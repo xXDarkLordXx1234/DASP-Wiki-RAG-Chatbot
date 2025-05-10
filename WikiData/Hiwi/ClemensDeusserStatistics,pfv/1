@@ -1,0 +1,411 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1343303877" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+---+++++ Updated Statistics using the Register:
+
+I am now using a different definition for categories that resembles the actual structure of the Fachsystematik more closely. Instead of main and subcategories, I now use category "levels", of which there are four. the lowest (0) is the most specific and higher levels are progressively more general with level 3 being just five very general categories.
+
+This data is *far* more accurate than the previous batch, Instead of 190 words for classification I can now use 3850 and the share of documents that cannot be classified has decreased from ~20% to ~0.5%.
+
+The following statistics show the number of categories per document for the amount of documents (with that number of categories), on all 4 levels.
+
+Level 0:
+ | *#Categories* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 14 | 0.41% | 1959, 1966, 2268 | 
+ | 1 | 165 | 4.84% | 138, 261, 300 | 
+ | 2 | 401 | 11.76% | 140, 143, 180 | 
+ | 3 | 452 | 13.25% | 139, 141, 159 | 
+ | 4 | 447 | 13.1% | 122, 136, 186 | 
+ | 5 | 425 | 12.46% | 137, 142, 135 | 
+ | 6 | 329 | 9.65% | 173, 198, 218 | 
+ | 7 | 290 | 8.5% | 121, 157, 172 | 
+ | 8 | 220 | 6.45% | 134, 147, 184 | 
+ | 9 | 190 | 5.57% | 126, 124, 129 | 
+ | 10 | 149 | 4.37% | 153, 190, 204 | 
+ | 11 | 98 | 2.87% | 170, 175, 238 | 
+ | 12 | 65 | 1.91% | 169, 168, 176 | 
+ | 13 | 43 | 1.26% | 125, 123, 202 | 
+ | 14 | 40 | 1.17% | 151, 222, 307 | 
+ | 15 | 24 | 0.7% | 127, 282, 280 | 
+ | 16 | 29 | 0.85% | 154, 149, 219 | 
+ | 17 | 10 | 0.29% | 242, 274, 266 | 
+ | 18 | 6 | 0.18% | 435, 438, 2768 | 
+ | 19 | 6 | 0.18% | 356, 1987, 2591 | 
+ | 21 | 4 | 0.12% | 3526, 3491, 3584 | 
+ | 23 | 2 | 0.06% | 2032, 2084 | 
+ | 24 | 1 | 0.03% | 3149 | 
+ | 27 | 1 | 0.03% | 3489 | 
+
+Level 1:
+ | *#Categories* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 14 | 0.41% | 1959, 1966, 2268 | 
+ | 1 | 182 | 5.34% | 138, 261, 300 | 
+ | 2 | 408 | 11.96% | 140, 143, 180 | 
+ | 3 | 490 | 14.37% | 139, 141, 159 | 
+ | 4 | 486 | 14.25% | 122, 136, 142 | 
+ | 5 | 450 | 13.19% | 137, 135, 150 | 
+ | 6 | 327 | 9.59% | 157, 173, 198 | 
+ | 7 | 278 | 8.15% | 121, 129, 162 | 
+ | 8 | 220 | 6.45% | 134, 147, 184 | 
+ | 9 | 176 | 5.16% | 126, 124, 133 | 
+ | 10 | 128 | 3.75% | 153, 204, 239 | 
+ | 11 | 81 | 2.37% | 170, 169, 168 | 
+ | 12 | 50 | 1.47% | 248, 283, 282 | 
+ | 13 | 31 | 0.91% | 125, 123, 202 | 
+ | 14 | 32 | 0.94% | 151, 222, 280 | 
+ | 15 | 25 | 0.73% | 127, 270, 269 | 
+ | 16 | 19 | 0.56% | 154, 149, 242 | 
+ | 17 | 4 | 0.12% | 266, 435, 4269 | 
+ | 18 | 3 | 0.09% | 2768, 3491, 4568 | 
+ | 19 | 3 | 0.09% | 356, 3128, 3526 | 
+ | 20 | 2 | 0.06% | 2032, 3149 | 
+ | 21 | 1 | 0.03% | 4946 | 
+ | 24 | 1 | 0.03% | 3489 | 
+
+Level 2:
+ | *#Categories* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 14 | 0.41% | 1959, 1966, 2268 | 
+ | 1 | 226 | 6.63% | 138, 261, 300 | 
+ | 2 | 542 | 15.89% | 139, 140, 143 | 
+ | 3 | 693 | 20.32% | 121, 137, 136 | 
+ | 4 | 590 | 17.3% | 122, 135, 150 | 
+ | 5 | 468 | 13.72% | 124, 166, 185 | 
+ | 6 | 326 | 9.56% | 126, 168, 175 | 
+ | 7 | 244 | 7.15% | 134, 151, 187 | 
+ | 8 | 140 | 4.1% | 127, 125, 153 | 
+ | 9 | 82 | 2.4% | 133, 219, 336 | 
+ | 10 | 41 | 1.2% | 123, 170, 202 | 
+ | 11 | 34 | 1.0% | 154, 149, 169 | 
+ | 12 | 6 | 0.18% | 266, 356, 435 | 
+ | 13 | 3 | 0.09% | 2032, 2588, 3491 | 
+ | 14 | 1 | 0.03% | 3489 | 
+ | 15 | 1 | 0.03% | 4946 | 
+
+Level 3:
+ | *#Categories* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 14 | 0.41% | 1959, 1966, 2268 | 
+ | 1 | 491 | 14.39% | 137, 139, 138 | 
+ | 2 | 1351 | 39.61% | 121, 136, 141 | 
+ | 3 | 1123 | 32.92% | 127, 135, 134 | 
+ | 4 | 373 | 10.94% | 126, 125, 124 | 
+ | 5 | 59 | 1.73% | 123, 149, 170 | 
+ 
+As could be expected, we now have more categories per paper (since more words are recognised). We can condense that down to two or three categories for most documents by generalising to the third category level, but the number of categories remains a problem for now.
+ 
+The next batch of statistics looks at the number of *documents* per category, so basically the opposite:
+
+Level 0:
+ | *#Documents* | *#Categories* | *Share* | *Examples* | 
+ | 1 | 31 | 15.35% | 6000, 3300, 7600 | 
+ | 2 | 21 | 10.4% | 7620, 7563, 7464 | 
+ | 3 | 16 | 7.92% | 6540, 7630, 6420 | 
+ | 4 | 14 | 6.93% | 6640, 6405, 7462 | 
+ | 5 | 11 | 5.45% | 6590, 6630, 7580 | 
+ | 6 | 7 | 3.47% | 6400, 6505, 6812 | 
+ | 7 | 7 | 3.47% | 6620, 6310, 7830 | 
+ | 8 | 5 | 2.48% | 7570, 7530, 7466 | 
+ | 9 | 5 | 2.48% | 7590, 6110, 4500 | 
+ | 10 | 4 | 1.98% | 6810, 5221, 5235 | 
+ | 11 | 1 | 0.5% | 6210 | 
+ | 12 | 6 | 2.97% | 7540, 7469, 4600 | 
+ | 13 | 8 | 3.96% | 3200, 7550, 5230 | 
+ | 14 | 5 | 2.48% | 3190, 6430, 7505 | 
+ | 15 | 5 | 2.48% | 7569, 6130, 7450 | 
+ | 16 | 1 | 0.5% | 6410 | 
+ | 17 | 3 | 1.49% | 4400, 6050, 6690 | 
+ | 18 | 1 | 0.5% | 7920 | 
+ | 19 | 7 | 3.47% | 6550, 5050, 6847 | 
+ | 23 | 1 | 0.5% | 6120 | 
+ | 25 | 1 | 0.5% | 7510 | 
+ | 26 | 1 | 0.5% | 6834 | 
+ | 27 | 2 | 0.99% | 6105, 6831 | 
+ | 28 | 2 | 0.99% | 7565, 6844 | 
+ | 29 | 2 | 0.99% | 6510, 3550 | 
+ | 30 | 2 | 0.99% | 7520, 4100 | 
+ | 31 | 1 | 0.5% | 7430 | 
+ | 32 | 2 | 0.99% | 7562, 3110 | 
+ | 33 | 1 | 0.5% | 3130 | 
+ | 34 | 2 | 0.99% | 6840, 6832 | 
+ | 35 | 2 | 0.99% | 7940, 6835 | 
+ | 38 | 3 | 1.49% | 3553, 6841, 6390 | 
+ | 40 | 1 | 0.5% | 7465 | 
+ | 41 | 1 | 0.5% | 6855 | 
+ | 42 | 1 | 0.5% | 3120 | 
+ | 45 | 1 | 0.5% | 3540 | 
+ | 47 | 1 | 0.5% | 6851 | 
+ | 48 | 1 | 0.5% | 6520 | 
+ | 53 | 1 | 0.5% | 6610 | 
+ | 56 | 1 | 0.5% | 6811 | 
+ | 59 | 1 | 0.5% | 6740 | 
+ | 65 | 1 | 0.5% | 6730 | 
+ | 66 | 1 | 0.5% | 3535 | 
+ | 70 | 1 | 0.5% | 3520 | 
+ | 71 | 1 | 0.5% | 6833 | 
+ | 76 | 1 | 0.5% | 3560 | 
+ | 79 | 1 | 0.5% | 6846 | 
+ | 81 | 1 | 0.5% | 6710 | 
+ | 106 | 1 | 0.5% | 3400 | 
+ | 117 | 1 | 0.5% | 7420 | 
+ | 122 | 1 | 0.5% | 6813 | 
+ | 136 | 1 | 0.5% | 6863 | 
+ | 335 | 1 | 0.5% | 6850 | 
+ | 412 | 1 | 0.5% | 3530 | 
+
+Level 1:
+ | *#Documents* | *#Categories* | *Share* | *Examples* | 
+ | 1 | 14 | 10.77% | 6330, 6000, 3300 | 
+ | 2 | 7 | 5.38% | 7890, 7410, 6320 | 
+ | 3 | 8 | 6.15% | 6540, 7630, 5210 | 
+ | 4 | 9 | 6.92% | 7910, 6370, 6640 | 
+ | 5 | 7 | 5.38% | 6590, 3570, 6630 | 
+ | 6 | 3 | 2.31% | 4050, 6830, 6500 | 
+ | 7 | 7 | 5.38% | 6310, 7830, 6350 | 
+ | 8 | 5 | 3.85% | 7400, 4700, 7570 | 
+ | 9 | 5 | 3.85% | 7590, 6110, 7750 | 
+ | 10 | 1 | 0.77% | 6810 | 
+ | 11 | 1 | 0.77% | 6210 | 
+ | 12 | 5 | 3.85% | 3580, 6860, 7540 | 
+ | 13 | 8 | 6.15% | 5220, 6790, 6300 | 
+ | 14 | 5 | 3.85% | 4200, 7810, 6400 | 
+ | 15 | 3 | 2.31% | 7500, 6130, 7450 | 
+ | 16 | 1 | 0.77% | 6410 | 
+ | 17 | 3 | 2.31% | 4400, 6690, 6050 | 
+ | 18 | 1 | 0.77% | 7920 | 
+ | 19 | 4 | 3.08% | 6550, 5050, 6170 | 
+ | 20 | 1 | 0.77% | 7730 | 
+ | 23 | 3 | 2.31% | 5230, 6120, 7740 | 
+ | 25 | 1 | 0.77% | 7510 | 
+ | 27 | 1 | 0.77% | 6100 | 
+ | 29 | 1 | 0.77% | 6510 | 
+ | 30 | 2 | 1.54% | 4100, 7520 | 
+ | 31 | 1 | 0.77% | 7430 | 
+ | 32 | 1 | 0.77% | 3110 | 
+ | 33 | 1 | 0.77% | 3130 | 
+ | 34 | 1 | 0.77% | 6840 | 
+ | 35 | 1 | 0.77% | 7940 | 
+ | 38 | 1 | 0.77% | 6390 | 
+ | 40 | 1 | 0.77% | 6820 | 
+ | 42 | 1 | 0.77% | 3120 | 
+ | 45 | 1 | 0.77% | 3540 | 
+ | 48 | 1 | 0.77% | 6520 | 
+ | 53 | 1 | 0.77% | 6610 | 
+ | 59 | 1 | 0.77% | 6740 | 
+ | 65 | 1 | 0.77% | 6730 | 
+ | 70 | 1 | 0.77% | 3520 | 
+ | 71 | 1 | 0.77% | 7460 | 
+ | 76 | 1 | 0.77% | 3560 | 
+ | 79 | 1 | 0.77% | 7560 | 
+ | 81 | 1 | 0.77% | 6710 | 
+ | 86 | 1 | 0.77% | 3550 | 
+ | 106 | 1 | 0.77% | 3400 | 
+ | 117 | 1 | 0.77% | 7420 | 
+ | 335 | 1 | 0.77% | 6850 | 
+ | 478 | 1 | 0.77% | 3530 | 
+ | 827 | 1 | 0.77% | 6800 | 
+
+Level 2:
+ | *#Documents* | *#Categories* | *Share* | *Examples* | 
+ | 1 | 1 | 3.23% | 3300 | 
+ | 4 | 1 | 3.23% | 5100 | 
+ | 7 | 1 | 3.23% | 4000 | 
+ | 8 | 2 | 6.45% | 7600, 4700 | 
+ | 9 | 1 | 3.23% | 4500 | 
+ | 12 | 2 | 6.45% | 4600, 4300 | 
+ | 13 | 1 | 3.23% | 3200 | 
+ | 14 | 1 | 3.23% | 4200 | 
+ | 17 | 2 | 6.45% | 4400, 6200 | 
+ | 18 | 1 | 3.23% | 6000 | 
+ | 20 | 1 | 3.23% | 5000 | 
+ | 30 | 1 | 3.23% | 4100 | 
+ | 39 | 1 | 3.23% | 7800 | 
+ | 42 | 1 | 3.23% | 5200 | 
+ | 52 | 1 | 3.23% | 6400 | 
+ | 77 | 1 | 3.23% | 7900 | 
+ | 81 | 1 | 3.23% | 7700 | 
+ | 82 | 1 | 3.23% | 6300 | 
+ | 86 | 1 | 3.23% | 6600 | 
+ | 106 | 1 | 3.23% | 3400 | 
+ | 108 | 1 | 3.23% | 6100 | 
+ | 110 | 1 | 3.23% | 6500 | 
+ | 121 | 1 | 3.23% | 3100 | 
+ | 204 | 1 | 3.23% | 7500 | 
+ | 247 | 1 | 3.23% | 6700 | 
+ | 254 | 1 | 3.23% | 7400 | 
+ | 780 | 1 | 3.23% | 3500 | 
+ | 1268 | 1 | 3.23% | 6800 | 
+
+Level 3:
+ | *#Documents* | *#Categories* | *Share* | *Examples* | 
+ | 66 | 1 | 20.0% | 5000 | 
+ | 109 | 1 | 20.0% | 4000 | 
+ | 663 | 1 | 20.0% | 7000 | 
+ | 1021 | 1 | 20.0% | 3000 | 
+ | 1988 | 1 | 20.0% | 6000 | 
+ 
+With the exception of a few outliers (6800, 3500) this looks fairly well distributed and appears to correspond with the scope of the categories. The outlying categories in question are "Paedagogische Psychologie", "Wirtschaftkunde, Wirtschaftslehre" and "Politisch-gesellschaftlicher Unterricht, Politische Bildung", which sounds popular enough.
+
+---+++++ Statistics for main- and subcategories of the Fachsystematik in pedocs
+
+This table concerns the *main category keywords*. I filtered the pedocs keywords to only keep the ones that also appeared in the FS main categories, these statistics show the result (0 means that no keywords remained). The examples show the document IDs, you can check the corresponding title and keywords of documents [[ClemensDeusserPedocsList][here]] (fair warning: very large).
+
+Note that a keyword can be in both categories, in that case it is treated as being in a main category. 
+
+(Design shamelessly stolen from Shuo's Wiki)
+
+ | *#Keywords* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 1219 | 35.74% | 137, 139, 138 | 
+ | 1 | 984 | 28.85% | 121, 136, 129 | 
+ | 2 | 602 | 17.65% | 133, 134, 147 | 
+ | 3 | 310 | 9.09% | 126, 122, 150 | 
+ | 4 | 154 | 4.51% | 124, 149, 169 | 
+ | 5 | 76 | 2.23% | 127, 123, 188 | 
+ | 6 | 28 | 0.82% | 153, 190, 219 | 
+ | 7 | 14 | 0.41% | 242, 375, 750 | 
+ | 8 | 9 | 0.26% | 125, 154, 356 | 
+ | 9 | 8 | 0.23% | 269, 326, 320 | 
+ | 10 | 2 | 0.06% | 324, 4389 | 
+ | 11 | 5 | 0.15% | 222, 274, 270 | 
+ 
+And the same for the *subcategory keywords*:
+
+ | *#Keywords* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 684 | 20.05% | 121, 138, 141 | 
+ | 1 | 849 | 24.89% | 137, 136, 139 | 
+ | 2 | 671 | 19.67% | 159, 146, 151 | 
+ | 3 | 477 | 13.98% | 142, 129, 135 | 
+ | 4 | 299 | 8.77% | 122, 133, 147 | 
+ | 5 | 184 | 5.39% | 169, 204, 237 | 
+ | 6 | 109 | 3.2% | 126, 124, 153 | 
+ | 7 | 50 | 1.47% | 127, 123, 246 | 
+ | 8 | 31 | 0.91% | 149, 202, 238 | 
+ | 9 | 22 | 0.64% | 125, 280, 336 | 
+ | 10 | 10 | 0.29% | 269, 326, 356 | 
+ | 11 | 7 | 0.21% | 324, 320, 372 | 
+ | 12 | 7 | 0.21% | 154, 440, 438 | 
+ | 13 | 3 | 0.09% | 242, 270, 4945 | 
+ | 14 | 6 | 0.18% | 222, 219, 322 | 
+ 
+For reference, [[ClemensDeusserPedocsStatistics][here]] is the same statistic in its unfiltered form, including all keywords of pedocs.
+
+If we count only the different categories (different category keywords can belong to the same category), the result is this for the keywords of the *main categories*:
+
+ | *#Categories* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 1219 | 35.74% | 137, 139, 138 | 
+ | 1 | 1160 | 34.01% | 121, 136, 129 | 
+ | 2 | 642 | 18.82% | 123, 122, 147 | 
+ | 3 | 274 | 8.03% | 126, 154, 149 | 
+ | 4 | 74 | 2.17% | 125, 124, 153 | 
+ | 5 | 34 | 1.0% | 127, 274, 270 | 
+ | 6 | 6 | 0.18% | 375, 2084, 3489 | 
+ | 7 | 1 | 0.03% | 3040 | 
+ | 8 | 1 | 0.03% | 3037 | 
+ 
+And this for the keywords of the *subcategories*:
+
+ | *#Categories* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 684 | 20.05% | 121, 138, 141 | 
+ | 1 | 970 | 28.44% | 137, 136, 139 | 
+ | 2 | 766 | 22.46% | 134, 159, 146 | 
+ | 3 | 485 | 14.22% | 122, 142, 129 | 
+ | 4 | 272 | 7.97% | 126, 123, 153 | 
+ | 5 | 136 | 3.99% | 125, 124, 149 | 
+ | 6 | 48 | 1.41% | 242, 270, 320 | 
+ | 7 | 26 | 0.76% | 127, 274, 299 | 
+ | 8 | 15 | 0.44% | 375, 380, 438 | 
+ | 9 | 6 | 0.18% | 440, 435, 3040 | 
+ | 10 | 1 | 0.03% | 219 | 
+ | 11 | 1 | 0.03% | 3489 | 
+ | 13 | 1 | 0.03% | 2084 | 
+ 
+If we *generalize* the subcategories to the main categories by assigning to each subcategory its corresponding main category, we receive this:
+
+ | *#Categories* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 684 | 20.05% | 121, 138, 140 | 
+ | 1 | 1018 | 29.84% | 133, 136, 137 | 
+ | 2 | 822 | 24.1% | 129, 134, 146 | 
+ | 3 | 505 | 14.81% | 122, 126, 135 | 
+ | 4 | 232 | 6.8% | 123, 127, 153 | 
+ | 5 | 98 | 2.87% | 124, 125, 149 | 
+ | 6 | 37 | 1.08% | 242, 274, 299 | 
+ | 7 | 10 | 0.29% | 219, 329, 584 | 
+ | 8 | 3 | 0.09% | 438, 4404, 4919 | 
+ | 9 | 2 | 0.06% | 435, 3489 | 
+ 
+And if we *merge* the generalized data with the main category keyword data (essentially assigning main categories to all keywords that appear in the Fachsystematik):
+
+ | *#Categories* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 662 | 19.41% | 138, 140, 141 | 
+ | 1 | 610 | 17.88% | 121, 133, 137 | 
+ | 2 | 659 | 19.32% | 134, 136, 146 | 
+ | 3 | 507 | 14.86% | 129, 135, 142 | 
+ | 4 | 363 | 10.64% | 122, 168, 172 | 
+ | 5 | 247 | 7.24% | 123, 126, 147 | 
+ | 6 | 171 | 5.01% | 154, 173, 176 | 
+ | 7 | 92 | 2.7% | 149, 153, 169 | 
+ | 8 | 45 | 1.32% | 124, 125, 127 | 
+ | 9 | 30 | 0.88% | 269, 270, 324 | 
+ | 10 | 13 | 0.38% | 219, 274, 321 | 
+ | 11 | 6 | 0.18% | 375, 438, 584 | 
+ | 12 | 3 | 0.09% | 3040, 4389, 4919 | 
+ | 13 | 2 | 0.06% | 435, 3037 | 
+ 
+Note that this data is extracted using naive methods and just uses exact matching of individual words. This produces anomalies such as very similar words not matching ("Berufliche Bildung" not matching with "Berufsbildung", or even "psychosoziale" not matching "psychosozial"), multiple sub and/or main categories per word ("Erziehung" or "Schule") and false matches ("Berufliche Bildung" and "Politische Bildung" create a match since both contain the word "Bildung"). Further refinement is required if this data will be used as a gold standard and that can only be achieved with at least a minimum of NLP techniques.
+
+---+++++ Keywords in both Fachsystematik and pedocs (OUTDATED):
+
+Number of keywords occurring in both FS and pedocs: ~190
+   * [[ClemensDeusserFSPedocsKeywords1][Per document, in SQL statements]]
+   * [[ClemensDeusserFSPedocsKeywords2][Across database, in plain text]]
+
+---+++++ PEDOCS and Fachsystematik  (OUTDATED):
+
+Pedocs is a database of over 3000 papers pertaining to pedagogy. The relevant information per document contained in this database is the title, a short description (abstract), the author(s), the date, publication information and a number of keywords. The Fachsystematik provides consistent identifiers for pedagogic papers according to their topic. While pedocs does have a field "FS_Keys", it does not appear to be used, so usage of the FS to determine the topic seems to be infeasible.
+
+---+++++ Statistics of pedocs:
+
+Keywords in pedocs can be found in the "opus" table, "subject_uncontrolled_german" column.
+
+   * Number of different keywords: 5817
+   * Number of papers (in opus): 3411
+   * Number of papers (in opus_autor): 3552
+   * Total Number of keywords: 38040
+That means:
+   * Average number of keywords per paper: 11.152154793315743
+   * Average times a word appears: 6.539453326456937
+
+Top 3 most common words and the number of occurences:
+   * deutschland: 1304
+   * rezension: 640
+   * schule: 423
+
+Authors, found in opus_autor:
+   * Number of authors: 2949
+   * Authors per paper with 5230 database entries and 3552 papers:
+      * ~1.4724 authors per paper on average.
+      * Between 1 and 18 authors per paper.
+      * 915 papers with more than one author,
+      * 2637 papers with only one author.
+   * 1800 authors have written a paper with somebody else.
+
+
+
+
+SQL statements documentation:
+
+
+<blockquote>
+SELECT COUNT(DISTINCT source_opus) FROM opus;
+
+SELECT COUNT(DISTINCT source_opus) FROM opus_autor;
+
+SELECT COUNT(creator_name) FROM opus_autor;
+
+SELECT COUNT(DISTINCT creator_name) FROM opus_autor;
+
+SELECT reihenfolge FROM opus_autor ORDER BY reihenfolge DESC;
+
+SELECT COUNT(source_opus) FROM opus_autor where reihenfolge = 2;
+
+SELECT COUNT(DISTINCT creator_name) FROM opus_autor WHERE source_opus IN (SELECT source_opus FROM opus_autor WHERE reihenfolge = 2);
+</blockquote>
+
+-- Main.ClemensDeusser - 2012-07-26

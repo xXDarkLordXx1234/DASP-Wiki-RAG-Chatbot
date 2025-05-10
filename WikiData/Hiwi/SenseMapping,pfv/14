@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1267360007" format="1.1" reprev="14" version="14"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---++ Sense Mapping
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Sense Mapping between Wikipedia and WordNet | |
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Nachtrag vom Januar | 02.02.2010 | -11 | Wikipedia Mining |
+| Sense Mapping | 03.02.2010 | 3 | Einarbeitung in Relatedness, Excel-Extrahierung |
+| Sense Mapping | 05.02.2010 | 3 | Parsing von Excel-Datei.<br> Tabelle mit LinkLabels/Redirects wurde vollständig importiert. |
+| Sense Mapping | 06.02.2010 | 2.5 | Tokenizierung, Einarbeitung in Relatedness |
+| Sense Mapping | 07.02.2010 | 2.5 | Erstellung von Tests/Statistiken. |
+| Sense Mapping | 09.02.2010 | 3.5 | Statistik-Tabellen im Attachment |
+| Sense Mapping | 10.02.2010 | 2 | Analyse in "SenseMappingAnalysis.pdf" |
+| Sense Mapping | 11.02.2010 | 2 | Auswertung der Performanz |
+| Sense Mapping | 13.02.2010 | 3.5 | Test von Thresholds in "Threshold_Test.xls"<br>"SenseMappingAnalysis.pdf" wurde aktualisiert. |
+| Sense Mapping | 17.02.2010 | 3 | Einrichtung des neuen Rechners |
+| Sense Mapping | 18.02.2010 | 2 | AnchorText-Funktionen |
+| Sense Mapping | 19.02.2010 | 2 | Error analysis TF and FT |
+| Sense Mapping | 22.02.2010 | 3.5 | Einbeziehung von Hypo- und Hypernymen in Wordnet.<br>Einarbeitung in ESA |
+| Sense Mapping | 24.02.2010 | 3.5 | Tabellen mit Wordnet HypoHyper-Statistiken in XLS-Dateien.<br> "SenseMappingAnalysis.pdf" updated |
+| Sense Mapping | 27.02.2010 | 2.5 | Tests mit ESA-Methods |
+| Sense Mapping | 28.02.2010 | 3 | Tabellen mit ESA-Methods Average Statistics in XLS-Dateien.<br> "SenseMappingAnalysis.pdf" updated |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende April 2010 |
+<nop>
+   * [[%ATTACHURL%/SameSense1.xls][SameSense1.xls]]: Table with SameSense=0 Items
+
+   * [[%ATTACHURL%/SameSense0.xls][SameSense0.xls]]: Table with SameSense=1 Items
+
+   * [[%ATTACHURL%/SameSense1_Average.xls][SameSense1_Average.xls]]: Table with SameSense=1 Average Statistics
+   
+   * [[%ATTACHURL%/SameSense0_Average.xls][SameSense0_Average.xls]]: Table with SameSense=0 Average Statistics
+
+   * [[%ATTACHURL%/SenseMappingAnalysis.pdf][SenseMappingAnalysis.pdf]]: SenseMapping Analysis
+
+   * [[%ATTACHURL%/Threshold_Test.xls][Threshold_Test.xls]]: Test of different Thresholds and methods
+
+   * [[%ATTACHURL%/SameSense0HypoHyper_Average.xls][SameSense0HypoHyper_Average.xls]]: Table with SameSense=0 and WordNet Gloss,Hypo and Hypernyms. Average Statistics.
+
+   * [[%ATTACHURL%/SameSense1HypoHyper_Average.xls][SameSense1HypoHyper_Average.xls]]: Table with SameSense=1 and WordNet Gloss,Hypo and Hypernyms. Average Statistics.
+
+   * [[%ATTACHURL%/SameSense0ESA_Average.xls][SameSense0ESA_Average.xls]]: Table with SameSense=0 ESA-Methods. Average Statistics.
+
+   * [[%ATTACHURL%/SameSense1ESA_Average.xls][SameSense1ESA_Average.xls]]: Table with SameSense=1 ESA-Methods. Average Statistics.
+
+%META:FILEATTACHMENT{name="SameSense1.xls" attachment="SameSense1.xls" attr="" comment="Table with SameSense=0 Items" date="1265711875" path="SameSense1.xls" size="97280" stream="SameSense1.xls" tmpFilename="/var/tmp/CGItemp35232" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SameSense0.xls" attachment="SameSense0.xls" attr="" comment="Table with SameSense=1 Items" date="1265711904" path="SameSense0.xls" size="1135104" stream="SameSense0.xls" tmpFilename="/var/tmp/CGItemp35394" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SameSense0_Average.xls" attachment="SameSense0_Average.xls" attr="" comment="Table with SameSense=0 Average Statistics" date="1265711945" path="SameSense0_Average.xls" size="10240" stream="SameSense0_Average.xls" tmpFilename="/var/tmp/CGItemp35200" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SameSense1_Average.xls" attachment="SameSense1_Average.xls" attr="" comment="Table with SameSense=1 Average Statistics" date="1265711961" path="SameSense1_Average.xls" size="10240" stream="SameSense1_Average.xls" tmpFilename="/var/tmp/CGItemp35232" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SenseMappingAnalysis.pdf" attachment="SenseMappingAnalysis.pdf" attr="" comment="SenseMapping Analysis" date="1267359736" path="SenseMappingAnalysis.pdf" size="455797" stream="SenseMappingAnalysis.pdf" tmpFilename="/var/tmp/CGItemp45051" user="YevgenChebotar" version="4"}%
+%META:FILEATTACHMENT{name="Threshold_Test.xls" attachment="Threshold_Test.xls" attr="" comment="Test of different Thresholds and methods" date="1266063957" path="Threshold_Test.xls" size="12288" stream="Threshold_Test.xls" tmpFilename="/var/tmp/CGItemp35358" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SameSense0HypoHyper_Average.xls" attachment="SameSense0HypoHyper_Average.xls" attr="" comment="Table with SameSense=0 and WordNet Gloss,Hypo and Hypernyms. Average Statistics." date="1267359706" path="SameSense0HypoHyper_Average.xls" size="18944" stream="SameSense0HypoHyper_Average.xls" tmpFilename="/var/tmp/CGItemp45558" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="SameSense1HypoHyper_Average.xls" attachment="SameSense1HypoHyper_Average.xls" attr="" comment="Table with SameSense=1 and WordNet Gloss,Hypo and Hypernyms. Average Statistics." date="1267359720" path="SameSense1HypoHyper_Average.xls" size="18944" stream="SameSense1HypoHyper_Average.xls" tmpFilename="/var/tmp/CGItemp45504" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="SameSense0ESA_Average.xls" attachment="SameSense0ESA_Average.xls" attr="" comment="Table with SameSense=0 ESA-Methods. Average Statistics." date="1267359795" path="SameSense0ESA_Average.xls" size="14336" stream="SameSense0ESA_Average.xls" tmpFilename="/var/tmp/CGItemp40700" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SameSense1ESA_Average.xls" attachment="SameSense1ESA_Average.xls" attr="" comment="Table with SameSense=1 ESA-Methods. Average Statistics." date="1267359820" path="SameSense1ESA_Average.xls" size="14848" stream="SameSense1ESA_Average.xls" tmpFilename="/var/tmp/CGItemp40648" user="YevgenChebotar" version="1"}%

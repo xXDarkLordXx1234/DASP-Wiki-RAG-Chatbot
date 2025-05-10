@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="ulutuerk" comment="" date="1641937102" format="1.1" reprev="2" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Feature Optimization in Multimodal Emotion Detection Models
+*Start date:* 15.12.2021
+
+*Supervisor:* Tobias Mayer
+
+---++ Meeting 15.12.2021
+   * slurm tutorial machen
+   * baselines lauffähig machen
+
+---++ Meeting 04.01.2022
+   * fixed grid_search function on slurm and updated dependecies
+   * implemented script_generator to split bigger grid_searches into smaller searches
+   * ran grid_search
+   * created (temporary) feature list
+     
+---++ Meeting 11.01.2022
+   * determining hyperparameters for further research
+   * comparing accuracy using determined hyperparamters and custom feature set

@@ -1,0 +1,108 @@
+%META:TOPICINFO{author="lichtenberg" comment="" date="1652862727" format="1.1" reprev="5" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis: Prediction of Mood States from Therapy Session Recordings
+*Start date:* 03.01.2021
+
+*Supervisor:* Tobias Mayer
+
+Weekly Report:
+
+
+==Week 12. - 18.05.2022==
+   * Writing on thesis 
+   * Running HMNet
+   * Supervisor Meeting on the 18.05.2022
+
+==Week 05. - 11.05.2022==
+   * krank
+
+==Week 28. - 04.05.2022==
+   * krank
+
+==Week 21. - 27.04.2022==
+   * krank
+   * Supervisor Meeting on the 27.04.2022
+
+==Week 14. - 20.04.2022==
+   * Writing on thesis 
+   * working on HMNet, BPT and class imbalance
+   * Supervisor Meeting on the 20.04.2022
+
+==Week 07. - 13.04.2022==
+   * Writing on thesis 
+   * working on HMNet and BPT
+   * Supervisor Meeting on the 13.04.2022
+
+==Week 31. - 06.04.2022==
+   * Writing on thesis 
+   * working on HMNet and BPT
+   * Supervisor Meeting on the 06.04.2022
+
+==Week 24. - 30.03.2022==
+   * Setup SVM Baseline
+   * Supervisor Meeting on the 30.03.2022
+
+==Week 17. - 23.03.2022==
+   * Preperation for Presentation for Project
+   * Supervisor Meeting on the 23.03.2022
+
+==Week 10. - 16.03.2022==
+   * Run Fastfromer experiments
+   * Setup LSTM baselines
+   * Supervisor Meeting on the 16.03.2022
+
+==Week 03. - 09.03.2022==
+   * Run Fastfromer experiments
+   * Setup LSTM baselines
+   * Supervisor Meeting on the 09.03.2022
+
+==Week 24. - 02.03.2022==
+   * Run Fastfromer experiments
+   * Setup LSTM baselines
+   * Supervisor Meeting on the 02.03.2022
+
+==Week 17. - 23.02.2022==
+   * try embedding with xlm-roberta, problem with gpu memory allocation
+   * xlm-r input also limited to 512 tokens and input seq longer
+   * start with implementing the fastformer model
+   * Supervisor Meeting on the 25.02.2022
+
+==Week 10. - 16.02.2022==
+   * try embedding with xlm-roberta 
+   * start with implementing the fastformer model
+   * Supervisor Meeting on the 16.02.2022
+
+==Week 03. - 09.02.2022==
+   * Read data and make analysis
+   * find out how many nan values are their for the POM scores
+   * Supervisor Meeting on the 09.02.2022
+
+==Week 26. - 02.02.2022==
+   * Got the access to slurm
+      * Doing the Tutorial
+      * Look into the Dataset  
+   * Supervisor Meeting on the 02.02.2022
+
+==Week 20. - 26.01.2022==
+   * Research paper on long document Transformer
+      * Make a comparison of current state of the art models
+   * Making Notes and write on the chapter Related work
+   * Supervisor Meeting on the 26.01.2022
+      * first information about dataset structure
+
+==Week 13. - 19.01.2022==
+   * Research paper on long document Transformer
+      * Make a comparison of current state of the art models
+   * Making Notes and write on the chapter Related work
+   * Supervisor Meeting on the 19.01.2022
+      * select models
+
+==Week 03. - 12.01.2022==
+   * Research paper on long document Transformer
+      * Make a comparison of current state of the art models
+   * Rearach on the topic of Emotions and Moods 
+      * Papers about Profile of Moods Score (POMS) 
+   * Supervisor Meeting on the 05.01.2022 and 12.01.2022
+      * discussing models
+
+---++ Meeting 26.01.2022

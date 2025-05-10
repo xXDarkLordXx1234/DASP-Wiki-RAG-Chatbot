@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="ShuoYang" date="1322989179" format="1.1" version="43"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll von DARIAH-DE, Shuo Yang
+
+---++ Aktuelle Arbeit: Nov 2011 - Jan 2012
+
+---+++ Aufgabenübersicht
+
+Siehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/buglist.cgi?query_format=advanced&short_desc_type=allwordssubstr&short_desc=&product=DARIAH-DE&long_desc_type=substring&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&emailassigned_to1=1&emailtype1=substring&email1=yang&emailassigned_to2=1&emailreporter2=1&emailqa_contact2=1&emailcc2=1&emailtype2=substring&email2=&bugidtype=include&bug_id=&votes=&chfieldfrom=&chfieldto=Now&chfieldvalue=&cmdtype=doit&order=Reuse+same+sort+as+last+time&remtype=asdefault&field0-0-0=noop&type0-0-0=noop&value0-0-0=][Bugzilla]].
+
+<b>Aktuelle Bugs:</b>
+
+eSciDoc:
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1166][Automatic triggering]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1167][LUCAS writer]]
+
+UIMAFit !ExternalResource:
+   * [[http://code.google.com/p/dkpro-core-asl/issues/detail?id=40][Auto-Lookup External Resource]]
+   * [[http://code.google.com/p/uimafit/issues/detail?id=100][Bind !ExternalResource by setting parameter]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1169][Lazy loading of !ExternalResource]]
+
+---+++ Protokoll
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | -13 | Übertrag von letztem Vertrag |
+| 02.11.11 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]] | 0.5 | |
+| 08.11.11 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]] | 0.5 | |
+| 13.11.11 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]] | 1.5 | |
+| 16.11.11 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]] | 2 | |
+| 19.11.11 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]]</del> | 3.5 | Erledigt. Besprochene Projekte wurden in DKPro-Repository geschoben und nach DKPro Codestil refactored |
+| 20.11.11 | TREC vs GIRT, Auto-Lookup External Resource | 1.5 | Einlesen der Beziehung von TREC und GIRT. Einarbeiten in ExternalResource |
+| 21.11.11 | Auto-Lookup External Resource | 5 | Kapselung von Auto-Lookup, Wrapper-Methode von UIMAfit um ExternalResource automatisch zu binden. [[https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/yang/ExternalResource/de.tudarmstadt.ukp.experiments.sy.externalresource][Link zum Java-Projekt]] |
+| 22.11.11 | ESciDoc Auto-Triggering, Meeting | 1.5 | Meeting: Diskussion bisheriger Ergebnisse und nächste Schritte |
+| 23.11.11 | Moving Old Projects | 0.5 | |
+| 28.11.11 | Moving Old Projects | 3 | Refactors, Erstellung nicht-copyrighted Testcases | 
+| 29.11.11 | Meeting, Auto-Lookup External Resource | 3 | Meeting: Fusion von XmlReaderXPath in DKPro-ASL. <p> Weiterentwicklung Auto-Lookup External Resource |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 60)$EXEC($GET(total_hour))"}% | bis Ende Januar noch %CALC{"$EVAL( $GET( total_hour ) - ($GET( done_hour )) )"}% Stunden |
+<nop>
+
+---++ Dokumente
+ShuoYangMemo
+
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Main/NotesOnCoding][Notes on Coding]]
+
+
+---++ Vorherige Arbeit
+ShuoYangWork2H2011<br>
+ShuoYangWork1H2011
+
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+
+-- Main.ShuoYang - 2011-12-04
+
+%META:TOPICMOVED{by="ShuoYang" date="1316728220" from="Hiwi.ShuoDariah" to="Hiwi.ShuoYangDariahArbeit"}%

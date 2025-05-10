@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="BenjaminHerbert" date="1245659523" format="1.1" version="5"}%
+%META:TOPICPARENT{name="HristoLulev"}%
+To Install Virtual Machine on Your PC follow the steps:
+   * Copy "BackupUnzipped" and "virtualbox-2.2_2.2.2-46594_Ubuntu_intrepid_amd64.deb" to Your Home directory.
+   *  Run the "virtualbox-2.2_2.2.2-46594_Ubuntu_intrepid_amd64.deb", after installation completes go to Applications/Anwendungen -> System Tools/Systemwerkweuge and check wether the shortcut "Sun !VirtualBox" is there, DON'T start it! You may need to restart the computer now if its not there.
+   * Open a Terminal and write this in it:
+      1 =sudo su -=     // here you will be asked for your password
+      2 =vi /etc/group=
+            // scroll at the last line of the text on your screen, you'll see something like "vboxusers : x 123 : ..."
+         - when there press Shift+A, now write:
+      3 your_username (press)Esc :wq (press)Enter
+      4 =cd /home/your_username=
+      5 =cd !BackupUnzipped=
+      6 =chmod 770 !VMBoxPlus=
+      7 =./VMBoxPlus= and press Enter
+      8 =exit=
+    * now start the !VirtualBox, in the first dialog window you should give name to your virtual machine, that could be any valid name, best would be f.e. name like: your_usernameWindows, click Next, now select the size of the RAM, recommended is not less then 1 GB, click Next. Now here select the virtual Boot harddrive, check the "Festplatte benutzen(Existierend)/Existing"-> "Hinzufügen/Add" and navigate to your Home folder, !BackupUnzipped -> VDI and chose the XP_clean.vdi. Click Finish, now the virtualbox starts and if you want you can mount, on the right side, by clicking on the text, additional CD/DVD-ROM or other devices.
+   * Click on the green arrow for Start and the Virtual Windows XP starts. In order to connect it with the network there are some additional setting that need to be done.
+   * On the start menu right click on "Arbeitsplatz" and select "Eigenschaften", on the tab Computername click "Ändern" and change the defalt name to f.e. your_usernameVM. Click OK and how you need to restart the virtual PC.
+   * After starting again, on the Start menu right click on "Netzwerkumgebung"->"Eigenschaften", on the new window, again right click on the LAN-Verbingung->Eigenschaften, scroll down, select "Internetprotocoll TCP/IP" and click the button "Eigenschaften".
+   * Click "Folgende DNS-Serveradressen verwenden"-radio button and change the(Beforzugter) DNS-Server to: 130.83.163.141 and the Alternativer DNS-Server to: 130.83.22.63. Don't close the window and click the "Erweitert"-button,  tab WINS, there click the button "Hinzufügen" and enter the following: 130.83.163.141, click "Hinzufügen" and one more time the "Hinzufügen" on the bigger window in order to type in one more adress: 130.83.163.139 again Hinzufügen, "OK" and Restart the virtual PC.
+   * Again on the Start menu right click the "Arbeitsplatz" and select the tab "Computername" click the button "Ändern" again and this time change the radio button to "Mitglied von" and type in "NTDOM.TK.informatik.tu-darmstadt.de"! Confirm with OK and now you should see a log in screen where the username is NTDOM\Administrator an the password "ask Hristo or Manfred when you need it!", after successful log in on the screen comes up a welcome window, if everything is done wright and the server is up!
+   * Now the virtual PC should be restarted one more time and this time your log in name is automaticlly set to UKPuser with no password. Log in and as administrator you should create the corresponding user account from "Systemsteuerung -> Benutzerkonten -> Hinzufügen". Add username and for Domäne type in "NTDOM", you can proove it with "Durchsucen" and type in the name again, here before the check again NTDOM\Administrator should type in password. Click on "Weiter", choose "Andere" for "Zugriffsstuffe" and click "Fertig stellen".
+   * at the next log in, the new created user can be logged in on the NTDOM network
+       
+-- Main.HristoLulev - 27 Apr 2009

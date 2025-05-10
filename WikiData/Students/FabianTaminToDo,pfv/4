@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="FabianTamin" date="1258113540" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ To Do
+
+What have to be done:
+1st Priority:
+   * [v] Creating better list of Wiki-links for user study 2
+   * [v] Reorganize annotators in UIMA pipelining and its parameter
+   * [v] Fixing !MediaWiki !HTMLTextBlockAnnotator wikiSyntax is always *MediaWiki*
+   * [ ] !TWiki annotator implementation for !TWikiHTMLTextBlockExtractor
+   * [ ] Bug fix: for some articles document is unreadable
+      * [ ] check !TextBlockFilter
+
+2nd Priority:
+   * [v] Tuning: don't close dialog if dialog is dragged (or maybe if mouse is down)
+   * [v] Separate execution of annotators
+   * [ ] Reload functionality for timeout
+
+
+3rd Priority:
+   * [v] Implementing for image
+
+
+-- Main.FabianTamin - 14 Sep 2009

@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="bugert" comment="" date="1554372106" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Meeting Minutes
+
+---++ Generelles
+   * Zeitliche Vorgaben:
+      * 13. Mai: Release Hausübung 5
+         * Studenten sollen Baseline für Shared Task entwickeln. Dafür muss CodaLab mit simplem Scorer funktionieren, plus die Hausübung.
+      * ca. 08. Juli: Submission Deadline für Shared Task
+         * Bis dahin kann der Scorer noch erweitert werden.
+
+   * https://docs.google.com/document/d/1g25ZrPRPo0O37FPyPqF5o5r7xe2kUqQYiRc5hh1JOac/edit#
+      * Poems, die generiert werden sollen
+      * Was der Scorer können soll
+
+---++ 2019-04-04 Erste Aufträge von MB
+   * Generieren von Poems: erstmal überspringen.
+   * Wir brauchen zunächst eine prototypische Umsetzung für den gesamten Shared Task. Der Weg dahin:
+      * mit Codalab vertraut machen: https://github.com/codalab/codalab-competitions/wiki und [[%ATTACHURL%/dl4nlp2018_shared_task_codalab.7z][Competition vom letzten Jahr]] mal hochladen/ausprobieren
+      * Datenformat für die Poem-Predictions grob festlegen
+      * simplen Scorer schreiben, der z.B. nur readability prüft
+      * das ganze auf Codalab mit Dummy-Predictions testen
+
+%META:FILEATTACHMENT{name="dl4nlp2018_shared_task_codalab.7z" attachment="dl4nlp2018_shared_task_codalab.7z" attr="" comment="" date="1554371476" path="dl4nlp2018_shared_task_codalab.7z" size="2438062" user="bugert" version="1"}%

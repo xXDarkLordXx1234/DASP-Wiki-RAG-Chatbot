@@ -1,0 +1,85 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="4" version="5"}%
+%META:TOPICPARENT{name="DependencyParser"}%
+-- Main.IrinaAlles - 2012-06-21
+---+ Stanford Parser
+A natural language parser is a program that works out the grammatical structure of sentences, for instance, which groups of words go together (as "phrases") and which words are the subject or object of a verb. Probabilistic parsers use knowledge of language gained from hand-parsed sentences to try to produce the most likely analysis of new sentences.
+---++Introduction
+This package is a Java implementation of probabilistic natural language parsers, both highly optimized PCFG and lexicalized dependency parsers, and a lexicalized PCFG parser. The original version of this parser was mainly written by Dan Klein, with support code and linguistic grammar development by Christopher Manning.
+
+The lexicalized probabilistic parser implements a factored product model, with separate PCFG phrase structure and lexical dependency experts, whose preferences are combined by efficient exact inference, using an A* algorithm. Or the software can be used simply as an accurate unlexicalized stochastic context-free grammar parser. Either of these yields a good performance statistical parsing system.
+
+The parser provides [[http://nlp.stanford.edu/software/stanford-dependencies.shtml][Stanford Dependencies]] output as well as phrase structure trees. Typed dependencies are otherwise known grammatical relations. This style of output is available only for English and Chinese.
+<SMALL>(partly taken from http://nlp.stanford.edu/software/lex-parser.shtml)</SMALL>
+---++Usage
+---+++++Installation
+The Stanford Parser can be downloaded [[http://nlp.stanford.edu/software/lex-parser.shtml#Download][here]].
+You just need to unpack the archive.
+---+++++Training
+To train the parser you will need a collection of syntactically annotated data such as the [[http://www.cis.upenn.edu/~treebank/home.html][Penn Treebank]]. 
+A sentence might look like this:
+<verbatim>%% Sent 2
+(
+	(S
+		(NN-SB Konzernchefs)
+		(VVFIN-HD lehnen)
+		(NP-OA
+			(ART-NK den)
+			(NN-NK Milliardär)
+		)
+		(PP-MO
+			(APPR-AC als)
+			(NN-NK US-Präsidenten)
+		)
+		(PTKVZ-SVP ab)
+	)
+)</verbatim>
+
+Use the following command for training:
+<verbatim>prompt>	java -mx1500m -cp stanford-parser.jar edu.stanford.nlp.parser.lexparser.LexicalizedParser 
+-tLPP edu.stanford.nlp.parser.lexparser.NegraPennTreebankParserParams -encoding UTF-8 
+ -train theTreebank.penn 0 -saveToSerializedFile yourModel.tar.gz
+</verbatim>
+
+---+++++ Parsing
+In order to parse simple sentences the following command can be used:
+<verbatim>prompt> java -mx3g -cp stanford-parser.jar edu.stanford.nlp.parser.lexparser.LexicalizedParser 
+-encoding utf-8 -sentences newline -tokenized -outputFormat penn ./yourModel.ser.gz onesent.txt > output.penn</verbatim>
+
+The onesent.txt contains the sentences to be parsed. There has to be only one sentence per line and all tokens must be separated by a white space. 
+A possible parse is represented in the left column of the following table: 
+
+|*Penn output*|*CoNLL06*|
+|<verbatim>(ROOT
+  (CS
+    (S
+      (NP-SB
+        (PN (NE Miyazawa))
+        (AVP
+          (S (VVFIN betonte)
+            (NP-SB
+              (VP
+                (AVP (ADV aber) ($, ,)
+                  (S (KOUS daß)))
+                (NP-OA
+                  (S
+                    (VP (PRF-OA sich) (ADV auch)
+                      (NP-OA (ART die) (NN Europäer))
+                      (VVPP anstrengen))
+                    (VMFIN müßten)))
+                ($. .)))))))))</verbatim>|<verbatim>1	Miyazawa	_	NE	NE	_	2	SB	2	SB
+2	betonte	_	VVFIN	VVFIN	_	0	ROOT	0	ROOT
+3	aber	_	ADV	ADV	_	2	MO	2	MO
+4	,	_	$,	$,	_	2	PUNC	2	PUNC
+5	daß	_	KOUS	KOUS	_	11	CP	11	CP
+6	sich	_	PRF	PRF	_	10	OA	11	OA
+7	auch	_	ADV	ADV	_	9	MO	9	MO
+8	die	_	ART	ART	_	9	NK	9	NK
+9	Europäer	_	NN	NN	_	11	SB	11	SB
+10	anstrengen	_	VVINF	VVINF	_	11	OC	11	OC
+11	müßten	_	VMFIN	VMFIN	_	2	OC	2	OC
+12	.	_	$.	$.	_	2	PUNC	2	PUNC</verbatim>|
+
+In order to compare the Stanford results to the other parsers' performance it is necessary to convert these output to the CoNLL representation (right column).
+Due to the missing dependency tags in the stanford parse tree and the missing support for different output formats (at least for the German languange) these results are not comparable.
+
+%META:FILEATTACHMENT{name="germanFactored_100.ser.gz" attachment="germanFactored_100.ser.gz" attr="" comment="Stanford model for German based on the TiGER treebank" date="1344240360" path="germanFactored_100.ser.gz" size="7398780" user="IrinaAlles" version="1"}%

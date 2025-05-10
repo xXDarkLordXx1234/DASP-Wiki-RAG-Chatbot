@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1295953010" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WiktionaryAnalysis"}%
+---+ JWKTL Analysis
+---++ Diagram
+---+++ Legend 
+   * Extends:     <br>
+   <img src="%ATTACHURLPATH%/extends.jpg" alt="extends.jpg" width="59" height="28" />
+   * Implements: <br>
+ <img src="%ATTACHURLPATH%/implements.jpg" alt="implements.jpg" width="59" height="28" />
+   * Uses or has as a variable <br>
+ <img src="%ATTACHURLPATH%/uses.jpg" alt="uses.jpg" width="59" height="28" />
+   *  *IWiktionaryFilter(Depr)* : Deprecated class
+   * __Closable__ : Abstract class
+   * **WiktionaryRedLinksParser* : class created for testing/statistical purposes
+
+---+++ Detailed JWKTL Diagram: <br />
+     <img src="%ATTACHURLPATH%/JWKTLDiagram.jpg" alt="JWKTLDiagram.jpg" width="3018" height="2078" />
+     
+
+%META:FILEATTACHMENT{name="JWKTLDiagram.jpg" attachment="JWKTLDiagram.jpg" attr="" comment="Detailed JWKTL Diagram" date="1295866314" path="JWKTLDiagram.jpg" size="1669410" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="extends.jpg" attachment="extends.jpg" attr="" comment="" date="1295952585" path="extends.jpg" size="854" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="implements.jpg" attachment="implements.jpg" attr="" comment="" date="1295952585" path="implements.jpg" size="1087" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="uses.jpg" attachment="uses.jpg" attr="" comment="" date="1295952585" path="uses.jpg" size="694" user="YevgenChebotar" version="1"}%

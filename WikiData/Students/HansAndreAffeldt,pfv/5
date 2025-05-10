@@ -1,0 +1,134 @@
+%META:TOPICINFO{author="affeldt" comment="" date="1646054841" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Multimodal Classification of Claims about Images
+
+*Start date*: 21.01.2022
+
+*End date*: 22.07.2022
+
+*Supervisor*: Luke Bates
+
+---++ Current Status
+
+#StatusFour
+---++++ 11.02.2022 - 18.02.2022
+   [[https://docs.google.com/presentation/d/1FgMJLpU9GUa_jvprEa8n-m9z82obrHPH05pVn1NoVvs/edit?usp=sharing][Slides]]   
+   * Tested SetFit with (Split 70/30)
+      * Positive Label 1 and Negative Label 0 :
+         * Acc. No Fit 0.74
+         * Acc. SetFit 0.82
+         * Acc. Reuters No Fit 0.78 
+         * Acc. Reuters SetFit 0.88
+      * Positive label 1 and Negative label -1:
+         * Acc. No Fit 0.74
+         * Acc. SetFit 0.82
+         * Acc. Reuters No Fit 0.78
+         * Acc. Reuters SetFit 0.92
+   * Tested different ST 
+
+   * Using visual channel only of [[https://arxiv.org/abs/2103.00020][CLIP]]
+      * Acc. No Fit 0.75
+      * Acc. SetFit 0.77
+      * Acc. Reuters No Fit 0.79
+      * Acc. Reuters SetFit 0.80
+
+#StatusThree
+---++++ 04.02 - 11.02.2022
+   [[https://drive.google.com/file/d/187bKyDGqSDgk13YS6ad_Y4P2BoRBND7j/view?usp=sharing][Slides]]   
+   * read about [[https://arxiv.org/abs/1908.10084][SentenceTransformer]]
+      * https://www.sbert.net/
+   * replaced the sentence embedding in [[https://aclanthology.org/D19-1216/][Fact-Checking Meets Fauxtography: Verifying Claims About Images]] with ST
+      * performance did not change
+   * Read about [[https://towardsdatascience.com/sentence-transformer-fine-tuning-setfit-outperforms-gpt-3-on-few-shot-text-classification-while-d9a3788f0b4e][Sentence Transformer Fine-Tuning (SetFit)]]
+      * Run some experiments on the Reuters/Snopes dataset.
+         * *! didn't use cross-validation yet*
+         * split dataset into 65%/35%
+*Eval set*
+| *label* | *source* | *count* |
+| False| snopes| 220|
+| True| reuters | 139|
+| True| snopes| 74|
+
+         * Increase in Accuracy using  SetFit
+            * Acc No Fit : 0.75
+            * Acc SetFit : 0.81
+         * [[https://aclanthology.org/D19-1216/][Fact-Checking Meets Fauxtography: Verifying Claims About Images]] Results were:
+            * 0.801 Accuracy (*10 fold cross validation *)
+         * (Same Result with much less information ?)
+      * Do we just predict Reuters or Snopes ? 
+         * Accuracy predicting claim is true or false
+            * Acc No Fit : 0.75
+            * Acc SetFit : 0.81
+         * Using the same predictions to predict reuters or snopes:
+            * Acc No Fit : 0.81
+            * Acc. SetFit : *0.88*
+            * 52 predictions changed, all were (True,Snopes) samples predicted as false
+            * 
+
+#StatusTwo
+---++++ 28.01 - 04.02.2022
+[[https://drive.google.com/file/d/17wLdtpy_qwnaSWGKFOOmMi7nAY7BVPUE/view?usp=sharing][Slides]]   
+-
+
+#PriorOne
+---++++ prior 28.01.2022
+[[https://drive.google.com/file/d/1XEvts39ZiDELYnojDga_oPSR9edoHbwF/view?usp=sharing][Slides]]
+   * implemented the model from *[[https://aclanthology.org/D19-1216/][Fact-Checking Meets Fauxtography: Verifying Claims About Images]]*
+   * tested an approach using yolov5
+      * idea: 
+         * use yolo to detect object 
+         * crop images and use the cropped images as input
+         * create/combine features as in Fact-Checking Meets Fauxtography: Verifying Claims About Images
+      * *result worsens*
+      * need to check for errors
+
+|10-fold cross-validation |*train accuracy *| *test accuracy *| *train precision* | *test precision* |
+|*paper*|-|80.1|-|90.3|
+|*my results*| 96.91|80.93|100|89.89|
+|*YOLOv5*|86.93|70.39|96.69|81.86|
+
+---++ Meetings
+---++++ 04.02.2022
+   * presented difference VisualBERT - OSCAR(+)
+   * I was recommended to have a look at SentenceTransformer and [[https://towardsdatascience.com/sentence-transformer-fine-tuning-setfit-outperforms-gpt-3-on-few-shot-text-classification-while-d9a3788f0b4e][SetFit]]
+
+---++++ 28.01.2022
+
+   * presented [[#PriorOne][results prior 28.01.2022]]
+   * talked about problems i faced
+      * old computer
+   * *[[#StatusTwo][TODO]]*
+      * dataset analysis
+         * split into train/test/dev
+         * check if model learned to classify reuters or snopes
+         * what have the wrong predicted image claim pairs in common
+      * tryout sentences transformer
+         * https://www.sbert.net/
+         * https://github.com/UKPLab/sentence-transformers
+         * [[https://towardsdatascience.com/sentence-transformer-fine-tuning-setfit-outperforms-gpt-3-on-few-shot-text-classification-while-d9a3788f0b4e][towardsdatascience sentence transformer]]
+      * tryout other models
+         * transformer based models
+            * visual BERT
+      * check if bad yolo results caused by mistake
+      * clean up code 
+      * setup ukp gitlab
+      * take a look at *[[https://arxiv.org/pdf/2112.08594.pdf][Twitter-COMMs: Detecting Climate, COVID, and Military Multimodal Misinformation]]*
+      * learn to work with SLURM
+
+---++ Research
+|*Papers*|*Additonal*|
+|[[https://arxiv.org/abs/2105.09284][SemEval-2021 Task 6: Detection of Persuasion Techniques in Texts and Images]]|-|
+|[[https://arxiv.org/abs/2103.00242][A Survey on Stance Detection for Mis- and Disinformation ]]|-|
+|[[https://arxiv.org/abs/2107.00941][Misinformation Detection on YouTube Using Video Captions]]|-|
+|[[https://arxiv.org/abs/1908.03557][VisualBERT: A Simple and Performant Baseline for Vision and Language]]|-|
+|[[https://openreview.net/pdf?id=M4wgkxaPcyj][NLP-based Feature Extraction for the Detection of COVID-19 Misinformation Videos on YouTube]]|-|
+|[[https://arxiv.org/abs/1911.03854][r/Fakeddit: A New Multimodal Benchmark Dataset for Fine-grained Fake News Detection]]|-|
+|[[https://arxiv.org/abs/2106.03794][COVID-Fact: Fact Extraction and Verification of Real-World Claims on COVID-19 Pandemic]]|-|
+|[[https://aclanthology.org/W14-2508/][Fact Checking: Task definition and dataset construction]]|-|
+|[[https://ojs.aaai.org//index.php/ICWSM/article/view/3266][Explaining Multimodal Deceptive News Prediction Models]]|-|
+|[[https://arxiv.org/abs/1905.12616][Defending Against Neural Fake News]]|-|
+|[[https://aclanthology.org/D19-1216/][Fact-Checking Meets Fauxtography: Verifying Claims About Images]]|-|
+|[[https://arxiv.org/pdf/2112.08594.pdf][Twitter-COMMs: Detecting Climate, COVID, and Military Multimodal Misinformation]]||
+|[[https://arxiv.org/abs/2103.00020][CLIP]]||
+|[[https://towardsdatascience.com/sentence-transformer-fine-tuning-setfit-outperforms-gpt-3-on-few-shot-text-classification-while-d9a3788f0b4e][SetFit]]||
+|[[https://arxiv.org/abs/2004.11362][Supervised Contrastive Learning]]||

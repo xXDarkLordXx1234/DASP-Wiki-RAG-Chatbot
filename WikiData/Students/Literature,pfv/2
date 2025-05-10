@@ -1,0 +1,98 @@
+%META:TOPICINFO{author="geisler" comment="save topic" date="1473343182" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="NadjaGeisler"}%
+---+!! Literary Research
+
+%TOC%
+
+<sticky>
+<iframe src="%ATTACHURL%/relatedPapers.html" width="99%" height="700"></iframe>
+</sticky>
+
+---++ Notes
+
+---+++ Deep Learning
+
+| *Year* | *Key*            | *Title*                                                                        | *Relevance* |
+| 2016   | Rocktaeschel2016 | Learning Knowledge Base Inference with Neural Theorem Provers                  | 1           |
+| 2014   | Beltagy2014      | Probabilistic Soft Logic for Semantic Textual Similarity                       | 0           |
+| 2014   | Bowman2014       | Recursive Neural Networks Can Learn Logical Semantics                          | 1           |
+| 2011   | Niu2011          | Tuffy:Scaling up Statistical Inference in Markov Logic Networks using an RDBMS | 1           |
+|        |                  |                                                                                |             |
+
+---+++ Question Answering/Answer Reranking
+
+| *Year* | *Key*      | *Title*                                                               | *Relevance* |
+| 2012   | Gupta2012  | A survey of text question answering techniques                        | 2           |
+| 2016   | Santos2016 | Attentive Pooling Networks                                            | 2.5         |
+| 2016   | Wang2016   | Sentence Similarity Learning by Lexical Decomposition and Composition | 3           |
+| 2016   | Wang2016a  | Inner Attention based Recurrent Neural Networks for Answer Selection  | 3           |
+| 2014   | Yu2014     | Deep Learning for Answer Sentence Selection                           | ?           |
+|        |            |                                                                       |             |
+
+---+++ Deep Learning for Question Answering/Answer Reranking
+
+| *Year* | *Key*             | *Title*                                                              | *Relevance* |
+| 2015   | Feng2015          | Applying deep learning to answer selection: A study and an open task | 5           |
+| 2016   | IanGoodfellow2016 | Deep Learning                                                        | 2           |
+| 2015   | Tan2015           | LSTM-based Deep Learning Models for non-factoid answer selection     | 3           |
+| 2016   | Trischler2016     | Natural Language Comprehension with the EpiReader                    | 3           |
+| 2016   | Andreas2016       | Learning to compose neural networks for question answering           | 3           |
+| 2014   | Iyyer2014         | A Neural Network for Factoid Question Answering over Paragraphs      | 2           |
+|        |                   |                                                                      |             |
+
+---+++ Rules in Machine Learning
+
+| *Year* | *Key*                | *Title*                                                                                         | *Relevance* |
+| 2016   | Angeli2016           | Combining Natural Logic and Shallow Reasoning for Question Answering                            | 3           |
+| 2007   | Chang2007            | Guiding semi-supervision with constraint-driven learning                                        | 3           |
+| 2008   | Druck2008            | Learning from Labeled Features Using Generalized Expectation Criteria                           | ?           |
+| 2010   | Ganchev2010          | Posterior regularization for structured latent variable models                                  | ?           |
+| 2012   | Chang2012            | Structured learning with constrained conditional models                                         | ?           |
+| 2009   | Carlson2009          | Coupling Semi-supervised Learning of Categories and Relations                                   | ?           |
+| 2007   | Sanchez-Martinez2007 | Integrating corpus-based and rule-based approaches in an open-source machine translation system | ?           |
+| 2015   | Beltagy2015          | Representing Meaning with a Combination of Logical Form and Vectors                             | ?           |
+|        |                      |                                                                                                 |             |
+
+---+++ PropS
+
+| *Year* | *Key*         | *Title*                                  | *Relevance* |
+| 2016   | Stanovsky2016 | Getting More Out Of Syntax with PropS    | 4           |
+| 2007   | Banko2007     | Open Information Extraction from the Web | 3           |
+|        |               |                                          |             |
+
+---+++ Integration of Rules in Neural Networks
+
+| *Year* | *Key*      | *Title*                                                                                           | *Relevance* |
+| 2016   | Hu2016     | Harnessing Deep Neural Networks with Logic Rules                                                  | 4           |
+| 2012   | Garcez2012 | Neural-symbolic learning systems: foundations and applications                                    | 3           |
+| 2014   | Franca2014 | Fast relational learning using bottom clause propositionalization with artificial neural networks | 3           |
+| 1990   | Towell1990 | Refinement of approximate domain theories by knowledge-based neural networks                      | 3           |
+|        |            |                                                                                                   |             |
+
+---+++ SemEval
+
+| *Year* | *Key*        | *Title*                                                                                                                                                      | *Relevance* |
+| 2015   | Zhou2015     | Answer sequence learning with neural networks for answer selection in community question answering                                                           | ?           |
+| 2016   | Jia2016      | ITNLP-AiKF at SemEval-2016 Task 3: a question answering system using community QA repository                                                                 | ?           |
+| 2015   | Belinkov2015 | VectorSLU: A continuous word vector approach to answer selection in community question answering systems                                                     | ?           |
+| 2016   | Wu2016       | ECNU at SemEval-2016 Task 3: Exploring traditional method and deep learning method for question retrieval and answer ranking in community question answering | 3           |
+|        |              |                                                                                                                                                              |             |
+
+---++ Legend
+
+0 - irrelevant
+
+1 - probably irrelevant
+
+2 - could be relevant
+
+3 - partly relevant
+
+4 - very relevant
+
+5 - same objective
+
+
+-- Main.NadjaGeisler - 2016-09-06
+
+%META:FILEATTACHMENT{name="relatedPapers.html" attachment="relatedPapers.html" attr="" comment="" date="1473343115" path="relatedPapers.html" size="39808" user="geisler" version="3"}%

@@ -1,0 +1,40 @@
+10:47:02,798  INFO ExperimentCrossValidation$1:247 - Executing task [de.tudarmstadt.ukp.dkpro.tc.weka.task.WekaTestTask-IncompleteClaims]
+10:47:02,817  INFO DefaultLoggingService:34 - [WekaTestTask-IncompleteClaims-1986b2ff-c119-11e6-ba01-c19c8645e322] Initialized task [de.tudarmstadt.ukp.dkpro.tc.weka.task.WekaTestTask-IncompleteClaims]
+10:47:02,919  INFO DefaultLoggingService:34 - [WekaTestTask-IncompleteClaims-1986b2ff-c119-11e6-ba01-c19c8645e322] Starting task [de.tudarmstadt.ukp.dkpro.tc.weka.task.WekaTestTask-IncompleteClaims]
+10:47:03,808 ERROR DefaultLoggingService:41 - [WekaTestTask-IncompleteClaims-1986b2ff-c119-11e6-ba01-c19c8645e322] Task failed [de.tudarmstadt.ukp.dkpro.tc.weka.task.WekaTestTask-IncompleteClaims](caused by UnsupportedAttributeTypeException: weka.classifiers.functions.SMO: Cannot handle unary class!)
+10:47:03,809  INFO DefaultLoggingService:34 - [WekaTestTask-IncompleteClaims-1986b2ff-c119-11e6-ba01-c19c8645e322] Shut down task
+10:47:03,809 ERROR DefaultLoggingService:41 - [ExperimentCrossValidation$1IncompleteClaims-11a68e2b-c119-11e6-ba01-c19c8645e322] Task failed [de.tudarmstadt.ukp.dkpro.tc.ml.ExperimentCrossValidation$1IncompleteClaims](caused by UnsupportedAttributeTypeException: weka.classifiers.functions.SMO: Cannot handle unary class!)
+10:47:03,809  INFO DefaultLoggingService:34 - [ExperimentCrossValidation$1IncompleteClaims-11a68e2b-c119-11e6-ba01-c19c8645e322] Shut down task
+10:47:03,810 ERROR DefaultLoggingService:41 - [Evaluation-IncompleteClaims-0e930c98-c119-11e6-ba01-c19c8645e322] Task failed [Evaluation-IncompleteClaims](caused by UnsupportedAttributeTypeException: weka.classifiers.functions.SMO: Cannot handle unary class!)
+10:47:03,810  INFO DefaultLoggingService:34 - [Evaluation-IncompleteClaims-0e930c98-c119-11e6-ba01-c19c8645e322] Shut down task
+Exception in thread "main" de.tudarmstadt.ukp.dkpro.lab.engine.ExecutionException: de.tudarmstadt.ukp.dkpro.lab.engine.ExecutionException: de.tudarmstadt.ukp.dkpro.lab.engine.ExecutionException: weka.core.UnsupportedAttributeTypeException: weka.classifiers.functions.SMO: Cannot handle unary class!
+	at de.tudarmstadt.ukp.dkpro.lab.engine.impl.ExecutableTaskEngine.run(ExecutableTaskEngine.java:68)
+	at de.tudarmstadt.ukp.dkpro.lab.engine.impl.DefaultTaskExecutionService.run(DefaultTaskExecutionService.java:48)
+	at de.tudarmstadt.ukp.dkpro.lab.Lab.run(Lab.java:97)
+	at de.tudarmstadt.ukp.dkpro.argumentation.implicitclaims.experiments.ImplicitClaimIdentificationCV.run(ImplicitClaimIdentificationCV.java:145)
+	at de.tudarmstadt.ukp.dkpro.argumentation.implicitclaims.experiments.ImplicitClaimIdentificationCV.main(ImplicitClaimIdentificationCV.java:62)
+Caused by: de.tudarmstadt.ukp.dkpro.lab.engine.ExecutionException: de.tudarmstadt.ukp.dkpro.lab.engine.ExecutionException: weka.core.UnsupportedAttributeTypeException: weka.classifiers.functions.SMO: Cannot handle unary class!
+	at de.tudarmstadt.ukp.dkpro.lab.engine.impl.ExecutableTaskEngine.run(ExecutableTaskEngine.java:68)
+	at de.tudarmstadt.ukp.dkpro.lab.task.impl.BatchTask.runNewExecution(BatchTask.java:350)
+	at de.tudarmstadt.ukp.dkpro.lab.task.impl.BatchTask.executeConfiguration(BatchTask.java:255)
+	at de.tudarmstadt.ukp.dkpro.lab.task.impl.BatchTask.execute(BatchTask.java:185)
+	at de.tudarmstadt.ukp.dkpro.tc.ml.ExperimentCrossValidation.execute(ExperimentCrossValidation.java:267)
+	at de.tudarmstadt.ukp.dkpro.lab.engine.impl.ExecutableTaskEngine.run(ExecutableTaskEngine.java:55)
+	... 4 more
+Caused by: de.tudarmstadt.ukp.dkpro.lab.engine.ExecutionException: weka.core.UnsupportedAttributeTypeException: weka.classifiers.functions.SMO: Cannot handle unary class!
+	at de.tudarmstadt.ukp.dkpro.lab.engine.impl.ExecutableTaskEngine.run(ExecutableTaskEngine.java:68)
+	at de.tudarmstadt.ukp.dkpro.lab.task.impl.BatchTask.runNewExecution(BatchTask.java:350)
+	at de.tudarmstadt.ukp.dkpro.lab.task.impl.BatchTask.executeConfiguration(BatchTask.java:255)
+	at de.tudarmstadt.ukp.dkpro.lab.task.impl.BatchTask.execute(BatchTask.java:185)
+	at de.tudarmstadt.ukp.dkpro.tc.ml.ExperimentCrossValidation$1.execute(ExperimentCrossValidation.java:194)
+	at de.tudarmstadt.ukp.dkpro.lab.engine.impl.ExecutableTaskEngine.run(ExecutableTaskEngine.java:55)
+	... 9 more
+Caused by: weka.core.UnsupportedAttributeTypeException: weka.classifiers.functions.SMO: Cannot handle unary class!
+	at weka.core.Capabilities.test(Capabilities.java:951)
+	at weka.core.Capabilities.test(Capabilities.java:1134)
+	at weka.core.Capabilities.test(Capabilities.java:1045)
+	at weka.core.Capabilities.testWithFail(Capabilities.java:1356)
+	at weka.classifiers.functions.SMO.buildClassifier(SMO.java:1251)
+	at de.tudarmstadt.ukp.dkpro.tc.weka.task.WekaTestTask.execute(WekaTestTask.java:92)
+	at de.tudarmstadt.ukp.dkpro.lab.engine.impl.ExecutableTaskEngine.run(ExecutableTaskEngine.java:55)
+	... 14 more

@@ -1,0 +1,73 @@
+%META:TOPICINFO{author="RichardSteuer" date="1355857336" format="1.1" version="19"}%
+%META:TOPICPARENT{name="IrExperiments"}%
+Until now (15.12.2012), my best baseline result (without any kind of expansion) is the following.
+
+---+++Evaluation results (trec_eval)
+   * 1.  all queries, indexed token and lemma
+   * 2.  all queries, indexed token and lemma
+   * 3.  all queries, just indexed stem
+
+<div id="table1" style="float:left; margin-left:25px">
+| num_q | all | 91 | 
+| num_ret | all | 6089175 | 
+| num_rel | all | 1045 | 
+| num_rel_ret | all | 1021 | 
+| *map* | all | 0.2880 | 
+| gm_ap | all | 0.0333 | 
+| R-prec | all | 0.2714 | 
+| bpref | all | 0.3619 | 
+| recip_rank | all | 0.4938 | 
+| *P5* | all | 0.3077 | 
+| P10 | all | 0.2374 | 
+| P15 | all | 0.1993 | 
+| P20 | all | 0.1786 | 
+| P30 | all | 0.1443 | 
+| P100 | all | 0.0670 | 
+| P200 | all | 0.0395 | 
+| P500 | all | 0.0180 | 
+| P1000 | all | 0.0096 | 
+</div>
+
+<div id="table1" style="float:left; margin-left:25px">
+| num_q | all | 91 | 
+| num_ret | all | 6479941 | 
+| num_rel | all | 1045 | 
+| num_rel_ret | all | 1028 | 
+| *map* | all | 0.2853 | 
+| gm_ap | all | 0.0339 | 
+| R-prec | all | 0.2679 | 
+| bpref | all | 0.3548 | 
+| recip_rank | all | 0.4834 | 
+| *P5* | all | 0.3077 | 
+| P10 | all | 0.2440 | 
+| P15 | all | 0.2015 | 
+| P20 | all | 0.1808 | 
+| P30 | all | 0.1476 | 
+| P100 | all | 0.0693 | 
+| P200 | all | 0.0401 | 
+| P500 | all | 0.0184 | 
+| P1000 | all | 0.0097 |
+</div>
+
+<div id="table1" style="float:left; margin-left:25px">
+| num_q | all | 91 | 
+| num_ret | all | 5625712 | 
+| num_rel | all | 1045 | 
+| num_rel_ret | all | 1026 | 
+| *map* | all | 0.2818 | 
+| gm_ap | all | 0.0367 | 
+| R-prec | all | 0.2704 | 
+| bpref | all | 0.3463 | 
+| recip_rank | all | 0.4855 | 
+| *P5* | all | 0.3165 | 
+| P10 | all | 0.2385 | 
+| P15 | all | 0.2015 | 
+| P20 | all | 0.1824 | 
+| P30 | all | 0.1513 | 
+| P100 | all | 0.0701 | 
+| P200 | all | 0.0405 | 
+| P500 | all | 0.0182 | 
+| P1000 | all | 0.0098 |
+</div>
+
+<div style="clear:both;"></div>

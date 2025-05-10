@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="chebotar" comment="reprev" date="1365372229" format="1.1" reprev="10" version="12"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Februar 2013 - April 2013
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| PedocsKeyphrases | 05.02.2013 | 4 | Vorbereitung von Keyphrase-Evaluation |
+| PedocsKeyphrases | 06.02.2013 | 3 | Vorbereitung von Keyphrase-Evaluation |
+| Uby | 12.02.2013 | 3 | XMLToDB Converter |
+| Uby | 13.02.2013 | 2 | Neue Uby-Version auf Google-Code unter branch/UbyHibernate4 |
+| Uby | 13.02.2013 | 1.5 | Uby-Branching |
+| Uby | 24.02.2013 | 2.5 | Uby Bug-Fixing |
+| PedocsKeyphrases | 03.03.2013 | 4.5 | Experimente auf Server |
+| PedocsKeyphrases | 08.03.2013 | 2.5 | Experimente auf Server |
+| PedocsKeyphrases | 13.03.2013 | 7 | Experimente mit Multilabel-Klassifizierung |
+| PedocsKeyphrases | 16.03.2013 | 4 | Multilabel-Klassifizierung |
+| PedocsKeyphrases | 17.03.2013 | 4 | [[%ATTACHURL%/PedocsExperimentResults.xls][PedocsExperimentResults.xls]]: Pedocs experiment results |
+| PedocsKeyphrases | 18.03.2013 | 4 | Unsupervised Extraction |
+| PedocsKeyphrases | 19.03.2013 | 2 | Experimente auf Server: Multilabel mit Score > 0 |
+| PedocsKeyphrases | 20.03.2013 | 2 | Experimente auf Server: Unsupervised mit Background-Resource |
+| Uby | 07.04.2013 | 5 | DBToXmlTransformer gefixt<br>Vorbereitung des Releases |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60 | bis Ende April 2013 |
+
+%META:FILEATTACHMENT{name="PedocsExperimentResults.xls" attachment="PedocsExperimentResults.xls" attr="" comment="Pedocs experiment results" date="1363560756" path="PedocsExperimentResults.xls" size="24576" user="chebotar" version="1"}%

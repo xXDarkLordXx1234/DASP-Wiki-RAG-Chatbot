@@ -1,0 +1,76 @@
+%META:TOPICINFO{author="StefanHenss" date="1352062493" format="1.1" version="7"}%
+%META:TOPICPARENT{name="StefanHenss"}%
+---+ Related Work
+
+   * 0: Irrelevant
+   * 1: Should be mentioned
+   * 2: Contains relevant aspects, such as unique features.
+   * 3: Competitive approach
+
+---++ Web Crawling
+
+| *Year* | *Title* | *Citations* | *Relev.* | *Comments* |
+| 1999 | [[http://dl.acm.org/citation.cfm?id=657633][Using Reinforcement Learning to Spider the Web Efficiently]] | 263 | 0 | Only describes parts of "Automating the Construction of Internet Portals with Machine Learning". |
+| 2000 | [[http://www.vldb.org/conf/2000/P527.pdf][Focused crawling using context graphs]] | 532 | 2 | Builds a graph of links directly and indirectly leading to target pages and learns to predict min. length to a target page for each link from language features of the link source. |
+| 2000 | [[http://www.springerlink.com/content/r1723134248214t0/][Automating the Construction of Internet Portals with Machine Learning]] | 359 | 3 | Uses Naive Bayes on text surrouding a link to predict the discounted number of relevant future links; introduces two subsets of web to perform crawling on. Could also be relevant for clustering. |
+| 2002 | [[http://dl.acm.org/citation.cfm?id=511466][Accelerated focused crawling through online relevance feedback]] | 229 | 3 | Uses a reinforcement-related approach, containing separate classifiers for following and storing links. Also makes explicit use of HTML structure. |
+| 2004 | [[http://dl.acm.org/citation.cfm?id=1031117][Topical web crawlers: Evaluating adaptive algorithms]] | 172 | 2 | Discusses the major crawling approaches which surfaced until 2004 and provides an elaborate evaluation and comparision. |
+| 2004 | [[http://www.springerlink.com/content/w3mrhf99xfw2umg7/][Focused Crawling Using Temporal Difference-Learning]] | 7 | 3 | Uses the same problem definition and supervised learning to predict action values, which makes it a direct competitor. The paper itself isn't very interesting, though. |
+| 2007 | [[http://dl.acm.org/citation.cfm?id=1243335][Combining text and link analysis for focused crawling-An application for vertical search engines]] | 61 | 3 | Uses a sample of relevant documents to train topic models using LSI to predict link relevance. |
+| 2010 | [[http://www.springerlink.com/content/kk42758m8m321636/][Efficient Deep Web Crawling Using Reinforcement Learning]] | 5 | 2 | Makes use of reinforcement learning to find content which is only accessible through search queries. Could be helpful for extending the crawler with search capabilities (using Google to escape dead ends). |
+| 2012 | [[http://dl.acm.org/citation.cfm?id=2124328][Selecting actions for resource-bounded information extraction using reinforcement learning]] | 2 | 1 | Uses a very similar crawling approach to ours but mostly focuses on IE. Those, however, could work as features for us.  |
+
+---++ Keyword Extraction/Assignment
+
+| *Year* | *Title* | *Citations* | *Relev.* | *Comments* |
+| 2001 | [[http://www.springerlink.com/index/M20AV0YUMKMGETLA.pdf][Automatic Keyword Extraction Using Domain Knowledge]] | 51 | 1 | Uses simple term frequency values and features from a thesaurus. The latter is a good idea, but the system itself isn't very competitive. |
+| 2003 | [[http://pdf.aminer.org/000/903/225/keyword_extraction_from_a_single_document_using_word_co_occurrence.pdf][Keyword Extraction from a Single Document using Word Co-occurrence Statistical Information]] | 260 | 2 | Uses co-occurence clustering and X² statistics to identify topic-biased terms. Performs slightly worse than tf*idf, but some of the ideas should be reused. |
+| 2003 | [[http://dl.acm.org/citation.cfm?id=1119383][Improved Automatic Keyword Extraction Given More Linguistic Knowledge]] | 203 | 3 | They use NP-chunker and POS tagger for candidate retrieval and then perform binary classification on only 4 features. Still a rather weak approach, but should be used as a baseline. |
+| 2007 | [[http://dl.acm.org/citation.cfm?id=1284916.1285164][Using Lexical Chains for Keyword Extraction]] | 75 | 3 | Computes lexical chains for the text and for each keyword candidate, it extracts features for the corresponding chains and the words role within them. Finally, supervised learning is used. |
+| 2008 | [[http://dl.acm.org/citation.cfm?id=1613178][Graph-Based Keyword Extraction for Single-Document Summarization]] | 42 | 3 | They build co-occurance graphs and (a) use graph features for supervised learning and (b) use an unsupervised algorithm (HITS) to detect hubs. The latter seems interesting to derive features from. |
+| 2009 | [[http://acl.ldc.upenn.edu/P/P07/P07-1070.pdf][Towards an Iterative Reinforcement Approach for Simultaneous Document Summarization and Keyword Extraction]] | 63 | 3 | This is by far the most interesting approach and most serious competitor. Especially interesting is the notion of using summarization  information, such as sentence relevance, to model keyword importance from context. The approach essentially uses multiple graphs where nodes "reinforce" each other (so it's not actually reinforcement learning). |
+
+---++ Single-Document Summarization
+
+| *Year* | *Title* | *Citations* | *Est. Relev.* | *Comments* |
+| 1997 | [[http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.3193][Using lexical chains for text summarization]] | 795 | tbd | tbd |
+| 1998 | [[http://dl.acm.org/citation.cfm?id=1119121][Automated text summarization and the SUMMARIST system]] | 444 | tbd | tbd |
+| 1999 | [[http://dl.acm.org/citation.cfm?id=977047][The TIPSTER SUMMAC text summarization evaluation]] | 211 | tbd | tbd |
+| 2000 | [[http://dl.acm.org/citation.cfm?id=990892][The automated acquisition of topic signatures for text summarization]] | 285 | tbd | tbd |
+| 2000 | [[http://dl.acm.org/citation.cfm?id=974190][Sentence reduction for automatic text summarization]] | 172 | tbd | tbd |
+| 2001 | [[http://dl.acm.org/citation.cfm?id=383952.383955][Generic text summarization using relevance measure and latent semantic analysis]] | 345 | tbd | tbd |
+| 2002 | [P] [[http://patentscope.wipo.int/search/en/WO2002008950][AUTOMATIC SUMMARIZATION OF A DOCUMENT]] | 63 | tbd | tbd |
+| 2003 | [[http://dl.acm.org/citation.cfm?id=1073465][Automatic evaluation of summaries using N-gram co-occurrence statistics]] | 768 | tbd | tbd |
+| 2004 | [[http://arxiv.org/abs/1109.2128][LexRank: Graph-based lexical centrality as salience in text summarization]] | 499 | tbd | tbd |
+| 2004 | [[http://dl.acm.org/citation.cfm?id=1219064][Graph-based ranking algorithms for sentence extraction, applied to text summarization]] | 155 | tbd | tbd |
+| 2004 | [[http://research.nii.ac.jp/ntcir/workshop/OnlineProceedings4/OPEN/NTCIR4-OPEN-LinCY.pdf][Looking for a Few Good Metrics: Automatic Summarization EvaluationHow Many Samples Are Enough?]] | 67 | tbd | tbd |
+| 2012 | [[http://www.citeulike.org/user/cckitpw/article/11288795][Framework of Automatic Text Summarization Using Reinforcement Learning]] | 0 | tbd | tbd |
+
+---++ Dossier Extraction
+
+| *Year* | *Title* | *Citations* | *Est. Relev.* | *Comments* |
+| 1993 | [[http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.93.9372][Characteristics of text affecting relevance judgments]] | 82 | tbd | tbd |
+| 2008 | [[http://dl.acm.org/citation.cfm?id=1613742][Revisiting readability: a unified framework for predicting text quality]] | 60 | tbd | tbd |
+
+---++ Multi-Document Summarization
+
+| *Year* | *Title* | *Citations* | *Est. Relev.* | *Comments* |
+| 1997 | [[http://dl.acm.org/citation.cfm?id=1867503][Multi-document summarization by graph search and matching]] | 191 | tbd | tbd |
+| 1999 | [[http://dl.acm.org/citation.cfm?id=1034760][Information fusion in the context of multi-document summarization]] | 261 | tbd | tbd |
+| 2000 | [[http://dl.acm.org/citation.cfm?id=1117580][Multi-document summarization by sentence extraction]] | 191 | tbd | tbd |
+| 2001 | [[http://en.scientificcommons.org/42424226][Experiments in single and multi-document summarization using MEAD]] | 96 | tbd | tbd |
+| 2002 | [[http://dl.acm.org/citation.cfm?id=1073160][From single to multi-document summarization: A prototype system and its evaluation]] | 144 | tbd | tbd |
+| 2007 | [[http://dl.acm.org/citation.cfm?id=1625743][Manifold-ranking based topic-focused multi-document summarization]] | 89 | tbd | tbd |
+| 2008 | [[http://dl.acm.org/citation.cfm?id=1390387][Multi-document summarization via sentence-level semantic analysis and symmetric matrix factorization]] | 58 | tbd | tbd |
+| 2009 | [[http://dl.acm.org/citation.cfm?id=1620807][Exploring content models for multi-document summarization]] | 125 | tbd | tbd |
+
+---++ Other
+
+| *Year* | *Title* | *Citations* | *Est. Relev.* | *Comments* |
+| 1997 | [[http://arxiv.org/abs/cmp-lg/9709008][Semantic Similarity Based on Corpus Statistics and Lexical Taxonomy]] | 1622 | tbd | tbd |
+| 2004 | [[http://dl.acm.org/citation.cfm?id=1614025.1614037][WordNet:: Similarity-Measuring the Relatedness of Concepts]] | 709 | tbd | tbd |
+| 2004 | [[http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.59.2199][An Intrinsic Information Content Metric for Semantic Similarity in WordNet]] | 246 | tbd | tbd |
+| 2005 | [[http://dl.acm.org/citation.cfm?id=1631865][Measuring the Semantic Similarity of Texts]] | 163 | tbd | tbd |
+| 2006 | [[http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.65.3690][Corpus-based and knowledge-based measures of text semantic similarity]] | 222 | tbd | tbd |
+| 2007 | [[http://dl.acm.org/citation.cfm?id=1242572.1242675][Measuring semantic similarity between words using web search engines]] | 283 | tbd | tbd |
+| 2011 | [[http://arxiv.org/abs/1105.5444][Semantic Similarity in a Taxonomy: An Information-Based Measure and its Application to Problems of Ambiguity in Natural Language]] | 1256 | tbd | tbd |

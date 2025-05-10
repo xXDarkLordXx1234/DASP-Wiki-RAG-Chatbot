@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="stab" comment="" date="1539942638" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2018-10-19
+   * paperwork
+   * discuss task description 
+   * discussed ranking approaches for aspect extraction 
+   * evaluation metrics (How can e compare ranking and sequence modeling approaches?)
+      * Solution 1: consider only best ranked candidate as actual "hit" and evaluate using token-level IOB/BIO tagging scheme
+      * Solution 2: use approach described in http://www.aclweb.org/anthology/S14-2004
+   * *TODOS / next steps*
+      * *Formulate a good argument why we use ranking methods instead of common sequence labeling methods.* in the current version of the task description 
+      * Get familiar with keras / tensorflow -> LSTM-CRF
+      * Evaluation Setup: How to split the data? Cross-topic vs. In-topic vs. "we don't care about the topic"
+      * Review papers and start writing related work section. 
+
+---++ 2018-10-11 
+   * Forms for account, IP, etc. 
+   * Discuss data to use for this project
+   * Task description
+   * Evaluation setup
+   * @discussed: (1) selquence labeling vs. (2) ranking approaches
+   * *Participate in the advanced seminar*: Dienstag 11:30 Raum B002+
+   * *Todos / next steps*
+      * Prepare forms and contract / etc.
+      * Get familiar with the following methods CRF, LSTM-CRF and sequence-tagging (these models are for instance used for named-entity recognition,)
+      * Get familiar with keras / tensorflow -> LSTM-CRF
+      * Think about evaluation strategies w.r.t. to compare tagging and ranking approaches
+      * Evaluation Setup: How to split the data? Cross-topic vs. In-topic vs. "we don't care about the topic"
+
+
+
+-- Main.ChristianStab - 2018-10-11

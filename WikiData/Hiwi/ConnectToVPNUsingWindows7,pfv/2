@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="autosave" date="1370536426" format="1.1" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+---+ This guide explains how to connect to VPN of TK using Windows 7
+
+---+++ The Guide 
+
+   * Open Network and Sharing Center (Control Panel - > Network and Sharing Center).
+   
+  <img width="800" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingWindows7/1.PNG">
+   * Click on the "Setup a connection or network'
+   * Then choose "Connect to Workspace"
+   * "Use my Internet Connection(VPN)"
+   * In the next window type in the Internet address 130.83.163.135 and in Destination Name: UKP-VPN and choose Don't connect now; just setup so I can connect later, then click next
+      
+  <img alt="foto2.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingWindows7/2.PNG">
+  
+   * Then type your username and password and click create. Close next window
+   * Now go to Network and Sharing Center again and choose Change Adapter Settings
+   * Right click on UKP-VPN and choose properties
+   * Go to Security tab and select PPTP as Type of VPN
+   
+   <img alt="foto2.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingWindows7/3.PNG">
+   
+   * Now click ok and connect to UKP-VPN. Just Works!
+   
+-- Main.ArtemVovk - 2010-10-24
+
+
+%META:FILEATTACHMENT{name="1.PNG" attachment="1.PNG" attr="" comment="" date="1287940537" path="1.PNG" size="146500" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="2.PNG" attachment="2.PNG" attr="" comment="" date="1287941105" path="2.PNG" size="68168" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="3.PNG" attachment="3.PNG" attr="" comment="" date="1287941995" path="3.PNG" size="52804" user="ArtemVovk" version="2"}%

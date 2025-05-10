@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="7" version="8"}%
+%META:TOPICPARENT{name="MathieuGermain"}%
+---++ Meeting 13.7.09
+   * UIMA tf*idf component working?
+
+---++ Meeting 8.7.2009
+   * wrapper too much effort (too many libraries, parameters, etc.)
+   * instead: continue MMR
+
+---++ Meeting 6.7.2009
+   * Finish CPE , add baselineNIST, done
+   * plan:
+      * 1. continue working on UIMA wrapper for time word identification program (what was the name of the program?)
+      * 2. statistics of words (term frequency of nouns; perhaps also adjectives)
+      * 3. inverse document frequency -> tf*idf
+   * for evaluation: have a look at ROUGE & model files from TAC08
+
+---++ Meeting 29.6.2009
+   * TAC reader done
+   * Continue to look for existing Time Expression identification 
+   * Finish CPE , add baselineNIST
+
+---++ Meeting 22.6.2009
+   * TAC reader nearly done; question: MG: more features including? JC: no
+   * JC: do you need a grade? MG: no, just success/fail
+   * identification of temporal expressions
+   * fax done for money transfer
+   * *plan*
+      * finish TAC Reader; 
+         * Paragraph + Warnings  
+      * build CPE (or java code) TAC reader + preprocessing components (UkpSentenceSplitter, UkpTokenizer, TreeTagger (part-of-speech annotation))
+      * have a look at AnnotationViewer
+      * put statistics for temporal expressions in wiki
+      * if time: start with temporal annotation program
+         * before: have a look if there already exist programs for temporal expression identification which we could reuse
+
+---++ Meeting 15.6.2009
+   * get TAC reader to work
+   * SVN works, DKPro works
+   * same items as last week
+
+---++ Meeting 8.6.2009
+   * plan:
+      * enhance TAC reader
+      * UIMA preprocessing pipeline
+      * tf*idf baseline

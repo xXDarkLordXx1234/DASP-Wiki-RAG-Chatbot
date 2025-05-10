@@ -1,0 +1,68 @@
+%META:TOPICINFO{author="IrinaAlles" date="1344240614" format="1.1" version="5"}%
+%META:TOPICPARENT{name="DependencyParser"}%
+-- Main.IrinaAlles - 2012-06-21
+---+ Malt Parser
+
+MaltParser is a system for data-driven dependency parsing, which can be used to induce a parsing model from treebank data and to parse new data using an induced model. MaltParser is developed by Johan Hall, Jens Nilsson and Joakim Nivre at Växjö University and Uppsala University, Sweden.
+
+---++Introduction
+
+MaltParser can be characterized as a data-driven parser-generator. While a traditional parser-generator constructs a parser given a grammar, a data-driven parser-generator constructs a parser given a treebank. MaltParser is an implementation of inductive dependency parsing, where the syntactic analysis of a sentence amounts to the derivation of a dependency structure, and where inductive machine learning is used to guide the parser at nondeterministic choice points (Nivre, 2006). The parsing methodology is based on three essential components:
+
+   1 Deterministic parsing algorithms for building labeled dependency graphs (Kudo and Matsumoto,2002; Yamada and Matsumoto, 2003; Nivre,2003)
+   2 History-based models for predicting the next parser action at nondeterministic choice points (Black et al., 1992; Magerman, 1995; Ratnaparkhi, 1997; Collins, 1999)
+   3 Discriminative learning to map histories to parser actions (Kudo and Matsumoto, 2002; Yamada and Matsumoto, 2003; Nivre et al., 2004; Hall et al., 2006)
+          <br/><SMALL>(taken from http://www.maltparser.org/intro.html)</SMALL>
+          
+   The Parser implements the following parsing algorithms:
+   
+   * Nivre arc-eager
+   * Nivre arc-standard
+   * Covington non-projective
+   * Covington projective
+   * Stack projective
+   * Stack swap-eager
+   * Stack swap-lazy
+   * Planar
+   * 2-planar
+
+   and includes two machine learning packages:
+    
+   * LIBSVM - A Library for Support Vector Machines (Chang, 2001).
+   * LIBLINEAR -- A Library for Large Linear Classification (Fan et al., 2008).
+   
+MaltParser also provides already [[http://www.maltparser.org/mco/mco.html][pre-trained models]] for Englisch, French and Swedish.
+
+---++Usage
+MaltParser has a very good [[http://www.maltparser.org/userguide.html][user guide]], which should be consulted for greater details. Here we will just cover the main aspects in order to get a quick start.
+
+---+++++Installation
+The latest version of MaltParser can be downloaded from http://www.maltparser.org/download.html.
+---+++++Train your Model
+Currentlly MaltParser only supports tab-separated data files. So to train your proper model you need a Treebank in CoNLL format.
+Your data should look like this:
+<verbatim>1	Die	_	ART	ART	_	2	NK	_	_
+2	Strafverfolger	_	NN	NN	_	5	SB	_	_
+3	in	_	APPR	APPR	_	2	MNR	_	_
+4	Hannover	_	NE	NE	_	3	NK	_	_
+5	sehen	_	VVFIN	VVFIN	_	0	ROOT	_	_
+6	das	_	PDS	PDS	_	5	OA	_	_
+7	anders	_	ADV	ADV	_	5	MO	_	_
+8	.	_	$.	$.	_	5	PUNC	_	_</verbatim>
+
+To train a model using the default parsing algorithm, type the following command:
+<verbatim>prompt> java -jar maltparser-1.7.1.jar -c yourModel -i theTreebank.conll -m learn</verbatim>
+This creates a model *yourModel.mco* which is also refered to as Single Malt configuration file.
+To define a the algorithm to be used for training add the *-a* parameter with one of the available algorithms:
+nivreeager, nivrestandard, covnonproj, covproj, stackproj, stackeager, stacklazy, planar, 2planar.
+
+<verbatim>prompt> java -jar maltparser-1.7.1.jar -a nivrestandard -c yourModel -i theTreebank.conll -m learn</verbatim>
+
+---+++++Parsing
+Once you have a trained a model you can parse data using the command 
+<verbatim>prompt> $ java -jar maltparser-1.7.1.jar -c yourModel -i dataToParse.conll -o parsedOutput.conll -m parse</verbatim>
+where *-c yourModel* is the prefix of the .mco file resulting from the training step.
+
+The parser's output will be per default in CoNLL06 format as illustrated above, this can be changed to MaltTab, or MaltXML.
+   
+%META:FILEATTACHMENT{name="maltModel100GerTiger_nodup_stackproj.mco" attachment="maltModel100GerTiger_nodup_stackproj.mco" attr="" comment="Malt model for German based on the TiGER treebank" date="1344240614" path="maltModel100GerTiger_nodup_stackproj.mco" size="10100618" user="IrinaAlles" version="1"}%

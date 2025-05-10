@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="hofmann" comment="save topic" date="1365370326" format="1.1" reprev="1" version="4"}%
+---+ Tasks
+
+
+---+ Aktueller Vertrag (Apr 2013)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 05.04.2013 | Meeting | 1 | |
+| 07.04.2013 | DARIAH-AIB | 2 | Client Erweiterung um Update, Delete Methoden. Unit Tests |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 20
+
+
+
+-- Main.DieterHofmann - 01 Apr 2013

@@ -1,0 +1,65 @@
+%META:TOPICINFO{author="UrsGlaubitt" date="1224201043" format="1.1" reprev="25" version="25"}%
+%META:TOPICPARENT{name="UrsGlaubitt"}%
+---+ Task Overview Urs Glaubitt
+
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="4"}%
+
+
+| *Aufgabe*  | *Tag*  | *Stunden*  | *Bemerkungen*  |
+| Lesen der Papers "Flexible UIMA Components .." und "What to be?- Electronic Career Guidance..." | 01.04.2008 | 1 ||
+| Erste Einarbeitung in UIMA mithilfe des Tutorials | 02.04.2008 | 5 ||
+| Einarbeitung in SIM Pack | 02.04.2008 | 4 ||
+| Einarbeitung in SIM Pack (Continued) | 10.04.2008 | 1 ||
+| Einarbeitung in die JWPL API | 18.04.2008 | 2 ||
+| Berufe aus Wikipedia extrahieren | 18.04.2008 | 2 | Habe mir die verschiedenen Kategorien und Artikel angeschaut, um zu sehen inwieweit man nicht relevante Artikel herausfiltern kann. Genauere Doku kommt noch in den nächsten Tagen. |
+| WikiMiner / TK-Account Problem (Verbindung zur Datenbank) | 21.04.2008 | 2 ||
+| Berufe aus Wikipedia extrahieren | 21.04.2008 | 3 | Habe mir die verschiedenen Kategorien und Artikel angeschaut, um zu sehen inwieweit man nicht relevante Artikel herausfiltern kann. Genauere Doku kommt noch in den nächsten Tagen. |
+| Programmieren (Berufsbeschreibungen extrahieren) | 30.04.2008 | 7 | |
+| Programmieren (Berufsbeschreibungen extrahieren) | 03.05.2008 | 6 | |
+| Programmieren (Berufsbeschreibungen extrahieren) | 04.05.2008 | 5 | |
+| Programmieren (Berufsbeschreibungen extrahieren) | 05.05.2008 | 1 | |
+| Programmieren (Berufsbeschreibungen extrahieren) | 19.05.2008 | 5 | Bug bzgl. der Blacklist gefixt; es wird nun auch eine csv-Datei mit allen rausgefilterten Pages angelegt; "fehlerhafte" reguläre Ausdrücke gefixt; einige neue reguläre Ausdrücke hinzugenommen;|
+| Programmieren (Berufsbeschreibungen extrahieren) | 20.05.2008 | 1.5 | Alles nötige fürs Projekt im TK-Pool eingerichtet; Code überarbeitet; Diverse Mining-Prozesse durchlaufen lassen|
+| Programmieren (Berufsbeschreibungen extrahieren) | 23.05.2008 | 5 | Deutsche Ergebnisse überarbeitet und (hoffentlich) alle nichtrelevanten Artikel aussortiert; paralell dazu erste Versuche das gleiche auch für die englische Wikipedia zu machen|
+| Programmieren (Berufsbeschreibungen extrahieren) | 25.05.2008 | 4 | Folien; "Recherche" für das Vergleichen von semantischen Graphen; Modifikation des Codes für die englische Wikipedia|
+| Programmieren (Berufsbeschreibungen extrahieren) | 26.05.2008 | 1.5 | "Verfeinerung" des englischen Berufsminings|
+| UIMA | 14.06.2008 | 1 | "Einrichten" des Workspaces; auschecken, entpacken, etc. und überfliegen wichtiger Stellen des UIMA-Tutorials;|
+| UIMA | 16.06.2008 | 2 | Erstellung eines BerkeleyDbReaders für eine CAS mit 2 Views; Erstellung eines entsprechenden Descriptors|
+| UIMA | 17.06.2008 | 1 | Bindingklasse für  IndexTerm erstellt und Descriptor für den BerkeleyDbReader angepasst; Versuch automatisch generierte Dateien zu erzeugen, bzw. entsprechende Stellen im UIMA-Tutorial zu finden; Einarbeitung in die Erstellung eines Annotators (habe mir beispielhaft den RelatednessScorer angesehen)|
+| UIMA | 22.06.2008 | 4.5 | Modifizierung des RelatednessScorer; Bindingklasse für POS erstellt; JUnit-Test für den neuen BerkeleyDbReader angefangen|
+| UIMA | 23.06.2008 | 2 | JUnit-Test für den neuen BerkeleyDbReader continued|
+| UIMA | 24.06.2008 | 3 | Bugfixing im JUnit-Test und im neuen BerkeleyDBReader |
+| UIMA | 25.06.2008 | 3 | Bugfixing im JUnit-Test und im neuen BerkeleyDBReader; Den WindowGenerator angefangen |
+| UIMA | 27.06.2008 | 2 | Erneutes Bugfixing |
+| UIMA | 28.06.2008 | 3 | WindowGenerator fortgesetzt; WindowLinker angefangen |
+| UIMA | 08.07.2008 | 4 | Debugging des MultipleViewBerkeleyDbReaders |
+| UIMA | 09.07.2008 | 4 | MultipleViewBerkeleyDbReaderTest läuft nun fehlerfrei durch; Bugfixing im WindowLinker|
+| UIMA | 11.07.2008 | 1 | Kommentieren des Codes |
+| UIMA | 13.07.2008 | 3.5 | WindowGenerator debugged |
+| UIMA | 14.07.2008 | 1.5 | WindowGeneratorTest angefangen |
+| UIMA | 15.07.2008 | 1 | WindowGenerator debugged |
+| UIMA | 16.07.2008 | 4 | WindowGenerator debugged |
+| UIMA | 31.07.2008 | 5 | WindowGenerator fertig; WindowGeneratorTest läuft fehlerfrei; WindowLinker mit DummyMeasure sollte fertig sein |
+| UIMA | 01.08.2008 | 5 | WindowLinkConsumer angefangen; WindowLinkerCached angefangen |
+| UIMA | 19.08.2008 | 3.5 | Bug im WindowLinker/CachedRelatednessScore gesucht |
+| UIMA | 24.08.2008 | 1 | Bug im WindowLinker/CachedRelatednessScore gesucht |
+| UIMA | 27.08.2008 | 4 | Den letzten Code geschrieben, Debugging-Ausgaben entfernt, Tests fertiggestellt und den Code kommentiert |
+| UIMA | 29.08.2008 | 2.5 | Code automatisieren |
+| UIMA | 30.08.2008 | 2.5 | Code automatisieren |
+| UIMA | 07.09.2008 | 4 | Code automatisieren |
+| UIMA | 20.09.2008 | 3 | Code für "kompletten Experiment-Durchlauf" angefangen |
+| UIMA | 22.09.2008 | 1.5 | Code für "kompletten Experiment-Durchlauf" weitergeführt |
+| UIMA | 30.09.2008 | 3.5 | Erstellung der Configklassen |
+| UIMA | 03.10.2008 | 3.5 | Überarbeitung der Configklassen |
+| UIMA | 04.10.2008 | 3 | Configklassen;  BerkeleyDbReader angepasst|
+| UIMA | 05.10.2008 | 2.5 | BerkeleyDbReader angepasst |
+| UIMA | 11.10.2008 | 4 | Documentselection, Paper gelesen |
+| UIMA | 16.10.2008 | 3 | Documentselection |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 240 | bis Ende November |
+
+-- Main.ChristofMueller - 16 Apr 2008
+   * [[%ATTACHURL%/prsentation.pdf][prsentation.pdf]]: Folien für den 26.05.2008
+
+%META:FILEATTACHMENT{name="prsentation.pdf" attachment="prsentation.pdf" attr="" comment="Folien für den 26.05.2008" date="1211801675" path="präsentation.pdf" size="86140" stream="präsentation.pdf" tmpFilename="/var/tmp/CGItemp31309" user="UrsGlaubitt" version="1"}%

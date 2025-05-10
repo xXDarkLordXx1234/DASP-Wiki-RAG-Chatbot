@@ -1,0 +1,110 @@
+%META:TOPICINFO{author="BastianChristoph" date="1289772818" format="1.1" reprev="21" version="21"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+---++ Meeting Agenda
+
+%TOC%
+
+---++++ 16.11.2010
+   * Refactoring: abstract baseline, parsing
+   * Input-daten: nosvn, aktivieren/deaktivieren
+   * Stream-redirect in Debug-Modus
+   * Dokumentation der Klassen
+ 
+   * [] Annotatoren-Parameter
+      * [] k bei baselines als externer Parameter
+      * [] Enums für einfache Abbildungen (String -> String)
+      * [] HashMap verwenden statt enum für (String -> Int) - z.B. SkipLevel
+      * [] Bei Enums nur 'name()'
+   * [] Refactoring:
+      * [] Funktionen: verschachtelung auflösen
+   * [~] CollectionReader
+      * [] Duc2001: Read tree, file as content
+      * [] Duc2002: Read tree, extract plain content
+      * [] Duc2003: Read tree, extract plain content
+   * [~] RougeEvaluator: Reference Summary
+      * [] Alle reference-summaries verwenden, wenn mehrere Summarizer (dragontool-rouge-kit-option nutzen)
+      * [] Duc2001
+      * [] Duc2002 (Ref-Summaries: Multiple Summarizers, gegen alle evaluieren, s.o. )
+      * [] Duc2003 (Ref-Summaries: Short, Multiple Summarizers, siehe Duc2002)
+      * [] Duc2004 (Reference Missing?)
+      * [] Duc2005 (Ref-Summaries: dokumentieren, falls 2005 nicht verwendet werden kann )
+   * [] Vergleich mit Pyramid-Method (semantic equivalence at varying levels of granularity.)
+      * [] Duc{2002, 2003, 2004, 2005}
+   * [] Test-Cases für baselines
+   * [] Daten
+      * [] zip-file und DKPRO_HOME
+
+---++++ 09.11.2010
+   * enums vereinfachen
+   * Parameter in baseline Annotatoren, z.B. first_k
+   * Daten im SVN
+      * wieder löschen, macht das auschecken zu langsam
+   * Warum Parameter als String im Evaluator?
+   * Refactor !DucCollectionReader
+      * tief verschachtelte Schleifen für einzelne DUC Versionen sind unschön und duplizieren Code
+      * modularisieren
+
+   * [x] Base-dir anpassen
+      * [x] DKPRO_HOME env-variable umstellen
+   * [~] Dokumentation erweitern (inline)
+   * [~] Enums
+      * [~] getCode() statt name() verwenden bei Rouge-SkipLevel (Mapping: "High" ( 'name()' )-> "9" ( 'getCode()' ) )
+   * [~] CollectionReader
+      * [x] Duc2001: Read tree, use file as content
+      * [x] Duc2002: Read tree, extract plain content to additional file
+      * [] Duc2003: Read tree, extract plain content to additional file
+   * [] RougeEvaluator: Reference Summary
+      * [~] Duc2001
+      * [~] Duc2002 (Ref-Summaries: Multiple Summarizers, gegen alle evaluieren oder konkateniert? )
+      * [] Duc2003 (Ref-Summaries: Short, Multiple Summarizers, siehe Duc2002)
+      * [] Duc2004 (Reference Missing?)
+      * [] Duc2005 (Ref-Summaries: 250 words, keine eindeutige Text->RefSummary Zuordnung, Topic-Collection konkateniert als Dokument verwenden? )
+   * [] Vergleich mit Pyramid-Method (semantic equivalence at varying levels of granularity.)
+      * [] Duc{2002, 2003, 2004, 2005}
+   * [] Test-Cases für baselines
+
+---++++ 02.11.2010
+   * [~] Refactoring
+      * [x] Naming: Kovention für Klassen
+      * [x] Naming: Komponenten-Namen
+      * [x] Code-Struktur: Depricated / unused
+   * [] Dokumentation erweitern (inline)
+   * [~] Test-daten
+      * [x] Testing mode aus Reader löschen
+      * [x] Verzeichnis "data-test" verwenden
+   * [~] Eingabe-Parameter für Komponenten erweitern
+      * [x] enums verwenden 
+      * [x] default_values bei Parametern
+   * [] Base-dir anpassen
+      * [] DKPRO_HOME env-variable umstellen
+
+---++++ 26.10.2010
+   * [x] Entfernen: simple annotators
+   * [~] Referenz-Summaries einbinden (Evaluation Annotator)
+      * [x] DocumentMetaData-Annotation verwenden
+   * [~] ROUGE-Modul einbinden
+      * [x] EvalAnnotator: Annotationen (beta, ROUGE-mode, gram, maxskip)
+   * [~] Simple Summarization Pipeline: Baselines
+      * [x] ROUGE-Annotationen verwenden
+      * [x] Referenz-Summaries verwenden
+
+---++++ 19.10.2010
+   * [x] Anmeldung Bachelor-Arbeit
+   * [x] Erweiterte Summary Annotation einbinden
+   * [x] Summary Annotation inkl. Summary-Feature in TypeSystem einbinden
+
+   * [~] CollectionReader: Referenz-Summaries
+      * [~] -> direkt in Evaluation-Annotator (s.o.)
+   * [~] simple und extended annotators?
+      * [~] -> nur extended annotators (s.o.)
+   * [~] State-of-the-art Implementierungen
+      * [x] [[SentenceSelectionLexRankSimple][Tutorial]] für Lex Page Rank- Implementierung in DragonToolkit
+ 
+---++++ 12.10.2010
+   * [x] Baseline-Implementierungen (Annotator)
+   * [~] Rouge Referenzimplementierung
+      * [x] SummaryEvalRougeSimple
+   * [~] State-of-the-art Implementierungen
+
+---++++ 05.10.2010
+   * Rouge

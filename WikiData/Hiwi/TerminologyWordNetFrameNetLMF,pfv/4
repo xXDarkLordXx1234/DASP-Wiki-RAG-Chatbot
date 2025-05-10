@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="SilvanaHartmann" date="1288784301" format="1.1" version="4"}%
+%META:TOPICPARENT{name="ResearchTaskDictionaryIntegration"}%
+---+++Terminology in !WordNet, !FrameNet and LMF
+
+---++++WN terminology
+   * lexeme: abstract pairing of meaning and form 
+   * lemma: the base form that is conventionally used to represent a lexeme
+
+(see: UKP LSM-slides)
+
+---++++FN terminology
+   * lexeme: "any of the inflectional versions of a word, represented by the uninflected stem" 
+   * lemma: "composed of one or more lexemes" (in order to handle MWEs)
+   * lexical unit: "association between a lemma and a frame. Since lemmas are units of form and frames represent meaning, lexical units correspond roughly to dictionary senses"
+
+(see: THE STRUCTURE OF THE FRAMENET DATABASE, Baker et al., 2003)
+
+---++++LMF terminology (LMF specifications with examples: LMF-revision-16, ISO/TC 37/SC 4 N453)
+
+   * lexeme: abstract unit generally associated with a set of forms (form: sequence of morphs) sharing a common meaning
+   * lexical entry: 
+      * container for managing one or several forms and possibly one or several meanings in order to describe a lexeme
+      
+---++++++Background information from ISO-LMF (ISO FDIS 24613:2008)
+Terms and definitions used in ISO-LMF (ISO FDIS 24613:2008) are mainly specified according to ISO 1087-1 (Terminology work -- Vocabulary -- Part 1: Theory and application) and ISO 1087-2 (Terminology work -- Vocabulary -- Part 2: Computer applications):
+   * Section 3 Terms and definitions: "For the purposes of this International Standard, the terms and definitions given in ISO 1087-1, ISO 1087-2 and the following apply (It is worth noting that, on purpose, we avoid to define and use highly controversial terms like "word", "morpheme", "base", "fusion", "ergative", "paradigm", and "collocation".)"
+   * Section 4.4 ISO 12620 Data Category Registry (DCR): "The designers of an LMF conformant lexicon shall use data categories from the ISO 12620 Data Category Registry (DCR) located at [[http://www.isocat.org/][www.isocat.org]]."
+
+
+
+
+-- Main.JudithEckleKohler - 2010-10-26

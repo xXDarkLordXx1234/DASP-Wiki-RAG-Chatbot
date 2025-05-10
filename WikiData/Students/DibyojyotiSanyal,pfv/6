@@ -1,0 +1,73 @@
+%META:TOPICINFO{author="eckart" comment="reprev" date="1481213418" format="1.1" reprev="4" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+   * https://github.com/openminted/interop-examples
+
+*Upto now:* 
+
+   * Have a Java implementation of proof of concept of UIMA AS system runnable in local m/c.
+   * Have a Groovy implementation of the same where the whole system starts using DKpro Script DSL.
+   * Separated UIMA-AS Server and service script so that the can be run independent of UIMA-AS client.
+   * Compatibility of YARN vs Mesos: [[%ATTACHURL%/Compatibility_of_YARN_with_Docker_Dibyo_102716_V1.1_REC.pdf][Compatibility_of_YARN_with_Docker_Dibyo_102716_V1.1_REC.pdf]] 
+   * Comparison of our system with UIMA DUCC: [[%ATTACHURL%/uima_ducc_vs_Our_project.doc][uima_ducc_vs_Our_project.doc]]: uima_ducc_vs_Our_project.doc
+
+*2016-11-10 to 2016-11-17 :*
+
+   * Developing shell script to generate Docker base image containing Ubuntu, Java8 and Groovy installed.
+   * Developing shell script that uses above base image and packages UIMA-AS server script and creates new image.
+   * Developing shell script that uses above base image and packages UIMA-AS service script and creates new image.
+   * Developing shell script that uses above base image and packages UIMA-AS client implementation and creates new image.
+
+*2016-11-17 to 2016-11-24 :*
+
+   * Status of last week:
+      * Issue found, in executing program with groovy 1.8. @grab statements does not work properly
+      * Issue found, not able to install groovy 2.4.7 in docker image.   
+   * Next week plan:  
+      *  resolving above issues.
+      *  invoking the docker broker from PipelineEngine and connecting with the service running inside docker from host.
+      *  writing required shell scripts for checking, invoking and removing docker container for broker.
+      *  adding different options for invoking different kinds of broker (docker, non docker)
+      *  modifying PipelineEngine accordingly.
+      *  changing service script so that it gets generated in run time from template for the particular annotator.   
+
+*2016-11-24 to 2016-12-01 :*
+   * Status of last week:
+      * concern, invoking broker inside server takes time because every time dependent jars are downloaded inside container. 
+   * Next week plan:  
+      * mapping volume from host to container where the dependencies are downloaded, to reduce run time of services inside docker container.
+      * writing required shell scripts for checking, invoking and removing docker container for annotator services.
+      * writing required shell scripts for checking, if base image exists.
+      * enhancing PipelineEngine with options for building docker image for broker and service in runtime from PipelineEngine.   
+      * writing required shell scripts to invoke broker and services for different invoke options of broker and services. 
+      * modifying PipelineEngine accordingly to execute shell scripts.
+      * writing required shell scripts to probe if the services inside docker container is running and up.
+      * adding credentials json file to read invoke options and credentials data from a file given as input by user in groovy DSL.
+      * improving code to generated random and unique endpoint names and client application should fetch those names from services.
+      * enabling choosing service instance with lowest cpu and memory usage when service invoke preference in BEST_EFFORT.
+      * enabling client application to check if all services are up and running without error. 
+*2016-12-01 to 2016-12-08 :*
+   * Status of last week:
+      * concern, how to detect if a service or broker fails or the container fails while pipeline is running, now if something like this happens pipeline execution stalls.  
+   * Next week plan:  
+      * generating Thesis report structure.
+      * writing thesis report of work done so far. 
+      * reading about docker swarm.
+
+*2016-11-08 to 2016-12-15 :*
+   * Status of last week:
+   * Next week plan:  
+
+*2016-11-15 to 2016-12-22 :*
+   * Status of last week:
+   * Next week plan:  
+
+*2016-11-22 to 2016-12-29 :*
+   * Status of last week:
+   * Next week plan:  
+
+-- Main.SanyalDibyojyoti - 2016-11-10
+
+   
+
+%META:FILEATTACHMENT{name="Compatibility_of_YARN_with_Docker_Dibyo_102716_V1.1_REC.pdf" attachment="Compatibility_of_YARN_with_Docker_Dibyo_102716_V1.1_REC.pdf" attr="" comment="Compatibility of YARN vs Mesos" date="1478803675" path="Compatibility of YARN with Docker_Dibyo_102716_V1.1_REC.pdf" size="355609" user="dibyojyoti" version="1"}%
+%META:FILEATTACHMENT{name="uima_ducc_vs_Our_project.doc" attachment="uima_ducc_vs_Our_project.doc" attr="" comment="" date="1478803857" path="uima ducc vs Our project.doc" size="429568" user="dibyojyoti" version="1"}%

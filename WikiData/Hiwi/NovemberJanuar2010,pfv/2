@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Understanding the analysis for German resources  | |
+| Analyzing Wiktionary and !WordNet  | |
+| Implementing a transformation for Roget's thesaurus  | |
+| Analyzing Roget's thesaurus and the information overlap of the resources  | |
+| Classification of Wikipedias redirects and link labels| |
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Open Roget's | 10.11.2009 | 3 | Einarbeitung in Open Roget's |
+| Open Roget's | 11.11.2009 | 3 | Roget's Thesaurus Beschreibung in "OpenRogetsDesc.pdf" |
+| Open Roget's | 12.11.2009 | 2.5 | Implementierung von doTransformLexemes für Opent Roget's |
+| Open Roget's | 13.11.2009 | 1.5 | Implementierung von doTransformWordSenses für Opent Roget's |
+| Open Roget's | 14.11.2009 | 3 | Implementierung von doTransformRelations für Opent Roget's |
+| CombiLSR | 15.11.2009 | 3 | combilsr.transform für OpenRoget's ist fertig<br>Ausführung von Tests |
+| CombiLSR | 18.11.2009 | 3 | Ausführung von Tests |
+| CombiLSR | 20.11.2009 | 3 | Ausführung von Tests |
+| CombiLSR | 22.11.2009 | 4 | Tests |
+| English Resources | 25.11.2009 | 3 | Statistiken für WordNet? , Wiktionary EN, Open Roget's in "EnglishStatistics.pdf" |
+| English Resources | 26.11.2009 | 2 | Analyse der Statistiken von englischen Resourcen in:<br> "EnglishResourceAnalysis.pdf" (wird nachgefüllt) |
+| English Resources | 28.11.2009 | 3 | Analyse der Statistiken von englischen Resourcen |
+| English Resources | 29.11.2009 | 2 | Analyse der Statistiken von englischen Resourcen. Mehr in PDF |
+| English Resources | 30.11.2009 | 2 | Analyse der Statistiken von englischen Resourcen. Mehr in PDF |
+| English Resources | 01.12.2009 | 2 | Analyse der Statistiken von englischen Resourcen. |
+| Coverage Analysis | 02.12.2009 | 2 | Coverage Analysis verschiedener Wortlisten |
+| Coverage Analysis | 05.12.2009 | 3 | Statistiken in PDF. <br>Mapping in "EnglishWordListMappings.zip" |
+| Coverage Analysis | 06.12.2009 | 3 | Coverage Analysis verschiedener Wortlisten |
+| Coverage Analysis | 07.12.2009 | 2 | Coverage Analysis. Leipzig Corpora. |
+| Coverage Analysis | 08.12.2009 | 2 | Verteilung der Frequencies in den Resourcen in "LeipzigCorporaFrequencies.ods" <br> "EnglishWordListMappings.zip" und "EnglishWordsCoverageStatistics.pdf" update. |
+| Wikipedia mining | 11.12.2009 | 2 | Wiki inlink labels and redirects |
+| Wikipedia mining | 13.12.2009 | 3 | Extrahierung von inlink labels und redirects |
+| Wikipedia mining | 15.12.2009 | 3 | Extrahierung von inlink labels und redirects. Statistiken. |
+| Wikipedia mining | 16.12.2009 | 2.5 | Extrahierung von inlink labels und redirects. Statistiken. |
+| Wikipedia mining | 18.12.2009 | 3 | Extrahierung von inlink labels und redirects. Statistiken. |
+| Wikipedia mining | 19.12.2009 | 4 | Statistiken und Heuristiken in "LinkLabels.pdf" |
+| Wikipedia mining | 20.12.2009 | 3.5 | Analyse der Statistiken in "LinkLabels.pdf" |
+| Wikipedia mining | 22.12.2009 | 3.5 | Analyse der Statistiken. Einarbeitung in Papers. |
+| Wikipedia mining | 23.12.2009 | 2 | Je 200 Zufällige Beispiele zu NO-TYPE in Link Labels + Redirects,<br> nur Link Labels, nur Redirects in ODS-Dateien |
+| Wikipedia mining | 12.01.2010 | 1.5 | Analyse der No-Type link labels |
+| Wikipedia mining | 13.01.2010 | 2 | No-Type LinkLabels with Comments in "LinkLabelsRedirectsNOTYPEComments.ods" |
+| Wikipedia mining | 16.01.2010 | 2 | Erstellung der neuen Heuristiken |
+| Wikipedia mining | 17.01.2010 | 3 | Einarbeitung in "MorphAdorner Lemmatizer"<br> Erstellung der Heuristik für Bestimmung des gleichen Wortstammes |
+| Wikipedia mining | 19.01.2010 | 3 | Neue Heuristiken |
+| Wikipedia mining | 20.01.2010 | 3 | Neue Heuristiken. Mehr in "LinkLabels.pdf" |
+| Wikipedia mining | 21.01.2010 | 2 | LinkLabels-Funktionen in Page |
+| Wikipedia mining | 22.01.2010 | 2 | LinkLabels-Funktionen in Page |
+| Wikipedia mining | 24.01.2010 | 2 | LinkLabels-Funktionen in Page |
+| Wikipedia mining | 26.01.2010 | 2 | Importieren von Datenbank |
+| Wikipedia mining | 27.01.2010 | 2 | Ausfüllung von Annotations.Importieren von Datenbank. |
+| Wikipedia mining | 28.01.2010 | 3.5 | Ausfüllung von Annotations.Importieren von Datenbank. |
+| Wikipedia mining | 01.02.2010 | 2.5 | JWPL mit Link-Labels Funktionen in "svn/dkpro_students/y_chebotar/JWPLOnly" |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende Januar 2010 |

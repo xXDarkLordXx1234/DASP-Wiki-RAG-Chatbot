@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="ShuoYang" date="1294421090" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ All things Sigmund related
+
+
+---++ Kapitel 19 Verteilte Programmierung / Java ist auch eine Insel (8. Auflage)
+[[http://openbook.galileocomputing.de/javainsel8/javainsel_19_007.htm#mjb4dfc636ba13cc04d06f489cade6978b Buch]]
+
+Zugriff entfernter Ressourcen / Aufruf entfernter Methoden:<br>
+über HTTP:<br>
+   * + Verbreitet
+   * + idR keine Beschränkungen von Firewalls
+
+SOAP - Simple Object Access Protocol<br>
+bietet einfachen Zugriff auf Server-Ressourcen mit HTTP und XML
+   * + Entfernter Methodenaufruf, dessen Parameter und Ergebnisse in XML kodiert
+   * + Programmiersprache-neutral
+   * - XML-Overhead (Dateigröße, Benötigen von Parsen)
+   * - Potentielle Sicherheitsprobleme (Berechtigung, Übertragung in Klartext - SSL to the rescue)
+
+Implementierung:<br>
+Mit Java 6 kommt JAX-WS 2.0 - Java API für XML-Based Web Services
+
+package =javax.xml.ws= : ([[http://download.oracle.com/javase/6/docs/api/javax/xml/ws/package-summary.html javadoc]], [[http://www.w3.org/TR/ws-gloss/ W3C Glossary]])
+   * =Endpoint= : An association between a *binding* and a *network address*, that may be used to communicate with an instance of a service (Glossary). Always tied to one *binding* and one *implementor* (javadoc)
+   * =Binding=: Specifies the protocol and data format to be used in transmitting messages defined by the associated interface (Glossary)
+   * =Implementor=: a java class annotated with @WebService specifying remote methods and binding information.
+   * =Executor=: executes submitted Runnable tasks, may be set on the endpoint in order to gain better control over the threads used to dispatch incoming requests (for example, pooling)
+
+
+   1. One creates Web Services and runs it
+   1. One generates Stubs from the WSDL file
+   1. One calls the Stubs and get results from remote web service
+ 
+
+---++ http://java.sun.com/developer/technicalArticles/xml/webservices/
+
+SOAP client: creates XML document which has the information needed for remote method invocation<br>
+SOAP server:listens for SOAP messages, acts as a distributor and interpreter of SOAP documents
+
+
+
+-- Main.ShuoYang - 2011-01-06

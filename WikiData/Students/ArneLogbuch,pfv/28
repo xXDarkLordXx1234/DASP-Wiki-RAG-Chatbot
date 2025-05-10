@@ -1,0 +1,168 @@
+%META:TOPICINFO{author="ArnePottharst" date="1209471181" format="1.1" version="28"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Logbuch 
+%TOC%
+
+---++ 28.04.2008
+   * Implementierung der Dependencies als UIMA-Typen (DEP als Haupttyp und Untertypen unter .dep.XXX).
+   * Die Abhängigkeiten der Tokens untereinander werden noch nicht gespeichert, ist aber sehr wichtig -> noch machen
+
+   * Testen des Lemmatisierers aus Leipzig, ist schnell und einfach. Bisher funktionieren aber nur Nomen, Verben geht noch nicht. Ist schlecht dokumentiert.
+      * *NJ*: Ist der Lemmatisierer generell nicht in der Lage Verben zu behandeln oder hast du ihm die Funktion noch nicht entlockt?
+      * *AP:* Doch, Verben gehen auch, aber nicht so gut:
+         * Plusquamperfekt wird nicht korrekt umgesetzt: "gekommen"->"ekommen", "geritten"->"en", "gespielt"->"pielt". Präsens geht auch nicht gut: "komme"->"komme", "werde" -> "werde", "laufe"-> "laufe". Imperativ: "komm" -> "komm", "lauf" -> "lauf"
+         * Download der Toolbox unter http://wortschatz.uni-leipzig.de/~cbiemann/software/toolbox/index.htm#_Baseforms da steht nur dabei, daß es für Nomen ist (für die geht es auch recht gut); von Verben steht nichts dabei, es ist aber eine Verben-Klassifikationsdatei dabei. Dort gibt es auch mehr Doku sowie Quelltexte.
+         * Die Verb-Grundform von "Haus" ist "Heisen" und von "Auto" "Aun" Also lieber nicht die falsche Wortklasse übergeben ;-)
+
+---++ 25.04.2008
+Satzstrukturen, die sinnvoll sind, z.B.
+   * (S (NP Subjekt) (VAFIN ist) (VP (PP mit Objekt) (VVPP ausgerüstet))
+   * (S (NE Subject) (VVFIN produziert) (NN Objekt)
+Über die Dependencies sind die entsprechenden Teile miteinander verbunden, so daß man sinnvolle Sachen rausholen kann.
+
+   * *NJ*: Decken diese beiden Muster tatsächlich genug ab? Wieviele Sätze hast du analysiert um sie zu erhalten? 
+   * *AP:* Nein, das deckt natürlich nicht alles ab (steht ja auch "z.B.") dabei, aber das sind Satzstrukturen, mit denen ich erstmal arbeite, da sie recht einfach sind.
+      * *NJ*: Hab ich überlesen, sorry.
+
+---++ 23.04.2008
+Untersuchung von 20 Nachrichtentexten und Zerlegung mittels !StanfordParser, um herauszufinden, welche POS-Tokens interessant sind und wie die Strukturen/Phrasen aufgebaut sind, die die gesuchten Informationen enthalten. Nützliche Beschreibung der POS-Tags und Strukturen: http://www.fi.muni.cz/~xnemcik/nlp/sarrebrugge/handout.pdf 
+
+---++ 18.04.2008
+Einbindung des Stanford-NLP-Parsers als UIMA-Komponente, Annotation der Texte analog zum !TreeTaggerPosLemma (bis auf das Lemma, das liefert der Stanford-NLP-Parser nicht). Es gibt Probleme bei Sätzen mit mehr als 30 Wörtern, da dann mit der Factored-Methode zu viele Elemente erzeugt (>200.000, das ist fest eingestellte Grenze), siehe auch http://nlp.stanford.edu/software/parser-faq.shtml#k. Ich habe die Satzlängen-Grenze mal fest auf 30 eingestellt, könnte man noch variabel per UIMA-Parameter machen.
+   * Was ist mit Sätzen, die länger als 30 Wörter sind? Kann man die irgendwie aufsplitten, und ist das sinnvoll?
+   * *NJ*: kommt das häufig vor? Ich vermute dass Aufsplitten das Parsing Ergebnis verändern / -fälschen würde, aber ich untersuche die Frage mal.
+   * *AP* Ja, in meinen Texten sind einige Sätze, die viele Nebensätze etc. haben und daher mehr als 30 Wörter haben, im Schnitt wohl ein Satz pro Text.
+
+Eine Idee, wie man die Abhängigkeiten der Wörter speichern kann: zu jedem Token speichern, von welchem Token es abhängt, das gibt der Stanford-NLP-Parser ja zurück. So kann man hinterher damit in einem anderen Annotator arbeiten und muß nicht die komplette Baumstruktur irgendwie speichern (da ja jeder Token genau eine Token hat, von dem er abhängt -> ein Elter-Knoten).
+   * NJ: Ja das haben wir auch überlegt (zusätzlich ist natürlich noch die Art der Relation zu speichern). Es kann allerdings auch durchaus mal erforderlich sein, dass man den Baum auch von einem Knoten nach unten verfolgen muss. In diesem Falle wäre diese Repräsentation etwas unpraktisch.
+
+---++ 16.04.2008
+   * Anfang der Umsetzung des Stanford-NLP-Parsers für UIMA. Allerdings spinnt das Dingen rum und wirft komische Fehlermeldungen beim Initialisieren, ich kann den !LexicalizedParser nicht direkt aus Java aufrufen: wenn ich das .jar einbinde, findet er Methoden nicht bzw. die Parameter passen nicht zu den vorhandenen, wenn ich die Java-Quelltexte direkt aufrufe funktioniert das De-Serialisieren der Trainingsdaten nicht wegen falscher serializeID.
+      * *NJ*: Folgender Code aus der FAQ funktioniert bei mir nachdem ich einfach die .jar eingebunden habe und den Pfad zur englishPCFG.ser.gz angepasst habe:
+      * <verbatim>
+import java.util.*;
+import edu.stanford.nlp.trees.*;
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+
+class ParserDemo {
+  public static void main(String[] args) {
+    LexicalizedParser lp = new LexicalizedParser("englishPCFG.ser.gz");  // <-- hier den Pfad anpassen
+    lp.setOptionFlags(new String[]{"-maxLength", "80", "-retainTmpSubcategories"});
+
+    String[] sent = { "This", "is", "an", "easy", "sentence", "." };
+    Tree parse = (Tree) lp.apply(Arrays.asList(sent));
+    parse.pennPrint();
+    System.out.println();
+
+    TreebankLanguagePack tlp = new PennTreebankLanguagePack();
+    GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
+    GrammaticalStructure gs = gsf.newGrammaticalStructure(parse);
+    Collection tdl = gs.typedDependenciesCollapsed();
+    System.out.println(tdl);
+    System.out.println();
+
+    TreePrint tp = new TreePrint("penn,typedDependenciesCollapsed");
+    tp.printTree(parse);
+  }
+}
+
+</verbatim>
+      * *AP* Argh! Ganz doofer Fehler: Beim Stanford-NER ist auch der Parser dabei, allerdings in einer veralteten Version. Einfach durch die aktuelle (stanford-parser-2007-08-19) ersetzen, schon läufts.
+
+---++ 14.04.2008
+   * Erstellen eines UIMA-Annotators für den Stanford NER nebst entsprechenden Typen. Als Parameter für den StanfordNE muß der vollständige Pfad zur serialisierten Klassifikationsdatei angegeben werden.
+   * Der TreeTagger funktioniert leider noch nicht für längere Texte (>400 Wörter), die verbesserte Version von Florian habe ich noch nicht zum Laufen bekommen (Windows 2000).
+      * *NJ*: Dieser Stand der Probleme ist bekannt, du kannst versuchen das verbessern, indem du dem TreeTagger nur einzelne Sätze statt ganze Dokumente gibst. Das hat bei mir allerdings auch nicht 100%ig funktioniert daher noch eine Alternative: Der Stanford Parser kann auch POS Tagging. Du könntest das Problem elegant umgehen wenn du ihn einbindest. 
+      * *AP*: Ok, probiere ich mal aus. Eine reine Java-Lösung finde ich auch besser.
+
+---++ 28.03.2008
+Ich habe begonnen, eine [[ArneOntologieAPI][OntologieAPI]] zu erstellen, sowie eine Implementation, die auf KInfinity zugreifen kann.
+
+Niklas: Ich habe in deiner Präsentation vom letzten Statusmeeting gesehen dass du einen "StanfordNE" Annotator erstellt hast, der "NE" Typ erzeugt. Wie sieht dieser Typ aus? (Ich finde den Code dazu nicht im SVN)
+
+---++ 13.03.2008
+   * Starten des UIMA-CPE:
+      * =SET UIMA_HOME=D:\Dipl-Tools\apache-uima=
+      * =SET UIMA_CLASSPATH=H:\privat\eclipse\DKPro\lib\dkpro_core_rev96.jar=
+      * =SET UIMA_DATAPATH=H:\privat\eclipse\DKPro=
+      * Inhalt von H:\privat\eclipse\DKPro\.datapath: =H:\privat\eclipse\DKPro=
+
+---++ 22.02.2008
+   * Der Stanford-Tokenizer hat Probleme mit _manchen_ Umlauten und bricht danach um, hier nochmal nachforschen & nachbessern.
+   * Tokens zu klassifizieren ist auch von Hand nicht immer einfach und eindeutig. Genaue Vorgaben/Beispiele sind notwendig.
+   * Probleme, da z.B. "Yahoo" eine Firma und "Yahoo Mail" ein Produkt ist ... sorgt für nicht eindeutige Ergebnisse
+
+Versuch mit Texten mit den Stichwörtern "Yahoo, Google, IBM, Microsoft, Vista, Festplatte, Opera, Ubuntu"
+
+*Trainingsdaten* ("NE-Dichte": 22,4%)
+| *Gesamt* | * O* | *PROD* | *COMP* | *PRODTYPE* | *PERS* | *ORG* | *MISC* | *LOC* |
+|  10867 |  8429 |  757 |  340 |  797 |  75 |  185 |  174 |  110 |
+|   100% |  77,6% |  7,0% |  3,1% |  7,3% |  0,7% |  1,7% |  1,6% |  1,0 % |
+
+*Testdaten* ("NE-Dichte": 18,5%)
+| *Gesamt* | *O* | *PROD* | *COMP* | *PRODTYPE* | *PERS* | *ORG* | *MISC* | *LOC* |
+|  2795 |  2279 |  65 |  154 |  94 |  33 |  85 |  75 |  10 |
+|  100% |  81,5% |  2,3% |  5,5% |  3,4% |  1,2% |  3,0% |  2,7% |  0,4% |
+
+*Ergebnisse*
+   * NE-Dichte Gold: 18,5%
+   * NE-Dichte Gold: 14,1%
+   * Korrekt klassifizierte NE: 45,0%
+   * Falsch klassifizierte NE: 68,6%
+   * Falsch als NE erkannt: 10,2%
+
+*"Als NE erkannt, egal ob richtiges NE oder falsches NE"*
+| | *ist NE* | *ist kein NE* |
+| *als NE erkannt* |   354 |  162 |
+| *nicht als NE erkannt* |  40 |  2239 |
+
+---++ 11.02.2008
+Erstellung eines halbautomatischen Annotators, der die Texte aus der Datenbank ausliest, in Tokens zerlegt und mit Hilfe von Wikipedia in die vorher genannten Klassen einordnet soweit möglich. Anschließend muß die Ausgabe nochmals von Hand nachgearbeitet werden. Mit diesen Daten kann dann der Stanford-NER trainiert werden.
+
+---++ 07.02.2008
+Beim Stanford-NER sind 4 verschiedene Demosets dabei. Eines davon wird im Paper zu !CoNLL 2003 erwähnt:
+   * Entities: Person (PER), Ort (LOC), Organisation (ORG), Sonstiges (MISC)
+   * Trainingset: 945 Dokumente, 203.000 Token
+   * Testset: 231 Dokumente, 46.000 Token
+
+Im Wissensnetz gibt es folgende Klassen: Person (PER), Ort (LOC), Firma/Hersteller (COMP), Produkt (PROD), Produkttyp (PRODTYPE). Sinnvoll wäre auch noch MISC für alles andere, was auch einen Namen darstellt aber in keine Kategorie fällt.
+
+---++ 06.02.2008 
+Erschließen eines Textkorpus "Redaktionelle Texte":
+   * Crawlen verschiedener Newssites mittels Curl und Wget, Texte ca. seit Anfang 2007 bis heute
+   * Extrahieren des Textes mittels Perl
+   * Einspeisen in !MySQL -Datenbank für schnellen Zugriff
+   * Statistik:
+      * heise.de: 3259 Texte
+      * hartware.de: 2973 Texte
+      * de.internet.com: 471 Texte
+      * golem.de: 7757 Texte
+   * Insgesamt also: 14460 Texte
+
+Jetzt muß ich schauen, welche Texte geeignet sind, also nach Stichwörtern sinnvolle Texte herausfinden und markieren. Von diesen Texte einige manuell klassifizieren für Stanford-NER-Training. Ausprobieren, ob ich das mit Hilfe von Wikipedia-Artikeln machen kann.
+
+*IG:* hier musst du dich schlau machen, welche Trainingsmengen das Stanford-NER-Programm voraussetzt, damit es sinnvoll funktioniert.
+
+Ein weiterer Textkorpus soll "User generated Content", also Blogeinträge, enthalten, hier muß ich schauen, die Technokrati funktioniert.
+
+*IG:* dafür gibt es bereits einen UIMA-Reader in UKP. Niklas kann den Zuständigen (CT) kontaktieren.
+
+---++ 05.02.2008 
+Trainieren des Stanford-NER mit ein paar Textdateien, die ich von Hand klassifiziert habe. Erste Ergebnisse sehen ganz gut aus, es werden auch Dinge richtig klassifiziert, die in den Trainingsdaten nicht vorhanden sind, aber ein paar Fehler treten noch auf, ich brauche mehr Trainingsdaten.
+
+---++ 01.02.2008 
+Checkin ins SVN:
+   * Der *WikiParser*, der zum Erstellen von SVN-Dateien dient, die dann eingelesen werden können von K-Infinity
+   * Grundversion des *Stanford-NER*. In der Datei <nop>TeXHyphenator#loadDefault() habe ich einen String eingefügt, der gefehlt hat, Decompiler sei Dank ;-)
+
+---++ 25.01.2008 
+Erstellen des Wissensnetzes:
+   1 Einlesen von Wikipedia-Kategorien (=Typen)
+   1 Einlesen von Artikeln mit Zuordnung zu den Kategorien (=Instanzen)
+   1 Einlesen der Links in den Artikeln, um die Artikel untereinander zu verlinken.
+
+Dies alles kann ich in K-Infinity importieren und so ein Wissensnetz daraus aufbauen.
+Es fehlen allerdings noch wichtige Metainformationen bei den Links zwischen den einzelnen Artikeln wie "A stellt her B" oder "A ist Konkurrent von B", ebenso könnten noch Metainformationen zu den einzelnen Instanzen gespeichert werden. Hier überlege ich grade, welche Informationen ich noch aus Wikipedia ziehen kann, und ob bzw. welche weiteren Quellen ich noch verwenden kann -&gt; Ideen sind willkommen :-) 
+
+---++ 09.01.2008 
+Einarbeitung in UIMA und K-Infinity: ich habe ein Testprogramm (Proofe of Concept) für UIMA erstellt, das einen gegebenen Text zerlegt und großgeschriebene Wörter in einem Text findet (seeehr simples NER) und diese im Wissensnetz von K-Infinity sucht und gefundene entsprechend in UIMA markiert.

@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="NicoErbs" date="1263912231" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="NicoErbsHiWi"}%
+---++ Work
+
+%TOC%
+
+
+---+++ Related Work
+   * [[NicoErbsHiWiRelatedWork][Related Work]]
+
+---+++ Tasks
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Task 1: Creating Maven project for keyphrase experiments | 100 |
+| Task 2: Improving experimental framework for existing keyphrase experiments | 50 |
+| Task 3: Print out parameters from CPEs to output | 0 |
+| Task 4: Redesign Cooccurrence Graph for better compatibility with [[NicoErbsPageRankCooccurrenceAndGraphs][PageRank]] | 90 |
+| Task 5: Improve Pos filter in CandidateAnnotator | 0 |
+| Task 6: Experiments with keyphrase extraction | 0 |
+
+
+---+++ Working Hours
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Task* | *Date* | *Hours* | *Remark* |
+| Installing eclipse | 05.01.2010 | 5.5 | |
+| Creating Maven project | 06.01.2010 | 5.5 | Additionally solving problems with eclipse |
+| Improving experimental framework for existing keyphrase experiments | 07.01.2010 | 2.5 | Understanding keyphrase extraction framework |
+| Improving experimental framework for existing keyphrase experiments | 12.01.2010 | 3 | StartFrameworkCandidateBaselineExperiments |
+| Improving experimental framework for existing keyphrase experiments | 12.01.2010 | 6.5 | StartFrameworkCandidateBaselineExperiments |
+| Improving experimental framework for existing keyphrase experiments | 13.01.2010 | 2 | StartFrameworkCooccurrenceKeyphraseExperiments |
+| Redesign Cooccurrence Graph for better compatibility with [[NicoErbsPageRankCooccurrenceAndGraphs][PageRank]] | 13.01.2010 | 2 | Change [[NicoErbsPageRankCooccurrenceAndGraphs][CooccurrenceGraphAnnotator]] |
+| Redesign Cooccurrence Graph for better compatibility with [[NicoErbsPageRankCooccurrenceAndGraphs][PageRank]] | 15.01.2010 | 1 | Change [[NicoErbsPageRankCooccurrenceAndGraphs][CooccurrenceGraphAnnotator]] |
+| Redesign Cooccurrence Graph for better compatibility with [[NicoErbsPageRankCooccurrenceAndGraphs][PageRank]] | 18.01.2010 | 2 | Analyze impact of changes (see [[NicoErbsPageRankCooccurrenceAndGraphs][here]]) |
+| Improving experimental framework for existing keyphrase experiments | 19.01.2010 | 5 | Remaining frameworks in package keyphrases.acl09 |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 180 | until March 31st 2010 |
+<nop>
+
+----+++ Useful internal links
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/artifactory][Artifactory]]
+
+
+-- Main.NicoErbs - 11 Jan 2010

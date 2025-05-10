@@ -1,0 +1,145 @@
+%META:TOPICINFO{author="schulz" comment="" date="1532447195" format="1.1" reprev="23" version="26"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2018-07-17
+---++++ meeting notes
+   * also use UMLS without eliminating similar terms --> investigate which terms exactly are eliminated, are they really the ones detectable by other methods?
+   * there seems to be some mistake in calculating the wrongly predicted terms (less when UMLS merged with other lists than with just other lists)
+
+---++++ pre-meeting notes
+   * finished plot that evaluates methods on the "development set" and allows us to choose the right threshold
+   * extracted gazetteers from UMLS and evaluated them
+
+---++ 2018-07-17
+---++++ meeting notes
+   * we versus I
+   * bibliography style: can also use other if easier to read
+   * describe library for scraping websites: possible but not necessary
+   * description of code: appendix + readme in UKP git
+   * created plots
+ 
+
+---++++ pre-meeting notes
+   * started writing portions of the thesis
+   * made code more consistent
+   * created more plots for evaluation
+   * annotated 30 essays
+
+---++ 2018-07-10
+---++++ meeting notes
+   * midterm presentation
+   * manually check what the different methods output on 30 essays and compare
+   * do more statistics to find out in which direction to do more work to improve
+
+---++ 2018-07-03
+---++++ meeting notes
+   * discussed Claudia's feedback regarding presentation
+
+
+---++ 2018-06-26
+---++++ meeting notes
+   * todo after mid-term presentation
+      * try other German word embeddings (Claudia to send some)
+      * use the fastText comparison with original embeddings (without new OOV embeddings) and use cosine similarity with new embeddings (with new OOV embeddings)
+      * train medical word embeddings?
+   * discussed presentation: change to UKP template
+   * discussed results
+      * compare which terms are exclusive to which word lists (do we need all of them?)
+      * compare which terms are found by which approaches, what's the overlap (create a table)
+
+---++++ pre-meeting notes
+   * created some statistical calculations on the annotated essays
+   * prepared a raw version of slides for the presentation
+   * did some work on evaluating the performance of each method
+---++ 2018-06-20
+---++++ meeting notes
+   * talked about methods, that create different views of the annotated essays
+   * next weeks will focus on creating more views on the essays as well as statistics
+   * furthermore I will start preparing the midterm presentation
+---++ 2018-06-12
+---++++ meeting notes
+   * Talked about struture of the thesis and that it is generally ok to use online texts for embeddings, since we do not actually use the original content
+   * Next Weeks will focus on comparing the wordlists and methods and finding meaningful & interesting results for the midterm presentation
+---++++ pre-meeting notes  
+   * *Datenschutz der einzelnen Webseiten:*
+   * apotheken-umschau scheint das systematische runterladen und verwenden nicht zu verbieten, zumindest vermute ich mal, dass das nicht gemeint ist auf der Seite [[https://www.apotheken-umschau.de/unternehmenskommunikation/AGB--Nutzungsbedingungen--30966.html][AGB]] (suche nach Satz "Die Inhalte sind nach Maßgabe der gesetzlichen Bestimmungen urheberrechtlich geschützt"
+   * Dr gumpert will eine schriftliche Genehmigung für das Kopieren, siehe: [[https://www.dr-gumpert.de/html/disclaimer.html][Disclaimer]], Satz "Das Material darf ohne ausdrückliche schriftliche Genehmigung von www.dr-gumpert.de nicht kopiert"
+   * Auch medizin-lexikon.de äußert sich ähnlich: [[https://www.medizin-lexikon.de/Copyright][Copyright]]
+   * Auf gesundheit.de konnte ich keine Einschränkung finden
+   * netDoktor spricht davon, dass die Speicherung und Nutzung für private/interne Zwecke in Ordnung sei, aber eine Zustimmung wäre vielleicht doch angebracht, siehe [[https://www.netdoktor.de/ueber-uns/nutzungsbedingungen/][Nutzungsbedingungen ]]Punkt 4
+
+   * *Progress of last week:*
+   * Implemented new methods to find medical entities based on comparison of word embeddings
+   * I used fastText's Embeddings but two different models for actual comparison:
+   * 1. fastText model to retrieve embeddings and scikit's cosine similarity function to compare them.
+   * 2. spacy model to retrieve embeddings and it's own similarity function
+   * Key Difference: spacy's similarity scores feel slightly more natural, but it is not able to work with out-of-vocabulary words. the fastText model on the other hand can create out-of-vocabulary embeddings, that seem quite meaningful but the scores in genral of scikit's cosine similarity seem slightly inferior. A hybrid approach could be possible if memory is not critical (storing 2 models costs quite a lot of memory)
+
+---++ 2018-06-05
+---++++ meeting notes
+   * flexikon states that crawling is forbidden
+   * focus on comparison of existing German word embeddings
+   * add all websites found
+   * Claudia to ask ULB about medical texts and UMLS
+   * Domains that are currently planned to be crawled: [[https://www.netdoktor.de/][netdoktor.de]], [[https://www.apotheken-umschau.de/][apotheken-umschau.de]], [[https://www.dr-gumpert.de/][dr-gumpert.de]], [[https://www.gesundheit.de/][gesundheit.de]],[[https://www.medizin-lexikon.de/Hauptseite][ medizin-lexikon.de]]
+
+---++++ pre-meeting notes
+   * some more literature reviews
+   * collected text from http://flexikon.doccheck.com
+
+---++ 2018-05-21
+---++++ pre-meeting notes
+   * implemented Stringmatcher module, that compares phrases in the essay with terms in wordlists by 1. exact matching, 2. similarity, 3. exact matching with stemming. The class then outputs a version of the essay with annotations
+   * Started indepth literature review for NER with Wikipedia and the Web
+   * Question: What is meant with the work package P3 in the task description? Should out-of-vocabulary words manually be detected to create embeddings for them?
+   * Question: FraMed is an ideal corpus focusing on clinical reports in order to advance information extraction, but the corpus is confidential and access protected. I guess Scientists are generally not allowed to grant access to such corporas to other scientists? (see the [[https://pdfs.semanticscholar.org/fcd7/067715040df59c8c4bc76e0695f1d5d4f460.pdf?_ga=2.268209550.1206075924.1526905647-1544907588.1526905647][Paper]])
+   * Current thoughts on next steps: 1. create a corpus with text sorts similar to that of medical essays (should the provided essays be part of the corpus?), 2. learn embeddings with fasttext, 3. try finding out-of-vocabulary words by comparing word embeddings (now stringmatching based on semantic instead of lexical similarity), 4. Further approaches like finding medical terms in english in the more structured wikidata.org, but using inter language links to get the german articles (and words) out of it (may be a better approach to extract medical terms, but it is questionable whether a lot of NEW terms would come out of this). Another approach would be to learn to classify words in Wikipedia articles correctly and extract more medical terms this way. This would probably yield a lot more new terms that would otherwise be missed, but is also very prone to noise
+
+---++ 2018-05-08
+---++++ meeting notes
+   * extracted medical words from articles in wikipedia's category lists [[https://de.wikipedia.org/wiki/Kategorie:Krankheit][Krankheit]] and [[https://de.wikipedia.org/wiki/Kategorie:Krankheitssymptom][Krankheitssymptom]]
+   * First attempt of finding medical terms in essays by matching them with occurrences in the created medical term lists (stopwords removed)
+   * TODO(Marcel): Stringmatching with 1. stemming and 2. similarity of 90% and 3. exact matching
+---++++ meeting notes
+   * Pschyrembel is a very useful website but explicitly vorbids extraction of information: TODO Claudia: send email to ask about this
+   * look at results of first extraction: problem that some non-medical terms are found, e.g. "seit" since current algorithm doesn't do exact match but checks if word m-grams are contained in a medical term (which may be made of various words)
+   * next steps: (1) try stemming/lemmatizing, exact match, and approximate match (match except for 1 or 2 characters - can this solve spelling mistakes?!), (2) start to find large (freely available and useable) amounts of German medical text for training embeddings
+
+---++ 2018-04-30
+---++++ pre-meeting notes
+   * extracted first word list from website netDoktor.de using Python library Scrapy
+
+---++++ meeting notes
+   * discussed what should be mentioned as related work in thesis: 5 (to 10) papers with large overlap in goal, task, methods
+   * next steps: identify more medical terms using Wikipedia pages of terms currently in the list
+
+---++ 2018-04-24
+---++++ meeting notes
+   * look at websites with German medical terms that Marcel found
+   * discuss draft task description
+   * idea: also use word embeddings to extend medical word lists
+   * note: Marcel wants to hand in before start of October --> hard work required since this is one month less than usual for a Bachelor thesis
+   * plan dates for mid-term presentation (10.7.) and final presentation (18.9.) 
+   * TODO(!ClS): finalise Task Description
+   * TODO(Marcel): start with creation of medical term lists
+
+
+---++ 2018-04-19
+---++++ meeting notes
+   * discuss related papers 
+   * TODO(!ClS): draft task description
+
+---++ 2018-04-11
+---++++ meeting notes
+   * agreed on aim of thesis: automatically detect medical diagnosis (e.g. disease), medical test, and test results in texts --> unsupervised, there will only be a few documents for testing
+   * talked about general expectations for thesis at UKP
+   * discussed various possible dictionaries: UMLS, Wikipedia
+   * either use various dictioniaries and dict extraction methdos and compare their usefulness
+   * or go in the ML direction, i.e. train a classifier (on Medical word embeddings??) to also predict unknown medical words
+   * Marcel will contribute to writing task description
+      * TODO(!ClS): Send some examples of task description
+   * programming language dependent on task
+   * next steps: decide which direction to take, check possible dictionaries and data sources, draft task description
+
+
+
+-- Main.ClaudiaSchulz - 2018-04-16

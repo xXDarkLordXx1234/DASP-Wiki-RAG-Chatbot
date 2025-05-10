@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="ShuoYang" date="1301763675" format="1.1" version="3"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Arbeitsprotokoll-1H 2011 / Shuo Yang
+
+%TOC%
+
+
+---++ Feb 2011
+
+---+++ Abgeschlossene Aufgaben
+keine
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Einarbeiten SIGMUND, Treffen | 15.02.2011 | 4 | Maven-ize =CasSearchModule= Projekt <br> Weitere Einarbeiten in SIGMUND <br> Einlesen vorhandener Codes von UKP in SIGMUND <br> Treffen mit Benjamin<ul><li>Probleme bei SIGMUND (=SSSearchString=) </li><li> Erklärung von Spring WS</li><li>Besprechung nächster Schritte</li></ul> | * |
+| Einarbeiten SIGMUND | 14.02.2011 | 2.5 | Einlesen von SIGMUND Interfaces <br> =GSStartSearchRequest= zum Laufen gebracht |  | 
+| Spring WS | 09.02.2011 | 1.5 | Einarbeiten in Spring WS |  |
+| Spring WS | 08.02.2011 | 2.5 | Einlesen Document-basiert vs RPC-basiert SOAP-Stile. <br> Anschauen von CAS Klassen <p> Vorbereitung einer Folie zur Präsentierung von Spring WS | |
+| Spring WS | 07.02.2011 | 4.5 | Ein Spring-Stil Document-basierte Web Service Beispiel wurde geschrieben und funktionsfähig gebracht. | |
+| Spring WS | 06.02.2011 | 3 | Einarbeiten in Spring WS | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 30)$EXEC($GET(total_hour))"}% | bis Ende Februar noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 10 Stunde Übertrag von Januar) | |
+<nop>
+
+---++ Jan 2011
+
+---+++ Abgeschlossene Aufgaben
+keine
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Spring WS, Treffen | 31.01.2011 | 4 | Einarbeiten in Spring Web Services. <p> Treffen mit Benjamin | * |
+| Spring WS | 29.01.2011 | 1.5 | Einarbeiten in Spring WS | * |
+| Fehlerreport CAS | 27.01.2011 | 1.5 | Sigmund-Server von CAS hat mehrfach wegen =SearchString= -Abfrage abgestürzt. <br> Detailliert protokollierte Test durchgeführt und an CAS weitergeleitet, um die Ursache herauszufinden <br> Dafür Einarbeiten in Log4j | * |
+| Spring WS, Treffen | 24.01.2011 | 3 | Einarbeiten in Spring Web Services. Sigmund Projekt kann das vielleicht nützen <br> Treffen mit Benjamin | * |
+| Sigmund | 23.01.2011 | 1.5 | Einarbeiten in Sigmund Web Services Klassen <br> Testprogramm =FetchDocument= erfolgreich <br> Testprogramm =SearchString= fehlgeschlagen wegen serverseitigem Fehler | * |
+| Sigmund-Einarbeiten, Treffen | 18.01.2011 | 2.5 | Einarbeiten in SOAP und kurz JSP <p> Treffen mit Benjamin |  |
+| Sigmund-Einarbeiten | 07.01.2011 | 1 | Einarbeiten in SOAP |  |
+| Sigmund-Einarbeiten | 06.01.2011 | 2 | Einarbeiten in SOAP Web Services <br> Erstellung eines Testprogramms für RPC über SOAP |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 27)$EXEC($GET(total_hour))"}% | bis Ende Januar noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 7 Stunde Übertrag von November)  | |
+<nop>
+
+
+-- Main.ShuoYang - 2011-03-07

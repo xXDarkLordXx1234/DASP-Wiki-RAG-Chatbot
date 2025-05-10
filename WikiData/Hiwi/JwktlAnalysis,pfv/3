@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="WiktionaryAnalysis"}%
+---+ JWKTL Analysis
+
+---++ JWKTL Diagram
+
+JwktlDiagram
+
+---++ Wiktionary Informationen mit JWKTL
+JwktlWktInformation
+
+---++ Verbesserungsvorschläge zu Klassenstruktur
+---+++ de.tudarmstadt.ukp.wiktionary.api.* - Namespace
+*1. IWiktionaryRelation und IWiktionaryTranslation* <br>
+In einigen Artikeln in Wiktionary ist es nicht möglich eine Relation oder eine Translation an einen bestimmten Sense zuzuordnen. Z.B. in http://en.wiktionary.org/wiki/example werden keine Sense-Markers bei Synonymen angegeben. Deswegen ist es sinnvoll Relations und Translations in _WiktionaryEntry_ zu speichern. Es kann ein Map in _WiktionaryEntry_ enthalten sein, der die Verbindung zwischen Sense und Relation/Translation herstellt, falls es ein Sense-Marker vorhanden ist. Da es die Möglichkeit gibt vom _WiktionarySense_ auf _WiktionaryEntry_ zuzugreifen, kann man auch auf diesen Map zugreifen und für einzelne Senses vorhandene Relations/Translations erhalten.<br><br>
+*2. WordEntry und IWiktionaryEntry* <br>
+Da _WordEntry_ im größten Teil der API durch _IWiktionaryEntry_ ersetzt wurde, ist die Verwendung von beiden Interfaces sowie von _WordEntryAdapter_ verwirrend. Deswegen könnte man auf die Verwendung nur von _IWiktionaryEntry_ umsteigen.<br><br>
+*3. Pronunciation-Interface* <br>
+Alle Komponente von einer Wiktionary-Seite werden in _de.tudarmstadt.ukp.wiktionary.api_ als Interfaces deklariert, nur bei _Pronunciation_ wird auf die Klasse aus *.entry - Package verwiesen. Um einheitlich zu bleiben, könnte ein Interface auch für _Pronunciation_ ähnlich wie bei anderen Komponenten erstellt werden und in *.entry-Package implementiert werden, _PronunciationType_ könnte man in das Hauptpackage verschieben.<br><br>
+*4. Closable und WiktionaryIterator* <br>
+Die Klasse _Closable_ könnte in _de.tudarmstadt.ukp.wiktionary.api_ verschoben werden, da es mehr eine allgemeine Klasse ist, von der auch _Wiktionary_ -Klasse ableitet und das die einzige Ableitung ist, die von _de.tudarmstadt.ukp.wiktionary.api_ zu _de.tudarmstadt.ukp.wiktionary.api.entry_ geht. Auch _WiktionaryIterator_ kann in _de.tudarmstadt.ukp.wiktionary.api_ platziert werden.<br><br>
+*5. Namenkonventionen* <br>
+Um einheitlich zu bleiben könnten die Interfaces für _WikiString_ , _Quotation_ , _Gender_ , _Language_ usw. in _IWikiString_ , _IQuotation_ usw. und ihre Implementierungen entsprechend in _WikiString_ , _Quotation_ (ohne "_Impl") umbenannt werden. <br>
+Der Name für _de.tudarmstadt.ukp.wiktionary.api.entry_ spiegelt nicht ganz den Inhalt des Packages, da das Package fast eine direkte Implementierung von dem Hauptpackage ist und auch solche Klassen wie WiktionaryEdition enthält. 
+
+---+++ de.tudarmsdadt.ukp.wiktionary.api.parser.* und de.tudarmsdadt.ukp.wiktionary.parser.* - Namespaces
+Die Aufteilung von dem Parser in zwei verschiedene Namespaces ist nicht ganz klar. Vor allem wird _de.tudarmsdadt.ukp.wiktionary.api.parser.*_ nicht in API selbst verwendet und soll nicht in _de.tudarmsdadt.ukp.wiktionary.api.*_ - Namespace liegen<br>
+*Vorschlag* : Zwei Namespaces in _de.tudarmsdadt.ukp.wiktionary.parser.*_  zu vereinigen. Package-Struktur von _de.tudarmsdadt.ukp.wiktionary.parser.*_ kann folgend aussehen:<br>
+   * de.tudarmstadt.ukp.wiktionary.parser
+      * de.tudarmstadt.ukp.wiktionary.parser.en
+      * de.tudarmstadt.ukp.wiktionary.parser.de
+      * de.tudarmstadt.ukp.wiktionary.parser.ru
+      * de.tudarmstadt.ukp.wiktionary.parser.entry
+         * de.tudarmstadt.ukp.wiktionary.parser.entry.de
+         * de.tudarmstadt.ukp.wiktionary.parser.entry.en
+      * de.tudarmstadt.ukp.wiktionary.parser.db
+      * de.tudarmstadt.ukp.wiktionary.parser.components
+         * de.tudarmstadt.ukp.wiktionary.parser.components.en
+         * de.tudarmstadt.ukp.wiktionary.parser.components.de
+      * de.tudarmstadt.ukp.wiktionary.parser.util
+Dabei soll Aufteilung der Klassen in die Packages ein wenig reorganisiert werden:<br><br>
+__de.tudarmstadt.ukp.wiktionary.parser__ <br>
+Hier sollen sich die Hauptklassen des Parsers befinden:<br>
+   * _IWiktionaryDumpParser_ <- _XMLDumpParser_ <- _WiktionaryDumpParser_ <- _WiktionaryArticleParser_ <br>
+   Die Ableitungskette ist nicht ganz klar. Z.B. liegt zwischen _IWiktionaryDumpParser_ und _WiktionaryDumpParser_ noch _XMLDumpParser_, obwohl laut dem Namen _WiktionaryDumpParser_ den _IWiktionaryDumpParser_ direkt implementierten sollte. Vielleicht können die Funktionen von _XMLDumpParser_ und _WiktionaryDumpParser_ in einer Klasse vereinigt werden.<br>
+   * _IWiktionaryEntryParser_ <- _WiktionaryEntryParser_
+   * _IBlockHandler_ kann aus de.tudarmstadt.ukp.wiktionary.parser.util verschoben werden, da er sowieso nur von den Klassen aus _de.tudarmstadt.ukp.wiktionary.parser_ -Package verwendet wird
+   * _Context_ kann aus _de.tudarmstadt.ukp.wiktionary.api.parser_ verschoben werden.
+   * _IWordEntryHandler_ wird in keiner Klasse des JWKTLs benutzt und somit nicht gebraucht
+__de.tudarmstadt.ukp.wiktionary.parser.components__ <br>
+Hier können alle Worker, Factory, Processor usw. Klassen aus _de.tudarmstadt.ukp.wiktionary.parser.api.components_ enthalten sein. Zusätzlich kann hier _LanguageFactory_ aus _de.tudarmstadt.ukp.wiktionary.api.parser_ verschoben werden. In *.en und *.de -Unterpackages können die Klassen _EnPosEntryFactory_ und _DePosEntryFactor_ in entsprechende _de.tudarmstadt.ukp.wiktionary.parser.entry_ - Unterpackages verschoben werden, da sie von _EntryFactory_ aus *.entry-Package ableiten <br><br>
+__de.tudarmstadt.ukp.wiktionary.parser.entry__ <br>
+Hier können alle Klassen aus _de.tudarmstadt.ukp.wiktionary.parser.api.entry_ enthalten sein. In die *.en und *.de -Unterpackages können zusätzlich _EnPosEntryFactory_ und _DePosEntryFactor_ verschoben werden.  Die Klassen _Pair_ und _AsymPair_ können jedoch in _de.darmstadt.ukp.wiktionary.parser.util_ verschoben werden, da sie eher generische Funktionalitäten bieten.<br><br>
+__de.tudarmstadt.ukp.wiktionary.parser.util__ <br>
+_RegExUtil_ , _StringUtil_ , _Pair_ , _AsymPair_ <br><br>
+__de.tudarmstadt.ukp.wiktionary.parser.db__ <br>
+_IWiktionaryDB_ , _WiktionaryDB_ 

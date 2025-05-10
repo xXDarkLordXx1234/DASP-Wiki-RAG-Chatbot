@@ -1,0 +1,16 @@
+private AnalysisEngineDescription getSearcher() throws ResourceInitializationException{
+		File aTermEsaIndexPath = new File(props.get(EsaPipeline.DIRECTORY_ESA_VECTOR));
+		return createAggregateDescription(
+				createPrimitiveDescription(
+						TerrierQueryGenerator.class, getDKProTypeSystem()),
+				createPrimitiveDescription(
+						TerrierSearcher.class, getDKProTypeSystem(),
+						TerrierSearcher.PARAM_ENABLE_ORQUERY_WITHINFIELDS, true,
+						TerrierSearcher.PARAM_MATCHING_MODEL, LexicalMatching.class.getName(),
+						TerrierSearcher.PARAM_WEIGHTING_MODEL, ESA.class.getName(),
+						TerrierSearcher.PARAM_WEIGHTING_PREFIX+EsaBasedWeightingModel.PARAM_TERM_ESA_INDEX_PATH, aTermEsaIndexPath.getAbsolutePath(),
+						TerrierSearcher.PARAM_INDEX_DIRECTORY, props.get(PipelineFactory.DIRECTORY_DOCUMENTS_INDEX),
+						IndexSearcherBase.PARAM_TERM_FIELD_NAME, new String[] {"token"},
+						IndexSearcherBase.PARAM_FIELD_WEIGHT, new float[] { 1.0f })
+						);
+	} 

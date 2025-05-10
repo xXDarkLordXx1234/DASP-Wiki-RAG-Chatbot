@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="BastianChristoph" date="1292960387" format="1.1" version="2"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+   * 21.12.2010
+      * Extended thesis structure of part: Motivation
+
+   * 20.12.2010
+      * General Setup of UIMA-Component for Keyphrase-Extraction
+      * Added libs to repository
+ 
+   * 19.12.2010
+      * Structure for Related work changed
+      * Peer Baseline-Coverage recalculated
+         * Analyzed conference-runScript
+         * Analyzed rouge-perl implementation
+         * Enabled Lemmatizing in Java Code (Flag "-m" in conference-runScript means "use PorterStemmer")
+         * Changed Rouge-Value-Selection to "Average Model" (Flag "-B" for best model in runScript not used, default is "-A")
+         * |                        | *ROUGE-1* | *ROUGE-2* | *ROUGE-3* | *ROUGE-4* |
+           | peer-baseline | 0.22136       | 0.06370      | 0.02118       | 0.00707      |
+           | my baseline    | 0.18867       | 0.05263      | 0.01763       | 0.00547     |

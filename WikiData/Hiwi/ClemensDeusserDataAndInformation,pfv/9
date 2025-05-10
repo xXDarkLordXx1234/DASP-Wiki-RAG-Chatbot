@@ -1,0 +1,97 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1340191622" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+(will format properly once I figure out how)
+
+---+++++ On the Fachsystematik correlating with PEDOCS
+
+*Description of the Fachsystematik and PEDOCS*
+
+The  [[ClemensDeusserFachsystematik][Fachsystematik]] (FS) is an index of topic areas of pedagogy scientific papers. It is structured using a general topic category, such as "Bildung und Erziehung allgemein" and then splitting off to sub categories, such as "Theorie der Bildung und Erziehung, einzelne Richtungen". In this specific document, the categories are identified by numbers.
+
+PEDOCS is a database of pedagogic papers, including metadata such as title, abstract, author(s), publication date, publication issue and keywords for each paper.
+
+*The Fachsystematik and PEDOCS keywords*
+
+Our main question now is whether the keywords in the PEDOCS database at least partially match the categories provided by the FS, if it does and if that matching is of good quality, we can use it as our gold standard to test and verify our algorithms against. To find out whether they matched up, I intentionally chose a very generous approach, so that if they did match up, I would not have sufficient evidence to use them as the gold standard, but if they did *not* match up, I would have sufficient evidence to dismiss them as a potential gold standard, so my goal was to provide reasoning that the keywords in PEDOCS were not set with the FS in mind.
+
+For my approach I first augmented the FS to form complete words, for example "Jugendhilfe, -berufshilfe, -arbeitslosigkeit" was changed to "Jugendhilfe, Jugendberufshilfe, Jugendarbeitslosigkeit", so that a match from the keyword "Jugendarbeitslosigkeit" would not be missed. I then extracted all words longer than 3 letters (to exclude words such as "der die das") and treated them each as a separate category and repeated the same process with the PEDOCS keywords. My reasoning for this was simple, if the keywords matched a category completely, then it would match at least one of the words, so the correct results would be a subset of our results and partially correct results would be caught as well, which lines up with our goal of attempting to prove that FS and PEDOCS do not match up.
+
+As a result, the amount of different PEDOCS keywords increased slightly by about 500 keywords (~10%) and the intersection of FS words and PEDOCS keywords consisted of about 190 words, which is a subset of ~3% of all PEDOCS keywords and ~38% of FS keys. While only a relatively low amount of PEDOCS keywords occurs in the FS, this by itself is not sufficient to dismiss the matching as unsuitable, we need to actually look at documents to see whether the matching keywords are actually representative and how much information the filtered keywords contained.
+
+*Verifying our results*
+
+(in progress)
+
+---+++++ Technical progress
+
+Small framework for graphs built on top of JUNG and an interface for algorithms. Framework for JDBC pending, may be able to use JDBCReader.
+
+---+++++ Chinese Whispers clustering results including keywords and number of occurrences per cluster:
+
+   * [[ClemensDeusserCluster1][Version 1 / 10 iterations / 22 cluster / normalised edges]]
+
+Sample results using tf*idf and CW randomization seeds:
+
+   * [[ClemensDeusserCluster2][Version 2 / 10 iterations / 3 cluster / seed:2 / normalised edges / tf*idf / cutting edges below average weight]]
+   * [[ClemensDeusserCluster3][Version 2 / 10 iterations / 3 cluster / seed:4 / normalised edges / tf*idf / cutting edges below 1.5 * average weight]]
+   * [[ClemensDeusserCluster4][Version 2 / 10 iterations / 6 cluster / seed:1 / normalised edges / tf*idf / cutting edges below twice average weight]]
+
+Results very similar, all have a very large single cluster with the majority of nodes.
+
+---+++++ Keywords in both Fachsystematik and pedocs:
+
+Number of keywords occurring in both FS and pedocs: ~190
+   * [[ClemensDeusserFSPedocsKeywords1][Per document, in SQL statements]]
+   * [[ClemensDeusserFSPedocsKeywords2][Across database, in plain text]]
+
+---+++++ PEDOCS and Fachsystematik
+
+Pedocs is a database of over 3000 papers pertaining to pedagogy. The relevant information per document contained in this database is the title, a short description (abstract), the author(s), the date, publication information and a number of keywords. The Fachsystematik provides consistent identifiers for pedagogic papers according to their topic. While pedocs does have a field "FS_Keys", it does not appear to be used, so usage of the FS to determine the topic seems to be infeasible.
+
+---+++++ Statistics of pedocs:
+
+Keywords in pedocs can be found in the "opus" table, "subject_uncontrolled_german" column.
+
+   * Number of different keywords: 5817
+   * Number of papers (in opus): 3411
+   * Number of papers (in opus_autor): 3552
+   * Total Number of keywords: 38040
+That means:
+   * Average number of keywords per paper: 11.152154793315743
+   * Average times a word appears: 6.539453326456937
+
+Top 3 most common words and the number of occurences:
+   * deutschland: 1304
+   * rezension: 640
+   * schule: 423
+
+Authors, found in opus_autor:
+   * Number of authors: 2949
+   * Authors per paper with 5230 database entries and 3552 papers:
+      * ~1.4724 authors per paper on average.
+      * Between 1 and 18 authors per paper.
+      * 915 papers with more than one author,
+      * 2637 papers with only one author.
+   * 1800 authors have written a paper with somebody else.
+
+
+
+
+SQL statements documentation:
+
+
+<blockquote>
+SELECT COUNT(DISTINCT source_opus) FROM opus;
+
+SELECT COUNT(DISTINCT source_opus) FROM opus_autor;
+
+SELECT COUNT(creator_name) FROM opus_autor;
+
+SELECT COUNT(DISTINCT creator_name) FROM opus_autor;
+
+SELECT reihenfolge FROM opus_autor ORDER BY reihenfolge DESC;
+
+SELECT COUNT(source_opus) FROM opus_autor where reihenfolge = 2;
+
+SELECT COUNT(DISTINCT creator_name) FROM opus_autor WHERE source_opus IN (SELECT source_opus FROM opus_autor WHERE reihenfolge = 2);
+</blockquote>

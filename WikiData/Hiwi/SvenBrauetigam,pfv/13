@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="braeutigam" comment="save topic" date="1447341100" format="1.1" reprev="10" version="13"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+
+-- Main.SvenBraeutigam - 2015-10-11
+
+---+++ Protocol
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Sven, Stunden 2015* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Vorlesung & Moodle-Betreuung | 15.10.2015 | 3 | <ul><li> Ansprechpartner für Studenten und Vorstellung der Person in der Vorlesung </li><li>Sprechstundenumfrage im Moodle-Forum</li></ul> |
+| Forumsbetreuung & Hausaufgabenkorrektur | 19.10.2015 | 2 | |
+| Forumsbetreuung | 20.10.2015 | 1 | |
+       | Studentenbetreuung | 21.10.2015 | 2 | <ul><li>Einrichten von Python + Packages</li><li>Erklärung Übungsablauf</li></ul> |
+| Sprechstunde, Meeting, Hausaufgabenkorrektur | 22.10.2015 | 3 | |
+| Moodle, Hausaufgabenkorrektur | 23.10.2015 | 2 | |
+| Hausaufgabenkorrektur | 24.10.2015 | 1 | |
+| Studentenbetreuung | 28.10.2015 | 1 | |
+| Sprechstunde, Hausaufgabenkorrektur | 29.10.2015 | 2 | |
+| Hausaufgabenkorrektur | 02.11.2015 | 4 | |
+| Sprechstunde, Studentenbetreuung | 05.11.2015 | 3 | |
+| Moodle, Studentenbetreuung | 07.11.2015 | 2 | |
+| Hausaufgabenkorrektur | 09.11.2015 | 6 | |
+| Sprechstunde | 12.11.2015 | 2 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | until the end of november 2015 |

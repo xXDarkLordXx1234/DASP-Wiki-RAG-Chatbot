@@ -1,0 +1,37 @@
+%META:TOPICINFO{author="RichardSteuer" date="1327807444" format="1.1" version="3"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+---+Contextual Thesaurus
+
+This page documents our work on the next level of the DistributionalThesaurus (DT),
+the *Contextual Thesaurus*.
+
+The implementation to this research is based on a local UIMA pipeline (i.e. the
+Cluster is not used here). It relies on the output of the *ContextParses* step,
+see the corresponding paragraph at the DT page.
+The goal of this second	version is to examine whether or not a _local context_
+could help with automatic similarity (or disambiguation) calculation.
+
+The current results are very promising.
+
+-- Main.RichardSteuer - 2012-01-29
+
+---++Level 1
+
+Consider the following sentence:
+
+   * _I started to work it out._
+
+The sentence has the following dependency relations (according to the [[http://nlp.stanford.edu/software/lex-parser.shtml][S\
+tanford Parser]]):
+
+   * nsubj(started-2, I-1)
+   * root(ROOT-0, started-2)
+   * aux(work-4, to-3)
+   * xcomp(started-2, work-4)
+   * dobj(work-4, it-5)
+   * prt(work-4, out-6)
+
+
+---++Level 2
+
+---++Evaluation

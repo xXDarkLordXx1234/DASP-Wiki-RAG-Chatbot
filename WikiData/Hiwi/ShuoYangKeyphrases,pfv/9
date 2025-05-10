@@ -1,0 +1,62 @@
+%META:TOPICINFO{author="ShuoYang" date="1335971865" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="ShuoYangDariahArbeit"}%
+Application of existing keyphrase extraction infrastructure to new data sets
+
+
+
+
+---++ Problems
+_Currently no problems_
+
+
+---++ Results
+
+---+++ Basic Statistics
+| *Corpus* | *# Documents* | *Tokens / Document* | *# Keyphrases* | *Keyphrases / Document* | *Characters / Keyphrase* | *Tokens / Keyphrase* | *Pearson Correlation r* |
+| Pedocs (German) | 3115 | 14590.50 | 35169 | 11.29 | 13.76 | 1.18 (±0.54) | 0.2342 |
+| Pedocs (All Languages) | 3424 | 14531.57 | 39607 | 11.57 | 13.85 | 1.20 (±0.55) | 0.0946 |
+
+Note: 
+   * Many documents (but not all) have cover page containing metadata of the document and license disclaimers in English. These text are currently included in document text.
+
+---++++ How to run (Pedocs)
+Preparation:
+   1. Extract =pedocs-volltexte.tar.gz= and note the path
+   2. Extract =pedocs_sql.tar.gz= and import =pedocs.sql= into a database
+   3. Check out <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases/de.tudarmstadt.ukp.dkpro.semantics.keyphrasepipelines</verbatim> 
+   4. Configure test environment in =PedocsPipelineConfiguration.java= (=src/main/java/.../keyphrasepipelines/pedocs/=)
+
+Experiment:
+   1. Open =PedocsBasicStatisticsPipelines.java= in =src/test/java=
+   2. Run the task =printStatistics()= (notice the preconditions in its !JavaDoc)
+
+
+---+++ Gold Keyphrase Inclusion Ratio
+"What's the percentage of gold keyphrases that are present in the text?"
+
+| *Corpus* | *# of Included Gold Keyphrases* | *Total # of Gold Keyphrases* | *% of Included Keyphrases* |
+| Pedocs (German - with lemmatization) | 25613 | 35205 | 0.7275387 |
+| Pedocs (German - without lemmatization) | 9042 | 35207 | 0.25682393 |
+
+Note: 
+   * Corrupt files - these files are removed from the corpus:
+      * Cannot be read by PDFBox: 
+         * =1472.pdf=
+      * IOException from PDFStreamEngine, Could not find font(COSName{TT1}) in map={}: 
+         * =2966.pdf=
+         * =2971.pdf=
+         * =2973.pdf=
+
+---++++ How to run (Pedocs)
+   1. Make sure you've run the "For the first time" part in "How to run" of Basic Statistics
+   2. Open =PedocsGoldKeyphraseInclusionRatioPipelines.java= in =src/test/java=
+   3. With lemmatization: start the task =printRatioWithLemmatization()= (notice the preconditions in its !JavaDoc) <br>
+   Without lemmatization: start the task =printRatioWithoutLemmatization= (notice the preconditions in its !JavaDoc)
+
+
+
+---++ URLs
+   * Components usable for the pipeline: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_ng/dkpro/semantics</verbatim>
+   * Experimental projects should be stored in: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases</verbatim>
+
+-- Main.ShuoYang - 2012-04-04

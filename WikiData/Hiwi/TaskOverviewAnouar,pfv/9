@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="AnouarHaha" date="1178626905" format="1.1" version="9"}%
+%META:TOPICPARENT{name="AnouarWork"}%
+---++ Task Overview Anouar
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+
+| *Anouar Aufgaben* ||
+| *Aufgabe*  | *% done*  |
+| Einarbeitung Wikipedia API | 100 |
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="4"}%
+
+| *Anouar Stunden* ||||
+| *Aufgabe*  | *Tag*  | *Stunden*  | *Bemerkungen*  |
+| Einarbeitung Wikipedia API | 12.12.2006 | 10 | | 
+| Implementierung Demo Server | 20.12.2006 | 20 | +Servlet api(Einstieg),Tomcat(doku+installation),JSP(Einstieg)+WebSeiten(Einstieg)|
+| Reimplementierung | 13.01.2007 | 10 | + neuer Klassendesign + neue JSP's + neue Funktionalitaeten|
+| 3.Version              | 25.01.2007 | 15 | new requirements | 
+|  4.Version + Navigation Design| 15.02.2007| 20| + neue JSP's (Usage of javascript)     |
+| Neue Wikipedia Api  |04.04.2007| 10  |installation MySQl  + installation frensh wikipedia + Konfiguration der API |
+| Implementierung der neuen demo Klassen |04.04.2007| 25  |+Konfiguration einstellbar und Erweiterbarkeit moeglich  |
+| Web Design |04.04.2007| 15  |navigation, skripte .. |
+| Dokumentation zur  Demo|04.04.2007| 10  |Konfiguration, Architektur, Effizienz, Vergleich mit den aelteren Versionen |
+| Datenbank-Konfiguration(frwiki)|20.04.2007| 15  |Erstellen einer Tabelle aus MediaWiki und ihrer Einbindung an der Tabelle der API|
+| Tests für die API(Korrektheit,Performanz)|24.04.2007| 10  |Erstellen eines Pakets für die Tests|
+| MediaWikiMarkup2html|27.04.2007|15 | Erstellen eines Konverters zum formattierten Presentieren von Seiteninhalt|
+| Erstellen eines Tutorials fuer fr_api|29.04.2007| 5| |
+| Debugging+ DB neu|30.04.2007| 15|Kodierung in Windows Vs Unix(UTF8) + API-Bug |
+|Italienische+Spanische Versionen|04.05.2007|10 | |
+|RemoteDBConfig|?.05.2007| |In Bearbeitung |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |

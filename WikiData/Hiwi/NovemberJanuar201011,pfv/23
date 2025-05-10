@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="ChristianMeyer" date="1294302912" format="1.1" version="23"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---++ November-Januar 2010-2011
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Ressource Research | |
+| SemEval | |
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| SemEval | 03.11.2010 | 2.5 | Einarbeitung in Ponzetto10, SemEval |
+| SemEval | 07.11.2010 | 2.5 | SemEvalParser (SVN: "SemEvalApi") |
+| SemEval | 09.11.2010 | 2 | SemEvalApi |
+| SemEval | 10.11.2010 | 2 | SemEvalApi |
+| SemEval | 11.11.2010 | 3 | SemEvalApi. Resource Research Meeting |
+| SemEval | 12.11.2010 | 2.5 | SemEvalApi. Clusters |
+| SemEval | 13.11.2010 | 2 | SemEvalApi. Tokenizer, Lemmatizer, StopWords |
+| SemEval | 14.11.2010 | 2 | SemEvalApi. WordNet2.1-3.0-Mapping |
+| SemEval | 15.11.2010 | 2 | SemEvalApi. WordNet2.1-3.0-Mapping |
+| SemEval | 16.11.2010 | 1.5 | SemEval Candidate-Offsets |
+| SemEval | 17.11.2010 | 3.5 | SemEvalApi. Candidate-Offsets. WordNet2.1-3-Mapping |
+| SemEval | 18.11.2010 | 2 | SemEvalApi. Meeting, POS-Filter, Back-Off |
+| SemEval | 21.11.2010 | 1.5 | SemEvalApi. Back-Off Algorithmus |
+| SemEval | 22.11.2010 | 1.5 | SemEvalApi. Error Analysis |
+| SemEval | 24.11.2010 | 2.5 | SemEvalApi. Error Analysis |
+| SemEval | 27.11.2010 | 3 | SemEvalApi. Domain WSD. Error Analysis. |
+| SemEval | 28.11.2010 | 2 | DomainCorpora Parser |
+| SemEval | 30.11.2010 | 3 | DomainCorpora. Mapping, Evaluation |
+| SemEval | 02.12.2010 | 3 | SemCor. Parser |
+| SemEval | 04.12.2010 | 2.5 | SemCor. Mapping, Evaluation |
+| SemEval | 05.12.2010 | 2.5 | SemCor Mapping. Einarbeitung in Graph Connectivity for WSD |
+| SemEval | 07.12.2010 | 2 | DomainCorpora, SemCor. Error Analysis |
+| SemEval | 07.12.2010 | 2 | DomainCorpora, SemCor. Error Analysis |
+| SemEval | 09.12.2010 | 2.5 | Ähnlichkeitsstudie. DomainCorpora, SemCor. Error Analysis |
+| SemEval | 13.12.2010 | 2 | SemCor Error Analysis |
+| SemEval | 14.12.2010 | 2 | DomainCorpora, SemCor. Error Analysis |
+| SemEval | 15.12.2010 | 1.5 | Tabelle mit Ergebnissen: SemEval |
+| Resource Integration | 04.01.2011 | 3 | Einarbeitung in JWKTL 0.15.0. [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/Jwktl0150Tutorial][Tutorial]] |
+| Resource Integration | 05.01.2011 | 3 | Resource Integration Meeting. [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/Jwktl0150Tutorial][Tutorial]] |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende Januar 2011 |
+<nop>

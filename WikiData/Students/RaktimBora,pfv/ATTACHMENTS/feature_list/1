@@ -1,0 +1,45 @@
+Sentence:The capital of Alabama is Montgomery.
+Ungrounded Graph:
+Score: 1.0
+SynParse: (<T S[dcl] ba 1 2> (<T NP[nb] ba 0 2> (<T NP[nb] fa 0 2> (<L NP[nb]/N The The DT O O NP[nb]/N>) (<L N capital capital NN O O N>) ) (<T NP\NP fa 0 2> (<L (NP\NP)/NP of of IN O O (NP\NP)/NP>) (<T NP lex 0 1> (<L N Alabama Alabama NNP LOCATION O N>) ) ) ) (<T S[dcl]\NP fa 0 2> (<L (S[dcl]\NP)/NP is be VBZ O O (S[dcl]\NP)/NP>) (<T NP rp 0 2> (<T NP lex 0 1> (<L N Montgomery Montgomery NNP LOCATION O N>) ) (<L . . . . O O .>) ) ) ) 
+Semantic Parse: [capital.of.2(1:e , 3:alabama), UNIQUE(5:montgomery), capital.of.1(1:e , 5:montgomery), capital(1:s , 5:montgomery)]
+Words: 
+LexicalItem{1, capital, capital, NN, N{_=38351}; (lambda $_:83327 (TYPE $_:83327 $_:83327))}
+LexicalItem{3, Alabama, alabama, NNP, N{_=38353}; (lambda $_:83331 (TYPE $_:83331 $_:83331))}
+LexicalItem{5, Montgomery, montgomery, NNP, N{_=38355}; (lambda $_:83338 (TYPE $_:83338 $_:83338))}
+Edges: 
+(1,3,5)	(capital.of.2,capital.of.1):0.0
+Types: 
+(5,1)	capital:0.0
+Properties: 
+5	[UNIQUE]
+EventTypes: 
+EventEventModifiers: 
+
+Semantic Parse 1 : capital.of.2(1:e , 3:alabama), UNIQUE(5:montgomery), capital.of.1(1:e , 5:montgomery), capital(1:s , 5:montgomery)
+Semantic Parse 2 : capital.of.2(1:e , 3:alabama) ^ capital(1:s , 1:x) ^ is.1(4:e , 1:x) ^ UNIQUE(1:x) ^ capital.of.1(1:e , 1:x) ^ is.2(4:e , 5:montgomery) 
+Semantic Parse 3 : capital.of.2(1:e , 3:alabama) ^ capital.of.1(1:e , 5:montgomery) ^ capital(1:s , 5:montgomery) 
+Semantic Parse 4 : capital.of.2(1:e , 3:alabama) ^ capital(1:s , 1:x) ^ is.1(4:e , 1:x) ^ capital.of.1(1:e , 1:x) ^ is.2(4:e , 5:montgomery) 
+Semantic Parse 5 : capital.of.2(1:e , 3:alabama) ^ capital(1:s , 1:x) ^ is.2(5:e , 1:x) ^ UNIQUE(1:x) ^ is.1(5:e , 5:montgomery) ^ capital.of.1(1:e , 1:x) 
+
+Grounded phrase: capital of.1(e , Montgomery) ^ capital of.2(e , x)
+Denotations: [Q173, Q81931]
+
+Grounded phrase: located in the administrative territorial entity.1(e , Montgomery) ^ located in the administrative territorial entity.2(e , x)
+Denotations: [Q173, Q502784]
+
+
+Feature 1: Edge/relation dependency: (capital.of,capital of) (capital of,located in the administrative territorial entity)
+Feature 2: Number of entities in sentence, ungrounded and grounded graph
+Feature 3: Presence of [UNIQUE] (better determination of a grounded surrogate?)
+Feature 4: Number of events in ungrounded
+Feature 5: Number of events modifiers in grounded graph
+Feature 6: Number of nodes linked to an event in ungrounded parse & number of nodes linked to an event in grounded parse
+Feature 7: Is Graph connected in ungrounded (common node pair in ungrounded pasre) vs (is that acheived in grounded parse)
+Feature 8: Semantic similarity score of edge/relation?
+Feature 9: Record relations (If a grounded parse has two relations between two different node pairs, record them. Likely to co-occur?)
+Feature 10: Stem overlap count between ungrounded graph and grounded graph
+Feature 11: Penalty for un-instantiated variables
+
+Algorithm: Online learning for Perceptron (weight vector learning)
+Grounded graph prediction : modified linear regression (dot product score as rank instead of +1 or -1 prediction)

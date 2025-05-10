@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1300451570" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="JwktlAnalysis"}%
+---+ JWKTL Wiktionary Information Coverage
+JwktlDiagram
+
+|*Feature*|*Representation Class*|*Extraction Points*|
+| *Page* |IWiktionaryPage|IWiktionaryEdition: getAllPages(), getPageForWord(), getPageForId()<br>IWiktionaryEntry: getPage()<br>IWiktionarySense: getPage()|
+|- Page title|String|IWiktionaryPage: getTitle()|
+|- Timestamp|Date|IWiktionaryPage: getTimestamp()|
+|- Revision|Integer|IWiktionaryPage: getRevision()|
+|- Author|String|IWiktionaryPage: getAuthor()|
+|- Entry Language|Language|IWiktionaryPage: getEntryLanguage()|
+|- Categories|List&lt;String>|IWiktionaryPage: getCategories()|
+|- InterWiki Links|List&lt;String>|IWiktionaryPage: getInterWikiLinks()|
+|- Redirect target|String|IWiktionaryPage: getRedirectTarget()|
+| *- Entry* |IWiktionaryEntry|IWiktionaryEdition: getAllEntries(), getEntriesForWord(), getEntryForId()<br>IWiktionaryPage: getEntries()<br>IWiktionarySense: getEntry()|
+|--- Entry Index|Integer|IWiktionaryEntry: getIndex()|
+|--- Word|String|IWiktionaryEntry: getWord()|
+|--- Entry Header|String|IWiktionaryEntry: getEntryHeader()|
+|--- Word Language|Language|IWiktionaryEntry: getWordLanguage()|
+|--- Parts-of-Speech|List&lt;PartOfSpeech>|IWiktioanryEntry: getPartsOfSpeech()|
+|--- Gender|Gender|IWiktionaryEntry: getGender()|
+|--- Entry Link|String|IWiktionaryEntry: getEntryLink()|
+|--- Pronunciations|List&lt;Pronunciation>|IWiktionaryEntry: getPronunciations()|
+|----- Pronunciation Type|PronunciationType|Pronunciation: getType()|
+|----- Pronunciation Text|String|Pronunciation: getText()|
+|----- Pronunciation Note|String|Pronunciation: getNote()|
+|--- Etymology|List&lt;WikiString>|IWiktionaryEntry: getEtymology()|
+|--- Unassigned Sense|IWiktionarySense|IWiktionaryEntry: getUnassignedSense()|
+| *--- Sense* |IWiktionarySense|IWiktionaryEdition: getAllSenses(), getSensesForWord(), getSenseForId()<br>IWiktionaryEntry: getSenses()|
+|----- Gloss|WikiString|IWiktionarySense: getGloss()|
+|----- Examples|List&lt;WikiString>|IWiktionarySense: getExamples()|
+|----- Quotations|List&lt;Quotation>|IWiktionarySense: getQuotations()|
+|------- Quotation Source|WikiString|Quotation: getSource()|
+|------- Quotation Lines|List&lt;WikiString>|Quotation: getLines()|
+|----- Translations|List&lt;IWiktionaryTranslation>|IWiktionarySense: getTranslations()|
+|------- Translation Language|String|IWiktionaryTranslation: getLanguage()|
+|----- Relations|List&lt;IWiktionaryRelation>|IWiktionarySense: getRelations()|
+|------- Relation target|String|IWiktionaryRelation: getTarget()|
+|------- Relation type*|RelationType|IWiktionaryRelations: getRelationType()|
+|----- References|List&lt;WikiString>|IWiktionarySense: getReferences()|
+
+* __RelationType__ : SYNONYM, ANTONYM, HYPERNYM, HYPONYM, HOLONYM, MERONYM, CHARACTERISTIC_WORD_COMBINATION, COORDINATE_TERM, DERIVED_TERM, DESCENDANT, ETYMOLOGICALLY_RELATED_TERM,, SEE_ALSO, TROPONYM

@@ -1,0 +1,108 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1314059051" format="1.1" reprev="18" version="18"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Mateusz Parzonka
+ 
+---++++  Aufgabenbereich (01.02.2011 - 30.09.2011)
+   * Integration von dkpro_students/parzonka/back-of-the-book-indexing in DKPro (de.tudarmstadt.ukp.dkpro.semantics.bookindexing)
+   * jar-Wrapper für bookindexing
+   * Generischer PhrasenMatch-Evaluator
+
+---++++ Stunden
+
+---+++++ Februar 2011
+
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="20%, 5%, 5%, 70%" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Setup  | 01.02.2011 |  3  | Einarbeitung in Maven, Kennenlernen der Arbeitsabläufe, Installation |
+| Setup  | 13.02.2011 |  2  | Einarbeitung in Maven, Planung |
+| Integration  | 13.02.2011 |  4  | Komponten migriert, Dependencies werden angepasst |
+| Integration  | 14.02.2011 |  8  | Dependencies wurden angepasst, einige Idiome ersetzt |
+| Integration  | 15.02.2011 |  5  | Dependencies wurden angepasst, einige Idiome ersetzt, Code vollständig eingecheckt, Tests laufen durch |
+|  * * | *Summe:* |  %CALC{"$SET(0211, $SUM( $ABOVE() ))"}% %CALC{"$GET(0311)"}%  | * * |
+
+---+++++ März 2011
+
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="20%, 5%, 5%, 70%" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+|  * * | *Summe:* |  %CALC{"$SET(0311, $SUM( $ABOVE() ))"}% %CALC{"$GET(0311)"}%  | * * |
+
+---+++++ April 2011
+
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="20%, 5%, 5%, 70%" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Refactoring | 10.04.2011 |  1  | Refactoring des Aggregators |
+| Wrapper, Refactoring | 10.04.2011 |  2  | Wrapper, SegmentProcessingPipeline |
+| Refactoring | 10.04.2011 |  1  | SegmentProcessingPipeline |
+| Tests | 10.04.2011 |  1  | Basisklasse und Subklasse für Wrapper |
+| Wrapper | 11.04.2011 |  3  | Test für Pipeline und Debugging |
+| Wrapper | 12.04.2011 |  3  | Baseline-Subklasse, Tutorial |
+| Wrapper | 13.04.2011 |  0.5  | Debugged Test mit Demultiplier |
+| Wrapper | 24.04.2011 |  4  | Wrapper, Einbindung von UIMA-Ressource |
+| Wrapper | 25.04.2011 |  8  | Wrapper, Einbindung von UIMA-Ressource,  TfidfAnnotator |
+| Wrapper | 26.04.2011 |  0.5  | Besprechung mit Torsten |
+| Wrapper | 29.04.2011 |  1.5  | Änderungen an der Implementierungen in Tfidf |
+| Wrapper | 30.04.2011 |  9  | Architektur |
+|  * * | *Summe:* |  %CALC{"$SET(0411, $SUM( $ABOVE() ))"}% %CALC{"$GET(0411)"}% | * * |
+
+---+++++ Mai 2011
+
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="20%, 5%, 5%, 70%" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Wrapper | 01.05.2011 |  10  | Architektur |
+| Refactoring | 01.05.2011 |  6  | Grundlegende Umstrukturierung |
+| Wrapper | 01.05.2011 |  6  | Kommentare und Tests, Interfaces, weitere Umstrukturierung |
+| Wrapper, Tests | 08.05.2011 |  4  | Kommentare und Tests |
+| Wrapper | 09.05.2011 |  5  | LoglikelihoodRanker |
+| Wrapper | 14.05.2011 |  4  | CoocurrenceGraphRanker, DfModelBuilder |
+| Wrapper | 15.05.2011 |  8  | Annotatoren, Kommentare, Tests, Debugging |
+|  * * | *Summe:* |  %CALC{"$SET(0511, $SUM( $ABOVE() ))"}% %CALC{"$GET(0511)"}%  | * * |
+
+---+++++ Juni 2011
+
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="20%, 5%, 5%, 70%" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Tests | 02.06.2011 |  2  | Assumes für Speicherverbrauch, Bugreport |
+| PhraseMatchEvaluator | 25.06.2011 |  2  | Design |
+| PhraseMatchEvaluator | 26.06.2011 |  11  | Implementation, Tests |
+| PhraseMatchEvaluator | 27.06.2011 |  6  | JCasOps AeOutputs|
+| PhraseMatchEvaluator | 28.06.2011 |  11  | ExternalResources |
+| PhraseMatchEvaluator | 29.06.2011 |  6  | Tests |
+| PhraseMatchEvaluator | 30.06.2011 |  3  | Tests |
+|  * * | *Summe:* |  %CALC{"$SET(0611, $SUM( $ABOVE() ))"}% %CALC{"$GET(0611)"}%  | * * |
+
+---+++++ Juli 2011
+
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="20%, 5%, 5%, 70%" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+|  * * | *Summe:* |  %CALC{"$SET(0711, $SUM( $ABOVE() ))"}% %CALC{"$GET(0711)"}%  | * * |
+
+---+++++ August 2011
+
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="20%, 5%, 5%, 70%" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+|  * * | *Summe:* |  %CALC{"$SET(0811, $SUM( $ABOVE() ))"}% %CALC{"$GET(0811)"}%  | * * |
+
+---+++++ September 2011
+
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="20%, 5%, 5%, 70%" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+|  * * | *Summe:* |  %CALC{"$SET(0911, $SUM( $ABOVE() ))"}% %CALC{"$GET(0911)"}%  | * * |
+
+---+++  Stunden Gesamt
+
+Soll: 8 * 25 = 200 Stunden
+
+%TABLE{tablewidth="20%" cellborder="1" columnwidths="50%, 50%" }%
+| *Monat* | *Stunden* | 
+| 02/11 | %CALC{"$GET(0211)"}% |
+| 03/11 | %CALC{"$GET(0311)"}% |
+| 04/11 | %CALC{"$GET(0411)"}% |
+| 05/11 | %CALC{"$GET(0511)"}% |
+| 06/11 | %CALC{"$GET(0611)"}% |
+| 07/11 | %CALC{"$GET(0711)"}% |
+| 08/11 | %CALC{"$GET(0811)"}% |
+| 09/11 | %CALC{"$GET(0911)"}% |
+| *Summe:* | *%CALC{"$SET(total, $SUM( $ABOVE() ))"}%%CALC{"$GET(total)"}%* |
+| Restsoll: | %CALC{"$EVAL(200 - $GET(total))"}% |
+
+<nop>

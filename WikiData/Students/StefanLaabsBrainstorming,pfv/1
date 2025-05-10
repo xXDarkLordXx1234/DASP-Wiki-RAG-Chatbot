@@ -1,0 +1,96 @@
+%META:TOPICINFO{author="StefanLaabs" date="1272289584" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StefanLaabs"}%
+ <noautolink>
+
+---++ First outlines:
+
+---+++ 1. TOC
+
+---+++ 2. Introduction
+
+---++++ A. A first and short Definition of the task and overview
+
+   * Main question
+   * Situation at UKP
+   * Goals
+
+
+_Working-titles-of-ideas:_
+
+How can the results of NLP research assist in a usage of wikis?
+
+What algorithms and solutions exists already and where can they help?
+
+At the end should be found some applications for theses algorithms and maybe some further ideas...
+
+ 
+---++++ B. State-of-the-art
+
+*First part: (in research)*
+   * State of the art in academic research (Papers on text similarity, summarization, information structuring, ... )
+   * Usage of NLP techniques in other areas in practice and their usability factors (Books on search interface/ recommender systems)
+_(-> What could be achieved?)_
+
+*Second part: (in practice)*
+   * Other existing applications (which use these ideas) _( -> What exists in other areas?)_
+   * Existing PlugIns _( -> What is missing?)_
+
+    _here i would like to use some simple statistics of Wiki plug-Ins_
+    _basic ideas: show the gap between NLP in research an in practice_
+    _Number of PlugIns shows better the gap_
+    
+like: (Columns: Area of Usage - Rows: Area of Techniques/Advantages/Support )
+
+|  *Wiki Plug-Ins*  ||||
+|| *Find* | *Edit* | *Organize* |
+| Usability | x1 | x2 | lots(z3) |
+| Structuring | y1 | some(y2) | y3 |
+| NLP | few(x1) | few(x2) | few(x3) |
+| ... | | | |
+
+... some PlugIns in Detail. (Good example, close to topic, ... )
+
+---++++ C. Detailed definition of problem and task
+
+Something about the problem that led to the gap
+Defining some examples for implementation
+Basic ideas of thesis
+
+---+++ 3. Description
+
+---++++ Conception of the first task analysis
+
+*Defining user classes*
+1. New User/Explorer: Unexperienced in the usage of wikis and comparable systems
+2. Advanced User: Familiar with most of the features
+3. Top User: Administrates/Moderates the Wiki, Organization
+
+*Defining use cases*
+1. Read something about ...
+2. Put in informations about ... 
+3. Structure existing information ...
+_have to been broken down in quite small and basic tasks: analysis step-by-step_
+
+*Conception and development of new PlugIns*
+
+Ideas from the use cases should now be a starting point for the development of the new PlugIns.
+_( -> Which ideas are implementable? How much work? Existing structure?)_
+_Conception of Design/Design Principles_
+
+---+++ 4. Implementation of Mock-Ups
+---+++ 5. First Evaluation
+---+++ 6. Implementation
+---+++ 7. Second Evaluation
+
+---+++ 5. Critics
+Discussion of missing point, personal statements
+
+---+++ 6. General Discussion
+
+---+++ 7. Summary
+
+---+++ 8. Literature
+
+ </noautolink>
+
+-- Main.StefanLaabs - 26 Apr 2010

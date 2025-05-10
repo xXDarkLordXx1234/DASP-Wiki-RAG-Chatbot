@@ -1,0 +1,41 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1370818084" format="1.1" reprev="48" version="48"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * include the (tiny) proportion of the (topic,document) pairs in the thesis (Gottron, evaluation slides)
+   * include bpref in the thesis
+   * create TWSI terms index
+   * run experiments on the DT expansions index
+
+<!-- DT entry for "commentary#NN" (top5):
+
+Term: "commentary#NN",	Score: "767.0",	Keycount: "74384"
+Term: "essay#NN",	Score: "99.0",	Keycount: "60196"
+Term: "stockpickr#NP",	Score: "95.0",	Keycount: "2387"
+Term: "article#NN",	Score: "91.0",	Keycount: "591594"
+Term: "editorial#NN",	Score: "88.0",	Keycount: "73890"
+
+-->
+
+<!--
+
+Dear all,
+
+in de.tudarmstadt.ukp.dkpro.ir.terrier3.index.isolated.TerrierManagerOr I found this:
+
+// UKP DKPro: If we use a query with fields, then the reqquirement_list size is > then 0, due
+// to the requirement on the field. This would trigger the BooleanScoreModifier
+// which would zero out all documents in which not all of the search terms occur.
+// Usually this means, that everything will be zeroed out and nothing will return.
+
+ // q.getTermsOf(FieldQuery.class, field_list, true);
+ //   for (int i=0; i<field_list.size(); i++) {
+ //     if (!requirement_list.contains(field_list.get(i))) {
+ //       requirement_list.add(field_list.get(i));
+ //      }
+ //    }
+
+Richard (REC) had commented that out by the given reasons. I think there is a misunderstanding: The terms do not have to appear in the document, but in the index field (of the document).
+
+treetagger-bin: 20120425.0
+treetagger-model-en: 20111109.0
+
+-->

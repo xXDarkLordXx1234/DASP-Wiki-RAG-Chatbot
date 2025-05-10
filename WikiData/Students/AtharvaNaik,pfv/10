@@ -1,0 +1,69 @@
+%META:TOPICINFO{author="naik" comment="" date="1632174995" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ *Internship Report*
+<p align="center">
+-----+ Research Timeline:
+   * Setup NAM and partial set of patterns.
+   * Justify and formalize format of patterns and matching function.
+   * Create a general checklist: 1. Make lexicon, 2. Handle named entities   
+   * Add some task specific patterns (from NLI/QA literature). 
+
+<p align="center">
+-----+ Useful Links:
+[[https://docs.google.com/document/d/12e53jyVdUH4mmg3cjofBkIsbAtNEp53Hrkd9hJbsmzg/edit?usp=sharing][NAM Documentation]]
+</p>
+
+<p align="center">
+-----+ Idea:
+-----+++ Description
+   * Can we use some sort of compositionality to partition all samples into designated phrases. Each phrase has an associated role.
+   * We finetune an Adapter over a BERT like model, that uses only one phrase at a time.
+   * We compose all Adapters and then combine their predictions using attention. (as described in the [[https://arxiv.org/pdf/2005.00247.pdf][Adapter Fusion]] paper)
+   * Finally use attention weights to weigh relative contributions
+   * Something similar to [[https://arxiv.org/pdf/2109.03646.pdf][Sustainable Modular Debiasing of Language Models]] but aimed towards artifact detection by weighing relative contributions (like in case of additive models: GAM and NAM)
+   * *One key difference:* in AdapterFusion, there is a set of taks {1,..N} and the extra weights ψ are learned for a task (say m), such that m ϵ{1,..N}. *However* we want to train the parameters ψ on a task which is a composition operation C, applied oved {1,..N} i.e. task is C({1,..N})
+-----+++ The Rationale:
+   * We can consider performing an task say NLI, as a multi task setup where we perform several subtasks on parts of the input, and fuse together the results.
+   * We can have an explicit association of a small set of parameters (each adapter) with the classification subtask, analogus to a feature network in NAM
+   * We can gauge the relative contribution of each subtask to the overall task. Relying too much on a single task or a subset of tasks can be an indication of artifacts that make it possible to solve the overall task by solving only a subset of tasks, indicating a bias. 
+-----+++ The Challenges:
+   * Dividing a task say NLI into subtasks that are disentangled enough to detect biases, but are informative enough so that the fusion of the adapters forms a reasonable model.
+   * Weighing relative contributions of Adapters.
+   * Generalizing the sub task division mechanism for any task. (A general compositionality based apporach like a universal dep prase seems like a good starting point.)
+-----+++ The Contributions:
+   * Using Adapter fusion for artifact detection and interpretablity
+   * An approach to decompose any NLP task into simpler tasks to allow for bias detection.
+</p>
+
+<p align="center">
+-----+ Meeting Notes
+14th September 2021:
+   * Discussion about pattern features for NAM. 
+   * Possible flaw pointed out by Nafise about this approach. We can't consider the bias features extracted by this method, because actual transformer like models might not use these features.
+   * Suggestion to move towards adapting NAM as a post hoc method, or using another post hoc method.
+   * Discussion on the possibility of using transformer models to extract features and then use them as input to NAM. However this approach is not desirable because it involves training two models one after other and is thus inferior to other, more direct post hoc approaches.
+24th August 2021:
+   * Setup pytorch version of NAM and try it out on some sample datasets.
+   * Utilize general patterns from the checklist paper to create features for NAM.  
+</p>
+17th August 2021:
+   * Discussed approach: Design (or learn) a set of features (like text spans such as NP in dep parse, common words etc.) and learn predictor for label using a NAM for dense representation of each feature. Then use NAM to breakdown relative importance of each feature (instead of the nullification test). Note: here we want to overfit the model on the dataset to model the labelling function, we don't want to generalize our model.
+   * Need to look into vaibility of training NAM on dense features (like Word2Vec or SBERT embedding) instead of a single variables.
+   * Proposed method is similar to LIME, but LIME perturbs local gradients, we are scoring dataset level features, to find their relative contributions in the labelling function that represents the annotation.
+   * Need to check papers similar to LIME, to make sure that this hasn't been done before.
+   * Start with MNLI as a case study for validating proposed method: 1)come up with feature set for NAM 2)fit NAMs on feature set to extract biases 3)test if NAMs relative ranking results correspond with the biases found by existing stress test/adversarial papers.
+   * This can later be extended to the class of PA using new feature set (or learning it by using any existing post-hoc interpretability approach on a trained model/NAM)
+10th August 2021: 
+   * Discussion of idea about features that bias model prediction towards a certain class (similar to competency models paper, Trigger words from explainability tutorial slides) and maybe more generally the idea of Illegitimate features (information leakage) (as defined in the Empirical Methods book under the validity section)
+   * Infrastructure/communications setup
+   * One possible direction is Validity of features (circular features, bias features and information leakage) 
+</p>
+
+<p align="center">
+-----+ Summaries
+   * Competency Problems: <LINK>
+   * QA Survey and Taxonomy: <LINK>
+   * Validity Problems: <LINK> 
+   * Neural Additive models: <LINK>
+   * False perfection in machine learning: <LINK>
+</p>

@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="NicoErbs" date="1278661243" format="1.1" version="7"}%
+%META:TOPICPARENT{name="MarkoMartin"}%
+%TOC%
+
+---++08.07.2010
+   * PlainTextWriter, AnnotationOffsetWriter, and SegmentationEvaluator now obtain file names from the document URI in the meta data.
+   * another update of UIMA pipeline for corpus generation:<br>
+     <img src="%ATTACHURL%/Pipeline_-_Corpus_Generation.png"/>
+      * The WikipediaTemplateUsingArticlesReader reads all articles which refer a template that can be specified with the <code>PARAM_TEMPLATE_NAME</code> parameter; in this case, the template name "featured article" will be used.
+      * PARAM_SECTION_GRANULARITY constitutes the level on which sections are divided into multiple segments. E.g., a value of 1 indicates that only top-level sections are separated; 2 would cause also sections on the second level to be separated etc.
+      * PARAM_SPLIT_PARAGRAPHS constitutes whether paragraphs are considered as separate segments.
+      * PARAM_FILTERED can be set to true in order to filter out page data which cannot be reasonably used for text segmentation, e.g., sections with only references, short image descriptions etc.
+   * WikipediaTemplateUsingArticlesReader implemented and unit-tested
+      * WikipediaArticleSegmenter implemented as separate testable (non-UIMA) component which separates a Wikipedia page into segments, according to the user-defined parameters (granularity, paragraph splitting)
+      * Searching featured articles is very slow due to the approach of iterating through all Wikipedia pages.
+         * *NE:* You may run the corpus generation process on one of our servers or any of the pc in the students lab?
+
+---++02.07.2010 - 04.07.2010
+   * update of UIMA pipeline concepts:
+      * corpus generation:<br><img src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/viewfile/Students/MarkoMartinWorkflow?filename=Pipeline_-_Corpus_Generation.png;rev=2"/>
+      * evaluation:<br><img src="%ATTACHURL%/Pipeline_-_Evaluation.png"/>
+   * implementation of PlainTextWriter, AnnotationOffsetWriter, and abstract SegmentationEvaluator
+      * some simple unit tests added
+   * tried to connect the JWPL database (with VPN connection)
+      * error: java.sql.SQLException: Access denied for user 'm_martin'@'130.83.163.244' (using password: YES)
+      * _05.07.2010:_ solved with correct user name and password
+   * implementation of WikipediaCategoryReader initiated
+      * This component is to receive documents of a certain category and annotate them with segment annotations on a certain level of granularity.
+   * all necessary libraries added to Eclipse project and saved in SVN repository (Project should now be compilable on other systems.)
+      * URL: https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/m_martin/trunk/GraphBasedTextSegmentation
+
+---++28.06.2010
+   * first ideas for UIMA pipelines
+      * corpus generation:<br><img src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/viewfile/Students/MarkoMartinWorkflow?filename=Pipeline_-_Corpus_Generation.png;rev=1"/>
+      * evaluation:<br><img src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/viewfile/Students/MarkoMartinWorkflow?filename=Pipeline_-_Evaluation.png;rev=1"/>
+
+---++26.06.2010
+   * new DKPro libraries from NE imported
+      * => solves problem with AnnotationWriter
+   * VPN connection tested with login data as specified by TZ
+      * => failed
+   * Wiki pages Workflow and Questions set up
+
+---++24.06.2010
+   * mail to Malioutov and Barzilay concerning P<sub>k</sub> and WindowDiff implementation
+   * JWPL library downloaded and imported
+
+-- Main.MarkoMartin - 26 Jun 2010
+
+%META:FILEATTACHMENT{name="Pipeline_-_Corpus_Generation.png" attachment="Pipeline_-_Corpus_Generation.png" attr="" comment="UIMA pipeline for corpus generation" date="1278620379" path="Pipeline - Corpus Generation.png" size="22535" stream="Pipeline - Corpus Generation.png" tmpFilename="/var/tmp/CGItemp24350" user="MarkoMartin" version="3"}%
+%META:FILEATTACHMENT{name="Pipeline_-_Evaluation.png" attachment="Pipeline_-_Evaluation.png" attr="" comment="UIMA pipeline for evaluation" date="1278269291" path="Pipeline - Evaluation.png" size="23436" stream="Pipeline - Evaluation.png" tmpFilename="/var/tmp/CGItemp23627" user="MarkoMartin" version="2"}%

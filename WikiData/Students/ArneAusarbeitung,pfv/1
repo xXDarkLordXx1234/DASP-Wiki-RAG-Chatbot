@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="ArnePottharst" date="1211183793" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Schriftliche Ausarbeitung
+Erste Ideen zur Gliederung der schriftlichen Ausarbeitung.
+
+   * Abstract
+
+   * Einleitung
+      * Überblick/Motivation
+      * Verwendete Daten
+         * Nachrichtentexte
+         * Aufbau des Wissensnetzes
+      * R.Snow Baseline
+      * K-Infinity
+
+   * Ontology Learning
+      * Ontologie
+      * Relationen
+
+   * Implementierung
+      * Preprocessing
+      * Analyse
+         * Named Entities
+         * Part of Speech
+         * Lemmatisierung/Synonymisierung
+         * Relationen finden
+      * Postprocessing
+
+   * Evaluation
+      * R.Snow Baseline
+      * Goldstandard
+
+   * Zusammenfassung
+      * Fazit
+      * Ausblick
+      * Danksagungen

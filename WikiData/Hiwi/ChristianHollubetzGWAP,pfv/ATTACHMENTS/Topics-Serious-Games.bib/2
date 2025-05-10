@@ -1,0 +1,640 @@
+% This file was created with JabRef 2.7.2.
+% Encoding: UTF8
+
+@ARTICLE{Ahn08,
+  author = {von Ahn, Luis and Dabbish, Laura},
+  title = {Designing Games With A Purpose},
+  journal = {Communications of the ACM},
+  year = {2008},
+  volume = {51},
+  pages = {58--67},
+  number = {8},
+  month = {August},
+  publisher = {New York, NY: ACM},
+  abbrv = {CACM},
+  abstract = {Data generated as a side effect of game play also solves computational
+	problems and trains AI algorithms.},
+  doi = {10.1145/1378704.1378719},
+  file = {Paper:Ahn08.pdf:PDF},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://dl.acm.org/citation.cfm?id=1378719}
+}
+
+@INPROCEEDINGS{Ahn04,
+  author = {von Ahn, Luis and Dabbish, Laura},
+  title = {Labeling images with a computer game},
+  booktitle = {Proceedings of the SIGCHI Conference on Human Factors in Computing
+	Systems},
+  year = {2004},
+  pages = {319--326},
+  publisher = {New York, NY: ACM},
+  location = {Vienna, Austria},
+  confdate = {April 24-29, 2004},
+  abbrv = {CHI},
+  abstract = {We introduce a new interactive system: a game that is fun and can
+	be used to create valuable output. When people play the game they
+	help determine the contents of images by providing meaningful labels
+	for them. If the game is played as much as popular online games,
+	we estimate that most images on the Web can be labeled in a few months.
+	Having proper labels associated with each image on the Web would
+	allow for more accurate image search, improve the accessibility of
+	sites (by providing descriptions of images to visually impaired individuals),
+	and help users block inappropriate images. Our system makes a significant
+	contribution because of its valuable output and because of the way
+	it addresses the image-labeling problem. Rather than using computer
+	vision techniques, which don't work well enough, we encourage people
+	to do the work by taking advantage of their desire to be entertained.},
+  doi = {10.1145/985692.985733},
+  file = {Paper:Ahn04.pdf:PDF},
+  isbn = {1-58113-702-8},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://dl.acm.org/citation.cfm?doid=985692.985733}
+}
+
+@INPROCEEDINGS{Ahn06,
+  author = {von Ahn, Luis and Kedia, Mihir and Blum, Manuel},
+  title = {Verbosity: a game for collecting common-sense facts},
+  booktitle = {Proceedings of the SIGCHI Conference on Human Factors in Computing
+	Systems},
+  year = {2006},
+  pages = {75--78},
+  month = {April},
+  publisher = {ACM Press},
+  location = {Montreal, Canada},
+  confdate = {April 22-27, 2006},
+  abbrv = {CHI},
+  abstract = {We address the problem of collecting a database of "common-sense facts"
+	using a computer game. Informally, a common-sense fact is a true
+	statement about the world that is known to most humans: "milk is
+	white," "touching hot metal hurts," etc. Several efforts have been
+	devoted to collecting common-sense knowledge for the purpose of making
+	computer programs more intelligent. Such efforts, however, have not
+	succeeded in amassing enough data because the manual process of entering
+	these facts is tedious. We therefore introduce Verbosity, a novel
+	interactive system in the form of an enjoyable game. People play
+	Verbosity because it is fun, and as a side effect of them playing,
+	we collect accurate common-sense knowledge. Verbosity is an example
+	of a game that not only brings people together for leisure, but also
+	collects useful data for computer science.},
+  doi = {10.1145/1124772.1124784},
+  file = {Paper:Ahn06.pdf:PDF},
+  isbn = {1-59593-372-7},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://dl.acm.org/citation.cfm?id=1124784}
+}
+
+@ARTICLE{Ahn08a,
+  author = {von Ahn, Luis  and Maurer, Benjamin and McMillen, Colin  and Abraham,
+	David  and Blum, Manuel},
+  title = {reCAPTCHA: Human-Based Character Recognition via Web Security Measures},
+  journal = {Science},
+  year = {2008},
+  volume = {321},
+  pages = {1465-1468},
+  number = {5895},
+  month = {September},
+  publisher = {Washington, DC: American Association for the Advancement of Science},
+  abbrv = {Science},
+  abstract = {CAPTCHAs (Completely Automated Public Turing test to tell Computers
+	and Humans Apart) are widespread security measures on the World Wide
+	Web that prevent automated programs from abusing online services.
+	They do so by asking humans to perform a task that computers cannot
+	yet perform, such as deciphering distorted characters. Our research
+	explored whether such human effort can be channeled into a useful
+	purpose: helping to digitize old printed material by asking users
+	to decipher scanned words from books that computerized optical character
+	recognition failed to recognize. We showed that this method can transcribe
+	text with a word accuracy exceeding 99%, matching the guarantee of
+	professional human transcribers. Our apparatus is deployed in more
+	than 40,000 Web sites and has transcribed over 440 million words.},
+  doi = {10.1126/science.1160379},
+  file = {Paper:Ahn08a.pdf:PDF},
+  issn = {0036-8075},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://www.sciencemag.org/content/321/5895/1465.short}
+}
+
+@INPROCEEDINGS{Cooper11,
+  author = {Cooper, Seth and Khatib, Firas and Makedon, Ilya and Lu, Hao and
+	Barbero, Janos and Baker, David and Fogarty, James and Popović, Zoran},
+  title = {Analysis of social gameplay macros in the Foldit cookbook},
+  booktitle = {Proceedings of Foundations of Digital Games,},
+  year = {2011},
+  month = {July},
+  location = {Bordeaux, France},
+  confdate = {June 28-July 1, 2011},
+  abbrv = {FDG},
+  file = {Paper:Cooper11.pdf:PDF},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://grail.cs.washington.edu/projects/protein-game/foldit-fdg11.pdf}
+}
+
+@ARTICLE{Cooper10a,
+  author = {Cooper, Seth and Khatib,  Firas and Treuille, Adrien  and Barbero,
+	Janos and Lee, Jeehyung and Beenen, Michael and Leaver-Fay, Andrew
+	and Baker, David  and Popović, Zoran},
+  title = {Predicting protein structures with a multiplayer online game},
+  journal = {Nature},
+  year = {2010},
+  volume = {466},
+  pages = {756--760},
+  number = {7307},
+  month = {August},
+  abbrv = {Nature},
+  abstract = {People exert large amounts of problem-solving effort playing computer
+	games. Simple image- and text-recognition tasks have been successfully
+	'crowd-sourced' through games, but it is not clear if more complex
+	scientific problems can be solved with human-directed computing.
+	Protein structure prediction is one such problem: locating the biologically
+	relevant native conformation of a protein is a formidable computational
+	challenge given the very large size of the search space. Here we
+	describe Foldit, a multiplayer online game that engages non-scientists
+	in solving hard prediction problems. Foldit players interact with
+	protein structures using direct manipulation tools and user-friendly
+	versions of algorithms from the Rosetta structure prediction methodology,
+	while they compete and collaborate to optimize the computed energy.
+	We show that top-ranked Foldit players excel at solving challenging
+	structure refinement problems in which substantial backbone rearrangements
+	are necessary to achieve the burial of hydrophobic residues. Players
+	working collaboratively develop a rich assortment of new strategies
+	and algorithms; unlike computational approaches, they explore not
+	only the conformational space but also the space of possible search
+	strategies. The integration of human visual problem-solving and strategy
+	development capabilities with traditional computational algorithms
+	through interactive multiplayer games is a powerful new approach
+	to solving computationally-limited scientific problems.},
+  doi = {10.1038/nature09304},
+  file = {Paper:Cooper10a.pdf:PDF},
+  issn = {0028-0836},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2956414/?tool=pubmed}
+}
+
+@INPROCEEDINGS{Cooper10,
+  author = {Cooper, Seth and Treuille, Adrien and Barbero, Janos and Leaver-Fay,
+	Andrew and Tuite, Kathleen and Khatib, Firas and Snyder, Alex Cho
+	and Beenen, Michael and Salesin, David and Baker, David and Popović,
+	Zoran},
+  title = {The challenge of designing scientific discovery games},
+  booktitle = {Proceedings of the Fifth International Conference on the Foundations
+	of Digital Games},
+  year = {2010},
+  pages = {40--47},
+  month = {June},
+  publisher = {New York, NY: ACM},
+  location = {Pacific Grove, CA, USA},
+  confdate = {June 19-21, 2010},
+  abbrv = {FDG},
+  abstract = {Incorporating the individual and collective problem solving skills
+	of non-experts into the scientific discovery process could potentially
+	accelerate the advancement of science. This paper discusses the design
+	process used for Foldit, a multiplayer online biochemistry game that
+	presents players with computationally difficult protein folding problems
+	in the form of puzzles, allowing ordinary players to gain expertise
+	and help solve these problems. The principle challenge of designing
+	such scientific discovery games is harnessing the enormous collective
+	problem-solving potential of the game playing population, who have
+	not been previously introduced to the specific problem, or, often,
+	the entire scientific discipline. To address this challenge, we took
+	an iterative approach to designing the game, incorporating feedback
+	from players and biochemical experts alike. Feedback was gathered
+	both before and after releasing the game, to create the rules, interactions,
+	and visualizations in Foldit that maximize contributions from game
+	players. We present several examples of how this approach guided
+	the game's design, and allowed us to improve both the quality of
+	the gameplay and the application of player problem-solving.},
+  doi = {10.1145/1822348.1822354},
+  file = {Paper:Cooper10.pdf:PDF},
+  isbn = {978-1-60558-937-4},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://dl.acm.org/citation.cfm?id=1822354}
+}
+
+@INPROCEEDINGS{Hladka09,
+  author = {Hladká, Barbora and Mírovský, Jiří and  Schlesinger, Pavel},
+  title = {Designing a language game for collecting coreference annotation},
+  booktitle = {Proceedings of the Third ACL/IJCNLP Workshop on `Linguistic Annotation'},
+  year = {2009},
+  pages = {52--55},
+  month = {August},
+  organization = {Association for Computational Linguistics},
+  location = {Suntec, Singapore},
+  abbrv = {ACL/IJCNLP-LAW},
+  abstract = {PlayCoref is a concept of an on-line language game designed to acquire
+	a substantial amount of text data with the coreference annotation.
+	We describe in detail various aspects of the game design and discuss
+	features that affect the quality of the annotation.},
+  file = {Paper:Hladka09.pdf:PDF},
+  isbn = {978-1-932432-52-7},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://www.aclweb.org/anthology/W/W09/W09-3008}
+}
+
+@INPROCEEDINGS{Ho09,
+  author = {Ho, Chien-Ju and Chen, Kuan-Ta},
+  title = {On formal models for social verification},
+  booktitle = {Proceedings of the ACM SIGKDD Workshop on Human Computation},
+  year = {2009},
+  pages = {62--69},
+  month = {July},
+  publisher = {New York, NY: ACM},
+  location = {Paris, France},
+  confdate = {June 28-July 1, 2009},
+  abbrv = {KDD-HCOMP},
+  abstract = {The introduction of the ESP Game and other Games With A Purpose (GWAP)
+	has demonstrated the potential of human computation in solving AI-hard
+	problems. In such systems, users are normally required to input answers
+	for questions proposed by the system, e.g., descriptions about a
+	picture or a song. Since users may bring up irrelevant inputs intentionally
+	or carelessly, and often the system does not have "correct" answers,
+	we have to rely on the users to verify answers from others. We call
+	this kind of mutual verification of users' answers "social verification."
+	
+	
+	In this paper, we propose formal models for two fundamental social
+	verification mechanisms, simultaneous verification and sequential
+	verification, in human computation systems. By adopting a game-theoretic
+	approach, we perform an equilibrium analysis which explains the effect
+	of each verification mechanism on a system's outcome. Our analysis
+	results show that sequential verification leads to a more diverse
+	and descriptive set of outcomes than simultaneous verification, though
+	the latter is stronger in ensuring the correctness of verified answers.
+	Our experiments on Amazon Mechanical Turk, which asked users to input
+	textual terms related to a word, confirmed our analysis results.
+	We believe that our formal models for social verification mechanisms
+	will provide a basis for the design of future human computation systems.},
+  doi = {10.1145/1600150.1600172},
+  file = {Paper:Ho09.pdf:PDF},
+  isbn = {978-1-60558-672-4},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://dl.acm.org/citation.cfm?id=1600172}
+}
+
+@INPROCEEDINGS{Jain09,
+  author = {Jain, Shaili and Chen, Yiling and Parkes, David C.},
+  title = {Designing incentives for online question and answer forums},
+  booktitle = {Proceedings of the 10th ACM conference on Electronic commerce},
+  year = {2009},
+  pages = {129--138},
+  month = {July},
+  publisher = {New York, NY: ACM},
+  location = {Stanford, CA, USA},
+  confdate = {July 6-10, 2009},
+  abbrv = {EC},
+  abstract = {In this paper, we provide a simple game-theoretic model of an online
+	question and answer forum. We focus on factual questions in which
+	user responses aggregate while a question remains open. Each user
+	has a unique piece of information and can decide when to report this
+	information. The asker prefers to receive information sooner rather
+	than later, and will stop the process when satisfied with the cumulative
+	value of the posted information. We consider two distinct cases:
+	a complements case, in which each successive piece of information
+	is worth more to the asker than the previous one; and a substitutes
+	case, in which each successive piece of information is worth less
+	than the previous one. A best-answer scoring rule is adopted to model
+	Yahoo! Answers, and is effective for substitutes information, where
+	it isolates an equilibrium in which all users respond in the first
+	round. But we find that this rule is ineffective for complements
+	information, isolating instead an equilibrium in which all users
+	respond in the final round. In addressing this, we demonstrate that
+	an approval-voting scoring rule and a proportional-share scoring
+	rule can enable the most efficient equilibrium with complements information,
+	under certain conditions, by providing incentives for early responders
+	as well as the user who submits the final answer.},
+  doi = {10.1145/1566374.1566393},
+  file = {Paper:Jain09.pdf:PDF},
+  isbn = {978-1-60558-458-4},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://dl.acm.org/citation.cfm?id=1566374.1566393}
+}
+
+@INPROCEEDINGS{Jain08,
+  author = {Jain, Shaili and Parkes, David C.},
+  title = {A Game-Theoretic Analysis of Games with a Purpose},
+  booktitle = {Internet and Network Economics: Proceedings of the 4th International
+	Workshop},
+  year = {2008},
+  volume = {5385},
+  series = {Lecture Notes in Computer Science},
+  pages = {342--350},
+  month = {December},
+  publisher = {Berlin/Heidelberg: Springer},
+  location = {Shanghai, China},
+  confdate = {December 17-20, 2008},
+  abbrv = {LNCS-WINE},
+  abstract = {We present a simple game-theoretic model for the ESP game, an interactive
+	game devised to label images on the web, and characterize the equilibrium
+	behavior of the model. We show that a simple change in the incentive
+	structure can lead to different equilibrium structure and suggest
+	the possibility of formal incentive design in achieving desirable
+	system-wide outcomes, complementing existing considerations of robustness
+	against cheating and human factors.},
+  doi = {10.1007/978-3-540-92185-1_40},
+  file = {Paper:Jain08.pdf:PDF},
+  isbn = {978-3-540-92184-4},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://www.springerlink.com/content/g0k4481n38582w83/}
+}
+
+@INPROCEEDINGS{Lafourcade07,
+  author = {Lafourcade, Mathieu},
+  title = {Making people play for Lexical Acquisition with the JeuxDeMots prototype},
+  booktitle = {Proceedings of the Seventh International Symposium on Natural Language
+	Processing},
+  year = {2007},
+  month = {December},
+  location = {Pattaya, Chonburi, Thailand},
+  confdate = {December 13-15, 2007},
+  abbrv = {SNLP},
+  abstract = {Lexical and semantic information are difficult to collect either automatically
+	or manually, and as being instrumental in many (if not all) NLP applications,
+	there is a serious bottleneck for advances in this research field.
+	In this paper, we propose a novel approach by making people play
+	some king of associative word games. Doing so, we can memorize associations
+	where a pair of players agrees. We present the principles of the
+	game and some insights of the data collected so far.},
+  comment = {http://hal-lirmm.ccsd.cnrs.fr/docs/00/20/08/83/PDF/MLF-snlp2007-v5.pdf},
+  file = {Paper:Lafourcade07.pdf:PDF},
+  isbn = {978-874-623-062-9},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://hal-lirmm.ccsd.cnrs.fr/lirmm-00200883/en/}
+}
+
+@MISC{Lease11,
+  author = {Lease, Matthew},
+  title = {Crowd Computing: Opportunities \& Challenges},
+  howpublished = {Keynote speech at the 5th International Joint Conference on Natural
+	Language Processing},
+  month = {November},
+  year = {2011},
+  abbrv = {IJCNLP},
+  keywords = {Crowd Sourcing},
+  location = {Chiang Mai, Thailand},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://www.slideshare.net/mattlease/crowd-computing-opportunities-challenges-ijcnlp-2011-keynote}
+}
+
+@INPROCEEDINGS{Siorpaes07,
+  author = {Siorpaes, Katharina  and Hepp, Martin},
+  title = {OntoGame: Towards Overcoming the Incentive Bottleneck in Ontology
+	Building},
+  booktitle = {On the Move to Meaningful Internet Systems 2007: OTM 2007 Workshops},
+  year = {2007},
+  editor = {Meersman, Robert and Tari, Zahir and Herrero, Pilar},
+  volume = {4806},
+  series = {Lecture Notes in Computer Science},
+  pages = {1222--1232},
+  publisher = {Berlin/Heidelberg: Springer},
+  abbrv = {LNCS-OTM},
+  abstract = {Despite significant advancement in ontology learning, building ontologies
+	remains a task that highly depends on human intelligence, both as
+	a source of domain expertise and for producing a consensual conceptualization.
+	This means that individuals need to contribute time, and sometimes
+	other resources, to an ontology project. Now, we can observe a sharp
+	contrast in user interest in two branches of Web activity: While
+	the “Web 2.0” movement lives from an unprecedented amount of contributions
+	from Web users, we witness a substantial lack of user involvement
+	in ontology projects for the Semantic Web. We assume that one cause
+	of the latter is a lack of proper incentive structures of ontology
+	projects, i.e., settings in which the perceived benefits outweigh
+	the efforts for people to contribute.
+	
+	
+	As a novel solution, we (1) propose to masquerade collaborative ontology
+	engineering behind on-line, multi-player game scenarios, in order
+	to create proper incentives for humans to help building ontologies
+	for the Semantic Web. Doing so, we adopt the findings from the already
+	famous “games with a purpose” by von Ahn, who has shown that pres-enting
+	a useful task, which requires human intelligence, in the form of
+	an on-line game can motivate a large amount of people to work heavily
+	on this task, and this for free. Then, we (2) describe our OntoGame
+	prototype, and (3) prov-ide preliminary evidence that users are willing
+	to invest a lot of time into those games, and, by doing so, unknowingly
+	weave ontologies for the Semantic Web.},
+  file = {Paper:Siorpaes07.pdf:PDF},
+  isbn = {978-3-540-76889-0},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://www.springerlink.com/content/0041104017922086/}
+}
+
+@INPROCEEDINGS{Siorpaes08,
+  author = {Siorpaes, Katharina  and Hepp, Martin},
+  title = {OntoGame: Weaving the Semantic Web by Online Games},
+  booktitle = {The Semantic Web: Research and Applications},
+  year = {2008},
+  volume = {5021},
+  series = {Lecture Notes in Computer Science},
+  pages = {751--766},
+  publisher = {Berlin/Heidelberg: Springer},
+  abbrv = {LNCS-ESWC},
+  abstract = {Most of the challenges faced when building the Semantic Web require
+	a substantial amount of human labor and intelligence. Despite significant
+	advancement in ontology learning and human language technology, the
+	tasks of ontology construction, semantic annotation, and establishing
+	alignments between multiple ontologies remain highly dependent on
+	human intelligence. This means that individuals need to contribute
+	time and sometimes other resources. Unfortunately, we observe a serious
+	lack of user involvement in the aforementioned tasks, which may be
+	due to the absence of motivations for people who contribute. As a
+	novel solution, we (1) propose to masquerade the core tasks of weaving
+	the Semantic Web behind online, multi-player game scenarios, in order
+	to create proper incentives for human users to get involved. Doing
+	so, we adopt the findings from the already famous “games with a purpose”
+	by von Ahn, who has shown that presenting a useful task, which requires
+	human intelligence, in the form of an online game can motivate a
+	large amount of people to work heavily on this task, and this for
+	free. Then, we (2) describe our generic OntoGame platform, and (3)
+	several gaming scenarios for various tasks plus our respective prototypes.
+	Based on the analysis of user data and interviews with players, we
+	provide preliminary evidence that users (4) enjoy the games and are
+	willing to dedicate their time to those games, (5) are able to produce
+	high-quality conceptual choices. Eventually we show how users entertaining
+	themselves by online games can unknowingly help weave and maintain
+	the Semantic Web.},
+  doi = {10.1007/978-3-540-68234-9_54},
+  file = {Paper:Siorpaes08.pdf:PDF},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://www.springerlink.com/content/k0q415u721011510/}
+}
+
+@ARTICLE{Siorpaes08a,
+  author = {Siorpaes, Katharina  and Hepp, Martin},
+  title = {Games with a Purpose for the Semantic Web},
+  journal = {Intelligent Systems},
+  year = {2008},
+  volume = {23},
+  pages = {50--60},
+  number = {3},
+  month = {May},
+  publisher = {IEEE Press},
+  abbrv = {Intell Syst},
+  abstract = {Weaving the Semantic Web requires that humans contribute their labor
+	and judgment for extending and updating formal knowledge structures.
+	Key tasks in evolving the current Web to a Semantic Web include discovering
+	and specifying semantic relationships between multiple ontologies
+	and annotating textual or multimedia information. However, whereas
+	the Web 2.0 movement is fueled by an unprecedented number of contributions
+	from Web users, there's a substantial lack of user involvement in
+	weaving the heavyweight Semantic Web. One cause of this lack of involvement
+	is a lack of proper incentive structures. Hiding the tasks involved
+	in weaving the Semantic Web behind online multiplayer games presents
+	the tasks as fun and intellectually challenging entertainment. A
+	series of OntoGame prototypes support the full life cycle of realizing
+	the Semantic Web. These games adopt Luis von Ahn's ''games with a
+	purpose'' concept---that is, presenting a task as an online game
+	can motivate many people to work},
+  doi = {10.1109/MIS.2008.45},
+  file = {Paper:Siorpaes08a.pdf:PDF},
+  issn = {1541-1672},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4525142&tag=1}
+}
+
+@ARTICLE{Siorpaes10,
+  author = {Siorpaes, Katharina and Simperl, Elena},
+  title = {Human Intelligence in the Process of Semantic Content Creation},
+  journal = {World Wide Web - Special Issue: Human-Centered Web Science},
+  year = {2010},
+  volume = {13},
+  pages = {33--59},
+  number = {1--2},
+  month = {March},
+  abbrv = {WWWJ},
+  abstract = {Despite significant progress over the last years the large-scale adoption
+	of semantic technologies is still to come. One of the reasons for
+	this state of affairs is assumed to be the lack of useful semantic
+	content, a prerequisite for almost every IT system or application
+	using semantics. Through its very nature, this content can not be
+	created fully automatically, but requires, to a certain degree, human
+	contribution. The interest of Internet users in semantics, and in
+	particular in creating semantic content, is, however, low. This is
+	understandable if we think of several characteristics exposed by
+	many of the most prominent semantic technologies, and the applications
+	thereof. One of these characteristics is the high barrier of entry
+	imposed. Interacting with semantic technologies today requires specific
+	skills and expertise on subjects which are not part of the mainstream
+	IT knowledge portfolio. A second characteristic are the incentives
+	that are largely missing in the design of most semantic applications.
+	The benefits of using machine-understandable content are in most
+	applications fully decoupled from the effort of creating and maintaining
+	this content. In other words, users do not have a motivation to contribute
+	to the process. Initiatives in the areas of the Social Semantic Web
+	acknowledged this problem, and identified mechanisms to motivate
+	users to dedicate more of their time and resources to participate
+	in the semantic content creation process. Still, even if incentives
+	are theoretically in place, available human labor is limited and
+	must only be used for those tasks that are heavily dependent on human
+	intervention, and cannot be reliably automated. In this article,
+	we concentrate on this step in between. As a first contribution,
+	we analyze the process of semantic content creation in order to identify
+	those tasks that are inherently human-driven. When building semantic
+	applications involving these specific tasks, one has to install incentive
+	schemes that are likely to encourage users to perform exactly these
+	tasks that crucially rely on manual input. As a second contribution
+	of the article, we propose incentives or incentive-driven tools that
+	can be used to increase user interest in semantic content creation
+	tasks. We hope that our findings will be adopted as recommendations
+	for establishing a fundamentally new form of design of semantic applications
+	by the semantic technologies community.},
+  doi = {10.1007/s11280-009-0078-0},
+  file = {Paper:Siorpaes10.pdf:PDF},
+  issn = {1386-145X},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://www.springerlink.com/content/r08076u01423023p/}
+}
+
+@INPROCEEDINGS{Vickrey08,
+  author = {Vickrey, David and Bronzan, Aaron and Choi, William and Kumar, Aman
+	and Turner-Maier, Jason and Wang, Arthur and Koller, Daphne},
+  title = {Online Word Games for Semantic Data Collection},
+  booktitle = {Proceedings of the 2008 Conference on Empirical Methods in Natural
+	Language Processing},
+  year = {2008},
+  pages = {533--542},
+  month = {October},
+  organization = {Association for Computational Linguistics},
+  location = {Honolulu, Hawaii},
+  confdate = {October 25–27, 2008},
+  abbrv = {EMNLP},
+  abstract = {Obtaining labeled data is a significant obstacle for many NLP tasks.
+	Recently, online games have been proposed as a new way of obtaining
+	labeled data; games attract users by being fun to play. In this paper,
+	we consider the application of this idea to collecting semantic relations
+	between words, such as hypernym/hyponym relationships. We built three
+	online games, inspired by the real-life games of ScattergoriesTM
+	and TabooTM . As of June 2008, players have entered nearly 800,000
+	data instances, in two categories. The first type of data consists
+	of category/answer pairs (“Types of vehicle”,“car”), while the second
+	is essentially free association data (“submarine”,”underwater”).
+	We analyze both types of data in detail and discuss potential uses
+	of the data. We show that we can extract from our data set a significant
+	number of new hypernym/hyponym pairs not already found in WordNet.},
+  file = {Paper:Vickrey08.pdf:PDF},
+  keywords = {GWAP},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://www.aclweb.org/anthology/D08-1056}
+}
+
+@INPROCEEDINGS{Wolska11,
+  author = {Wolska, Magdalena and Schäfer, Ulrich and Nghia, Pham The},
+  title = {Bootstrapping a Domain-specific Terminological Taxonomy from Scientific
+	Text},
+  booktitle = {Proceedings of the 9th International Conference on Terminology and
+	Artificial Intelligence},
+  year = {2011},
+  pages = {17--23},
+  month = {November},
+  location = {Paris, France},
+  confdate = {November 8-10, 2011},
+  abbrv = {TIA},
+  file = {Paper:Wolska11.pdf:PDF},
+  owner = {Christian M. Meyer},
+  timestamp = {2012.01.30},
+  url = {http://tia2011.crim.fr/Proceedings/pdf/TIA05.pdf}
+}
+
+@comment{jabref-meta: fileDirectory:Files-Topics/Serious-Games;}
+
+@comment{jabref-meta: groupsversion:3;}
+
+@comment{jabref-meta: groupstree:
+0 AllEntriesGroup:;
+1 KeywordGroup:Games with a Purpose\;0\;keywords\;GWAP\;0\;0\;;
+1 KeywordGroup:Crowd Sourcing\;0\;keywords\;Crowd Sourcing\;0\;0\;;
+1 KeywordGroup:Serious Games\;0\;keywords\;Serious Games\;0\;0\;;
+}
+

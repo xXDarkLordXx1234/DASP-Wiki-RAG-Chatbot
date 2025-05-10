@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="NicoErbs" date="1262861851" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NicoErbsHiWi"}%
+---+ Related Work
+
+%TOC%
+
+   * [[NicoErbsHiWiBibTex][BibTex]]
+
+---++ Summaries
+A list of related work and their summaries.
+
+---+++Turney99
+   * Supervised
+
+Developed GenEx as program for keyphrase extraction. Genex consists of Genitor for learning a model and Extractor for extracting keyphrases with this model.
+
+---+++Frank99
+   * Supervised
+
+Developed Kea as program for keyphrase extraction. A Naive Bayes learning scheme is applied.
+
+---+++Hulth2003
+   * Supervised
+
+Four different features for keyphrase detection are used:
+   * Term frequency
+   * collection frequency
+   * relative positiion of the first occurence
+   * PoS tags
+
+---+++Milhalcea and Tarau
+   * Unsupervised
+
+Using cooccurence measure to build graph between keyphrase candidates and selecting most central candidates as keyphrases. Similar to PageRank.
+The best results were obtained for keyphrase candidates, which are nouns and adjectives.
+
+
+-- Main.NicoErbs - 07 Jan 2010

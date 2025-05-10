@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="IrinaAlles" date="1340693670" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="DependencyParser"}%
+-- Main.IrinaAlles - 2012-06-21
+---+ Malt Parser
+
+MaltParser is a system for data-driven dependency parsing, which can be used to induce a parsing model from treebank data and to parse new data using an induced model. MaltParser is developed by Johan Hall, Jens Nilsson and Joakim Nivre at Växjö University and Uppsala University, Sweden.
+
+MaltParser can be characterized as a data-driven parser-generator. While a traditional parser-generator constructs a parser given a grammar, a data-driven parser-generator constructs a parser given a treebank. MaltParser is an implementation of inductive dependency parsing, where the syntactic analysis of a sentence amounts to the derivation of a dependency structure, and where inductive machine learning is used to guide the parser at nondeterministic choice points (Nivre, 2006). The parsing methodology is based on three essential components:
+
+   1 Deterministic parsing algorithms for building labeled dependency graphs (Kudo and Matsumoto,2002; Yamada and Matsumoto, 2003; Nivre,2003)
+   2 History-based models for predicting the next parser action at nondeterministic choice points (Black et al., 1992; Magerman, 1995; Ratnaparkhi, 1997; Collins, 1999)
+   3 Discriminative learning to map histories to parser actions (Kudo and Matsumoto, 2002; Yamada and Matsumoto, 2003; Nivre et al., 2004; Hall et al., 2006)
+          <br/><SMALL>(taken from http://www.maltparser.org/intro.html)</SMALL>
+          
+   The Parser implements the following parsing algorithms:
+   
+   * Nivre arc-eager
+   * Nivre arc-standard
+   * Covington non-projective
+   * Covington projective
+   * Stack projective
+   * Stack swap-eager
+   * Stack swap-lazy
+   * Planar
+   * 2-planar
+
+   and includes two machine learning packages:
+    
+   * LIBSVM - A Library for Support Vector Machines (Chang, 2001).
+   * LIBLINEAR -- A Library for Large Linear Classification (Fan et al., 2008).

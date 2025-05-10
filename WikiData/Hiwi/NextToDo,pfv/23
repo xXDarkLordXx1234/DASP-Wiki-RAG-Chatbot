@@ -1,0 +1,3 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1366379621" format="1.1" reprev="23" version="23"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * create parameter for index and search to tell which types to put into which field, e.g. "f_Token:TokenLemma" or "f_Expansion:Expansion"

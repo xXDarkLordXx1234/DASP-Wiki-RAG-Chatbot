@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="stab" comment="save topic" date="1523009039" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+---++ Time Tracking
+
+Internal timesheet complete up to *dd.mm.yyyy*
+
+---+++ 2018-04
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| SUM | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+-- Main.ChristianStab - 2018-04-06

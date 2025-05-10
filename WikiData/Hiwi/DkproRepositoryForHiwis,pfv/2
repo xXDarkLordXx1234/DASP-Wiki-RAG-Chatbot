@@ -1,0 +1,73 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1280499951" format="1.1" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ DKPro repository for hiwis
+
+%TOC%
+
+---++ HowTo
+   * [[ConnectToVPNUsingUbuntu][Connect to VPN using Ubuntu]]
+
+
+---++ Most important things to know
+   * Repository URL: https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students
+   * Repository for external libraries: https://maggie.tk.informatik.tu-darmstadt.de/svn/lib
+      * *Important*: Do not check in anything here without asking for permission!  
+   * Current UIMA Version: 2.2<br />
+   * UIMA Data Path in Eclipse: =[PATH_TO_PROJECT]/= <br />
+
+---++ Projects
+
+   * core: pre-processing components like tokenizer, stemmer, lemmatizer...
+      * *Important*: Do not check in anything here without asking for permission!
+   * one project for each student
+   
+---++ Code
+*Directories*
+
+The directories follow the PEAR structure:
+
+   * src - Java source code
+   * src_test - Junit 4 test code
+   * conf - Configuration files 
+   * desc - Descriptors in folders that match the Java package structure (see below)
+   * input - Input data (usually empty)
+   * lib - Required libraries. One directory per lib, that contains the jar and the docs.
+   * output - Output data (usually empty)
+   * resources - Ressources, external Software
+   * docs - Documentation
+
+*Package names*
+
+Classes implementing UIMA components shall go to the following packages:
+
+   * de.tudarmstadt.ukp.dkpro.PROJECT.reader
+   * de.tudarmstadt.ukp.dkpro.PROJECT.consumer
+   * de.tudarmstadt.ukp.dkpro.PROJECT.annotator
+   * de.tudarmstadt.ukp.dkpro.PROJECT.cpe  (wobei CPEs eigentlich nur aus einer Deklaration bestehen)
+   * de.tudarmstadt.ukp.dkpro.PROJECT.type
+   * de.tudarmstadt.ukp.dkpro.PROJECT.resource
+
+At each level, we have a util package that conatins any utils needed and a resources package for needed resources.
+
+*Coding rules*
+
+   1 No component may require resources or external software that is not part of the repository.
+   1 Quick hacks are done by cloning a component with a name that ends with the initials of the author. (first, put it in the incubator project)
+   1 Any big change needs to be discussed with the Group. A change is big if it may change the semantics of a component.
+   1 Whenever possible, import by name must be used
+   1 Type-sytem import by name => Set data path =[PATH_TO_PROJECT]/=
+   1 We should have unit tests for each component.
+
+---++ Component Overview
+
+%EDITTABLE{}%
+| *Name* | *Coordinator* | *Repository* | *Project* | *R/A/C* | *Notes* | *Language(s)* | *Requires (License)* | *Status* | *Dates* |
+| <nop>LanguageIDAE     | Dong Han          | dkpro_students | dong | Annotator           | document language guesser | de, en, fr, es, it, sv, pl, nl, no, fi, sq, sk, sl, da, hu | textcat-1.0.1(LGPL) | Complete | 04.10.2007 |
+| BananaSplitter | Dong Han | dkpro_students | dong | Annotator | splitting the compounds | de | banana-split-0.3.1(GPL) | Complete | 05.10.2007 |
+| XmlFilesReader | Dong Han | dkpro_students | dong | Reader | read the xml files | neutral | stax-api-1.0.1(Apache Liscence V2.0)  wstx-lgpl-3.2.2(LGPL) | Complete | 09.10.2007 |
+
+
+
+-- Main.ChristofMueller - 02 Oct 2007
+
+-- Main.ChristofMueller - 16 Apr 2008

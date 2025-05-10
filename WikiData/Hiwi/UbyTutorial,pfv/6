@@ -1,0 +1,337 @@
+%META:TOPICINFO{author="WladimirSchmidt" date="1319025051" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="LSR.LmfProcessingByYevgen"}%
+---+ Uby LMF tutorial
+---++ Uby packages
+
+|*Package/Class name*|*Description*|
+| __de.tudarmstadt.ukp.lmf.model__ and subpackages|All LMF elements as classes|
+| __de.tudarmstasdt.ukp.lmf.transform__|Classes needed for transformation of resources in XML and Database|
+| - LMFTransformer | Abstract class for a resource transformer|
+| - LMFXMLTransformer | Abstract class (derives from LMFTransformer) for a resource transfromation in LMF XML format|
+| - LMFDBTransformer | Abstract class (derives from LMFTransformer) for a resource transformation in Database with Hibernate|
+| - XMLTo<nop>DBTransformer | Transforms any LMF XML file to Database |
+| - DBTo<nop>XMLTransformer | Transforms any Lexical<nop>Resource saved in Database into LMF XML |
+| - DBConfig | Holds settings for database connection and path to Hibernate map files|
+| - LMFDBUtils | Useful functions for Database transformation, such as: creation of all needed tables and constraints, complete deleting of a LexicalResource or Lexicon from Database|
+| - String<nop>Utils | Useful functions for dealing with strings, such as filtering of characters that can not be saved in Database|
+|__de.tudarmstadt.ukp.lmf.writer__| Classes needed for writing LMF model to the XML | 
+| - LMFWriter | Abstract class for an XML (or other file format) writer |
+| - LMFXml<nop>Writer | Writes LMF-Model directly to given XML file|
+| - LMFXml<nop>Writer<nop>DOM | Saves LMF-Model to a DOM-Object, that can be optionally written to a XML file | 
+| __de.tudarmstadt.ukp.lmf.hibernate__ | Classes needed for establishing of Hibernate connection and reading of map files|
+| - Hibernate<nop>Connect | Reads Hibernate map files and creates Hibernate configuration for given DBConfig settings|
+| - Custom<nop>MySQLDialect | Needed for creation of Database tables for the LMF Model|
+| - Enum<nop>User<nop>Type | Needed for mapping of Enums from LMF Model to database |
+|__de.tudarmstadt.ukp.lmf.api__ | Access and search functions to Uby database |
+| - Uby | Main entrance point to the model. Searching functions for lexical entries etc. Creation of Iterators over LMF elements (Synset-Iterator, Sense-Iterator, LexicalEntry-Iterator)|
+| - Criteria<nop>Iterator<T> | Universal iterator that can be used for iteration over any LMF element. Needs a Hibernate-Criteria object with predefined selection/filtering settings|
+| - Criteria<nop>Iterable<T> | Iterable that uses the Criteria<nop>Iterator<T> |
+
+---++ Transformation
+---+++ Create new transformation
+LMFDBTransformer can be used for transforming a resource to a database, LMFXMLTransformer transforms the resource directly to XML file.  The transformation class should derive from one of these classes. The transformation is sequential, i.e. the LMF elements are saved one by one and removed from memory afterwards.  In this away we avoid running out of memory. In both cases following functions should be implemented:
+
+|*Function name* | *Description*|
+|getResourceAlias() | Should return an abbreviation or alias of the transformed resource (e.g. WktEn or WikiEn)|
+|createLexicalResource() | Should return a _LexicalResource_ . Only _name_ and _globalInformation_ should be set (Lexicons and other subelements should not be set)|
+|createNextLexicon() | Should return the next Lexicon that should be transformed. If there is no next Lexicon, i.e. all lexicons have been transformed, then return _null_ . Only direct attributes of the Lexicon are required(e.g. id, languageIdentifier), subelements such as LexicalEntries should not be set. |
+|||
+<br>
+Each of the following functions is called successively in a loop for each Lexicon. When the function returns null, the transformer goes on to the next function and calls it successively. If all functions have returned null, i.e. there are no further elements of current Lexicon that should be saved, then the createNextLexicon() function is called again to get the next Lexicon. If there is another Lexicon (i.e. createNextLexion() does not return null), the process starts over.
+<br>
+|*Calling order*| *Function name* | *Description* |
+|1|getNextLexicalEntry() | Should return the next _LexicalEntry_ with all its subelements from current _Lexicon_ , i.e. the Lexicon that was last returned by createNextLexicon(). If there is no next LexicalEntry, should return _null_. |
+|2|getNextSubcategorizationFrame()| Should return the next  _SubcategorizationFrame_ with all its subelements form current _Lexicon_. If there is no next SubcategorizationFrame, should return _null_. |
+|3|getNextSubcategorizationFrameSet()| The same for _SubcategorizationFrameSet_  |
+|4|getNextSemanticPredicate()| The same for _SemanticPredicate_ |
+|5|getNextSynset()| The same for _Synset_ |
+|6|getNextSynSemCorrespondence()| The same for _SynSemCorrespondence_ |
+|7|getNextConstraintSet()| The same for _ConstraintSet_ |
+<br>
+After all lexicons have been saved, function for saving SenseAxis is called:
+|*Function name*| *Description*|
+|getNextSenseAxis()|Should return the next SenseAxis of the LexicalResource with all its subelements. If there are no SenseAxis left, should return null|
+<br>
+At the end of the transformation the transformer will call _finish()_ function. In this function some unfinished task can be specified.
+<br>
+
+*Generation of LMF IDs* <br>
+The LMFTransformer class has a function _getLmfId(Class clazz, String originalId)_. The function returns unique LMF ID of a form  Resource<nop>Alias<nop> _<nop>ClassName<nop>_<nop>Counter. The function needs class of the element, for which the ID should be generated and original ID of the element in the original resource. Internally, the transformer saves the mappings of the original IDs  to the generated LMF IDs. In such a way, for an element with the same original ID the getLmfId(..) - method returns the same LMF ID. For example, there is a SenseRelation between two Senses. We extract this relation from the source Sense, but it can happen that the target Sense is not yet saved(e.g. it will first occur later in the iteration process). For the source Sense we call getLmfId(Sense.class, originalTargetSenseID), we get LMF ID for the target Sense and save the relation. When the target Sense occurs later in the resource, we call getLmfId(Sense.class, senseID) for it and get the same LMF ID as it had in the SenseRelation. Therefore, the connection between two senses is established through the same senseID. <br>
+It is possible that the original resource does not explicitly have a unique identifier for some element, but normally it should be possible to uniquely identify these elements by their properties and create some artificial ID.
+<br>
+
+*Access to already saved elements* <br>
+By using database and LMFDBTrasnformer it is possible to access objects that have already been saved to the database. By calling _getLmfObjectById(Class clazz, String id)_ , the object of specific class with given LMF ID is returned. If this object was not yet saved in the database, then _null_ is returned. It is possible to modify this object and update it in the database by calling _update(Object obj)_ if the changes were made directly to some object attributes or _saveList(Object parent, List list)_ if some Collection/List of the object was changed (e.g. if some new Senses were added to the LexicalEntry then we call _saveList(lexicalEntry, lexicalEntry.getSenses())_. In this way all Senses are saved to the database and LexicalEntry is updated)
+
+---+++ Start Transformation
+For the transformation, LMFDBTransformer requires DBConfig object with all database and path settings, which is passed to the constructor. LMFXMLTransformer requires LMFWriter object that handles the writing to XML file.
+The transformation is then started by calling _transform()_ method.
+<br>
+
+*Creation of tables* <br>
+If the database was just created and there are no LMF tables yet, they can be created by calling _LMFDBUtils.createTables(DBConfig)_ . The function needs database configuration. It automatically creates all tables that are needed for Hibernate mapping that is specified in the hibernate map files.
+<br>
+
+*Deleting of existing resource* <br>
+If some lexical resource was already imported to the database, it is necessary to completely remove it before importing it again. There are methods _LMFDBUtils.deleteLexicalResourceFromDatabase(LexicalResource, DBConfig)_ for deleting LexicalResource and _LMFDBUtils.deleteLexiconFromDatabase(LexicalResource, DBConfig)_ for deleting of single lexicon. The method _deleteLexicalResourceFromDatabase(..)_ is automatically called when starting the transformation in LMFDBTransformer. The delete process is very fast, as the delete command is cascaded to all subelements of the LexicalResource or Lexicon by using ON DELETE CASCADE option on foreign key constraints in the database. Most of the constraints are automatically created by Hibernate. However, some constraints should be created manually. _LMFDBUtils.turnOnConstraints()_ adds missing constraints to the database. _LMFDBUtils.turnOffConstraints()_ removes these constraints from the database as they may cause some errors during the import process. These methods are automatically called during the transformation in LMFDBTransformer: before transformation start _turnOffConstraints()_ is called and after transformation is finished _turnOnConstraints()_ is called.
+
+---+++ XML to database and database to XML
+*XMLToDBTransformer* <br>
+For importing of existing LMF XMLs in the database XMLToDBTransformer can be used. It uses the XML to database mapping feature of Hibernate. The XML file is parsed sequentially with DOM4J library. Such elements as LexicalEntry, SubcategorizationFrame, Synset etc. are periodically committed to the database and removed from the memory. The transformer needs DBConfig object. To start the transformation we call the function _transform(File xmlFile, String lexicalResourceName)_ with path to XML-File and name of the resource that should be converted. Similar to LMFDBTransformer the existing resource is first completely deleted from the database and the new version is imported afterwards.
+<br>
+
+*DBToXMLTransformer* <br>
+In order to dump the LexicalResource from the database to a XML-File, _DBToXMLTransformer_ can be used. It needs DBConfig with all database settings and LMFWriter which holds the writer settings for the XML-file. The transformation is started by calling _transform(LexicalResource lexicalResource)_ . For the given _lexicalResource_ the _name_ -Attribute should be set. Other attributes are not required.
+
+---++ Hibernate map files
+The mapping of classes, attributes and relations between classes to the database is stored in multiple hibernate map files, one for each class. The map files also contain the mapping from XML elements to the database. Exerpt from map file for LexicalEntry:
+
+<verbatim>
+<hibernate-mapping>
+<class name="de.tudarmstadt.ukp.lmf.model.core.LexicalEntry" table="LexicalEntry" node="LexicalEntry" dynamic-insert="true">        
+    <id name="id" column="lexicalEntryId" node="@id" type="string"/>
+
+    <property name="separableParticle" column="separableParticle" node="@separableParticle" type="string"/>
+    
+    <property name="partOfSpeech" column="partOfSpeech" node="@partOfSpeech">    
+    	<type name="de.tudarmstadt.ukp.lmf.hibernate.EnumUserType">
+         	<param name="enumClassName">de.tudarmstadt.ukp.lmf.model.enums.EPartOfSpeech</param>         	
+      	</type>
+    </property>  	
+
+    <many-to-one name="lemma"  class="de.tudarmstadt.ukp.lmf.model.morphology.Lemma" 
+			column="lemmaId"   node="Lemma" unique="true" foreign-key="none"  lazy="false"/>		
+
+    <list name="senses" node=".">
+         <key column="lexicalEntryId" on-delete="cascade"/>
+         <index column="idx"/>
+         <one-to-many class="de.tudarmstadt.ukp.lmf.model.core.Sense" node="Sense"/>
+     </list> 
+     ...
+</class>
+</hibernate-mapping>
+</verbatim>
+
+In the following different parts of this exerpt are described:
+
+<verbatim>
+<class name="de.tudarmstadt.ukp.lmf.model.core.LexicalEntry" table="LexicalEntry" node="LexicalEntry" dynamic-insert="true"> 
+</verbatim>
+Maps the class  or XML-node to the database:
+   * __name__ -  Name of the class that should be mapped
+   * __node__ - Name of the XML-Element that contains this class|
+   * __table__ - Name of the table where objects of this class should be stored|
+   * __dynamic-insert__  - Helps to improve transformation performance (If it is true, then SQL INSERT-statements are shorter because they do not include attributes that are null)|
+----------------------------------------
+<verbatim>
+<id name="id" column="lexicalEntryId" node="@id" type="string"/> 
+</verbatim>
+Unique identifier of this object, will be converted to the primary key of the table:
+   * __name__ - Name of the class attribute that holds the identifier
+   * __column__ - Name of the column in the database that will contain this identifier and will be the primary key
+   * __node__ - XML-Element that holds the identifier. In this case "@id" points to the id-attribute of the node LexicalEntry
+   * __type__ - Data type of the identifier
+If a class does not have an explicit id, e.g. FormRepresentation, then id can be generated automatically, for example:
+<verbatim>
+<id column="formRepresentationId" type="long">
+           <generator class="increment"/>
+</id>
+</verbatim>
+This creates a numerical ID which is incremented for each new FormRepresentation.
+----------------------------------------
+<verbatim>
+<property name="separableParticle" column="separableParticle" node="@separableParticle" type="string"/>
+</verbatim>
+Some simple attribute of the class that does not require any relation mapping
+   * __name__ - Name of the class attribute
+   * __column__ - Name of the column in the database
+   * __node__ - XML-Element that holds this attribute. In this case "@separableParticle" points to the "separableParticle" - Attribute of the node LexicalEntry
+   * __type__ - Data type of the attribute
+---------------------------------------- 
+<verbatim>
+<property name="partOfSpeech" column="partOfSpeech" node="@partOfSpeech">    
+    	<type name="de.tudarmstadt.ukp.lmf.hibernate.EnumUserType">
+         	<param name="enumClassName">de.tudarmstadt.ukp.lmf.model.enums.EPartOfSpeech</param>         	
+      	</type>
+</property>
+</verbatim>
+For mapping of Enum variables it is necessary to specify the Enum - Class, because Hibernate should know which Enum values are allowed. We use the EnumUserType-class to implement this behaviour. <br>
+__name__ , __column__ and __node__ attributes are specified as for other property-Elements. Between __param__ -tags we should insert the name of the Enum class.
+----------------------------------------
+<verbatim>
+ <many-to-one name="lemma"  class="de.tudarmstadt.ukp.lmf.model.morphology.Lemma" 
+						column="lemmaId" node="Lemma" unique="true" foreign-key="none"/>	
+</verbatim>
+For one-to-one relation like LexicalEntry-Lemma we use <many-to-one ..> tag with _unique_ -Attribute set tot _true_ . Hibernate has a <one-to-one ..> tag as well. It is, however, required to have this tag in both related classes. In our model the relationship is unidirectional, i.e. the LexicalEntry has a Lemma, but Lemma is not connected to the LexicalEntry. Therefore, the use of <one-to-one..> -Tag is not possible.  The work around is to use <many-to-one>-Tag. The _unique_ -Attribute says that it is not possible for several LexicalEntries to have the same Lemma.
+   * __name__ - Name of the class attribute
+   * __class__ - The class of the related entity
+   * __column__ - Column where the identifier of the related entity will be stored
+   * __node__ - Node, i.e. name of the sub-element of the LexicalEntry-Node, where the Lemma is stored in the XML-file
+   * __foreign-key__ - If none, no foreign-key for Lemma in the LexicalEntry-Table will be created. As we do not want that LexicalEntry is constrained by the Lemma, no foreign-key in the LexicalEntry-Table is needed. We want it to be the other way around, Lemma should be constrained by the LexicalEntry(e.g. for cascade deleting).  It is not possible to describe it in Hibernate. Therefore this constraint is created by calling _LMFDBUtils.turnOnConstraints()_ as described above.
+   * __lazy__ - lazy="false" means that the Lemma will be loaded from the database together with the LexicalEntry. Alternatively, by having lazy="true the Lemma would be loaded only by trying to access the lemma-Attribute of the LexicalEntry-class.
+----------------------------------------
+<verbatim>
+<list name="senses" node=".">
+         <key column="lexicalEntryId" on-delete="cascade"/>
+         <index column="idx"/>
+         <one-to-many class="de.tudarmstadt.ukp.lmf.model.core.Sense" node="Sense"/>
+</list> 
+</verbatim>
+Maps the list of Senses of this LexicalEntry to the database as one-to-many Relation. 
+   * __name__ - Name of the class attribute
+   * __node__ - Node, which contains the list in the XML-File. In this case "." means that Sense-Elements are contained in the root of this class, i.e. inside the LexicalEntry-Element.
+   * __&lt;key&gt;__
+      * __column__ - Column name in the Sense-Table that will hold the id of this LexicalEntry
+      * __on-delete="cascade"__ - Hibernate will automatically add ON DELETE CASCADE constraint to the Sense-Table. This means, that when a LexicalEntry is deleted, all of its Senses will be deleted as well
+   * __&lt;index&gt;__
+      * __column__ - As this mapping maps a list, we need some column which holds the index number of each element to be able to retrieve the elements in the same order as inserted.
+   * __&lt;one-to-many class="de.tudarmstadt.ukp.lmf.model.core.Sense" node="Sense"/&gt;__ - Defines the actual relation to the other entity
+      * __class__ - The class of the related entity. If the class is mapped to several tables, then __entity-name__ attribute is needed for disambiguating the correct mapping(e.g. FormRepresentation_SenseRelation and FormRepresentation_Lemma)
+      * __node__ - Node, i.e. name of the sub-element of the LexicalEntry-Node, where each Sense is stored in the XML-file
+If the preserving of element order is not needed, then <bag...> can be used instead of <list...>
+---+++ Accessing inverse relations      
+In the LMF model and XML-DTD only the unidirectional relations are specified, e.g. from Lexicon to LexicalEntry, from LexicalEntry to Sense, from Sense to Synset, from Sense to SenseRelation. It is, however, often useful to have the inverse relation, e.g. to get a Lexicon of some LexicalEntry, to get a LexicalEntry of some Sense, to get all Senses of a Synset or to get a source Sense of a SenseRelation. Normally, in the database all columns that are needed for extracting of these relations are present. For example, Sense-Table has column lexicalEntryId. Therefore, it is possible to get LexicalEntry by manually querying for the lexicalEntryId and getting LexicalEntry from the LexicalEntry-Table. However, it is more convenient if Hibernate could do this automatically. For that, we can add an attribute lexicalEntry to the Sense class  and add the following relation to the Hibernate mapping :
+<verbatim>
+<many-to-one name="lexicalEntry" column="lexicalEntryId" class="de.tudarmstadt.ukp.lmf.model.core.LexicalEntry" insert="false" update="false"/>
+</verbatim>
+Hibernate will automatically set _lexicalEntry_ to the LexicalEntry with the ID equal to one stored in the _lexicalEntryId_ column. As all inserts and updates are handled by the LexicalEntry class we set insert="false" and update="false" in the Sense-class<br>
+-----------------------------------
+Senses are related to Synset through following relation:
+<verbatim>
+    <many-to-one name="synset" class="de.tudarmstadt.ukp.lmf.model.semantics.Synset" column="synsetId" 
+			node="@synset" foreign-key="none" not-found="ignore"/>
+</verbatim>
+We use _not-found="ignore"_ attribute, because it is possible that Sense is not assigned to any Synset and thus, _synsetId_ column stays _NULL_. Furthermore, we do not use _unique="true"_ attribute, because it is possible that several Senses have the same Synset. <br>
+For getting all Senses of a Synset we have to add _List<Sense> senses_ to the Synset-Class and insert following mapping to the Synset mapping file:
+<verbatim>
+<bag name="senses">
+        <key column="synsetId"/>
+        <one-to-many class="de.tudarmstadt.ukp.lmf.model.core.Sense" />
+</bag>
+</verbatim>
+We use <bag..> instead of <list..>, because it does not require <index..> - column(as described above), which is not present in the Sense-Table. Hibernate will automatically fill the senses-List in the Synset-class. <br>
+Although these mappings are convenient for simplifying the access to different elements, they cause errors during the transformation process. This happens because transformer does not set these attributes and they stay equal to _null_. For example, transformer sets the senses-List of the LexicalEntry, but it does not set the lexicalEntry-Attribute of each Sense. Therefore, it is better to use the mappings without these relations for the transformation and mappings with the relations for the access. <br>
+The mappings for transformation are stored in __"hibernatemap/transform"__ - Folder and for access  in __"hibernatemap/access"__ - Folder.
+---++ Uby-API
+__de.tudarmstadt.ukp.lmf.api.Uby__ - class is the main entrance point for the accessing of the Uby-Database. It needs DBConfig object, where following information should be set:
+   * __host__ - Host of the MySQL database, e.g. "bender.tk.informatik.tu-darmstadt.de"
+   * __database__ -  Name of the Uby-Database, e.g. "uby"
+   * __user__ - User to access the database, e.g. "student"
+   * __password__ - Password to access the database, e.g. "student"
+   * __hibernateMapPath__ - Path to the folder with Hibernate mappings. As described above for access we use mappings from "hibernatemap/access"-Folder
+   * __showSQL__ - If true, all SQL queries generated by Hibernate will be printed to the console
+The Uby-Class creates the Hibernate session:
+<verbatim>
+Configuration cfg = HibernateConnect.getConfiguration(dbConfig);
+SessionFactory sessionFactory = cfg.buildSessionFactory();
+Session session = sessionFactory.openSession();
+</verbatim>
+Currently Uby has the following access functions:
+|*Function name*|*Description*|
+|getLexicalResource(String name)| Returns LexicalResource with given name from the database|
+|getLexicalEntries(String word, EPartOfSpeech pos, Lexicon lexicon)|Returns all lexical entries for given parameters. _word_ -parameter is mandatory. _pos_ and _lexicon_ can be null. If pos or lexicon is not null, then lexical entries are additionally filtered by part-of-speech or lexicon|
+|getLexicalEntryIterator(EPartOfSpeech pos, Lexicon lexicon)| Returns an Iterator over lexical entries. If pos or lexicon are not null, then lexical entries are filtered by part-of-speech or lexicon|
+|getSenseIterator(Lexicon lexicon)|Returns an Iterator over senses. If lexicon is not null, then senses are filtered by Lexicon|
+|getSynsetIterator(Lexicon lexicon)|Returns and Iterator over synsets. If lexicon is not null, then synsets are filtered by Lexicon|
+<br>The Uby-class should be used for creating access-Methods, that need explicit querying in the database(and therefore a Hibernate session-Object). These are search methods (searching for writtenForm, part-of-speech etc.) and Iterator-methods. <br><br>
+The attributes and sub-elements of different LMF elements does not require explicit querying as they are automatically loaded by Hibernate. Get- and Set- methods of the classes inside __de.tudarmstadt.ukp.lmf.model__ -package are sufficient for that. However, it is possible to define some shortcuts inside these model classes. For example, instead of calling for each Sense sense.getDefintions().get(0).getTextRepresentations().get(0) we can add to the Sense-class function getDefintionText(), which does it automatically. Furthermore, for creation of Synset gloss we can define the following function, which aggregates all these definition texts:
+<verbatim>
+public String getGloss(){
+		StringBuilder result = new StringBuilder();
+		for(Sense sense : senses){
+			result.append(sense.getDefinitionText()+" ");
+		}
+		return result.toString();
+}
+</verbatim>
+For such accesses Hibernate will automatically load all needed elements.
+---+++ Search queries
+ For creation of searching queries like in the Uby class it is convenient to use Hibernate Criteria-API. For example, to get all LexicalEntries for a word filtered by POS and Lexicon we have to specify the following Criteria:
+<verbatim>
+Criteria criteria = session.createCriteria(LexicalEntry.class);
+criteria = criteria.add(Restrictions.eq("partOfSpeech", pos));		
+			     .add(Restrictions.sqlRestriction("lexiconId = '"+lexicon.getId()+"'")); // Alternatively: .add(Restrictions.eq("lexicon", lexicon)) if LexicalEntry has a link to its lexicon
+			     .createCriteria("lemma")
+			     .createCriteria("formRepresentations")
+			     .add(Restrictions.eq("writtenForm", word));				
+List<LexicalEntry> result = criteria.list();
+</verbatim>
+Every call to _add()_ or _createCriteria()_ method returns an updated Criteria, therefore it is possible to aggregate all settings in one call. With call to the _add()_ - function we can add some Restriction (i.e. the SQL WHERE clause) to current object. In our case we are adding eq(i.e. equal)-restriction on partOfSpeech-Variable (this is not the column name in the database, but name of the class attribute that holds this value). Furthermore, we are adding directly a SQL clause to the query by specifying sqlRestriction. The given string will appear as WHERE clause (WHERE lexiconId='...').    In order to search for a word we need to descend to the FormRepresentation-Level. Each subsequent call to the createCriteria() creates a JOIN to the table that holds the variable specified in the function parameter. E.g. "lemma" joins the Lemma table, "formRepresentations" joins the FormRepresentation_Lemma table. Finally, on the FormRepresentation_Lemma table we add a restriction (again a WHERE clause), which says that "writtenForm" should be equal to _word_ . By calling criteria.list() the resulting SQL-Query will be executed and retrieved rows will be returned as a List.
+---+++ Iteration
+In order to iterate over LMF elements the CriteriaIterator<T> can be used. It needs a Criteria with added restrictions as described above and number of elements that should be maximally loaded from the database. For example, iteration over all LexicalEntries with a specific POS and lexicon:
+
+<verbatim>
+Criteria criteria = session.createCriteria(LexicalEntry.class);		
+criteria = criteria.add(Restrictions.eq("partOfSpeech", pos))
+                             .add(Restrictions.sqlRestriction("lexiconId = '"+lexicon.getId()+"'"));			                             
+                             
+CriteriaIterator<LexicalEntry> lexicalEntryIterator = new CriteriaIterator<LexicalEntry>(criteria, 10);
+
+while(lexicalEntryIterator.hasNext()){
+       LexicalEntry nextLexicalEntry = lexicalEntryIterator.next();
+}
+</verbatim>
+First, we create all restrictions and provide the resulting Criteria to the CriteriaIterator. The CriteriaIterator will load LexicalEntries that satisfy all restrictions and return them by calling the next() method. 10 LexicalEntries will be loaded into memory for each SQL Query. This means that every 10 lexical entries the Iterator will query the database and save LexicalEntries into a buffer, from which it will return the LexicalEntry-objects by calling the next()-method. If this number is big, then less SQL queries are needed and iteration is faster. It takes, however, more memory as all objects has to be stored in a buffer. For iterating over all Synsets we can creation the following Iterator:
+<verbatim>
+Criteria criteria = session.createCriteria(Synset.class);
+criteria = criteria.add(Restrictions.sqlRestriction("lexiconId = '"+lexicon.getId()+"'"));
+CriteriaIterator<Synset> synsetIterator = new CriteriaIterator<Synset>(criteria, 10);
+</verbatim>
+---+++ Examples
+Extraction of LexicalEntries from GermaNet-Lexicon for a verb "gehen". Additionally, extraction of LexicalEntry senses, Synsets of these senses and Lemma forms of all Senses inside these Synsets:
+<verbatim>
+DBConfig dbConfig = new DBConfig("bender.tk.informatik.tu-darmstadt.de", "uby", "student", "student","hibernatemap/access", false);
+Uby uby = new Uby(dbConfig);
+
+LexicalResource gnLexResource = uby.getLexicalResource("GermaNet");
+Lexicon gnLexicon = gnLexResource.getLexicons().get(0);		
+
+for(LexicalEntry lexEntry : uby.getLexicalEntries("gehen", EPartOfSpeech.verb, gnLexicon)){
+	System.out.println("LexicalEntry: "+lexEntry.getId());
+	System.out.println("Lemma: "+lexEntry.getLemmaForm());
+	for(Sense sense : lexEntry.getSenses()){				
+		System.out.println("- Sense: "+sense.getId());
+		Synset synset = sense.getSynset();
+		System.out.println("-- Synset: "+synset.getId());
+		for(Sense sense2 : synset.getSenses()){
+			System.out.println("---- Synset Sense Lemma: "+sense2.getLexicalEntry().getLemmaForm());
+		}	
+	}
+}
+</verbatim>
+
+Iteration over all Synsets and extraction of SynsetRelations with source Synset, target Synset and relation type:
+<verbatim>
+DBConfig dbConfig = new DBConfig("bender.tk.informatik.tu-darmstadt.de", "uby", "student", "student","hibernatemap/access", false);
+Uby uby = new Uby(dbConfig);
+
+LexicalResource gnLexResource = uby.getLexicalResource("GermaNet");
+Lexicon gnLexicon = gnLexResource.getLexicons().get(0);		
+
+Iterator<Synset> synsetIterator = uby.getSynsetIterator(gnLexicon);
+while(synsetIterator.hasNext()){
+	Synset synset = synsetIterator.next();
+	System.out.println("Synset: "+synset.getId());
+	for(SynsetRelation synsetRelation : synset.getSynsetRelations()){
+		System.out.println("-- Synset Relation: "+synsetRelation.getRelType()+" "
+				+ synsetRelation.getSource().getId()+" "+synsetRelation.getTarget().getId());
+	}
+}
+</verbatim>
+
+---+++ Saving or updating objects in the database
+To save element in the database we have to start a Hibernate Transaction. After that we can save or update some object. After committing the transaction the changes will be stored in the database. For example, adding a Sense  to LexicalEntry. The sense should be saved, the lexicalEntry should be updated:
+<verbatim>
+Configuration cfg = HibernateConnect.getConfiguration(dbConfig);
+SessionFactory sessionFactory = cfg.buildSessionFactory();
+Session session = sessionFactory.openSession();
+Transaction	transaction = session.beginTransaction();	
+Sense sense = new Sense();
+....
+lexicalEntry.getSenses().add(sense);
+session.save(sense);
+session.update(lexicalEntry);
+transaction.commit();
+session.close();
+</verbatim>
+The changes are not stored in the database before transaction.commit() is called. After calling commit() new Transaction should be started in order to make another changes. Any number of changes can be committed at once. However, by having a big number of changes adding of new changes becomes slower. Therefore, it is recommended to periodically commit() transaction, close and reopen the session. After closing the session the objects that were saved are no longer persisted by Hibernate and should be reloaded if they are used in the new session.

@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="6"}%
+%META:TOPICPARENT{name="HristoLulev"}%
+   * Now that you have the Desktop CD, you'll need to reboot your computer to use Ubuntu. 
+   * Your computer's BIOS must be set to boot from CD first; otherwise, Windows will just load up again. To get into the BIOS settings, you usually have to press one of these keys during boot-up: Escape, F1, F2, F12, or Delete. Usually your computer will tell you which key to use.
+   * Once your BIOS is configured to boot from CD first, if you have Ubuntu in the drive, you should see this screen. Select your language.
+   * you may want to select *Try Ubuntu* without any change to your computer, as it will allow you to do other things (check your email, browse the web) while you're installing Ubuntu. 
+   or You may *Install Ubuntu* 
+   * After setting all the Regional and keyboard setting You will need to *Prepare the harddrive* 
+   * By default, the installer will give you the option to install Ubuntu side by side with whatever operating system is currently on your computer. You can choose that if you want to set up a dual-boot, but as I stated before, the safest dual-boot is probably with Wubi, unless you know what you're doing (in which case you shouldn't be looking at this guide). 
+      * You can either "use the entire disk", which is recommended because Ubuntu makes the rest automatically, or "specify partitions manually(advanced)". Here I'll explain how to do it manually since the default option is quite straightforward.
+      * Click on "Forward" and on the next screen select the *Free Memory* and *create new partition*. Now _Ubuntu_ needs three partitions:
+         *  __One__ a _swap_ partition, which is used as buffer memory during the installation, should be at least 1024, but is that it should not be less then the size of your RAM. To create it click on the free space and select _Create new partition_, select _Logical_ as mount point and set the size . 
+         * __Two__ _/_ -called the _root_ . Set it as _Logical_ and _Ext3_ and / as mount point .The root partition is akin to the "C" drive in Windows. Here are going to be saved the Operating System with the Installed Software, so feel free to set the size of that partition as Your needs, f.e. I'll set it to 40 GB(40960MB). 
+         * __Three__ create Your _/home_  partition. You can use the rest of the hard drive, or enter some number in MB according to Your needs and free space. Set it up as you would the home partition but choose _/home_ as the mount point.
+   * Click _Forward_ and on the next screen enter Your name, user-name and password
+   * Finalize: now its all configured, review your settings. Make sure you've a root and swap partition and that your windows partition has a mount point so you can access it.click *Install* and wait for the files to be copied.
+   * After finishing this Your PC needs to be restarted and the installation CD will be ejected automatically.
+ 
+-- Main.HristoLulev - 27 Apr 2009

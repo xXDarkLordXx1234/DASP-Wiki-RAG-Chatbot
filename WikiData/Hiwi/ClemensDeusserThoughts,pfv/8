@@ -1,0 +1,77 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1342639800" format="1.1" version="8"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+<!--
+  * Set ALLOWTOPICVIEW = Main.IrynaGurevych, Main.WolfgangStille
+  * Set ALLOWTOPICCHANGE =  Main.IrynaGurevych, Main.WolfgangStille
+//-->
+
+Some notes and thoughts that could be relevant for discussion or for the written thesis.
+
+---++++ June 21
+
+Testing suite brainstorming:
+
+The "pipeline" (incidentally, I now understand why DKPro is set up the way it is):
+   * Input is document metadata (loosely, could include key phrases and such)
+   * Output is a classification, let's assume for now that this will be multi label
+   * Manipulation inbetween, anywhere from DKPro to machine learning to graph algorithms
+   * Manipulation needs to be modular to a degree
+
+The rest:
+   * Input can be generated using keyphrase extraction for example, could be invoked with the pipeline, but does not need to be an integrated part of it
+   * gold standard can be generated separately
+   
+I'm not including full text analysis in the pipeline for now, we can generate metadata using the full text outside the pipeline should it be required. The reason for not including it in the pipeline is that we cannot treat full text like metadata, we'd have to analyse single documents as the amount of full text data is simply too large to process the entire database at once, so if I included full text in the pipeline I'd basically have to do design two versions of the pipeline since my current approach requires procession of the entire database to allow clustering.
+
+The main question would obviously be how to handle the manipulation part. Building a very general interface would not be a problem, but we probably desire a more modular and less generic approach, which would be difficult considering how little we know of what the manipulation should be. Building a DKPro like pipeline with a dedicated object (CAS) and an interface for its manipulation could be a solution, but I'm very unfamiliar with that type of design and the complexity of that approach would probably be overkill for our purposes.
+
+The reason why I assume multi label is because it feels like a much better approach for judging the quality of our results. Enabling partially correct results would allow us to see improvement even if our result does not yet match to the correct category, improving the testing process. Multi label also feels like a more natural and correct classification since many papers relate to several categories. In our meetings a process was mentioned that maps multi label results to single labels, so if our end result is required to be single label, then that could simply be appended afterwards.
+
+---++++ June 18
+
+Possible evaluation methods:
+   * Cross validation 
+   * Keywords (closest to current "approach", check keywords and determine whether they match up with each other and form a coherent cluster)
+   * Extracted information ("keyphrases", nouns, verbs etc. Similar to previous one, but using additional information rather than just the provided one)
+
+Combination of first and last approach? Cluster using keywords, evaluate using extracted information. Keywords may not be sufficient for classification though.
+
+Using cross validation on separate training and validation sets results in the general question of how to determine those sets, what is an appropriate, representative set? How do we even evaluate the validation set?
+
+Currently our method of validation is looking at keywords from the generated clusters and guessing whether they are related to each other. In addition, we can look at how spread the clusters are, if we get a single large cluster then the result is likely not a good one. Obviously this needs to be improved somehow.
+
+---++++ June 15
+
+*IG:* I allow me just a short comment, as we have a meeting on Tuesady anyway. We have to formalize und understand the task properly before you start any experiments. We should then determine good baselines and understand their results for a set of experimental configurations we define. Then, we should define a hypothesis how / which graph-based methods to use and why, and verify this experimentally. But not having this plan, we run the risk of investing the valuable time in not-so-promising-things. For example, if you asked me, I would have told you long time ago that using keywords as your representation is not a good way to go. They do not encode enough context (apart from poor quality) to serve as a good representation for an NLP task. This is known in the literature.
+
+Just using the nouns of the description (abstract) could be more successful, semi-redundancy may actually strenghten correct results. Should be tested once I find out how to get the DKPro pipeline to actually deliver it's results.
+
+How can we cluster papers around specific (pre defined) topics?
+
+I've talked about this with Wolfgang, he suggested that we could define our topics as points in our search space and build our clusters around these topics.
+
+I'm not sure how that is supposed to work with Chinese Whispers however, we could certainly force a class to exist, but we cannot really force nodes to be part of that class without skewing the results. And in either case, if we go by a search space approach with our nodes as vectors in this space and distances as the cosine of the angle, then what do we need a graph for? We could just as well use any one of the many statistical clustering algorithms that work just fine without a graph representation, right?
+
+It's not really a problem yet since we're not quite far enough, but it seems to me that it's bound to become one.
+
+---++++ June 14
+
+I'm beginning to think that a dozen keywords per document is not enough for a statistical approach, which is essentially what we're doing right now. I think we either need many more keywords per document or some sort of interpretation of those keywords.
+
+Germanet/Wordnet/UBY *may* be an answer and I'll definitely check those out, but for now I remain unconvinced for the following reasons:
+
+1: How usable are they? What I've seen so far is underwhelming, they could very well be another case of DKPro that'd take ages to learn for a more questionable benefit.
+2: Generalising words to synonyms or hypernyms never generates data, you always lose data, is that really a good way to go if you don't have much data to begin with?
+3: Even as a human I have a hard time roughly classifying a pedocs paper just by looking at the keywords, how could a rather rudimentary method that just generalises information produce better results? While being far from an expert, I think we need actual sophisticated NLP to squeeze information from the bits of data we have.
+
+To illustrate the last point, a random example:
+
+"Geschichtsunterricht ; Kooperation; Thema; Norm; Oral History; Moral; Sekundarstufe II; Unterrichtsprojekt; Grundschule; Berufsbildung; Außerschulische Einrichtung; Sekundarstufe I; Entwicklung;; Deutschland"
+
+This seems to be about history lessons, yet only two of the keywords actually pertain to that and one is in another language. All the other keywords are so general in their meaning that they barely help to specify the document further. While tf*idf helps against that, it only helps if those keywords are not just general, but also common in our database, which is not necessarily the case.
+
+"Sekundarstufe II; Grundschule; Rechtsextremismus; Sekundarstufe I; Deutschland"
+
+What is this one about? Radical right extremism in elementary schools, highschools and "Gymnasium"? So just right extremism in any school? Then "Schule, Rechtsextremismus" seems more fitting, so if we assume that the people setting the keywords did a good job, and they probably did, then the document is about something else, perhaps right extremism detailed in each of those stages, or perhaps a document *about* those stages with an interlude about right extremism? It could even be a document about teaching about right extremism.
+
+Without even the title of the document, it becomes pure guess work what it's about and the keywords seem to be less of a help than one would expect.

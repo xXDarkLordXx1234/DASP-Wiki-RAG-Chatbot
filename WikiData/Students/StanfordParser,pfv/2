@@ -1,0 +1,39 @@
+%META:TOPICINFO{author="IrinaAlles" date="1340704940" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="DependencyParser"}%
+-- Main.IrinaAlles - 2012-06-21
+---+ Stanford Parser
+A natural language parser is a program that works out the grammatical structure of sentences, for instance, which groups of words go together (as "phrases") and which words are the subject or object of a verb. Probabilistic parsers use knowledge of language gained from hand-parsed sentences to try to produce the most likely analysis of new sentences.
+---++Introduction
+This package is a Java implementation of probabilistic natural language parsers, both highly optimized PCFG and lexicalized dependency parsers, and a lexicalized PCFG parser. The original version of this parser was mainly written by Dan Klein, with support code and linguistic grammar development by Christopher Manning.
+
+The lexicalized probabilistic parser implements a factored product model, with separate PCFG phrase structure and lexical dependency experts, whose preferences are combined by efficient exact inference, using an A* algorithm. Or the software can be used simply as an accurate unlexicalized stochastic context-free grammar parser. Either of these yields a good performance statistical parsing system.
+
+The parser provides [[http://nlp.stanford.edu/software/stanford-dependencies.shtml][Stanford Dependencies]] output as well as phrase structure trees. Typed dependencies are otherwise known grammatical relations. This style of output is available only for English and Chinese.
+<SMALL>(partly taken from http://nlp.stanford.edu/software/lex-parser.shtml)</SMALL>
+---++Usage
+---+++++Installation
+The Stanford Parser can be downloaded [[http://nlp.stanford.edu/software/lex-parser.shtml#Download][here]].
+You just need to unpack the archive.
+---+++++Training
+To train the parser you will need a collection of syntactically annotated data such as the [[http://www.cis.upenn.edu/~treebank/home.html][Penn Treebank]]. 
+A sentence might look like this:
+<verbatim>%% Sent 2
+(
+	(S
+		(NN-SB Konzernchefs)
+		(VVFIN-HD lehnen)
+		(NP-OA
+			(ART-NK den)
+			(NN-NK Milliardär)
+		)
+		(PP-MO
+			(APPR-AC als)
+			(NN-NK US-Präsidenten)
+		)
+		(PTKVZ-SVP ab)
+	)
+)</verbatim>
+
+Use the following command for training:
+<verbatim>prompt>	java -mx1500m -cp stanford-parser.jar edu.stanford.nlp.parser.lexparser.LexicalizedParser -tLPP edu.stanford.nlp.parser.lexparser.NegraPennTreebankParserParams -encoding UTF-8  -train theTreebank.penn 0 -saveToSerializedFile yourModel.tar.gz
+</verbatim>

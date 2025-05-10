@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="BastianChristoph" date="1288028850" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+---++ Summary Evaluation
+
+%TOC%
+
+---++++ ROUGE: Setup using Dragon Toolkit
+   * [[SummaryEvalRougeSimple][Setup for Simple Example]]
+
+---++++ ROUGE Package: Implementations
+   * Dragon Toolkit: http://dragon.ischool.drexel.edu/features.asp (Java)
+   * Chin-Yew Lin: http://research.microsoft.com/~cyl/download/ROUGE-1.5.5.tgz (Perl)
+
+---++++ Evaluation methods
+   * ROUGE Package
+   * Kappa Statistics
+   * Pyramid evaluation method
+      * -> Handling of semantic equivalence at varying levels of granularity
+      * -> Paper: http://www.cis.upenn.edu/~nenkova/papers/p1-nenkova.pdf

@@ -1,0 +1,464 @@
+=============================================================================================================================
+Sentence:In the genetic area, relations have been found between autism and schizophrenia based on duplications and deletions of chromosomes; research showed that schizophrenia and autism are significantly more common in combination with 1q21. 1 deletion syndrome.
+Parse Count: 12
+Semantic Parse:  [deletion(1:s , 0:type.int), syndrome.1(2:e , 0:type.int)]
+Lexical items: [0, 1]
+Events (with NN/NNP arguments)[]
+
+Metaline:Q41112==schizophrenia==**==
+
+
+=============================================================================================================================
+Sentence:Most land areas are in an albedo range of 0. 1 to 0. 4. The average albedo of Earth is about 0. 3.
+Parse Count: 11
+Semantic Parse:  [to.2(1:e , 2:type.int), to.1(1:e , 0:type.int)]
+Lexical items: [0, 1, 2]
+Events (with NN/NNP arguments)[]
+
+Metaline:Q2==Earth==**==
+
+
+=============================================================================================================================
+Sentence:Albedo affects climate and drives weather.
+Parse Count: 5
+Semantic Parse:  [weather.drives(4:s , 0:albedo), weather(5:s , 0:albedo), climate.affects.1(2:e , 0:albedo), climate(2:s , 0:albedo)]
+Lexical items: [0, 2, 4, 5]
+Node:0, Albedo  weather
+Events (with NN/NNP arguments)[2]
+
+Metaline:Q101038==Albedo==**==Q7937==climate==**==Q11663==weather==**==
+Node to ground: Albedo
+Annotated ID:Q101038 type: [physical quantity]
+Added node to LEFT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:Snow albedo is highly variable, ranging from as high as 0. 9 for freshly fallen snow, to about 0. 4 for melting snow, and as low as 0. 2 for dirty snow.
+Parse Count: 38
+Semantic Parse:  [snow.for.1(3:e , 0:type.int), snow(3:s , 0:type.int), snow.dirty(2:s , 0:type.int)]
+Lexical items: [0, 2, 3]
+Events (with NN/NNP arguments)[]
+
+Metaline:
+
+
+=============================================================================================================================
+Sentence:Deciduous trees have an albedo value of about 0. 15 to 0. 18 whereas coniferous trees have a value of about 0. 09 to 0. 15.
+Parse Count: 6
+Semantic Parse:  [to.2(1:e , 2:type.int), to.1(1:e , 0:type.int)]
+Lexical items: [0, 1, 2]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:These variants, the Italic and Roman forms, were derived from the Caroline Script version.
+Parse Count: 21
+Semantic Parse:  [variants(1:s , 1:x), derived.2(10:e , 6:roman), Italic.'s.1(4:e , 6:roman), version(14:s , 13:caroline-script), Italic.'s.2(4:e , 6:roman), UNIQUE(6:roman), UNIQUE(13:caroline-script), derived.from.2(10:e , 13:caroline-script)]
+Lexical items: [1, 13, 14, 6, 10]
+Node:13, Caroline_Script UNIQUE version
+Node:6, Roman UNIQUE  
+Events (with NN/NNP arguments)[4, 10]
+
+Metaline:Q9820==C==**==
+Node to ground: Roman
+Disambiguation: Q1115393,Q933726,Q16898442,Q202458,Q227668,Q406506,Q1137271,Q16882248,Q11242044,Q7361566,Q1260840,Q1401088,
+Adding an ambiguous node to LEFT list
+Node to ground: Roman
+Annotated ID:Q1115393,Q933726,Q16898442,Q202458,Q227668,Q406506,Q1137271,Q16882248,Q11242044,Q7361566,Q1260840,Q1401088, type: null
+Added node to RIGHT list
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding for event/edge: 4
+Dismabiguation not possible as both nodes are ambigous..No property found in WikiData..Grounding not possible
+Node to ground: Roman
+Annotated ID:Q1115393,Q933726,Q16898442,Q202458,Q227668,Q406506,Q1137271,Q16882248,Q11242044,Q7361566,Q1260840,Q1401088, type: null
+Added node to RIGHT list
+Node to ground: Caroline Script
+Annotation not found
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:In one study, on average, about 3. 68% of letters used in English texts tend to be a, while the number is 6. 22% in Spanish and 3. 95% in French.
+Parse Count: 23
+Semantic Parse:  [Spanish(3:s , 5:type.int), %.in.2(1:e , 5:type.int), %(1:s , 0:type.int), %.in.1(1:e , 0:type.int)]
+Lexical items: [0, 1, 3, 5]
+Events (with NN/NNP arguments)[]
+
+Metaline:
+
+
+=============================================================================================================================
+Sentence:Alabama is nicknamed the Yellowhammer State, after the state bird.
+Parse Count: 3
+Semantic Parse:  [nicknamed.1(2:e , 4:yellowhammer-state), bird(9:s , 4:yellowhammer-state), bird.after.1(9:e , 4:yellowhammer-state), bird.state(8:s , 4:yellowhammer-state), UNIQUE(4:yellowhammer-state), nicknamed.2(2:e , 0:alabama)]
+Lexical items: [0, 2, 4, 8, 9]
+Node:0, Alabama   
+Node:4, Yellowhammer_State UNIQUE bird
+Events (with NN/NNP arguments)[2, 9]
+
+Metaline:Q173==Alabama==**==Q16819 ref=northern flicker|Yellowhammer==Yellowhammer==**==
+Node to ground: Yellowhammer State
+Annotation not found
+Node to ground: Alabama
+Annotated ID:Q173 type: [state of the United States]
+Added node to RIGHT list
+Insufficient Nodes OR Node pair not connected by a relation 
+Node to ground: Yellowhammer State
+Annotated ID: type: []
+Added node to LEFT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:The capital of Alabama is Montgomery.
+Parse Count: 1
+Semantic Parse:  [capital.of.2(1:e , 3:alabama), UNIQUE(5:montgomery), capital.of.1(1:e , 5:montgomery), capital(1:s , 5:montgomery)]
+Lexical items: [1, 3, 5]
+Node:3, Alabama   
+Node:5, Montgomery UNIQUE capital
+Events (with NN/NNP arguments)[1]
+
+Metaline:Q173==Alabama==**==Q29364 ref=Montgomery, Alabama|Montgomery==Montgomery==**==
+Node to ground: Alabama
+Annotated ID:Q173 type: [state of the United States]
+Added node to RIGHT list
+Node to ground: Montgomery
+Annotated ID:Q29364 type: [capital, city, county seat]
+Added node to LEFT list
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding for event/edge: 1
+Grounding nodes Montgomery and Alabama. Grounded Properties: [[capital of, P1376], [located in the administrative territorial entity, P131]]
+
+Grounded phrase: described by source.1(e , Montgomery) ^ described by source.2(e , x)
+Denotations: [Q19180675, Q602358]
+
+Grounded phrase: country.1(e , Montgomery) ^ country.2(e , x)
+Denotations: [Q30]
+
+Grounded phrase: located in the administrative territorial entity.1(e , Montgomery) ^ located in the administrative territorial entity.2(e , x)
+Denotations: [Q173, Q502784]
+
+Grounded phrase: topic's main category.1(e , Montgomery) ^ topic's main category.2(e , x)
+Denotations: [Q7464260]
+
+Grounded phrase: sister city.1(e , Montgomery) ^ sister city.2(e , x)
+Denotations: [Q219330, Q926713]
+
+Grounded phrase: instance of.1(e , Montgomery) ^ instance of.2(e , x)
+Denotations: [Q5119, Q515, Q62049]
+
+Grounded phrase: located in time zone.1(e , Montgomery) ^ located in time zone.2(e , x)
+Denotations: [Q5385]
+
+Grounded phrase: category for people who died here.1(e , Montgomery) ^ category for people who died here.2(e , x)
+Denotations: [Q18760919]
+
+Grounded phrase: category for people born here.1(e , Montgomery) ^ category for people born here.2(e , x)
+Denotations: [Q8064173]
+
+Grounded phrase: capital of.1(e , Montgomery) ^ capital of.2(e , x)
+Denotations: [Q173, Q81931]
+
+
+ Grounded parse 0 : described by source.1(e , Montgomery) ^ described by source.2(e , x)
+
+ Grounded parse 1 : country.1(e , Montgomery) ^ country.2(e , x)
+
+ Grounded parse 2 : located in the administrative territorial entity.1(e , Montgomery) ^ located in the administrative territorial entity.2(e , x)
+
+ Grounded parse 3 : topic's main category.1(e , Montgomery) ^ topic's main category.2(e , x)
+
+ Grounded parse 4 : sister city.1(e , Montgomery) ^ sister city.2(e , x)
+
+ Grounded parse 5 : instance of.1(e , Montgomery) ^ instance of.2(e , x)
+
+ Grounded parse 6 : located in time zone.1(e , Montgomery) ^ located in time zone.2(e , x)
+
+ Grounded parse 7 : category for people who died here.1(e , Montgomery) ^ category for people who died here.2(e , x)
+
+ Grounded parse 8 : category for people born here.1(e , Montgomery) ^ category for people born here.2(e , x)
+
+ Grounded parse 9 : capital of.1(e , Montgomery) ^ capital of.2(e , x)
+
+=============================================================================================================================
+Sentence:Cahaba, now a ghost town, was the first permanent state capital from 1820 to 1825.
+Parse Count: 15
+Semantic Parse:  [capital.from.1(12:e , 0:cahaba), town.ghost(4:s , 0:cahaba), capital.permanent(10:s , 0:cahaba), UNIQUE(0:cahaba), capital.from.2(12:e , 14:type.datetime), capital.to.2(12:e , 16:type.datetime), capital.state(11:s , 0:cahaba), town(5:s , 0:cahaba), town.now(2:s , 5:e), capital.to.1(12:e , 0:cahaba), capital(12:s , 0:cahaba), capital.first(9:s , 0:cahaba)]
+Lexical items: [0, 11, 12, 2, 14, 4, 5, 16, 9, 10]
+Node:0, Cahaba UNIQUE town
+Events (with NN/NNP arguments)[12]
+
+Metaline:
+Node to ground: Cahaba
+Id from query: Q1025752 type: [Wikimedia disambiguation page]Wikimedia disambiguation page
+Added node to LEFT list
+Node to ground: Cahaba
+Annotated ID:Q1025752 type: [Wikimedia disambiguation page]
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:The Confederacys capital was initially located at Montgomery.
+Parse Count: 2
+Semantic Parse:  [located(5:s , 2:x), capital(2:s , 2:x), located.initially(4:s , 5:e), located.at.2(5:e , 7:montgomery), UNIQUE(2:x), capital.Confederacys(1:s , 2:x)]
+Lexical items: [1, 2, 4, 5, 7]
+Events (with NN/NNP arguments)[]
+
+Metaline:Q29364 ref=Montgomery, Alabama|Montgomery==Montgomery==**==
+
+
+=============================================================================================================================
+Sentence:Alabama was heavily involved in the American Civil War.
+Parse Count: 1
+Semantic Parse:  [involved.in.2(3:e , 6:american-civil-war), involved.heavily(2:s , 3:e), UNIQUE(6:american-civil-war), involved.2(3:e , 0:alabama)]
+Lexical items: [0, 2, 3, 6]
+Node:0, Alabama   
+Node:6, American_Civil_War UNIQUE  
+Events (with NN/NNP arguments)[3]
+
+Metaline:Q4060371 ref=Alabama in the American Civil War|involved in the American Civil War==involved in the American Civil War==**==
+Node to ground: American Civil War
+Disambiguation: Q8676,Q20892041,
+Adding an ambiguous node to RIGHT list
+Node to ground: Alabama
+Disambiguation: Q173,Q2829450,Q4705177,Q2140332,Q2829452,Q227051,Q4705171,Q4705174,Q4705176,Q4705175,Q3607615,
+Adding an ambiguous node to RIGHT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:Birmingham experienced such rapid growth that it was called The Magic City.
+Parse Count: 5
+Semantic Parse:  [called.1(8:e , 10:magic-city), UNIQUE(10:magic-city), called.2(8:e , 6:it), experienced.2(1:e , 6:it), growth.rapid(3:s , 6:it), growth.such(2:s , 6:it), experienced.1(1:e , 0:birmingham), growth.that.1(4:e , 6:it), growth(4:s , 6:it)]
+Lexical items: [0, 1, 2, 3, 4, 6, 8, 10]
+Node:0, Birmingham   
+Node:10, Magic_City UNIQUE  
+Events (with NN/NNP arguments)[1, 8]
+
+Metaline:
+Node to ground: Birmingham
+Disambiguation: Q2256,Q79867,Q2188746,Q593324,Q865761,Q1922603,Q368323,Q4916587,Q5409875,Q865725,Q16860029,Q4916575,Q4916585,Q16243973,
+Adding an ambiguous node to LEFT list
+Insufficient Nodes OR Node pair not connected by a relation 
+Node to ground: Magic City
+Disambiguation: Q6730668,Q3843179,Q368733,Q6730667,Q20496916,
+Adding an ambiguous node to LEFT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:A notable natural wonder in Alabama is Natural Bridge rock, the longest natural bridge east of the Rockies , located just south of Haleyville.
+Parse Count: 4
+Semantic Parse:  [Natural(7:s , 8:bridge), located.just(21:s , 20:e), east.of.1(15:e , 8:bridge), wonder.natural(2:s , 8:bridge), located(20:s , 18:rockies), wonder.in.1(3:e , 8:bridge), UNIQUE(18:rockies), east.natural(13:s , 8:bridge), wonder.notable(1:s , 8:bridge), east.bridge(14:s , 8:bridge), UNIQUE(8:bridge), east.of.2(15:e , 24:haleyville), rock(9:s , 8:bridge), east.south(22:s , 15:e), east.of.2(15:e , 18:rockies), wonder.in.2(3:e , 5:alabama), wonder(3:s , 8:bridge), east.longest(12:s , 8:bridge)]
+Lexical items: [22, 12, 13, 24, 14, 15, 18, 1, 2, 3, 5, 7, 8, 9, 20, 21]
+Node:24, Haleyville   
+Node:18, Rockies UNIQUE located
+Node:5, Alabama   
+Node:8, Bridge UNIQUE Natural
+Events (with NN/NNP arguments)[3, 15]
+
+Metaline:Q173==Alabama==**==Q66555 ref=Natural Bridge, Alabama|Natural Bridge==Natural Bridge==**==Q413714==natural bridge==**==Q5463 ref=Rocky Mountains|Rockies==Rockies==**==Q79255 ref=Haleyville, Alabama|Haleyville==Haleyville==**==
+Node to ground: Bridge
+Disambiguation: Q19883530,Q2532492,Q82626,Q347789,Q846929,Q2925160,Q4966191,Q4966203,Q19087780,Q19087791,Q19087793,Q19087798,Q18615124,Q19087784,Q4966188,Q1109478,Q16860434,Q20537182,Q20538367,Q4966195,Q4966196,Q995971,Q995973,Q4966190,Q4966193,Q3908163,
+Adding an ambiguous node to LEFT list
+Node to ground: Alabama
+Annotated ID:Q173 type: [state of the United States]
+Added node to RIGHT list
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding for event/edge: 3
+Resolved dismabigutaion: No property found in WikiData..Grounding not possible
+Node to ground: Bridge
+Annotated ID:Q19883530,Q2532492,Q82626,Q347789,Q846929,Q2925160,Q4966191,Q4966203,Q19087780,Q19087791,Q19087793,Q19087798,Q18615124,Q19087784,Q4966188,Q1109478,Q16860434,Q20537182,Q20538367,Q4966195,Q4966196,Q995971,Q995973,Q4966190,Q4966193,Q3908163, type: null
+Added node to LEFT list
+Node to ground: Haleyville
+Annotated ID:Q79255 type: [city]
+Added node to RIGHT list
+Node to ground: Rockies
+Annotated ID:Q5463 type: [mountain range]
+Added node to RIGHT list
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding for event/edge: 15
+Resolved dismabigutaion: No property found in WikiData..Grounding not possible
+Resolved dismabigutaion: No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:Alabama is also prone to tropical storm s and even hurricanes.
+Parse Count: 5
+Semantic Parse:  [prone.also(2:s , 3:e), prone.1(3:e , 0:alabama)]
+Lexical items: [0, 2, 3]
+Events (with NN/NNP arguments)[]
+
+Metaline:Q173==Alabama==**==Q16799239==tropical storm==**==
+
+
+=============================================================================================================================
+Sentence:The United States Census Bureau estimates that the population of Alabama was 4,849,377 on July 1, 2014, which represents an increase of 69,641, or 1. 46%, since the 2010 Census.
+Parse Count: 21
+Semantic Parse:  [%.since.2(1:e , 6:census), %.since.1(1:e , 0:type.int), %(1:s , 0:type.int), UNIQUE(6:census)]
+Lexical items: [0, 1, 6]
+Node:6, Census UNIQUE  
+Events (with NN/NNP arguments)[1]
+
+Metaline:Q637413==United States Census Bureau==**==Q173==Alabama==**==Q523716 ref=2010 United States Census|2010 Census==2010 Census==**==
+Node to ground: Census
+Id from query: Q9185886 type: [Wikimedia disambiguation page]Wikimedia disambiguation page
+Added node to RIGHT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:The racial composition of the state was 68. 5% White (67.
+Parse Count: 14
+Semantic Parse:  [-LRB-.'s.2(3:e , 2:white), -LRB-.%(1:s , 0:type.int), -LRB-.'s.1(3:e , 0:type.int)]
+Lexical items: [0, 1, 2, 3]
+Node:2, White   
+Events (with NN/NNP arguments)[3]
+
+Metaline:Q49078 ref=White American|White==White==**==
+Node to ground: White
+Annotated ID:Q49078 type: [ethnic group]
+Added node to RIGHT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:2%), English (23.
+Parse Count: 4
+Semantic Parse:  [%(1:s , 0:type.int), English.1(4:e , 0:type.int)]
+Lexical items: [0, 1]
+Events (with NN/NNP arguments)[]
+
+Metaline:Q1344183 ref=English American|English==English==**==
+
+
+=============================================================================================================================
+Sentence:6%), Irish (7.
+Parse Count: 2
+Semantic Parse:  [%(1:s , 0:type.int), %.Irish(4:s , 5:x)]
+Lexical items: [0, 1, 4, 5]
+Events (with NN/NNP arguments)[]
+
+Metaline:Q1075293 ref=Irish American|Irish==Irish==**==
+
+
+=============================================================================================================================
+Sentence:7%), German (5.
+Parse Count: 1
+Semantic Parse:  [%.German(4:s , 5:x), %(1:s , 0:type.int)]
+Lexical items: [0, 1, 4, 5]
+Events (with NN/NNP arguments)[]
+
+Metaline:Q141817 ref=German American|German==German==**==
+
+
+=============================================================================================================================
+Sentence:1% of all Alabama residents five years old or older spoke only English at home in 2010, a minor decrease from 96. 1% in 2000.
+Parse Count: 17
+Semantic Parse:  [%(1:s , 0:type.int), %.in.1(1:e , 0:type.int), %.in.2(1:e , 3:type.datetime)]
+Lexical items: [0, 1, 3]
+Events (with NN/NNP arguments)[]
+
+Metaline:Q173==Alabama==**==
+
+
+=============================================================================================================================
+Sentence:The composition of other traditions is 0. 5% Mormon, 0. 5% Jewish, 0. 5% Muslim, 0. 5% Buddhist, and 0. 5% Hindu.
+Parse Count: 14
+Semantic Parse:  [0.1(4:e , 0:type.int), %(1:s , 0:type.int)]
+Lexical items: [0, 1]
+Events (with NN/NNP arguments)[]
+
+Metaline:
+
+
+=============================================================================================================================
+Sentence:Alabamas 2012 GDP increased 1. 2% from the previous year.
+Parse Count: 2
+Semantic Parse:  [increased.1(3:e , 0:alabamas), increased.1(4:s , 3:e)]
+Lexical items: [0, 3, 4]
+Events (with NN/NNP arguments)[]
+
+Metaline:Q173==Alabama==**==
+
+
+=============================================================================================================================
+Sentence:The states seasonally adjusted unemployment rate was 5. 8% in April 2015.
+Parse Count: 7
+Semantic Parse:  [rate(5:s , 7:type.int), rate.seasonally(2:s , 5:e), UNIQUE(7:type.int), rate.states(1:s , 7:type.int), rate.adjusted.1(5:e , 7:type.int), rate.unemployment(4:s , 7:type.int)]
+Lexical items: [1, 2, 4, 5, 7]
+Events (with NN/NNP arguments)[]
+
+Metaline:
+
+
+=============================================================================================================================
+Sentence:The remaining portion of the ThyssenKrupp plant had final bids submitted by ArcelorMittal and Nippon Steel for $1. 6 billion in March 2013.
+Parse Count: 22
+Semantic Parse:  [2013(4:s , 3:march), in.1(1:e , 0:type.int), in.2(1:e , 3:march)]
+Lexical items: [0, 1, 3, 4]
+Node:3, March  2013
+Events (with NN/NNP arguments)[1]
+
+Metaline:Q137910==ThyssenKrupp==**==Q27893==ArcelorMittal==**==Q651282==Nippon Steel==**==
+Node to ground: March
+Disambiguation: Q5626482,Q110,Q2569076,Q557757,Q19109600,Q227402,Q4282465,Q4283115,Q6756687,Q6756691,Q19026530,Q18890460,Q6756693,Q16201256,Q17096281,Q18890459,Q20784022,Q6756690,Q19026523,
+Adding an ambiguous node to RIGHT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:JVC America, Inc. operates an optical disc replication and packaging plant in Tuscaloosa.
+Parse Count: 7
+Semantic Parse:  [operates.1(3:e , 0:jvc-america), operates.1(3:e , 2:inc.)]
+Lexical items: [0, 2, 3]
+Node:0, JVC_America   
+Node:2, Inc.   
+Events (with NN/NNP arguments)[3]
+
+Metaline:Q215901 ref=JVC|JVC America, Inc.==JVC America, Inc.==**==Q234870==optical disc==**==
+Node to ground: JVC America
+Annotation not found
+Node to ground: Inc.
+Disambiguation: Q341678,Q954455,Q17484173,
+Adding an ambiguous node to LEFT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:UAB Hospital is the only Level I trauma center in Alabama.
+Parse Count: 1
+Semantic Parse:  [UNIQUE(0:uab-hospital), center.I(5:s , 0:uab-hospital), center.in.1(7:e , 0:uab-hospital), center(7:s , 0:uab-hospital), center.trauma.1(7:e , 0:uab-hospital), center.in.2(7:e , 9:alabama), center.Level(4:s , 0:uab-hospital), center.only(3:s , 0:uab-hospital)]
+Lexical items: [0, 3, 4, 5, 7, 9]
+Node:0, UAB_Hospital UNIQUE center
+Node:9, Alabama   
+Events (with NN/NNP arguments)[7]
+
+Metaline:Q7863705==UAB Hospital==**==Q3246647 ref=trauma center|Level I trauma center==Level I trauma center==**==Q173==Alabama==**==
+Node to ground: UAB Hospital
+Annotated ID:Q7863705 type: [hospital]
+Added node to LEFT list
+Node to ground: UAB Hospital
+Annotated ID:Q7863705 type: [hospital]
+Node to ground: Alabama
+Annotated ID:Q173 type: [state of the United States]
+Added node to RIGHT list
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding for event/edge: 7
+Grounding nodes UAB Hospital and Alabama. Grounded Properties: [[located in the administrative territorial entity, P131]]
+
+Grounded phrase: country.1(e , UAB Hospital) ^ country.2(e , x)
+Denotations: [Q30]
+
+Grounded phrase: located in the administrative territorial entity.1(e , UAB Hospital) ^ located in the administrative territorial entity.2(e , x)
+Denotations: [Q173]
+
+Grounded phrase: instance of.1(e , UAB Hospital) ^ instance of.2(e , x)
+Denotations: [Q16917]
+
+
+ Grounded parse 0 : country.1(e , UAB Hospital) ^ country.2(e , x)
+
+ Grounded parse 1 : located in the administrative territorial entity.1(e , UAB Hospital) ^ located in the administrative territorial entity.2(e , x)
+
+ Grounded parse 2 : instance of.1(e , UAB Hospital) ^ instance of.2(e , x)
+
+=============================================================================================================================

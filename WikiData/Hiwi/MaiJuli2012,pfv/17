@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="kluge" date="1375801001" format="1.1" version="17"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Mai-Juli 2012
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| SIG_KDSL.EduSeer | 14.05.2012 | 3 | Einarbeitung in CiteSeer |
+| SIG_KDSL.EduSeer | 24.05.2012 | 6 | Installation von JDK, Tomcat, Solr, Ant etc. am Server |
+| SIG_KDSL.EduSeer | 26.05.2012 | 6 | CiteseerX-Webapp läuft auf localhost:8080/citeseerx |
+| SIG_KDSL.EduSeer | 05.06.2012 | 2 | Seersuite installation guide:[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/SeerSuite/InstallingSeersuite.pdf][InstallingSeersuite.pdf]] |
+| SIG_KDSL.EduSeer | 17.06.2012 | 6 | Test Data ist importiert. Man kann über die Suche darauf zugreifen. z.B.<br>[[http://seersuite.ukp.informatik.tu-darmstadt.de:8080/citeseerx/search?q=nlp&submit=Search&sort=rel][http://seersuite.ukp.informatik.tu-darmstadt.de:8080/citeseerx/search?q=nlp&submit=Search&sort=rel]] |
+| SIG_KDSL.EduSeer | 21.06.2012 | 2 | MyCiteSeer funktioniert. Test user: csxuser, password: csx-devel.<br>Installation von Perl-Modulen und PDFBox für Ingestion. Konfiguration von FileConversion service. |
+| SIG_KDSL.EduSeer | 25.06.2012 | 3 | FileConversionService und ParsCit funktionieren |
+| SIG_KDSL.EduSeer | 02.07.2012 | 6 | Seersuite ingestion guide:[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/SeerSuite/SeersuiteIngestion.pdf][SeersuiteIngestion.pdf]] |
+| SIG_KDSL.EduSeer | 13.07.2012 | 5 | Import von deutschen Papers |
+| SIG_KDSL.EduSeer | 17.07.2012 | 2 | Import von deutschen Papers |
+| SIG_KDSL.EduSeer | 21.07.2012 | 5 | Einarbeitung in Re-Training von ParsCit und SVMHeaderParser |
+| SIG_KDSL.EduSeer | 24.07.2012 | 4 | Automatic ingestion of Pedocs PDFs |
+| SIG_KDSL.EduSeer | 26.07.2012 | 5 | Automatic ingestion of Pedocs PDFs |
+| SIG_KDSL.EduSeer | 29.07.2012 | 2 | Pedocs aus dem Jahr 2012 sind improtiert |
+| SIG_KDSL.EduSeer | 31.07.2012 | 3 | Indexierung der Pedocs. Instruktionen für ingestPedocs-Skript: SIG_KDSL.EduSeer |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60 | bis Ende Juli 2012 |
+<nop>

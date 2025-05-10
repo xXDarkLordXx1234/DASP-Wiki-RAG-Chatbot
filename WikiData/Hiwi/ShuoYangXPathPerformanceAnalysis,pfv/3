@@ -1,0 +1,127 @@
+%META:TOPICINFO{author="ShuoYang" date="1277753394" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ XPath Performance Analysis
+_Update 1 on 28.06: New data from !XmlFileReader with XPath v1.2_
+
+---++ Overview
+
+In a UIMA pipeline, a collection reader reads in files, creates annotations out of them and passes them over to the next processing stage in the pipeline. A great number of files to be processed are structured XML files, for example the GIRT format. On one hand, they are very much structurally similar enough to be processed uniformly. On the other, however, they also have their own slightly different content and we may only need a subset of information from them. Thus a flexible way to read in different kinds of XML files and get (only) the information we need through filtering is necessary.
+
+There is already a XML reader with Woodstox XML processor which, according to Woodstox's website, has its advantage in high-performance. But the current implementation of it leaves the XML structure relatively fixed. It is not yet very easy to adapt to other XML contents. So it solves the first problem mentioned above, but not the second.
+
+Enter XPath. The XML Path Language (XPath) is an element in !W3C's XSLT standard, which can be used to navigate through elements and attributes in an XML document with great flexibility. It works like a query: one specifies a XPath expression, and the relevant nodes of a XML document will be selected for further process. 
+
+XPath seems to be able to solve both problems. But it remains to be seen how it does performance-wise, which is what this article is about.
+  
+---++ Test Environment
+Tests were conducted on a laptop computer with Core 2 Duo 2.4GHz CPU, 4GB memory running Mac OS X 10.6.4. Java 1.6 was used as the programming language with UIMA version 2.3.0 and Java's built-in XPath library =javax.xml.xpath=. Furthermore, JUnit 4.8.1 was used as test tool and Java's =System.currentTimeMillis()= for time measurement, and Progress Meter was disabled.
+
+For collection reader we had !XmlFileReader(Woodstox) and !XmlFileReader(XPath) <del>1.0</del> 1.2. !XmlFileReader(XPath) in its <del>1.0</del> 1.2 implementation supports not yet all XML structures. But since !XmlFileReader(Woodstox) is limited too, it doesn't impose a big problem for performance comparison. For output we used =AnnotationWriter= which writes all annotations flatly into a plain text file.
+
+Each test class was run several times at once in one test group for each reader, producing a more accurate average performance. And for some test classes, test group was run several times to avoid situations like temporary system slow-downs.
+
+Following tests were conducted:
+| *Test Class* | *Description* | *Repeat in each Group* | *Repeat of Group* |
+| One File | Read in one GIRT file | 100 | 3 |
+| Several Files | Read in six GIRT files | 100 | 3 |
+| Hundreds of Files | Read in 192 GIRT files | 100 | 1 |
+| Thousands of Files | Read in 1536 GIRT files | 5 | 1 |
+
+---++ Test Results and Analysis
+[[https://spreadsheets.google.com/ccc?key=0AoWF2gmb8eYodFpFalBiX2Z4bzZ1TW5CT3MzUkRmY0E&hl=en&authkey=CKC7vNoE][Raw result data v1.2]]
+
+<del>[[https://spreadsheets.google.com/ccc?key=0AoWF2gmb8eYodGFZc3Q4cmg5WUpERVRhVURTZHN1UGc&hl=en&authkey=CNX5r5II][Raw result data v1.0]]</del>
+
+---+++ Initialization time
+Before the tests, there is one thing to notice: the initialization time. We see in the benchmark data uniformly, that for the exact same test, the first run takes several times longer than subsequent runs. And after the first run the durations stay much more stable. The longer duration for the first run may due to initialization of UIMA pipeline and every component. Since it's one time phenomenal it doesn't say much to the actual performance of the reader. And it makes the chart less readable. So the first run is left out in following results.
+
+---+++ One file
+<img src="https://spreadsheets0.google.com/oimg?key=0AoWF2gmb8eYodFpFalBiX2Z4bzZ1TW5CT3MzUkRmY0E&oid=3&zx=aolhmvj4bqzn" />
+
+| *Repeat of Group* | *Average Duration XPath [s]* | *Average Duration Woodstox [s]* | *Speed of XPath* [%]* |
+| 1 | 0.3310 | 0.3105 | -6.6 |
+| 2 | 0.3288 | 0.3085 | -6.6 |
+| 3 | 0.3245 | 0.3126 | -3.8 |
+| _Total_ | _0.3281_ | _0.3105_ | _-5.7_ |
+* +: faster, -: slower
+
+---+++ Several files
+<img src="https://spreadsheets0.google.com/oimg?key=0AoWF2gmb8eYodFpFalBiX2Z4bzZ1TW5CT3MzUkRmY0E&oid=8&zx=itomo83z0xwl" />
+
+| *Repeat of Group* | *Average Duration XPath [s]* | *Average Duration Woodstox [s]* | *Speed of XPath* [%]* |
+| 1 | 0.4061 | 0.4149 | +2.1 |
+| 2 | 0.4071 | 0.3947 | -3.1 |
+| 3 | 0.4088 | 0.4066 | -0.5 |
+| _Total_ | _0.4073_ | _0.4054_ | _-0.5_ |
+* +: faster, -: slower
+
+---+++ Hundreds of files
+<img src="https://spreadsheets0.google.com/oimg?key=0AoWF2gmb8eYodFpFalBiX2Z4bzZ1TW5CT3MzUkRmY0E&oid=9&zx=cwa98qwyrcjs" />
+
+| *Repeat of Group* | *Average Duration XPath [s]* | *Average Duration Woodstox [s]* | *Speed of XPath* [%]* |
+| 1 | 5.7587 | 5.7627 | +0.1 |
+* +: faster, -: slower
+
+---+++ Thousands of files
+<img src="https://spreadsheets0.google.com/oimg?key=0AoWF2gmb8eYodFpFalBiX2Z4bzZ1TW5CT3MzUkRmY0E&oid=10&zx=cd7nz8m0f5pg" />
+
+| *Repeat of Group* | *Average Duration XPath [s]* | *Average Duration Woodstox [s]* | *Speed of XPath* [%]* |
+| 1 | 44.0828 | 44.1543 | +0.2 |
+* +: faster, -: slower
+
+---+++ Performance Analysis
+As we can see, !XmlFileReader(XPath) in its v1.2 implementation is _very comparable_ in performance to XmlFileReader(Woodstox). The former was slightly slower than the latter when few files were processed, but soon caught up as the number of file increased. And finally it is even a bit faster for processing a lot of files, although the margin is small enough to be neglected. 
+
+With XPath, the performance of !XmlFileReader is also more stable, consistent in comparison to that with Woodstox. 
+
+
+<del>As we can see, a Collection Reader with XPath is considerably slower in its current implementation than that with Woodstox. It also gets slower as the data set increases in size. I wonder whether it has to do with the way files are read in, instead of pure processing, that takes longer</del>
+
+---++ Summary
+XPath provides an interesting possibility for working with XML files. It enables us to easily and flexibly select exactly the parts, and only the parts that we need in a XML file. A component reader with XPath provides thus more flexibility for XML files with all kinds of structures.  Performance-wise, the XmlFileReader with XPath is also very comparable with that with Woodstox, which is known for its high performance. In some cases the reader with XPath is only slightly slower than that with Woodstox, and in some cases, especially as the number of file increases, the reader with XPath performs even faster than Woodstox. 
+
+For its simplicity, flexibility, XPath is a good choice to process XML files. Its concrete implementation, !XmlFileReader(XPath), performs equally well or sometimes better than an implementation with Woodstox, which is less flexible and more structurally complicated. XPath and !XmlFileReader(XPath) is thus a good alternative for reading in and processing of XML files.
+
+
+<del>Performance-wise, however, it is slower than Woodstox in the current Reader implementation.</del>
+
+<del>I think it's possible to optimize the way files are read in in the Reader with XPath. Instead of 1 file each time, as it is now, we buffer in more at a time, thus decreases number of disk access, which may contribute to better performance.</del>
+
+<br>
+------
+<br>
+
+---++ Archive
+---+++ <del>Data for !XmlFileReader(XPath) v1.0</del>
+---+++ <del>One file</del>
+<img src="https://spreadsheets0.google.com/oimg?key=0AoWF2gmb8eYodGFZc3Q4cmg5WUpERVRhVURTZHN1UGc&oid=3&zx=n12le7m3x063" />
+
+| *Repeat of Group* | *Average Duration XPath [s]* | *Average Duration Woodstox [s]* | *Slower [%]* |
+| 1 | 0.3889 | 0.3105 | 25  |
+| 2 | 0.3950 | 0.3085 | 28 |
+| 3 | 0.3971 | 0.3126 | 27 |
+| Total | 0.3937 | 0.3105 | 27 |
+
+---+++ <del>Several files</del>
+<img src="https://spreadsheets.google.com/oimg?key=0AoWF2gmb8eYodGFZc3Q4cmg5WUpERVRhVURTZHN1UGc&oid=8&zx=ddszvey5prh7" />
+
+| *Repeat of Group* | *Average Duration XPath [s]* | *Average Duration Woodstox [s]* | *Slower [%]* |
+| 1 | 0.5278 | 0.4149 | 27 |
+| 2 | 0.5272 | 0.3947 | 34 |
+| 3 | 0.5264 | 0.4066 | 29 |
+| Total | 0.5271 | 0.4054 | 30 |
+
+---+++ <del>Hundreds of files</del>
+<img src="https://spreadsheets.google.com/oimg?key=0AoWF2gmb8eYodGFZc3Q4cmg5WUpERVRhVURTZHN1UGc&oid=9&zx=l92osviz6me3" />
+
+| *Repeat of Group* | *Average Duration XPath [s]* | *Average Duration Woodstox [s]* | *Slower [%]* |
+| 1 | 8.6090 | 5.7627 | 49 |
+
+---+++ <del>Thousands of files</del>
+<img src="https://spreadsheets.google.com/oimg?key=0AoWF2gmb8eYodGFZc3Q4cmg5WUpERVRhVURTZHN1UGc&oid=10&zx=qtfp568rtxqr" />
+
+| *Repeat of Group* | *Average Duration XPath [s]* | *Average Duration Woodstox [s]* | *Slower [%]* |
+| 1 | 68.5288 | 44.1543 | 55 |
+
+
+-- Main.ShuoYang - 28 Jun 2010

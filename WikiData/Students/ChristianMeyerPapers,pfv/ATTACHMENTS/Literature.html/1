@@ -1,0 +1,1929 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<title>JabRef References output</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+<!--
+// QuickSearch script for JabRef HTML export 
+// Version: 2.0
+//
+// Copyright (c) 2006-2008, Mark Schenk
+//
+// This software is distributed under a Creative Commons Attribution 3.0 License
+// http://creativecommons.org/licenses/by/3.0/
+
+// Some features:
+// + optionally searches Abstracts and Reviews
+// + allows RegExp searches
+//   e.g. to search for entries between 1980 and 1989, type:  198[0-9]
+//   e.g. for any entry ending with 'symmetry', type:  symmetry$
+//   e.g. for all reftypes that are books: ^book$, or ^article$
+//   e.g. for entries by either John or Doe, type john|doe
+// + easy toggling of Abstract/Review/BibTeX
+
+// Search settings
+var searchAbstract = true;
+var searchReview = true;
+
+// Speed optimisation introduced some esoteric problems with certain RegExp searches
+// e.g. if the previous search is 200[-7] and the next search is 200[4-7] then the search doesn't work properly until the next 'keyup'
+// hence the searchOpt can be turned off for RegExp adepts
+var searchOpt = true;
+
+if (window.addEventListener) {
+	window.addEventListener("load",initSearch,false); }
+else if (window.attachEvent) {
+	window.attachEvent("onload", initSearch); }
+
+function initSearch() {
+	// basic object detection
+	if(!document.getElementById || !document.getElementsByTagName) { return; }
+	if (!document.getElementById('qstable')||!document.getElementById('qs')) { return; }
+
+	// find QS table and appropriate rows
+	searchTable = document.getElementById('qstable');
+	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+	// split all rows into entryRows and infoRows (e.g. abstract, review, bibtex)
+	entryRows = new Array();
+	infoRows = new Array(); absRows = new Array(); revRows = new Array();
+
+	for (var i=0, k=0, j=0; i<allRows.length;i++) {
+		if (allRows[i].className.match(/entry/)) {
+			entryRows[j++] = allRows[i];
+		} else {
+			infoRows[k++] = allRows[i];
+			// check for abstract/review
+			if (allRows[i].className.match(/abstract/)) {
+				absRows.push(allRows[i]);
+			} else if (allRows[i].className.match(/review/)) {
+				revRows.push(allRows[i]);
+			}
+		}
+	}
+
+	//number of entries and rows
+	numRows = allRows.length;
+	numEntries = entryRows.length;
+	numInfo = infoRows.length;
+	numAbs = absRows.length;
+	numRev = revRows.length;
+
+	//find the query field
+	qsfield = document.getElementById('qsfield');
+
+	// previous search term; used for speed optimisation
+	prevSearch = '';
+
+	//find statistics location
+	stats = document.getElementById('stat');
+	setStatistics(-1);
+
+	// creates the appropriate search settings
+	createQSettingsDialog();
+
+	// shows the searchfield
+	document.getElementById('qs').style.display = 'block';
+	document.getElementById('qsfield').onkeyup = testEvent;
+}
+
+function quickSearch(tInput){
+
+	 if (tInput.value.length == 0) {
+		showAll();
+		setStatistics(-1);
+		qsfield.className = '';
+		return;
+	} else {
+		// only search for valid RegExp
+		try {
+			var searchText = new RegExp(tInput.value,"i")
+			closeAllInfo();
+			qsfield.className = '';
+		}
+		catch(err) {
+			prevSearch = tInput.value;
+			qsfield.className = 'invalidsearch';
+			return;
+		}
+	}
+	
+	// count number of hits
+	var hits = 0;
+
+	// start looping through all entry rows
+	for (var i = 0; cRow = entryRows[i]; i++){
+
+		// only show search the cells if it isn't already hidden OR if the search term is getting shorter, then search all
+		// some further optimisation is possible: if the search string is getting shorter, and the row is already visible, skip it. Then be careful with hits!
+		if(!searchOpt || cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
+			var found = false; 
+
+			var inCells = cRow.getElementsByTagName('td');
+			var numCols = inCells.length;
+				
+			for (var j=0; j<numCols; j++) {
+				cCell = inCells[j];
+				var t = cCell.innerText?cCell.innerText:getTextContent(cCell);
+				if (t.search(searchText) != -1){ 
+					found=true; 
+					break;
+				} 
+			}
+
+			// look for further hits in Abstract and Review
+			if(!found) {
+				var articleid = cRow.id;
+				if(searchAbstract && (abs = document.getElementById('abs_'+articleid))) {
+					if (getTextContent(abs).search(searchText) != -1){ found=true; } 
+				}
+				if(searchReview && (rev = document.getElementById('rev_'+articleid))) {
+					if (getTextContent(rev).search(searchText) != -1){ found=true; } 
+				}
+			}
+			
+			if(found) {
+				cRow.className = 'entry show';
+				hits++;
+			} else {
+				cRow.className = 'entry noshow';
+			}
+		}
+	}
+
+	// update statistics
+	setStatistics(hits)
+	
+	// set previous search value
+	prevSearch = tInput.value;
+}
+
+function toggleInfo(articleid,info) {
+
+	var entry = document.getElementById(articleid);
+	var abs = document.getElementById('abs_'+articleid);
+	var rev = document.getElementById('rev_'+articleid);
+	var bib = document.getElementById('bib_'+articleid);
+	
+	if (abs && info == 'abstract') {
+		if(abs.className.indexOf('abstract') != -1) {
+		abs.className.indexOf('noshow') == -1?abs.className = 'abstract noshow':abs.className = 'abstract';
+		}
+	} else if (rev && info == 'review') {
+		if(rev.className.indexOf('review') != -1) {
+		rev.className.indexOf('noshow') == -1?rev.className = 'review noshow':rev.className = 'review';
+		}
+	} else if (bib && info == 'bibtex') {
+		if(bib.className.indexOf('bibtex') != -1) {
+		bib.className.indexOf('noshow') == -1?bib.className = 'bibtex noshow':bib.className = 'bibtex';
+		}		
+	} else { 
+		return;
+	}
+
+	// check if one or the other is available
+	var revshow = false;
+	var absshow = false;
+	var bibshow = false;
+	(abs && abs.className.indexOf('noshow') == -1)? absshow = true: absshow = false;
+	(rev && rev.className.indexOf('noshow') == -1)? revshow = true: revshow = false;	
+	(bib && bib.className == 'bibtex')? bibshow = true: bibshow = false;
+	
+	// highlight original entry
+	if(entry) {
+		if (revshow || absshow || bibshow) {
+		entry.className = 'entry highlight show';
+		} else {
+		entry.className = 'entry show';
+		}		
+	}
+	
+	// When there's a combination of abstract/review/bibtex showing, need to add class for correct styling
+	if(absshow) {
+		(revshow||bibshow)?abs.className = 'abstract nextshow':abs.className = 'abstract';
+	} 
+	if (revshow) {
+		bibshow?rev.className = 'review nextshow': rev.className = 'review';
+	}
+	
+}
+
+function setStatistics (hits) {
+	if(hits < 0) { hits=numEntries; }
+	if(stats) { stats.firstChild.data = hits + '/' + numEntries}
+}
+
+function getTextContent(node) {
+	// Function written by Arve Bersvendsen
+	// http://www.virtuelvis.com
+	
+	if (node.nodeType == 3) {
+	return node.nodeValue;
+	} // text node
+	if (node.nodeType == 1) { // element node
+	var text = [];
+	for (var chld = node.firstChild;chld;chld=chld.nextSibling) {
+		text.push(getTextContent(chld));
+	}
+	return text.join("");
+	} return ""; // some other node, won't contain text nodes.
+}
+
+function showAll(){
+	// first close all abstracts, reviews, etc.
+	closeAllInfo();
+
+	for (var i = 0; i < numEntries; i++){
+		entryRows[i].className = 'entry show'; 
+	}
+}
+
+function closeAllInfo(){
+	for (var i=0; i < numInfo; i++){
+		if (infoRows[i].className.indexOf('noshow') ==-1) {
+			infoRows[i].className = infoRows[i].className + ' noshow';
+		}
+	}
+}
+
+function testEvent(e){
+	if (!e) var e = window.event;
+	quickSearch(this);
+}
+
+function clearQS() {
+	qsfield.value = '';
+	quickSearch(qsfield);
+}
+
+function redoQS(){
+	showAll();
+	quickSearch(qsfield);
+}
+
+// Create Search Settings
+
+function toggleQSettingsDialog() {
+
+	var qssettings = document.getElementById('qssettings');
+	
+	if(qssettings.className.indexOf('active')==-1) {
+		qssettings.className = 'active';
+
+		if(absCheckBox && searchAbstract == true) { absCheckBox.checked = 'checked'; }
+		if(revCheckBox && searchReview == true) { revCheckBox.checked = 'checked'; }
+
+	} else {
+		qssettings.className= '';
+	}
+}
+
+function createQSettingsDialog(){
+	var qssettingslist = document.getElementById('qssettings').getElementsByTagName('ul')[0];
+	
+	if(numAbs!=0) {
+		var x = document.createElement('input');
+		x.id = "searchAbs";
+		x.type = "checkbox";
+		x.onclick = toggleQSetting;
+		var y = qssettingslist.appendChild(document.createElement('li')).appendChild(document.createElement('label'));
+		y.appendChild(x);
+		y.appendChild(document.createTextNode('search abstracts'));		
+	}
+	if(numRev!=0) {
+		var x = document.createElement('input');
+		x.id = "searchRev";
+		x.type = "checkbox";		
+		x.onclick = toggleQSetting;
+		var y = qssettingslist.appendChild(document.createElement('li')).appendChild(document.createElement('label'));		
+		y.appendChild(x);		
+		y.appendChild(document.createTextNode('search reviews'));
+	}
+		
+	// global variables
+	absCheckBox = document.getElementById('searchAbs');
+	revCheckBox = document.getElementById('searchRev');
+	
+	// show search settings
+	if(absCheckBox||revCheckBox) {
+		document.getElementById('qssettings').style.display = 'block';
+	}
+}
+
+function toggleQSetting() {
+	if(this.id=='searchAbs') { searchAbstract = !searchAbstract; }
+	if(this.id=='searchRev') { searchReview = !searchReview; }
+	redoQS()
+} 
+-->
+</script>
+<style type="text/css">
+body { background-color: white; font-family: "Trebuchet MS", Arial, sans-serif; font-size: 12px; line-height: 1.2; padding: 1em; color: #2E2E2E; }
+
+#qs { width: auto; border-style: solid; border-color: gray; border-width: 1px 1px 0px 1px; padding: 0.5em 0.5em; display:none; position:relative; }
+#qs form { padding: 0px; margin: 0px; }
+#qs form p { padding: 0px; margin: 0px; }
+
+.invalidsearch { background-color: red; }
+
+table { border: 1px gray solid; width: 100%; empty-cells: show; }
+th, td { border: 1px gray solid; padding: 0.5em; vertical-align: top;  }
+td { text-align: left; vertical-align: top; }
+th { background-color: #EFEFEF; }
+
+td a { color: navy; text-decoration: none; }
+td a:hover  { text-decoration: underline; }
+
+tr.noshow { display: none;}
+
+tr.highlight td { background-color: #F1F1F1; border-top: 2px black solid; font-weight: bold; }
+tr.abstract td, tr.review td, tr.bibtex td { background-color: #F1F1F1; border-bottom: 2px black solid; }
+tr.nextshow td { border-bottom: 1px gray solid; }
+
+tr.bibtex pre { width: 100%; overflow: auto;}
+
+p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
+
+#qssettings { padding: 0.5em; position: absolute; top: 0.2em; right: 0.2em; border: 1px gray solid; background-color: white; display: none; }
+#qssettings p { font-weight: bold; cursor: pointer; }
+#qssettings ul { display: none; list-style-type: none; padding-left: 0; margin: 0; }
+#qssettings.active ul { display: block; }
+
+@media print {
+	p.infolinks, #qssettings, #qs { display: none !important; }
+	table { border-width: 0px; }
+	tr { page-break-inside: avoid; }
+	tr > * + * + * + * + * {display: none; }
+	thead tr::before { content: "Reference"; border: 1px gray solid; padding: 0.5em; vertical-align: top; font-weight: bold; text-align: center; display: table-cell; background-color: #EFEFEF; }
+	tr[id]::before { content: attr(id); display: table-cell; border: 1px gray solid; padding: 0.5em; vertical-align: top; font-style: italic; }
+}
+</style>
+</head>
+<body>
+
+<div id="qs">
+	<form action="">
+	<p>QuickSearch: <input type="text" name="qsfield" id="qsfield" autocomplete="off" title="Allows plain text as well as RegExp searches" /><input type="button" onclick="clearQS()" value="clear" />&nbsp; Number of matching entries: <span id="stat">0</span>.</p>
+	<div id="qssettings">
+		<p onclick="toggleQSettingsDialog()">Search Settings</p>
+		<ul></ul>
+	</div>
+	</form>
+</div>
+<table id="qstable" border="1">
+<thead><tr><th width="20%">Author</th><th width="30%">Title</th><th width="5%">Year</th><th width="30%">Journal/Proceedings</th><th width="10%">Reftype</th><th width="5%">DOI/URL</th></tr></thead>
+<tbody><tr id="Baeza92" class="entry">
+	<td>Baeza-Yates, R.A.</td>
+	<td>Introduction to data structures and algorithms related to information retrieval <p class="infolinks">[<a href="javascript:toggleInfo('Baeza92','bibtex')">BibTeX</a>]</p></td>
+	<td>1992</td>
+	<td>Information Retrieval: Data Structures and Algorithms, pp. 13-27&nbsp;</td>
+	<td>incollection</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Baeza92" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@incollection{Baeza92,
+  author = {Baeza-Yates,, Ricardo A.},
+  title = {Introduction to data structures and algorithms related to information retrieval},
+  booktitle = {Information Retrieval: Data Structures and Algorithms},
+  publisher = {Upper Saddle River NJ, Prentice-Hall, Inc.},
+  year = {1992},
+  pages = {13--27}
+}
+</pre></td>
+</tr>
+<tr id="Baum72" class="entry">
+	<td>Baum, L.E.</td>
+	<td>An inequality and associated maximization technique in statistical estimation for probabilistic functions of Markov processes <p class="infolinks">[<a href="javascript:toggleInfo('Baum72','bibtex')">BibTeX</a>]</p></td>
+	<td>1972</td>
+	<td>Inequalities III: Proceedings of the Third Symposium on Inequalities, pp. 1-8&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Baum72" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Baum72,
+  author = {Baum, Leonard E.},
+  title = {An inequality and associated maximization technique in statistical estimation for probabilistic functions of Markov processes},
+  booktitle = {Inequalities III: Proceedings of the Third Symposium on Inequalities},
+  publisher = {New York, NY, Academic Press},
+  year = {1972},
+  pages = {1--8}
+}
+</pre></td>
+</tr>
+<tr id="Baum67" class="entry">
+	<td>Baum, L.E. &amp; Eagon, J.A.</td>
+	<td>An Inequality with Applications to Statistical Estimation for Probabilistic Functions of a Markov Process and to a Model for Ecology <p class="infolinks">[<a href="javascript:toggleInfo('Baum67','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Baum67','bibtex')">BibTeX</a>]</p></td>
+	<td>1967</td>
+	<td>Bulletin of the American Mathematical Society<br/>Vol. 73(3), pp. 360-363&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://projecteuclid.org/DPubS/Repository/1.0/Disseminate?view=body&id=pdf_1&handle=euclid.bams/1183528841">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Baum67" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: The object of this note is to prove the theorem below and sketch two applications, one to statistical estimation for (probabilistic) functions of Markov processes and one to Blakley's model for ecology.</td>
+</tr>
+<tr id="bib_Baum67" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Baum67,
+  author = {Baum, Leonard E. and Eagon, J. A.},
+  title = {An Inequality with Applications to Statistical Estimation for Probabilistic Functions of a Markov Process and to a Model for Ecology},
+  journal = {Bulletin of the American Mathematical Society},
+  year = {1967},
+  volume = {73},
+  number = {3},
+  pages = {360--363},
+  url = {http://projecteuclid.org/DPubS/Repository/1.0/Disseminate?view=body&amp;id=pdf_1&amp;handle=euclid.bams/1183528841}
+}
+</pre></td>
+</tr>
+<tr id="Baum66" class="entry">
+	<td>Baum, L.E. &amp; Petrie, T.</td>
+	<td>Statistical Inference for Probabilistic Functions of Finite State Markov Chains <p class="infolinks">[<a href="javascript:toggleInfo('Baum66','bibtex')">BibTeX</a>]</p></td>
+	<td>1966</td>
+	<td>The Annals of Mathematical Statistics<br/>Vol. 37(6), pp. 1554-1563&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://projecteuclid.org/DPubS/Repository/1.0/Disseminate?view=body&id=pdf_1&handle=euclid.aoms/1177699147">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Baum66" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Baum66,
+  author = {Baum, Leonard E. and Petrie, Ted},
+  title = {Statistical Inference for Probabilistic Functions of Finite State Markov Chains},
+  journal = {The Annals of Mathematical Statistics},
+  year = {1966},
+  volume = {37},
+  number = {6},
+  pages = {1554--1563},
+  url = {http://projecteuclid.org/DPubS/Repository/1.0/Disseminate?view=body&amp;id=pdf_1&amp;handle=euclid.aoms/1177699147}
+}
+</pre></td>
+</tr>
+<tr id="Baum70" class="entry">
+	<td>Baum, L.E., Petrie, T., Soules, G. &amp; Weiss, N.</td>
+	<td>A Maximization Technique Occurring in the Statistical Analysis of Probabilistic Functions of Markov Chains <p class="infolinks">[<a href="javascript:toggleInfo('Baum70','bibtex')">BibTeX</a>]</p></td>
+	<td>1970</td>
+	<td>The Annals of Mathematical Statistics<br/>Vol. 41(1), pp. 164-171&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://projecteuclid.org/DPubS/Repository/1.0/Disseminate?view=body&id=pdf_1&handle=euclid.aoms/1177697196">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Baum70" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Baum70,
+  author = {Baum, Leonard E. and Petrie, Ted and Soules, George and Weiss, Norman},
+  title = {A Maximization Technique Occurring in the Statistical Analysis of Probabilistic Functions of Markov Chains},
+  journal = {The Annals of Mathematical Statistics},
+  year = {1970},
+  volume = {41},
+  number = {1},
+  pages = {164--171},
+  url = {http://projecteuclid.org/DPubS/Repository/1.0/Disseminate?view=body&amp;id=pdf_1&amp;handle=euclid.aoms/1177697196}
+}
+</pre></td>
+</tr>
+<tr id="Bharat98" class="entry">
+	<td>Bharat, K. &amp; Broder, A.</td>
+	<td>A technique for measuring the relative size and overlap of public Web search engines <p class="infolinks">[<a href="javascript:toggleInfo('Bharat98','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Bharat98','review')">Review</a>] [<a href="javascript:toggleInfo('Bharat98','bibtex')">BibTeX</a>]</p></td>
+	<td>1998</td>
+	<td>Computer Networks and ISDN Systems<br/>Vol. 30(1-7), pp. 379-388&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1016/S0169-7552(98)00127-5">DOI</a> &nbsp;</td>
+</tr>
+<tr id="abs_Bharat98" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: Search engines are among the most useful and popular services on the Web. Users are eager to know how they compare. Which one has the largest coverage? Have they indexed the same portion of the Web? How many pages are out there? Although these questions have been debated in the popular and technical press, no objective evaluation methodology has been proposed and few clear answers have emerged. In this paper we describe a standardized, statistical way of measuring search engine coverage and overlap through random queries. Our technique does not require privileged access to any database. It can be implemented by third-party evaluators using only public query interfaces.<p>We present results from our experiments showing size and overlap estimates for HotBot, AltaVista, Excite, and Infoseek as percentages of their total joint coverage in mid 1997 and in November 1997. Our method does not provide absolute values. However using data from other sources we estimate that as of November 1997 the number of pages indexed by HotBot, AltaVista, Excite, and Infoseek were respectively roughly 77M, 100M, 32M, and 17M and the joint total coverage was 160 million pages. We further conjecture that the size of the static, public Web as of November was over 200 million pages. The most startling finding is that the overlap is very small: less than 1.4% of the total coverage, or about 2.2 million pages were indexed by all four engines.</td>
+</tr>
+<tr id="rev_Bharat98" class="review noshow">
+	<td colspan="6"><b>Review</b>: WebSize in 1997: 200 million pages<p>Also published in:<p>@inproceedings297863,<p> author = Bharat,, Krishna and Broder,, Andrei,<p> title = A technique for measuring the relative size and overlap of public Web search engines,<p> booktitle = WWW7: Proceedings of the seventh international conference on World Wide Web 7,<p> year = 1998,<p> pages = 379--388,<p> location = Brisbane, Australia,<p> doi = http://dx.doi.org/10.1016/S0169-7552(98)00127-5,<p> publisher = Elsevier Science Publishers B. V.,<p> address = Amsterdam, The Netherlands, The Netherlands,<p> </td>
+</tr>
+<tr id="bib_Bharat98" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Bharat98,
+  author = {Bharat, Krishna and Broder, Andrei},
+  title = {A technique for measuring the relative size and overlap of public Web search engines},
+  journal = {Computer Networks and ISDN Systems},
+  publisher = {Amsterdam, Elsevier Science Publishers B. V.},
+  year = {1998},
+  volume = {30},
+  number = {1--7},
+  pages = {379--388},
+  doi = {http://dx.doi.org/10.1016/S0169-7552(98)00127-5}
+}
+</pre></td>
+</tr>
+<tr id="Brin98" class="entry">
+	<td>Brin, S. &amp; Page, L.</td>
+	<td>The anatomy of a large-scale hypertextual Web search engine <p class="infolinks">[<a href="javascript:toggleInfo('Brin98','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Brin98','bibtex')">BibTeX</a>]</p></td>
+	<td>1998</td>
+	<td>Computer Networks and ISDN Systems<br/>Vol. 30(1-7), pp. 107-117&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1016/S0169-7552(98)00110-X">DOI</a> &nbsp;</td>
+</tr>
+<tr id="abs_Brin98" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: In this paper, we present Google, a prototype of a large-scale search engine which makes heavy use of the structure present in hypertext. Google is designed to crawl and index the Web efficiently and produce much more satisfying search results than existing systems. The prototype with a full text and hyperlink database of at least 24 million pages is available at http://google.stanford.edu/<p>To engineer a search engine is a challenging task. Search engines index tens to hundreds of millions of Web pages involving a comparable number of distinct terms. They answer tens of millions of queries every day. Despite the importance of large-scale search engines on the Web, very little academic research has been done on them. Furthermore, due to rapid advance in technology and Web proliferation, creating a Web search engine today is very different from three years ago. This paper provides an in-depth description of our large-scale Web search engine — the first such detailed public description we know of to date.<p>Apart from the problems of scaling traditional search techniques to data of this magnitude, there are new technical challenges involved with using the additional information present in hypertext to produce better search results. This paper addresses this question of how to build a practical large-scale system which can exploit the additional information present in hypertext. Also we look at the problem of how to effectively deal with uncontrolled hypertext collections where anyone can publish anything they want.</td>
+</tr>
+<tr id="bib_Brin98" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Brin98,
+  author = {Brin, Sergey and Page, Lawrence},
+  title = {The anatomy of a large-scale hypertextual Web search engine},
+  journal = {Computer Networks and ISDN Systems},
+  year = {1998},
+  volume = {30},
+  number = {1--7},
+  pages = {107--117},
+  doi = {http://dx.doi.org/10.1016/S0169-7552(98)00110-X}
+}
+</pre></td>
+</tr>
+<tr id="Chklovski04" class="entry">
+	<td>Chklovski, T. &amp; Pantel, P.</td>
+	<td>VerbOcean: Mining the Web for Fine-Grained Semantic Verb Relations <p class="infolinks">[<a href="javascript:toggleInfo('Chklovski04','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Chklovski04','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP 04), pp. 33-40&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.patrickpantel.com/Download/Papers/2004/emnlp04.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Chklovski04" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: Broad-coverage repositories of semantic relations between verbs could benefit many NLP tasks. We present a semi-automatic method for extracting fine-grained semantic relations between verbs. We detect similarity, strength, antonymy, enablement, and temporal happens-before relations between pairs of strongly associated verbs using lexico-syntactic patterns over the Web. On a set of 29,165 strongly associated verb pairs, our extraction algorithm yielded 65.5% accuracy. Analysis of error types shows that on the relation strength we achieved 75% accuracy. We provide the resource, called VERBOCEAN, for download at http://semantics.isi.edu/ocean/.</td>
+</tr>
+<tr id="bib_Chklovski04" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Chklovski04,
+  author = {Chklovski, Timothy and Pantel, Patrick},
+  title = {VerbOcean: Mining the Web for Fine-Grained Semantic Verb Relations},
+  booktitle = {Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP 04)},
+  publisher = {Association for Computational Linguistics},
+  year = {2004},
+  pages = {33--40},
+  url = {http://www.patrickpantel.com/Download/Papers/2004/emnlp04.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Church90" class="entry">
+	<td>Church, K.W. &amp; Hanks, P.</td>
+	<td>Word Association Norms, Mutual Information, and Lexicography <p class="infolinks">[<a href="javascript:toggleInfo('Church90','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Church90','bibtex')">BibTeX</a>]</p></td>
+	<td>1990</td>
+	<td>Computational Linguistics<br/>Vol. 16(1), pp. 22-29&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.14.5547&rep=rep1&type=pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Church90" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: The term word association is used in a very particular sense in the psycholinguistic literature. (Generally speaking, subjects respond quicker than normal to the word nurse if it follows a highly associated word such as doctor.) We will extend the term to provide the basis for a statistical description of a variety of interesting linguistic phenomena, ranging from semantic relations of the doctor/nurse type (content word/content word) to lexico-syntactic co-occurrence constraints between verbs and prepositions (content word/function word). This paper will propose an objective measure based on the information theoretic notion of mutual information, for estimating word association norms from computer readable corpora. (The standard method of obtaining word association norms, testing a few thousand subjects on a few hundred words, is both costly and unreliable.) The proposed measure, the association ratio, estimates word association norms directly from computer readable corpora, making it possible to estimate norms for tens of thousands of words.</td>
+</tr>
+<tr id="bib_Church90" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Church90,
+  author = {Church, Kenneth W. and Hanks, Patrick},
+  title = {Word Association Norms, Mutual Information, and Lexicography},
+  journal = {Computational Linguistics},
+  year = {1990},
+  volume = {16},
+  number = {1},
+  pages = {22--29},
+  url = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.14.5547&amp;rep=rep1&amp;type=pdf}
+}
+</pre></td>
+</tr>
+<tr id="Dempster77" class="entry">
+	<td>Dempster, A.P., Laird, N.M. &amp; Rubin, D.B.</td>
+	<td>Maximum Likelihood from Incomplete Data via the EM Algorithm <p class="infolinks">[<a href="javascript:toggleInfo('Dempster77','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Dempster77','review')">Review</a>] [<a href="javascript:toggleInfo('Dempster77','bibtex')">BibTeX</a>]</p></td>
+	<td>1977</td>
+	<td>Journal of the Royal Statistical Society. Series B (Methodological)<br/>Vol. 39(1), pp. 1-38&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://www.jstor.org/stable/2984875">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Dempster77" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: A broadly applicable algorithm for computing maximum likelihood estimates from incomplete data is presented at various levels of generality. Theory showing the monotone behaviour of the likelihood and convergence of the algorithm is derived. Many examples are sketched, including missing value situations, applications to grouped, censored or truncated data, finite mixture models, variance component estimation, hyperparameter estimation, iteratively reweighted least squares and factor analysis.</td>
+</tr>
+<tr id="rev_Dempster77" class="review noshow">
+	<td colspan="6"><b>Review</b>: EM algorithm.</td>
+</tr>
+<tr id="bib_Dempster77" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Dempster77,
+  author = {Dempster, Arthur P. and Laird, Nan M. and Rubin, Donald B.},
+  title = {Maximum Likelihood from Incomplete Data via the EM Algorithm},
+  journal = {Journal of the Royal Statistical Society. Series B (Methodological)},
+  publisher = {Blackwell Publishing for the Royal Statistical Society},
+  year = {1977},
+  volume = {39},
+  number = {1},
+  pages = {1--38},
+  url = {http://www.jstor.org/stable/2984875}
+}
+</pre></td>
+</tr>
+<tr id="Erkan04" class="entry">
+	<td>Erkan, G. &amp; Radev, D.R.</td>
+	<td>LexRank: Graph-based Lexical Centrality as Salience in Text Summarization <p class="infolinks">[<a href="javascript:toggleInfo('Erkan04','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Erkan04','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>Journal of Artificial Intelligence Research (JAIR)<br/>Vol. 22, pp. 457-479&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://www.jair.org/papers/paper1523.html">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Erkan04" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: We introduce a stochastic graph-based method for computing relative importance of textual units for Natural Language Processing. We test the technique on the problem of Text Summarization (TS). Extractive TS relies on the concept of sentence salience to identify the most important sentences in a document or set of documents. Salience is typically defined in terms of the presence of particular important words or in terms of similarity to a centroid pseudo-sentence. We consider a new approach, LexRank, for computing sentence importance based on the concept of eigenvector centrality in a graph representation of sentences. In this model, a connectivity matrix based on intra-sentence cosine similarity is used as the adjacency matrix of the graph representation of sentences. Our system, based on LexRank ranked in first place in more than one task in the recent DUC 2004 evaluation. In this paper we present a detailed analysis of our approach and apply it to a larger data set including data from earlier DUC evaluations. We discuss several methods to compute centrality using the similarity graph. The results show that degree-based methods (including LexRank) outperform both centroid-based methods and other systems participating in DUC in most of the cases. Furthermore, the LexRank with threshold method outperforms the other degree-based techniques including continuous LexRank. We also show that our approach is quite insensitive to the noise in the data that may result from an imperfect topical clustering of documents.</td>
+</tr>
+<tr id="bib_Erkan04" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Erkan04,
+  author = {Erkan, Güne&#351; and Radev, Dragomir R.},
+  title = {LexRank: Graph-based Lexical Centrality as Salience in Text Summarization},
+  journal = {Journal of Artificial Intelligence Research (JAIR)},
+  year = {2004},
+  volume = {22},
+  pages = {457--479},
+  url = {http://www.jair.org/papers/paper1523.html}
+}
+</pre></td>
+</tr>
+<tr id="Gabrilovich07" class="entry">
+	<td>Gabrilovich, E. &amp; Markovitch, S.</td>
+	<td>Computing Semantic Relatedness using Wikipedia-based Explicit Semantic Analysis <p class="infolinks">[<a href="javascript:toggleInfo('Gabrilovich07','bibtex')">BibTeX</a>]</p></td>
+	<td>2007</td>
+	<td>Proceedings of The 20th International Joint Conference on Artificial Intelligence (IJCAI)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.cs.technion.ac.il/~gabr/papers/ijcai-2007-sim.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Gabrilovich07" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Gabrilovich07,
+  author = {Gabrilovich, Evgeniy and Markovitch, Shaul},
+  title = {Computing Semantic Relatedness using Wikipedia-based Explicit Semantic Analysis},
+  booktitle = {Proceedings of The 20th International Joint Conference on Artificial Intelligence (IJCAI)},
+  year = {2007},
+  url = {http://www.cs.technion.ac.il/~gabr/papers/ijcai-2007-sim.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Lucene05" class="entry">
+	<td>Gospodnetić, O. &amp; Hatcher, E.</td>
+	<td>Lucene in Action <p class="infolinks">[<a href="javascript:toggleInfo('Lucene05','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>, pp. xxxiv, 421, Ill.&nbsp;</td>
+	<td>book</td>
+	<td><a href="http://lccn.loc.gov/2005274326">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Lucene05" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@book{Lucene05,
+  author = {Gospodnetić, Otis and Hatcher, Erik},
+  title = {Lucene in Action},
+  publisher = {Manning Publications Co.},
+  year = {2004},
+  pages = {xxxiv, 421, Ill.},
+  url = {http://lccn.loc.gov/2005274326}
+}
+</pre></td>
+</tr>
+<tr id="Gulli05" class="entry">
+	<td>Gulli, A. &amp; Signorini, A.</td>
+	<td>The indexable web is more than 11.5 billion pages <p class="infolinks">[<a href="javascript:toggleInfo('Gulli05','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Gulli05','bibtex')">BibTeX</a>]</p></td>
+	<td>2005</td>
+	<td>WWW '05: Special interest tracks and posters of the 14th international conference on World Wide Web, pp. 902-903&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://doi.acm.org/10.1145/1062745.1062789">DOI</a> &nbsp;</td>
+</tr>
+<tr id="abs_Gulli05" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: In this short paper we estimate the size of the public indexable web at 11.5 billion pages. We also estimate the overlap and the index size of Google, MSN, Ask/Teoma and Yahoo!</td>
+</tr>
+<tr id="bib_Gulli05" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Gulli05,
+  author = {Gulli, Antonio and Signorini, Alessio},
+  title = {The indexable web is more than 11.5 billion pages},
+  booktitle = {WWW '05: Special interest tracks and posters of the 14th international conference on World Wide Web},
+  publisher = {New York NY, ACM},
+  year = {2005},
+  pages = {902--903},
+  doi = {http://doi.acm.org/10.1145/1062745.1062789}
+}
+</pre></td>
+</tr>
+<tr id="He04" class="entry">
+	<td>He, D., Demner-Fushman, D., Oard, D.W., Karakos, D. &amp; Khudanpur, S.</td>
+	<td>Improving Passage Retrieval Using Interactive Elicition and Statistical Modeling <p class="infolinks">[<a href="javascript:toggleInfo('He04','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('He04','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>Proceedings of Text REtrieval Conference (TREC)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://trec.nist.gov/pubs/trec13/papers/umd-jhu.hard.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_He04" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: The University of Maryland and Johns Hopkins University worked together in the 2004 High Accuracy Retrieval from Documents (HARD) track to explore design options for interactive passage retrieval systems. HARD assessors responded to clarification forms by (1) selected additional search terms from an automatically constructed list of potentially discriminating terms, (2) selected relevant passages from an automatically constructed list of possibly relevant passages, and (3) entered additional search terms. Query expansion based on these three types of elicited information yielded statistically significant improvements in R-precision over baselines with and without blind relevance feedback. For topics that requested passages as answers, a preliminary analysis shows that statistical models for passage extent trained on HARD 2003 data yielded a significant improvement over a replication of the University of Maryland's hard-2003 technique for passage extent determination, and the results of the new technique appear to generally be well above the median for HARD 2004 systems.</td>
+</tr>
+<tr id="bib_He04" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{He04,
+  author = {He, Daqing and Demner-Fushman, Dina and Oard, Douglas W. and Karakos, Damianos and Khudanpur, Sanjeev},
+  title = {Improving Passage Retrieval Using Interactive Elicition and Statistical Modeling},
+  booktitle = {Proceedings of Text REtrieval Conference (TREC)},
+  year = {2004},
+  url = {http://trec.nist.gov/pubs/trec13/papers/umd-jhu.hard.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Islam08" class="entry">
+	<td>Islam, A. &amp; Inkpen, D.</td>
+	<td>Semantic text similarity using corpus-based word similarity and string similarity <p class="infolinks">[<a href="javascript:toggleInfo('Islam08','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Islam08','bibtex')">BibTeX</a>]</p></td>
+	<td>2008</td>
+	<td>ACM Transactions on Knowledge Discovery from Data (TKDD)<br/>Vol. 2(2), pp. 1-25&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://doi.acm.org/10.1145/1376815.1376819">DOI</a> &nbsp;</td>
+</tr>
+<tr id="abs_Islam08" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: We present a method for measuring the semantic similarity of texts using a corpus-based measure of semantic word similarity and a normalized and modified version of the Longest Common Subsequence (LCS) string matching algorithm. Existing methods for computing text similarity have focused mainly on either large documents or individual words. We focus on computing the similarity between two sentences or two short paragraphs. The proposed method can be exploited in a variety of applications involving textual knowledge representation and knowledge discovery. Evaluation results on two different data sets show that our method outperforms several competing methods.</td>
+</tr>
+<tr id="bib_Islam08" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Islam08,
+  author = {Islam, Aminul and Inkpen, Diana},
+  title = {Semantic text similarity using corpus-based word similarity and string similarity},
+  journal = {ACM Transactions on Knowledge Discovery from Data (TKDD)},
+  publisher = {New York, NY, ACM},
+  year = {2008},
+  volume = {2},
+  number = {2},
+  pages = {1--25},
+  doi = {http://doi.acm.org/10.1145/1376815.1376819}
+}
+</pre></td>
+</tr>
+<tr id="Islam07" class="entry">
+	<td>Islam, A. &amp; Inkpen, D.</td>
+	<td>Semantic Similarity of Short Texts <p class="infolinks">[<a href="javascript:toggleInfo('Islam07','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Islam07','review')">Review</a>] [<a href="javascript:toggleInfo('Islam07','bibtex')">BibTeX</a>]</p></td>
+	<td>2007</td>
+	<td>Proceedings of the International Conference on Recent Advances in Natural Language Processing (RANLP 2007)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.site.uottawa.ca/~diana/publications/ranlp_2007_textsim_camera_ready.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Islam07" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: This paper presents a method for measuring the semantic similarity of texts using a corpus based measure of semantic word similarity and a normalized and modified versions of the Longest Common Subsequence (LCS) string matching algorithm. Existing methods for computing text similarity have focused mainly on either large documents or individual words. In this paper, we focus on computing the similarity between two sentence or between two short paragraphs. The proposed method can be exploited in a variety of applications involving textual knowledge representation and knowledge discovery. Evaluation results on two different data sets show that our method outperforms several competing methods.</td>
+</tr>
+<tr id="rev_Islam07" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Tags: similarity<p>* Semantic Text Similarity (STS): combination of string matching and SOC-PMI<p>* Texts P = pi, R = rj // Tokenize, filter stop words, lemmatize<p>* delta = #Tokens having pi = rj, delete those, ||R|| > ||P|| WLOG.<p>* v1 = NLCS(pi, rj)<p>* v2 = NMCLCS1(pi, rj)<p>* v3 = NMCLCSn(pi, rj)<p>* aij = w1v1 + w2v2 + w3v3 (Experiments: w1 = w2 = w3 = 1/3) --> Matrix M1<p>* bij = normalized SOC-PMI(pi, rj) --> Matrix M2<p>  * Normalisation: lambda = max. Similarity. return (SOC-PMI > lambda ? 1 : SOC-PMI / <p>  * Idea: lambda = max PMI-IR(w1,w1); PMI-IR(w2,w2) = log_2 WebSize? / max hits(w1); hits(w2) <p>* M = psi M1 + phi M2 (Experiments: psi = phi = 1/2)<p>* rho = ordered set of Matrix-Maxima, delete corresponding cols/rows after finding a maximum<p>  * Fill this set until an element = 0 or ||P|| - delta - ||| = 0 "No more Maximum!" <p>* S(P, R) = (delta + sum i) (||P|| + ||R||) / (2 ||P|| ||R||)<p>* Performance OK, although trend to underestimate (really similar ones are badly recognized)</td>
+</tr>
+<tr id="bib_Islam07" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Islam07,
+  author = {Islam, Aminul and Inkpen, Diana},
+  title = {Semantic Similarity of Short Texts},
+  booktitle = {Proceedings of the International Conference on Recent Advances in Natural Language Processing (RANLP 2007)},
+  year = {2007},
+  url = {http://www.site.uottawa.ca/~diana/publications/ranlp_2007_textsim_camera_ready.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Jain99" class="entry">
+	<td>Jain, A.K., Murty, M.N. &amp; Flynn, P.J.</td>
+	<td>Data Clustering: A Review <p class="infolinks">[<a href="javascript:toggleInfo('Jain99','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Jain99','review')">Review</a>] [<a href="javascript:toggleInfo('Jain99','bibtex')">BibTeX</a>]</p></td>
+	<td>1999</td>
+	<td>ACM Computing Surveys<br/>Vol. 31(3), pp. 264-323&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1145/331499.331504">DOI</a> &nbsp;</td>
+</tr>
+<tr id="abs_Jain99" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: Clustering is the unsupervised classification of patterns (observations, data items, or feature vectors) into groups (clusters). The clustering problem has been addressed in many contexts and by researchers in many disciplines; this reflects its broad appeal and usefulness as one of the steps in exploratory data analysis. However, clustering is a difficult problem combinatorially, and differences in assumptions and contexts in different communities has made the transfer of useful generic concepts and methodologies slow to occur. This paper presents an overview of pattern clustering methods from a statistical pattern recognition perspective, with a goal of providing useful advice and references to fundamental concepts accessible to the broad community of clustering practitioners. We present a taxonomy of clustering techniques, and identify cross-cutting themes and recent advances. We also describe some important applications of clustering algorithms such as image segmentation, object recognition, and information retrieval.</td>
+</tr>
+<tr id="rev_Jain99" class="review noshow">
+	<td colspan="6"><b>Review</b>: A review of clustering algorithms: HAC, k-Means,...</td>
+</tr>
+<tr id="bib_Jain99" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Jain99,
+  author = {Jain, Anil Kumar and Murty , M. Narasimha and Flynn, Patrick Joseph},
+  title = {Data Clustering: A Review},
+  journal = {ACM Computing Surveys},
+  publisher = {New York, NY, ACM},
+  year = {1999},
+  volume = {31},
+  number = {3},
+  pages = {264--323},
+  doi = {http://dx.doi.org/10.1145/331499.331504}
+}
+</pre></td>
+</tr>
+<tr id="Jansen00" class="entry">
+	<td>Jansen, B.J., Spink, A. &amp; Saracevic, T.</td>
+	<td>Real life, real users, and real needs: a study and analysis of user queries on the web <p class="infolinks">[<a href="javascript:toggleInfo('Jansen00','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Jansen00','bibtex')">BibTeX</a>]</p></td>
+	<td>2000</td>
+	<td>Information Processing &amp; Management<br/>Vol. 36(2), pp. 207-227&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1016/S0306-4573(99)00056-4">DOI</a> &nbsp;</td>
+</tr>
+<tr id="abs_Jansen00" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: We analyzed transaction logs containing 51,473 queries posed by 18,113 users of Excite, a major Internet search service. We provide data on: (i) sessions -- changes in queries during a session, number of pages viewed, and use of relevance feedback; (ii) queries -- the number of search terms, and the use of logic and modifiers; and (iii) terms -- their rank/frequency distribution and the most highly used search terms. We then shift the focus of analysis from the query to the user to gain insight to the characteristics of the Web user. With these characteristics as a basis, we then conducted a failure analysis, identifying trends among user mistakes. We conclude with a summary of findings and a discussion of the implications of these findings.</td>
+</tr>
+<tr id="bib_Jansen00" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Jansen00,
+  author = {Jansen, Bernard J. and Spink, Amanda and Saracevic, Tefko},
+  title = {Real life, real users, and real needs: a study and analysis of user queries on the web},
+  journal = {Information Processing &amp; Management},
+  year = {2000},
+  volume = {36},
+  number = {2},
+  pages = {207--227},
+  doi = {http://dx.doi.org/10.1016/S0306-4573(99)00056-4}
+}
+</pre></td>
+</tr>
+<tr id="Jiang97" class="entry">
+	<td>Jiang, J.J. &amp; Conrath, D.W.</td>
+	<td>Semantic Similarity Based on Corpus Statistics and Lexical Taxonomy <p class="infolinks">[<a href="javascript:toggleInfo('Jiang97','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Jiang97','bibtex')">BibTeX</a>]</p></td>
+	<td>1997</td>
+	<td>Proceedings of the International Conference on Research in Computational Linguistics (ROCLING X)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://arxiv.org/abs/cmp-lg/9709008">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Jiang97" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: This paper presents a new approach for measuring semantic similarity/distance between words and concepts. It combines a lexical taxonomy structure with corpus statistical information so that the semantic distance between nodes in the semantic space constructed by the taxonomy can be better quantified with the computational evidence derived from a distributional analysis of corpus data. Specifically, the proposed measure is a combined approach that inherits the edge-based approach of the edge counting scheme, which is then enhanced by the node-based approach of the information content calculation. When tested on a common data set of word pair similarity ratings, the proposed approach outperforms other computational models. It gives the highest correlation value (r = 0.828) with a benchmark based on human similarity judgements, whereas an upper bound (r = 0.885) is observed when human subjects replicate the same task.</td>
+</tr>
+<tr id="bib_Jiang97" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Jiang97,
+  author = {Jiang, Jay J. and Conrath, David W.},
+  title = {Semantic Similarity Based on Corpus Statistics and Lexical Taxonomy},
+  booktitle = {Proceedings of the International Conference on Research in Computational Linguistics (ROCLING X)},
+  year = {1997},
+  url = {http://arxiv.org/abs/cmp-lg/9709008}
+}
+</pre></td>
+</tr>
+<tr id="Jijkoun05" class="entry">
+	<td>Jijkoun, V. &amp; de Rijke, M.</td>
+	<td>Retrieving answers from frequently asked questions pages on the web <p class="infolinks">[<a href="javascript:toggleInfo('Jijkoun05','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Jijkoun05','bibtex')">BibTeX</a>]</p></td>
+	<td>2005</td>
+	<td>Proceedings of the International Conference on Information and Knowledge Management (CIKM '05), pp. 76-83&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.science.uva.nl/~mdr/Publications/Files/cikm2005-faqs.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Jijkoun05" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: We address the task of answering natural language questions by using the large number of Frequently Asked Questions (FAQ) pages available on the web. The task involves three steps: (1) fetching FAQ pages from the web; (2) automatic extraction of question/answer (Q/A) pairs from the collected pages; and (3) answering users’ questions by retrieving appropriate Q/A pairs. We discuss our solutions for each of the three tasks, and give detailed evaluation results on a collected corpus of about 3.6Gb of text data (293K pages, 2.8M Q/A pairs), with real users’ questions sampled from a web search engine log. Specifically, we propose simple but effective methods for Q/A extraction and investigate task-specific retrieval models for answering questions. Our best model finds answers for 36% of the test questions in the top 20 results. Our overall conclusion is that FAQ pages on the web provide an excellent resource for addressing real users’ information needs in a highly focused manner.</td>
+</tr>
+<tr id="bib_Jijkoun05" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Jijkoun05,
+  author = {Jijkoun, Valentin and de Rijke, Maarten},
+  title = {Retrieving answers from frequently asked questions pages on the web},
+  booktitle = {Proceedings of the International Conference on Information and Knowledge Management (CIKM '05)},
+  publisher = {New York, NY, ACM},
+  year = {2005},
+  pages = {76--83},
+  url = {http://www.science.uva.nl/~mdr/Publications/Files/cikm2005-faqs.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Kaisser08" class="entry">
+	<td>Kaisser, M., Hearst, M.A. &amp; Lowe, J.B.</td>
+	<td>Improving Search Results Quality by Customizing Summary Lengths <p class="infolinks">[<a href="javascript:toggleInfo('Kaisser08','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Kaisser08','review')">Review</a>] [<a href="javascript:toggleInfo('Kaisser08','bibtex')">BibTeX</a>]</p></td>
+	<td>2008</td>
+	<td>Proceedings of ACL-08: Human Language Technology Conference (HLT), pp. 701-709&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.aclweb.org/anthology/P/P08/P08-1080">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Kaisser08" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: Web search engines today typically show resummarize how the retrieved documents are related to the query. However, recent research suggests that longer summaries can be preferable for certain types of queries. This paper presents empirical evidence that judges can predict appropriate search result summary lengths, and that perceptions of search result quality can be affected by varying these result lengths. These findings have important implications for search results presentation, especially for natural language queries.</td>
+</tr>
+<tr id="rev_Kaisser08" class="review noshow">
+	<td colspan="6"><b>Review</b>: *  Tags: answer style, answer length<p>* Answer is tradeoff between informative summary (length) and number of results --> avoid scrolling<p>* Answer style: exact, sentence, paragraph, document; paragraph was best, but there's a very individual trend<p>  * Chopping/Truncation (...) was bad, tags/keywors were good <p>* Answer presentation: standard (click for full text), instant (expand summary), dynamic (expand on mouse hover); instant was best<p>* Study 1: Find the right length for each answer category<p>  * Fact (Time, Location, Number) = short answer, only phrase/sentence<p>  * Advice/General Info = long answer, whole paragraphs/articles<p>  * Person/Organisation is not clear: unique (CEO of MS) vs. list of names (travel agencies of a country) <p>* Study 2: Search WP for a question's answer, provide different lengths<p>  * Corpus of 170 questions with answers via MTurk??? (useful for evaluation? available?)<p>  * Average length for the answers provided (useful for scoring?) <p>* Study 3: Question with a random length (correct) answer, rate 0..10<p>  * Only trend for a specific length, but not fixed for answer type<p>  * e.g. for best answer sentence, phrase/paragraph is OK while article/document is not <p>* Idea: Answer in a paragraph, highlight the sentence/phrase answer if compatible<p>* Idea: Button to switch answer length/style</td>
+</tr>
+<tr id="bib_Kaisser08" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Kaisser08,
+  author = {Kaisser, Michael and Hearst, Marti A. and Lowe, John B.},
+  title = {Improving Search Results Quality by Customizing Summary Lengths},
+  booktitle = {Proceedings of ACL-08: Human Language Technology Conference (HLT)},
+  publisher = {Association for Computational Linguistics},
+  year = {2008},
+  pages = {701--709},
+  url = {http://www.aclweb.org/anthology/P/P08/P08-1080}
+}
+</pre></td>
+</tr>
+<tr id="Kamvar04" class="entry">
+	<td>Kamvar, S., Haveliwaland, T. &amp; Golub, G.</td>
+	<td>Adaptive methods for the computation of PageRank <p class="infolinks">[<a href="javascript:toggleInfo('Kamvar04','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>Linear Algebra and its Applications<br/>Vol. 386(Special Issue on the Conference on the Numerical Solution of Markov Chains 2003), pp. 51-65&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1016/j.laa.2003.12.008">DOI</a> <a href="http://dbpubs.stanford.edu/pub/showDoc.Fulltext?lang=en&doc=2003-26&format=pdf&compression=">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Kamvar04" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Kamvar04,
+  author = {Kamvar, Sepandar and Haveliwaland, Taher and Golub, Gene},
+  title = {Adaptive methods for the computation of PageRank},
+  journal = {Linear Algebra and its Applications},
+  year = {2004},
+  volume = {386},
+  number = {Special Issue on the Conference on the Numerical Solution of Markov Chains 2003},
+  pages = {51--65},
+  url = {http://dbpubs.stanford.edu/pub/showDoc.Fulltext?lang=en&amp;doc=2003-26&amp;format=pdf&amp;compression=},
+  doi = {http://dx.doi.org/10.1016/j.laa.2003.12.008}
+}
+</pre></td>
+</tr>
+<tr id="King67" class="entry">
+	<td>King, B.</td>
+	<td>Step-wise clustering procedures <p class="infolinks">[<a href="javascript:toggleInfo('King67','review')">Review</a>] [<a href="javascript:toggleInfo('King67','bibtex')">BibTeX</a>]</p></td>
+	<td>1967</td>
+	<td>Journal of the American Statistical Association<br/>Vol. 62(317), pp. 86–101&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://www.jstor.org/stable/2282912">URL</a>&nbsp;</td>
+</tr>
+<tr id="rev_King67" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Single link HAC?</td>
+</tr>
+<tr id="bib_King67" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{King67,
+  author = {King, Benjamin},
+  title = {Step-wise clustering procedures},
+  journal = {Journal of the American Statistical Association},
+  year = {1967},
+  volume = {62},
+  number = {317},
+  pages = {86–101},
+  url = {http://www.jstor.org/stable/2282912}
+}
+</pre></td>
+</tr>
+<tr id="Kohavi98" class="entry">
+	<td>Kohavi, R. &amp; Provost, F.</td>
+	<td>Glossary of Terms. Editorial for the Special Issue on Applications of Machine Learning and the Knowledge Discovery Process <p class="infolinks">[<a href="javascript:toggleInfo('Kohavi98','bibtex')">BibTeX</a>]</p></td>
+	<td>1998</td>
+	<td>Machine Learning<br/>Vol. 30(2-3), pp. 271-274&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://robotics.stanford.edu/%7Eronnyk/glossary.ps">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Kohavi98" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Kohavi98,
+  author = {Kohavi, Ron and Provost, Foster},
+  title = {Glossary of Terms. Editorial for the Special Issue on Applications of Machine Learning and the Knowledge Discovery Process},
+  journal = {Machine Learning},
+  year = {1998},
+  volume = {30},
+  number = {2-3},
+  pages = {271--274},
+  url = {http://robotics.stanford.edu/%7Eronnyk/glossary.ps}
+}
+</pre></td>
+</tr>
+<tr id="Leacock98" class="entry">
+	<td>Leacock, C. &amp; Chodorow, M.</td>
+	<td>Combining Local Context and WordNet Similarity for Word Sense Identification <p class="infolinks">[<a href="javascript:toggleInfo('Leacock98','bibtex')">BibTeX</a>]</p></td>
+	<td>1998</td>
+	<td>WordNet: An Electronic Lexical Database, pp. 265-283&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Leacock98" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Leacock98,
+  author = {Leacock, Claudia and Chodorow, Martin},
+  title = {Combining Local Context and WordNet Similarity for Word Sense Identification},
+  booktitle = {WordNet: An Electronic Lexical Database},
+  publisher = {Cambridge, MA, MIT Press},
+  year = {1998},
+  pages = {265--283}
+}
+</pre></td>
+</tr>
+<tr id="Lesk86" class="entry">
+	<td>Lesk, M.</td>
+	<td>Automatic sense disambiguation using machine readable dictionaries: how to tell a pine cone from an ice cream cone <p class="infolinks">[<a href="javascript:toggleInfo('Lesk86','bibtex')">BibTeX</a>]</p></td>
+	<td>1986</td>
+	<td>Proceedings of the 5th annual international conference on Systems documentation (SIGDOC '86), pp. 24-26&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://doi.acm.org/10.1145/318723.318728">DOI</a> &nbsp;</td>
+</tr>
+<tr id="bib_Lesk86" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Lesk86,
+  author = {Lesk, Michael},
+  title = {Automatic sense disambiguation using machine readable dictionaries: how to tell a pine cone from an ice cream cone},
+  booktitle = {Proceedings of the 5th annual international conference on Systems documentation (SIGDOC '86)},
+  publisher = {New York, NY, ACM},
+  year = {1986},
+  pages = {24--26},
+  doi = {http://doi.acm.org/10.1145/318723.318728}
+}
+</pre></td>
+</tr>
+<tr id="Lin98" class="entry">
+	<td>Lin, D.</td>
+	<td>An information-theoretic definition of similarity <p class="infolinks">[<a href="javascript:toggleInfo('Lin98','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Lin98','bibtex')">BibTeX</a>]</p></td>
+	<td>1998</td>
+	<td>Proceedings of the 15th International Conference on Machine Learning (ICML), pp. 296-304&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://citeseer.ist.psu.edu/95071.html">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Lin98" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: Similarity is an important and widely used concept. Previous definitions of similarity are tied to a particular application or a form of knowledge representation. We present an information theoretic definition of similarity that is applicable as long as there is a probabilistic model. We demonstrate how our definition can be used to measure the similarity in a number of different domains.</td>
+</tr>
+<tr id="bib_Lin98" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Lin98,
+  author = {Lin, Dekang},
+  title = {An information-theoretic definition of similarity},
+  booktitle = {Proceedings of the 15th International Conference on Machine Learning (ICML)},
+  publisher = {Morgan Kaufmann, San Francisco, CA},
+  year = {1998},
+  pages = {296--304},
+  url = {http://citeseer.ist.psu.edu/95071.html}
+}
+</pre></td>
+</tr>
+<tr id="Liu08" class="entry">
+	<td>Liu, Y., Li, S., Cao, Y., Lin, C.-Y., Han, D. &amp; Yu, Y.</td>
+	<td>Understanding and Summarizing Answers in Community-Based Question Answering Services <p class="infolinks">[<a href="javascript:toggleInfo('Liu08','review')">Review</a>] [<a href="javascript:toggleInfo('Liu08','bibtex')">BibTeX</a>]</p></td>
+	<td>2008</td>
+	<td>Proceedings of the 22nd International Conference on Computational Linguistics (Coling 2008), pp. 497-504&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.aclweb.org/anthology/C08-1063">URL</a>&nbsp;</td>
+</tr>
+<tr id="rev_Liu08" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Tags: question answering, question type,<p>* Reuse of the best answer in Y!A<p>* Answer Type: also distribution in the paper<p>  * FACT.UNIQUE (my birthdate)<p>  * FACT.DIRECT (some birthdate of an (unknown) star)<p>  * FACT.INDIRECT (url with birthday list)<p>  * SUBJECTIVE (best movie-title)<p>  * RELEVANT (relevant for the question/topic, but no answer)<p>  * IRRELEVANT <p>* Question Type:<p>  * NAVIGATIONAL (url/search engine)<p>  * INFORMATION.CONSTANT (answer is unique and constant)<p>  * INFORMATION.DYNAMIC.OPINION (How's Vista?)<p>  * INFORMATION.DYNAMIC.CONTEXT-DEPENDENT (Pop. of china [when???])<p>  * INFORMATION.DYNAMIC.OPEN (birthdate of a star)<p>  * TRANSACTIONAL (Software for some purpose / buy something)<p>  * SOCIAL (no answer expected, comment only) <p>* Question Type-dependent summary:<p>  * Open: cluster [hierarchical, cos-sim], NP extrator, relevance score for each NP and cluster (= PMI, KL-Divergence), choose answer with highest score (key answer), rank cluster with key answer score<p>  * Sentiment-Opinion (What do U think of/Why): cluster, (word-based) polarity classification<p>  * List-Opinion (What's the best...): sentence-segmenter, key-sentence for cluster, rank clusters <p>* Manual evaluation</td>
+</tr>
+<tr id="bib_Liu08" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Liu08,
+  author = {Liu, Yuanjie and Li, Shasha and Cao, Yunbo and Lin, Chin-Yew and Han, Dingyi and Yu, Yong},
+  title = {Understanding and Summarizing Answers in Community-Based Question Answering Services},
+  booktitle = {Proceedings of the 22nd International Conference on Computational Linguistics (Coling 2008)},
+  publisher = {Coling 2008 Organizing Committee},
+  year = {2008},
+  pages = {497--504},
+  url = {http://www.aclweb.org/anthology/C08-1063}
+}
+</pre></td>
+</tr>
+<tr id="Manning08" class="entry">
+	<td>Manning, C.D., Raghavan, P. &amp; Schütze, H.</td>
+	<td>Introduction to Information Retrieval <p class="infolinks">[<a href="javascript:toggleInfo('Manning08','bibtex')">BibTeX</a>]</p></td>
+	<td>2008</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td><a href="http://www.informationretrieval.org/">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Manning08" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@book{Manning08,
+  author = {Manning, Christopher D. and Raghavan, Prabhakar and Schütze, Hinrich},
+  title = {Introduction to Information Retrieval},
+  publisher = {New York, NY, Cambridge University Press},
+  year = {2008},
+  url = {http://www.informationretrieval.org/}
+}
+</pre></td>
+</tr>
+<tr id="Mihalcea06" class="entry">
+	<td>Mihalcea, R., Corley, C. &amp; Strapparava, C.</td>
+	<td>Corpus-based and Knowledge-based Measures of Text Semantic Similarity <p class="infolinks">[<a href="javascript:toggleInfo('Mihalcea06','review')">Review</a>] [<a href="javascript:toggleInfo('Mihalcea06','bibtex')">BibTeX</a>]</p></td>
+	<td>2006</td>
+	<td>Proceedings of the American Association for Artificial Intelligence (AAAI 2006)&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.cs.unt.edu/~rada/papers/mihalcea.aaai06.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="rev_Mihalcea06" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Tags: similarity<p>* Similarity of two texts: sim(T1, T2) = (sum(w in T1) max_T2 sim(w, T2) * IDF(w)) / (2 * sum(w in T1) IDF(w)) + (sum(w in T2) max_T1 sim(w, T1) * IDF(w)) / (2 * sum(w in T2) IDF(w))<p>* Specifity of a term (opposite of generality), represented by inverse-document-frequency (IDF) in a large corpus<p>* Pointwise Mutial Information (PMI): PMI-IR(w1, w2) = log_2 p(w1 and w2) / p(w1) p(w2)<p>  * Internet as corpus: log_2 hits(w1 AND w2) WebSize / hits(w1) * hits(2) --> normalisation? <p>* Latent Semantic Analysis (LSA): reduction in dimension with SVD, finds most possible relation (complex)<p>* Leacock &amp; Chodrow: shortest path in WordNet? , sim = -log (path / 2 #max-depth)<p>* Lesk: definition overlap<p>* Wu &amp; Palmer: nearst/least common sumsumer LCS (= hypernym): sim = 2 * depth(LCS) / depth(w1) + depth(w2)<p>* Resnik: Information content of LCS: sim = IC(LCS) with IC(c) = -log p(c), with p(c) is PR of c = word-frequency / corpus-size<p>* Lin: sim = 2 * IC(LCS) / IC(w1)+IC(w2)<p>* Jiang &amp; Conrath: sim = 1 / ( IC(w1) + IC(w2) - 2 IC(LCS) )</td>
+</tr>
+<tr id="bib_Mihalcea06" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Mihalcea06,
+  author = {Mihalcea, Rada and Corley, Courtney and Strapparava, Carlo},
+  title = {Corpus-based and Knowledge-based Measures of Text Semantic Similarity},
+  booktitle = {Proceedings of the American Association for Artificial Intelligence (AAAI 2006)},
+  year = {2006},
+  url = {http://www.cs.unt.edu/~rada/papers/mihalcea.aaai06.pdf}
+}
+</pre></td>
+</tr>
+<tr id="DKPro08" class="entry">
+	<td>Müller, C., Zesch, T., Müller, M.-C., Bernhard, D., Ignatova, K., Gurevych, I. &amp; Mühlhäuser, M.</td>
+	<td>Flexible UIMA Components for Information Retrieval Research <p class="infolinks">[<a href="javascript:toggleInfo('DKPro08','bibtex')">BibTeX</a>]</p></td>
+	<td>2008</td>
+	<td>Proceedings of the LREC 2008 Workshop 'Towards Enhanced Interoperability for Large HLT Systems: UIMA for NLP', pp. 24-27&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/publikationen/2008/paper.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_DKPro08" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{DKPro08,
+  author = {Müller, Christof and Zesch, Torsten and Müller, Mark-Christoph and Bernhard, Delphine and Ignatova, Kateryna and Gurevych, Iryna and Mühlhäuser, Max},
+  title = {Flexible UIMA Components for Information Retrieval Research},
+  booktitle = {Proceedings of the LREC 2008 Workshop 'Towards Enhanced Interoperability for Large HLT Systems: UIMA for NLP'},
+  year = {2008},
+  pages = {24--27},
+  url = {http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/publikationen/2008/paper.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Nagy68" class="entry">
+	<td>Nagy, G.</td>
+	<td>State of the art in pattern recognition <p class="infolinks">[<a href="javascript:toggleInfo('Nagy68','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Nagy68','review')">Review</a>] [<a href="javascript:toggleInfo('Nagy68','bibtex')">BibTeX</a>]</p></td>
+	<td>1968</td>
+	<td>Proceedings of the IEEE<br/>Vol. 56(5), pp. 836-863&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?tp=&arnumber=1448344&isnumber=31108">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Nagy68" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: This paper reviews statistical, adaptive, and heuristic techniques used in laboratory investigations of pattern recognition problems. The discussion includes correlation methods, discriminant analysis, maximum likelihood decisions minimax techniques, perceptron-like algorithms, feature extraction, preprocessing, clustering and nonsupervised learning. Two-dimensional distributions are used to illustrate the properties of the various procedures. Several experimental projects, representative of prospective applications, are also described.</td>
+</tr>
+<tr id="rev_Nagy68" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Chaining effect in HAC single-link.</td>
+</tr>
+<tr id="bib_Nagy68" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Nagy68,
+  author = {Nagy, George},
+  title = {State of the art in pattern recognition},
+  journal = {Proceedings of the IEEE},
+  publisher = {Institute of Electrical and Electronics Engineers (IEEE)},
+  year = {1968},
+  volume = {56},
+  number = {5},
+  pages = {836--863},
+  url = {http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?tp=&amp;arnumber=1448344&amp;isnumber=31108}
+}
+</pre></td>
+</tr>
+<tr id="Newman06a" class="entry">
+	<td>Newman, M.E.J.</td>
+	<td>Finding community structure in networks using the eigenvectors of matrices <p class="infolinks">[<a href="javascript:toggleInfo('Newman06a','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Newman06a','review')">Review</a>] [<a href="javascript:toggleInfo('Newman06a','bibtex')">BibTeX</a>]</p></td>
+	<td>2006</td>
+	<td>Physical Review E<br/>Vol. 74(3), pp. 036104&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1103/PhysRevE.74.036104">DOI</a> <a href="http://link.aps.org/doi/10.1103/PhysRevE.74.036104">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Newman06a" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: We consider the problem of detecting communities or modules in networks, groups of vertices with a higher-than-average density of edges connecting them. Previous work indicates that a robust approach to this problem is the maximization of the benefit function known as "modularity" over possible divisions of a network. Here we show that this maximization process can be written in terms of the eigenspectrum of a matrix we call the modularity matrix, which plays a role in community detection similar to that played by the graph Laplacian in graph partitioning calculations. This result leads us to a number of possible algorithms for detecting community structure, as well as several other results, including a spectral measure of bipartite structure in networks and a centrality measure that identifies vertices that occupy central positions within the communities to which they belong. The algorithms and measures proposed are illustrated with applications to a variety of real-world complex networks.</td>
+</tr>
+<tr id="rev_Newman06a" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Using eigenvectors and spectral values for modularity maximization<p>* $Q = (number of edges within communities) - (expected number of such edges)$<p>* $Q = 1/2m sum_ij (A_ij - P_ij)*(g_i = g_j ? 1 : 0)$ with:<p>** $A_ij = #edges between vertices i and j$,<p>** $g_i = community of vertex i$,<p>** $P_ij = k_i k_j / 2m$,<p>** $k_i = degree of vertex i$.<p>* In [Newman04b]: greedy opt. here spectral partitioning</td>
+</tr>
+<tr id="bib_Newman06a" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Newman06a,
+  author = {Newman, Mark E. J.},
+  title = {Finding community structure in networks using the eigenvectors of matrices},
+  journal = {Physical Review E},
+  year = {2006},
+  volume = {74},
+  number = {3},
+  pages = {036104},
+  url = {http://link.aps.org/doi/10.1103/PhysRevE.74.036104},
+  doi = {http://dx.doi.org/10.1103/PhysRevE.74.036104}
+}
+</pre></td>
+</tr>
+<tr id="Newman06b" class="entry">
+	<td>Newman, M.E.J.</td>
+	<td>Modularity and community structure in networks <p class="infolinks">[<a href="javascript:toggleInfo('Newman06b','review')">Review</a>] [<a href="javascript:toggleInfo('Newman06b','bibtex')">BibTeX</a>]</p></td>
+	<td>2006</td>
+	<td>Proceedings of the National Academy of Sciences (PNAS)<br/>Vol. 103(23), pp. 8577-8582&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1073/pnas.0601602103">DOI</a> <a href="http://www.pnas.org/cgi/reprint/103/23/8577.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="rev_Newman06b" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Same procedure as [Newman06a]</td>
+</tr>
+<tr id="bib_Newman06b" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Newman06b,
+  author = {Newman, Mark E. J.},
+  title = {Modularity and community structure in networks},
+  journal = {Proceedings of the National Academy of Sciences (PNAS)},
+  year = {2006},
+  volume = {103},
+  number = {23},
+  pages = {8577-8582},
+  url = {http://www.pnas.org/cgi/reprint/103/23/8577.pdf},
+  doi = {http://dx.doi.org/10.1073/pnas.0601602103}
+}
+</pre></td>
+</tr>
+<tr id="Newman04b" class="entry">
+	<td>Newman, M.E.J.</td>
+	<td>Fast algorithm for detecting community structure in networks <p class="infolinks">[<a href="javascript:toggleInfo('Newman04b','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Newman04b','review')">Review</a>] [<a href="javascript:toggleInfo('Newman04b','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>Physical Review E<br/>Vol. 69(6), pp. 066133&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1103/PhysRevE.69.066133">DOI</a> <a href="http://prola.aps.org/abstract/PRE/v69/i6/e066133">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Newman04b" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: Many networks display community structure—groups of vertices within which connections are dense but between which they are sparser—and sensitive computer algorithms have in recent years been developed for detecting this structure. These algorithms, however, are computationally demanding, which limits their application to small networks. Here we describe an algorithm which gives excellent results when tested on both computer-generated and real-world networks and is much faster, typically thousands of times faster, than previous algorithms. We give several example applications, including one to a collaboration network of more than 50 000 physicists.</td>
+</tr>
+<tr id="rev_Newman04b" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Community structure: nodes that cluster into tightly knit groups<p>** high density of within-group edges<p>** lower density of between-group edges<p>* [Newman04a]: iterative removal of edges w/ high betweenness<p>** Disadvantage = $O(m^2 n)$<p>** New algorithm = $O(n^2 + mn)$<p>* Basic idea: modularity $Q = sum_i (e_ii - a_i^2)$<p>** with $e_ii = #within-group edges, a_i = #incoming edges in group i$<p>* works similar as HAC: starting with singleton communities,<p>** join two vertices, leading to greates increase in Q (smallest decrease),<p>** best cut in dendrogram = max. value of Q <p>** = Greedy opt.<p>* Calc of modularity change: $delta Q = 2(e_ij - a_i a_j)$<p>* Extension to weighted networks possible</td>
+</tr>
+<tr id="bib_Newman04b" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Newman04b,
+  author = {Newman, Mark E. J.},
+  title = {Fast algorithm for detecting community structure in networks},
+  journal = {Physical Review E},
+  year = {2004},
+  volume = {69},
+  number = {6},
+  pages = {066133},
+  url = {http://prola.aps.org/abstract/PRE/v69/i6/e066133},
+  doi = {http://dx.doi.org/10.1103/PhysRevE.69.066133}
+}
+</pre></td>
+</tr>
+<tr id="Newman04c" class="entry">
+	<td>Newman, M.E.J.</td>
+	<td>Analysis of weighted networks <p class="infolinks">[<a href="javascript:toggleInfo('Newman04c','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Newman04c','review')">Review</a>] [<a href="javascript:toggleInfo('Newman04c','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>Physical Review E<br/>Vol. 70(5), pp. 056131&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1103/PhysRevE.70.056131">DOI</a> <a href="http://prola.aps.org/abstract/PRE/v70/i5/e056131">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Newman04c" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: The connections in many networks are not merely binary entities, either present or not, but have associated weights that record their strengths relative to one another. Recent studies of networks have, by and large, steered clear of such weighted networks, which are often perceived as being harder to analyze than their unweighted counterparts. Here we point out that weighted networks can in many cases be analyzed using a simple mapping from a weighted network to an unweighted multigraph, allowing us to apply standard techniques for unweighted graphs to weighted ones as well. We give a number of examples of the method, including an algorithm for detecting community structure in weighted networks and a new and simple proof of the max-flow/min-cut theorem.</td>
+</tr>
+<tr id="rev_Newman04c" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Application of [Newman04b] on weighted networks.<p>* $Q = 1/2m sum_ij (A_ij - k_i k_j / 2m)*(c_i = c_j ? 1 : 0)$<p>* see [Newman06a] for explanation</td>
+</tr>
+<tr id="bib_Newman04c" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Newman04c,
+  author = {Newman, Mark E. J.},
+  title = {Analysis of weighted networks},
+  journal = {Physical Review E},
+  publisher = {American Physical Society},
+  year = {2004},
+  volume = {70},
+  number = {5},
+  pages = {056131},
+  url = {http://prola.aps.org/abstract/PRE/v70/i5/e056131},
+  doi = {http://dx.doi.org/10.1103/PhysRevE.70.056131}
+}
+</pre></td>
+</tr>
+<tr id="Newman04a" class="entry">
+	<td>Newman, M.E.J. &amp; Girvan, M.</td>
+	<td>Finding and evaluating community structure in networks <p class="infolinks">[<a href="javascript:toggleInfo('Newman04a','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Newman04a','review')">Review</a>] [<a href="javascript:toggleInfo('Newman04a','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>Physical Review E<br/>Vol. 69(2), pp. 026113&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1103/PhysRevE.69.026113">DOI</a> <a href="http://prola.aps.org/abstract/PRE/v69/i2/e026113">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Newman04a" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: We propose and study a set of algorithms for discovering community structure in networks -- natural divisions of network nodes into densely connected subgroups. Our algorithms all share two definitive features: first, they involve iterative removal of edges from the network to split it into communities, the edges removed being identified using one of a number of possible "betweenness" measures, and second, these measures are, crucially, recalculated after each removal. We also propose a measure for the strength of the community structure found by our algorithms, which gives us an objective metric for choosing the number of communities into which a network should be divided. We demonstrate that our algorithms are highly effective at discovering community structure in both computer-generated and real-world network data, and show how they can be used to shed light on the sometimes dauntingly complex structure of networked systems.</td>
+</tr>
+<tr id="rev_Newman04a" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Remove edges to split graph in community structure<p>* "betweenness" = high if many intra-community and low inter-community links</td>
+</tr>
+<tr id="bib_Newman04a" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Newman04a,
+  author = {Newman, Mark E. J. and Girvan, Michelle},
+  title = {Finding and evaluating community structure in networks},
+  journal = {Physical Review E},
+  year = {2004},
+  volume = {69},
+  number = {2},
+  pages = {026113},
+  url = {http://prola.aps.org/abstract/PRE/v69/i2/e026113},
+  doi = {http://dx.doi.org/10.1103/PhysRevE.69.026113}
+}
+</pre></td>
+</tr>
+<tr id="Ottenbacher08" class="entry">
+	<td>Otterbacher, J., Erkan, G. &amp; Radev, D.R.</td>
+	<td>Biased LexRank: Passage Retrieval using Random Walks with Question-Based Priors <p class="infolinks">[<a href="javascript:toggleInfo('Ottenbacher08','bibtex')">BibTeX</a>]</p></td>
+	<td>2008</td>
+	<td>&nbsp;</td>
+	<td>unpublished</td>
+	<td><a href="http://tangra.si.umich.edu/~radev/papers/blrj08.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Ottenbacher08" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@unpublished{Ottenbacher08,
+  author = {Otterbacher, Jahna and Erkan, Güne&#351; and Radev, Dragomir R.},
+  title = {Biased LexRank: Passage Retrieval using Random Walks with Question-Based Priors},
+  year = {2008},
+  note = {Preprint submitted to Elsevier Science},
+  url = {http://tangra.si.umich.edu/~radev/papers/blrj08.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Wortschatz06" class="entry">
+	<td>Quasthoff, U., Richter, M. &amp; Biemann, C.</td>
+	<td>Corpus Portal for Search in Monolingual Corpora <p class="infolinks">[<a href="javascript:toggleInfo('Wortschatz06','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Wortschatz06','bibtex')">BibTeX</a>]</p></td>
+	<td>2006</td>
+	<td>Proceedings of the fifth international conference on Language Resources and Evaluation (LREC), pp. 1799-1802&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://wortschatz.uni-leipzig.de/~cbiemann/pub/2006/QuasthoffBiemannRichter06portal.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Wortschatz06" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: A simple and flexible schema for storing and presenting monolingual language resources is proposed. In this format, data for 18 different languages is already available in various sizes. The data is provided free of charge for online use and download. The main target is to ease the application of algorithms for monolingual and interlingual studies.</td>
+</tr>
+<tr id="bib_Wortschatz06" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Wortschatz06,
+  author = {Quasthoff, U. and Richter, M. and Biemann, C.},
+  title = {Corpus Portal for Search in Monolingual Corpora},
+  booktitle = {Proceedings of the fifth international conference on Language Resources and Evaluation (LREC)},
+  year = {2006},
+  pages = {1799-1802},
+  url = {http://wortschatz.uni-leipzig.de/~cbiemann/pub/2006/QuasthoffBiemannRichter06portal.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Quillian67" class="entry">
+	<td>Quillian, M.R.</td>
+	<td>Word Concepts: A Theory and Simulation of Some Basic Semantic Capabilities <p class="infolinks">[<a href="javascript:toggleInfo('Quillian67','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Quillian67','bibtex')">BibTeX</a>]</p></td>
+	<td>1967</td>
+	<td>Behavioral Science<br/>Vol. 12(5), pp. 410-430&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1002/bs.3830120511">DOI</a> <a href="http://www3.interscience.wiley.com/journal/114032477/abstract">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Quillian67" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: In order to discover design principles for a large memory that can enable it to serve as the base of knowledge underlying human-like language behavior, experiments with a model memory are being performed. This model is built up within a computer by "recoding" a body of information from an ordinary dictionary into a complex network of elements and associations interconnecting them. Then, the ability of a program to use the resulting model memory effectively for simulating human performance provides a test of its design. One simulation program, now running, is given the model memory and is required to compare and contrast the meanings of arbitrary pairs of English words. For each pair, the program locates any relevant semantic information within the model memory, draws inferences on the basis of this, and thereby discovers various relationships between the meanings of the two words. Finally, it creates English text to express its conclusions. The design principles embodied in the memory model, together with some of the methods used by the program, constitute a theory of how human memory for semantic and other conceptual material may be formatted, organized, and used.</td>
+</tr>
+<tr id="bib_Quillian67" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Quillian67,
+  author = {Quillian, M. Ross},
+  title = {Word Concepts: A Theory and Simulation of Some Basic Semantic Capabilities},
+  journal = {Behavioral Science},
+  year = {1967},
+  volume = {12},
+  number = {5},
+  pages = {410--430},
+  url = {http://www3.interscience.wiley.com/journal/114032477/abstract},
+  doi = {http://dx.doi.org/10.1002/bs.3830120511}
+}
+</pre></td>
+</tr>
+<tr id="Rabiner89" class="entry">
+	<td>Rabiner, L.R.</td>
+	<td>A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition <p class="infolinks">[<a href="javascript:toggleInfo('Rabiner89','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Rabiner89','bibtex')">BibTeX</a>]</p></td>
+	<td>1989</td>
+	<td>Proceedings of the IEEE<br/>Vol. 77(2), pp. 257-286&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1109/5.18626">DOI</a> &nbsp;</td>
+</tr>
+<tr id="abs_Rabiner89" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: This tutorial provides an overview of the basic theory of hidden Markov models (HMMs) as originated by L.E. Baum and T. Petrie (1966) and gives practical details on methods of implementation of the theory along with a description of selected applications of the theory to distinct problems in speech recognition. Results from a number of original sources are combined to provide a single source of acquiring the background required to pursue further this area of research. The author first reviews the theory of discrete Markov chains and shows how the concept of hidden states, where the observation is a probabilistic function of the state, can be used effectively. The theory is illustrated with two simple examples, namely coin-tossing, and the classic balls-in-urns system. Three fundamental problems of HMMs are noted and several practical techniques for solving these problems are given. The various types of HMMs that have been studied, including ergodic as well as left-right models, are described</td>
+</tr>
+<tr id="bib_Rabiner89" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Rabiner89,
+  author = {Rabiner, Lawrence R.},
+  title = {A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition},
+  journal = {Proceedings of the IEEE},
+  publisher = {Institute of Electrical and Electronics Engineers (IEEE)},
+  year = {1989},
+  volume = {77},
+  number = {2},
+  pages = {257-286},
+  doi = {http://dx.doi.org/10.1109/5.18626}
+}
+</pre></td>
+</tr>
+<tr id="Resnik95" class="entry">
+	<td>Resnik, P.</td>
+	<td>Using Information Content to Evaluate Semantic Similarity in a Taxonomy <p class="infolinks">[<a href="javascript:toggleInfo('Resnik95','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Resnik95','bibtex')">BibTeX</a>]</p></td>
+	<td>1995</td>
+	<td>Proceedings of the 14th International Joint Conference on Artificial Intelligence (IJCAI), pp. 448-453&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://citeseer.ist.psu.edu/resnik95using.html">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Resnik95" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: This paper presents a new measure of semantic similarity in an is-a taxonomy, based on the notion of information content. Experimental evaluation suggests that the measure performs encouragingly well (a correlation of r = 0.79 with a benchmark set of human similarity judgments, with an upper bound of r = 0.90 for human subjects performing the same task), and significantly better than the traditional edge counting approach (r = 0.66).</td>
+</tr>
+<tr id="bib_Resnik95" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Resnik95,
+  author = {Resnik, Philip},
+  title = {Using Information Content to Evaluate Semantic Similarity in a Taxonomy},
+  booktitle = {Proceedings of the 14th International Joint Conference on Artificial Intelligence (IJCAI)},
+  year = {1995},
+  pages = {448--453},
+  url = {http://citeseer.ist.psu.edu/resnik95using.html}
+}
+</pre></td>
+</tr>
+<tr id="Rijsbergen74" class="entry">
+	<td>van Rijsbergen, C.J.</td>
+	<td>Foundations of Evaluation <p class="infolinks">[<a href="javascript:toggleInfo('Rijsbergen74','bibtex')">BibTeX</a>]</p></td>
+	<td>1974</td>
+	<td>Journal of Documentation<br/>Vol. 30(4), pp. 365-373&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1108/eb026584">DOI</a> &nbsp;</td>
+</tr>
+<tr id="bib_Rijsbergen74" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Rijsbergen74,
+  author = {van Rijsbergen, Cornelis Joost},
+  title = {Foundations of Evaluation},
+  journal = {Journal of Documentation},
+  publisher = {London, Aslib},
+  year = {1974},
+  volume = {30},
+  number = {4},
+  pages = {365--373},
+  doi = {http://dx.doi.org/10.1108/eb026584}
+}
+</pre></td>
+</tr>
+<tr id="rfc1321" class="entry">
+	<td>Rivest, R.</td>
+	<td>The MD5 Message-Digest Algorithm <p class="infolinks">[<a href="javascript:toggleInfo('rfc1321','bibtex')">BibTeX</a>]</p></td>
+	<td>1992</td>
+	<td>RFC 1321 (Informational)&nbsp;</td>
+	<td>standard</td>
+	<td><a href="http://www.ietf.org/rfc/rfc1321.txt">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_rfc1321" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@standard{rfc1321,
+  author = {Rivest, Ron},
+  title = {The MD5 Message-Digest Algorithm},
+  year = {1992},
+  note = {Request for Comments},
+  url = {http://www.ietf.org/rfc/rfc1321.txt}
+}
+</pre></td>
+</tr>
+<tr id="Ross76" class="entry">
+	<td>Ross, S.M.</td>
+	<td>A First Course in Probability <p class="infolinks">[<a href="javascript:toggleInfo('Ross76','bibtex')">BibTeX</a>]</p></td>
+	<td>1976</td>
+	<td>, pp. x, 305, Ill.&nbsp;</td>
+	<td>book</td>
+	<td><a href="http://lccn.loc.gov/83011361">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Ross76" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@book{Ross76,
+  author = {Ross, Sheldon M.},
+  title = {A First Course in Probability},
+  publisher = {New York NY, Macmillan},
+  year = {1976},
+  pages = {x, 305, Ill.},
+  url = {http://lccn.loc.gov/83011361}
+}
+</pre></td>
+</tr>
+<tr id="Salton88" class="entry">
+	<td>Salton, G. &amp; Buckley, C.</td>
+	<td>Term-weighting approaches in automatic text retrieval <p class="infolinks">[<a href="javascript:toggleInfo('Salton88','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Salton88','review')">Review</a>] [<a href="javascript:toggleInfo('Salton88','bibtex')">BibTeX</a>]</p></td>
+	<td>1988</td>
+	<td>Information Processing &amp; Management<br/>Vol. 24(5), pp. 513-523&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1016/0306-4573(88)90021-0">DOI</a> <a href="http://dx.doi.org/10.1016/0306-4573(88)90021-0">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Salton88" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: The experimental evidence accumulated over the past 20 years indicates that text indexing systems based on the assignment of appropriately weighted single terms produce retrieval results that are superior to those obtainable with other more elaborate text representations. These results depend crucially on the choice of effective termweighting systems. This article summarizes the insights gained in automatic term weighting, and provides baseline single-term-indexing models with which other more elaborate content analysis procedures can be compared.</td>
+</tr>
+<tr id="rev_Salton88" class="review noshow">
+	<td colspan="6"><b>Review</b>: * TF-IDF<p>* Cosine Similarity</td>
+</tr>
+<tr id="bib_Salton88" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Salton88,
+  author = {Salton, Gerard and Buckley, Christopher},
+  title = {Term-weighting approaches in automatic text retrieval},
+  journal = {Information Processing &amp; Management},
+  publisher = {Tarrytown NY, Pergamon Press, Inc.},
+  year = {1988},
+  volume = {24},
+  number = {5},
+  pages = {513--523},
+  url = {http://dx.doi.org/10.1016/0306-4573(88)90021-0},
+  doi = {http://dx.doi.org/10.1016/0306-4573(88)90021-0}
+}
+</pre></td>
+</tr>
+<tr id="Salton83" class="entry">
+	<td>Salton, G., Fox, E.A. &amp; Wu, H.</td>
+	<td>Extended Boolean information retrieval <p class="infolinks">[<a href="javascript:toggleInfo('Salton83','review')">Review</a>] [<a href="javascript:toggleInfo('Salton83','bibtex')">BibTeX</a>]</p></td>
+	<td>1983</td>
+	<td>Communications of the ACM<br/>Vol. 26(11), pp. 1022-1036&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1145/182.358466">DOI</a> &nbsp;</td>
+</tr>
+<tr id="rev_Salton83" class="review noshow">
+	<td colspan="6"><b>Review</b>: * IDF formula</td>
+</tr>
+<tr id="bib_Salton83" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Salton83,
+  author = {Salton, Gerard and Fox, Edward A. and Wu, Harry},
+  title = {Extended Boolean information retrieval},
+  journal = {Communications of the ACM},
+  publisher = {New York, NY, ACM},
+  year = {1983},
+  volume = {26},
+  number = {11},
+  pages = {1022--1036},
+  doi = {http://dx.doi.org/10.1145/182.358466}
+}
+</pre></td>
+</tr>
+<tr id="Salton75" class="entry">
+	<td>Salton, G., Wong, A. &amp; Yang, C.-S.</td>
+	<td>A vector space model for automatic indexing <p class="infolinks">[<a href="javascript:toggleInfo('Salton75','bibtex')">BibTeX</a>]</p></td>
+	<td>1975</td>
+	<td>Communications of the ACM<br/>Vol. 18(11), pp. 613-620&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://doi.acm.org/10.1145/361219.361220">DOI</a> &nbsp;</td>
+</tr>
+<tr id="bib_Salton75" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Salton75,
+  author = {Salton, Gerard and Wong, A. and Yang, Chung-Shu},
+  title = {A vector space model for automatic indexing},
+  journal = {Communications of the ACM},
+  publisher = {New York, NY, ACM},
+  year = {1975},
+  volume = {18},
+  number = {11},
+  pages = {613--620},
+  doi = {http://doi.acm.org/10.1145/361219.361220}
+}
+</pre></td>
+</tr>
+<tr id="Schmid94" class="entry">
+	<td>Schmid, H.</td>
+	<td>Probabilistic Part-of-Speech Tagging Using Decision Trees <p class="infolinks">[<a href="javascript:toggleInfo('Schmid94','bibtex')">BibTeX</a>]</p></td>
+	<td>1994</td>
+	<td>Proceedings of International Conference on New Methods in Language Processing&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.ims.uni-stuttgart.de/ftp/pub/corpora/tree-tagger1.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Schmid94" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Schmid94,
+  author = {Schmid, Helmut},
+  title = {Probabilistic Part-of-Speech Tagging Using Decision Trees},
+  booktitle = {Proceedings of International Conference on New Methods in Language Processing},
+  year = {1994},
+  url = {http://www.ims.uni-stuttgart.de/ftp/pub/corpora/tree-tagger1.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Sneath73" class="entry">
+	<td>Sneath, P.H.A. &amp; Sokal, R.R.</td>
+	<td>Numerical Taxonomy. The Principles and Practice of Numerical Classification <p class="infolinks">[<a href="javascript:toggleInfo('Sneath73','review')">Review</a>] [<a href="javascript:toggleInfo('Sneath73','bibtex')">BibTeX</a>]</p></td>
+	<td>1973</td>
+	<td>, pp. XV, 573&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="rev_Sneath73" class="review noshow">
+	<td colspan="6"><b>Review</b>: * Complete-link HAC?</td>
+</tr>
+<tr id="bib_Sneath73" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@book{Sneath73,
+  author = {Sneath, Peter H. A. and Sokal, Robert R.},
+  title = {Numerical Taxonomy. The Principles and Practice of Numerical Classification},
+  publisher = {San Francisco CA, W. H. Freeman &amp; Co.},
+  year = {1973},
+  pages = {XV, 573}
+}
+</pre></td>
+</tr>
+<tr id="Jones72" class="entry">
+	<td>Spärck Jones, K.</td>
+	<td>A statistical interpretation of term specificity and its application in retrieval <p class="infolinks">[<a href="javascript:toggleInfo('Jones72','review')">Review</a>] [<a href="javascript:toggleInfo('Jones72','bibtex')">BibTeX</a>]</p></td>
+	<td>1972</td>
+	<td>Journal of Documentation<br/>Vol. 28(1), pp. 164-165&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1108/eb026526">DOI</a> <a href="http://www.soi.city.ac.uk/~ser/idfpapers/ksj_orig.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="rev_Jones72" class="review noshow">
+	<td colspan="6"><b>Review</b>: * General definition of specificity, but no formula</td>
+</tr>
+<tr id="bib_Jones72" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Jones72,
+  author = {Spärck Jones, Karen},
+  title = {A statistical interpretation of term specificity and its application in retrieval},
+  journal = {Journal of Documentation},
+  year = {1972},
+  volume = {28},
+  number = {1},
+  pages = {164--165},
+  url = {http://www.soi.city.ac.uk/~ser/idfpapers/ksj_orig.pdf},
+  doi = {http://dx.doi.org/10.1108/eb026526}
+}
+</pre></td>
+</tr>
+<tr id="Steinhaus56" class="entry">
+	<td>Steinhaus, H.</td>
+	<td>Sur la division des corp materiels en parties <p class="infolinks">[<a href="javascript:toggleInfo('Steinhaus56','review')">Review</a>] [<a href="javascript:toggleInfo('Steinhaus56','bibtex')">BibTeX</a>]</p></td>
+	<td>1956</td>
+	<td>Bulletin L'Acadmie Polonaise des Science C1<br/>Vol. III, IV, pp. 801-804&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="rev_Steinhaus56" class="review noshow">
+	<td colspan="6"><b>Review</b>: Invention of k-Means</td>
+</tr>
+<tr id="bib_Steinhaus56" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Steinhaus56,
+  author = {Steinhaus, H.},
+  title = {Sur la division des corp materiels en parties},
+  journal = {Bulletin L'Acadmie Polonaise des Science C1},
+  year = {1956},
+  volume = {III, IV},
+  pages = {801--804}
+}
+</pre></td>
+</tr>
+<tr id="Strehl02" class="entry">
+	<td>Strehl, A.</td>
+	<td>Relationship-based Clustering and Cluster Ensembles for High-dimensional Data Mining <p class="infolinks">[<a href="javascript:toggleInfo('Strehl02','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Strehl02','review')">Review</a>] [<a href="javascript:toggleInfo('Strehl02','bibtex')">BibTeX</a>]</p></td>
+	<td>2002</td>
+	<td><i>School</i>: The University of Texas at Austin&nbsp;</td>
+	<td>phdthesis</td>
+	<td><a href="http://www.lans.ece.utexas.edu/~strehl/diss/">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Strehl02" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: This dissertation takes a relationship-based approach to cluster analysis of high (1000 and more) dimensional data that side-steps the `curse of dimensionality' issue by working in a suitable similarity space instead of the original feature space. We propose two frameworks that leverage graph algorithms to achieve relationship-based clustering and visualization, respectively. In the visualization framework, the output from the clustering algorithm is used to re-order the data points so that the resulting permuted similarity matrix can be readily visualized in 2 dimensions, with clusters showing up as bands. Results on retail transaction, document (bag-of-words), and web-log data show that our approach can yield superior results while also taking additional balance constraints into account.<p>The choice of similarity is a critical step in relationship-based clustering and this motivates our systematic comparative study of the impact of similarity measures on the quality of document clusters. The key findings of our experimental study are: (i) Cosine, correlation, and extended Jaccard similarities perform comparably; (ii) Euclidean distances do not work well; (iii) graph partitioning tends to be superior to $ k$-means and SOMs especially when balanced clusters are desired; and (iv) performance curves generally do not cross. We also propose a cluster quality evaluation measure based on normalized mutual information and find an analytical relation between similarity measures.<p>It is widely recognized that combining multiple classification or regression models typically provides superior results compared to using a single, well-tuned model. However, there are no well known approaches to combining multiple clusterings. The idea of combining cluster labelings without accessing the original features leads to a general knowledge reuse framework that we call cluster ensembles. We propose a formal definition of the cluster ensemble as an optimization problem. Taking a relationship-based approach we propose three effective and efficient combining algorithms for solving it heuristically based on a hypergraph model. Results on synthetic as well as real data-sets show that cluster ensembles can (i) improve quality and robustness, and (ii) enable distributed clustering, and (iii) speed up processing significantly with little loss in quality.</td>
+</tr>
+<tr id="rev_Strehl02" class="review noshow">
+	<td colspan="6"><b>Review</b>: Purity</td>
+</tr>
+<tr id="bib_Strehl02" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@phdthesis{Strehl02,
+  author = {Alexander Strehl},
+  title = {Relationship-based Clustering and Cluster Ensembles for High-dimensional Data Mining},
+  school = {The University of Texas at Austin},
+  year = {2002},
+  url = {http://www.lans.ece.utexas.edu/~strehl/diss/}
+}
+</pre></td>
+</tr>
+<tr id="Turney01" class="entry">
+	<td>Turney, P.D.</td>
+	<td>Mining the Web for Synonyms: PMI-IR versus LSA on TOEFL <p class="infolinks">[<a href="javascript:toggleInfo('Turney01','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Turney01','bibtex')">BibTeX</a>]</p></td>
+	<td>2001</td>
+	<td>Proceedings of the 12th European Conference on Machine Learning (EMCL '01), pp. 491-502&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://cogprints.org/1796/0/ECML2001.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Turney01" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: This paper presents a simple unsupervised learning algorithm <p>for recognizing synonyms, based on statistical data acquired by querying a Web <p>search engine. The algorithm, called PMI-IR, uses Pointwise Mutual Information<p>(PMI) and Information Retrieval (IR) to measure the similarity of pairs of<p>words. PMI-IR is empirically evaluated using 80 synonym test questions from<p>the Test of English as a Foreign Language (TOEFL) and 50 synonym test<p>questions from a collection of tests for students of English as a Second <p>Language (ESL). On both tests, the algorithm obtains a score of 74%. PMI-IR is <p>contrasted with Latent Semantic Analysis (LSA), which achieves a score of <p>64% on the same 80 TOEFL questions. The paper discusses potential<p>applications of the new unsupervised learning algorithm and some implications<p>of the results for LSA and LSI (Latent Semantic Indexing).</td>
+</tr>
+<tr id="bib_Turney01" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Turney01,
+  author = {Turney, Peter D.},
+  title = {Mining the Web for Synonyms: PMI-IR versus LSA on TOEFL},
+  booktitle = {Proceedings of the 12th European Conference on Machine Learning (EMCL '01)},
+  publisher = {Springer},
+  year = {2001},
+  pages = {491--502},
+  url = {http://cogprints.org/1796/0/ECML2001.pdf}
+}
+</pre></td>
+</tr>
+<tr id="OECD07" class="entry">
+	<td>Vickery, G. &amp; Wunsch-Vincent, S.</td>
+	<td>Participative Web And User-Created Content: Web 2.0 Wikis and Social Networking <p class="infolinks">[<a href="javascript:toggleInfo('OECD07','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('OECD07','bibtex')">BibTeX</a>]</p></td>
+	<td>2007</td>
+	<td>, pp. 128&nbsp;</td>
+	<td>book</td>
+	<td><a href="www.sourceoecd.org/scienceIT/9789264037465">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_OECD07" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: The concept of the “participative web” is based on an Internet increasingly influenced by intelligent web services that empower users to contribute to developing, rating, collaborating and distributing Internet content and customising Internet applications. As the Internet is more embedded in people’s lives users draw on new Internet applications to express themselves through “user-created content” (UCC).<p>This study describes the rapid growth of UCC, its increasing role in worldwide communication and draws out implications for policy. Questions addressed include: What is user-created content? What are its key drivers, its scope and different forms? What are new value chains and business models? What are the extent and form of social, cultural and economic opportunities and impacts? What are associated challenges? Is there a government role and what form could it take?</td>
+</tr>
+<tr id="bib_OECD07" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@book{OECD07,
+  author = {Vickery, Graham and Wunsch-Vincent, Sacha},
+  title = {Participative Web And User-Created Content: Web 2.0 Wikis and Social Networking},
+  publisher = {Paris, OECD Publishing},
+  year = {2007},
+  pages = {128},
+  url = {www.sourceoecd.org/scienceIT/9789264037465}
+}
+</pre></td>
+</tr>
+<tr id="Viterbi67" class="entry">
+	<td>Viterbi, A.J.</td>
+	<td>Error bounds for convolutional codes and an asymptotically optimal decoding algorithm <p class="infolinks">[<a href="javascript:toggleInfo('Viterbi67','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Viterbi67','bibtex')">BibTeX</a>]</p></td>
+	<td>1967</td>
+	<td>IEEE Transactions on Information Theory<br/>Vol. 13(2), pp. 260-269&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1054010">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Viterbi67" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: The probability of error in decoding an optimal convolutional code transmitted over a memoryless channel is bounded from above and below as a function of the constraint length of the code. For all but pathological channels the bounds are asymptotically (exponentially) tight for rates above R_0, the computational cutoff rate of sequential decoding. As a function of constraint length the performance of optimal convolutional codes is shown to be superior to that of block codes of the same length, the relative improvement increasing with rate. The upper bound is obtained for a specific probabilistic nonsequential decoding algorithm which is shown to be asymptotically optimum for rates above R_0 and whose performance bears certain similarities to that of sequential decoding algorithms.</td>
+</tr>
+<tr id="bib_Viterbi67" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Viterbi67,
+  author = {Viterbi, Andrew J.},
+  title = {Error bounds for convolutional codes and an asymptotically optimal decoding algorithm},
+  journal = {IEEE Transactions on Information Theory},
+  publisher = {Institute of Electrical and Electronics Engineers (IEEE)},
+  year = {1967},
+  volume = {13},
+  number = {2},
+  pages = {260--269},
+  url = {http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1054010}
+}
+</pre></td>
+</tr>
+<tr id="Wu94" class="entry">
+	<td>Wu, Z. &amp; Palmer, M.</td>
+	<td>Verb semantics and lexical selection <p class="infolinks">[<a href="javascript:toggleInfo('Wu94','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Wu94','bibtex')">BibTeX</a>]</p></td>
+	<td>1994</td>
+	<td>32nd. Annual Meeting of the Association for Computational Linguistics, pp. 133-138&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://citeseer.ist.psu.edu/wu94verb.html">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Wu94" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: This paper will focus on the semantic representation of verbs in computer systems and its impact on lexical selection problems in machine translation (MT). Two groups of English and Chinese verbs are examined to show that lexical selection must be based on interpretation of the sentence as well as selection restrictions placed on the verb arguments. A novel representation scheme is suggested, and is compared to representations with selection restrictions used in transfer-based MT. We see our approach as closely aligned with knowledge-based MT approaches (KBMT), and as a separate component that could be incorporated into existing systems. Examples and experimental results will show that, using this scheme, inexact matches can achieve correct lexical selection.</td>
+</tr>
+<tr id="bib_Wu94" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Wu94,
+  author = {Wu, Zhibiao and Palmer, Martha},
+  title = {Verb semantics and lexical selection},
+  booktitle = {32nd. Annual Meeting of the Association for Computational Linguistics},
+  year = {1994},
+  pages = {133--138},
+  url = {http://citeseer.ist.psu.edu/wu94verb.html}
+}
+</pre></td>
+</tr>
+<tr id="Yang06" class="entry">
+	<td>Yang, D. &amp; Powers, D.M.W.</td>
+	<td>Verb Similarity on the Taxonomy of WordNet <p class="infolinks">[<a href="javascript:toggleInfo('Yang06','bibtex')">BibTeX</a>]</p></td>
+	<td>2006</td>
+	<td>Proceedings of the Third International WordNet Conference (GWC), pp. 121-128&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://nlpweb.kaist.ac.kr/gwc/pdf2006/2.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Yang06" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Yang06,
+  author = {Yang, Dongqiang and Powers, David M. W.},
+  title = {Verb Similarity on the Taxonomy of WordNet},
+  booktitle = {Proceedings of the Third International WordNet Conference (GWC)},
+  publisher = {Masaryk University, Brno},
+  year = {2006},
+  pages = {121--128},
+  url = {http://nlpweb.kaist.ac.kr/gwc/pdf2006/2.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Ye06" class="entry">
+	<td>Ye, S., Wen, J.-R. &amp; Ma, W.-Y.</td>
+	<td>A Systematic Study of Parameter Correlations in Large Scale Duplicate Document Detection <p class="infolinks">[<a href="javascript:toggleInfo('Ye06','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Ye06','bibtex')">BibTeX</a>]</p></td>
+	<td>2006</td>
+	<td><br/>Vol. 3918Lecture Notes in Artificial Intelligence, pp. 275-284&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://dx.doi.org/10.1007/11731139_33">DOI</a> <a href="http://www.springerlink.com/content/235g025u1820mpg4/fulltext.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Ye06" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: Although much work has been done on duplicate document <p>detection (DDD) and its applications, we observe the absence of a systematic <p>study of the performance and scalability of large-scale DDD. It is still <p>unclear how various parameters of DDD, such as similarity threshold,<p>precision/recall requirement, sampling ratio, document size, correlate<p>mutually. In this paper, correlations among several most important<p>parameters of DDD are studied and the impact of sampling ratio is of most <p>interest since it heavily affects the accuracy and scalability of<p>DDD algorithms. An empirical analysis is conducted on a million <p>documents from the TREC .GOV collection. Experimental results show that even <p>using the same sampling ratio, the precision of DDD varies greatly on <p>documents with different size. Based on this observation, an adaptive<p>sampling strategy for DDD is proposed, which minimizes the sampling ratio <p>within the constraint of a given precision threshold. We believe the<p>insights from our analysis are helpful for guiding the future large<p>scale DDD work.</td>
+</tr>
+<tr id="bib_Ye06" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Ye06,
+  author = {Ye, Shaozhi and Wen, Ji-Rong and Ma, Wei-Ying},
+  title = {A Systematic Study of Parameter Correlations in Large Scale Duplicate Document Detection},
+  booktitle = {Lecture Notes in Artificial Intelligence},
+  publisher = {Springer},
+  year = {2006},
+  volume = {3918},
+  pages = {275--284},
+  url = {http://www.springerlink.com/content/235g025u1820mpg4/fulltext.pdf},
+  doi = {http://dx.doi.org/10.1007/11731139_33}
+}
+</pre></td>
+</tr>
+<tr id="Klabunde04" class="entry">
+	<td></td>
+	<td>Computerlinguistik und Sprachtechnologie. Eine Einführung <p class="infolinks">[<a href="javascript:toggleInfo('Klabunde04','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Klabunde04','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>, pp. 642&nbsp;</td>
+	<td>book</td>
+	<td><a href="http://www.springer.com/spektrum+akademischer+verlag/informatik/informatik+und+it+%C3%BCbergreifend/book/978-3-8274-1407-6">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Klabunde04" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: Dieses Lehrbuch bietet eine umfassende Einführung in Grundlagen und Methoden der Computerlinguistik und stellt die wichtigsten Anwendungsgebiete in der Sprachtechnologie vor. Es richtet sich gleichermaßen an Studierende der Computerlinguistik und verwandter Fächer mit Bezug zur Verarbeitung natürlicher Sprache wie an Entwickler sprachverarbeitender Systeme.<p>Nach einem Überblick über Aufgaben und Ziele der Computerlinguistik werden die erforderlichen theoretischen Grundlagen zur Logik, den Formalen Sprachen und statistischen Verfahren ausführlich und beispielbezogen erläutert.<p>Es schließt sich eine Darstellung der verschiedenen Methoden für die Verarbeitung auf den linguistischen Beschreibungsebenen an. Dabei werden zunächst die grundlegenden Begriffe und Konzepte der Phonetik, Morphologie, Syntax, Semantik sowie der Pragmatik vermittelt und darauf aufbauend die Prinzipien der sprachtechnologischen Umsetzung behandelt.<p>Der letzte Teil des Buches gibt einen Überblick über die sprachtechnologischen Anwendungen in der Praxis und zeigt anhand einer Vielzahl konkreter Fragestellungen - von Spracherkennung über Sprachsynthese, Information Retrieval bis hin zu Dialogsystemen und automatischer Übersetzung - das Zusammenwirken der einzelnen Methoden auf.<p>Für die zweite Auflage wurden sämtliche Kapitel überarbeitet, aktualisiert und zum Teil auch substanziell erweitert. Zudem wurden neue Beiträge über computerlinguistische Grundlagen und Methoden wie z.B. die Texttechnologie hinzugenommen, um deren Relevanz für die Sprachtechnologie stärker hervorzuheben.</td>
+</tr>
+<tr id="bib_Klabunde04" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@book{Klabunde04,,
+  title = {Computerlinguistik und Sprachtechnologie. Eine Einführung},
+  publisher = {Heidelberg, Spektrum-Verlag},
+  year = {2004},
+  pages = {642},
+  edition = {2. überarbeitete und erweiterte Auflage},
+  url = {http://www.springer.com/spektrum+akademischer+verlag/informatik/informatik+und+it+%C3%BCbergreifend/book/978-3-8274-1407-6}
+}
+</pre></td>
+</tr>
+<tr id="Fellbaum98" class="entry">
+	<td></td>
+	<td>WordNet: An Electronic Lexical Database (Language, Speech, and Communication) <p class="infolinks">[<a href="javascript:toggleInfo('Fellbaum98','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Fellbaum98','bibtex')">BibTeX</a>]</p></td>
+	<td>1998</td>
+	<td>, pp. xxii, 423Hardcover&nbsp;</td>
+	<td>book</td>
+	<td><a href="http://lccn.loc.gov/97048710">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Fellbaum98" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: WordNet, an electronic lexical database, is considered to be the most important resource available to researchers in computational linguistics, text analysis, and many related areas. Its design is inspired by current psycholinguistic and computational theories of human lexical memory. English nouns, verbs, adjectives, and adverbs are organized into synonym sets, each representing one underlying lexicalized concept. Different relations link the synonym sets. <P>The purpose of this volume is twofold. First, it discusses the design of WordNet and the theoretical motivations behind it. Second, it provides a survey of representative applications, including word sense identification, information retrieval, selectional preferences of verbs, and lexical chains. <P>Contributors: Reem Al-Halimi, Robert C. Berwick, J. F. M. Burg, Martin Chodorow, Christiane Fellbaum, Joachim Grabowski, Sanda Harabagiu, Marti A. Hearst, Graeme Hirst, Douglas A. Jones, Rick Kazman, Karen T. Kohl, Shari Landes, Claudia Leacock, George A. Miller, Katherine J. Miller, Dan Moldovan, Naoyuki Nomura, Uta Priss, Philip Resnik, David St-Onge, Randee Tengi, Reind P. van de Riet, Ellen Voorhees.</td>
+</tr>
+<tr id="bib_Fellbaum98" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@book{Fellbaum98,,
+  title = {WordNet: An Electronic Lexical Database (Language, Speech, and Communication)},
+  publisher = {Cambridge, MA, MIT Press},
+  year = {1998},
+  pages = {xxii, 423},
+  url = {http://lccn.loc.gov/97048710}
+}
+</pre></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+ <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 18/03/2009.</small>
+</p>
+
+</body>
+</html>
+
+<!-- File generated by JabRef ; Export Filter written by Mark Schenk -->

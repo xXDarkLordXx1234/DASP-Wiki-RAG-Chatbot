@@ -1,0 +1,39 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1294146706" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Mateusz Parzonka
+
+Bachelor Thesis Student September  - December 2010.
+
+---+++++ Thesis Overview
+
+*"Using Text Segmentation to Improve Back-Of-The-Book-Indexing"*
+
+("Verbesserte Generierung von Stichwortverzeichnissen mittels Textsegmentierung")
+
+<blockquote style="border-top-color: #fbfbfb; border-right-color: #fbfbfb; border-bottom-color: #fbfbfb; border-left-color: #dddddd; border-top-width: 1px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 3px; padding-top: 0.5em; padding-right: 1.25em; padding-bottom: 0.5em; padding-left: 1.25em; background-color: #fbfbfb; border-style: solid"><strong style="font-weight: bold">Abstract:</strong><p>Non-fictional books usually contain a back-of-the-book index, because it significantly increases the usability and contributes to its overall value. Since the creation of such an index requires many days of intensive human labor, it is tried to automatize the task using methods of Natural Language Processing. Automatic back-of-the-book indexing is thereby considered to be strongly related to methods rooted in keyphrase extraction. Many methods of keyphrase extraction are only conditionally suitable for long texts, so we analyze, if a partitioning of the text in smaller segments can improve these methods. For that purpose we implement an unsupervised system for automatic back-of-the-book indexing, which incorporates text segmentation. The effectivity of the system is evaluated using an existing gold standard consisting of 29 books with associated indexes created by humans. In the process we are able to exceed the existing benchmark for this gold standard, using a combination of named entity recognition, Tf.idf and simple segmentation. We demonstrate, that segmentation can improve but also worsen the results. It was one of the surprising findings, that by using a prominent method from keyphrase extraction, only considerably poor results could be achieved. Our investigation is accompanied by an exhaustive overview over existing methods of back-of-the-book indexing. The applied gold standard is thoroughly analyzed in that context.</blockquote>
+
+---+++++ Documents
+
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Students/MateuszParzonka/bachelor-thesis.pdf][Thesis]], handed in 15.12.10
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Students/MateuszParzonka/final_presentation.pdf][Final presentation slides]], presentation held on 3.01.10
+
+---+++++ Supervision
+
+   * [[MateuszParzonkaLogBook][Log Book]]
+   * [[MateuszParzonkaMeetingProtocols][Meeting Protocols]]
+   * [[MateuszParzonkaInstallation][Checkout and installation instructions]]
+  
+
+---+++++ Planning
+
+   * [[MateuszParzonkaSchedule][Schedule]]
+
+---+++++ Resources
+
+   * [[MateuszParzonkaReferences][Bibliography]]
+---+++++ 
+
+-- Main.MateuszParzonka - 2011-01-04
+
+%META:FILEATTACHMENT{name="bachelor-thesis.pdf" attachment="bachelor-thesis.pdf" attr="" comment="Bachelor-Thesis, version handed in on 15.12.10" date="1294145226" path="bachelor-thesis.pdf" size="1698735" user="MateuszParzonka" version="1"}%
+%META:FILEATTACHMENT{name="final_presentation.pdf" attachment="final_presentation.pdf" attr="" comment="Final presentation, held on 3.01.11" date="1294145704" path="final_presentation.pdf" size="5098424" user="MateuszParzonka" version="1"}%

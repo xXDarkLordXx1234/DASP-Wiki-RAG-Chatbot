@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="lee" comment="" date="1596701649" format="1.1" reprev="4" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Bachelor Thesis* : 
+
+*Supervisor*: JL
+
+
+*Start Date* : 
+
+*Mid-Term Presentation Date* : 
+
+*Final Presentation Date* : 
+
+*End Date*: 
+
+
+---++++ *xx.xx.xxxx - xx.xx.xxxx*
+
+---++++ Meeting *06.08.2020*
+   * Finetune whole BERT Model 
+   * Add results in readme/the repo
+   * Further parameter tuning
+
+---++++ Meeting *16.07.2020*
+   * Setup is working and first experiments with BERT have been run
+   * Regression conversion is done
+   * Next steps:
+      * Run regression setup (MAE/MSE/RMSE loss, linear output layer)
+      * Check evaluation metrics
+      * Future work - self-supervised objective for regression similar to masked language modeling? 
+
+
+---++++ Meeting *25.06.2020*
+   * Working environment on slurm
+   * Currently working on [[https://github.com/mandarjoshi90/coref][SpanBERT]] code -> setting up evaluation
+
+---++++ Meeting *09.06.2020*
+   * Read into [[https://wiki.ukp.informatik.tu-darmstadt.de/Services/Campus/ComputeCluster][Slurm]]
+   * Try to run [[https://github.com/mandarjoshi90/coref][SpanBERT]] code
+
+
+*[[https://docs.google.com/spreadsheets/d/1nxlQ2bi2CxXFtSs9GSeq17GU5rkKtfKz6c84uU_6Xj0/edit#gid=0][Literatur research]]* 
+
+
+*To-Dos For xx.xx. - xx.xx.:*
+
+
+
+-- Main.JiUngLee - 2020-04-30

@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="TobiasHorsmann" date="1315676813" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Tobias Horsmann
+
+---+++ Aufgabenüberblick
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| * Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung in Wikipedia-API um auf lokale MySQL DB mit Amisch-Wiki zugreifen zu können | |
+| Eingelesen Wikiseiten nach MWT absuchen und diese speichern. Abgreifen von MWT vorläufig via RegEx | |
+| Gefundene MWTs indiziert in einem eigenen Datentyp speichern | |
+| Zu jedem MWT die Häufigkeit innerhalb des Wiki ermitteln/abzählen und Eintrag um Frequenz aktualisieren. | |
+| MWT filtern damit nur noch MWTs aus 2-X Wörtern vorhanden sind | |
+---+++ Zeiterfassung
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Zusammenfassung* | *Stunden* | *Bemerkungen* | 
+| ... | ... | ... | ... |  
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 90)$EXEC($GET(total_hour))"}% | bis Ende November noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |
+<nop>
+
+%META:FILEATTACHMENT{name="hiwi_task_description.pdf" attachment="hiwi_task_description.pdf" attr="" comment="Rough task overview" date="1315573417" path="hiwi_task_description.pdf" size="788067" user="SilvanaHartmann" version="1"}%

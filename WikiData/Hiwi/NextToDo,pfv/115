@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1379161026" format="1.1" reprev="113" version="115"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+[java] 13/09/14 01:08:25 INFO pipelines.IndexDocument: Creating TREC document from /home/steuer/Tipster/tipsterTagged (en)
+     [java] 14.09.13 01:08:25 - 10: de.tudarmstadt.ukp.dkpro.core.stopwordremover.StopWordRemover.initialize(145): INFO: Loaded stopwords for locale [*] from [file:/srv/home/steuer/deploy/classes/stopwords/all.txt]
+     [java] Exception in thread "main" java.lang.IllegalStateException: Current event not START_ELEMENT or END_ELEMENT
+     [java]     at com.ctc.wstx.sr.BasicStreamReader.getName(BasicStreamReader.java:749)
+     [java]     at collectionreaders.XmlReaderDocs1.getNext(XmlReaderDocs1.java:357)
+     [java]     at org.uimafit.component.JCasCollectionReader_ImplBase.getNext(JCasCollectionReader_ImplBase.java:70)
+     [java]     at org.uimafit.pipeline.SimplePipeline.runPipeline(SimplePipeline.java:79)
+     [java]     at pipelines.IndexDocument.createTrecDocument(IndexDocument.java:242)
+     [java]     at pipelines.IndexDocument.main(IndexDocument.java:285)
+     [java] Java Result: 1
+
+
+   * <s>write about and</s> *apply new data set*
+      * <s>transforming Tipster docs into !RobustWSD format ...</s>
+         * after: transform to Terrier tagged format
+            * for baseline
+            * for first DT experiments
+
+   * run *delex query side on frink*
+      * the sense substituter contains an old version of asv toolbox, dt lemmatizer has new one
+         * re-pack the sensesubstituter jar and remove the asv package
+      * implement second term selecting method and (just by annotations overlap) count how many terms would be expanded by each of the two methods
+
+   * points to *extend the thesis*: experiments with new data set, intro

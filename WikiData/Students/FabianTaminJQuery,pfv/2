@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="FabianTamin" date="1249409151" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ JQuery
+_&#8220;This short summary is cited from [[http://en.wikipedia.org/wiki/JQuery][Wikipedia article]]&#8221;_
+
+<noautolink>
+jQuery is a lightweight JavaScript library that emphasizes interaction between JavaScript and HTML. It was released in January 2006 at BarCamp NYC by John Resig.
+
+Dual-licensed under the MIT License and the GNU General Public License, jQuery is free, open source software.
+
+Both Microsoft and Nokia have announced plans to bundle jQuery on their platforms, Microsoft adopting it initially within Visual Studio[2] for use within Microsoft's ASP.NET AJAX framework and ASP.NET MVC Framework whilst Nokia will integrate it into their Web Run-Time platform.
+</noautolink>
+
+[[http://en.wikipedia.org/wiki/JQuery][More information (from Wikipedia)]]
+
+Link to [[http://jquery.com/][jQuery]]
+
+---++ Separation of Structure (HTML) and Behavior (JS)
+_&#8220;This tutorial is using [[http://docs.jquery.com/Downloading_jQuery][jQuery library]] and [[http://docs.jquery.com/images/c/c7/Jquery-starterkit.zip][JQuery Starterkit]] (cited from [[http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery][jQuery's official pages (Getting started with jQuery)]])&#8221;_
+
+Now update the $(document).ready handler: 
+<verbatim>
+$(document).ready(function() {
+   $("a").click(function() {
+     alert("Hello world!");
+   });
+});
+</verbatim>
+
+This should show the alert as soon as you click on the link. You are ready now to copy and paste this script into your custom.js file. Then, open starterkit.html in the browser and click any link. You should see a pop-up window with "Hello world!" message regardless of what link was clicked. 
+
+Let's have a look at what we are doing: $("a") is a jQuery selector, in this case, it selects all a elements. $ itself is an alias for the jQuery "class", therefore $() constructs a new jQuery object. The click() function we call next is a method of the jQuery object. It binds a click event to all selected elements (in this case, a single anchor element) and executes the provided function when the event occurs. 
+
+This is similar to the following code: 
+<verbatim>
+<a href="" onclick="alert('Hello world')">Link</a>
+</verbatim>
+
+The difference is quite obvious:<br />
+_We don't need to write an onclick for every single element. We have a clean separation of structure (HTML) and behavior (JS), just as we separate structure and presentation by using CSS._
+
+
+---++ JQuery's DOM (Document Object Model) Functionalities
+   * Finding using *selectors* and overriding behavior using *events*
+   * jQuery is a lot about making code *shorter* and therefore *easier to read* and *maintain*. The following is a shortcut for the *$(document).ready(callback)* notation: 
+ <verbatim>
+$(function() {
+   // code to execute when the DOM is ready
+});
+ </verbatim>
+
+
+
+-- Main.FabianTamin - 04 Aug 2009

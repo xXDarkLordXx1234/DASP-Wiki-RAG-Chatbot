@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1376332494" format="1.1" reprev="6" version="9"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+---+++ experiments
+   * run (without fields) just DN to see if wrong POS annotations make a difference (baseline <-> DT expansions)
+   * run just N (narrative) and see, if expansions on that improve performance (why? no NNP mistagging)
+   * add another term selecting method: by least key count (in the DT)
+
+---+++ written thesis
+   * UIMA intro: sketch full pipeline (reader, annotators, consumer)
+   * TWSI: conduct statistics for the 1016 nouns in the topics and documents
+   * intro: show an example sentence expanded with all the three resources
+   * intro:TWSI: How are polysemous/monosemous target words identified? What features are used?

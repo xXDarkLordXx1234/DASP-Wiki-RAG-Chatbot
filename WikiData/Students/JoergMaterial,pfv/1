@@ -1,0 +1,37 @@
+%META:TOPICINFO{author="JoergHellms" date="1216125186" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="JoergHellms"}%
+---+ Literatur
+ 
+%TOC%
+
+---++ F. Schwager: Automatic analysis of lexical cohesion. Diploma Thesis. Computer Science Department. Technische Universität Darmstadt. 2008.
+Darstellung des lexikalischen Zusammenhangs mittels Graphen statt wie bisher mit Ketten.
+Es wird erklärt was ein lexikalischer Zusammenhang ist und welche Arten es gibt.
+
+---+++ Lexikalische Ketten
+   * Zusammenhängende Wörter verketten
+   * Wort gehört nur zu einer Kette
+
+---+++ Erzeugen von Ketten mittels Graphen
+Galley and McKeown (Galley, et al., 2003)
+
+---+++ *Lexikalische Graphen*
+Größerer Aufwand (Zeit und Speicherplatz) beim Erzeugen von Graphen als von Ketten.
+Aufgrund der im Graph enthaltenen Informationen aber besser bei Anwendungen, bei denen der lexikalischen Zusammenhang hilfreich ist.
+Bildung von Clustern zur Bestimmung von Wortbedeutungen.
+
+*Erzeugen von lexikalischen Graphen:*
+   * Identifizieren aller Wörter, die in den Graph aufgenommen werden sollen
+   * Verbinden der Wörter, aufgrund ihrer Beziehungen untereinander mit Gewichtung der Kanten z.B. mit Explicit Semantic Analysis (ESA) (Gabrilovich, et al., 2007).
+
+Zur Optimierung kann am erstellten Baum die Gewichtung der Kanten nochmals angepasst werden und es können auch Kanten ganz entfernt werden.
+
+---+++ UIMA
+   * Preprocessing (Paragraph Splitter, Sentence Splitter, Tokenizer, TreeTagger)
+   * *Lexical graph computation* (POS Filter, Word Pair Annotator, Semantic Relatedness Analysis)
+   * *Graph Augmentaiton* (Link Weight Adjustment, Link Prunning)
+
+
+
+
+-- Main.JoergHellms - 15 Jul 2008

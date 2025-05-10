@@ -1,0 +1,167 @@
+%META:TOPICINFO{author="ShuoYang" date="1294327227" format="1.1" version="5"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Arbeitsprotokoll-2H 2010 / Shuo Yang
+
+%TOC%
+
+
+---++ Dez 2010
+
+---+++ Abgeschlossene Aufgaben
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* |
+| 1. !WikiWörterbuch | 100 |
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !WikiWörterbuch-Wiktionary | 30.12.2010 | 2.5 | Überarbeitung und Erweiterung von Wiktionary-Teil. Hinzufügen der Funktionalität, Gloss und Senses für eine Übersetzung zu bekommen. | * |
+| !WikiWörterbuch-OO | 28.12.2010 | 3 | Dokumentationen, Kommentare und Unit Tests zu erstellen | * |
+| !WikiWörterbuch-OO | 27.12.2010 | 4 | Mehr Object-oriented-Version fertig. | * |
+| !WikiWörterbuch-OO | 25.12.2010 | 2 | Angefangen, Klassen mehr Object-oriented umzuschreiben | * | 
+| !WikiWörterbuch | 21.12.2010 | 2 | Dokumentation und Erklärung von Komponenten | * |
+| !WikiWörterbuch | 20.12.2010 | 1 | Erklärung von Komponenten <p> Treffen mit Benjamin über nächste Aufgabe |  |
+| !WikiWörterbuch | 17.12.2010 | 1 | Erklärung von Komponenten |  |
+| !WikiWörterbuch | 13.12.2010 | 1 | Aktualisierung von ShuoYangStatistikInterlanguageLinksWikipedia |  |
+| Studie | 08.12.2010 | 0.5 | Studie zu Ähnlichkeiten von Daniel Bär |  |
+| Meeting | 06.12.2010 | 1 | Meeting mit Benjamin |  |
+| !WikiWörterbuch | 05.12.2010 | 1 | Englische Wikipedia fertig geparst und somit !WikiWörterbuch fertig. <p> Anpassung und Erstellung von Unit Tests |  |
+| !WikiWörterbuch | 03.12.2010 | 1 | Weitere Parsen <p> Vorschlag der Verbesserungen in JWPL im Ausnahme von =NULL= an Torsten |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 27)$EXEC($GET(total_hour))"}% | bis Ende Dezember noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 13 Stunde Untertrag von November)  | |
+<nop>
+
+
+---++ Nov 2010
+
+---+++ Abgeschlossene Aufgaben
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* |
+| 1. =XMLFileReader= mit =XPath= | 100 |
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !NewXmlFileReader | 1.12.2010 | 1 | !NewXmlFileReader behandelt Ausnahme von ungültiger ID tags ähnlich wie alte !XmlFileReader: bearbeitet bis Doc mit ungültiger ID tag, dann bricht sich ab. CASes vor diese illegale ID tag werden gespeichert und weiterbearbeitet, CASes ab dies werden ignoriert <p> Damit !NewXmlFileReader fertig<br> Anpassung von Unit-Tests und Saubermachen | * |
+| !WikiWörterbuch-Buganalyse, !NewXmlFileReader | 30.11.2010 | 2 | Artikle ShuoYangMysqlimportErrorReport fertig, und damit Fehleranalyse fertig. <p> Fortsetzung von !NewXmlFileReader, Ausnahmebehandlung von ungültiger ID tags | * |
+| !WikiWörterbuch-Buganalyse | 29.11.2010 | 1.5 | Fehler NULL in =isDisambiguation= liegt an =\= vor tab-Character<br> Angefangen mit dem Bericht darüber ShuoYangMysqlimportErrorReport | * |
+| !WikiWörterbuch-Buganalyse | 26.11.2010 | 2 | Arbeitsweise von JWPL bezüglich =isDisambiguation= fast verstanden<p>Fehler ganz wenig isDisambiguation = =true= liegt daran, dass Wikipedia den Kategoriename von Disambiguation zu Disambiguation_pages umbenennt. Dies wurde nicht in README.txt aktualisiert oder hingewiesen. Als Kommandozeileargumente für DataMachine wurde noch der Alte eingegeben. <p> Erneute DataMachine-Parsen mit neuem Kategoriename | * |
+| !WikiWörterbuch-Buganalyse | 24.11.2010 | 1.5 | Einarbeiten in JWPL, insbesondere über wie =isDisambiguation= entschieden wird | * |
+| !WikiWörterbuch-Buganalyse | 23.11.2010 | 2 | Herausfinden woran die folgenden Fehlern liegen: <ul><li>Fast alle Pages sind kein =isDisambiguation= </li><li>8 mal NULL in =isDisambiguation=</li></ul> Lernen von UNIX shell Befehle (u.a. head, tail, od ...), um Inhalt von mit riesiger Textdateien (z.B. 27GB) sehen und analysieren zu können. | * |
+| !WikiWörterbuch, Treffen | 22.11.2010 | 1.5 | Nur 4 Pages in ganze englischer Wikipedia haben isDisambiguation = =true=. Merkwürdig. <p> Test von Speicherverbrauch - Ein Leerlauf von JWPL getPages() verbraucht an sich 2.1GB (mit dataCache = 5000) bzw. 2.3GB (mit dataCache = 10000) - Speicherverbrauch von !WikiWörterbuch in Ordnung <p> Treffen mit Benjamin | * |
+| !WikiWörterbuch | 21.11.2010 | 1 | Fortsetzung der Extraktion von englischer Wikipedia |  |
+| !WikiWörterbuch | 20.11.2010 | 1 | Extraktion des Wörterbuches von deutscher Wikipedia fertig. |  |
+| !WikiWörterbuch | 19.11.2010 | 3 | Code zur Extraktion und Anfrage von Wörterbücher fertig.<br>Anpassung von Test cases, Beispiele<p> Fehlerhaft bei der Extraktion von englischer Wikipedia: in 8 Einträge wurde =NULL= im Feld =isDisambiguation= von Datenbank =Page= gespeichert.<br>Überlege, woran das liegt<p> Weitere Extraktion von deutscher Wikipedia |  |
+| !WikiWörterbuch-Erstellung | 18.11.2010 | 2 | Installation von Maven auf UKP Rechner, um aktuelle JWPL zu benutzen <p> Extraktion von deutscher Wikipedia und Überprüfung von Daten <br> Zwar rawMap kleiner geworden als früher mit eigenem Parser, da Kategorie:xx Seiten nun nicht umfasst. Dies ist aber wie gewünscht. |  |
+| !WikiWörterbuch-Erstellung | 17.11.2010 | 2.5 | Weitere Konfigurationen auf UKP Rechner<p>Checkout von Projekte aus SVN. Hinzufügen von benötigter Bibliotheken. <p> Anfang mit der Extraktion aus englischer Wikipedia |  |
+| !WikiWörterbuch-Erstellung | 16.11.2010 | 3.5 | Setup von UKP Rechner mithilfe von Timo, um englische Wikipedia zu bearbeiten.<p> Geparste Dateien kopieren, in MySQL importieren <p> Allerdings fehlerhaft wegen nicht ausreichendem Speicherplatz im Festplatt  |  |
+| Treffen | 15.11.2010 | 0.5 | Treffen mit Benjamin über verbleibende Fragen von !WikiWörterbuch |  |
+| !WikiWörterbuch | 14.11.2010 | 1 | <ul><li>Refactoring</li><li> =JwplTranslationDictionary= implements =TranslationEngine= mit neuer Maps </li><li>Erstellen von Unit Tests </li></ul> |  |
+| !WikiWörterbuch | 13.11.2010 | 4.5 | <ul><li> =createDisambiguationMap= kann nun optional redirect Seiten beinhalten.</li><li> =createCustomDictionary= fertig, womit man dynamisch neu Wörterbuch aus =RawMap= erstellen kann</li><li> =createRedirectDictionary= fertig</li></ul> |  | 
+| !WikiWörterbuch-JWPL, Treffen | 12.11.2010 | 2.5 | Implementierung von Extraktion der Disambiguation- und Disambiguated-Map fertig.<br>Exemplarische Beispiele erstellt<p> Treffen mit Benjamin und Diskussion über bisherige Ergebnisse und weitere Vorgänge. <p> Disambiguation Links nun sortiert <p> Kurz Einarbeiten in Groovy |  |
+| !WikiWörterbuch-JWPL | 11.11.2010 | 4.5 | Raw Map fertig erstellt. <br> Ergebnisse analysieren und Probleme notieren <p> Weitere Implementierung <br> Extraktion im Laufe |  |
+| !WikiWörterbuch-JWPL | 10.11.2010 | 1.5 | Weitere Implementierung |  |
+| !WikiWörterbuch-JWPL, Treffen | 09.11.2010 | 4 | Implementieren Extraktion vom Disambiguation-Wörterbuch <p> Erstellen damit dasDisambiguation-Wörterbuch <p> Treffen mit Benjamin über neue Speicherungsstruktur |  |
+| !WikiWörterbuch-JWPL | 08.11.2010 | 1.5 | Vom Kollege erfahren, mit dem Parameter =dataCache= lässt sich SQL-Abfrage reduzieren und dadurch Performanz verbessern <p> Weiterhin erstellen vom Wörterbuch |  |
+| !WikiWörterbuch-JWPL | 06.11.2010 | 1.5 | Einarbeiten in JWPL |  |
+| !WikiWörterbuch-JWPL | 05.11.2010 | 4 | DE-Wikipedia mit !DataMachine geparst, in MySQL importiert <p> Erzeugen von Wörterbuch mit JWPL (sehr langsam) |  |
+| !WikiWörterbuch-JWPL | 04.11.2010 | 2.5 | Einarbeiten in JWPL |  |
+| !WikiWörterbuch-JWPL | 03.11.2010 | 1.5 | Versuch, mit =DataMachine= passende Dateien aus Wikipedia-Dump für JWPL zu erzeugen. Allerdings schlag immer fehl mit =Exception in thread "main"= |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 41)$EXEC($GET(total_hour))"}% | bis Ende November noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 1 Stunde Übertrag von Oktober)  | |
+<nop>
+
+
+---++ Okt 2010
+
+---+++ Detaillierte Auflistung
+
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !WikiWörterbuch-JWPL, Treffen | 02.11.2010 | 4.5 | Einarbeiten in =JWPL= und =DataMachine= / =WikiMachine= <br> Und zwar bei der Implementierung vom Reader der Wikipedia-Dump, und wie es Disambiguation findet (aus =categorylinks.sql=) <p> Treffen mit Benjamin über Einsetzen von JWPL für Extraktion der Wörterbücher aus Wikipedia | * |
+| !WikiWörterbuch | 30.10.2010 | 0.5 | Weitere Programmierung | * |
+| !WikiWörterbuch | 29.10.2010 | 2 | <ul><li>Erstellen von APIs zum Zugriff der Redirect Targets und Tests dazu</li><li>Erstellen von Redirect Targets Abbildung von englischer Wikipedia</li><li>Erstellen von EN-DE Wörterbuch aus neuem englischen Wikipedia-Dump</li></ul> | |
+| !WikiWörterbuch, Treffen | 28.10.2010 | 6 | <ul><li>Irgendwo verbrauchte viele Speicher, so dass das Programm nicht mehr richtig funktionieren konnte.</li></li>Dabei, die Ursache herauszufinden mit JVisualVM-Tool</li><li>Treffen mit Benjamin </li><li>Erstellen vom Wörterbuch aus deutscher Wikipedia</li><li>Erstellen von Redirect-"Anchors"-Abbildung. </li></ul> | |
+| !WikiWörterbuch | 27.10.2010 | 2 | <ul><li>Versuch, nicht wohlformatierte Crosslanguage-Links mit Regular Expression zu identifizieren </li><li>Testen</li></ul> |  |
+| !WikiWörterbuch-Disambiguation, Treffen | 18.10.2010 | 2 | <ul><li>Weitere Einarbeiten in JWPL Parser</li><li>Treffen mit Benjamin über Disambiguations</li></ul> |  |
+| !WikiWörterbuch-Disambiguation | 16.10.2010 | 2 | <ul><li>Einarbeiten in JWPL Parser, Nachvollziehen wie er Disambiguations parst.</li><li>Dabei auch Lernen von Spezifikation über Disambiguations von Wikipedia</li></ul> | * |
+| !WikiWörterbuch-Wiktionary | 15.10.2010 | 3 | <ul><li>Einarbeiten in JWPL APIs </li><li>Extraktion / Konvertierung geparste Wiktionary-Einträge ins bisherigen Format von Wikipedia-Wörterbuch</li><li>Erstellen von Beispiele und Tests</li></ul> | * |
+| !WikiWörterbuch-Wiktionary | 14.10.2010 | 1 | Angefangen mit Wiktionary-Teil |  |
+| !WikiWörterbuch, Meeting | 12.10.2010 | 2.5 | <ul><li>Herunterladen neuer Version von Wiki Dump (20100916)</li><li>Optimierung: Wiederverwendung von !StringBuilder bei der Sammlung von Strings in =page=, statt jedes Mal neue Initialisierung</li><li>Meeting mit Benjamin über nächste Schritte inkl. Disambiguations und Wiktionary</li></ul> |  |
+| !WikiWörterbuch | 10.10.2010 | 6 | <ul><li>Bugbehoben: u.ä. Titel-Elemente wurden konkateniert. </li><li>Nun liefert der Parser (fast) richtige Übersetzungen. </li><li> Außer kleine Mengen Ausnahmen von ungültige CLL-Formate</li></ul> |  |
+| !WikiWörterbuch | 08.10.2010 | 1 | Weitere Entwicklung von !WikiWörterbuch |  |
+| !WikiWörterbuch | 02.10.2010 | 6.5 | <ul><li>Unterstützung von Parsen redirecter Links</li><li>Zu große Speicherverbrauch (>2GB) mit One-Pass parsen (gleichzeitig direct- und redirect-Übersetzungen. Nur kleine Prozent von redirect haben deutsche Übersetzungen aber alle müssen zunächst gespeichert), so dass System abnormal langsam geworden</li><li>Dazu probiert FileHashMap (clapper.org), was alle Values von HashMap direkt im Festplatt speichert. Aber zu langsam (>30min). </li><li>Gelöst mit Two-Pass parsen. Erst mal alle direkte Übersetzungen, zweites Mal alle redirect Übersetzungen. So dass nur gültige redirect werden gespeichert, daher viel kleiner Speicherverbrauch, und viel schneller (alle two passes insgesamt 20 min, mit 1-Pass allein redirect-Zwischenspeicherung dauert 19.3min)</li><li>Wörter mit =""= getrennt in string representation, da =,= auch in Titel enthalten ist und daher nicht eindeutig.</li><li>Redirect-Ergebnis evtl. nicht vollständig (A-Bomb nicht gefunden :( ). Versuche noch, die Ursache herauszufinden</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 40)$EXEC($GET(total_hour))"}% | bis Ende Oktober noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden | |
+<nop>
+
+
+---++ Sept 2010
+
+---+++ Abgeschlossene Aufgaben
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* |
+| 1. Umbauen von !TrecTranslationXmlWriter | 100 |
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !WikiWörterbuch | 01.10.2010 | 3.5 | <ul><li>Extraktion von Redirect-Links</li><li>Kombination mit direkter Übersetzungen (noch nicht fertig)</li><li>Umbau von direkter Übersetzungen, gespeichert in List statt einzige konkatenierte String</li><li>Problem: System wird extrem langsam wenn VM über 2GB groß ist</li></ul> | * |
+| !WikiWörterbuch | 30.09.2010 | 1 | Angefangen mit der Implementierung von Extraktion aus Redirect-Links |  |
+| !WikiWörterbuch, Meeting | 28.09.2010 | 3.5 | Beobachtung und Analyse von Crosslanguage-Links in Wiki dump <br> Erhöhung Robustness von !WikiWörterbuch, indem leere Links ( =[[de:] ]= ), fehlerhafte Links (=[[de:]=, =[[de:=) ignoriert werden <p> Meeting mit Benjamin über Redirect-Extraktion |  |
+| !TrecTranslationXmlWriter, !WikiWörterbuch | 27.09.2010 | 3.5 | Saubermachen und Kommentare von !TrecTranslationXmlConcatenatedWriter, Test cases und Readme (fertig) <p> Implementierung direkter Einlesen aus Plaintext-Dateien für !WikiWörterbuch <br> Komische Verhalten in geparste Hashmap gefunden. Versuchen, Ursache herauszufinden |  |
+| !GoogleTranslator | 24.09.2010 | 1 | Prüfen von Gültigkeiten verwendeter Bibliltheken, APIs in !GoogleTranslator<p> Aktualisierung der Testcases mit !NewXmlFileReader und !TrecTranslationXmlWriter |  |  
+| !WikiWörterbuch, !TrecTranslationXmlWriter | 22.09.2010 | 7 | Testen, Saubermachen und Verfeinerung der Kommentare von !TrecTranslationXmlWriter (fertig) <p> !WikiWörterbuch: <ul><li>Nun wird Key in Kleinbuchstaben gespeichert, und Value in originale.</li><li>Für Keys mit mehrerer Interlanguage-Links, werden diese einzelne Übersetzungen aneinandergehangen</li><li> =HashMapDictionary#getTranslation(String)= nun liefert die Übersetzung vom Wörterbuch.</li><li>Zur Veranschaulichung ein Tool geschrieben, was gespeicherte Wörterbuch im Form von Hashmap ins Plaintext konvertiert.</li><li>Erstellung von Listen der Artikeln, deren Titel Klammern beinhaltet, und Listen der Artikeln mit mehrerer Übersetzungen</li></ul> |  |
+| !WikiWörterbuch, !TrecTranslationXmlWriter, Meeting | 21.09.2010 | 7.5 | Meeting mit Benjamin über Ergebnisse und Fortsetzung von Projekete <p> !TrecTranslationXmlWriter: <ul><li>Ausgegebene Dateien spiegelt nun die originale Struktur und Hierarchie vor Einlesen wieder.</li><li>Möglichkeit zur Ausgabe aller Dateien auf dieselben Ordner (PARAM_WRITE_FLATLY)</li></ul> !WikiWörterbuch: <ul><li>Statistik von Redirect</li><li>Ursache Abweichung Anzahl geparster Pages mit ihr in Statistik auf Wikipedia: Wiki nutzt [[http://meta.wikimedia.org/wiki/Article_count_reform][diese Methode zum Zählen]]</li></ul> |  |
+| !WikiWörterbuch, !TrecTranslationXmlWriter | 20.09.2010 | 10 | !WikiWörterbuch: <ul><li>Extraktion der Wortpaare aus Wiki Dump (EN-DE)</li><li>Nun gespeichert auf dem Festplatt in HashMap</li><li>Ein interaktives Konsoleprogramm, womit man die Wortpaare abfragen kann.</li></ul> !TrecTranslationXmlWriter: <ul><li>Ausgabe der Dateien in originaler Struktur von Dateien (Falls 3 ein dann 3 aus in originale Dateiname)</li><li>Rekursive Struktur noch nicht testiert (Dateien unter Unterordnern)</li><li>Getrennt in zwei Klassen, eine für aneinandergehangene Ausgabe (!TrecTranslationXmlConcatenatedWriter), eine für separate Dateien (!TrecTranslationXmlWriter)</li></ul> |  |
+| !WikiWörterbuch | 19.09.2010 | 9.5 | Erstellung von Statistik über Anteil der Seiten in Wikipedia, die mit Interlanguage-Link in Zielsprache sind. <br> Probiert mit SAX Parser und rein BufferedReader, Performanzvergleich <br> Allerdings unterscheiden sich die Resultate voneinander. Versuchen, die Ursache herauszufinden <br> Untersuchung der Möglichkeiten zur effizienten Speicherung von großer Menge Daten |  |
+| !WikiWörterbuch | 18.09.2010 | 1.5 | Einarbeiten in Struktur von XML Dateien von MediaWiki <br> Untersuchung der Möglichkeiten von XML-Parsen mit Java |  |
+| !WikiWörterbuch, Meeting | 17.09.2010 | 3 | Einarbeiten in JWPL <br> Meeting mit Benjamin über erneute Aufgaben und Zeitplanung |  |
+| !NewXmlFileReader,<br> Wörterbuch aus Wikipedia | 16.09.2010 | 3 | =NewXmlFileReader= fast fertig. Test <br> Herunterladen von WikiDump, Einarbeiten in JWPL |  |
+| !NewXmlFileReader | 15.09.2010 | 1 | Weitere Implementierung von =NewXmlFileReader= |  |
+| !NewXmlFileReader | 02.09.2010 | 2.5 | Weitere Implementierung von =NewXmlFileReader= |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 57.5)$EXEC($GET(total_hour))"}% | bis Ende September noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (inkl. 17,5 Übertrag von August) | |
+<nop>
+
+---++ Juli ~ Aug 2010
+
+---+++ Abgeschlossene Aufgaben
+| *Aufgabe* | *% done* |
+| 1. Anpassung von BM25 auf Lucene 3.0 | 100 |
+| 2. Dokumentation auf Implementierung eignem Lucene Scoring | 100 |
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| BM25, !NewXmlFileReader | 28.08.2010 | 6 | Zusammenführung von Projekte BM25 Modelle ins Eine. <br> Erneute Evaluierung und Anpassung von dieser Modell an neuer APIs von Lucene 3, mit neu erworbenen Verständnisse von Lucene Scoring <br> Testen und Behoben von Bugs <br> Vorbereitung von NewXmlFileReader auf Implementierung weiterer Funktionälitäten | * |
+| Lucene Scoring | 27.08.2010 | 3.5 | Dokument ShuoYangChangingLuceneScoring fertig geschrieben <br> Saubermachen von !DemoScoring | * |
+| Lucene Scoring | 26.08.2010 | 5 | Einarbeiten in Similarity <br> Erstellung vom Dokument ShuoYangChangingLuceneScoring (noch nicht fertig) |  |
+| Lucene Scoring | 25.08.2010 | 5 | Einarbeiten in Lucene Scoring <br> Erstellung von DemoScoring | * |
+| Lucene Scoring | 24.08.2010 | 2.5 | Einarbeiten in Lucene Scoring |  |
+| Lucene Scoring | 23.08.2010 | 1.5 | Einarbeiten in Lucene Scoring |  |
+| Lucene Scoring | 22.08.2010 | 2 | Einarbeiten in Lucene (Datenstruktur, Scoring) |  |
+| WikiDictionary | 02.08.2010 | 1.5 | Versuchen, WikiDumps unterzuladen |  |
+| !XPathReader | 22.07.2010 | 1.5 | Implementierung von !XmlFileReader |  |
+| !XPathReader, Meeting | 20.07.2010 | 2 | Testen von !XmlFileReader und Meeting mit Benjamin |  | 
+| BM25, !XPathReader | 17.07.2010 | 3 | Testen und Fixieren von !BM25Modell <br> Modifizierung von !XmlFileReader mit XPath für höherer Flexibilität |  |  
+| BM25 | 15.07.2010 | 3 | Debug von !BM25Modell für spezielle Queries |  |
+| BM25 | 13.07.2010 | 2.5 | Anpassungen und Testen von !BM25Modell unter Lucene 3.0 |  |
+| BM25 | 11.07.2010 | 2.5 | Einarbeiten in Lucene !TermQuery als Beispiel für Scoring, und <br> Anpassungen von !BM25Modell <ul><li> funktioniert schon mit Lucene 3.0 (ohne Explanation) </li><li> Korrektheit allerdings noch nicht testiert </li></ul> |  |
+| Lucene Scoring | 10.07.2010 | 3 | Einarbeiten in Lucene Scoring |  |
+| BM25 | 08.07.2010 | 1 | Anpassungen |  |
+| BM25, Meeting | 06.07.2010 | 3 | Weiteres Anpassen und Meeting mit Benjamin |  |
+| BM25 | 04.07.2010 | 2 | Weiteres Anpassen |  |
+| BM25 | 02.07.2010 | 2 | Anpassen von BM25 für Lucene 3.0 |  |
+| BM25 | 01.07.2010 | 2 | Einarbeiten in BM25 |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 72)$EXEC($GET(total_hour))"}% | bis Ende August noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (inkl. 12 Übertrag von Mai) |  |
+<nop>
+
+
+-- Main.ShuoYang - 02 Dez 2010

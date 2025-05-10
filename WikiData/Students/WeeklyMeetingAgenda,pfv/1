@@ -1,0 +1,13 @@
+%META:TOPICINFO{author="GeorgiValkanov" date="1354545368" format="1.1" version="1"}%
+%META:TOPICPARENT{name="GeorgiValkanov"}%
+-- Main.GeorgiValkanov - 2012-12-03
+
+---+++ Meeting on 04.12
+
+   * How many questions needed in the corpus?
+   * Question solver 
+      * wia semantic relatedness (WordNet, Roget's Thesaurus)
+      * other way?
+   * Question generator 
+      * Wiki-based? 
+      * or similar to solver - get N similar concepts, chose N+1th with a bigger distance to the rest?

@@ -1,0 +1,106 @@
+%META:TOPICINFO{author="ShuoYang" date="1269159986" format="1.1" version="7"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Google Translate Performance Analysis
+
+Table of contents:
+%TOC%
+
+---++ Overview
+*Google Translate* is a popular translation service provided by [[http://www.google.com Google Inc.]] with relatively good accuracy.
+Google provides interfaces like a web app and AJAX APIs for accessing it. In this article we are going to evaluate its performance over AJAX APIs on large quantity of inquiries, including the caveats on query frequency, general translation speed, influence of inquiry length on translation speed and possible errors during translation.
+
+---++ Test Environment
+Following tests were performed:
+   * Optimal query frequency
+   * Average query speed
+   * Influence of query length on translation speed
+      * Translate short sentences (average length 26 characters before encoding)
+      * Translate long sentences (average length 4485 characters before encoding)
+   * Influence of network speed on translation speed
+      * Run the short sentences test both at home and in the university
+
+Tests were conducted on a late-2008 !MacBook Pro with Core 2 Duo 2.4GHz CPU, 4GB memory running Mac OS X 10.6.2. Java was used as the programming language with [[http://code.google.com/p/google-api-translate-java/ Google-API-Translate-Java]] library which accesses Google Translate over [[http://code.google.com/apis/ajaxlanguage/documentation/ Google AJAX Language APIs]].
+
+The computer was connected to the Internet via 802.11g Wireless LAN with real world speed of maximal 2.7MB / s, which shouldn't be a limiting factor over Internet speed on translation queries.
+
+---++ Tests and Performance Results
+---+++ Optimal Query Frequency
+Google has an undocumented limit on number of queries performed uninterrupted. After reaching this limit Google returns a *403 error - suspected terms of service abuse* and refuses to work for a short period. To not abuse the term of service we need to find the optimal query frequency. 
+
+Query frequency is controlled by _number of queries per block_ n and _length of break between blocks_ l. After every n queries I made the system to sleep l seconds. With the optimal l Google Translate should work for arbitrary many queries without returning 403 error.
+
+---++++ Results
+| *Number of queries* | *Length of break (s)* | *Outcome* |
+| 500 | 5 | 403 error after 1xxx queries |
+| 200 | 5 | 403 error after 3000 queries |
+| 200 | 10 | 403 error after 500 queries |
+| 200 | 30 | 403 error after 7750 queries |
+| 200 | 50 | 403 error after 13500 queries |
+| 200 | 60 | No error at least after 75500 queries |
+| 500 | 60 | 403 error after 10250 queries |
+
+As we can see, a break of 60s after every 200 queries seems to be optimal and should work for arbitrary many queries. Google Translate also has "memory". Queries are _not_ accepted within a short interval directly after a 403 error: Google blocks those for a short period, which partly explains this interesting result of error after only 500 queries with the combination of (200, 10).
+
+Subsequent tests were all performed with the (200, 60) combination.
+
+---+++ Influence of Query Length on Translation Speed
+---++++ Short Queries
+Short queries are sentences created using a random sentence generator, which chooses randomly each from a predefined set of subjects, verbs and objects and forms a sentence. Each query is of average 26 characters including space. 
+
+Tests are grouped into blocks of 10 queries, 50 queries, 250 queries and 1250 queries, although after every 200 queries a 60 second break is enforced. The duration of processing each block is measured using java's =System.currentTimeMillis()= command. A block includes loops of getting a generated sentence from an array, translate it using Google Translate and saving the translated String into another array (emulating real world scenarios). Each block is performed 50 times to get its average duration.
+
+---++++ Long Queries
+Long queries are concatenated short sentences. Each time 450 random short sentences are generated and indices are randomly chose to create a sentence around 4500 characters long. This length chosen because of Google's limit on 5120 (1024 * 5) character per query _after encoding_ , and buffer is reserved for extra characters created during encoding. Google returns a *[404] invalid result data* error if the query has more than 5120 characters. The average length of each query is 4485 including space.
+
+Tests are likewise grouped into blocks of 10, 50, 250 and 1250 queries with the same break strategy. Duration of processing each block is measured likewise to that of short sentences (time for generating sentence is of course not included). Each block is also performed 50 times to get its average duration.
+
+---++++ Results
+_Only average duration are listed, detailed data can be seen in [[http://spreadsheets.google.com/pub?key=tj8x6l5pMj-jkOfytxK7dmA&gid=0 Google Spreadsheet]]_
+
+| *Queries* | *Avg. Time Short Block (s)* | *Avg. Time Long Block (s)* | *Avg. Time Short Query (ms)* | *Avg. Time Long Query (ms)* | *Times longer* |
+| 10 | 0.583 | 0.949 | 58.302 | 94.886 | 1.627 |
+| 50 | 2.779 | 4.715 | 55.576 | 94.301 | 1.697 |
+| 250 | 13.890 | 21.8 | 55.561 | 87.2 | 1.569 |
+| 1250* | 73.941 | 114.752 | 59.153 | 91.802 | 1.552 |
+| *Average* | -  | - | 57.148 | 92.047 | 1.611 |
+_* Due to time constraints stopped at the 48th round (short) and 45th round (long)_
+
+Charts:
+
+<img src="http://spreadsheets.google.com/oimg?key=0AoWF2gmb8eYodEpvdEhJTXlDbzlLb0lNc1M0Y2hFVWc&oid=3&v=1268646187414" />
+<img src="http://spreadsheets.google.com/oimg?key=0AoWF2gmb8eYodEpvdEhJTXlDbzlLb0lNc1M0Y2hFVWc&oid=7&v=1268758395710" />
+#AverageSpeed
+<img src="http://spreadsheets.google.com/oimg?key=0AoWF2gmb8eYodEpvdEhJTXlDbzlLb0lNc1M0Y2hFVWc&oid=11&v=1268759112990" />
+
+
+As we can see, the average speed of each short and long query is 57.15 ms and 92.05 ms, respectively. That translates to 17.5 short queries per second and 10.9 long queries per second. Long queries are of average 173 times longer than short queries and <del>it takes only 1.61 times longer for Google to translate it</del> it takes only 1.61 times as long to translate a long query. Thus it is more efficient to send long queries when possible as oppose to short ones.
+
+---+++ Influence of network speed on translation speed
+To see the influence of network speed on translation speed, I ran the same short query test at two places:
+   * My student dormitory
+   * UKP-Pool, in the university
+and compared the translation speed. 
+
+---++++ Results
+_detailed data can be seen in [[http://spreadsheets.google.com/pub?key=tj8x6l5pMj-jkOfytxK7dmA&gid=0 Google Spreadsheet]]_
+
+| *Queries* | *Avg. Time Dorm (ms)* | *Avg. Time Univ (ms)* |
+| 10 | 58.302 | 64.366 |
+| 50 | 55.576 | 59.649 |
+| 250 | 55.561 | 59.053 |
+| 1250 | 59.153 | - |
+| *Average* | 57.148 | 61.023 |
+
+<img src="http://spreadsheets.google.com/oimg?key=0AoWF2gmb8eYodEpvdEhJTXlDbzlLb0lNc1M0Y2hFVWc&oid=12&v=1268760479788" />
+
+It can thus be concluded that influence of network connection on translation speed is minimal (Though both tested places have fast Internet access).
+
+---+++ Average Query Speed
+[[#AverageSpeed][See above]]
+
+---++ Summary
+Google Translate returns the translated text fast. With the optimal break combination it can be used to batch process translations. This break is, however, not short. Since short queries and long queries are processed almost at the same speed, concatenating each short queries to form long ones then split later can significantly reduce the overall query count thus taking less breaks, which increases the overall translation performance. This is only possible though, if concatenation does not change the translation result of each short query, otherwise the translation may be wrong. The influence on semantics of concatenation will thus be tested shortly after.
+
+-- Main.ShuoYang - 16 Mar 2010
+
+%META:TOPICMOVED{by="ShuoYang" date="1268574785" from="Hiwi.GoogleTranslateSpeedAnalysis" to="Hiwi.GoogleTranslatePerformanceAnalysis"}%

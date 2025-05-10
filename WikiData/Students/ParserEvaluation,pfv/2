@@ -1,0 +1,88 @@
+%META:TOPICINFO{author="IrinaAlles" date="1340747139" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="IrinaAlles"}%
+-- Main.IrinaAlles - 2012-06-26
+
+---+ Parser Evaluation
+
+---++Malt Parser
+---++++Stackproj
+---+++++10% Data Set
+Gold:   /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br/>
+Parsed: /srv/home/alles/DependencyParsing/parser/maltparser-1.7.1/training/output/malt10TigerModelOut_stackproj.conll
+
+| *accuracy / Metric:LA* |  *counter / Metric:LA* |  * correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token*|
+|0.87|                1      |               0.87             |            0.763             |      1             |         0.763          |               0.8          |           1           |           0.8        |                   Row mean |
+|70734   |               70734      |           70734         |               70734        |           70734         |         70734        |                 70734            |       70734       |           70734          |               Row count|
+
+---+++++50% Data Set
+Gold:   /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br/>
+Parsed: /srv/home/alles/DependencyParsing/parser/maltparser-1.7.1/training/output/malt50TigerModelOut_stackproj.conll
+
+| *accuracy / Metric:LA* |  *counter / Metric:LA* |  * correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token*|
+|0.893             |     1         |            0.893           |             0.804           |        1              |        0.804            |             0.833      |             1          |            0.833        |                 Row mean|
+|70734       |           70734     |            70734        |                70734         |          70734      |            70734         |                70734     |              70734        |          70734       |                  Row count|
+
+---++++Covproj
+---+++++10% Data Set
+Gold:   /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br/>
+Parsed: /srv/home/alles/DependencyParsing/parser/maltparser-1.7.1/training/output/malt10TigerModelOut_covproj.conll
+
+| *accuracy / Metric:LA* |  *counter / Metric:LA* |  * correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token*|
+|0.825            |      1             |        0.825                 |       0.748              |     1                  |    0.748                    |     0.782            |       1               |       0.782                         |Row mean|
+|70734             |     70734             |    70734                |        70734              |     70734               |   70734                       |  70734                  | 70734                 | 70734                         |Row count|
+
+---+++++50% Data Set
+Gold:   /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br/>
+Parsed: /srv/home/alles/DependencyParsing/parser/maltparser-1.7.1/training/output/malt50TigerModelOut_covproj.conll
+
+| *accuracy / Metric:LA* |  *counter / Metric:LA* |  * correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token*|
+|0.856    |              1            |         0.856        |                0.793           |        1         |             0.793           |              0.819        |           1          |            0.819         |                Row mean|
+|70734          |        70734        |         70734       |                 70734    |               70734         |         70734           |              70734       |            70734     |             70734            |             Row count|
+
+---++++Covnonproj
+---+++++10% Data Set
+Gold:   /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br/>
+Parsed: /srv/home/alles/DependencyParsing/parser/maltparser-1.7.1/training/output/malt10TigerModelOut_covnonproj.conll
+
+| *accuracy / Metric:LA* |  *counter / Metric:LA* |  * correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token*|
+|0.87       |            1            |         0.87         |                0.78            |        1           |           0.78              |            0.817            |       1            |          0.817           |              Row mean|
+|70734        |          70734        |         70734         |               70734         |          70734           |       70734             |            70734        |           70734     |             70734      |                   Row count|
+
+---++Mate Tools Parser
+
+---+++++10% Data Set
+Gold:   /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br/>
+Parsed: /srv/home/alles/DependencyParsing/parser/mateToolsParser/output/mate10TigerModel_out_06.conll
+
+| *accuracy / Metric:LA* |  *counter / Metric:LA* |  * correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token*|
+|0.909         |         1          |           0.909               |         0.835        |           1           |           0.835         |                0.871        |           1           |           0.871           |              Row mean|
+|70734        |          70734       |          70734           |             70734        |           70734         |         70734         |                70734         |          70734       |           70734       |                  Row count|
+
+---+++++50% Data Set
+Gold:   /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br/>
+Parsed: /srv/home/alles/DependencyParsing/parser/mateToolsParser/output/mate50TigerModel_out_06.conll
+
+| *accuracy / Metric:LA* |  *counter / Metric:LA* |  * correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token*|
+|0.935        |          1              |       0.935          |              0.879       |            1            |          0.879            |             0.905      |             1          |            0.905         |                Row mean|
+|70734        |          70734       |          70734           |             70734        |           70734         |         70734         |                70734         |          70734       |           70734       |                  Row count|
+
+---+++++100% Data Set
+Gold:   /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br/>
+Parsed: /srv/home/alles/DependencyParsing/parser/mateToolsParser/output/mate100TigerModel_out_06.conll
+
+
+| *accuracy / Metric:LA* |  *counter / Metric:LA* |  * correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token*|
+|0.945    |              1          |           0.945            |            0.897          |         1           |           0.897            |             0.919           |        1           |           0.919         |                Row mean|
+|70734        |          70734       |          70734           |             70734        |           70734         |         70734         |                70734         |          70734       |           70734       |                  Row count|
+
+
+---++Stanford Parser
+---++Confusion Matrix
+|*dev/gold*||*Malt*|*Mate*|*Stanford*|
+|*Malt*\
+|stackproj|1|0.905|?|
+|^| covproj|?| 0.876|?|
+|^| nivrestandard| ?|?|?|
+|*Mate*|?|?|?|
+| *Stanford*| ? |  ?|
+  

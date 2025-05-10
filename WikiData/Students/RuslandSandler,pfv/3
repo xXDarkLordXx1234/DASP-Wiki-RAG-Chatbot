@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="sandler" comment="" date="1590766895" format="1.1" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+
+
+-- Main.KevinStowe - 2020-02-06
+
+
+29.05.2020:
+   * finished this week:
+      * finished reading all relevant resources
+      * research in regards to data procurement
+            * current idea is to scrap data from https://www.reddit.com/r/Jokes/ similar to the data procurement in the paper "Language Models are Unsupervised Multitask Learners"
+            * difference is that we won't follow links, but take data directly from reddit (from the post's headline and content. comments may also include humor, but require too much filtering)
+      * read PyTorch documentation and HuggingFace documentation
+      * first commit in repository. includes
+            * model class that will be extended by baseline model and the finetuned model later on.
+            * class includes a predict method which can generate n candidates for the next word of a given text
+      * set up riot client for communication
+   * plans for next week:
+      * continue working on baseline model
+      * work on data procurement according to procedure explained above
+      * get familiar with the ukp site and cluster

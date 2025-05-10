@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="RichardSteuer" date="1354645131" format="1.1" version="8"}%
+%META:TOPICPARENT{name="IrExperiments"}%
+An analysis of one specific query. I'll take a query, where the !P@15 value actually is better than the !P@5 value, i.e. later results are better. Let's look at the query 140, with the following trec_eval values:
+<BLOCKQUOTE>
+num_ret         140     136<br/>
+num_rel         140     70<br/>
+num_rel_ret     140     32<br/>
+map             140     0.1449<br/>
+R-prec          140     0.2714<br/>
+bpref           140     0.3402<br/>
+recip_rank      140     0.2000
+P5              140     0.2000<br/>
+P10             140     0.3000<br/>
+P15             140     0.4667<br/>
+P20             140     0.4500<br/>
+P30             140     0.3667<br/>
+P100            140     0.2300<br/>
+</BLOCKQUOTE>

@@ -1,0 +1,93 @@
+%META:TOPICINFO{author="mirashi" comment="reprev" date="1464606826" format="1.1" reprev="6" version="6"}%
+---+!! %TOPIC%
+%TOC%
+
+----+ March 2016
+
+* Topic Correlations
+   * Get familiar with Ego
+      * Documents include project proposal and technical document 
+   * Get familiar with the xml corpus of Ego
+      *  Analysing structure, nodes and useful parts of corpus
+   * Cleaning xml
+      * Extracting useful information i.e articles from dump
+      * Seperating English and Deutsch corpus
+   * Creating Database model
+      * Model to represent overall structure of articles and
+        its interaction with other contents of corpus
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 4.03.2016 | Meeting | 1 | Defining goals as mentioned in above description |
+| 7.03.2016 | Ego documents | 5 | Getting familiar by reading documents provided |
+| 7.03.2016 | Ego corpus | 4 | Analysing corpus structure in detail |
+| 8.03.2016 | Ego coprus | 4 | Post analysis narrow down on useful and non useful data |
+| 8.03.2016 | Cleaning corpus | 2 | Extracting useful data from corpus (articles and threads) |
+| 8.03.2016 | Ego article | 2 | Analysing contents of articles |
+| 11.03.2016 | Meeting | 1 | Discussion done on creating a database model |
+| 14.03.2016 | Pre analysis for modelling | 2 | Analysing relation between articles and other contents of corpus to prepare for database modelling |
+| 14.03.2016 | Modelling | 6 | Database modelling using Hibernate and Mysql |
+| 18.03.2016 | Meeting | 1 | Discussion done on using baseX for data analysis and visualization. Goal is to create multiple Xquery functions which achieve a bottom up approach to gain insight into the unknown details of corpus |
+| 22.03.2016 | BaseX | 5 | Understanding usage of BaseX |
+| 23.03.2016 | XQuery | 6 | Writing all the necessary Xqueries required |
+| 29.03.2016 | Meeting | 1 | Showed progress in BaseX. Hatem suggested using Play Framework for frontend |
+
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+
+
+
+----+ April 2016
+
+* Topic Correlations
+   * Get familiar with Play Framework
+      * Use of latest technology recommended by Dr.Hatem 
+   * Implementing web application using Play Framework
+   * Using BaseX as database /Rest service
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 5.04.2016 | Play framework | 6 | Getting familiar with play framework |
+| 6.04.2016 | Play framework | 5 | Wokring on the UI of the website |
+| 7.04.2016 | Play framework | 8 | Working on controller, and Javascripts |
+| 8.04.2016 | Play + BaseX | 4 | Creating a interface between frontend and BaseX database |
+| 12.04.2016 | Play + BaseX | 4 | Contiuing work on the interface and testing for different results |
+| 15.04.2016 | Meeting | 1 | Giving updates on UI development.Discussed on completing UI part by this month |
+| 19.04.2016 | Play + BaseX | 8 | Working on additional UI features and Xqueries required to complete the goals |
+| 20.04.2016 | Test + Report | 2 | Testing different features of web app and finally creating a report |
+| 20.04.2016 | d3 | 2 | Understanding the usage of d3 graphs for ego web app |
+
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+
+----+ May 2016
+
+* Topic Correlations
+   * Get familiar with d3 js
+   * Implementing visualization with d3.js
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2.05.2016 | d3 js | 6 | Visualization of articles counts by area, topic and ddc |
+| 3.05.2016 | d3 js | 6 | Visualization of articles counts by thread and language |
+| 6.05.2016 | Meeting | 1 | Progress on visualization part discussed with  next aim being visualizing links between articles |
+| 6.05.2016 | d3 js | 6 | Visualization of links between articles based on outgoing links |
+| 6.05.2016 | Meeting | 1 | Meeting on progress, and discussed adding option of analysing references in articles |
+| 9.05.2016 | XQuery | 6 | Wrote Xqueries which retrieve different details related to references. More details can been seen in webapp |
+| 13.05.2016 | Meeting | 1 | Showed progress on reference analyses |
+| 16.05.2016 | Play Framework | 6 | Added UI for the reference analyses |
+| 23.05.2016 | Meeting | 1 | In meeting discussed improvising UI by seperate corpus, article and reference analyses to different pages and make it more user intuitive |
+| 25.05.2016 | Play Framework | 5 | Seperated different analyses into different pages and fixed some bugs |
+| 30.05.2016 | Meeting | 1 | Showed the final end product. Discussed the plan for bug fixing for the next month |
+
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+
+
+

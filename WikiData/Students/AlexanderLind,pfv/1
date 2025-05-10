@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="lind" date="1557228291" format="1.1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+
+What i did the last two weeks:
+
+- compiled necessary datasets, uploaded to gitlab, made a nice structure to use in future that is modular
+- tried, read and failed to learn how a Language Model in the style setting should work
+
+
+1.) All on datasets:
+======================================================================
+downloaded and processed following datasets:
+
+- rottentomatoes
+- shakespear by jhamtani
+- yelp_gender prabhumoye
+- yelp sentiment
+
+on the dataset we were unsure of:
+- imdb review
+my suggestion would be now:
+- dropoff for equal distribution of attributes (we have enough datapoints)
+
+
+dataset im unsure to use:
+- stanford sentiment treebank
+because it was used for a summarization task and they only got sentiment, but maybe still usable as the other datasets....
+
+other datasets:
+- robvoigt (i will show you samples in my docs, lets discuss which may be usable)
+
+
+=======================================================================
+
+2.) All on the Language Model implementation:
+=======================================================================
+
+I think i have huge misunderstandings in Ficler & Goldberg, need to talk to you...
+
+I've created an overview of all technical details used in the paper (i will show and try to explain).
+
+Questions on:
+1. Embeddings
+2. Feature usage
+3. Role of LSTM
+4. n-grams and prediction
+
+=======================================================================
+
+My plans for following week:
+
+- look what you say about the datasets
+- may work on this aswell (create a overview, create examples etc.)
+
+- Understand how the Language Model i try to implement should work (math and structure)
+
+- Read the newest papers you suggested on mendeley (from 16. april to 1.may ...)
+
+- inform goezde about my seminar

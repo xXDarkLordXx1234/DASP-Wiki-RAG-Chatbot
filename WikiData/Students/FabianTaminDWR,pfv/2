@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="FabianTamin" date="1250537498" format="1.1" version="2"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ DWR (Direct Web Remoting)
+
+---++ What is DWR
+DWR is an engine that exposes methods of server-side Java objects to !JavaScript code.
+
+---++ Create and Convert
+_Cited from [[http://directwebremoting.org/dwr/][here]]_
+
+[[http://www.ibm.com/developerworks/java/library/j-ajax3/dwr-fig1.gif]]
+
+---+++ The create element
+<noautolink>
+The create element specifies the server-side methods on a class that can be called by a DWR client.
+
+The create element tells DWR that a server-side class should be exposed to Ajax requests and defines how DWR should obtain an instance of that class to remote. The creator attribute here is set to the value new, meaning that DWR should call the class's *default constructor* (Java constructor with no parameter) to obtain an instance. Other possibilities are to create an instance through a fragment of script using the Bean Scripting Framework (BSF), or to obtain an instance via integration with the IOC container, Spring. By default, when an Ajax request to DWR invokes a creator, the instantiated object is placed in page scope and therefore is no longer available after the request completes. In the case of the stateless CatalogDAO, this is fine.
+
+The javascript attribute of create specifies the name by which the object will be accessible from !JavaScript code. Nested within the create element, a param element specifies the Java class that the creator will create. Finally, include elements specify the names of the methods that should be exposed. Explicitly stating the methods to expose is good practice to avoid accidentally allowing access to potentially harmful functionality -- if this element is omitted, all of the class's methods will be exposed to remote calls. Alternately, you can use exclude elements to specify only those methods you wish to prevent access to.
+</noautolink>
+
+---+++ The convert element
+<noautolink>
+The convert element specifies the members to include in the JavaScript serialization of a Class.
+
+While creators are concerned with exposing classes and their methods for Web remoting, convertors are concerned with the parameters and return types of those methods. The role of the convert element is to tell DWR how to convert datatypes between their server-side Java object representation and serialized JavaScript representation, and vice versa. 
+
+DWR automatically mediates simple data types between Java and JavaScript representations. These types include Java primitives, along with their respective class representations, as well as Strings and Dates, arrays, and collection types. DWR can also convert JavaBeans into JavaScript representations, but for security reasons, doing so requires explicit configuration.
+
+The convert element in Listing 2 tells DWR to use its reflection-based bean convertor for the Items returned by the exposed methods of CatalogDAO and specifies which of the Item's members should be included in the serialization. The members are specified using the JavaBean naming convention, so DWR will call the corresponding get methods. In this case, I'm omitting the numerical price field and instead including the formattedPrice field, which is currency-formatted ready for display.
+
+At this point, I'm ready to deploy my dwr.xml to my Web application's WEB-INF directory, where the DWR servlet will pick it up. Before proceeding, however, it's a good idea to ensure that everything is working as expected.
+</noautolink>
+
+
+---++ External Links:
+   * [[http://directwebremoting.org/dwr/][DWR's Official Website]]
+   * [[http://www.ibm.com/developerworks/java/library/j-ajax3/][Ajax for Java developers: Ajax with Direct Web Remoting]]
+   * [[http://directwebremoting.org/dwr/server/dwrxml/converters/bean.html][Bean and Object converter]]
+
+
+
+-- Main.FabianTamin - 17 Aug 2009

@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="11"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++Pedocs meeting @ DIPF 2012-11-08
+
+%TOC%
+
+---+++To present
+   * Unsupervised results
+      * Error analysis of results with tf.idf and tf did not show any  anomaly
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"}%
+| *Candidate* | *Ranking* | *R-Precision* |
+| Lemma | !PageRank | 17.7% |
+| Token | !PageRankRanking | 17.7% |
+| Lemma | Frequency | 17.0% |
+| Lemma | tf.idf (log, bin) | 13.5% |
+| Chunk | Frequency | 12.5% |
+| Lemma | Position | 7.8% |
+| Named entity | Frequency | 5.2% |
+
+   * Controlled vocabulary
+%INCLUDE{"SIG_KDSL.PedocsControlledVocabularies"}%
+
+---+++To discuss
+   * Advanced mapping to controlled vocabulary
+      * Strict matching
+      * lemmatization
+      * Decompounding
+      * Ontology
+      * Similarity measures
+   * Coreference resolution
+<img src="%ATTACHURLPATH%/../PedocsMeeting201210/coreference.png" alt="NED Coreference" />
+
+
+
+
+-- Main.NicolaiErbs - 2012-11-08
+
+%META:FILEATTACHMENT{name="Fehleranalyse.xlsx" attachment="Fehleranalyse.xlsx" attr="" comment="Error analysis tf.idf vs. tf" date="1352373584" path="Fehleranalyse.xlsx" size="4665" user="NicoErbs" version="1"}%

@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="DanielBaer" date="1264495133" format="1.1" version="9"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Carolin Deeg
+
+---++++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" }%
+| *Aufgabe* | *% done* |
+| Extraktion der parallelen Wikiquotes | 90 |
+
+---++++ Stunden
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Parallele Wikiquotes | | 2 | Eclipse eingerichtet und Projekt aufgesetzt |
+| | | 1 | Kennenlernen der Wiki-API |
+| | | 4 | Zerlegung der Aufgabe in einzelne Teilaufgaben und deren Implementierung |
+| | | 2 | Optimierung des Codes und Bugfixes |
+| | | 1 | Besprechung |
+| | | 2 | Implementierung von zusätzlichen Hilfsmethoden |
+| | | 2 | Ergänzen/Hinzufügen der Dokumentation |
+| | | 3 | Einfügen des Projekts ins SVN (und benötigte Methoden in bereits vorhandenen Klassen hinzufügen) |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 30 | 01.01.2010 bis 31.01.2010 |
+<nop>

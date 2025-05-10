@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="ArtemVovk" date="1232813646" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+-- Main.ArtemVovk - 23 Jan 2009 <br />
+---+ DKPro Documentation
+
+*Installation Notes for* <br />
+*dkpro Project*
+
+   
+   *Content* 
+   
+This release consists of the content of SVN Repositories:<br />
+   1	https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro - DKProject Repository<br />
+   2	 https://maggie.tk.informatik.tu-darmstadt.de/svn/lib - Library Repository<br />
+
+   
+   *General description* 
+   
+Installation of dkpro project consists of 2 mainparts:<br />
+   1 Installation of ukp_lib  library side<br />
+   2 Installation of dkpro_core code side<br />
+
+  *Installation of ukp_lib* <br />
+   * *Step 1* : *Getting data from Library Repository* <br />
+              Via SVN Client data from Library Repository must be loaded(check-out)<br />
+   * *Step 2* : *Renaming lib project* <br />
+ After getting data, we must rename the library project from lib into ukp_lib.
+ 
+  *Installation of dkpro_core*
+   * *Step 1: Getting data from Project Repository* <br />
+      Via SVN Client data from DKProject Repository(dkpro_core/trunk) must be loaded(check-out)
+   * *Step 2: Renaming dkpro project* <br />
+      After getting data, we must rename the dkproject from core into dkpro_core
+   * *Step 3: Adding missing libraries into .classpath* <br />
+      Now we must add some missing links to librarieres to the .classpath file in the root of dkpro_core. <br />
+      File .classpath must be opened and between tags <verbatim><classpath> </classpath> </verbatim>, this code(see below) must be typed: <br />
+         <verbatim><classpathentry kind="lib" path="/ukp_lib/lib/germanet/germanet_new.jar"/></verbatim>
+         <verbatim><classpathentry kind="lib" path="/ukp_lib/lib/icu4j/icu4j-4_0.jar"/></verbatim>
+         <verbatim><classpathentry kind="lib" path="/ukp_lib/lib/pdf_box_0.7.3/PDFBox-0.7.3.jar"/></verbatim>
+   * *Step 4: Adding java- und UIMA nature to .project file of Eclipse.* <br />
+      Open .project file of Eclipse(in the root) and between <verbatim><natures> </natures> </verbatim>following code must be added: <br />
+         <verbatim><nature>org.eclipse.jdt.core.javanature</nature> </verbatim>
+      <verbatim><nature>org.apache.uima.pear.UimaNature</nature> </verbatim> <br />
+      And also between <verbatim><buildSpec> </buildSpec> </verbatim> : <br />
+		<verbatim><buildCommand> <br />
+			<name>org.eclipse.jdt.core.javabuilder</name> <br />
+			<arguments></arguments> <br />
+		</buildCommand> <br /></verbatim>
+   * *Step 5: Adding .datapath file* <br />
+      File .datapath must be created in root of project. He must contain absolute path to the project. <br />
+      For example: D:\Darmstadt\Eclipse\dkpro_core
+
+
+         

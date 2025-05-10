@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="NiklasJakob" date="1216378124" format="1.1" version="6"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+   * Einleitung
+      * Aufbau dieser Arbeit
+	  
+   * Ontology Learning und Ontology Population 
+      * Ontologien 
+	  
+   * Verwandte Arbeiten
+      * Verwandte Arbeiten zur Extraktion von Relationsinstanzen 
+      * Verwandte Arbeiten zu Ontologien und Ontology Learning 
+	  
+   * Architektur
+      * UIMA Einleitung 
+         * UIMA-Pipeline 
+      * K-Infinity 
+         * !OntologyAPI 
+      * Vorverarbeitung
+      * Named Entities/Entities of Interest 
+      * Part of Speech 
+      * Lemmatisierung/Synonymisierung 
+      * Relationen extrahieren 
+      * Postprocessing 
+	  
+   * Evaluation
+      * Verwendete Daten 
+         * Untersuchte Texte 
+         * Wikipedia und Wiktionary 
+         * Aufbau/Erstellung des Wissensnetzes 
+      * Baseline 
+      * Goldstandard 
+      * Ergebnisse 
+         * VerbLemmatizer 
+         * Stanford NER 
+         * Stanford POS 
+         * Gesamtsystem 
+      * Fehleranalyse 
+	  
+   * Zusammenfassung
+      * Fazit
+      * Danksagungen
+	  
+   * Anhang
+      * !OntologyAPI

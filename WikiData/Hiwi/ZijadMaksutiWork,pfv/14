@@ -1,0 +1,29 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1259001408" format="1.1" version="14"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ZijadMaksuti - 29 Oct 2009
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" format=" | text,10 | date | text,4 | textarea,3x30" }%
+| *Zijad's Stunden* | | | |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Erster Arbeitstag | 20 October 2009 | 1.5 | Arbeitseinführung |
+| Einrichtung neuer Rechner | 22 October 2009 | 7 | Einrichtung der neuen Rechner: <br />Installation des Betriebssystems, Anlegen der Accounts sowie Installation notwendiger Software |
+| Anschließen neuer Rechner | 26 October 2009 | 3.5 | Die Rechner sind in E216 gebracht worden und angeschlossen. Ein Rechner im oben genannten Raum musste neu eingerichtet werden da er ursprunglich für die WiMis gedacht war. |
+| Meeting | 27 October 2009 | 1.5 | Meeting mit IG, BH, MS, TZ und MM. Hauptthemen: Arbeitsorganisation und Arbeitsverteilung. |
+| Wartung der Drucker | 29 October 2009 | 4 | Nachfüllen der Katusche des Druckers aus dem IG's Büro. Instandsetzung des neuen Canon Laser Jets. |
+| Upgraden des Betriebsystems | 2 November 2009 | 2 | Upgraden des Betribsystems an zweiern Rechnern in E216, dabei wurde untersucht ob die neueste Version 9.1 des Betriebsystems Ubuntu sich mit der von UKP verwendeten Version von Eclipse verträgt: Keine Inkopatibilitäten festgestellt. |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 20 | bis Ende Oktober |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" format=" | text,10 | date | text,4 | textarea,3x30" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Instandsetzung des UKP-Netzes | 6 November 2009 | 3.5 | Deaktivierung des LDAPs an den Rechnern in E216, Betriebssystemupgrade |
+| Anpassung der "ldap", "pam" und anderer dazu gehörigen Einstellungen | 10 November 2009 | 1 | Dies ist notwendig um die volle Funktionalität unserer Rechner in der neuen Domäne zu ermöglichen |
+| Anpassung der "ldap", "pam" und anderer dazu gehörigen Einstellungen | 11 November 2009 | 8 | Fortsetzung, sieh oben|
+| Anpassung der "ldap", "pam" und anderer dazu gehörigen Einstellungen, Instandsetzung des Servers "selma" | 13 November 2009 | 5 | Unter anderem sind alle HiWi Rechner mit einem Label gekennzeichnet. Wir haben uns für diesen Schritt entschieden da wir festgestellt haben dass manchen Rechnern die falsche IP-Adresse zugeteilt war, was zu einem Konflikt fuhr. Mit den Labels lässt sich dieser Konflikt in der Zukunft vermeiden |
+| Erstellen des howTo's zur ldap Installation | 17 November 2009 | 2.0 | Es war notwendig nochmal alle während der Domäneumstellung gemachten Notizen durchzugehen und zu überprüfen , um ein kompaktes und vor allem korrektes howTo erstellen zu können |
+| Erstellen des howTo's zur ldap Installation | 18 November 2009 | 6.5 | "LdapInTKDomäne" howTo ist jetzt vollständig und befindet sich im TWiki |
+| Mausreinigung; Instandsetzung der HiWi Computer aus dem D216; Berecnung der Druckkosten unserer Drucker; | 23 November 2009 | 5.0 | Da wahrscheinlich einer der Skripten zur  ldap Installation fehlerhaft ist war ich nicht in der Lage einen der Rechner aus D216 zu vernetzen. Wird am Mittwoch mit MS besprochen. Die Druckkosten unserer Drucker sind ausgerechnet worden und werden morgen in Form einer Tabelle an Sekretariat weitergeleitet (Details dazu im Bugzilla)|
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 40 | bis Ende November |
+
+<nop>

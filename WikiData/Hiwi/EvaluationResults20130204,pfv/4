@@ -1,0 +1,7 @@
+%META:TOPICINFO{author="RichardSteuer" date="1359973399" format="1.1" version="4"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+--+++ Train T
+
+<pre>
+> grep map *Test*T.* | sort -t " " -k3nr
+</pre>

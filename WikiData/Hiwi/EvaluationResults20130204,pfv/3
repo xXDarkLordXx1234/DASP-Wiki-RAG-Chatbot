@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="RichardSteuer" date="1359973281" format="1.1" version="3"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+<pre>
+> grep map *Test*T.* | sort -t " " -k3nr
+</pre>
+
+SearchTopic.TokenLemma_expansions1.Test.T.1.all.output.trec:map            	all	0.3361
+SearchTopic.TokenLemma_expansions3.Test.T.1.all.output.trec:map            	all	0.3319
+SearchTopic.TokenLemma_expansions3.Test.T.2.all.output.trec:map            	all	0.3315
+SearchTopic.TokenLemma_expansions1.Test.T.1.V.output.trec:map            	all	0.3290
+SearchTopic.TokenLemma_expansions1.Test.T.2.V.output.trec:map            	all	0.3283
+SearchTopic.TokenLemma_expansions3.Test.T.3.all.output.trec:map            	all	0.3273
+SearchTopic.TokenLemma_expansions1.Test.T.0.all.output.trec:map            	all	0.3272
+SearchTopic.TokenLemma_expansions1.Test.T.0.V.output.trec:map            	all	0.3272
+SearchTopic.TokenLemma_expansions1.Test.T.3.V.output.trec:map            	all	0.3263
+SearchTopic.TokenLemma_expansions1.Test.T.10.V.output.trec:map            	all	0.3253
+SearchTopic.TokenLemma_expansions1.Test.T.5.V.output.trec:map            	all	0.3252
+SearchTopic.TokenLemma_expansions5.Test.T.5.all.output.trec:map            	all	0.3240
+SearchTopic.TokenLemma_expansions5.Test.T.2.all.output.trec:map            	all	0.3165
+SearchTopic.TokenLemma_expansions3.Test.T.2.V.output.trec:map            	all	0.3153
+SearchTopic.TokenLemma_expansions3.Test.T.3.V.output.trec:map            	all	0.3150
+SearchTopic.TokenLemma_expansions5.Test.T.1.all.output.trec:map            	all	0.3143
+SearchTopic.TokenLemma_expansions3.Test.T.1.V.output.trec:map            	all	0.3142
+SearchTopic.TokenLemma_expansions5.Test.T.3.all.output.trec:map            	all	0.3140
+SearchTopic.TokenLemma_expansions3.Test.T.0.all.output.trec:map            	all	0.3134
+SearchTopic.TokenLemma_expansions3.Test.T.0.V.output.trec:map            	all	0.3134
+SearchTopic.TokenLemma_expansions3.Test.T.5.V.output.trec:map            	all	0.3132
+SearchTopic.TokenLemma_expansions3.Test.T.10.V.output.trec:map            	all	0.3094
+SearchTopic.TokenLemma_expansions1.Test.T.2.all.output.trec:map            	all	0.3067
+SearchTopic.TokenLemma_expansions5.Test.T.2.V.output.trec:map            	all	0.3007
+SearchTopic.TokenLemma_expansions5.Test.T.3.V.output.trec:map            	all	0.3005
+SearchTopic.TokenLemma_expansions5.Test.T.5.V.output.trec:map            	all	0.2999
+SearchTopic.TokenLemma_expansions5.Test.T.1.V.output.trec:map            	all	0.2998
+SearchTopic.TokenLemma_expansions3.Test.T.5.all.output.trec:map            	all	0.2995
+SearchTopic.TokenLemma_expansions5.Test.T.0.all.output.trec:map            	all	0.2990
+SearchTopic.TokenLemma_expansions5.Test.T.0.V.output.trec:map            	all	0.2990
+SearchTopic.TokenLemma_expansions5.Test.T.10.V.output.trec:map            	all	0.2976
+SearchTopic.TokenLemma_expansions1.Test.T.3.all.output.trec:map            	all	0.2897
+SearchTopic.TokenLemma_expansions10.Test.T.5.all.output.trec:map            	all	0.2880
+SearchTopic.TokenLemma_expansions10.Test.T.3.all.output.trec:map            	all	0.2788
+SearchTopic.TokenLemma_expansions10.Test.T.2.all.output.trec:map            	all	0.2720
+SearchTopic.TokenLemma_expansions10.Test.T.1.all.output.trec:map            	all	0.2706
+SearchTopic.TokenLemma_expansions10.Test.T.10.all.output.trec:map            	all	0.2643
+SearchTopic.TokenLemma_expansions10.Test.T.2.V.output.trec:map            	all	0.2607
+SearchTopic.TokenLemma_expansions10.Test.T.5.V.output.trec:map            	all	0.2606
+SearchTopic.TokenLemma_expansions10.Test.T.3.V.output.trec:map            	all	0.2604
+SearchTopic.TokenLemma_expansions10.Test.T.1.V.output.trec:map            	all	0.2601
+SearchTopic.TokenLemma_expansions10.Test.T.10.V.output.trec:map            	all	0.2595
+SearchTopic.TokenLemma_expansions10.Test.T.0.all.output.trec:map            	all	0.2587
+SearchTopic.TokenLemma_expansions10.Test.T.0.V.output.trec:map            	all	0.2587
+SearchTopic.TokenLemma_expansions1.Test.T.5.all.output.trec:map            	all	0.2553
+SearchTopic.TokenLemma_expansions5.Test.T.10.all.output.trec:map            	all	0.2334
+SearchTopic.TokenLemma_expansions3.Test.T.10.all.output.trec:map            	all	0.2268
+SearchTopic.TokenLemma_expansions1.Test.T.10.all.output.trec:map            	all	0.1876

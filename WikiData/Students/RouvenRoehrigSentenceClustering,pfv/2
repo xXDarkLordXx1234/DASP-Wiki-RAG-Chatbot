@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="roehrig" comment="reprev" date="1365787501" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="RouvenRoehrigDataAnalyses"}%
+---+!! Sentence Clustering
+---++++ Master Thesis of Rouven Röhrig
+
+This page contains results of the 'sentence clustering data analysis'.
+
+---++++ Description
+In this analysis I've used DKPro with the similarity package to generate clusters of similar sentences.
+I've implemented a pipeline which reads error messages (simple self-defined xml format).
+Different consumers create clusters of similar sentences based on a TextSimilarityMeasureBase and thresholds.
+A writer outputs the clusters (self-defined xml format) along with simple statistics.
+
+---++++ Statistics
+*Definitions*:
+   * Cluster := a cluster consists of a 'base sentence' and a set of member sentence.
+   * Base sentence := Every member of the cluster is similar with respect to the base sentence.
+   * Member sentence := a member is a sentence with is similar to the base sentence (the base sentence is also a member).
+   * Enclave (n) := an enclave is a cluster which contains _n_ members only (default n=1; then the member is the base sentence itself).
+      * Note: some setups define an enclave as a cluster with one or two members only.
+   * Real cluster := a real cluster contains at least two members.
+
+---++++ Statistics
+The following measures have been used:
+   * Number of enclaves
+   * Number of real clusters
+   * Average real cluster size:= number of real clusters / number of all members of all real clusters
+
+|*Message types*|*Measure*|*enclave n=*|*included databases*|*Number of enclaves*|*Number of real clusters*|*Avg. real cluster size*|
+|action|CosineSimilarity (default setup) lower/upper bound: 0.7/1.0|1|BR, INM, INS|1776|1946|5.16|
+|action|CosineSimilarity (default setup) lower/upper bound: 0.8/1.0|1|BR, INM, INS|2632|1090|3.12|
+|action|CosineSimilarity (default setup) lower/upper bound: 0.8/1.0|2|BR, INM, INS|3270|452|4.71|
+
+-- Main.RouvenRoehrig - 12 Apr 2013

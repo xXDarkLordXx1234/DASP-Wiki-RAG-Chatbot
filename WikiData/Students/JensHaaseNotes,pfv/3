@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="MichaelMatuschek" date="1271843355" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="JensHaase"}%
+---++++ Initialer Projektaufbau
+Zunächst mal muss eclipse installiert und vorbereitet sein wie hier beschrieben (sollte auf den Rechnern im student lab schon vorhanden sein):
+
+https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/DKProDeveloperResources
+
+Danach kann man sich daran machen, ein neues Projekt anzulegen, zunächst analog zu:
+
+https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/DKProFirstSteps
+
+VORSICHT: Die Anleitung ist für unseren Fall nicht ganz zutreffend, da einige der Komponenten die wir brauchen noch nicht in die neue Struktur migriert sind. 
+
+Nach dem Anlegen des Projekts sind die Schritte wie folgt:
+
+   1 Die Projekte dkpro_core_migration, JWPL und JWPLRevisions müssen ausgecheckt und zum Build Path hinzugefügt werden
+   1 Die XML-Deskriptoren, die für die Reader benötigt werden, müssen in ein passendes Verzeichnis gelegt werden, die Pfade in den Deskriptoren müssen angepasst werden. Nur absolute Pfade sollten verwendet werden!
+   1 Danach kann mit dem CPE-Manager eine Pipeline konstruiert werden. Zu beachten ist, dass der Reader (so wie alle anderen Komponenten aus /JWPLRevisions/src/de/tudarmstadt/ukp/kulessa/uima) über den Deskriptor erstellt werden muss. Außerdem muss das !SofA-Mapping stimmen, damit die Annotatoren den Text der Revisionen auch finden.
+
+Ein Beispielprojekt sowie die benötigten Deskriptoren finden sich hier: [[%ATTACHURL%/haase_ba.jar][haase_ba.jar]]
+
+Mehr zu den Komponenten zur Revisionsverarbeitung findet sich in der Diplomarbeit von S. Kulessa. Die habe ich in Papierform, aber auch digital ([[%ATTACHURL%/Kulessa_da.zip][Kulessa_da.zip]]).
+
+Die Zugangsdaten für die Datenbank sollte ich bereist mitgeteilt haben.
+
+---++++ Weitere nützliche Dinge
+
+Wenn man zunächst nicht mit UIMA-Pipelines arbeiten möchte, kann man sich die Komponenten in /JWPLRevisions/src/de/tudarmstadt/ukp/kulessa/jwpl anschauen. Diese erlauben den Zugriff auf Revisionen einfach aus Java heraus.
+
+Im Projekt JWPL finden sich eine Reihe nützlicher Komponenten, um mit Wikipedia-Artikeln zu arbeiten, u.a. ein Parser. Damit habe ich selbst noch nicht gearbeitet, aber er kommt mit einigen Tutorials und Beispielen. Vielleicht ist da was nützliches dabei.
+
+---++++  UKP Pre-Packaged Eclipse
+
+Based on the Eclipse Classic distribution from http://www.eclipse.org.
+
+System requirements:
+	Linux x86 64bit
+	JDK 1.5
+
+Changes to the default distribution:
+	- Increased maximum memory for Eclipse to 512m (eclipse.ini)
+	- Installed Apache UIMA plugins        (Descriptor editors)
+	- Installed Subclipse 1.6	       (Version control)
+	- Installed Eclipse XML Editor	       (XML editor)
+	- Installed Mylyn plugins 	       (Task management)
+	- Installed Maven plugins	       (Project management)
+	- Installed Java EE Developer Tools    (J2EE perspective and tooling)
+	- Installed Web Developer Tools        (Servlet-container integration)
+	- Installed Web Page Editor	       (HTML editor)
+
+CAUTION: Some changes to the default settings might be necessary for this to work correctly, so please ask if in doubt
+
+%META:FILEATTACHMENT{name="haase_ba.jar" attachment="haase_ba.jar" attr="" comment="Beispielprojekt" date="1271763844" path="haase_ba.jar" size="1388831" stream="haase_ba.jar" tmpFilename="/var/tmp/CGItemp7589" user="MichaelMatuschek" version="1"}%
+%META:FILEATTACHMENT{name="Kulessa_da.zip" attachment="Kulessa_da.zip" attr="" comment="Daten von S. Kulessa" date="1271765175" path="Kulessa_da.zip" size="6243302" stream="Kulessa_da.zip" tmpFilename="/var/tmp/CGItemp7506" user="MichaelMatuschek" version="1"}%

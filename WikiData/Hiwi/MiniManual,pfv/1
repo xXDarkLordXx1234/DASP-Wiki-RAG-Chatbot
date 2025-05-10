@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="ArtemVovk" date="1234807189" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+-- Main.ArtemVovk - 16 Feb 2009
+
+---+MiniManual
+
+</br>
+
+There are 4 basic buttons
+<ul><li> *Add*  add a new Descriptor set to xml config file and to xml Descriptor Set List. For this purpose you must enter Name of descriptor set and ID of descriptor set in corresponding Text fields and also select minimum one descriptor from Descriptor List.
+ 
+Then a new descriptor set will be added to Descriptor Set List (and to xml config file).</li>
+<li><strong>Del</strong>  delete choose descriptor Set or Sets from a Descriptor  Set List(and from xml config file)</li>
+<li><strong>Load</strong>  load choosen descriptor Set from Descriptor Set List and the result will be showed in Descriptor List.(double Mouse Click will do same thing). You can also choose more than one descriptor Set from Descriptor Set List</li>
+   <li><strong>Clear</strong>  just removes all selections in Descriptor List</li>
+   </ul>
+   *Descriptor List - this list contains all descriptors from SVN Repository<br/>
+   **Descriptor Set List - new list it contains only names of Descriptor Sets

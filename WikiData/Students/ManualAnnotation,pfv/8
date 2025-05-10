@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="NicoErbs" date="1247838393" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+%TOC%
+---+ Manual annotation
+
+   * *GOAL:* Manual annotation for creating the evaluation data set for Nico and Elif
+
+   * %BLUE%<span style="color: #000000; -webkit-text-decorations-in-effect: none" class="Apple-style-span"><span style="color: blue"><span style="text-decoration: none">[[%ATTACHURL%/../NicoErbsResources/evaluationDataSet.txt][Evaluation data set (1000 subjective and 1000 objective sentences)]]</span></span></span>%ENDCOLOR%
+
+---++ 
+---+++ Evaluation (1000 Sentences)
+
+[[%ATTACHURL%/../NicoErbsResources/Evaluation_06_07_09.zip][mmax annotation project with aprox 1000 sentences]]
+
+[[%ATTACHURL%/../NicoErbsResources/markables.zip][Results of mmax annotation project with 1000 sentences]] 
+---+++ Pilot Study (100 Sentences)
+
+   * Annotate for sentence level subjectivity.
+   * [[%ATTACHURL%/PilotAnnotationProject.zip][Download]] pilot project.
+   * [[%ATTACHURL%/../NicoErbsResources/NicoElifPilotManualAnnotation_SentenceLevelSubjectivity_level.xml][Nicos results of annotation test with mmax]]
+   * [[%ATTACHURL%/../ElifResources/NicoElifPilotManualAnnotation_SentenceLevelSubjectivity_level.xml][Elif's annotation test results with mmax]]: MMax Annotation Test Results
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Teaching/ElifResources][Discussion about how to annotate]]
+
+---+++ Pilot agreement
+   * *Confusion Matrix:* Nico not_set = 1, Elif not_set = 2
+
+| | | Nico  | | |
+| | | *yes* | *no* | *total* |
+| Elif | *yes* | 35 | 17 | 52 |
+| | *no* | 2 | 34 | 36 |
+| | *total* | 37 | 51 | 88 |
+
+   * Kappa = 0.58
+   * Agreement = 0.784
+
+---++ Actual annotation - 15.06.2009
+   * [[%ATTACHURL%/NicoElifManualAnnotation_15_06.zip][15.06.2009 - MMAX Project with 104 sentences]]
+
+-- Main.CigdemToprak - 04 Jun 2009
+
+%META:FILEATTACHMENT{name="PilotAnnotationProject.zip" attachment="PilotAnnotationProject.zip" attr="" comment="" date="1244128738" path="PilotAnnotationProject.zip" size="25221" stream="PilotAnnotationProject.zip" tmpFilename="/var/tmp/CGItemp38854" user="CigdemToprak" version="1"}%
+%META:FILEATTACHMENT{name="NicoElifManualAnnotation_15_06.zip" attachment="NicoElifManualAnnotation_15_06.zip" attr="" comment="" date="1245059455" path="NicoElifManualAnnotation_15_06.zip" size="30649" stream="NicoElifManualAnnotation_15_06.zip" tmpFilename="/var/tmp/CGItemp48751" user="CigdemToprak" version="1"}%

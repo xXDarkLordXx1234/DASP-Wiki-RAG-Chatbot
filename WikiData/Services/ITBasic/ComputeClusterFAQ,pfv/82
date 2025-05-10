@@ -1,0 +1,473 @@
+%META:TOPICINFO{author="alles" comment="" date="1692790262" format="1.1" reprev="81" version="82"}%
+%META:TOPICPARENT{name="Services/Campus.ComputeCluster"}%
+---+!! Slurm Compute Cluster FAQ
+
+%TOC%
+---++Access
+---+++ My connection to the login node froze - what to do?
+   * the reason for this might be that you ran too many processes on the login node
+   * every user has limited resources there so a single user can't overload the whole login node
+   * if you cant login again you need to open up a ticket so that system-admin kills your processes
+   * to avoid this in the future you can try an interactive srun session on Slurm (srun --qos yolo -p yolo --mem=32G --pty bash) activate your conda environment there and do the installation.
+
+---++ Cluster Downtime
+---+++ Where to compute if the cluster has a downtime?
+   * In that time, if you need to compute urgent things, you can go with the following alternatives:
+      * The well-known DGX Server of Fachbereich Informatik
+      * Lichtenberg HLR - but we don't have any up-to-date information on the current utilization of the resources and you need to [[https://www.hrz.tu-darmstadt.de/hlr/nutzung_hlr/zugang_hlr/projektantrag_hlr/index.en.jsp][apply for a project in time]].
+   * Just in case you can't handle the downtime / switch to the resources mentioned above please let us know in time so that we can organize and provide extra resources if necessary. 
+   * However, this would mean an extreme extra workload for system-admin and could further extend the downtime.
+
+---+++ How to run jobs until the downtime starts?
+   * As the maximum runtime of a job is 3 days, you cannot start jobs starting from 3 days before the maintenance day. 
+   * To circumvent his, remember that you can start computation jobs until maintenance starts by adding the SBATCH --time parameter to limit the runtime.
+   * Example: =--time=2-12:05:00= limits your jobs runtime from 3 days standard (which might not work due to too little time until maintenance starts) to 2 days, 12 hours and 5 minutes.
+
+---++ Resources
+%INCLUDE{"Services.Campus.ComputeClusterGPUs"}%
+
+---++ Jobs and scheduling
+---+++ What's the status of my jobs?
+Run<verbatim>
+squeue --me
+</verbatim>
+
+For more job monitoring commands, see e.g. [[https://hpcf.umbc.edu/general-productivity/tools-for-monitoring-your-jobs/][here.]]
+---+++ Why is my job pending?
+Check the REASON column of the =squeue= output.
+   * "Resources" means that there is currently no free compute node with the resource requirements of your job.
+   * "Priority" means that other jobs in the same partition have a higher priority than yours.
+   * "QOS..." means that your job is pending because of restrictions defined by us. For example, =QOSMaxGRESPerUser= means that the total number of GPUs in your currently running jobs have reached the permitted maximum.
+   * For other codes, check [[https://slurm.schedmd.com/squeue.html#lbAF][the Slurm documentation]].
+
+You can increase your chances by:
+   * Requesting fewer resources (CPUs, GPUs, Memory).
+   * Using the =--time= option of =sbatch= to limit the execution time of your jobs.
+   * Using an account with higher !FairShare, if you have multiple accounts at your disposal.
+
+---+++ My jobs are pending even though there are so many unused GPUs!
+You probably maxed out your GPU allocation (see =QOSMaxGRESPerUser= above). Your options:
+   1 Run multiple experiments on one GPU:<verbatim>
+#!/bin/bash
+#
+#SBATCH --ntasks=2
+#SBATCH --gres=gpu:1
+srun python /path/to/first/script.py
+srun python /path/to/second/script.py
+...
+</verbatim>
+   2 Consider submitting your jobs to the =yolo= partition. More information [[Services.Campus.ComputeCluster#Partitions_and_Resource_Limits][here]].
+
+---+++ How much !FairShare do I have left?
+%INCLUDE{"Services/Campus.ComputeClusterDetermineFairShare"}%
+
+---+++ Why does my job fail immediately? It's running fine on my workstation.
+
+Please check the following:
+   * Do the parent folders of the =--output= and =--error= files in your =sbatch= script *exist* and do you have *write permissions* for these files?
+   * Does your experiment try to read to or write from =/home/&lt;user&gt;/...=? There are no =/home= directories on compute nodes in our cluster. Configure your experiment to use =/ukp-storage-1= instead of =/home=. Well-written external code libraries should offer the possibility to change their working directory, too. If you are using python and your script still does not run, try adding =/ukp-storage-1= to your =PYTHONPATH=.
+
+---+++ How do I cancel/stop/kill a compute job?
+
+To cancel a job, use =scancel=. You need the running or pending jobid. It is only the job's owner and SLURM administrators that can cancel jobs.
+
+<verbatim>
+scancel <jobid>
+</verbatim>
+
+To cancel all your jobs (running and pending) you can run
+
+<verbatim>
+scancel -u $USER
+</verbatim>
+
+You get the job id when you submit the job and you can look it up by =squeue -u <username>=. Interactive jobs are cancelled once you close the session, e.g. via =Ctrl + C=.
+
+---+++ How can I run my job on a specific node?
+
+Use the =-w= option to specify a node or a comma separated list of nodes to run on.
+
+---+++ How to schedule jobs which make use of GPUs?
+---++++ Simple option via the =--gres= parameter
+You can use the =--gres= option of =sbatch= or =srun=. For example, use =--gres=gpu:p100:2= to request two P100 GPUs. If the GPU model is not of importance, you can also use =--gres=gpu:1= to request one GPU of any model available. For details, refer to [[https://slurm.schedmd.com/sbatch.html][the sbatch documentation]].
+
+---++++ Advanced option via node features
+More advanced GPU requests are possible via node feature constraints.
+For example, you can force a job to run on a GPU with 16GB or 24GB memory by running
+<verbatim>
+sbatch --gres=gpu:1 --constraint="gpu_mem:16gb|gpu_mem:24gb" myscript.sh
+</verbatim>
+Complex boolean expressions for constraints are possible, see [[https://slurm.schedmd.com/sbatch.html][the sbatch documentation]].
+If you want to be nice, you can also force a CPU job to not run on a GPU server by specifying =--constraint="no_gpus"= for your job.
+For the full list of node features, see [[ComputeClusterFAQ#Which_nodes_are_there_63_Which_GPUs_are_there_63][this FAQ question]].
+
+---+++ How much of the allocated resources does/did my job use?
+---++++ Finished jobs
+   * For *CPU and memory efficiency*: run =seff &lt;jobid&gt;=.
+   * For *CPU, memory, disk usage and more*: The =sacct= command provides more information for example by running =sacct -j &lt;jobid&gt; -l &verbar; less -S=. Refer to [[https://slurm.schedmd.com/sacct.html][the sacct documentation]] for more details and explanations.
+   * For *GPU utilization*: Check the GPU dashboard in our [[http://monitoring.ukp.informatik.tu-darmstadt.de/][cluster monitoring]]. There is no Slurm-internal way to check GPU usage.
+
+---++++ Running jobs
+   * For *CPU and memory efficiency*:
+      * Start an interactive job on the node where the job you are interested in is running (via =srun -w nodename --pty bash=), then simply run =htop= *OR*
+      * Run =sstat &lt;jobid&gt; &verbar; less -S=. Refer to [[https://slurm.schedmd.com/sstat.html][the sstat documentation]] for more details and explanations. *OR*
+      * As a =htop= alternative, we offer [[https://github.com/nicolargo/glances][Glances]] in the web version. For every Slurm node, it is reachable in the browser from VPN on Port =61208= , e.g. via [[http://krusty.ukp.informatik.tu-darmstadt.de:61208/]].
+
+   * For *GPU utilization*:
+      * Check the GPU dashboard in our [[http://monitoring.ukp.informatik.tu-darmstadt.de/][cluster monitoring]].
+      * You can also run =rgpustat ${server_name}= on =wormulon= .
+
+---+++ How do I run jobs that run longer than three days?
+
+   * Researchers can submit jobs taking up to seven days by using the "snail" QOS. This can be done by adding =--qos=snail= as an option for =sbatch=. %ICON{new}% Note that =snail= is only applicable for CPU jobs.
+   * For GPU jobs taking longer than three days we recommend to split the workload across multiple jobs by using checkpointing and warm-started training.
+
+---+++ How to run many similar jobs efficiently?
+
+Slurm offers [[https://slurm.schedmd.com/job_array.html][job arrays]] for starting many jobs with similar resource and runtime requirements. Example applications are hyperparameter optimization, running your code on many different datasets, and more. Benefits of using job arrays over starting individual jobs:
+   * easier management: array jobs can be cancelled all at once, have their resource requirements updated all at once, etc.
+   * less pollution in =squeue=
+   * it's more efficient for the Slurm scheduler
+
+When submitting a job array, Slurm provides additional environment variables for each job (see the official documentation linked above). Check the development section of these FAQ for hints on how to use these environment variables effectively.
+
+---++ Storage
+
+---+++ Where to put code and data?
+
+See [[ComputeClusterStorage]].
+
+---+++ I need fast temporary storage for my job, where can I get that?
+
+Some of the nodes in the cluster have a local disk space for storing temporary files. When a job starts on such a node, a directory for temporary files is automatically created. The location of this directory is passed to your script in the =TMPDIR= environment variable. Note that *all files in this directory are automatically deleted after your job completes or fails.*
+
+You can specifically request nodes with temporary storage by using the =--tmp=<size[units]>= option of sbatch/srun, for example =--tmp=1G= for 1GB.
+
+---+++ Why do I get Permission denied exceptions when my job tries to write to my home folder?
+
+You do not have a home folder on slurm nodes. Libraries or tools that try to read or write to your home folder, e.g. when caching, downloading models, writing config files need to be configured so that they write to a network storage instead. List of known tools and how to configure them:
+
+| *Tool* | *Kind* | *Name* |
+| wandb| Environment Variable| [[https://docs.wandb.ai/library/environment-variables][WANDB_CONFIG_DIR]]|
+
+---+++ How to share files with other users?
+
+Shared folders for temporary file exchange between users exist on several of the network file systems. Check [[ComputeClusterStorage][this page]] and search for "temporary" to find one such location to which you have access to.
+
+For a long term shared folder with multiple users please use the [[https://service.ukp.informatik.tu-darmstadt.de/shared-slurm-folder][Shared Slurm Folder Form]].
+
+---++ Development-related
+
+---+++ Which software is available on each node?
+
+%TWISTY{ 
+    showlink="Installed software" 
+    hidelink="Hide _Installed software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+%TWISTY{ 
+    showlink="System programs" 
+    hidelink="Hide _System programs_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * atop
+   * curl
+   * htop
+   * iftop
+   * iotop
+   * jq
+   * nano
+   * ncdu
+   * p7zip
+   * rsync
+   * screen
+   * vim
+   * wget
+%ENDTWISTY% 
+
+%TWISTY{ 
+    showlink="developer software" 
+    hidelink="Hide _developer software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * gcc
+   * gcc-c++
+   * python3.6
+   * python2.7
+   * OpenJDK 8
+   * cmake
+%ENDTWISTY% 
+
+%ENDTWISTY%
+
+---+++ How do I get a newer gcc version?
+
+<verbatim>
+ scl enable gcc-toolset-11 bash
+</verbatim>
+
+---+++ How do I get a newer/specific Java version?
+
+You can either try to install it via [[https://anaconda.org/conda-forge/openjdk][conda]] or [[https://adoptium.net/][download]] and [[https://adoptium.net/installation/archives/][install]] it in your folder on the storage.
+
+---+++ Which possibilities are there for testing/debugging an experiment?
+
+---++++ Use the "testing" partition
+%INCLUDE{ComputeClusterTestingPartition}%
+
+---++++ Start an interactive shell
+If you want to have an interactive shell on a slurm node, then on *wormulon*, you can run
+
+<verbatim>
+srun --pty bash -i
+</verbatim>
+
+There, you can open a python shell or start parts of your experiment to see if everything runs as expected. =srun= accepts the same parameters as you can specify in a batch file, e.g. =srun --gres=gpu:1 --pty bash= would request one GPU.
+
+---++++ Live monitoring of stdout/stderr
+If you use =srun= inside your =sbatch= bashscript to start your main experiment (as in "srun python run.py"), then you can monitor stdout/stderr output while the job is running via:
+<verbatim>
+sattach <jobid.stepid>
+</verbatim>
+=stepid= will be 0 unless your bash script contains multiple =srun= calls. For example, to see the output of the first =srun= call within job 42, run =sattach 42.0=.
+
+---++++ Remote Debugging
+This option is much more powerful but also takes more effort to set up. The !PyCharm debugger will run on your workstation but will debug code that is running remotely on a Slurm compute node. This way, one can interactively debug code using GPUs and more.
+
+%TABPANE%
+%TAB{"PyCharm Professional"}%
+   * You need !PyCharm Professional. As of 2019-07, there are free 1 year licenses for students, see https://www.jetbrains.com/student/.
+   * Follow the instructions [[https://www.jetbrains.com/help/pycharm/remote-debugging-with-product.html#remote-debug-config][on setting up a remote debug server]]. Note: The variant with a remote interpreter does *NOT* work in our Slurm cluster, since it requires an SSH connection to individual compute nodes (which we do not provide).
+%ENDTAB%
+%TAB{"Other (please contribute!)"}%
+_If you have successfully used remote debugging with a tool other than PyCharm, please contact %WIKIWEBMASTER%._
+
+According to their website, Visual Studio is also capable of remote debugging.
+%ENDTAB%
+%ENDTABPANE%
+
+To use remote debugging with Slurm it is necessary to start the debugging server locally in Pycharm and share the port to Slurm. For this the following steps are necessary:
+
+   1 Start Python Debug Server in PyCharm (see instructions above for installation)
+      * IDE host name: localhost
+      * Port: Any free local port on your machine, let's define it as < local_port >
+      * Path mappings: make sure your path is shared like /home/< username >/PycharmProjects/< project_name >=/mnt/beegfs/work/< username >/< project_name >
+   2 Open a ssh tunnel from your local machine to slurm (remote_port should be free on slurm!)
+      * ssh -R 0.0.0.0:< remote_port >:localhost:< local_port > < username >@wormulon.ukp.informatik.tu-darmstadt.de
+   3 Add debugger trace to your python file and start it on slurm via sbatch
+      * import pydevd_pycharm
+      * pydevd_pycharm.settrace('130.83.79.170', < remote_port >, stdoutToServer=True, stderrToServer=True)
+   4 Wait for process connection ;-)
+
+---+++ How can I access Slurm job information (job ID, executing node, ...) from within my experiment?
+
+---++++ Via sbatch filename patterns
+You can use placeholders in sbatch arguments to vary filenames depending on the job id and more. The following example would include the jobid and the name of the executing node in the filename:
+<verbatim>
+#SBATCH --output=/ukp-storage-1/my_user/myjob.%j.%N.out
+</verbatim>
+A list of all possible placeholders can be found in the [[https://slurm.schedmd.com/sbatch.html][sbatch documentation]].
+
+---++++ Via slurm environment variables
+Slurm sets environment variables for the job ID, the executing node, the resources of the current node and more. An full list is shown [[https://slurm.schedmd.com/sbatch.html#lbAJ][here]].
+
+You can use these environment variables directly inside your =sbatch= bashscript to load certain datasets or pass certain parameters to your code.
+*If you use python*, check out *[[https://pypi.org/project/slurmee/][the slurmee package]]*. It conveniently provides Slurm job information inside python à la =slurmee.get_job_id()=.
+
+---+++ How can I create a virtualenv?
+
+Use the =venv= module that comes with Python, e.g. 
+
+<verbatim>
+python3.6 -m venv venv
+</verbatim>
+
+Replace =python3.6= with the Python version of your choice. In your batch file, you can activate it by referencing its absolute path, e.g. =source /ukp-storage-1/$your_name/test/venv/bin/activate=
+
+Make sure to put it on the network storage, e.g. =/ukp-storage-1/$USER=, otherwise, compute nodes have no access to it.
+
+---+++ How can I use Python 3.7+?
+
+Use [[https://docs.conda.io/en/latest/miniconda.html][miniconda]]. Or [[https://www.liquidweb.com/kb/how-to-install-python-3-on-centos-7/][build from source]] (on wormulon, the build dependencies are installed, i.e. you can skip the =yum install= steps).
+
+Make sure to put it on the network storage, e.g. =/ukp-storage-1/$USER=, otherwise, compute nodes have no access to it.
+
+---+++ How can I use a specific CUDA version?
+
+In your batch script, use <verbatim>module load cuda</verbatim> for the latest CUDA version or =module load cuda/$version=. You can see all available CUDA versions by running <verbatim>module avail</verbatim> on the headnode. Torch comes with a bundled CUDA, you specify the version when installing =pytorch=.
+
+---+++ How to run experiments on A100 GPUs?
+CUDA 11 is required to run jobs on this GPU, i.e. you need to make sure to install the right versions of your frameworks.
+   * For *pytorch*, see https://pytorch.org/get-started/locally/.
+   * For *tensorflow*, you need to use version 2.4.0 or later ([[https://github.com/tensorflow/tensorflow/issues/43718#issuecomment-703871083][source]]), see https://github.com/tensorflow/tensorflow/releases .
+
+Having installed the right version, you need to specify CUDA 11 in your jobs (see the question above).
+
+---+++ How to run multi-GPU experiments on minerva?
+If you see =RuntimeError: NCCL Error 2: unhandled system error= when running multi-GPU experiments on minerva (the DGX A100), then run the following statement in your sbatch script or in your interactive job:<verbatim>
+export NCCL_IB_DISABLE=1
+</verbatim>
+
+---+++ How to use the H100 GPU with bitsandbytes?
+Some people might experience issues in using H100PCIE graphic cards in combination with [[https://github.com/TimDettmers/bitsandbytes][bitsandbytes]] when using torch-bundled CUDA within a virtual env because bitsandbytes requires some additional lib files which are not provided that way. Below I describe how I managed to get it running (thanks to JCK for the suggestion !):
+
+*How to run experiments on H100 GPUs in combination with bitsandbytes?*
+
+   * *CUDA 11.8* is required to run jobs on this GPU, i.e. you need to make sure to install the right versions of your frameworks.
+      * For pytorch, see https://pytorch.org/get-started/locally/ 
+   * Having installed the right version, you need to specify CUDA 11.8 in your jobs by exporting the required LD_LIBRARY path:
+      * <verbatim>export LD_LIBRARY_PATH="<your-project-path>/<your-virtual-env>/lib64/python3.10/site-packages/nvidia/cuda_runtime/lib"</verbatim>
+   * In addition you need to load some more libraries by loading the natively installed CUDA on slurm (make sure that the version matches your CUDA version installed within your virtual environment!):
+      * =module load cuda/$version=
+
+This howto was written by Tilman, thanks a lot for the contribution!
+
+---+++ How can I use tensorboard with Slurm?
+Use [[https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh][sshfs]] and run tensorboard on your workstation.
+
+On your workstation, run something like:
+<verbatim>
+mkdir ~/ukp-storage-1
+sshfs <username>@wormulon:/ukp-storage-1/<username> ~/ukp-storage-1
+tensorboard --logdir ~/ukp-storage-1/my-experiment
+</verbatim>
+
+---+++ How can I run jupyter notebooks on compute nodes?
+   1. Decide which compute node suits your job.
+   2. On wormulon, run the following commands (with NODENAME filled in):<verbatim>
+       [user@wormulon ~]$            mkdir -p /ukp-storage-1/$USER/jupyter_test
+       [user@wormulon jupyter_test]$ cd /ukp-storage-1/$USER/jupyter_test
+       [user@wormulon jupyter_test]$ python3 -m venv venv
+       [user@wormulon jupyter_test]$ source venv/bin/activate
+(venv) [user@wormulon jupyter_test]$ pip install jupyter
+(venv) [user@wormulon jupyter_test]$ srun -w NODENAME --pty bash
+(venv) [user@NODENAME jupyter_test]$ jupyter notebook --ip=0.0.0.0 --notebook-dir=/ukp-storage-1/$USER/jupyter_test
+</verbatim>
+   3. You do not have direct access from the outside on slurm nodes, which is why you need a tcp forwarder. For that, run =redir -I IDENTIFIER :EXTERNAL_PORT NODENAME:JUPYTER_PORT= on *wormulon*, e.g. =redir -I jckjupyter :5042 krusty:8888= whenever you start the notebook server. If the port is already chosen by somebody else, then pick another one. The forwarder lives in the background and also goes on when exiting the shell. *<u>Please note:</u>*
+      * We kill these forwarders daily at 3am, so restart it when needed. 
+      * You can choose any port from *from 5000 to 5100* as <u>EXTERNAL_PORT</u> and any *above 1024* as <u>JUPYTER_PORT</u>
+      * This kind of port forwarding is currently *only usable from UKP network* (130.83.167.0/24), *UKP VPN* and *TK network* (130.83.163.0/24). Contact sysop if you are outside those networks and want to use this. 
+      * You can test the forward locally on *wormulon* for HTTP via =curl localhost:EXTERNAL_PORT=, e.g. =curl localhost:5000=
+   4. On your workstation/laptop, browse to =http://wormulon.ukp.informatik.tu-darmstadt.de:EXTERNAL_PORT= to access the notebook. Make sure that when you copy the URL from the terminal with the token that the URL contains the =.ukp.informatik.tu-darmstadt.de= part! (=slurm.ukp...= works, too!)
+
+Please note:
+   * You can of course wrap the =srun= and =jupyter notebook= calls in a .sh file to use with sbatch.
+   * The =-w= argument forces a job to run on a specific node. This is insofar important in that the compute nodes with Pokemon names (=turtok=, =blubella=, ...) cannot be reached from outside via VPN.
+   * This just works via UKP network and VPN, not via TU VPN
+
+---+++ How to use Docker?
+%INCLUDE{"Services.Campus.ComputeClusterDockerUsage"}%
+
+---+++ Advanced scheduling recipes
+Here are some examples how Slurm's advanced scheduling options can be combined.
+
+---++++ Use timeout command to automatically restart jobs
+
+Taken from [[https://www.hpc.kaust.edu.sa/tips/use-%E2%80%9Ctimeout%E2%80%9D-command-automatically-restart-jobs][here]].
+
+Sometimes our jobs cannot be finished in the 24-hour time limit, and have to be restarted again and again until the calculations are completed successfully. Instead of manually checking the job states and resubmitting the jobscripts, we can use the linux command =timeout= to restart jobs automatically.
+
+For example, if you have a job that will need to run more than 24 hours (suppose the job is regularly checkpointed and can be restarted by just resubmitting the job), you can prepare a Slurm jobscript =my_slurm_jobscript= like this:
+
+<verbatim>
+#!/bin/bash
+…
+…
+#SBATCH --partition=ukp
+#SBATCH --nodes=1
+#SBATCH --time=24:00:00
+…
+…
+timeout 23h srun --ntasks=32 my_app
+if [[ $? -eq 124 ]]; then
+  sbatch my_slurm_jobscript
+fi
+</verbatim>
+
+In this job, =my_app= will be running for 23 hours at the most. If =my_app= is stopped by the =timeout= command, an exit code =124= will be returned and the jobscript =my_slurm_jobscript= will be automatically submitted again. Then the jobscrtipt =my_slurm_jobscript= will be repeatedly resubmitted until the calculation is fully completed.
+
+Please note:
+   * The Slurm time limit (24 hours in this case) should be a little bit longer than the =timeout= time limit (23 hours in this case), so that the =sbatch my_slurm_jobscript= will be able to executed.
+   * Do a test to make sure this works for you own case before using it massively in your production runs.
+   * You still need to monitor your jobs regularly to make sure everything is working fine, as not all exceptions can be covered in one simple script.
+
+For more information about the =timeout= command, use =man timeout=.
+
+---+++++ Propagating job array task ID (and more) to automatically restarted jobs
+The above solution is not directly applicable when using job arrays, since restarted jobs lose their job array task ID. Similarly, sbatch command line arguments specified when initially submitting a job (such as =--export=) are not propagated. [[https://slurm.schedmd.com/sbatch.html#SECTION_OUTPUT-ENVIRONMENT-VARIABLES][Environment variables set by sbatch]] can be used to retain this information. Example:
+
+<verbatim>
+#!/bin/bash
+# Submit via "sbatch --export=ALL,foo='bar' --array=0-1 script.sh"
+
+echo "foo is ${foo}"
+echo "array task id is ${SLURM_ARRAY_TASK_ID}"
+
+timeout 20s srun sleep 30
+
+if [[ $? -eq 124 ]]; then
+  sbatch --array=$SLURM_ARRAY_TASK_ID --export=$SLURM_EXPORT_ENV script.sh
+fi
+</verbatim>
+
+---++++ Self-restarting singleton jobs
+Consider the following use case: A large number of parallel-running jobs require !CoreNLP to tokenize some documents, so it would be most efficient to run a separate job with !CoreNLP server which has many CPUs allocated. Several issues need to be addressed here:
+   * If the !CoreNLP server is needed for a duration longer than three days, the job will timeout which breaks all dependent jobs -> it were cool if the job could schedule a new instance of itself once it's close to its time limit,
+   * no two instances of the !CoreNLP server should run at the same time (they must run on the same node using the same TCP port after all),
+   * the !CoreNLP server job should stop rescheduling itself if all dependent jobs which used !CoreNLP are finished.
+
+Here is an elegant solution how to achieve this (you need to fill in the placeholders and call the file "submit_corenlp.sh"):
+<verbatim>
+#!/usr/bin/env bash
+#
+# Job which runs CoreNLP for one day. Reschedules itself as long as there are jobs in the queue whose job name contains
+# `needs_corenlp`.
+#
+#SBATCH --job-name=corenlp
+#SBATCH --chdir=path/where/submit_corenlp.sh/is/located
+#SBATCH --output=path/to/my/stdout/dir
+#SBATCH --error=path/to/my/stderr/dir
+#SBATCH --open-mode=append
+# ☝️ make sure that all reincarnations of this job *append* to this logfile
+#SBATCH --mail-type=FAIL
+#SBATCH --mail-user=my_username@ukp.informatik.tu-darmstadt.de
+#SBATCH --nodelist=barney
+# ☝️ always run this job on the same node so that dependent jobs know where to find CoreNLP - make sure to pick a node which has so many CPUs that it is unlikely to ever be completely booked (like barney)
+#SBATCH --time=1-0
+#SBATCH --dependency=singleton
+# ☝️ only one job with this name is permitted to run at a time
+
+#    We could let Slurm cancel our job automatically after 1 day, but then we would get a heart attack every time there is a "FAILED" email. Better let the job complete 30min before being cancelled.
+#    |
+#    |               TODO start corenlp (or something else) here
+#    |               |
+srun --time=23:30:00 path/to/my/script/which/starts/corenlp.sh
+
+# Get names of pending or running jobs from own user. If at least one job name contains the substring "needs_corenlp",
+# reschedule this job.
+jobnames=$(squeue --me -O "Name:250" --noheader)
+if [[ $jobnames == *"needs_corenlp"* ]]; then
+    sbatch --quiet submit_corenlp.sh
+fi
+</verbatim>
+
+Having submitted this job, you only need to make sure to include "needs_corenlp" in the job name of any job which, well, needs !CoreNLP. It can take around 30 seconds for an old !CoreNLP job to stop and a new one to start, therefore make sure to set the HTTP timeout for !CoreNLP in dependent jobs large enough so they "don't notice" the change.
+
+---++ Demonstrators and User Studies
+We can reserve compute nodes (incl. GPU nodes) for demonstrators or user studies. See [[ComputeClusterDemonstrator]].
+
+---++ Known issues
+
+---+++ !RuntimeError: CUDA error: no kernel image is available for execution on the device
+
+If you run on karpador and get this error, then it means that you use a deep learning library with a CUDA which is too new. You can either use a different node or downgrade your pytorch (<= 1.2.0) or tensorflow. You can exclude karpador from your jobs by adding =-x karpador= to your srun or sbatch calls.
+
+If you run on on a A100, then please see [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/Campus/ComputeClusterFAQ#How_to_run_experiments_on_A100_GPUs_63][How to run experiments on A100 GPUs]]
+
+---++ My issue isn't listed here
+If you are a student, please contact your supervisor. Otherwise please send us an email to =ticket@ukp.informatik.tu-darmstadt.de=.
+
+%META:TOPICMOVED{by="bugert" date="1570804905" from="Services.ComputeClusterFAQ" to="Services/Campus.ComputeClusterFAQ"}%

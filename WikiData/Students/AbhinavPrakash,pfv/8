@@ -1,0 +1,95 @@
+%META:TOPICINFO{author="eckart" comment="save topic" date="1510228639" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Masters Thesis* : Distributed Annotation Tool with Heterogeneous Presentation Modes 
+
+*Supervisor*: Dr Richard Eckart de Castilho
+
+
+*Start Date* : 21-SEP-2017 
+
+*Mid-Term Presentation Date* : 05-DEC-2017 
+
+*Final Presentation Date* : 06-MAR-2018   
+
+*End Date*: 26-MAR-2018 
+
+---++++ *09.NOV.2017 - 15.NOV.2017*
+
+ *Status of Last Week:*
+
+   * <del>Fix the frontend-maven-plugin configuration issue</del> *Status:* Complete.
+   * <del>configure webpack and gulp to talk to existing files in the code and the build setup.</del>*Status:* Complete.
+   * <del>Finish the Introduction Chapter of the Report</del>*Status:* Complete.
+   * Work on Rendering the existing annotations*Status:* Incomplete: Database related exceptions in the code.     
+      
+
+*To-Dos For Current Week:*
+
+   * Get the code up and running by fixing database related issues.
+   * Research on the context based methods to anchor annotations, described by W3C Web Annotation Working group
+   * Work on the implementation part and get to see some actions
+   * Report: Start the background chapter 
+   * To be added during Meeting
+   * think about problems, solutions and the approach to find solution with a comparison between different solutions for the data management between the text based and pdf based approach
+
+*Info:*
+   * https://github.com/UKPLab/emnlp2017-graphdocexplore - a project from some UKP people - they also use the maven-frontend-plugin
+
+-- Main.PrakashAbhinav - 2017-11-08 - 22:18
+---++++ *02.NOV.2017 - 08.NOV.2017*
+
+ *Status of Last Week:*
+
+   * <del>Prepare an outline of the report.</del> *Status:* Complete
+
+   * <del>Write Start writing Introduction chapter and complete at least Motivation section.</del> *Status:* Complete.
+         
+   * <del>Find out how functionalities provided by Webpack and babel can be implemented in INCEpTION Environment.</del> *Status:* Complete 
+     
+   * <del>Create a separate branch of INCEpTION</del> and Implement basic selection action. *Status:* Incomplete: The Selection Action not implemented yet. Database related exceptions in the code.   
+      
+
+*To-Dos For Current Week:*
+
+   * <del>Fix the frontend-maven-plugin configuration issue.</del>
+   * <del>configure webpack and gulp to talk to existing files in the code and the build setup.</del>
+   * <del>Finish the Introduction Chapter of the Report</del>
+   * Work on Rendering the existing annotations 
+
+-- Main.PrakashAbhinav - 2017-11-01 - 21:23
+
+ *Status of Last Week:*
+   * The basic concept of rendering and creation of annotations in the PDF has been understood. To Understand it properly I had to refer to the followings as well:
+   * ECMAScript 6 
+   * JQuery
+   * SVG
+   * WebPack
+   * AXIOS
+   * NodeJS
+
+*To-Dos For Current Week:*
+   * <del>Prepare an outline of the report</del>
+   * <del>Write Start writing Introduction chapter and complete at least Motivation section</del>
+   * <del>Find out how functionalities provided by Webpack and babel can be implemented in INCEpTION Environment</del>
+      * REC: maybe this can help? https://github.com/eirslett/frontend-maven-plugin    
+   * Create a separate branch of INCEpTION and Implement basic selection action
+
+---++++ *19.OCT.2017 - 23.OCT.2017*
+
+*To-Dos For Current Week:*
+   * <del>Understand the code flow of PDFAnno and find out how annotations are rendered and created</del>
+  
+---++++ *Tasks completed until 19.OCT.2017*
+   * Read and understood about the following topics:
+   * Basics of Annotations
+   * BRAT
+   * WebAnno
+   * INCEpTION
+   * Overview of the code of INCEpTION and WebAnno
+   * PDFJS
+   * Read about W3C Web Annotation Model
+   * Adobe JavaScript API for PDFs
+   * Started writing draft of the Report
+
+
+   

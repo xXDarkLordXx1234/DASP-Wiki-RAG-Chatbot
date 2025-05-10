@@ -1,0 +1,550 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1279706345" format="1.1" reprev="17" version="17"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+ -- Main.YevgenChebotar - 11 Jul 2010010010010
+
+%TOC%
+
+---+ Growth of different wiktionary editions
+Source: [[http://stats.wikimedia.org/wiktionary/EN/PlotsPngArticlesTotal.htm][http://stats.wikimedia.org/wiktionary/EN/PlotsPngArticlesTotal.htm]]   [[http://en.wiktionary.org/wiki/Wiktionary:Multilingual_statistics][http://en.wiktionary.org/wiki/Wiktionary:Multilingual_statistics]]<br>
+Wiktionary statistics: http://stats.wikimedia.org/wiktionary/EN/Sitemap.htm
+<br>
+<img width="835" height="525" alt="" src="http://stats.wikimedia.org/wiktionary/EN/PlotArticlesTotal1.png"  />
+<img width="835" height="525" alt="" src="http://stats.wikimedia.org/wiktionary/EN/PlotArticlesTotal2.png"  />
+<img width="835" height="525" alt="" src="http://stats.wikimedia.org/wiktionary/EN/PlotArticlesTotal3.png"  />
+
+
+---+ Bots (All languages)
+Source: [[http://en.wiktionary.org/wiki/Wiktionary:Bots][http://en.wiktionary.org/wiki/Wiktionary:Bots]]<br>
+Bot activity statistics: http://stats.wikimedia.org/wiktionary/EN/BotActivityMatrix.htm
+---++ Currently active bots
+| *Bot name* | *Language/Activity Field* | *Function* |
+| AutoFormat | General | Entry format||
+| Conrad.Bot | General | Link fixing for deleted/deletable redirects.||
+| Doddebot | General | HTML replacement||
+| Interwicket | General | Interwiki links||
+| MalafayaBot | General | Interwiki links in Category namespace||
+| Mzajacbot | General | Replace obsolete Script templates||
+| PolyBOT | General | Column templates||
+| Tbot  | Translations | Maintain {{t}} links||
+| DerbethBot  | Audio | Adding IPA and pronunciation files to entries||
+| Dvortybot | Audio | Bulk linking of audio||
+| TheCheatBot | English | Noun plurals||
+| Dawnraybot  | French | Verb forms||
+| KassadBot  | German | Verb forms||
+| BuchmeierBot  | Spanish | Verb forms||
+| MewBot  | Dutch | Verb and adjective forms||
+| MglovesfunBot  | Dutch | Verb forms||
+| SemperBlottoBot  | Italian | Inflected forms||
+| FitBot  | Latin/Galician | Latin - inflected forms; Galician - verb forms||
+| Neskbot  | Hiligaynon | Entry creation||
+| Opiaterein Inflectobot | Lithuanian | Entry creation; template replacement||
+| UllmannBot  | CJK characters | Format Kanji/Han characters||
+
+---++ Currently in-active bots
+| *Bot name* | *Language/Activity Field* | *Function* |
+| DblRedirBot | General | Eliminate double redirects||
+| ScsHdrRewrBot | General | Simple rewrites of section headings, in an ongoing effort to keep them consistent and normalized.||
+| ScsRhymeBot | General | Maintenance of Wiktionary rhyme lists and links.||
+| TempBot | General | Template replacement||
+| ComparBot | English | Adj. comparative forms||
+| PastBot | English | Verb past forms||
+| SuperlBot | English | Adj. superlative forms||
+| ThirdPersBot | English | 3rd-pers. verb forms||
+| Websterbot | English | Importing Webster's (1913) entries||
+| TheDaveBot   | Spanish | Verb forms||
+| NanshuBot | CJK characters | CJK ideographs||
+
+---+  Criteria for inclusion of new entries(Common for all languages)
+Source: [[http://en.wiktionary.org/wiki/Wiktionary:Criteria_for_inclusion][http://en.wiktionary.org/wiki/Wiktionary:Criteria_for_inclusion]]
+
+A term should be included if it's likely that someone would run across it and want to know what it means. A term need not be limited to a single word in the usual sense. Any of these are also acceptable:
+   * Compounds and multiple-word terms such as post office.
+   * Idioms such as go on and give up the ghost.
+   * Proverbs
+   * Abbreviations, acronyms, and initialisms such as NBA.
+   * Prefixes and suffixes such as re- and -ist.
+   * Characters used in ideographic or phonetic writing such as &#23383; or &#643;.
+
+*Attestation*: Attested means verified through
+   1. Clearly widespread use,
+   2. Usage in a well-known work,
+   3. Appearance in a refereed academic journal, or
+   4. Usage in permanently recorded media, conveying meaning, in at least three independent instances spanning at least a year.
+
+*Conveying meaning*
+Filters out made-up words and terms with made-up examples of how the word can be used.
+
+*Independence*
+Exclude multiple references that draw on each other. If a term is only used in a narrow community, there is no need to refer to a general dictionary such as Wiktionary to find its meaning.
+
+*Spanning at least a year*
+Filter out words that may appear and see brief use, but then never be used again.
+
+*Idiomaticity*
+An expression is idiomatic if its full meaning cannot be easily derived from the meaning of its separate components. For example  , _this is a door_ is not idiomatic, but _shut up_ is.
+
+*Misspellings*
+Once it is decided that a misspelling is of sufficient importance to merit its own page, the usual language and part of speech headings can be used, followed by this simple entry: # {{misspelling of|[[...]]}}. An additional section explaining why the term is a misspelling should be considered optional.
+
+*Inflections*
+The entries for such inflected forms as _cameras_, _geese_, _asked_, and _were_ should indicate what form they are, and link to the main entry for the word.
+
+*Vandalism*
+If the vandalism consists of an edit to an existing page, that edit will be reverted. If the vandalism consists of a new article, that article will be removed.
+
+*Protologisms* 
+Protologisms are listed on [[http://en.wiktionary.org/wiki/Wiktionary:List_of_protologisms][http://en.wiktionary.org/wiki/Wiktionary:List_of_protologisms]], and should not be given their own separate entries.
+
+*Fictional universes*
+Terms originating in fictional universes which have three citations in separate works, but which do not have three citations which are independent of reference to that universe may be included only in appendices of words from that universe, and not in the main dictionary space.
+
+*Wiktionary is not an encyclopedia*
+Entries do not become encyclopedic in nature; if this happens, such content should be moved to Wikipedia, but the dictionary entry itself should be kept.
+
+*Names*
+Company names: To be included, the use of the company name other than its use as a trademark <br>
+Brand names: A brand name for a physical product should be included if it has entered the lexicon.<br>
+Given and family names: Given names (such as David, Roger, and Peter) and family names (such as Baker, Bush, Rice, Smith, and Jones) are words, and subject to the same criteria for inclusion as any other words. <br>
+Genealogic content: Wiktionary is not a genealogy database. Wiktionary articles on family names, for example, are not intended to be about the people who share the family name. They are about the name as a word. <br>
+
+*Languages to include*
+All natural languages are acceptable. However, it is important to note that the question of whether a proposed language is considered a living language, or a dialect of or alternate name for another language is inherently subjective in some cases, and either designation may have political overtones.<br>
+Constructed languages that have apparent consensus (they should have ISO 639-3 code) can be included.
+
+---+ English Wiktionary
+48.6% of wiktionary.org traffic goes to English Wiktionary.
+---++ History
+Source: [[http://en.wikipedia.org/wiki/Wiktionary][http://en.wikipedia.org/wiki/Wiktionary]]
+
+Wiktionary was brought online on December 12, 2002, following a proposal by Daniel Alston. On March 29, 2004, the first non-English Wiktionaries were initiated in French and Polish. Wiktionary was hosted on a temporary URL (wiktionary.wikipedia.org) until May 1, 2004, when it switched to the current full URL.
+
+Despite Wiktionary's large number of entries, most of the entries and many of the definitions at the project's largest language editions were created by bots that found creative ways to generate entries or (rarely) automatically imported thousands of entries from previously published dictionaries. Seven of the 18 bots registered at the English Wiktionary created 163,000 of the entries there. Only 259 entries remain (each containing many definitions) on Wiktionary from the original import by Websterbot from public domain sources; the majority of those imports have been split out to thousands of proper entries manually. Another one of these bots, "ThirdPersBot," was responsible for the addition of a number of third-person conjugations that would not receive their own entries in standard dictionaries; for instance, it defined "smoulders" as the "third-person singular simple present form of smoulder." Excluding these 163,000 entries, the English Wiktionary would have about 137,000 entries, including terms unique to languages other than English, making it smaller than most monolingual print dictionaries.
+
+---++ Criteria for inclusion specific for English
+Source: [[http://en.wiktionary.org/wiki/Wiktionary:About_English][http://en.wiktionary.org/wiki/Wiktionary:About_English]]<br>
+*Modern English possessives*
+It is community consensus not to provide entries for Modern English possessive forms which are formed by adding the enclitics s or , and which are otherwise not idiomatic (with the single exception of the pronoun ones). 
+
+---++ Discussion forums
+Der Umgangston in [[http://en.wiktionary.org/wiki/Wiktionary:Beer_parlour]["Beer parlour"]] und [[http://en.wiktionary.org/wiki/Wiktionary:Tea_room]["Tea room"]] ist teilweise ziemlich familiär. Es wird über die wichtige Fragen und einzelne Artikel diskutiert. Die Entscheidungen werden mittels Abstimmung getroffen. Z.B. über die Exklusion von "Modern English possessives" in English Wiktionary wurde hier [[http://en.wiktionary.org/wiki/Wiktionary:Votes/pl-2007-07/exclusion_of_possessive_case][http://en.wiktionary.org/wiki/Wiktionary:Votes/pl-2007-07/exclusion_of_possessive_case]] abgestimmt. Es gibt z.B. aktuelle Diskussionen über das Format von Table of Contents und Phrasebook in English Wiktionary, wobei noch keinen Konsens gefunden wurde. Diskussion über einzelnge Entries findet in  [[http://en.wiktionary.org/wiki/Wiktionary:Tea_room]["Tea room"]] statt, wobei sehr oft über Phrasen und nicht einzelne Wörter disktutiert wird. Allgemeine Wiktionary-Fragen werden hauptsächlich in [[http://en.wiktionary.org/wiki/Wiktionary:Beer_parlour]["Beer parlour"]] diskutiert.
+
+---++ Bots
+[[http://en.wiktionary.org/wiki/Wiktionary:Grease_pit#Century_Dictionary_Bot][Hier]] sehen wir eine Diskussion über die Verwendung von einem Century Dictionary Bot für die Importierung von Etymologien aus Century Dictionary, die aber von einem User als veraltet eingestuft wird.
+<br> [[http://meta.wikimedia.org/wiki/Special:Log/import][Hier]] befindet sich ein Import log von WKT_EN. Man sieht sowie einzelne importierte Einträge, als auch andere importierte Seiten wie Templates und Kategorien. Es werden jedoch nicht nur von Bots, sondern auch von reelen Benutzern importierte Seiten, angezeigt. Die Statistik startet mit dem Jahr 2006. Größter Teil der Einträge wurden durch "transwiki import" importiert. [[http://meta.wikimedia.org/wiki/Help:Import][Hier]] sehen wir eine Hilfsthema zum Thema Import allgemein für alle WIkimedia-Projekte.
+<br> Viele Einträge wurden in WKT_EN aus Webster's 1913 Dictionary importiert, dabei wurde bei solchen Einträgen ein Template {{ [[http://en.wiktionary.org/wiki/Template:webster_1913][webster_1913]] }} verwendet, damit Benutzer diese Einträge nochmal überprüfen konnten. Zurzeit sind schon alle damals importierte Einträge korrigiert und verändert, so dass es keine Seiten mehr mit dem Template webster_1913 gibt.
+
+---++ Article Structure
+Normales Artikel in English wiktionary hat folgende Struktur
+   * Language 1
+      * Pronunciation
+      * Etymology 1
+         * POS1
+            * Sense 1
+            * Sense 2... 
+         * Synonyms
+         * Hyponyms...
+         * Derived Terms
+         * Translations
+         * See also
+         * POS2...
+      * Etymology 2...
+   * Language 2...
+
+Der Sense-Marker ist "#", wobei es als eine Sense-Nummer dargestellt wird.
+   * *ChM*: Relationen, z.B. Synonyme, werden mit einem abgekürzten Gloss mit dem Sense verbunden, z.B. # (A craft on or in water) für Sense 1 (http://en.wiktionary.org/wiki/boat). Ein eindeutiges Mapping von Index zu abgekürztem Gloss gibt es nicht, sollte aber über Lesk recht einfach herzustellen sein.
+
+---++ Wikisaurus
+Source: [[http://en.wiktionary.org/wiki/Wiktionary:Wikisaurus][http://en.wiktionary.org/wiki/Wiktionary:Wikisaurus]]<br>
+All Wikisaurus entries are placed in Wikisaurus-Category [[http://en.wiktionary.org/wiki/Category:Wikisaurus][http://en.wiktionary.org/wiki/Category:Wikisaurus]] .  Currently it contains 894 Entries. Almost all entries follow a unified format. The inclusion criteria for Wikisaurus entries are the same as those for the mainspace. There are only few users, who contribute to Wikisaurus, the project is still in his embryo stage.
+---++ Example Articles 
+ [[%ATTACHURL%/WKT_EN_go.txt][go]] ,  [[%ATTACHURL%/WKT_EN_aircraft.txt][aircraft]]
+
+---+ French wiktionary
+Source: [[http://fr.wikipedia.org/wiki/Wiktionnaire][http://fr.wikipedia.org/wiki/Wiktionnaire]]
+9.7%(6.8% from France and 2.9% from other world) of wiktionary.org traffic goes to French wiktionary. 
+
+---++ History
+Thanks to automatic insertion of entries from different free dictionaries French wiktionary has grown very rapidly and currently it is the Wiktionary Edition with most entries.
+   * *ChM*: "automated import of public-domain dictionaries articles (Littré 1863 and Dictionnaire de lAcadémie Française 1932-1935)." [Navarro et al., 2009]
+
+
+---++ Criteria for inclusion specific for French
+Es gibt eine Liste von Wörter die in jedem Wiktionary vorhanden sein müssen: [[http://fr.wiktionary.org/wiki/Wiktionnaire:Liste_des_mots_que_tous_les_Wiktionnaires_devraient_avoir][http://fr.wiktionary.org/wiki/Wiktionnaire:Liste_des_mots_que_tous_les_Wiktionnaires_devraient_avoir]]<br>
+Es gibt auch eine Liste von Wörter die zur Zeit am meisten angefragt sind: [[http://fr.wiktionary.org/wiki/Wiktionnaire:Mots_les_plus_demand%C3%A9s][http://fr.wiktionary.org/wiki/Wiktionnaire:Mots_les_plus_demand%C3%A9s]]. Es gibt eine Maske für ein schnelles Erstellen von Entries: [[http://fr.wiktionary.org/wiki/Aide:Cr%C3%A9ation_rapide][http://fr.wiktionary.org/wiki/Aide:Cr%C3%A9ation_rapide]]
+---++ Discussion forums
+Es gibt auch ähnlich zu Tea Room [[http://fr.wiktionary.org/wiki/Wiktionnaire:Questions_sur_les_mots][http://fr.wiktionary.org/wiki/Wiktionnaire:Questions_sur_les_mots]] und Beer parlour  [[http://fr.wiktionary.org/wiki/Wiktionnaire:Wikid%C3%A9mie][http://fr.wiktionary.org/wiki/Wiktionnaire:Wikid%C3%A9mie]]. Aktuelle Diskussionstheme ist z.B. Verbesserung von Wiktionary-Struktur([[http://fr.wiktionary.org/wiki/Wiktionnaire:Wikid%C3%A9mie#Standard_de_pr.C3.A9sentation_de_Wiktionnaire][Standard de présentation de Wiktionnaire]], ein Vorschlag ist illustriert auf [[http://fr.wiktionary.org/wiki/Wiktionnaire:N%C3%A9oWiktionnaire][http://fr.wiktionary.org/wiki/Wiktionnaire:N%C3%A9oWiktionnaire]]. 
+
+---++Article Structure
+Source: [[http://fr.wiktionary.org/wiki/Wiktionnaire:Structure_des_articles][http://fr.wiktionary.org/wiki/Wiktionnaire:Structure_des_articles]]
+
+   * Language 1(French)
+      * Etymology
+         * Etymology I
+         * Etymology II...
+      * POS 1 I
+            * Sense 1
+            * Sense 2
+         * Synonyms
+         * Hyponyms...
+         * Derived Terms
+         * Translations
+      * POS 1 II...
+      * POS 2 I...
+      * POS 2 II...
+      * Pronunciation
+      * See also   
+      * Anagramms
+      * References
+   * Language 2...
+
+Der Sense-Marker ist "#", wobei es als eine Sense-Nummer dargestellt wird. Mit "#*" werden Beispiele angegeben. Die Struktur des Artikels ist in WKT_FR mehr mit Templates gefüllt. Z.B. werden in englischem WKT die einzelne Abschnitte mit lesbaren Überschriften versehen: "===Noun===" oder "====Translations====" (z.B. [[http://en.wiktionary.org/wiki/sun][http://en.wiktionary.org/wiki/sun]]). In WKT_FR werden Überschriften nur mit Templates beschrieben: {{-nom-|fr|num=1}} oder {{-trad-}} (z.B. [[http://fr.wiktionary.org/wiki/mousse][http://fr.wiktionary.org/wiki/mousse]]) Bei Translations sehen wir es auch, WKT_EN: 
+   * Georgian: {{t-|ka|&#4315;&#4310;&#4308;|tr=mze|sc=Geor|xs=Georgian}}
+   * German: {{t+|de|Sonne|f}}
+   * Greek: {{t+|el|&#942;&#955;&#953;&#959;&#962;|m|tr=ílios}}
+WKT_FR:
+   * {{T|de}} : {{trad+|de|stumpf}}
+   * {{T|en}} : {{trad+|en|blunt}}
+   * {{T|da}} : {{trad-|da|sløv}}, {{trad-|da|stump}}
+
+   * *ChM*: Die Etymologie ist über ein Klammernpräfix bestehend aus POS und Sense-Index disambiguiert, z.B. (Nom 1) Provient. Vorsicht, hier können auch Nicht-etymologische Infos enthalten sein.
+      * Relationen sind (nur bei polysemen Worten) sowohl mit abgekürztem Gloss, als auch mittels Sense-Index gekennzeichnet, z.B. "Amas de bulles (2) : écume" (http://fr.wiktionary.org/wiki/mousse)
+Vor vielen Senses stehen Context Labels. Die grammatischen Labels sind hier aufgelistet: [[http://fr.wiktionary.org/wiki/Annexe:Glossaire_grammatical][http://fr.wiktionary.org/wiki/Annexe:Glossaire_grammatical]]
+---++ Thesaurus
+Es gibt nur eine sehr kleine Version von Thesaurus in WKT_FR. Es befindet sich hier: [[http://fr.wiktionary.org/wiki/Cat%C3%A9gorie:Th%C3%A9saurus_par_langue][http://fr.wiktionary.org/wiki/Cat%C3%A9gorie:Th%C3%A9saurus_par_langue]] , für Französisch: [[http://fr.wiktionary.org/wiki/Cat%C3%A9gorie:Th%C3%A9saurus_en_fran%C3%A7ais][http://fr.wiktionary.org/wiki/Cat%C3%A9gorie:Th%C3%A9saurus_en_fran%C3%A7ais]] .Französische version hat nur 19 Einträge. Im Unterschied zum englischen Wikisaurus gibt es für einen Eintrag mehr verwandte Wörter,die keine Synonyme oder andere Relationen darstellen. Z.B.: [[http://fr.wiktionary.org/wiki/Th%C3%A9saurus:fran%C3%A7ais/l%C3%A9gume][http://fr.wiktionary.org/wiki/Th%C3%A9saurus:fran%C3%A7ais/l%C3%A9gume]] . Über das französische Thesaurus wird in Diskussionsforen diskutiert: [[http://fr.wiktionary.org/wiki/Wiktionnaire:Wikid%C3%A9mie/Th%C3%A9saurus][http://fr.wiktionary.org/wiki/Wiktionnaire:Wikid%C3%A9mie/Th%C3%A9saurus]]. Wir können also möglicherweise eine weitere Entwicklung des Thesaurus in kommender Zeit erwarten.
+
+---++ Example Articles
+[[%ATTACHURL%/WKT_FR_bien.txt][bien]] , [[%ATTACHURL%/WKT_FR_mousse.txt][mousse]] , [[%ATTACHURL%/WKT_FR_abonnement.txt][abonnement]]
+
+---+ Russian Wiktionary
+---++ History
+Source:[[http://ru.wikipedia.org/wiki/&#1042;&#1080;&#1082;&#1080;&#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1100;][Wikipedia: WKT_RU]]
+WKT_RU wurde in 2004 gegründet. Bis 2006 gab es nur wenige und niedrig-qualitative Einträge. Ab 2006 gibt es einen Administrator, es wurde eine Funktionalität für die Beschreibung von Morphologie und ein System der semantischen Kategorien entwickelt. In 2006 wurde ein Bot gestartet, der Dummy-Seiten von noch nicht vorhandenen Einträgen erstellt. Somit ist die Anzahl der Einträge in WKT_RU in 2009 bis 200.000 gestiegen. Dabei kann der automatische Artikel-Zähler nicht zwischen echten und Dummy-Seiten unterscheiden, die zurzeit noch den größten Teil der Einträge darstellen.
+
+---++ Discussion forums
+Da es sehr wenige aktive Nutzer gibt ist auch der Umgangston ziemlich familiär. Es wird viel über Verwendung von verschiedenen Vorlagen diskutiert, da WKT_RU durch breite Verwendung von Vorlagen gut strukturiert ist.
+
+---++ Bots
+Für automatische Erstellung der Deklinationen und Neigungen wurde in WKT_RU ein Wörterbuch bon Zaliznjak benutzt. Es gibt eine spezielle Seite, die sich damit beschäftigt: [[http://ru.wiktionary.org/wiki/&#1042;&#1080;&#1082;&#1080;&#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1100;:&#1058;&#1077;&#1093;&#1085;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077;_ &#1074;&#1086;&#1087;&#1088;&#1086;&#1089;&#1099;/&#1041;&#1086;&#1090;&#1086;&#1079;&#1072;&#1083;&#1080;&#1074;&#1082;&#1072; &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1080;_&#1086;_&#1089;&#1083;&#1086;&#1074;&#1086;&#1080;&#1079;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1103;&#1093;][hier]]
+
+---++ Article structure
+
+   * Sprache 1
+      * Wort I (Es ist ähnlich zur Etymologie-Einteilung in WKT_EN, kommt aber eher selten vor(wie z.B. bei http://ru.wiktionary.org/wiki/%D0%BF%D0%BE%D0%BB). 
+      * Morphologische und syntaktische Eigenschaften (Hier steht der POS und andere Eigenschaften wie Endungen, Neigungen usw.)
+      * Aussprache
+      * Semantische Eigenschaften
+         * Bedeutungen
+            * Bedeutung 1
+            * Bedeutung 2...
+         * Synonyme
+            * Synonym zur Bedeutung 1
+            * Synonym zur Bedeutung 2...
+         * Antonyme...
+         * Hypernyme usw.
+      * Verwandte Wörter 
+      * Etymologie
+      * Phrasen und Redewendugen mit diesem Wort
+      * Übersetzung 
+      * Wort II...
+   * Sprache 2...
+Vor vielen Senses stehen Context Labels. Sie sind hier aufgelistet: [[http://ru.wiktionary.org/wiki/&#1042;&#1080;&#1082;&#1080;&#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1100;:&#1059;&#1089;&#1083;&#1086;&#1074;&#1085;&#1099;&#1077;_&#1089;&#1086;&#1082;&#1088;&#1072;&#1097;&#1077;&#1085;&#1080;&#1103;][http://ru.wiktionary.org/wiki/&#1042;&#1080;&#1082;&#1080;&#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1100;:&#1059;&#1089;&#1083;&#1086;&#1074;&#1085;&#1099;&#1077;_&#1089;&#1086;&#1082;&#1088;&#1072;&#1097;&#1077;&#1085;&#1080;&#1103;]] . Die Senses werden mit "#" markiert und als Aufzählungen dargestellt. Bei der späteren Zuweisung müssen Synonyme, Antonyme usw. in gleicher Reihenfolge wie die Senses stehen. Wenn kein Synonym für einen Sense vorhanden ist, dann wird die Zeile trotzdem eingefügt aber leer gelassen. Bei den Übersetzungen wird eine kurze Repräsenation des Senses für die Zuweisung verwendet.<br>
+Es gibt keinen selbständigen Thesaurus in WKT_RU.
+
+---++ Example Articles
+
+[[%ATTACHURL%/WKT_RU_slon.txt][&#1089;&#1083;&#1086;&#1085;]] , [[%ATTACHURL%/WKT_RU_pol.txt][&#1087;&#1086;&#1083;]] , Dummy-Entry:[[%ATTACHURL%/WKT_RU_peremeshatsa.txt][&#1087;&#1077;&#1088;&#1077;&#1084;&#1077;&#1097;&#1072;&#1090;&#1100;&#1089;&#1103;]]
+---+ Polish Wiktionary
+
+---++ Besonderheiten
+Source: http://pl.wikipedia.org/wiki/Wikis%C5%82ownik , [[http://www.wiadomosci24.pl/artykul/polski_wikislownik_dziewiaty_wsrod_najwiekszych_na_swiecie_119094.html][http://www.wiadomosci24.pl/artykul/polski_wikislownik_dziewiaty_wsrod_najwiekszych_na_swiecie_119094.html]]
+Im Unterschied zu anderen Wiktionaries spielt die Großschreibung bei den Artikelnamen in WKT_PL keine Rolle.  WKT_PL ist unter allen Wiktionaries auf dem ersten Platz bei der Nutzung von Multimedia. Von 160.000 Einträge haben mehr als 18.000 Illustrationen. Es gibt mehr als 20.000 Einträge auf polnisch, um 20.000 auf Interlingua, 10.000 auf English und 10.000 auf Schwedisch. 
+
+---++ Discussion forums
+Es gibt ein "[[http://pl.wiktionary.org/wiki/Wikis%C5%82ownik:Bar][Bar]]" für eine Besprechung der Wiktionary-Organistation. Interessanterweise wurde hier [[http://pl.wiktionary.org/wiki/Wikis%C5%82ownik:Bar#Wikisaurus][http://pl.wiktionary.org/wiki/Wikis%C5%82ownik:Bar#Wikisaurus]] vor kuzem ein Vorschlag für polnische Version der Wikisaurus gemacht. Man kann es auch bei vielen Editionen won WKT beobachten, dass diese Idee aus WKT_EN diskutiert wird. In WKT_PL gibt es auch eine Möglichkeit Live durch einen [[irc://chat.freenode.net/wikislownik][IRC-Channel]] zu diskutieren.
+
+---++ Article Structure
+Source: [[http://pl.wiktionary.org/wiki/Wikis%C5%82ownik:Zasady_tworzenia_hase%C5%82][http://pl.wiktionary.org/wiki/Wikis%C5%82ownik:Zasady_tworzenia_hase%C5%82]]
+<br>Examples: [[http://pl.wiktionary.org/wiki/przenosi%C4%87][przenosi&#263;]] , [[http://pl.wiktionary.org/wiki/%C5%9Bwiat#pl][&#347;wiat]]
+   * Language 1
+      * Transliteration (Only needed if the entry is not written in latin letters) (transliteracja)
+      * Pronunciation (wymowa)
+      * Senses (znaczenia)
+         * POS 1
+            * Sense 1.1
+            * Sense 1.2...
+         * POS 2
+            * Sense 2.1
+            * Sense 2.2...
+         * POS 3...
+      * Conjugation. (odmiana)
+      * Examples (przyk&#322;ady)
+         * Example 1.1
+         * Example 1.2...
+         * Example 2.1
+         * Example 2.2...
+      * Syntax (sk&#322;adnia). For a verb for example: Which preposition and case is to use with this verb.
+      * Synonyms (synonimy)
+      * Antonyms (antonimy)
+      * Phrases and expressions ( kolokacje, zwi&#261;zki frazeologiczne)
+      * Related words and phrases (s&#322;owa pokrewne, wyrazy pokrewne)
+      * Etymology (etymologia)
+      * Comments (uwagi)
+         * Comment 1.1...
+         * Comment 2.1...
+      * Translations (t&#322;umaczenia)
+         *  Language 1: translation for 1.1, translation for 1.2..., 2.1...
+      * References, Sources (&#378;ród&#322;a)
+WKT_PL hat einen ziemlich unterschiedlichen Mark-Up als WKT_EN. Sektionen werden mit {{Sektion}} bezeichnet, POS mit  ''POS'' . Die Senses werden mit Zahlen markiert. Z.B. POS 1, Sense 1 " : (1.1) ", POS 3, Sense 12 ": (3.12)" . Genauso werden auch Beispiele und Übersetzungen markiert. Vor den meisten Senses steht ein Context Label (Skrót) . Die Context Labels sind hier aufgelistet: [[http://pl.wiktionary.org/wiki/Aneks:Skr%C3%B3ty_u%C5%BCywane_w_Wikis%C5%82owniku][http://pl.wiktionary.org/wiki/Aneks:Skr%C3%B3ty_u%C5%BCywane_w_Wikis%C5%82owniku]]. 
+
+---++ Example Articles
+[[%ATTACHURL%/WKT_PL_przenosic.txt][przenosi&#263;]] , [[%ATTACHURL%/WKT_PL_swiat.txt][&#347;wiat]] , [[%ATTACHURL%/WKT_PL_pomieszczenie.txt][pomieszczenie]]
+
+---+ Lithuanian Wiktionary
+Source: http://lt.wiktionary.org/wiki/Viki%C5%BEodynas:Pagrindinis_puslapis<br>
+WKT_LT wurde in 2008 gegründet und hat zurzeit mehr als 540.000 Einträge. Nach Französischem und Englischem ist es das drittgrößte Wiktionary. Es ist das größte litauische WikiMedia-Projekt.
+
+---++ Discussion Forums
+Hier befindet sich der Community-Portal: http://lt.wiktionary.org/wiki/Vikiodynas:Bendruomen&#279;s_portalas . Hier sehen wieder einen [[http://lt.wiktionary.org/wiki/Viki%C5%BEodynas:Baras][Bar]] . Insgesamt gibt es aber nur sehr wenige Diskussionen sowie im Bar, als auch in anderen Community-Bereichen.
+
+---++ Article Structure
+Source: [[http://lt.wiktionary.org/wiki/Viki%C5%BEodynas:Straipsni%C5%B3_%C5%A1ablonai ][Lithanian Entry Template]], [[http://lt.wiktionary.org/wiki/Viki%C5%BEodynas:Straipsni%C5%B3_%C5%A1ablonai_(u%C5%BEsienio_kalbos_%C5%BEodis)][Foreign Language Entry Template]]<br><br>
+*Lithuanian Entries* (Examples: http://lt.wiktionary.org/wiki/geras , http://lt.wiktionary.org/wiki/mogus , http://lt.wiktionary.org/wiki/man ):
+
+   * Language 1 (kalba)
+      * POS 1
+         * Grammatical Properties
+         * Syllables (Skiemenys)
+         * Word 1 Senses
+            * Sense 1
+            * Sense 2
+         * See also
+         * Idioms (Frazeologizmai)
+         * Ethymology (Etimologija)
+         * Synonyms  (Sinonimai)
+            * Synonyms for Sense 1
+            * Synonyms for Sense 2...
+         * Antonyms (Antonimai)
+            * Antonyms for Sense 1
+            * Antonyms for Sense 2...
+         * Related words and phrases (Iraikos arba posakiai)
+         * Translations (Vertimai)
+            * Translations for Sense 1
+            * Translations for Sense 2...
+      * POS 2...
+   * Language 2...
+
+Die Senses werden mit # Markiert und als Aufzählungen dargestellt. Bei der Angabe von Synonymen, Antonymen und Übersetzungen wird eine Kurzrepräsentation eines Senses angegeben, damit es zu richtigem Sense zugewiesen wird. Beispiel. 
+<br>
+_mogus_ <br>
+1.socialinis gyv&#363;nas, i kit&#371; r&#363;i&#371; isiskiriantis ilav&#279;jusiu abstrak&#269;iu m&#261;stymu....<br>
+Bei den Synonymen wird dann im Mark-Up {{sin-top|socialinis gyv&#363;nas}} für den Überschrift der zu diesem Sense zugehörigen Synonymen eingegeben. Wenn kein Hinweis auf ein bestimmtes Sense erforderlich ist, wird einfach "bendrai" angegeben (übersetzt "allgemein").<br>
+
+*Foreign language entries* (Examples: http://lt.wiktionary.org/wiki/word , http://lt.wiktionary.org/wiki/bank )
+   * Language 1 
+      * Pronunciation
+      * Latin transliteration (If not in latin letters)
+      * POS 1
+         *  Word. Optional: desription in Lithuanian
+            * Translation to Lithuanian 1
+            * Translation to Lithuanian 2...
+         * Use
+         * Ethymology
+         * Synonyms
+         * Antonyms
+      * POS 2...
+   * Language 2
+---++ Example Articles
+[[%ATTACHURL%/WKT_LT_zmogus.txt][mogus]] , [[%ATTACHURL%/WKT_LT_eina.txt][eina]] , [[%ATTACHURL%/WKT_LT_naudingas.txt][naudingas]] , [[%ATTACHURL%/WKT_LT_man.txt][man]]
+---+ Turkish Wiktionary
+---++ History
+WKT_TR wurde in 2004 gegründet. Zuzeit gibt es ca. 268.000 Einträge.
+---++ Discussion forums
+Es gibt keine getrennte Diskussionsbereiche. Alle Fragen werden [[http://tr.wiktionary.org/wiki/Vikisözlük:Köy_çe&#351;mesi][hier]] diskutiert
+---++ Article structure
+Source: http://tr.wiktionary.org/wiki/Yard%C4%B1m:Madde_%C5%9Eablonu<br>
+Examples: http://tr.wiktionary.org/wiki/gitmek , http://tr.wiktionary.org/wiki/ev<br><br>
+   * Language 1 (Dil)
+      * POS 1
+         * Syllables (Tireleme)
+         * Pronunciation (Söyleni&#351;)
+         * Spelling. Here comes optionally spelling of the word in arabic or cyrillic and spelling variations in turkish
+         * Senses (Anlamlar)
+            * [1] Sense
+            * [2] Sense...
+         * Etymology (K&#305;saltmalar)
+            * [1] Etymology
+            * [2] Etymology...
+         * Synonyms (E&#351; Anlaml&#305;lar)
+            * [1] Synonyms
+            * [2] Synonyms...
+         * Antonyms(Kar&#351;&#305;t Anlaml&#305;lar)
+            * [1] Antonyms...
+         * Hypernyms(Üst Kavramlar), Same level concepts(Yan Kavramlar, for example for entry car: truck, tractor), Hyponyms (Alt Kavramlar)
+            * [1]...
+            * [2]... 
+         * Examples(Örnekler)
+            * [1] Example
+            * [2] Example..
+         * Proverbs, Sayings, Idioms (Atasözleri, Deyimler): [1], [2]...
+         * Association of words (Sözcük Birliktelikleri): [1], [2]...
+         * Derived words (Türetilmi&#351; Kavramlar):  [1], [2]... 
+         * Words with similar pronunciation, f.e. Homophones (Benzer Sözcükler)
+         * References, Resources (Kaynaklar)
+         * Translations (Çeviriler)
+            * Translations to turkish-based languages (Türk Dilleri) : [1], [2]...
+            * Translations to other languages
+      * POS 2...
+   * Language 2...
+Die Senses werden mit [Nummer] markiert. Diese Nummer wird auch dann für die Zuweisung von Synonymen, Antonymen, Übersetzungen usw. benutzt.
+
+---++ Example Articles
+[[%ATTACHURL%/WKT_TR_ev.txt][ev]] , [[%ATTACHURL%/WKT_TR_gitmek.txt][gitmek]] , [[%ATTACHURL%/WKT_TR_adam.txt][adam]]
+
+---+ Vietnamese Wiktionary
+---++ History
+WKT_VI wurde in 2004 gegründet. Zurzeit gibt es ca. 228.000 Einträge
+---++Discussion forums
+Es gibt einen Diskussionsbereich [[http://vi.wiktionary.org/wiki/Th&#7843;o_lu&#7853;n_Wiktionary:Th&#7843;o_lu&#7853;n][hier]]. Außerdem gibt es Diskussionsbereiche speziell für nicht-vietnamesisch sprechnende Benutzer [[http://vi.wiktionary.org/wiki/Wiktionary:Guestbook_for_non-Vietnamese_speakers][hier]] , es wird jedoch kaum benutzt.
+---++ Article Structure
+Source: [[http://vi.wiktionary.org/wiki/Wiktionary:S&#417;_&#273;&#7891;_m&#7909;c_t&#7915;][S&#417;_&#273;&#7891;_m&#7909;c_t&#7915;]]
+Examples: http://vi.wiktionary.org/wiki/go , http://vi.wiktionary.org/wiki/nhà
+   * Language 1
+      * Pronunciation
+      * Word written in "[[http://de.wikipedia.org/wiki/Ch&#7919;_nôm][Ch&#7919; Nôm]]" (Chinese characters)
+      * Homophones
+      * Spelling variations
+      * Etymology
+      * Transliteration in latin letters
+      * POS 1
+         * Senses with Examples
+            * Sense 1
+            * Sense 2...
+         * Synonyms
+         * Antonyms
+         * Idioms..
+         * Derived words
+         * Translations
+      * POS 2...
+      * References
+   * Language 2...
+Die Senses werden mit "#" nummeriert. Die Synonyme, Antonyme, Übersetzungen usw. werden mit einer Kurzversion des Glosses zu einem Sense zugewiesen.
+
+---++ Example Articles
+[[%ATTACHURL%/WKT_VI_nha.txt][nhà]] , [[%ATTACHURL%/WKT_VI_go.txt][go]] , [[%ATTACHURL%/WKT_VI_dong_vat.txt][&#273;&#7897;ng v&#7853;t]]
+
+---+ Ido Wiktionary
+---++ History
+Source: http://io.wiktionary.org/wiki/Wikivortaro:Historio_di_Wikivortaro <br>
+WKT_IO wurde in 2005 gegründet und hat zurzeit ca. 170.000 Einträge.
+Da Ido eine künstliche Sprache ist, unterscheidet sich die Struktur von WKT_IO von anderen Wiktionaries.
+---++ Article Structure
+Source: http://io.wiktionary.org/wiki/Helpo:Modelo_dil_pagino <br>
+Examples: http://io.wiktionary.org/wiki/havar , http://io.wiktionary.org/wiki/domo , http://io.wiktionary.org/wiki/en
+   * Ido
+      * Semantik (Semantico)
+         * Semantik 1
+         * Semantik 2... . Wobei insgesamt gibt es ziemlich selten mehrdeutige Wörter, da auch ein der Zielen von Ido war, die Mehrdeutigkeit zu vermeiden
+      * Morfologie (Morfologio). Einteilung des Wortes in einzelne Teile. Dabei gibt es auch für diese Teile einzelne Einträge. Z.B. für das Wort [[http://io.wiktionary.org/wiki/havar][havar]] gibt es Einträge [[http://io.wiktionary.org/wiki/hav][hav]] und [[http://io.wiktionary.org/wiki/.ar][.ar]] . Hier sieht man die modularische Aufbau von Ido-Wörtern, die aus Prefix (prefixo), Wortstamm (radiko) und Suffix (sufixo) bestehen.
+      * Beispiele (Exemplaro)
+      * Synonyme (Sinonimo)
+      * Antonyme (Antonimo)
+      * Komposition Wörter (Kompundi) Z.B. für domo: domo-chefo, farmodomo..
+   * Herkunftssprachen (Fonto-lingui). Sprachen und Wörter aus denen das Ido-Wort abgeleitet wurde
+      * Englisch (Angliana)
+      * Französisch (Franciana)
+      * Deutsch (Germaniana)
+      * Spanisch (Hispaniana)
+      * Italienisch (Italiana)
+      * Russisch (Rusiana)          
+   * Übersetzung in andere Sprachen, alphabetisch nach Sprachen aufgelistet              
+Die Senses sind meistens mit ** markiert, z.B. in [[http://io.wiktionary.org/wiki/qua][qua]] oder [[http://io.wiktionary.org/wiki/domo][domo]], dabei kommt der erste Sense direkt nach dem Titel "Semantico" . Bei einigen Enträgen sind Senses mit Zahlen markiert, z.B. [[http://io.wiktionary.org/wiki/.ar][.ar]] . Die Beispiele, Synonyme, Antonyme,  Übersetzungen sind bei einigen Artikeln mit einem Disambigueirungs-Wort an die Senses zugewiesen (z.B. [[http://io.wiktionary.org/wiki/irar][irar]], bei anderen mit dem Nummer des Senses (z.B. [[http://io.wiktionary.org/wiki/qua][qua]]) Vor vielen Senses stehen Context-Labels. Die Liste von Context-Labels Abbreviaturen befindet sich hier: [[http://io.wiktionary.org/wiki/Kategorio:Abreviuri][Abreviuri]]. Insgesamt ist die Vorlagen-Struktur bei WKT_IO nicht so gut entwickelt wie bei anderen Wiktionaries, darüber wird auch teilweise in Diskussionsforen diskutiert ([[http://io.wiktionary.org/wiki/Wikivortaro:Komuneso-portalo][Komuneso-portalo]])
+
+---++ Example Articles
+[[%ATTACHURL%/WKT_IO_havar.txt][havar]] , [[%ATTACHURL%/WKT_IO_domo.txt][domo]] , [[%ATTACHURL%/WKT_IO_en.txt][en]] , [[%ATTACHURL%/WKT_IO_ar.txt][.ar]]
+
+---+ Portuguese Wiktionary
+---++ History
+WKT_PT wurde in 2004 gegründet und besteht zurzeit aus mehr als 155.000 Einträge. Davon sind ca. 26.000 portugisiesche ([[http://pt.wiktionary.org/wiki/Wikcion%C3%A1rio:Estat%C3%ADsticas_por_idioma][Estatísticas por idioma]] ). Active bots findet man hier : [[http://pt.wiktionary.org/wiki/Wikcion%C3%A1rio:Rob%C3%B4s/Pedidos_de_aprova%C3%A7%C3%A3o][Robôs]]
+
+---++ Discussion forums
+Es gibt einen "beer parlour" : [[http://pt.wiktionary.org/wiki/Wikcion%C3%A1rio:Esplanada][Espalanda]] . Es wird zurzeit auch über die automatische Erstellung der Einträge durch Bots diskutiert ( [[http://pt.wiktionary.org/wiki/Wikcion%C3%A1rio:Esplanada#P.C3.A1ginas_autom.C3.A1ticas][hier]]) . [[http://pt.wiktionary.org/wiki/Categoria:!P%C3%A1gina_autom%C3%A1tica_%28Maio_2010%29][Hier]] sehen wir z.B. die Seiten, die in Mai experimentell automatisch erstellt wurden. Außerdem gibt es einen speziellen Bereich für Abstimmungen: [[http://pt.wiktionary.org/wiki/Wikcion%C3%A1rio:Vota%C3%A7%C3%B5es][Votações]] . Hier sehen wir die abgeschlossene Abstimmungen, dabei sind sie in einzelne Bereiche unterteilt wie Community, Stil und Konventionen, Bürokratie, Administratoren.
+
+---++ Article Structure
+Sources: [[http://pt.wiktionary.org/wiki/Wikcion%C3%A1rio:Livro_de_estilo][Livro_de_estilo]] , [[http://encontrolivre.org/2009/download/palestras/FredMaranhao-wikcionario.pdf][FredMaranhao-wikcionario.pdf]]<br>
+Examples: [[http://pt.wiktionary.org/wiki/com][com]], [[http://pt.wiktionary.org/wiki/constru%C3%A7%C3%A3o][construção]], [[http://pt.wiktionary.org/wiki/casa][casa]], [[http://pt.wiktionary.org/wiki/ir][ir]], [[http://pt.wiktionary.org/wiki/passar][passar]]
+   * Language 1
+      * POS 1 (Tipo de verbete)
+      * Senses (Definições)
+         * Sense 1 with examples
+         * Sense 2 with examples...
+      * Camonismo (?)
+      * Conjugation / Declination (Conjugação / Declinação)
+      * Synonyms (Sinônimos)
+      * Antonyms (Antônimos)
+      * Phrases (Fraseologia) ,  Expressions (Expressões)
+      * Pronunciation (Pronúncia)
+      * Translation (Tradução)
+      * Derived words (Verbetes derivados)
+   *  Etymology (Etimologia)
+   *  See also (Ver também)     
+
+Die Senses sind allgemein mit Nummern markiert (In Wiki-Code sind es "#"-Zeichen). Dabei stehen oft vor einem Sense Context Labels, wie z.B. in [[http://pt.wiktionary.org/wiki/ir][ir]] . Doch es gibt auch Artikeln mit anderer Struktur. In [[http://pt.wiktionary.org/wiki/passar][passar]] z.B. werden Senses als Unterpunkte von Context Labels genommen. Die Übersetzungen werden entweder allgemein oder für einzelne Senses mit Nummern angegeben (Überschrift: De "Nummer des Senses"). Bei See also(Ver também) - Sektion sehen wir z.B. bei [[http://pt.wiktionary.org/wiki/constru%C3%A7%C3%A3o][construção]] eine Unterteilung der Links nach Abschnitten (zuerst nach POS, dann nach Themengebieten). Wir sehen auch, dass in einigen Einträgen Abschnitte vorkommen, die nicht in den Richtlinien definiert sind. Z.B. bei [[http://pt.wiktionary.org/wiki/casa][casa]]
+gibt es Abschnitte Vergrößerung(Aumentativos) , Verkleinerung( Diminutivos), Anagramm (Anagrama). Bei [[http://pt.wiktionary.org/wiki/com][com]] gibt es einen Sprachenabschnitt "Português-Inglês" (Portugiesisch-English), wo verschieden portugisiesche Phrasen übersetzt werden. Insgesamt sind bei nicht-portugisieschen Sprachen in Einträgen nur die Übersetzungen ins Portugisiesch angegeben und selten weitere Informationen. 
+
+---++ Example Articles
+[[%ATTACHURL%/WKT_PT_passar.txt][passar]], [[%ATTACHURL%/WKT_PT_ir.txt][ir]], [[%ATTACHURL%/WKT_PT_casa.txt][casa]], [[%ATTACHURL%/WKT_PT_construcao.txt][construção]], [[%ATTACHURL%/WKT_PT_com.txt][com]]
+
+---+ Chinese Wiktionary
+---++ History
+WKT_ZH wurde in 2004 gegründet und hat zurzeit um 258.000 Einträge. 
+
+---++ Discussion Forums
+Es gibt ein Bereich, wo die allgemeine Fragen, wie die Struktur von Wiktionary usw. diskutiert werden("Beer parlour"): [[http://zh.wiktionary.org/zh/Wiktionary:%E5%95%A4%E9%85%92%E9%A6%86][&#21860;&#37202;&#39302;]] . Es gibt auch eine "Tea room", wo linguistische Fragen und einzelne Einträge diskutiert werden: [[http://zh.wiktionary.org/zh/Wiktionary:%E8%8C%B6%E5%AE%A4][&#33590;&#23460;]]
+
+---++ Article Structure
+Source: [[http://zh.wiktionary.org/zh/Wiktionary:%E4%BD%88%E5%B1%80%E8%A7%A3%E9%87%8B][&#20296;&#23616;&#35299;&#37323;]] , [[http://zh.wiktionary.org/zh/Template:New_zh_intermediate][New_zh_intermediate]] , [[http://zh.wiktionary.org/zh/Template:New_zh_advanced][New_zh_advanced]]<br>
+Example Articles: [[http://zh.wiktionary.org/zh/%E9%A3%9F][&#39135;]], [[http://zh.wiktionary.org/zh/%E6%B0%B8%E9%81%A0][&#27704;&#36960;]], [[http://zh.wiktionary.org/zh/%E7%8F%BE%E5%9C%A8][&#29694;&#22312;]]
+   * Sprache 1
+      * Wort 1 (Wenn mehrere Etymologien vorhanden sind)
+         * Charakter (Bei den einzelnen Charakteren Beschreibung des Hieroglyphen) 
+         * Aussprache
+         * Etymologie
+         * POS 1
+            *  Bedeutungen      
+               * Bedeutung 1
+               * Bedeutung 2...
+         * Übersetzung
+         * Wort 2...
+      * Sprache 2
+Insgesamt ist die Struktur wird nicht in allen Artikeln festgehalten. Viele der Artikeln sind sehr kurz und mit keinen Übersetzungen versehen. Auch das Auftreten von Synonyme, Antonyme usw. ist selten.
+
+%META:FILEATTACHMENT{name="WKT_EN_go.txt" attachment="WKT_EN_go.txt" attr="" comment="Wiktionary EN %22go%22" date="1279094018" path="WKT_EN_go.txt" size="32429" stream="WKT_EN_go.txt" tmpFilename="/var/tmp/CGItemp36490" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_EN_aircraft.txt" attachment="WKT_EN_aircraft.txt" attr="" comment="Wiktionary EN %22aircraft%22" date="1279095191" path="WKT_EN_aircraft.txt" size="3999" stream="WKT_EN_aircraft.txt" tmpFilename="/var/tmp/CGItemp45563" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="WKT_FR_bien.txt" attachment="WKT_FR_bien.txt" attr="" comment="Wiktionary FR %22bien%22" date="1279094466" path="WKT_FR_bien.txt" size="7277" stream="WKT_FR_bien.txt" tmpFilename="/var/tmp/CGItemp36423" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_FR_mousse.txt" attachment="WKT_FR_mousse.txt" attr="" comment="Wiktionary FR %22mousse%22" date="1279094704" path="WKT_FR_mousse.txt" size="6649" stream="WKT_FR_mousse.txt" tmpFilename="/var/tmp/CGItemp36348" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_FR_abonnement.txt" attachment="WKT_FR_abonnement.txt" attr="" comment="Wiktionary FR %22abonnement%22" date="1279094722" path="WKT_FR_abonnement.txt" size="3154" stream="WKT_FR_abonnement.txt" tmpFilename="/var/tmp/CGItemp36367" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_RU_slon.txt" attachment="WKT_RU_slon.txt" attr="" comment="Wiktionary RU %22&#1089;&#1083;&#1086;&#1085;%22" date="1279095601" path="WKT_RU_slon.txt" size="15055" stream="WKT_RU_slon.txt" tmpFilename="/var/tmp/CGItemp41913" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_RU_pol.txt" attachment="WKT_RU_pol.txt" attr="" comment="Wiktionary RU %22&#1087;&#1086;&#1083;%22" date="1279095636" path="WKT_RU_pol.txt" size="3490" stream="WKT_RU_pol.txt" tmpFilename="/var/tmp/CGItemp41933" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_RU_peremeshatsa.txt" attachment="WKT_RU_peremeshatsa.txt" attr="" comment="Wiktionary RU %22&#1087;&#1077;&#1088;&#1077;&#1084;&#1077;&#1097;&#1072;&#1090;&#1100;&#1089;&#1103;%22" date="1279095660" path="WKT_RU_peremeshatsa.txt" size="1047" stream="WKT_RU_peremeshatsa.txt" tmpFilename="/var/tmp/CGItemp41824" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_PL_przenosic.txt" attachment="WKT_PL_przenosic.txt" attr="" comment="Wiktionary PL %22przenosi&#263;%22" date="1279096285" path="WKT_PL_przenosic.txt" size="18864" stream="WKT_PL_przenosic.txt" tmpFilename="/var/tmp/CGItemp41946" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_PL_swiat.txt" attachment="WKT_PL_swiat.txt" attr="" comment="Wiktionary PL %22&#347;wiat%22" date="1279096319" path="WKT_PL_swiat.txt" size="3295" stream="WKT_PL_swiat.txt" tmpFilename="/var/tmp/CGItemp41905" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_PL_pomieszczenie.txt" attachment="WKT_PL_pomieszczenie.txt" attr="" comment="Wiktionary PL %22pomieszczenie%22" date="1279096345" path="WKT_PL_pomieszczenie.txt" size="1312" stream="WKT_PL_pomieszczenie.txt" tmpFilename="/var/tmp/CGItemp41917" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_LT_zmogus.txt" attachment="WKT_LT_zmogus.txt" attr="" comment="Wiktionary LT %22mogus%22" date="1279096718" path="WKT_LT_zmogus.txt" size="8125" stream="WKT_LT_zmogus.txt" tmpFilename="/var/tmp/CGItemp41923" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_LT_eina.txt" attachment="WKT_LT_eina.txt" attr="" comment="Wiktionary LT %22eina%22" date="1279096736" path="WKT_LT_eina.txt" size="2478" stream="WKT_LT_eina.txt" tmpFilename="/var/tmp/CGItemp41781" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_LT_naudingas.txt" attachment="WKT_LT_naudingas.txt" attr="" comment="Wiktionary LT %22naudingas%22" date="1279096756" path="WKT_LT_naudingas.txt" size="1286" stream="WKT_LT_naudingas.txt" tmpFilename="/var/tmp/CGItemp41903" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_LT_man.txt" attachment="WKT_LT_man.txt" attr="" comment="Wiktionary LT %22man%22" date="1279096769" path="WKT_LT_man.txt" size="3874" stream="WKT_LT_man.txt" tmpFilename="/var/tmp/CGItemp41897" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_TR_ev.txt" attachment="WKT_TR_ev.txt" attr="" comment="Wiktionary TR %22ev%22" date="1279097067" path="WKT_TR_ev.txt" size="5616" stream="WKT_TR_ev.txt" tmpFilename="/var/tmp/CGItemp41813" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_TR_gitmek.txt" attachment="WKT_TR_gitmek.txt" attr="" comment="Wiktionary TR %22gitmek%22" date="1279097088" path="WKT_TR_gitmek.txt" size="3058" stream="WKT_TR_gitmek.txt" tmpFilename="/var/tmp/CGItemp41877" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_TR_adam.txt" attachment="WKT_TR_adam.txt" attr="" comment="Wiktionary TR %22adam%22" date="1279097109" path="WKT_TR_adam.txt" size="4939" stream="WKT_TR_adam.txt" tmpFilename="/var/tmp/CGItemp41749" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_VI_nha.txt" attachment="WKT_VI_nha.txt" attr="" comment="Wiktionary VI %22nhà%22" date="1279097455" path="WKT_VI_nha.txt" size="6255" stream="WKT_VI_nha.txt" tmpFilename="/var/tmp/CGItemp41783" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_VI_go.txt" attachment="WKT_VI_go.txt" attr="" comment="Wiktionary VI %22go%22" date="1279097471" path="WKT_VI_go.txt" size="13922" stream="WKT_VI_go.txt" tmpFilename="/var/tmp/CGItemp41985" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_VI_dong_vat.txt" attachment="WKT_VI_dong_vat.txt" attr="" comment="Wiktionary VI %22&#273;&#7897;ng v&#7853;t%22" date="1279097494" path="WKT_VI_dong_vat.txt" size="855" stream="WKT_VI_dong_vat.txt" tmpFilename="/var/tmp/CGItemp41825" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_IO_havar.txt" attachment="WKT_IO_havar.txt" attr="" comment="Wiktionary IO %22havar%22" date="1279097734" path="WKT_IO_havar.txt" size="4788" stream="WKT_IO_havar.txt" tmpFilename="/var/tmp/CGItemp41908" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_IO_domo.txt" attachment="WKT_IO_domo.txt" attr="" comment="Wiktionary IO %22domo%22" date="1279097753" path="WKT_IO_domo.txt" size="5356" stream="WKT_IO_domo.txt" tmpFilename="/var/tmp/CGItemp41878" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_IO_en.txt" attachment="WKT_IO_en.txt" attr="" comment="Wiktionary IO %22en%22" date="1279097770" path="WKT_IO_en.txt" size="9126" stream="WKT_IO_en.txt" tmpFilename="/var/tmp/CGItemp41933" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_IO_ar.txt" attachment="WKT_IO_ar.txt" attr="" comment="Wiktionary IO %22.ar%22" date="1279097784" path="WKT_IO_ar.txt" size="5559" stream="WKT_IO_ar.txt" tmpFilename="/var/tmp/CGItemp41854" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_PT_passar.txt" attachment="WKT_PT_passar.txt" attr="" comment="Wiktionary PT %22passar%22" date="1279186298" path="WKT_PT_passar.txt" size="4487" stream="WKT_PT_passar.txt" tmpFilename="/var/tmp/CGItemp42166" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_PT_ir.txt" attachment="WKT_PT_ir.txt" attr="" comment="Wiktionary PT %22ir%22" date="1279186312" path="WKT_PT_ir.txt" size="6314" stream="WKT_PT_ir.txt" tmpFilename="/var/tmp/CGItemp42233" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_PT_casa.txt" attachment="WKT_PT_casa.txt" attr="" comment="Wiktionary PT %22casa%22" date="1279186330" path="WKT_PT_casa.txt" size="9808" stream="WKT_PT_casa.txt" tmpFilename="/var/tmp/CGItemp42272" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_PT_construcao.txt" attachment="WKT_PT_construcao.txt" attr="" comment="Wiktionary PT %22construção%22" date="1279186351" path="WKT_PT_construcao.txt" size="4988" stream="WKT_PT_construcao.txt" tmpFilename="/var/tmp/CGItemp42144" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_PT_com.txt" attachment="WKT_PT_com.txt" attr="" comment="Wiktionary PT %22com%22" date="1279186370" path="WKT_PT_com.txt" size="2479" stream="WKT_PT_com.txt" tmpFilename="/var/tmp/CGItemp42163" user="YevgenChebotar" version="1"}%

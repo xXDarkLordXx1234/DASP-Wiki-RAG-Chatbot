@@ -1,0 +1,102 @@
+%META:TOPICINFO{author="NicoErbs" date="1267778469" format="1.1" version="46"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+---++ Work
+
+%TOC%
+
+
+---+++ Related Work
+   * [[NicoErbsHiWiRelatedWork][Related Work]]
+
+---+++ QuickLinks
+   * SemEval
+   * SemEvalSegmentation
+   * SemEvalResultsAnalysis
+
+---+++ Tasks
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Task 1: Creating Maven project for keyphrase experiments | 100 |
+| Task 2: Improving experimental framework for existing keyphrase experiments | 100 |
+| Task 2a: Collect information about missing files for experiments | 100 |
+| Task 2b: Establish working preprocessing | 100 |
+| Task 2c: Create new model for Kea (because of out-dated serial number) | 100 |
+| Task 3: Print out parameters from CPEs to output (see [[ParameterResultWriter][here]]) | 100 |
+| Task 3a: Check possibility to extract results to Excel format | 100 |
+| Task 4: Redesign Cooccurrence Graph for better compatibility with PageRank | 100 |
+| Task 5: Improve Pos filter in CandidateAnnotator | 100 |
+| Task 6: Experiments with keyphrase extraction | 0 |
+| Task 7: Check paper [[MikalaiAutaeuMarchese09]['Large Dataset for Keyphrases Extraction']] for training data and integrate it in existing experiments | 5 |
+| Task 8: Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 35 |
+| Task 8a: Add segmentation to exisiting experiments | 5 |
+| Task 8b: Analyze logs of experiments for additional tuning | 0 |
+| Task 8c: Investigate clustering | 0 |
+| Task 9: Review TfidfConsumer | 100 |
+| Task 9a: Create new TfidfConsumer and corresponding annotator | 100 |
+| Task 10: Refactor StanfordNamedEntityRecognizer to uutuc format (see e.g. StopwordFilter) | 0 |
+| Task 11: Prepare short presentation for Graph Problem in NLP | 0 |
+
+
+---+++ Working Hours
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Task* | *Date* | *Hours* | *Remark* |
+| Installing eclipse | 05.01.2010 | 5.5 | |
+| Creating Maven project | 06.01.2010 | 5.5 | Additionally solving problems with eclipse |
+| Improving experimental framework for existing keyphrase experiments | 07.01.2010 | 2.5 | Understanding keyphrase extraction framework |
+| Improving experimental framework for existing keyphrase experiments | 12.01.2010 | 3 | StartFrameworkCandidateBaselineExperiments |
+| Improving experimental framework for existing keyphrase experiments | 12.01.2010 | 6.5 | StartFrameworkCandidateBaselineExperiments |
+| Improving experimental framework for existing keyphrase experiments | 13.01.2010 | 2 | StartFrameworkCooccurrenceKeyphraseExperiments |
+| Redesign Cooccurrence Graph for better compatibility with PageRank | 13.01.2010 | 2 | Change [[NicoErbsPageRankCooccurrenceAndGraphs][CooccurrenceGraphAnnotator]] |
+| Redesign Cooccurrence Graph for better compatibility with PageRank | 15.01.2010 | 1 | Change [[NicoErbsPageRankCooccurrenceAndGraphs][CooccurrenceGraphAnnotator]] |
+| Redesign Cooccurrence Graph for better compatibility with PageRank | 18.01.2010 | 2 | Analyze impact of changes (see [[NicoErbsPageRankCooccurrenceAndGraphs][here]]) |
+| Improving experimental framework for existing keyphrase experiments | 19.01.2010 | 5 | Remaining frameworks in package keyphrases.acl09 |
+| Redesign Cooccurrence Graph for better compatibility with PageRank | 20.01.2010 | 1.5 | Adding comments and finalisation |
+| Improve Pos filter in CandidateAnnotator | 20.01.2010 | 1 | Added JUnit test case for Pos filter and made minor changes. Further changes do not have priority |
+| Collect information about missing files for experiments | 20.01.2010 | 0.5 | found ESA indexes |
+| Improving experimental framework for existing keyphrase experiment | 20.01.2010 | 1.5 | Analyzing and correcting errors for experiments |
+| Improving experimental framework for existing keyphrase experiment | 21.01.2010 | 1 | Analyzing and correcting errors for experiments |
+| miscellaneous | 22.01.2010 | 2 | Related work (reading and summarizing in [[NicoErbsHiWiRelatedWork][wiki]]) |
+| Improving experimental framework for existing keyphrase experiment | 22.01.2010 | 1 | Analyzing and correcting errors for experiments |
+| Create new model for Kea | 26.01.2010 | 2 | Kea Model training and improving architecture |
+| Redesign Cooccurrence Graph | 26.01.2010 | 2 | JUnit tests from semantics |
+| Establish working preprocessing | 26.01.2010 | 3.5 | |
+| Establish working preprocessing | 27.01.2010 | 3 | Reached problem with StanfordNamedEntityRecognizer |
+| Establish working preprocessing | 29.01.2010 | 2 | Fixing minor errors |
+| Review TfIdfConsumer and eliminate fixed references to path | 29.01.2010 | 3 | Transforming to AE (uutuc style) Decision: Create new TfidfConsumer |
+| Create new TfidfConsumer and corresponding annotator | 02.02.2010 | 6.5 | all necessary changes |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 02.02.2010 | 2 | created Reader and preprocessing |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 03.02.2010 | 5 | improved Reader for loading keyphrases, created writer and performed experiments |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 04.02.2010 | 3 | corrected writer for results |
+| Print out parameters from CPEs to output (see [[ParameterResultWriter][here]]) | 09.02.2010 | 5 | Created classes with Excel functions |
+| Print out parameters from CPEs to output (see [[ParameterResultWriter][here]]) | 10.02.2010 | 5 | Improved classes and applied to experiments |
+| Print out parameters from CPEs to output (see [[ParameterResultWriter][here]]) | 14.02.2010 | 4.5 | Corrected errors and created overview of results |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 16.02.2010 | 2 | Discussion about progress and further enhancements |
+| Improving experimental framework for existing keyphrase experiments | 17.02.2010 | 2 | Validating integrity ([[FrameworkAdaptionResults][Results]]) |
+| Print out parameters from CPEs to output | 17.02.2010 | 2 | Improved style of output |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 17.02.2010 | 2 | Created and filled page SemEvalStatus |
+| Improving experimental framework for existing keyphrase experiments | 18.02.2010 | 5 | Corrected errors and extracted results for comparison |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 19.02.2010 | 3 | Completed results for new framework and SemEval comparison statistics |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 22.02.2010 | 2 | Preprocessed training dataset and reconfigured all experiments |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 23.02.2010 | 6.5 | Created consumer for SemEval data to standard format. Created KEA model. Analyzed results |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 24.02.2010 | 5.5 | Completed results for training data. Started segmentation |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 26.02.2010 | 3 | LexSem Results and applying different KEA models |
+| Task 8a: Add segmentation to exisiting experiments | 01.03.2010 | 3 | Worked on Segmenter |
+| Task 8a: Add segmentation to exisiting experiments | 02.03.2010 | 5.5 | Completed (De-)Multiplier components and started experiments. Data analysis for a single file. |
+| Task 8a: Add segmentation to exisiting experiments | 03.03.2010 | 2.5 | Created a couple of DeSegmenter |
+| Algo in eWERC | 04.03.2010 | 2 | Preperation and Presentation |
+| Keyphrase extraction for [[SemEvalTechnical]['SemEvalTechnical-2']] (#5) | 05.03.2010 | 1 | R-Precision and overview table |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 180 | until March 31st 2010 |
+<nop>
+
+
+
+----+++ Useful internal links
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/artifactory][Artifactory]]
+
+----+++ Notes
+   * Use eclipse classic distribution
+   * Use Subclipse (!not subversion)
+
+
+-- Main.NicoErbs - 11 Jan 2010

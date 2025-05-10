@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="nagaraja" comment="save topic" date="1486723164" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Status 2017-2-10
+   * The UI of snopes website is changed on 2017-2-8. Thus modifying the code to fetch the required details.
+   * Worked on second corpus creation
+   * collected approximate size details required to download the pages
+   * TODO: Modify the code to adapt to the recent changes
+
+---++ Status 2017-2-3
+   * First Corpus:
+      * Origin is included in the corpus. Some issues like different page structure in old pages still persists.
+      * Handled evidence duplication problem
+      * Handled blank truthfulness and claim fields
+      * Uploaded the program in git
+   * TODO:
+      * First Corpus:
+         * Collect all the required statistics 
+         * Handle the issue related to Origin
+         * Add Example field to the corpus
+      * Second Corpus: 
+         * Construct the corpus 
+         * Collect all the required statistics
+      * Calculate the time and memory required to download a single page
+
+---++ Meeting 2017-1-26
+   * TODO:
+   * First corpus:
+      * Origin to be included in the corpus
+      * Compute statistics for:
+         * Claims with labels: true, false, mostly false, mostly true, mixed, unproven, ...
+         * How many claims are there with evidence
+      * Share program with Andreas once the corpus is constructed
+   * Second corpus:
+      * Statistics:
+         * For how many claims the original documents (following the links) cannot be recovered 
+      * Collect information from crawling experiments to request a server
+         * Time to dowload a webpage
+         * How many webpages need to be downloaded 
+         * CPU power, number of cores, memory required
+         * ...
+      * Document all errors which are encountered while crawling snopes.com for the discussion later on with Chris
+
+---++ Meeting 2016-12-14
+   * Corpus statistics so far
+      * Number claims: 9250
+      * Categories: 41
+      * Claim per category approx.: 225
+      * ...
+   * Two 3 credits lectures to be completed --> 2 exams in February
+   * TODO:
+      * Additional file with statistics: Time, number webpages, number of false, true, mixture, ...
+      * Information to be extracted: CSV file: category, claim, url, headline, thruthiness, origin, evidence, links to original documents
+      * Setup meeting with Chris 
+      * Clarify program storage
+      * Discuss problems with Chris
+   * Software libraries: crawler4j, parsing jsoup
+   * Emergent webpage: https://www.aclweb.org/anthology/N/N16/N16-1138.pdf
+
+
+
+
+
+-- Main.AndreasHanselowski - 2016-12-06

@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="FabianTamin" date="1246385759" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ Open Question
+
+---++ Extraction
+   * How is the form of extracted text from an article? The problem is: not every sentence has punctuation, e. g.: headings or lists.
+   * How to extract categories correctly? Extracted categories from Wikipedia by using pattern "wiki/category:.*" is incomplete.
+   * Are Wikipedia using another standard of Markup language. e.g. (&lt;ref&gt;Blakey p.77&lt;/ref&gt;)
+      * Some syntax are not displayed correctly if they are imported directly to standard !MediaWiki.
+      * Some syntax are recognized as text, if we extract it using !WikiText library.
+   * How to extracting !MarkupLanguage from !MediaWiki's template?
+
+---++ <noautolink>WikiText</noautolink>
+   * Is there any official forum for <noautolink>WikiText</noautolink>?
+      * [[http://www.eclipse.org/newsportal/thread.php?group=eclipse.tools.mylyn][Mylyn Newsportal]]
+      * [[http://dev.eclipse.org/mailman/listinfo/mylyn-integrators][Mailing list for Mylyn Integrators (!mylyn-integrators@eclipse.org)]]
+   * Is that possible to extract markup information (e. g.: headings, hyperlinks) directly using <noautolink>WikiText</noautolink>?
+      * Yes, it is possible to extract such information by deriving from class =NoOpDocumentBuilder=.
+   * Where can one get API of !MediaWiki and TWiki?
+      * From UKP's collections: https://maggie.tk.informatik.tu-darmstadt.de/svn/nlp4wiki/Wikulu/WikiAPI/trunk/
+
+---++ [DONE] Some questions about the entities to extract.
+
+   * Extract table-of-content for *single page*. <br /> Does single page mean: the single article we are viewing?
+      * Page and article are the same in this case. (JH)
+   * Extract links *from and to single pages*. <br /> Does from and to single pages mean: the article links in the current article and the articles, which have links to current article? (like caller & callee links)
+      * Exactly! (JH)
+   * Extract *tags* (if available). <br /> What kind of tags are they? Are they tags, which are already there in the article (e. g.: categories in wikipedia or wiktionary), or are they tags that we define by ourselves by extracting from the article?
+      * Not every wiki has tags, MediaWiki has categories (which are often used as tags though). TWiki has a plug-in to add tags to articles. So, tags means the tags that are already present (JH)
+
+---++ To Consider
+   * Will imperfect information (Summarization and keyphrase extraction are not perfect) influence the users' decision on the worthiness of the information? Perhaps comparing "perfect" summaries and keyphrases with automatically extracted ones in the final user study might make sense, if we have the time.
+
+-- Main.FabianTamin - 27 May 2009

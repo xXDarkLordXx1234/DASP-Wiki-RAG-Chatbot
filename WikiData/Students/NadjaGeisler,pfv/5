@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="geisler" comment="save topic" date="1490206461" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Enhancing Complex Question Answering with Rule-Based Question Understanding
+
+%TOC%
+
+---++ Schedule
+
+%EDITTABLE{format="| text,20| text,20| text,20|"}%
+| *Week* | *Task*                                                                                                                                         | *Comment*                                                             |
+| 0      | Initial meeting; discussion of the project definition                                                                                          |                                                                       |
+| 0-3    | Familiarization with the project, literature review, setup of the environment and the datasets                                                 | Start writing the thesis (or take notes for it) as early as possible! |
+| 4-8    | Data analysis. Development of Rules. Proposition matching implementation.                                                                      |                                                                       |
+| 8-12   | Rules implementation and first evaluation.                                                                                                     |                                                                       |
+| 12     | Mid-term presentation                                                                                                                          |                                                                       |
+| 13-16  | Integration of the rules with the CNN-based approach using the method of Hu et al. (2016)                                                      |                                                                       |
+| 17-20  | Integration of the rules with the CNN-based approach using the method of Hu et al. (2016). Evaluation. Error analysis. Qualitative analysis.   |                                                                       |
+| 21-24  | Final thesis redaction                                                                                                                         |                                                                       |
+| 24     | Submit the thesis                                                                                                                              |                                                                       |
+| 24     | Final presentation                                                                                                                             |                                                                       |
+
+---++ Status
+[[status][Weekly Status Reports]]
+
+---++ Literarture
+[[literature][Literary Research]]
+
+-- Main.AndreasRueckle1 - 2016-08-22
+%META:FILEATTACHMENT{name="NadjaGeisler_EnhancingComplexQuestionAnsweringWithRule-BasedQuestionUnderstanding_presentation.pdf" attachment="NadjaGeisler_EnhancingComplexQuestionAnsweringWithRule-BasedQuestionUnderstanding_presentation.pdf" attr="" comment="" date="1490206448" path="NadjaGeisler_EnhancingComplexQuestionAnsweringWithRule-BasedQuestionUnderstanding_presentation.pdf" size="376993" user="geisler" version="1"}%
+%META:FILEATTACHMENT{name="NadjaGeisler_EnhancingComplexQuestionAnsweringWithRule-BasedQuestionUnderstanding.pdf" attachment="NadjaGeisler_EnhancingComplexQuestionAnsweringWithRule-BasedQuestionUnderstanding.pdf" attr="" comment="" date="1490206461" path="NadjaGeisler_EnhancingComplexQuestionAnsweringWithRule-BasedQuestionUnderstanding.pdf" size="481750" user="geisler" version="1"}%

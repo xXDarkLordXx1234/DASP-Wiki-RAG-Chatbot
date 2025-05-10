@@ -1,0 +1,305 @@
+%META:TOPICINFO{author="kirsten" comment="" date="1695539239" format="1.1" reprev="7" version="16"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Weekly Activity Reports 
+
+
+
+---+++ KW 36-38
+
+   * *Project Implementation*
+      * analyse (too) high scores on validation data
+      * run baseline experiments
+      * implement baseline: inference with llama-2
+      * clean up codebase + logging
+   * *Literature Research (papers)*
+
+
+---+++ KW 33-35
+
+   * *Project Implementation*
+      * implement evaluation metrics (BLEU scores etc)
+      * analyse (too) high scores on validation data
+      * fix slurm issues
+      * re-implement test step in pytorch-lightning
+      * compare baseline implementation to survey paper
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 30-32
+
+   * *Project Implementation*
+      * run baselines with other codebases
+      * fix PLBART issues
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 29
+
+   * *Project Implementation*
+      * setup baseline experiments with PLBART
+      * setup baseline experiments with UnixCoder
+      * clean repo
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 28
+
+   * *Project Implementation*
+      * setup and run baseline experiments with CodeT5
+      * fix slurm issues
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 27
+
+   * *Project Implementation*
+      * clean up code
+      * create dedicated baseline and adapter baseline scripts
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 26
+
+   * *Project Implementation*
+      * debug aligned masking for trees according to mlm probability
+      * clean up code
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 25
+
+   * *Project Implementation*
+      * implement masked language modelling for base model
+      * implement aligned masking for trees
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 24
+
+   * *Project Implementation*
+      * experiment with adding adapter for unixcoder
+      * implement training adapters from scratch for base models
+      * finish implementation of forward pass through model with attached graph adapter
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 23
+
+   * *Project Implementation*
+      * experiment with adding adapter for unixcoder
+      * implement training adapters from scratch for base models
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 22
+
+   * *Project Implementation*
+      * code for adding ParallelAdapter to base models 
+      * try loading weights of code-specific models to base models
+      * check how much modification is needed to make code-specific models work with adapters
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 21
+
+   * *Project Implementation*
+      * Experiment with adapter attachment to target base models
+      * Explore attaching adapters to models not in AdapterHub
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+   * 
+
+---+++ KW 20
+
+   * *Project Implementation*
+      * Select target models, explore adapter compatibility
+      * Experiment with adapter attachment
+
+   * *Literature Research (papers)*
+      * MAGMA -- Multimodal Augmentation of Generative Models through Adapter-based Finetuning
+      * StructAdapt
+
+   * *Miscellaneous*
+
+---+++ KW 19
+
+   * *Project Implementation*
+      * Refactor framework
+      * Incorporate Pytorch Lightning
+      * Fix Dataloaders and Dataset issues
+
+   * *Literature Research (papers)*
+      * MAGMA -- Multimodal Augmentation of Generative Models through Adapter-based Finetuning
+
+   * *Miscellaneous*
+
+---+++ KW 18
+
+   * *Project Implementation*
+      * Finish Node ast_type prediction for new framework
+      * Fix bugs in framework & merge
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 17
+
+   * *Project Implementation*
+      * GNN implementation in new framework
+      * create custom embeddings for AST nodes
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 16
+
+   * *Project Implementation*
+      * implement preprocessing for new framework
+
+   * *Literature Research (papers)*
+      * StructAdapt
+
+   * *Miscellaneous*
+
+---+++ KW 15
+
+   * *Project Implementation*
+      * GNN implementation
+      * Node-level prediction
+      * Link-level prediction
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 14
+
+   * *Project Implementation*
+      * set up dataset loader
+      * start working on GNN implementation
+      * finalize preprocessing
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 13
+
+   * *Project Implementation*
+      * clean up graph generation code
+      * Implement dataset loader
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 12
+
+   * *Project Implementation*
+      * generated CodeXGlue correspondence
+      * work with indexed dataset
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+      * tutorials on creating Dataloader for next tasks
+
+---+++ KW 11
+
+   * *Project Implementation*
+      * work on graph generation
+      * add indexing for dataset creation
+
+   * *Literature Research (papers)*
+      * study UniXCoder, GraphCodeBERT (parser), CodeXGLUE
+
+   * *Miscellaneous*
+---+++ KW 10
+
+   * *Project Implementation*
+      * study graph generation code
+      * add comments
+      * re-implement
+      * transform to .py file
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 9
+
+   * *Project Implementation*
+      * setup structure infusion code locally and on slurm
+      * download Concode dataset
+      * go through code step-by-step
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 8
+
+   * *Project Implementation*
+      * setup UnixCoder and run code generation task
+
+   * *Literature Research (papers)*
+      * UnixCoder
+      * Design Space for GNNs
+
+   * *Miscellaneous*
+
+---+++ KW 7
+
+   * *Project Implementation*
+      * setup environment, PyTorch etc on SLURM
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+
+---+++ KW 6
+
+   * *Project Implementation*
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+      * get to know NetworkX, wandb, PyG
+      * research on Adapters, GNN
+      * meeting: run code of UnixCoder on SLURM, check out new code once pushed to GitLab
+
+---+++ KW 5
+
+   * *Project Implementation*
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+      * get to know NetworkX, wandb, PyG
+      * research on Adapters, GNNs
+
+---+++ KW 4
+
+   * *Project Implementation*
+
+   * *Literature Research (papers)*
+
+   * *Miscellaneous*
+      * Initial meeting, Mert presents the project

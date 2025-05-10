@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="eger" comment="reprev" date="1510341019" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Dependency Parsing as a Sequence Tagging Problem
+
+---++ Current Status
+
+---++ Meeting Minutes
+
+---++ General
+
+   
+   * Server names: desktop-titanx@ukp.informatik.tu-darmstadt.de, etc.
+
+   * Useful linux commands/programs:
+      * ssh, scp, filezilla, nohup (to run a job without being logged in!), ...
+
+   * Information about the servers: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ServerJobs
+      * Every job has to be scheduled in the server before being run
+      * If you need access to other servers, just let us know and we can see what we can do.
+      * Information on how to install the libraries in the GPU server: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/DKPro/GpuServer
+      * Policies and some hints on how to use the GPU server, e.g. important details to pay attention when using tensorflow/keras: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/UKP/GpuUsagePolicy
+
+   * VPN: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/VpnService
+
+
+
+-- Main.SteffenEger - 2017-11-10

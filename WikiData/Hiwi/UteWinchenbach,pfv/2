@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="winchenbach" comment="reprev" date="1434103142" format="1.1" reprev="2" version="2"}%
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 11.06.2015 | Einarbeitung NuS und Recherche DTA | 4 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+
+-- Main.ErikLanDoDinh - 2015-06-10

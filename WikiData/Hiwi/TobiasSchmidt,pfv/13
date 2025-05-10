@@ -1,0 +1,93 @@
+%META:TOPICINFO{author="tschmidt" comment="" date="1636466470" format="1.1" reprev="8" version="13"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.TobiasSchmidt - 2021-07-24
+
+---++ Open Issues
+   * Hebräisches ASR Modell 
+   * What happens if someone runs the feature package in a local virtual environment?Need to test this again
+
+---++ 01.11 - currently:
+   * Implemented CV for the PsyQA dataset, where the results were too good
+   * Implemented XLM Roberta finetuning for the PsyQA data (also CV)
+   * Currently re-training adapters with the new code
+   * Uploaded some batch to MTurk, evaluated results some minor things
+   * meetings for AI 4 Psych
+
+---++ 25.10 - 31.10:
+   * Continued with the adapter training/the chinese corpus; tried out different "counting schemes", of which one seemed correct
+   * Wrote code for the Adapter Training / CV training
+   * Initial meetings on AI 4 Psych projects
+
+---++ 11.10 - 24.10:
+   * trying to reproduce the experiments on the chinese corpus; 
+   * Training an adapter to compare performance with chinese RoBERTa
+   * Fine tuning BART model to decide if we need to annotate all data
+   * getting familiar with slurm, transformers etc.
+
+---++ 03.10 - 10.10 
+   * started evaluating the chinese corpus; checking if data is as advertised
+   * finished evaluation of the test batches
+
+---++ 27.09-03.10 
+   * continuing to evaluate our initial test results
+   * (mostly) finishing the implementation of the feature extraction package (mostly eye tracking and "cleaning up the code" for reusability)
+   * starting documentation
+   * if time: starting with a surfboard wrapper
+
+---++ 20.09-26.09
+   * uploading our AMT website to the official UKP AMT Account;
+   * carry out initial test run for annotations; evaluate results
+   * almost finished the implementation of the feature package
+---++ 13.09-19.09 
+   * sick with doctors note
+
+---++ 30.08-12.09 
+   * working on the AMT website, fixing smaller problems, qualification test, internal problems,...
+   * tried different ASR systems, started thinking about some way to implement the final feature package
+   * started with the implementation; mostly, the "general framework" code
+
+---++ 16.08 - 29.08 
+   * finishing features from last task (checking whether there are better eye blink detection systems)
+   * continue working on the AMT Website
+   * Implementing the qualification test via boto3
+   * Testing annotation time via MTurk Sandbox
+   * Writing up a handout about our current features
+   * Checking licenses of used packages for the feature package
+
+---++ 09.08 - 15.08
+   * FAU, eye gaze, head position. How much is pre-implemented?
+   * Eye closed, eye open, closing speed, gaze spatial distribution over time
+   * Search for body gestures out of the box models 
+   * Feature list in NextCloud
+   * Test Surfboard
+
+---++ 01.08 - 09.08
+   * new ASR model for annotation and speech rate
+   * document slides (Prosody)
+   * Continue making list for related work
+   * finish implementing the features from last week
+
+---++ 01.08 - 09.08 
+   * Implementing the following features: Pause rate / pause total / pause variability / utterance duration  (split and not split) / speech rate / time talking (with different silence detections)
+   * test some transcript models
+   * Start making list for related work
+
+---++ 26.07 - 01.08 
+   * Implementing the following features: Pause rate / pause total / pause variability / utterance duration  (split and not split) / speech rate / time talking (with different silence detections)
+   * test some transcript models
+   * Start making list for relted work
+
+---++ 19.07 - 25.07
+   * Finished reading last related work papers from the AVEC 2019 challenge; finalised the found feature list and put it into a table.
+   * Tried implementing basic functions to extract standard key features from the raw input data via openSMILE while only using python packages. 
+
+---++ 12.07 - 18.07
+   * Read more papers, especially related to the AVEC 2019 challenge and the DAIC Corpus. 
+
+---++ 05.07 - 11.07
+   * Started researching about multi modal features and searched related work, starting from a reference paper about Deep Spectral Features
+   * Began making a list about these features
+
+---++ 01.07 - 04.07
+   * Started researching about multi modal features and searched related work, starting from a reference paper about Deep Spectral Features
+   * Began making a list about these features

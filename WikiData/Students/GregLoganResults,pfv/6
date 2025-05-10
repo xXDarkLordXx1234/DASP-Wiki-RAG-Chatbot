@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="GregLogan" date="1227622298" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="GregLogan"}%
+---+ Experiment Results
+---++ 2008-11-25
+
+Pipeline now handles all test datasets, so I have much more input to test against. Currently getting:
+
+103/126 opinionated correctly with 15 false positives and 23 misses, out of 176 questions total.
+
+Requiring a minimum of 3 opinion words for short sentences and defining long questions as 6 or more sentences. The weight for the questions is 0.5.
+
+The logic behind the classification is still being worked on, but currently stands as follows:
+   * The count for the question is calculated by adding one for each single-word opinion patterns, and adding a the sum of a geometric series (ratio = 2) for multi-word opinion patterns.
+   * If that sum if creater than a limit, mark the question as opinionated
+   * If the number of sentences is over a certain limit and the count is greater than X mark the question as opinionated
+I am still experimenting with the value for X, and I'm not 100% sure that I even need that whole category. The current formula is count &gt;= floor(opinionated_pattern_minimum - (sentenceCount * sentence_weight))
+
+[[%ATTACHURL%/opinionwords.txt][opinionwords.txt]] is the newest version of my lookup.
+
+---++ 2008-11-18 
+
+Initial experiments on environment-part-2 data looked good until I factored in the false positives:
+
+22 Questions, 11 Opinionated, 9 Detected, 8 False Positives.
+
+Questions are classed as opinionated by my code on one of three conditions:
+   * The question has more than X number of words in the dictionary list
+   * The question has more than Y sentences, and has at least Z opinion words
+   * The question has only one sentence and has more than one opinion word
+
+Other datasets are still in progress. Dictionary attached at [[%ATTACHURL%/opinionwords.txt][opinionwords.txt]]
+
+[DB]: Have you split the dataset into a development set and a test set?
+   $ IG: an absolutely *important point* , please take care of this!
+
+GL: Not as of yet, but thank you for reminding me. The data is already divded into two parts, so I guess one part will be the training data and one the evaluation.
+
+[DB]: Have you tried opinionated phrases like "what is the best" in addition to opinion words?
+
+GL: Yes, and it doesn't appear to work the way I've implemented it. My annotator does a token based check, which of course means that "do" "you" "like" does not match "do you like". Unfortunately I don't see an easy way around this...
+
+---++ Notes
+
+Words like: basementcondimentdementcommandmentharassmentenslavementfermentfomentcementjudgementlamentmomentattachmentparlimenttenementamazement make SpellCorrector sad. Adding an upper limit to the size of the word appears to have fixed this.
+
+Words like: 900000000000000000000000000000000000000000,000000000000000000000000000000000,00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002! make TreeTagger sad
+
+-- Main.GregLogan - 18 Nov 2008
+
+%META:FILEATTACHMENT{name="opinionwords.txt" attachment="opinionwords.txt" attr="" comment="" date="1227622268" path="opinionwords.txt" size="1443" stream="opinionwords.txt" tmpFilename="/var/tmp/CGItemp24919" user="GregLogan" version="2"}%

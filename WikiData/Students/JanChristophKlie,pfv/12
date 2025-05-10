@@ -1,0 +1,182 @@
+%META:TOPICINFO{author="klie" comment="reprev" date="1497858002" format="1.1" reprev="3" version="12"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Jan-Christoph Klie (Master thesis)
+
+Deep Learning for extraction of predicate-argument structures
+
+---++ CW24 5.6.2017 - 12.6.2017
+
+   * Experiment more with LSTM/GRU cell number (64 is OK)
+   * Get 87% with lexicon even if NN only gives 72%
+   * Rewrite large parts of code to reuse functionality
+   * Add dataset split and concat
+   * Started SALSA/WASr
+
+---++ CW23 5.6.2017 - 12.6.2017
+
+   * Imbalance data issue
+   * LSTM massively overfits
+   * Framework for embeddings
+   * Tried more embeddings for SALSA
+
+
+---++ CW22 29.5.2017 - 4.6.2017
+
+   * Built framework for easy adding features to LSTM inputs
+   * Tried LSTM with sentence lemmas and predicate on DAS (same result as data majority)
+   * Tried to get better performance on SALSA with LSTM, bottle neck seems to be embedding quality right now
+   * Worked on getting fasttext, but python package right now has open bug for newest fasttext binary format
+   * Tried to get conceptnet for oov running, but no success yet
+   * Worked on FNWKde extraction (data is really noisy)
+
+---+++ Next steps:
+
+   * Improve German embeddings
+   * Try random embeddings
+   * Build dataset + embedding indices before training
+
+---++ CW21 22.5.2017 - 28.5.2017
+
+   * Skype call with Silvana about issues cropped up
+   * Started using UKP server for training
+   * Started LSTM sequence classifier (overfits, some bad choices, needs more love)
+   * First round of evaluation targets discussed
+
+---+++ Next steps:
+
+   * Work more on sequence classifier
+   * Extract FNWKde sentences
+   * Try CNN classifier
+
+---++ CW20 15.5.2017 - 21.5.2017
+
+   * Got Salsa 2.0
+   * Split Salsa via sampling
+   * Trained extensivley existing MLP on Das to reproduce previous results, not much improvements
+   * Reached (almost) same results with Glove on das
+   * Trained and tweaked MLP for Salsa 1.0 and Salsa 2.0
+   * Baseline for Salsa 2.0 (78%) is better than MLP result (~70%)
+
+---+++ Next steps:
+   * Improve MLP
+   * Write down first round of evaluations (temporarily)
+   * Start LSTM/CNN based classifier
+   
+---+++ Next steps:
+
+   * Understand FNWKde
+   * Start Deep Learning part (goal is to include validation set in training, add dropout and regulation, add Tensorboard)
+
+---++ CW19 8.5.2017 - 14.5.2017
+
+   * Fixed lemma.pos for now
+   * Tried to dependency parse corpora in Python with spacy and Stanford Parser
+   * Found out that DKPro already has TigerXML parser, therefore learnt UIMA basics and implemented DKPro Pipeline for SimpleSRL format
+   * Worked on Stanford Deep Learning Tutorial
+   * Wrote some sections about baselines
+
+---+++ Next steps:
+
+   * Understand FNWKde
+   * Start Deep Learning part (goal is to include validation set in training, add dropout and regulation, add Tensorboard)
+
+---++ CW18 1.5.2017 - 7.5.2017
+
+   * Translated SALSA with wikt2dict and Wacky Web frequency list
+   * Add file format module to ease reading/writing sentence files and frame annotations
+   * Fix bugs with tid unrolling
+   * Baseline gives 22% with Das Train + Translated SALSA
+
+---+++ Next steps:
+
+   * Understand FNWKde
+   * Plan evaluations (Which train, which test, which lexicon)
+   * Register thesis
+
+---++ CW17 24.4.2017 - 30.4.2017
+
+---+++ Done:
+
+   * Converted SALSA (need to fix lemma.pos)
+   * Trained SALSA -> 10% of WASRde with SALSA ++ WASRde Lexicon (50% NN, baselines really bad, ~7%)
+   * Started translation with babelnet
+
+---+++ Next steps:
+
+   * Make plan for evaluations used in the paper
+   * Work on BabelNet translation
+   * Understand FNWKde and transform to usable format
+
+---++ CW16 17.4.2017 - 23.4.2017
+
+---+++ Done:
+
+   * Got access to data and embeddings
+   * Read and understand basic_srl
+   * Trained the existing models
+   * Setup the git repositories
+   * Started to convert the data to the required format
+
+---+++ Next steps:
+
+   * Finish conversion
+   * Translate SALSA to English with UBY/BabelNet
+   * Train on German SALSA
+
+---++ CW15 10.4.2017 - 16.4.2017
+
+   * Read source code of basic_srl_system
+   * Got FrameNet 1.7 from NLTK and converted it to *basic_srl* data format
+   * Missing dependency annotations for frame net sentences, where to get?
+   * Requested and got approved for BabelNet download
+   * No access to existing das-text/train (FrameNet 1.5 split)
+   * Easter spent with relatives, so not much progress else
+   * I read about evaluation of word vectors, what to do and what not
+   * 
+---+++ Blocked:
+
+   * Need dependency annotations for *basic_srl* or hint how it was annotated for ood paper
+   * Need Das split data or build it on my own
+   * Which framenet to use (1.5 vs 1.7)
+   
+---+++ Next steps:
+
+   * Evaluate word embeddings maybe on similarity task with data from Gurevych, 2005 (bad idea for dependency contexts) 
+
+---++ CW14 3.4.2017 - 9.4.2017
+
+   * No dependency context embeddings for German online
+   * Found some German word embeddings already trained (word2vec, fasttext)
+   * Got Access to Wiki
+   * No access to data yet (?)
+   * Translation-APIs like Google Cloud Translate or Yandex Translate are too expensive (15-20$ / 1 Mio characters)
+   * Read the code of _basic_srl_system_, vague idea how it internally works
+   
+---+++ Next steps:
+
+   * Evaluate German embeddings found online
+   * Find out how to exactly evaluate word embeddings (some papers exist)
+   * Understand data format of _basic_srl_system_
+   * Maybe use FNWkde for first training of _basic_srl_system_
+
+*Goal: Get basic_srl_system running*
+
+---++ 6.4.2017 Kickoff meeting
+
+   * Scheduled mid presentation to 11.7.2017
+   * Get access to Wiki
+   * basic_srl_system is now on Github
+   * Clarify goal: only frame identification, if time maybe role id also
+
+---+++ Fleshed out details for work package 1 (baseline)
+
+   * Problem is projecting back annotations in translated text: German -translate-> English -FrameId-> Annotated English  -Project back-> Annotated German
+   * Word-to-word translation at first
+   * If time, use parse tree (syntax/dependency/...) and translate nodes
+   * Look for translation tools (Babelnet, Google Translate, ...)
+
+---+++ Things to solve
+
+   * Get access to data
+   * Look for translation tools
+   * word embeddings for German text

@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1282237271" format="1.1" version="6"}%
+%META:TOPICPARENT{name="ZijadMaksutiWork"}%
+---+++ Verständnisfragen  
+   * Unambiguous target: There is a page with the relation target's name in Wiktionary that contains only a single entry with a single sense. We assume that the relation's target is this single sense. Although this assumption holds for a large amount of relations, there are a few exceptions like  _ ?, where the correct Wiktionary entry or sense does not exist.
+      * Wie ist das zu verstehen:  there are a few exceptions like  _ ?
+    
+   * Was ist POS? [erklärt, danke]
+      * part of speech, such as noun, verb, adjective, etc.
+
+---+++The _real_ notes and stuff
+----+++++ Usage of sense graph
+   * A tool for generating a definition graph.
+      * Nodes are the senses of the definitons. Edges represent the relations.
+         * The graph should be adapted for our needs, weighted edges can represent the similarity.
+   * Finding the relations between definitions by using the graph in order to integrate them.
+      * Problem: How can definitions be integrated?
+         * Example: Definiton A and B overlap partially. Concatenating them would lead to redundant Information. Low-level text manipulation needed.
+----+++++ Wiktionary vs. !WordNet
+   * Wiktionary is more focused on word senses from natural sciences rather than social sciences or humanities, which are predominantly found in WordNet
+   * !WordNet contains (on average) more word senses for verbs
+   * Wiktionary has a higher number of maximum word senses for nouns.
+   * WIktionary encodes additional word senses for seldomly used terms.
+   * Wiktionary has better coverage of slang-related word senses.
+      
+-- Main.ZijadMaksuti - 16 Aug 2010
+
+%META:FILEATTACHMENT{name="ijcai-2007-sim.pdf" attachment="ijcai-2007-sim.pdf" attr="" comment="ESA - Explicit Semantic Analysis" date="1282002488" path="ijcai-2007-sim.pdf" size="295399" stream="ijcai-2007-sim.pdf" tmpFilename="/var/tmp/CGItemp32942" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="N09-2030.pdf" attachment="N09-2030.pdf" attr="" comment="Topic Identification Using Wikipedia Graph Centrality" date="1282155741" path="N09-2030.pdf" size="137710" stream="N09-2030.pdf" tmpFilename="/var/tmp/CGItemp37946" user="ZijadMaksuti" version="1"}%

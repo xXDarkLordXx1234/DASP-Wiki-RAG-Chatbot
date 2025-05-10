@@ -1,0 +1,187 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="WiktionaryAnalysis"}%
+---+ JWKTL 0.15.0
+
+---++ Parsing
+   1 Download Wiktionary dump (pages-articles.xml) from http://dumps.wikimedia.org/
+   2 Extract dump file
+   3 Parse dump file:
+
+<verbatim>
+      File dumpFile = new File(PATH_TO_DUMP_FILE);
+      File outputDirectory = new File(PATH_TO_PARSED_WIKTIONARY);
+      boolean overwriteExisting = OVERWRITE_EXISTING_FILES;
+		
+      Wiktionary.parseWiktionaryDump(dumpFile, outputDirectory, overwriteExisting);
+</verbatim>
+
+   __PATH_TO_DUMP_FILE__ : path to extracted Wiktionary dump file<br>
+   __PATH_TO_PARSED_WIKTIONARY__ : output folder, where the parsed Wiktionary should be placed<br>
+   __OVERWRITE_EXISTING_FILES__ : set TRUE if you want to overwrite existing files<br>
+
+
+---++ Iterating over all Pages, Entries, Senses, Relations.
+<verbatim>
+   IWiktionaryEdition wkt = Wiktionary.open(WIKTIONARY_DIRECTORY); // Opening Wiktionary
+   for(IWiktionaryEntry entry : wkt.getAllEntries()){ // Iterating over all entries
+      Wiktionary.makeInfoString(entry);
+   }
+   
+   for(IWiktionaryPage page : wkt.getAllPages()){ // Iterating over all pages
+      System.out.println(page.getEntryCount());
+   }
+		
+   for(IWiktionarySense sense : wkt.getAllSenses()){ // Iterating over all glosses
+      System.out.println(sense.getGloss());
+      for(IWiktionaryRelation relation : sense.getRelations()){ // Iteration over relations
+         System.out.println(relation.getRelationType() + " " + relation.getTarget());
+      }
+   }
+   
+   wkt.close(); // Closing the Wiktionary
+</verbatim>
+Addtitionaly you can add some parameters to _getAll..()_ functions, e.g. _sortByTitle_ .
+
+---++ Extracting Glosses, Examples and Quotations
+If you want to extract all glosses for a given word use following code snippet:
+
+<verbatim>
+   IWiktionaryEdition wkt = Wiktionary.open(WIKTIONARY_DIRECTORY); // Opening Wiktionary
+
+   List<IWiktionaryEntry> entries = wkt.getEntriesForWord(WORD); // Extracting all Wiktionary entries for a given word
+		
+   for(IWiktionaryEntry entry : entries){ // Iterating over the entries
+      for(WikiString gloss : entry.getGlosses()){ // Iterating over the glosses of each entry
+          System.out.println(gloss.getPlainText());  
+      }
+      
+      for(WikiString example : entry.getAllExamples()){ // Iterating over the examples
+         System.out.println(example.getPlainText());
+      }
+			
+      for(Quotation quotation : entry.getAllQuotations()){ // Iterating over the quotations				
+         System.out.println(quotation.getSource());
+         for(WikiString line : quotation.getLines()){ // Iterating over the quotation lines
+            System.out.println(line.getPlainText());
+         }
+      }      
+   }
+   
+   wkt.close(); // Closing the Wiktionary
+</verbatim>
+Gloss text will be extracted without any wiki markup. If you want glosses with wiki markup use following code instead:
+<verbatim>
+gloss.getTextIncludingWikiMarkup();
+</verbatim>
+If you want to extract examples or quotations assigned to a specific sense, use getAssigned...()-functions accordingly:
+<verbatim>
+   for(WikiString example : entry.getAssignedExamples(SENSE_NR)){ // Iterating over the examples for sense with SENSE_NR
+      System.out.println(example.getPlainText());
+   }
+			
+   for(Quotation quotation : entry.getAssignedQuotations(SENSE_NR)){ // Iterating over the quotations for sense with SENSE_NR			
+      System.out.println(quotation.getSource());
+      for(WikiString line : quotation.getLines()){ // Iterating over the quotation lines
+         System.out.println(line.getPlainText());
+      }
+   }         
+</verbatim>
+
+---++ Extracting translations
+
+<verbatim>
+   IWiktionaryEdition wkt = Wiktionary.open(WIKTIONARY_DIRECTORY); // Opening Wiktionary
+
+   List<IWiktionaryEntry> entries = wkt.getEntriesForWord(WORD); // Extracting all Wiktionary entries for a given word
+		
+   for(IWiktionaryEntry entry : entries){ // Iterating over the entries
+      Map<Language, List<String>> langTranslations = entry.getAllTranslations(); // Extracting all translations with corresponding languages
+      for(Language language : langTranslations.keySet()){ // Iterating over languages
+         List<String> translations = langTranslations.get(language); // Extract translation for each language
+         for(String translation : translations){  // Iterating over translations
+            System.out.println(translation);
+         }				
+      }
+
+   }
+   
+   wkt.close(); // Closing the Wiktionary
+</verbatim>
+Alternatively you can extract translations only for a specific language:
+<verbatim>
+List<String> translations = entry.getAllTranslations(Language.ENGLISH);
+</verbatim>
+If translation is assigned to a specific sense in Wiktionary you can extract translations only for this sense:
+<verbatim>
+Map<Language, List<String>> langTranslations  = entry.getAssignedTranslations(SENSE_NR);
+</verbatim>
+or
+<verbatim>
+List<String> translations = entry.getAssignedTranslations(LANGUAGE, SENSE_NR);
+</verbatim>
+If translation is not assigned to any sense use functions
+<verbatim>
+entry.getUnassignedTranslations();
+</verbatim>
+or
+<verbatim>
+getUnassignedTranslations(LANGUAGE);
+</verbatim>
+instead.
+
+---++ Extracting Related Words
+You can extract related words for given RelationType, e.g. Synonyms:
+<verbatim>
+   IWiktionaryEdition wkt = Wiktionary.open(WIKTIONARY_DIRECTORY); // Opening Wiktionary
+
+   List<IWiktionaryEntry> entries = wkt.getEntriesForWord(WORD); // Extracting all Wiktionary entries for a given word
+		
+   for(IWiktionaryEntry entry : entries){ // Iterating over the entries
+   
+      List<String> relatedWords = entry.getAllRelatedWords(RelationType.SYNONYM);
+      for(String relatedWord : relatedWords){ // Iterating over the synonyms
+         System.out.println(relatedWord);
+      }    
+   }
+   
+   wkt.close(); // Closing the Wiktionary
+</verbatim>
+If you want to extract related words to a specific sense, use getAssignedRelatedWords()-function instead:
+<verbatim>
+   for(IWiktionaryEntry entry : entries){ // Iterating over the entries
+   
+      List<String> relatedWords = entry.getAllRelatedWords(RelationType.SYNONYM, SENSE_NR); // Extracting synonyms for sense with SENSE_NR
+      for(String relatedWord : relatedWords){ // Iterating over the synonyms
+         System.out.println(relatedWord);
+      }    
+   }
+</verbatim>
+
+---++ Extracting Links
+You can extract links to other Wiktionary entries, links to other language versions of Wiktionary and external links:
+<verbatim>
+   IWiktionaryEdition wkt = Wiktionary.open(WIKTIONARY_DIRECTORY); // Opening Wiktionary
+
+   List<IWiktionaryEntry> entries = wkt.getEntriesForWord(WORD); // Extracting all Wiktionary entries for a given word
+		
+   for(IWiktionaryEntry entry : entries){ // Iterating over the entries
+
+      for(WikiString gloss : entry.getGlosses()){ // Iterating over the glosses of each entry
+      
+         for(String wikiLink : gloss.getWikiLinks()){ // Iterating over wiki links
+            System.out.println(wikiLink);
+         }  
+         for(ExternalLink externalLink : gloss.getExternalLinks()){ // Iterating over external links
+            System.out.println(externalLink.getUrl());
+         }
+
+      }
+      
+      for (String interWikiLink : entry.getInterWikiLinks()){ // Iterating over inter language links			
+         System.out.println(interWikiLink);
+      }
+    
+   }
+   
+   wkt.close(); // Closing the Wiktionary
+</verbatim>

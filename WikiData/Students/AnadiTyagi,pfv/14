@@ -1,0 +1,80 @@
+%META:TOPICINFO{author="tyagi" comment="save topic" date="1509974920" format="1.1" reprev="13" version="14"}%
+---+!! Anadi Tyagi(Masters Thesis)
+
+---++ Meeting (06/11/2017)
+   * Sketch a proposal for multimodal KBC algorithm.
+   * Implement evaluation: e.g. user study
+   
+---++ Meeting (30/10/2017)
+   * Start writing chapter e.g. "image data collection and preparation"
+   * Finish Image Filtering
+   * Plan evaluation: e.g. user study
+   
+---++ Meeting (23/10/2017)
+   * Sift to VGG for image similarity(extraction of features) which VGG?? 19, 100.. use matlab library, pickel files to save image id and features vector.
+   * Plan evaluation: e.g. user study
+   * Start writing chapter e.g. "image data collection and preparation"
+
+---++ Meeting (16/10/2017)
+   * Literature review of state of art with focus on image based implementations.
+   * Sketch a proposal for multimodal KBC algorithm.
+   * Check image crawler for text search and try to implement filtering(e.g. http://www.esprockets.com/papers/CIVR2007-canonical-camera.pdf)
+   
+---++ Meeting (09/10/2017)
+   * Literature review of state of art with focus on image based implementations.
+   * Sketch a proposal for multimodal KBC algorithm.
+   * Finish the web implementation
+
+---++ Meeting (25/09/2017)
+   * update crawler to save data from wikidata in file and use that file in next run to download images.
+   * Implement all algorithms
+   * Use case to be implemented: a user wants to use the web application to train and test transE on their own data. Provide the needed functionality with the needed documentation.
+
+---++ Meeting (07/09/2017)
+   * Continue with web application and get TransE running web app. use https://github.com/thunlp/KB2E AND https://github.com/thunlp/Fast-TransX
+   * Prepare for registration
+
+---++ Meeting (07/09/2017)
+   * Continue with web application and get TransE running web app.
+   * Prepare for registration
+
+---++ Meeting (23/08/2017)
+   * Read literature about image coherence e.g graph based methods.
+   * Develop coherence measure(required measure of image simalirity)
+   * Study VGGnet, how it works, how can we use pre trained models in Python(keras or tensorflow)
+   * Take a look on library Matconvnet(http://www.vlfeat.org/matconvnet/pretrained/) and paper to multimodelity(Imagined Visual Representations as Multimodal Embeddings)
+
+---++ Meeting (17/08/2017)
+   * Update code for crawler and upload on repo.
+   * Read literature about image coherence e.g graph based methods.
+   * Develop coherence measure(required measure of image simalirity)
+   * Study VGGnet, how it works, how can we use pre trained models in Python(keras or tensorflow)
+
+---++ Meeting (03/08/2017)
+   * Documenting crawler(for thesis document)
+   * Category based analysis of Images based on wikidata instanceOf
+   * Develop a model to split freebase triples dataset based on categories..
+   * Upload final crawler to gitLab and guidelines in readme.txt
+   * Start working on Web Application for integrating KBC approaches.
+
+---++ Meeting (27/07/2017)
+   * Use Type in image query formulation
+   * Investigate ambiguity of entities by WordNet
+   * Clean folder structure and create mapping b/w fbIDs and folders
+   * crawl wikidata images from wikipedia if available and use in search
+   * Studying the available solution for canonical image representation and think about own approach. 
+   
+---++ Meeting (20/07/2017)
+   * Obtaining meta data for freebase ids (the transE dataset) by using Wikidata sparql as a bridge to obtain the data
+   * Develop a mechanism to formulate queries for images out of the meta data e.g. should we use labels and all aliases or part of the aliases? Does it help to use the type of the entity (e.g. human, city,...) in the query.
+   * Crawl images based on the approach developed in the previous point and investigate them manually.
+   * Studying the available solution for canonical image representation and think about own approach.
+
+---++ Meeting (14/07/2017)
+   * Setting up access to UKP
+   * Preparing FB data for image crawling
+   * study approaches for canonical image representation approaches
+
+
+
+-- Main.AnadiTyagi - 2017-07-14

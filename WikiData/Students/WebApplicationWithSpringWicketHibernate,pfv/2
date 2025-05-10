@@ -1,0 +1,13 @@
+%META:TOPICINFO{author="eckle" date="1401905495" format="1.1" version="2"}%
+%META:TOPICPARENT{name="AnukiranSolur"}%
+---++ Notes on Web Applications with Spring, Wicket, Hibernate
+
+   * book Spring in Action: private copy of JEK, can bring it on demand
+
+---+++ Uby UI Web App vs Web App Template
+
+   * Hibernate SessionFactory vs Spring EntityManager
+      * the Uby Web App just uses the applicationContext.xml; the connection to the Uby DB is set up by the Uby API (via the Hibernate SessionFactory)
+   * datasource: Uby DB vs datasource: embedded HSQL DB for storing user annotations and metadata
+
+-- Main.JudithEckleKohler - 2014-05-28

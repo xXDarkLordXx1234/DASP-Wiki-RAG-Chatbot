@@ -1,0 +1,39 @@
+%META:TOPICINFO{author="winchenbach" comment="" date="1535384187" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+%TOC%
+---+++ Meeting 23.08.2018
+   * *Status*: Experimente für 2-Klassen Klassifikation (Entailment, Kein Entailment) für Textual Entailment Modelle für Englisch und Deutsch abgeschlossen. BiLSTM Modelle unterscheiden sich in Input (Satzencoding mit oder ohne Parameter Sharing), 
+   Optimizer (Adam oder Nadam), Hyperparameter wie Dropout, Seeds etc. Aus mehreren Runs auf dem Cluster mit zufälligen Hyperparametern wurde das performanteste Modell gewählt (anhand von Metriken und Accuracy und Loss Kurven des Trainings-/Validierungsprozesses). 
+   Als Baseline wurde die Majority Baseline berechnet und ein BiLSTM auf allen Hypothesen-Evidenz Links trainiert (negative Bsp. sind zufällig zugeordnete Evidenzen, 
+   die Evaluation dieser Baseline ist 10fold CV auf allen Daten). Training auf 100k Trainingsdaten des SNLI für Englisch ([[https://nlp.stanford.edu/projects/snli/][SNLI]]) bzw. diesen mit Google API übersetzten SNLI Daten. Evaluation auf Testdaten des (übersetzten) 
+   SNLI, des englischen RTE3 und eines manuell übersetzten RTE3([[https://sites.google.com/site/excitementproject/results][RTE3-de]])
+   Corpus, sowie auf den User-Study Hypothesen-Evidenz Links. Für User-Study und RTE3 Daten wurde das auf SNLI (en bzw. de) trainierte Modell ohne weiteres Training übernommen. Als Metrik berechnet wurde Accuracy und Precision, Recall, F1 der positiv Klasse.
+   | *Daten [Majority Baseline]* | *Modell* | *DE* || *EN*||
+   | ^|^ | *Acc.* | *F1* |*Acc.*|*F1*|
+   | SNLI Testdata [0,66]|  Shared Adam  |  0,80 | 0,70 | 0,83 | 0,75 |
+   |^ |  Shared NAdam  |  0,81 | 0,72 | - | - |
+   | ^ |  Not Shared Adam  |  0,80 | 0,68 | 0,80 | 0,71 |
+   | RTE3 [0,51] |  Not Shared NAdam  |  0,49 | 0,07 | 0,49 | 0,25 |
+   | User Study Nuklear [0,67] |  Not Shared NAdam  |  0,62 | 0,17 | - | - |
+   | User Study Wald [0,67] |  Not Shared NAdam  |  0,65 | 0,08 | - | - |
+   | Links Modell [0,67] |  Not Shared NAdam  |  0,72 | 0,56 | - | - |
+
+   : Evaluationswerte für neue Daten (RTE3, User Studies) bei Training nur auf einem vorherigen Datenset sind schlecht. Vergleich mit dem Transfer Experiment des ursprünglichen SNLI Papers zeigt ähnlich schlechte Werte ohne weiteres Training auf neuen Daten (Bowman 
+   et al. 2015). Dort wurde ein LSTM auf SNLI trainiert, dann auf neuem Datensatz (SICK) getestet, anschließend wurde nur die letzte Dense Layer mit den neuen Daten neu trainiert.
+   |*Trainings-Daten*| *Test Acc. [%]*|
+   |SNLI only| 46,7|
+   |SICK only| 71,3|
+   |SNLI + SICK| 80,8|
+   * *Nächste Schritte*:
+      * 3 Klassen Modell trainieren und auf User Study Daten testen
+      * Argumentmining Daten vorbereiten, Modell trainieren und auf User Study Daten testen
+      * Verschiedene Embeddings testen
+   * *Nächstes Treffen*: 6.09.2018
+
+   
+
+---+++ Sources
+[Bowman et. al. 2015] Samuel R. Bowman, Gabor Angeli, Christopher Potts, and Christopher D. Manning. 2015. A large annotated corpus for learning natural language inference. In Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing (EMNLP). 
+
+
+-- Main.UteWinchenbach - 2018-08-27

@@ -1,0 +1,68 @@
+%META:TOPICINFO{author="MichaelKutschke" date="1336576531" format="1.1" version="9"}%
+%META:TOPICPARENT{name="WebHome"}%
+%TOC%
+
+*DEADLINE: June 1st 2012*
+
+---++ Description
+Given a set of Wikipedia articles that have been tagged with a particular quality flaw, decide whether a previously unseen article suffers from this flaw. 
+
+---++ Features and Evaluation
+   * [[List of defined features]]
+   * [[Results using different algorithms and features]]
+
+---++ Work Plan
+   * KW 18 
+      * Status Meeting 2.5.
+      * TODO
+         * Integration weiterer ML Algorithmen
+         * Feature Selection Methods einbauen
+         * Consumer für Challenge Ausgabeformat
+   * KW 19
+      * Status Meeting 8.5.
+      * TODO (voraussichtlich)
+         * Manuelle Sichtung von Instanzen für komplexe Flaws in Hinblick auf weiteres Feature Engineering
+         * Wenn noch nicht sowieso möglich: Weitere Automatisierung des Labs um verschiedene Feature Set+Feature Selector+Algorithmen automatisch durchzuprobieren
+         * Iteratives Feature Engineering und Evaluation
+   * KW 20
+      *  
+   * KW 21
+      *  
+   * KW 22
+      *  DEADLINE: Freitag. Wir sollten Do fertig für die Einreichung sein.
+
+---++ Resources
+---+++ Compute Server
+   * =moe.ukp.informatik.tu-darmstadt.de= has been reserved for the challenge (might still be used by others from time to time)
+---+++ Database
+   * JWPL Database incl. revisions has been installed on moe
+      * =wiki_en_20120104_rev=
+      * Access to db from outside only via ssh-tunnel (open a ssh-tunnel to moe and connect to mysql on moe through the tunnel)
+      * MySQL user: root (no password)
+      * If you use 3307 as a local port tunneling to 3306 on moe, you can connect to the server with =mysql -h127.0.0.1 -uroot -P3307=
+      * Here's the config for opening a tunnel using SSH Tunnel Manager "gSTM" in Ubuntu. Note that you might not be able to connect to "localhost" but to "127.0.0.1" instead
+
+      * <img src="%ATTACHURLPATH%/Bildschirmfoto_am_2012-04-03_152852.png" alt="Bildschirmfoto_am_2012-04-03_152852.png" width="1000" height="300" />
+---+++ Workstations
+   * =ukp-pool01= has been reserved
+---+++ Corpus
+   * The quality flaw dataset is available from the [[http://www.uni-weimar.de/medien/webis/research/events/pan-12/pan12-web/iq-wikipedia.html][task website]]
+   * The extracted article Ids are accessible in the project folder src/main/resources/articleIds
+---+++ SVN Repository
+   * <span class="red">UPDATE:</span> [[https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/de.tudarmstadt.ukp.loewe.tp23.quality/][de.tudarmstadt.ukp.loewe.tp23.quality]] 
+      * Neues Projekt in dkpro_students. Nicht mehr das LOEWE-TP23 verwenden - das macht Probleme.
+---+++ Notes
+   * The project depends on cleartk-ml-weka, which is currently only available in the cleartk trunk. It must be checked out and cannot be obtained from artifactory until it has been included in a cleartk release. (not true anymore as of 9.5. - Michael)
+
+
+
+
+---++ Links
+   * [[http://www.uni-weimar.de/medien/webis/research/events/pan-12/pan12-web/iq-wikipedia.html][Task Website]]
+   * [[https://groups.google.com/forum/?fromgroups#!forum/pan-workshop-series][PAN Google Group]]
+   * [[http://clef2012.org/][CLEF 2012]]
+
+-- Main.OliverFerschke - 2012-03-16
+     
+
+%META:FILEATTACHMENT{name="Bildschirmfoto_am_2012-04-03_152852.png" attachment="Bildschirmfoto_am_2012-04-03_152852.png" attr="" comment="" date="1333459830" path="Bildschirmfoto_am_2012-04-03_152852.png" size="174328" user="OliverFerschke" version="1"}%

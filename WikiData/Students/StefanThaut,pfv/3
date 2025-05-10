@@ -1,0 +1,62 @@
+%META:TOPICINFO{author="thaut" comment="" date="1577011675" format="1.1" reprev="1" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+*Important Dates:*
+   * 28.01.2020 (mid-term presentation)
+   * 07.04.2020 (final talk)
+   * 21.04.2020 (submission deadline) 
+
+---++ Week 21.10. - 27.10.:
+   * Familiarization with the task
+   * Review of literature on suitable corpora and BERT embeddings
+
+---++ Week 28.10. - 03.11.:
+   * Description of the corpora
+   * First sections of the thesis about the corpora, their annotation schemes and related foundations
+   * Introduction into concepts of Transfer Learning and recap of pytorch library
+
+---++ Week 04.11. - 10.11.:
+   * Preprocessing of the corpora -> summarization of their (separated) data into one CSV-File per corpus
+   * Preprocessing of Lauschers gold labels into format for comparison with the output of Lauschers model prediction
+   * Description of the evaluations of the particular corpora in their introducing paper
+   * Locally setup of the Lauscher model
+   * Implementation of the annotation tool for the annotation study and first version of the corresponding instructions
+
+---++ Week 11.11. - 17.11.:
+   * Reproduction of the scores of the Lauscher model
+   * Error tracking regarding the Lauscher model and its experimental setup
+   * Setup of the ARC model on Slurm
+   * Preprocessing of Lauscher corpus for input into the ARC model
+   * Revision of the instructions for the annotation study
+
+---++ Week 18.11. - 24.11.:
+   * Adjustment of the ARC model to the (preprocessed) Lauscher corpus
+   * First experiments with the ARC model on the Lauscher corpus without finetuning and removal of the classification layer
+   * Tests of the REST-API of the Lauscher model (for better reproduction of Lauscher scores)
+
+---++ Week 25.11. - 01.12.:
+   * Server problems on Slurm
+   * Revision of the dataset for the annotation study and final version of its instructions
+   * Revision of the splits of Lauscher corpus (now fully random) and reevaluation (per label as well as averaged) of Lauschers model on these (hopefully final) splits
+   * First preliminary results of the annotation study
+   * Gathering of possibilities of how to modify the ARC model for Transfer Learning and implementation of them
+
+---++ Week 02.12. - 08.12.:
+   * Bugfixing on Slurm
+   * Deployment of the annotation study
+   * Conversion of the other corpora into the ARC format and creation of respective splits
+   * Preparation of the experiments of Transfer Learning with several configurations (with/out finetuning, various corpora, various splits, ...)
+
+---++ Week 09.12. - 15.12.:
+   * Evaluation of the TL experiment (creation of summarizing table, confusion matrices and metrics values for the distinct labels)
+   * Added majority agreement for the annotation study
+   * Calculating the majority baseline for TL experiments and added these values to the table
+   * Validation of the calculation of the inter annotator agreements
+
+---++ Week 16.12. - 22.12.:
+   * Adjusting the TL code for baseline tests for each corpus and split (train ARC model on resp. split-train-data of corpus and test on the corresponding test data)
+   * Bugfixing of Krippendorffs Alpha for annotation study
+   * Review of comments regarding the code
+   * Evaluation of the baseline tests (add these values to the table)
+   * Consistency check of ARC model on ARC data itself (check if labels "0", "[SEP]" and "[CLS]" are also predicted)
+
+-- Main.TilmanBeck - 2019-11-12

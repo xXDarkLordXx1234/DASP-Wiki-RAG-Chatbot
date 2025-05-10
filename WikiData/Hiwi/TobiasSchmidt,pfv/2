@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="tschmidt" comment="" date="1627468778" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.TobiasSchmidt - 2021-07-24
+
+---++ 19.07 - 23.07
+   * Finished reading last related work papers from the AVEC 2019 challenge; finalised the found feature list and put it into a table.
+
+   * Tried implementing basic functions to extract standard key features from the raw input data via openSMILE while only using python packages. 
+
+---++ 28.07
+   * Implementing the following features: Pause rate / pause total / pause variability / utterance duration  (split and not split) / speech rate / time talking (with different silence detections)
+
+   * test some transcript models
+
+   * Start making list for relted work

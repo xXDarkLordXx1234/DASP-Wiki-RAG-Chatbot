@@ -1,0 +1,240 @@
+%META:TOPICINFO{author="lwolf" comment="reprev" date="1523882297" format="1.1" reprev="23" version="23"}%
+---+!! Bachelor Thesis: Neural Sequence to Sequence Approaches for Mapping Natural Questions to SPARQL Queries
+
+%TOC%
+
+
+
+---+ Useful Links
+   * [[https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql_thesis][Thesis Repo]]
+   * [[https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql_thesis/issues][ToDos]]
+   * [[https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql/issues][Code]]
+
+---+ Schedule
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20|"}%
+| *Week* | *Start Date* | *Task* | *Comment* |
+| | 23.11.17 | Initial meeting; discussion of the project definition | |
+| | 27.11.17 | Familiarization with the project, literature review, setup of the environment and the datasets | Start writing the thesis (or take notes for it) as early as possible! |
+| | 04.12.17 | Requirements and data analysis | WP1 |
+| | 18.12.17 | Model development | WP2 |
+| | 08.01.17 | Preliminary evaluation | |
+| | 15.01.17 | Evaluation on QA Datasets | |
+| | 23.01.18 | Mid-term presentation | |
+| | 29.01.18 | Error analysis | WP3 |
+| | 12.02.18 | Final thesis redaction | |
+| | 03.04.18 | Final presentation | |
+| | ??? | Submit the thesis | |
+
+---+ Meetings (monday 14:00)
+---++ 16 April 2018
+---++++ Done
+   * had final presentation
+   * evaluated model on QALD-7 task 4
+   * wrote most of my thesis (missing: evaluation, abstract, conclusions)
+
+---++++ Questions
+   * Formalities for thesis
+   * grading of final presentation
+   * how to cite entity linker
+
+
+---++++ ToDos
+   * finish evaluation, abstract, conclusions
+   * review citations, add more sources
+   * read through grammar and spelling mistakes
+
+
+---++ 26 March 2018
+---++++ Done
+   * created final presentation
+ 
+---++ 19 March 2018
+---++++ Done
+   * created template generated data (with 120 templates)
+   * created a merged dataset from wikidata examples, wdAqua and templates
+   * included word embeddings, created own sparql embeddings
+   * created webinterface to ask questions and analyze atttention
+   * implemented attention copy mechanism (using attention information to look for unknown entities)
+
+---++++ Question
+   * krusty - cannot install tensorflow anymore
+   * webquestions / evaluation -> which data should I use
+   * questions.index not found in question-answering
+   * thesis introduction - what to change?
+
+---++++ Plans
+   * further write thesis
+   * create dataset to evaluate on
+   * write evaluation mechanism
+
+---++ 05 March 2018
+---++++ Done
+   * Worked on Related work and datasets
+   * Current status of thesis can be found here: https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql_thesis/blob/master/thesis-lars-wolf.pdf
+
+---++++ Question
+   * WebQSP graphs repository access
+   * Reading through first thesis drafts
+   * letter of recommendation
+
+---++ 26 February 2018
+---++++ Done
+   * Almost finished introduction
+   * Almost finished entity-linking
+
+---++++ Questions
+   * Entity Linking, preliminary results not perfect -> next steps?
+   * Conversion of WebQSP
+      * -> use existing git code for mapping graphs to SPARQL
+      * -> Use the ones with good F-Scores
+      * -> Improve some queries with less good F-Score
+      * -> Leave out the rest
+   * F1 calculation -> does it make sense at this point?
+   * Template generated wikidata
+ 
+---++++ Plans till next meeting
+   * Start converting WebQSP
+   * Finish Introduction and Related Work
+
+---++ 12 February 2018
+---++++ Done
+   * More Infos
+   * Confirmation that I passed: mid-april
+   * Grade: 30. April ("Umschreibedatum")
+   * Herr Prof. Hochberger does not have to be second examiner
+
+---++++ Plans
+*Things to be done till final presentation (13.03)*
+   * Entity linking for wikidata
+   * Wikidata dataset improvements and evaluation
+   * F1 score calculation || wdaqua conversion
+
+*Things to be done till finishing my thesis (30.03)*
+   * Introduction (25.02)
+   * Related work (27.02 - 2 weeks)
+     * "Was muss man wissen, um das Experiment zu verstehen?"
+   * Datasets (10.03 - 1.5 weeks)
+   * Model (24.03 - 2 weeks)
+     * kurze beschreibung, was ich für Verständnis lernen musste
+     * attention, seq2seq...
+   * Evaluation (14.04 - 2.5 weeks)
+     * hyperparameter
+     * daten
+     * evaluationsmetriken
+     * error analysis (genaue beschreibung, per hand (min. 50) durchgehen)
+   * Conclusion (22.04 - 1 week)
+   * Abstract 25.03
+
+   * [Final presentation preparation till ???]
+
+---++ 05 February 2018
+---++++ Done
+   * Installed entity linking repo
+   * some more work on thesis redaction
+   * some improvements to WikiData dataset
+
+---++++ Plans (mostly from last meeting)
+   * try entity linking preprocessing on Wikidata dataset
+   * add information on when which section of my thesis should be finished
+   * get information on when I need to have a confirmation if I passed my thesis
+
+   * convert WebQSP to Wikidata & trainabe format (?)
+   * start working on evaluation method for F1 scores
+
+---++ 29 January 2018
+---++++ Done
+   * mid term presentation
+   * some more work on thesis redaction
+
+---++++ Plans (mostly from last meeting)
+   * improve WikiData dataset (currently has a very large vocabulary, some queries were not extracted perfectly)
+   * try entity linking preprocessing on Wikidata dataset
+   * evaluate some hyperparams
+   * convert WebQSP to Wikidata & trainabe format (?)
+   * start working on evaluation method for F1 scores
+
+---++ 08 January 2018
+---++++ Done
+   * model is now working on krusty
+   * started evaluation
+   * added possibility to train model with the created wikidata dataset
+
+---++++ Quesions
+   * Data sparsity
+     * using template generated data - expanding Leipzig's approach
+     * using a Paraphrasing Database (PPDB)
+   * is Simple Questions worth a try?
+   * WebQSP conversion
+
+---++++ Plans
+   * convert WebQSP to trainabe format
+   * improve WikiData dataset (currently has a very large vocabulary, some queries were not extracted perfectly)
+   * evaluate some hyperparams
+   * start working on evaluation method for F1 scores
+
+---++ 18 December 2017
+---++++ Done
+   * read through much more related work (see [[https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql_thesis/blob/master/thesis-lars-wolf.pdf][git]])
+   * researched on some more datasets
+   * created program to automatically convert wikidata's example queries to header and SPARQL-query (in SPARQL and Leipzig format)
+   * Asked Leipzig about including attention in their work (see [[https://github.com/AKSW/NSpM/issues/1][their git]])
+
+---++++ Quesions
+   * krusty access?
+   * "We" or "I"
+   * thesis registration
+   * Dataset
+      * Web QSP ~3500 question - SPARQL, freebase
+      * Simple Questions: mapped to Wikidata
+         * needs review, evaluation on what's actually answerable
+      * Templates (like Leipzig or [[https://arxiv.org/pdf/1704.08760.pdf][Iyer]])
+      * data augmentation (like [[https://arxiv.org/pdf/1704.08760.pdf][Iyer]])
+   * Model
+      * should I create a different Model, or use the options provided by the [[https://github.com/tensorflow/nmt/tree/04c8c04a8b4e805f3d0a9c42b4d17c85f1324c55][tensorflow example for NMT]]
+      * Pro TF-NMT: Up-to-date, Attention of Bahdanau already integrated. Provides same model as Google is using for Translation
+      * Same model Leipzig is using for their approach
+
+---++++ Plans
+   * create Model / adapt model of Leipzig
+   * first evaluation of Model
+   * try Paraphrase  Database (PPDB) and data augmentation approaches 
+   * evaluate semantic parsing papers & relevance
+
+---++ 04 December 2017
+---++++ Done
+   * Wrote first draft of related work (see [[https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql_thesis/blob/master/thesis-lars-wolf.pdf][git]])
+   * tested code of Leipzig on my local machine ([[https://github.com/AKSW/NSpM][their git]]
+   * tried [[https://github.com/osh/KerasGAN][Keras GAN]]
+---++++ Quesions
+   * how can I access krusty? (Currently: permission denied)
+     * Daniil is organizing Server permissions
+   * are GANs promising in that area? How to deal with evaluating ambiguous SPARQL queries? (didn't find method for multiple output options yet)
+     * Leave them for no, not to much work on using them for text generation
+   * shall I put GANs in related work, even though I might not use them?
+---++++ Plans
+   * Finish first iteration of related work (&#10004; except for semantic parsers)
+   * decide on data type (question -> sparql, leipzig format?)
+   * create dataset out of wikipedia entries &#10004;
+   * try method of Leipzig to create more data (&#10004; understood, didn't create more yet though)
+   * read further into model ideas  &#10004;
+   * read into evaluation methods for QA-problems (Bleu? F1 on correct answers? ...?)
+   * set up bibtex &#10004; &#10004;
+
+---++ 27 November 2017
+   * sign bachelorthesis description &#10004;
+   * set up VPN &#10004;
+   * get Latex up and running &#10004;
+   * read through related work
+   * look at webqsp &#10004;
+ 
+---++ 23 November 2017
+   * create Wiki page &#10004;
+   * change password &#10004;
+   * Read through bachelor thesis description, forward possible changes untill sunday &#10004;
+   * set up VPN &#10004;
+   * create git repositories  &#10004;
+      * thesis &#10004;
+      * code &#10004;
+
+-- Main.LarsWolf - 2017-11-24

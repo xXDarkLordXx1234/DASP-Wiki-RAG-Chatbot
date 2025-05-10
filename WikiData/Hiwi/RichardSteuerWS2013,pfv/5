@@ -1,0 +1,25 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1380821168" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+%TOC%
+
+---+++ Aktueller Vertrag (September 2013 - Oktober 2013)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Richards Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung in Martins Aufgaben, [[https://docs.google.com/document/d/14PWeoTkrnKk9H8_7CfVbdvuoFZ7jYivNTkBX2Hj7qLw/edit?pli=1#][Google syntactic ngrams]] | 30.09.2013 | 1 | |
+| Task 1.1 und 1.2 beendet, Ergebnisse an Martin geschickt | 01.10.2013 | 6 | nodes: Abdeckung der Jahre |
+| Einarbeitung in [[http://sourceforge.net/projects/jobimtext/][JobBimText]] ([[http://www.ukp.tu-darmstadt.de/software/jobimtext/][UKP]]), mit Hadoop wieder vertraut gemacht | 03.10.2013 | 2 | |
+| *Summe* | | 9 | bisher geleistet |
+| *Soll* | | 80 | (aktueller Vertrag, 40 h/Monat) |
+
+---+++ Aufgaben
+
+Von Martin: 
+
+   * <s>Task 1) Abdeckung der Jahre im [[https://docs.google.com/document/d/14PWeoTkrnKk9H8_7CfVbdvuoFZ7jYivNTkBX2Hj7qLw/edit?pli=1#][Google syntactic ngrams]] berechnen</s>
+   * Task 2) Dts fuer die verschiedenen Epochen berechnen.
+   * Task 3) "So wenn wir ich Zeitscheiben die ich gerne haette mal ermittelt habe haette ich noch gerne eine Matrix mit den Wortoverlaps unter den Zeitscheiben. Kann man dann anhand der !WordCounts der jeweiligen DTs berechnen."
+
+Von Chris:
+   * 70+ M Sätze Deutsch parsen, Ziel: Auf HDFS liegen die geparsen Sätze, so dass man dann eine DT-Pipeline starten kann.

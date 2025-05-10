@@ -1,0 +1,48 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212846359" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="SimonKulessaTaskLog"}%
+*Komponente:*
+<br>Delta Tool
+
+*Beschreibung:*
+<br>Speicherformat für die Unterschiede zwischen zwei Revisionen.
+
+*Operationen:*
+<br>
+_Add (Index, Text)_
+<br>
+_Delete (Index, Text)_
+<br>
+_Replace (Index, Anzahl Zeichen, Text)_
+<br>
+_Cut (Index, Anzahl Zeichen, ID)_
+<br>
+_Paste (Index, ID)_
+<br>
+<br>Diese Operationen werden ausgehend von der alten Version genutzt. Im Unterschied zu Delta-Format
+beschreibt diese Format allerdings keine vollständige Revision, sondern lediglich die Änderungen. Bei sämtliche
+Operationen handelt es sich um "Live-Edits" der Revision.<br>
+<br>
+_Insert_ fügt neue nicht in der alten Revision vorhandene Teile ein.<br>
+_Delete_ löscht alte nicht in der neuen Revision vorhandene Teile.<br>
+_Replace_ ersetzt den durch die Indizes beschriebenen Bereich mit dem neuen Text.<br>
+_Cut_ schneidet den angegeben Bereich aus und speichert ihn unter der angebenen ID.<br>
+_Paste_ fügt einen vorher ausgeschnittenen Bereich (referenziert durch die ID) an die angebene Position ein.<br>
+<br>
+*Ablauf:*
+<br>1. Finden der identischen Blöcke am Anfang und am Ende beider Revisionen.
+<br>2. Markieren dieser Bereiche in beiden Versionen als genutzte Zeichen.
+<br>3. Hinzufügen der Blöcke in getrennte Listen für beide Revisionen.
+<br>4. Aufteilen aller restlichen ungenutzten Zeichen der alten Revision in eine Index-HashMap (Key: Zeichen, Value: Liste der Positionen des Zeichens)
+<br>5. Laufen über die neue Version und suchen nach dem !LongestCommonSubstring.
+<br>6. Dabei muss darauf geachtet werden dass sich keine zwei Blöcke in beiden Revision überlappen.
+<br>7. Ein gefundener Substring muss mehr als 25 Zeichen enthalten.
+<br>8. Falls alle diese Kriterien erfüllt sind wird der Block gebildet, beide Bereiche als genutzte Zeichen markiert und der Block in beide Listen hinzugefügt.
+<br>9. Nachdem alle LCS-Blöcke gefunden wurden, werden nun die _Insert_ und _Delete_ Blöcke erzeugt und den entsprechenden Listen hinzugefügt..
+<br>10. Sortieren beider Block-Listen nach dem !StartIndex der Blöcke.
+<br>11. Vergleichen beider Block-Listen von links nach rechts. Dabei wird aus der alten Revision die neue Revision erzeugt, um die Live-Edit Indizes zu erhalten.<br>
+   * Bei identischen Blöcken werden beide Blöcke verworfen. <br>
+   * Beim Auftreten von _Insert_ und _Delete_ Blöcken werden die entsprechenden Einträge erzeugt.<br>
+   * Sollten ein _Insert_ und _Delete_ Block zeitgleich auftreten wird ein _Replace_ Block erzeugt.<br>
+   * Beim Auftreten von unterschiedlichen Blöcken werden entsprechende _Cut_ und _Paste_ Einträge erzeugt.
+
+-- Main.SimonKulessa - 07 Jun 2008

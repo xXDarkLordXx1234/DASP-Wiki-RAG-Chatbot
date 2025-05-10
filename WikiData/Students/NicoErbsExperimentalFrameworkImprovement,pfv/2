@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="NicoErbs" date="1262793672" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="NicoErbsTasks"}%
+---+ Experimental Framework Improvement
+
+%TOC%
+
+---+++ good solution
+
+---++++ Annotator Factory for each annotaor
+
+public static AnalysisEngineDescription getKeyphraseCandidateAnnotator_filteredToken_noPosFilter_noResolve() throws ResourceInitializationException<br>
+         return createPrimitiveDescription(<br>
+               CandidateAnnotator.class,<br>
+               ComponentFactory.getDKProTypeSystem(),<br>
+               CandidateAnnotator.PARAM_ANNOTATION_TYPE, FilteredToken.class.getName(),<br>
+               CandidateAnnotator.PARAM_STRING_METHOD, "getCoveredText",<br>
+               CandidateAnnotator.PARAM_USE_POS_FILTER, false,<br>
+               CandidateAnnotator.PARAM_RESOLVE, false);<br>
+        }
+
+
+---++++ Generating chain
+
+   * calling methods from 
+
+---+++ not so good solution
+one class with framework with hard coded locations
+
+
+
+-- Main.NicoErbs - 06 Jan 2010

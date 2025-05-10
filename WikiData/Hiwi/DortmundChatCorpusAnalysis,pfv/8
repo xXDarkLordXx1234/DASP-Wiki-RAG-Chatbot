@@ -1,0 +1,107 @@
+%META:TOPICINFO{author="hartmann" comment="reprev" date="1449052146" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="ElisaStarke"}%
+---++ Corpus Analysis - Dortmund Chat Corpus
+   *  [[https://www.linguistik.hu-berlin.de/de/institut/professuren/korpuslinguistik/forschung/nosta-d][link to website]]
+   * Link to corpus: [[https://www.linguistik.hu-berlin.de/de/institut/professuren/korpuslinguistik/forschung/nosta-d/nosta-d-unicum-1.3][nosta-d-unicum-1.3]]
+   * Link to paper: [[https://www.linguistik.hu-berlin.de/de/institut/professuren/korpuslinguistik/forschung/nosta-d/empirikom-paperpackage][empirikom-paperpackage]]
+*- Overarching question: how do both versions of the corpus relate to each other, what are the differences (check Paper!)?*
+Preprocessing and Annotations include:
+   * 	Tokenization
+   * 	Normalization: state interpretation of utterances that can be dealt with by standard grammar
+   *    Annotations: 
+		* automatically POS-tagged and lemmatized + manually corrected
+		* dependency relations
+		* named entities
+		* coreference 
+
+*- What is the size of the corpus (tokens, sentences)*
+   * tokens => 5655
+   * sentences => 786
+   * SH: Kann es sein, dass sich diese Ergebnisse auf die Summe von Norm und Orig beziehen? Wie groß sind diese jeweils (beide enthalten ja den gleichen Inhalt, das Ziel ist entweder auf Orig oder auf Norm zu arbeiten, nicht auf beiden zusammen)?
+   * ES: Die Zahlen sind richtig sowohl für Norm als auch Orig, da sie identisch sind, zumindest wenn man nach dem Markup in "unicom_orig.tcf" bzw. "uniform_norm.tcf" geht. Das liegt daran, dass jedes Token, was in dem anderen Korpus keine Entsprechung hat als "_" gesetzt wird, jedoch auch als eigenes Token zählt. Dadurch gibt es in beiden Korpora genau die gleiche Anzahl an Tokens bzw. Sätzen. Ich habe noch eine neue Statistik erstellt, welche nur Tokens zählt, welche nicht einem "_" entsprechen da ergeben sich folgende Zahlen:
+   * Orig: tokens => 3694
+   * Norm: tokens => 4732
+   * Die Anzahl der Sätze bleibt aber dennoch für beide Korpora gleich.
+   * Verb Instances (based on instances files)
+      | dataset | instances (tokens) | lemmas (types) |
+      | Orig    | 382                | 184            |
+      | Norm    | 442                | 192            | 
+      * (cut -f2 instancesOfLemma_norm.txt | egrep "[0-9]" | awk '{SUM+=$1}END {print SUM}')
+
+
+
+*- What kind of dependency labels were used in the paper (check Paper!)*
+	- Dependenz-Annotation wird aus TIGER-Annotatin der Normalisierung übersetzt
+	
+*- Was there a different set of dependency labels used for the original version (orig) compared to the normalized version (norm)?*
+	- NO
+	
+*- Write each verb lemma and the corresponding sentence to file*
+--> files are attached (analysisResults_norm.txt and analysisResults_orig.txt)
+
+
+---++ Comparison to pre-selected training verbs 
+   * Lemma Overlap (A)
+      *  Attached, there are two lists of verbs ([[%ATTACHURL%/all_lemmas][all_lemmas]] and [[%ATTACHURL%/train_lemmas][train_lemmas]]). 
+      * How many of the lemmas in the two versions of Dortmund Chat Corpus (DCS-norm and DCS-orig) are covered by each of the lists? 
+         * (please report the total number, and the percentage in relation to all lemmas in each of DCS-norm/DCS-orig)
+            * all_lemmas: DCS-norm => 65 (34%)   //   DCS-orig => 58 (32%) 
+            * train_lemmas: DCS-norm => 46 (24%)   //   DCS-orig => 41 (22%)
+            * total: DCS-norm => 191 lemmas   // DCS-tarin => 183 lemmas
+   * Instances for overlapping lemmas (B) 
+      * If you filter the instance-counts in DCS-norm and DCS-orig (instancesOfLemma_X.txt) by each of the two lists (i.e., keep only the overlapping lemmas), how many verb instances remain 
+         * (please attach the filtered lists and report the total sum of the remaining instances for norm and orig here)
+            * all_lemmas: DCS-norm => 192 instances [[%ATTACHURL%/results_allLemmas_norm.txt][results_allLemmas_norm.txt]] //    DCS-orig => 149 instances [[%ATTACHURL%/results_allLemmas_orig.txt][results_allLemmas_orig.txt]]
+            * train_lemmas: DCS-norm => 118 instances [[%ATTACHURL%/results_trainLemmas_norm.txt][results_trainLemmas_norm.txt]]  //   DCS-orig => 91 [[%ATTACHURL%/results_trainLemmas_orig.txt][results_trainLemmas_orig.txt]]
+   * Additional Filter: only ambiguous words 
+      * The attached file [[%ATTACHURL%/all_lemmas_numsenses.tsv][all_lemmas_numsenses.tsv]] contains two columns: lemma and number-of-germanet-senses for this lemma
+      * How many instances remain in DCS-norm and DCS-orig, if you only count the ambiguous lemmas (with more than 1 germanet sense) 
+      * (please add an additional column to the result lists from question B that marks those instances that belong to ambiguous words)
+         * column "ambiguous?" => 1 = ambiguous    // 0 = not ambiguous
+      * (please report the total number of remaining instances after filtering here)
+         * all_lemmas: DCS-norm => 53 instances    //    DCS-orig => 48
+         * train_lemmas: DCS-norm => 46 instances    // DCS-orig => 41 
+         * SH: Question: This the number of remaining lemmas, right? (Not the number of instances with the remaining lemmas)? (for train_lemmas, the number of instances before and after filtering should be the same, as all train lemmas are ambiguous) 
+   * Based on the above observations: Do you think that CDS is a test set of reasonable size and difficulty for a WSD task trained on the all_lemmas or on the train_lemmas?    
+      * I think it would be a rather small test set, as it is only as big as around 10-12% of the entire corpus (DCS-norm: 442 instances  //    DCS-orig: 382 instances). Further it includes mostly very common verbs, so it wouldn't be very difficult either. 
+---++ Automatic Mapping of new Annotations from Norm to Orig
+   * Premise: 
+      * The sentences in Norm and Orig are trivially aligned (same number of sentences)
+      * For each sentence, the number of tokens is also the same (missing tokens are filled with dummy token "_")
+         * Therefore, token-alignment for a sentence can be inferred:  
+         * Example:
+            | norm: || _  || Ich || _ || freue || _ || mich || . | 
+            | orig: || _  || _ || * || freu  || * || _    || _ |
+      * Based on the aligned tokens, it should be possible to map DKPro annotations (from manual Sense and Role annotation in WebAnno) from Norm to Orig automatically
+         * The original annotation types from DCS (token, lemma, pos, dependency) should not be mapped, only additional annotation types 
+   * Input/Output
+      * Input: xmi file for norm with additional annotations, tcf/xmi file for orig
+      * Expected output: xmi/tcf file for orig that 1) preserves the given annotations from orig and 2) additionally provides the annotations mapped from norm    
+   * Steps
+      1 Verify assumption on alignability (~1h)
+      2 Create new custom annotations on norm in a given WebAnno setup (SemArg,SemPred with Slots, SemPredPart/SemArgPart), on the first 15 sentences, export as xmi - project kp3_chat_test (~1h)
+         * add add simple and difficult (annotations with slots, sentence-crossing annotations) to create a good test-bed  
+      3 Create method to automatically map orig and norm tokens and transfer custom annotations from norm to orig.
+         * Should be easily reusable, i.e., run with a single call
+         * Should be easily extendable (parameter for mapping various annotation types)    
+         * Hint: start with simple annotations (SemArg,SemArgPart), then add complex annotations (SemPred with Slots, sentence crossing relation anntotations (SemPredPart))
+ 
+-- Main.ElisaStarke - 2015-11-14
+
+   
+
+%META:FILEATTACHMENT{name="analysisResults_norm.txt" attachment="analysisResults_norm.txt" attr="" comment="normalized corpus" date="1447964010" path="analysisResults_norm.txt" size="16384" user="starke" version="2"}%
+%META:FILEATTACHMENT{name="analysisResults_orig.txt" attachment="analysisResults_orig.txt" attr="" comment="original corpus" date="1447964041" path="analysisResults_orig.txt" size="16384" user="starke" version="2"}%
+%META:FILEATTACHMENT{name="averageNumberofDependentsByLemma_norm.txt" attachment="averageNumberofDependentsByLemma_norm.txt" attr="" comment="average number of dependents by lemma (norm)" date="1447964138" path="averageNumberofDependentsByLemma_norm.txt" size="1937" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="averageNumberOfDependentsByLemma_orig.txt" attachment="averageNumberOfDependentsByLemma_orig.txt" attr="" comment="average number of dependents by lemma (orig)" date="1447964165" path="averageNumberOfDependentsByLemma_orig.txt" size="1716" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="instancesOfLemma_orig.txt" attachment="instancesOfLemma_orig.txt" attr="" comment="distribution over verb lemmas (orig)" date="1447964232" path="instancesOfLemma_orig.txt" size="1963" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="instancesOfLemma_norm.txt" attachment="instancesOfLemma_norm.txt" attr="" comment="distribution over verb lemmas (norm)" date="1447964254" path="instancesOfLemma_norm.txt" size="2046" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="numberOfDependentsByVerb_orig.txt" attachment="numberOfDependentsByVerb_orig.txt" attr="" comment="number of direct dependents for each verb (orig)" date="1447964291" path="numberOfDependentsByVerb_orig.txt" size="3278" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="numberOfDependentsByVerb_norm.txt" attachment="numberOfDependentsByVerb_norm.txt" attr="" comment="number of direct dependents for each verb (norm)" date="1447964319" path="numberOfDependentsByVerb_norm.txt" size="4044" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="train_lemmas" attachment="train_lemmas" attr="" comment="list of lemmas (first line is header)" date="1448010779" path="train_lemmas" size="1990" user="hartmann" version="1"}%
+%META:FILEATTACHMENT{name="all_lemmas" attachment="all_lemmas" attr="" comment="list" date="1448010795" path="all_lemmas" size="5301" user="hartmann" version="1"}%
+%META:FILEATTACHMENT{name="all_lemmas_numsenses.tsv" attachment="all_lemmas_numsenses.tsv" attr="" comment="column1: lemma column2: number of germanet senses" date="1448010832" path="all_lemmas_numsenses.tsv" size="6369" user="hartmann" version="1"}%
+%META:FILEATTACHMENT{name="results_allLemmas_norm.txt" attachment="results_allLemmas_norm.txt" attr="" comment="overlap of all_lemmas + DCS-norm corpus" date="1448463457" size="824" user="starke" version="2"}%
+%META:FILEATTACHMENT{name="results_allLemmas_orig.txt" attachment="results_allLemmas_orig.txt" attr="" comment="overlap of all_lemmas + DCS-orig corpus" date="1448463248" path="results_allLemmas_orig.txt" size="744" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="results_trainLemmas_norm.txt" attachment="results_trainLemmas_norm.txt" attr="" comment="overlap of train_lemmas + DCS-norm corpus" date="1448463282" path="results_trainLemmas_norm.txt" size="590" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="results_trainLemmas_orig.txt" attachment="results_trainLemmas_orig.txt" attr="" comment="overlap of train_lemmas + DCS-orig corpus" date="1448463307" path="results_trainLemmas_orig.txt" size="521" user="starke" version="1"}%

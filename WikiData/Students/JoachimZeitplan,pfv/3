@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="JoachimCaspar" date="1227508270" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="JoachimCaspar"}%
+---++ Zeitplan
+Der Zeitplan ist übernommen aus der Aufgabenbeschreibung zur Diplomarbeit. Ergänzungen sind _kursiv_ gesetzt.
+| Monat | Woche | Aufgabe | Anmerkung |
+| ** | ** |*Konzeptionierung* | ** |
+| Aug. | -x | Einarbeitung | Einarbeitung in Werkzeuge, Programmiersprachen und die bestehende Codebasis |
+| Sept | 0 | Besprechung der Aufgabenstellung | Literaturrecherche, Patentrecherche |
+| Sept. | 1-2 | Analyse der bestehenden Methode zur Verarbeitung von parallelen Dokumenten in UIMA | Es ist zu prüfen ob eine Alternative zur bisherigen Verarbeitung von parallelen Dokumenten mittels &bdquo;View Mappings&ldquo; machbar und sinnvoll ist. Wenn ja ist eine entsprechende Komponente zu implementieren. |
+| Sept. | 3-4 | Einbinden der parallelen Korpora-Daten in die UIMA Verarbeitungspipeline | Analyse der Korpora-Datenstruktur, Konzeptionierung und Implementierung einer UIMA Reader-Komponente zur Verarbeitung der Daten |
+|** |** | *Implementierung* |** |
+| Okt. | 5 | Einbinden der existierenden Vorverarbeitungskomponenten | Je nach Verarbeitungsmethode sind ggf. Anpassungen der existierenden Vorverarbeitungskomponenten erforderlich |
+| Okt./Nov. | 5-13 | Konzeption und Entwicklung der Methoden zur Fachterminologie-Extraktion | Einbinden etwaig verfügbarer (Teil-)Komponenten. Implementierung der statistischen und linguistischen Komponenten zur Terminologie-Extraktion. _24.Nov: single word mining fast fertig, multi word mining und GIZA noch nicht angefangen. Einbinden und Implementieren dauert also länger (incl. Dez.)_ |
+| **|** | *Evaluierung* |** |
+| Dez. | 14-17 | Evaluierung I | Evaluierung der Terminologie-Extraktion anhand des Eurovoc Thesaurus. 1. Terminologiekandidaten für die jeweilige Sprache extrahieren, 2. Giza++ auf parallelen Korpus anwenden und Wortalignierung speichern, 3. Wortalignierungen mit Terminologiekandidaten (reranken / selber mappen / ="korrigieren") Evaluierung Ia: monolinguale Terminologiekandidaten mittels EuroVoc (monolingual) evaluieren. Evaluierung Ib: bilinguale Terminologie-Übersetzungskandidaten mittels EuroVoc (biling.) evaluieren|
+| Jan. | 18 | Evaluierung II | Evaluierung der Terminologie-Extraktion im Information-Retrieval Szenario. _Mehr Fokus auf CLIR, also mehr als die ursprünglich geplante 1 Woche!_|
+|** |** | *Ausarbeitung* |** |
+| Jan./Feb. | 19-24 | Reinschrift der Dipl. Arbeit | Empfehlung: bereits begleitend zu einzelnen Themenkomplexen schreiben bzw. Notizen anfertigen |
+| Mitte Feb. | 22 | Vortrag | ½ h Vortrag über die Ergebnisse der Diplomarbeit |
+| Ende Feb. | 24 | Abgabe der schriftlichen Arbeit | Die Arbeit wird vom Prüfungssekretariat des Fachbereichs abgestempelt und beim Betreuer abgegeben. |
+
+-- Main.JoachimCaspar - 25 Sep 2008

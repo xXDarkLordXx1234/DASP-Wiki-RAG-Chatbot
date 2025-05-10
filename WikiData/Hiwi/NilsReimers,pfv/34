@@ -1,0 +1,53 @@
+%META:TOPICINFO{author="reimers" comment="reprev" date="1392740831" format="1.1" reprev="34" version="34"}%
+---+!! Time sheet
+---+!! February
+| *Date* | *Tasks* | *Time* |
+| Tu, 18.02.14 | - Working on the dataset, examing the results from the NGram feature extractor & chunk feature extractor: [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2014_02_18_Intimacy.pdf][Report ]]<br /> - Currently at 84.6% accuracy (human: 91.3%) with NGram feature extractor <br /> - Meeting with Roland for Discourse Marker. No new information how they could help | 5:30h|
+| Fr, 14.02.14 | - Examin POSNGram Feature extractor: [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2014_02_14_Intimacy.pdf][Report ]]<br /> - Next step: Better generalization using GermaNet for WSD by using Hyponym structure| 2:15h |
+| Th, 13.02.14 | - Examin GermaNet for WSD: GermaNet uses Senses from Wiktionary. Only few words have an annotated sense -> Wiktionary more suitable<br /> - Using Hyponym structure might be useful. Currently trying to create a feature extractor for this | 1:40h|
+| Tu, 11.02.14 | - Working on WSD for German Text | 6:10h |
+| Sa, 08.02.14 | - Scanning diploma thesis from the study <br /> - Writing classifier based on existing features & annotations <br />- Classified results by hand & compare results to existing classification: [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2014_02_08_Intimacy.pdf][Report]] | 5:25h |
+| Fr, 07.02.14 | - Finishing report for Intimacy labeling: [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2014_02_07_Intimacy.pdf][Report ]]| 2:15h |
+| Tu, 04.02.14 | - Working with UBY <br /> - Adding LIWC & Dependency Feature Extractors | 6:00h |
+| Tu, 01.02.14 | - Time left from January | -2:15h |
+
+
+---+!! January
+| *Date* | *Tasks* | *Time* |
+| Tu, 14.01.14 | - Extending the NGramFeatureExtractor to be able to work with stem/lemma. <br> - Extending the NGramFreatureExatractor to multi view <br> - Classification of the event (positive / negative). Currently at ~80% correct identified <br> - Getting more familiar with Weka classifiers <br> -Having some issues with DKPro & Dependencies | 8:40h |
+| Fr, 17.01.14 | - Writing simple polarity annotator / feature extrator and adding it to the pipeline | 1:45h |
+| Tu, 21.01.14 | - Writing classifier for text intimacy classification (baseline 61%, best result: 82%)<br />- Checking the Zeit Developer API for which information are available: [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2014_01_21_Zeit_Developer_API.pdf][Summary ]] <br />-Making first statistiks for the Zeit Corpus|  5:35h |
+| Th, 23.01.14 | - Start writing a crawler for the Zeit corpus | 2:10h |
+| Fr, 24.01.14 | - Working with Tahir on the Pythagoras Experiment, brainstorming on more powerfull features<br />- Finishing Zeit Newspaper Corpus crawler. About 1000 articles crawled and stored in the database<br />- Some statistics for the Zeit Corpus: [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2014_01_24_Zeit_Statistics.pdf][Link]]  | 8:05h |
+| Sa, 25.01.14 | - Some work with TC on the psych. dataset (adding/adapting feature extactors) | 2:00h |
+| Su, 25.01.14 | - Equalizing the dataset for the intimacy dataset. Rerun test and refine feature extractors. | 1:30h |
+| Tu, 28.01.14 | - Working on the psychology dataset. Adding & testing additional features<br />- Reading papers from other researchs on PANAS values | 6:30 h|
+| We, 29.01.14 | - Importing UBY & getting familiar with UBY<br />- Reading papers for LSA | 1:30h |
+| *January* | *Sum hours:* | *37:45h* |
+
+---+!! December
+%EDITTABLE{format="| text,20| text,20| text,20|"}%
+| *Date* | *Tasks* | *Time* |
+| Tu, 3.12.13 | Administration, installing Software etc | 1.5 h |
+| Fr, 6.12.13 | -Reading thesis about the dataset / get familiar with the dataset <br> -Installing DKPro and ClearTK. Run first code examples for UIMA and for text classification <br> -Reading recommended papers from James Pennebaker | 4 h |
+| Su, 8.12.13 | - Continue reading  papers by J. Pennebacker <br> -Trying to fix various bugs with DKPro TC installation (not successful yet) (Import of demos not working. Bug with path names in windows, not handling not allowable characters in the path like C:\ ) <br> -Export SPSS Data to Text | 3h |
+| Tu, 10.12.13 | -Understanding the SPSS data (variables & PANAS scales)<br>-Created first plots on background distribution (age, sex, nationality, anger)<br>-Learning how to use SPSS for basic statistical analysis<br>-Computing correlation between fields<br>-Converted doc files to txt<br>-Convert data set to English<br>-Installing DKPro TC<br>-[[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2013_12_10_Distribution_and_Correlation.pdf][Output of SPSS that shows distributions & correlations ]] | 7h |
+| Fr, 13.12.13 | -Finishing up with correlation analysis of the data<br>- Playing around with the dkpro-tc demo (Twentynewsgroup) & running also the other demos<br>- Started to write the reader for out dataset | 4h |
+| Sa, 14.12.13 | -Finishing the corpus data reader<br>-Baseline with single labels is running<br>-Still struggeling getting the regression code to run | 1.5h |
+| Tu, 17.12.13 | -Converting from label classification to regression<br>- Baseline errors: Mean Abs Error: 0.57, Root Mean Sqrd Error: 0.73<br>-Reading papers about textual emotion & affect<br> - Dataset not really suitable to predict from the text input the anger value of that person (dataset way too sparse, only 3 candidates that were moderatly angry, all other were not really angry)<br>-Examing other PANAS values to find a suitable prediction scenario | 5h |
+| Fr, 20.12.13 | -Examing dataset1<br>- See [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2013_12_20_Summary_of_Dataset1.pdf][Summary ]]for the findings. See [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2013_12_20_Dataset1_Correlations.xls][Correlation.xls]] for a correlation analysis between simple features and the personality of the participants | 3h |
+| Sa, 21.12.13 | -Cleanup of the dataset1 raw data: Adapt layout of the data such that it can be accessed by a program. Remove 'bad quality' entries. Mapping of the raw data with the SPSS data for the negative events (positive events are missing) | 1.5h |
+| Mo, 23.12.13 | -Inserting the ids into the raw data for the group that should describe a positive event<br>-Converting of the data to SQLite<br>-Start writing Java reader for the dataset1<br>-Solving issues with custom annotation classes under dkpro tc| 4.5h|
+| Sa, 28.12.13 | -Setting up baseline for classification which event (positive or negative) participants describe<br>-Getting familiar with the different existing feature extractors<br>-Trying to extend the ngram feature extractor such that it uses stems/lemma instead of the word (work is ongoing)| 5h|
+| *December* | *Sum hours:* | *40h* |
+
+
+%META:FILEATTACHMENT{name="2013_12_10_Distribution_and_Correlation.pdf" attachment="2013_12_10_Distribution_and_Correlation.pdf" attr="" comment="" date="1386691522" path="2013_12_10 Distribution and Correlation.pdf" size="42801" user="reimers" version="1"}%
+%META:FILEATTACHMENT{name="2013_12_20_Summary_of_Dataset1.pdf" attachment="2013_12_20_Summary_of_Dataset1.pdf" attr="" comment="" date="1387560766" path="2013_12_20_Summary of Dataset1.pdf" size="281562" user="reimers" version="1"}%
+%META:FILEATTACHMENT{name="2013_12_20_Dataset1_Correlations.xls" attachment="2013_12_20_Dataset1_Correlations.xls" attr="" comment="" date="1387560791" path="2013_12_20 Dataset1_Correlations.xls" size="70144" user="reimers" version="1"}%
+%META:FILEATTACHMENT{name="2014_01_21_Zeit_Developer_API.pdf" attachment="2014_01_21_Zeit_Developer_API.pdf" attr="" comment="" date="1390319223" path="2014_01_21 Zeit Developer API.pdf" size="390639" user="reimers" version="1"}%
+%META:FILEATTACHMENT{name="2014_01_24_Zeit_Statistics.pdf" attachment="2014_01_24_Zeit_Statistics.pdf" attr="" comment="" date="1390579579" path="2014_01_24_Zeit Statistics.pdf" size="305166" user="reimers" version="2"}%
+%META:FILEATTACHMENT{name="2014_02_07_Intimacy.pdf" attachment="2014_02_07_Intimacy.pdf" attr="" comment="" date="1391804116" path="2014_02_07_Intimacy.pdf" size="301722" user="reimers" version="1"}%
+%META:FILEATTACHMENT{name="2014_02_08_Intimacy.pdf" attachment="2014_02_08_Intimacy.pdf" attr="" comment="" date="1391939387" path="2014_02_08_Intimacy.pdf" size="550802" user="reimers" version="1"}%
+%META:FILEATTACHMENT{name="2014_02_14_Intimacy.pdf" attachment="2014_02_14_Intimacy.pdf" attr="" comment="" date="1392394895" path="2014_02_14_Intimacy.pdf" size="307984" user="reimers" version="1"}%
+%META:FILEATTACHMENT{name="2014_02_18_Intimacy.pdf" attachment="2014_02_18_Intimacy.pdf" attr="" comment="" date="1392740802" path="2014_02_18_Intimacy.pdf" size="423882" user="reimers" version="1"}%

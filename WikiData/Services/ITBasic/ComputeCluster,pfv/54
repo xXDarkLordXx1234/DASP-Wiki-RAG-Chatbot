@@ -1,0 +1,188 @@
+%META:TOPICINFO{author="alles" comment="" date="1695368359" format="1.1" reprev="51" version="54"}%
+%META:TOPICPARENT{name="WebHome"}%
+<div style="float:right;background-color:white; z-index:999; border: solid 2px lightblue;">
+---++++ !!Content
+%TOC%
+</div>
+
+---+!! Slurm Compute Cluster
+
+---++ *%RED%Currently known issues%ENDCOLOR%*
+| *first reported* | *when we'll fix it* | *issue description* |
+| 01/2023 | next downtime - 09/23 | accessing the private IP address of the login node does not work (e.g. for debugging, accessing ports other than SSH/22) |
+| 08/2023 | 09/23 | the walktrough usage example needs to be adapted to the new qos and partitions |
+| 08/2023 | ongoing | the documentation / FAQ might be missing / incorrect / not complete at some points - if you feel so please let us know via ticket so we can add things.|
+
+---++ *%BLUE%[[ComputeClusterFAQ][👉 Frequently Asked Questions 👈]]%ENDCOLOR%*
+
+<div style="border: solid 2px lightblue; font-weight:800; padding: 5px">
+<p align="left">
+*Check [[ComputeClusterFAQ][this FAQ]] first before opening a ticket with system-admin!*
+</p>
+</div>
+
+---++ *%BLUE%[[https://public.ukp.informatik.tu-darmstadt.de/slurm-tutorial/slurm-tutorial.zip][👉 Walkthrough Usage Example 👈]]%ENDCOLOR%*
+
+<div style="border: solid 2px lightblue; font-weight:800; padding: 5px">
+<p align="left">
+Please <a href="https://public.ukp.informatik.tu-darmstadt.de/slurm-tutorial/slurm-tutorial.zip">download</a> and follow this tutorial project for our Slurm compute cluster to get started!
+
+*We recommend to also read on first and understand the basic principle of SLURM, accounts, partitions and qos as well as how to use the central storage.*
+</p>
+</div>
+
+---++ <u>Principle of Slurm</u>
+Slurm is a job scheduling service. With Slurm, one performs compute experiments by connecting to a headnode where one can submit a compute job into a queue of compute jobs. Slurm prioritizes compute jobs in a way that every user gets his/her share of the compute resources that he/she deserves. If a compute job has a high enough priority and a node (== compute server) with sufficient resources is free, Slurm will automatically start the compute experiment. Once a job finishes, an email notification is sent.
+
+---++ <u>The Cluster Headnode (slurm / slurm-login)</u>
+---+++ Resource limits
+
+   * /home folder
+      * Your home folder of the login node is not reachable from compute nodes, hence you need to put your code and data on our [[ComputeClusterStorage][central cluster storage]]. 
+      * The space is limited in =/home=, so please do not store more than 10GB, better not more than 1GB in your home folder!
+   * CPU and RAM
+      * Every user can use 2 CPU cores and 2 GB of RAM on the login node
+      * If you run intensive jobs here (what you should NEVER do) you might break your ssh session to the login node. If you do so open up a [[https://ticket.ukp.informatik.tu-darmstadt.de][ticket]] with system-admin.
+      * For installing and building things you can submit e.g. a cpu job to a compute node to avoid those issues. 
+
+---+++ Access: TU Da wide
+
+   * The cluster login node is reachable by SSH at =slurm.ukp.informatik.tu-darmstadt.de= from within the network of TU Darmstadt
+   * This includes UKP network
+   * If you work remotely... 
+      * and are a **student**, consider using the [[https://www.hrz.tu-darmstadt.de/services/it_services/vpn/index.en.jsp][HRZ VPN]]
+      * and are a **researcher** of UKP Lab consider using the [[/Services/Lab/VpnService][UKP VPN]]
+
+---+++ Access: special for UKP Lab
+
+%RED%currently the is no access to the private IP of the login node - see currently known issues at the top of this page.%ENDCOLOR%
+
+---++ <u>GPUs and Server in the Cluster</u>
+%INCLUDE{"Services.Campus.ComputeClusterGPUs"}%
+
+---++ <u>Storage: Moving code and data into the cluster</u>
+
+See [[ComputeClusterStorage]].
+
+---++ <u>Quota, Accounts, Partitions and Resources</u>
+
+Before explaining how user quotas work, you need to learn about accounts in Slurm.
+
+---+++ !FairShare
+Account quotas in Slurm are not hard limits. Instead, every account has a !FairShare value between 0.0 and 1.0 attached to it. Jobs can be submitted independent of the !FairShare value. However, *jobs by accounts with higher !FairShare value are prioritized by the scheduler*. By running jobs, the !FairShare value decreases depending on the duration and the resource requirements of the jobs. The !FairShare value recovers over time (it has a half-life of two weeks).
+
+%INCLUDE{"ComputeClusterDetermineFairShare"}%
+
+---+++ Accounts
+Slurm tracks resource usage via so-called *accounts*. Slurm accounts work a bit like bank accounts, i.e. a single user can have multiple accounts.
+The total compute power of the cluster is distributed across all accounts, meaning every account receives a percentage of the total compute power. Your affiliation (the lab you belong to) and your employment relation (researcher or student) decides over your accounts and their quota. If your affiliation is UKP/ATHENE, you will have one UKP account and one ATHENE account, giving you a larger share of the total compute power.
+
+You can see your accounts via =sshare -U=. Add =--account=SOME_ACCOUNT= to your =sbatch= or =srun= call to run using a different account. Note: resource limits in partitions (see below) apply _per user_, not _per account_.
+
+The following accounts exist and will be applied like follows:
+
+| *Lab* | *%GREEN%UKP Lab%ENDCOLOR%* ||| *ATHENE* ||| *TK Lab* ||
+| *Account* | ukp-researcher | ukp-student | ukp-gpu-large | athene-researcher | athene-student | athene-gpu-large | tk-researcher | tk-student |
+| *Assigned to* | all UKP researchers | for UKP students on supervisor request (account form) | UKP researchers on special request with a very good reason for limited time| all ATHENE researchers (in adition to UKP researcher if both applys) | for ATHENE students on supervisor request | ATHENE researchers on special request with a very good reason for limited time | all TK researchers that request cluster access | for TK students on supervisor request |
+| *Allowed qos* | cpu, cpu-long, gpu, yolo, interactive | cpu, gpu-small, yolo, interactive | gpu-large | cpu, cpu-long, gpu, yolo, interactive | cpu, gpu-small, yolo, interactive | gpu-large | cpu, cpu-long, gpu, yolo, interactive  | cpu, gpu-small, yolo, interactive |
+| *Default qos* | gpu | gpu-small | gpu-large | gpu | gpu-small | gpu-large | gpu | gpu-small |
+
+For access to account *-gpu-large open up a ticket at UKP system-admin, we'll check your application. As this is another account, you need to act like mentioned above: add =--account=SOME_ACCOUNT= to your =sbatch= or =srun= call.
+To know more on partitions and QOS, please read on.
+
+---+++ Partitions and Resource Limits (QOS)
+
+When submitting a job in Slurm, one has to specify a *partition* into which the job will be queued. We have several partitions in our cluster for different purposes and hardware. Some are for gpu server only, some for cpu server only and for day-in-day-out experiments, another one is for interactive jobs with srun and so on. The partition =gpu= is default for all jobs. *If you are athene or tk related, you need to specify another partition in your jobs.*
+
+Basically, the partition just selects the possible nodes briefly. 
+
+---++++ Partitions
+The follwoing partitions exist:
+
+| *Lab* | *%GREEN%UKP Lab%ENDCOLOR%* ||| *ATHENE* || *TK Lab* ||
+| *Available Partition* | gpu (default) | cpu | yolo | gpu-athene | yolo | gpu-tk | yolo |
+| *Permission for* | UKP Researcher & Students | UKP Researcher & Students | UKP Researcher & Students | ATHENE Researcher & Students | ATHENE Researcher & Students | TK Researcher & Students | TK Researcher & Students |
+
+also check using =scontrol show partition=
+
+---++++ QOS
+QOS (quality of service) controls the runtime and amount of resources a user can use for a single job and in total of one of those partitions. 
+
+*When submitting a job, one can request different QOS settings. The QOS influences the resource limits.*
+
+The following QOS limits apply:
+
+| *QOS* | *cpu* | *cpu-long* | *gpu* | *gpu-large* | *gpu-small* | *yolo* | *interactive* |
+| *Allowed Accounts* | *-researcher, *-student | *-researcher | *-researcher | *-gpu-large | *-student | *-researcher, *-student | *-researcher, *-student |
+| *Allowed Partitons* (depending on account, see above) | cpu, gpu-tk, gpu-athene | cpu-long, gpu-tk, gpu-athene | gpu, gpu-tk, gpu-athene | gpu, gpu-tk, gpu-athene | gpu, gpu-tk, gpu-athene | yolo | cpu, gpu, gpu-tk, gpu-athene |
+| Max nodes per job | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| Max logical CPUs per job | 64 | 64 | 16 | 256 | 16 | unlimited | 16 |
+| Max logical CPUs per user | 128 | 64 | 64 | 256 | 64 | unlimited | 64 |
+| *Min* GPUs per job %N% | 0 | 0 | 1 | 1 | 1 | 0 | 0 |
+| Max GPUs per job | 0 | 0 | 4 | 8 | 2 | unlimited | 2 |
+| Max GPUs per user | 0 | 0 | 4 | 8 | 2 | unlimited | 2 |
+| Max memory per job (GB) | 256| 256 | 256 | 1024 | 256 | unlimited | 256 |
+| Max memory per user (GB) | 512 | 256 | 512 | 1014 | 256 | unlimited | 256 |
+| Max job duration (days) | 3 | 7 | 3 | 1 | 3 | 3 | 8 hours |
+
+---++++ Examples
+To run a job in a specific partition use =-p PARTITIONNAME=. 
+
+   * <u>For example, if you are associated with ATHENE</u>, you would want to use 
+      * <verbatim>sbatch -p gpu-athene -a athene-researcher your_script.sh</verbatim>
+      * *Explanation:* 
+      * There is no need to specify the qos, as "gpu" is the default qos for account athene-researcher
+      * But might need to specify the account using =-a athene-researcher= to use the correct account if you have been assigned multiple ones (remmber to check your accounts using =sshare -U=)
+
+   * <u>For example, if you are associated with UKP and want to use the CPU partition</u>, you would want to use 
+      * <verbatim>sbatch -p cpu -q cpu your_script.sh</verbatim>
+      * or
+      * <verbatim>sbatch -p cpu -q cpu-long your_script.sh</verbatim>
+      * *Explanation:* 
+      * You need to specify the QOS using =-q cpu= or =-q cpu-long=, as the default QOS for account "ukp-resarcher" is "gpu" which match the "cpu" partition!
+
+   * <u>For example, if you are associated with UKP and want to use "gpu-large" QOS (on partition "gpu")</u> after your application for account "ukp-gpu-large" is complete, you would want to use 
+      * <verbatim>sbatch -p gpu -a ukp-gpu-large your_script.sh</verbatim>
+      * *Explanation:* 
+      * You need to specify the account using =-a ukp-gpu-large= to use the correct account as you now have multiple ones ("ukp-gpu-large" and maybe "ukp-researcher", remmber to check your accounts using =sshare -U=)
+      * There is no need to specify the QOS, as "gpu-large" is the default qos for the account "ukp-gpu-large"
+
+---++++ Special Partitions / QOS
+---+++++ The yolo partition
+The =yolo= partition is useful if you have many medium to low priority jobs which are not time-critical. It is available for researchers and students.
+
+Jobs in this partition:
+   * will utilize any currently idling and unclaimed compute resources of the cluster and
+   * will *bypass all resource limits* (max GPUs per user, etc.) but
+   * will be *cancelled and requeued if a higher priority job from a different partition demands resources*
+The =yolo= partition contains *all* nodes in the cluster, i.e. it makes it possible to run jobs on compute nodes from other labs users normally would not have access to. Jobs are limited to a runtime of 3 days, and !FairShare is computed with the same rates as usual. For the sake of the climate, please make use of checkpointing to avoid pointless recomputation in case your job gets cancelled.
+
+To submit a job in the =yolo= partition, run<verbatim>
+sbatch -q yolo -p yolo myscript.sh
+</verbatim>
+
+---+++++ The interactive QOS
+The =interactive= qos is useful if you want to run interactive jobs using srun. It is available for researchers and students.
+
+Jobs submitted to any qos / partition that use *srun* will automatically moved to the interactive qos to keep the cluster resources free. 
+
+Jobs in this partition:
+   * will run max. 8 hours
+
+A detailed overview of all available partitions is shown with =scontrol show partition=
+
+---++ <u>Monitoring</u>
+
+Visit https://monitoring.ukp.informatik.tu-darmstadt.de to view the load of the whole cluster and individual nodes. This page is accessible from within the TU Darmstadt network.
+
+---++ <u>Slurm Command Documentation / Ext. References</u>
+
+| *Command* | *Purpose* | *Example* | *Documentation* |
+| =srun= | Schedule a compute job. Executed in the foreground (directly on your terminal). | =srun --pty bash=  | [[https://slurm.schedmd.com/srun.html]] |
+| =sbatch= | Schedule a compute job. Executed in the background. | =sbatch myscript.sh= | [[https://slurm.schedmd.com/sbatch.html]] |
+| =squeue= | Show the job queue and status. | =squeue --me= | [[https://slurm.schedmd.com/squeue.html]] |
+| =scancel= | Cancel a job. | =scancel [job_id]= | [[https://slurm.schedmd.com/scancel.html]] |
+| =sinfo= | Show status of cluster nodes and available resources. | =sinfo --Format=nodehost,statelong,cpus,memory,gres= | [[https://slurm.schedmd.com/sinfo.html]] |
+| =sshare= | Display accounts and !FairShare. | =sshare -a= | [[https://slurm.schedmd.com/sshare.html]] |
+
+%META:TOPICMOVED{by="bugert" date="1570804848" from="Services.ComputeCluster" to="Services/Campus.ComputeCluster"}%

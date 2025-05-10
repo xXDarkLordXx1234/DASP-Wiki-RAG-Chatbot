@@ -1,0 +1,294 @@
+%META:TOPICINFO{author="meichler" comment="" date="1559640371" format="1.1" reprev="11" version="13"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Developing an Inspector for Multilingual Word Representations
+
+*Start date:* 2019-02-06
+
+*Supervisor:* Dr. Gözde Gül Şahin
+
+---++ Meeting 2019-06-04
+
+   * POS and DEP done
+      * Issue with French w2v
+      * Try [[https://github.com/gozdesahin/dataset_compilation/blob/master/data_util/utf_check.py]]
+   * NER almost done
+      * Missing Czech data (send email to Gözde)
+   * Get word embedding extraction to work with different architectures ASAP
+      * Test forward only on encoder
+      * Does not have to generalize can also be manual support for each encoder
+   * System demo paper
+      * Do basic explanation Gözde will do the polishing
+      * Test with @stud email address
+   * Thesis draft date is 2019-07-16
+
+---++ Meeting 2019-05-23
+
+   * Going live checklist
+      * Imprint, privacy (similar to [[https://fileserver.tk.informatik.tu-darmstadt.de/LectureRecordings/TK1/WS1819/]]), GitHub
+      * Firewall (might take some time)
+      * Get encoder for all models (Seq2Seq, Seq2Vec, and PyTorch wrappers for each)
+         * Issue with lower level PyTorch modules e.g. Linear regarding input dim
+         * Add tests
+      * Add missing languages
+      * Replace “Some text.”
+      * Move to percentage for accuracy
+      * Do SEO optimization
+      * Test different AllenNLP versions
+         * Check AllenNLP version number
+   * Next iteration
+      * Additional epochs
+      * Run celery service on startup
+   * Server permissions Gözde for reboot (+ check PostgreSQL for user #)
+      * Works
+   * Open source now
+      * Additional documentation + README.md
+   * Experiments
+      * w2v vector sizes
+      * Don’t have to extract
+   * Thesis
+      * System demo paper web application part similar to thesis
+      * State privacy standpoint and why storing data is ok (with disclaimer not a lawyer)
+      * Give background on classifiers, downstream
+
+---++ 2019-05-21
+
+   * Added TLS encryption to the server
+   * Developed asynchronous probing using Celery
+      * Celery currently does not run on startup
+      * Django Celery Results backend stores results for free which enables sharing
+   * Switched from SQLite to PostgreSQL due to stability issues
+   * Updated server documentation
+   * Fixed probing of static embeddings by lowercasing tokens
+   * Continued experiments
+      * Added DEP
+      * Working on NER
+   * ONNX importing is currently not available in PyTorch but coming soon [[https://github.com/onnx/tutorials]]
+   * Send Allen AI contact draft to Gözde
+
+---++ Meeting 2019-05-14
+
+   * Final talk will probably switch to 2019-07-09 to get more time for user studies
+   * Found and fixed stability issue in model evaluation
+   * Send directory with vector files to Gözde
+   * Lowercase static vector files
+   * Ignore issue where user could upload German model and select Arabic language
+   * Work on experiments
+      * Add DEP, NER
+      * Look for semantic tasks (XNLI, CQA, dialog data)
+      * Check data which was published
+   * Check ONNX format
+   * Test multiple model types in linspector
+   * Prepare user case model with multiple layers for case study
+      * What do we want to measure? (e.g. accuracy, time)
+   * Contact Allen AI for help with finding users for case study
+      * [[https://groups.google.com/a/allenai.org/forum/#!forum/allennlp-users]] (Inactive group)
+
+---++ 2019-05-06
+
+   * Finished demo and presentation
+   * Gave midterm talk
+      * Feedback:
+         * Default probing tasks could be selected automatically depending on classifier
+         * Privacy should be considered for other institutions uploading their models to us
+         * Custom AllenNLP classifiers cannot easily be supported
+         * Look at ONNX format for model upload
+         * Add export functionality to results page
+         * Use crowd sourcing for user tests
+            * Questions and static HTML pages
+            * Is there an AllenNLP user group?
+   * Keep track of Google sheet [[https://docs.google.com/spreadsheets/d/1hXxceFGbP-R9VUzHB_4mzg8zNfAnb9SZJY92yF9YLBc/htmlview#gid=0]]
+   * Include privacy disclaimer e.g. “We don’t keep your model, if you don’t trust us check our open source code, or run a local instance”
+   * Allow to probe multiple layers at the same time but not multiple models (have to draw the line somewhere)
+
+---++ Meeting 2019-04-30
+
+   * Looked over demo and midterm slides
+      * Discussed what is important for researchers to see (e.g. related work, experiments)
+   * Confirmed that Odd Feat and Same Feat probing tasks need different classifier
+   * Gözde will ask again for TLS certificate
+   * Next focus for web application should be stability with async probing and unit tests
+   * Project can be open sourced early if necessary
+   * Experiments should run soon
+
+---++ Meeting 2019-04-16
+
+   * Looked at current system architecture
+      * Finalized details on how the model is trained
+         * Load pre trained embedding either directly or extracted from model
+         * Embedding layer won’t be trained
+         * Train linear layer or MLP with intrinsic data
+   * Will train model then set up Django website and integrate LINSPECTOR for the demo
+   * Send pull request for improved bash scripts at some point
+   * Midterm talk
+      * Motivation
+      * Describe task
+      * Previous work + short AllenNLP introduction
+      * What am I doing (show system architecture chart)
+      * Demo (shortened or screenshots)
+         * Show basic visualization to highlight that we will have some kind of visualization
+      * Present config options in screenshot
+      * ~15min talk and ~5min questions
+      * Prepare an abstract
+
+---++ 2019-04-15
+
+   * Automated experiments
+      * Forked LINSPECTOR and simplified scripts
+      * Added automatic download for fastText and BPE embeddings
+      * Prepared metadata for my language candidates
+   * Developed a model with support for pre trained embeddings for probing tasks
+
+---++ Meeting 2019-04-09
+
+   * Agreed on Arabic, Armenian, Czech, French, and Hungarian for experiments
+      * w2v, fastText, BPE (no ELMo)
+      * Create additional vectors with dim 50, 100, and 200
+   * Provide three UI suggestions
+      1 Best weights only using =archive_model=
+      2 Upload additional epoch files manually
+      3 Upload all epochs with automatic selection
+   * For midterm talk show a demo (May 2nd)
+      * Do upload
+      * Do classification
+      * Show results
+   * Final talk will probably be on June 25th
+   * Work with German POS as a starter
+      * Gözde will add an entry to the Wiki for Barney and Krusty (check available GPUs using =nvidia-smi=)
+      * Create a linear classifier for each probing test
+   * Gözde will request a TLS certificate for the web server
+
+---++ 2019-04-08
+
+   * Looked at decision trees regarding Zhang et al. (2019)
+      * [[https://blog.twitter.com/engineering/en_us/topics/open-source/2017/Introducing-Torch-Decision-Trees.html]]
+      * [[https://scikit-learn.org/stable/modules/tree.html]]
+      * Feels like it might not fit within our scope
+   * Did setup of LaTeX with thesis template
+   * Created a setup for vocabulary processing and model training
+
+---++ 2019-04-03
+
+   * AllenNLP archive_model only saves the final model
+      * The parameter =files_to_archive= allows to supply a dictionary of additional files
+      * This raises file size and execution time substantially
+      * To get and analyze all epochs custom code by the user or submission of a manual zipped archive would be required which is more error-prone
+      * See [[https://github.com/maexe/linspector-proposal/blob/master/get_representation.py]]
+      * Once all metrics_epoch_x.json and model_state_epoch_x.th files are available it would be easy to select e.g. 3 epochs with the biggest jump in accuracy by looking at the metric files
+   * A Django application with Apache and mod_wsgi is up and running
+      * [[http://linspector.ukp.informatik.tu-darmstadt.de/static/hello.html]] (reachable from within the UKP network)
+      * Documented server setup [[https://github.com/maexe/linspector-proposal/blob/master/docs/django.md]]
+   * Started experiments for Portuguese, UD, fastText to understand LINSPECTOR
+
+---++ 2019-03-28
+
+   * Found a way to get all modules of a model so the user can select one for probing
+   * Looked at different language candidates
+   * As suggested Arabic (9), Armenian (9), Czech (5), French (7), Hungarian (8), and Portuguese (8) seem to be the best candidates (# of probing tests in brackets)
+      * Only French and Portuguese share a family so one of these could be eliminated
+      * Except for Hungarian all candidates are fusional languages
+         * With Finnish and Turkish the most reasonable agglutinative candidates were already tested
+         * Quechuan languages are also agglutinative and provide a high coverage of probing tasks but are low resource (only fastText and no Wikipedia)
+      * Did not find pre-trained embeddings for all candidates (except fastText) but all have 100,000+ Wikipedia articles
+      * All candidates have POS, DEP, NER and other corpora + Arabic and Czech have SRL
+
+---++ Meeting 2019-03-19
+
+   * Decided on PyTorch hooks to get representations
+   * Find a way to select all given layers from a model
+   * Start with a linear classifier, try decision trees later on for probing tasks
+      * Check the model config and lowercase tokens if they aren’t already
+      * Dynamically adjust the model config based on embedding size
+   * Analyse automatically which epochs should be probed (like up to 3 in total)
+   * Think about how to visualize results without doing downstream tasks (too expensive)
+   * Think about alternatives for UI, parameters, and visualization so we can provide options to researchers in a minor UI study
+   * Think about and document how others could extend the project to sentence embeddings in the future
+   * Build a framework to run experiments
+      * More details in a future email form Gözde
+   * Server access to barney and krusty was granted
+
+---++ 2019-03-18
+
+   * Finished PyTorch tutorials as discussed
+   * Looked at AllenNLP dataset readers and how to implement a custom reader
+      * Seems fairly easy, basically applying a combination of string operations
+      * A reader is used to create a vocabulary which is fed as a default param to each model
+   * Found PyTorch hooks to get the representation input and output of a =torch.nn.Module= which seems like a elegant solution to probe individual layers
+      * Build a demo based on AllenNLP SimpleTagger for POS and intrinsic vocabulary
+      * See [[https://github.com/maexe/linspector-proposal/blob/master/get_representation.py]]
+
+---++ Meeting 2019-03-11
+
+   * Discussed and decided on AllenNLP as an implementation basis based on tech demo
+   * Overview of existing code, how probing is currently implemented, and how a future implementation should look
+   * Decided on early May for midterm, and early to mid June for final presentation
+   * Tasks:
+      * Find out how AllenNLP reads files
+      * Convert vocabulary in 2-3 file formats
+      * Make AllenNLP SimpleTagger work for German and Case
+      * Use [[https://github.com/gozdesahin/dataset_compilation/blob/master/data_util/get_intrinsic_vocab.py]] to write a file and check how simple tagger reads this
+      * Get encoding from AllenNLP seq2seq encoder from this model
+      * Go through "Deep Learning for NLP with Pytorch" first 4 tutorials [[https://pytorch.org/tutorials/beginner/deep_learning_nlp_tutorial.html]]
+
+---++ 2019-02-26
+
+   * Got to know the basics of the AllenNLP framework
+   * Tested the possibility of extending AllenNLP models with additional parameters (=probing_layer=, =lang=)
+   * Engineered a small tech demo and drew a flow chart with a potential solution ([[https://github.com/maexe/linspector-proposal]])
+   * I will have to look further into probing and how to handle static embeddings
+
+---++ Meeting 2019-02-20
+
+   * Discussed thesis discription and timeline
+   * Overview of AllenNLP
+   * Tasks:
+      * Setup working environment ([[https://github.com/allenai/allennlp]], [[http://github.com/gozdesahin/dataset_compilation]])
+      * Decide whether to use AllenNLP or own interface
+      * Is AllenNLP extendable?
+      * Provide an abstract idea whether AllenNLP is feasible for WP1
+
+---++ 2019-02-20
+
+   * Scanned and read papers from Google Scholar, RepEval, RepL4NLP, and ICLR
+   * Added some of them to Mendeley with a summary
+   * Yaghoobzadeh et al. (2018) and Bacon and Regier (2018) had some (possibly) interesting ideas for tasks
+   * Put Zhang and Bowman (2019) and Ettinger et al. (2016) on my reading list
+   * Found that I should read up on ELMo and AllenNLP
+
+---++ Meeting 2019-02-06
+
+   * Finished paperwork
+   * Discussed papers
+   * Got first overview of project and datasets
+   * Tasks: Read and gather additional papers
+
+---++ 2019-02-06
+
+   * Read all the stared papers in Mendeley, added summaries to each
+   * Had no real issues reading them except for having to look up some linguistic words
+   * Most interesting papers to me where Köhn (2016) and Burlot et al. (2018) for their multi lingual approaches + Conneau et al. (2018) as an introduction to probing tasks
+   * I did not found Tsvetkov et al. (2015) that useful
+   * Currently looking at Köhn (2015) and Burlot and Yvon (2017) for additional multilingual evaluation systems
+
+---++ Meeting 2019-01-23
+
+   * Finalized web server requirements
+   * Project will be open source on GitHub
+   * Discussed paperwork
+   * Tips on how to find good papers (overview of search engines, workshops, conferences)
+   * Tasks:
+      * Read papers in Mendeley and add a note “which dataset", "which language(s)", "which evaluation method(s)", and "conclusion"
+      * Search additional relevant papers
+      * Think about advanced probing tests
+      * Print and sign paperwork
+
+---++ Meeting 2019-01-17
+
+   * Organization of thesis at UKP Lab
+   * Introduced to topic
+      * Word embeddings
+      * Evaluation methods
+      * Probing tests
+      * Potential definition of work packages
+   * Tasks: Gather requirements for web server
+
+-- Main.MaxEichler - 2019-03-11

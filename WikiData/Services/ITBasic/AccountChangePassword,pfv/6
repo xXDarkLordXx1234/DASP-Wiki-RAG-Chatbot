@@ -1,0 +1,9 @@
+%META:TOPICINFO{author="bugert" comment="reprev" date="1487860788" format="1.1" reprev="5" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Change password
+   * Two options:
+      * Change it via the dedicated [[https://wiki.ukp.informatik.tu-darmstadt.de/pwchange/index.pl][password change webpage]]
+      * Or if your workstation is in the UKP domain, simply use the =passwd= command on the command line
+      <!--* Alternatively log in via ssh to any of our compute servers and use =passwd= on the command line there-->
+
+%META:TOPICMOVED{by="eckart" date="1426602920" from="UKP.AccountChangePassword" to="Services.AccountChangePassword"}%

@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="HakanEroglu" date="1229479860" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="HakanEroglu"}%
+---+ Logbuch
+
+%TOC%
+
+---++ Dezember 2008
+---+++ 16.12.2008
+
+- Implementierung folgender Komponenten:
+   1 *BlogReader* : Erstellung eines CAS-Objects mit Nodes und Edges
+   2 *TransformJUNG.java* : Transformation zu einem JUNG-based Graphen
+   3 *Results*: Komponente zur Berechnung des PageRanks
+   4 *Printer*: Klasse zur Ausgabe der Rankings
+
+Desweiteren Berechnung von "Characteristic Path Length", "Clustering Coefficient"
+
+- ToDo:
+   * Berechnung von "Connectedness"
+   * Berechnung von "Characteristic Path Length for Tags"
+   * Berechnung von "Cumulative probability distribution of node strength"
+
+-- Main.LizhenQu - 16 Dec 2008

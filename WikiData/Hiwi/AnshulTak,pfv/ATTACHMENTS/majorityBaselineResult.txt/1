@@ -1,0 +1,33 @@
+251.0	0.0	
+151.0	0.0	
+402.0
+
+Category: NoBias
+  F         = 0.7687595712098009
+  precision = 0.6243781094527363
+  recall    = 1.0
+  TP        = 251.0
+  FP        = 151.0
+  FN        = 0.0
+
+Category: Biased
+  F         = 0.0
+  precision = 0.0
+  recall    = 0.0
+  TP        = 0.0
+  FP        = 0.0
+  FN        = 151.0
+
+Overall Results (micro-avg)
+  F         = 0.6243781094527363
+  acc       = 0.6243781094527363
+
+Overall Results (macro-avg)
+  acc       = 0.6243781094527363
+  F[macro]  = 0.38437978560490044
+  P[macro]  = 0.31218905472636815
+  R[macro]  = 0.5
+
+
+Acc F1 P R F1 Flaw F1 Good
+0.6243781094527363 0.38437978560490044 0.31218905472636815 0.5 0.0 0.7687595712098009

@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="klamm" comment="" date="1544536899" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "2" }%
+| *Date* |
+| xx.xx.xxxx | xx:x-xx:xx | x | x |
+| xx.xx.xxxx | xx:xx-xx:xx | x | x |
+| insgesamt | / | Stundenzettel und Wiki | x |
+| *Total* | | | %CALC{"$SUM( $ABOVE() )"}% |
+
+-- Main.ChristopherKlamm - 2018-12-11

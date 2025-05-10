@@ -1,0 +1,287 @@
+%META:TOPICINFO{author="NiklasJakob" date="1212686971" format="1.1" version="55"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Logbuch 
+%TOC%
+
+---++ 05.06.2008
+   * Baseline-System weiter bearbeitet. Wikipedia hat Probleme, manche Produkte/Firmen zu finden. Evtl. könnte hier eine Volltextsuche (TD*IDF) helfen.
+   * Innerhalb der einzelnen Relationen müßte man noch besser unterscheiden, z.B: _&lt;Firma&gt; stellt &lt;Produkt&gt; vor._ spezialisieren als: _&lt;Firma&gt; stellt [neue|verbesserte|aktualisierte Version|Ausgabe] von &lt;Produkt&gt; vor._
+
+Grundsatzfrage:
+   * Ist es sinnvoll (für die gesamte Arbeit) nur eine geringe Anzahl von Relationen zu betrachten (max. 10 Stück) und diese genauer zu analysieren? Oder soll das ganze generisch für ganz viele (z.B. >100 Relationen) sein? Im Moment betrachte ich nur die vom am [[#29_05_2008][29.05.2008]] angegebenen.
+      * *NJ*: Ich sehe keinen Vorteil bei einer Detailuntersuchung, werde hier aber mal Rücksprache halten.
+
+---++ 03.06.2008
+Manuelles Erstellen eines Goldstandards für die angegebenen Relationen und die damit extrahierten Sätze. Manche Relationen (z.B. produziert) haben zu einem großen Teil kein Subjekt, da sie im Passiv verwendet werden bzw. Personalpronomen als Subjekt haben. Andere hingegen (z.B. stellt vor) haben sehr viel Aussagekraft.
+
+Bei den Relationen ohne Subjekt könnte es Probleme geben, mal beobachten, was der Dependency-Parser dazu sagt.
+
+---++ 02.06.2008
+   * Implementierung des Baseline-Systems
+      * UIMA-Reader für annotierte !TreeTagger-Dateien (bzw. Annotator, der diese Dateien im CAS annotiert)
+      * Annotator, der alle Nomen in Wikipedia nachschlägt (verwendet die Wikipedia-API) und schaut, ob es ein Unternehmen/Hersteller oder ein Produkt ist.
+      * Dieser Ansatz findet sehr wenige Sachen (wahrscheinlich einstelliger Prozentbereich, ich werde morgen beginnen, den manuellen Goldstandard erstellen und schauen, was gefunden werden kann). Teilweise sind Sachen in komische Kategorien einsortiert, hier hilft evtl., den kompletten Artikel zu durchsuchen, mal überlegen, ob das sinnvoll ist.
+      * Zusammengesetzte Wörter werden noch nicht gefunden "Game Boy Advance" sind im Moment drei Wörter, die einzeln nicht in Wikipedia stehen, als Wortgruppe aber schon -> aufeinanderfolgende Nomen gruppieren.
+
+---++ 30.05.2008
+   * Baseline-System: 
+      1 Alle Sätze mit bestimmten Relationen finden, z.B. "produziert", "stellt ... vor"
+      1 Mit !TreeTagger annotieren
+      1 Nomen vor und hinter der Relation finden und auswerten
+      * Geht prinzipiell, wird aber schwierig, wenn Schachtelsätze, lange Sätze, Passivkontruktionen, umgestellte Sätze vorhanden sind (~99% der Sätze).
+      * Es ist mehr Arbeit nötig:
+         * z.B. "von" ist nützlich 
+         * Alle gefundenen Nomen/Named Entities bei Wikipedia nachschlagen, ob es eine Firma/ein Produkt ist, alle anderen NN/NE ignorieren: Template: __&lt;Firma&gt;__ *produziert* __&lt;Produkt&gt;__, __&lt;Firma&gt;__ *stellt* __&lt;Produkt&gt;__ *vor*, analog dazu für die anderen Relationen entsprechende Templates.
+         * Wenn ein Produktname/Firmenname aus mehreren Namen besteht, muß das berücksichtigt werden (z.B. Google verwenden)
+
+Zusammengesetzte Namen bei Google finden:
+   * <strike>"Microsoft Writer"</strike> vs "Microsoft" "Writer": 4.210 vs 1.700.000 Treffer: *0,2%*
+   * *"Microsoft Word"* vs "Microsoft" "Word": 37.700.000  vs 48.500.000 Treffer: *77%*
+   * *"OpenOffice Writer"* vs "OpenOffice" "Writer": 247.000 vs 428.000:  *57%*
+   * <strike>"OpenOffice Word"</strike> vs "OpenOffice" "Word": 31.000 vs 503.000: *6%*
+      * *NJ*: Identifiziert die NER Komponente diese Begriffe als getrennte Entitäten oder woraus resultiert das Problem?
+      * *AP*: Ja, die einzelnen Wörter werden als Nomen (NN) oder Named Entity (NE) erkannt. Wenn mehrere davon hintereinander kommen, sollte untersucht werden, ob sie zusammengehören und einen Begriff bilden.
+         
+
+---++ 29.05.2008
+   * Ein paar Relationen und ihre Anzahl:   
+      * 342 * stellt * vor
+      * 295 * benötigt *
+      * 213 * besteht aus *
+      * 162 * produziert *
+      * 52 * läuft unter *
+      * 36 * stellt * her
+   * =grep -rh --include=sentences.*.txt "stellt [^.]* vor" . > stellt_vor.txt=
+
+   * Etwas Statistik: ca. 170.000 Sätze; 11,68 Sätze pro Text (Naives Splitten der Sätze mit =/"?[.?!\n:]"?[\n ]+/=)
+
+---++ 27.05.2008
+   * Was alles gefunden werden soll (= _Templates_ nach [1]):
+      1. *NE rel* __NE__ Das Subjekt und die Relation ist bekannt, das Objekt wird gefunden (Sony produziert _Y_.)
+      1. *NE _rel_ NE* die Named Entities sind bekannt, die Relation wird gefunden (Sony _pinnöpelt_ Festplatten.)
+      1. __NE__ *rel NE* die Relation und das Objekt ist bekannt, das Subjekt wird gefunden (_X_ stellt Festplatten her.)
+      1. __NE__ *rel* __NE__ die Relation ist bekannt, zwei Named Entities werden gefunden (_X_ stellt _Y_ her.)
+      1. *NE* __rel NE__ Das Subjekt ist bekannt, die Relation und das Objekt werden gefunden (Sony  _pinnöpelt_ _Y_.)
+   
+   * Gefundene Named Entities (bzw. _Entities of Interest_) und Relationen (Verben) bzw. die Synonyme der Relationen werden im Wissensnetz nachgeschlagen. Wenn sie vorhanden sind, so wird das passende der 5 Templates angewendet und entsprechend mit vorhandenem und neu gefundenem gefüllt und ausgegeben.
+
+[1] Computerlinguistik und Sprachtechnologie : eine Einführung / hrsg. von Kai-Uwe Carstensen
+
+---++ 26.05.2008
+   * Ich habe begonnen, ein Baselinesystem bzw. einen Goldstandard zur Evaluation zu erstellen. Im Moment bin ich mir noch nicht ganz sicher, was alles da rein soll, da die Texte ziemlich heterogen sind und pro Text nur 1-2 Fakten extrahiert werden können (wenn überhaupt). 
+      * In den Texten kommt ewas vor wie "Firma X _stellt_ auf der Messe Y das neue Produkt Z _vor_", dann folgen endlose Produktbeschreibungen. Im Prinzip bin ich nur am ersten Satz interessiert, den Rest kann ich dann ignorieren, da mich die Produkteigenschaften nicht interessieren. 
+      * Die verschiedenen Fakten sind meist über mehrere Sätze verteilt, hier muß ich schauen, wie ich vorgehen kann, z.B. "Die lange angekündigte Xbox ist endlich erschienen. Mit x Monaten Verspätung stellt Microsoft seine neue Spielkonsole vor."
+         * *NJ*: Ich fürchte ohne ein zusätzliches Wissensnetz welches dir die Information liefern kann dass Xbox eine Spielkonsole ist wirst du da nichts machen können. Aber selbst wenn diese Information verfügbar wäre ist dies glaube ich ein schwer zu lösendes Problem.
+         * *AP:* Es soll ja grade gefunden werden, daß die Xbox eine Spielkonsole ist ... also das Wissensnetz damit angereichert werden ... ich sag mal: "Future Work" :-)
+      * Sätze mit Umschreibungen sind problematisch, z.B. "Für Spieler und Cineasten ist das neue 19"-Display "R19W11" von V7 ausgelegt." Wie könnte man sowas analysieren?
+         * *NJ*: _von_ als herkunftsbeschreibende Präposition ist eigentlich schon ziemlich interessant & relevant für deine Zwecke. Das sollte man im Auge behalten...
+         * *AP:* Ja, evtl. gibt es auch noch mehr Wörter, die interessant sind, muß ich mal untersuchen.
+      * Angelehnt an "Harvesting Relations from the Web" von _Blohm, Cimiano, Stemle_ habe ich eine Wildcardsuche implementiert, die die Texte mittels Regulärer Ausdrücke und Relationen (Verben) durchsucht, z.B: "* produziert !*" oder "* bietet * an". Das muß noch verfeinert werden, da viel uninteressanter Krams gefunden wird.
+      * Die Texte von hartware.de haben einen grausamen Schreibstil, das kann fast schon als User Generated Content durchgehen ;-)
+   * E-Mail nach Leipzig geschrieben und gefragt, warum der Lemmatisierer nicht richtig funktioniert.
+   * Mein Verben-Lemmatisierer hat das Problem, daß er unbekannte Wörter (=Wörter, die nicht in Wiktionary stehen) nicht lemmatisieren kann, das ist ungünstig -> bessere Lösung suchen.
+      * *NJ*: Hast du nur eine geringe Abdeckung oder wie ist das Problem aufgefallen?
+      * *AP:* Ja, einige Wörter sind gar nicht im Wörterbuch enthalten. Ich habe mir eine Liste mit (fast) allen Verben ausgeben lassen (bis zum Heap-Overflow in Java nach einigen Stunden Analyse ... irgend eins von den Stanfort-Tools hat anscheinend ein Memory-Leak). Ca. 17.000 Sätze hat er analysiert in ca. 1040 Dateien und somit ca. 17.000 Sachen gefunden, die als Verb bzw. Prädikat in Frage kommen könnten, wobei nicht alles wirklich Verb ist, wenn z.B. Tabellen o.ä. im Text vorkamen, da gibts natürlich Probleme, ab und zu werden auch andere Dinge als Verb erkannt. Wie viele Verben _nicht_ gefunden werden, habe ich nicht untersucht, wäre auch noch interessant. Einige Wörter, die nicht bei Wiktionary stehen: "blicken", "zurechtkommen", "vorantreiben", "urteilen". Insgesamt etwa 1000 Wörter (mit Doppelungen), also 5-10%. Evtl. könnte ich hier doch auf den Leipzig-Lemmatiser zurückgreifen ...
+
+---++ 15.05.2008
+   * UIMA-Annotator für den =LeipzigLemmatizer= erstellt, bei dem man auswählen kann, ob man Nomen, Verben und/oder Adjektive annotieren möchte.
+   * =VerbLemmatizer= -Daten ergänzt und verbessert, Kampf gegen die Umlaute gewonnen. Es leben reguläre Ausdrücke!
+
+---++ 13.05.2008
+   * Da das mit dem !TreeTagger alles nichts wird, habe ich für Verben einen eigenen Lemmatisierer erstellt. Dafür habe ich aus Wiktionary alle Verben ausgelesen und die Konjunktionen extrahiert (die Liste hat derzeit 21.426 Einträge, ist aber noch nicht ganz vollständig, da es mit UTF-8 und Umlauten und !MySQL mal wieder Probleme gab ...). Hieraus habe ich dann einen Hash erstellt (=konjugierte Form;Grundform=), der vom =VerbLemmatizer= benutzt wird, um die Grundform zu finden. Der !VerbLemmatizer benötigt als Eingabe Verben (z.B. vom !StanfordParser), die er dann versucht aufzulösen. Wenn das nicht direkt gelingt, versucht er, das Prefix vom Verb zu entfernen oder ein Prefix anzuhängen, um die Grundform zu finden. Anschließend wird das gefundene Word als =Lemma= im CAS annotiert. Evtl. gibt es manchmal Probleme mit der Qualität von Wiktionary, hier muß ich schauen, ob Probleme auftreten.
+      * *NJ*: Ich hatte bedenken was die Abdeckung vom Wiktionary angeht, aber ~20000 Einträge hört sich nicht so schlecht an. Du verwendest den =Lemma= Datentyp den auf der !TreeTagger benutzt?
+      * *AP*: Ja, ich verwende den Datentyp vom !TreeTagger (Motto: so viel vorhandenes weiterverwenden).
+      * *NJ*: Wenn nix zusammenläuft kannst du auch deine Dokumente mit ner .bat / .sh Datei von der Kommandozeile einfach Taggen+Lemmatisieren lassen, die Ausgaben in ne Datei schreiben und mit nem UIMA Reader einlesen. Dann haste auch wieder alles schön in der Pipeline
+   * Für Nomen funktioniert der Leipziger Lemmatizer (zumindest bisher), daher benötige ich dafür keine "Sonderanfertigung", er muß nur noch als UIMA-Komponente eingebunden werden.
+
+   * Um ein Synonym-Wörterbuch zu erstellen, kann man auch Wiktionary verwenden ... ist das sinnvoll? Ich werde mir morgen mal !GermaNet anschauen, was das so kann.
+      * *NJ*: Für diesen Task ist eigentlich !GermaNet genau die Lösung
+
+---++ 09.05.2008
+   * Tests mit Traversieren des Parse-Tree des Stanford-Parsers sind erfolgreich, in vielen Fällen wird schon Subjekt-Prädikat-Objekt richtig erkannt:
+      * =S -> NP VP= mit NP als ersten Zweig des Parse-Tree, VP die restlichen Zweige (Head und Tail, hier macht es Sinn...)
+         * NP besteht aus Nominalphrase, Named Entity, Normal Noun oder Personalpronomen, hier später nochmal genauer untersuchen, was sinnvoll zu verwenden ist. Wenn es nur ein Personalpronomen ist, den Satz nicht weiter analysieren (siehe [[ArneMeetingProtokolle#08_05_2008][Protokoll vom 08.05.]])
+         * *NJ*: Wie vermutet ist die Resolution von Anaphern ein schwieriges Problem. Man sollte wohl davon absehen selbst zu versuchen eine Lösung zu bauen. Stattdessen wurden mir folgende existierende Lösungen genannt: http://www.assembla.com/wiki/show/bart-coref und http://dces.essex.ac.uk/research/nle/GuiTAR/. Das Problem lohnt sich wahrscheinlich erst zu adressieren wenn alles andere läuft...
+      * =VP -> V N= um das Objekt und das Prädikat zu extrahieren
+         * Das Verb kann aus mehreren Teilen bestehen ("ist ... gegangen"), also alles, was nach Verb aussieht, einsammeln.
+         * Das Objekt kann verschachtelt sein und aus mehreren Teilen bestehen, hier nochmal schauen, was davon wirklich sinnvoll ist.
+      * Idee für neue UIMA-Typen: Grammar > Subject, Predicate, Object, die jeweils alles abdecken, was dazugehören könnte und dann später z.B. das Subject =Die Firma Sony= auf die Named Entity =Sony= hin untersuchen.
+   * Fiese Sachen: =Der Mann sieht die Frau .= vs. =Die Frau sieht der Mann .= oder auch: =Sony stellt Festplatten her .= vs. =Festplatten stellt Sony her .= Letzteres könnte ich untersuchen als das Tupel =(herstellen, {Sony, Festplatte})=, wenn ich dann im Wissensnetz nach "Sony" und "Festplatte" suche, finde ich, daß das eine ein Unternehmen ist und das andere ein Produkt, also ist die Relationsrichtung klar.
+
+---++ 07.05.2008
+   * Relationen finden: Prädikat des Satzes ist (meist?) auf der obersten Ebene des Abhängigkeitsbaumes zu finden, nun noch Subjekt und Objekt finden. Was ist, wenn das Subjekt nur aus Personalpronominen besteht (z.B. "Sie stellen ein neues Produkt her"), soll ich da noch rausfinden auf was sich das "Sie" bezieht? Ist ziemlich kompliziert, denke ich ...
+   * Um die Dinge zu finden, die vom Prädikat abhängen, muß ich nun die davon Abhängigen Token durchsuchen -> !FSList erstellen, die wiederum !FSListen von abhängigen Token haben können, ergo: Baumstruktur des Parse-Baumes nachbauen per UIMA-Typen.
+
+---++ 05.05.2008
+   * Der Stanford-Parser macht Probleme mit der Dependency-Analyse, beim folgenden Satz schlägt es fehlt: _"Sony bringt Walkman mit Abspielfunktion , die sehr beliebt bei vielen Leuten ist , heraus ."_ Ohne den eingeschobenen Nebensatz geht es. Das Problem liegt in der Funktion =gsf.newGrammaticalStructure(parse);= im [[http://nlp.stanford.edu/software/parser-faq.shtml#r][Beispiel]]. Warum es nicht geht habe ich leider nicht so genau rausfinden können, anscheinend wird der Baum falsch aufgebaut, da die englische Grammatik (=EnglishGrammaticalStructure=) auf einen deutschen Parse-Baum angewendet wird.
+      * *NJ*: Hast du es mal mit dem Satz _"Sony bringt *einen* Walkman, ... , heraus."_ probiert?
+      * *AP:* Nö, das eine Wort ändert am Problem auch nichts. Es gibt anscheinend im deutschen Satzstrukturen, die es im englischen nicht gibt -> keine Ausgabe.
+   * Wenn es mal funktioniert (also ohne Nebensätze) gibt die Depenceny-Analyse eine Liste von Abhängigkeiten zurück, die man sehr einfach verarbeiten kann: =dep(Walkman-3, Sony-1)= etc.
+      * *NJ*: Gibt es für deutsche Sätze nicht auch die Möglichkeit sich "getypte" Abhängigkeiten zurückgeben zu lassen - also z.B. =dobj(x, y)=?
+      * *AP:* Nein, das geht mangels z.B: "GermanGrammaticalStructure.java" oder "GermanGrammaticalRelations.java" nicht.
+
+---++ 28.04.2008
+   * Implementierung der Dependencies als UIMA-Typen (DEP als Haupttyp und Untertypen unter .dep.XXX).
+   * Die Abhängigkeiten der Tokens untereinander werden noch nicht gespeichert, ist aber sehr wichtig -> noch machen
+
+   * Testen des Lemmatisierers aus Leipzig, ist schnell und einfach. Bisher funktionieren aber nur Nomen, Verben geht noch nicht. Ist schlecht dokumentiert.
+      * *NJ*: Ist der Lemmatisierer generell nicht in der Lage Verben zu behandeln oder hast du ihm die Funktion noch nicht entlockt?
+      * *AP:* Doch, Verben gehen auch, aber nicht so gut:
+         * Plusquamperfekt wird nicht korrekt umgesetzt: "gekommen"->"ekommen", "geritten"->"en", "gespielt"->"pielt". Präsens geht auch nicht gut: "komme"->"komme", "werde" -> "werde", "laufe"-> "laufe". Imperativ: "komm" -> "komm", "lauf" -> "lauf" 
+         * Download der Toolbox unter http://wortschatz.uni-leipzig.de/~cbiemann/software/toolbox/index.htm#_Baseforms da steht nur dabei, daß es für Nomen ist (für die geht es auch recht gut); von Verben steht nichts dabei, es ist aber eine Verben-Klassifikationsdatei dabei. Dort gibt es auch mehr Doku sowie Quelltexte.
+         * Die Verb-Grundform von "Haus" ist "Heisen" und von "Auto" "Aun" Also lieber nicht die falsche Wortklasse übergeben ;-)
+            * *NJ*: Torsten bestätigt diese Probleme (sie waren ihm nicht bewusst). Kannst du mal checken ob der TreeTagger deine Beispiele richtig lemmatisiert? Ich fürchte es gibt ansonsten keine Alternative :(
+            * *AP:* Der !TreeTagger kommt mit den Wortformen problemlos zurecht ...
+
+---++ 25.04.2008
+Satzstrukturen, die sinnvoll sind, z.B.
+   * (S (NP Subjekt) (VAFIN ist) (VP (PP mit Objekt) (VVPP ausgerüstet))
+   * (S (NE Subject) (VVFIN produziert) (NN Objekt)
+Über die Dependencies sind die entsprechenden Teile miteinander verbunden, so daß man sinnvolle Sachen rausholen kann.
+
+   * *NJ*: Decken diese beiden Muster tatsächlich genug ab? Wieviele Sätze hast du analysiert um sie zu erhalten? 
+   * *AP:* Nein, das deckt natürlich nicht alles ab (steht ja auch "z.B.") dabei, aber das sind Satzstrukturen, mit denen ich erstmal arbeite, da sie recht einfach sind.
+      * *NJ*: Hab ich überlesen, sorry.
+
+---++ 23.04.2008
+Untersuchung von 20 Nachrichtentexten und Zerlegung mittels !StanfordParser, um herauszufinden, welche POS-Tokens interessant sind und wie die Strukturen/Phrasen aufgebaut sind, die die gesuchten Informationen enthalten. Nützliche Beschreibung der POS-Tags und Strukturen: http://www.fi.muni.cz/~xnemcik/nlp/sarrebrugge/handout.pdf 
+
+---++ 18.04.2008
+Einbindung des Stanford-NLP-Parsers als UIMA-Komponente, Annotation der Texte analog zum !TreeTaggerPosLemma (bis auf das Lemma, das liefert der Stanford-NLP-Parser nicht). Es gibt Probleme bei Sätzen mit mehr als 30 Wörtern, da dann mit der Factored-Methode zu viele Elemente erzeugt (>200.000, das ist fest eingestellte Grenze), siehe auch http://nlp.stanford.edu/software/parser-faq.shtml#k. Ich habe die Satzlängen-Grenze mal fest auf 30 eingestellt, könnte man noch variabel per UIMA-Parameter machen.
+   * Was ist mit Sätzen, die länger als 30 Wörter sind? Kann man die irgendwie aufsplitten, und ist das sinnvoll?
+   * *NJ*: kommt das häufig vor? Ich vermute dass Aufsplitten das Parsing Ergebnis verändern / -fälschen würde, aber ich untersuche die Frage mal.
+   * *AP* Ja, in meinen Texten sind einige Sätze, die viele Nebensätze etc. haben und daher mehr als 30 Wörter haben, im Schnitt wohl ein Satz pro Text.
+
+Eine Idee, wie man die Abhängigkeiten der Wörter speichern kann: zu jedem Token speichern, von welchem Token es abhängt, das gibt der Stanford-NLP-Parser ja zurück. So kann man hinterher damit in einem anderen Annotator arbeiten und muß nicht die komplette Baumstruktur irgendwie speichern (da ja jeder Token genau eine Token hat, von dem er abhängt -> ein Elter-Knoten).
+   * NJ: Ja das haben wir auch überlegt (zusätzlich ist natürlich noch die Art der Relation zu speichern). Es kann allerdings auch durchaus mal erforderlich sein, dass man den Baum auch von einem Knoten nach unten verfolgen muss. In diesem Falle wäre diese Repräsentation etwas unpraktisch.
+
+---++ 16.04.2008
+   * Anfang der Umsetzung des Stanford-NLP-Parsers für UIMA. Allerdings spinnt das Dingen rum und wirft komische Fehlermeldungen beim Initialisieren, ich kann den !LexicalizedParser nicht direkt aus Java aufrufen: wenn ich das .jar einbinde, findet er Methoden nicht bzw. die Parameter passen nicht zu den vorhandenen, wenn ich die Java-Quelltexte direkt aufrufe funktioniert das De-Serialisieren der Trainingsdaten nicht wegen falscher serializeID.
+      * *NJ*: Folgender Code aus der FAQ funktioniert bei mir nachdem ich einfach die .jar eingebunden habe und den Pfad zur englishPCFG.ser.gz angepasst habe:
+      * <verbatim>
+import java.util.*;
+import edu.stanford.nlp.trees.*;
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+
+class ParserDemo {
+  public static void main(String[] args) {
+    LexicalizedParser lp = new LexicalizedParser("englishPCFG.ser.gz");  // <-- hier den Pfad anpassen
+    lp.setOptionFlags(new String[]{"-maxLength", "80", "-retainTmpSubcategories"});
+
+    String[] sent = { "This", "is", "an", "easy", "sentence", "." };
+    Tree parse = (Tree) lp.apply(Arrays.asList(sent));
+    parse.pennPrint();
+    System.out.println();
+
+    TreebankLanguagePack tlp = new PennTreebankLanguagePack();
+    GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
+    GrammaticalStructure gs = gsf.newGrammaticalStructure(parse);
+    Collection tdl = gs.typedDependenciesCollapsed();
+    System.out.println(tdl);
+    System.out.println();
+
+    TreePrint tp = new TreePrint("penn,typedDependenciesCollapsed");
+    tp.printTree(parse);
+  }
+}
+
+</verbatim>
+      * *AP* Argh! Ganz doofer Fehler: Beim Stanford-NER ist auch der Parser dabei, allerdings in einer veralteten Version. Einfach durch die aktuelle (stanford-parser-2007-08-19) ersetzen, schon läufts.
+
+---++ 14.04.2008
+   * Erstellen eines UIMA-Annotators für den Stanford NER nebst entsprechenden Typen. Als Parameter für den StanfordNE muß der vollständige Pfad zur serialisierten Klassifikationsdatei angegeben werden.
+   * Der TreeTagger funktioniert leider noch nicht für längere Texte (>400 Wörter), die verbesserte Version von Florian habe ich noch nicht zum Laufen bekommen (Windows 2000).
+      * *NJ*: Dieser Stand der Probleme ist bekannt, du kannst versuchen das verbessern, indem du dem TreeTagger nur einzelne Sätze statt ganze Dokumente gibst. Das hat bei mir allerdings auch nicht 100%ig funktioniert daher noch eine Alternative: Der Stanford Parser kann auch POS Tagging. Du könntest das Problem elegant umgehen wenn du ihn einbindest. 
+      * *AP*: Ok, probiere ich mal aus. Eine reine Java-Lösung finde ich auch besser.
+
+---++ 28.03.2008
+Ich habe begonnen, eine [[ArneOntologieAPI][OntologieAPI]] zu erstellen, sowie eine Implementation, die auf KInfinity zugreifen kann.
+
+Niklas: Ich habe in deiner Präsentation vom letzten Statusmeeting gesehen dass du einen "StanfordNE" Annotator erstellt hast, der "NE" Typ erzeugt. Wie sieht dieser Typ aus? (Ich finde den Code dazu nicht im SVN)
+
+---++ 13.03.2008
+   * Starten des UIMA-CPE:
+      * =SET UIMA_HOME=D:\Dipl-Tools\apache-uima=
+      * =SET UIMA_CLASSPATH=H:\privat\eclipse\DKPro\lib\dkpro_core_rev96.jar=
+      * =SET UIMA_DATAPATH=H:\privat\eclipse\DKPro=
+      * Inhalt von H:\privat\eclipse\DKPro\.datapath: =H:\privat\eclipse\DKPro=
+
+---++ 22.02.2008
+   * Der Stanford-Tokenizer hat Probleme mit _manchen_ Umlauten und bricht danach um, hier nochmal nachforschen & nachbessern.
+   * Tokens zu klassifizieren ist auch von Hand nicht immer einfach und eindeutig. Genaue Vorgaben/Beispiele sind notwendig.
+   * Probleme, da z.B. "Yahoo" eine Firma und "Yahoo Mail" ein Produkt ist ... sorgt für nicht eindeutige Ergebnisse
+
+Versuch mit Texten mit den Stichwörtern "Yahoo, Google, IBM, Microsoft, Vista, Festplatte, Opera, Ubuntu"
+
+*Trainingsdaten* ("NE-Dichte": 22,4%)
+| *Gesamt* | * O* | *PROD* | *COMP* | *PRODTYPE* | *PERS* | *ORG* | *MISC* | *LOC* |
+|  10867 |  8429 |  757 |  340 |  797 |  75 |  185 |  174 |  110 |
+|   100% |  77,6% |  7,0% |  3,1% |  7,3% |  0,7% |  1,7% |  1,6% |  1,0 % |
+
+*Testdaten* ("NE-Dichte": 18,5%)
+| *Gesamt* | *O* | *PROD* | *COMP* | *PRODTYPE* | *PERS* | *ORG* | *MISC* | *LOC* |
+|  2795 |  2279 |  65 |  154 |  94 |  33 |  85 |  75 |  10 |
+|  100% |  81,5% |  2,3% |  5,5% |  3,4% |  1,2% |  3,0% |  2,7% |  0,4% |
+
+*Ergebnisse*
+   * NE-Dichte Gold: 18,5%
+   * NE-Dichte Gold: 14,1%
+   * Korrekt klassifizierte NE: 45,0%
+   * Falsch klassifizierte NE: 68,6%
+   * Falsch als NE erkannt: 10,2%
+
+*"Als NE erkannt, egal ob richtiges NE oder falsches NE"*
+| | *ist NE* | *ist kein NE* |
+| *als NE erkannt* |   354 |  162 |
+| *nicht als NE erkannt* |  40 |  2239 |
+
+---++ 11.02.2008
+Erstellung eines halbautomatischen Annotators, der die Texte aus der Datenbank ausliest, in Tokens zerlegt und mit Hilfe von Wikipedia in die vorher genannten Klassen einordnet soweit möglich. Anschließend muß die Ausgabe nochmals von Hand nachgearbeitet werden. Mit diesen Daten kann dann der Stanford-NER trainiert werden.
+
+---++ 07.02.2008
+Beim Stanford-NER sind 4 verschiedene Demosets dabei. Eines davon wird im Paper zu !CoNLL 2003 erwähnt:
+   * Entities: Person (PER), Ort (LOC), Organisation (ORG), Sonstiges (MISC)
+   * Trainingset: 945 Dokumente, 203.000 Token
+   * Testset: 231 Dokumente, 46.000 Token
+
+Im Wissensnetz gibt es folgende Klassen: Person (PER), Ort (LOC), Firma/Hersteller (COMP), Produkt (PROD), Produkttyp (PRODTYPE). Sinnvoll wäre auch noch MISC für alles andere, was auch einen Namen darstellt aber in keine Kategorie fällt.
+
+---++ 06.02.2008 
+Erschließen eines Textkorpus "Redaktionelle Texte":
+   * Crawlen verschiedener Newssites mittels Curl und Wget, Texte ca. seit Anfang 2007 bis heute
+   * Extrahieren des Textes mittels Perl
+   * Einspeisen in !MySQL -Datenbank für schnellen Zugriff
+   * Statistik:
+      * heise.de: 3259 Texte
+      * hartware.de: 2973 Texte
+      * de.internet.com: 471 Texte
+      * golem.de: 7757 Texte
+   * Insgesamt also: 14460 Texte
+
+Jetzt muß ich schauen, welche Texte geeignet sind, also nach Stichwörtern sinnvolle Texte herausfinden und markieren. Von diesen Texte einige manuell klassifizieren für Stanford-NER-Training. Ausprobieren, ob ich das mit Hilfe von Wikipedia-Artikeln machen kann.
+
+*IG:* hier musst du dich schlau machen, welche Trainingsmengen das Stanford-NER-Programm voraussetzt, damit es sinnvoll funktioniert.
+
+Ein weiterer Textkorpus soll "User generated Content", also Blogeinträge, enthalten, hier muß ich schauen, die Technokrati funktioniert.
+
+*IG:* dafür gibt es bereits einen UIMA-Reader in UKP. Niklas kann den Zuständigen (CT) kontaktieren.
+
+---++ 05.02.2008 
+Trainieren des Stanford-NER mit ein paar Textdateien, die ich von Hand klassifiziert habe. Erste Ergebnisse sehen ganz gut aus, es werden auch Dinge richtig klassifiziert, die in den Trainingsdaten nicht vorhanden sind, aber ein paar Fehler treten noch auf, ich brauche mehr Trainingsdaten.
+
+---++ 01.02.2008 
+Checkin ins SVN:
+   * Der *WikiParser*, der zum Erstellen von SVN-Dateien dient, die dann eingelesen werden können von K-Infinity
+   * Grundversion des *Stanford-NER*. In der Datei <nop>TeXHyphenator#loadDefault() habe ich einen String eingefügt, der gefehlt hat, Decompiler sei Dank ;-)
+
+---++ 25.01.2008 
+Erstellen des Wissensnetzes:
+   1 Einlesen von Wikipedia-Kategorien (=Typen)
+   1 Einlesen von Artikeln mit Zuordnung zu den Kategorien (=Instanzen)
+   1 Einlesen der Links in den Artikeln, um die Artikel untereinander zu verlinken.
+
+Dies alles kann ich in K-Infinity importieren und so ein Wissensnetz daraus aufbauen.
+Es fehlen allerdings noch wichtige Metainformationen bei den Links zwischen den einzelnen Artikeln wie "A stellt her B" oder "A ist Konkurrent von B", ebenso könnten noch Metainformationen zu den einzelnen Instanzen gespeichert werden. Hier überlege ich grade, welche Informationen ich noch aus Wikipedia ziehen kann, und ob bzw. welche weiteren Quellen ich noch verwenden kann -&gt; Ideen sind willkommen :-) 
+
+---++ 09.01.2008 
+Einarbeitung in UIMA und K-Infinity: ich habe ein Testprogramm (Proofe of Concept) für UIMA erstellt, das einen gegebenen Text zerlegt und großgeschriebene Wörter in einem Text findet (seeehr simples NER) und diese im Wissensnetz von K-Infinity sucht und gefundene entsprechend in UIMA markiert.

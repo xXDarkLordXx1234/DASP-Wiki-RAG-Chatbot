@@ -1,0 +1,246 @@
+%META:TOPICINFO{author="winchenbach" comment="save topic" date="1426578577" format="1.1" reprev="36" version="36"}%
+%META:TOPICPARENT{name="StudentsList"}%
+%TOC%
+---+++ Meeting 18/03/2015, 14:00 Uhr
+   * Status
+      * Aufteilung in Sätze umgesetzt und ausprobiert: Leider keine Verbesserung
+      * Ergebnisse der verschiedenen Versionen: [[%ATTACHURL%/results.pdf][results.pdf]]
+      * Semi-Crf ([[http://crf.sourceforge.net/][(semi-)CRF implementation in Java]]) angefangen umzusetzen
+   * Gesprächsthemen:
+      * Vortrag (Länge, Sprache, Publikumskenntnisse)
+      * Genauer Abgabetermin der Arbeit
+      * (SolrJ) 
+
+---+++ Meeting 03/03/2015, 14:00 Uhr
+   * Status
+      * Testdaten auf 40 Texte ausgeweitet 
+      * PMI Berechnung+ Annotation in Projekt integriert
+        -> ist Zugang zur WdK Suchmaschine dafür möglich?
+      * Umsetzung von Verbesserungsideen:
+         * Verben, Nomen die zusammen mit Adjektiven auftreten als mögliche Expressions: Expression Recall minimal besser, Precision schlechter
+         * Verben, Nomen die zusammen mit Adjektiven auftreten, Wörter die im Lexikon stehen als mögliche Expressions: wiederum Expression Recall minimal besser, Precision schlechter
+         * Mehrere Targets pro Satz zulassen: Recall deutlich besser, Precision um einiges schlechter; logisch nicht unbedingt sinnvoll, da sich die Targets eines Satzes (und ihren 
+           Expressions) untereinander bei der Bewertung beeinflussen, da der Algorithmus einen Satz jeweils als eine Einheit verarbeitet.
+         * Aufteilung von Sätzen in Teilsätze (Clauses): implementiert, Unit Test, aber noch nicht in Pipeline integriert
+         * Semi-CRF: noch nicht angefangen
+       
+
+---+++ Meeting 10/02/2015, 14:00 Uhr
+   * Status 
+      * Evaluation soweit fertig und getestet, [[https://www.dropbox.com/s/jkhfs0etwg4yy3m/Results.zip?dl=0][vorläufige Resultate]] zeigen, 
+        dass wenige Targets, Expressions erkannt werden
+   * Verbesserungsideen
+      * Sätze mit mehreren Targets zulassen
+      * Sätze aufteilen (schon besprochen, eher verworfen)
+      * Momentan werden nur Adjektive als mögliche Expressions benutzt, Aufnahme erweitern (Verben, Nomen die zusammen mit Adjektiven auftreten, Wörter die im Lexikon stehen)
+      * Semi-CRF Implementierung benutzen (Vorteil: Segmente statt einzelner Wörter, Nachteil: benötigt Trainingsdaten)
+   * Task Description: Unterschrift
+   * Nächste Schritte: experimentieren (Verbesserungsideen + evtl. SemiCRF), schreiben
+
+---+++ Meeting 03/02/2015, 12:00 Uhr
+   * abwesend (krank): !CaS
+   * Feedback zu Thesis-Struktur:
+      * REC: sieht soweit gut aus. Ich würde die Improvements aus Kapitel 3 rausnehmen und in ein neues Kapitel packen, d.h. State-of-the-Art/Baseline und Contributions trennen - auch wenn es bei der Bachelorarbeit ggf. eher dünn ausfällt.
+      * !CaS: Bei Referenz auf "People's Daily"-Paper fehlen Orts- und Seitenangaben. Vollständig:      
+Lin, Chenghua, and Yulan He. Joint Sentiment/Topic Model for Sentiment Analysis. In Proceedings of the 18th ACM Conference on Information and Knowledge Management, 37584. CIKM 09. New York, NY, USA: ACM, 2009. doi:10.1145/1645953.1646003.
+   * Anmeldung (Themenvergabe: 1.1.2015) ist bei Prof. Gurevych
+   * Fragen/Probleme
+      * Probleme mit Input-Encoding der WdK Dateien -> sind ANSI/ASCII, WebAnno liest UTF-8 ein -> Probleme mit nicht erkannten Umlauten, "ß", usw.
+   * Nächste Schritte:
+      * Evaluation weiter-/fertig implementieren
+      * Ausarbeitung weiter führen
+   * Nächstes Treffen:
+      * 10.02.2015 14:00 Uhr
+
+---+++ Meeting 20/01/2015, 14:00 Uhr
+
+   * Status
+      * Error prevention implementiert, getestet, löscht auf richtigen Texten aber viele Targets, Expressions, die ursprünglich gefunden wurden
+      * Ein paar Texte mit WebAnno annotiert
+      * Einleitung und Gliederung für Ausarbeitung entworfen
+   * Diskussionspunkte
+      * Anmeldung
+         * Noch kein Feedback zur Task Description
+      * Termin Final Presentation: 31.03.2015
+      * Thesis
+      * Evaluation
+   * Fragen/Problem
+      * Error prevention zum falschen Zeitpunkt (vor vs. nach Aufnahme neuer Worte), verschiedene Möglichkeiten für Umgang mit widersprüchlichen Expressions
+      * Thesis: Ist Kapitel mit Hintergrundwissen bzw. Erklärung der Theorie üblich? Wie weit sollte man ausholen?
+                Wieviel schreibt man konkret zur Implementation d.h. technisch statt Methode dahinter?
+      * Welche Evaluationsmetriken sind in einer Situation mit so viel Output sinnvoll (z.B. statt Eval. bei 2 Klassen Klassifikation)?
+      * Welches Export Format von WebAnno sollte man verwenden?
+      * Ist Suchmaschine für Corpus offline?
+   * Nächste Schritte
+      * Ausarbeitung (verwandte Arbeiten etc.) weiter führen
+      * Evaluation implementieren (Format bestimmen, Einlesen und Metrik berechnen)
+      * Error Prevention: Parameter anpassen
+   * Nächstes Treffen
+      * 3.02.15 12:00 Uhr
+
+
+---+++ Meeting 07/01/2015, 12:00 Uhr
+   * Status
+      * Kernalgorithmus vorerst fertig getestet (Unit-Tests, noch keine Evaluation mit Testdaten und WebAnno)
+      * WdK-Reader integriert mit Unterstützung für mehrere Länder pro Text (Problem: momentan keine Targetunterscheidung für verschiedene Länder)
+      * WebAnno Standalone ausprobiert
+   * Fragen/Probleme
+      * Ausführung auf den wenigen getesteten Texten aus dem Corpus führt zu nicht aussagekräftigen Ergebnissen (ca. neutral, wenige ausschlaggebende Sätze im Text)
+      * Error Prevention muss wohl als nächstes implementiert werden, um widersprüchliche Expressions und nicht zu dem aktuellen Land passende Targets auszusortieren
+      * Vielleicht könnte man versuchen verschachtelte Sätze aufzuteilen um mehr untersuchbare Sätze zu bekommen?
+      * WebAnno, Evaluation?
+   * Protokoll
+      * Satztrennung ist vermutlich schwer (deutsch und dieser Corpus sowieso), ev. ausprobieren (chunking weniger aufwendig, sonst Teilbäume von Syntaxbäumen und ev. dann     
+        Zwischenspeichern wegen Aufwand des Prozesses).
+        Stattdessen: Bei Sentence Selection targets nur aus vorgegebener Liste mit Named Entities wählen 
+                     -> ev. weniger mehrfach Targets pro Satz und dadurch mehr verwendbare Sätze
+      * Annotationen: so gut, ausführlich wie möglich annotieren, außer total unmöglich erkennbare Sätze.
+                      Webanno soweit ok (allerdings keine Suchfunktion)
+   * Nächste Schritte
+      * Error Prevention implementieren
+      * Mit Ausarbeitung anfangen
+      * Testdaten auswählen und annotieren
+   * Nächstes Treffen
+     20.01.15 um 14:00 Uhr
+      
+
+---+++ Meeting 16/12/2014, 14:00 Uhr
+   * Status
+      * Gibbs-Sampling implementiert und getestet
+      * Gesamt-Pipeline (vorläufig) implementiert, muss noch gedebuggt werden
+      * Motivationsschreiben, Notizen zum Zeitplan entworfen
+   * Fragen/Probleme
+      * Hätte doch gerne WdKCorpusReader zum Auslesen des Buchtitels
+      * Verallgemeinerung der Methode, was unterscheidet/bleibt gleich bei Eriks Problemstellung?
+      * (Implementationsdetail) Setzen von Datenstrukturen in AnalysisEngine momentan als ExternalResource -> ok
+   * Nächste Schritte
+      * Anmelden?
+      * Weiter Debuggen
+      * Testdaten, Evaluation -> WebAnno
+   * Nächstes Treffen
+      * 7.01, 12:00
+   
+
+---+++ Meeting 02/12/2014
+   * Status
+      * Probleme mit MCMC Verständnis/Implementation
+   * People's Daily paper: initialization step
+      * [[http://commons.apache.org/proper/commons-math/javadocs/api-3.3/index.html][Poisson Distribution in Java]]
+   * Motivationsschreiben, Zeitplan
+   * Nächste Schritte
+      * Implementation MCMC
+   * Nächstes Treffen
+      * !CaS: 15.-17.12.
+      
+---+++ Meeting 25/11/2014
+   * Status
+      * Pipeline für Daily-Paper Ansatz erstellt ([[https://www.dropbox.com/s/vkwpn9lbf5zu4vg/PipelineDesign.pdf?dl=0][Pipeline Design]]), 
+        teilweise implementiert, teilweise getestet.
+      * Vollständig ist die Auswahl von geeigneten Sätzen, möglichen Ausdrücken und Zielen in vereinfachter Form.
+      * Der Bootstrapping Algorithmus ist bis auf den MCMC-Schritt implementiert, aber noch nicht getestet.
+      * Das Einlesen der Texte zusammen mit Information über Land und Zeit muss noch fertig implementiert werden.
+   * Fragen/Probleme
+      * Ist eine Vorsortierung der Texte (nach Zeit) nötig? Wie integriert man so etwas in die Pipeline?
+      * MCMC- Algorithmus/ Bedingte Wahrscheinlichkeiten aus Paper
+   * Protokoll 
+      * Targets erstmal nur Ländernamen (manuelle Liste) als Baseline, dann Vergleich mit NE-basierten Targets
+      * t für WdK nicht sinnvoll, da Bücher voneinander unabhängig sind
+      * Ein Buch als G_{i} -> m_{i,t} bleibt gleich innerhalb eines Buches -> nur ein m_i
+         * Initialisierung von m_{i,t} als Random oder "Neutral" (4) -> ausprobieren
+         * Dokumente sind Seiten (später alternativ Kapitel)
+      * WdkCorpusReader existiert falls nötig 
+   * Nächste Schritte:
+      * MCMC-Schritt implementieren
+      * Motivationsschreiben, Zeitplan 
+   * Nächstes Treffen:
+      * 02/12/2014
+
+---+++ Meeting 11/11/2014
+   * Status
+      * PMIR-Berechnung implementiert, noch nicht an Testdaten ausgewertet
+      * "People's Daily"- Paper und Literatur bzgl. semi-CRFs und MCMC gelesen
+   * "People's Daily"- Paper
+      * Eignung Welt der Kinder- Corpus bzgl. im Paper getroffener Annahmen (1)ok (Error prevention),
+        (2)unklar: ausprobieren, sonst einzelne Verlage statt ganzer Sammlung oder Zeitkomponente streichen?
+      * Grundsätzliches Verständnis, Umsetzung häufig unklar
+   * Code:
+      * gemeinsam durchgehen
+      * [[http://code.google.com/p/dkpro-core-asl/downloads/detail?name=DKProCoreStyle_20120326.xml][Eclipse format style]]
+      * [[http://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/TagSets/stts-table.html][STTS POS Tagset]]
+      * [[http://crf.sourceforge.net/][(semi-)CRF implementation in Java]]
+   * Nächste Schritte:
+      * Vereinfachte Methode mit NERs und ADJ statt semi-CRF
+      * Expressions nur Sentiment Lexikon
+   * Nächstes Treffen:
+      * 18/11/2014, 14:00 Uhr
+   
+---+++ Meeting 05/11/2014
+   * Status:
+      * Manuelle Annotationen: CSniper- Erster Eindruck, [[http://demo-search.thepund.it/][Pundit]] noch nicht angeschaut
+      * Pipeline: Text Reader-> Tokenizer-> POS Tagger-> (Eventuelle) Subjektive Terme nach POS Tags-> PMIR Berechnung (noch nicht fertig)-> Konsolen Ausgabe
+   * Fragen:
+      * Wiki-Benutzung: Kommentare zu CSniper?
+      * PMIR Implementation, noch beenden?
+      * Zugriff Workshop-Paper
+   * SVN repository?
+   * TUDA-DH Meeting am 1.12. 14 bis 17 Uhr
+   * Welt der Kinder Projekttreffen am 7.11.
+   * Nächste Schritte:
+      * Zeitplan, Motivation schreiben
+      * Syntaktisches Verfahren ausbauen (vgl. Workshop-Paper, Term-Ziel) oder anderer Ansatz (mehr Literatur Recherche)?
+      * Sentiment Analysis on the Peoples Daily. (Literatur)
+   * Nächstes Treffen:
+      * Nächsten Dienstag 14:00 Uhr
+
+---+++ Meeting 27/10/2014
+   * Status?
+   * Implementation mit [[https://code.google.com/p/dkpro-core-asl/][DKPro]]
+      * Pipeline: WdkReader -> Segmenter -> IMSCWBWriter -> CSniper
+      * CWB -> CSniper-Pfad
+   * Gold Standard / Evaluation
+      * Manuelle Annotation mit CSNiper
+      * Annotationen +/0/-/check
+      * Gegencheck durch Historiker
+
+---+++ Meeting 20/10/2014
+
+   * Teilnahme an [[SIG_PrintMedia.WebHome][SIG NLP for Print Media]]
+      * Regelmäßige Treffen (bisher alle zwei Wochen) zum gegenseiten Austausch
+      * Rotierend: Präsentation über den aktuellen Stand der eigenen Arbeit
+      * Kooperation mit [[DeborahButh][Deborah Buth]]
+   * Formalitäten
+      * Co-Betreuung durch Erik-Lân Do Dinh (Opinion Mining)
+      * "Expectations for Students"
+      * Account (Wiki etc.)
+      * RBG Account
+      * Transponder?
+      * Vertrag Intellectual Properties
+   * Nächste Schritte:
+      * Beispiele für Opinions in "Welt der Kinder" corpus analysieren (http://wdk.ukp.informatik.tu-darmstadt.de/solr/WdK.test/browse)
+         * Was sind Sentiment/Opinion Words?
+         * Was für Einheiten werden bewertet (Personen, Länder, Ereignisse, ...)
+      * Test mit baseline approach (PMI, Turney, 2002)
+         * Experimentieren mit verschiedenen "sentiment words"
+         * Analyse der Ergebnisse
+      * Motivation, Ziele, Zeitplan
+      * Entwicklungsumgebung: DKPro, Eclipse, Subversion
+   * Nächstes Treffen
+      * Montag, 27.10., 14 Uhr, gemeinsam mit Deborah Buth und Erik-Lân Do Dinh?
+
+---+++ Resources (Papers, Software)
+
+---++ Papers
+   * Li and Hovy, Sentiment Analysis on the Peoples Daily., 2014
+   * Yang and Cardie "Extracting Opinion Expressions with semi-Markov Conditional Random Fields", 2012
+   * Sarawagi and Cohen "Semi-Markov Conditional Random Fields for Information Extraction", 2004
+
+
+
+
+-- Main.CarstenSchnober - 2014-10-20
+   * [[%ATTACHURL%/OpinionMiningMotivationZeitplan.pdf][OpinionMiningMotivationZeitplan.pdf]]: OpinionMiningMotivationZeitplan.pdf
+
+   * [[%ATTACHURL%/results.pdf][results.pdf]]: results.pdf
+
+%META:FILEATTACHMENT{name="OpinionMiningMotivationZeitplan.pdf" attachment="OpinionMiningMotivationZeitplan.pdf" attr="" comment="" date="1418817030" path="OpinionMiningMotivationZeitplan.pdf" size="53275" user="schnober" version="1"}%
+%META:FILEATTACHMENT{name="results.pdf" attachment="results.pdf" attr="" comment="" date="1426577817" path="results.pdf" size="42978" user="winchenbach" version="1"}%

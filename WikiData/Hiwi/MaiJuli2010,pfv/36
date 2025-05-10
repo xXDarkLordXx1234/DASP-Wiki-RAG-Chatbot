@@ -1,0 +1,89 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1279714191" format="1.1" version="36"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---++ Mai-Juli 2010
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Sense Mapping between Wikipedia and WordNet | |
+| Framework for WKT_RU | |
+| Wiktionary Research | |
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Russian Wiktionary | 01.05.2010 | -2 | Nachtrag vom April |
+| Russian Wiktionary | 02.05.2010 | 3 | Wikokit to JWKTL Adapter |
+| Russian Wiktionary | 03.05.2010 | 2 | Wikokit to JWKTL Adapter |
+| Russian Wiktionary | 05.05.2010 | 2 | Wikokit to JWKTL Adapter |
+| Russian Wiktionary | 06.05.2010 | 2 | Wikokit to JWKTL Adapter |
+| Russian Wiktionary | 07.05.2010 | 2 | Tutorial wie man eine WKT_RU dump erstellt in "CreationRussianJWKTL.pdf"<br>Der Source-Code ist in SVN "JWKTLWikokit" |
+| Russian Wiktionary | 08.05.2010 | 2 | Übersetzung von Begriffen aus WKT_RU in "RussischDeutschUebersetzungWKT.pdf" |
+| Russian Wiktionary | 09.05.2010 | 2 | |
+| Russian Wiktionary | 10.05.2010 | 2 | WKT_RU Statistics |
+| Russian Wiktionary | 13.05.2010 | 3 | WKT_RU Statistiken in "WKT_RU_Statistics.pdf" |
+| Sense Mapping | 19.05.2010 | 4 | Vorstudie WordNet/Wiktionary Mapping |
+| Russian Wiktionary | 20.05.2010 | 2 | WKT_DE Statistics |
+| Russian Wiktionary | 21.05.2010 | 2 | Extrahieren von ContextLabels |
+| Russian Wiktionary | 22.05.2010 | 2 | WKT_RU_Statistics.pdf aktualisiert |
+| Russian Wiktionary | 23.05.2010 | 4 | ContextLabels aus WKT(EN, DE, RU) in "ContextLabels_EN_DE_RU.ods" |
+| Russian Wiktionary | 24.05.2010 | 1.5 | WKT_RU Analyse in WKT_RU_Analysis.pdf |
+| Russian Wiktionary | 27.05.2010 | 2 | Translation Statistics.Update "WKT_RU_Analysis.pdf" und "WKT_RU_Statistics.pdf" |
+| Sense Mapping | 31.05.2010 | 3 | Sense Mapping Framework |
+| Sense Mapping | 02.06.2010 | 2 | ESA-Measures, Crossvalidation |
+| Sense Mapping | 03.06.2010 | 3.5 | Crossvalidation |
+| Sense Mapping | 06.06.2010 | 3 | Crossvalidation Tests |
+| Sense Mapping | 07.06.2010 | 3 | Error Analysis package. Die Crossvalidation-Ergebnisse(Cosine) in "Crossvalidation.csv" |
+| Sense Mapping | 09.06.2010 | 2.5 | ESA-Tests. Besprechung. |
+| Sense Mapping | 10.06.2010 | 2 | Verbesserung von SenseMapping-Framework |
+| Sense Mapping | 11.06.2010 | 2.5 | Implementierung von Shuffle, nrWnWikiMappings-Methoden |
+| Sense Mapping | 12.06.2010 | 2 | SenseMapping erweitert(nrWnWikiMappings, Shuffle, Cache für GS) |
+| Sense Mapping | 15.06.2010 | 2.5 | Verbesserung von SenseMapping |
+| Sense Mapping | 17.06.2010 | 2.5 | SenseMapping Majority Voice |
+| Sense Mapping | 19.06.2010 | 2.5 | WordNet/Wiki Mapping, Extracting Candidates |
+| Sense Mapping | 20.06.2010 | 2.5 | WordNet/Wiki Mapping |
+| Sense Mapping | 22.06.2010 | 2 | WN-Wiki Mapping in "WnWikiMapping.zip"<br>Total nr. of pairs: 390278, Aligned: 54206, Not Aligned: 336072 |
+| Sense Mapping | 23.06.2010 | 2 | Extrahierte Wiki-Artikel per Synset in "SynsetCandidateCount.ods" |
+| Sense Mapping | 24.06.2010 | 2 | Wikipedia Language Count. Annotation von zufälligen Alignments |
+| Sense Mapping | 30.06.2010 | 3 | Synset Alignments Properties in "AlignmentSynsetStats.csv" |
+| Wiktionary Research | 06.07.2010 | 3 | Details in WiktionaryResearch |
+| Wiktionary Research | 07.07.2010 | 2 | Wiktionary Research |
+| Wiktionary Research | 10.07.2010 | 4.5 | Wiktionary Research |
+| Wiktionary Research | 11.07.2010 | 4 | Wiktionary Research |
+| Wiktionary Research | 12.07.2010 | 2 | Wiktionary Research |
+| Wiktionary Research | 14.07.2010 | 3.5 | Wiktionary Research |
+| Wiktionary Research | 15.07.2010 | 2 | Wiktionary Research |
+| Wiktionary Research | 21.07.2010 | 3 | Wiktionary Research |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende Juli 2010 |
+<nop>
+   * [[%ATTACHURL%/CreationRussianJWKTL.pdf][CreationRussianJWKTL.pdf]]: How to create JWKTL-Dump of WKT_RU
+
+   * [[%ATTACHURL%/RussischDeutschUebersetzungWKT.pdf][RussischDeutschUebersetzungWKT.pdf]]: Russisch - Deutsch Übersetzung von einigen Begriffen aus Wiktionary-Seiten
+
+   * [[%ATTACHURL%/WKT_RU_Statistics.pdf][WKT_RU_Statistics.pdf]]: WKT_RU Statistic Tables
+
+   * [[%ATTACHURL%/ContextLabels_EN_DE_RU.ods][ContextLabels_EN_DE_RU.ods]]: ContextLabels from Wiktionary (EN, DE, RU)
+
+   * [[%ATTACHURL%/WKT_RU_Analysis.pdf][WKT_RU_Analysis.pdf]]: WKT_RU Analysis
+
+   * [[%ATTACHURL%/Crossvalidation.csv][Crossvalidation.csv]]: Crossvalidation, StringBased Cosine. GoldStandardGross
+
+   * [[%ATTACHURL%/WnWikiMapping.csv.zip][WnWikiMapping.csv.zip]]: WordNet-Wikipedia Mapping. Format: "wnID;wikiID;wikiTitle;SameSense"
+
+   * [[%ATTACHURL%/SynsetCandidateCount.ods][SynsetCandidateCount.ods]]: Extracted Wiki-Articles per Synset
+
+   * [[%ATTACHURL%/AlignmentSynsetStats.csv][AlignmentSynsetStats.csv]]: Statistic for Synset Alignments
+
+%META:FILEATTACHMENT{name="CreationRussianJWKTL.pdf" attachment="CreationRussianJWKTL.pdf" attr="" comment="How to create JWKTL-Dump of WKT_RU" date="1273334470" path="CreationRussianJWKTL.pdf" size="381580" stream="CreationRussianJWKTL.pdf" tmpFilename="/var/tmp/CGItemp50761" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="RussischDeutschUebersetzungWKT.pdf" attachment="RussischDeutschUebersetzungWKT.pdf" attr="" comment="Russisch - Deutsch Übersetzung von einigen Begriffen aus Wiktionary-Seiten" date="1273417197" path="RussischDeutschUebersetzungWKT.pdf" size="460156" stream="RussischDeutschUebersetzungWKT.pdf" tmpFilename="/var/tmp/CGItemp56276" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="WKT_RU_Statistics.pdf" attachment="WKT_RU_Statistics.pdf" attr="" comment="WKT_RU Statistic Tables" date="1274952944" path="WKT_RU_Statistics.pdf" size="294884" stream="WKT_RU_Statistics.pdf" tmpFilename="/var/tmp/CGItemp53262" user="YevgenChebotar" version="5"}%
+%META:FILEATTACHMENT{name="ContextLabels_EN_DE_RU.ods" attachment="ContextLabels_EN_DE_RU.ods" attr="" comment="ContextLabels from Wiktionary (EN, DE, RU)" date="1274694532" path="ContextLabels_EN_DE_RU.ods" size="26241" stream="ContextLabels_EN_DE_RU.ods" tmpFilename="/var/tmp/CGItemp50771" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WKT_RU_Analysis.pdf" attachment="WKT_RU_Analysis.pdf" attr="" comment="WKT_RU Analysis" date="1274952924" path="WKT_RU_Analysis.pdf" size="213071" stream="WKT_RU_Analysis.pdf" tmpFilename="/var/tmp/CGItemp52910" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="Crossvalidation.csv" attachment="Crossvalidation.csv" attr="" comment="Crossvalidation, StringBased Cosine. GoldStandardGross" date="1276070472" path="Crossvalidation.csv" size="5984" stream="Crossvalidation.csv" tmpFilename="/var/tmp/CGItemp50942" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WnWikiMapping.csv.zip" attachment="WnWikiMapping.csv.zip" attr="" comment="WordNet-Wikipedia Mapping. Format: %22wnID;wikiID;wikiTitle;SameSense%22" date="1277222020" path="WnWikiMapping.csv.zip" size="6770129" stream="WnWikiMapping.csv.zip" tmpFilename="/var/tmp/CGItemp35788" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SynsetCandidateCount.ods" attachment="SynsetCandidateCount.ods" attr="" comment="Extracted Wiki-Articles per Synset" date="1277284048" path="SynsetCandidateCount.ods" size="34009" stream="SynsetCandidateCount.ods" tmpFilename="/var/tmp/CGItemp35503" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="AlignmentSynsetStats.csv" attachment="AlignmentSynsetStats.csv" attr="" comment="Statistic for Synset Alignments" date="1277973097" path="AlignmentSynsetStats.csv" size="730" stream="AlignmentSynsetStats.csv" tmpFilename="/var/tmp/CGItemp41095" user="YevgenChebotar" version="1"}%
+%META:TOPICMOVED{by="YevgenChebotar" date="1275299148" from="Hiwi.WorkMai2010" to="Hiwi.WorkMaiJuli2010"}%

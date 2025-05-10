@@ -1,0 +1,81 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="ChristianMeyer"}%
+---+!! UIMA
+
+%TOC%
+
+---++ Installation
+
+   * Eclipse and plug-ins
+      * Install Eclipse Europa (or above) from http://www.eclipse.org/downloads/
+      * In Eclipse: =Help > Software Updates > Find and Install...=
+         * =Search for new Features=
+         * [X] New Remote Site "UIMA Eclipse Plugins update site" http://www.apache.org/dist/incubator/uima/eclipse-update-site/
+         * [X] Europa Discovery Site
+         * =Finish=
+         * [X] Select all UIMA-packages
+         * =Select Required=
+         * =Install...=
+       * Vista: Copy installed files in =User\AppData\Local\VirtualStore= and =User\.eclipse= back to eclipse :(
+   * UIMA SDK
+      * Install UIMA base framework / BIN-Edition from http://incubator.apache.org/uima/downloads.cgi
+      * Install UIMA base framework / SRC-Edition (can be installed to =%UIMA_HOME%\src=)
+      * Add system variable UIMA_HOME to the root of the UIMA SDK (not =bin/=)
+      * Add JDK to PATH (if not in path yet)
+      * Call =%UIMA_HOME%\bin\adjustExamplePaths.bat=
+      * Call =%UIMA_HOME%\src\addSourceToJars.bat=
+      * Call =eclipse.exe -clean=
+      * Open =Window > Preferences > Java > Build Path > Classpath Variables=
+      * Add Variable =UIMA_HOME==F:\TUWorkspace\apache-uima=
+      * Import examples (optional)
+         * =Import > Existing project into workspace=
+         * =Browse=, select =%UIMA_HOME%=
+         * [X] =Copy project into workspace=
+         * =Import=
+
+---++ Concepts
+   
+   * UIMA = Unstructured Information Management Architecture
+   * AE = Analysis Engine (run simultaneous)
+      * Feature Structure (Metadata for document, Annotations)
+      * Annotation: special Feature Structure (has a position in the document)
+      * Annotator (creates Feature Structures)
+      * Aggregate AE (contains several (primitive) AEs)
+   * CAS = Common Analysis Structure (Data structure for Feature Structures/Annotations)
+      * Data to communicate between UIMA modules/engines
+   * CPE = Collection Processing Engine (which engines to call in which order)
+      * Collection Reader (reads input data, e.g. a text file)
+      * CAS Consumer (uses the analysed data, writes output)
+      * CAS Processor = CAS Consumer & AE, CPE has several CAS Processors
+   * CPM = Collection Processing Manager (runs the CPE)
+   * Sofas = Subjects of Analysis (type and view of a document)   
+
+---++ Usage 
+
+   * Reading a parameter: <verbatim>
+ String param = (String) getConfigParameterValue("<paramname>"); </verbatim>
+   * Checking output types (only create those annotations that are requested): <verbatim>
+ ResultSpecification resultSpec = getResultSpecification();
+ if (resultSpec.containsType("<FullQualifiedAnnotClass>", aJCas.getDocumentLanguage())) ...</verbatim>
+   * Create an annotation: <verbatim>
+ <AnnotClass> annot = new <AnnotClass>(aJCas);
+ annot.setBegin(matcher.start());
+ annot.setEnd(matcher.end());
+ annot.setVariable("some string");
+ annot.addToIndexes();</verbatim>
+   * Using UIMA indices: 2 different styles
+      * JAVA-style: <verbatim>
+ FSIndex index = aJCas.getAnnotationIndex(<AnnotClass>.type);
+ Iterator iter = index.iterator();
+ while (iter.hasNext())
+   <AnnotClass> annot = iter.next();</verbatim>
+      * UIMA-style: <verbatim>
+ FSIterator iter = cas.getAnnotationIndex(<AnnotClass>.type).iterator();
+ while (iter.isValid()) {
+   <AnnotClass> annot = iter.get();
+   iter.moveToNext();
+ } // also: iter.moveToFirst(); iter.moveToPrevious(); iter.moveToLast(); iter.moveTo(annot); </verbatim>
+      * The iterator iterates also over subtypes of the given type (ordered by "begin" (longer annotations before shorter ones)
+      * When updating an index feature (begin/end for Annotation), the FS needs to be removed from and readded to the index
+
+-- Main.ChristianMeyer - 10 Nov 2008

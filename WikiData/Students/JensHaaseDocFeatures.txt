@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="4"}%
+%META:TOPICPARENT{name="JensHaaseDoc"}%
+---+ ML Features
+
+---++ Feature list
+
+Features with
+   * (b) have the value true and false (true if value changed from previous to current revision, else false),
+   * (n) have numerical values (a double or int),
+   * (s) have norminal values (a string value)
+
+Current features (Total 633):
+   * (n) Text ratio
+   * (b) Links (external, internal)
+   * (n) Number of Changes (insert, delete, replace, copy and paste)
+   * (b) Spell error
+   * (s) Previous category
+   * (n) Bi-gram (only aa-zz, with lower-cased text)
+   * (b) wikipedia templates (from wiki parser. All templates starting with 'cite_' are in references)
+   * (b) Reference (special case of a wiki template. Name starts with 'cite_')
+   * (b) Formatting (bold, italic text)
+   * (b) Stopwords

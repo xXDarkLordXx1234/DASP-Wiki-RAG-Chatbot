@@ -1,0 +1,472 @@
+%META:TOPICINFO{author="nothvogel" comment="" date="1543321972" format="1.1" reprev="45" version="45"}%
+---+!! %TOPIC%
+
+---+++ UKP Arg Sim corpus stats
+   * #Topics: 28
+   * Original (unfiltered): 3640 argument pairs, 130 pairs per topic
+   * Filtered (removed pairs with DTORCD gold label):
+      * 3064 argument pairs
+      * Average: 109.43 pairs per topic
+   * Non-argument count per topic and stance trends:
+      * [[https://1drv.ms/x/s!Ag8wvhyPqjGGgexsLg4XauwZBPJZIQ][Excel Table]] 
+      * Updates automatically as I make changes.
+      * Stance explanation: One character per hit, displays if arguments in that hit are mostly
+         * pro: +
+         * mixed: ~
+         * con: -
+   * Split-half reliability: All topics, 10 trials, 4 max assignments. Spearman:
+      * overall average: 0.8424792611957311
+      * overall std: 0.04393931060091606
+   * Ranking comparison with old dataset (soft labels), spearman:
+      * mean: 0.7740714522696546
+      * std: 0.052407861966246645   
+
+
+---+++ Crowdsourcing
+   * Selected Topics:
+
+| *id* | *name* | *description* | *batchNr* | *numOfPairs* |
+| 7 | Fracking | forcing fractures in a rock layer to extract oil and natural gas | 1 | 114 |
+| 5 | Electric cars | vehicles that use electricity to move | 2 | 111 |
+| 17 | Offshore drilling | drilling a borehole below the seabed to extract oil or natural gas | 3 | 115 |
+| 12 | Hydroelectric dams | damming a river to generate electricity with water turbines | 4 | 117 |
+| 24 | Stem cell research | using embryonic or adult-derived stem cells for medical research | 5 | 115 |
+| 10 | Geoengineering | intervening in the Earth's climate system | 5 | 102 |
+| 21 | Robotic surgery | using robotic systems to assist in surgery | 4 | 117 |
+| 13 | Hydrogen fuel cells | use hydrogen fuel to generate electricity and only emit water as a by-product | 3 | 115 |
+| 18 | Organ donation | giving an organ away for transplantation or research after death | 2 | 115 |
+| 11 | Gmo | genetically modified organisms i.e. crops whose genetic material has been altered | 1 | 111 |
+| 14 | Internet of things | connecting physical devices and everyday objects via the internet to exchange data | 5 | 107 |
+| 16 | Net neutrality | principle that internet providers treat all data equally | 4 | 109 |
+| 1 | Big data | extracting valuable information from very large datasets | 3 | 112 |
+| 20 | Recycling | converting waste materials into new materials and objects | 2 | 115 |
+| 6 | Electronic voting | using systems that cast or count votes electronically | 1 | 115 |
+
+   * Batches:
+| *number* | *#pairs* | *bwsFactor* | *maxAssignments* | *#HITs* | *#assignments* | *#cheaters* | *$reward* | *$total* | *$perPair* | *bestAgree* | *worstAgree* | *bestWorstAgree* | *topics*                                                     | 
+| 1        | 340      | 1.5         | 5                | 569     | 2845           | 0           | 0.20      | 682.8    | 1.98       | 0.651       | 0.607        | 0.445            | ['Fracking' 'Gmo' 'Electronic voting']                       | 
+| 1.1      |          |             | 4                | 100     | 400            | 0           | 0.20      | 96       |            |             |              |                  | ['Fracking' 'Gmo' 'Electronic voting']                       | 
+| 2        | 341      | 1.75        | 4                | 664     | 2656           | 0           | 0.20      | 637.44   | 1.85       | 0.668       | 0.630        | 0.476            | ['Electric cars' 'Organ donation' 'Recycling']               | 
+| 3        | 342      | 1.75        | 4                | 666     | 2664           | 1           | 0.20      | 639.36   | 1.85       | 0.694       | 0.683        | 0.519            | ['Offshore drilling' 'Hydrogen fuel cells' 'Big data']       | 
+| 3.1      |          |             | 1                | 211     | 211            |             | 0.20      | 8.44     |            | 0.699       | 0.690        | 0.525            | ['Offshore drilling' 'Hydrogen fuel cells' 'Big data']       | 
+| 4        | 343      | 1.75        | 4                | 668     | 2672           |             | 0.20      | 641.28   | 1.85       | 0.701       | 0.689        | 0.533            | ['Hydroelectric dams' 'Robotic surgery' 'Net neutrality']    | 
+| 5        | 324      | 1.75        | 4                | 630     | 2520           |             | 0.20      | 604.8    | 1.85       | 0.685       | 0.660        | 0.505            | ['Stem cell research' 'Geoengineering' 'Internet of things'] | 
+| 6 | 315 | 1.75 | 4 | 609 | 2436 |  | 0.20 | 584.64 | 1.85 | 0.656 | 0.634 | 0.467 | ['Nanotechnology' 'Solar energy' 'Genetic diagnosis'] |
+| *SUM*    | %CALC{"$SUM( $ABOVE() )"}%   |           |                |       |              |        |          | %CALC{"$SUM( $ABOVE() )"}%       |          | | | | |
+
+
+---++ Meeting notes
+
+---+++ Upcoming
+<!--   * Status of literature review
+   * Data cleaning
+   * Results of internal ukp test 1: 
+      * 4 assignments per HIT as of 10.08.2018 12:45
+      * errors/problems: 0
+      * best agreement: 75.0%
+      * worst agreement: 68.75%
+      * best and worst agreement (combined): 51.25%
+-->
+
+   * Batch 6: Agreement better than expected, no cheaters.
+   * Unblock every worker I blocked for this experiment (i.e. Melissa)?
+   * Machine Learning: 
+      * 1. Split data into train (80%) and test (20%) sets. 
+      * 2. Run cross-topic validation on train set to optimize hyperparameters (test set is not used at all)
+      * 3. Decide on hyperparameters and test on the test set.
+   * I trained a new model 10 times for each validation topic to reduce initialization impact.
+   * Train/test split is still random and might affect results. Repeat 1-3 as well?
+   * I have some data for ensemble model. Nothing for maLSTM yet. Enough time to test maLSTM? Don't want to lose time tuning hyperparameters for it.
+   * How to evaluate results? Current loss is MSE. Let the model predict on all data or only test to get spearman rank correlation (to make it comparable with unsupervised baselines)?
+   * Final presentation 04.12.
+
+old:
+   * timeline until hand-in
+      * unsupervised baselines finished
+      * supervised system
+         * preference-based Bayesian model: https://github.com/ukplab/tacl2018-preference-convincing
+         * straighforward DNN with hybrid features
+      * error analysis
+      * final BWS batch (up to 2000 pairs)
+      * start writing
+
+---+++ 05.11.2018
+   * (+ email until 27.11.2018)
+   * Thesis Structure:
+      * 1 Intro (ca. 10%)
+      * 2 Related Work (ca. 15%)
+      * 3 Methods/Theory (Preference-based annotation and learning inkl. BWS, (un)supervised similarity learning) (ca. 15%)
+      * 4 BWS for ArgSim (Corpus Creation) (ca. 25%)
+      * 5 Learning ArgSim (Experiments inkl. unmittelbarer Analyse) (ca. 15%)
+      * 6 Discussion (ca. 15%)
+      * 7 Conclusion/Future Work (ca. 5%)
+   * Look at other preference-based methods in related work (not only BWS) for creating data + learning
+   * Related work:  Konkrete Ansätze, die methodisch verwandte Arbeiten einsetzen und deren Ergebnisse (wichtig). Warum so und nicht anders? Warum verwende ich X und nicht Y?
+   * Joys previous work at UKP: I need to explain it, but not make it look like it is my own work. belongs to related work. In corpus creation: Explain where the data comes from, how pairs were selected. When comparing my data with joys work: refer to related work.
+
+---+++ 29.10.2018
+   * got word movers distance working for spacy models (now running on linux)
+   * most frequent words for stem-1-grams from all pairs (not just selected topics).
+   * fasttext self-trained from scratch does not work that well (tested 100, 200, 300 dim vectors, otherwise default settings)
+      * result: rho = 0.3 or lower, compared to 0.48 topline
+      * input for fasttext: all arguments (not just selected topics) => list of words only seperated by space (no linefeeds or other seperators for different arguments)
+      * retrain fasttext model: not available in the official repo, but exists as a pull request. try to retrain at all?
+   * fasttext with higher learning rate works surprisingly well (competetive with topline).
+      * Tested learning rates from 0.1 (default) to 1.0. Best results around 0.2-0.3.
+      * Warning: Overfitting possible! Todo: Remove 10-15% of selected topic arguments. 
+      * Even when removing some of the arguments from the selected topics, the results are fine(rho=~0.40). 
+      * However, as I remove more and more arguments, the training data for the fasttext model decreases, possibly lowering the test results even further.
+   * 'overfitting' the embedding is not that bad. can train my own fasttext model on all pairs.
+   * send thesis structure to JD.
+   * create simple ensemble NN that is not too big.
+
+
+---+++ 22.10.2018
+   * error analysis: find examples where text models fail that are interesting and can be used to compare different models
+   * fasttext: has pros and cons, will adjust well to the domain but we could not have enough data to train it properly
+   * if it doesn't take too much time: test fasttext and word movers distance
+   * out of vocab random vector: use dict for unknown words. project to the same vector within a run
+   * best system: create confusion matrix
+   * new batch to get to 2000 pairs: topics: Nanotechnology, Solar energy, Genetic diagnosis
+   * focus on writing in november
+
+---+++ 15.10.2018
+   * For stem 1-grams: Test different vector sizes (100, 200, 500, 1000, 2000, 5000, all words) + number of stopwords.
+   * Out of vocab words: Test projecting to a random vector (instead of projecting to 0).
+   * GloVe didn't perform that well, but we rather want to test different embedding models than GloVe with different training data.
+   * Test until next week: OOV on random vector, InferSent, FastText, Word Movers?, if there is more time: MaLSTM, Euclid normalized.
+   * Plot/analyze collected baselines
+   * Use z-transformation for spearman average everywhere
+
+---+++ 08.10.2018
+   * How to handle out of vocabulary words in embeddings: 
+      * Project to a random vector, or use single vector for all oov words (like all zero)
+   * Test preprocessing: Filter for stopwords, punctuation, all lowercase…
+   * Make sanity checks / check by hand
+   * About baselines / own system:
+      * What works for our problem? Compare baselines with each other…
+      * Own system would be compared to misra et al, should be equally good or better
+      * Main contribution of my work is the new corpus
+   * Train fasttext myself:
+      * Use as much training data as possible (i.e. all arguments in old corpus, not only from selected topics)
+      * Test training from scratch and adjusting pretrained models.
+      * Possible overfitting. Maybe we need to exclude some topics from training the embedding model.
+      * Basics should be finished until next week.
+
+---+++ 24.09.2018
+   * For now, use baselines that worked well in misra/wachsmut and are easy to implement
+   * Text representation: 
+      * Stem 1-grams
+      * Word2Vec pretrained google news 300
+      * + at least one other embedding like glove
+   * Aggregation method for embeddings: Average over all words in sentence
+   * Similarity measures:
+      * Cosine
+      * Euclidean distance (normalize vectors?)
+      * Manhattan distance
+      * Word movers distance
+   * Other systems:
+      * UMBC STS?
+      * Rouge/LWIC
+      * Misra et al system
+   * For later: train FastText myself, test other embeddings (sentence level?), InferSent
+   * (neural) embeddings == model produced by something like word2vec, encodes semantic info. Unigrams only encode lexical information
+   * Use nltk and spacy for python: Most of the baselines should already be implemented
+
+
+---+++ 14.09.2018
+   * Split Half Reliability: 
+      * Sample possibly too small (half == only 2 assignments).
+      * => Aggregate results about required assignments:
+         * Split Half Reliability on 100 test HITs with 8/4 assignments
+         * Split Half Reliability on all HITs with 4/2 assignments
+         * 1/2/3 assignments on all HITs with max assignments as gold standard
+         * Cut off assignments for HITs that have more than 4 assignments before calculating scores/ranking, repeat 10 times as well
+         * keep notes and plots for thesis
+      * Comparison with old ranking:
+         * Try to use MACE to generate soft labels for old corpus. Needs worker IDs that I don’t have atm
+         * How to convert new ranking/scores to hard labels? Assign based on a-priori probability for each label or find intervals for labels between [-1,1]. Per topic or over the whole dataset?
+         * Evaluate hard labels from new ranking like a classifier: classification error matrix, precision/recall, accuracy. See scikit-learn for implementations.
+   * Next steps: Similarity baselines.
+      * Use embedding that is known to work(i.e. from Misra et al, Wachsmut) for now
+      * Create list of all similarity measures (that are easy to implement/ready to use)
+      * Calculate similarity value for each metric and compare ranking with our results
+      * Can use regression to find which parameters corellate most with ArgSim
+      * Only afterwards: Test different embedding approaches, e.g. pretrained or train on our own dataset
+
+---+++ 06.09.2018
+   * if there are more experiments in the future: make qualification test harder
+   * overall workers seemed to be satisfied with the task
+   * main focus: midterm talk
+
+---+++ 27.08.2018
+   * Arg Sim Machine Learning: 'Cross-Topic' validation, e.g. train on n-1 topics and test on remaining one.
+   * Word Embeddings: Test some different options, but not main focus
+   * How to combine argument sentences and topic information?
+   * Look for state of the art embeddings
+   * Keep experiment stats as a table in the wiki
+
+---+++ 15.08.2018
+   * Next meeting when JD is back from vacation
+   * Until then, contact via email.
+   * Qualification test:
+      * add note that the HIT layout is better in the actual HIT
+      * switch arguments with each other in HITs to make tests more clear to decide
+      * 4 definitive test HITs, workers need at least 50% correct answers
+      * if workers answer best == worst they get -1 point to prevent lucky hits when ticking random boxes
+      * explain solution in example HIT
+   * fix topic description in HIT templates (quali + regular hit)
+   * qualification requirements for live hit:
+      * locale: USA, Canada, (UK, Australia)
+      * Approval Percent: >95, in first batch: >98
+      * #HITs Approved: 1000
+      * Own Qualification Test
+   * Captchas:
+      * Adjust lists to remove bad synonyms / phrases
+      * Add disclaimer to HIT description: 'This task contains periodic attention checks. Please make sure to answer them correctly.'
+      * Generate all possible combinations, remove bad ones
+      * Has to be obvious, i.e. Most + synonym(similar) or synonym(most) + similar
+   * How to use HITs from ukp-test-1 in crowdsourcing experiments:
+      * using the exact same HITs for BWS needs complicated logic changes
+      * idea: sample BWS questions regularly; add captchas and HITs from ukp-test-1 seperately
+      * this way, we can still compare crowd with experts (even though we can't compute standard agreement)
+      * after the experiments ended, we can still do BWS with experts on a small subset and compare our ranking results with the crowd
+   * How to select batches:
+      * combine topics from both ends of the list (sorted by argument quality descending)
+   * Parameters for HITs and Qualification Test: Send JD list with current params to check them
+   * Send cost estimate as well to compare results
+   * When the crowdsourcing experiment is live:
+      * How to handle malicious workers:
+         * 2 possibilities: block/reject
+         * block: worker can not accept any more HITs
+         * reject: worker will not get paid
+         * Block first (and as quickly as possible). Only reject if worker is obviously malicious. 
+         * Only need to reject before auto-approval time
+      * Check at least once a day:
+         * for each worker: agreement with majority, #captchas seen, #captchas failed...
+         * block if neccessary
+      * When the experiment ended: reject malicious workers, approve remaining ones
+      * Need to collect more assignments for HITs where workers were blocked/rejected until we have enough
+      * When workers send feedback for the HIT, JD will forward the emails to me.
+   * First batch:
+      * 3 topics with BWS factor 2?, 5 assignments
+      * sample mini-batch from the first batch to test parameters: 100 HITs, increase max assignments to 9
+      * collect results and adjust parameters (payment, qualification test...) if necessary
+   * Keep track of batches in wiki. Table with: topic, batches, batch number
+   * Next steps:
+      * Get experiments live as soon as possible
+      * Send status report to JD at the start of next week
+      * If experiments went all right, I can continue; In case there are major problems: wait and discuss before deploying next batch
+      * JD will be able to respond to emails from Monday
+      * Send mail as soon as: 
+         * Experiment is live
+         * Experiment ended and results are evaluated
+
+---+++ 10.08.2018
+   * Captchas: Should be obvious (i.e. 'select pair 3 as most similar')
+      * Idea: Compose Captchas from 2 parts: Disclaimer + Selection Instructions
+      * Disclaimer should make it clear that the whole HIT is an attention check
+      * Instructions describe choices for best and worst for that HIT
+      * Need multiple variants / synonyms for Captchas to make it harder to automate
+   * Agreement:
+      * For now, my counting method (majority voting with equal weights) is all right
+      * Later: Use more solid statistical measures like:
+         * Kappa agreement, Krippendorf(2004?)
+         * Alpha
+         * Need measure that can deal with low sample size
+         * Low priority for now
+   * Send topic descriptions to JD
+   * Qualification test:
+      * 5? test hits on a single page
+      * 1 solved as an example
+      * workers need to give >50% correct answers
+   * Check more BWS literature (low priority)
+   * Collect results of in-house study (ukp-test-1)
+   * Estimate costs for crowdsourcing
+   * Data cleaning: Search arguments manually for missing spaces, weird characters (like '<>', parser errors). Only if it doesn't need that much time
+   * In general, keep notes of what I'm doing and what I'm reading for thesis, add some bullet points to outline
+   * deploy HITs in batches (i.e. per topic?)
+
+---+++ 03.08.2018
+   * Change similarity order in HIT template from low->high to high->low
+   * Use `assignments` to describe how many workers work on a HIT
+   * Pushed my main project to ukp git server -> https://git.ukp.informatik.tu-darmstadt.de/nothvogel/arg-sim-bws
+   * Results of BWS Sampling experiment: Choosing 4 random items from the whole set with equal probability is not enough to satisfy BWS assumptions:
+      * Test setup: 2000 items, bws factor 1.5. 
+      * Using Mohammad et Al definition of BWS constraints. The first two constraints prevent duplicate items in each question and duplicate questions; easy to solve in code.
+      * Third constraint: `3.  each  term  in  the  term  list  appears  approximately in the same number of 4-tuples`.
+      * Over 3 reruns of randomly choosing 4 items with equal probability the occurrence of singe items in questions was very different with some items not appearing at all while others appeared in up to 14 different questions.
+      * For this reason the sampling process was changed to use weighted random selection: Start with equal weights for all items in the set. Normalize the weights so that they can be interpreted as a probability. Draw 4 items for the next question using weight_i as the probability to select item_i and decrease the weight of the items chosen thus reducing the probability that these items get drawn again.
+      * The other constraint is: `4.  each pair of terms appears approximately in the same number of 4-tuples`. I'm assuming that this is only with respect to pairs that actually appear in the questions (and not all possible pairs of items). Fortunately, this constraint was satisfied in all tests without further sampling changes.
+      * Here are the results for our test case (2000 items, bws factor 1.5): [[%ATTACHURLPATH%/bws-sampling-test.txt][bws-sampling-test]]
+      * Is the new sampling method still considered `random`, i.e. does not introduce some kind of bias?
+   * Todo:
+      * Create 20 HITs for internal UKP tests -> https://workersandbox.mturk.com/mturk/preview?groupId=3VOM7QT3F4KBU7R45G27CKPV8K1W7W
+      * Prepare result evaluation that works for N assignments
+      * Add short description of topics?
+      * Next: CAPTCHAs, qualification test, worker qualification requirements
+
+
+---+++ 30.07.2018
+   * Rework guidelines: 
+      * Move explanation in examples to the right
+      * Add shading to show similarity levels
+      * Add small text about the given topic (bullet points, short)
+   * Non-arg test results: Use the best 15 topics for now (median <= 1.5 bad args per hit)
+   * Priority: Deploy to AMT for
+      * 1: Small test round with JD and me. Keep track time needed, make adjustments to the HIT if necessary 
+      * 2: Larger in-house study over all topics (to create gold standard...)
+   * Try to get some topics on AMT Sandbox until Thursday 14:00
+   * Not neccessary to check BWS assumptions for first small tests, but make sure to add it later
+   * Estimated cost for crowdsourcing 1500 argument pairs using BWS, with n=number of items to annotate: 
+      * Optimal: Generating 2*n BWS questions, 10 annotations from different workers per HIT: [[%ATTACHURLPATH%/full.txt][full]]
+      * Minimal: Mohammad et al ('Capturing Reliable Fine-Grained Sentiment Associations[...]', 2016) concluded in their study that it was enough to generate 1.5*n BWS questions and collect 3 annotations per BWS question. Using these values: [[%ATTACHURLPATH%/min.txt][min]]
+      * Reduced: Mohammad et al were working with much smaller items (only a few words) and we probably need some more annotations just to be safe. We could generate something like 1.7*n BWS questions and collect 7 annotations per BWS question: [[%ATTACHURLPATH%/red.txt][reduced]]
+      * If we implement a function that checks the BWS assumption (each item appears approx. in the same number of questions) we can probably get as low as 1.5*n BWS questions
+      * We don't know how many annotations per question we need. We could test a smaller subset with 10 annotations, then run reproducability tests to determine the minimum number of required annotations per question (similar to Muhammad et al) to save costs
+   
+---+++ 24.07.2018
+   * HIT 3d printing test results:
+      * Agreement
+         * Best: 55%
+         * Worst: 45%
+         * Best & Worst combined: 25%
+         * Problem: Many `non-arguments`. Hard to decide best/worst
+   * How to deal with `non-arguments`?
+      * topics like 3d printing, big data, cloud storing and cryptocurrency contain many sentences that fit the given topic, but are not arguments (i.e. companies advertising their product)
+      * if there are too many non-arguments it gets hard to decide which pair is best/worst (in particular with 2 or more 'bad' pairs in a single BWS question)
+      * we need at least 15-20 topics / 1500-2000 pairs in the end
+      * Check the other topics of the existing UKP arg sim corpus:
+         * generate 10 test HITs for each topic
+         * create a table with the 28 topics and rows for hit 1-10 (so we can have statistics per BWS question/hit too).
+         * count how many non-argument pairs there are (if at least 1 argument in that pair is bad, it counts as 1 non-arg pair).
+         * also keep track of general stance of the arguments on the topic (pro/con/mixed).
+      * Alternative/Fallback solution: Generate more arguments from other dataset on argument stance
+   * Rework HIT guidelines and examples:
+      * improve examples: correct typos, grammar. Do not need to copy them 1:1 from the corpus
+      * add `general tips` to guidelines: ignore typos/grammar, ...
+      * what to explain (and what to omit): text should be short so workers actually read it
+         * 1 sentence: what is an argument with respect to a given topic? Possibly as introduction for examples
+      * Give 5 examples to sepeare them visually from the actual task (4 pairs)
+      * Sort them in one direction (i.e. from low to high similarity), possibly underline it graphically (shading?)
+      * Replace criteria column with `explanation`: use bullet points, no full text
+      * Do not mention `aspect` if it is not neccessary. aspect is not the only criterium (scope, overlap...)
+   * I received amt access info today. Will do some tests. Save results of internal tests already (need it for agreement checks and gold standard).
+
+---+++ 16.07.2018
+   * HIT guidelines: Do not formalize too much. Test without scale, try textual explanation.
+   * New HIT tests with JD and me:
+      * 20 HITs, single topic (different from fracking)
+      * Including guidelines draft, without can't decide
+   * We need enough pairs for the different topics (and if possible with different stances). Count:
+      * How many pairs, topics are available (excluding DTOCD)
+      * Per topic: How many pairs? Stance (same stance / mixed)?
+      * Calculate average pairs per topic
+   * AMT Sandbox: JD will give me account info soon. To test the HIT, deployment to AMT, result collection (+ in-house tests later)
+   * Captchas:
+      * Should be made obvious (i.e. `Select this pair as 'best'`).
+      * 10-20 different phrases to make automating difficult
+      * About every 10th HIT should be a captcha
+   * https://arxiv.org/pdf/1709.01887.pdf >> last 2 Pages (Appendix) contain examples for crowdsourcing guidelines used ("Figure 10:  Definitions used for Facet and AFS in MT HIT"), see also http://www.aclweb.org/anthology/N15-1046.pdf
+   * annotation time per HIT (110-120sec.)
+   * Agreement over 16 questions: 81% best, 68% worst, 50% best and worst combined (excluding questions marked as can't decide)
+   * Controversial questions are usually the ones where some pairs are very similar
+   * Do we even need (or want to have) the `can't decide` option for cases where some pairs are very similar to each other? 
+      * If you are not sure, it should be fine to select either one
+      * If we collect more annotations for these questions, similar pairs are likely to receive a score that is close to each other.
+      * Some kind of bug report function might still be useful.
+
+
+---+++ 09.07.2018
+   * generate hits as seperate html files is fine (as long as it is reproducable/backed up and we know which annotation belongs to which particular hit/data)
+   * Todo:
+      * Fix HIT validation (prevent best==worst)
+      * Try not using external js libraries if possibleto prevent problems
+      * Make sure HIT is compatible with all modern browsers
+      * Agree on HIT guidelines: Similar to misra et al?
+         * Do we need a scale that is this fine-grained? Table can get quite long…
+         * Examples in table or in qualification/training phase?
+         * Do we need the explicit definition of FACETS?
+      * Solve some test HITs and keep track of time needed / eventual problems
+
+---+++ 26.06.2018
+   * Ranking papers linked below probably not applicable for our problem (goal: ranking vs numeric score)
+   * In house study: 
+      * Not possible to collect enough annotations in house to apply full best-worst scaling
+      * Instead used to test HIT setup, make sure task is well-defined and expert agreement is sufficient
+      * Compare with AMT worker results later
+      * Use existing topics/argument pairs from UKP corpus for now, create own corpus later
+      * Leave incorrect arguments in the dataset for now, only filter if we encounter them too often
+   * Worker competence / HIT setup:
+      * Set Additional requirements for workers (AMT parameters)
+      * Use qualification test and a few training examples.
+      * Use Captchas / Control Questions to filter bad workers
+   * Todo:
+      * Research how worker competence can be included in the BWS model. If nothing else is found, use MACE.
+      * Develop/Implement HIT layout (1 reference argument fixed at the top that appears in all 4 pairs?)
+      * Implement argument pair sampling (4-touples) for BWS and connect it to the 'frontend'
+
+---+++ 14.06.2018
+   
+   * Best-Worst scaling HIT setup
+      * Try to use simple language, avoid domain-specific/technical terms
+      * Need options for: Can't decide (e.g. all pairs equally similar), bug report
+      * Keep assumptions of best-worst algorithm in mind
+      * How to model task: 1 fixed pair on top, compare with other variable pairs? Make it simple for workers
+      * Kiritchenko and Mohammad (2016) find that 2n BWS questions are enough to obtain reliable scores. (with n: number of items (argument pairs)
+         * They conclude that you would only need 3 annotations per BWS question to obtain reliable annotations.
+         * However, they annotate words/very small phrases only.  
+         * We probably need to collect more annotations initially
+      * It seems like there is no restriction on set size that should be annotated with BWS (existing corpora could be used)
+   * Problem: Evaluating word encodings/embeddings and distance metrics
+      * We want to use the best combination to pre-select interesting pairs for annotation
+      * Testing on other corpora depends on the data set quality and might introduce bias
+      * Collecting expert annotations on our new dataset in house might not be sufficient for Best-Worst Scaling
+         * We can only produce a small number of annotations for the dataset
+         * Best-Worst Scaling requires a certain number of annotations to work correctly
+      * Later: Test combinations again on our new, then annotated dataset
+   * Check if the existing UKP corpus / Misra et al corpus is sufficient
+      * UKP corpus contains some invalid arguments: Missing spaces, webdriver errors, ads...
+      * Possible to use subset with lower MACE threshold?
+   * Code examples for preprocessing / HIT setup / training similarity systems available in UKP gitlab
+   * Open questions: 
+      * Pairwise preference methods applicable for ArgSim problem? See below.
+      * About Habernal Gurevych 2016 annotation method: 
+         * You can reject workers based on their low computed competence (MACE?) or other criteria such as too short submission times.
+         * How to handle transitive properties / potentionally conflicting preference annotations? E.g. a>b, b>c but c>a
+
+---+++ 11.06.2018
+
+   * Meeting cancelled on my request, rescheduled on Thursday
+
+---+++ 25.05.2018
+
+   * Assumption: Arguments generated by in-house parser are good enough
+   * Argument quality still needs to be considered: Sentence length, readability, confidence of parser etc.
+   * Filter arguments: Use simpler rules (no annotation for argument quality)
+   * Take notes while reviewing related work; needs to be included in thesis
+   * Thesis deadline: ~ mid december
+
+---++++ Todo:
+   
+   * Evaluate existing UKP arg sim corpus: Enough data for sampling?
+   * Study Best-Worst scaling in depth, make sure assumptions of the algorithm are satisfied
+   * Create better mockup for Best-Worst scaling HIT
+   * Literature review / related work on:
+      * Preprocessing: How arguments are preprocessed, how interesting pairs are selected
+         * JD: hier bitte folgendes ansehen: http://argumentation.bplaced.net/arguana-publications/papers/wachsmuth18a-acl.pdf (Sect. 5.1 sim. computation + embedding arg. similarity)
+            * How to evaluate which distance metric performs best? 
+            * ConceptNet was used because it is smaller (encoding or model size?)
+            * Word Movers Similarity
+      * Pairwise annotation for assessing arg sim
+      * Habernal Gurevych 2016 (annotation method)
+      * Preference/ranking based methods for crowdsourcing/annotating similarity:
+         * Applicable for arg sim problem? [[https://www.microsoft.com/en-us/research/wp-content/uploads/2013/02/wsdm2013-preference-chen-et-al.pdf][Chen et al 2013]] or [[https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7980235&tag=1][Wang et al 2017]]
+
+-- Main.PhilippNothvogel - 2018-05-25
+
+%META:FILEATTACHMENT{name="full.txt" attachment="full.txt" attr="" comment="" date="1533036615" size="214" user="nothvogel" version="1"}%
+%META:FILEATTACHMENT{name="min.txt" attachment="min.txt" attr="" comment="" date="1533037114" size="217" user="nothvogel" version="1"}%
+%META:FILEATTACHMENT{name="red.txt" attachment="red.txt" attr="" comment="" date="1533037480" size="226" user="nothvogel" version="1"}%
+%META:FILEATTACHMENT{name="bws-sampling-test.txt" attachment="bws-sampling-test.txt" attr="" comment="" date="1533641754" size="441" user="nothvogel" version="1"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="Philipp Nothvogel"}%

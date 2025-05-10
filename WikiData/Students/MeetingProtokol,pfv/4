@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="CigdemToprak" date="1243432434" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+%TOC%
+
+---+++ 27.05.2009
+
+   * @action(NE): prepare 300000 sentence corpus from FAZ
+      * Crawl the data from the archive files.
+      * CD-Search interface enables an option "Export mit Umbruch" 
+      * Search options: 
+         * Ressort: Bildung, Hochschule, Wissensschaft, Meinung
+         * Art: Kommentar, TAZ-Bericht, Dokumentation
+         * Länge: nur mittlere
+         * Make a corpus of 300000 (half from Kommentar, half from Bericht)
+   * @action(CT): Nico's  TK account dringend
+   * @action(CT): look for suitable German Parsers, send Nico the BitPar Parser 
+      * Students repository, core project has all the components except Parser    
+   * @action(NE): harvest the forum data.
+      * Course name: Basics September 2006m, 2007
+   * @discuss(): Manual annotation.
+      * Read the [[http://www.cs.pitt.edu/~wiebe/pubs/papers/lre05.pdf][manual]] 
+      * [[http://www.cs.pitt.edu/~wiebe/pubs/pub1.html][Wiebe's page for more info. on sentiment and subjectivity analysis]]
+      * [[http://mmax2.sourceforge.net/][Annotation Tool]]
+   * @action(CT): create the annotation project after receiving the evaluation data set from Nico
+   
+*DONE*
+   * @action(CT): mail German opinion lexicon for high-precision subj. classifiers.
+
+---+++ 18.05.2009
+
+Presentation of preliminary version of Status Meeting Presentation.
+
+Discussion of approach to determine polarity of forum entries.
+
+   * @action(NE): improve presention for next day
+   * @action(CT): upload German opinion lexicon to TWiki
+
+---+++ 
+
+-- Main.CigdemToprak - 11 May 2009

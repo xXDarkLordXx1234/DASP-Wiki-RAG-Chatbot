@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="nbeck" comment="" date="1616173280" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ KW 11: March 15-21, 2021
+   * created exhaustive set of sentence mappings from MetaNet and FrameNet, roughly 360.000 in total
+   * began researching language models for fine-tuning. Current candidates
+      * T5
+      * BART
+      * CTRL
+      * PPLM
+      * GPT-2
+   * wrote chapter on conceptual metaphor theory
+   * received draft paper from Kevin, where some of my work is planned to be included
+
+---
+
+---++ KW 10: March 8-14, 2021
+   * implemented fitterBERT, resulting in a roughly 1000x speedup in creating sentence mappings
+   * adopted Delemmatizer from fitBert
+   * created figures for sentence and vocab distribution
+   * computation of ALL possible sentence mappings running
+   * *Mid-term presentation* on April 1, 2021
+
+---
+
+---++ KW 9: March 1-7, 2021
+   * began writing introduction 
+   * FitBERT way too slow -> began custom implementation building on huggingface's BERT
+   * read related papers (anonymous submissions)

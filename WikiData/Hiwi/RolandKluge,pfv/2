@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="RolandKluge" date="1338913909" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Stundenzettel
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Anmerkungen* |
+| Kickoff-Treffen: Roadmap, erstes Arbeitspaket, Technisches | 04.06.2012 | 1 | in Arbeit |
+| Einlesen: <nop>SeerSuite, Algorithm Search, <nop>TableSeer, etc. | 05.06.2012 | 2,5 | in Arbeit |
+| Einrichtung von DKPro | | | ausstehend |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60 | bis 1. September 2012 |
+<nop>

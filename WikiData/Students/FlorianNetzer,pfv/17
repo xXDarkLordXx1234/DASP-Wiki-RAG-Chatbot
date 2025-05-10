@@ -1,0 +1,141 @@
+%META:TOPICINFO{author="eger" comment="save topic" date="1510310936" format="1.1" reprev="17" version="17"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Bachelor Thesis* : Deep Learning for Citation Count Prediction
+
+
+*Start date* :  05.10.2017
+
+*Supervisor*: Dr Steffen Eger
+
+
+
+---++++ *Current Status*
+   * 8.11.2017
+      * changed hep binning to four classes which are more evenly distributed. 
+      * improved conclusion extraction. around 400 conclusions more for the CL dataset, 5000 more for HEP
+      * Tried optimizing the models. No to big improvements
+      * ran experiments on introduction and conclusion
+         * results with f1 metric coming tomorrow morning. some results still missing 
+   * 1.11.2017
+      * accumulated older papers for the CL datasets prediction task. Improved results and lowered variance between dev and test results. new statistics + label distribution in datasetv2.pdf
+      * Improved results(see attached experimentsv2.pdf) for CNN by changing the layers and dimensions. including author and venue input into the Dense layers at the end of the CNN model seems to improve results in some cases(no venue information for hep papers).  As good or even better results than yogatama baseline so far!:)
+      * changed yogatama baseline to resemble better the model described in the paper. Test showed no big differences but I did not rerun all the Experiments yet. UPDATE: did reruns. results better for CL dataset. experimentsv2.pdf updated
+      *  tried mlp on yogatama and vdcnn. no good results so far.
+   * 25.10.2017
+      * Created Statistics for the datasets(see attached dataset.pdf). Problem: train/dev split is to small for the CL dataset prediction task. This is because most papers are in 2016 and 2017. The smallest time span for predictions is citations within one year because there is no information about the citation month. Therefore the train/dev split has to be, to avoid overlapping with test split, in 2014, which is small. 
+      * Evaluation of models on abstract and full text(see attached experiments.pdf). So far only the yogatama baseline has some good results. I noticed some difference in my implementation to the one described in the paper. I will change it and hopefully improve it further. VDCNN not tested yet but I made my own implementation which should work. I am also trying to use an MLP instead to logistic Regression on the yogatama features.   
+   * 18.10.2017
+      * Began evaluating different models. So far no interesting results. Models need to be optimized.
+         * SE: Better than baseline? Do you tokenize your data? On which level do you work: abstract, intro, conclusion, full text?
+            * yogatama(with author and venue info) on tokenized abstract   works ok for modelling task. about 6.5% better accuracy than baseline . baseline level for prediction. 
+            * yogatama on full text better(modelling task), almost 10% improvement over baseline.
+            * simple cnn at baseline
+            * fasttext slightly over baseline
+            * vdcnn not running yet :(
+
+   * 17.10.2017:
+      * program to create dataset on apu /home/netzer/semanticScholarDBcomplete:
+         * run.sh: runs every step to create the full dataset. category can be changed in script(see comments). I did not test how long a full run takes.
+         * finished CL dataset: semanticScholar_csCL_FULL.jsonl . Every line is a paper + metdata encoded as json
+         * sample paper : example.txt
+      * all arxiv papers: /home/netzer/arxiv
+   * 11.10.2017:
+      * Datensatz mit papern aus  high-energy physics ist fertig.
+      * Ich habe angefangen das Modell von Yogatama zu implementieren. Bisher habe ich nur Ridge Regression verwendet. Im paper wir diese mit einem  Generalized Linear Model mit Time Series Regularization verglichen. Für letzteres gibt es keine fertigen Implementierungen. Ich bin mir nicht sicher wie viel Aufwand das wäre.
+      * Sonst bin ich dabei ein Framework zu bauen, mit dem ich die Experimente mit verschieden Evaluierungsszenarios,Datensätzen und Modellen strukturiert durchführen kann. 
+   
+
+---++ Meeting Minutes
+
+---++++ *Meeting 09.11.2017*
+   * *Info*: 
+      * For meta-data based features, may have a look here: https://github.com/Lucaweihs/impact-prediction, http://ai2-website.s3.amazonaws.com/publications/JCDL2017.pdf
+      * Another definition of novelty: 
+         * https://pdfs.semanticscholar.org/ccef/bfea8303fd4a5b79d0b7f3dfd467d321a2d8.pdf, Section 3.2
+         * SE: I do think that this would be difficult to compute, because we would need to extract all the references ...
+   * *TODOS:*
+      * novelty & readability features
+      * Both with log.reg. and MLP
+   * *Catchup & general:*
+      * What is the body exactly composed of? Everything? (abstract, intro, ...)
+      * Optional: Make a single CNN representation of abstract, intro, body, conclusion, then concatenate
+         * Could be better than a single model on all text 
+      * Yogotama: Binary+log(features): exclude one of them
+      * Fasttext: add some experiments
+      * Code sustainability: document your code well
+      * Reproducibility: store your commands in little "run.sh" scripts, so that you know in the end what you did
+      * Optional: MLP with Yogatama.
+      * Do something with the _title_: e.g. a separate category or include it in the abstract and/or body
+      * To run a command independently of the console, type: "nohup sh run.sh > store.dat &"
+      * Maybe add more training data by adding first half of 2016
+         * Either ignore the fact that this isn't exactly prediction anymore
+         * Or: try to get month citations in 2017
+
+---++++ *Meeting 02.11.2017*
+   * Expand train set for cs.CL: e.g., include first 6 months from 2016 in train set
+      *  also re-run with fasttext
+   * Work on conclusion extractor and perform experiments on Introduction and Conclusion
+   * HEP label distribution: split ">2" in "3" and ">3" or similarly
+   * Document your code well so that we could re-use it very simply for new data (e.g. cs.ML). Keep it flexible
+   * Play around with the Yogotama baseline:
+      * use only unigrams
+      * omit the binary features and keep only log counts. 
+         * Did you log the counts? Double check
+   * CNN: use more filters than 75 - this might boost your performance. Play around with other hyperparams
+   * Implement F1 and report F1 performance. E.g.: do we have high recall for papers in the class ">2"?
+   * If time permitting:
+      * Play around with novelty scheme:
+         * log-likelihood ratio test: http://ucrel.lancs.ac.uk/llwizard.html
+         * Idea: Small corpus and big corpus. This can calculate (and rank) you the words whose frequency is most unexpected given the big corpus
+            * Big corpus = all previous years, Small corpus = current year. Represent each document e.g. as the log counts of the 100 most unexpected words in the current year
+
+---++++  *Meeting 26.10.2017*
+   * Try outs:
+      * To alleviate data sparsity, accumulate everything from 2008 to 2015 take citations in corresponding next year. As test use 2016 to 2017
+         * Additionally, may crawl e.g. cs.ML
+      * Make a histogram of the label distribution: papers and their citations
+      * check if own implementation of vdcnn really works or look for different ones on the net
+      * Report F1 macro in addition to accuracy
+      * look into the classifiers: which errors do they commit? do they always predict majority? what is the majority?
+      * include/exclude author,venue from Yogotama and from Neural Nets
+      * Fix the problem with yogotama (features only from abstract)
+      * try out MLP with Yogatama; use one dense hidden layer and maybe ReLU or PRELU as activation function
+
+---++++  *Meeting 19.10.2017*
+   * Parameters to play around with:
+      * Stop words on/off
+      * Evaluate deep learning approaches on abstract, intro, conclusion, whole text
+      * Can include/exclude author, venue, etc. both in Yogotama baseline and in Deep Learning approaches
+         * You could do it as follows (or differently): "{Title}%%%{Author1,Author2,...}%%%{Abstract}%%%{Intro}%%%{Body}%%%{Conclusion}%%%{References}" as a long sequence of text.
+      * Use ridge regression or alternatively MLP for Yogotama et al. baseline
+   * TODOs:
+      * fix/optimize the conclusion extractor
+      * document "run.sh" a little better: what do the arguments stand for? where is the output written to?
+      * make a statistics:
+         * how many papers overall? how many in your train/dev/test splits?
+---++++ *Meeting 12.10.2017*
+
+   * Please provide SE with the following:
+      * Sample full texts on apu (ideally already pre-processed) with meta data
+      * Program to download meta data from SemanticScholar
+      * All full texts stored on apu
+   * Very important:
+      * *Structure* and *document* your coding
+         * Can document by placing everything in simple bash scripts, for example, that could always be re-run
+   * When forecasting, you can play around with the forcecast gap, e.g., 1 year, 2 years, etc.
+   * For n-gram vectors you can play around with their sizes (e.g. same number of 1-grams than 2-grams?)
+   * TODOs for next week: evaluate Yogatama et al. baseline as well as deep learning models on apu (FastText, Very Deep Conv Nets, Standard Conv Nets)
+   
+
+
+
+
+
+-- Main.SteffenEger - 2017-10-09
+
+%META:FILEATTACHMENT{name="dataset.pdf" attachment="dataset.pdf" attr="" comment="statistics for the datasets" date="1508940784" path="dataset.pdf" size="52777" user="netzer" version="1"}%
+%META:FILEATTACHMENT{name="experiments.pdf" attachment="experiments.pdf" attr="" comment="results on experiments.(25.10)" date="1508940861" path="experiments.pdf" size="23654" user="netzer" version="1"}%
+%META:FILEATTACHMENT{name="experimentsv2.pdf" attachment="experimentsv2.pdf" attr="" comment="experiments results 2.11." date="1509612225" path="experimentsv2.pdf" size="24148" user="netzer" version="2"}%
+%META:FILEATTACHMENT{name="datasetv2.pdf" attachment="datasetv2.pdf" attr="" comment="statistics for the datasets" date="1509551348" path="datasetv2.pdf" size="97851" user="netzer" version="1"}%
+%META:FILEATTACHMENT{name="experimentsv3.pdf" attachment="experimentsv3.pdf" attr="" comment="" date="1510211951" path="experimentsv3.pdf" size="26565" user="netzer" version="1"}%
+%META:FILEATTACHMENT{name="datasetv3.pdf" attachment="datasetv3.pdf" attr="" comment="" date="1510211984" path="datasetv3.pdf" size="100164" user="netzer" version="1"}%

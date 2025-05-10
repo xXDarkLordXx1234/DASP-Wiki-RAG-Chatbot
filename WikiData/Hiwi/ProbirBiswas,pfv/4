@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="biswas" comment="reprev" date="1401383127" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Probir Biswas
+
+---+++ Time Sheet
+
+---++++ Time Sheet June 2014
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Task* | *Subtask* | *Time* | *Notes* |
+| Setup | Setup eclipse, uby | 5 | Setup of the environment and configuration |
+| Setup | Maven repository configuration with eclipse, uby | 5 | Setup of the environment and configuration |
+| Uby | Issue 10. Problem with quotes in sql queries | 8 | Issue 10. Called getWNSenseByExtRef and checked problem with quotes in sql queries |
+| Uby | Issue 27. Filter getSensesByOriginalReference by lexicon | 10 | Issue 27. Filter getSensesByOriginalReference by lexicon |
+| | | | |
+| *Total* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *To be fulfilled:* | | 40 | until 30 June 2014 |
+
+-- Main.JudithEckleKohler - 2014-04-25

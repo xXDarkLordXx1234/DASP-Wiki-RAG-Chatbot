@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1375264013" format="1.1" reprev="83" version="84"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * apply *delex* resource and write about it in the thesis
+      * it is working stand-alone, incorporate into expansions framework
+         * got it working in my project (i.e., fixed all dependencies, resources and so on), incorporate into pipeline
+            * got it working within the pipeline, now create method to select target words (!HeadAnnotation)
+               * find out how to select which words have *WordNet synonyms* at all
+                  * done, how implement different "which one to select" methods
+
+   * write about and apply *new data set*
+      * transform into same data format
+
+   * write *DFR* section
+
+   * compare ranks from baseline run (result on frink: tr_indexDT/res) and a top3 DT index run
+      * <del>implement rank correlation at class utils.CompareTwoRankings (*spearman ranking*)</del> + write in thesis
+
+   * read the thesis: "A Comparison of Lexical Expansion Methodologies to Improve Medical Question and Answering Systems" ([[http://gradworks.umi.com/15/12/1512012.html][online]])
+
+   * https://groups.google.com/forum/#!topic/dkpro-core-developers/LTfV46smprw

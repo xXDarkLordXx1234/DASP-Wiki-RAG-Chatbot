@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="eckle" comment="save topic" date="1367568896" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+---+++ Roland Kluge Tasks June To August 2013
+
+   * Vorarbeiten für 1-Tages Tutorial für KDSL Stipendiaten und interessierte UKP-DIPF / DIPF-TBA Mitarbeiter
+      * Durchsicht von existierendem UIMA Tutorial (https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/Teaching/UimaTutorialApril2011) und Integration relevanter Teile in das NLP4Web Tutorial (das Tristan gemacht hat)
+      * Erstellen einer Vorab-Umfrage für Teilnehmer des Tutorials um den Kenntnisstand zu erheben
+      * Vorbereiten des Codes für das Tutorial (anpassen existierender Teile des UIMA Tutorials April 2011)
+      * Erstellen eines Handouts für das TUtorial, welches wichtige Schritte beim Aufsetzen der Projekt-Struktur in Eclipse zusammenfasst
+   * Erstellen eines Tutorials zur Benutzung von DKPro Lab zur Auswertung von DKPro-Core Komponenten
+   * Erstellen eines Tutorials zur Verwendung von TextMarker für Deutsch
+   * Erstellen eines detaillierteren UIMA-Tutorials (UIMA für Fortgeschrittene, basierend auf UIMA Tutorial April 2011)
+
+---+++++ Lerninhalte Einstiegstutorial Mai 2013
+
+   * UIMA Tutorial April 2011: Zu verwendende Inhalte für das Einstiegstutorial
+      * aus Unit 1: Type System (wichtige Hintergrund Informationen), Entwicklungsumgebung aufsetzen
+      * aus Unit 2: wichtige DKPro-Core Komponenten vorstellen
+         * TODO: ergänzen weiterer DKPro-Core Komponenten, inbes. für Deutsch
+      * aus Unit 3: weitere Analysekomponenten aus DKPro-Core vorstellen
+         * TODO: entsprechende Komponenten für Deutsch
+      * aus Unit 6: hier fehlen die Folien, deshalb:
+         * TODO (*JEK* ich mache einen ersten Entwurf)
+         * UKP Best Practices für Maven
+         * Multi-module Projekte mit Maven in Eclipse und Subversion
+         * Releases mit Maven und Artifactory
+         * Qualitätssicherung durch Continuous Integration mit Jenkins
+
+
+
+
+
+-- Main.JudithEckleKohler - 30 Apr 2013

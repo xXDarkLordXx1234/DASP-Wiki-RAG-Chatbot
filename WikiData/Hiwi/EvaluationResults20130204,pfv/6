@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="RichardSteuer" date="1359973486" format="1.1" version="6"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+Results of my first experiments with the DT data. Results grepped on the 192 trec_eval output files:
+
+<pre>
+> grep map *Test*T.* | sort -t " " -k3nr
+</pre>
+
+---+++ Train T
+
+<pre>
+> grep map *Test*T.* | sort -t " " -k3nr
+</pre>
+
+---+++ Train TD
+
+---+++ Test T
+
+---+++ Test TD

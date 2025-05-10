@@ -1,0 +1,52 @@
+%META:TOPICINFO{author="FabianTamin" date="1243445598" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ Prototype
+---++ Goal:
+   * *User friendliness*: how easy to use the user interface
+   * *Simplicity*: keep the user interface as simple as possible
+   * *High learnability*: how easy to learn the interface to accomplish basic task
+   * *High efficiency*: how quickly the user to accomplish the tasks after learning
+   * *Lowest errors*: how many errors do users make, how easy is it for users to recover from these errors
+   * *High memorability*: after a period of non-use, how long does it take the user still remember to use it effectively
+   * *High satisfaction*: how satisfying is the user interface (for normal users and advance users)
+
+---++ Guidelines:
+   * Offer informative feedback
+   * Balance user control with automated action
+   * Reduce short-term memory load
+      * Support simple history mechanism
+      * Integration navigation & search
+   * Provide shortcuts for skilled users
+   * Reduce errors; offer simple error handling
+      * Avoid empty result sets
+      * Address the vocabulary problem
+      * Small details
+   * Strive for consistency
+   * Permit easy reversal of actions
+   * Recognize the importance of aesthetic in design
+
+---++ Model of information seeking process:
+   * Iteration of information details (summary length)
+   * Browsing as information seeking strategy (browsing VS search)
+   * Integrating navigation with search
+      * Categories for navigating & narrowing
+      * Collapsing & extending contents
+      * Sorting
+   * Small history mechanism
+
+---++ Personalization
+   * User-driven customization
+      * Manual closing the snippet
+      * Keeping snippet opened
+
+
+-- Main.FabianTamin - 27 May 2009
+   * [[%ATTACHURL%/Model_Guideline.htm][Model_Guideline.htm]]: 2009_0527_1926 Guideline for modelling the prototype
+
+   * [[%ATTACHURL%/prototype_-_C_mode.svg][prototype_-_C_mode.svg]]: 2009_0527_1931 Prototype in compact mode (viewing a single article)
+
+   * [[%ATTACHURL%/prototype_-_V_mode.svg][prototype_-_V_mode.svg]]: 2009_0527_1930 Prototype in visited articles mode (provide history of visited articles in a single page)
+
+%META:FILEATTACHMENT{name="Model_Guideline.htm" attachment="Model_Guideline.htm" attr="" comment="2009_0527_1926 Guideline for modelling the prototype" date="1243445598" path="Model_Guideline.htm" size="37802" stream="Model_Guideline.htm" tmpFilename="/var/tmp/CGItemp56218" user="FabianTamin" version="3"}%
+%META:FILEATTACHMENT{name="prototype_-_C_mode.svg" attachment="prototype_-_C_mode.svg" attr="" comment="2009_0527_1931 Prototype in compact mode (viewing a single article)" date="1243445280" path="prototype_-_C_mode.svg" size="63259" stream="prototype_-_C_mode.svg" tmpFilename="/var/tmp/CGItemp56584" user="FabianTamin" version="2"}%
+%META:FILEATTACHMENT{name="prototype_-_V_mode.svg" attachment="prototype_-_V_mode.svg" attr="" comment="2009_0527_1930 Prototype in visited articles mode (provide history of visited articles in a single page)" date="1243445109" path="prototype_-_V_mode.svg" size="99977" stream="prototype_-_V_mode.svg" tmpFilename="/var/tmp/CGItemp52466" user="FabianTamin" version="1"}%

@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="4"}%
+%META:TOPICPARENT{name="MarlonHorn"}%
+---+ Main.MarlonHorn - 16 Jan 2009
+
+---++ ToDo-Liste:
+   1 Methode schreiben um Wikipedia-Titel und Wiktionary-Übersetzungen auszulesen und zu speichern
+   1 Präsentation vorbereiten
+   1 Gesammelte Daten analysieren und auf besondere Eigenschaften untersuchen
+
+
+---+ Main.MarlonHorn - 04 Feb 2009
+
+---++ Besprochene Themen:
+---+++ Anmeldung
+   * Anmeldung ist eingereicht
+   * Abgabe-Termin für die Bachelor-Thesis ist der 4.5.09
+---+++ Gelöste Probleme:
+   * Es werden jetzt alle Übersetzungen für ein Wort ausgegeben
+   * Dadurch existieren jetzt auch ca. 1000 Überschneidungen zwischen den Wiktionary-Listen
+   * "en" und "(en)" wurden rausgefiltert
+---+++ Fortschritte:
+   * Übersetzungslisten sind fertig,
+   * wurden kombiniert,
+   * und in eine BerkleyDB eingefügt
+---+++ Neue Probleme:
+   * evtl. existieren noch nicht gefundene Übersetzungen, z.B. für "-er" --> wird überprüft
+   * Überprüfung der Datenbank                                                            --> Speichern in Text-Datei
+   * Rausfiltern der doppelten Übersetzungen                                        --> wird beim Einfügen in die Datenbank überprüft
+   * Wird der Original-Query übergeben oder eine lemmatisierte Liste   --> vermutlich erst Original-Query, bei Nicht-Erfolg lemmatisierte Liste
+---+++ Nächste Schritte:
+   * Implementierung der Übersetzungsmethode
+
+
+
+---+ Main.MarlonHorn - 24 Mar 2009
+
+---++ Besprochene Themen:
+---+++ Translator
+   * Einige Fehler im Build Path behoben
+   * Methode zum Erzeugen der Token-Kombinationen muss geändert werden, sodass jede Kombination nur einmal übersetzt wird
+   * Alle absoluten Pfadangaben sollen in relative Pfade abgeändert werden
+   * Letzte Fehler müssen behoben werden
+---+++ Random Graph Walk
+   * Erzeugung eines Graphen mittels der JUNG-Bibliothek
+   * Hinzufügen eines neuen Features zu Translation zum Speichern des PageRank-Scores
+   * Anschließend Auswahl der besten Übersetzungskandidaten

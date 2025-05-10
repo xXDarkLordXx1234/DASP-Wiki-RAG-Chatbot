@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1285527138" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Mateusz Parzonka
+
+Bachelor Thesis Student since September 2010.
+
+---+++++ Thesis Overview
+
+*"Using Text Segmentation to Improve Back-Of-The-Book-Indexing"* (Working title)
+
+("Verbesserte Generierung von Stichwortverzeichnissen mittels Textsegmentierung")
+
+<blockquote style="border-top-color: #fbfbfb; border-right-color: #fbfbfb; border-bottom-color: #fbfbfb; border-left-color: #dddddd; border-top-width: 1px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 3px; padding-top: 0.5em; padding-right: 1.25em; padding-bottom: 0.5em; padding-left: 1.25em; background-color: #fbfbfb; border-style: solid"><strong style="font-weight: bold">Task Description:</strong><p>Stichwortverzeichnisse in Büchern bieten dem Leser einen ersten Überblick über die behandelten Themen, dienen aber hauptsächlich dazu herauszufinden, auf welchen Seiten ein bestimmtes Thema behandelt wird. Die Erstellung von Stichwortverzeichnissen ist ein aufwändiger Vorgang der bisher nur unzureichend von Sprachverarbeitungsmethoden unterstützt wird.<p>Es soll ein System zur automatischen Generierung von Stichwortverzeichnissen entwickelt werden. Dazu sollen bereits bestehende Ansätze der Schlüsselphrasenextraktion zum Einsatz kommen. Diese wurden jedoch im Allgemeinen für deutlich kürzere Texte entwickelt und müssen daher für den Einsatz in Büchern angepasst werden. Ein Ansatz soll dabei sein, die Bücher mittels Textsegmentierungsalgorithmen in thematisch zusammengehörige Teile zu zerlegen und dann jeweils die Schlüsselphrasen pro Segment zu extrahieren. Da Stichwortverzeichnisse bestimmten editorischen Regeln folgen, sind weiterhin Nachverarbeitungsschritte zu implementieren, welche die extrahierten Schlüsselphrasen in gültige Einträge des Stichwortverzeichnisse umwandeln. Die Qualität des entwickelten Systems soll anhand eines bestehenden Datensatzes aus Büchern und den korrespondierenden Stichwortverzeichnissen evaluiert werden.</blockquote>
+
+---+++++ Supervision
+
+  
+   * [[MateuszParzonkaProblemsAndQuestions][Problems and Questions]]
+   * [[MateuszParzonkaMeetingProtocols][Meeting Protocols]]
+
+
+
+---+++++ Planning
+
+   * [[MateuszParzonkaSchedule][Schedule]] : What is supposed to happen?
+   * [[MateuszParzonkaLogBook][LogBook]] : What has happened / is happening right now?
+
+
+---+++++ Resources
+
+   * [[MateuszParzonkaReferences][Bibliography]] : The papers / books i know (and have) so far.
+---+++++ 
+
+-- Main.MateuszParzonka - 14 Sep 2010

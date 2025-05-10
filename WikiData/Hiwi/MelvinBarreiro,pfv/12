@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="barreiro" comment="reprev" date="1403056564" format="1.1" reprev="12" version="12"}%
+%META:TOPICPARENT{name="WebHome"}%
+<!--
+This line only protects this topic, if the hash/number sign is removed.
+   * Set ALLOWTOPICVIEW = Main.MelvinBarreiroMartin, Main.IrynaGurevych, Main.SebastianHarrach
+//-->
+
+---+++ Kommentare SeH
+
+Sehr schöne Dokumentation, danke. Du hast bei protocol den 24.04. genannt, Du meinst verm. den 24.05.? Sieht sonst alles aus wie geplant :-)
+
+IT-Infrastructure
+@info(REC) Do not use URLs to link between wiki pages:
+   * for intra-web links write just the name of the page, e.g. MeetingProtokolle instead of https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/MeetingProtokolle
+   * for cross-web links prefix the page name with the wiki web name, e.g. UKP.Teaching.SenseLinkCuration instead of https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/Teaching/SenseLinkCuration
+
+http://www.hrz.tu-darmstadt.de/id/tuid/tu_id_mitarbeiter/inh_tuid_mitarbeiter.de.jsp
+
+---+++ Projects Melvin Barreiro Martin
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"}%
+| *Aufgabe* | *% done* |
+| Einarbeitungsprozess UKP für neue Mitarbeiter designen | 80 |
+| Einarbeitung in das UKP|40 |
+| | |
+
+
+---+++ Protocol
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Melvin, Stunden 2014* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+
+| UKP | 18.06.2014 | 3 | <ul><li> Angleichung an das mit Sebastian besprochene <ll><li> Ausarbeitung der Feinstruktur <ll><li> Korrektur der letzten Fehler |
+| UKP | 11.06.2014 | 2 | <ul><li> Besprechung mit Sebastian <ll><li> Verbesserungen bezüglich des Designs wuren erstellt <ll><li> Themenbereiche wurden gewichtet |
+| UKP | 08.06.2014 | 5 | <ul><li> tiefere Einarbeitung in die UKP website </li><li> Auseinandersetzung mit der Syntax des UKP </li><li> Implementierung der groben Struktur mit Links |
+| UKP | 24.05.2014 | 3 | <ul><li> Vertiefung der Einarbeitung in das UKP-Wiki </li><li> Ausarbeitung der Einarbeitungsstruktur II </li><li> Implementierung der Grundstruktur |
+| UKP | 24.05.2014 | 1 | <ul><li> Ausarbeitung der Einarbeitungsstruktur I |
+| UKP | 23.05.2014 | 2 | <ul><li> Einarbeitung in das UKP-Wiki und Erfassen der Aufgabe </li><li> Aufgebe: Einarbeitungsprozess UKP für neue Mitarbeiter designen </li><li> Lektionen erstellen   </li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+       | *Soll* | | 24 | until the end of june 2014 |
+
+
+---+++ Working at UKP
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Lektion, Inhaltsübersicht* |
+| *section* | *amount of chapters* | *content* | *table chapters* | *tasks* | *completed* | *question* |
+| section 0: Tutorial | 01 ||</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/TuTorial][tutorial]] |  |  |  |
+|**|**|**|**|**|**|**|
+| section 1: Getting Started | 12 | [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/FirstSteps][First Steps]] | </li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/OurAbbreviations][abbreveation of colleagues]]  </li><li>  [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/StudentidHowto][Student ID]] </li><li> [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/TuidHowto][TU ID]] </li><li> [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/SubScriptions][subscriptions]] | | | |
+| | | day to day business | </li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/Calendar][UKP Calendar]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ArbeitenUnterLinux][workng with Linux]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/UseFileserver][sharing files with internal people(DataRepository)]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/PublicWWWShare][sharing files with external people]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/MultifunktionsRaeume][Book a room]] | | | |
+|||UKP Talks|</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/UKPMeeting][UKP Meeting]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ScientificTalks][UKP Scientific Talks]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/WorkflowConferenceTalks][Workflow Conference Talks]] ||||
+|**|**|**|**|**|**|**|
+| section 2: Communication | 06 ||</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/CommunicationWithinTheGroup][within the group]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/GroupMeetings][group meetings]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/IndividualMeetings][IGs (individual) meetings with staff]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/WeeklyReports][Weekly reports ]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/KommunikationNachAussen][Kommunikation nach außen]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/PowerPoint][PowerPoint]] | | | |
+|**|**|**|**|**|**|**|
+| section 3: Workspace | 13 |scientific howto|</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/CallForPapers][Call for papers]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/CreatingTechnicalReports][Creating Technical Reports]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ReviewChM09112009][InterAnnotatorAgreement]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/StatisticalMethods][StatisticalMethods]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/CrowdSourcing][Crowdsourcing]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/LinguisticExamples][Lingustic examples]] | | | |
+|||infrastructure|</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ResearchInfrastructure][Setting up your research infrastructure]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/DevelopmentInfrastructure][Setting up your software development infrastructure]]||||
+|||assistance|</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/WorkingHours][Working Hours]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/AbsenceEmergencies][Absence because of sickness or emergencies]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/KrankenkassenbeitraegeStipendiaten][Health Insurance for Scholarship Holders]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/AdvertiseHiwiJobs][Advertise Hiwijobs]]</li><li>[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/HiWiEinstellung][HiWi Einstellung]]||||
+|**|**|**|**|**|**|**|

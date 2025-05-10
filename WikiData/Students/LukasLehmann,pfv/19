@@ -1,0 +1,255 @@
+%META:TOPICINFO{author="lehmann" comment="" date="1567668877" format="1.1" reprev="17" version="19"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Informationen
+
+   * Student: Lukas Lehmann
+   * Betreuer: Johannes Daxenberger
+   * Typ: Bachelorthesis
+   * Anmeldung: 11.04.2019
+   * Deadline: 11.10.2019
+   * Thema: Interpretable Neural Argument Mining
+   * Prüfungsordnung: 2015
+
+---++ Aktuelle Fragen
+
+   -
+
+---++ Evaluation - wichtigste Ergebnisse
+
+   | ** | *macro-f1* | *stability* || *word deletion (macro-f1)* ||| *KNN sent vec* | ** |
+   | *model & explanation* | *3 label* | *syn* | *bt* | *1 del.* | *4 del.* | *7 del.* | *(macro-f1)* | *Rank* |
+   | BiCLSTM (LIME) |  0.4261 |  0.2422 |  0.1205 |  0.6775 |  <u>0.3357</u> |  <u>0.2586</u> |  <u>0.8791</u> |  1 |
+   | BiCLSTM (Anchors) | ^ |  0.4193 |  0.2476 |  0.8906 |  0.6843 |  0.6154 |  0.5717 |  7 |
+   | BiCLSTM (LRP) | ^ |  0.2331 |  0.0918 |  0.7479 |  0.4454 |  0.3624 |  0.7662 |  3 |
+   | BiCLSTM (random) | ^ |  - |  - |  0.9295 |  0.8478 |  0.7714 |  0.5093 |  - |
+   | BiLSTM + sparse att. |  0.3918 |  0.2039 |  0.1187 |  0.6946 |  0.5404 |  0.5186 |  0.5603 |  8 |
+   | BiLSTM + normal att. |  0.3994 |  0.1800 |  <u>0.0344</u> |  0.6893 |  0.5535 |  0.4927 |  0.5436 |  6 |
+   | BiCLSTM + sparse att. |  0.4238 |  0.2252 |  0.0938 |  0.7249 |  0.6945 |  0.6521 |  0.4899 |  9 |
+   | BiCLSTM + normal att. |  <u>0.4346</u> |  0.2648 |  0.0986 |  0.6652 |  0.5103 |  0.4472 |  0.6173 |  4 |
+   | TreeLSTM + sparse att. |  0.3687 |  - |  - |  0.6936 |  0.4182 |  0.3453 |  0.5723 |  10 |
+   | TreeLSTM + normal att. |  0.3824 |  - |  - |  0.6633 |  0.4389 |  0.3958 |  0.5491 |  11 |
+   | BiTPRN + sparse att. |  0.3812 |  0.1584 |  0.1083 |  <u>0.6081</u> |  0.3716 |  0.3492 |  0.5782 |  5 |
+   | BiTPRN + normal att. |  0.3880 |  <u>0.1482</u> |  0.0541 |  0.6119 |  0.3576 |  0.3254 |  0.6328 |  2 |
+
+---++ Zusammenfassung der Meetings
+
+---+++ Meeting vom 29.08.2019
+
+   * Qualification Test: ca. 20 Fragen bei Word Selection, 40 Fragen bei Binary Decision
+   * No Argument kommt nicht vor in Guidelines schreiben
+   * negative Weights bei Binary Decision ignorieren
+   * Beispiel mit Topic in Word Selection Guidelines
+   * HIT-Rewards an US-Mindestlohn ($7.25) orientieren
+   * Word Selection mit 1-5 Wörtern
+
+---+++ Meeting vom 20.08.2019
+
+   * neuer Test mit US Binary Decision
+      * Can't Decide wieder hin
+      * Nur Argumente
+      * Nur korrekt klassifizierte Sätze
+      * 5 pro HIT
+   * Falls immer noch wenig Agreement bei US Binary Decision: US Word Selection:
+      * User wählen 1-3 Wörter pro Satz als wichtig (ohne Abstufung) aus
+   * Attention Checks in HITs (alle n Sätze enthalten klare Anweisung was zu tun ist, um Bots o.ä. zu verhindern)
+
+---+++ Meeting vom 13.08.2019
+
+   * US nochmal für Test deployen
+   * 4 Systeme: BiCLSTM sparse, BiCLSTM normal, LIME, LRP
+   * ca. 20 HITs
+   * Can't Decide weg
+   * Erklärung für blaue Highlightings verbessern
+   * Beispiel in Guidelines
+
+---+++ Meeting vom 01.08.2019
+
+   * Systeme bzgl. intrinsischer Evaluation ranken
+   * US konkret durchdenken: Was wird gemacht? Wie wird evaluiert?
+   * Einarbeitung in boto3 für US
+   * 3-5 Systeme in US
+   * vorher interner Test der US in Sandbox
+
+---+++ Meeting vom 23.07.2019
+
+   * KNN Sentence Vectors mit Macro F1 testen
+   * Ergebnisse der Evaluation auf Wichtigstes reduzieren & Tabelle anfertigen
+   * SANet ausprobieren
+   * Ideen für User Study überlegen
+   * US wird vorab intern getestet, um Gold Truth zu haben (evtl. im Extremfall um unseriöse Worker zu blocken)
+
+---+++ Meeting vom 05.07.2019
+
+   * evtl. andere Embeddings ausprobieren? (z.B. Glove)
+   * evtl. Context in BiLSTM+Attention in Zellen integrieren -> ähnlich guten Ansatz wie BiCLSTM finden!
+   * Word Deletion nur für Argumente ausprobieren (No Arguments fallen weg)
+   * Evtl. für Word Deletion der Interpretable Models noch mal LIME o.ä. anwenden?
+
+---+++ Meeting vom 25.06.2019
+
+   * Talk evtl. etwas kürzen, RW fällt im finalen Talk weg, mehr Zeit für Evaluation
+   * Highlighting TreeLSTM Attention: evtl. mit verschiedenen Farben unterstreichen oder auf verschiedenen Ebenen unterstreichen, alternativ auf Blattebene runterrechnen
+   * für intrinsic evaluation von TreeLSTM (außer Stability) muss ebenfalls auf Blattebene runtergerechnet werden
+   * Bis Ende Juli sollten Interpretable Models fertig sein, dann auf User Study konzentrieren
+   * Bis Ende August sollte User Study fertig sein, damit Zeit zum Schreiben ist
+
+---+++ Meeting vom 11.06.2019
+
+   * evtl. Verifikation der intrinsischen Evaluation mit besserem/anderem Modell (am Ende, falls Zeit)
+   * evtl. Attention als Vergleich mit SparseAttention für interpretierbare Modelle
+   * K-sparse Sentence Embeddings hinten anstellen, evtl. bessere Alternative bzgl. Vergleichbarkeit mit anderen Ansätzen
+   * Zwischenpräsentation:
+      * Inhalt: Motivation (Warum ist Interpretability wichtig?), Taskmotivation (Warum dieser Task?), Related Work (Tasks, Interpretierbarkeit), Ansätze (Warum diese gewählt?), bisherige Ergebnisse, aktueller Stand (was noch geplant?), kleine Diskussion, offene Fragen (Ideen via Feedback sammeln)
+      * Dauer: max. 20 Minuten
+      * Folien bis Freitag/spätestens Montag schicken (müssen nicht final sein)
+
+---+++ Meeting vom 23.05.2019
+
+   * Anchors dauert noch ewig -> evtl. mal mit anderen Parametern ausprobieren
+   * evtl. andere Menge "relervanter" Sätze wegen Baum-Tiefe für TreeLSTM als relevantes Kriterium -> parsen mal ausprobieren
+   * Frage ob Dependency oder Constituency Parsing für TreeLSTM
+   * Methoden in Arbeit beschreiben, wie sie gedacht sind (auch wenn Teile in Realität wegfallen (z.B. bei LRP)
+      * Unterschiede der realen zur beschriebenen Implementierung z.B. als Fußnote
+   * KNN bei Importance Weighting Based Sentence Vectors erstmal topic-wise
+      * evtl. zu geringe Anzahl Neighbors?
+   * für Stabilität erstmal cosine similarity als distance measure
+      * evtl. zusätzlich andere Maße
+
+---+++ Meeting vom 09.05.2019
+
+   * zufallsbasierten Synonymansatz zur Stabilität ohne manuellen Eingriff (stattdessen Frequency Counter von wordnet verwenden)
+   * zusätzlich Machine-Translation-Ansatz zur Stabilität (Google API verwenden)
+   * evtl. Ansatz mit "zerstörten" Sätzen -> Wie stark ändern sich Erklärungen?
+   * Implementierung von LIME und Anchors erstmal wie vorgegeben in den Papern
+   * Struktur der Thesis:
+      * Auflistung von Ansätzen aus Papern im Related-Work-Teil, herausstellen, was wir (anders) machen
+      * detaillierte Beschreibung der verwendeten Ansätze im Methods-Teil
+   * BiCLSTM noch weiter ausprobieren, damit Ergebnisse idealerweise dem Paper entsprechen
+
+---+++ Meeting vom 25.04.2019
+
+   * Experimente aus dem Paper im UKP-Git
+   * Experimente sollen für 2-label und 3-label Setup gemacht werden (wie im Paper)
+   * Code für BiCLSTM erhalten
+   * Ansätze zur Evaluation diskutiert
+   * Evaluation über ähnliche Argumente -> führen diese zu ähnlichen Erklärungen?
+      * Sätze syntaktisch umformen (z.B. Machine Translation EN->DE->EN)
+      * ähnliche Argumente im Corpus finden (Ähnlichkeit der Sentence Representations)
+      * Wörter durch Synonyme ersetzen
+      * zufälliges Rauschen eher vermeiden, da semantische Äquivalenz des Inputs fraglich sein könnte
+   * Experimente im Paper verwenden word2vec-Embeddings, die nicht gefinetuned sind
+   * aktuell geplant: BiCLSTM zum Laufen bringen, evtl. modellunabhängige Ansätze anfangen, Ansätze für ähnliche Argumente testen
+
+---+++ Meeting vom 11.04.2019
+
+   * Besprechung der bisherigen Ansätze zu interpretierbaren Modellen
+   * Diskussion der Möglichkeiten bzgl. intrinsischer Evalutaion -> weitere Ansätze zu recherchieren
+   * mögliche Verwendung eines IOB-getaggten Corpus diskutiert
+   * Nutzung & Kenntlichmachung von externem Code
+   * Struktur und Inhalte der Thesis (v.a. Zielpublikum)
+   * Zugang zu BiCLSTM soll bald erfolgen
+   * Zugangsdaten zu Wiki erhalten
+   * offizielle Anmeldung für das Studienbüro übergeben
+  
+---++ Ideen
+
+---+++ User Study
+
+   * User bewerten, welche Erklärung überzeugender ist (binäre Entscheidung zwischen zwei Erklärungen)
+   * User klassifizieren Instanzen einmal mit Hilfe einer Erklärung, einmal ohne (gute Erklärung sollte Accuracy erhöhen)
+   * User wählen n wichtigste Wörter aus (Korrelation mit automatischer Erklärung)
+
+---+++ State-of-the-art-Modell (BiCLSTM)
+
+   * Integration von Topic-Information in i- und c-Gate der LSTM-Zelle
+   * bidirektionales Modell
+   * Klassifikation basierend auf h_n_forward und h_1_backward
+   * https://aclweb.org/anthology/D18-1402
+
+---+++ Modell-unabhängige Ansätze (auf BiCLSTM angewendet)
+
+---++++ LIME
+
+   * lokales, lineares Surrogatmodell
+   * wird auf gesampleten Daten rund um zu erklärende Instanz trainiert (beim Samplen könnte man hier wie bei Anchors vorgehen)
+   * Daten werden bzgl. ihrer Distanz zu Originalinstanz gewichtet
+   * Gewichte des trainierten linearen Modells als Importance Weighting über die Eingabedimensionen
+   * für jedes Wort werden die Importance Weightings all seiner Dimensionen aufsummiert, um ein Importance Weighting für Wörter zu erhalten
+   * https://arxiv.org/pdf/1602.04938.pdf (hier wird als Input Representation ein Bag-of-Words-Ansatz verwendet)
+
+---++++ Anchors
+
+   * für eine zu erklärende Instanz wird eine “Perturbation Distribution” erstellt (Idee ist, dass Eingabewörter durch Wörter mit gleichem POS-Tag ersetzt werden, ähnliche Wörter (nach Embedding-Distanz) sind wahrscheinlicher)
+   * ein Anchor ist eine Teilmenge von Wörtern der zu erklärenden Instanz, sodass mindestens ein Anteil tau der Instanzen aus der Perturbation Distribution, die diese Teilmenge enthalten, gleich klassifiziert wird wie die zu erklärende Instanz
+   * bei der Erstellung eines Anchors wird seine Coverage (Anteil der Instanzen der Perturbation Distribution, die den Anchor enthalten) maximiert
+   * https://homes.cs.washington.edu/~marcotcr/aaai18.pdf
+
+---++++ Layer-wise Relevance Propagation (LRP)
+
+   * ausgehend von den Output-Neuronen (rückwärts durch das Netz) wird für jedes Neuron j ein Relevanzwert R_j berechnet
+   * daraus ermittelt man dann R_d für alle Inputdimensionen d und Relevanzwerte für Wörter als Summe der Relevanzwerte ihrer Dimensionen
+   * https://www.aclweb.org/anthology/W17-5221
+
+---+++ Interpretierbare Modelle
+
+---++++ BiLSTM mit SparseAttention
+
+   * funktioniert grundsätzlich so wie “outer-att” (https://aclweb.org/anthology/D18-1402)
+   * verwendet statt des klassischen Softmax-Attentionmechanismus einen Sparsemax (https://arxiv.org/pdf/1602.02068.pdf)
+   * Topic-Information wird genauso im Attentionmechanismus integriert wie bei outer-att
+   * Attention Weights werden dann als Importance Weighting über die Eingabewörter interpretiert
+   * auch wenn Attention als Erklärung kritisch zu betrachten ist (https://arxiv.org/pdf/1902.10186v1.pdf), könnte SparseAttention hier gute Erklärungen liefern, da durch die Sparsity (einige Attention Weights sind 0) zumindest dargestellt werden kann, welche Wörter wenig Einfluss auf die Entscheidung haben
+
+---++++ TreeLSTM mit SparseAttention
+
+   * zunächst müssen Eingabesätze mit einem Constituency Parser in eine Baumstruktur umgewandelt werden, die dann binarisiert wird
+   * es wird ein Binary TreeLSTM (https://www.aclweb.org/anthology/P15-1150) verwendet, wobei die Wörter eines Satzes nur in den jeweiligen Blättern einfließen (bei inneren Knoten sind die x-Werte 0)
+   * es wird SparseAttention auf alle Hidden States (Blätter und innere Knoten) des TreeLSTM angewandt, um ein Importance Weighting zu erhalten (Topic Information wird auch wieder hier integriert)
+   * die Idee ist, dass durch die zusätzliche Anwendung von Attention auf Teilsätze (innere Knoten) analysiert werden kann, welche Teilsätze wichtig für eine Entscheidung sind (nicht nur einzelne Wörter)
+
+---++++ k-sparse Sentence Embeddings
+
+   * Grundlage bildet (z.B.) das bekannte BiCLSTM-Modell
+   * das finale Sentence-Embedding (im BiCLSTM-Fall z.B. conc(h_n_fw, h_1_bw)) wird dann durch ein k-sparse-Layer befördert, welches alle außer die k am meisten aktivierten Dimensionen auf 0 setzt
+   * Backpropagation erfolgt dann nur durch diese k Dimensionen
+   * nun könnte man für jede Dimension diejenigen Trainingsinstanzen heraussuchen, die diese besonders stark aktivieren
+   * für eine einzelne Testinstanz, welche im Modell mit k-sparse-Layer in ein Sentence-Embedding mit k relevanten Dimensionen umgewandelt und klassifiziert wurde, wäre eine Erklärung dann durch diejenigen Trainingsinstanzen gegeben, die diese Dimensionen besonders stark aktivieren (die Annahme wäre, dass das ähnliche Sätze sind, wie die Testinstanz)
+   * basierend auf: https://arxiv.org/pdf/1809.08621.pdf
+
+---++++ Tensor Product Recurrent Network
+
+   * TPRN funktioniert grundsätzlich ähnlich wie RNN, in jeder Iteration t wird ein Zustand v_t aus v_t-1 und dem Wort w_t berechnet
+   * für jedes Wort wird mittels a_s und a_r (diese sind fast one-hot) ein Symbol aus einer Symbolmatrix S und eine Rolle aus einer Rollenmatrix R ausgewählt
+   * um a_s und a_r als one-hot sicherzustellen, wird eine Quantisierungsfunktion gewichtet zur Loss-Funktion hinzuaddiert
+   * da a_s und a_r nicht ganz one-hot sind, kann man die “Auswahl” über das Maximum von a_s bzw. a_r definieren oder über einen Threshold 
+   * auf den v_t-States könnte man dann wieder wie für das BiLSTM einen Attention-Mechanismus (bzw. evtl. SparseAttention), um die Topic-Information zu integrieren und ein Importance Weighting zu erhalten
+   * TPRN kann auch bidirektional verwendet werden, in dem Fall erhält man jeweils zwei Rollen & Symbole pro Wort
+   * als Erklärung für die Entscheidung des Classifiers würde dann das Importance Weighting und die Rollen & Symbole (repräsentiert durch Vertreter dieser) für jedes Wort fungieren (also wenigstens etwas mehr Informationen als bei BiLSTM mit SparseAttention)
+   * nach den Autoren von http://www.interpretable-ml.org/nips2017workshop/papers/07.pdf & https://arxiv.org/pdf/1705.08432.pdf kodieren Symbole häufig lexikalisch-semantischen Inhalt und die Rollen häufig grammatikalische Rollen, wie Subjekt/Objekt; man könnte hierzu analysieren, inwiefern das auch bei unserem Task zutrifft
+
+---+++ Evaluation
+
+---++++ Importance Weighting Based Sentence Vectors
+
+   * Ansatz folgt https://arxiv.org/pdf/1612.07843.pdf
+   * sollte für alle Erklärungsansätze funktionieren, die sich auf ein Importance Weighting über Einabewörter reduzieren lassen
+   * für jede Instanz wird ein Sentence Vector als Summe der mit Importance Weighting gewichteten Word Embeddings berechnet und normiert (euklidische Norm)
+   * wir erhalten ein Dataset aller Sentence Vectors, gelabelt mit der Prediction des originalen Modells für den jeweiligen Satz
+   * K-nearest-neighbors Classification verwendet, um Sentence Vectors zu klassifizieren, eine hohe Accuracy soll ein gutes Importance Weighting implizieren ("Explanatory Power Index")
+   * Anwendung auf Anchors: Interpretation eines Anchors als Importance Weighting mit Wert 1, wenn Wort in Anchor und 0 sonst
+   * Anwendung auf TreeLSTM: Importance Weight für jedes Wort ist eigenes Attention Weight + 1/2 Attention Weight des Parent-Knoten + 1/4 Attention Weight des Parent-Knoten vom Parent-Knoten + ...
+
+---++++ Schrittweises Entfernen von Wörtern
+
+   * Ansatz folgt https://www.aclweb.org/anthology/W16-1601 bzw. https://www.aclweb.org/anthology/W17-5221
+   * sollte für alle Erklärungsansätze funktionieren, die sich auf ein Importance Weighting über Einabewörter reduzieren lassen
+   * für korrekt klassifizierte Testinstanzen werden nach und nach die Wörter mit den höchsten Importance Weights entfernt (Embeddings auf 0 gesetzt) und der Abfall in der Accuracy der Classification beobachtet, ein stärkerer Abfall könnte ein Indiz für ein "richtigeres" Importance Weighting sein
+   * analog könnten für falsch klassifizierte Testinstanzen nach und nach Wörter mit den niedrigsten Importance Weights entfernt werden und evtl. ein Anstieg in der Accuracy beobachtet werden, ein stärkerer Anstieg könnte ein Indiz für ein "richtigeres" Importance Weighting sein (Vorsicht: Die Importance Weightings unterscheiden sich hier dadurch, dass z.B. Attention niedrigere Gewichte (nahe 0) i.d.R. unwichtigen Wörtern vergibt und z.B. LRP niedrigere Gewichte (negativ) i.d.R. opponierenden Wörtern)
+
+---++++ Stabilität von Erklärungen bei Rauschen
+
+   * man könnte den Inputvektoren minimales Rauschen hinzufügen, sodass die Prediction sich nicht ändert, und beobachten, inwiefern die Erklärung sich ändert
+   * man könnte diese Änderung für vergleichbare Erklärungen (z.B. Importance Weightings) quantifizieren und vergleichen (für eine "gute" Erklärung sollte keine große Änderung auftreten)
+   * fraglich ist, inwiefern es legitim ist, zufälliges Rauschen zu den Word Embeddings zu addieren, da diese dann keine echten Wörter mehr abbilden, oder ob stattdessen Wörter durch ähnliche Wörter im Embedding Space ersetzt werden müssen
+
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="Lukas Lehmann"}%

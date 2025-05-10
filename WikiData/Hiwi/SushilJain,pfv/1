@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="eckart" comment="reprev" date="1417429174" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+
+---+ Tasks
+
+   * [[DKPro/DKProDeveloperResources][Set up development environment]]
+   * Allow !WebAnno to use external pre-authentication as provided by an external Shibboleth proxy
+      * Code to base on: [[http://wiki.aaf.edu.au/aaf-mini-grants/tpac/shibboleth-integration-with-spring-security][How to integrate Shibboleth via Spring Security]]
+      * Requirement: when the external authentication HTTP header is present, the user does not see the login dialog
+      * Requirement: when no external authentication HTTP header is present, a access denied page is displayed (no login page)
+      * Requirement: when a user with the externally provided user id does not exist yet, it is created
+      * Simulate external authentication using a browser plugin to provide additional headers, e.g. [[https://addons.mozilla.org/de/firefox/addon/modify-headers/][Modify Headers]]
+      * Send changes as a patch file to REC
+   * Implement a working prototype of packaging a Python-based NLP tool as a Docker image so it can be run like a command line tool
+
+---+ Current contract (Dec 2014)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+|  |  |  |  |
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+
+
+-- Main.RichardEckartDeCastilho - 2014-12-01

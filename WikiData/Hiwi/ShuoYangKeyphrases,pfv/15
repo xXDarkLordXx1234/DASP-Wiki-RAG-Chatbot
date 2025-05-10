@@ -1,0 +1,95 @@
+%META:TOPICINFO{author="ShuoYang" date="1336049768" format="1.1" reprev="15" version="15"}%
+%META:TOPICPARENT{name="ShuoYangDariahArbeit"}%
+Application of existing keyphrase extraction infrastructure to new data sets
+
+
+
+
+---++ Problems
+   * *Numbers in keyphrases are incorrectly lemmatized* (not critical).
+      * TreeTager lemmatizes numbers in keyphrases to special token @card@. For example, both "Schuljahr 01" and "Schuljahr 02" are lemmatized to "Schuljahr @card@".
+      * Nonetheless the impact of this should be small. Only keyphrases in 77 of the 3114 documents are affected, and from each only a small percentage of keyphrases. Therefore we would first ignore this problem.
+
+
+---+++ Resolved
+   * *Problem:* How to compare? Noun phrase keyphrases cannot match any lemma in document.
+      * For example, "psychosoziale entwicklung" is in Gold Keyphrase. "psychosozialeentwicklung" is in text. They should count as match but in the current comparison method, they don't. 
+      * In a wider scope, since texts are lemmatized, all gold keyphrases containing more than one token are automatically counted as "not in the text".
+      * Should we lemmatize the gold keyphrases too? But could it change the semantics?
+      * Maybe compare not only lemmas but also other units?
+   * *Solution:* 
+      * Lemmatize the gold keyphrases too. After lemmatization, concatenate all lemmas of the text, and concatenate all lemmatized tokens of each keyphrase, then compare the concatenated text with each concatenated keyphrase.
+      * Compare only lemmas with lemmas, non-lemmas with non-lemmas; don't mix.
+
+
+---++ Results
+
+---+++ Basic Statistics
+| *Corpus* | *# Documents* | *Tokens / Document* | *# Keyphrases* | *Keyphrases / Document* | *Characters / Keyphrase* | *Tokens / Keyphrase* | *Pearson Correlation r* |
+| Pedocs (German) | 3115 | 14590.50 | 35169 | 11.29 | 13.76 | 1.18 (±0.54) | 0.2342 |
+| Pedocs (All Languages) | 3424 | 14531.57 | 39607 | 11.57 | 13.85 | 1.20 (±0.55) | 0.0946 |
+
+Note: 
+   * Many documents (but not all) have cover page containing metadata of the document and license disclaimers in English. These text are currently included in document text.
+
+---++++ How to run (Pedocs)
+Preparation:
+   1. Extract =pedocs-volltexte.tar.gz= and note the path
+   2. Extract =pedocs_sql.tar.gz= and import =pedocs.sql= into a database
+   3. Check out <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases/de.tudarmstadt.ukp.dkpro.semantics.keyphrasepipelines</verbatim> 
+   4. Configure test environment in =PedocsPipelineConfiguration.java= (=src/main/java/.../keyphrasepipelines/pedocs/=)
+
+Experiment:
+   1. Open =PedocsBasicStatisticsPipelines.java= in =src/test/java=
+   2. Run the task =printStatistics()= (notice the preconditions in its !JavaDoc)
+
+
+---+++ Gold Keyphrase Inclusion Ratio
+"What's the percentage of gold keyphrases that are present in the text?"
+
+| *Corpus* | *# of Included Gold Keyphrases* | *Total # of Gold Keyphrases* | *% of Included Keyphrases* |
+| Pedocs (German - with lemmatization) | 25581 | 35161 | 0.72753906 |
+| Pedocs (German - without lemmatization) | 24310 | 35163 | 0.6913517 |
+
+*Charts for ratio with lemmatization:* (for raw data, reference the attachment "inclusion_ratio.xlsx")<p>
+   * *Inclusion Ratio Distribution:* <br />
+     <img src="%ATTACHURLPATH%/distribution.png" alt="distribution.png" width="500" height="300" /><p>
+     This chart splits the inclusion ratio into intervals ([0%, 5%], (5%, 10%], ..., (95%, 100%]), and shows how many documents of the German corpus are in each ratio interval. <p>
+     *Example:* <ul><li>The rightmost column shows, that there are over 400 documents whose keyphrase inclusion ratios are between 95% (exclusive) and 100% (inclusive).</li><li>The column above "50" shows, that there are almost 200 documents whose keyphrase inclusion ratios are between 45% (exclusive) and 50% (inclusive).</li></ul>
+
+   * *Document Minimal Inclusion Ratio:* <p>
+     <img src="%ATTACHURLPATH%/min_ratio.png" alt="min_ratio.png" width="500" height="300" /><p>
+     This chart shows for each inclusion ratio interval, what percentage of documents have _at least_ such an inclusion ratio.<p>
+     *Example:* <ul><li>The leftmost point shows, that 100% of the documents - all documents - have at least 0% (inclusive) inclusion ratio</li>
+      <li>The point above "55" shows, that more than 80% of the documents have at least 55% (inclusive) inclusion ratio</li></ul>
+
+
+Note: 
+   * Corrupt files - these files are removed from the corpus:
+      * Cannot be read by PDFBox: 
+         * =1472.pdf=
+      * IOException from PDFStreamEngine, Could not find font(COSName{TT1}) in map={}: 
+         * =2966.pdf=
+         * =2971.pdf=
+         * =2973.pdf=
+
+---++++ How to run (Pedocs)
+   1. Make sure you've run the "For the first time" part in "How to run" of Basic Statistics
+   2. Open =PedocsGoldKeyphraseInclusionRatioPipelines.java= in =src/test/java=
+   3. With lemmatization: start the task =printRatioWithLemmatization()= (notice the preconditions in its !JavaDoc) <br>
+   Without lemmatization: start the task =printRatioWithoutLemmatization= (notice the preconditions in its !JavaDoc)
+
+
+
+---++ URLs
+   * Components usable for the pipeline: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_ng/dkpro/semantics</verbatim>
+   * Experimental projects should be stored in: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases</verbatim>
+
+-- Main.ShuoYang - 2012-05-02
+
+   * [[%ATTACHURL%/inclusion_ratio.xlsx][inclusion_ratio.xlsx]]: inclusion_ratio.xlsx
+
+%META:FILEATTACHMENT{name="distribution.png" attachment="distribution.png" attr="" comment="" date="1335988527" path="distribution.png" size="62837" user="ShuoYang" version="2"}%
+%META:FILEATTACHMENT{name="coverage.png" attachment="coverage.png" attr="" comment="" date="1335976643" path="coverage.png" size="40283" user="ShuoYang" version="1"}%
+%META:FILEATTACHMENT{name="inclusion_ratio.xlsx" attachment="inclusion_ratio.xlsx" attr="" comment="" date="1335996907" path="inclusion_ratio.xlsx" size="170865" user="ShuoYang" version="2"}%
+%META:FILEATTACHMENT{name="min_ratio.png" attachment="min_ratio.png" attr="" comment="" date="1335996859" path="min_ratio.png" size="51778" user="ShuoYang" version="2"}%

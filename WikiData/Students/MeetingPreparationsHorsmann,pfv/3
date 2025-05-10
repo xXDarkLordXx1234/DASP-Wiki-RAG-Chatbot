@@ -1,0 +1,228 @@
+%META:TOPICINFO{author="horsmann" comment="reprev" date="1383480659" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="TobiasHorsmann"}%
+---+++ 2013-11-03
+Hier mal das Grundgerüst wie ich mir die Evaluation vorstelle: 
+[[%ATTACHURL%/thesis.pdf][thesis.pdf]]: thesis.pdf
+
+Die Baseline:
+
+Als Gedankenstütze hier noch mal das Verfahren nachdem die Baseline funktioniert:
+<img src="%ATTACHURLPATH%/baseline.png" alt="baseline.png" width='554' height='184' />
+<img src="%ATTACHURLPATH%/baseline_ablauf.png" alt="baseline_ablauf.png" width='636' height='374' />
+
+Die Baseline liefert einige Treffer wo laut Index nur 1 Lösung existiert. Eindeutig sind die oft aber nicht. Unten mal eine Selektion von 4 Wortpaaren. Für einige Wörter gab es in den Daten keine Treffer. Die Wortpaare sind zwar stark Synonym, teilweise aber nur schwer zu finden. Ich hab den Datenauszug aus 10.000 Artikeln entnommen. Einige Sätze in denen die Worte drin auftreten sind durch ihre Position als erste oder zweites Wort im Satz aus der Baselinemethode rausgeflogen.
+Worte wie "tool" die allgemein und häufig wirken und wo man viele Treffer erwartet lassen sich kaum in den Wikipedia-Daten finden. Momentan benutze ich ein zufällig gewähltes Subset des Wikipedia-Korpus, das wirkt sich vermutlich je nach Themengebieten und Wort stark auf die Trefferquote aus.
+Es macht vermutlich Sinn (wenn die Wortpaare festgelegt sind) alle Wikipediaartikel einmal zu durchlaufen und alle Sätze zu bestimmen in denen eines der Wörter drin auftritt, um das Problem zu umlaufen.
+
+#######
+Attorney - 755 matches, 20 mit 1 Lösung laut Baseline
+
+Key: attorney	
+Key-Pos: 	
+Sent: Schreiber indicated to Greene that he would prepare an additional power of ____ covering the 1988 taxable year and forward a copy to Greene upon its submission to Revenue Agent Keung .	
+Tags: N5	
+ attorney	
+	
+Key: attorney	
+Key-Pos: 	
+Sent: He is a retained ____ , and these airs of the bench are the emptiest affectation .	
+Tags: N5	
+ attorney	
+	
+Key: attorney	
+Key-Pos: 	
+Sent: Upon learning of the decision mentioned , the appellant petitioned Congress for relief ; and , in compliance with his petition , a statute was passed , which became a law in February , 1877 , authorizing the Court of Claims to take jurisdiction of his claims under the Captured and Abandoned Property Act ; which claims , said the statute , were , by accident or mistake of his agent or ____ , and without fault or neglect on his part , as is claimed , not filed within the time limited by said act . 19 Stat . 509 .	
+Tags: N5	
+ attorney	
+	
+Key: attorney	
+Key-Pos: 	
+Sent: When the case was argued before the Circuit Court of Appeals the Government submitted , over petitioner s objection , a copy of what it said was a transcript of petitioner s testimony before the Securities and Exchange Commission , supported by an affidavit of the assistant United States ____ in charge of this prosecution .	
+Tags: N5	
+ attorneys, Attorney, attorney	
+ 
+ Key: attorney
+Sent: Attorneys  fees Notwithstanding any other provision of this Act , in an action or administrative proceeding for a violation of this Act , an entity described in section 10 a other than paragraph 4 of such section , in the discretion of the entity , may allow the prevailing party , other than the Commission or the United States , a reasonable ____  s fee including expert fees as part of the costs .
+Tags: N5
+ attorney, </S>
+ 
+ Key: attorney
+Sent: When they divorced , Ellen executed a power of ____ appointing Werner as her attorney-in-fact and authorizing him to act on her behalf regarding the 1984 , 1985 , and 1986 tax years .
+Tags: N5
+ attorney
+ 
+ 
+#####
+Lawyer - 187 matches, 3 mit 1 Lösung
+ 
+ Key: lawyer
+Sent: Petitioner made several requests to see his ____ , who , though present in the building , and despite persistent efforts , was refused access to his client .
+Tags: N5
+ lawyer
+ 
+ 
+ Key: lawyer
+Sent: Paul worked at his own trade Acts 18 3 , 20 33 + , and other commercial pursuits are men tioned among the early Christians Erastus the treasurer of the city , Rom . 16 23 ; Alexander the coppersmith , 2 Tim . 4 14 ; Zenas the ____ , Tit . 3 13 ; Simon a tanner , Acts 9 43 ; Lydia a seller of purple , 16 14 ; Aquila and Priscilla , like Paul , tentmakers , 18 3 .
+Tags: N3
+ lawyer
+ 
+ 
+ Key: lawyer
+Sent: On graduating there , May 15 , 1764 , he entered the office of Mr Kissam , an eminent New York ____ ; and in 1768 he was called to the bar .
+Tags: N5
+ lawyer
+ 
+ 
+ #######
+ Buy - 3 matches, 0 mit 1 Lösung
+ 
+ 
+ #######
+ Purchase - 500 matches 7 mit 1 Lösung
+ 
+ Key: purchase
+Sent: For purposes of this Title 1 The terms employee welfare benefit plan and welfare plan mean any plan , fund , or program which was heretofore or is hereafter established or maintained by an employer or by an employee organization , or by both , to the extent that such plan , fund , or program was established or is maintained for the purpose of providing for its participants or their beneficiaries , through the ____ of insurance or otherwise , A medical , surgical , or hospital care or benefits , or benefits in the event of sickness , accident , disability , death or unemployment , or vacation benefits , apprenticeship or other training programs , or day care centers , scholarship funds , or prepaid legal services , or B any benefit described in Section 302 c of the Labor Management Relations Act , 1947 other than pensions on retirement or death , and insurance to provide such pensions . 2 A Except as provided in subparagraph B , the terms employee pension benefit plan and pension plan mean any plan , fund , or program which was heretofore or is hereafter established or maintained by an employer or by an employee organization , or by both , to the extent that by its express terms or as a result of surrounding circumstances such plan , fund , or program i provides retirement income to employees , or ii results in a deferral of income by employees for periods extending to the termination of covered employment or beyond , regardless of the method of calculating the contributions made to the plan , the method of calculating the benefits under the plan or the method of distributing benefits from the plan .
+Tags: N5
+ purchase
+ 
+ Key: purchase
+Sent: Within 12 months after environmentally benign pressure sensitive adhesives for paper products become commercially available , each agency shall revise its specifications for paper products using adhesives and direct the ____ of paper products using those adhesives , whenever technically practicable and cost effective .
+Tags: N5
+ purchase
+ 
+ 
+ ########
+ Taxi - 7 matches, 0 mit 1 Lösung
+ 
+ 
+ ########
+ Cab - 36 matches, 0 mit 1 Lösung
+ 
+ 
+ ########
+ Tree - 1000 matches, 54 mit 1 Lösung
+ 
+ Key: tree
+Sent: Being short of stature , he hastened on before the multitude who were thronging about Christ as he passed through Jericho on his way to Jerusalem , and climbed up a sycamore ____ that he might be able to see him .
+Tags: N5
+ tree
+ 
+ Key: tree
+Sent: Having finished the work the Father had given Him to do John 17 4 , on the sixth day of the week , Jesus , while suspended on the accursed ____ , cried with a loud voice , It is finished ?
+Tags: N4
+ tree
+ 
+ Key: tree
+Sent: Taking a few steps out , she looked down the road , but could not see him coming ; so she turned in again , and sat down under a shady ____ out of view of the road .
+Tags: N5
+ tree
+ 
+ #######
+ oak - 233 matches, 9 mit 1 Lösung
+ 
+ 
+Key: oak
+Sent: Firmly builded with rafters of ____ , the house of the farmer Stood on the side of a hill commanding the sea ; and a shady Sycamore grew by the door , with a woodbine wreathing around it .
+Tags: N5
+ oak
+ 
+ 
+ Key: oak
+Sent: Absalom fled on a swift mule ; but his long flowing hair , or more probably his head , was caught in the bough of an ____ , and there he was left suspended till Joab came up and pierced him through with three darts .
+Tags: N5
+ oak
+
+
+Key: oak
+Sent: The plain beside Kedes and the surrounding hills is thkkly covered with terebinth and ____ forests , among which the writer saw at several places the black tents of a nomad tribe which frequents this region .
+Tags: N3
+ oak
+
+
+
+---+++ 2013-09-30
+Schwierigkeitsbestimmung eines Wortes im Satz als Lücke durch Bestimmung der potenziellen Mehrdeutigkeit durch Ermittlung oder Abschätzung von alternativen Worten die ebenfalls syntaktische und semantische Sätze ergeben:
+
+Use-Case:
+Es wird ein Wort bestimmt, dass Blank gesetzt werden soll. Für dieses Wort werden Sätze bereitgestellt in denen dieses Wort vorkommt, wo es aber eine nur geringe Anzahl an anderen Worten gibt die an der Stellen des ursprünglichen Wortes eingesetzt werden können. 
+Das heißt die Anzahl an alternativen Möglichkeiten ist bekannt woraus Rückschlüsse über die Schwierigkeit der Lücke getroffen werden können. Beziehungsweise Wortlücken die eine große Anzahl an Alternativen haben kommen zum Beispiel für Testmethoden wie Open-Cloze nicht in Frage (zumindest nicht bei Bewertungsmethoden wo nur exakte Antworten Punkte bringen).
+Bei vielen Kandidaten kann der Kandidatenpool als Quelle für Distraktoren verwendet werden oder Methoden wie C-Test sollten verwendet werden. 
+Alternativ können Testteilnehmer aufgefordert werden für eine Wortlücke alle Worte einzusetzen die einen gültigen Satz ergeben. Durch Abgleich mit den maschinell ermittelten Worten kann dann eine Auto-Bepunktung durchgeführt werden. Zudem könnten unter Umständen bisher noch nicht bekannte, alternative Antworten auf diesen Weg gewonnen werden, wodurch der Wortpool automatisch wächst (manuelle, menschliche Beurteilung notwendig). 
+
+
+Baseline:
+Als Baseline für die Auffindung von Sätzen wo ein Wort eine geringe Mehrdeutigkeit an könnte folgender Ansatz verwendet werden:
+Anhand des Suchwortes und seiner Wortklasse werden andere Sätze ermittelt wo dieses ebenfalls drin vorkommt. Für jeden Satz wird die POS-Tag Nachbarschaft von w-2 bis w+2 um das gesuchte Wort herum ermittelt, Wortnachbarschafts-Signatur. Die Wortklasse des Suchwortes wird ignoriert, da auch Worte mit anderen Wortklassen berücksichtigt werden sollen.
+Für diese Wortnachbarschafts-Signatur wird der komplette Korpus für alle Sätze mit dem Suchwort durchsucht. Alle Worte die mit gleicher Nachbarschafts-Signatur auftreten und vom ursprünglichen Suchwort verschieden sind stellen Kandidaten für den jeweiligen Ausgangssatz dar. Als Baseline gilt hier die Annahme, dass jeder Kandidat ein syntaktisch und semantischen Satz ergibt, wenn man dieses anstelle des ursprünglichen Wortes einsetzt. 
+
+Methode für bessere Ergebnisse:
+Anhand von den Baseline-Kandidaten wird für jeden Kandidat:
+- mit verschiedenen Maßen um Semantik relatedness zu bestimmen die Ähnlichkeit von Ursprungswort uw und einem Kandidat K ermittelt. 
+	+ Wordnet Ansätze mit Hierarchie-Tiefe, lowest common 
+	+ Schnittmenge der Wortdefinitionen von uw und K
+	+ (siehe LSM Vorlesungsfolien)
+- Verwendung von Frequenz Thresholds für ähnliche Kandidaten, e.g. sehr spezielle Worte sind unwahrscheinlich, wenn das ursprüngliche Wort ein sehr häufiges war. 
+- Erzeugt ein Kandidat einen gültigen Parsebaum ?
+
+
+Evaluation:
+Aspekt 1:
+Testteilnehmer auffordern alle passenden Worte zu nennen die eine Lücke seiner Meinung nach sinnvoll ergänzen und einen syntaktisch und semantisch korrekten Satz ergeben. Reihenfolge in der Benennung durch den Testteilnehmer liefert Hinweise darüber wie naheliegend ein Wort für eine Lücke ist (ausgehend von Muttersprache X).
+- Wie viele der automatisch ermittelten Worte werden von den Testteilnehmern genannt?
+- Wie häufig nennen Testteilnehmer andere, korrekte Worte
+
+Aspekt 2:
+Sollte Kandidatenerhebung Fälle hervorbringen wo es für einen open-class Wort fast keine alternativen Kandidaten gibt, sind diese Lücken dann lösbar als Cloze-Test? 
+- Test mit solchen Lücken an non-natives und natives geben um These zu überprüfen
+- Falls solche Worte vorhanden sind lässt sich vielleicht ein Datenpool erstellen mit Worten die als Cloze geeignet sind und keine unlösbare Mehrdeutigkeit aufweisen
+
+
+---+++ 2013-09-24
+
+Was macht Schwierigkeit eines Worte aus, wenn dieses als Cloze oder C-Test Variante verwendet wird:
+
+Ich hab die Vorschläge aus der vorherigen Revision jetzt mal nach Art geordnet, hoffe das ist jetzt etwas übersichtlicher
+
+---++++ Satzlevel
+   * Wortlänge
+      * in Buchstaben
+      * in Silben
+      * Satzlänge
+   * Position der Lücke im Satz
+      * Anfang: Tendenz zu geringerer Lösbarkeit
+      * Ende: Tendenz zu höherer Lösbarkeit
+
+---++++ Statistik
+   * Frequenz des Wortes
+   * Frequenz der Phrase (Trigram oder Bigram mit vorherigen und nachfolgenden Wörtern)
+   * Anzahl Synonyme zu einem Wort
+      *wenn vorhanden -> Distraktoren/C-Test notwendig
+      *keine vorhanden -> Cloze möglich
+   * Type-Token Ratio des Textes
+
+---++++ Ressource-Basiert mit POS-Tagging
+   * Teil des Grundwortschatzes (gehen, sagen, kaufen, sehen, Auto, Fahrrad, einfach, schwer, teuer, billig,...)
+   * Bei Distraktoren: Ist Wort ein (entferntes) Synonym zu Grundwortschatz-Wörtern, höhere Vertrautheit -> guter Distraktor?
+   * Gibt es sub-/ oder superordinate-Worte zu dem Wort das Blank gesetzt werden soll
+   * Semantik relatedness des Lücken-Wort zu Synonym-Worten aus einer Ressource; e.g. wie ähnlich sind potenzielle Synonyme dem eigentlich gesuchten Wort?
+   * Named Entities in einem Satz
+   * Abstraktheit und Polysemie des Wortes
+   * ist das Wort ein Cognate in der Muttersprache
+   * ist das Wort ein Lemma oder konjugiert
+   * Wortart (POS), Frequenz der POS Sequenz ("Präposition Artikel Nomen" ist häufig, andere Sequenzen nicht unbedingt)
+   * Lücke teil eins Collocation-N-Grams? Häufigkeit dieses N-Grams?
+   * 5 Gram Nachbarschaft des Wortes das zur Lücke wird als Bag of Words Model, ist dieses Wort mit Nachbarschaft von w-2 bis w+2 in den X-häufigsten Mengen? Nein -> schwer
+   * Morphologie des Wortes: "un-ver-rück-bar" ist schwieriger als "bunt" (spielt für Englisch vermutlich keine Rolle
+
+---++++ Parsing
+   * Anzahl Noun-phrases pro Satz
+   * Anzahl Verb-phrases pro Satz
+   * Wenn die Lücke auf ein Verb gesetzt wird, ist dieses Head-Verb ? ja--> schwer? leichter?
+   * Tiefe des Parsebaum des Satzes
+   * baseline_ablauf.png: <br />
+
+   * baseline.png: <br />
+
+%META:FILEATTACHMENT{name="baseline_ablauf.png" attachment="baseline_ablauf.png" attr="" comment="" date="1383479944" path="baseline_ablauf.png" size="183708" user="horsmann" version="1"}%
+%META:FILEATTACHMENT{name="baseline.png" attachment="baseline.png" attr="" comment="" date="1383480310" path="baseline.png" size="81619" user="horsmann" version="2"}%
+%META:FILEATTACHMENT{name="thesis.pdf" attachment="thesis.pdf" attr="" comment="" date="1383480567" path="thesis.pdf" size="66604" user="horsmann" version="1"}%

@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="NicoErbs" date="1359723537" format="1.1" version="15"}%
+%META:TOPICPARENT{name="CarolinDeeg"}%
+-- Main.CarolinDeeg - 2012-11-09
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Pedocs einrichten | 02.11.2012 | 0.5 | Projekt auschecken, Fehler beheben |
+| Testläufe | 02.11.2012 | 1 | Projekt läuft nicht (Out of Memory); mehr RAM zugewiesen |
+| | 09.11.2012 | 1 | Besprechung mit Nico |
+| | 09.11.2012 | 1 | Testlauf mit jeweils einer Einstellung pro Parameter (Bleibt nach |
+| | 09.11.2012 | 0.5 | Durchsehen und Verstehen der *Task-Klassen die verwendet werden |
+| | 13.11.2012 | 1 | Testläufe mit einer auskommentierten Komponente |
+| | 15.11.2012 | 2 | Testläufe mit einer auskommentierten Komponente |
+| | 16.11.2012 | 1 | Besprechung mit Nico |
+| Coreference-Klasse | 19.11.2012 | 2 | Erstellen der Java-Klasse SimpleCoreference (Funktion: Finden von Personalpronomen und deren zugehörigen Nomen) |
+| | 21.11.2012 | 1 | Fehlersuche und Korrekturen |
+| | 23.11.2012 | 2 | Korrekturen (Zuordnen von Personalpronomen zu Nomen) |
+| | 28.11.2012 | 1 | Treffen mit Nico |
+| | 30.11.2012 | 1 | Umstellen des Codes auf Pipeline-Komponente |
+| | 01.12.2012 | 0.5 | Verbessern der Ausgabe |
+| | 04.12.2012 | 0.5 | Umstellen des Codes auf Pipeline-Komponente |
+| | 06.12.2012 | 1 | Aufräumen des Codes |
+| | 12.12.2012 | 1 | Treffen mit Nico |
+| | 14.12.2012 | 2 | Erstellen der Coreference-Annotation |
+| | 16.12.2012 | 2 | Erstellen einer Evaluationskomponente zum Testen der Coreference-Komponente |
+| | 18.12.2012 | 4 | Testen der Evaluation mit verschiedenen Texten |
+| | 18.12.2012 | 1 | Analyse der Evaluation (Zitate scheinen Coreference-Suche durcheinanderzubringen) |
+| | 19.12.2012 | 1 | Erstellen der Klassen für neue Komponenten |
+| | 19.12.2012 | 1 | Verbessern der Ergebnisausgabe |
+| | 21.12.2012 | 3 | Schreiben der Komponenten (Aufteilung des Codes der bisherigen Klasse) |
+| | 21.12.2012 | 2 | Hinzufügen von zusätzlichen Test-Dateien |
+| | 23.12.2012 | 2 | Bestimmung von Named Entities ermöglichen |
+| | 25.12.2012 | 4 | Schreiben der Komponenten (Aufteilung des Codes der bisherigen Klasse) und Verbesserungen |
+| | 26.12.2012 | 3 | Testen der neuen Pipeline |
+| | 26.12.2012 | 2 | Entfernen von Debug-Befehlen und Verbesserung der Lesbarkeit des Codes |
+| | 29.12.2012 | 1 | Austauschen von Test-Texten; Debugging |
+| | 30.12.2012 | 3 | Testen der neuen Komponenten |
+| | 03.01.2013 | 4 | Testen der neuen Komponenten |
+| | 04.01.2013 | 0.5 | Besprechung mit Nico |
+| | 04.01.2013 | 1 | Verbesserungen von NamedEntityReferent.java |
+| | 05.01.2013 | 1.5 | Verbesserung der Ausgabe |
+| | 06.01.2013 | 2 | Tests und Verbesserungen der Komponenten |
+| | 08.01.2013 | 2 | Erstellung und Suchen von neuen (geeigneten) Test-Texten |
+| | 11.01.2013 | 0.5 | Besprechung mit Nico |
+| | 14.01.2013 | 1 | Änderung der Evaluation-Komponente |
+| | 15.01.2013 | 2 | Debugging der Komponenten |
+| | 18.01.2013 | 0.5 | Besprechung mit Nico |
+| | 20.01.2013 | 2 | Änderungen der Ausgabe |
+| | 23.01.2013 | 3 | Kombination von verschiedenen Komponenten mit sämtlichen Einstellungen |
+| | 29.01.2013 | 3 | Refactoring |
+| | 30.01.2012 | 3 | Wiki Gruppen Migration |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 75 | 11.11.2012 bis 31.01.2013 |
+<nop>

@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="bugert" comment="" date="1611056459" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="ComputeCluster"}%
+<div style="padding: 10px; border: 2px solid red">
+As of 2021-01, we do not offer docker anymore. No alternative is offered currently. If you are affiliated with UKP, consider requesting a Project VM to host your dockerized applications.
+</div>
+
+[[https://www.docker.com/][docker]] and [[https://docs.docker.com/compose/][docker-compose]] are installed on a limited number of nodes. We give usage permission to individual users upon request. If you need access, please [[https://bugzilla.ukp.informatik.tu-darmstadt.de/enter_bug.cgi?product=Shared-IT&component=Slurm][open a bug]] (if you belong to UKP) else send us an email to =system-admin@ukp.informatik.tu-darmstadt.de=.
+
+Docker images and volumes are saved *locally* on nodes and are not written to network-attached storage. For this reason, we recommend the following approach:
+   1 Run <verbatim>sinfo -O "NodeHost,Cores,Memory,Features:100" | sed '1p;/docker/!d'</verbatim> to see all nodes which have docker installed.
+   2 Pick one node which suits your jobs (for example =apu=) then run all your jobs on that node via =sbatch -w apu=

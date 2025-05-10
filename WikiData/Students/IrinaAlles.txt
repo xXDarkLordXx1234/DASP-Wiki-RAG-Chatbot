@@ -1,0 +1,25 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="11"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.IrinaAlles - 2012-06-21
+---+ Unstructured Information Management Lab
+_Comparative study of dependency parsers for the German language._
+
+This study's goal is the evaluation and comparison of dependency parsers for the German language. Dependency parsers produce a grammar called "dependency grammar" which describes the structure of a sentence in terms of words and the binary syntactic and semantic relations between them.
+
+The parsers for English are very advanced and can be considered as reliable pre processing step for further NLP tasks, whereas the number of dependency parsers and available models for the German language is humble and their performance often unclear. Therefore this study focuses especially parsers for the German language. The evaluation does not only consider traditional performance measures but also usability factors as ease of use, training and parsing time and performance on different data sets.
+
+The following sections give an introduction to the evaluated parsers, the data sets used for training and testing, and the evaluation setup. The evaluation results are presented in the last section.
+
+
+   * [[Dependency Parser][Dependency Parsers]]
+   * [[UKP/Personal.LisaCorpora][Corpora]]
+   * [[Setup][Setup]]
+   * [[ParserEvaluation][Evaluation]]
+
+
+This investigation showed that even with little amount of data one can achieve acceptable parsing results for the German language, since all of the here evaluated parsers achieved more than 80% accuracy on the smallest data set of 2807 sentences.
+Regarding the evaluation criterion ease of use, than the MaltParser is at the top. It has a very structured and well written user guide with appropriate examples, precisely defines the required formats and provides a detailed overview of available options and execution modes. Whereas MateTools Parser and [[MDParser]] provide a very short description of commands necessary to run and train the parser. This might be sufficient if one wouldn't encounter any difficulties. 
+
+Considering accuracy the MateTools Parser showed the best performance of 93,9% accuracy on the 100% data set closely followed by MaltParser, which achieved 90% accuracy on the medium data set using its covnonproj algorithm. Possibly it might have reached even more on the full data set but due to its long training time it never finished. This leads to the next evaluation criterion the time, as already indicated MaltParser is one of the slowest for training and for parsing its best model took up to 15 days for training and 10 hours to parse 3.509 sentences. The MDParser shows the extreme opposite behaviour it requires less than 10 minutes for training and 30 seconds to parse the same 3.509 sentences with very acceptable results. MateTools Parser showed also an acceptable time performance of nearly two days for training on the largest data set and 30 minutes for parsing.  
+
+Thus the MateTools Parser is the parser of choice, as it finds the point of equilibrium between the applied criteria. It is usable without too many troubles and shows very good results which are achieved in an acceptable amount of time. In case one attaches great importance to the time dimension, MDParser should be the first choice, it is incredibly fast in training and parsing and provides good results of 85,5% accuracy.

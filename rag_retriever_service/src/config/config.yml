@@ -1,0 +1,18 @@
+CHROMA_DB_HOST: chroma-db
+CHROMA_DB_PORT: 8000
+CHROMA_DB_COLLECTION_NAME: WikiData
+
+HUGGING_FACE_EMBEDDING_MODEL: "sentence-transformers/paraphrase-MiniLM-L6-v2"
+
+SIMILARITY_TOP_K: 15
+
+CROSS_ENCODER_MODEL: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+LOG_RERANKING: false
+LOG_RERANKING_OUTPUT_FILE: "reranking_log.json"
+
+
+USE_KEYCLOAK_AUTH: true
+JWKS_URL: "https://auth.ukp.informatik.tu-darmstadt.de/realms/UKP/protocol/openid-connect/certs"
+
+METADATA_DENY_FILTER_KEY: "deny_view"
+METADATA_ALLOW_FILTER_KEY: "allow_view"

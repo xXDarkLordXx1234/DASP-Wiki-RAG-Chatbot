@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="TorstenZesch" date="1215499712" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="EliaWork"}%
+---++ Task Overview Elia
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Elia Aufgaben* ||
+| *Aufgabe*  | *% done*  |
+| Überarbeitung !DataMachine & !TimeMachine | 0 |
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Elia Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung | 15.6. - 30.6. | ? | |
+| *Summe* | |  %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 40 | Juli/August |

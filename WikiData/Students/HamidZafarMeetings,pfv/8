@@ -1,0 +1,35 @@
+%META:TOPICINFO{author="aelmi" comment="save topic" date="1477582806" format="1.1" reprev="7" version="8"}%
+%META:TOPICPARENT{name="HamidZafar"}%
+---++ [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafar][Back]] 
+
+---+!! Meetings
+
+---++ 18.10.2016
+   * Prepare presentation slides *Please checkout Presentation/Mid-term presentation.pdf, Still working on it*
+   * Requirement for distributed platform
+      * A single server with multiple cores *[Currently using google cloud (free for 2 months) 1CPU 8Cores 7GB mem]*
+      * investigate existing options (hadoop, spark, tension flow)
+      * Check out free plan on amazon cloud *[Applied for it, wait for approval.]*
+   * Prepare report on model in more detail and align with implementation *Please checkout Writing/Template/UKPThesisTemplate.pdf. Not quite done yet*
+   * Summerize the spliting and merging steps as well as clustering 
+   * evaluation: 
+      * try with exterme values different in each cluster => *got better, used 30,000 data, 78%-94% correctly identified (depends on the dataset)*
+      * try prediction task
+
+---++ 12.10.2016
+
+   * Reviewing scalability papers for HDPs and adapting to IMMC
+      * Proposed method uses a Gibbs' sampler with auxiliary variables
+   * Implementing scalable distributed IMMC
+   * Tasks to do for next week:
+      * Report on the method -- put a description into the thesis template
+      * Continue with implementation of distributed IMMC
+      * Produce an outline of the mid-term presentation
+      * Update UKP Wiki page
+      * Presentation info (see [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafarPresentations][presentation page]])
+      * Computation resources!
+
+-- Main.EdwinSimpson - 2016-10-11
+
+
+-- Main.HamidZafartavanAelmi - 2016-10-14

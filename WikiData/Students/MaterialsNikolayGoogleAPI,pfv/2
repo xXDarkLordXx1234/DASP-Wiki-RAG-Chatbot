@@ -1,0 +1,85 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="NikolayMaterials"}%
+Access Google Translate API
+
+ 
+
+AJAX Language API - using Javascript the usual way:
+http://code.google.com/apis/ajaxlanguage/documentation/
+ 
+
+the Language API now supports strings up to 5,000 characters
+in length if you use the POST method.  Using GET (e.g., through the AJAX API), you
+will still run into trouble depending on your individual browser's limitations on the
+amount of data you can pass through the url
+http://code.google.com/p/google-ajax-apis/issues/detail?id=18
+
+Apparently, servers have recently been limited GET request lengths
+to under 2,000 characters.  So, to do a 5,000 character request, you must use POST
+which is not supported in the Javascript implementation of the API
+http://code.google.com/p/google-ajax-apis/issues/detail?id=150&q=language%20api&sort=type&colspec=ID%20Type%20Stars%20Status%20Modified%20Summary%20APIType%20Opened
+
+For Flash developers, and those developers that have a need to access the AJAX Language API from other Non-Javascript environments, the API exposes a simple RESTful interface. In all cases, the method supported is GET and the response format is a JSON encoded result with embedded status codes. Applications that use this interface must abide by all existing terms of use. An area to pay special attention to relates to correctly identifying yourself in your requests. Applications MUST always include a valid and accurate http referer header in their requests. In addition, we ask, but do not require, that each request contains a valid API Key. By providing a key, your application provides us with a secondary identification mechanism that is useful should we need to contact you in order to correct any problems.
+
+http://code.google.com/apis/ajaxlanguage/documentation/reference.html
+
+Key - If specified, it must be a valid key associated with your site which is validated against the passed referer header.
+
+The batch interface, which is only available with the RESTful framework, allows for multiple translations to occur in a single call through the use of multiple q and/or langpair arguments
+
+. Translate several strings, all from the same source language to the same target language
+
+. Translate one string into several languages
+
+. Translate several strings, each into a different language
+
+http://ajax.googleapis.com/ajax/services/language/
+
+translate?v=1.0&q=hello%20world&langpair=en%7Cit&q=goodbye&langpair=en%7Cfr
+
+ 
+
+Google AJAX API Terms of Use
+
+You will not, and will not permit your end users or other third parties to:
+
+    * submit any request exceeding 5000 characters in length, to the translation components of the Service;  
+    * use any robot, spider, site search/retrieval application, or other device to retrieve or index any portion of Google services or collect information about users for any unauthorized purpose;  
+    * copy, store, archive, republish or create a database of results returned from the service, in whole or in part, directly or indirectly, except that you may store results in a temporary cache for a period not to exceed Fifteen (15) days solely for the purpose of using those results to carry out a specific user-requested action; or  
+    * transmit any viruses, worms, defects, Trojan horses, or any items of a destructive nature.  
+
+Java libraries
+
+ 
+
+    *Java code snippet from the Developer's Guide: 
+
+URL url = new URL("http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=Paris%20Hilton");
+URLConnection connection = url.openConnection();
+connection.addRequestProperty("Referer", "http://www.mysite.com/index.html");
+JSONObject json = new JSONObject(builder.toString());
+
+    *google-api-translate-java  
+
+Using the Lesser GPL permits use of the library in proprietary programs;
+using the ordinary GPL for a library makes it available only for free programs.
+http://www.gnu.org/licenses/why-not-lgpl.html
+
+    *google-translate-idea-plugin  
+
+http://code.google.com/p/google-translate-idea-plugin/
+
+Apache License 2.0
+
+the Apache License allows the user of the software the freedom to use the software for any purpose, to distribute it, to modify it, and to distribute modified versions of the software
+The Apache license only requires that a notice is kept informing recipients that Apache licensed code has been used
+Two files that must be put at the top directory of redistributed software packages:
+
+    * LICENSE - a copy of the license itself.  
+    * NOTICE - A "notice" text document listing the names of licensed libraries used, together with their developers.  
+
+   * [[%ATTACHURL%/Google_Translate.pdf][Google_Translate.pdf]]: Google API Information
+
+-- Main.NikolayGeorgiev - 17 Jun 2009
+
+%META:FILEATTACHMENT{name="Google_Translate.pdf" attachment="Google_Translate.pdf" attr="" comment="Google API Information" date="1245260711" path="Google Translate.pdf" size="19436" stream="Google Translate.pdf" tmpFilename="/var/tmp/CGItemp34372" user="NikolayGeorgiev" version="1"}%

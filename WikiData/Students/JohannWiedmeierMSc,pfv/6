@@ -1,0 +1,75 @@
+%META:TOPICINFO{author="wiedmeier" comment="reprev" date="1501057868" format="1.1" reprev="5" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Thesis: Enhanced Representation Learning for Question Retrieval with Transfer Learning
+
+*Goals:*
+   * Use representation learning to find question duplicates
+   * Find strategies to train model without using question duplicate labels (unsupervised learning, transfer learning)
+   * Examine how answer information can be used to improve the representation
+
+*Repository:* 
+   * https://git.ukp.informatik.tu-darmstadt.de/Thesis-Johann-Wiedmeier/enhancing-representations 
+
+*Datesets:*
+   * Askubuntu by Tao Lei (https://github.com/taolei87/askubuntu)
+
+*Results:*
+   * https://docs.google.com/spreadsheets/d/1uv49Vzm3OqQ4jwlWzrqmCj15dKFTbK6VFSCXW8of70s
+
+---++ Reports
+---+++ TODO
+   * Implement pretraining with question-answer pairs
+   * Implement unsupervised pre training
+   * Research Save/Restore bug fix further
+   * Setup the attention visualization webapp
+   * Research transfer learning
+
+---+++ 26.07.2017
+   * Implement Lin et al. "A Structured Self-attentive Sentence Embedding" as an alternative baseline model (https://arxiv.org/abs/1703.03130)
+   * Combine question and answer before pooling on cnn/lstm (no working configuration found)
+
+---+++ 20.07.2017
+   * Error Analysis intra_attention_lstm (valid)
+   * Test word importance layer with other models
+   * Combine question and answer before pooling on cnn/lstm (no good models found yet)
+   * Research Tan "Improved Representation Learning" paper
+Details ([[%ATTACHURLPATH%/Report5_14.07.-20.07.pdf][pdf]]) 
+
+---+++ 13.07.2017
+   * Re-run best Models from 06.07.2017 for 5 total runs to increase significance of the results
+   * Use word_importance_layer with attention pooling models
+   * Research character embedding models
+   * Answer integration and evaluation 
+Details ([[%ATTACHURLPATH%/Report4_06.07.-13.07.pdf][pdf]]) 
+
+---+++ 06.07.2017
+   * Implement (vanilla) CNN, biLSTM and word-averaging baselines
+   * Integrate Andreas Rücklé's attention pooling models into the project
+   * Evaluate all models to find a model that potentially beats RCNN (SOTA)
+Details ([[%ATTACHURLPATH%/Report3_30.06.-06.07.pdf][pdf]]) 
+ 
+---+++ 29.06.2017
+   * Research approaches to combine question and answer representations
+      * Use the Neural Tensor Network (Socher) to build an advanced question-answer combination layer (Qiu: https://www.aaai.org/ocs/index.php/IJCAI/IJCAI15/paper/view/11401)
+      * Use Parikh et al. (2016) or other attention mechanisms (https://arxiv.org/abs/1606.01933)
+      * Use cutoff attention to reduce noise when combining representations (See [[%ATTACHURLPATH%/cutoff-attention.pdf][pdf]])
+      * ...
+Details ([[%ATTACHURLPATH%/Report2_23.06.-29.06.pdf][pdf]]) 
+
+---+++ 22.06.2017
+   * Literature Review
+   * Run first experiments to include answers using a weighted average of the representations
+   * Research state of the art (RCNN by Tao Lei https://arxiv.org/abs/1512.05726)
+   * Examine the dataset used by Tao Lei for his RCNN experiment
+   * Analyse the potential improvement when including answers ([[%ATTACHURLPATH%/ImprovementPotentialbyUsingAnswers.pdf][pdf]]) 
+   * Extend RCNN to also use answers using a weighted average of the representations
+      * Including answers in this naíve way seemed to only introduce noise
+Details ([[%ATTACHURLPATH%/Report1_14.06.-22.06.pdf][pdf]]) 
+
+%META:FILEATTACHMENT{name="cutoff-attention.pdf" attachment="cutoff-attention.pdf" attr="" comment="Motivation and idea behind %22Cutoff-Attention%22" date="1499075325" path="cutoff-attention.pdf" size="75952" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report1_14.06.-22.06.pdf" attachment="Report1_14.06.-22.06.pdf" attr="" comment="Detailed report for %2222.06.2017%22" date="1499075803" path="Report1_14.06.-22.06.pdf" size="84626" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report2_23.06.-29.06.pdf" attachment="Report2_23.06.-29.06.pdf" attr="" comment="Detailed report for %2229.06.2017%22" date="1499075830" path="Report2_23.06.-29.06.pdf" size="34767" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="ImprovementPotentialbyUsingAnswers.pdf" attachment="ImprovementPotentialbyUsingAnswers.pdf" attr="" comment="Analysis of the potential improvement by using answers with RCNN" date="1499075865" path="ImprovementPotentialbyUsingAnswers.pdf" size="55606" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report3_30.06.-06.07.pdf" attachment="Report3_30.06.-06.07.pdf" attr="" comment="Detailed report for %2206.07.2017%22" date="1499674098" path="Report3_30.06.-06.07.pdf" size="57131" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report4_06.07.-13.07.pdf" attachment="Report4_06.07.-13.07.pdf" attr="" comment="Detailed report for %2213.07.2017%22" date="1500581898" path="Report4_06.07.-13.07.pdf" size="50507" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report5_14.07.-20.07.pdf" attachment="Report5_14.07.-20.07.pdf" attr="" comment="Detailed report for %2220.07.2017%22" date="1500581916" path="Report5_14.07.-20.07.pdf" size="92678" user="wiedmeier" version="1"}%

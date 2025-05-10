@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1285118644" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+%TOC%
+
+---++++++ 21 Sep 2010 (TZ/NE)
+   * Discussed UIMA-specific topics:
+      * Testing of Pipelines and testing of Annotators. 
+      * Introduced implementation of automatic pipeline testing. 
+      * Awaiting code for DKProTestBase for Annotator testing.
+   * Discussed filtering of common words and common phrases:
+      * Discussed using TF-IDF for common word filtering.
+      * Discussed using a web search count for common word filtering and a common phrase metric.
+      * UKP has the Web 1T 5-gram Version 1 (1-5-grams and frequency counts from Google) which could be used too.
+   * Discussed segmentation:
+      * Discussed possibility of a rule-based segmenter exploiting the syntactic structure of a book for topical segmentation.
+      * Segmenters for experiments could be: 
+         * jTextTile 
+         * C99
+         * SentenceSegmenter (as baseline) 
+         * Rule-based book segmenter (optional)
+   * Discussed Keyphrase Extraction:
+      * Keyphrase extraction should be limited to TextRank (OccurenceGraph & PageRank) for now. 
+      * LSG is too expensive in this phase. 
+      * Other extractors exist but will be discussed later.
+   * Next step: 
+      * Implement baseline system following Csomai & Mihalceas approach using n-grams, NP-chunks and (heuristic) Named Entity Recognition their original data set.
+---++++++ 14 Sep 2010 (TZ)
+   * Discussed pipeline layout: 
+      * Pipeline should consist of Keyphrase Extraction on subCASes followed by a postprocessing step that filters suitable index entry candidates.
+      * Rather focus on Keyphrase Extraction than Named Entity Recognition.
+      * Discussed possibility of using "global" information to enhance postprocessing step.
+   * Discussed technical details: 
+      * Looked at (de)multiplication for subcas-processing. Awaiting demo code for proper UIMA-Settings when (de)multiplying.
+   * Next steps:
+      * Attapt _KeyphraseEvaluatorApproximate_ to evaluate BOTBI-Pipeline with recall, precision, f-measure
+      * Write simple pipeline that processes a whole book and evaluate index entries with gold standard

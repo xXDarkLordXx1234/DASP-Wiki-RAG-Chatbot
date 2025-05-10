@@ -1,0 +1,91 @@
+%META:TOPICINFO{author="markard" comment="" date="1534915675" format="1.1" version="8"}%
+---+!! Bachelor Thesis: Deep Learning for extraction of predicate-argument structures 
+
+---++ 08.08
+   * further thesis writing
+
+---++ 07.30
+   * finalizing of the presentation
+   * summarize results
+
+---++ 07.19
+   * preparing presentation
+   * thesis writing
+
+---++ 07.12
+   * different approach for span identifier   
+
+---++ 07.05
+   * adding frame embeddings
+
+---++ 06.28
+   * implementation of a LSTM performing span identification and role labeling at once
+
+---++ 06.22
+   * evaluation of new results
+   * analysis of correlation between span identifier and role labeler
+
+---++ 06.15
+   * span identifier improvement
+   * implementation of a 2 layer bidirectional LSTM
+
+---++ 06.01
+   * change from TFLearn to Keras
+   * comparison to Open-SESAME span identifier
+
+---++ 05.24
+   * testing the RNN span identifier
+
+---++ 05.15
+   * improve span identifier
+   * implement RNN span identifier
+   * structure thesis
+
+---++ 05.03
+   * finalize mid-term presentation   
+   * simple span identifier
+   * summarize results
+
+---++ 04.26
+   * prepare mid-term presentation
+   * include Salsa
+   * implement salsalexicon
+
+---++ 04.19
+   * implement one neural network per frame
+   * salsa testing
+   * compare evaluation types
+
+---++ 04.12
+   * hyperparameter testing
+   * include POS tags 
+   * adapted network to baseline-api
+
+---++ 04.05
+   * implement combiner
+   * assume perfect spans for evaluation
+   * refactoring of project structure
+   * summarize results up to current state
+
+---++ 03.29
+   * compare role count 
+   * combine extended majority baseline with simple majority baseline
+   * combine lexica baselines
+   * build baseline combination of majority and lexica versions
+   * overlay lexicon on simple neural network
+   * add frame information to the simple neural network 
+
+---++ 03.22
+   * restructure lexicon
+   * implement new lexicon baseline
+   * divide simple majority baseline and extended majority baseline 
+
+---++ 03.08
+   * include the FrameNet lexicon
+   * lexicon baseline
+   * data-majority baseline (without "gold-positions") 
+
+---++ 03.01
+   * understand the frame-identification project by Klie 
+   * structure the data
+   * data-majority baseline (with "gold-positions")

@@ -1,0 +1,297 @@
+%META:TOPICINFO{author="koch" comment="reprev" date="1412854798" format="1.1" reprev="10" version="11"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Presentations
+   * [[%ATTACHURL%/midtermPresentation.pdf][midterm presentation]]
+
+
+---++ Meeting 05.06.2014
+
+   * Studentische Vorträge: Di. 09:50 oder 11:30, i.d.R. alle 2-4 Wochen
+      * Einladungen kommen per Mail
+      * Zwischenvortrag: 09.09.2014
+      * Abschlussvortrag: 02.12.2014 
+    Abstimmungstermin: Do. 14:00 Uhr
+
+
+-- Main.ChristianMeyer - 2014-06-05
+
+
+---++ Meeting 26.06.2014
+
+---+++ Fortschritt
+   * WEBIS Text Editor aufgesetzt: Problem "File Not Found", trotz korrektem Verzeichnispfad in der entsprechenden Variablen. Rechteproblem?
+   * Toolchain definiert: Tomcat/Mysql/Git/Eclipse/GWT/Maven/SmartGWT/ Atmosphere Websockets
+   * Planung:
+      * Atmosphere Websockets nutzen, um den Servletcontainer offen zu halten. Dadurch lässt sich die serverseitige asynchrone Analyse sinnvoll umsetzen. Vereinfachtes Transportlayer: Serializierbare Objekte.
+      * Client-/Server-Kommunikationen bzgl. Markierungen: Kontext basiert anhand von Textvergleichen. Der Marker enthält einen zu markierenden Textteil und einen Textteil der für die existenz des Markers entscheidend ist. Dadurch kann der Client die Lebensdauer und mehrere Vorkommen selbstständig detektieren
+      * Detektion von Umgangssprache: DACL mit Umgangssprachlichen Wörtern um Umangssprache effizient zu detektieren, DB-Tablle mit Ersetzungsvorschlägen, wobei der Key ein Hashwert des Wortes ist
+      * GUI-Design: Ein Menu am oberen Rand, Links der Editor und rechts ein Fläche, um Markierungsbeschreibungen zu platzieren.
+
+---+++ Offene Fragen
+   * Welche Lizenzen können verwendet werden? GNU LPGL, Apache, ASL. Lizenzen sollten dokumentiert werden. Vorsicht mit GPL.
+   * WEBIS-verpflichtend? Nein.
+   * Freie Tool-/Framework-/Libary-auswahl? Ja, mit den oben genannten Lizenzen.
+
+---+++ Meeting Ergebnisse
+   * Markierungen:
+      * Konzept für überlappende Markierungen überlegen.
+      * Mölgiche Markierungen: Tooltip, In-text, Beschreibungen, Heatmap über den Text
+      * Sollten (de)aktivierbar sein, um den Text nicht zu überladen
+      * Ggf. ein Scoring entwickelen, um wichtigere Markeriungen zu unterscheiden
+   * Literaturarbeit wird ggf. bis anfang August zurückgestellt, da zunächst die Infrastruktur der Applikation entwickelt werden muss, sowie Klausuren im Juli anstehen
+
+---+++ Plan bis zum nächsten Meeting, am 03.07.2014
+   * GUI mit Ausnahme des Editors fertig stellen
+   * Websockets implementiert und offene Fragen bezüglich Server geklärt: Daten im Hauptspeicher halten, Daten zwischen Nutzern teilen (e.g. DACL Umgangssprachendetektion)
+   * Factorypattern für serializierbare Client-/Server-kommunikations Transportklassen implementieren
+   * Ansatz für Editor entwickeln:Welche Editoren gibt es? Welcher davon eignet sich als Grundlage? Wie kann dieser erweitert werden? Welche Begrenzungen gibt dieser auf?
+   * Ggf.: GUI Mockup
+-- Main.FrerikKoch - 2014-06-29 - 10:40
+
+---++ Meeting 03.07.2014
+
+---+++ Fortschritt
+   * Marker Design ist entwickelt worden und teilweise umgesetzt worde. Ein Mockupn existiert
+   * GUI Implementierung ist fortgeschritten
+   * Editorwahl eingegrenzt
+   * Erster Entwurf zur synchronisierung von Client und Server Textrepresenation bzw. Markierungen
+      * Ein Marker besteht aus: Start Position, End Position, Textversion, Liste von Kontexttextpositionen(Start/End), Beschreibung, Quickfixes
+      * Textversionierung anhand des undo stacks des Texteditors
+
+---+++ Offene Fragen
+   * Was ist mit Webis? Webis vorläufig gestrichen. Könnte als Referenzimplentierung herangezogen werden.
+
+---+++ Meeting Ergebnisse
+   * Lamport clocks als mögliche Ergänzung zur Client-/Server-synchronisation.
+   * Marker Design: Übersichtsmodi anbieten. Zum Beispiel zur visualisierung der verwendeten Zeiten
+   * Vom 28.07. bis 01.08. wird die Masterarbeit klausurbedingt ruhen
+
+---+++ Plan bis zum nächsten Meeting, am 08.07.2014
+   * Editor auswählen und Marker, sowie Icons implementieren
+   * Andere aktuelle Themen nach Möglichkeit: Client-/Server-kommunikation, Übersichtsfeatures, Textversionierung 
+-- Main.FrerikKoch - 2014-07-06 - 11:49
+
+---++ Meeting 08.07.2014
+
+---+++ Fortschritt
+   * Projektstruktur überarbeitet
+   * Editorwahl: CKEditor
+   * Integration CKEditor
+   * Probleme:
+      * HTML Represenation des Texts
+         * Wie soll die Position spezifiziert werden
+         * Wie Markerierungen vornehmen? 
+   * Lösungsansätze:
+      * Server arbeitet auf Textrepresentation
+      * Client rechnet hoch
+      * Makerumsetzung per html tags, einfügen Per CKEditor API       
+
+---+++ Offene Fragen
+   * Offizielle Anmeldung? Christian kümmert sich
+   * Tipps für Umgang mit Html? 
+  
+
+---+++ Meeting Ergebnisse
+   * Mögliches Feature: Discurs markers
+   * Mögliches Feature: Overview mode emotion highlighting
+   
+
+---+++ Plan bis zum nächsten Meeting, am 17.07.2014
+   * Technischer Ansatz für Markierungen im Editor, erste Implementation
+   * Entwurf zum HTML Handling, Text position spezifizieren
+
+-- Main.FrerikKoch - 2014-07-14 - 10:09
+
+---++ Meeting 17.07.2014
+Meeting viel aus.
+-- Main.FrerikKoch - 2014-07-24 - 12:40
+
+---++ Meeting 24.07.2014
+
+---+++ Fortschritt
+   * Implementierung Textmarkierungen
+   * Ansatz für Versionierung (Text basiert, offesets für Markierungstransformation)
+   * Begonnen: Icon implementierung     
+
+---+++ Offene Fragen
+   -
+  
+
+---+++ Meeting Ergebnisse
+   * Option zum verstecken der Richtext optionen des CKEditor
+   * Input lock: Was passiert wann?
+      * Input text vs. output text
+      * Bearbeitungszeit
+      * Änderungen mit Zeitstempel, Art der Änderung
+      * Modularität: Eventuell einzelne Features parametrisieren (Richtext editor optionen, Feature optionen)
+---+++ Plan bis zum nächsten Meeting, am 21.08.2014
+   * Client fertig:
+      * Icons
+      * Versionierung
+      * Client/Server Kommunikation
+   * Literaturrecherche begonnen
+   * Erstes Feature: Fixe Markierungen mit fixer Beschreibung
+-- Main.FrerikKoch - 2014-07-25 - 11:29
+
+---++ Meeting 21.08.2014
+
+---+++ Fortschritt
+   * Versionsmanagement
+   * Markermanagement (Probleme)
+   * Angefangen: 
+      * Konfiguration 
+      * GUI-Extension
+      * Literaturrecherche
+      * Thesis Struktur
+      * Featureauswahl
+
+---+++ Offene Fragen
+   * Thesis Struktur?
+   * Literatur bzgl. Linguistik?
+   * Featureauswahl
+   * Mid Term Presenation
+  
+---+++ Meeting Ergebnisse
+   * Allgemein
+      * Zurückstellen Copy/Cut/Paste (Tastenkombinationen müssen abgefangen werden)
+      * Rudimentäre Userverwaltung wird benötigt
+   * Material:
+      * Textlab: Gesellschaft für deutsche Sprache
+      * Hohenheimer Index
+      * Züricher Textanalyse Raster
+      * Workshops Uni-Leipzig
+   * Thesis Struktur (Inhalt, Reihenfolge und Kapitelzuordnung nicht fix)
+      * Motivation/Introduction
+      * Related Work:
+         * Einordnung/Kategorisierung InViEdit in Schreibassistenzsystemen
+         * Verwandte Schreibassistenzsysteme, Schreibassistenzsysteme allgemein, Feedback Arten
+      * System Design
+         * System Architektur
+         * Client Design
+         * Performanceoptimierungen
+         * Text Modelle
+         * Mögliche Anwendungen: Forschung, Schreiben von Texten, Überarbeiten von Texten
+      * Features
+         * Begründung und Umsetzung der einzelnen Features
+      * Evaluation
+         * Ggf. Nur extrinsische Studie, je nach aufwand
+         * Ggf. Intrinsische auf Feature Basis
+      * Conclusion
+      * ...
+   * Mid Term Presentation
+      * Struktur
+         * Motivation, Einordnung
+         * Umgesetztes
+         * Geplantes
+         * Ausblick
+         * Ist-stand Vorführung
+      * Datum: 9.9.2014
+      * Zeitlicher Rahmen: 20-25 min
+   * Featureauswahl (Vorläufig ausgewählte Features)
+      * Point of Interest Features
+         * Nicht Standartsprache erkennen, ggf. Ersetzungsvorschlag (e.g Umgangssprache)
+         * Redundanz auf Worteben, ggf. Synonyme Ersetzungsvorschläge
+         * Zu lange Sätze, ggf. Trennungsvorschläge
+         * Fixe Markierungen
+      * Overview Features
+         * Listenbasierte Markierungen: Discourse, Connectoren, Präpositionen
+         * POS-Tagging
+         * Bigramm Frequenz
+
+---+++ Plan bis zum nächsten Meeting, am 04.09.2014
+   * Presentation vorbereitet
+   * Markerprobleme gelöst
+-- Main.FrerikKoch - 2014-07-25 - 11:29 - 2014-08-27 - 15:04
+
+---++ Meeting 04.09.2014
+
+---+++ Fortschritt
+   * Markerprobleme großteils gelöst
+   * Presentationsentwurf vorbereitet
+   * Erste Tests: Drohende Clientside performance probleme
+   * Entwurf Features
+
+---+++ Offene Fragen
+   * Presentation in Ordnung?
+   * Umgang mit etwaigen Performance Problemen?
+  
+---+++ Meeting Ergebnisse
+   * Folien Verbesserungsvorschläge
+   * Performance Probleme umgehen wo möglich. Ansonsten: Prototyp
+
+---+++ Plan bis zum nächsten Meeting, am 11.09.2014
+   * Presentation fertigstellen/halten
+   * Markertypen implementieren
+-- Main.FrerikKoch - 2014-09-11 - 09:00
+
+---++ Meeting 11.09.2014
+
+---+++ Fortschritt
+   * Mid-Term Vortrag
+   * Kleinere Code Anpassungen
+
+---+++ Offene Fragen
+   * Feedback Presentation?
+      * Insgesamt sehr gut. Potentielle Verbesserung: Motivation noch besser rüber bringen
+   * Ggf. Websockets durch periodische RPC ersetzen je nach Aufwand?
+      * Ja.
+  
+---+++ Meeting Ergebnisse
+   * Folien Verbesserungsvorschläge
+   * Performance Probleme umgehen wo möglich. Ansonsten: Prototyp
+
+---+++ Plan bis zum nächsten Meeting, am 25.09.2014
+   * Konfigurationmanagement abschließen (+Fixed Markers)
+   * Client/Server Kommunikation finalisieren
+   * User saves implementieren
+-- Main.FrerikKoch - 2014-09-15 - 15:51
+
+---++ Meeting 25.09.2014
+
+---+++ Fortschritt
+   * Login implementiert
+   * Konfiguration implementiert
+   * Load/Save serverseitig implementiert
+   * Marker clientseitig implementiert
+   * Meeting mit Daniela 
+   * Evaluation
+      * Contributions evaluieren
+      * Zeitrahmen 
+
+---+++ Offene Fragen
+   * Evaluation?
+  
+---+++ Meeting Ergebnisse
+   * Zeitrahmen max. 30 min
+   * Anfang: Kurze allgemeine Datenerhebung
+   * Text überarbeiten: Problematik Text + Fehler
+   * Pilotstudie notwendig
+   * Fragebogen bzgl. usability
+
+---+++ Plan bis zum nächsten Meeting, am 25.09.2014
+   * Save/Load fertigstellen
+   * Anzeige bugs beheben
+-- Main.FrerikKoch - 2014-10-09 - 13:32
+
+---++ Meeting 2.10.2014
+
+---+++ Fortschritt
+   * Load/Save fertiggestellt
+   * Events für usertracking implementiert
+   * Anzeigebug behoben
+   * Evaluation geringfügig konkretisiert (3fn, 6tp, 3fp; 1,2,1 pro Fehlertyp: langer satz, umgangssprache, wortredundanz)
+
+---+++ Offene Fragen
+   * Evaluation?
+  
+---+++ Meeting Ergebnisse
+   * Deploymentbeschreibung
+   * Load bei leerem Speicher bug
+   * Wortlisten in Datenbanktabelle umsetzen mit Spalten: MatchString,Farbe,HtmlDescription 
+
+---+++ Plan bis zum nächsten Meeting, am 25.09.2014
+   * User Tracking fertig
+   * Evaluationsentwurf
+-- Main.FrerikKoch - 2014-10-09 - 13:32
+
+%META:FILEATTACHMENT{name="midtermPresentation.pdf" attachment="midtermPresentation.pdf" attr="" comment="" date="1411467677" path="midtermPresentation.pdf" size="356254" user="meyer" version="1"}%

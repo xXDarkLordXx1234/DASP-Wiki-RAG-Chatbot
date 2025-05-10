@@ -1,0 +1,41 @@
+%META:TOPICINFO{author="JoachimCaspar" date="1247841064" format="1.1" version="4"}%
+%META:TOPICPARENT{name="PavelRojtberg"}%
+---++ Meeting 22.7.2009
+   * info(JC)
+      * Lemmatisierung (Plural->Singular, etc.) könnte etwas bringen: "grandmother" statt "grandmother's", aber nur manchmal... Gegenbeispiel: "tree", "trees" für image search query
+      * z.B. Stanford-Library, package: edu.stanford.nlp.process
+      * Klasse: morphology.java
+      * Methode: lemmatize
+   * Statusmeeting, Ideen von Zuhörern (eher future work):
+      * news stories -> passende Bilderserie dazu generieren
+      * Urlaubs-Tagebuch + getaggte Urlaubsbilder kombinieren
+
+---++ Meeting 6.7.2009
+   * Folien für Statusmeeting besprochen
+
+---++ Meeting 30.6.2009
+   * question(): Evaluierung wie wo gewünscht? bisher geplant/angefangen: 
+      * Grammatik (Parser lexicalized vs. nonlexicalized models for Parser)
+      * Deskriptoren (Wortarten/Tags)
+      * explizite Benutzerstudie (evtl. 2 Leute?)
+   * Sepia, Bloom, Sketch; welches?
+
+---++ Meeting 22.6.2009
+   * offene Fragen geklärt
+   * Plan:
+      * aktuell 15 S; Ziel: 25-30 Seiten
+      * weiterschreiben, aber ab jetzt Fokus wieder auf Programmierung
+      * weitere Schritte der Programmierung ins wiki
+      * Programmieren: siehe PavelRojtbergNotes
+
+---++ Meeting 15.6.2009
+   * Plan:
+      * bis nächste Woche schreiben
+      * übernächste Woche programmieren
+
+---++ Meeting 8.6.2009
+   * Gliederung diskutiert
+   * Übersichtsgrafik in 2 Teile
+   * Stil, Referenzen
+
+-- Main.JoachimCaspar - 15 Jun 2009

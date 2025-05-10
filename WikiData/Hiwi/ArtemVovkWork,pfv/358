@@ -1,0 +1,126 @@
+%META:TOPICINFO{author="ArtemVovk" date="1324931320" format="1.1" version="358"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Artem Vovk Work
+
+---++ Documents
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+ImportingWikipedia
+
+SuggestSectionProblems
+
+---++ Work
+
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Wikulu | x |
+| RevisionMachine | x |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Wikulu | 4.10.2011 | 1 | <ul><li>Beratung mit Richard(Maven)</li></ul> |
+| Wikulu | 5.10.2011 | 2 | <ul><li>Erstellung von Wikulu VM</li></ul> |
+| Wikulu | 8.10.2011 | 5 | <ul><li>RevisionMachine: Issue 27 wurde gelöst</li><li>Wikulu VM wurde erstellt</li></ul> |
+| Wikulu | 9.10.2011 | 2 | <ul><li>Änderungen in Wikulu image</li></ul> |
+| Wikulu | 12.10.2011 | 3 | <ul><li>Neue Wikulu instanz wurde erzeugt</li><li>Anpassung von QA Demo</li></ul> |
+| Wikulu | 16.10.2011 | 3.5 | <ul><li>QA Demo plugin wurde vollstandig erstellt</li></ul> |
+| Wikulu | 20.10.2011 | 1 | <ul><li>Beratung mit Silvana</li></ul> |
+| Wikulu | 8.11.2011 | 3 | <ul><li>Implementation of css support</li></ul> |
+| Wikulu;RevisionMachine | 14.11.2011 | 2 | <ul><li>Versuche wikulu dipf zum Laufen zu bringen</li><li>Beratung mit Oliver</li><li>Einarbeitung in Issue http://code.google.com/p/jwpl/issues/detail?id=61</li></ul> |
+| RevisionMachine | 16.11.2011 | 5.5 | <ul><li>Issue http://code.google.com/p/jwpl/issues/detail?id=61 wurde behoben</li></ul> |
+| RevisionMachine | 19.11.2011 | 3.5 | <ul><li>Testen und weitere Analyse von Issue http://code.google.com/p/jwpl/issues/detail?id=61</li></ul> |
+| RevisionMachine | 21.11.2011 | 4 | <ul><li>Implementierung von LazyRevisionIterator</li><li>Erstellung von JUnit Tests</li></ul> |
+| Wikulu | 4.12.2011 | 0.5 | <ul><li>Änderungen in wikulu dipf wegen Umzug auf ukp domain</li></ul> |
+| Wikulu | 14.12.2011 | 4 | <ul><li>Integration of plugin specific CSS files</li></ul> |
+| Wikulu | 15.12.2011 | 2 | <ul><li>Plugin specific CSS files can be loaded in Wikulu</li><li>Integration of QA Demo css files</li></ul> |
+| Wikulu | 20.12.2011 | 5 | <ul><li>Beratung mit Daniel</li><li>Studie Teil 1.</li></ul> |
+| Wikulu | 21.12.2011 | 4 | <ul><li>Studie Teil 2. 50 Paaren von Texten wurden evaluiert</li></ul> |
+| Wikulu | 25.12.2011 | 5 | <ul><li>Studie Teil 2. 50 Paaren von Texten wurden evaluiert(Zwei mal beim Submitting wurde Fehler geliefert!)</li></ul> |
+| Wikulu | 26.12.2011 | 4.5 | <ul><li>Studie Teil 2. 50 Paaren von Texten wurden evaluiert</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 99.5 | bis Ende Dezember |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+   * [[%ATTACHURL%/build.xml][build.xml]]: Script for importing wikipedia
+---------------------
+
+ReleasePackageErrors
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"
+
+
+---++ Previous Work
+
+   * ArtemVovkPreviousWork
+
+   
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="MiniManual.pdf" attachment="MiniManual.pdf" attr="" comment="Manual to %22Preloaded descriptor selection%22" date="1234806618" path="MiniManual.pdf" size="40665" stream="MiniManual.pdf" tmpFilename="/var/tmp/CGItemp37940" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="build.xml" attachment="build.xml" attr="" comment="Script for importing wikipedia" date="1248857901" path="build.xml" size="2013" stream="build.xml" tmpFilename="/var/tmp/CGItemp61365" user="ArtemVovk" version="1"}%

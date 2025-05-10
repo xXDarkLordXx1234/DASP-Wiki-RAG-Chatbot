@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="TobiasHorsmann" date="1336983544" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="TobiasHorsmann"}%
+   * JMWEProjectsHorsmann
+   * TEIReader
+      * Modified version of the TEIReader n order to use a local pos-tagging-2-uima mapping file for reading a TEI-Corpus
+      * pos-tagging2-uima mapping file for the tei-brown corpus
+      * Not yet integrated into DKPro
+   * freqExtraction
+      * Web1T Index for large corpora. Used for developing the index creation for larger Wikipedias (e.g. English). Already moved to DKPro.
+   * LinguisticInfoExtraction
+      * Extracts named entities based on a dictionary, their various part of speech tags with frequencies and lemmas

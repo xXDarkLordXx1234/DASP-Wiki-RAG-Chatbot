@@ -1,0 +1,111 @@
+%META:TOPICINFO{author="ManuelWick" date="1273566310" format="1.1" reprev="27" version="27"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ Todo/Workflow
+   * Designstruktur für pluginfähigen CollectionReader
+      * <strike>Erste Idee: mehrere CRs, die im selben Verzeichnis arbeiten und von der CPE eingebunden werden</strike> <span class="red">gescheitert, da CPE aktuell nur eine Instanz eines CR zulässt</span>
+      * <strike>Zweite Idee: ein CollectionReader, der als PluginFramework dient und via Interface/XML externe Reader nutzen kann</strike> <span class="green">works, at the moment with .txt and .pdf</span>
+      * <span class="green">[Update: Work needless? Implementation of new readers in Apache-Tika?]</span>
+         * Implementation of IReaders - pdf, txt, word, eml, xls, openoffice
+   * <strike>Erste selbstgeschriebene Collection Processing Engine implementieren</strike>
+   * <strike>Become acquainted with Apache-Tika</strike>
+   * <strike>Implement Apache-Tika-Library</strike> <span class="green">Works fine</span>
+      * <strike>Get Apache-Maven running
+         * http://www.sonatype.com/books/m2eclipse-book/reference/creating.html</strike> <span class="red"> Not my goal </span>
+      * <strike>Main framework</strike>
+      * <strike>Integrate Tika-Readers in IReader [still makes sense? integrate missing readers in TIKA?]</strike> <span class="red">Makes no sense</span> <span class="green">Integrating missing parsers</span>
+         * <strike>Trying to build missing parsers for Apache-Tika: EML-Parser</strike>
+            * *BH* Keep it simple
+               * integrate Tika into a reader
+               * Check if the filetype is handled by Tika -> let it handle it
+               * Check if the filetype is eml -> handle it with another component
+               * Tika is only a means to get to the text
+               * Remember that thesis goal is not to integrate Tika into a component, but to compare retrieval models...
+   * Writing 
+
+   * <strike>Updating Tika from 0.5 to 0.6 (test failures in 0.6 ... )</strike>
+      * *BH*: try running with more RAM, this may fix it. TODO: try this
+      * Updated to Tika 0.7
+
+22.03.2010
+
+   * <strike>Reading JavaMail-Doc</strike>
+   * <strike>Writing de.tudarmstadt.de.ukp.manuelwick.dkpro.tika.parser.EmlParser.java</strike> First version works
+      * Improve the parser
+   * Understanding index-construction (irbookonlinereading.pdf)
+   * <strike>Find out, how Lucene can be used to UIMA</strike>
+   * <strike>Find out, how Terrier can be used in UIMA</strike>
+   * Build underlying architecture in UIMA
+      * encodings, metadata-handling, interfaces, extensibility, simplicity
+   * How to work with the BodyContentHandler (how to create Elements in EML-Parser to work with)
+   * MBOX sequence of messages in it? (IR-Book page 21) for EML the same?
+   * IR-Book page 35 SS->SS ?
+   * IR-Book page 42 Algorithm
+   * IR-Book Permuterm, k-Gram
+   * IR-Book (realpages 96-104)
+   * BSBI & SPIMI why does BSBI need the termIDs? why not using terms like in SPIMI?
+   * What features does Lucene have?(IRB p.112)
+   * Log-Merge? (IRB p.116-117)
+   * <strike>NoSuchElementException while parsing with PDFParser Finanzierung___Part_3_1_2__4789437.pdf</strike>
+      * <strike>why? failure in PDFBox? how to solve it?</strike>
+   * <strike>CPE <-> CPM differences ?</strike>
+   * <strike>What UIMA-Components are exactly given?</strike>
+   * <strike>How does the project layout exactly look like?</strike>
+   * <strike>In general, whats the important information, that should be indexed?</strike>
+
+   * Encoding-problems with Tika-Mbox parser. Isnt fully developed yet. EML-Parser works.
+
+---++ 23.03.10
+   * http://www.cs.technion.ac.il/~shaulm/papers/abstracts/Gabrilovich-2007-CSR.html
+   * http://www.ukp.tu-darmstadt.de/projects/sir/
+   * <strike>Write uutuc-Pipeline</strike>
+   * <strike>Convert project in JUnit style</strike>
+
+---++ 25.03.10
+   * JUnit-Testing EmlParser
+   * JUnit-Testing Tika-Library
+   * Lucene Index Searching
+      * Boolean Retrieval with 2 and more testdocs
+      * TermWeighting
+   * <strike>Building Topics-Pipeline (Query) and Documents-Pipeline (Indexing) with Lucene</strike>
+   * <strike>Building Topics-Pipeline (Query) and Documents-Pipeline (Indexing) with Terrier</strike> Simple Pipeline with Indexing/Searching works for both
+
+---++ 26.03.10
+   * <strike>Getting familiar with basic scoring, term weighting, vector space model</strike>
+   * <strike>Understand retrieval models</strike>
+      * Tf-Idf model
+      * BM-25 model
+      * Explicit Semantic Analysis based model
+
+---++ 29.03.10
+   * <strike>Problems with Microsoft-Office-Files when encrypted - serious problem?!</strike> No serious problem; just skip
+
+---++ 03.04.10
+   * Build external config-files for easy adaption of different configurations for information retrieval models?
+
+---++ 06.04.10
+   * <strike>How should evaluation look like? Need Queries</strike>Given
+   * <strike>Need ESA components</strike>Given
+
+
+---++ 08.04.10
+   * Solve MimeType-Problem in Tika
+   * Determine correct processing of eml-files
+   * <strike>Tika-Config.xml</strike> Not needed anymore in Tika Version 0.7
+   * <strike>Performing speed-tests with different Tika-Parser (perhaps significant speed improvment)</strike> Version 0.7 seems to be performance improved
+
+---++ 14.04.10
+   * Process given queries
+   * Learn to control Logging-mechanism in Tika, UIMA, POI, etc.
+   * Get ESA running
+   * Index CRM-Data
+   * Encapsulate DKPro-Pipeline in CPM? To have access to progress?
+   * <strike>Out of memory error... Trying with more heap-space, but where does the error come from? How to find out? How to control?</strike> See Workflow
+   * Set own mimetype in Tika to solve the wrong mimetype detection for eml
+
+---++ 28.04.10
+   * <strike>Run testsector_lucene_searching_105_107() - Identify error source "OutOfMemoryError - Java Heap Space"</strike> Terrier and Tika work fine with newest versions of DKPro components 
+
+---++ 04.05.10
+   * Speed issues running ESA
+
+-- Main.ManuelWick - 26 Jan 2010

@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="MichaelMatuschek" date="1333094766" format="1.1" version="15"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}%
+   * [[DkproRepositoryStudents][DKPro repository for students]]
+   * [[InformationenFuerDiplomanden][Informationen für Diplomanden und Bachelor-/Masterstudenten]]
+   * [[StudentsList][Students]]
+
+---+++ getting started
+   * pool: D017
+   * jabber: domain: tk.informatik.tu-darmstadt.de , server: jabber.tk.informatik.tu-darmstadt.de , use TLS
+
+
+---++ Recently changed topics
+
+%SEARCH{ ".*" regex="on" nosearch="on" nototal="on" order="modified" reverse="on" limit="10" format="[[$topic]]&nbsp;&nbsp;-&nbsp;&nbsp;"}%
+
+---++ <nop>%WEB% Web Utilities
+<form action='%SCRIPTURLPATH{"search"}%/%WEB%/'>
+   * <input type="text" name="search" size="22" />&nbsp;<input type="submit" class="twikiSubmit" value="%MAKETEXT{"Search"}%" /> - [[WebSearchAdvanced][%MAKETEXT{"advanced search"}%]]
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes
+   * WebStatistics - listing popular topics and top contributors
+   * WebPreferences - preferences of this web
+</form>
+

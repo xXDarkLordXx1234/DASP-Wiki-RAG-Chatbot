@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="MarkusWeimer" date="1173693462" format="1.1" version="4"}%
+%META:TOPICPARENT{name="AmazonDatenbank"}%
+Hier können Besonderheiten o.ä. aufgeführt werden.
+
+%TOC%
+
+---++Customer ID
+Ich musste feststellen, dass es auch Kunden ohne ID gibt. Ich werde diese Kunden alle unter der Customer ID "n/a" zusammenfassen. Eine statistische Auswertung für diese noname-Kunden ist natürlich nicht mehr möglich.
+
+---++Produkte ohne Herstellername
+Es gibt einige wenige Produkte, die keinen Hersteller besitzen (z.B. !B00004W18U und !B000069D08). Diese werde ich nicht in die DB aufnehmen.
+
+---++ !NumberFormatException Error bei AWS
+Bei Holen von Produktinformationen einiger Produkte kommt es zu einer _NumberFormatException_. Dies ist leider ein Bug beim Amazon Web Service (s.a. http://developer.amazonwebservices.com/connect/thread.jspa?messageID=32002&#32002).
+
+*MW*: Was hat das zur Folge? Fehlen dann evtl. interessante Daten in der DB?
+
+---++ Produkte in verschiedenen Varianten
+Es gibt Produkte in verschiedenen Variationen (z.B. in der Farbe). Ein Beispiel dafür ist die Digitalkamera _Oregon Scientific DS6688-O 3MP !ThinCam Digital Camera_, die in verschiedenen Farben erhältlich ist (Orange: !B000A339QO, Blue: !B000A339QE). Obwohl es unterschiedliche Produkte sind (zumindest farblich) und sie daher verschiedenen !ASINs besitzen, sind ihnen dieselben Reviews zugeordnet. Daher werden die Reviews nur einmal in die Datenbank eingefügt.
+
+-- Main.KaiMichaelHoever - 08 Mar 2007

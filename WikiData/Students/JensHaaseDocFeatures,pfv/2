@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="JensHaase" date="1278405900" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="JensHaaseDoc"}%
+---+ ML Features
+
+---++ Feature list
+
+Features with (i) are already implemented. Features with (t) are unit tested.
+
+   * pronoun frequency
+   * pronoun impact
+   * vulgarism frequency
+   * vulgarism impact
+   * replacement similarity
+   * context relation (keywords similarity)
+   * Nb of stopwords (*How to use stopword tagger without UIMA. Code Access*)
+   * Nb of incorrect words (Spellchecker)
+   * Nb of Inserts/Deleltes/Replaces/...
+   * Nb of paragraphs
+   * (i) Text length
+   * (i) Nb of links (internal / external)
+   * (i)(t) Nb of sentence
+   * (i)(t) Longest / shortest sentence
+   * (i)(t) Nb of token
+   * (i)(t) Longest / <strike>(shortest) token (shortest token will mostly be 2)</strike>
+   * (i)(t) Char distribution (max bi-gram)
+   * (i)(t) Longest char sequence
+   * (i)(t) Compression rate
+   * (i)(t) Upper case ratio
+   * (i)(t) term frequency
+   * <strike>anonymity</strike> (no data)
+   * <strike>comment length</strike> (no data)
+   * <strike>edits per user</strike> (no data)

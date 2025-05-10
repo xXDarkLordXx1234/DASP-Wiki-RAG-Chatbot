@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="ShuoYang" date="1289830973" format="1.1" version="113"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Nov 2010
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. =XMLFileReader= mit =XPath= | 95 |  |
+| 2. !WikiWörterbuch | 90 | * | 
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !WikiWörterbuch | 14.11.2010 | 1 | <ul><li>Refactoring</li><li> =JwplTranslationDictionary= implements =TranslationEngine= mit neuer Maps </li><li>Erstellen von Unit Tests </li></ul> | * |
+| !WikiWörterbuch | 13.11.2010 | 4.5 | <ul><li> =createDisambiguationMap= kann nun optional redirect Seiten beinhalten.</li><li> =createCustomDictionary= fertig, womit man dynamisch neu Wörterbuch aus =RawMap= erstellen kann</li><li> =createRedirectDictionary= fertig</li></ul> | * | 
+| !WikiWörterbuch-JWPL, Treffen | 12.11.2010 | 2.5 | Implementierung von Extraktion der Disambiguation- und Disambiguated-Map fertig.<br>Exemplarische Beispiele erstellt<p> Treffen mit Benjamin und Diskussion über bisherige Ergebnisse und weitere Vorgänge. <p> Disambiguation Links nun sortiert <p> Kurz Einarbeiten in Groovy |  |
+| !WikiWörterbuch-JWPL | 11.11.2010 | 4.5 | Raw Map fertig erstellt. <br> Ergebnisse analysieren und Probleme notieren <p> Weitere Implementierung <br> Extraktion im Laufe |  |
+| !WikiWörterbuch-JWPL | 10.11.2010 | 1.5 | Weitere Implementierung |  |
+| !WikiWörterbuch-JWPL, Treffen | 09.11.2010 | 4 | Implementieren Extraktion vom Disambiguation-Wörterbuch <p> Erstellen damit dasDisambiguation-Wörterbuch <p> Treffen mit Benjamin über neue Speicherungsstruktur |  |
+| !WikiWörterbuch-JWPL | 08.11.2010 | 1.5 | Vom Kollege erfahren, mit dem Parameter =dataCache= lässt sich SQL-Abfrage reduzieren und dadurch Performanz verbessern <p> Weiterhin erstellen vom Wörterbuch |  |
+| !WikiWörterbuch-JWPL | 06.11.2010 | 1.5 | Einarbeiten in JWPL |  |
+| !WikiWörterbuch-JWPL | 05.11.2010 | 4 | DE-Wikipedia mit !DataMachine geparst, in MySQL importiert <p> Erzeugen von Wörterbuch mit JWPL (sehr langsam) |  |
+| !WikiWörterbuch-JWPL | 04.11.2010 | 2.5 | Einarbeiten in JWPL |  |
+| !WikiWörterbuch-JWPL | 03.11.2010 | 1.5 | Versuch, mit =DataMachine= passende Dateien aus Wikipedia-Dump für JWPL zu erzeugen. Allerdings schlag immer fehl mit =Exception in thread "main"= |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 41)$EXEC($GET(total_hour))"}% | bis Ende November noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 1 Stunde Übertrag von Oktober)  | |
+<nop>
+
+---+++ Dokumente
+*WikiWörterbuch:* <br>
+ShuoYangStatistikInterlanguageLinksWikipedia <br>
+[[http://www.ishuo.de/storage/wikipediaTitlesWithBrackets.txt][List of wikipedia articles, whose title entails brackets]] <br>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ShuoYang/titleWithMultipleTranslations.txt][List of wikipedia articles with multiple interlanguage links]]
+
+*Lucene Scoring:* <br>
+ShuoYangChangingLuceneScoring <br>
+ShuoYangBM25Guide
+
+*XMLReader:* <br>
+ShuoYangXPathPerformanceAnalysis
+
+*Google Translate:* <br>
+ShuoYangGoogleTranslatePerformanceAnalysis <br>
+ShuoYangGoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+-- Main.ShuoYang - 15 Nov 2010
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%
+%META:FILEATTACHMENT{name="titleWithMultipleTranslations.txt" attachment="titleWithMultipleTranslations.txt" attr="" comment="List of wikipedia articles with multiple interlanguage links" date="1285170011" path="titleWithMultipleTranslations.txt" size="22805" stream="titleWithMultipleTranslations.txt" tmpFilename="/var/tmp/CGItemp3071" user="ShuoYang" version="1"}%

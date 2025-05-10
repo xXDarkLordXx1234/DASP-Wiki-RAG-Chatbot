@@ -1,0 +1,158 @@
+%META:TOPICINFO{author="zyska" comment="" date="1683204618" format="1.1" reprev="16" version="20"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ *Bachelor Thesis*: NLP-Supported Pragmatic Tagging for Inline Commentary
+
+*Official Start Date*: 12.12.2022
+
+*Mid-Term Presentation Date*: 14.03.2023
+
+*Final Presentation Date*: 23.05.2023
+
+*End Date*: 12.06.2023
+
+---++ Meeting Minutes
+
+---+++ Meeting 2023-05-04
+
+   * speaking about revised thesis sections
+   * look again into the annotation/comment patterns
+   * for next time, preparing presentation
+   * next meeting 17.05. 
+
+---+++ Meeting 2023-04-27
+
+   * Discussion of the data results
+   * Adding standard deviation 
+
+---+++ Meeting 2023-04-20
+
+   * First insights into the data and suggestions for possible metrics
+   * Discussing open points in thesis, clarification feedback
+   * Further steps, graphics in excel
+
+---+++ Meeting 2023-04-13
+
+   * currently we only have two participants, we need four
+   * export first dump of the database with results: sudo docker exec -t $${CONTAINER} pg_dumpall -c -U postgres > export.sql
+   * import into local db: cat "export.sql" | sudo docker exec -i $${CONTAINER} psql -U postgres
+   * if imported, view the database with pgadmin
+
+---+++ Meeting 2023-03-30
+
+   * User Study Guide, all introduction information before the actual user study workflow. 
+   * Split questionare to ask questions after each system, all general questions to the end
+   * Fixed last Bugs in CARE regarding the classification model (Test next monday)
+   * Discussed structure of thesis
+
+---+++ Meeting 2023-03-23
+
+   * Speaking about mid-term presentation
+   * Adapt instruction for user study: add explaination for the classes for which they should formulate the comments (class can be find in https://arxiv.org/pdf/2204.10805.pdf)
+   * Further examples for comments in the dataset: https://github.com/UKPLab/f1000rd/blob/main/data/simple/prag.csv
+   * Testing live demo on the server
+   * Removing delete and closable in modals
+   * Server Error in nlp.js (Cannot read property "Service Socket" of undefined) in function #getClient(clientID)
+
+---+++ Meeting 2023-03-17
+   * Questionare complete
+   * Tested version on server (think to push local version and pull on server), to start on server use screen (https://wiki.ubuntuusers.de/Screen/)
+      * make docker (ggf. make init)
+      * make dev-build-frontend
+      * make dev-backend
+   * Discussed presentation for next week (SIG Intertext Tuesday 21.03.2023)
+
+---+++ Meeting 2023-03-02
+   * Hendrik attended to the Meeting, present and discussing current state of the user study 
+   * Beginning in the user study not always with version A, and randomize which text is used on which version. 
+   * Other names for text versions (not A and B like the version in PEER). Split text in separates text, without assigning numbers to the text. 
+   * Questionare, adapt exactly like UMUX (https://www.digital-management.at/umux-usability-metric-for-user-experience/)
+   * Logging stats (mounted and unmounted) when pdf page is loaded 
+   * Tracking if stop is cancelled
+   * Adding age and identified gender in questionare 
+   * https://psycnet.apa.org/record/1984-27645-001
+   * splitting questionare to present it directly after using each version
+
+---+++ Meeting 2023-02-16
+   * Qian joined the meeting, Charbel presented the current status and Qian presented her work to help address text flaws
+   * Qian sent overview table and examples, and we address: Fluency/Grammar, Clarity, Texture/Coherence 
+   * TODO
+      * Forcing people to select a tag in version A when finish the user study
+      * Explain labels from model in the introduction to the participants
+
+---+++ Meeting 2023-02-09
+   * choosing paper from https://aclanthology.org/
+   * Ask Qian for flaws categories in document
+   * problems with pdf upload and nlp service still open
+   * mid-term presentation on 14.03., power point presentation of goals, current status, open points
+   * TODO
+      * Writing instructions for user study
+
+---+++ Meeting 2023-02-02
+   * Implemented of code in new version
+   * Version can be selected now
+   * User Study Questionare mostly finished
+   * TODO
+      * NLP Broker not available in TU Network, adjust firewall rules (UKP)
+      * Introduction for user study, general procedure
+      * Dataset for user study: https://www.kaggle.com/competitions/asap-aes/data
+      * Appointment with Hendrik in the next few weeks
+
+---+++ Meeting 2023-01-26
+
+   * Updated version with NLP broker are available now, updating branch with dev branch
+   * Both version integrated into the frontend
+   * TODO:
+      * Integration of current into new version of PEER
+      * Integrate UMUX Questions into Survey, different sections (Demographic Data, Version A, Version B, General Questions)
+
+---+++ Meeting 2023-01-19
+   * data in frontend can be saved in the db now (for persistent saving)
+   * presented first questionare 
+   * TODO:
+      * A/B Testing example questionaire (UMUX, etc.)
+      * Ordering of questionaire
+      * fixing smaller bugs with visualization on reload
+
+---+++ Meeting 2022-01-12
+   * first mockup version mostly implemented, begin to implement second version (modal)
+   * fixed some minor bugs with emit to parent components and modal teleport to body
+   * introduction sequelize to add new database columns
+   * Use pgadmin to access the database logs
+   * TODO:
+      * saving of models results in vue store
+      * preparing for user study to discuss it next time
+
+---+++ Meeting 2022-01-05
+   * Tried: connect scibert model with pipeline (problems with docker container)
+   * Working on mockup for first version, currently returning string as prediction 
+   * TODO: 
+      * object with commend id and implementing model - due parallel requests
+      * use batch and select for displaying predictions
+      * Prediction are saved in vuex store at the beginning, later implementing into db
+      * we provide the model with the nlp api pipeline
+
+---+++ Meeting 2022-12-22
+   * Clarify open questions in PEER (websockets subscribe)
+   * Clarify general architecture and linking models
+   * TODO
+      * To read:
+      * https://hendrikschuff.de/files/How_to_Do_Human_Evaluation_Schuff_et_al.pdf
+      * https://quod.lib.umich.edu/w/weave/12535642.0001.101?view=text;rgn=main
+      * Next steps: connect scibert model, further implementation, showing results of scibert model and saving
+   * OPEN
+      * Latex Template Thesis
+      * Scope (Minimum number of pages)
+   * Next Meeting: 5.01.2023
+
+---+++ Meeting 2022-12-13
+   * Introduction into PEER 
+      * Frontend: Vuex Store, Vue Browser Plugin, Relevant Components
+      * Backend: Websockets (Socket.IO, DB: Sequelize)
+   * Questions can be asked at any time in Elements
+   * Timely deal with user study, not only programming
+   * Open Connections can be closed during restart of the Linux Machine (shutdown -r now)
+   * Prepare current state for each meeting and questions we should discuss
+   * *TODO*
+      * Basic implementation of static feedback 
+      * Install PyCharm Professional (also have a look into the database, tab on right side)
+   * Regular Meetings: Regular weekly meetings at Thursday, 2 PM weekly

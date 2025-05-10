@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="NicoErbs" date="1288171486" format="1.1" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ Linking support for inbound links in corporate wikis
+_Bachelor Thesis Winter Term 2010/2011_
+---++ Abstract
+_...where you can read what this is all about and find links to more detailed info_
+---+++ Goals
+   * Implement a Wikulu plug-in that suggests pages and anchor texts for inbound links to a new/edited wiki page
+   * Research and juxtapose various suggestion techniques
+---+++ Organizational
+   * [[#Meetings][Meetings]]
+   * [[#Plan][Project Plan]] / Milestones
+---+++ Technology
+   * [[Projects.Wikulu.WikuluSetup][Wikulu]]
+   * !UimaFit / UIMA
+   * [[Students.DkproRepositoryStudents][DKPro]]
+---++ #Meetings
+*29.10.2010 11:00*
+   * @question(NE;AK): What about a !LogBook (see MateuszParzonkaLogBook)?
+   * @action(AK): Einrichtung svn, Arbeitsumgebung, Jabber
+   * @action(AK): Fragen zur Baselineimplementierung
+   * @info(NE;AK): All important links at ImportantLinks
+   * *done*
+      * @action(NE): Set links to important Wikulu pages on student page
+      * @action(NE): Send link to Wikulu svn repository
+
+*15.10.2010 11:00*
+   * discussion of general procedure
+   * registration date: 1st of November planned
+
+---++ #Plan
+| Week | Task | Comments/Links |
+| 1-2 | Task 1: Baseline | implement UIMA components, unit tests and baseline reasoning|
+| 3-5 | Task 2: Wikulu | integrate into wikulu |
+| 6-8 | Task 3: Methods | implement more interesting reasoning components |
+| 9 | Task 4: Evaluation | make sense of data gathered from stuff made in Task 3|
+| 10-12 | Writing | ...and then write some more |
+| 12 | Presentation | you are invited :) |
+| 12 | Deadline | do or die |
+-- Main.AlexanderKrug - 13 Oct 2010

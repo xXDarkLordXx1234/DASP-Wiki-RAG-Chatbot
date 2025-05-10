@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1260568846" format="1.1" reprev="21" version="21"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ZijadMaksuti - 29 Oct 2009
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" format=" | text,10 | date | text,4 | textarea,3x30" }%
+| *Zijad's Stunden* | | | |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Erster Arbeitstag | 20 October 2009 | 1.5 | Arbeitseinführung |
+| Einrichtung neuer Rechner | 22 October 2009 | 7 | Einrichtung der neuen Rechner: <br />Installation des Betriebssystems, Anlegen der Accounts sowie Installation notwendiger Software |
+| Anschließen neuer Rechner | 26 October 2009 | 3.5 | Die Rechner sind in E216 gebracht worden und angeschlossen. Ein Rechner im oben genannten Raum musste neu eingerichtet werden da er ursprunglich für die WiMis gedacht war. |
+| Meeting | 27 October 2009 | 1.5 | Meeting mit IG, BH, MS, TZ und MM. Hauptthemen: Arbeitsorganisation und Arbeitsverteilung. |
+| Wartung der Drucker | 29 October 2009 | 4 | Nachfüllen der Katusche des Druckers aus dem IG's Büro. Instandsetzung des neuen Canon Laser Jets. |
+| Upgraden des Betriebsystems | 2 November 2009 | 2 | Upgraden des Betribsystems an zweiern Rechnern in E216, dabei wurde untersucht ob die neueste Version 9.1 des Betriebsystems Ubuntu sich mit der von UKP verwendeten Version von Eclipse verträgt: Keine Inkopatibilitäten festgestellt. |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 20 | bis Ende Oktober |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" format=" | text,10 | date | text,4 | textarea,3x30" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Instandsetzung des UKP-Netzes | 6 November 2009 | 3.5 | Deaktivierung des LDAPs an den Rechnern in E216, Betriebssystemupgrade |
+| Anpassung der "ldap", "pam" und anderer dazu gehörigen Einstellungen | 10 November 2009 | 1 | Dies ist notwendig um die volle Funktionalität unserer Rechner in der neuen Domäne zu ermöglichen |
+| Anpassung der "ldap", "pam" und anderer dazu gehörigen Einstellungen | 11 November 2009 | 8 | Fortsetzung, sieh oben |
+| Anpassung der "ldap", "pam" und anderer dazu gehörigen Einstellungen, Instandsetzung des Servers "selma" | 13 November 2009 | 5 | Unter anderem sind alle HiWi Rechner mit einem Label gekennzeichnet. Wir haben uns für diesen Schritt entschieden da wir festgestellt haben dass manchen Rechnern die falsche IP-Adresse zugeteilt war, was zu einem Konflikt fuhr. Mit den Labels lässt sich dieser Konflikt in der Zukunft vermeiden |
+| Erstellen des howTo's zur ldap Installation | 17 November 2009 | 2.0 | Es war notwendig nochmal alle während der Domäneumstellung gemachten Notizen durchzugehen und zu überprüfen , um ein kompaktes und vor allem korrektes howTo erstellen zu können |
+| Erstellen des howTo's zur ldap Installation | 18 November 2009 | 6.5 | "LdapInTKDomäne" howTo ist jetzt vollständig und befindet sich im TWiki |
+| Mausreinigung; Instandsetzung der HiWi Computer aus dem D216; Berecnung der Druckkosten unserer Drucker; | 23 November 2009 | 5.0 | Da wahrscheinlich einer der Skripten zur  ldap Installation fehlerhaft ist, war ich nicht in der Lage einen der Rechner aus D216 zu vernetzen. Wird am Mittwoch mit MS besprochen. Die Druckkosten unserer Drucker sind ausgerechnet worden und werden morgen in Form einer Tabelle an Sekretariat weitergeleitet (Details dazu im Bugzilla) |
+| Erforschen der Möglichkeiten zum upgraden des Betriebsystens des Dell mini 10 notebooks, der für Präsentationen benutzt wird | 24 November 2009 | 1.5 | Ein Upgrade des Betriebsystems ist zu diesem Zeitpunkt nicht möglich da die Firma Intel noch keine passende Treiber veröffentlicht hat. Ein Update des Betriebsystems ist jedoch möglich und sollte zu keinen Problemen führen |
+| Nachfüllen der Druckerkatusche | 26 November 2009 | 1.5 | Der Lexmark X544 befindet sich jetzt im D226, die Katuschen sind aufgefüllt, der Drucker ist angeschlossen und einsatzbereit |
+| Konfigurieren des Dell mini Inspiron Notebooks | 27 November 2009 | 2 | Softwarepaketen auf dem kleinen Notebook wurden geupdatet. Ein Bios-passwort wurde gesetzt sowie ein Administrator account angelegt (ukpadmin). Die Möglichkeiten zur Installation eines VPN-Klientes wurden untersucht. Weitere Details befinden sich im bugzilla |
+| Erstellen einer Inventarliste | 30 November 2009 | 5.0 | Mehr als die Hälfte der UKP-Rechner sind bereits zusammengefasst. Übrig geblieben sind noch die Geräte im D226 und die im IG's Büro. |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 40 | bis Ende November |
+
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einrichtung der Rechner im D216 | 7 Dezember 2009 | 2.5 | Auf 3 der Rechner im D216 ist eine neue Version von Ubuntu installiert |
+| Einrichtung der Rechner im D216 | 8 Dezember 2009 | 6.5 | Versuch die Rechner aus D216 mit der TK Domäne zu verbinden. Leider erfolglos. Es wird daran immer noch gearbeitet. Es sind weitere 3 Rechner mit Monitoren in den Raum gebracht worden und eingerichtet. Meeting mit BH, MS, und MM |
+| Einrichtung der Rechner im D216 | 9 Dezember 2009 | 5 | Einrichtung des Präsentationsrechner in D216, Tauschen der Monitoren aus Sekretariat, entsorgung der defekten Rechnerkomponenten. Einrichtung der Lokalen accounts auf 4 verbliebenen  Rechner  die diesen nicht hatten, vervollständigen der Inventarliste und Übergabe an Sekretariat.|
+| Installation des Fachbereichsdruckers | 10  Dezember 2009 | 1.5 | Installation des Fachbereichsdruckers und erstellen des HowToInstallFachbereichsdruckerInUbunutu |
+| Reparatur der IGs Mouse | 11 Dezember 2009 | 2.5 | Reinigung und Testen der IG's Maus. Beim Testen sind keine Fehler festgestellt, die Maus funktioniert einwandfrei und wurde in IG's Büro gestellt |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 40 | bis Ende Dezember |
+
+<nop>

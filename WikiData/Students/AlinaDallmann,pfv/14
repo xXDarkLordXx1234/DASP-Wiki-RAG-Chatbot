@@ -1,0 +1,142 @@
+%META:TOPICINFO{author="dallmann" comment="" date="1579196238" format="1.1" reprev="13" version="14"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis: Employing Graph Neural Networks for Text Production from Knowledge Graphs
+
+*Start date*: 22.11.2019
+
+*End date*: 22.05.2020
+
+*Supervisor*: Leonardo Ribeiro
+
+*Midterm Talk*: 
+
+*Final Talk*: 
+
+---+++ Meeting 17.01.2020
+   * using additionally jumping knowledge network to compare with "normal" dense and residual connections? (https://arxiv.org/abs/1806.03536)
+   * different approach: adding RNN units between GCN layers? (https://arxiv.org/abs/1904.08035)
+   * training with dense and residual connections with more layers slower than with no skip connections --> increase # decay steps? --> comparability?
+   * statistics of newly created dataset:
+      * journal domains:  [('artificial intelligence', 5998), ('big data', 3591), ('computational intelligence', 9697), ('computational linguistics', 260), ('computer vision', 9535), ('data mining', 2669), ('data science', 1443), ('intelligent robots', 6065), ('machine intelligence', 1398), ('machine learning', 4948), ('machine translation', 114), ('machine vision', 1023), ('natural language processing', 216), ('neural information processing systems', 23), ('web intelligence', 1187)]
+
+|  | *new dataset (full)* | *AGENDA train set* |
+| No_datapoints | 47477 | 38720 |
+| average_no_nodes | 18.77 | 12.42 |
+| average_no_edges | 11.24 | 4.43 |
+| average_title_len | 9.67 | 9.89 |
+| average abstract len | 162.66 | 141.32 |
+| # vocabulary in nodes |91734 | 97732 |
+
+   * pre-midterm presentation on the Friday in three weeks? --> duration?
+
+
+
+
+---+++ Meeting 10.01.2020
+   * baselines created with seq2seq model --> in AGENDA dataset especially strong on the MoverScore --> captures semantics quite well
+   * Random walks for creating BERT embeddings
+      * extracting random walks works
+      * it is also feasible to create sentence-based BERT embeddings whereby one sentence is the whole walk
+      * <u>but:</u> this embedding could then be used in a seq2seq model --> GNNs rather seem not to make sense? --> work here further or not?
+   * some experiments on WebNLG, like shared vocabulary or using other pretrained embeddings (like Glove, CommonCrawl..) worked but did not really lead to better results
+   * Adding data points to the AGENDA dataset definitely helps 
+      * maybe create a different test set with these data (not in relation with AGENDA) for testing?
+   * subwords still do not work
+   * the new WebNLG test set version only uses seen categories
+   * Where to set the prioritisation?
+
+---+++ Meeting 03.01.2020
+   * Extracting AI papers from Semantic Scholar Corpus and create a graph from its abstract using pretrained DYGIE++ model 
+      * Appending AGENDA dataset with ~1000 datapoints leads to a slightly better result
+      * Title not yet integrated
+      * --> more experiments integrating the title and more data points upcoming 
+   * Implementing preprocessing with subwords
+      * Results about the same as using no subwords
+   * Hyperparameter tuning with random search 
+      * For AGENDA dataset one good result; other than that, the learning rate seemed to be the main issue why the training process did not work out well
+      * Do more hyperparameter tuning as of now? (Bayesian optimization!? --> but how to best integrate it into the framework?)
+   * WebNLG: there is no differentiation in seen/unseen test data set for the newest version of the dataset 
+   * Regarding the text: is it important to mention/explain all formulas used in certain models (like calculation of hidden state in GCN etc.), even though the formula is not important anymore afterwards?
+
+
+---+++ Meeting 18.12.2019
+---++++Last steps
+   * Run all current AGENDA and WebNLG input methods with GIN, GAT and GGNN
+   * Train AGENDA and WebNLG with other GNNs (ArmaConv, SGConv)
+   * Try to create new dataset
+   * Fix Moverscore issues
+---++++Questions
+   * Does new dataset really make sense?
+      * show current predictions and statistics
+      * extracted 2019 computer science papers from Arxiv (63250) --> only about half has an abstract in the metadata --> entity/relation extraction with Dygie++ model, pretrained on Scierc data (500 papers from AI conferences) --> some relation extractions do not make sense at all (approximately once an abstract has more than 20 relations, the quality of the relations does not seem to be good)
+         * problems for example with abstracts where formula are used
+         * in other data points, there are no predicted relations or entities 
+   * Create embedding with BERT or SciBERT?
+      * How to do it with a graph? --> as it would be usually a sentence as input so that BERT can use the context
+---++++Next steps?
+   * Maybe train new dataset?
+   * Adapt models?
+   * Changing input method to only one file?
+
+---+++ Meeting 06.12.2019
+---++++Last steps
+   * Debugging encoder to enable learning with features 
+   * Using WebNLG dataset as further input dataset 
+   * Running several experiments with different input methods
+---++++Questions
+   * learning with features leads to worse results
+      * possible approaches to debug this issue?
+   * MoverScore works with the test set but not with the dev set
+      * dimension error -> What could be the issue? Dev and test set are preprocessed the same way 
+---++++Next steps?
+   * Starting with the best input method and run with different GNNs (predefinded ones from Pytorch Geometric)
+   * Processing Wikibio dataset
+   * Fix Moverscore and dev set issue
+   * Debug learning with features
+
+
+---+++ Meeting 29.11.2019
+---++++Last steps
+   * Evaluation script using MoverScore, Multi-BLEU and Meteor
+   * Trying to run models with batch size 20
+   * Implement input method using features
+---++++Questions
+   * Training with batch size 20 always leads to an out-of-memory error --> even when trying to block 64G memory
+      * How to solve this issue?
+      * calculating loss function is currently the point where the OOM error occurs
+      * single tensors itself are not so large 
+      * calling garbage collector and empyting cache before does not help completely 
+   * Validation also using MoverScore --> takes quite long (~5 min) to calculate? --> not do it for every validation step? or use data sampling?
+
+
+---+++ Meeting 22.11.2019
+---++++Last steps 
+   * Getting scripts run with Slurm 
+   * Train on AGENDA dataset with different preprocessing methods and gin/ggnn models 
+   * Train on Visual Genome dataset  
+   * Start writing theoretical chapters about datasets/ GNNs 
+
+---++++Questions/ Next Steps 
+   * Discuss on how to further structure the next steps. 
+      * Trying different GNNs on all ways of preprocessing? 
+         * Also take older NNs (from Pytorch-Geometric)? 
+      * Or determine a good preprocessing way first? 
+         * Understanding of creating a vector-based input still difficult 
+   * AGENDA dataset 
+      * Approach to use the node classes as well? --> e.g. put them as nodes in the graph as well? 
+   * How to avoid CUDA out-of-memory error?  
+      * How to determine the best amount of storage to reserve for training? 
+   * How to determine the initial parameters intelligently? 
+   * Official registration of thesis --> forward form to IG!?
+
+---+++ Meeting 29.10.2019
+---++++ Next Steps
+   * Get model running on Slurm using AGENDA dataset
+   * Try different dataset input options (LSTM, various linearisation methods)
+   * Start writing theoretical chapters
+
+
+
+-- Main.AlinaDallmann - 2019-10-28
+
+%META:FILEATTACHMENT{name="Schedule_gantt.xlsx" attachment="Schedule_gantt.xlsx" attr="" comment="" date="1577988196" size="12542" user="dallmann" version="1"}%

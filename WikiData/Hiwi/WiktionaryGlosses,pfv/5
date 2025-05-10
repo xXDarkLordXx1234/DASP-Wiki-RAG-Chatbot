@@ -1,0 +1,60 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1298455753" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="WiktionaryAnalysis"}%
+---+ Wiktionary highly similar glosses
+---++ Statistics
+
+|Number of all senses|460268|
+|Number of pairs with at least one common word*|984582058|
+|Minimum Similarity|0.00592|
+|Maximum Similarity|1.0|
+|Mean value|0.11616|
+|Standard deviation|0.07866|
+<br>
+* For pairs: (a,b) is not equal to (b,a), (a,a) pairs are not included
+
+---+++ Similarity =1.0
+Von 265722 Gloss-Paaren mit Similarity 1.0(mit Filterung der Stopwords) wurden 98931 analysiert (d.h. es wurde für das Wort in WordNet ein Sense gefunden). Davon sind 3655 Synonyms (3.69% bzw. 1.38% von allen Gloss-Paaren).
+Die Liste mit Einträgen mit Similarity 1.0 ist hier:  [[%ATTACHURL%/WiktionarySim100.tar.bz2][WiktionarySim100.tar.bz2]]. Format: 
+<verbatim>
+WORD_1;SENSE_NUMBER_1;POS_1;WORD_2;SENSE_NUMBER_2;POS_2;GLOSS_1;GLOSS_2
+</verbatim>
+
+---++ WordNet Synonyms
+| *Category* | *Pairs count* | *Found senses in WN* | *Synonyms count* | *Synonyms % of pairs count* | *Synonyms % of found senses* |
+| =1.0|265722|98931|3655|1.38%| 3.69% |
+|>=0.9|664|176|21|3.16%|11.93%|
+|>=0.8|23898|8166|283|1.18%|3.47%|
+|>=0.7|90452|28532|486|0.54%|1.70%|
+|>=0.6|405754|138244|2075|0.51%|1.50%|
+|>=0.5|4757464|1140711|5804|0.12%|0.51%|
+
+
+
+
+---+ Wiktionary Determiner Glosses
+Es wurde folgender RegEx-Ausdruck benutzt:
+
+<verbatim>
+(\\#\\s)?((\\{\\{[^\\}]+\\}\\}\\s)*)(a|A|an|An|The|the)\\s((\\[\\[[^\\]]+\\]\\])|(\\w+)).*
+</verbatim>
+
+|All glosses|3298055|100.0%|
+|Marker+Determiner+Link|33155|1.01%|
+|Determiner+Link|66602|2.02%|
+|Marker+Determiner+Text|32123|0.974%|
+|Determiner+Text|68947|2.09%|
+
+<br>
+Man muss beachten, dass einige Glosses noch vor dem Link einen zusätzlichen Modifier haben. Z.B. "An individual &#91;&#91;element]] in a larger whole" in [[http://en.wiktionary.org/wiki/point][point]], oder "A piece of &#91;&#91;paper]] twisted to be" in [[http://en.wiktionary.org/wiki/cornet][cornet]] oder "A thick &#91;&#91;pile]] of &#91;&#91;fabric]]" in [[http://en.wiktionary.org/wiki/fur][fur]]. In diesem Fall werden diese Glosses als _Determiner+Text_ eingetragen. 
+<br>Im Fall von [[http://en.wiktionary.org/wiki/creature][creature]] "A &#91;&#91;living]] &#91;&#91;being]]" sind beide Wörter verlinkt. 
+<br>Die Word-Link Liste(extrahiert aus _Marker+Determiner+Link_ und _Determiner+Link_) befindet sich hier: [[%ATTACHURL%/DeterminerLinkedArticles.csv][DeterminerLinkedArticles.csv]]
+Nach der Überprüfung der Links auf die Synonymie im WordNet ergeben sich folgende Werte:<br>
+_Anzahl der überprüften Links_ : 99757<br>
+_Anzahl der gefundenen Senses_ : 45706<br>
+_Anzahl der gefundenen Synonyme_ : 2607 ( 2.61% von den überprüften Links, 5.70% von gefundenen Senses )
+
+
+
+%META:FILEATTACHMENT{name="DeterminerLinkedArticles.csv" attachment="DeterminerLinkedArticles.csv" attr="" comment="Word-Link Mapping from glosses with determiner" date="1298454966" path="DeterminerLinkedArticles.csv" size="2488233" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="WiktionarySim100.tar.bz2" attachment="WiktionarySim100.tar.bz2" attr="" comment="List of wiktionary glosses with similarity 1.0" date="1298453531" path="WiktionarySim100.tar.bz2" size="2330641" user="YevgenChebotar" version="1"}%
+%META:TOPICMOVED{by="YevgenChebotar" date="1298034771" from="Hiwi.WiktionaryHighSimGlosses" to="Hiwi.WiktionaryGlosses"}%

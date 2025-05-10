@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="tak" comment="save topic" date="1466333249" format="1.1" reprev="25" version="26"}%
+%META:TOPICPARENT{name="AnshulTak"}%
+---+ March 2016 - May 2016
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 24-3-2016 | meeting | .5 | |
+| 28-3-2016 | Understand project and project setup | 1.5 | |
+| 29-3-2016 | Groovy | 3.5 | Did sample groovy tutorial |
+| 29-3-2016 | Project | 2 | Script for issue #3 |
+| 30-3-2016 | Meeting | .5 | |
+| 4-4-2016 | Change in spec project and git | 2.5 | |
+| 5-4-2016 | Update datamodel and changes component parse function to include parameter | 3.5 | |
+| 6-4-2016 | make detailed overview adoc | 3 | template |
+| 7-4-2016 | meeting | 1 | |
+| 9-4-2016 | parameter change | 2.5 | comments for parameter changes and commit |
+| 13-4-2016 | Refactoring | 3.5 | refactor the monolithic file |
+| 15-4-2016 | Specification project changes | .5 | Generated adocs in target and then utilise it for rendering from target folder |
+| 18-4-2016 | meeting | 1 | |
+| 23-4-2016 | crawler code | 5 | tried understanding and fix to get descriptor |
+| 25-4-2016 | modified crawler code | 4.5 | fixed req for gid and get desc with highest version for a gid and artifactid |
+| 27-4-2016 | crwaling for dkpro done | 2.5 | fixed issues |
+| 28-4-2016 | Integrate crawler with exisiting code | 3.5 | issue |
+| 3-5-2016 | understand DKPro DSL script code | 4.5 | DKPro DSL |
+| 5-5-2016 | Modified spec project and continue understant DSL | 1 | try setup machine and understand the DSL code |
+| 9-5-2016 | Build error | 3.5 | error in mapping conversion project |
+| 10-5-2016 | meeting | 1 | meeting |
+| 10-5-2016 | looked for the issue "components missing from component overview" | 3 | "components missing from component overview" |
+| 11-5-2016 | code changes | 2 | 1. Moved index, ivy files and descriptor to src/test/test-output so that changes are not lost when running 'mvn clean install' 2. Added ivy, groovy and htmlclient logging 3. Used 'transitive:false' in Grape.grab so that no transitive dependency is downloaded 4. Used streamcopying in 'FindComponentDescriptor.groovy'. This copying is for copying XML from JAR to outside JAR i.e. locally |
+| 14-5-2016 | Spec project changes | 2 | |
+| 17-5-2016 | mapping conversion changes | 1 | changing original descriptor link |
+| 19-5-2016 | Meeting | 1 | meeting |
+| 25-5-2016 | Get POMs of DKPro artifact similar to descriptor using classifier 'POM' | 2.5 | Get POMs of DKPro artifact similar to descriptor using classifier 'POM' |
+| 28-5-2016 | Add component json into script project | 5 | Add component json into script project |
+| 28-5-2016 | commit and further changes in dkpro-script and mapping conversion project | 2 | commit and further changes in dkpro-script and mapping conversion project |
+| 2-6-2016 | meeting | 1 | meeting |
+| 2-6-2016 | gate integration | 3.5 | gate integration |
+| 3-6-2016 | parameter changes | 1 | parameter changes |
+| 6-6-2016 | CREOLE descriptor | 1.5 | Looked into the problem |
+| 7-6-2016 | issue #3 in spec project | 3 | |
+| 8-6-2016 | Extracting info from POM | 1 | not yet complete still finding solution |
+| 8-6-2016 | issue 7 & 8 | 3 | |
+| 9-6-2016 | meeting | 1 | meeting |
+| 17-6-2016 | Spec changes | 5.5 | spec proj changes |
+| 18-6-2016 | Gate integration | 6 | gate |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 120

@@ -1,0 +1,13 @@
+[package]
+name = "rust_python_module"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pyo3 = { version = "0.18", features = ["extension-module"] }
+sha2 = "0.10"
+regex = "1.8"
+rayon = "1.5"
+
+[lib]
+crate-type = ["cdylib"]  # Required for building Python extensions

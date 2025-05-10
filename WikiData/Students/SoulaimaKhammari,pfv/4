@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="khammari" comment="" date="1655808955" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Weekly Activity Reports
+
+---+++ Week 21 from 23.05.2022 to 27.05.2022
+   * Read the background research inclusive papers related to the topic
+   * Got access to Slurm 
+      * Set up the virtual environment with the needed libraries
+   * Learned transformers
+      * Followed tutorials that may be helpful for the thesis
+      * Read about possible methods that will/can be used
+---+++ Week 22 from 28.05.2022 to 03.06.2022
+   * Got a closer look at the methodologies and the models that will be used (T5, Bert)
+   * Cloned the first model that will be used:
+      * made some changes to make it work 
+      * trained the model 
+---+++ Week 23 from 06.06.2022 to 10.06.2022
+   * Ran the model on some random datasets and analysed the results
+   * Created anther cuda environment because I installed the wrong pytorch 
+---+++ Week 24 from 13.06.2022 to 17.06.2022
+   * Pre-processed the data of MetaQA1.0 to fit into the input of the Question-Converter model
+   * Ran the model on some of the agents with their respective datasets 
+  
+
+
+   

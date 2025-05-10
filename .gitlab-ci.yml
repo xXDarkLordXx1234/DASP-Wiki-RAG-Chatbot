@@ -1,0 +1,50 @@
+stages:
+  - compile
+  - test
+  - deploy
+
+compile-rust-module:
+  stage: compile
+  image: rust:1.83-slim
+  before_script:
+    - apt-get update && apt-get install -y 
+        python3 
+        python3-pip 
+        python3-venv 
+        build-essential 
+        curl
+    - python3 -m venv venv
+    - source venv/bin/activate
+    - pip install maturin
+  script:
+    - cd process_data/src/rust_python_module/
+    - maturin build --release
+  artifacts:
+    paths:
+      - process_data/src/rust_python_module/target/wheels/*.whl
+    expire_in: 1 week
+
+run-tests:
+  stage: test
+  image: python:3.11-slim
+  dependencies:
+    - compile-rust-module
+  before_script:
+    - apt-get update && apt-get install -y build-essential
+    - pip install process_data/src/rust_python_module/target/wheels/*.whl
+    - pip install -r process_data/requirements.txt
+    - pip install -r rag_retriever_service/requirements.txt
+    - pip install pytest-asyncio
+    - pip install pytest==8.3.4
+  script:
+    - pytest
+
+deploy:
+  stage: deploy
+  image: curlimages/curl:latest 
+  tags:
+    - dockerRunner
+  script:
+    - curl -X POST "http://10.167.31.202:5000/deploy/"
+  only:
+    - main

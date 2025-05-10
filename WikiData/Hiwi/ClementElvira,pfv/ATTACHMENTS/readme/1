@@ -1,0 +1,107 @@
+This DKPro TC based framework is about automatic text summarization. The first and main idea is to use both the Weka wrapping ant the DKPro tools to "easily" produce summarizer.
+
+Since TC is about Text classification, this framework was designed for sumarization by sentence extraction. Consequently, We are using the TC unit paradigm, which consists in separating each text into several short piece (sentences here) and for each unit attributing a label "1" if the sentence has been accepted or "0" otherwise. The way to describe how to create these label for the training set will be described later.
+
+The summarization pipeline is based on the TC one, which is the following : preprocessing, reading, annotating, featuring, training and classifying and creating report
+
+1. Preprocessing
+
+This section is very similar to the one from TC. You can choose to work on training reference summarizes or body text. You just need to use the right reader, which is described in the following section.
+
+2. Reader
+
+This framework used a specific reader, obvioulsy based on the TC abstract Unit Reader. It is called "AMLSummarizationReader", where AML stands for "Abstract Machine Learning". Additionnaly to the classic getText method and so on, it defines several abstract method, such as splitting text into paragraph, linking body to associated summary. These methode are very important for evaluation for instance. 
+
+One important thing is that the Reader splitted himself a text into Sentence and Word (with the approriate annotation), using the stanfort parser.
+
+3. Annotating
+
+This phase is very similar to the TC one.
+
+But I have sometimes found convenient to put the summarization logic inside an annotator. Indeed, you might sometimes want to summarize using ranking, and this is impossible because the TC paradigm impose to classify unit by unit. In this case, you can derive from a Summarization annotator "InAnnotatorSummarizer" and you just have to redefine a specific method containing the logic. You can then call the method addSentence to create a specific annotation that is linked to a feature that can be used by the summarizer "basicSummarizer". This one needs no training set, it just looks the value of the previous feature and return it.
+
+4. feature
+
+Similar to TC, except that for now, if you want to build the summariry after the classification, you need to put a feature Sentence (the name is confusing and not well choosen, I admit). This string feature will save the value of each sentence in the weka .ARFF file that will base usefull later for building the summary. I admit this is not well designed, and I guess memory greedy, but it's working. Originally I wanted to serialize theses sentence in somewhere in the $DKPRO_HOME folder, but I didnot know how to go into the core of TC.
+
+5. Classification
+
+Similar to tc, except that you return 0 or 1.
+
+6 evaluation
+
+I have created a few report weka report for summarization. Indeed, quality evaluation in summarization is quite a difficult technic, that can not be sum up by usual machine learning statics. We agreed on using a metric called ROUGE, that compare a system build summary to a model, via ngram, longtest sub string and so on.
+I have created three report :
+-> build summary which just build the system summary on a txt file in the folder targer/summarization
+-> Rouge evaluation that perform the evaluation mentioned above. It basically calls a PERL script provided by the authors, parse it. The results are available under a csv file in the filder targer/summarization/ROUGE. Note : a java version of ROUGE is available here but it's simple in beta.
+->ParseARFF that present the result in a csv file.
+
+Unfortunnatly, the rouge report need that the first one is executed before, but the TC core execute report in the orthographic order so it was causing issues. To solve that I have integrated the second report inside the first one. 
+
+II. Creating outcome
+
+Because we want to see summarization as sentence extraction, it can be related to binary classification, where each sentence is an observation. But the way to link the sentence in the reference summary to the text is not that obvisous. Indeed, in most of the dataset, the reference smmary has been written by human, in the normal way, that can be called "sentence generation". If we want to perform supervised learning technic, it s mandary to find a way to create that binary outomes ("accepted" 1 or "rejected", 0).
+ 
+We have chosen the cosine similarity to create outcomes. Everything is implemented in the reader. It splits the reference summary into sentences, and then for each sentence select the one is the body text that has highest cosine score.
+
+III. Presenting few summarizers
+
+	A. Baselines
+
+* 10 First sentences : This summarizer just take the 10 first sentences of the text. To perform that, We use an annotator that just create an annotation indicating the position of the sentence. Then the summarizer just compare the associated feature to the threshold.
+
+* TFIDF : This summarizer compute the TFIDF score of every sentences and select the 10 best scores. TDIFD needs a preprocessing step. Then an annotator juste compute the score of each sentences : by summing or averaging. The it creates an annotation that indicate the rank of sentence.
+
+* TFIDF position : a tfidf summarizer where the score is weighted by the position of the sentence in the text.
+
+
+	B. From litterature
+
+* Kupiec Chen Pederson : This one is inspired by the following article:
+KUPIEC, Julian, PEDERSEN, Jan, et CHEN, Francine. A trainable document summarizer. In : Proceedings of the 18th annual international ACM SIGIR conference on Research and development in information retrieval. ACM, 1995. p. 68-73.
+It consists in a naive Bayes with 5 features :
+	-> SentenceSizeThreshholdFeature, a simple treshold on the size of the unit
+ 	-> FixedPhraseFeature, if the sentence contain any word inside a hard coded list,
+ 	manually extracted from http://wortschatz.uni-leipzig.de/html/wliste.html
+ 	-> ParagraphFeature : a binary feature indicating weather the sentence is in the 10% first/last paragraph
+	or not
+ 	-> TfidfThematicWordFeature : A feature indicating weather the sentence contains thematic word or not. To
+	do that, Tfidf for each sentence is computed (by sum) and then we use a treshold
+	-> UpperCaseWordFeature : A ternary feature indicating that the sentence contain Upper Case word for the 	frist,
+not the first time or not at all
+
+* Mead : this one is inspired by the following article :
+Otterbacher, Jahna C., Adam J. Winkel, and Dragomir R. Radev. "The Michigan single and multi-document summarizer for DUC 2002." Document Understanding Conferences. 2002. 
+The implementation is based on an annotator that called the perl script provided by the authors. It computes three numerical features : position, size and topic and a score based on a weigth summ. The features, as weel as the ranking is catched by the annotator and redistributed as annotation and then features. 
+There is also the two classical experiments (ACL and Wikipedia) and you can also use custom mead tools to try to perform better results with AdvancedMeadTools. This class provides function to delete, directly in the .docsent file, sentences not starting with pronoun or containing not enough pronoun, sentence containing number etc...
+
+	C. Custom summarizer
+
+* Tree pattern summarizer : this summarizer compute, in a preprocessing ste, the last level of part of speech tagging on the reference summary. Then, it create the ngramm distribution of the Part Of Speech sentence.
+Then it compute exactly the same on the reference summary on compute the distance of each sentence to the distribution of the reference summary (using Bhattacharyya's distance) and select the ten best score. The idea of this summarizer is to find pattern in the reference summary and then look for the same pattern in the body text.
+
+* Spectral : The idea of this summarizer is to solve by ourself the issue of redundancy in summarization. To do that, we consider a sentence as an information, a topic. We will summurize by clustering. 
+First, we define the distance between sentence/topic using the cosine similarity. Like that, we obtain a distance matrix (Gramm Matrix), and use kernel kmean (in reality spectral clustering that is equivalent to a gaussian kernel) to obtain as much clusters a sentence we want in our summary. So each cluster represent an information.
+Second, we want to select only once setence in each cluster. For We only select the one with the best TFIDF score.
+
+* Hestia : This one is one really a summarizer, but more an experiment to build an .ARFF file fur experiment outside of dkpro. It calls feature from various project (TC included)
+
+* Balanced naive Bayes : This summarizer is a balanced naive bayes. It uses the feature from the previous one. The idea was to deal with outcome unbalance. Indeed, each text is about 300 observations (sentence) and only 10 are labeled as positive outcome. To counter the biais introduce by the phenomenon, we use a cost sensitive summarizer. Indeed, each supervised summarization technic aims to minimize a cost function. Here we just weight the error in the cost function, in order to make false positive or true negative more important. For now We just choose the weigth as follows : the error associated the dominant class (the negative one) 
+
+	D. What can be done
+
+Corruption : This is annother idea to deal with unbalanced outcome, based on the following article : 
+Maaten, L., Chen, M., Tyree, S., & Weinberger, K. Q. (2013). Learning with marginalized corrupted features. In Proceedings of the 30th International Conference on Machine Learning (ICML-13) (pp. 410-418).
+
+The idea of the article is to increase the accuracy of a classifier by training him with noised data. It presents several kinf of noise two way of doing it : By articially increasing the size of the dataset generating noise or using asymptical results. I think we can use the first solution the first way to artificially increase the amount of positive outcome. Two ways : we noise the existing feature, or we noise the sentence associated to positive outcome (removing word...) and we recompute features.
+
+
+IV Code Improvement
+
+I think one can improve the quality of the framework:
+
+-> The Sentence feature : To transmit the content of the sentence in order to build the summary at the end, I save the Sentence as a string feature. This very heavy, and memory greedy. I'm pretty sure it is possible tu avoid this, by loading the sentence in the summary builder in another way. I have seen that the unit are stored  but have not been able to load it.
+
+-> It might be a good idea to seperate the summary building report from the ROUGE evaluation report. For now, two different projects exists, with two reports. Both are working but I have no idea how to put a mandatory input in the second one, because the ROUGE report need the first one before. What I've done for now is that the summary builder call the ROUGE report.
+
+

@@ -1,0 +1,125 @@
+%META:TOPICINFO{author="ShuoYang" date="1279131943" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ BM25 Guide
+BM25/BM25F are probabilistic models for IR that is different from the default of Lucene. Both models have stood out at TREC by their performance and are considered as state-of-the-art in the IR community. Joaquín Pérez-Iglesias has a [[http://nlp.uned.es/~jperezi/Lucene-BM25/][Java implementation]] of it but it was written for Lucene 2.4. It didn't work with Lucene 3.0 since many Lucene APIs have changed. I have adapted it for Lucene 3.0. Thorough test hadn't been done yet so please inform me if anything goes wrong.
+
+---++ BM25 vs !BM25F
+BM25 is applied to plain documents, that is documents without fields, on the other hand BM25F is applied to documents with structure.
+
+---++ Basic Usage
+---+++ BM25
+In a sentence, one replaces the query part with =BM25BooleanQuery=. The rest stays the same.
+
+0. We assume the documents were already indexed.
+   
+1. Create a searcher with path to the index
+<verbatim>    IndexSearcher searcher = new IndexSearcher("IndexPath");</verbatim>
+ 
+2. Set average length of search field. This must be done before instantiating =BM25BooleanQuery= . Either create a file with the info in it, and load it in with:
+<verbatim>    BM25Parameters.load("avgLengthPath");</verbatim>
+   or set it directly in method parameter:
+<verbatim>    BM25Parameters.setAverageLength("fieldName", averageLength);</verbatim>
+
+3. Create a =BM25BooleanQuery= with your favorite analyzer
+<verbatim>    BM25BooleanQuery query = new BM25BooleanQuery("query", "fieldName", analyzer);</verbatim>
+
+4. Search and output normally. Result will be ranked now with BM25 model!
+<verbatim>      TopDocs top = searcher.search(query, null, 10);
+		ScoreDoc[] docs = top.scoreDocs;
+
+		// Print results
+		System.out.println("length: " + docs.length);
+		for (int i = 0; i < top.scoreDocs.length; i++) {
+			System.out.println(docs[i].doc + ": " + docs[i].score + ", "
+					+ searcher.doc(docs[i].doc).get("title"));
+		}
+</verbatim>
+   
+Putting it all together:
+
+<verbatim>   // Create a searcher with path to the index
+	IndexSearcher searcher = new IndexSearcher("IndexPath");
+
+	// Obtain and set average length. 
+	BM25Parameters.setAverageLength("fieldName", averageLength);
+	BM25BooleanQuery query = new BM25BooleanQuery("query", "fieldName",
+		new StandardAnalyzer());
+	
+	// Search
+	TopDocs top = searcher.search(query, null, 10);
+	ScoreDoc[] docs = top.scoreDocs;
+	
+	// Print results
+	System.out.println("length: " + docs.length);
+
+	for (int i = 0; i < top.scoreDocs.length; i++) {
+		System.out.println(docs[i].doc + ": " + docs[i].score + ", "
+				+ searcher.doc(docs[i].doc).get("title"));
+	}
+</verbatim>
+
+---+++ !BM25F
+Similar to BM25. In a sentence, one replaces the query part with =BM25BooleanQuery=. The rest stays the same.
+
+0. We assume the documents were already indexed.
+   
+1. Create a searcher with path to the index
+<verbatim>    IndexSearcher searcher = new IndexSearcher("IndexPath");</verbatim>
+ 
+2. Set average length of *each* search field. This must be done before instantiating =BM25BooleanQuery= . Either create a file with the info in it, and load it in with:
+<verbatim>    BM25Parameters.load("avgLengthPath");</verbatim>
+   or set it directly in method parameter:
+<verbatim>    BM25FParameters.setAverageLength("field1Name", averageLength1);
+    BM25FParameters.setAverageLength("field2Name", averageLength2);
+</verbatim>
+
+3. Set explicit k1 parameter
+<verbatim>    BM25FParameters.setK1(k1Value);</verbatim>
+
+4. Define fields and create a =BM25BooleanQuery= with your favorite analyzer
+<verbatim>    String[] fields ={"FIELD1","FIELD2"};
+    BM25BooleanQuery query = new BM25BooleanQuery("query", fields, analyzer);</verbatim>
+
+5. Search and output normally. Result (NOT normalized) will be ranked now with BM25 model!
+<verbatim>      TopDocs top = searcher.search(query, null, 10);
+		ScoreDoc[] docs = top.scoreDocs;
+
+		// Print results
+		System.out.println("length: " + docs.length);
+		for (int i = 0; i < top.scoreDocs.length; i++) {
+			System.out.println(docs[i].doc + ": " + docs[i].score + ", "
+					+ searcher.doc(docs[i].doc).get("title"));
+		}
+</verbatim>
+   
+Putting it all together:
+
+<verbatim>	String[] fields ={"FIELD1","FIELD2"};
+	IndexSearcher searcher = new IndexSearcher("IndexPath");
+
+	// Set explicit average Length for each field
+	BM25FParameters.setAverageLength("FIELD1", 123.5f);
+	BM25FParameters.setAverageLength("FIELD2", 42.2f);
+	
+	// Set explicit k1 parameter
+	BM25FParameters.setK1(1.2f);
+	
+	// Using boost and b defaults parameters
+	BM25BooleanQuery queryF = new BM25BooleanQuery("query",
+		fields, new StandardAnalyzer());
+	
+	// Retrieving NOT normalized scorer values
+	TopDocs top = searcher.search(queryF, null, 10);
+	ScoreDoc[] docs = top.scoreDocs;
+	
+	// Print results
+	System.out.println("length: " + docs.length);
+	for (int i = 0; i < top.scoreDocs.length; i++) {
+		System.out.println(docs[i].doc + ": " + docs[i].score + ", "
+				+ searcher.doc(docs[i].doc).get("title"));
+	}
+
+</verbatim>
+
+
+-- Main.ShuoYang - 14 Jul 2010

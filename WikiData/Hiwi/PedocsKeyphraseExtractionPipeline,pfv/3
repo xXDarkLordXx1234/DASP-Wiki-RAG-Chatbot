@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="ShuoYang" date="1345470487" format="1.1" version="3"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++ Structure of the Pipeline
+
+   1. Preprocessing
+      1. Text Reader
+      1. Tokenizer: =BreakIteratorSegmenter=
+      1. Stopword remover (Token, Lemma): =StopwordRemover=
+      1. Lemma + POS: =TreeTaggerPosLemmaTT4J=
+      1. DF model builder: =TfidfConsumer=
+   1. Candidate Selection
+      1. TFIDF annotator: =TfidfAnnotator=
+      1. =CandidateAnnotator=
+      1. =Candidate2KeyphraseConverter=
+      1. =KeyphraseMerger=
+      1. =StructureFilter=
+      1. Stopword remover (Keyphrase): =StopwordFilter=
+   1. Keyphrase Extraction
+      1. Calculate TFIDF score for each keyphrase (based on the score of each element in the keyphrase): =TfidfRanking=
+      1. Output keyphrases: =KeyphraseWriter=
+   1. Evaluation
+      1. Evaluate extraction result and write into Lab stream: =KeyphraseEvaluatorLab=
+      1. Visualize the result: =KeyphraseEvaluationVisualizer=
+   1. Report
+
+
+-- Main.ShuoYang - 2012-08-20

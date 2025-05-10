@@ -1,0 +1,52 @@
+%META:TOPICINFO{author="eckart" comment="reprev" date="1417435191" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+
+---+ Tasks
+
+   * [[DKPro/DKProDeveloperResources][Set up development environment]]
+      * You will need Subversion support in Eclipse. I recommend using Subclipse. Install it and the Maven integration from these Update sites:
+         * http://subclipse.tigris.org/update_1.10.x 
+         * http://subclipse.tigris.org/m2eclipse/latest/
+   * Allow !WebAnno to use external pre-authentication as provided by an external Shibboleth proxy
+      * Code to base on: http://wiki.aaf.edu.au/aaf-mini-grants/tpac/shibboleth-integration-with-spring-security <!--][How to integrate Shibboleth via Spring Security]]-->
+      * Requirement: when the external authentication HTTP header is present, the user does not see the login dialog
+      * Requirement: when no external authentication HTTP header is present, a access denied page is displayed (no login page)
+      * Requirement: when a user with the externally provided user id does not exist yet, it is created
+      * Simulate external authentication using a browser plugin to provide additional headers, e.g. https://addons.mozilla.org/de/firefox/addon/modify-headers/ <!--][Modify Headers]]-->
+      * Send changes as a patch file to REC
+      * !WebAnno in Eclipse
+         * To develop on !WebAnno, you need the m2e Eclipse plugins (already part of the Eclipse 4.4.1 Java Developer edition)
+         * You also need to install the Web Tools Platform (wtp) plugins so you can run !WebAnno in a Tomcat within Eclipse
+            * Can be installed via the "Install new Software..." in Eclipse - set "Work with" to "-- All available sites --"
+            * Under "Web, XML, Java EE and OSGi Enterprise Development" install
+               * Eclipse Java EE Developer Tools   
+               * Eclipse Web Developer Tools 
+               * Eclipse XML Editors and Tools
+               * JavaScript Development Tools
+               * JST Server Adapters
+               * JST Server Adapters Extension
+               * JST Server UI
+               * m2e-wtp JPA configurator
+               * m2e-wtp Maven Integration
+               * WST Server Adapters
+         * of course, you need to download a Tomcat (version 6 or 7) and extract it to some folder (no need to configure it in any way)
+      * Hooking into !WebAnno
+         * The Spring Security configurations are in the module =de.tudarmstadt.ukp.clarin.webanno.webapp= in the folder =src/main/webapp/WEB-INF/securityContext.xml=
+         * User management happens via the =UserDao= service. This service can be accessed in a (Spring-managed) class file by adding the class field<pre>
+@Resource(name = "userRepository")
+private UserDao userRepository;</pre>
+         * "Spring-managed" means that the class must be declared e.g. in the "securityContext.xml" or "applicationContext.xml" files or is otherwise managed by Spring. Should be the case for the classes offered by the Spring Security/Shibboleth examples mentioned above.
+   * Implement a working prototype of packaging a Python-based NLP tool as a Docker image so it can be run like a command line tool
+
+---+ Current contract (Dec 2014)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+|  |  |  |  |
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+
+
+-- Main.RichardEckartDeCastilho - 2014-12-01

@@ -1,0 +1,122 @@
+%META:TOPICINFO{author="ArtemVovk" date="1276012792" format="1.1" reprev="182" version="182"}%
+%META:TOPICPARENT{name="WebHome"}%
+   ---+ Artem Vovk Work
+
+---++ Work
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Redirect Service (instead of proxy) | 90 |
+| Suggest Links Design | 100 |
+| MediaWikiSimpleAdapter Design anpassen | 100 |
+| DIPF Lucene Index | 100 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Suggest Links Design | 01.03.2010 | 5 | <ul><li>Implementierung von popup(CSS Design)</li></ul> |
+| Suggest Links Design | 02.03.2010 | 5 | <ul><li>Implementierung von popup(CSS Design)</li></ul> |
+| Suggest Links Design | 10.03.2010 | 2 | <ul><li>Design wurde erledigt</li></ul>> |
+| Suggest Links Design | 23.04.2010 | 3 | <ul><li>Implementierung von Function: Confirm Link(Problem Analyse))</li></ul> |
+| Suggest Links Design | 25.04.2010 | 2 | <ul><li>Design korrektur(Add Button)</li><li>Problem Analyse: 3 Algo <br/> Erster Algo:  <br/>1) position vom Suchwort(Wortanfang) in plaintext finden(Wortnummer)<br/> 2) dann mit diffpathmatch position in wikitext finden <br/>3) Dann ab diese Position erstes Suchwort matchen   <br/>Zweiter Algo: <br/> 1) Die Anzahl von den Suchwoertern die nicht verlinkt sind im Plaintext mitzehlen(und die Nummer vom richtigen Suchwort merken) <br/> 2) Die Anzahl von den Suchwoertern die nicht verlinkt sind im Wikitext mitzaehlen(und die Nummer vom richtigen Suchwort merken) <br/> 3) Beides vergleichen, falls gleich, dann richtiges Wort markieren <br/> Dritter Algo:  <br/> 1) Suchwort im Wikitext nacheinander betrachten <br/> 2) Falls die Woerter, die links und rechts vom betrachtenden Wort mit den Woertern vom Plaintext uebereinstimmen, dann das ist unseres Wort</li> <li>Erster Algo wurde ausgewaehlt</li><li>Implementierung von Suchwortzaehler</li></ul> |
+| Suggest Links Design | 26.04.2010 | 4 | <ul><li>Implementierung vom ersten Algo</li></ul> |
+| Suggest Links Design | 29.04.2010 | 3.5 | <ul><li>Implementierung vom ersten Algo(Suche von Wortposition)</li></ul> |
+| Suggest Links Design | 30.04.2010 | 5.5 | <ul><li>Implementierung vom ersten Algo wurde erledigt(aber nur fuer MediaWiki und noch beta-version)</li></ul> |
+| Suggest Links Design | 03.05.2010 | 5 | <ul><li>Suggest Links fuer MediaWiki wurde implementiert und testiert</li><li>Suggest Links fuer TWiki wurde implementiert und testiert</li><li>Designkorrektur(fuer TWiki)</li></ul> |
+| Suggest Links Design | 05.05.2010 | 3 | <ul><li>Beratung mit Johannes</li><li>Kodekorrektur</li></ul> |
+| Suggest Links Design | 10.05.2010 | 5 | <ul><li>Korrektur von Bugs(double plus, falsche Links)</li><li>Beratung mit Johannes, Daniel, Nico</li></ul> |
+| Suggest Links Design | 13.05.2010 | 2 | <ul><li>Korrektur von UI Bugs(Positionieren, zeichen zwischen keywords)</li></ul> |
+| Suggest Links Design </br> Redirect Service (instead of proxy) | 14.05.2010 | 4 | <ul><li>Korrektur von Bugs(Firefox layout bug)</li><li>Aenderungen in Redirect Service</li></ul> |
+| Redirect Service (instead of proxy) | 15.05.2010 | 2 | <ul><li>Korrektur von Bugs(Redirected service mit Sniffer)</li></ul> |
+| Suggest Links Design </br> Redirect Service (instead of proxy) | 17.05.2010 | 2 | <ul><li>Beratung mit Daniel und Nico</li><li>Suggest Links wurde erledigt(Probelm mit zweitem Plus wurde geloest)</li></ul> |
+| Suggest Links Design </br> Redirect Service (instead of proxy) | 19.05.2010 | 2 | <ul><li>Screenshots von SuggestLinks</li><li>Direct proxy - Korrektur von Bugs</li></ul> |
+| Redirect Service (instead of proxy) | 20.05.2010 | 5 | <ul><li>Direct proxy - Korrektur von Bugs(wurde fuer mediawiki angepasst, sniffer wurde fuer direct proxy auch angepasst und getestet)</li><li>Testen von direct proxy-> mrburns mediawiki und twiki funktioniert einwandfrei, es gibt nur noch Porblem mit wikipedia(ich hab so vertanden, dass da gibt's Shutz gegen solche Zugriffe)</li></ul> |
+| Redirect Service (instead of proxy) | 21.05.2010 | 3 | <ul><li>Versuche das Problem mit dem Zugriff zum Wikipedia zu loesen</li><li>Anpassen von neuem wikipedia Design</li></ul> |
+| Redirect Service (instead of proxy) | 23.05.2010 | 3 | <ul><li>Wikipedia neues Design wurde angepasst</li><li>Weitere Versuche direct proxy fuer wikipedia einstellen</li></ul> |
+| Redirect Service (instead of proxy) | 28.05.2010 | 2 | <ul><li>Versuche direct-proxy mit Wikipedia verbinden</li></ul> |
+| Redirect Service (instead of proxy)</br> MediaWikiSimpleAdapter? Design anpassen</br>DIPF Lucene Index | 31.05.2010 | 6 | <ul><li>Versuche direct-proxy mit Wikipedia verbinden</li><li>Beratung mit Nico</li><li>MediaWikiSimpleAdapter? Design wurde angepasst</li><li>DIPF Lucene Index wurde erstellt</li></ul> |
+| DIPF Lucene Index | 02.06.2010 | 3 | <ul><li>Dokumentation fuer Lucene index Erstellung</li><li>Aenderungen in wikulu.datastore</li><li>Versuche DIPF Wiki ueber direct proxy laufen zu machen</li></ul> |
+| Redirect Service (instead of proxy) | 04.06.2010 | 3 | <ul><li>Loesung fuer DIPF mit direct proxy wurde gefunden</li><li>Versuche wikipedia ueber direct proxy zu verbinden</li></ul> |
+| Redirect Service (instead of proxy) | 07.06.2010 | 3.5 | <ul><li>Charset fuer wikulu wurde angepasst</li><li>Datastore(DKProAnalyzer) wurde geaendert</li><li>Beratung mit Nico</li><li>Analyse von direct proxy</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 126 (45 Übertrag von Februar) | bis Ende May |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+ImportingWikipedia
+
+SuggestSectionProblems
+
+TestPage?
+
+
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+   * [[%ATTACHURL%/build.xml][build.xml]]: Script for importing wikipedia
+
+---------------------
+
+ReleasePackageErrors
+
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"
+
+
+---++ Previous Work
+
+   * ArtemVovkPreviousWork
+
+   
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="MiniManual.pdf" attachment="MiniManual.pdf" attr="" comment="Manual to %22Preloaded descriptor selection%22" date="1234806618" path="MiniManual.pdf" size="40665" stream="MiniManual.pdf" tmpFilename="/var/tmp/CGItemp37940" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="build.xml" attachment="build.xml" attr="" comment="Script for importing wikipedia" date="1248857901" path="build.xml" size="2013" stream="build.xml" tmpFilename="/var/tmp/CGItemp61365" user="ArtemVovk" version="1"}%

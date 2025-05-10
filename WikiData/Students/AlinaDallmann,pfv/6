@@ -1,0 +1,56 @@
+%META:TOPICINFO{author="dallmann" comment="" date="1574951474" format="1.1" reprev="5" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis: Employing Graph Neural Networks for Text Production from Knowledge Graphs
+
+*Start date*: 
+
+*End date*:
+
+*Supervisor*: Leonardo Ribeiro
+
+*Midterm Talk*: 
+
+*Final Talk*: 
+
+---+++ Meeting 29.11.2019
+---++++Last steps
+   * Evaluation script using MoverScore, Multi-BLEU and Meteor
+   * Trying to run models with batch size 20
+   * Implement input method using features
+---++++Questions
+   * Training with batch size 20 always leads to an out-of-memory error --> even when trying to block 64G memory
+      * How to solve this issue?
+      * calculating loss function is currently the point where the OOM error occurs
+      * single tensors itself are not so large 
+      * calling garbage collector and empyting cache before does not help completely 
+   * Validation also using MoverScore --> takes quite long (~5 min) to calculate? --> not do it for every validation step? or use data sampling?
+
+---+++ Meeting 22.11.2019
+---++++Last steps 
+   * Getting scripts run with Slurm 
+   * Train on AGENDA dataset with different preprocessing methods and gin/ggnn models 
+   * Train on Visual Genome dataset  
+   * Start writing theoretical chapters about datasets/ GNNs 
+
+---++++Questions/ Next Steps 
+   * Discuss on how to further structure the next steps. 
+      * Trying different GNNs on all ways of preprocessing? 
+         * Also take older NNs (from Pytorch-Geometric)? 
+      * Or determine a good preprocessing way first? 
+         * Understanding of creating a vector-based input still difficult 
+   * AGENDA dataset 
+      * Approach to use the node classes as well? --> e.g. put them as nodes in the graph as well? 
+   * How to avoid CUDA out-of-memory error?  
+      * How to determine the best amount of storage to reserve for training? 
+   * How to determine the initial parameters intelligently? 
+   * Official registration of thesis --> forward form to IG!?
+
+---+++ Meeting 29.10.2019
+---++++ Next Steps
+   * Get model running on Slurm using AGENDA dataset
+   * Try different dataset input options (LSTM, various linearisation methods)
+   * Start writing theoretical chapters
+
+
+
+-- Main.AlinaDallmann - 2019-10-28

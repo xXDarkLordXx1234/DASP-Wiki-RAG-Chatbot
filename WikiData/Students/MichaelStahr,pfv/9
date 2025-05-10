@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="stahr" comment="save topic" date="1407509441" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Adaptive Visualization of Lexical Information for Computer-assisted Writing
+
+---+++ Treffen 28.07
+   * nächste Treffen Woche am 18.08 übernächste 4-5.09.14
+   * lösen des problems mit der RepeatingView - done
+   * Auswahl für eine Sprache
+   * "Lesen"
+      * man ließt ein wort versteht es nicht und will die möglichen bedeutungen in der eigenen sprache 
+      * liste von Übersetuzungen
+         * bedeutung   
+   * "Schreiben"
+      * liste von Bedeutungen
+         * übersetzungen    
+
+   
+
+---+++ Treffen 17.07.2014
+   * Bootstraps
+   * Visualisierung von Lexikalischen Einträgen Fokusieren
+
+---+++ Treffen 09.07.2014
+
+   * pastelfarben
+   * flat-design
+      * icons - http://iconmonstr.com/?s=plus
+      * Beispiele: 
+         * http://www.google.de/imgres?imgurl=http%3A%2F%2Fnetdna.webdesignerdepot.com%2Fuploads%2F2013%2F08%2Fhosting.jpg&imgrefurl=http%3A%2F%2Fwww.webdesignerdepot.com%2F2013%2F09%2Fthe-ultimate-guide-to-flat-design%2F&h=540&w=782&tbnid=BXCdZGjzl3lmnM%3A&zoom=1&docid=GNDemQPBKmXu7M&ei=wXi-U8_eIOLl4QS93YHoDA&tbm=isch&iact=rc&uact=3&dur=1786&page=1&start=0&ndsp=29&ved=0CD4QrQMwBw  
+         * http://www.google.de/imgres?imgurl=http%3A%2F%2Fnetdna.webdesignerdepot.com%2Fuploads%2F2013%2F04%2Fspelltower.jpg&imgrefurl=http%3A%2F%2Fwww.webdesignerdepot.com%2F2013%2F04%2Fflat-design-sites-that-work%2F&h=928&w=1564&tbnid=UxVyGKIjdl30cM%3A&zoom=1&docid=NLx4_SUzFDN8QM&ei=wXi-U8_eIOLl4QS93YHoDA&tbm=isch&iact=rc&uact=3&dur=300&page=1&start=0&ndsp=29&ved=0CDIQrQMwAw
+         * http://www.google.de/imgres?imgurl=http%3A%2F%2Fbashooka.com%2Fwp-content%2Fuploads%2F2013%2F03%2Fflat-ui-inspiration-2.jpg&imgrefurl=http%3A%2F%2Fbashooka.com%2Finspiration%2Fflat-web-ui-design%2F&h=518&w=690&tbnid=j1f_l9MPY-rBJM%3A&zoom=1&docid=DJrijXllC1qdKM&ei=wXi-U8_eIOLl4QS93YHoDA&tbm=isch&iact=rc&uact=3&dur=457&page=1&start=0&ndsp=29&ved=0CDUQrQMwBA
+         * http://web3canvas.com/web-ui-design-trends-2013-10-flat-design-inspiration/
+   * bootstrap (framework -> http://getbootstrap.com/getting-started/) - wird benutzt
+
+---+++ Treffen 23.06.2014
+   * Unterschiedliche Lexika anschauen
+      * Definition
+      * Text Beispiele
+      * http://de.wiktionary.org/wiki/Bank
+      * http://www.owid.de/artikel/81386/Turnger%C3%A4t?module=elex
+      * Allgemeine Literaturrecherche
+
+---+++ Treffen 16.06.2014
+   * Einarbeiten in UBY und Hibernate
+      * verstehen wie einzelne Querys abgesetzt werden   
+
+---+++ Treffen 10.06.2014
+   * Vorlage für Webapp: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/stahr/webapp-example
+      * Deployed Resources/webapp/databaseContext.xml - Passwort eintragen, Datenbankparameter festlegen
+      * DAO-Konzept lernen und UBY-Anbindung planen
+      * Technologien: http://wicket.apache.org/, http://projects.spring.io/spring-framework/, http://hibernate.org/, http://en.wikipedia.org/wiki/Java_Persistence_API
+
+---+++ Treffen 03.06.2014
+   * Erledigt: Eclipse eingerichtet, Datenbank aufgesetzt, Zeiterfassung für Selbstorganisation angelegt
+   * TODO: Papers Lesen, Vorlesung besuchen
+      * Vorlesung: am 05.06.2014 -> 09:50/c120 zum Thema UBY 
+
+---+++ Treffen 26.05.2014
+   * Studentische Vorträge: Di. 09:50 oder 11:30, i.d.R. alle 2-4 Wochen
+      * Einladungen kommen per Mail
+      * Zwischenvortrag: 16.09.2014
+      * Abschlussvortrag: 11.11.2014
+   * Abstimmungstermin: Di. 03.06. 12:00 Uhr
+      * danach Mo. 12:00 Uhr
+   * TODO: erste Literatur aufarbeiten, Details der Aufgabenstellung verstehen
+
+-- Main.ChristianMeyer - 2014-05-26

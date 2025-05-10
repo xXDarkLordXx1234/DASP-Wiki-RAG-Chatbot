@@ -1,0 +1,68 @@
+%META:TOPICINFO{author="ShuoYang" date="1339683647" format="1.1" version="78"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll von DARIAH-DE, Shuo Yang
+
+---++ Aktuelle Arbeit: Mai 2012 - September 2012
+
+---+++ Aufgabenübersicht
+
+Siehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/buglist.cgi?query_format=advanced&short_desc_type=allwordssubstr&short_desc=&product=DARIAH-DE&long_desc_type=substring&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&emailassigned_to1=1&emailtype1=substring&email1=yang&emailassigned_to2=1&emailreporter2=1&emailqa_contact2=1&emailcc2=1&emailtype2=substring&email2=&bugidtype=include&bug_id=&votes=&chfieldfrom=&chfieldto=Now&chfieldvalue=&cmdtype=doit&order=Reuse+same+sort+as+last+time&remtype=asdefault&field0-0-0=noop&type0-0-0=noop&value0-0-0=][Bugzilla]].
+
+<b>Aktuelle Bugs:</b>
+
+[[ShuoYangKeyphrases]]
+
+<b>On Hold:</b>
+
+eSciDoc:
+   * <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1412][Setup ESciDoc in VM + Guide]]</del>
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1166][Automatic triggering]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1167][LUCAS writer]]
+
+UIMAFit !ExternalResource:
+   * [[http://code.google.com/p/dkpro-core-gpl/issues/detail?id=14][Load mapping with !AutoResourceResolver]]
+   * [[http://code.google.com/p/dkpro-core-asl/issues/detail?id=40][Lazy loading of !ExternalResource]]
+
+
+---+++ Protokoll
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 2.5 | Übertrag von letztem Vertrag |
+| 01.05.2012 | Pedocs Inclusion Ratio, Refactor | 3.5 | Abspeicherung Inclusion Ratio jedes Dokuments in Datenbank, um Verteilungsdiagram zu zeichnen. <p> Refactor der Komponenten |
+| 02.05.2012 | Pedocs Inclusion Ratio Diagramme, Meeting | 5 | Nachbearbeitung der Daten und Erstellung davon die Diagramme der Inclusion Ratios<p> Aktualisierung und Erweiterung der Wiki-Seite um die neue Ergebnisse<p> Meeting mit Richard, Emailbericht an IG |
+| 03.05.2012 | Meeting | 1 | Meeting mit Richard |
+| 08.05.2012 | Pedocs Keyphrase Extraction | 0.5 | Einarbeiten in bestehende Pipelines |
+| 09.05.2012 | Pedocs Keyphrase Extraction | 6 | Einarbeiten in bestehende Pipelines sowie Komponenten <p> Modernisierung der Komponenten <p> KEA Pipeline gebaut, Evaluation der Ergebnisse |
+| 10.05.2012 | Pedocs Keyphrase Extraktion | 4 | Parameters lassen sich nun durch Java Properties User-spezifisch einstellen <p> Aufteilung des Korpus in Test-Evaluation Mengen <p> Angefangen, das KEA-Modell aus Testmenge zu generieren. (12.05: KEA zu langsam, siehe [[ShuoYangKeyphrases]]-Results) | 
+| 12.05.2012 | Pedocs Keyphrase Extraktion - Tfidf | 6 | Aufbauen der Tfidf-Pipeline <p> Erste Evaluation der Extraktion mittels Tfidf-Lemma bekommen. Schlechte Werte :( siehe [[ShuoYangKeyphrases]]-Results. Werde mit andere Konfiguration weiter testen. |
+| 13.05.2012 | Pedocs Keyphrase Extraction | 3 | Zweite Evaluation mit Tfidf. Schlechte Werte. <p> Erste Evaluation mit nur Tf. Normale Werte. |
+| 14.05.2012 | Pedocs Keyphrase Extraction, Meeting | 2 | Meeting mit Herr Rittberger in Frankfurt |
+| 25.05.2012 | Pedocs Keyphrase Distribution | 1 | Emailkommunikation mit Richard <p> Beheben von Maven Probleme |
+| 27.05.2012 | Pedocs Keyphrase Distribution | 5 | Beheben von Maven Probleme <p> Einarbeiten in DKPro Lab <p> Häufigkeitsverteilung jeder Keyphrase |
+| 28.05.2012 | Pedocs Keyphrase Distribution | 3 | Verteilung bekommen. Ergebnisse zu [[ShuoYangKeyphrases]] hinzugefügt |
+| 13.06.2012 | SVN Relocate | 0.5 | Relocate SVN auf neuen Servers. <p> Einarbeitung in Entfernte Berechnung auf Computing Servers |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 100)$EXEC($GET(total_hour))"}% | bis Ende September noch %CALC{"$EVAL( $GET( total_hour ) - ($GET( done_hour )) )"}% Stunden |
+<nop>
+
+---++ Dokumente
+ShuoYangMemo
+
+UsefulLinuxCommands
+
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Main/NotesOnCoding][Notes on Coding]]
+
+
+---++ Vorherige Arbeit
+ShuoYangWork1H2012
+
+ShuoYangWork2H2011<br>
+ShuoYangWork1H2011
+
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+
+-- Main.ShuoYang - 2012-06-14
+
+%META:TOPICMOVED{by="ShuoYang" date="1316728220" from="Hiwi.ShuoDariah" to="Hiwi.ShuoYangDariahArbeit"}%

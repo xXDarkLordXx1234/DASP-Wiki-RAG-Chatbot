@@ -1,0 +1,90 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="3"}%
+%META:TOPICPARENT{name="ShuoYangSigmundArbeit"}%
+---+ Notes on [[http://en.wikipedia.org/wiki/Java_API_for_XML_Web_Services][JAX-WS]]
+Java API for XML Web Services
+
+---++ Kapitel 19 Verteilte Programmierung / Java ist auch eine Insel (8. Auflage)
+[[http://openbook.galileocomputing.de/javainsel8/javainsel_19_007.htm#mjb4dfc636ba13cc04d06f489cade6978b Buch]]
+
+Zugriff entfernter Ressourcen / Aufruf entfernter Methoden:<br>
+über HTTP:<br>
+   * + Verbreitet
+   * + idR keine Beschränkungen von Firewalls
+
+SOAP - Simple Object Access Protocol<br>
+bietet einfachen Zugriff auf Server-Ressourcen mit HTTP und XML
+   * + Entfernter Methodenaufruf, dessen Parameter und Ergebnisse in XML kodiert
+   * + Programmiersprache-neutral
+   * - XML-Overhead (Dateigröße, Benötigen von Parsen)
+   * - Potentielle Sicherheitsprobleme (Berechtigung, Übertragung in Klartext - SSL to the rescue)
+
+Implementierung:<br>
+Mit Java 6 kommt JAX-WS 2.0 - Java API für XML-Based Web Services
+
+package =javax.xml.ws= : ([[http://download.oracle.com/javase/6/docs/api/javax/xml/ws/package-summary.html javadoc]], [[http://www.w3.org/TR/ws-gloss/ W3C Glossary]])
+   * =Endpoint= : An association between a *binding* and a *network address*, that may be used to communicate with an instance of a service (Glossary). Always tied to one *binding* and one *implementor* (javadoc)
+   * =Binding=: Specifies the protocol and data format to be used in transmitting messages defined by the associated interface (Glossary)
+   * =Implementor=: a java class annotated with @WebService specifying remote methods and binding information.
+   * =Executor=: executes submitted Runnable tasks, may be set on the endpoint in order to gain better control over the threads used to dispatch incoming requests (for example, pooling)
+
+
+   1. One creates Web Services and runs it
+   1. One generates Stubs from the WSDL file
+   1. One calls the Stubs and get results from remote web service
+ 
+
+---++ http://java.sun.com/developer/technicalArticles/xml/webservices/
+
+SOAP client: creates XML document which has the information needed for remote method invocation<br>
+SOAP server:listens for SOAP messages, acts as a distributor and interpreter of SOAP documents
+
+
+---++ SOAPHandler
+
+Web services communicate with SOAP messages. By default JAX-WS handles the SOAP message marshalling and unmarshalling parts for you. However, if you want to see or modify the SOAP messages, JAX-WS supports custom _handler chain_.
+
+---+++ Creation
+Here is a [[http://jax-ws.java.net/articles/handlers_introduction.html][tutorial]] on two types of handler: SOAP handler, logic handler, and how to create them.
+
+---+++ Loading
+You can load the handler in two ways: in Java code or in Java annotation plus XML.
+
+---++++ In Java code
+   1. Create a =HandlerResolver= object, return the needed handler(s) in its =getHandlerChain(PortInfo)= method.
+   2. Call =setHandlerResolver(HandlerResolver)= method on your =javax.xml.ws.Service= subclass, pass in the just created =HandlerResolver= object as parameter. This can be done either within your =Service= subclass, or in the client before accessing web service.
+
+A simple =HandlerResolver= looks like this
+<verbatim>
+		class MyHandlerResolver implements HandlerResolver() {
+			@SuppressWarnings("unchecked")
+			public List<Handler> getHandlerChain(PortInfo info) {
+				List<Handler> handlerList = new ArrayList<Handler>();
+				handlerList.add(new MySoapHandler());
+				return handlerList;
+			}
+		});
+</verbatim>
+
+---++++ In Java annotation plus XML 
+   1. Create an XML file denoting the handler chain. For example, =mysoaphandler.xml= has content like this:
+   <verbatim>
+<?xml version="1.0" encoding="UTF-8"?>
+<jws:handler-chains xmlns:jws="http://java.sun.com/xml/ns/javaee">
+
+  <jws:handler-chain>
+    <jws:handler>
+      <jws:handler-name>MySoapHandler</jws:handler-name>
+      <jws:handler-class>de.tudarmstadt.ukp.experiments.sy.webservicetest.handler.MySoapHandler</jws:handler-class>
+    </jws:handler>
+  </jws:handler-chain>
+
+</jws:handler-chains>
+   </verbatim>
+   2. Tell your =javax.xml.ws.Service= subclass about this handler chain. Add this line of code under the @WebService or "@WebServiceClient" annotation.
+  <verbatim>
+@HandlerChain(file = "mysoaphandler.xml")
+  </verbatim>
+
+
+
+-- Main.ShuoYang - 2011-03-19

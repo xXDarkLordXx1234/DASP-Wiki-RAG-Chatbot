@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="horsmann" date="1379766484" format="1.1" version="1"}%
+%META:TOPICPARENT{name="TobiasHorsmann"}%
+---++++ 2013-09-24
+     Was macht Schwierigkeit eines Worte aus, wenn dieses als Cloze oder C-Test Variante verwendet wird:
+Was macht Schwierigkeit eines Worte aus, wenn dieses als Cloze oder C-Test Variante verwendet wird:
+
+Der erste Teil ist das was ich dir schon per Mail geschickt hatte, der zweite neue Ideen (teils sehr ähnlich). Deine Vorschläge hängen unten dran.
+
+   * Frequenz des Wortes
+   * Teil des Grundwortschatzes (gehen, sagen, kaufen, sehen, Auto, Fahrrad, einfach, schwer, teuer, billig,...)
+   * Bei Distraktoren: Ist Wort ein (entferntes) Synonym zu Grundwortschatz-Wörtern, höhere Vertrautheit -> guter Distraktor?
+   * Wortlänge
+      * in Buchstaben
+      * in Silben
+   * Anzahl Synonyme zu einem Wort
+      *wenn vorhanden -> Distraktoren/C-Test notwendig
+      *keine vorhanden -> Cloze möglich
+   * Satzlänge
+   * Position der Lücke im Satz
+      * Anfang: Tendenz zu geringerer Lösbarkeit
+      * Ende: Tendenz zu höherer Lösbarkeit
+---------------------------------------------------------
+   * Lücke teil eins Collocation-N-Grams? Häufigkeit dieses N-Grams?
+   * Semantik relatedness des Lücken-Wort zu Synonym-Worten aus einer Ressource; e.g. wie ähnlich sind potenzielle Synonyme dem eigentlich gesuchten Wort?
+   * Named Entities
+   * Anzahl Noun-phrases pro Satz
+   * Anzahl Verb-phrases pro Satz
+   * Anzahl Entities mentioned
+   * Wenn die Lücke auf ein Verb gesetzt wird, ist dieses Head-Verb ? ja--> schwer? leichter?
+   * 5 Gram Nachbarschaft des Wortes das zur Lücke wird als Bag of Words Model, ist dieses Wort mit Nachbarschaft von w-2 bis w+2 in den X-häufigsten Mengen? Nein -> schwer
+ 
+<u>Lisa:</u>
+   * Frequenz der Phrase (Trigram oder Bigram mit vorherigen und nachfolgenden Wörtern)
+   * Abstraktheit und Polysemie des Wortes
+   * Tiefe des Parsebaum des Satzes
+   * Type-Token Ratio des Textes
+   * Wortart (POS), Frequenz der POS Sequenz ("Präposition Artikel Nomen" ist häufig, andere Sequenzen nicht unbedingt)
+   * ist das Wort ein Lemma oder konjugiert
+   * ist das Wort ein Cognate in der Muttersprache
+   * Morphologie des Wortes: "un-ver-rück-bar" ist schwieriger als "bunt" (spielt für Englisch vermutlich keine Rolle)

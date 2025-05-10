@@ -1,0 +1,69 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1287057280" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ DomainLabels
+---++ Wikipedia DomainLabels
+
+   * [[%ATTACHURL%/WikipediaDomainlabelsBericht.pdf][WikipediaDomainlabelsBericht.pdf]]: Bericht zu Task 1 und Task 2, Analyse von Domainlabels in Wikipedia   
+ 
+   * [[%ATTACHURL%/WikiDomainsOutput.csv][WikiDomainsOutput.csv]]: Domain labels, extracted from Wiki-Disambig. pages. Format: CSV. Separation: semicolon   
+ 
+   * [[%ATTACHURL%/WikiMainTopicsHierarchy.xml][WikiMainTopicsHierarchy.xml]]: Hierarchy of main categories as found on http://en.wikipedia.org/wiki/Category:Main_topic_classifications   
+ 
+   * [[%ATTACHURL%/WikiDomainsOutputType1DE.csv][WikiDomainsOutputType1DE.csv]]: Domainlabels vom Typ 1. Deutsche Wikipedia.   
+ 
+   * [[%ATTACHURL%/WikiDomainsOutputType2DE.csv][WikiDomainsOutputType2DE.csv]]: Domainlabels vom Typ 2. Deutsche Wikipedia.   
+ 
+   * [[%ATTACHURL%/Task_DomainLabelsGerman.odt][Task_DomainLabelsGerman.odt]]: Domainlabels in deutscher Wikipedia. Bericht.   
+ 
+   * [[%ATTACHURL%/Task_AbdeckungDLGerman.odt][Task_AbdeckungDLGerman.odt]]: DomainLabels - Abdeckung in German Wikipedia   
+ 
+   * [[%ATTACHURL%/WikiDomainsOutputType2.csv][WikiDomainsOutputType2.csv]]: Domainlabels extracted from Disambiguation tags   
+ 
+---++ Wiktionary DomainLabels
+   * [[%ATTACHURL%/Task4_WiktionaryDomains.pdf][Task4_WiktionaryDomains.pdf]]: Task 4. Wiktionary Senses, Wiktionary Domain Labels.   
+ 
+   * [[%ATTACHURL%/TopicContextLabels.csv][TopicContextLabels.csv]]: Topic Context Labels as found on http://en.wiktionary.org/wiki/Category:Topical_context_labels   
+ 
+   * [[%ATTACHURL%/WiktionaryDomainLabels.csv][WiktionaryDomainLabels.csv]]: Mapping Definitions-Context/Domain labels from Wiktionary   
+ 
+   * [[%ATTACHURL%/WiktionaryLabelsFrequency.csv][WiktionaryLabelsFrequency.csv]]: Frequency of Context/Domain labels in Wiktionary   
+ 
+   * [[%ATTACHURL%/ContextLabels_EN_DE_RU.ods][ContextLabels_EN_DE_RU.ods]]: ContextLabels Alignment in Wiktionary (EN, DE, RU)
+ 
+---++ WordNet DomainLabels
+
+   * [[%ATTACHURL%/WordNetHierarchyNew.xml][WordNetHierarchyNew.xml]]: WordNet Domains-Hierarchy in XML. WordNet Domains 3.2.   
+ 
+   * [[%ATTACHURL%/WordNetDomains.txt][WordNetDomains.txt]]: Alle in WordNet Domains verwendete Domains   
+ 
+---++ Comparative Studies
+   * [[%ATTACHURL%/WikiWordNetDomainsMapping.csv][WikiWordNetDomainsMapping.csv]]: DomainsMapping Vorschlag: Wiki Domainlabels zu WordNet Domains. Trennzeichen:Semikolon.   
+ 
+   * [[%ATTACHURL%/Task_AbdeckungDL.odt][Task_AbdeckungDL.odt]]: DomainLabels - Abdeckung in Wikipedia und Wiktionary
+
+   * [[%ATTACHURL%/DomainLabels_Categorized.ods][DomainLabels_Categorized.ods]]: WKT_EN, WN_EN, WKT_DE, WKT_RU Domainlabels categorized
+
+   * [[%ATTACHURL%/DomainLabels_Uncategorized.ods][DomainLabels_Uncategorized.ods]]: WKT_EN, WN_EN, WKT_DE, WKT_RU Domainlabels uncategorized
+
+   * [[%ATTACHURL%/DomainLabels_Analysis.pdf][DomainLabels_Analysis.pdf]]: WKT_EN, WN_EN, WKT_DE, WKT_RU Domainlabels Analysis
+
+%META:FILEATTACHMENT{name="Task4_WiktionaryDomains.pdf" attachment="Task4_WiktionaryDomains.pdf" attr="" comment="Task 4. Wiktionary Senses, Wiktionary Domain Labels." date="1252922419" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.Task4_WiktionaryDomains.pdf" movedwhen="1287045311" movefrom="Hiwi.YevgenChebotar.Task4_WiktionaryDomains.pdf" path="Task4_WiktionaryDomains.pdf" size="233026" stream="Task4_WiktionaryDomains.pdf" tmpFilename="/var/tmp/CGItemp61102" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="Task_AbdeckungDL.odt" attachment="Task_AbdeckungDL.odt" attr="" comment="DomainLabels - Abdeckung in Wikipedia und Wiktionary" date="1254652966" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.Task_AbdeckungDL.odt" movedwhen="1287045352" movefrom="Hiwi.YevgenChebotar.Task_AbdeckungDL.odt" path="Task_AbdeckungDL.odt" size="27557" stream="Task_AbdeckungDL.odt" tmpFilename="/var/tmp/CGItemp56391" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="Task_AbdeckungDLGerman.odt" attachment="Task_AbdeckungDLGerman.odt" attr="" comment="DomainLabels? - Abdeckung in German Wikipedia" date="1255943849" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.Task_AbdeckungDLGerman.odt" movedwhen="1287045369" movefrom="Hiwi.YevgenChebotar.Task_AbdeckungDLGerman.odt" path="Task_AbdeckungDLGerman.odt" size="26224" stream="Task_AbdeckungDLGerman.odt" tmpFilename="/var/tmp/CGItemp56186" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="Task_DomainLabelsGerman.odt" attachment="Task_DomainLabelsGerman.odt" attr="" comment="Domainlabels in deutscher Wikipedia. Bericht." date="1255532489" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.Task_DomainLabelsGerman.odt" movedwhen="1287045404" movefrom="Hiwi.YevgenChebotar.Task_DomainLabelsGerman.odt" path="Task_DomainLabelsGerman.odt" size="36780" stream="Task_DomainLabelsGerman.odt" tmpFilename="/var/tmp/CGItemp56203" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="TopicContextLabels.csv" attachment="TopicContextLabels.csv" attr="" comment="Topic Context Labels as found on http://en.wiktionary.org/wiki/Category:Topical_context_labels" date="1253119150" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.TopicContextLabels.csv" movedwhen="1287045416" movefrom="Hiwi.YevgenChebotar.TopicContextLabels.csv" path="TopicContextLabels.csv" size="14597" stream="TopicContextLabels.csv" tmpFilename="/var/tmp/CGItemp56296" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WikiDomainsOutput.csv" attachment="WikiDomainsOutput.csv" attr="" comment="Domain labels, extracted from Wiki-Disambig. pages. Format: CSV. Separation: semicolon" date="1252153071" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WikiDomainsOutput.csv" movedwhen="1287045426" movefrom="Hiwi.YevgenChebotar.WikiDomainsOutput.csv" path="WikiDomainsOutput.csv" size="360437" stream="WikiDomainsOutput.csv" tmpFilename="/var/tmp/CGItemp60325" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WikiDomainsOutputType1DE.csv" attachment="WikiDomainsOutputType1DE.csv" attr="" comment="Domainlabels vom Typ 1. Deutsche Wikipedia." date="1255532419" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WikiDomainsOutputType1DE.csv" movedwhen="1287045437" movefrom="Hiwi.YevgenChebotar.WikiDomainsOutputType1DE.csv" path="WikiDomainsOutputType1DE.csv" size="106224" stream="WikiDomainsOutputType1DE.csv" tmpFilename="/var/tmp/CGItemp56257" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WikiDomainsOutputType2.csv" attachment="WikiDomainsOutputType2.csv" attr="" comment="Domainlabels extracted from Disambiguation tags" date="1254408211" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WikiDomainsOutputType2.csv" movedwhen="1287045448" movefrom="Hiwi.YevgenChebotar.WikiDomainsOutputType2.csv" path="WikiDomainsOutputType2.csv" size="528515" stream="WikiDomainsOutputType2.csv" tmpFilename="/var/tmp/CGItemp56362" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WikiDomainsOutputType2DE.csv" attachment="WikiDomainsOutputType2DE.csv" attr="" comment="Domainlabels vom Typ 2. Deutsche Wikipedia." date="1255532435" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WikiDomainsOutputType2DE.csv" movedwhen="1287045458" movefrom="Hiwi.YevgenChebotar.WikiDomainsOutputType2DE.csv" path="WikiDomainsOutputType2DE.csv" size="272035" stream="WikiDomainsOutputType2DE.csv" tmpFilename="/var/tmp/CGItemp56276" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WikiMainTopicsHierarchy.xml" attachment="WikiMainTopicsHierarchy.xml" attr="" comment="Hierarchy of main categories as found on http://en.wikipedia.org/wiki/Category:Main_topic_classifications" date="1253522439" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WikiMainTopicsHierarchy.xml" movedwhen="1287045472" movefrom="Hiwi.YevgenChebotar.WikiMainTopicsHierarchy.xml" path="WikiMainTopicsHierarchy.xml" size="4963" stream="WikiMainTopicsHierarchy.xml" tmpFilename="/var/tmp/CGItemp60844" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="WikiWordNetDomainsMapping.csv" attachment="WikiWordNetDomainsMapping.csv" attr="" comment="DomainsMapping Vorschlag: Wiki Domainlabels zu WordNet Domains. Trennzeichen:Semikolon." date="1252846118" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WikiWordNetDomainsMapping.csv" movedwhen="1287045483" movefrom="Hiwi.YevgenChebotar.WikiWordNetDomainsMapping.csv" path="WikiWordNetDomainsMapping.csv" size="6832" stream="WikiWordNetDomainsMapping.csv" tmpFilename="/var/tmp/CGItemp60914" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="WikipediaDomainlabelsBericht.pdf" attachment="WikipediaDomainlabelsBericht.pdf" attr="" comment="Bericht zu Task 1 und Task 2, Analyse von Domainlabels in Wikipedia" date="1253521655" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WikipediaDomainlabelsBericht.pdf" movedwhen="1287045493" movefrom="Hiwi.YevgenChebotar.WikipediaDomainlabelsBericht.pdf" path="WikipediaDomainlabelsBericht.pdf" size="344369" stream="WikipediaDomainlabelsBericht.pdf" tmpFilename="/var/tmp/CGItemp61485" user="YevgenChebotar" version="9"}%
+%META:FILEATTACHMENT{name="WiktionaryDomainLabels.csv" attachment="WiktionaryDomainLabels.csv" attr="" comment="Mapping Definitions-Context/Domain labels from Wiktionary" date="1253521430" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WiktionaryDomainLabels.csv" movedwhen="1287045504" movefrom="Hiwi.YevgenChebotar.WiktionaryDomainLabels.csv" path="WiktionaryDomainLabels.csv" size="2551075" stream="WiktionaryDomainLabels.csv" tmpFilename="/var/tmp/CGItemp60897" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="WiktionaryLabelsFrequency.csv" attachment="WiktionaryLabelsFrequency.csv" attr="" comment="Frequency of Context/Domain labels in Wiktionary" date="1253521469" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WiktionaryLabelsFrequency.csv" movedwhen="1287045514" movefrom="Hiwi.YevgenChebotar.WiktionaryLabelsFrequency.csv" path="WiktionaryLabelsFrequency.csv" size="6776" stream="WiktionaryLabelsFrequency.csv" tmpFilename="/var/tmp/CGItemp61127" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="WordNetDomains.txt" attachment="WordNetDomains.txt" attr="" comment="Alle in WordNet Domains verwendete Domains" date="1252668753" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WordNetDomains.txt" movedwhen="1287045525" movefrom="Hiwi.YevgenChebotar.WordNetDomains.txt" path="WordNetDomains.txt" size="1628" stream="WordNetDomains.txt" tmpFilename="/var/tmp/CGItemp59851" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="WordNetHierarchyNew.xml" attachment="WordNetHierarchyNew.xml" attr="" comment="WordNet Domains-Hierarchy in XML. WordNet Domains 3.2." date="1252845692" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.WordNetHierarchyNew.xml" movedwhen="1287045539" movefrom="Hiwi.YevgenChebotar.WordNetHierarchyNew.xml" path="WordNetHierarchy.xml" size="5406" stream="WordNetHierarchy.xml" tmpFilename="/var/tmp/CGItemp60274" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="ContextLabels_EN_DE_RU.ods" attachment="ContextLabels_EN_DE_RU.ods" attr="" comment="ContextLabels from Wiktionary (EN, DE, RU)" date="1274694532" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.ContextLabels_EN_DE_RU.ods" movedwhen="1287055357" movefrom="Hiwi.WiktionaryAnalysis.ContextLabels_EN_DE_RU.ods" path="ContextLabels_EN_DE_RU.ods" size="26241" stream="ContextLabels_EN_DE_RU.ods" tmpFilename="/var/tmp/CGItemp50771" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="DomainLabels_Analysis.pdf" attachment="DomainLabels_Analysis.pdf" attr="" comment="WKT_EN, WN_EN, WKT_DE, WKT_RU Domainlabels Analysis" date="1286460586" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.DomainLabels_Analysis.pdf" movedwhen="1287055863" movefrom="Hiwi.WorkAugustOktober2010.DomainLabels_Analysis.pdf" path="DomainLabels_Analysis.pdf" size="104370" stream="DomainLabels_Analysis.pdf" tmpFilename="/var/tmp/CGItemp52683" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="DomainLabels_Categorized.ods" attachment="DomainLabels_Categorized.ods" attr="" comment="WKT_EN, WN_EN, WKT_DE, WKT_RU Domainlabels categorized" date="1286462719" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.DomainLabels_Categorized.ods" movedwhen="1287055876" movefrom="Hiwi.WorkAugustOktober2010.DomainLabels_Categorized.ods" path="DomainLabels_Categorized.ods" size="26488" stream="DomainLabels_Categorized.ods" tmpFilename="/var/tmp/CGItemp57483" user="YevgenChebotar" version="4"}%
+%META:FILEATTACHMENT{name="DomainLabels_Uncategorized.ods" attachment="DomainLabels_Uncategorized.ods" attr="" comment="WKT_EN, WN_EN, WKT_DE, WKT_RU Domainlabels uncategorized" date="1286372793" moveby="YevgenChebotar" movedto="Hiwi.DomainLabels.DomainLabels_Uncategorized.ods" movedwhen="1287055888" movefrom="Hiwi.WorkAugustOktober2010.DomainLabels_Uncategorized.ods" path="DomainLabels_Uncategorized.ods" size="28761" stream="DomainLabels_Uncategorized.ods" tmpFilename="/var/tmp/CGItemp47551" user="YevgenChebotar" version="1"}%

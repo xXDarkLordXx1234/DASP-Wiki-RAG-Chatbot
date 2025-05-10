@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="bugert" comment="" date="1569592214" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="ComputeCluster"}%
+---+!! %TOPIC%
+
+%TOC%
+
+---++ Principle
+The headnode and all compute nodes share one network file system. It is mounted on the headnode and each compute node under */ukp-storage-1*. This means that you only need to copy the data once to the network share, not to every single node. Jobs can then see the data no matter on which compute node a job runs.
+
+<div style="border: 2px solid red">
+   * There is *no backup* system in place for /ukp-storage-1.
+   * *Do not store code or large files in =/home= on the headnode.* A custom bash_profile and other small configuration files are okay.
+</div>
+
+---++ Usage
+
+---+++ Copying data and code to the cluster
+
+Every user has their own personal folder on ukp-storage-1 at =/ukp-storage-1/&lt;username&gt;=. This folder should already exist when you log in for the first time.
+You can copy data to this folder from your workstation via =rsync= or =scp=:
+
+From your workstation using =rsync=:
+<verbatim>
+rsync -aP data_folder wormulon:/ukp-storage-1/$USER
+</verbatim>
+
+From your workstation using =scp=:
+<verbatim>
+scp -r data_folder wormulon:/ukp-storage-1/$USER
+</verbatim>
+
+---+++ Accessing data and code in compute jobs
+
+When submitting compute jobs, you can now refer to your files on the storage. For example:
+<verbatim>
+#!/bin/bash
+#
+#SBATCH --job-name=test_job
+#SBATCH --output=/ukp-storage-1/klie/test/res.txt
+#SBATCH --mail-type=ALL
+#SBATCH --partition=ukp
+
+source /ukp-storage-1/klie/test/venv/bin/activate
+python /ukp-storage-1/klie/test/test.py
+</verbatim>

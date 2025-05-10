@@ -1,0 +1,9 @@
+%META:TOPICINFO{author="GeorgiValkanov" date="1359387594" format="1.1" version="1"}%
+%META:TOPICPARENT{name="GeorgiValkanov"}%
+-- Main.GeorgiValkanov - 2013-01-28
+---+++ Preliminary results (28.01.2013)
+|  *Similarity Measure*  |  *Result Single*  |  *Result Cluster*  |  *Match*  |
+|  Jiang Conrath  |  38 %  |  28%  |  71%  |
+|  Resnik  |  42%  |  32%  |  84%  |
+| | | | |
+|  Gloss Overlap (with Pseudo/without Pseudo)  |  46 % / 38 %  |  41 % / 38 %  |  85 %/ 88 %  |

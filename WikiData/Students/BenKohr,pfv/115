@@ -1,0 +1,613 @@
+%META:TOPICINFO{author="kohr" comment="save topic" date="1504033545" format="1.1" reprev="111" version="115"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Ben Kohr (Bachelor thesis)
+
+---++ Links
+   * Repo: https://git.ukp.informatik.tu-darmstadt.de/kuznetsov/BenKohr_BA_SRI
+   * Overleaf: https://www.overleaf.com/9080638sxrmhsvkghzv
+
+-------------------------------------------------------------------------------------------------------
+
+---++ Things done (18.08 - 31.08.)
+
+   * Updated the data folder.
+   * Refactored syntactic(Semantic)Path.
+   * Corrected and updated the Thesis according to your notes.
+   * Inserted functions and an algorithm for general and role-specific evaluation.
+   * Updated experiment automation.
+   * Started the text for DBSCANWithConstraints.
+   * Put the algorithm SyntacticBaseline into the thesis.
+   * Put the algorithm SyntacticPathBaseline into the thesis.
+   * Finished the section about DBSCANWithConstraints.
+   * Wrote the section about Kmeans.
+   * Wrote the section about COPKmeans.
+   * Took a look at the feedback, updated the text and answered the questions (below).
+   * Wrote the initial words for 'Task parameters'.
+   * Started explaining the NORMAL function mode.
+   * Started to create a table for the results.
+   * Finished the table layout (for now) for the results
+   * Finished exlaining the NORMAL function mode.
+   * Explained the Brown funtion mode.
+   * Explained the Custom function mode.
+   * Explained the Embeddings function mode.
+   * Found and (hopefully) corrected the Brown cluster bug.
+    
+
+*Notes:*
+
+   * Purity/Collocation: The overall purity and collocation (general evaluation) are determined according to the formulas in the Lang and Lapata paper. There is *no* role specific _purity_ and _collocation_. For role-specific values, I only compute _missing_, _correct_ and _spurious_ elements for each role and determine _precision_ and _recall_ from them (in Evaluation.java). In my opinion, the way I implemented it seems okay, but feel free to have a look at the Evaluation class again. :)
+      * IK: Well I had a quick look but let's look at the results in the end, there might be something not obvious   
+   * I use this embeddings file: glove.6B.50d.txt.
+      * IK: Ok, let's stay with that.
+   * From my side, the parameter experiments can be started on your machine. The data folder is updated (see above).
+      * IK: got the last "data" folder from dropbox, started on my machine, didn't crash so far and even printed some stuff, so I guess it's in progress.   
+   * I could not find a Penn Treebank definiton for dependency relations. It seems that they only provide POS tag definitions...
+      * IK: take a look here http://www.aclweb.org/anthology/W08-2121.pdf
+
+
+  *Regarding your feedback:*
+
+DBSCAN:
+   * what's the difference between your DBSCAN and original DBSCAN, if any?
+      * The result should be the same. My approach is a bit different (map/ function with -1, 0, and cluster ids; the cluster ids get updated by incrementing, if I remember right, this is not explicitely said in the DBSCAN paper). The differences are not that big to explicitely refer to them, I think...
+   * do you define "image" earlier? I just don't remember.
+      * I did not define image. I mean the "normal" image of an element a under function f, f(a). 
+   * You seem to use "state" and "image" interchangeably, is it the case? 
+      * I re-wrote the paragraph to make it more understandable. "State" is not used in the paragraph anymore.
+
+DBSCANWithConstraints:
+   * minor wording issues ("take into account" -> consider, enforce the constraints etc.) ->
+      * I replaced some occurrences of 'take into account' with 'consider', 'enforce' or 'respect'.
+
+SyntacticBaseline
+   * where does the number "20" come from? 
+      * Lang and Lapa stated that in their implementation, they gathered up to 20 clusters and the rest of the elements gets a fallback-cluster.
+
+
+-------------------------------------------------------------------------------------------------------
+
+---++ Task parameters (08.06 - 23.06.)
+
+   * Algorithm
+      * CW Biemann
+      * CW ChineseWhispers
+      * DBSCAN
+      * DBSCANWithContraints
+      * Kmeans
+      * COPKMeans
+      * Syntactic Baseline
+      * Syntactic Path Baseline
+   * Initilization (only for Kmeans, COPKmeans and the CWs)
+      * Normal (CWs)
+      * Random (Kmeans, COPKmeans)
+      * SyntacticBaseline (CWs, KMeans, COPKMeans)
+      * SyntacticPathBaseline (CWs, KMeans, COPKMeans) 
+   * Lemma reading
+      * Original lemma
+      * Next lemma
+   * Distance function
+      * K-SRL-distance function (except for Predicate Frame class!)
+      * Additional Brown feature function
+      * My custom function
+
+---++ Existing similarity/distance functions (08.06 - 23.06.)
+   * Predicate *F*rame, 
+   * Predicate *F*rame *C*lass (ALWAYS ACTIVE!), 
+   * Predicate *V*oice, 
+   * Syntactic*P*ath, 
+   * *A*rgument Head *L*emma, 
+   * *A*rgument Head *P*OS, 
+   * *B*rown class match
+
+Normal similarities (depending one MODE variable):
+
+   * K_SRL_SIMILARITY(A1, A2) = 
+6 if AL, V, P and F match 
+
+5 if only AP, V, P and F match
+
+4 if only V, P and F match
+
+3 if only AL, V, P and FC match
+
+2 if only AP, V, P and FC match
+
+1 if only V, P and FC match
+
+0 otherwise
+               
+   
+
+   * K_SRL_SIMILARITY_WITH_BROWN(A1, A2) = 
+8 if AL, V, P and F match
+
+7 if only B, V, P and F match
+
+6 if only AP, V, P and F match
+
+5 if only V, P and F match
+
+4 if only AL, V, P and FC match
+
+3 if only B, V, P and F match
+
+2 if only AP, V, P and FC match
+
+1 if only V, P and FC match
+
+0 otherwise
+   
+   * K_SRL_SIMILARITY_CUSTOM(A1, A2) = 
+12 if V and P match
+
+10 if only P matches
+
+_in addition to the above, if the current score is >= 0, then_
+
+_1 additionally, if F matches; then_
+
+_3 additionally, if AL matches; then_
+
+_2 additionally, if AP matches; then_
+
+_1 additionally, if B matches_
+
+0 otherwise
+
+These functions build on top of the normal similarities (and also depend on the mode, as the similarities do):
+
+   * normal distance function (A1, A2): Max_value_of_similarity_function - corresponding_sim_function(A1, A2)
+
+   * PHI_ARGUMENT_SIMILARITY(A1, A2) =
+                       INTEGER_MIN if A1 and A2 appear in the same sentence;
+                       sim_function(A1, A2) otherwise
+
+   * PHI_ARGUMENT_DISTANCE(A1, A2) =
+                       INTEGER_MAX if A1 and A2 appear in the same sentence;
+                       dist_function(A1, A2) otherwise
+
+Usages:
+   * CW Biemann: PHI_ARGUMENT_SIMILARITY
+   * CW Lang/Lapata: PHI_ARGUMENT_SIMILARITY
+   * DBSCAN: normal distance
+   * DBSCANWithConstraints: normal distance
+   * KMeans: PHI_ARGUMENT_DISTANCE
+   * COPKMeans: normal distance
+
+
+   
+---++ Meetings
+
+---+++ 20.04.2017
+   * TODO(IK): <del>hand in the CoNLL-2008 data</del>
+   * TODO(IK): schedule talks
+
+---+++ 13.04.2017
+   * Infrastructure setup
+   * Questions regarding implementation
+
+---+++ 6.04.2017
+   * _Cancelled: EACL_
+
+---+++ 1-30.03.2017
+
+   * Topic introduction
+   * Task description
+   * Administration
+
+
+
+
+
+---++ Things done and questions per week
+
+
+---++ Things done (10.08 - 17.08.)
+
+   * Implemented a switch for whole path or last element
+   * Started working on the complete parameter variation automation.
+   * Filled empty section headlines with some text.
+   * Mentioned the frame-sense-speciality for PropBank. 
+   * Wrote the section about DBSCAN.
+   * Started to put the DBSCANWithConstraints algorithm in the Thesis.
+   * Inserted the Brown similarity function.
+   * Inserted the word embedding similarity function.
+   * Finished parameter variation automation.
+   * Finished the DBSCANWithContraints algorithm in the Thesis.
+   * Inserted subimages of the complete workflow for further components.
+   * Put the Kmeans algorithm in the Thesis.
+   * Started implementing the parameter application automation (to apply the manually checked best parameter combination automatically to all algorithms on the big CoNLL file).
+   * Put the COPKmeans algorithm in the Thesis.
+   * Finished the parameter application automation methods.
+
+*Questions:*
+
+   * Just to get it right: "Correct" are argument instances which have the "best match" role AND the "best match" cluster, "missing" are those with the "best match" role but with another cluster and "spurious" are those with the "best match" cluster but a different actual role. Is this right?
+
+---++ Things done (28.07 - 10.08.)
+
+   * Went through the thesis ideas and corrections as discussed on 27.07 and updated the text.
+   * Expanded the Chinese Whispers (Biemann) algorithm to the Thesis.
+   * Wrote the section "Input format".
+   * Updated the first workflow image.
+   * Added two small images (pieces from the workflow).
+   * Wrote the section "Reading and preprocessing".
+   * Wrote the section "Graph construction for CWBiemann and CWLangLapata".
+   * Wrote the section about CWBiemann.
+   * Added table of algorithms.
+   * Added the CWLangLapata algorithm.
+   * Wrote the section about CWLangLapata.
+   * Added the DBSCAN algorithm.
+
+*Questions:*
+
+   * Shall I avoid empty sections (e.g., in case a section starts and then the first subsection immediately starts afterwards, like Introduction -> Motivation?)
+   * I am a bit unsure about frames. If I remember right, the idea is that verbs invoke frames, which typically correspond to senses of the verb and that this is the typical idea in an SRL process. But - VerbNet and PropBank verbs don't invoke frames, do they?
+   * Just to get it right: "Correct" are argument instances which have the "best match" role AND the "best match" cluster, "missing" are those with the "best match" role but with another cluster and "spurious" are those with the "best match" cluster but a different actual role. Is this right?
+   * Shall I mention that in FrameNet nouns (etc.) can also invoke frames?
+
+*Notes*
+   * Yes, the final deadline for the Master is the 31.10.2017. But the Studienbüro mentioned that there are some holidays in that time, so it would be better to have everything ready a bit earlier (ideally in the 43. week).
+   * I could not find out how many pages are desired and whether this amount already includes the start and the ending of the document.
+
+---++ Things done (20.07 - 27.07.)
+
+   * Added the subsection about K-SRL in the Introduction.
+   * Added the subsection about Lang and Lapata in the Introduction.
+   * Changed some things in the Introdcution (SRL <-> subject, object usage; similarity <-> distance function)
+   * Wrote initial words in the Experimental setup section.
+   * Wrote subsection "Overview" in the Experimental setup section.
+   * Experimented with algorithm notation (start of CW (Biemann)).
+   * Expanded the basic similarity functions in the document.
+   * Implemented POS grouping and integrated it into the pipeline.
+   * Worked on creating a workflow overview image.
+   * Implemented role-based evaluation.
+
+*Notes:*
+   * Yes, my PC takes much more than 12 minutes for all experiments in the current configuration.
+
+---++ Things done (13.07 - 20.07.)
+
+   * Implemented the logging of functions values (CW: for the graph's edges, KMeans: When the nearest cluster is searched, DBSCAN(WithConstraints): When a region query is performed)
+   * Ran the program on all algorithms with the new logging: [[%ATTACHURL%/Logs.zip][Logs.zip]]
+   
+   * Corrected some of the red hints in the current state of the Thesis.
+   * Changed the bibliography to a proper Latex-Bibliography.
+   * Read and improved "Motivation".
+   * Created a first draft for the documents structure.
+   * Wrote "Thesis stucture".
+   * Created a subfolder "Thesis" in the Dropbox folder which contains the current state of the Thesis. 
+
+This is easier to update than Overleaf and you see the correct fonts (which Overleaf does not display). Feel free to take a look at the documents structure (Table of Contents) which I planned (first draft).
+
+   * Answered to the suggestions and remarks in the emails: [[%ATTACHURL%/Regarding_emails.txt][Regarding_emails.txt]]
+   * Answered to the Code-TODOs in the code directly.
+   * (Slightly) improved the SRL section.
+   * Experimented with algorithm usage in LaTeX.
+
+
+---++ Things done (06.07 - 13.07.)
+
+   * Implemented the verb group clustering.
+
+Now, when the CoNLL reader provides its map and if verb group usage is desired, the original String-Set(Argument)-Map is transformed so that there aren't Verb-Argument-Pairs, but Verbclass-Argument pairs. I have taken into account that a verb can appear in more than one group (then, it's arguments are inserted into every argument set of a group this verb belongs to) and that a verb could not have a group provided (in that case, this verb makes its own group). The clustering itself and the evaluation work as before. As there are no gold labels for *groups*, the evaluation still looks at the gold roles (A0, A1, ...) for *individual verbs* (as before), and these gold labels A0, A1, A2, ... may (probably) differ in their sense between individual verbs of the same group (so they don't indicate the exact same semantic role, probably), but in case of similar verbs (which form the groupings), this should be okay, I guess - what do you think?
+
+   * Reading of embeddings file.
+   * Start of implementation of the Lang/Lapata similarity function
+
+Now a lot of method signatures and type declarations have changed from "Integer" to "Number" oder "Double" to be able to deal with int and double values. I hope that I did not destroy anything with these changes (like e.g., casting some number to an inappropriate format); the (Fscore) results for some algorithms differ now, but the difference first starts with the third or fourth digit behind the comma. But, this may also be due to something like the unability of double values to represent every int exactly (comparisons with >= etc.) or something similar.
+
+   * Implemented the similarity function of Lang and Lapata. 
+
+If words without a vector representation occur and should be compared, then the result for lex is always 0. I implemented the cosine similarity by myself as I did not find an existing implementation in the JDK so far.
+
+   * After a long time of debugging, comparing outputs, going back to previous commits and observing changes, I finally solved the above problem with the differences in the results by taking an old commit again and inserting only the new function as an int-function.
+
+Now, the embeddings function result (double) is converted into an appropriate integer. With alpha = 0.5, the original function (without -inf) has the range of [-0.5, 1] which is now transformed to [0, 1.5] (to get rid of negative values) and then to [0, 15000] (to have an integer result). So, all signatures can stay the same and there are no conversion problems.
+By the way: Lang and Lapata said, that their function had the range [-1, 1] u {-inf}. Probably they meant "with alpha varying between 0 and 1", because with a fixed alpha of 0.5, the range is [-0.5, 1].
+
+   * Fixed a small bug in Kmeans.
+   * Fixed a small bug with CW Biemann.
+   * Ran the programm with the CUSTOM-setting (as before) to see if everything works fine now. It seems to do. These are the current results:
+   [[%ATTACHURL%/Results_10_07_2017.pdf][Results_10_07_2017.pdf]]
+   * Now, the same words will always get the cosine score of 1, even if one of them does not have an embedding representation.
+   * Implemented a switch to choose _between_ using a verb group with only one single verb for those verbs without a VerbNet group _and_ using one fallback group, where all verbs without VerbNet group are put into.
+   * Generated up-to-date logging results (12.07): [[%ATTACHURL%/Current_logs_%2812.07%29.zip][Current_logs_(12.07).zip]]
+   
+
+
+---+++ Comments IK
+   * Roles for predicate groups: yes, correct, the roles for the verbs in the same group should have the same or similar roles, that's the motivation behind grouping the verbs. ==> Okay, that is what I thought. :)
+   * Minor changes in F-Scores: yes, I guess it's some internal math thing, don't bother 
+   * Lexical similarity: the result can be 0 - it's okay - UNLESS the words are identical, then it's self-similarity and must be 1 ==> I will implement that.
+   * Negative values: do we have to get rid of negative values? I don't know, but I'm sure some of the algorithms have a justification for that. What motivates your decision? ==> We probably do not have to get rid of them, but I am not sure if everything still works as desired if we allow negative values. That is why I chose this conversion. ==> OK
+
+
+
+---+++ 08.06 - 06.07. (Things done)
+   * Chose parameter ranges and did some initial parameter optimization tests for all of the algorithms. The results are in "Results_09_06_2017.pdf".
+   * After a closer look to some of the algorithms, I made some changes to DBSCANWithConstraints, Constraints, COPKMeans and KMeans. The new results (with new parameter search for the modified algorithms) are in "Results_10_06_2017.pdf"
+   * Noticed some things and thought about the following:
+      * With similar parameters, COPKMeans is usually a bit worse than KMeans and DBSCANWithConstraints is in such cases worse than KMeans, even though these algorithms should act as improvements over the original form. I checked them, but I could not find a mistake. Maybe you could have a look at them, too. Always feel free to check my code.
+      * There are outliers using DBSCAN/DBSCANWithConstraints and they are currently not used in the evaluation (there are treated as non-existing). What shall I do in the case of outliers?
+      * COPKMeans does not find clusterings for every input (which is okay), but then, the evaluation can tae those argument sets into account which are acutually produced by COPKMeans. What shall we do there?
+      * Maybe the training data is a bit too small, just an idea.
+   *  I refined the results of "Results_10_06_2017.pdf" to "Results_11_06_2017.pdf" by taking a look at the best parameters so far and searched for better combinations in these regions. Because NEXT_LEMMA is always worse than original lemma (probably only due to the training on original lemma), I only evaluated on NEXT_LEMMA. COPKMeans, DBSCAN and DBSCANWithConstraints may not have that meaningful results (see the above problems). For COPKMeans, I tested the k that is written in the PDF - less k would provide better results, but with only a small number of actually found clusterings!
+   * Then, I searched for good parameters with my custom distance function and refinded them afterwards, applied them to "train.closed" (as with the above results) and I got the results of "Results_12_06_2017.pdf". They are slightly better, but still far away from the SyntacticBaseline.
+   
+   [[%ATTACHURL%/Results_09_06_2017.pdf][Results_09_06_2017.pdf]]
+
+   [[%ATTACHURL%/Results_10_06_2017.pdf][Results_10_06_2017.pdf]]
+
+   [[%ATTACHURL%/Results_11_06_2017.pdf][Results_11_06_2017.pdf]]
+
+   [[%ATTACHURL%/Results_12_06_2017.pdf][Results_12_06_2017.pdf]]
+
+   * Improved parameter experiment automation
+   * Tested an SyntacticBaseline initialization for CW (but, I didn't find a text part where Lang and Lapata spoke of a initialization with the syntactic baseline, but maybe I just didn't look good enough...). But, there is a problem, currently: My initialization clusters the arguments with SyntacticBaseline and then uses these cluster ids to initially label the vertices. But, as only vertices with the identical path are connected and are not no-links (due to the distance funtion(s)) and because SyntacticBaselien assigns the same id for the same syntactic function (the last part of the syntactic path), all connected, non-no-link vertices are already labeled with the same it. Hence, CW yields the same result as SyntacticBaseline, because it does not change anything. Do you have an idea for a better initialization?
+   * Realized SyntacticBaseline initialization for KMeans and COPKMeans
+   * Looked at COPKMEans and DBSCAN, made some changes to Constraint management
+   * Outlier treatment for DSBCAN/DBSCANWithConstraints
+   * Treatment for no clusterings (COPKMeans)
+   * Tuned parameters and evaluated after the changes (see "Results_18_06_2017.pdf"). The CW algorithms have the problem described above. The results are better, because CW Lang/Lapata does not change the initial SyntacticBaseline clustering at all and CW Biemann only makes it worse by letting no-links vote. Do you have any ideas how to solve that problem? KMeans and COPKMeans also start with the original SyntacticBaseline information (by starting with centroids based on the SB clusters). But they also make the clustering worse than before - KMeans even uses the (optimal) value 6.0 for the stopThreshold, which means as little changes as possible, but still the results are worse...
+   
+[[%ATTACHURL%/Results_18_06_2017.pdf][Results_18_06_2017.pdf]]
+
+   * Implemented switch for initialzation types for ChineseWhispers, KMeans and COPKMeans
+   * Experimented with a non-syntactic similarity function for CW Lang/Lapata in the case of SyntacticBaseline preclustering - just to find out that any similarity that is not always 0 yields a worse clustering result than just using 0 similarity everytime (so that the SB clustering is not changed). Similar result for KMeans. It seems like the SB preclustering can only be made worse.
+   * But, while experimenting with the functions, I tried to integrate the syntactic function (not the path, which is already in there) into my custom function (as a "fallback" in case the syntactic path does not match). I changed the function, made some parameter experiments with CW Lang/Lapata and the normal (!) initilization, so no SB preclustering with CW Lang/Lapata. If I did not make a mistake, these are the results of the new similarity with the (so far) best parameters for CW:
+>>> PURITY: 0.8219866585200499 (as a comparison: SyntacticBaseline: 0.8055106840647154)
+>>> COLLOCATION: 0.7791332222938306 (0.7934079362555136)
+>>> FSCORE: 0.7999864614880909 (0.7994135052946661)
+   * Implemented a logging class (AlgorithmLogger) and applied logging to the ChineseWhisers classes.
+   * Logging for KMeans (Classic, COPKMeans)
+   * Changed the custom distance function a bit, training and testing with the current function and the current parameters yield the following results (all results with normal initialization):
+
+[[%ATTACHURL%/Results_26_06_2017.pdf][Results_26_06_2017.pdf]]
+
+   * Improved logging: It does not waste too much time when not activated during an algorithm's execution.
+   * Experimented with COPKMeans and the distances at hand, but with no improved result.
+   * Finished logging for all algorithms.
+
+---++ Notes (08.06 - 23.06.)
+   * The distance/similarity functions can be found in the class "WordAspects" in the package "words". ARGUMENT_SIMILARITY_WITHOUT_BROWN is the basic function. Then, there is my custom similarity which resulted in (slightly) better results, and the similarity with the Brown feature. The distance is adapted to the similarity. Which similarity/distance is used is determined by the FunctionMode.
+   * Syntactic(Path)Baseline: SyntacticPathBaseline uses the syntactic path as a grouping criterion, only arguments with the exact same path are grouped together (e.g. "SUBJ OBJ ADV SUBJ"), while SyntacticBaseline uses only the function (OBJ, SUBJ, i.e. the last element of the path.)
+   * Theta in L+L Chinese Whispers: Theta is a sum divided by a number of vertices, so it should not be an integer.
+   *  My complete code: [[%ATTACHURL%/Code.zip][Code.zip]]
+   * CW aspect: Why does CW Lang/Lapata not change it initialized SyntacticBaseline clustering? Because: SB clusters according to the syntactic function, this means, according to the last part of the syntactic path. So, all arguments with the same last element of the syntactic path are in one initial cluster. Then, CW starts and contructs a graph, using the K-SRL-distance function, which assigns non-zero similarities *ONLY IF* the syntactic path of two arguments is identical! This means that in the resulting graph, only arguments with the identical syntactic path are connected with non-NOLINK-links! But, as all of these arguments (of course) share the same *LAST* element of the syntactic path, *all elements in such a connection have the same initial cluster ids*. CW can only change cluster ids if neighbors have other ids - but as all connected graph parts already have the same id, no cluster label will change, no matter how many executions are run. This is why the final result of CW Lang/Lapata is still the same as in the beginning after the SB pre-clustering. CW Biemann *CAN* change this score, because it *ALLOWS* voting nodes with only NOLINK-neighbors, but this will likely decrease the score.
+   * So, in my opinion, there is no error. This behavior is the expected one, it may only be not that useful for us. What one could do is to use another function for CW which does not look at the path anymore (because SB has already done that). What do you think about that?
+   * And, if I used the Syntactic *PATH* for initial clustering (i.e. the SyntacticPATHBaseline), the results will still be the same :), because the initial graph groups have all the same path (according to the distance function, which only constructs NOLINK-edges *IF* the path is the same) and because of having the same path, they have the same initial label (according to SPathBaseline) and then all updates caused by neighbors will result in the exact same id (as above).
+
+
+
+
+---++ Things done (02.06 - 08.06.)
+   * Edited CoNLL reader to take care of duplicates. Now, arguments that are already seen are not discarded, but remembered within the already existing one. Clustering is still performed on the "outside" argument, so should not have changed.
+   * When evaluating (or printing results), the inner arguments (with their gold labels) are taken out of the surrounding argument and their get the same classes as their container arguments. So, evaluation and printing take all arguments into account. This should realize an instance-based evaluation.
+   * Ran the project on whole_connl. The results can be found in results_01_06_17 (Dropbox).
+   * Implemented the syntactic baseline how I would understand it based on the paper description (see: SyntacticBaseline; the previous syntactic baseline is now called "SyntacticPathBaseline"); results: PURITY: 0.8037515852435123, COLLOCATION: 0.791917624122201, FSCORE: 0.7977907225815418 for whole CoNLL
+   * Implemented a method for experimenting with parameters for algorithms, which just needs a few ajustments when another algorithm/parameter should be investigated
+
+
+---+++ 26.05.17 - 01.06.17 (Things done)
+   * Read emails
+   * Changed separator in CSV files from semicolon to a tab separator
+   * Changed cluster number for (COP)KMeans to 53
+   * Implemented a adjacency matrix printer in the given format ("VERBNAME_nodes.txt", "VERBNAME_edges.txt"), used for the verbs of Lang and Lapata.
+   * Changed Brown feature to be more reasonable
+ 
+
+---++ IDEAS:
+   * Tested some modifications and thought about some possible refinements. To get results fast, I only tested most of my experimental ideas on small datasets that are not representative, just to get an impression. These are my ideas:
+      * I'm irritated about the under-mergin problem. CW is run for each single verb and the cluster numbers produced are not correlated to the ones for another verb. Cluster number X in clustering Y is not the same class as cluster number X in clustering Z.
+		So, there are not more than 1000 clusters produced per clustering, but (in current results) in most cases less than 50. The same is true for the other algorithms: Same numbers of different clusterings don't indicate same clusters. 
+	  * But still, some verbs produce high number of clusters (e.g. say). This problem of clusters in CW could be resolved by getting all but the 53 biggest clusters and merge the elements in these small clusters to "nearby" (connected) vertices of the biggest clusters.
+      * I set the number of clusters from 53 to 10 for the KMeans algorithms, because it seemed to me that this high number of clusters leads to worse results (bad collocation). Maybe a small cluster number is better, even if not the whole amount of labels can be captured.
+      * I tried (experimental) some custom distance functions (with rather less success). Probably we should weight the individual matches (AL, P, F, AP, ...) individually?
+      * I tested a distance function which does not return 0 as the smallest value, but 1, while giving more weight to the "well known" matches, hoping the merging could be engaged with more available links. This probably weakens the efficiency. The programm ran out of heap space over night, even though I already increased it...
+      * I also tried to required lower the percentage of nodes that "want to" vote for the CW algorithms, but that did not provide better results. I hoped to achieve more merges of clusters.
+      * I changed the "cooldown" of the CW L/Lapata algorithm, so that it does not start with the maximum value, allowing more cluster label changes.
+      * Besides that, I thought about
+         * dynamically determine the EPS value of DBSCAN (according to the current cluster distances),
+         * looking at parts of the syntactic path (not always the whole path) and define a fitting distance function
+         * integrate must-links for COPKMeans and DBSCANWithContraints in case of a small distance
+		 * Using different "base" distance functions (ARGUMENT_SIMILARITY) for the different algorithms
+      * A Whole-CoNLL-Test with 10 clusters for (COP)KMeans, the new "cooldown", and the improved Brown distance function (see above) yields the following result: [[%ATTACHURL%/Results_29_05_2017_%281%29.pdf][Results_29_05_2017_(1).pdf]]
+      * A Whole-CoNLL-Test with this configuration AND the merging of infrequent clusters into nearby ones (CW) yields the following result (only CW): [[%ATTACHURL%/Results_29_05_2017_%282%29.pdf][Results_29_05_2017_(2).pdf]]
+
+---++ FEEDBACK (IK):
+   * Yes, cluster numbers should not be the same. I mean, these are just indicators! Does it cause problems with evaluation? Because it shouldn't, since Arg1 of "see" is also not same as Arg1 of, say, "burn". The stuff should be evaulated per verb as in Lang/Lapata. I think that's what you do, but just to be sure.
+   * Number of clusters is a parameter so the value must be justified somehow. Is the purity higher with more clusters?
+   * Giving some weights to AL/P/F/AP might be not a bad idea since you will give clusters another change to merge (at the expense of graph density for CW, but it's still less dense than the original one). You can play around with that. If you have time, run the clusterings just with the syntactic path feature, path+voice, path+lemma etc.
+   * I'd keep minimal distance at 0 and add individual features instead, otherwise the graph might get too dense.
+   * EPS, K and other parameters - well, usually one gets them from the validation/development set. Dynamically determining the EPS might complicate things, so let's think about it more.
+   * Parts of the syntactic path - this needs a thought. I *think* it will not be helpful for the task, but I'll think more.
+   * BTW our syntactic baseline is lower than the one in Lang/Lapata. Take another careful look at the paper to see if there are any mismatches in evaluation etc. This might be due to a different syntactic parser though.
+ 
+---++ BK:
+	* I read the emails and the feedback.
+	* Regarding the frequencies of verbs, I took another look at the CoNLL reader and it seems that this is due to removing duplicates. I don't add every
+	argument to the Sets, but only those that are not already included. The reader finds about 20000 possible arguments and about 15500 are discared as they
+	are already contained (regarding the StringToCompare). Say has many arguments and therefore many duplicates.
+         * (IK): OK, good, makes sense.
+	* Some verbs are missing in the DBSCAN result, because DBSCAN clustering results that have only outliers are not added to the result file and the evaluation.
+         * (IK): OK, but then it's not a fair comparison. What if you just assign outliers unique cluster labels? I mean, most of these instances are unfrequent ones so you'd get some score boost there.
+	* Yes, I evaluate on single verbs and average afterwards. But you probably already checked that. :)
+	* The purity is higher with more clusters, yes. That's why I thought about reducing it. This yields better results (see below).
+	
+	* I did some experiments with the distance function. I used a small subset of whole_conll.closed (about a third), hoping I get results rather fast and that they are
+	(a bit) representative, too. 
+		* I used P && V match as the only criterion first, to have a baseline.
+		* And then, I added feature after feature, always ensuring that the current combination of them yields better better results on the small data set.
+		* I also experimented with cutting the "#[preposition]" away if the paths don't match at first, rating a match without the "#..." a bit lower. But that
+		didn't succed on the dataset.
+		* Finally, I obtained a custom function, that yielded better results compared to the initial results on the rediced dataset, so ran the whole procedure
+		with this function, after having made some adjustions to the project in order to deal with the function.
+		* The results can be found in "res, 30.05.17" in Dropbox. There are the reports and results, and the matrices (in VERB_nodes.txt and VERB_edges.txt for the Lang/Lapata verbs).
+		  After all of this work and optimization of the function on the smaller data set ("train (med).closed"), the result on the complete CoNLL is better than the previous best result (for (most of/all?) of the algorithms except SyntacticBaseline), 
+		  BUT syntactic baseline still is the best. :( 
+		  The corresponding PDF can be found in the mentioned folder.
+	* I also updated the reference data I use (complete folder structure) in Dropbox (in "data").
+
+---++ Notes for the meeting
+   * Won't have time to check that, but it might be important. Do you evaluate argument-wise or instance-wise? I mean, e.g. for purity do you iterate over arguments (=merged) or corpus instances (=not merged)?
+   * I checked Lang and Lapata and they seem to use train for evaluation and test for tuning. We might want to do the same. Check this.
+   * Also in their syntactic function baseline they only use 21 most frequent functions and don't say much about paths. Check this too (we don't want our syntactic baseline to get even better, but we must check it).
+
+
+
+---+++ 19.05.17 - 25.05.17 (Things)
+
+   * Checked the passive verb (see Notes IK). The syntactic head of "told" in this sentence is "roll" (an not be), that's why the passive recipe does not say that it's passive.
+   * Implemented the syntactic baseline as another clustering algorithm with the following results on whole_conll, original lemma:
+      * PURITY: 0.8591531262384537
+      * COLLOCATION: 0.5592415327866354
+      * FSCORE: 0.6774900175473992
+      * Time: 0.016667 minutes
+   * Implemented directed dependency path generation
+   * Printing number of clusters after each clustering
+   * Added Brown cluster feature
+   * Clustering results after the above steps: [[%ATTACHURL%/Results.pdf][Results.pdf]], see also ZIP file in Dropbox (21.05.); remark: I was irritated that the ClassicKMeans needs more time than the COPKMeans, but I could not find any reason why this is the case. I ran the KMeans (after some further changes) later and it took less than one minute (as COPKMeans), which is what I would expect. I checked the different run configurations in the Main class and the ProcessingContainer class (because in the second run, I used the configuration for only one algorithm and not the one for all five), but I could not detect a bug (if there is any). It's still a bit strange. Maybe it's because of my computer getting slower after the long run time temporarily (?). I couldn't detect a bug that causes this - and maybe it's all correct, even if it seems wierd (For course, feel free to check my code, if you have the time :) ).
+   * Updated DBSCANWithConstraints to only extract the problematic cannot-link element from a cluster and to assign it to another cluster (if possible). Updated the rest of the algorithm to still respect all cannot- and must-link constraints.
+   * Improved clustering speed of ChineseWhispers (Biemann) from about 27 minutes (whole conll, original lemma) to 9 minutes; improved speed of CW (Langa/Lapata) from 72 minutes to also appr. 9 minutes. 
+   * Tested all algorithms' performances (current state) with a different Brown cluster file. For the above test, I used the English file paths_1000_min_50. For this test, I used paths_1000_min_3. The results have not changed much by the different cluster file ([[%ATTACHURL%/Results.pdf][Results.pdf]], see also Dropbox -> results, another cluster file).
+
+
+---+++ 19.05.17 - 25.05.17 (Questions)
+
+
+---+++ 12 - 18.05.2017
+
+   * TO-prepositions are treated like IN-prepositions now
+   * Printing of prepositions in next lemma mode, if two or more children are observed or if no children is observed 
+   * Random seed used now to specify behavior of ChineseWhispers (Biemann / Lang, Lapata), of KMeans and COPKMeans.
+   * Documented the current parameters that can be modified for optimization: [[%ATTACHURL%/Parameters.pdf][Parameters.pdf]]
+   * Path annotation in case of next lemma usage (There was only one single case in train.closed, where the path to the NEW node had only one step, so in this one case I annotated the last (and only) step to the child noun).
+   * Printing clustering results into a file (as a table)
+   * Added the whole sentence to the table output
+   * All clustering and reading times are printed now
+   * Reading results are separately printed as a table
+   * I did a performance and clustering test on all (currently) five algorithms, with original and next lemma and on the single verbs. The results for all verbs are documented here: [[%ATTACHURL%/Results.pdf][Results.pdf]]. Some were obtained after some (possible) further processing (if needed), e.g. removing empty argument sets before clustering for single verbs, removing results consisting of outliers only (DBSCAN) etc. Documented are the purity, collocation and fscore for alle algorithms and the times. I put the result files (reports (Output text) and results (Tables), all in all 264 files) into Dropbox, because it was far to big to upload it here. You may take the zip archive "results.zip" and remove it from the Dropbox again, I still have a copy.
+   * Implemented a DBSCAN algorithm inspired by C-DBSCAN, which respects constraints -> DBSCANWithConstraints
+   * Tested DBSCANWithConstraints on CoNLL (results see Dropbox, folder "DBSCANWithConstraints").
+      * Purity: 0,89362
+      * Collocation: 0,38070
+      * F-score: 0,53394
+      * Time: 0,16667 minutes
+   * Improved speed of COPKMeans from about 13 minutes (whole CoNNL, all verbs) to less than one minute.
+
+---++ Questions BK (this week, 12.05 - 18.05.)
+
+---++ Notes IK
+   * (just to make sure) double check distance/similarity conversion
+   * General note on results: higher purity, lower collocation. How can it be improved?
+      * Lower collocation means that clusters are fragmented, which is understandable because our distance function is so strict.
+         * Try using Brown clusters in addition to lemmas? https://github.com/rug-compling/dep-brown-data (if you use, don't forget to cite!)
+         * Make sure to take the English clusters and not the Dutch ones :)
+         * Also consider reading the paper
+   * PASSIVE/ACTIVE debug, conll2008_clustering.DBSCAN_[2]_next_lemma_[tell]_RESULT.csv src line 334522, LGSby -> Active. Why not passive?
+   * Implement syntactic baseline?
+
+---+++ 05. - 11.05.2017
+
+Things done BK:
+   * Words now only are nolinks, if they have the same sentence id and verb id
+   * Added NO_LINK constant
+   * Treated NO_LINK as special value for CW (Biemann): Now, Integer.MIN_VALUE indicates these NO_LINKs. They are less frequently taken chosen as voted class.
+   * Treated NO_LINK as special value for CW (Lang/Lapata): In addition to CW (Biemann), if one node is only connected to NO_LINK-distant nodes, it must not vote.
+   * Treated NO_LINK as special value for KMEANS: NO_LINK nodes have Integer.MAX_VALUE distance in that case. This probably does not make a huge difference, as all nodes are jus compared to the cluster center nodes and just in very few cases there is such a distance occurence, but it still takes the knowledge into account.
+   * Treated NO_LINK as special value for COP-KMEANS: NO_LINKs between Arguments result in cannotLink-Elements, before clustering is done.
+   (For DBSCAN, in my opinion there is no "good" way to (intuitively) add the information of NO_LINKs)
+   * Added stop criterions to reduce number of iterations significantly for CW (Bieman, L&L): Number of changes / change wishes of nodes determine level of change; low level of changes results in a stop of the algorithm.
+   * Added stop criterions to reduce number of iterations significantly for ClassicKMeans and CopKMeans: differences between old and new centroids is determined and may result in a stop, if they are similar.
+   * Added usage of child node if node is a preposition (configurable for the reader)
+   * Better communication between the reader, the clustering algorithms (on one side) and the Evaluation (on the other side). The specialities of the reader (verbs with no arguments), DBSCAN (Ourliers) and COPKMeans (Unable to construct clusters) caused problems during evalutaion which are (hopefully) solved now.
+   * I edited the Pipeline class for supporting several individual pipeline runs. One of the next steps will be refactoring the Pipeline as due to adding aspect after aspect to it, it's pretty complex now and configuration management is not easy anymore. I still hope these results are correctly configured and determined by the system: In [[%ATTACHURL%/Results.zip][this]] ZIP archive I inserted the output for the whole CoNLL (all CoNLL files in one single file) with all five algorithms (Chinese Whispers original, CW Lang/Lapata, DBSCAN, KMeans, COPKMeans) with configurations as in the current Pipeline.java file on the original lemma usage ("...original lemma..." in the file name) and the next lemma usage ("...next lemma..."). The output contains the processing steps, the time and the evaluation metrics. I also ran the program to determine the clustering results for single verbs (those in the Lang/Lapata paper). As mentioned, I will improve the Pipeline class in terms of readability and efficency as soon as I have the time for it.
+   * I made a new processing core of the project which is (in my optinion and, and, if written correctly) much more understandable and flexible. Next step is to make it faster. Currently, e.g. the single verbs are clustered individually while their results could be stored during the clustering of all verbs and used later on. Some results of the "new" Pipeline are collected here and they seem to be as in the "original" pipeline (but with some randomness aspects, due to the algorithms): [[%ATTACHURL%/Result2.zip][These are the results.]]
+ 
+Questions BK:
+   * Currently, I just take the "IN" prepositions to switch to the child node. Should I use others, too, for example the "TO" POS tag?
+      * IK: Well I would do the "TO" too, but see if it's easy or not. If not, drop it for now.
+      
+
+Notes IK:
+   * So can the no-link'ed elements get merged in COP-KMEANS / KMEANS?
+   * Let's go through all parameters again
+   * Randomness - fix the seed!
+   * Lemma comparison - lowercase?..
+   * Result2.xip - add clustered arguments?
+   * Print full argument signature (all the features you use to get the distance, e.g. path, lemma, POS etc.)
+
+
+
+---+++ 28.04 - 04.05.2017
+Things done:
+   * Implemented and integrated dependency finding between two given nodes
+   * Implemented and integrated voice detection from the recipe
+   * CoNLL-Reader timing test on the corpus
+   * Improved CoNLL reading speed (I got rid of some readers, the tests are still working, the output file ([[%ATTACHURL%/newoutput.txt][newoutput.txt]]) seems to have the identical arguments (String representation), but now the reading for "say" takes only 0.7 minutes instead of 172 minutes).
+   * Implemented the confidence aspect of Lang and Lapata to the Chinese Whispers Algortihm. Now, confidence usage can be added or not via a boolean.
+   * Added support for all verbs: All verbs contained and marked in the corpus are searched and arguments are detected per verb.
+   * small enrichements of the Pipeline class (mode for CoNLL: one verb, list of verbs, all verbs; evaluation)
+   * Speed improvement for finding all verbs and constructing arguments for each verb: From (probably much) more than 105 minutes (I aborted it...) to now only 2.3 minutes (I degugged it and it seems to be working, please feel free to take a look at it, I certainly will add more tests, but it seems to be correctly working). This is the attached output for the reading of all verbs: [[%ATTACHURL%/output_allverbs.txt][output_allverbs.txt]]
+   * Added tests for evaluation metrics and the reading of all verbs
+   * Now, the Reader only retrieves verbs (POS: V...)
+   * Improved reader code
+   * Implemented the similarity function by Lang and Lapata (based on sentences numbers)
+      * IK: what if there are several Arg0 in the sentence, but they belong to different predicates?
+
+Questions:
+   * [ANSWERED] If I remember right, you said that we focus on verbs only, not on predicates for clustering. Does this mean I have to mention that explicitely in the Latex paper (when there is time for that, later)? And also, in the CoNLL file often nouns (predicates) get a frame association, too. Shall we exclude them, because they are not verbs? 
+   * [ANSWERED] Lang and Lapata used a function with range [-1, 1] union -inf. How should I adapt this, when given arguments with 5 oder six discrete features? I currently implemented a dummy function which only produces the result of the "normal" argument similarity and I would have to change some constructors and functions (which currently expect integer values) to double value usage. 
+   * My distance/similarity function produce integer values, but the class Integer does not offer a -Inf. The class Double does (Double.NEGATIVE_INFINITY). I instead chose Integer.MIN_VALUE (to not have to change alle constructor signatures and methods affected by the distance/similarity functions). Is this also okay or does it have to be the negative infinity by class Double?
+      * IK: hm, that should be fine (given the distance function, you will never come anywhere close to Integer.MIN_VALUE), but those minimum values should be treated differently anyway, because _you don't want them to vote at all_. I would suggest, let it be Integer.MIN_VALUE, but store it separately as a constant. It's basically just a way to store the NO-LINK value. Let's talk about this.
+
+
+---+++ 20. - 27.04.2017
+Things done:
+   * Downloaded CoNLL (link can be removed!)
+   * Implemented a first version of the CoNLL Reader
+   * First version of evaluation metrics, integration into the pipeline
+   * First try of dependency graphs, necessary data structures implemented
+   * Tests for CoNLL and the evaluation
+   * Fixed the FIXMEs
+Questions:
+
+   * There are some warning when I don't silence System.err in the Pipeline by DKPro. Maybe they aren't important, I'm not sure. What is your opinion? ([[%ATTACHURL%/warnings.txt][warnings.txt]])
+      * IK: ignore
+   * I don't have Outlook or something similar. In case the UKP meetings are each Tuesday, could you tell me the time and the place?
+      * IK: see email
+   * How to distinugish between agentive and non-agentive verbs?
+      * IK: They have a hint in the paper, agentive are the ones that take Arg0 as subject I guess. You will need dependency trees for that.
+   * How to distinguish between active and passive voice? I thought about using the POS tags, but I guess they don't give this information.
+      * IK: Yes, that's one of the underspecified parts of the paper, POS tags are not enough. The same POS can mark passive ("The movie was banned") and active ("The government has banned the movie") voice. You will need dependency tree for that, so focus on that first.
+   * Please feel free to look over the current version (I guess this is better than informing you on Mondays, even if the version slightly changes afterwards), especially over the CoNLL Reader. I stepped through it (with the Debugging Tool) and tested it on the CONLL data and it seems working for me (except the todos, of course, see the two list items above), but maybe I understood something wrong or made a mistake...
+      * I'll have a look
+   * Does the syntactic path always lead from a node to the sentence's root?
+      * No, a syntactic path leads from node A to node B, sometimes (rarely!) passing through the root. I think I understand what confused you here. I will explain on our meeting. In short, linguistically speaking the main predicate is a root. However, the dependency parsing algorithms require each node in the sentence to have a parent (it's just easier to formulate this way), so they add an abstract node "ROOT" which is the parent of the actual root. So: informally speaking, if you're dealing with the main predicate, your paths would be from the root to the arguments. However, _strictly_ speaking - no, you're not going through the root node, just through the main predicate whos parent is the abstract root. If it's still unclear, I'll give an example on Thursday.
+   * Is it possible to move the weekly meetings on Thursday from 13:00 to 12:00?
+      * Yes, let's move to 12:00. We won't get the nice room anymore though, but it should be fine.
+
+
+%META:FILEATTACHMENT{name="warnings.txt" attachment="warnings.txt" attr="h" comment="" date="1492890276" path="warnings.txt" size="667" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="newoutput.txt" attachment="newoutput.txt" attr="" comment="" date="1493466071" path="newoutput.txt" size="40623" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="output_allverbs.txt" attachment="output_allverbs.txt" attr="" comment="" date="1493553829" path="output_allverbs.txt" size="1965805" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Results.zip" attachment="Results.zip" attr="" comment="" date="1494417520" path="Results.zip" size="875501" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Result2.zip" attachment="Result2.zip" attr="" comment="" date="1494478594" path="Result2.zip" size="1285048" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="chp3A10.10072F978-3-540-72530-5_25.pdf" attachment="chp3A10.10072F978-3-540-72530-5_25.pdf" attr="" comment="C-DBSCAN paper" date="1494497238" path="chp%253A10.1007%252F978-3-540-72530-5_25.pdf" size="331048" user="kuznetsov" version="1"}%
+%META:FILEATTACHMENT{name="Parameters.pdf" attachment="Parameters.pdf" attr="" comment="" date="1494581910" path="Parameters.pdf" size="311048" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Results.pdf" attachment="Results.pdf" attr="" comment="" date="1495647752" path="Results.pdf" size="266959" user="kohr" version="3"}%
+%META:FILEATTACHMENT{name="Results_29_05_2017_(1).pdf" attachment="Results_29_05_2017_(1).pdf" attr="" comment="" date="1496055335" path="Results_29_05_2017 (1).pdf" size="266740" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Results_29_05_2017_(2).pdf" attachment="Results_29_05_2017_(2).pdf" attr="" comment="" date="1496055369" path="Results_29_05_2017 (2).pdf" size="265369" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Results_09_06_2017.pdf" attachment="Results_09_06_2017.pdf" attr="" comment="" date="1497361280" path="Results_09_06_2017.pdf" size="267075" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Results_10_06_2017.pdf" attachment="Results_10_06_2017.pdf" attr="" comment="" date="1497361292" path="Results_10_06_2017.pdf" size="266436" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Results_11_06_2017.pdf" attachment="Results_11_06_2017.pdf" attr="" comment="" date="1497361304" path="Results_11_06_2017.pdf" size="261464" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Results_12_06_2017.pdf" attachment="Results_12_06_2017.pdf" attr="" comment="" date="1497361317" path="Results_12_06_2017.pdf" size="261236" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Results_18_06_2017.pdf" attachment="Results_18_06_2017.pdf" attr="" comment="" date="1497785253" path="Results_18_06_2017.pdf" size="260878" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Code.zip" attachment="Code.zip" attr="" comment="" date="1497875655" path="Code.zip" size="36370" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Results_26_06_2017.pdf" attachment="Results_26_06_2017.pdf" attr="" comment="" date="1498552965" path="Results_26_06_2017.pdf" size="261144" user="kohr" version="2"}%
+%META:FILEATTACHMENT{name="Results_10_07_2017.pdf" attachment="Results_10_07_2017.pdf" attr="" comment="" date="1499718446" path="Results_10_07_2017.pdf" size="261161" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Current_logs_(12.07).zip" attachment="Current_logs_(12.07).zip" attr="" comment="" date="1499884015" path="Current logs (12.07).zip" size="98562" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Logs.zip" attachment="Logs.zip" attr="" comment="" date="1499963802" path="Logs.zip" size="146267" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="Regarding_emails.txt" attachment="Regarding_emails.txt" attr="" comment="" date="1500389897" path="Regarding emails.txt" size="3912" user="kohr" version="1"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="Ben Kohr"}%

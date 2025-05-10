@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="NicoErbs" date="1340376917" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++Keyphrase Extraction on PEDOCS corpus
+
+
+
+%TOC%
+
+---++++Overview
+<img src="%ATTACHURLPATH%/ArchitectureOverview.png" alt="Architecture overview" />
+
+
+---++++Goals
+   * Application of existing keyphrase extraction infrastructure to new data sets
+   * *Productive system for indexer?*
+   * *Productive system for user?*
+
+---++++Tasks
+
+%ACTIONSEARCH{topic="PedocsTasks"}%
+
+[[PedocsTasks][Pedocs task list]]
+
+---++++Data analysis
+   * [[PedocsCorpusAnalysis][Corpus analysis]]
+   * [[PedocsKeyphraseInclusion][Keyphrase inclusion ratio]]
+   * [[PedocsKeyphraseDistribution][Keyphrase distribution]]
+
+---++++Methods
+   * [[PedocsKeyphraseExtractionMethods][Keyphrase extraction methods]]
+
+---++++Miscellaneous
+   * [[HowToRun][How to run]]
+   * [[PedocsProblems][Challenges and solutions]]
+
+---+++Resourcen
+   * http://www.pedocs.de/
+   * Components usable for the pipeline: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_ng/dkpro/semantics</verbatim>
+   * Experimental projects should be stored in: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases</verbatim>
+   * [[%ATTACHURL%/../ShuoYangKeyphrases/stopword-filtering.pdf][stopword-filtering.pdf]]: A Paper to Automatic Extraction of Domain-specific Stopwords
+
+
+-- Main.NicoErbs - 2012-06-22
+
+%META:FILEATTACHMENT{name="ArchitectureOverview.png" attachment="ArchitectureOverview.png" attr="" comment="Architecture overview" date="1340375007" path="ArchitectureOverview.png" size="59629" user="NicoErbs" version="1"}%

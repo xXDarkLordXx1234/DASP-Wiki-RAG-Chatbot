@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1379087645" format="1.1" reprev="6" version="11"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+---+++ experiments
+   * run (without fields) just DN to see if wrong POS annotations make a difference (baseline <-> DT expansions)
+   * run just N (narrative) and see, if expansions on that improve performance (why? no NNP mistagging)
+   * add another term selecting method: by least key count (in the DT)
+
+---+++ written thesis
+   * UIMA intro: sketch full pipeline (reader, annotators, consumer)
+   * TWSI: conduct statistics for the 1016 nouns in the topics and documents
+   * intro: show an example sentence expanded with all the three resources
+   * intro:TWSI: How are polysemous/monosemous target words identified? What features are used?
+   * intro: sketch "IR pipeline" (information need, query-docs matching, results)
+   * DT: point out the notion of the DT being able to deal with misspellings in a certain way (as long as they are available in the texts it is built from)
+   * experiments: overview graphic for expansion: term selection - per doc/term - term expansion

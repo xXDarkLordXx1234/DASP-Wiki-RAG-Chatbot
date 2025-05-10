@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="NikolayMaterials"}%
+---+ Distortion CPE
+
+   * Description
+      * Sentence, Token and and TreeTagger are called 2 times, for the _InitialView and for the TranslatedDocument View - done by using the sofaMapping of "TranslatedDocument" to "_InitialView" for the "*OneOfTheAboveAnnotator* 2" Annotators.
+      * At the end the DistortionAnnotator writes in the TranslatedView the calculated distortion.
+-- Main.NikolayGeorgiev - 14 Jul 2009
+   * The Distortion CPE GUI: <br />
+     <img src="%ATTACHURLPATH%/Distortion_CPE.png" alt="Distortion_CPE.png" width='1280' height='958' />
+
+   * The Distortion CPE trick - with sofaMapping: <br />
+     <img src="%ATTACHURLPATH%/Distortion_CPE.xml.png" alt="Distortion_CPE.xml.png" width='1280' height='974' />
+
+%META:FILEATTACHMENT{name="Distortion_CPE.png" attachment="Distortion_CPE.png" attr="" comment="The Distortion CPE GUI" date="1247544167" path="Distortion_CPE.png" size="76814" stream="Distortion_CPE.png" tmpFilename="/var/tmp/CGItemp42467" user="NikolayGeorgiev" version="1"}%
+%META:FILEATTACHMENT{name="Distortion_CPE.xml.png" attachment="Distortion_CPE.xml.png" attr="" comment="The Distortion CPE trick - with sofaMapping" date="1247544199" path="Distortion_CPE.xml.png" size="265875" stream="Distortion_CPE.xml.png" tmpFilename="/var/tmp/CGItemp42536" user="NikolayGeorgiev" version="1"}%

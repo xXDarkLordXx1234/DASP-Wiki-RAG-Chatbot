@@ -1,0 +1,358 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1379338833" format="1.1" reprev="436" version="437"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+---++ Richard Steuer<br /><br />Master Thesis Student March 2013 - September 2013.
+<div style="float:right; background: solid white; border: solid grey 1px; padding: 0.5em">
+<b>Quick links</b><br/>
+[[https://scruffy.ukp.informatik.tu-darmstadt.de/artifactory/webapp/archivesearch.html?4][Artifactory class search]]<br/>
+[[https://bugzilla.ukp.informatik.tu-darmstadt.de/][Bugzilla UKP]]<br/>
+[[https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/projects/dkpro-ir][Chiliproject]]
+</div>
+
+---+++++ Thesis Overview
+
+*"Using Contextualized Lexical Expansion for Information Retrieval"* <br/>
+Supervisors: Prof. Dr. Chris Biemann, Dr. Jungi Kim
+
+---++Meetings
+   * (in) what we did within the meeting
+   * (after) what I did after the meeting
+   * (before) notes for me, before the meeting
+
+---+++ 16.09.2013 (33rd meeting)
+   * Chris: "Turn this from a report into a thesis."
+   * Chris: "You have one send left."
+   * Chris: "... gonna get there ... gonna get there ... gonna get there."
+
+---+++ 13.09.2013 (32nd meeting, just with Chris)
+   * (in) talked about Chris' comments on the thesis
+   * (in) talked about remaining time and work to do; most import: work at the text, include "Why are we doing this?", "What does that (result) mean?"
+   
+---+++ 11.09.2013 (31st meeting, just with Chris)
+   * (in) talked about written thesis and submission, !Hiwi-Job, still missing experiments
+   * (after) implemented comments from Chris on the thesis: intro (query length, IR, motivation), analysis levels, DT intro
+   * (after) overview graphic "data transformation" (experiments chapter)
+   * (after) finally transformed all the Tipster data and ran experiments on them:
+      * DT query side
+      * TWSI query side
+      * started DT and TWSI index side
+   * (after) highlighted results improving over the baseline
+
+---+++ 12.08.2013 (30th meeting, just with Chris)
+   * (in) talked about the final talk: results not clearly arranged (one resource - one result), include some statements (doesn't hurt performance, lot of movement), show Spearman rank coefficient
+   * (in) talked about my participation at the [[https://www.andrena.de/studentpage/ase-student-edition. ASE student edition]]
+   * (in) question: query side experiments on new data set: lemma <-> token; answer: no, use same preconditions
+   * (in) talked about submission of written thesis and software on DVD: include test cases
+   * (after) continued the written thesis (Related Work, IR intro, ...)
+   * (after) wrote pipelines to transform the tipster queries and documents (took 6h)
+
+---+++ 09.08.2013 (29th meeting, just with Jungi)
+   * (in) talked about the new data set and my final talk
+   * (in) talked about the practical obstacles of using Delex and about Maven
+
+---+++ 02.08.2013 (28th meeting)
+   * (in) talked about remaining meetings, the final talk and the written thesis
+   * (in) talked about Delex
+   * (after) disentangled DT libs and cleaned project dependencies
+   * (after) continued the written thesis (UIMA, DFR, new dataset, ...)
+   * (after) wrote an annotation pipeline and transformed the Tipster topics into the !RobustWSD format
+   * (after) applied Delex query side top1-per-term
+   * (after) solved a bug with [[http://terrier.org/docs/v3.5/javadoc/org/terrier/structures/SingleLineTRECQuery.html SingleLineTRECQuery]], had to set tokenize to false anyway ... (checked previous query side experiments, they are valid)
+   * (after) prepared final talk
+
+---+++ 08.07.2013 (27th meeting)
+   * (in) talked about and decided for using a second data set, would add more value to the thesis
+   * (in) showed the html evaluations to them
+   * (in) talked about conducting rank correlations, producing a (sorted) by-query-improvement graph
+   * (in) will meet again in two weeks, re-scheduled my *final talk* to *13th of August* 2013
+   * <del>%RED% TODO: %ENDCOLOR% (high) apply the *delex* resource and write about it in the thesis</del>
+      * (after) got Delex working in pipeline and integrated into the framework, implemented two term selecting methods
+   * (after) applied *rank correlation* and wrote about it in the thesis
+   * %RED% TODO: %ENDCOLOR% (medium) prepare that graph (*query-by-query* improvements) [put into chapter "data analysis"]
+   * (after) continued the written thesis (Delex, Spearman)
+   * (after) started the medical expansion paper
+
+---+++ 01.07.2013 (26th meeting)
+   * (in) talked about my experimental results, their tiny changes and what that actually means
+   * %RED% TODO: %ENDCOLOR% investigate, if there are many rank changes, if sth. happens
+   * (after) created html evaluations for a baseline run and an index top3 DT run and manually looked at them
+   * (after) played with terrier index field weights, even negative or >= 10 ("try to break it")
+
+---+++ 24.06.2013 (25th meeting)
+   * (in) confirmed to continue despite of !BM25F results not being exactly equal
+   * (after) met with Martin once to talk about the Delex software (status: train model, have to meet once more)
+
+---+++ 17.06.2013 (24th meeting)
+   * (before) thousands separation: "245.073.761" or "245,073,761"
+   * (before) experiments: set w1 to zero does not equal baseline, worry? normalization factors?
+   * (in) have a fix w1 parameter (field weight 1) and continue experiments with precision and recall
+   * (in) rather show screenshots of experiments than wasting time copying them to latex
+   * (after) <del>TODO: (high priority) fix issue with w1 results not being equal</del>, near equal with b=0.75
+   * (after) ran DT index side experiments again and completed them (top 1, 3, 5 and 10)
+   * (after) ran DT query side experiments
+   * (after) (after) normalized TWSI scores (_per doc_ experiments) and ran experiments
+
+---+++ 10.06.2013 (23rd meeting, just with Jungi)
+   * (in) showed my progress to him (experiments and thesis) and discussed some issues
+   * (after) fixed baseline stem issue, ran baseline experiments again
+   * (after) put all terms (of one type) between one tag (instead of one tag for each term); re-ran DT index, took 41 hours
+   * (after) %RED% TODO: %ENDCOLOR% (old pipeline with !DKPro IR) rerun the 0.40 result baseline experiment with 1000 as a limit to see if that changes MAP results
+
+---+++ 03.06.2013 (22nd meeting)
+   * (in) presented the switch to standalone terrier and the results to Chris
+   * (in) talked about how to proceed and how to deal with the delay
+   * (after) discovered and confirmed, that 19 out 150 train queries have no relevant documents at all
+   * (after) ran baseline experiments again with the stand-alone terrier package, just indexed and used Token, Lemma, Stem and their combinations, wrote results into the written thesis, *result*: using _Lemma_ and _Stem_ is similar, we're using Lemma
+   * (after) created an annotator to build the topN (per term: 1,3,5,10; per document: 10, 50, 100, 500) expansion term tags for the terrier tagged format, ran the creation of the huge index (just DT terms so far), took 27 hours (data transformation) + 6 hours (indexing) on frink
+   * (after) continued writing the thesis (experiments, evaluation measures)
+   * (after) created TWSI terms index
+   * (after) ran first experiments DT and TWSI index side and put them into the written thesis
+   * %RED% TODO: %ENDCOLOR% apply the following strategy for the term-per-doc weighting: which are the most frequent expansions (are there any expansion terms that appear again and again, even coming from different original terms?)
+
+---+++ 29.05.2013 (21st meeting, short technical just with Jungi)
+   * (in) tried debugging, then finally decided to switch to stand-alone Terrier and its file format
+   * (after) replaced !TerrierSearcher in the pipeline by a component to write all the !IndexTerm's into a file, got familiar with and ran the stand-alone Terrier [[http://terrier.org/docs/v3.5/index.html][(doc online)]]
+      * *result*: was able to copy the baseline results
+   * (after) figured out field indexing and retrieval
+      * *result*: the dragon is dead
+
+---+++ 28.05.2013 (20th meeting, short technical just with Jungi)
+   * (in) looked at the indices token numbers and my wiki output, token difference 0.7 million (out of 86 million)
+   * (after) re-run indices to have exactly the same amount of tokens, *result*: no changes in retrieval performance
+
+---+++ 27.05.2013 (19th meeting, short technical meeting just with Jungi)
+   * (in) explained my wiki result table to Jungi, went through the !TerrierSearcher source code and intercepted !NaN and infinity values for the document score
+   * (after) ran fix with whole query dataset, see Hiwi.FieldsDebug20130527
+      * *conclusion*: limitting to 1000 fixed it
+   * (after) ran previous runs with "limited to 1000" again, results are the same
+   * (after) debugged !TerrierSearcher, in which the weighting of the documents according to the fields happens
+      * *result*: works fine, cause is not in that class, it happens in the actual search (_query()_ in !TerrierIndexSearcherImpl.class)
+
+---+++ 13.05.2013 (18th meeting)
+   * (in) discussed my talk for the next day
+   * (after) ran experiments with different fields and weights, tried debugging the poor performance, see Hiwi.FieldsDebug20130527
+      * (after) *conclusion*: there is a bug in !DKPro IR concerning !NaN with no limit (i.e., more than 100k) on the search results
+
+---+++ 06.05.2013 (17th meeting)
+   * (in) discussed status talk: motivation, talk about the three resources, the approaches of IR expansion
+   * (in) talked about approaching the index fields software problem
+   * (after) prepared the status talk
+
+---+++ 08.04.2013 (16th meeting)
+   * (in) talked about the evaluation, deeply looked at the relevance judgments (query narrative and documents), dropped the former idea of re-evaluating by crowdsourcing
+   * (in) talked about and set the date for the status and final talk: 14.05.2013 (status), 20.08.2013 (final)
+   * (in) talked about the fields problem, prioritized that as the number one problem; scheduled technical meeting with Jungi
+   * <del>(after) TODO: "Fight the dragon!"</del>
+   * (after) took me two days to discover this bug: one expansion of "000m#CD" (leftover from "1 # 000m") is "4:58#CD", which Terrier interprets as a search on a field ...
+   * (after) Fields: I was able to create a field with a custom name, put all index terms in it, and retrieve; evaluation results are the same. Confirmed by debugging and contact with REC: It's not easily possible to search in different fields with different terms, all terms are searched for in all fields, e.g.: (f_Token: t1 t2 t3) and/or (f_Lemma: t1 t2 t3); REC responded that there is the possibility of using the Field annotations ("referenced" by their offsets)
+   * (after) to be able to apply the offsets solution for field annotations, I had to redesign the lemma and token annotation positions (which had had the same offsets before); evaluation results are (as good as) the same!
+   * (after) redesigned the underlying Token and Lemma offsets architecture, applied Field annotations, found a place in !TerrierSearcher class to add a function to properly construct a field query, examined that fields query is correct, evaluation results still not the same (but much better), see [[Hiwi.UsingFieldsIR20130419][UsingFieldsIR20130419]]
+   * (after) mastered the setting of fields, created index with all tokens and lemmas in one, expansions into another, retrieval results are near zero, problem is in !TerrierManagerOr class ...
+
+---+++ 11.03.2013 (15th meeting)
+   * (in) talked about the result of the !WordNet "evaluation", Chris' conclusion: "It confirms out intuition, that !WordNet is useless for expansion."
+   * (after) <s>TODO: read the thesis: "A Comparison of Lexical Expansion Methodologies to Improve Medical Question and Answering Systems"([[http://gradworks.umi.com/15/12/1512012.html][online]])</s> done after 12.08.2013
+   * (in) talked about the written thesis, went through the TOC, the extent, the registration
+   * (in) talked about the word count to come and using the UKP cluster
+   * (in) talked about index side expansion and using multiple fields as the last and very important unknown
+   * (in) talked about assigning weights to TWSI terms
+   * (after) <del> TODO: get multiple fields to work, one field for all the expansion terms</del> done after 29.05.2013
+   * (after) ran experiments with and without multiple fields and send this link to Jungi: [[Hiwi.UsingFieldsIR20130311][UsingFieldsIR20130311]]
+   * (after) contacted Richard, found way to inspect terms in different fields; confirmed, works (via _indexReader.docById(docId).terms(field)_)
+   * (after) worked on the written thesis and included several papers
+   * (after) added a "types" parameter to the search pipeline, e.g. to pass "TokenLemma" in camel case, did refactoring on the code (purpose: simpler and clearer) and re-executed and evaluated both pipelines to check their functionality
+   * (after) added marking of the non-relevant docs in the HTML visualization tool
+   * (after) ran experiments with the least frequent query term(s) expanded, tiny improvement: MAP 0.3442 -> 0.3449 (one least term), p@5 0.3387 -> 0.3413 (two terms)
+
+---+++ 11.02.2013 (14th meeting)
+   * (before) idea: maybe conduct an analysis between T and TD, which terms help
+   * Chris consoled me: "Don't get frustrated. IR is hard."
+   * (in) Chris told us the distinction between NN and NNP in DT to be in the works
+   * (in) Chris told us to be on vacation (and hence not available) from 16th to 27th
+   * (in) Jungi had a brilliant idea for hacking a workaround to get Terrier query expansion to work: Since we have the expansion output (terms and weight), I could use this and post-process the terms + weight
+   * (in) talked about now using several fields on the index side, one for all the original terms and one for all expansion terms and assigning a different weight for the expansion field
+      * (in) the next analysis ("Do this until you find a trend.") should only regard the ones with a large impact (i.e. either bridging a large rank gap or consider results only in the top ranks)
+   * (in) looked at the evaluation together and concluded two assumptions: 1. is_a relations and synonyms help. 2. co-hyponyms do not help.
+   * (in) Chris offered the possibility of using money from his crowdsourcing seminar to me to conduct a crowdsourced re-ranking relevance task
+   * (after) worked with the !WordNet libraries JAWS and JWI, managed to output semantic relations like synonymy and co-hyponymy
+   * (after) conducted a new analysis and automatically evaluated and classified the results using !WordNet
+      * wrote down a pair (original term, expansion term) and the measure (e.g. 1/rank_orig - 1/rank_withexpansions) and write down e.g. the path UDD (for up-down-down)
+      * applied the JWI API and wrote a function with !WordNet telling the relation between two terms
+      * done this for integer "rank difference" and reciprocal rank value
+   * (after) <del>TODO: (high) ran experiments with the expansion field on the index side (in order to assign a different weight to all the expansion terms)</del> done after 29.05.2013
+   * (after) tried to tackle the issue with "u.n." and related terms; created new Token annotation type (to be able to set a value instead of using !coveredText), switched all the Token types, ran experiments, but MAP decreased, so switched back
+   * (after) using the new DT db from now on (that distinguishes between NN and NNP)
+   * (after) added a new parameter _numberOfExpansionsPerDoc_ to limit expansions per query/doc
+   * <s>(after) TODO: (low) idea: conduct a word frequency count (based on the whole doc collection) and only expand the more specific (i.e. rare) one, so that in e.g. "solar energy" only "solar" is expanded</s> done after 11.03.2013
+   * (after) %RED% TODO: %ENDCOLOR% (low) idea: use the DT without NNP for the title, and the other one for the rest (D, N)
+
+---+++ 05.02.2013 (13th meeting, just with Jungi)
+   * (in) first, Jungi showed to me how to get TF out of the index (it's the indexReader inside of !TerrierSearcher.java)
+   * (in) showed the qe bug to Jungi, worked on it for a while, couldn't fix it
+   * (in) talked about query term weighting with the circumflex, I have to test it myself and ask Richard, if it's available in !DkPro IR
+      * tested it myself, and it works perfectly!
+
+---+++ 04.02.2013 (12th meeting)
+   * (in) handle multi-word expressions: leave it that way (of splitting them)
+   * (in) talked about weighting the query terms: Jungi confirmed that the circumflex is the way he uses it
+   * (in) Chris told me to just use the train query collection from now on (for my experiments)
+   * (in) Chris complimented me on my progress ("Keep up the speed!"), I replied: "I've changed. :)"
+   * (in) Chris explained that another analysis of the results to be the next most important thing: Are there two classes of expansions (the ones that help and the ones that don't)? conduct that new analysis: At what terms does the worsening happen? And how often? At (in)frequent terms?
+      * use maybe 3 and 0 as expansion quantity (both sides), and all POS (goal: not pursue the path of least worsening); "bring some examples"
+   * (in) talked about that function of Terrier, how often a query term is present in the index and each file
+   * (in) Chris advised not to follow the path of least worsening; once a system is upon baseline, we can improve on that
+   * (in) mentioned the possibility of using the DT counts as a variable for weighting (division, square root, sqrt twice)
+   * (after) found out that there are 150 train queries (instead of 91), debugged it and solved this important issue: trec_eval wasn't evaluating all the search results, because in the gold standard file, they use query IDs without leading zero ("41" instead of "041", as it is handled throughout the rest of the pipeline and even the topic files); changed the output before writing the search results
+   * (after) found out that the !IndexTerm annotation has a weight feature, applied it, extended the !IndexTermAnnotation class, set weights in the DT and a default (1.0) for all other query terms; now it works perfectly! the query term weights are taken into account
+      * ran experiments on T test and train with the "division weighting method", got insignificant improvements
+      * implemented weighting methods: none (1.0), division, sqrt, sqrttwice; tested a little bit; obersavtions: division improves significantly over none, sqrt can't beat that
+   * (after) integrated the run_id into the evaluation output; doing so, I found a bug in the !SearchResultRecord class, e-mailed to REC, fixed it
+   * (after) html visualization: added the query annotation and document frequency for every word in it
+   * (after) conducted new query analysis, looked at all the 150 queries, created page QueryAnalysis20130209
+   * (after) tried abbreviations annotator with seven fixed abbreviations, didn't improve anything
+      * (after) doing so, removed "us" and "un" from the stopwords file, which did improve results
+---+++ 28.01.2013 (11th meeting)
+   * (in) because I asked, talked about the DT not being the main resource we are trying to apply, rather expansions in general
+   * (in) first talked about getting and using abbreviation lists, rather generate the list from the very same document collection
+   * (in) one goal of the thesis could be to achieve the same results with T as with TD
+   * (in) Chris showed a typical thesis structure to me ("This is a random thesis."), mentioning software used; I should describe document collection and TREC evaluation as well
+   * (in) talked about DT expansions in general and expansion modes to try: DT-expand the query, the index, and both; try TWSI (UIMA annotator on [[http://www.ukp.tu-darmstadt.de/software/twsi-sense-substituter/][website]])
+   * (in) went to Martin Riedl afterwards, explained to me how to employ the DT framework
+   * (after) tried the other two Terrier query expansion models (Bo1, Bo2); results are still the same (i.e. query expansion is not working)
+   * (after) spend a day debugging, why qe is not working; I can't figure it out, the reduction of the !ResultSet happens within the org.terrier !Manager class and the !QueryExpansion class
+   * (after) enhanced !AnnotationRemover to take the class name to work with (as parameter)
+   * (after) made choosing T,D,N a UIMA and Java command line parameter
+   * (after) plugged in the old DTExpander query-side and ran experiments with it on frink; tried 1, 5 and 10 expansions; all precision results worsened (recall improved); the more expansion terms, the worse
+   * (after) had to redo the experiments again, because I had found out that there is no NNP in the DT; results even worsened (because more terms got expansions)
+   * <s> TODO: (medium) find out how to assign weights to !IndexTerm annotation (therefore, for expansion terms)</s> Jungi confirmed to use the circumflex in Terrier
+   * (after) got the new DT data to work, wrote an annotator, installed a !POS mapping, ran experiments query side; results worsened in the same way
+   * (after) implemented POS parameter to !DTAnnotator; ran query-side experiments dependent on POS, same results (but: most little worsening with verbs only, even an insignificant increase with 2 expansion terms on Test data with T only)
+   * (after) ran experiments with expansions on index side as well, and both index and query side, results so far:
+      * could not increase map, but muss less worsening with verbs only
+      * could slightly increase !P@5  with verbs only (train data)
+      * full list here: EvaluationResults20130204
+   * (after) plugged in the TWSI sense annotator, encountered (and solved) problems:
+      * was hard to find out how to distribute the config and data (model, etc.) files, because some of the relative paths are hard-coded into the classes
+      * used an old uimafit API, had to rewrite some parts of the code
+      * contrary to the Javadoc, it additionally relies on Sentence annotations (which I didn't have)
+   * <s>TODO: (high) try annotator: TWSI</s> done after 04.02.2013, results worsened in the same way, even a little bit more
+   * <s>TODO: (high) try annotator: abbreviations</s> done after 04.02.2013
+
+---+++ 10.01.2013 (10th meeting)
+   * (in) Chris joked that after the thesis, I'd have to know the IR book by heart (Manning//Raghavan/Schütze: Introduction to Information Retrieval)
+   * (in) decided to focus on the *query evaluation* next: take 10 docs and one query, find out why query expansion improves performance; compare evaluation with and without query expansion
+   * (in) talked about DT expansion: test it with T, TD, TDN
+   * (in) decided to continue the meetings on mondays
+   * (after) ran new experiments, just used TD (title, description); performance just slightly decreased
+   * (after) searching pipeline: made choosing train/test a Java command line parameter
+   * <s>TODO: (low) make choosing T, D, N a !UIMA parameter</s> done after 28.01.2013
+   * (after) wrote an !UnderscoreSplitReAnnotator to re-annotate terms containing underscore (Token and Lemma);in the test data (queries) this makes 2,58% of all terms; created new index; slightly improved results
+      * (after) enhanced that annotator to also re-annotate terms containing hyphens (e.g. " habit-forming") and added an annotator removing all terms only consisting characters that are neither letter nor number; slightly improved results again
+   * (after) discovered that query expansion is not working (results with and without are the same), although console output says so; adding the PARAM_ENABLE_ORQUERY_WITHINFIELDS and debugging; crashes because of an empty query string (added by query expansion), e.g. by file ENtopic.C331.wsd (test data set)
+   * %RED% TODO: %ENDCOLOR% (medium) fix query expansion; doesen't seem to work, results with and without aren't different
+   * (after) discovered a Bug while processing terms containing dots ("U.N.", "e.g."); wrote an annotator to post-remove them
+   * (after) wrote a tool to easily visualize the retrieval results, the query and the evaluation on one page; deployed it to compute server and ran it there with all the 160 test queries (and the corresponding search and evaluation results); created section [[Hiwi.IrExperiments#4_1_Evaluation_browsing][Evaluation_browsing]] in the documentation
+   * (after) manually examined the first ten queries with their results, drew error classes
+      * (after) created an expansion annotator and manually added expansion terms; evaluated another 20 queries to examine how expansion should be done
+   * <s>TODO: (high) write the "Related Work" chapter (two sentences per paper)</s> done after 12.08.2013
+   * (after) read the papers and started writing (!LaTex):
+      * "UKP: Computing Semantic Textual Similarity byCombining Multiple Content Similarity Measures", 2012
+      * "Using Distributional Similarity for Lexical Expansion in Knowledge-based Word Sense Disambiguation", 2012
+      * "Text: Now in 2D! A Framework for Lexical Expansion with Contextual Similarity", 2012
+
+---+++ 20.12.2012 (9th meeting, just with Jungi)
+   * (in) asked Jungi, and decided not to touch the Synset type for now
+   * (in) asked Jungi about *IndexTermGenerator*.PARAM_TOKEN_WEIGHT (and others): since we now use *IndexTermAnnotator* (due to API changes), which does not have these weight parameters; answer: Extend *IndexTermAnnotator* and add parameters for each (Token, Lemma, Stem)
+   * (in) asked Jungi if we'll have many parameters and thus should use !DkPro Lab; answer is no
+   * (in) asked Jungi: we should take the second index (i.e. index token, lemma and stem)
+   * (in) discussed weights, Jungi told me to use 1/3 for each (Token, Lemma, Stem); and we'll not use weighting for headline/text
+   * (in) Jungi explained the structure of the topics to me (regarding evaluation): They consist of a Title (T), a Description (D) and a Narrative (N). For evaluation purposes, we should try all the combinations: T, TD, TDN (currently, we're using TD)
+   * (in) since the overall evaluation scores are still poor (compared to the paper), we took a look at the paper again and found out that they use a slightly different model ("DFR_BM25") and query expansion ("KL") ([[http://www.cs.buap.mx/~dpinto/research/CICLing07_1/Pinto06c/node2.html][What is KL?]])
+   * (in) Jungi advised to compare how the DT expansion performs with and without the query expansion later
+   * (after) ran the search again with DFR_BM25 and KL; only the !TokenLemmaStem variant improved (slightly), the two others showed slightly decreased performance (see BaselineIR)
+   * (after) ran experiments, tried the three combinations (T, TD, TDN); T performed poorly, while TDN improved the results again
+   * (after) Contacted REC, he said not to use the !IndexTermGenerator class; simulating the weight parameters could be done by using fields and assigning weights to them
+   * (after) finally found out how to select the Terrier fields to search on, and how to assign weights to them; played with it, ran experiments, but no improvements at all (maybe it's because of the missing orquery option)
+   * <s> TODO: find out how the lemma is created in the CLEF09 corpus</s> couldn't find it out, Jungi said it's !WordNet (because of the synset scores)
+   * (after) had a massive struggle with "TerrierSearcher.PARAM_ENABLE_ORQUERY_WITHINFIELDS, false" (as they used in the paper, necessary for query expansion) causing a !BufferUnderflowException; after many hours, I finally found out it's because of an empty query term (added by the lexical expansion); fixed the empty term problem by modifying the org.terrier source code, but this didn't solve the problem; contacted REC, who confirmed by observation that all !IndexTerms are search for within all fields ... which makes we wonder about the point of using fields in the first place ...
+   * (after) mea culpa: discovered that I was always using the training data for results comparison; used the test data, which boosted the results again
+   * (after) the test data set combined with TDN (title, description, narrative) threw an error; while debugging, I found out it's because of the term "1:0" (a soccer game), Terrier interprets this as "look for the term '0' in the field '1'" ...
+   * (after) another error occured; it turned out there are some single terms "-" in the topics, which is a special character for Terrier as well (i.e., minus); removed those term entries manually from two files (ENtopic.C277.wsd, ENtopic.C295.wsd)
+   * (after) could solve another !BufferUnderflowException by debugging, it's because of a special character in the test data set; this resulted in being able to process the N (narrative) as well; boosted the results again!
+
+---+++ 06.12.2012 (8th meeting)
+   * (in) agreed on staying with the CLEF09 corpus, but just take one WSDed system/corpus
+   * (in) talked about next step goals (within 4 weeks): read papers and write "Previous and related work", find out weighting of headline/text, resurrect "Synset" type
+   * (after) adapted the XML *topics* reader to just read one corpus (NUS or UBC), ran and evaluated it; the evaluation results with the entire topics collection is the same, so I'll just take one topics corpus from now on
+   * (after) did the same with the *document* collections; results are the same, again; I'll take one collection from now on
+   * (after) checked with the debugger, if the *lemma text* is indexed correctly (because I was confused); yes, it is
+   * (after) found out: Synset score is currently not used; you simply could include it by adding an !IndexTerm annotation in terms of the *Synset text value* (e.g. _"06838825n"_ )
+   * (after) resurrected the Synset type (including max score annotation)
+   * (after) added stemming to the document and topics pipeline
+   * (after) while debugging, I discovered and fixed not having the same stopword removal processing in both the pipelines
+   * (after) while evaluating, I found and reported a bug in the !StopWordRemover annotator
+   * (after) ran and evaluated several indexing combinations, see BaselineIR; all approaches improved significantly just by applying stopwords correctly
+   * (after) found out: there is no weighting of headline/text
+   * <s>TODO: write a tool to easily visualize and browse the query evaluation</s> done after 10.01.2013
+
+---+++ 29.11.2012 (7th meeting)
+   * (in) talked about the next step goal: extracting the documents by id after the retrieval
+   * (in) Chris recommended the following papers for lexical expansion:
+      * "Text: Now in 2D! A Framework for Lexical Expansion with Contextual Similarity", 2012
+      * "Using Distributional Similarity for Lexical Expansion in Knowledge-based Word Sense Disambiguation", 2012
+      * "UKP: Computing Semantic Textual Similarity byCombining Multiple Content Similarity Measures", 2012
+   * (after) took a look at the terrier web interface, thought about extracting documents, looked at queries with 10 ten bad results, started an analysis, created page QueryAnalysis
+   * <s>TODO: read the papers (later step)</s> done after 10.01.2013
+   * (after) created page WebBasedTerrier
+  
+---+++ 27.11.2012 (6th meeting, just with Jungi, consulted Richard [rec])
+   * (in) sat down with Jungi to get help with the "cannot process topic" error; we thought it was an encoding error
+   * (in) after spending one hour on it, we consulted Richard (REC) for another hour; he kindly took the time, ran the debugger and fixed the problem (solved by stopword removing round brackets and quotation marks), casually fixed the entire project dependencies
+   * (after) merged and unpacked all the files (that took several hours)
+   * (after) indexed all the 300k documents (took two hours on frink)
+      * commented and refactored the old XML reader code (from the paper)
+      * validated all the 300k XML files using _xmllint_ (result: OK); compared if all the file names are the same in both directories (result: OK)
+      * FOUND IT: the file "LA042494-0045.wsd" (in both the NUS and the UBC collection) is causing the problems, it is exceptionally small
+      * ran experiment on frink (for the used commands see IrExperiments)
+---+++ 23.11.2012 (5th meeting, just with Jungi)
+   * (in) Jungi presented his changes to me: he included "my" readers (which I had transformed from the old code) into one of his recent DKPro IR experiments
+   * (in) the pipelines are working now, including evaluation (see IrExperiments); he shared everything by SVN
+   * (in) Jungi said to not use DKPro Lab, because we don't have so many parameters
+   * (in) instead of the class _IndexTermGenerator_ we now use _IndexTermAnnotator_
+   * (after) understood and adapted new software package, kept it runnable, created the page IrExperiments
+
+---+++ 22.11.2012 (4th meeting, just with Jungi)
+   * (in) went through the code together, fixed many bugs
+   * (in) got the document indexing pipeline running
+   * (in) got stuck at the other pipeline (which does the topics and the search) by org.terrier source code error
+   * (in) Richard (REC) dropped by, pointed us to DKPro Lab
+   * EXTRA: read "A Lightweight Framework for Reproducible Parameter Sweeping in Information Retrieval", 2011
+
+---+++ 08.11.2012 (3rd meeting, just with Jungi)
+   * (in) went through the framework and overall technical aspects with Jungi
+   * (after) set up SVN folder and shared with Jungi
+   * (after) rewrote dkrpro pipelines, readers and annotators (topics and docs) from the package into new uima layout
+
+---+++ 25.10.2012 (2nd meeting)
+   * (after) downloaded and installed the software/framework to use, 
+   * <s>TODO: manually evaluate the retrieval performance and examine "error classes"</s> done after 10.01.2013
+   * <s>TODO: read "Retrieving with good sense", 2000</s> done after 12.08.2013
+   * EXTRA: read "Language model information retrieval with document expansion", 2006
+   * EXTRA: read "Flexible UIMA Components for Information Retrieval Research", 2008
+
+---+++ 11.10.2012 (1st meeting)
+   * (in) discussed ideas, suggested papers
+   * (in) Jungi said: "If you give me one week", he'd fix the framework (they used in the paper of 2009)
+   * (after) I read the following papers:
+      * "CLEF 2009 Ad Hoc Track Overview: Robust-WSD Task", 2009
+      * "Combining Probabilistic and Translation-Based Models for Information Retrieval Based on Word Sense Annotation", 2009
+      * "Word Sense Disambiguation and Information Retrieval", 1994
+      * "Word Sense Disambiguation Improves Information Retrieval", 2012
+      * "Enriching Document Representation via Translation for Improved Monolingual Information Retrieval", 2011
+      * "A Markov Random Field Model for Term Dependencies", 2005
+      * "Latent concept expansion using markov random fields", 2007
+      
+---++See also
+   * [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/DKPro/HowToMaven][How To Maven]]
+   * [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Hiwi/DkproRepositoryForHiwis][How To SVN]]
+   * [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/DKPro/DKProIrProduct][DKPro IR]] (out-dated)
+   * [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/DKPro/TheLab][DKPro Lab]]

@@ -1,0 +1,464 @@
+%META:TOPICINFO{author="SimonKulessa" date="1227689436" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="SimonKulessa"}%
+---++ Paraphrasen Kandidaten 2<br>
+<br>
+Ich habe die Filterung nochmal etwas ausgebaut und erzeuge nun auch Wortparaphrasen.<br>
+<br>
+Das Format für die Wortparaphrasen ist wie folgt:<br>
+<br>
+!---------[ArtikelNr] (ohne Ausrufungszeichen)<br>
+Wordphrase1<br>
+Context1<br>
+Satz1<br>
+Wordphrase2<br>
+Context2<br>
+Satz2<br>
+<br>
+<br>
+Die enthaltenen Kandidaten wurden aus den ersten 350.000 Revision erzeugt.<br>
+Bei den Satzparaphrasen habe ich die Duplikate entfernt, bei den Wortparaphrasen bisher noch nicht.<br>
+<br>
+Der Context ist in diesem Fall 2 Wörter, wobei ein Wort mindestens 4 Buchstaben enthalten muss.<br>
+Zusätzlich muss die EditDistance zwischen zwei Wortparaphrasen mindestens 3 betragen<br>
+(wobei ich als Basis die Levenshtein distance minus den Absolutbetrag des Längenunterschieds der WortKandidaten nehme)<br>
+<br>
+Wenn ich nichts übersehen habe, werden bleiben bisher allerdings nur 1-Wort Phrasen übrig. <br>
+Ob das ein Bug ist oder ob die Daten mehr einfach nicht hergeben ist noch nicht geklärt.<br>
+<br>
+   * [[%ATTACHURL%/para.7z][para.7z]]: Satz und Wortparaphrasen
+   * [[%ATTACHURL%/para.zip][para.zip]]: Satz und Wordparaphrasen (zip Version des 7z Archives)
+
+-- Main.SimonKulessa - 26 Nov 2008
+
+---++ Paraphrasen Kandidaten
+
+Anmerkung:
+Die Paraphrasen in den SQL Dateien sind zum Teil nicht konform mit der SQL-Syntax,
+deswegen können nicht alle in eine SQL-Datenbank importiert werden.
+
+---------
+Paraphrasen Kandidaten aus den ersten 20.333 Revisionen des Wikipedia-Archives.
+Der Einfachheit halber im SQL Format.
+
+Extrahiert nach der Token-Filterung.
+4 MB, 9116 Paraphrasen Kandidaten
+
+Paraphrasen Kandidaten Sets:
+   * [[%ATTACHURL%/paraphrase.sql][Paraphrase.sql]]: Beispiel Paraphrasen Kandidaten 1
+----------
+
+Extrahiert nach der Token, Spelling und Antonymie Filterung:
+3 MB, 7191 Paraphrasen Kandidaten
+
+Spelling Errors (~40000) gibts jede Menge (unter anderem die meisten Sonderzeichen, z.B. '[', '(' und ',' )
+Antonymie weniger als 100.
+
+Paraphrasen Kandidaten Sets:
+   * [[%ATTACHURL%/paraphrase_word.sql][Paraphrase_word.sql]]: Beispiel Paraphrasen Kandidaten 2
+
+----------
+
+Extrahiert nach der Token, Spelling, StopWord, SwearWord und Antonymie Filterung:
+Duplikate wurde aus dem Ergebniss entfernt.
+
+3 MB, 4804 Paraphrasen Kandidaten,
+
+Stop Words:  (~40000)
+Swear Words: < 200
+
+Format der Textdatei - je Kandidate 5 Zeilen<br>
+!---------[ArtikelNr] (ohne Ausrufungszeichen)<br>
+Phrase1<br>
+Phrase2<br>
+Übriggebliebende Token aus Phrase 1<br>
+Übriggebliebende Token aus Phrase 2<br>
+
+   * [[%ATTACHURL%/paraphrases3.txt][paraphrases3.txt]]: Paraphrasen Kandidaten III (Edit: Artikle-ID Fehler behoben)
+
+Im wesentliche gilt je mehr Revision desto mehr Kandidaten
+hier mal eine ungefähre Abschätzung, was man so erwarten kann
+
+> 10000 -> 2000+ Kandidaten
+> 1000 -> 200+ Kandidaten 
+> 500 -> 100+ Kandidaten
+> 100 -> 10+ Kandidaten
+< 100 -> 0 bis 10
+
+
+Hier die genaue Verteilung der Kandidaten über die Artikel:<br>
+67 von 89 Artikel ohne Kandidaten
+
+<table border=1>
+<tr><td>Revisions-Id</td><td>Anzahl Kandidaten</td></tr>
+<tr><td>12</td><td>2264</td></tr>
+<tr><td>21</td><td>1</td></tr>
+<tr><td>25</td><td>644</td></tr>
+<tr><td>38</td><td>12</td></tr>
+<tr><td>39</td><td>63</td></tr>
+<tr><td>43</td><td>76</td></tr>
+<tr><td>54</td><td>1</td></tr>
+<tr><td>58</td><td>1</td></tr>
+<tr><td>60</td><td>1</td></tr>
+<tr><td>128</td><td>146</td></tr>
+<tr><td>251</td><td>1</td></tr>
+<tr><td>254</td><td>1</td></tr>
+<tr><td>255</td><td>5</td></tr>
+<tr><td>263</td><td>1</td></tr>
+<tr><td>274</td><td>2</td></tr>
+<tr><td>278</td><td>1</td></tr>
+<tr><td>279</td><td>1</td></tr>
+<tr><td>289</td><td>2</td></tr>
+<tr><td>290</td><td>116</td></tr>
+<tr><td>296</td><td>2</td></tr>
+<tr><td>303</td><td>214</td></tr>
+<tr><td>305</td><td>221</td></tr>
+</table>
+
+
+----------
+Im Vergleich dazu ...
+
+Nach extrahieren der Paraphrasen und Alphabet-Filterung (Die Buchstaben werden extrahiert und gehasht um eine Paraphrase zu identifizieren,
+Duplicate werden verworfen)
+
+(aufgrund der Größe verzichte ich darauf die datei hochzuladen)
+143 MB, 470079 Paraphrasen Kandidaten, Laufzeit der UIMA Pipeline: 45 Minuten
+
+Die größe Anzahl erklärt sich vorallem dadurch, dass hier bei einer Änderung alle betroffenen Sätze beider Revisionen als Kandidate genommen werden.
+
+-- Main.SimonKulessa - 10 Nov 2008
+
+---++ SQL Datenbank
+
+<table>
+<tr>
+<td>
+Testdatenmenge (Größe in der DB, zip + base64):
+</td>
+<td>
+8,3 GB
+</td>
+</tr>
+<tr>
+<td>
+Anzahl Einträge / Revisionen:
+</td>
+<td>
+~29,100,000
+</td>
+</tr>
+<tr>
+<td>
+Anzahl Artikel:
+</td>
+<td>
+~480,000
+</td>
+</tr>
+<tr>
+<td>
+Größe des Artikel Index:
+</td>
+<td>
+~31 MB
+</td>
+</tr>
+<tr>
+<td>
+Größe des Revisions Index:
+</td>
+<td>
+~916 MB
+</td>
+</tr>
+<tr>
+<td>
+Dauer zum Erstellen des Index direkt in der Datenbank
+</td>
+<td>
+~44 Minuten
+</td>
+</tr>
+<tr>
+<td>
+Dauer zum Erstellen des Index in eine File und späteres Einladen
+</td>
+<td>
+~10 Minuten + 18 Minuten
+</td>
+</tr>
+<tr>
+<td>
+Zugriffszeit auf einzelne Elemente
+</td>
+<td>
+< 1 Sekunde
+</td>
+</tr>
+<tr>
+<td>
+Iterationsdauer
+</td>
+<td>
+~ 4 Stunden 15 Minuten
+</td>
+</tr>
+</table>
+
+-- Main.SimonKulessa - 30 Sep 2008
+
+---++ 8GB Wiki Scan (2006-11-04)
+
+Zusammenfassung der Log-File (zu finden auf selma unter raid/scratch/kulessa/logs/ ... 360 MB)
+
+<table>
+<tr>
+<td>
+Dauer des Scans:
+</td>
+<td>
+~23:56:11.549
+</td>
+</tr>
+<tr>
+<td>
+Größe des Inhalts (byte):
+</td>
+<td>
+~1.197.930.168.658 (inklusive nicht verwertbarer elemente wie xml ...)
+</td>
+</tr>
+<tr>
+<td>
+Anzahl Artikel:
+</td>
+<td>
+6.281.204
+</td>
+</tr>
+<tr>
+<td>
+Anzahl Revisionen:
+</td>
+<td>
+~ 83.000.000
+</td>
+</tr>
+<td>
+Davon nicht verwendbar (für die Paraphrasensuche):
+</td>
+<td>
+2.665.333 Artikel (~42,5 %), 2.223.727.246 byte (~0,2 %)
+</td>
+<tr>
+<td>
+1 Revision und/oder folgendes Prefix:
+</td>
+<td>
+User talk, Talk, Image, User, Category, Wikipedia, Template, Category talk, Image talk, 
+Wikipedia talk, Portal, Template talk, MediaWiki, Portal talk, MediaWiki talk, Help talk)
+</td>
+</tr>
+</table>
+
+SIZE STAT: 
+<table border=1>
+<tr>
+<td width=200>>   1 GB</td>
+<td>44</td>
+</tr>
+<tr>
+<td>> 512 MB</td>
+<td>61</td>
+</tr>
+<tr>
+<td>> 100 MB</td>
+<td>1076</td>
+</tr>
+<tr>
+<td>>  10 MB</td>
+<td>14621</td>
+</tr>
+<tr>
+<td>>   1 MB</td>
+<td>79047</td>
+</tr>
+<tr>
+<td>>  10 KB</td>
+<td>1346971</td>
+</tr>
+<tr>
+<td><= 10 KB</td>
+<td>4839383</td>
+</tr>
+</table>
+
+REVISION STAT: 
+<table border=1>
+<tr>
+<td width=200>> 10000</td>
+<td>65</td>
+</tr>
+<tr>
+<td>>  1000</td>
+<td>4960</td>
+</tr>
+<tr>
+<td>>   100</td>
+<td>112858</td>
+</tr>
+<tr>
+<td>>    20</td>
+<td>539785</td>
+</tr>
+<tr>
+<td>>     1</td>
+<td>2958203</td>
+</tr>
+<tr>
+<td><=    1</td>
+<td>2665333</td>
+</tr>
+</table>
+
+PREFIX STAT: (mit mehr als 100 Vorkommen)
+<table border=1>
+<tr>
+<td width=200>User talk</td>
+<td>1037921</td>
+</tr>
+<tr>
+<td>Talk</td>
+<td>857937</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>630378</td>
+</tr>
+<tr>
+<td>User</td>
+<td>277225</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>178056</td>
+</tr>
+<tr>
+<td>Wikipedia</td>
+<td>171211</td>
+</tr>
+<tr>
+<td>Template</td>
+<td>78317</td>
+</tr>
+<tr>
+<td>Category talk</td>
+<td>26533</td>
+</tr>
+<tr>
+<td>Image talk</td>
+<td>18526</td>
+</tr>
+<tr>
+<td>Wikipedia talk</td>
+<td>16852</td>
+</tr>
+<tr>
+<td>Portal</td>
+<td>16266</td>
+</tr>
+<tr>
+<td>Template talk</td>
+<td>13697</td>
+</tr>
+<tr>
+<td>UN/LOCODE</td>
+<td>6718</td>
+</tr>
+<tr>
+<td>WP</td>
+<td>4285</td>
+</tr>
+<tr>
+<td>MediaWiki</td>
+<td>1872</td>
+</tr>
+<tr>
+<td>Portal talk</td>
+<td>1550</td>
+</tr>
+<tr>
+<td>List of people by name</td>
+<td>1474</td>
+</tr>
+<tr>
+<td>WT</td>
+<td>298</td>
+</tr>
+<tr>
+<td>List of subjects in Gray's Anatomy</td>
+<td>288</td>
+</tr>
+<tr>
+<td>Wp</td>
+<td>261</td>
+</tr>
+<tr>
+<td>Help</td>
+<td>256</td>
+</tr>
+<tr>
+<td>ISO 3166-1</td>
+<td>245</td>
+</tr>
+<tr>
+<td>MediaWiki talk</td>
+<td>219</td>
+</tr>
+<tr>
+<td>Star Wars</td>
+<td>200</td>
+</tr>
+<tr>
+<td>ISO 639</td>
+<td>161</td>
+</tr>
+<tr>
+<td>Help talk</td>
+<td>150</td>
+</tr>
+<tr>
+<td>List of drugs</td>
+<td>132</td>
+</tr>
+<tr>
+<td>ISO 3166-2</td>
+<td>120</td>
+</tr>
+<tr>
+<td>Star Trek</td>
+<td>114</td>
+</tr>
+</table>
+
+-- Main.SimonKulessa - 30 Sep 2008
+
+---++ Paraphrasen Kandidaten Sets
+
+Zum Speicherformat bitte folgendes lesen:<br>
+[[SimonKulessaTaskLog_SpeicherformatParaphrasen][Beschreibung des derzeit verwendeten Paraphrasen Speicherformats]]
+
+Paraphrasen Kandidaten Sets:
+   * [[%ATTACHURL%/candCluster.txt][candCluster.txt]]: Beispiel Extraktion aus dem Artikel "D. B. Cooper"
+
+
+-- Main.SimonKulessa - 07 Jun 2008
+
+
+
+%META:FILEATTACHMENT{name="candCluster.txt" attachment="candCluster.txt" attr="" comment="Beispiel Extraktion aus dem Artikel %22D. B. Cooper%22" date="1212658140" path="candCluster.txt" size="487984" stream="candCluster.txt" tmpFilename="/var/tmp/CGItemp38635" user="SimonKulessa" version="1"}%
+%META:FILEATTACHMENT{name="paraphrase.sql" attachment="paraphrase.sql" attr="" comment="Paraphrasen Kandidaten im SQL Format" date="1225805104" path="paraphrase.sql" size="4219813" stream="paraphrase.sql" tmpFilename="/var/tmp/CGItemp32765" user="SimonKulessa" version="1"}%
+%META:FILEATTACHMENT{name="paraphrase_word.sql" attachment="paraphrase_word.sql" attr="" comment="Paraphrasen Kandidaten II" date="1226065742" path="paraphrase_word.sql" size="3341402" stream="paraphrase_word.sql" tmpFilename="/var/tmp/CGItemp33038" user="SimonKulessa" version="1"}%
+%META:FILEATTACHMENT{name="paraphrases3.txt" attachment="paraphrases3.txt" attr="" comment="Paraphrasen Kandidaten III (Edit: Artikle-ID Fehler behoben)" date="1226356187" path="paraphrases3.txt" size="2611575" stream="paraphrases3.txt" tmpFilename="/var/tmp/CGItemp41500" user="SimonKulessa" version="2"}%
+%META:FILEATTACHMENT{name="para.7z" attachment="para.7z" attr="" comment="Satz und Wordparaphrasen" date="1227536287" path="para.7z" size="3008382" stream="para.7z" tmpFilename="/var/tmp/CGItemp32268" user="SimonKulessa" version="1"}%
+%META:FILEATTACHMENT{name="para.zip" attachment="para.zip" attr="" comment="Satz und Wordparaphrasen (zip Version des 7z Archives)" date="1227689401" path="para.zip" size="4469570" stream="para.zip" tmpFilename="/var/tmp/CGItemp32486" user="SimonKulessa" version="1"}%

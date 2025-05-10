@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="RichardSteuer" date="1353947801" format="1.1" version="8"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+---++ Experiments
+
+This topic describes how to perform the experiments with the IR framework that I use in my thesis.
+
+---+++ 1. Obtain the code
+
+   * SVN directory: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/steuer/de.tudarmstadt.ukp.ir.masterthesis.steuer.first/
+   * the current working package is called *de.tudarmstadt.ukp.ir.masterthesis.steuer.first.jk;*
+
+---+++ 2. Index the documents
+
+   * as documents, we use the CLEF-WSD dataset (Robust WSD task), see "CLEF 2009 Ad Hoc Track Overview: Robust-WSD Task", 2009

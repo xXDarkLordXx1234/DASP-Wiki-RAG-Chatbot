@@ -1,0 +1,78 @@
+%META:TOPICINFO{author="IrinaAlles" date="1344026866" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="IrinaAlles"}%
+-- Main.IrinaAlles - 2012-06-26
+
+---+ Parser Evaluation
+
+---++ Malt Parser
+---+++++ Stackproj
+
+| *Data Set* | *accuracy / Metric: LA* | *accuracy / Metric: LAS* | *accuracy / Metric: UAS* |*Training time*|*Parse time*|
+|original *10%* |0.87|0.763|0.8|23m 52.05s|1:09:10|
+|cleaned *10%* |0.866|0.758|0.794|26m 12.65s|1h 36m 06s|
+|original *50%* |0.893|0.804|0.833|33h 13m 12s|4h 12m 20s|
+|cleaned *50%*|0.887|0.791|0.823|24h 22m 00s| 3h 50m 00s|
+|original *100%* |0.899|0.818|0.844|126h 00m 14s|
+|cleaned *100%* |0.89|0.8|0.829|153h 34m 12s|6h 20m 04s|
+
+
+---+++++ Nivrestandard
+
+| *Data Set* | *accuracy / Metric:LA* | *accuracy / Metric:LAS* | *accuracy / Metric:UAS* | *Training Time* | *Parsing Time*|
+|original *10%*|0.829|0.753|0.785||
+|cleaned *10%*|0.828|0.749|0.78|22h 41m 92s|
+|original *50%*|-|
+|cleaned *50%*|0.852|0.785|0.813|21h 16m 13s|
+|original *100%*|0.856|0.794|0.819||
+|cleaned *100%*|0.86|0.796|0.821|132h 26m 10s|
+
+---+++++ Covproj
+
+| *Data Set* | *accuracy / Metric:LA* | *accuracy / Metric:LAS* | *accuracy / Metric:UAS* |*Training Time* | *Parsing Time*|
+|original *10%*|0.825|0.748|0.782|Row mean|
+|cleaned *10%*|0.827|0.746|0.778|Rowmean|
+|original *50%*|0.856|0.793|0.819|Rowmean|
+|cleaned *50%*|0.85|0.781|0.81|Rowmean|
+|original *100%*|0.868|0.813|0.837|Rowmean|
+|cleaned *100%*|0.856|0.793|0.819|Rowmean|
+
+
+---+++++ Covnonproj
+
+| *Data Set* | *accuracy / Metric:LA* | *accuracy / Metric:LAS* | *accuracy / Metric:UAS* | *Training Time* | *Parsing Time*|
+| *10%* |0.87|0.78|0.817|Row mean|
+| *50%* |0.9|0.823|0.851|Row mean|
+| *100%* |-||||||||||
+
+
+---++ Mate Tools Parser
+
+Gold: /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br /> Parsed: /srv/home/alles/DependencyParsing/parser/mateToolsParser/output/mate10TigerModel_out_06.conll
+
+|*DataSet*|| *accuracy/ Metric: LA* |*accuracy/ Metric: LAS* | *accuracy/ Metric: UAS* |*Training Time* |*Parse time*|
+|*10%*|*tiger original*|0.909|0.835|0.871|2:16:29|29m 06.76s|
+|^|*tiger cleaned*|0.907|0.832|0.866|3:28:47|29m 27.75s|
+|^|*tueba*|0.806|0.72|0.776|9:56:21|1h 39m 28s|
+|*50%*|*tiger original*|0.935|0.879|0.905|7:37:04|29m 27.89s|
+|^|*cleaned*|0.932|0.873|0.899|21:09:24|30m 37.55s|
+|^|*tueba*|0.863|0.796|0.838|38:51:14|1h 42m 36s|
+|*100%*|*tiger original*|0.945|0.897|0.919|10:33:38|29m 31.82s|
+|^|*tiger cleaned*|0.939|0.886|0.91|44:35:27|30m 47.82s|
+|^|*tueba*|0.882|0.823|0.861|57:02:30|1h 43m 28s|
+
+---++ MDParser
+
+|*DataSet*|| *accuracy/ Metric: LA* | *accuracy/ Metric: LAS* | *accuracy/ Metric: UAS* |*Training Time* |*Parse time*|
+|*10%*|*tiger*|0.829|0.741|0.796|1m 39.43s|0m 19.37s|
+|*50%*|*tiger*|0.852|0.777|0.827|4m 00.69s|0m 27.15s|
+|*100%*|*tiger*|0.855|0.784|0.831|9m 08.23s|0m 32.28s|
+
+---++ Stanford Parser
+---++ Confusion Matrix
+| *dev/gold* || *Malt stackproj* | *Malt covproj* | *Malt nivrestandard* | *Malt covnonproj* | *Mate* | *Stanford* |
+| *Malt*  | *stackproj* | 1 |||| 0.902 | ? |
+| ^ | *covproj* | ? | 1 ||| 0.871 | ? |
+| ^ | *nivrestandard* | ? | ? | 1 || 0.866 | ? |
+| ^ | *covnonproj* | ? | ? | ? | 1 | 0.912 | ? |
+| *Mate* || 0.908 | 0.878 | 0.866 | 0.91 | 1 | ? |
+| *Stanford* || ? ||||  ? ||

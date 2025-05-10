@@ -1,0 +1,82 @@
+%META:TOPICINFO{author="blei" comment="" date="1594172512" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+++ *Bachelor-Thesis: Style Transfer for Creative Text Generation* 
+
+*Start date:* 27.05.2020
+
+*Supervisor:* Kevin Stowe
+
+
+---+++++ Week 27.05 - 03.06.2020
+   * Done:
+      * Code refactoring.
+      * Trained it on the lyric + blogs data.
+      * Shrinked the vocabulary from 75k -> 25k
+      * Read: [[https://paperswithcode.com/paper/multiple-text-style-transfer-by-using-word][Multiple Text Style Transfer by using Word-level Conditional Generative Adversarial Network with Two-Phase Training]]
+      * Started reading: [[https://arxiv.org/abs/1706.03762][Attention Is All You Need]] 
+   * Problems:
+      * Performance is really bad, it takes 24h for 45.000 iterations, not fully utilizing the GPU.
+      * The resulting transfers are bad, due to the low number of iterations.
+   * TODO
+      * Reclone the repository and train it on the original data, to check the performance.
+      * Try to train with fewer tokens.
+      * Build my own transformer model.
+      * Use transfer learning for metaphore style transfer or set the metaphore style as an additional style (N:N transfer).
+      * Train on the metaphore data directly.
+
+---+++++ Week 03.06 - 10.06.2020
+   * Done:
+      * I recloned the Style-Transformer-Repo and trained it on their original Data to test out the training time. It trained alot faster. The major difference between their data and the data I'm using is the sequence length.
+      * Therefore I shortened the sequence length for my data. This improved the training performance. Furthermore I used fixed pretrained embeddings which again increased the training speed significantly because it takes less memory and therefore I can increase the batch size from 8 => 100. All in all I can now train the model alot faster.
+      * I tried to implement the model from scratch using PyTorch libraries and the Huggingface library. This was quite difficult because they are not designed to run differentiable inference. This could improve as they are currently developing a EncoderDecoder Interface.
+       
+   * Problems:
+      * The results are bad after training it for a while. It learns more or less the identity, not more. A reason could be, that differentiating a short sequence from a blog post and from a lyric is very hard. Even I can't really differentiate the majority. Lyrics are only differentiable from other text, if they are fully viewed (multiple sentences). But the training becomes too expensive with too long sequences.
+      * Sometimes the training process randomly crashes with a cuda error. I didn't find a specific line or help on the internet.
+      
+   * TODO
+      * The main task is to find and use new data.  
+      * Fix the mentioned cuda error.
+
+
+---+++++ Week 10.06 - 17.06.2020
+   * Done:
+      * I trained the model for a lot longer, to see if it maybe learns more, but it didn't.
+      * I build a good inference and random inference interface. 
+      * I fixed bugs in the model output => text logic.
+      * I inspected the outputs with the new logic and noticed a few bugs. => The model doesnt produce <pad>'s or <eos> tokens. Even though it is trained on it.
+      * I build preprocessing for training on sentences only. => Didn't improve the results.
+   * Problems:
+      * I still dont have new data
+      * Without Huggingface I can't use pretrained models
+   * TODO
+      * Build a input pipeline for the Metaphores.
+      * Search for new formal and creative text datasets
+
+
+---+++++ Week 17.06 - 24.06.2020
+   * Done:
+      * Trained the model for a long time, on sentences only. The results didn't improve. This was kind of expected but I still wanted to do it, because I didn't train it for long on the sentences only dataset.
+      
+---+++++ Week 24.06 - 01.07.2020
+   * Done:
+      * I tried to build the model based on the huggingface library. This has numerous advantages like pretrained models. But after a lot of digging through source code and  QA on stackoverflow and twitter it turns out, that it isn't possible / huggingface isn't intended to be used for this.
+      * Build a preprocessing pipeline for the metaphore dataset and the brown corups
+      * Started building a classifier based on huggingface to distingulish between the two kinds of text.
+   * TODO
+      * Improve the metaphore preprocessing.
+      * Examine the poem dataset and build a preprocessing pipeline.
+      * Continue building the classifier.
+   * Problems
+      * Good data is still the main problem.
+      * It will be alot harder to get good results without huggingface / good pretrained models.
+
+---+++++ Week 01.07 - 08.07.2020
+   * Done:
+      * The classifier works and can distingulish well between metaphores and brown corpus sentences. But its not finished yet.
+      * Analyzed the poem dataset and started building the preprocessing for it.
+      
+
+
+
+-- Main.TobiasBlei - 2020-06-03

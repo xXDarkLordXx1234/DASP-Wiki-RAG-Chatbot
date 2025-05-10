@@ -1,0 +1,102 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1351793701" format="1.1" version="15"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+---+++++ 1.11
+
+[[%ATTACHURL%/cluster60.txt][New output format (the usual SQL keywords and MCL were used)]]
+
+And some new measures:
+
+| *Size* | *MCL V-measure* | *MCL modularity* | *MCL density* | *MST V-measure* | *MST modularity* | *MST density* | 
+ | 65.0% | 0.7618292091167121 | 0.017593687196372044 | 0.5379561754109469 | 0.5198422645784406 | 0.054521192059172295 | 0.5444348094155383 | 
+ | 42.25% | 0.734639207871989 | 0.020672089284535122 | 0.5415459509317688 | 0.6668345263701394 | 0.05516447193748267 | 0.5000677323985515 | 
+ | 27.46% | 0.6842058513463058 | 0.021636436626664857 | 0.5309951409689572 | 0.5559486866871461 | 0.057721861273883804 | 0.5000332657374812 | 
+ | 17.85% | 0.6623170378968107 | 0.02311687991411392 | 0.5275400653270443 | 0.6200350832990091 | 0.05716948614949061 | 0.5000465132575455 | 
+ | 11.6% | 0.533295553862299 | 0.027617720233060056 | 0.525330243871505 | 0.33513972511605405 | 0.05809856538936614 | 0.5000207212690969 | 
+ | 7.54% | 0.6885364656205989 | 0.022102776868810146 | 0.528656442003012 | 0.2894735957117005 | 0.054383826267402256 | 0.5000724762546033 | 
+ | 4.9% | 0.7207458319168321 | 0.02706208870945729 | 0.5254660964155283 | 0.5551514004039964 | 0.07278950217941493 | 0.5000206225888947 | 
+ | 3.19% | 0.6481574656335071 | 0.02589186920296313 | 0.5234232347973707 | 0.29581970887268194 | 0.05923887027224808 | 0.5000182438558737 | 
+ | 2.07% | 0.6871018333900089 | 0.029496196323273334 | 0.5241516382006879 | 0.04562413473519795 | 0.08671343765166528 | 0.5000235413233858 | 
+ | 1.35% | 0.6572456999349775 | 0.04251197220591609 | 0.5177320565944346 | 0.11977219973423098 | 0.04865128603020352 | 0.501917267126407 | 
+
+---+++++ 10.10.
+
+I tested the edges between clusters, the results are [[ClemensDeusserInterClusterEdgesAnalysis][here]].
+
+---+++++ 8.10.
+
+[[%ATTACHURL%/InputTestCluster.txt][Fulltext (PDF) clustering with all nouns ('NN' and 'NP')]] 784304 nouns in total, 52798 after initial pruning, 25071 edges after cutting. (for some curious reason, there appear to be 3413 documents in pdf form, 2 more than in the SQL DB).
+
+---+++++ 28.9.
+
+
+[[ClemensDeusserSteffenChineseWhispersResults][Combined results of tests of Steffen's version of chinese whispers]]
+
+---+++++ 26.9.
+
+Overnight MCL test results:
+
+Inflation of 4 or higher exloded the number of clusters, causing in trivially increased v-measure scores. Inflation of 1.4 resulted in very few (~30) clusters, some of which were clearly too large. Since I don't have an exact goal of the number of clusters, I lack an exact measure for inflation so I will leave it at 2.0 for now.
+
+Scheme (resources) seemed to have little to no effect, I need to run individual tests with more iterations to see whether there are statistically significant differences.
+
+Adjusting the threshold for the graph had a similar, but less pronounced, effect as inflation. Setting the threshold at the average edge weight would result in few and large clusters, setting it at three times the average weight resulted in ~250 clusters. Adjusting this value is equally difficult as inflation, so I will leave this at twice the average edge weight.
+
+---+++++ 21.9.
+
+[[%ATTACHURL%/keywordSpecificity.txt][Specificity of standard clustering (the sum of squares divided by square of sum, lower means more general and less specific).]]
+
+[[%ATTACHURL%/keywordOccurrences.txt][And for reference, here's how often each keyword appears in all documents.]]
+
+---+++++ 19.9.
+
+
+[[%ATTACHURL%/abstractStandard.txt][clustering with extracted nouns and named entities from abstracts (standard parameters otherwise)]]
+
+---+++++ 18.9.
+
+for beta = 1, pedocs keywords, inflation = 2, scheme = 4, seed = 1 (the Random instance determines which cluster subgraph is selected).
+
+The size refers to the size of the cluster subgraphs compared to the original graph.
+
+ | *Size* | *MCL V-measure* | *MCL F-measure* | *MST V-measure* | *MST F-measure* | 
+ | 65.0% | 0.8459003234219414 | 0.5928749765094367 | 0.4446463165628254 | 0.9954832937073632 | 
+ | 42.25% | 0.7849214171105466 | 0.3814280429152794 | 0.44477098978931234 | 0.9930555757193891 | 
+ | 27.46% | 0.7903559482903038 | 0.3879737017064342 | 0.42164123696367356 | 0.9882570877027269 | 
+ | 17.85% | 0.7701595653270578 | 0.22891732012656488 | 0.5270453678702729 | 0.9852272634747279 | 
+ | 11.6% | 0.8022374498520132 | 0.1944035346097202 | 0.31776166456761235 | 0.9672756319410446 | 
+ | 7.54% | 0.7788017842786414 | 0.11012782694198622 | 0.3034770045679119 | 0.9459413918291694 | 
+ | 4.9% | 0.8265179265751516 | 0.08997955010224948 | 0.574404699342472 | 0.9461196606309913 | 
+ | 3.19% | 0.8312255730718054 | 0.047225501770956316 | 0.5276391635055557 | 0.8984166518413095 | 
+ | 2.07% | 0.824384278844275 | 0.011933174224343675 | 0.5979072819358501 | 0.8558913710030661 | 
+ | 1.35% | 0.8077840892782483 | 0.0017809439002671418 | 0.43613430598005637 | 0.6722878021360315 | 
+ 
+and seed = 2:
+
+ | *Size* | *MCL V-measure* | *MCL F-measure* | *MST V-measure* | *MST F-measure* | 
+ | 65.0% | 0.8370220259937554 | 0.5825670285840905 | 0.4446463165628254 | 0.9954832937073632 | 
+ | 42.25% | 0.7887258794194598 | 0.41542853813435876 | 0.44477098978931234 | 0.9930555757193891 | 
+ | 27.46% | 0.769895913941929 | 0.32168255409290364 | 0.44497384843638654 | 0.9893277147339372 | 
+ | 17.85% | 0.7747361584351855 | 0.2306030902143213 | 0.2120087838898748 | 0.9754402916007372 | 
+ | 11.6% | 0.7908227380424143 | 0.20491519556940122 | 0.3856977832214245 | 0.9697243677507686 | 
+ | 7.54% | 0.8206048164991737 | 0.1873828856964397 | 0.5587427907065989 | 0.9649689364581411 | 
+ | 4.9% | 0.8072082965216525 | 0.05730659025787965 | 0.20694957763628544 | 0.9056259355262678 | 
+ | 3.19% | 0.8005798677107243 | 0.023715415019762844 | 0.3244868011169684 | 0.8832304526748972 | 
+ | 2.07% | 0.8292929654110618 | 0.017167381974248927 | 0.6160078135153512 | 0.870842332613391 | 
+ | 1.35% | 0.8368488469585115 | 0.009913258983890953 | 0.40654513992074887 | 0.6941694169416942 | 
+
+
+---+++++ 04.09.
+
+ [[%ATTACHURL%/cluster30.txt][Sample Cluster with inflation = 2, scheme = 4 and standard pedocs keywords.]]
+
+
+-- Main.ClemensDeusser - 2012-09-04
+
+
+
+%META:FILEATTACHMENT{name="cluster30.txt" attachment="cluster30.txt" attr="" comment="" date="1346780574" path="cluster30.txt" size="513034" user="ClemensDeusser" version="1"}%
+%META:FILEATTACHMENT{name="abstractStandard.txt" attachment="abstractStandard.txt" attr="" comment="" date="1348066623" path="abstractStandard.txt" size="875142" user="ClemensDeusser" version="1"}%
+%META:FILEATTACHMENT{name="keywordSpecificity.txt" attachment="keywordSpecificity.txt" attr="" comment="" date="1348242588" path="keywordSpecificity.txt" size="140825" user="ClemensDeusser" version="1"}%
+%META:FILEATTACHMENT{name="keywordOccurrences.txt" attachment="keywordOccurrences.txt" attr="" comment="" date="1348242587" path="keywordOccurrences.txt" size="108070" user="ClemensDeusser" version="1"}%
+%META:FILEATTACHMENT{name="InputTestCluster.txt" attachment="InputTestCluster.txt" attr="" comment="" date="1349701126" path="InputTestCluster.txt" size="1657843" user="ClemensDeusser" version="1"}%
+%META:FILEATTACHMENT{name="cluster60.txt" attachment="cluster60.txt" attr="" comment="" date="1351793618" path="cluster60.txt" size="1187642" user="ClemensDeusser" version="1"}%

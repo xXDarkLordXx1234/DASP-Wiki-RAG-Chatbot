@@ -1,0 +1,225 @@
+%META:TOPICINFO{author="FabianTamin" date="1259023613" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ User Study 1: Process Data (Plan)
+---++ Table of Contents
+%TOC%
+
+---++ Guidelines
+   * Target:
+      * Knowing the how well the proposed design works and knowing the best user interface design
+
+   * Usability test data type: process data
+      * Informal, qualitative observation of what people thinking and doing
+      * An overall feeling of what works and what doesn&#8217;t
+      * Finding critical incident: points during testing at which participants are confused, frustrated or even swear but also points people are pleasantly surprised or say something positive about the site.
+
+   * Setting up the task:
+      * Level of task
+      * Should be about what people want to do
+         * Not to tell participants how to do the task
+      * Task should be realistic
+
+   * Participants
+      * Number: 5-6 (max 12)
+      * Who:
+         * Avoiding friends and family as participants unless you&#8217;re sure they&#8217;ll give honest feedback
+         * Don&#8217;t recruit coworker from down the hall.
+      * Gifts and prizes
+      * Type of experimental design: within-groups experiment
+
+   * Running the test
+      * Location: for prototype it can be practically done anywhere
+      * Ethical consideration
+         * Avoid pressuring people to participate
+         * Make clear that the test is voluntary and that participants can stop the test at any time for any reason
+         * Make clear that you test the user interface design not the participants themselves
+         * If they have problems, it&#8217;s the UI-design fault, not theirs
+      * Pilot Test
+         * Test with two or three people
+         * Coworkers and friends are acceptable
+         * Find and work out any bugs in the procedure
+         * Find out how long the test takes
+            * cut or add more task
+      * Testing Paper Prototypes
+         * Explaining the concept of paper prototypes
+         * Pointing at things using finger as a mouse
+      * Starting & carrying out the test
+         * Greet participants
+            * 3 phases:
+               * Instruction & paperwork
+               * Performing the  task
+               * Debriefing
+            * Steps:
+               * Introduce yourself
+               * Describe the purpose of the test at a high level
+               * Emphasize:
+                  * We are asking you to help us improve the web site by helping us find problems with it. We&#8217;re testing the web site and not you.
+                  * Make clear that you won&#8217;t provide help as participants tackle the task because you want to see how they go through the web site normally.
+         * Fill out paperwork
+            * Basic demographic information:
+               * Name, address
+            * Explain how the data will be collected and will be used
+         * Ask participants to think aloud
+            * If they stop talking asking things like:
+               * So, what are you looking for now?
+               * What are you trying to do now?
+         * Instruct participants on how to start
+            * Ask participant if they have any questions before starting
+         * Take good notes during each task
+            * Take note what each participant says and does
+            * If certain task takes far too long, tell the participant that it&#8217;s okay to move on the next task
+         * Watch closely
+            * Answer any general question that participants may have, but don&#8217;t help them with the tasks
+         * Follow up with a quick survey
+            * After all the tasks have been completed, follow up with short survey
+            * Get the participants&#8217; overall impression and comments about the web site, asking what they liked and disliked about that.
+         * Debrief participants after test
+            * Discussing interesting behavior on the participant&#8217;s part
+               * Go through the web site again to help prompt their memory
+
+   * Analyzing the data
+      * What you saw and what participants said
+      * Improving prototype:
+         * Reduce confusion:
+            * Rename things using familiar language
+            * Explain them in greater detail
+         * Reduce errors and error recovery:
+            * Descriptive, longer link names, which provide more information-scent to help participants find a particular page.
+            * Clear form that helps prevent errors
+            * Meaningful error message
+         * Navigation
+            * Multiple ways to navigate
+            * Browsable content
+      * Important things to analyze:
+         * Why the error occurred
+         * Was the navigation to confusing
+         * Was the information disorganized
+         * Was the page to cluttered
+
+   * Presenting the result
+      * Reporting the result in the form of a written report or an oral presentation
+      * Sections of the report to include:
+         * Executive summary
+            * Quick overview, what you did in the test, summary of the result, run down of the recommendation for improvements
+         * Tasks
+            * What task you carried out
+            * Why these tasks were chosen
+         * Participants
+            * Number of participants
+            * General demographics
+            * Any defining characteristics
+         * Problem found
+            * List the problem encountered, prioritized by severity
+            * Graphs of success rate of participants at completing tasks
+         * Participant feedback
+            * Positive and negative feedback from participants
+         * Suggested improvements
+            * What needs to be changed to improve the website
+            * Categorize it to:
+               * Must do
+                  * Serious problems if it&#8217;s not recovered
+               * Should do
+                  * Problems are annoying but tolerable
+               * Could do
+                  * Benefit at recovery (keep this for next iteration)
+         * Appendixes
+            * Any test materials used during the experiment (demo scripts, instructions, forms)
+
+   * Sorting the list of features according to importance
+   * Rating the importance of each feature
+      * 1 (not important) to 7 (very important)
+
+---++ Question (uncategorized)
+   * Start point
+      * Opening snippet
+      * Hovering with delay
+      * Using small icon
+         * Icon position
+         * Icon size
+      * Idea: &#8230;
+   * Multiple or single Snippet
+   * Standard window size
+   * History feature
+      * ?: Meaningful
+      * ?: Confusing
+   * Snippet simplicity
+   * Distracting component (if it exists)
+   * Whether grouping to used and using articles is necessary or it is better if it is better to group them together to related articles
+   * Wished components to be there
+   * Standard sorting in visited articles
+      * Alphabetical
+      * Last visited on top
+      * First visited on top
+   * Font
+      * Size
+      * Type
+
+---++ Question (categorized and ordered)
+   * User interface rating
+      * Easy to use
+      * Simplicity
+      * Font
+         * Type
+         * Size
+      * Component&#8217;s positions
+   * Features
+      * Sorting (which feature is more important than the others)
+         * Summary
+         * Increasing & reducing summary size
+         * Table of contents
+         * Related articles
+            * Articles, which are used by the current article
+            * Articles, which use the current article
+         * External links
+         * History (visited articles)
+         * Snippet-windows control button (close button, hold button)
+      * Rating for each feature
+   * Preferences & wish list
+      * Optional preferences:
+         * Snippet instance
+            * Single snippet
+            * Multiple snippets
+         * Default sorting for visited articles
+            * Alphabetical
+            * Last visited time
+         * Related articles
+            * Grouped together
+            * Categorized
+      * Standard snippet size
+      * Distracting components
+      * Features are useful but does not exist
+
+---++ Card sorting
+   * Labeling for used articles, using article, related article
+   * Labeling for compact view and visited article
+   * How would you name this application/program/feature
+
+---++ Plot
+   * Browsing wiki-article with prototype
+   * Rate UI in overall
+   * Sort Features
+   * Rate each feature
+   * Give preferences
+   * Labeling/card sorting
+   * Impression, comment, and wish list
+
+---++ See also
+   * [[FabianTaminMockups][Mockups]]
+   * [[FabianTaminUserStudy1Result][1st User study: process data (result)]]
+   * [[FabianTaminUserStudy2][2nd user study: evaluation]]
+
+---++ Links 
+-- Main.FabianTamin - 04 Jun 2009
+   * [[%ATTACHURL%/User_Study_1.htm][User_Study_1.htm]]: User Study 1: Process Data
+   * [[%ATTACHURL%/User_Study_1_-_Form.docx][User_Study_1_-_Form.docx]]: 2009_0609_15:27 - Survey data form for user study 1
+   * [[%ATTACHURL%/User_Study_1_-_Form.pdf][User_Study_1_-_Form.pdf]]: 2007_0609_15:37 - Survey data form for user study 1 (PDF View)
+   * [[%ATTACHURL%/User_Study_1_-_Evaluation_Plan.docx][User_Study_1_-_Evaluation_Plan.docx]]: 2009_0610_18:11 - 1st user study's scenario
+   * [[%ATTACHURL%/User_Study_1_-_Form_-_v2.pdf][User_Study_1_-_Form_-_v2.pdf]]: 2007_0618_12:08 - Survey data form for user study 1 (PDF View) (checkbox form)
+   * [[%ATTACHURL%/User_Study_1_-_Form_-_v2.docx][User_Study_1_-_Form_-_v2.docx]]: 2007_0618_12:08 - Survey data form for user study 1 (checkbox form)
+
+%META:FILEATTACHMENT{name="User_Study_1.htm" attachment="User_Study_1.htm" attr="" comment="2009_0604 15:02 -- User Study 1: Process Data" date="1244120293" path="User Study 1.htm" size="51825" stream="User Study 1.htm" tmpFilename="/var/tmp/CGItemp47233" user="FabianTamin" version="2"}%
+%META:FILEATTACHMENT{name="User_Study_1_-_Form.docx" attachment="User_Study_1_-_Form.docx" attr="" comment="2009_0609_15:27 - Survey data form for user study 1" date="1244553839" path="User Study 1 - Form.docx" size="38321" stream="User Study 1 - Form.docx" tmpFilename="/var/tmp/CGItemp40905" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="User_Study_1_-_Form.pdf" attachment="User_Study_1_-_Form.pdf" attr="" comment="2007_0609_15:37 - Survey data form for user study 1 (PDF View)" date="1244554094" path="User Study 1 - Form.pdf" size="296605" stream="User Study 1 - Form.pdf" tmpFilename="/var/tmp/CGItemp40810" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="User_Study_1_-_Evaluation_Plan.docx" attachment="User_Study_1_-_Evaluation_Plan.docx" attr="" comment="2009_0618_14:26 - 1st user study's scenario" date="1245327991" path="User Study 1 - Form.docx" size="45250" stream="User Study 1 - Form.docx" tmpFilename="/var/tmp/CGItemp56129" user="FabianTamin" version="2"}%
+%META:FILEATTACHMENT{name="User_Study_1_-_Form_-_v2.pdf" attachment="User_Study_1_-_Form_-_v2.pdf" attr="" comment="2007_0618_12:08 - Survey data form for user study 1 (PDF View) (checkbox form)" date="1245319720" path="User Study 1 - Form - v2.pdf" size="388357" stream="User Study 1 - Form - v2.pdf" tmpFilename="/var/tmp/CGItemp50459" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="User_Study_1_-_Form_-_v2.docx" attachment="User_Study_1_-_Form_-_v2.docx" attr="" comment="2007_0618_12:08 - Survey data form for user study 1 (checkbox form)" date="1245319775" path="User Study 1 - Form - v2.docx" size="32467" stream="User Study 1 - Form - v2.docx" tmpFilename="/var/tmp/CGItemp50694" user="FabianTamin" version="1"}%

@@ -1,0 +1,99 @@
+%META:TOPICINFO{author="koch" comment="save topic" date="1405325745" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Treffen 05.06.2014
+
+   * Studentische Vorträge: Di. 09:50 oder 11:30, i.d.R. alle 2-4 Wochen
+      * Einladungen kommen per Mail
+      * Zwischenvortrag: 09.09.2014
+      * Abschlussvortrag: 02.12.2014 
+    Abstimmungstermin: Do. 14:00 Uhr
+
+
+-- Main.ChristianMeyer - 2014-06-05
+
+
+---++ Treffen 26.06.2014
+
+---+++ Fortschritt
+   * WEBIS Text Editor aufgesetzt: Problem "File Not Found", trotz korrektem Verzeichnispfad in der entsprechenden Variablen. Rechteproblem?
+   * Toolchain definiert: Tomcat/Mysql/Git/Eclipse/GWT/Maven/SmartGWT/ Atmosphere Websockets
+   * Planung:
+      * Atmosphere Websockets nutzen, um den Servletcontainer offen zu halten. Dadurch lässt sich die serverseitige asynchrone Analyse sinnvoll umsetzen. Vereinfachtes Transportlayer: Serializierbare Objekte.
+      * Client-/Server-Kommunikationen bzgl. Markierungen: Kontext basiert anhand von Textvergleichen. Der Marker enthält einen zu markierenden Textteil und einen Textteil der für die existenz des Markers entscheidend ist. Dadurch kann der Client die Lebensdauer und mehrere Vorkommen selbstständig detektieren
+      * Detektion von Umgangssprache: DACL mit Umgangssprachlichen Wörtern um Umangssprache effizient zu detektieren, DB-Tablle mit Ersetzungsvorschlägen, wobei der Key ein Hashwert des Wortes ist
+      * GUI-Design: Ein Menu am oberen Rand, Links der Editor und rechts ein Fläche, um Markierungsbeschreibungen zu platzieren.
+
+---+++ Offene Fragen
+   * Welche Lizenzen können verwendet werden? GNU LPGL, Apache, ASL. Lizenzen sollten dokumentiert werden. Vorsicht mit GPL.
+   * WEBIS-verpflichtend? Nein.
+   * Freie Tool-/Framework-/Libary-auswahl? Ja, mit den oben genannten Lizenzen.
+
+---+++ Meeting Ergebnisse
+   * Markierungen:
+      * Konzept für überlappende Markierungen überlegen.
+      * Mölgiche Markierungen: Tooltip, In-text, Beschreibungen, Heatmap über den Text
+      * Sollten (de)aktivierbar sein, um den Text nicht zu überladen
+      * Ggf. ein Scoring entwickelen, um wichtigere Markeriungen zu unterscheiden
+   * Literaturarbeit wird ggf. bis anfang August zurückgestellt, da zunächst die Infrastruktur der Applikation entwickelt werden muss, sowie Klausuren im Juli anstehen
+
+---+++ Plan bis zum nächsten Treffen, am 03.07.2014
+   * GUI mit Ausnahme des Editors fertig stellen
+   * Websockets implementiert und offene Fragen bezüglich Server geklärt: Daten im Hauptspeicher halten, Daten zwischen Nutzern teilen (e.g. DACL Umgangssprachendetektion)
+   * Factorypattern für serializierbare Client-/Server-kommunikations Transportklassen implementieren
+   * Ansatz für Editor entwickeln:Welche Editoren gibt es? Welcher davon eignet sich als Grundlage? Wie kann dieser erweitert werden? Welche Begrenzungen gibt dieser auf?
+   * Ggf.: GUI Mockup
+-- Main.FrerikKoch - 2014-06-29 - 10:40
+
+---++ Treffen 03.07.2014
+
+---+++ Fortschritt
+   * Marker Design ist entwickelt worden und teilweise umgesetzt worde. Ein Mockupn existiert
+   * GUI Implementierung ist fortgeschritten
+   * Editorwahl eingegrenzt
+   * Erster Entwurf zur synchronisierung von Client und Server Textrepresenation bzw. Markierungen
+      * Ein Marker besteht aus: Start Position, End Position, Textversion, Liste von Kontexttextpositionen(Start/End), Beschreibung, Quickfixes
+      * Textversionierung anhand des undo stacks des Texteditors
+
+---+++ Offene Fragen
+   * Was ist mit Webis? Webis vorläufig gestrichen. Könnte als Referenzimplentierung herangezogen werden.
+
+---+++ Meeting Ergebnisse
+   * Lamport clocks als mögliche Ergänzung zur Client-/Server-synchronisation.
+   * Marker Design: Übersichtsmodi anbieten. Zum Beispiel zur visualisierung der verwendeten Zeiten
+   * Vom 28.07. bis 01.08. wird die Masterarbeit klausurbedingt ruhen
+
+---+++ Plan bis zum nächsten Treffen, am 08.07.2014
+   * Editor auswählen und Marker, sowie Icons implementieren
+   * Andere aktuelle Themen nach Möglichkeit: Client-/Server-kommunikation, Übersichtsfeatures, Textversionierung 
+-- Main.FrerikKoch - 2014-07-06 - 11:49
+
+---++ Treffen 08.07.2014
+
+---+++ Fortschritt
+   * Projektstruktur überarbeitet
+   * Editorwahl: CKEditor
+   * Integration CKEditor
+   * Probleme:
+      * HTML Represenation des Texts
+         * Wie soll die Position spezifiziert werden
+         * Wie Markerierungen vornehmen? 
+   * Lösungsansätze:
+      * Server arbeitet auf Textrepresentation
+      * Client rechnet hoch
+      * Makerumsetzung per html tags, einfügen Per CKEditor API       
+
+---+++ Offene Fragen
+   * Offizielle Anmeldung? Christian kümmert sich
+   * Tipps für Umgang mit Html? 
+  
+
+---+++ Meeting Ergebnisse
+   * Mögliches Feature: Discurs markers
+   * Mögliches Feature: Overview mode emotion highlighting
+   
+
+---+++ Plan bis zum nächsten Treffen, am 08.07.2014
+   * Technischer Ansatz für Markierungen im Editor, erste Implementation
+   * Entwurf zum HTML Handling, Text position spezifizieren
+
+-- Main.FrerikKoch - 2014-07-14 - 10:09

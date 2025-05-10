@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="RolandKluge" date="1348582779" format="1.1" version="46"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+[[RolandKluge]]
+
+---++ Time Sheet
+
+---+++ Time Sheet Sep - Nov
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Task* | *Subtask* | *Date (start-finished)* | *Time* | *Notes* |
+| | Meeting | 31.08.2012 | 1 | |
+| | Carry-Over | 31.08.2012 | 1 | |
+| KeyphraseExtraction | | 04.09.2012 | 23,5 | |
+| *Total* | | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *To be fulfilled:* | | | 60 | until 1 Dec 2012 |
+
+
+---+++ Time Sheet Jun - Aug
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Task* | *Subtask* | *Date (start-finished)* | *Time* | *Notes* |
+| Init | Meeting: Roadmap, 1st work package,... | 04.06.2012 | 1 | |
+| Init | <nop>SeerSuite, Algorithm Search, <nop>TableSeer, etc. | 05.06.2012-06.06.2012 | 3 | |
+| DKPro | Setup | 06.06.2012- 19.06.2012 | 6 | |
+| | Meeting | 19.06.2012 | 1 | |
+| SeerSuite | Setup (general) | 19.06.2012-25.06.2012 | 2 | |
+| SeerSuite | Setup (Solr,Axis2,Importing Documents) | 25.06.2012-03.07.2012 | 6 | |
+| DKPro<->SeerSuite | DKPro gettingStarted | 05.07.2012 | 1 | |
+| SeerSuite | Setup Workspace (among others) | 06.07.2012 | 5 | |
+| SeerSuite | Ingestion Instructions | 09.07.2012 | 2 | |
+| DKPro<->SeerSuite | Establish Connection between | 09.07.2012- | 12 | in progress... |
+| | Meeting | 26.07.2012 | 1 | |
+| SeerSuite | Convert to Maven project | 27.07.2012 | 3 | in progress... |
+| SeerSuite | Check in to SVN + Preparations | 27.07.2012 | 13 | in progress... |
+| SeerSuite | Automate localization | 31.07.2012 | 4 | |
+| | Meeting | 10.08.2012 | 1 | |
+| *Total* | | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *To be fulfilled:* | | | 60 | until 1 Sep 2012 |
+
+-- Main.RolandKluge - 2012-07-17

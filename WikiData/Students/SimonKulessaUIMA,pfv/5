@@ -1,0 +1,102 @@
+%META:TOPICINFO{author="TorstenZesch" date="1224486012" format="1.1" version="5"}%
+%META:TOPICPARENT{name="SimonKulessa"}%
+Fehler unbekannter Ursache:
+
+
+---++ UKPSentenceSplitter:
+
+<b>Vermutete Ursache</b><br>
+DocumentText ist null ... UKPSentenceSplitter hat keine Möglichkeit auf die Views zuzugreifen ??<br>
+<br>
+CAS Objekt im Reader befüllt mit ...<br>
+<br>
+		// Set previous revision<br>
+		JCas revA = jcas.createView("PREVIOUS_REVISION");<br>
+		revA.setDocumentText(previousRevision);<br>
+<br>
+		// Set current revision<br>
+		JCas revB = jcas.createView("CURRENT_REVISION");<br>
+		revB.setDocumentText(currentRevision);<br>
+<br>
+<br>
+<b>StackTrace</b><br>
+
+org.apache.uima.analysis_engine.AnalysisEngineProcessException: Annotator processing failed. <br>   
+	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.callAnalysisComponentProcess(PrimitiveAnalysisEngine_impl.java:389)<br>
+	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.processAndOutputNewCASes(PrimitiveAnalysisEngine_impl.java:297)<br>
+	at org.apache.uima.analysis_engine.impl.AnalysisEngineImplBase.process(AnalysisEngineImplBase.java:218)<br>
+	at org.apache.uima.collection.impl.cpm.engine.ProcessingUnit.processNext(ProcessingUnit.java:892)<br>
+	at org.apache.uima.collection.impl.cpm.engine.ProcessingUnit.run(ProcessingUnit.java:577)<br>
+Caused by: java.lang.NullPointerException<br>
+	at java.text.StringCharacterIterator.<init>(Unknown Source)<br>
+	at java.text.StringCharacterIterator.<init>(Unknown Source)<br>
+	at java.text.BreakIterator.setText(Unknown Source)<br>
+	at de.tudarmstadt.ukp.dkpro.core.annotator.UkpSentenceSplitter.makeAnnotations(UkpSentenceSplitter.java:73)<br>
+	at de.tudarmstadt.ukp.dkpro.core.annotator.UkpSentenceSplitter.process(UkpSentenceSplitter.java:66)<br>
+	at org.apache.uima.analysis_component.JCasAnnotator_ImplBase.process(JCasAnnotator_ImplBase.java:48)<br>
+	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.callAnalysisComponentProcess(PrimitiveAnalysisEngine_impl.java:375)<br>
+	... 4 more<br>
+<br>
+
+----------------
+
+*TZ:* !SentenceSplitter ist eine Single-View Komponente, die eigentlich nichts von Views weiss. Sie kann aber auch mit Views arbeiten, indem im CPE Deskriptor (oder im Aggregate) ein !SofaMapping vorgenommen wird.
+<verbatim>
+<sofaNameMappings>
+<sofaNameMapping cpeSofaName="PREVIOUS_REVISION" componentSofaName="_InitialView"/>
+</sofaNameMappings>
+</verbatim>
+
+Damit beide Revisionen bearbeitet werden, muss der !SentenceSplitter entsprechend zweimal aufgerufen werden, mit jeweils anderem !SofaMapping.
+
+----------------
+
+*SK:*
+Scheint zu funktionieren ... vorrausgesetzt man benutzt die richtigen Felder ;).
+
+Ist es eigentlich normal das die CPE GUI jedesmal eine NullPointerException wirft wenn man den Reader ändert?
+Das neue Laden eines Readers scheint nur nach dem Ausführen von 'Clear-All' möglich zu sein.
+
+----------------
+
+*TZ:* Ja, ist normal. Ist ein Bug in der GUI.
+----------------
+---++ Zuordnen von Annotation zu Sofa's
+
+Eigentlich wollte ich die Annotation den Sofa's / Views zuordnen, aber das scheint nicht möglich / nicht notwendig zu sein ?
+
+  * [[%ATTACHURL%/SQLDiffReader.xml][SQLDiffReader.xml]]: Reader<br>
+
+Im Deskriptor ist das nicht notwendig. Alle Views, die von einer CAS abgeleitet werden, erben dessen Filesystem.
+Im Java-Code muss man die Annotationen natuerlich dann dem View hinzufuegen =view.addToIndexes()= anstatt der CAS =jcas.addToIndexes()=.
+
+----------------
+---++ Paramter Gruppen
+Die CPE GUI zeigt keine Parameter Gruppen an?
+
+*TZ:* Ja, die GUI ist halt doof.
+
+----------------
+---++ Iterieren von Annotation
+<br>
+Ich habe das Diff nun über Annotation an den Revisionen realisiert (und nicht über einen getrennten View).<br>
+Nun würde ich gerne anhand dieser Annotationen zugriff auf die Sentence Annotation kriegen.<br>
+<br>
+Gibt es eine einfachere Methode (bessere Schnittstelle) als die über die beiden Annotations-Typen getrennt <br>
+zu iterieren und die Indizes zu vergleichen?<br>
+<br>
+Beispiel:<br>
+Revision A enthält eine Diff Annotation von Position 200 bis 300, <br>
+und Satz Annotationen von 0-150, 151-210, 211-290, 291-330, ...<br>
+<br>
+Als Ergebniss will ich die Sätze 151-210, 211-290 und 291-330 zurückgeliefert bekommen.<br>
+*TZ:* In diesem Fall hilft der Subiterator nicht weiter, da die Indizes nur teilweise überlappen. Dann musst du tatsächlich über die Satz Annotationen iterieren und die Offsets vergleichen.
+<br>
+Ps: Der Iterator iteriert immer in text-positions-Reihenfolge ?<br>
+*TZ:* Ja.
+<br>
+<br>
+-- Main.SimonKulessa - 19 Oct 2008
+
+
+%META:FILEATTACHMENT{name="SQLDiffReader.xml" attachment="SQLDiffReader.xml" attr="" comment="SQLDiffReader Component Description" date="1224424263" path="SQLDiffReader.xml" size="3219" stream="SQLDiffReader.xml" tmpFilename="/var/tmp/CGItemp29245" user="SimonKulessa" version="1"}%

@@ -1,0 +1,82 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1286543564" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+---++ Check Out and installation instructions
+
+%TOC%
+
+For a clean install simply follow these steps:
+-- Main.MateuszParzonka - 07 Oct 2010
+
+---+++++ Check Out
+
+Tested a fresh checkout using Eclipse Helios and Subversive.
+Add this moment there is nothing tagged, so check out the trunk:
+
+=maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/parzonka/back-of-the-book-indexing/trunk=
+
+Check out normally by keeping the default name. The project will be named "back-of-the-book-indexing".
+
+The download process should take about 5 - 10 minutes. The projects folder should have a size of approx. 370 MB.
+
+---+++++ Import User Libraries
+
+After Check Out the project will be full of errors. The references to the user libraries are missing.
+
+To fix this, you have to:
+   1 Open the Eclipse preferences (NOT the project properties).
+   2 Enter the search string "User Libraries".
+   3 In the window "Java/Build Path/User Libraries" click on "Import".
+   4 Click on "Browse..." and navigate to the Eclipse workspace and into the "back-of-the-book-indexing"-project folder.
+   5 Select the file "back-of-the-book-indexing.userlibraries",
+   6 Make sure all libraries in the file are selected and click "OK".
+   7 Close the Eclipse preferences with "OK".
+ 
+*Warning*: When you use User Libraries yourself, take care that no User Library uses the same name like mine. They would get overwritten in the process (a message would appear after step 6). Consult me in this case.
+   
+The project is build and the project folder decoration should have a warning sign, but no more errors.
+
+---+++++ Execute Post-Update-Hook
+
+Since it seems that Eclipse is not able to retrieve the value of the DKPRO_HOME environment variable you have exported in your profile automatically you should execute manually a post update hook.
+This "manual hook" is a bash script located in the projects folder. To execute it you do the following:
+   1 Open a shell and cd to the Eclipse workspace and into the "back-of-the-book-indexing"-project folder.
+   2 Enter: =bash postUpdateHook.sh=
+   3 Switch back to Eclipse, open the "Package Explorer"-View and refresh (F5) the folder "run_configuration". All *.launch files should show a decoration of outgoing change, symbolizing that they have been changed by the script.
+   4 (Optionally) Run ValidateInstallation.launch to verify the result of this step.
+   
+To check if the data was added you should run the "ValidateInstallation" run configuration. Is is located in the directory =run_configuration= in the projects folder.<br>
+ The test "postUpdateHookWasExecuted" should be green now.
+ 
+Important: *The script has to be called AFTER EVERY UPDATE that was called on the run_configurations folder. Don't forget to REFRESH the folder run_configuration!* Then its possible to use exactly the same run configurations as i do.
+ 
+---+++++ Import Dataset to DKPRO_HOME
+
+There is a zipped folder containing the dataset CM2007 (Csomai & Michalcea 2007) which must be used to conduct the experiments defined in the project.
+
+To use it you have to:
+   1 Download it from [[http://dl.dropbox.com/u/294765/back-of-the-book-indexing.zip][here]].
+   2 Decompress the archive which yields the directory "back-of-the-book-indexing".
+   3 Place the directory in your DKPRO_HOME.
+
+This directory is organized as following:
+   * =back-of-the-book-indexing=
+      * =CM2007= (a base location for all data related to the dataset "CM2007" containing only directories)
+         * =dataset= (29 .txt files representing the books in the dataset)
+            * =gold= (4 * 29 gold files with different suffix representing book indexes with different granularities)
+         * =experiments= (contains all directories that are created during experiments on this dataset)
+         * =preprocessed= (contains directories that contain XMI-representations of preprocessed dataset elements)
+         * =tfidf= (contains directories that contain tf- and df-serializations extracted from this dataset
+
+Now the "back-of-the-book-indexing"-directory should exist in your DKPRO_HOME.
+To check if the data was added you should run the "ValidateInstallation" run configuration. Is is located in the directory =run_configuration= in the projects folder.<br>
+The test "dataFolderExists" should be green now.
+
+---+++++ Conducting existing Experiments
+
+All experiments that should be safely conducted by a supervisor have a run configuration.<br>
+They are located in the directory =run_configuration= in the projects folder.<br>
+They are organized in folders the mirror the organization of the "experiments"-package.<br>
+The more recent ones will be added to the Eclipse run favorites menu.<br>
+For a documentation of the experiment and its settings you can consult the javadoc of the subpackages of =de.tudarmstadt.ukp.parzonka.bbi.experiments=.
+
+   There is a class and a run configuration called "RunCurrentExperiments" that can be used to calculate all experiments in a proper sequence.

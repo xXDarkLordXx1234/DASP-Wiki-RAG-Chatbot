@@ -1,0 +1,83 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1308095704" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="LSR.WordNetResourcebeschreibung"}%
+---+ !WordNets Pointertypen 
+   * Die Beziehung zwischen Synsets und in ihnen enthaltenen Lexeme wird durch Pointers realisiert
+   * Jeder Pointer hat einen Ursprungs- und Zielsynset und besitzt einen Typ
+   * Dabei unterscheidet man zwischen lexikalischen und semantischen Pointertypen
+      * Lexikalische Pointertypen binden zwei Lexeme aus unterschiedlichen Synsets und stellen die Beziehung zwischen Wortformen dar
+         * Folgende Pointertypen _können_ lexikalisch sein: _Antonym, Pertainym, Participle, Also See, Derivationally Related_
+      *  Semantische Pointertypen stellen eine semantischen Relation dar und binden somit zwei gesamte Synsets
+   * In Abhängigkeit vom POS der Synsets, können zwischen Synsets nur bestimmte Pointertypen existieren - _appliesTo - Beziehung_
+
+---++ Pointertypen mit ihrer, im !WordNet verwendeten, Stringdarstellung; Aufgeteilt nach POS des Synsets
+---++++ Pointertypen der Nomen
+| ! | Antonym |
+| @ | Hypernym |
+| @i | Instance Hypernym |
+| ~ | Hyponym |
+| ~i | Instance Hyponym |
+| #m | Member holonym |
+| #s | Substance holonym |
+| #p | Part holonym |
+| %m | Member meronym |
+| %s | Substance meronym |
+| %p | Part meronym |
+| = | Attribute |
+| + | Derivationally related form |
+| ;c | Domain of synset - TOPIC |
+| -c | Member of this domain - TOPIC |
+| ;r | Domain of synset - REGION |
+| -r | Member of this domain - REGION |
+| ;u | Domain of synset - USAGE |
+| -u | Member of this domain - USAGE |
+
+---++++ Pointertypen der Verben
+| ! | Antonym |
+| @ | Hypernym |
+| ~ | Hyponym |
+| *  | Entailment |
+| > | Cause |
+| %%^ |   Also see |
+| $ | Verb Group |
+| + | Derivationally related form |
+| ;c | Domain of synset - TOPIC |
+| ;r | Domain of synset - REGION |
+| ;u | Domain of synset - USAGE |
+
+---++++ Pointertypen der Adjektiven
+| ! | Antonym |
+| & | Similar to |
+| < | Participle of verb |
+| \ | Pertainym (pertains to noun) |
+| = | Attribute |
+| ^  Also see |
+| ;c | Domain of synset - TOPIC |
+| ;r | Domain of synset - REGION |
+| ;u | Domain of synset - USAGE |
+
+---++++ Pointertypen der Adverben
+| ! | Antonym |
+| \ | Derived from adjective |
+| ;c | Domain of synset - TOPIC |
+| ;r | Domain of synset - REGION |
+| ;u | Domain of synset - USAGE |
+
+
+---++ Symmetrie der Pointer
+   * Manche Pointer sind Symmetrisch, dies bedeutet wenn es einen Pointer vom Synset A nach Synset B gibt, existiert auch ein Pointer vom Synset B nach Synset A.
+   * Die Symmetrie der Pointer hängt von den Pointertypen ab und ist in unterstehender Tabelle beschrieben
+|   Vom Synset A nach B |  Vom Synset B  nach A |
+| Antonym | Antonym |
+| Hyponym | Hypernym |
+| Hypernym | Hyponym |
+| Instance Hyponym | Instance Hypernym |
+| Instance Hypernym | Instance Hyponym |
+| Holonym | Meronym |
+| Meronym | Holonym |
+| Similar to | Similar to |
+| Attribute | Attribute |
+| Verb Group | Verb Group |
+| Derivationally Related | Derivationally Related |
+| Domain of synset | Member of Doman |
+
+%META:TOPICMOVED{by="ZijadMaksuti" date="1286424583" from="Hiwi.WordNetPointerSymbols" to="Hiwi.WordNetPointers"}%

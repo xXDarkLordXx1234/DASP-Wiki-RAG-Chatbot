@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212658493" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="SimonKulessa"}%
+---++ Paraphrasen Kandidaten Sets
+
+Cluster Format wie folgt:<br>
+"<"AritkelName">"{<br>
+Hier folgt nun eine Liste mit den Paraphrasen des Clusters<bt>
+{ID} ... Extrahierter Satz ...<br>
+}>>>
+
+Anmerkung:
+   * "<" ist als < zu lesen.
+   * Die ID beschreibt eine interne ID meines Programmes (x-te Revison) und ist nicht die RevisionsID der Wikipedia.
+
+Paraphrasen Kandidaten Sets:
+   * [[%ATTACHURL%/candCluster.txt][candCluster.txt]]: Beispiel Extraktion aus dem Artikel "D. B. Cooper"
+
+
+-- Main.SimonKulessa - 05 Jun 2008
+
+%META:FILEATTACHMENT{name="candCluster.txt" attachment="candCluster.txt" attr="" comment="Beispiel Extraktion aus dem Artikel %22D. B. Cooper%22" date="1212658140" path="candCluster.txt" size="487984" stream="candCluster.txt" tmpFilename="/var/tmp/CGItemp38635" user="SimonKulessa" version="1"}%

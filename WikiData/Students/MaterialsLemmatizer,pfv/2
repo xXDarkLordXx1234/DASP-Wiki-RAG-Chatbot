@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="DelphineBernhard" date="1247722429" format="1.1" version="2"}%
+%META:TOPICPARENT{name="NikolayMaterials"}%
+---+ Lemmatizer Notes
+
+Sometimes the lemmatizer has interesting/unexpected behavior with CAPITAL Letters:
+
+Sentence(0,45): The word <span class="green">AIRPLANE</span> starts with the letter "A".<br />
+Lemma(9,17): AIRPLANE  { value=<span class="green">airplane</span> }<br />
+<br />
+Sentence(48,79): An AIRPLANE flies in the sky. <br />
+Lemma(51,59): AIRPLANE  { value=airplane }<br />
+<br />
+Sentence(73,88):  This is a BEAR<br />
+Lemma(84,88): BEAR  { value=Bear }<br />
+<br />
+Sentence(89,131):  The word <span class="green">BEARS</span> begins with the letter "B"<br />
+Lemma(99,104): BEARS  { value=<span class="green">BEARS</span> }<br />
+<br />
+Sentence(123,140): This is the CAT.<br />
+Lemma(135,138): CAT  { value=CAT }<br />
+<br />
+Sentence(149,180):  CAT begins with the letter "C"<br />
+Lemma(150,153): CAT  { value=CAT }<br />
+<br />
+
+*DB*: Could you please also give the Part-of-speech tags associated with the words. Are they the same?
+
+   -- Main.NikolayGeorgiev - 15 Jul 2009

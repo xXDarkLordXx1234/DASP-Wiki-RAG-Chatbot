@@ -1,0 +1,37 @@
+%META:TOPICINFO{author="TristanMiller" date="1331886083" format="1.1" version="7"}%
+%META:TOPICPARENT{name="HowTo"}%
+<div style="background: red; font-size: 50px; border: solid black 5px; line-height: 100%; text-align: center;">
+Service is currently not available.
+</div>
+
+*Note:* Due to interoperability problems with other services, we cannot run the UKP VPN server as planned on our current Windows server. We are working on a new solution. Meanwhile, you have to use the TK VPN again. 
+
+---+ Connecting to the TK VPN
+
+---++ General configuration
+
+| Server | vpn.tk.informatik.tu-darmstadt.de (130.83.164.229) |
+| Login | TK domain account (without leading "TK\") |
+| Domain | TK |
+| Connection type | PPTP |
+| Options | enable software compression, disable remote gateway |
+| Requirements | working internet connection | 
+
+
+---+ Connecting to the UKP VPN
+
+---++ General configuration
+
+| Server | vpn.ukp.informatik.tu-darmstadt.de (130.83.167.129) |
+| Login | UKP domain account (without leading "UKP\") |
+| Domain | UKP |
+| Connection type | PPTP |
+| Options | enable software compression, disable remote gateway |
+| Requirements | working internet connection | 
+
+   * With the data in the table above, you can make a VPN connection into the UKP network &#8203;&#8203;to use the internal services. For details on the individual operating systems, see the !HowTo of TK: https://wiki.tk.informatik.tu-darmstadt.de/bin/view/ASCAll/TKVPN
+   * Please replace all ... tk.informatik.tu-darmstadt.de details with ... ukp.informatik.tu-darmstadt.de.
+
+---++ Notes on specific VPN clients
+---+++ KVpnc
+In the profile settings under Profile->Connection specific->PPTP/L2TP->Authentication, it may be necessary to change the "Authorization method" to MSCHAP (not MSCHAP-v2).

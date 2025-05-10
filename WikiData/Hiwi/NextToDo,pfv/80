@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1374138933" format="1.1" reprev="79" version="80"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * apply *delex* resource and write about it in the thesis
+      * it is working stand-alone, incorporate into expansions framework
+         * got it working in my project (i.e., fixed all dependencies, resources and so on), incorporate into pipeline
+            * got it working within the pipeline, now create indices
+
+   * write about and apply *new data set*
+
+   * write *DFR* section
+
+   * compare ranks from baseline run (result on frink: tr_indexDT/res) and a top3 DT index run
+      * <del>implement rank correlation at class utils.CompareTwoRankings (*spearman ranking*)</del> + write in thesis
+
+   * read the thesis: "A Comparison of Lexical Expansion Methodologies to Improve Medical Question and Answering Systems" ([[http://gradworks.umi.com/15/12/1512012.html][online]])
+
+   * https://groups.google.com/forum/#!topic/dkpro-core-developers/LTfV46smprw

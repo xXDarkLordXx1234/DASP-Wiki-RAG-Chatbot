@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1340019771" format="1.1" version="5"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+<!--
+  * Set ALLOWTOPICVIEW = Main.IrynaGurevych, Main.WolfgangStille
+  * Set ALLOWTOPICCHANGE =  Main.IrynaGurevych, Main.WolfgangStille
+//-->
+
+These are just some of the thoughts I'm having while working on this thesis. It may not be conventional to record this here, but I don't know what else to write and I'm being encouraged to write more, so... enjoy!
+
+---++++ June 15
+
+*IG:* I allow me just a short comment, as we have a meeting on Tuesady anyway. We have to formalize und understand the task properly before you start any experiments. We should then determine good baselines and understand their results for a set of experimental configurations we define. Then, we should define a hypothesis how / which graph-based methods to use and why, and verify this experimentally. But not having this plan, we run the risk of investing the valuable time in not-so-promising-things. For example, if you asked me, I would have told you long time ago that using keywords as your representation is not a good way to go. They do not encode enough context (apart from poor quality) to serve as a good representation for an NLP task. This is known in the literature.
+
+Just using the nouns of the description (abstract) could be more successful, semi-redundancy may actually strenghten correct results. Should be tested once I find out how to get the DKPro pipeline to actually deliver it's results.
+
+How can we cluster papers around specific (pre defined) topics?
+
+I've talked about this with Wolfgang, he suggested that we could define our topics as points in our search space and build our clusters around these topics.
+
+I'm not sure how that is supposed to work with Chinese Whispers however, we could certainly force a class to exist, but we cannot really force nodes to be part of that class without skewing the results. And in either case, if we go by a search space approach with our nodes as vectors in this space and distances as the cosine of the angle, then what do we need a graph for? We could just as well use any one of the many statistical clustering algorithms that work just fine without a graph representation, right?
+
+It's not really a problem yet since we're not quite far enough, but it seems to me that it's bound to become one.
+
+---++++ June 14
+
+I'm beginning to think that a dozen keywords per document is not enough for a statistical approach, which is essentially what we're doing right now. I think we either need many more keywords per document or some sort of interpretation of those keywords.
+
+Germanet/Wordnet/UBY *may* be an answer and I'll definitely check those out, but for now I remain unconvinced for the following reasons:
+
+1: How usable are they? What I've seen so far is underwhelming, they could very well be another case of DKPro that'd take ages to learn for a more questionable benefit.
+2: Generalising words to synonyms or hypernyms never generates data, you always lose data, is that really a good way to go if you don't have much data to begin with?
+3: Even as a human I have a hard time roughly classifying a pedocs paper just by looking at the keywords, how could a rather rudimentary method that just generalises information produce better results? While being far from an expert, I think we need actual sophisticated NLP to squeeze information from the bits of data we have.
+
+To illustrate the last point, a random example:
+
+"Geschichtsunterricht ; Kooperation; Thema; Norm; Oral History; Moral; Sekundarstufe II; Unterrichtsprojekt; Grundschule; Berufsbildung; Außerschulische Einrichtung; Sekundarstufe I; Entwicklung;; Deutschland"
+
+This seems to be about history lessons, yet only two of the keywords actually pertain to that and one is in another language. All the other keywords are so general in their meaning that they barely help to specify the document further. While tf*idf helps against that, it only helps if those keywords are not just general, but also common in our database, which is not necessarily the case.
+
+"Sekundarstufe II; Grundschule; Rechtsextremismus; Sekundarstufe I; Deutschland"
+
+What is this one about? Radical right extremism in elementary schools, highschools and "Gymnasium"? So just right extremism in any school? Then "Schule, Rechtsextremismus" seems more fitting, so if we assume that the people setting the keywords did a good job, and they probably did, then the document is about something else, perhaps right extremism detailed in each of those stages, or perhaps a document *about* those stages with an interlude about right extremism? It could even be a document about teaching about right extremism.
+
+Without even the title of the document, it becomes pure guess work what it's about and the keywords seem to be less of a help than one would expect.

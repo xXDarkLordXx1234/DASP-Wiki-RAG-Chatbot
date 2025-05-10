@@ -1,0 +1,39 @@
+%META:TOPICINFO{author="mirashi" comment="reprev" date="1458497422" format="1.1" reprev="3" version="3"}%
+---+!! %TOPIC%
+%TOC%
+
+----+ March 2016
+
+* Topic Correlations
+   * Get familiar with Ego
+      * Documents include project proposal and technical document 
+   * Get familiar with the xml corpus of Ego
+      *  Analysing structure, nodes and useful parts of corpus
+   * Cleaning xml
+      * Extracting useful information i.e articles from dump
+      * Seperating English and Deutsch corpus
+   * Creating Database model
+      * Model to represent overall structure of articles and
+        its interaction with other contents of corpus
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 4.03.2016 | Meeting | 1 | Defining goals as mentioned in above description |
+| 7.03.2016 | Ego documents | 4 | Getting familiar by reading documents provided |
+| 7.03.2016 | Ego corpus | 4 | Analysing corpus structure in detail |
+| 8.03.2016 | Ego coprus | 4 | Post analysis narrow down on useful and non useful data |
+| 8.03.2016 | Cleaning corpus | 2 | Extracting useful data from corpus (articles and threads) |
+| 8.03.2016 | Ego article | 2 | Analysing contents of articles |
+| 11.03.2016 | Meeting | 1 | Discussion done on creating a database model |
+| 14.03.2016 | Pre analysis for modelling | 2 | Analysing relation between articles and other contents of corpus to prepare for database modelling |
+| 14.03.2016 | Modelling | 5 | Database modelling using Hibernate and Mysql |
+| 18.03.2016 | Meeting | 1 | Discussion done on using baseX for data analysis and visualization. Goal is to create multiple Xquery functions which achieve a bottom up approach to gain insight into the unknown details of corpus |
+
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+
+
+
+

@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="alles" comment="" date="1706097637" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ComputeCluster"}%
+<div style="border: solid 2px lightblue; background-colo: yellow; font-weight:800; padding: 5px">
+<p align="left">
+*The [[ComputeClusterFAQ][Compute Cluster FAQ]] also applys to non-UKP members / students - this page is a additional support page for e.g. ATHENE only members.*
+</p>
+</div>
+
+<div style="float:right;background-color:white; z-index:999; border: solid 2px lightblue;">
+---++++ !!Content
+%TOC%
+</div>
+
+---+!! %TOPIC%
+
+---++ First steps
+---+++ Basic information
+   * TBD
+---+++ Getting access
+   * TBD
+
+---++ Special "external labs" Features
+---+++ Storage
+   * If you are ATHENE only (and not a member / student of UKP lab) your storage path is /storage/athene/work/$USERNAME
+---+++ Compute-nodes
+
+%INCLUDE{ "Services.Campus.ComputeClusterGPUs" pattern="---\+\+\+ Detailed Node Information(.*?)---\+\+\+" }%
+
+The following compute-nodes are ATHENE exclusive:
+
+%INCLUDE{ "Services.Campus.ComputeClusterGPUs" pattern="---\+\+\+\+ ATHENE compute-nodes(.*?)---\+\+\+" }%
+
+---+++ Running Jobs
+---++++ Example 1
+   * <u>If you are researcher and associated ONLY with ATHENE and not UKP</u>, you would want to specify the partition "gpu-athene" (selecting the compute-nodes) and the account "athene-researcher" (your "piggy bank") e.g. like <verbatim>sbatch -p gpu-athene -a athene-researcher your_script.sh</verbatim> to submit your jobs. You can also put these values to your sbatch script. 
+   * *Explanation:* 
+      * There is no need to specify the qos, as "gpu" is the default qos for account athene-researcher
+      * But might need to specify the account using =-a athene-researcher= to use the correct account if you have been assigned multiple ones (remember to check your accounts using =sshare -U=)
+
+-- Main.SebastianAlles - 2024-01-24

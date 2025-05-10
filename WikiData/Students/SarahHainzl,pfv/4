@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="hainzl" comment="reprev" date="1524011533" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2018-04-17
+   * Filtered the corpora for guideline
+   * Difficulties:
+      * Some arguments are supported by examples and it is hard to locate the aspect: 'Many girls , for example , do not like to wear skirts or dresses , which most girls ' uniforms require ' (school uniforms, argument_against) 
+      * There are arguments with two targets *A* and *B* that contain aspects for both targets: 'Firstly , it does n't let out green house gases that destroy the environment .' (nuclear energy, argument_for) target A: nuclear energy, target B: green house gases, aspect 1: green house gases refers to A, aspect 2: environment refers to B.
+      * How do we anotate aspects that are seperated by an subclause? For example: '...a performance, one might say, of decency itself.' (minimum wage, argument_for)
+   * added the current guideline to the attachments
+
+---++ 2018-04-11
+   * Wir prüfen nicht ob es sich um ein Argument handelt und auch nicht ob der Stance korrekt ist, damit wir uns auf den eigentlichen Task (Aspekt Annotation konzentrieren können)
+   * Zu jedem annotierten Aspekt *A* sollten wir mit annotieren, ob A sich direkt auf das Thema *T* bezieht 
+   * Nächste Schritte:
+      * *Korpus filtern*: (1) prüfe stance, (2) prüfe ob Argument, (3) filtere Sätze mit nicht eindeutigen Stance
+         * Hintergrund: da unsere Daten mit crowdsourcing erzeugt wurden, ist der Stance manchmal falsch und manchmal sind die Sätze nur Meinungen ohne Grund (=kein Argument)
+         * Das resultierende Korpus sollte mindestens 200 Sätze für mindestens vier Themen enthalten
+      * Guidelines überarbeiten
+      * Annotiere Beispiele für 10 pro un 10 contra für mehrere Themen
+         *  notiere Schwierigkeiten 
+         * und verfeinere Guideline entsprechend
+
+---++ 2018-04-04
+   * Completion of forms
+   * Discuss results of the first preliminary study
+      * Annotation seems to be more complicated for some topics. For instance, "Marijuana legalization" seems to be complicated; most likely because texts stem from online discussions. In contrast, "nuclear energy" is simpler to annotate.
+      * "*Target*" seems to be important and should be considered
+   * Nächste Schritte
+      * Berücksichtige target in der annotation. Wird es dadurch leichter? Wieviele Argumente enthalten das Target / wie viele nicht?
+      * Guideline überarbeiten.
+
+---++ 2018-03-28
+   * Thesis Workflow and forms
+   * Discuss topic in more detail
+   * Erste Studie:
+      * Annotiere 20 Argumente (10 pro + 10 con) für jeweils vier Themen (insgesamt 80 Sätze)
+      * Erstelle erste Guideline: (1) spezifiziere "Aspekt", (2) Suche gute Beispiele für die Guideline, (3) definiere Regeln für die Annotation
+      * Notiere Schwierigkeiten 
+
+
+
+-- Main.ChristianStab - 2018-04-04
+
+%META:FILEATTACHMENT{name="Guideline.docx" attachment="Guideline.docx" attr="" comment="Current guideline (17.04.18)" date="1524011474" path="Guideline.docx" size="14455" user="hainzl" version="1"}%

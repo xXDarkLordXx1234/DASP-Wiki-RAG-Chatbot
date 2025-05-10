@@ -1,0 +1,39 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="ShuoYangDariahArbeit"}%
+---+ Arbeitsprotokoll-1H 2012 / Shuo Yang
+
+%TOC%
+
+---+++ Februar 2012 - April 2012
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | -3 | Übertrag von letztem Vertrag |
+| 26.02.2012 | JOAI Data Provider, Harvester | 5 | Fertig: Einfügen von Testdaten in JOAI Data Provider, und Doku dazu<br>Fertig: Harvesten der Daten von JOAI-Testrepo<br>Angefangen: Harvesten der Daten von ESciDoc |
+| 27.02.2012 | Meeting | 1 | Meeting mit Richard |
+| 13.03.2012 | Organisatorisches, Doku | 2 | Einrichtung der Konten in DARIAH-Netz. Migration der Wiki-Seiten von UKP-Netz in DARIAH-Netz |
+| 14.03.2012 | Doku | 1.5 | Weitere Migrationen sowie Erweiterung der Wiki-Seiten |
+| 16.03.2012 | Wiki, Harvest von ESciDoc | 1.5 | Schieben der OAI-Testset von /opt in /srv <br> Versuchen, OAI-Provider in ESciDoc zu deployen, so dass ESciDoc von jOAI geharvestet werden können |
+| 18.03.2012 | Harvest von ESciDoc, Puppet | 2 | Wegen bekanntem Bug von OAI-Provider ist momentan eine Harvesting nicht möglich <br> Einarbeiten in Puppet |
+| 19.03.2012 | Puppet, Keyphrase Extraction Paper | 4 | Einarbeiten in Puppet <br> Einlesen von Keyphrase Extraction Paper |
+| 20.03.2012 | Meeting, Keyphrases Pedocs | 2 | Meeting über Keyphrases Aufgabe |
+| 21.03.2012 | Keyphrases Pedocs | 2 | Möglichkeit gefunden, schnell Datenarchiv herunterzuladen. Test-Archiv von Pedocs untergeladen | 
+| 24.03.2012 | Keyphrases Pedocs | 1 | Einarbeiten existierender Codes |
+| 25.03.2012 | Keyphrases Pedocs | 0.5 | Einarbeiten existierender Codes |
+| 26.03.2012 | Keyphrases Pedocs | 6.5 | Einarbeiten sowie Erweiterung existierender Codes. Anzahl der Dokumente sowie durch durchschnittliche Token per Dokument sind nun erhältlich |
+| 27.03.2012 | Keyphrases Pedocs | 2.5 | |
+| 01.04.2012 | Keyphrases Pedocs, DBS | 1.5 | |
+| 02.04.2012 | Keyphrases Pedocs | 2 | |
+| 04.04.2012 | Keyphrases Pedocs | 4 | Versuchen, mit Titel die Dokumente zu identifizieren, denn URN nicht überall verfügbar sind | 
+| 09.04.2012 | Keyphrases Pedocs | 1 | |
+| 11.04.2012 | Keyphrases Pedocs | 5 | Gruppierung der Dokumente nach Sprache, Erweiterung von PdfReader sowie FileSetCollectionReaderBase |
+| 12.04.2012 | Keyphrases Pedocs, Meeting | 2 | Mit source_opus lassen sich die Dokumente deutlich besser identifizieren. <p> Neue Priorität: Überprüfen, wie viel Prozent von Gold Keyphrases existieren in den Dokumente |
+| 17.04.2012 | DKPro, Keyphrases Pedocs | 7 | Dokumenten nun mit source_opus identifiziert. Dafür neue Komponent =PedocsLanguageBasedFileGroupper= .<p> =GoldKeyphrasesInclusionRatioCalculator= -Komponente gebaut, die berechnet, wie viel Prozent von Gold Keyphrases existieren in den Dokumente. Pipeline hat noch Problem beim Laufen.<p>JdbcReader aufgeräumt und in Google Code veröffentlicht. |
+| 18.04.2012 | Keyphrases Pedocs, DBS | 6 | Pipeline mit GoldKeyphrasesInclusionRatioCalculator läuft. Erste Ergebnisse von dem Ratio . <p> =WebpageReader= gebaut, um DBS Texte aus Webseite auszulesen. Pipeline hat noch Probleme. |
+| 24.04.2012 | Meeting | 0.5 | Meeting mit Richard |
+| 25.04.2012 | Pedocs Inclusion Ratio | 1.5 | Implementierung neues Vergleichsverfahrens mit Lemmatisierung |  
+| 28.04.2012 | Pedocs Inclusion Ratio, Refactor | 2 | Neue Vorgehensweise: Abspeicherung lemmatisierter Gold Keyphrases beim Preprocessing<p> Trennung von Pipelines nach Schwerpunkte | 
+| 30.04.2012 | Pedocs Inclusion Ratio  | 1.5 | Neues Vergleichsverfahren mit Lemmatisierung funktioniert |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 60)$EXEC($GET(total_hour))"}% | bis Ende April noch %CALC{"$EVAL( $GET( total_hour ) - ($GET( done_hour )) )"}% Stunden |
+
+-- Main.ShuoYang - 2012-05-01

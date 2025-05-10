@@ -1,0 +1,214 @@
+%META:TOPICINFO{author="ArtemVovk" date="1259832389" format="1.1" version="4"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+---+ Artem Vovk Previous Work
+
+
+---+ September to November 2009
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| SSL Proxy | 100 |
+| UI Modification | 100 |
+| Correction of Suggest Section | 100 |
+| Redirect Service (instead of proxy) | 80 |
+| !OpenSUSE mediawiki dump | 100 |
+| Automatic Lucene index generation | 100 |
+| Wiki syntax to plain text | 0 |
+
+Subtasks for lucene index generation:
+   * make configurable using a probperties file (with platform/url/...)
+   * create abstract class to unify code
+   * shell script to execute index generation
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| SSL Proxy | 08.09.2009 | 1 | <ul><li>Versuche SSL einzurichten</li></ul> |
+| SSL Proxy | 09.09.2009 | 3 | <ul><li>Neur Weg SSL zu implementieren, Implemetierung</li></ul> |
+| SSL Proxy | 10.09.2009 | 1 | <ul><li>Testen</li></ul> |
+| SSL Proxy+UI Modification | 14.09.2009 | 3 | <ul><li>Kommit(SSL Proxy)</li><li>UI Modifications- Problem Analyse, Implemetierung</li></ul> |
+| UI Modification | 15.09.2009 | 3 | <ul><li>Implemetierung</li></ul> |
+| UI Modification+ Correction of Suggest Section | 16.09.2009 | 3 | <ul><li>UI wurde implementiert</li><li>Correction of Suggest Section </li></ul> |
+| Correction of Suggest Section | 17.09.2009 | 3 | <ul><li>Correction of Suggest Section</li></ul> |
+| Correction of Suggest Section | 18.09.2009 | 3 | <ul><li>Correction of Suggest Section</li></ul> |
+| Correction of Suggest Section | 19.09.2009 | 1.5 | <ul><li>Lesen von Maven Dokumentation</li></ul> |
+| Correction of Suggest Section+SSL Proxy | 20.09.2009 | 2.5 | <ul><li>Suggest Section wurde korrigiert</li><li>Aenderungen in SSL Proxy</li></ul> |
+| Correction of Suggest Section | 21.09.2009 | 1 | adaptation to new XMLTextExtractor |
+| Correction of Suggest Section | 2.10.2009 | 5 | <ul><li>InnerHtml xml convertation(img tag, br tag)</li><li>Corrections in css selector(decrements each xpath "number" by 1)</li></ul> |
+| Correction of Suggest Section | 4.10.2009 | 3 | <ul><li>Correction of Suggest Section(changes in regex patterns)</li></ul> |
+| Correction of Suggest Section | 15.10.2009 | 4 | <ul><li>Correction of Suggest Section</li></ul> |
+| Correction of Suggest Section | 16.10.2009 | 4.5 | <ul><li>Correction of Suggest Section</li><li>OpenSUSE mediawiki dump</li></ul> |
+| Automatic Lucene index generation | 20.10.2009 | 2 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 21.10.2009 | 3 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 22.10.2009 | 3 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 23.10.2009 | 5.5 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 24.10.2009 | 3.5 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 28.10.2009 | 1 | <ul><li>Aenderungen in WikiAPI :getRelevantContent, getRelevantPlainPageContent</li></ul> |
+| -- | 29.10.2009 | 1.5 | Einrichten das DKPro mit Fabian |
+| Automatic Lucene index generation | 03.11.2009 | 3 | <li><ul>Implementation von IndexCreator</ul><ul>Testen von MediaWiki Index</ul><ul>Testen von TWiki Index</ul><ul>Erstellung als runnable Jar</ul></li> |
+| Automatic Lucene index generation | 08.11.2009 | 1 | <ul><li>Erstellung als runnable Jar</li><ul> |
+| Automatic Lucene index generation | 09.11.2009 | 4 | <ul><li>Erstellung als runnable Jar</li><li>als shell script</li><ul> |
+| Automatic Lucene index generation | 10.11.2009 | 1 | <ul><li>Dokumentation</li><li>Kode Aenderungen</li><ul> |
+| Automatic Lucene index generation | 15.11.2009 | 6 | <ul><li>Aenderungen im CLI</li><li>Multiply Webspaces fuer TWiki</li><li>OOP Model Aenderungen</li></ul> |
+| Automatic Lucene index generation | 19.11.2009 | 3 | <ul><li>Aenderungen in TWiki(login und pass sind jetzt Variablen, die kann man konfigurieren)</li><li>Lesen von Maven Dokumentation</li></ul> |
+| Automatic Lucene index generation | 24.11.2009 | 5 | <ul><li>Versuch das Problem mit https Seiten zu loesen</li></ul> |
+| Automatic Lucene index generation | 25.11.2009 | 5 | <ul><li>Das Problem des Zugriffs(durch https) zur maggie Seite wurde geloest</li></ul> |
+| Automatic Lucene index generation | 26.11.2009 | 2 | <ul><li>Adaptation von TWiki Klasse fuer https</li></ul> |
+| Automatic Lucene index generation | 27.11.2009 | 3 | <ul><li>Korrektion von weiteren Fehlern</li></ul> |
+| Automatic Lucene index generation | 30.11.2009 | 3 | <ul><li>Versuch der Verbindungsfehler zu beheben</li><li>Wiki syntax to plain text(Algo)</li><ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 115 (34 Übertrag von August) | bis Ende November |
+
+     
+---+ June to August 2009
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Konvertieren von HTML | 100 |
+| Wikipedia Import | 100 |
+| Berkeley DB XML einlesen | 100 |
+| Wikipedia XML Index | 100 |
+| SSL Proxy | 0 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Konvertieren von HTML | 08.06.2009 | 3 | <ul><li>Testen</li><li>Einlesen von UIMA Dokumentation(Sofas)</li></ul> |
+| Konvertieren von HTML | 10.06.2009 | 5 | <ul><li>Testen</li><li>Reimplementation</li><ul> |
+| Konvertieren von HTML | 11.06.2009 | 1 | <ul><li>Testen</li></ul> |
+| Konvertieren von HTML | 15.06.2009 | 4 | <ul><li>Installation von Wikulu</li></ul> |
+| Konvertieren von HTML | 17.06.2009 | 4 | <ul><li>Fehlersuche in Wikulu "Suggest Section"</li></ul> |
+| Konvertieren von HTML | 18.06.2009 | 2 | <ul><li>Realisierung von DTD Local Validation</li></ul> |
+| Konvertieren von HTML | 19.06.2009 | 3 | <ul><li>Realisierung von DTD Local Validation</li></ul> |
+| Konvertieren von HTML | 24.06.2009 | 3 | <ul><li>DTD Local Validation wurde erledigt</li><li>Testen</li></ul> |
+| Konvertieren von HTML | 25.06.2009 | 4 | <ul><li>Erzatz der Offsets durch XPath</li><li>Korrektion in DTD Local Validation</li></ul> |
+| Konvertieren von HTML | 26.06.2009 | 4 | <ul><li>Fehlerkorrektion in NLPWebService</li></ul> |
+| Konvertieren von HTML | 29.06.2009 | 3 | <ul><li>Lesen von JavaEE und Web Development Dokumentation</li></ul> |
+| Konvertieren von HTML | 30.06.2009 | 2 | <ul><li>Lesen von jQuery Dokumentation</li></ul> |
+| Konvertieren von HTML | 1.07.2009 | 4 | <ul><li>Implementation von TopicSegmentation(XPath+jQuery)</li></ul> |
+| Konvertieren von HTML | 06.07.2009 | 5 | <ul><li>Implementation von TopicSegmentation(XPath+jQuery)</li></ul> |
+| Konvertieren von HTML | 07.07.2009 | 4 | <ul><li>Implementation von TopicSegmentation(XPath+jQuery)</li></ul> |
+| Konvertieren von HTML | 15.07.2009 | 1 | <ul><li>Implementation von TopicSegmentation(XPath+jQuery)</li></ul> |
+| Konvertieren von HTML | 16.07.2009 | 1 | <ul><li>Implementation von TopicSegmentation(XPath+jQuery)</li></ul> |
+| Konvertieren von HTML | 20.07.2009 | 3 | <ul><li>Implementation von TopicSegmentation(XPath+jQuery)</li></ul> |
+| Konvertieren von HTML | 21.07.2009 | 2 | <ul><li>Implementation von TopicSegmentation(XPath+jQuery)</li></ul> |
+| Konvertieren von HTML | 22.07.2009 | 4 | <ul><li>Implementation von TopicSegmentation(XPath+jQuery)</li></ul> |
+| Konvertieren von HTML | 23.07.2009 | 4 | <ul><li>TopicSegmentation(XPath+jQuery) wurde implementiert</li></ul> |
+| Konvertieren von HTML | 24.07.2009 | 3 | <ul><li>TopicSegmentation(XPath+jQuery) testen</li><li>Import von Wikipedia</li></ul> |
+| Wikipedia Import | 27.07.2009 | 4 | <ul><li>Import von Wikipedia</li><li>Anleitung</li><li>Ant script fuer automatischen Import</li></ul> |
+| Berkeley DB XML einlesen | 28.07.2009 | 3 | <ul><li>Lesen von Xquery Dokumentation</li><li>Wikipedia Import</li></ul> |
+| FileIndex | 02.08.2009 | 2 | <ul><li>Indexing of Files</li></ul> |
+| FileIndex | 03.08.2009 | 2 | <ul><li>Indexing of Files(wikipedia in txt format)</li></ul> |
+| SSL Proxy | 14.08.2009 | 1 | <ul><li>SSL Dokumentation</li></ul> |
+| SSL Proxy | 20.08.2009 | 4 | <ul><li>Lesen von Dokumentation ueber SSL</li></ul> |
+| SSL Proxy | 24.08.2009 | 2.5 | <ul><li>Lesen von Dokumentation ueber SSL und Servlets</li></ul> |
+| SSL Proxy | 25.08.2009 | 3 | <ul><li>Lesen von Dokumentation ueber SSL und Servlets</li></ul> |
+| SSL Proxy | 26.08.2009 | 3 | <ul><li>Konfiguration von Jetty</li></ul> |
+| SSL Proxy | 27.08.2009 | 2.5 | <ul><li>Weitere Konfiguration von WikiProxy und Jetty</li></ul> |
+| SSL Proxy | 28.08.2009 | 2 | <ul><li>Weitere Konfiguration von WikiProxy und Jetty</li></ul> |
+| SSL Proxy | 30.08.2009 | 2 | <ul><li>Lesen von Dokumentation ueber SSL und Servlets</li></ul> |
+| SSL Proxy | 31.08.2009 | 2 | <ul><li>Lesen von Dokumentation ueber SSL und Jetty</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 136 (16 Übertrag von Mai) | bis Ende August |
+
+
+---++ March to May 2009
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Integrate Lucene into Wikulu | 100 |
+| !DocWriter enhancement | 100 |
+| WikuluDemo | 100 |
+| Konvertieren von HTML | 50 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| DocWriter enhancement | 12.03.2009 | 5 | <ul><li>Problem Analyse</li><li>HTML struktur Darstellung</li><li>Anfang von Implementation(index.html)</li></ul> |
+| DocWriter enhancement | 13.03.2009 | 3 | <ul><li>HTML Design</li><li>Weitere implemetation</li></ul> |
+| DocWriter enhancement | 14.03.2009 | 5 | <ul><li>Weitere Implementation</li><li>HTMLCreateDoc wurde erledigt</li></ul> |
+| DocWriter enhancement | 16.03.2009 | 5 | <ul><li>Java Dokumentation von neue Klassen</li><li>Testen von HTMLCreateDoc</li><li>Integration ins Dkpro release tool</li></ul> |
+| DocWriter enhancement | 18.03.2009 | 5 | <ul><li>Weitere Integration ins Dkpro release tool</li><li>Realisierung der Dokumentation von Aggregate Descriptoren</li></ul> |
+| DocWriter enhancement | 19.03.2009 | 2 | <ul><li>Implementation von der Nutzung der Typen</li><li>Kode Korrectur</li></ul> |
+| DocWriter enhancement | 22.03.2009 | 3 | <ul><li>Implementation von der Nutzung der Typen</li></ul> |
+| DocWriter enhancement | 23.03.2009 | 3 | <ul><li>Implementation von der Nutzung der Typen erledigt</li></ul> |
+| DocWriter enhancement | 24.03.2009 | 3 | <ul><li>Java docs fuer neue Klassen</li><li>Testen von doc_writer</li><li>Testen von dkpro_release_tool</li></ul> |
+| Integrate Lucene into Wikulu | 02.04.2009 | 1 | <ul><li>Problem Analyse</li></ul> |
+| Integrate Lucene into Wikulu | 03.04.2009 | 4 | <ul><li>Problem Analyse</li><li>Lesen von Dokumentation</li></ul> |
+| Integrate Lucene into Wikulu | 04.04.2009 | 3 | <ul><li>IR Componenten Analyse</li><li>Anfang von Implementation</li></ul> |
+| Integrate Lucene into Wikulu | 05.04.2009 | 3 | <ul><li>Implementation von Beispiel</li><li>Process Analyse</li></ul> |
+| Integrate Lucene into Wikulu | 07.04.2009 | 5 | <ul><li>Umbau von Projekt(Add Descriptoren und UIMA nature)</li><li>Implementation von AggregateDescriptor(IndexCreator)</li><li>Lesen von UIMA Dokumentation </li></ul> |
+| Integrate Lucene into Wikulu | 08.04.2009 | 3 | <ul><li>LuceneIndexCreator Implemetation</li></ul> |
+| Integrate Lucene into Wikulu | 11.04.2009 | 4 | <ul><li>LuceneIndexCreator wurde implemenetiert, getestet und zur Suche mit LuceneSearcher adaptiert</li></ul> |
+| WikuluDemo | 18.04.2009 | 3 | <ul><li>Installation von webrserver(Apache+PHP+MySql)</li><li>Installation vin wikimedia</li><li>Information ueber wikiDump</li></ul> |
+| WikuluDemo | 23.04.2009 | 3 | <ul><li>Versuche wikiDump zu importieren</li></ul> |
+| WikuluDemo | 24.04.2009 | 3 | <ul><li>Information ueber mwimport und mwdumper</li><li>Weitere Versuche Dump zu imprtieren</li></ul> |
+| WikuluDemo | 25.04.2009 | 4 | <ul><li>Weitere Versuche</li><li>Dump wurde ohne Fehler importiert!</li></ul> |
+| WikuluDemo | 29.04.2009 | 3 | Implementation von WikuluDemo |
+| WikuluDemo | 30.04.2009 | 4 | Implementation von WikuluDemo |
+| WikuluDemo | 01.05.2009 | 1 | <ul><li>enwiki wurde importiert</li><li>Versuch Index zu erstellen</li></ul> |
+| WikuluDemo | 03.05.2009 | 4 | <ul><li>Versuche Index zu erstellen</li></ul> |
+| WikuluDemo | 04.05.2009 | 8 | <ul><li>Implementation von Lucene Indexing</li><li>Bearbeitung von MediaWiki Klasse</li><li>Testen</li><li>Versuche Index zu erstellen</li></ul> |
+| WikuluDemo | 05.05.2009 | 1 | <ul><li>Erstellung von Index</li><li>Index wurde erstellt</li></ul> |
+| WikuluDemo | 06.05.2009 | 2 | <ul><li>Erstellung von TWiki index</li><li>Inegrierung von StemmFilter into Lucene Index</li></ul> |
+| Konvertieren von HTML | 21.05.2009 | 2 | <ul><li>Problem und Komponent Analyse</li></ul> |
+| Konvertieren von HTML | 27.05.2009 | 3 | <ul><li>Problem Analyse</li></ul> |
+| Konvertieren von HTML | 28.05.2009 | 5 | <ul><li>Problem Analyse</li><li>Lesen die Documentation ueber XPath und SAX</li><li>Anfang von Implementation</li></ul> |
+| Konvertieren von HTML | 29.05.2009 | 3 | <ul><li>Implementation</li></ul> |
+| Konvertieren von HTML | 30.05.2009 | 3 | <ul><li>Implemetation fertig</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 125 (5 Übertrag von Februar) | bis Ende Mai |
+
+
+---++ January/February 2009
+
+| *Artem Aufgaben* |
+| Einarbeitung in UIMA | 100 |
+| DKPro Release Tool Enhancement | 100 |
+
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung in UIMA | 15.01.2009 | 4 | Einfuehrung in UIMA. UIMA wurde instaliert und mit Eclipse verbunden, ganzer Stoff von Torsten und Mark-Christoph wurde gelesen. Jetzt probieren etwas zu schreiben |
+| Einarbeitung in UIMA | 20.01.2009 | 3 | Projekt Installation(dkpro_core, ukp_lib) |
+| Einarbeitung in UIMA | 21.01.2009 | 7 | Weitere Projekt Installation(dkpro_core, ukp_lib). Testen von "src_test". Dokumentation schreiben. Doc: Projekt Installation - https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/Projekt.pdf . Doc: Testfehler - https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/Fehler.pdf |
+| Einarbeitung in UIMA | 23.01.2009 | 3 | Einarbeitung in ukp_dkpro (dkpro_core_release_12_08). Installation und Testen des Projekts. ReportHere |
+| Einarbeitung in UIMA | 28.01.2009 | 3 | Einarbeitung in ukp_dkpro, das Problem mit relativen Pfad (in CPE Descriptor -> ConfigurationParameterSettings) wurde geloest. LoesungHere |
+| DKPro Release Tool Enhancement | 30.01.2009 | 3 | Installation von Tool. Start von Fehlersuche. |
+| DKPro Release Tool Enhancement | 31.01.2009 | 4 | Problem wurde gefunden, Suche nach Loesung. (Leider ab 00:00 1 Februar mein SVN Account nicht gueltig ist...) |
+| DKPro Release Tool Enhancement | 03.02.2009 | 4 | Code Korrektur fuer Aggregate Descriptors |
+| DKPro Release Tool Enhancement | 04.02.2009 | 2 | Code Korrektur. Debuging. Vorbereitung zum Kommit. |
+| DKPro Release Tool Enhancement | 05.02.2009 | 4 | Anfang von Implementation des Passwort Fenster(SVN). Encryption von Passwort(frueher Passwort war  direct in config File). |
+| DKPro Release Tool Enhancement | 06.02.2009 | 2 | Fehlersuche in den "Agregate Descriptors" Aenderungen. Fehlerkorrektion und Kommit. |
+| DKPro Release Tool Enhancement | 08.02.2009 | 6 | Weitere Implementation des Passwort Fenster(SVN). Jetzt kann man waehlen Speicherung von Passwort. Testen von Passwort Fenster. Fehler mit der Erneuerung der Descriptorlist wurde gefunden und korrigiert(Wenn man neue config File gewaehlt hat, dann in der Liste der Descriptoren waren keine Aenderungen). |
+   | DKPro Release Tool Enhancement | 11.02.2009 | 2 | Anfang von der Realisierung "Preloaded descriptor selection" <ul><li>  Problem Analyse </li><li>Aenderungen im Parser</li> </ul> |
+   | DKPro Release Tool Enhancement | 12.02.2009 | 3 | Realisierung "Preloaded descriptor selection" <ul><li>  Parser wurde erledigt </li> <li>GUI Design </li></ul> |
+| DKPro Release Tool Enhancement | 14.02.2009 | 5 | Corrections in agregate descriptor . <br/> Realisierung "Preloaded descriptor selection" <ul><li> Weitere GUI implementierung </li> <li>Implementierung von DescriptorSet class</li> |
+| DKPro Release Tool Enhancement | 15.02.2009 | 8 | Realisierung "Preloaded descriptor selection" (wurde erledigt. Noch fehlt load von KommandLine) <ul><li>Implementierung von DescriptorSetManager class</li><li>Testen</li> <li> JavaDocs </li> <li>Vorbereitung zum Kommit</li> |
+| DKPro Release Tool Enhancement | 16.02.2009 | 4 | "Preloaded descriptor selection" ist wieder geprueft und kommited. Auch noch klein Manual dazu MiniManual (Pdf format https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/MiniManual.pdf) <br/> Implementierung von Funktion "create project from command line"<ul><li>Problem Analyse</li><li>Analyse von Code</li> <li>Funktion wurde implementiert(noch Testen)</li></ul> |
+| DKPro Release Tool Enhancement | 19.02.2009 | 2 | <ul><li>Testen von Funktion "create project from cmd" </li><li>Option "save source" wurde hinzugefuegt</li><li>Ptojekt Name ist jetzt von Projekt ID abhaengig</li></ul> |
+| Integrate Lucene into Wikulu | 26.02.2009 | 2 | Implementierung Search Klasse: <ul><li>Lesen von Information</li><li>Problem Analyse</li></ul> |
+| Integrate Lucene into Wikulu | 27.02.2009 | 4 | Implementierung Search Klasse: <ul><li>Problem Analyse</li><li>Schreiben von Kode</li><li>Testen</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 80 | bis Ende Februar |
+
+---------------------
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+---------------------
+
+ReleasePackageErrors
+
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"

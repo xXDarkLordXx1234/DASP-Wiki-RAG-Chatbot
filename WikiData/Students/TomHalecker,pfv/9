@@ -1,0 +1,76 @@
+%META:TOPICINFO{author="lee" comment="" date="1623409946" format="1.1" reprev="7" version="9"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Master Thesis* : 
+
+*Supervisor*: JL
+
+*Start Date* : 1.3.2021
+
+*Mid-Term Presentation Date* : 20.5.2021
+
+*Final Presentation Date* : 
+
+*End Date*: 30.08.2021
+
+---++++ *xx.xx.xxxx - xx.xx.xxxx*
+
+---++++ Meeting *11.06.2021*
+   * multitask learning setup (German BERT) 
+      * use German conll 2014 as aux task (todo)
+      * + industrie and zerspanung respectively (done)
+   * XLM-Roberta with 
+      * multitask learning (done)
+      * cross-lingual multitask learning using translated data (todo)
+   * paraphrasing by backtranslation
+   * MTL for !BiLSTM
+   * Sentence sequence tagging -> for new texprax data?
+
+---++++ Meeting *28.05.2021*
+   * multitask learning setup (German BERT and !BiLSTM):
+      * use German conll 2014 as aux task
+      * + industrie and zerspanung respectively 
+   * paraphrasing by backtranslation
+   * XLM-Roberta with
+      * multitask learning
+      * crosss-lingual multitask learning using translated data
+
+---++++ Meeting *21.05.2021*
+   * presentation feedback
+   * use the new data
+   * multitask learning setup (German BERT and !BiLSTM):
+      * use German conll 2014 as aux task
+      * + industrie and zerspanung respectively 
+   * paraphrasing by backtranslation
+   * XLM-Roberta with
+      * multitask learning
+      * crosss-lingual multitask learning using translated data
+
+---++++ Meeting *07.05.2021*
+   * focus on question and answer identification
+   * slides/literature research by Wednesday/Thursday
+
+---++++ Meeting *30.04.2021*
+   * literature review on German NER -> some progress : new !GermanBERT [[https://arxiv.org/pdf/2010.10906.pdf][version]]
+   * !GermanBERT -> first results -> 0.7 accuracy? 
+   * Logistic regression -> 0.9 accuracy on training data -> probably only 'O' token prediction
+   * !BiLSTM + Wordembeddings (still pending)
+   * tbd: switching to macro f1 scores
+
+---++++ Meeting *23.04.2021*
+   * literature review on German NER
+   * !GermanBERT
+   * !BiLSTM + Wordembeddings
+
+---++++ Meeting *09.04.2021*
+   * next steps:
+      * training pipeline
+
+---++++ Meeting *12.03.2021*
+   * Baselines:
+      * Wordembeddings: Logistic regression, !BiLSTM
+      * Bert-esk models
+   * should be done by mid April
+
+---++++ Meeting *19.02.2021*
+
+*To-Dos For xx.xx. - xx.xx.:*

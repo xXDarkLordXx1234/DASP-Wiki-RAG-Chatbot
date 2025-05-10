@@ -1,0 +1,521 @@
+%META:TOPICINFO{author="LeonardSwiezinski" date="1345030331" format="1.1" reprev="20" version="20"}%
+%META:TOPICPARENT{name="Main.WebHome"}%
+---+ WebCorpus
+
+---++ About
+This project aims to create a system that generates information like n-gram counts, cooccurrence counts, or isolated sentences from a large corpus of webpages for a language of choice. 
+Parallel processing of such tasks can lead to a huge performance benefit over serial processing. 
+[[http://wayback.archive.org/web/*/http://labs.google.com/papers/mapreduce.html][MapReduce]] provides a programming model for parallel processing. We chose [[http://hadoop.apache.org/][hadoop]] as a <noautolink>MapReduce</noautolink> framework. 
+Our system is built as a pipeline of hadoop <noautolink>MapReduce</noautolink> jobs. The raw data is kindly provided by the [[http://wortschatz.uni-leipzig.de/findlinks/][FindLinks]] team at the [[http://uni-leipzig.de][university of Leipzig]]. 
+
+---++ Project Subtasks
+   * Extract documents from the raw data and provide them for further tasks in a standardized format aligned with metadata such as document URL and crawl date. We will refer to this job as [[#DocumentJob][DocumentJob]].
+   * Web crawling usually leads to a lot of noise, so some basic cleanup tasks need to be performed:
+      * Deduplication of documents, as a documents might occur multiple times due to recrawling of a document or context variations, like a print page for a document that occurred already as a normal page. ([[#DeduplicationJob][DeduplicationJob]], [[#DeduplicationByHostJob][DeduplicationByHostJob]])
+      * Filtering of documents with malformed encodings. ([[#UTF8Job][UTF8Job]])
+   * Inner segmentation of documents for further processing:
+      * Detection of paragraphs in documents. ([[#DocumentJob][DocumentJob]])
+      * Detection of sentences in paragraphs. ([[#SentenceJob][SentenceJob]])
+      * Detection of tokens in sentences. ([[#TokenJob][TokenJob]])
+   * Filtering of sentences with a language other than the chosen language. ([[#LanguageJob][LanguageJob]])
+   * Generate corpus of n-grams. ([[#NGramJob][NGramJob]])
+   * Generate corpus of cooccurrences. ([[#CooccurrenceJob][CooccurrenceJob]])
+   * Extract sentences with clearly detected language in a standardized format. ([[#SentenceExtractJob][SentenceExtractJob]])
+
+---+++ Overview
+| *Job* | *Before* | *Transformations* | *After* |
+| [[#DocumentJob][DocumentJob]] | Raw data with metadata as input | Basic cleanup, normalize whitespace and URL. | One document per line with URL and metadata |
+| [[#DeduplicationJob][DeduplicationJob]] | One document per line. | Deduplication by URL. | URL based duplicates are removed |
+| [[#DeduplicationByHostJob][DeduplicationByHostJob]] | One document per line. | Deduplication by host. | Host based duplicates are removed |
+| [[#UTF8Job][UTF8Job]] | One document per line. | Detect and remove documents that contain unknown glyphs. | Mostly correct encoded documents |
+| [[#SentenceJob][SentenceJob]] | One document per line. | Sentence split text. | Sentences are wrapped with XML-p-tags. |
+| [[#LanguageJob][LanguageJob]] (lang) | One document per line with sentence annotation. Parameter giving expected language. | Detects language per sentence. Estimates language for sentences that could not clearly be classified. Removes sentences with unexpected language estimation. | Sentences are annotated with detected and estimated language. |
+| [[#TokenJob][TokenJob]] | One document per line with sentence annotation (and language annotation). | Tokenizes Sentences. | Tokens in sentences are delimited by space characters. |
+| [[#NGramJob][NGramJob]] (n) | One tokenized document per line. Parameter giving n-gram size to be counted. | Counts n-grams according to parameter | One entry per line: n-gram#TAB#count |
+| [[#CooccurrenceJob][CooccurrenceJob]] (n) | One tokenized document per line. Parameter giving maximum cooccurrence distance to be counted. | Counts cooccurrences with distance up to parameter n. | One entry per line: word1@@-distance word2@@+distance#TAB#count |
+| [[#SentenceExtractJob][SentenceExtractJob]] (lang) | One document per line with sentence annotation (and language annotation).  Parameter giving expected language. | Extract sentences with expected language and maximum lenght of 512 characters. | One sentence per line with crawl date URL. |
+| [[#SentenceExtractCompactJob][SentenceExtractCompactJob]] | Output of SentenceExtractJob | Deduplication and counting of sentences. | One sentence per line with count, first crawl date, total count and up to ten URLs. |
+
+---+ Pipeline
+
+---++ Visualization
+<img src="%ATTACHURLPATH%/main.gif" alt="main.gif" width="928" height="997" />
+ 
+---++ Hadoop Jobs
+All jobs are located in the package webcorpus.hadoopjobs.
+
+---+++ DocumentJob
+This job takes raw input data and structures it, such that the following jobs can process it.
+
+   * Takes raw input data and retrieves single documents. 
+   * Filters documents with missing URL, or content=null or content="null".
+   * Wraps URL entries in source metadata (*sm*) with CDATA markup. 
+   * Normalizes Encoding to UT8 if other source encoding is given in source metadata. 
+   * Adds processing metadata (*pm*) and adds document length as entry "length". 
+   * Detects paragraphs by multiple line breaks and wraps them with p-tags. 
+   * Normalizes whitespace (replace all line breaks, tabs and multiple whitespaces with single whitespaces) and trim text. 
+   * Detects duplicates by same URL, same length and same content in first and last n characters. 
+   * Output one document per line. Format (replace #TAB# with tab): *URL#TAB#sm#TAB#pm#TAB#document*
+
+---++++ Data example
+---+++++ Before
+<verbatim>
+<source><location>http://document.url/1</location><date>2012-01-01</date><user>Tom</user><original_encoding>utf-8</original_encoding><language>deu</language></source>
+
+              Dies ist eine Testdatei       mit zwei Absätzen.
+
+
+Zweiter Absatz.
+
+
+</verbatim>
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.DocumentJob webcorpus_data/raw webcorpus_data/document
+</verbatim>
+---+++++ After
+<verbatim>
+http://document.url/1#TAB#<source><location><![CDATA[http://document.url/1]]></location><date>2012-01-01</date><user>Tom</user><original_encoding>utf-8</original_encoding><language>deu</language></source>#TAB#<process><length>83</length></process>#TAB#<p>Dies ist eine Testdatei mit zwei Absätzen.</p><p>Zweiter Absatz.</p> 
+</verbatim>
+The complete document is printed in one line with normalized whitespace. #TAB# is used in this example to illustrate the tab character. 
+
+---+++ DeduplicationJob
+Deduplication is performed, to decrease the amount of unnecessary data.
+
+   * Create key, by concatenating document length and first and last n characters. 
+   * Use [[http://hadoop.apache.org/common/docs/current/api/org/apache/hadoop/util/bloom/BloomFilter.html][BloomFilter]], to test, if document already appeared. 
+   * If *Conf.dropFilteredItems* is set to false, every item with reoccurring URL will be labeled with _is_duplicate:=[true|false]_.
+
+---++++ Data example
+---+++++ Before
+<verbatim>
+http://document.url/1	<source/>	<process/>	Same content.
+http://document.url/1	<source/>	<process/>	Same content.
+http://document.url/1/print	<source/>	<process/>	Same content.
+</verbatim>
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.DeduplicationJob webcorpus_data/document webcorpus_data/deduplication
+</verbatim>
+---+++++ After	
+<verbatim>
+http://document.url/1	<source/>	<process/>	Same content.
+http://document.url/1/print	<source/>	<process/>	Same content.
+</verbatim>
+
+---+++ DeduplicationByHostJob
+Same as DeduplicationJob, but looks for items with reoccurring hosts, by deconstructing URLs.
+
+---++++ Data example
+---+++++ Before
+<verbatim>
+http://document.url/1	<source/>	<process/>	Same content.
+http://document.url/1/print	<source/>	<process/>	Same content.
+</verbatim>
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.DeduplicationByHostJob webcorpus_data/deduplication webcorpus_data/deduplicationByHost
+</verbatim>
+---+++++ After
+<verbatim>
+http://document.url/1	<source/>	<process/>	Same content.
+</verbatim>
+
+---+++ UTF8Job
+Encoding errors can lead to undesirable behaviour in language technology. This job tries to filter at least the obvious appearances of encoding errors. 
+
+   * Labels (_encoding_error:=[true|false]_) or removes documents with defective encoding.
+   * Detects defective encoding just by looking for "&#65533;" (unknown glyph).
+
+---++++ Data example
+---+++++ Before
+<verbatim>
+... <p>Document cont[UNKNOWN GLYPH]ins encoding error.</p> ...
+</verbatim>
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.UTF8Job webcorpus_data/deduplicationByHost webcorpus_data/utf8
+</verbatim>
+---+++++ After
+Document is removed.
+
+---+++ SentenceJob
+For further processing and as a project goal itself, isolated sentences are needed. This job splits paragraphs to sentences.
+
+   * Wraps sentences with "s"-Tags.
+   * The sentence splitter from [[http://wortschatz.uni-leipzig.de/~cbiemann/software/toolbox/index.htm][ASV Toolbox]] is used
+   * webcorpus_conf/segmentizer.zip 
+      * boundariesFile.txt 
+      * postList.txt 
+      * postRules.txt 
+      * preList.txt 
+      * preRules.txt
+Adding these files as single files to the distributed cache has been problematic (reason unclear yet), but adding them as an archive file finally worked as expected. 
+
+<verbatim>
+// Add to the cache with symlink "segmentizer" in public int run(String[] args):
+DistributedCache.addCacheArchive(new URI("webcorpus_conf/segmentizer.zip#segmentizer"), conf);
+DistributedCache.createSymlink(conf);
+
+// The segmentizer expects an URL for every config file as parameter 
+// create a HashMap to store all the URLs in the Mapper
+private Map<String, URL> urlMap;
+
+// retrieve from cache in mapper
+private void getResources(){
+	URL resource = job.getResource("segmentizer");
+	File inputPath = new File(resource.getPath());
+	for (File f : inputPath.listFiles()) {
+		File file = new File(f.getAbsolutePath());
+		if(file.exists()){
+			try {
+				urlMap.put(file.getName(), file.toURI().toURL());
+			} catch (MalformedURLException e) {}
+		}
+	}
+}
+</verbatim>
+
+---++++ Data example
+---+++++ Before
+<verbatim>
+... <p>Paragraph contains two sentences. This is the second sentence.</p> ...
+</verbatim>
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.SentenceJob webcorpus_data/utf8 webcorpus_data/sentence
+</verbatim>
+---+++++ After
+<verbatim>
+... <p><s>Paragraph contains two sentences.</s><s>This is the second sentence.</s></p> ...
+</verbatim>
+
+---+++ LanguageJob
+Text that has not the language of choice should be omitted. Therefor we perform sentence based language detection using jlani from [[http://wortschatz.uni-leipzig.de/~cbiemann/software/toolbox/index.htm][ASV Toolbox]]. 
+
+   * Takes optional parameter [language_name] (ISO 639-1) to set language to look for. 
+      * hadoop jar webcorpus.jar webcorpus.hadoopjobs.LanguageJob webcorpus_data/sentence webcorpus_data/language [language_name] 
+   * Sentences, where the detected language (lani) matches language_name, will be labeled with: lang=language_name, lani=language_name
+   * Where lani does not match language_name for a sequence of sentences, following rules apply:
+      * if sequence is at the beginning of a paragraph: lang=lani, lani=lani
+      * if sequence is at the end of a paragraph: lang=lani, lani=lani
+      * else if sequence is not longer than Conf.maximumUnknownLanguageLength: lang=language_name, lani=lani
+      * else: lang=lani, lani=lani
+   * if Conf.dropFilteredItems is true, only sentences with lang=language_name will be kept. 
+   * jlani expects some files. In order to work with hadoop, they are packed into jlani.zip, which remains in the hdfs (webcorpus_conf/jlani.zip): 
+      * blacklist_utf8.txt 
+      * mappings.txt 
+      * de.ser.gz 
+      * en.ser.gz 
+      * ... (models for more languages) 
+   * The files are loaded from the distributed cache in a similar way, SentenceJob loads files.
+
+---++++ Data example
+---+++++ Before
+<verbatim>
+... <p><s>Paragraph contains three sentences.</s><s>One english, one gemischtsprachig, one &#1052;&#1086;&#1085;&#1075;&#1086;&#1083;.</s><s>&#1101;&#1083;&#1076;&#1101;&#1074; &#1075;&#1072;&#1078;&#1080;&#1075; &#1084;&#1101;&#1076;&#1101;&#1101;&#1083;&#1101;&#1083; &#1072;&#1075;&#1091;&#1091;&#1083;&#1089;&#1072;&#1085; &#1073;&#1080;&#1095;&#1083;&#1101;&#1075;&#1199;&#1199;&#1076;&#1080;&#1081;&#1075; &#1072;&#1083;&#1100; &#1073;&#1086;&#1083;&#1086;&#1093;&#1086;&#1086;&#1088; &#1093;&#1091;&#1088;&#1076;&#1072;&#1085; &#1093;&#1091;&#1075;&#1072;&#1094;&#1072;&#1072;&#1085;&#1076; &#1091;&#1089;&#1090;&#1075;&#1072;&#1093; &#1102;&#1084;&#1091;&#1091; &#1257;&#1257;&#1088;&#1095;&#1080;&#1083;&#1085;&#1257;.</s></p> ...
+</verbatim>
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.LanguageJob webcorpus_data/sentence webcorpus_data/language en
+</verbatim>
+---+++++ After
+<verbatim>
+... <p><s lang="en" lani="en">Paragraph contains three sentences.</s><s lang="en" lani="unknown">One english, one gemischtsprachig, one &#1052;&#1086;&#1085;&#1075;&#1086;&#1083;.</s></p> ...
+</verbatim>
+The second sentence is considered to be an english sentence, as it is following an english sentence and is short enough. The last sentence is removed.
+
+
+---+++ TokenJob
+To be able, to count n-grams and cooccurrences, a tokenized reprentation of our input is needed. This splits sentences to tokens.
+
+   * Tokenizes sentences and delimits all tokens with spaces.  
+   * Employs [[http://nlp.stanford.edu/software/tokenizer.shtml][Stanford Tokenizer]] from the Stanford POS-Tagger package. 
+   * Writes number of tokens to processing metadata: token_count
+
+---++++ Data example
+---+++++ Before
+<verbatim>
+... <s>Sentence (Sequence of words) to be tokenized.</s> ...
+</verbatim>
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.TokenJob webcorpus_data/language webcorpus_data/token
+</verbatim>
+---+++++ After
+<verbatim>
+... <s>Sentence ( Sequence of words ) to be tokenized .</s> ...
+</verbatim>
+
+---+++ NGramJob
+This job counts n-grams of tokens.
+
+   * Counts n-grams based on tokens. 
+   * Expects a parameter to set n: 
+      * hadoop jar webcorpus.jar webcorpus.hadoopjobs.NGramJob webcorpus_data/token webcorpus_data/ngram [n]
+
+---++++ Data example
+---+++++ Before
+NGramJob expects the output of TokenJob as input.
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.NGramJob webcorpus_data/token webcorpus_data/ngram 3
+</verbatim>
+Calculate some 3-grams.
+---+++++ After
+<verbatim>
+...
+und diffusionsgeschlossene Dämmungen	2
+und digitale Programme	1
+und digitalen Kartensammlungen	2
+...
+</verbatim>
+
+---+++ CooccurrenceJob
+This job counts cooccurrences of tokens.
+
+   * Counts cooccurrences based on tokens with distance up to n.
+   * Outputs all cooccurrences for all distances (1, 2, ..., n) at once.
+   * Expects a parameter to set n: 
+      * hadoop jar webcorpus.jar webcorpus.hadoopjobs.CooccurrenceJob webcorpus_data/token webcorpus_data/cooccurrence [n]
+
+---++++ Data example
+---+++++ Before
+CooccurrenceJob expects the output of TokenJob as input.
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.CooccurrenceJob webcorpus_data/token webcorpus_data/cooccurrence 5
+</verbatim>
+Calculate cooccurrences up to distance 5.
+---+++++ After
+<verbatim>
+...
+üpp@@-1 @@+1	1
+üppig@@-2 Bewuchses@@+2	1
+üppig@@-2 Buchs@@+2	1
+üppig@@-2 Garten@@+2	3
+üppig@@-2 Getreidefelder@@+2	1
+üppig@@-3 Garten@@+3	1
+üppig@@-3 Hmmmmm@@+3	1
+üppig@@-3 in@@+3	9
+...
+</verbatim>
+Line format is a follows:
+<verbatim>
+{word at p}@@-i {word at p+i}@@+i	count
+</verbatim>
+where p is the position of the left word and i is the distance between the left and the right word. 
+
+---+++ SentenceExtractJob
+Preprocessing step for [[#SentenceExtractCompactJob][SentenceExtractCompactJob]].
+
+   * Extracts sentences along with their corresponding dates and URLs.
+   * Sentences longer than 512 characters are omitted.
+   * Sentences, where lani detected "unknown", are omitted.
+
+---++++ Data example
+---+++++ Before
+Expects output of LanguageJob as input.
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.SentenceExtractJob webcorpus_data/language webcorpus_data/sentenceExtract
+</verbatim>
+---+++++ After
+<verbatim>
+...
+1560 wurde dem Markte Zwiesel ein Wappen zugesprochen.	http://zwiesel.de/content.php?content=d_3_9_3	2011-02-27
+Die Wappenverleihungsurkunde vom 11. Sept. dieses Jahres lautet wörtlich:	http://zwiesel.de/content.php?content=d_3_9_3	2011-02-27
+...
+</verbatim>
+
+---+++ SentenceExtractCompactJob
+Extracted and deduplicated sentences are a project goal. This job performs the deduplification and provides the desired sentences as output.
+
+   * Reduces the Output of SentenceExtractJob.
+   * Counts the number of total occurrences of a sentence.
+   * Outputs up to 10 URLs per Sentence.
+
+---++++ Data example
+---+++++ Before
+Expects output of SentenceExtractJob as input.
+---+++++ Call
+<verbatim>
+hadoop jar webcorpus.jar webcorpus.hadoopjobs.SentenceExtractCompactJob webcorpus_data/sentenceExtract webcorpus_data/sentenceExtractCompact
+</verbatim>
+---+++++ After
+<verbatim>
+...
+Hier steht ein Satz.	3	2011-02-24	http://occurrence1.com/index.php?id=42	http://occurrence2.com
+...
+</verbatim>
+Note that total count is higher than the number of URLs. This means, that a Sentence occurs multiple time in at least one page.
+
+---+ How to run
+
+   * Extract the contents of the project archive to a directory (e.g. "webcorpus")
+      * The resulting structure should look like this:
+         * webcorpus/
+            * example/
+               * jobconf.txt
+               * run.sh
+            * conf/
+               * jlani.zip
+               * segmentizer.zip
+            * webcorpus.jar
+   * *> cd webcorpus*
+   * Choose a name for your project (e.g. "mycorpus") and create a copy of "example/" with this name.
+      * *> mkdir mycorpus*
+      * the resulting structure should look like: webcorpus/mycorpus/
+   * Create a HDFS-directory for your project
+      * *> hadoop dfs -mkdir webcorpus_mycorpus*
+   * Create a HDFS-directory called "webcorpus_conf" for configuration resources, required by some of the jobs.
+      * *> hadoop dfs -mkdir webcorpus_conf*
+   * Copy the contents of webcorpus/conf/ to the previously created directory:
+      * *> hadoop dfs -copyFromLocal conf/jlani.zip webcorpus_conf/*
+      * *> hadoop dfs -copyFromLocal conf/segmentizer.zip webcorpus_conf/*
+   * edit webcorpus/mycorpus/run.sh :
+      * change the HDFS-path according to the previously chosen path:
+         * *HDFS_DIRECTORY=webcorpus_mycorpus*
+      * Optionally change the language setting.
+   * Copy raw data to webcorpus_mycorpus/raw/
+      * hadoop dfs -copyFromLocal /path/to/raw/data webcorpus_mycorpus/raw/
+   * Edit webcorpus/mycorpus/jobconf.txt according to your requirements.
+   * *> cd mycorpus*
+   * *> sh run.sh*
+
+---++ Shellscript to run the jobs (run.sh)
+<verbatim>
+HDFS_DIRECTORY=webcorpus
+JAR=../webcorpus.jar
+LANGUAGE=de
+
+# run
+hadoop jar ${JAR} webcorpus.hadoopjobs.DocumentJob ${HDFS_DIRECTORY}/raw ${HDFS_DIRECTORY}/document
+hadoop jar ${JAR} webcorpus.hadoopjobs.DeduplicationJob ${HDFS_DIRECTORY}/document ${HDFS_DIRECTORY}/deduplication
+hadoop jar ${JAR} webcorpus.hadoopjobs.DeduplicationByHostJob ${HDFS_DIRECTORY}/deduplication ${HDFS_DIRECTORY}/deduplicationByHost
+hadoop jar ${JAR} webcorpus.hadoopjobs.UTF8Job ${HDFS_DIRECTORY}/deduplicationByHost ${HDFS_DIRECTORY}/utf8
+hadoop jar ${JAR} webcorpus.hadoopjobs.SentenceJob ${HDFS_DIRECTORY}/utf8 ${HDFS_DIRECTORY}/sentence
+hadoop jar ${JAR} webcorpus.hadoopjobs.LanguageJob ${HDFS_DIRECTORY}/sentence ${HDFS_DIRECTORY}/language ${LANGUAGE}
+hadoop jar ${JAR} webcorpus.hadoopjobs.TokenJob ${HDFS_DIRECTORY}/language ${HDFS_DIRECTORY}/token
+hadoop jar ${JAR} webcorpus.hadoopjobs.NGramJob ${HDFS_DIRECTORY}/token ${HDFS_DIRECTORY}/1gram 1
+hadoop jar ${JAR} webcorpus.hadoopjobs.NGramJob ${HDFS_DIRECTORY}/token ${HDFS_DIRECTORY}/2gram 2
+hadoop jar ${JAR} webcorpus.hadoopjobs.NGramJob ${HDFS_DIRECTORY}/token ${HDFS_DIRECTORY}/3gram 3
+hadoop jar ${JAR} webcorpus.hadoopjobs.NGramJob ${HDFS_DIRECTORY}/token ${HDFS_DIRECTORY}/4gram 4
+hadoop jar ${JAR} webcorpus.hadoopjobs.NGramJob ${HDFS_DIRECTORY}/token ${HDFS_DIRECTORY}/5gram 5 
+hadoop jar ${JAR} webcorpus.hadoopjobs.CooccurrenceJob ${HDFS_DIRECTORY}/token ${HDFS_DIRECTORY}/cooccurrence 5
+hadoop jar ${JAR} webcorpus.hadoopjobs.SentenceExtractJob ${HDFS_DIRECTORY}/language ${HDFS_DIRECTORY}/sentenceExtract
+hadoop jar ${JAR} webcorpus.hadoopjobs.SentenceExtractCompactJob ${HDFS_DIRECTORY}/sentenceExtract ${HDFS_DIRECTORY}/sentenceExtractCompact
+</verbatim>
+
+And optionally extract n-gram counts and cooccurrence counts from the HDFS and sort them.
+<verbatim>
+hadoop dfs -cat ${HDFS_DIRECTORY}/1gram/part* > 1gram.txt
+hadoop dfs -cat ${HDFS_DIRECTORY}/2gram/part* > 2gram.txt
+hadoop dfs -cat ${HDFS_DIRECTORY}/3gram/part* > 3gram.txt
+hadoop dfs -cat ${HDFS_DIRECTORY}/4gram/part* > 4gram.txt
+hadoop dfs -cat ${HDFS_DIRECTORY}/5gram/part* > 5gram.txt
+
+hadoop dfs -cat ${HDFS_DIRECTORY}/cooccurrence/part* > cooccurrence.txt
+
+sort -k 2 -t "	" -r -n < 1gram.txt > 1gram_sorted.txt
+sort -k 2 -t "	" -r -n < 2gram.txt > 2gram_sorted.txt
+sort -k 2 -t "	" -r -n < 3gram.txt > 3gram_sorted.txt
+sort -k 2 -t "	" -r -n < 4gram.txt > 4gram_sorted.txt
+sort -k 2 -t "	" -r -n < 5gram.txt > 5gram_sorted.txt
+
+sort -k 2 -t "	" -r -n < cooccurrence.txt > cooccurrence_sorted.txt
+</verbatim>
+Note the tab characters between the quotation marks.
+
+---+ Configuration
+All configuration is done per project in a dedicated configuration file called "jobconf.txt".
+
+---+ Documented example configuration file
+<verbatim>
+
+# Name of job queue.
+# string, {default, quick} - default: default
+queueName=default
+
+# Length of tested String (each at start and end)  for deduplication.
+# int, (0, MAX_STRING_LENGTH / 2] - default: 1000 
+dedupTestLength=1000
+
+# The number of bits in the vector. => |Expected Values| * log_2(1 / FP-Rate)
+# int, (0, MAX_INT] - default: 256 
+dedupBloomVectorSize=1024
+
+# Bloom filter: number of hashes to consider
+# int - default: 1024
+dedupBloomNbHash=1024
+
+# Deduplication Bloom Filter hash function
+# {murmur, jenkins} - default: jenkins
+dedupBloomHashFunction=jenkins
+
+# Maximum length of text, with other language detected than expected.
+# int - default: 200
+maximumUnknownLanguageLength=200
+
+# Drop filtered documents, intead of labeling them.
+# bool - default: false (for testing, use true for production)
+dropFilteredItems=true
+
+# Use compression for map-reduce output. Always true for intermediate output (mappers).
+# bool - default: false (for testing, use true for production)
+useCompression=false
+
+# Number of map tasks for the job
+# int - deault: 80 
+numberOfMapTasks=80
+
+# Number of reduce tasks for the job
+# int - default: 80
+numberOfReduceTasks=80
+
+# Options for Stanford Tokenizer
+# string - default: ""
+#tokenizerOptions=
+
+# Separator for multiple keys (e.g. for CooccurrenceJob)
+# string - default: "@@"
+#keySeparator=@@
+
+# Sentence separator (e.g. for n-gram)
+# string - default: "<s>"
+#sentenceSeparator=<s>
+
+</verbatim>
+
+---+ Performance
+The system performance has been tested with german language date on a 8-node cluster with a capacity of 70 map slots and 35 reduce slots.
+The time per job is given in minutes. The size of the data, that a job outputs is given in gigabyte (GB).
+
+| *Job* | *4GB* minutes | GB | *40GB* minutes | GB |
+| Raw | - | 4 | - | - |
+| Document | - | 4,24 | - | - |
+| Deduplication | - | 3,81 | - | - |
+| DebuplicationByHost | - | 1,56 | - | - |
+| UTF8 | - | 1,54 | - | - |
+| Sentence | - | 1,61 | - | - |
+| Language | - | 1,86 | - | - |
+| Token | - | 1,91 | - | - |
+| NGram (1) | - | 0,07 | - | - |
+| NGram (2) | - | 0,68 | - | - |
+| NGram (3) | - | 2,08 | - | - |
+| NGram (4) | - | 3,71 | - | - |
+| NGram (5) | - | 5,19 | - | - |
+| Cooccurrence (5) | - | 6,54 | - | - |
+| SentenceExtract | - | 1,62 | - | - |
+| SentenceExtractCompact | - | 1,43 | - | - |
+| *Total* | - | 61,91 | - | - |
+
+
+
+
+
+
+
+%META:FILEATTACHMENT{name="main.png" attachment="main.png" attr="" comment="Hadoop flow" date="1344764603" path="main.png" size="240970" user="LeonardSwiezinski" version="2"}%
+%META:FILEATTACHMENT{name="main.gif" attachment="main.gif" attr="" comment="" date="1344786674" path="main.gif" size="107002" user="LeonardSwiezinski" version="3"}%
+%META:TOPICMOVED{by="NicoErbs" date="1337256032" from="Main.UKPWebCorpus" to="Hiwi.UKPWebCorpus"}%

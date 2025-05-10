@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="ArtemVovk" date="1262880421" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+-- Main.ArtemVovk - 07 Jan 2010
+
+---+ Suggest Section Problems
+
+*1) Character convertation problems* (for example plainText: <verbatim>'</verbatim> -&gt; wikiText:<verbatim>&rsquo;</verbatim>)
+
+Example:
+
+&nbsp;&nbsp;&nbsp; _PlainText:_   <verbatim>I wasn't at all sure it was going to work.(insert) But I'm happy to say</verbatim>
+
+&nbsp;&nbsp;&nbsp; _WikiText:_ <verbatim>I wasn&rsquo;t at all sure it was going to work. But I&rsquo;m happy to say</verbatim>
+
+     
+
+Solution: increase threshold
+
+*2) To much html tags in wiki text*
+
+Example:
+
+&nbsp;&nbsp;&nbsp; _PlainText:_ I realized that I was finally in a position to try to do it.(insert) I had two
+
+&nbsp;&nbsp;&nbsp; _WikiText:_ I realized that I was finally in a position to try to do it.<br /><br />I had two
+
+Solution: increase surrounding text length and threshold
+
+*3) TODO: False insertion in html tags*
+
+Example:
+
+&nbsp;&nbsp;&nbsp;PlainText: I realized that I was finally in a position to try to do it.(insert) I had two
+
+&nbsp;&nbsp;&nbsp;WikiText: I realized that I was finally in a position to try to do it.<br /><br />I had two
+
+&nbsp;&nbsp;&nbsp;AfterInsertion(WikiText):
+
+I realized that I was finally in a position to try to do it.&lt;
+
+---+ Titel
+
+br /&gt;<br />I had two

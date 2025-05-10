@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="ShuoYang" date="1343300385" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++Pedocs Corpus Format
+
+The *original* Pedocs corpus contains the following two parts:
+   * The corpus documents as PDF files, compressed. (=pedocs-volltexte.tar.gz=)
+      * Each PDF is stored in the subfolder =&lt;year&gt;/&lt;document_opus_id&gt;/pdf/&lt;title_or_something&gt;.pdf=.<br />For example, =2010/2092/pdf/Weiner_Wissensmanagement_im_Unterricht_berufsbildender_Schulen_D_A.pdf= .
+   * The metadata (including the gold keyphrases and the ID - "opus ID") as SQL dump, compressed. (=pedocs-sql.tar.gz=)
+
+The *processed* corpus is in the following format:
+   * All files are stored flatly in one single folder.
+   * For each document, three files are present:
+      * =&lt;document_opus_id&gt;.txt= : The extracted text from the PDF file, in plain text format.
+      * =&lt;document_opus_id&gt;.keys= : The gold keyphrases in plain text format, one line for each keyphrase, trimmed (the last line could be empty). 
+      * =&lt;document_opus_id&gt;.keys.lemmatized= : The lemmatized gold keyphrases in plain text format, one line for each keyphrase, trimmed (the last line could be empty).
+   * In order to keep the archive size small, the original PDF file is not included.
+   * Only German documents are retained. Documents of other languages are ignored.
+
+
+-- Main.NicoErbs - 2012-07-26

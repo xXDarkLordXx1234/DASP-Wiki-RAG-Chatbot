@@ -1,0 +1,101 @@
+%META:TOPICINFO{author="alles" comment="" date="1709307013" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="UkpItProcesses"}%
+<div style="padding:10px; border: 2px solid green; text-align: center">
+Last updated by system-admin on 01.03.2024
+</div>
+
+<div style="padding:10px; border: 2px solid red; text-align: center">
+If you are ever in doubt if some message is genuine, please forward it to ticket@ukp.tu-darmstadt.de - we'll check! <br /> No ticket is too dumb in this case. Better check twice :) 
+</div>
+
+<div style="float:right;background-color:white; z-index:999;">
+---++++ !!Content<br/>
+<div style="border: solid grey 1px; padding: 0.25em; margin: 0.25em">
+%TOC%
+</div>
+</div>
+
+---+ Phishing and Malware Awareness
+
+---++ What is Malware?
+Malware is malicious software designed to disrupt, damage, or gain unauthorized access to computer systems or networks. It includes viruses, worms, trojans, ransomware, and spyware.
+
+---++ What is Phishing?
+Phishing is a cybercrime tactic where attackers impersonate trustworthy entities via emails, messages, or websites to trick individuals into providing sensitive information such as passwords, credit card details, or personal data.
+
+---+++ Examples of Phishing Emails and Spam
+   * **"Urgent Account Verification"**: An email claiming immediate action required to verify your account details by clicking on a provided link.
+   * **"Lottery Winnings"**: A message informing you of winning a lottery or prize, requesting personal information to claim the prize.
+   * **"Fake Invoices"**: Emails pretending to be from legitimate businesses, requesting payment for invoices or services never rendered.
+
+---+++ Examples seen at UKP Lab
+
+%TABPANE%
+
+*%BLUE%also checkout the other tabs%ENDCOLOR%* ⬆️
+
+ %TAB{"Spam from "Internal""}%
+
+| *Sent from* | *Title* | *Content* | *Conclusion* | *Explanation* | 
+| Iryna Gurevych <someone@anothermail.de> | Urgent Request | Hello are you available to get a task done for me right now? <br /> *OR* <br /> I hope you're not too busy right now. I await your immediate response. <br /> *OR*  <br /> If you have a minute, could you kindly drop an email. BR Prof.Dr.Iryna Gurevych | ⚠️ *don't trust!* | Messages like there are hard for spamfilters to detect. Usually they've been sent from some gmail-address. IG will never contact you like this! She'll use our messenger or her work mail iryna.gurevych@tu-darmstadt.de. Most of these mails end up in requesting you to go to a store and buy gift cards while returning the money to you was promised, but you won't. *We've also seen coming these kind of messages from other Professors of TU Darmstadt* - so beware! |
+
+ %ENDTAB%
+
+ %TAB{"Spam from "External""}%
+
+| *Sent from* | *Title* | *Content* | *Conclusion* | *Explanation* | 
+| Oracle Privacy <noreply@oracle-zoominfo-notice.com> | Notice of Sale or Sharing of Personal Data | This Notice of Sale or Sharing of Personal Data is to inform you of the sale or sharing of personal data about you (*Personal Data*") from ZoomInfo Technologies LLC ("*ZoomInfo*") to Oracle Corporation ("*Oracle*") and supplements the information in the Personal Information Notice that ZoomInfo previously sent to you." | ⚠️ *don't trust!* | Lookup the domain of the mail sender shows that this domain is not affilted with oracle, also a warning was published [[https://rrzk.uni-koeln.de/informationssicherheit/it-sicherheit/beispiele-fuer-phishing-und-spam-mails][at e.g. Uni Köln]] |
+| Mail Delivery System <admin-.-verw.tu-darmstadt.de> | Mailbox Max Size Warning for account […] | Email account quota configuration settings for […]@tu-darmstadt.de. Mailbox Size Warning for account […]@verw.tu-darmstadt.de Some of your messages could not be sent. The following users have exceeded their individual quota: […]@verw.tu-darmstadt.de Go to your account to fix this issue.  | ⚠️ *don't trust!* | You have a mail quota, yes - but you can check this by yourself by logging in to e.g. [[https://mail.tu-darmstadt.de/owa/#path=/options/myaccount][OWA]] checking options -> my account - if everything is fine there, this might be spam. *Never directly click on links in such mails!* |
+| ІNG <kontakt@tamanengenharia.com.br> | Wichtige Information: Überprüfung Ihrer Daten notwendig | Sehr geehrter Kunde, Ihr Konto ist momentan nicht aktiv, da Sie Ihre Daten noch nicht bestätigt haben. Bitte klicken Sie auf den Button unten und geben Sie alle erforderlichen Daten vollständig ein, um die Bestätigung abzuschließen. Sobald Sie diesen Vorgang abgeschlossen haben, wird Ihr Konto wieder aktiviert und Sie können wie gewohnt fortfahren. Jetzt bestätigen [...] Wir danken für Ihr Verständnis und bitten die Unannehmlichkeiten zu verzeihen. Mit freundlichen Grüßen Ihr ING Kundensevice © 2024 ING-DiBa | ⚠️ *don't trust!* | Especially not if you are at ING Diba, but also if you are not a customer there, don't click the links, never put in information! In this case they don't even try to hide the "wrong" sends address - tamanengenharia.com.br is surely not from a german bank. |
+
+ %ENDTAB%
+
+%ENDTABPANE%
+
+---++ How to Check if an Email is Valid?
+
+### Tips for Identifying Valid Emails:
+
+   1. **Sender's Email Address**: Verify the sender's email address. Pay close attention to misspellings or unusual domain names that may indicate phishing attempts.
+   2. **Grammar and Spelling**: Legitimate emails usually have proper grammar and spelling. Be cautious of emails with numerous grammatical errors or unusual language.
+   3. **Request for Personal Information**: Exercise caution if an email requests sensitive information or asks you to click on suspicious links.
+   4. **Check Links and Attachments**: Hover over links to see the actual URL before clicking. Avoid downloading attachments from unknown sources.
+   5. **Contact the Sender**: If in doubt, contact the purported sender through alternative means (e.g., phone call, ukp messenger, going to their office) to verify the authenticity of the email.
+
+### How to Check Email Headers in Microsoft Outlook or Outlook Web App (OWA):
+
+   1. **Open the Suspicious Email**: Open the email that appears suspicious or potentially phishing.
+   2. **View Message Options**: 
+      * In Microsoft Outlook: Double-click on the email so it opens in another window, then select "File" and the click last button "Message Options."
+      * In Outlook Web App (OWA): Right-click a single email message, then select "View message details." 
+   3. **Check the Internet Headers**:
+      * In Microsoft Outlook: Locate the "Internet Headers" section, which displays the email's header information.
+   4. **Analyze Header Information**:
+      * Look for inconsistencies in the sender's domain and IP addresses.
+      * Check for any suspicious server paths or relay servers used in the email's delivery.
+   5. **Research Header Details**: 
+      * Use online tools or search engines to investigate any unfamiliar IP addresses or domains found in the email headers.
+      * Use e.g. google and search for the title or centens of the mail, mostly other users have reported this email already somewhere, e.g. at reddit or other online platforms
+   6. **Exercise Caution**: If the email headers contain unusual or suspicious information, treat the email with caution and refrain from clicking on any links or downloading attachments.
+
+By following these steps and scrutinizing email headers, you can better protect yourself from falling victim to phishing attacks and identify potentially malicious emails.
+
+---++ Why Phishing and Malware Awareness is Crucial
+   * **Protect Personal Information**: Awareness helps individuals recognize and avoid phishing attempts, safeguarding their sensitive data.
+   * **Prevent Financial Loss**: Awareness reduces the risk of falling victim to financial scams and fraudulent activities.
+   * **Maintain Data Integrity**: Understanding malware threats helps in implementing effective cybersecurity measures to protect against data breaches and system compromise.
+
+---+++ Importance of Data Backup / UKP Storage Usage
+*%RED%It's essential to avoid storing important data solely on local devices like desktops or laptops.%ENDCOLOR%* Utilizing centralized data storage provided by the lab ensures:
+
+   * **Data Redundancy**: Our storage often includes backups, minimizing the risk of data loss due to hardware failure or malware attacks.
+   * **Accessibility**: Data stored at central storage can be accessed from multiple devices, ensuring continuity in case of device failure.
+   * **Enhanced Security**: Centralized storage comes with additional security measures, like restricted areas to some users our groups, safeguarding sensitive data from unauthorized access.
+
+*%RED%See the possibilities to storage data hosted at UKP [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/UkpItProcesses#Data_Housekeeping_47_Storage_possibilities][at this overview]].%ENDCOLOR%*
+
+---+++ Conclusion
+
+Phishing and malware pose significant threats to individuals and organizations. By understanding these threats and adopting best practices such as being vigilant against phishing attempts and utilizing secure data storage solutions, we can collectively mitigate the risks associated with cybercrime.
+
+-- Main.SebastianAlles - 2024-03-01

@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="ShuoYang" date="1266408458" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Februar 2010
+
+---+++ Aufgabeübersicht
+| *Aufgabe* | *% done* |
+| Monolinguales Retrieval auf GIRT | |
+| Crosslinguales Retrieval auf GIRT | |
+
+---+++ Stundendetail
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| UIMA kennenlernen | 08.02.2010 | 1.5 | Lernen von UIMA, inkl. Konzepte <ul><li>CAS, Annotation</li><li>Reader, Analysis Engine, Consumer</li><li>Multi-View, Aggregate AEs</li></ul>und im Praxis <ul><li>Java Bindings</li><li>CPE GUI</li><li>Erzeugen von Annotations</li></ul> |
+| Betreuung | 12.02.2010 | 1.5 | Von Main.BenjaminHerbert, diskutiert wurden <ul><li>Information Retrieval, Topic(Query), Document</li><li>Monolingual, Crosslingual IR - durch Übersetzung</li><li>Lucene Index, Suche</li><li>Wettbewerb Clef, GIRT Format, Evaluation</li><li>Aufgabe 1: Monolinguales Retrieval auf GIRT</li><li>Aufgabe 2: Crosslinguales Retrieval auf GIRT</li></ul> |
+| Einrichtung Arbeitsumgebung | 14.02.2010 | 1 | <ul><li>Installation von UIMA, dessen Eclipse Plug-in</li></ul> |
+| UIMA kennenlernen | 14.02.2010 | 1.5 | Lernen von UIMA <ul><li>Implementierung =RoomNumberAnnotator= </li><li>Syntax von Regex</li><ul> |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 40)$EXEC($GET(total_hour))"}% | bis Ende Februar noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |
+<nop>
+
+---++ Vorherige Arbeit
+_noch keine_
+
+-- Main.ShuoYang - 17 Feb 2010

@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="ShuoYang" date="1270413846" format="1.1" reprev="22" version="22"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Mitte März ~ Ende April 2010
+
+---+++ Aufgabenübersicht
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Monolinguales Retrieval auf GIRT (MrGIRT) | | |
+| 2. Crosslinguales Retrieval auf GIRT (CrGIRT) | | |
+| 3. TikaReader | 90 | |
+| 4. Google Translate Analysis - Machbarkeit der Konkatenation | 100 | * |
+| 5. Girt Topics '06~'08 RU-EN, RU-DE | 100 | * |
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Girt RU | 03.04.2010 | 4.5 | Übersetzung von russischer Girt-Topics '06~'08 <ul><li>Bereinigung und Zusammenstellen der XML Dateien</li><li>Übersetzung mit =FastTranslationAnnotator= </li><li>Dabei Erstellung von Pipelines (im Projekt =FastTranslationAnnotator=, siehe =README=)</li><li>Die Ergebnisse befinden sich nun im =UKPExchange= von Dropbox</li></ul>   | * |
+| GTA-K | 02.04.2010 | 3.5 | Anlegen von neuem Projekt =FastTranslationAnnotator= <ul><li>für schnellere Übersetzung mit Konkatenation</li><li> befindet sich zusammen mit =README= in SVN</li></ul> Abschluss der Verfassung von GoogleTranslateConcatenationFeasibility <ul><li>Dafür Vergleich der Ergebnisse von Übersetzungen, beide mit und ohne Konkatenation</li></ul> | * |
+| GTA-K | 01.04.2010 | 1.5 | Beschleunigung von =TranslationAnnotator= mithilfe von Konkatenation <ul><li>Verwendung von neuer Bibliothek =Translator= , was Übersetzung mehrerer Sätze in dieselbe Anfrage unterstützt.</li><li>Neue Klasse =QueryLengthChecker= , um Anzahl gleichzeitig erlaubter Strings zu ermitteln</li><ul>  | * |
+| GTA-K | 21.03.2010 | 4.5 | Weitere Testen und Verfassung von GoogleTranslateConcatenationFeasibility |  |
+| GTA-K | 19.03.2010 | 2 | Entwurf und Durchführen von Testcases für GoogleTranslateConcatenationFeasibility |  |
+| GTA-P | 16.03.2010 | 2 | Verfassung von GoogleTranslatePerformanceAnalysis |  |
+| Übersetzung <br /> Girt Topics | 13.03.2010 | 1 | Mit GoogleTranslatePerformanceAnalysis <ul><li>Testcases von längerer Sätze erstellt</li><li>Dürchführen von Testcases daheim und in UKP-Pool</li><li>Dabei maximale Stringlänge von jeder Anfrage bestimmt, durch Encoding entstehende zusätzliche Länge muss man mit einbeziehen</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 61)$EXEC($GET(total_hour))"}% | bis Ende April noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |  |
+<nop>
+
+---+++ Dokumente
+GoogleTranslatePerformanceAnalysis
+
+GoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangPreviousWork
+
+-- Main.ShuoYang - 04 Apr 2010

@@ -1,0 +1,228 @@
+%META:TOPICINFO{author="ChristianJacobi" date="1178530596" format="1.1" version="25"}%
+%META:TOPICPARENT{name="ChristianJacobi"}%
+---+Meeting-Protokolle
+
+---++ 07.05.2007, 15:00 Uhr
+   * Ein paar Dinge zur Info:
+      * http://www.jacobi27.de/tud/meeting20070507/SelectiveAccessHandler.pdf
+      * http://www.jacobi27.de/tud/meeting20070507/ContextToPageIds.pdf
+      * http://www.jacobi27.de/tud/meeting20070507/WikiQueryExpansion.pdf
+   * Umstieg auf Linux / UIMA / Lemmatising
+
+---++ 16.04.2007, 14:00 Uhr
+   * [[%ATTACHURL%/Status20070416.pdf][Status20070416.pdf]]: Status20070416.pdf
+
+---++ 04.04.2007, 11:00 Uhr
+   * kleine Statistik:
+      * 100% - 377267 Seiten in Datenbank
+      * 74.19% - 279896 Seiten mit SubSections
+      * 67.72% - 255511 Seiten mit NestedLists
+      * 0.44% - 1679 Seiten mit DefinitionLists
+      * 17.22% - 64967 Seiten mit Tabellen
+      * 56.99% - 215022 Seiten mit Templates
+      * 96.61% - 364484 Seiten mit fettem Text
+      * 61.46% - 231877 Seiten mit kursiven Text
+      * 1.72% - 6499 Seiten mit Math
+      * 19.67% - 74236 Seiten mit Tags (z.B. Html)
+      * 0.81% - 3058 Seiten mit NoWiki (oder Pre)
+
+   * @action(CJ): anschauen, einarbeiten: Lucene / Querry Expansion / spearmans rank correlation coefficent
+
+
+---++ 26.03.2007, 15:00 Uhr
+
+   * Dateien des parsedpage Packets und der Unterpackete...
+      * 26.03. [[%ATTACHURL%/ParsedPage.jar][ParsedPage.jar]]: Parsed Page Api
+      * 11.04. [[%ATTACHURL%/MediaWikiParserFactory.jar][MediaWikiParserFactory.jar]]: ParserFactory for the ParsedPage API
+      * 26.03. [[%ATTACHURL%/HtmlTools.zip][HtmlTools.zip]]: HtmlToolkit for the ParsedPage API
+      * 11.04. [[%ATTACHURL%/ParsedPage_src.zip][ParsedPage_src.zip]]: The Source of ParsedPage / Parser / HtmlTools
+      * 26.03. [[%ATTACHURL%/ParsedPage_Javadoc_Public.zip][ParsedPage_Javadoc_Public.zip]]: The Public Javadocs for ParsedPage / Parser / HtmlTools
+      * 11.04. [[%ATTACHURL%/ParsedPage_UML.zip][ParsedPage_UML.zip]]: UML as PNG, zipped      
+      * 11.04. [[%ATTACHURL%/evaluation.zip][evaluation.zip]]: The Evaluation package (src)
+      * 11.04. [[%ATTACHURL%/Statistics_src.zip][Statistics_src.zip]]: Statistics package (src)
+
+
+---++ 19.03.2007, 15:00 Uhr
+   * Thumb (Bild) als Extraklasse auf dem gleichen Level wie z.B. Paragraph
+      * Idee verworfen, da zu Zeitaufwendig zum jetztigen Zeitpunk, bleibt also wie es ist, auch wenn es nicht 100%ig ideal ist.
+   
+   * Eindimensionale Tabellen
+      * Das entfernen der eindimensionalen Tabellen ist leider nicht so trivial wie zuerst vermutet, daher bleiben diese Tabellen doch wie sie sind.
+
+   * Status der Annotation des DevSets: http://www.jacobi27.de/tud/pr20070319/
+
+   * @action(CJ): Javadoc, UML & jar erstellen.
+
+---++ 12.03.2007, 14:00 Uhr
+   * Dateien zur Präsentation: http://www.jacobi27.de/tud/pr20070312/
+
+---++ 08.03.2007, 11:00 Uhr
+   *  Info: Evaluation über XML und SAXParser(Factory)
+
+   * [[%ATTACHURL%/anotationLanguage.xml][anotationLanguage.xml]]: soll die XML Elemente zur Annotation erklären...
+
+   * Annotiere Seiten als Beispiel
+      * [[%ATTACHURL%/MotoGP.168980.txt][MotoGP.168980.txt]]: wikimarkup
+      * [[%ATTACHURL%/MotoGP.xml][MotoGP.xml]]: xml annotation
+      * [[%ATTACHURL%/Schwarzer_Regen_(Roman).869667.txt][Schwarzer_Regen_(Roman).869667.txt]]: wikimarkup
+      * [[%ATTACHURL%/Schwarzer_Regen_(Roman).xml][Schwarzer_Regen_(Roman).xml]]: xml annotoation
+   
+   * (fast)aktuelle UML vom Parser
+      * [[%ATTACHURL%/ParsedPage.uml.pdf][ParsedPage.uml.pdf]]
+      * [[%ATTACHURL%/Parser.uml.pdf][Parser.uml.pdf]]
+
+---++ 26.02.2007, 15.00 Uhr
+   * Evaluation: [[%ATTACHURL%/AnnotatedPageSample.txt][AnnotatedPageSample.txt]]: AnnotatedPageSample.txt
+
+---++ 12.02.2007, 15.00 Uhr
+   * Evaluation... Diskusion der Möglichkeiten (siehe EMail)
+
+---++ 05.02.2007, 15.00 Uhr
+   * Info: Parser/ParserFactory
+   * Math und Html in ContentElement
+   * Tabellen mit Sektionen
+   * Templates
+   * Evaluation... HOWTO
+
+---++ 25.01.2007, 14.30 Uhr
+
+   * Package: ParsedPage: es reicht wenn Spans zurückgegeben werden, der User kann daraus selber Strings erstellen.
+   * @action(CJ): 
+      * HTML Tag annotation ermöglichen.
+      * Template Handling überdenken.
+      * MediaWikiParserFactory: Einfache initialisierung eines Parsers mit dem Parameter SPRACHE
+      * Tabelle von Template Namen und Häufigkeiten
+      * Tabelle von Häufigkeiten von Speziellen Strukturen, konkent: %Tabellen mit Sektionen in Anzahl Tabellen
+      * Evaluation planen:
+         * Spezifikation der Feautures die der Parser liefern soll und gewichtung dieser Feautures
+         * Automatisierung der Evaluation mithifle JUnit, hierzu Datenformat definieren.
+         * @not-now-action(CJ): Annotation des TrainingSet, (TestSet), EvaluationSet
+   * Wikipedia Dump ist vom 15.05.2006, es gibt keinen MediaWikiServer wo dieser Dump gerade läuft -> ggf. selber machen
+   * DefinitionLists: Der definierte Term ist kein BOLD text, auch wenn sie aktuell fett dargestellt werden.
+
+---++ 15.01.2007, 14.00 Uhr
+
+---++ 08.01.2007, 15.00 Uhr
+
+   * ca. zu 80% fertig
+   * neben XML noch Parameter auf Kommandozeile angeben können
+   * Evaluierung planen
+      * Evaluierung bestimmt Anzahl der noch in Parser zu investierenden Stunden!
+
+---++ 04.12.2006, 14:00 Uhr / 15.00 Uhr
+
+   * @action(TZ): Veröffentlichung der schriftlichen Diplomarbeit/Ausarbeitung - durch IP-Erklärung eingeschränkt?
+   * @action(CJ): Anmeldung Diplomarbeit
+
+---++ 27.11.2006, 15:00 Uhr
+  * IP-Erklärung (CM)
+      * @action (CJ): unterschreiben
+      * bis 27.11.2006
+   * @action(CJ): update Zeitplan verlinken
+      * [[%ATTACHURL%/20061127Zeitplan.pdf][20061127Zeitplan.pdf]]: 20061127Zeitplan.pdf
+   * @action(CJ): Wikipedia API DVD RW mitbringen
+      * done
+   * @action(TZ): Wikipedia API update?
+   * @action(CJ): Development und Testset auswählen
+   * Parser Realisierung?
+      * ParserUML.PNG: <br />
+     <img src="%ATTACHURLPATH%/ParserUML.PNG" alt="ParserUML.PNG" width='437' height='279' />
+   * API (nur Info)
+      * [[%ATTACHURL%/20061127API.pdf][20061127API.pdf]]: 20061127API.pdf
+   * UseCases (nur Info)
+      * [[%ATTACHURL%/20061127UseCases.pdf][20061127UseCases.pdf]]: 20061127UseCases.pdf
+
+---++ 20.11.2006, 15:00 Uhr
+   * CJ: spielt Quellcode bei Bewertung eine Rolle?
+      * ja, sollte auch sehr gut kommentiert sein
+   * IP-Erklärung (CM)
+      * @action (CJ): unterschreiben
+   * Evaluierung des Parsing
+      * @action (CJ): in Zeitplanung berücksichtigen
+         * done
+   * Uses-Cases? (TZ)
+      * @action (CJ): Use cases auf neuesten Stand + Beispiel für jede Klasse
+         * [[%ATTACHURL%/20061119UseCases.pdf][20061119UseCases.pdf]]: 20061119UseCases.pdf
+      * Anmerkungen (noch nicht vollständig):
+         * Use case 4: StringBuilder verwenden
+         * Use cas 10: 'bold' -> BOLD
+   * @action (TZ): neuen Wiki Link schicken
+      * done
+   * EssayAufforderung geändert (nur Info)
+      * [[%ATTACHURL%/Aufgabe1.pdf][Aufgabe1.pdf]]: Aufgabe1.pdf
+      * [[%ATTACHURL%/Aufgabe2.pdf][Aufgabe2.pdf]]: Aufgabe2.pdf
+      * HP geändert
+   * API:
+      * [[%ATTACHURL%/20061119API.pdf][20061119API.pdf]]: Die API UML als PDF
+         *Methoden hinzufügen: 
+            * List<FormatType> getFormat(int begin, int end)
+            * List getLinks(int begin, int end)
+         * italic => ITALIC usw.
+      * Tabellen sind noch nicht OK! Sonst sollte alles fertig sein.
+   * Parser:
+      * [[%ATTACHURL%/20061119Parser.pdf][20061119Parser.pdf]]: Grundlegende Fragen
+         * non-static und Interface
+
+---++ 13.11.2006, 15:00 Uhr
+   * Cigdems Essay-Sammlung (CM)
+      * nur Info
+   * IP-Erklärung (CM)
+      * @action (CJ): unterschreiben
+   * Evaluierung des Parsing
+      * @action (CJ): in Zeitplanung berücksichtigen
+   * API: Grundlegende Vorannahmen
+      * nur Info
+   * API: Realisierung der Sections
+      * nur Info, Realisierung ist soweit OK
+   * API: Integration von Sections in ParsedPage
+      * gemeinsames Interface für Section und ParsedPage bei sinnvollen Namen, ansonsten werden Funktionen einfach neu implementiert.
+   * API: FormatedText
+      * Umbenennungen:
+         * Klasse: FormatedText -> ContentComposite
+         * Funktion: FormatedText.toUnformatedString() -> ContentComposite.getText()
+         * Klasse: MFT -> ContentElement
+      * Spans als ImplementierungsMöglichkeit für Textformatierungen.
+   * API: Vererbungsproblematik
+      * Sections in Tabellen werden als Fehler in MediaWiki betrachtet (-> exception), sofern keine Beispiele gefunden werden, die die Implementierung nötig machen.
+   * Uses-Cases? (TZ)
+      * siehe nächstes Meeting
+  
+
+   * [[%ATTACHURL%/20061113CJ.pdf][20061113CJ.pdf]]: 20061113CJ.pdf
+
+   * UML1.png: <br />
+     <img src="%ATTACHURLPATH%/UML1.png" alt="UML1.png" width='800' height='742' />
+
+   * UML2.png: <br />
+     <img src="%ATTACHURLPATH%/UML2.png" alt="UML2.png" width='973' height='463' />
+
+%META:FILEATTACHMENT{name="ParserUML.PNG" attr="" autoattached="1" comment="" date="1164620516" path="ParserUML.PNG" size="2862" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061119UseCases.pdf" attr="" autoattached="1" comment="" date="1163958936" path="20061119UseCases.pdf" size="85121" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="UML1.png" attr="" autoattached="1" comment="" date="1163408158" path="UML1.png" size="12947" user="Main.TorstenZesch" version="1"}%
+%META:FILEATTACHMENT{name="Aufgabe1.pdf" attr="" autoattached="1" comment="" date="1163684967" path="Aufgabe1.pdf" size="87532" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061119API.pdf" attr="" autoattached="1" comment="" date="1163958882" path="20061119API.pdf" size="55411" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061113CJ.pdf" attr="" autoattached="1" comment="" date="1163408191" path="20061113CJ.pdf" size="128811" user="Main.TorstenZesch" version="1"}%
+%META:FILEATTACHMENT{name="20061119ParserUML.PNG" attr="" autoattached="1" comment="" date="1163958915" path="20061119ParserUML.PNG" size="1122" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061119Parser.pdf" attr="" autoattached="1" comment="" date="1163958903" path="20061119Parser.pdf" size="102884" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061127Zeitplan.pdf" attr="" autoattached="1" comment="" date="1164620502" path="20061127Zeitplan.pdf" size="54862" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="Aufgabe2.pdf" attr="" autoattached="1" comment="" date="1163684994" path="Aufgabe2.pdf" size="67664" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="UML2.png" attr="" autoattached="1" comment="" date="1163408172" path="UML2.png" size="8537" user="Main.TorstenZesch" version="1"}%
+%META:FILEATTACHMENT{name="20061127API.pdf" attr="" autoattached="1" comment="" date="1164620471" path="20061127API.pdf" size="54477" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061127UseCases.pdf" attr="" autoattached="1" comment="" date="1164620489" path="20061127UseCases.pdf" size="85889" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="AnnotatedPageSample.txt" attachment="AnnotatedPageSample.txt" attr="" comment="" date="1172434598" path="AnnotatedPageSample.txt" size="6328" stream="AnnotatedPageSample.txt" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="anotationLanguage.xml" attachment="anotationLanguage.xml" attr="h" comment="" date="1173307665" path="anotationLanguage.xml" size="1576" stream="anotationLanguage.xml" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="MotoGP.168980.txt" attachment="MotoGP.168980.txt" attr="h" comment="" date="1173307684" path="MotoGP.168980.txt" size="2208" stream="MotoGP.168980.txt" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="MotoGP.xml" attachment="MotoGP.xml" attr="h" comment="" date="1173307701" path="MotoGP.xml" size="3089" stream="MotoGP.xml" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="ParsedPage.uml.pdf" attachment="ParsedPage.uml.pdf" attr="h" comment="" date="1173307719" path="ParsedPage.uml.pdf" size="114932" stream="ParsedPage.uml.pdf" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="Parser.uml.pdf" attachment="Parser.uml.pdf" attr="h" comment="" date="1173307740" path="Parser.uml.pdf" size="49114" stream="Parser.uml.pdf" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="Schwarzer_Regen_(Roman).869667.txt" attachment="Schwarzer_Regen_(Roman).869667.txt" attr="h" comment="" date="1173307750" path="Schwarzer_Regen_(Roman).869667.txt" size="1079" stream="Schwarzer_Regen_(Roman).869667.txt" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="Schwarzer_Regen_(Roman).xml" attachment="Schwarzer_Regen_(Roman).xml" attr="h" comment="" date="1173307764" path="Schwarzer_Regen_(Roman).xml" size="1991" stream="Schwarzer_Regen_(Roman).xml" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="HtmlTools.zip" attachment="HtmlTools.zip" attr="" comment="HtmlToolkit for the ParsedPage API" date="1174917999" path="HtmlTools.zip" size="6332" stream="HtmlTools.zip" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="MediaWikiParserFactory.jar" attachment="MediaWikiParserFactory.jar" attr="h" comment="" date="1176300764" path="MediaWikiParserFactory.jar" size="93701" stream="MediaWikiParserFactory.jar" user="Main.ChristianJacobi" version="2"}%
+%META:FILEATTACHMENT{name="ParsedPage_Javadoc_Public.zip" attachment="ParsedPage_Javadoc_Public.zip" attr="" comment="The Public Javadocs for ParsedPage / Parser / HtmlTools" date="1174918077" path="ParsedPage Javadoc Public.zip" size="257863" stream="ParsedPage Javadoc Public.zip" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="ParsedPage_src.zip" attachment="ParsedPage_src.zip" attr="h" comment="" date="1176300786" path="ParsedPage_src.zip" size="48957" stream="ParsedPage_src.zip" user="Main.ChristianJacobi" version="2"}%
+%META:FILEATTACHMENT{name="ParsedPage_UML.zip" attachment="ParsedPage_UML.zip" attr="h" comment="" date="1176300808" path="ParsedPage_UML.zip" size="138589" stream="ParsedPage_UML.zip" user="Main.ChristianJacobi" version="2"}%
+%META:FILEATTACHMENT{name="ParsedPage.jar" attachment="ParsedPage.jar" attr="" comment="Parsed Page Api" date="1174918199" path="ParsedPage.jar" size="81432" stream="ParsedPage.jar" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="evaluation.zip" attachment="evaluation.zip" attr="h" comment="" date="1176300704" path="evaluation.zip" size="461277" stream="evaluation.zip" user="Main.ChristianJacobi" version="2"}%
+%META:FILEATTACHMENT{name="Statistics_src.zip" attachment="Statistics_src.zip" attr="h" comment="" date="1176300831" path="Statistics_src.zip" size="166014" stream="Statistics_src.zip" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="Status20070416.pdf" attachment="Status20070416.pdf" attr="h" comment="" date="1176722349" path="Status20070416.pdf" size="86897" stream="Status20070416.pdf" user="Main.ChristianJacobi" version="1"}%

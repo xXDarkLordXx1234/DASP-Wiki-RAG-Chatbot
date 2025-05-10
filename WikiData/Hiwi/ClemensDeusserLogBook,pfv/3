@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1336488967" format="1.1" version="3"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+---++++ May 8
+
+   * Keywordgraph of pedocs is connected (has 1 connected component), no isolated nodes.
+   * Removing common keywords appears to have no effect on nr of components, but reduces nr of edges significantly.
+   * 517 inconsistent papers between opus and opus_autor. 3007 (!) including opus_sama_publisher.
+   * Started on Chinese Whispers.
+
+---++++ May 7
+
+   * Implemented keyword based graph with: vertices = papers, edges = correlations, correlation = keyword in common, weight = number of correlations.
+   * Graph has 1.5mill edges, which seems surprisingly high.
+   * Reason is that some keywords are very common and form large complete components, "deutschland" alone forms component with ~850.000 edges.
+   * May have to adjust graph as these keywords do not seem to be particularly significant, not sure how to determine significance of keywords though
+   * Will analyze number of components and isolated nodes tomorrow.
+
+Current problems:
+   * DKPro still largely a mystery to me.
+   * Need to figure out how to extract my results from "AnalysisEngine" in Richard&Shuo's JDBC adapter.
+   * Haven't yet figured out a proper structure for the graphs. Custom classes for vertices and edges may be cleaner, but don't seem to make sense both for efficiency and avoiding redundancies.
+   * Keyword graph appears to run somewhat "sluggish", will look for coding mishaps.
+   * This wiki.
+
+---++++ Previous to May 2012:
+
+   * Reading on NLP
+   * Installed Maven, DKPro, Treetagger etc.
+   * Installed MySQL, entered pedocs, connected to Java (JDBC)
+   * Built Co-Author Network
+   * Ported to Richard&Shuo's JDBC code, not yet working.
+   * Roughly analyzed the database, concerning eligibility of a keyword based graph

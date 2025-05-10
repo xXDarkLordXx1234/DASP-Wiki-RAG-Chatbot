@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="NicoErbs" date="1287135076" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ Linking support for inbound links in corporate wikis
+_Bachelor Thesis Winter Term 2010/2011_
+---++ Abstract
+_...where you can read what this is all about and find links to more detailed info_
+---+++ Goals
+   * Implement a Wikulu plug-in that suggests pages and anchor texts for inbound links to a new/edited wiki page
+   * Research and juxtapose various suggestion techniques
+---+++ Organizational
+   * [[#Meetings][Meetings]]
+   * [[#Plan][Project Plan]] / Milestones
+---+++ Technology
+   * Wikulu
+   * UimaFit / UIMA
+   * DKPro
+---++ #Meetings
+*22.10.2010 11:00*
+   * @action(NE): Set links to important Wikulu pages on student page
+   * @action(NE): Send link to Wikulu svn repository
+   * @action(AK): Einrichtung svn, Arbeitsumgebung, Jabber
+   * @action(AK): Fragen zur Baselineimplementierung
+*15.10.2010 11:00*
+---++ #Plan
+| Week | Task | Comments/Links |
+| 1-2 | Task 1: Baseline | implement UIMA components, unit tests and baseline reasoning|
+| 3-5 | Task 2: Wikulu | integrate into wikulu |
+| 6-8 | Task 3: Methods | implement more interesting reasoning components |
+| 9 | Task 4: Evaluation | make sense of data gathered from stuff made in Task 3|
+| 10-12 | Writing | ...and then write some more |
+| 12 | Presentation | you are invited :) |
+| 12 | Deadline | do or die |
+-- Main.AlexanderKrug - 13 Oct 2010

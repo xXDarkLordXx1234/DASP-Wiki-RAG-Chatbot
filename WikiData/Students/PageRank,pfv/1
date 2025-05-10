@@ -1,0 +1,7 @@
+%META:TOPICINFO{author="NicoErbs" date="1263900725" format="1.1" version="1"}%
+%META:TOPICPARENT{name="NicoErbsPageRankCooccurrenceAndGraphs"}%
+---+++PageRank
+
+PageRank as it is used as well by Google takes links directing to the node into account. Furthermore it takes the importance from the connected node into account. This is done by iterating and updating neighbor-nodes. This updating (or improving of the graph) is done until no further improvements can be done. At the end each node has its corresponding score. This algorithm can be applied to weighted as well as unweighted graphs.
+
+-- Main.NicoErbs - 19 Jan 2010

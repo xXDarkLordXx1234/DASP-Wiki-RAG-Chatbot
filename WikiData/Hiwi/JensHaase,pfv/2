@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="JensHaase" date="1304689032" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Resources
+
+   * Subversion: https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/haase
+
+---+ Tasks
+
+   1 DKPro Core Style *(wie sehen die genau aus? Dokumentation?)*
+   1 Interfaces nicht mit I einleiten
+   1 @override annotations
+   1 Vergleich mit anderen existierenden Splitting algos (JWordSplit, BananaSplit)
+   1 Verwenden von DKPro Komponenten (Tokenizer, etc) und DKPro Typesystem
+   1 DKPro Typen für Noun Compounds neu definieren und bestehende Komponenten dahingehend überarbeiten - e.g. Unterstützung für mehr als 1 Split und für linking morphemes 
+   1 Splits als annotationen auf dem text verankern (start-end offset) anstatt als array
+   1 Dictionary & linking morphemes konfigurierbar machen (UIMA external resource)
+   1 static imports for JCasUtil etc.
+   1 shorten code using features from uimaFIT 1.2.0
+   1 Splitting Algo im Annotator konfigurierbar machen - ggf. auch als external resource.
+   1 Parameter sollten mit "a" beginnen (steht für Argument) - kein this benutzen
+   1 Enums sollten top-level Klassen sein oder wenigstens static
+   1 LRU cache - bestehende Implementierung von Apache Commons oder Google Collections?
+   1 keine Exceptions verschlucken (e.printStackTrace())
+   1 kein Exception Handling in Test Cases durchführen - einfach throws 
+   1 Webanwendung so ändern, dass Splitter/Ranker ausgewählt werden können
+
+---+ Aktueller Vertrag (Mai 2011 - Jun 2011)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 0.0 | |
+| 06.05.11 | Setup | 1 | Moved code to svn, Set up local project |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+-- Main.RichardEckart - 2010-12-21

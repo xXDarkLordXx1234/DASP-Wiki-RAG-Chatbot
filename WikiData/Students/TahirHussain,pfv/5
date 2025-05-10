@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="hussain" comment="reprev" date="1459494656" format="1.1" reprev="4" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 31st March 2016
+---++++ Meeting Agenda
+   * Thesis Registration
+   * Following questions needs to be discussed related to DKPro Core
+      1 Why Resource and Component are distributed separately in maven repository. Relationship between components and resources.
+      2 Classification of components, can one be substituted for another.
+      3 For workflow should I assume certain predefined components or it should be generic. How components can be listed.
+      4 Order in a certain workflow is always sequential or it can be customised i.e branches etc.
+      5 Scope of UIMA in workflow editor, i.e workflow will be generalised to UIMA pipeline or DK Pro Core Components.
+      6 In Some of the example, some parts of UIMA pipeline were provided by user, i.e final Writer component. Does it mean user can import custom components in workflow.
+      7 Workflow should be defined as UIMA compatible xml format, or some other way
+---++++ Issues
+   * Jabber account not working
+---++++ Tasks
+   *  
+
+<hr>
+
+---++  Meeting on 17 March 2016
+
+---++++ Tasks
+   * _Done_ - Brief overview of thesis and tasks to perform
+   * _Initial draft submitted_ - List of features/requirements for workflow editor
+
+<hr>
+
+[[%ATTACHURLPATH%/TaskDescription.pdf][Thesis description]]
+
+%META:FILEATTACHMENT{name="TaskDescription.pdf" attachment="TaskDescription.pdf" attr="" comment="" date="1459370768" size="334515" user="hussain" version="1"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="Tahir Hussain"}%

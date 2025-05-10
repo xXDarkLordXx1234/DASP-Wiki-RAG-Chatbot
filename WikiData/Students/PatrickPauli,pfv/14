@@ -1,0 +1,170 @@
+%META:TOPICINFO{author="habernal" comment="reprev" date="1490953878" format="1.1" reprev="2" version="14"}%
+%META:TOPICPARENT{name="StudentsList"}%
+Erledigt:
+   * 13.10.2016: Masterarbeiten von Christian Pollak und Rafael Hannemann gelesen
+   * 31.10.2016: Argotario-System erfolgreich lokal installiert und gestartet
+   * 7.11.2016: In Argumentation-Theory eingelesen (u.a. Chiappa, Tindale); Argotario mehrmals durchgespielt
+   * 14.11.2016: Aufbau von Argotario-System und Datenbank grundsätzlich verstanden
+   * Dezember: Einarbeitung in Technologien (AngularJS, Ionic, Mongo)
+   * 6.1.2017: Getting Things Done Workflow aufgesetzt
+
+Aktuelle TODOs (bis Meeting 12.1.): 
+   * App lokal wieder zum Laufen bringen
+   * Im Code schauen, welche Ansätze zur Übersetzung/Mehrsprachigkeit schon vorhanden sind
+   * evtl. ng-translate evaluieren
+   * Versionskontrolle für Thesis einrichten
+   * WPs aus der Beschreibung in TODO einfügen
+
+Meeting 2017-01-12
+
+   * All TODO done
+   * Multilinguality
+      * MongoDB: Types of fallacies: must be translated (de, en, etc.) and saved in the DB
+      * MongoDB: Arguments: have a language tag, but are not multilingual
+      * UI: angular-translage: has support for multiling., is a JSON format for more languages (key:value), these must be translated (like welcome screen, "you have points", etc.)
+   * Next steps:
+      * apply ng-translate / angular-translate in the development
+         * first only proof of concept on a small subset of the UI
+      * update script for adding German version of fallacies in the MongoDB
+      * first section-level draft (structure of the thesis); to be delivered on Tuesday EOB
+   * Discussed
+      * Recommended to use the latest snapshot (export) from the MongoDB from the argue server, so the newly implemented functionality is guaranteed to work on the production server too
+
+Meeting 2017-01-19
+   * There's already some ad-hoc support for language but it's heavily bound to the database
+   * todos
+      * 1) Remove existing translations from the database
+      * 2) Use solely ng-translate
+   * Revise topics before launch
+      * https://cubert.ukp.informatik.tu-darmstadt.de/work_packages/2303/activity
+      * Export topics from the database, make shared Google Sheet, we both will agree on topics that we keep and that we remove
+   * MongoDB Script for extracting Players of the week
+      * https://cubert.ukp.informatik.tu-darmstadt.de/work_packages/2243/activity
+
+<pre>
+Meeting 2017-01-26
+Discussed translation:
+- Some part already tranlated -- done
+- User can switch in game -- done
+- Some parts still missing
+
+TODOs
+- language selection not from a list in the DB but in the code
+- integration of Player of the week into the HTML page
+- delete messy duplicate code (#2334)
+- deploy on test server
+- writing
+
+
+Meeting 2017-02-07
+Translation done = everything in the 
+
+Server installation
+- apache configuration failed -- some problems with enabling the page
+
+TODO
+* finish dev deployment
+	* if still problems with configuration, contact IH
+* writing rel. work - Friday EOB deliver first draft
+* integrate player of the week on the production website
+
+</pre>
+
+Meeting 2017-02-16
+<pre>
+DONE
+* writing rel. work - Friday EOB deliver first draft
+DONE
+* integrate player of the week on the production website
+TODO
+
+* Thesis - writing: next Tuesday rel. work for feedback
+TODO
+* Choose language on the first (landing) page
+TODO
+* Not possible to change the language later (because of different arguments and topics)
+
+TODO
+* Deutsche Themen ~ 20 themen, statements (NOT questions) --- have a collection
+TODO
+* Deutsche Beispiele für Fallacies ~ 200 examples (with fallacy labels)
+* Design the crowdsourcing task -- specifications
+</pre>
+
+Meeting 2017-02-23
+<pre>
+* Deutsche Themen ~ 20 themen, statements (NOT questions) --- have a collection
+-- 30 topics gathered
+
+* Preparing new data for German using MTurk
+
+- HIT: Topic & pro/con given
+- Patrick TODO: send link https://public.ukp.informatik.tu-darmstadt.de/ih/emnlp2017/21-pilot-stance/mthit-00002.html
+- XML/JSON with data
+</pre>
+
+Meeting 2017-03-02
+<pre>
+* Big view on the thesis - planning the second part
+
+* Datensammlung
+	* Clean DB with English data
+
+	* Putting focus on German
+	* Users for German
+
+* Analyse
+	* Qualitative analyse
+* Experiments
+* Writing: 3 Weeks
+
+TODOs:
+
+* Folien
+* Fix players of the week
+
+My TODO:
+* activate PHP on the production server and test PHP info output, let know Patrick
+</pre>
+
+Meeting 2017-03-16
+<pre>
+Data collecting
+* done; 120 arguments
+
+Next steps
+* fallacy writing level + pvp world - finish localization
+* import new arguments in the database
+</pre>
+
+Meeting 2017-03-23
+
+<pre>
+Done
+* fallacy writing level + pvp world - finish localization
+* import new arguments in the database
+
+Problems
+* Lanuage selection on smartphone -> flag
+* Language bug in PvP composing level/round
+
+Discussion
+* Explanation why is it a fallacy will be ignored (slows down the game; can scary off players)
+
+Next steps
+* Deployment Roadmap
+* Deployment on the prod together next week
+</pre>
+
+Meeting 2017-03-31
+
+<pre>
+* TODO Patrick: Spam deletion
+
+* Running: Preparing qualitative analysis
+* Running: Preparing deep learning framework for evaluation
+
+* TODO IH: Send e-mail from debate clubs in Hessen to Patrick; then send back to IH
+</pre>
+
+-- Main.PatrickPauli - 2017-01-06 - 12:24

@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="starke" comment="reprev" date="1438537084" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ElisaStarke"}%
+---+!! Statistics for SALSA-VN alignment pairs
+
+The script used to compile the statistics has been committed, the files used as input have been attached to this site.
+  
+ total number of aligned pairs: 1145
+   * without semantic arguments: 355
+   * with semantic arguments: 790
+
+
+---++ Salsa
+- semantic predicates
+   * total number of semPreds in resource: 1023
+   * number of different semPreds covered by alignment (with semantic arguments): 175 => 17%
+   * number of different semPreds covered by alignment (without semantic arguments): 178 => 17%
+   
+- semantic arguments
+   * total number of semArgs in resource: 5024
+   * number of different semArgs covered by alignment: 487 => 10%
+
+- number of alignments per semPred
+   * min: 1
+   * max: 10
+   * average: 4 
+
+---++ !VerbNet
+- semantic predicates
+   * total number of semPreds in resource: 608
+   * number of different semPreds covered by alignment (with semantic arguments): 123 => 20%
+   * number of different semPreds covered by alignment (without semantic arguments): 124 => 20%
+   
+- semantic arguments
+   * total number of semArgs in resource: 1337
+   * number of different semArgs covered by alignment: 246 => 18%
+
+- number of alignments per semPred
+   * min: 1
+   * max: 8
+   * average: 6
+
+---++ number of alignment pairs with same semantic role (name) vs. different semantic role (name)
+   * same name: 21
+   * different name: 769
+
+-- Main.ElisaStarke - 2015-07-21
+
+%META:FILEATTACHMENT{name="SALSA_VN_alignmentWithRoles.xlsx" attachment="SALSA_VN_alignmentWithRoles.xlsx" attr="" comment="source file used to compile statistics (only pairs with semantic arguments)" date="1438536741" path="SALSA_VN_alignmentWithRoles.xlsx" size="139819" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="SALSA_VN_alignment.csv" attachment="SALSA_VN_alignment.csv" attr="" comment="source file used to compile statistics (pairs with and without semantic arguments)" date="1438536803" path="SALSA_VN_alignment.csv" size="136859" user="starke" version="1"}%

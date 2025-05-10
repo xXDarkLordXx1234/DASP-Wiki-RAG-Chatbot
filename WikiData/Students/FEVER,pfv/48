@@ -1,0 +1,398 @@
+%META:TOPICINFO{author="hanselowski" comment="" date="1531204253" format="1.1" reprev="45" version="48"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Meeting: 16.07.2018:
+
+   * Agenda:* 
+   * Ensemble models
+   * Training on the development set
+   * Publish code
+
+
+---++ Meeting: 09.07.2018:
+
+   * Document retrieval:* 
+   * Daniil try out entity linker on wikipedia
+
+   * Evidence Extraction:* 
+   * Try out run evidence extraction with 3 or 7 documents
+   
+
+   * Claim validation:* 
+   * use c-lstm
+   * SCV file for error analysis
+
+---++ Meeting: 02.07.2018:
+
+   * Document retrieval:* 
+   * Try out wikifier for document retrieval
+
+   * Evidence Extraction:* 
+   * First use entity linking methods to get a number of documents than additionally use information from document for ranking like tf-idf or doc2vec or topic models
+   * Use ensemble of models and hard or soft voting (adding up soft max probabilities)
+
+   * Claim validation:* 
+   * Try out classifiers like random Forrest with features
+   * Balance parameter from scikit learn for classifier
+   * Weight output from the softmax in order to match the distribution of the output
+   * Use ensemble of models and hard or soft voting
+
+
+---++ Meeting: 18.06.2018:
+
+   * Document retrieval:* 
+
+   * Evidence Extraction:* 
+   * Compute performance on the gold documents
+   * Try out model of Andreas for evidence extraction
+
+   * Claim validation:* 
+   * Try out enhanzed preptrained LSTM 
+
+   * Findings:* 
+   * Only a small number of evidence 
+   * Preformance Tuhin: Evidence F1 0.2978, Label Accuracy 0.5606, FEVER Score 0.4740 
+
+   * TODO:* 
+   * Find out what Tuhin is doing and where he is superior
+   * What kind of documents is Tuhin using for document retrieval
+   * Do an error analysis for the whole pipeline, prepare CSV and send out to everybody
+   * Maybe focus document evidence retrieval on the first paragraph
+			
+
+
+
+---++ Meeting: 12.06.2018:
+
+   * Document retrieval:* 
+      * Further improve retrieval for the cases where no document could be found
+
+   * Evidence Extraction:* 
+      * Train on the data set from Daniil 
+      * Talk to Andreas for ranking as answers ranking might help
+      * Try with two and one documents
+
+   * Claim valdiation:* 
+      * Train on the data set from Daniil 
+      * Wighted loss 
+      * More sentences or less sentences 
+      * Pretraining on SNLI might help 
+
+---++ Meeting: 05.06.2018:
+
+   * Document retrieval:* 
+      * Forward training set and development set
+
+   * Evidence extraction: 
+      * Erorr anlysis
+      * Try further hyper parameter tuning:
+         * Preselect sentences before ranking (reduce the number of sentences)
+         * Try to extract evidence not 5 documents but also 1 or 2 documents (From Daniil) 
+
+   * Textual entailment, claim validation: 
+      * Implement pyramid matching model with more than one sentence
+      * Implement decomposable attention with more than one sentence
+
+---++ Meeting: 29.05.2018:
+
+   * Document retrieval:* 
+      * Recall: 63% for 1 document 2 69%, 3.3 71%
+      * complete 66% 1, 72% 2, 73.7% 3.3
+      * Improvement: Error analysis entity linking 10 wrong, related entity, expansion rule to improve the coverage 
+      * Need to run on the training-set 
+      * We can already run evidence extraction and claim validation on the development set. Pipeline is basically in palace
+
+   * Evidence extraction: 
+      * Allignment CNN match pyramid, Recall 1 example 40%,  2 negative examples, example 42%
+      * BiLSTM: 15% 
+      * Baseline: 45% 
+      * Problem is that the we have a small number of training examples, we need to have 
+      * Biderectional multi perspective matching model
+
+
+   * Textual entailment, claim validation: 
+      * Universal sentence encoder + attention over golden sentences: 68%
+      * Hierarchical attention
+      * New corpus to be constructed
+      * Apply attention on sentence level
+
+
+
+---++ Meeting: 24.05.2018:
+
+   * Evidence extraction: 
+      * Problem
+         * Analysis predict scores on the evaluation set during training
+         * Learner is not learning 
+      * Different  
+         * score = f(x|c)
+         * score = f(x1|c) + f(x2|c) + g(x1,x2)
+      * Methods
+         * Glove
+         * Stacked lstm
+         * bilstm 
+         * Combine tfidf representations with sentence embeddings 
+      * Error analysis 
+         * Entities resolution 
+      * New problem setting: randomly sample sentences from the 5 documents
+
+   * Claim validaion
+      * 20 sentences with gold labels
+      * Decomposable attention with many sentencees
+      * Sentences encoder with attention on the sentence level  
+
+
+   * Document level:
+      * Entitiy linking on the development set running, results coming soon 
+
+
+
+---++ Meeting: 18.05.2018:
+
+
+   * [[https://arxiv.org/pdf/1704.00051.pdf][Facebook paper]], similar task also working on the wikipedia data
+   * Evidence extraction: 
+      * Google encoder can be fine tuned with small learning rate
+      * Facebook document reader attention LSTM
+         * Additional features: named entities, word overallap
+
+      * TODO:
+         * Sentenece encoder only pairs no negative sampling
+         * Sentenece encoder with negative sampling
+         * Attention model: sentence level (hierarchical encoding) (sequential information might help)
+
+   * Textual entailment:
+      * Problem definition: classification on text snippets, paragraphs, documents (multiple sentences) 
+      * Stacked biLSTM 3 layer with shortcuts: 66%
+      * Sentence level VS tocken level (in real problem setting which have to deal multiple sentences)
+         * Try out SNLI models
+      * Sentence level model to be also implemented (end-to-end sentence encoder and classifier (not need for lstm for for classification on sentence level)) 
+   
+
+---++ Meeting: 15.05.2018:
+
+   * Document retrieval: 
+      * Daniil will investigate entity linking methods for document retrieval
+
+   * Evidence extraction: 
+      * Use ranking loss: hinge loss, ranking loss, cosine similarity, maximum margin loss
+      * More negative sentences to be taken into account 
+      * Use GloVe embeddings trained on Wikipedia
+
+   * Textual entailment: 
+      * Baseline claim validation: 80% 
+      * Conditional baseline: 62% 
+      * Try out different SNLI models available models 
+      * SNLI using alignment according to attention, are we also able to use this?  
+
+   * Joint model:
+      * Maxime suggested to optimize the ranking encoder as well as mutual information encoder jointly 
+
+---++ Meeting: 09.05.2018:
+
+   * Evidence extraction:
+      * TF-Idf baseline 45% 
+      * Universal encoder 40% recall
+      * TODO:
+         * Upper bound 55% (to be clarified) (to be identified for the development set: depending on the upper bound we have to focus more on document retrieval or evidence extraction)
+         * We need to find out how many documents we should retrieve in order to extract the correct set of sentences 
+         * Error analysis to be perform: what kind of errors are made, how can we improve
+         * Other approaches: 
+            * Train our own sentence encoder on the data and use ranking loss, use Google sentence encoder with trained units
+            * Use average word embeddings
+            * LSTM with attention from Andreas Rückle
+         * Datasets:
+            * Gold and randomly sampled
+            * Only gold documents
+            * Run the baseline document retrieval in order to extract the documents    
+
+   * Evaluation:
+      * Each claim has several evidence sets for support and we have to identify one of them 
+
+   * Textual entailment: 
+      * Google universal encoder (53%) does not outperform baseline (63% DecAttention)
+      * TODO:
+         * Need to train our own models starting with lstm, cond lstm and so on
+
+((
+   * Claim validation (classification problem): basically the same classifier as for the evidence aggregation
+      * SOA SNLI models: u-v||u*v||u||v 
+      * Sentence encoder from Andreas Rückle
+ ))
+
+   * TODO: Set up git lab and share with all
+
+---++ Meeting: 02.05.2018:
+   * Evaluation: 5 sentences the rest will not be considered
+
+   * Aisha will apply contextual ranking methods in order to evidence extraction (Hao needs to provide the data)
+
+   * Joint model: use an attention model for claim validaion
+  
+   * Evidence extraction
+      * Extend the dataset with more irrelevant documents since in the real setting we will have documents with no evidence
+      * Evidence extraction first results: We beat the baseline but recall is quite low since the dataset only contains a small number of evidence (biased distribution)
+      * TODO Hao: 
+         * Implement Deep rank model: scoring with negative examples be pushed away: https://arxiv.org/pdf/1404.4661.pdf
+
+   * Claim validation
+      * Prepared the dataset from training set with 5 sentences for each claim with random examples from additional unrelated sentences 
+      * TODO Zile:
+         * Slack ask question regarding number of sentences, are we just allowed to use the 5 sentences which are selected as evidence or more information for claim validation
+         * Implement the FEVER baseline and reproduce the results
+         * Implement classifiers for claim validation:
+            * Google universal encoder (Facebook InferSent)
+            * Separate encoder for the sentence and the claim
+            * Conditional encoding
+         * Find out state of the art models for SNLI and multiNLI (we could also use them)
+   
+   * TODOs: 
+      * Evaluation metric for the task to be clarified: formal definition
+      * Information retrieval: talk to Andreas, Richard, Chris, ... how this can be done?
+
+
+
+---++ Important information about the task
+
+   * Links:
+      * [[https://arxiv.org/pdf/1803.05355.pdf][paper]] 
+      * [[http://fever.ai/task.html][shared task]]
+   * Modules:
+      * Information retrieval: We need to create an index for search using [[https://lucene.apache.org/][Lucene]]; [[https://github.com/lemire/IndexWikipedia][Creating Lucene index for Wikipedia dump]]
+         * Elastic search, BM 24, faiss Facebook semantic search 
+      * Evidence aggregation (consider as classification problem on sentence level): universal encoders (Facebook, Google), try to train our own sentence encoder, claim validation models, conditional encoders, SNLI multiNLI models ....
+         * Considering as ranking problem Can be later considered as content extraction or contextual ranking problem in order to facilitate the collection of linked evidence
+         * Considering as content selection: Simply generate conditional sequences, Beam search, Monte Carlo Tree search, ILP, Decoder LSTM condition on claim select the most likely sentence, ... 
+         * Considering as ranking problem: ...
+      * Claim validation (classification problem): basically the same classifier as for the evidence aggregation
+         * SOA NLI models: u-v||u*v||u||v 
+      * Joint learning of sentence aggregation and claim validation: Memory networks, ILP, reinforcement learning
+
+   * Models to be tried out:
+      * Google universal encoder
+      * Facebook InferSent
+      * Separate encoder for the sentence and the claim
+      * Conditional encoding
+      * Attention based models
+      * ...
+      
+   * Joint model:
+      * One hop reasoning: Sentence encoder, conditional decoding LSTM (generates a sequence of evidence), inference module (predicts a label for the claim on the basis of the evidence sequence),  joint loss function for evidence selection and label prediction, (attention for selection, keys values to be considered)
+      * Three hop reasoning: Same as above but we have additionally three options to choose from, additional selection module? 
+
+
+   * Miscellaneous:
+      * Documents: The document collection is whole Wikipedia (5.4M pages)
+      * Evidence: "in 31.75% of the claims more than one sentence was considered appropriate evidence. Claims require composition of evidence from multiple sentences in 16.82% of cases. Furthermore, in 12.15% of the claims, this evidence was taken from multiple pages."
+      
+
+---++ Methods and performance
+
+** Document retrieval:*
+| *Method*                 | *Score 1 doc* | *Score 2 docs* | *Score 3 docs* |  *Score 5 docs* | *Score 10 docs* |   
+| Baseline                 | 50.21         |                |                | 70.20           | 77.24  |    
+| Entity linking unmodified| 66.0          | 72.0           | 73.7           |                 |        |
+| np + wiki + tfidf        | 67.83         | 80.77          | 87.98          | 92.38           |       
+| Upper bound              | 87.85         | 100            | 100            | 100             | 100    |
+
+Wiki(first 3 results per np)
+| *Method* | Doc Accuarcy | Doc Recall |
+| All      | 93.86       | 90.796    |
+| Exact Match (claim words) | 92.04    |   88.06   |
+| USE         |   89.18  | 83.78     |
+| TFIDF       |   92.38  |   88.58   |
+
+Wiki(first 5 results per np)
+| *Method* | Doc Accuarcy | Doc Recall |
+| All      | 94.849       | 92.274    |
+| Exact Match (claim words) | 92.687    |   89.03   |
+| TFIDF       |   90.13  |   85.20   |
+
+
+
+** Evidence extraction:*
+| *Method* | *Score* |
+| Three layer stacked BiLSTM  | 17.0|  
+| Universal encoder (untrained)  | 40.0|  
+| Pyramid matching alignment ranking model 1 negative sample | 40.0|   
+| Pyramid matching alignment ranking model 2 negative samples, 1 CNN layers | 41.0|    
+| Baseline TF-IDF  | 45.0 |
+| Pyramid matching alignment ranking model 5 negative samples, 2 CNN layers | 46.0| 
+| Upper bound| 55.30 |
+
+| *Method* | *Recall* | *Precision* | *F1* | 
+| Universal encoder (untrained)  | 52.43 | 14.74 | 23.01 |  
+| Baseline TF-IDF  | 54.71 | 19.53 | 28.79 |
+| Pyramid matching alignment ranking model 5 negative samples, 2 CNN layers | 55.87 | 15.41 | 24.16 | 
+| Upper bound| 59.31 |
+
+Noun phrases + Wiki search API + extracted page match with claim(min 0 pages, max 14 pages, average 3.02 pages)
+| *Method* | *Recall* | *Precision* | *F1* | 
+| Universal encoder (untrained)  |  |  |  |  
+| Baseline TF-IDF  |  |  |   |
+| Pyramid matching alignment ranking model 5 negative samples, 2 CNN layers | 73.24 | 19.85 | 31.24 | 
+| Pyramid with new training | 74.00 | 19.88 | 31.35 |
+| Upper bound| 81.76 |
+| Pyramid training set | 73.63 | 19.87 | 31.29 |
+| New Upper Bound(not test on dev) | 85.37 |
+
+Wiki(first 3 reulsts + Pyramid):
+| *Method* | *Precision* | *Recall* | *F1* |  *Upper Bound* |
+| Baseline TF-IDF  | 0.1686 | 0.7071 | 0.2723  |  0.8858  | 
+| Exact Match      | 0.2020   | 0.7671   | 0.3198   | 0.8806 |
+
+Wiki(first 5 results + exact match):
+| *Method* | *Precision* | *Recall* | *F1* |  *Upper Bound* |
+| ESIM      |   0.2264   |  0.8208   | 0.3549   | 0.8903 |
+ 
+
+   ** Textual entailment (claim validation):*
+   * Baseline Dataset:
+   | *Method* | *Score* |
+   | Universal encoder (untrained)  | ???| 
+   | Baseline   |52.09 | 
+   | Best Score (Columbia)   |56.06 | 
+   | Upper bound |???     | 
+
+   * Entity Linking + Pyramid Sentence Selection (P3 S5):
+   | *Method* | *Score* |
+   | Universal encoder (untrained)  | 47.61| 
+   | Hierarchical Attention + GloVe Embedding | 48.46| 
+   | Hierarchical Attention + FastText & GloVe Embedding | 49.07| 
+   | Baseline   |50.34 | 
+   | ESIM + FastText & GloVe Embedding, baseline training set | 57.95| 
+   | Best Score(Columbia)   |58.14 |
+   | Fever Score if Claim Validation was perfect |70.52     | 
+ 
+   * Wiki Search + Pyramid Sentence Selection (P3 S5):
+   | *Method* | *Score* |
+   | Best Score(Columbia)   |56.06 |
+   | ESIM + FastText & GloVe Embedding, baseline training set | 57.75| 
+   | ESIM + FastText & GloVe Embedding, Match Pyramid training set, alignment: cosine with softmax | 61.08| 
+   | ESIM + FastText & GloVe Embedding, Match Pyramid training set, alignment: cosine without softmax | 62.53| 
+   | Fever Score if Claim Validation was perfect |82.67     | 
+
+   * Wiki Search + ESIM (P3 S5):
+   | *Method* | *Score* |
+   | Best Score(Columbia)   |58.14 |
+   | ESIM + FastText & GloVe Embedding, Match Pyramid training set, alignment: trainable without softmax | 61.65| 
+   | Fever Score if Claim Validation was perfect |88.05     | 
+
+   ** Overall pipeline:*
+    | *Method* | *Score (Dev. Set)* |
+     | Baseline   | 32.27 |
+     | Entity Linking + Match Pyramid + ESIM   | 40.36 |
+     | Wiki Search + Match Pyramid + ESIM with baseline training set  | 46.79 |
+     | Best Score (Columbia)   | 48.22 |
+     | Wiki Search + Match Pyramid + ESIM with Match Pyramid training set(alignment cos softmax)  | 50.62 |
+     | Wiki Search + Match Pyramid + ESIM with Match Pyramid training set(alignment cos no softmax)  | 51.78 |
+     | Wiki Search + ESIM + ESIM with Match Pyramid training set(alignment trainable no softmax)  | 54.37 |
+    | Upper bound |???     | 
+
+   **Documents statistics:*
+   | *Dataset*  | *unique doc numbers*| *cliam numbers*|
+   |Training    |       12549         |145449   |
+   |Dev         |       2892          |19998 |
+   |Intersection|    908   |  
+
+
+-- Main.AndreasHanselowski - 2018-04-24

@@ -1,0 +1,2 @@
+RichardSteuer
+Hadoop execution shortup script

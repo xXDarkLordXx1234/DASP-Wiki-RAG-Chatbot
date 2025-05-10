@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="CarolinDeeg" date="1320865379" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="CarolinDeeg"}%
+-- Main.CarolinDeeg - 2011-11-09
+
+---+++ Parser
+   * zu ändernde Klassen:
+      * PageTitle (?)
+      * SimpleWikiConfiguration
+      * SimpleParserConfig
+      * ParserConfigInterface
+      * LazyParser
+      * LazyPreprocessor
+      * LazyPostprocessor
+      * AstNodeTypes (??)
+      * LazyParserContext
+      * LazyParserState
+      * TicksAnalyzer (?)
+      * alle Klassen die mit ParserFunction... anfangen
+
+---++ Lesbare Klassen
+      * LinkTargetParser
+      * ParserScopes
+      * ParserAtoms
+      * LinkBuilder
+      * IntermediateTags
+      * ScopeType
+
+---++ AST
+      * ParserEntity
+      * Tuple (?)
+      * Visitor (?)
+      * evtl ParserCommon, ParserContext, ParserInterface (?), ParserState

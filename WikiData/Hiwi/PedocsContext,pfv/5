@@ -1,0 +1,13 @@
+%META:TOPICINFO{author="CarolinDeeg" date="1352474787" format="1.1" version="5"}%
+%META:TOPICPARENT{name="CarolinDeeg"}%
+-- Main.CarolinDeeg - 2012-11-09
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Pedocs einrichten | 02.10.2012 | 0.5 | Projekt auschecken, Fehler beheben |
+| Testläufe | 02.10.2012 | 1 | Projekt läuft nicht (Out of Memory); mehr RAM zugewiesen |
+| | 09.10.2012 | 1 | Besprechung mit Nico |
+| | 09.10.2012 | 1 | Testlauf mit jeweils einer Einstellung pro Parameter |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 75 | 01.08.2012 bis 31.10.2012 |
+<nop>

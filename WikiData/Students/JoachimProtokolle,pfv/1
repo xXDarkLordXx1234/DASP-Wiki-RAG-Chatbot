@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="JoachimCaspar" date="1224609823" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="JoachimCaspar"}%
+---+ Treffen mit Niklas, 20. Oktober 08, 18-19 Uhr
+
+   * Folien: Kritik & Feedback
+
+   * svn-Account aktiviert
+
+   * Wie DkPro in UIMA einbinden? done
+
+   * Welchen Vergleichskorpus nehmen? BNC? besser: UkWak
+
+   * Wie kann man eine Schranke bei Ranking-Maßen (loglikelihood, chisquare usw) festlegen? Mittels outlier detection.
+
+   * Homogenität bzw. Abstand zweier Korpora messen mit spearman rank correlation co-efficient? Nur wenn Zeit.
+
+   * Einzelevaluierung single-words, dann multi-words auf Kollokationsbasis, dann Adja-NN-artige Terminologie, dann Gesamtterminologie evaluieren? Nicht notwendig, nur wenn Zeit.
+
+   * Eval ähnlich zu IR-Methode mit prec-rec-Kurve, da rankingbasierte Maße verwendet werden? Nein, eher outlier detection und verbleibende Gesamtmenge an Terminologien unabhängig von Ranks betrachten.
+
+-- Main.JoachimCaspar - 21 Oct 2008

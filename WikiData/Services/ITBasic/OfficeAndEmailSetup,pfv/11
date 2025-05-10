@@ -1,0 +1,70 @@
+%META:TOPICINFO{author="hollstein" comment="reprev" date="1369838730" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="Resources"}%
+---+ !! UKP Mail Service
+%TOC%
+
+---++ Terms of Use
+   * Observe netiquette at all times!
+
+---++ Outlook Web Access (Webmail)
+You can read and send mail in your web browser through [[https://mx.ukp.informatik.tu-darmstadt.de/owa/][Outlook Web Access (OWA)]] at https://mx.ukp.informatik.tu-darmstadt.de/owa/. Your username is =surname@ukp.informatik.tu-darmstadt.de=. However this is more for situations when there is no Outlook client available, since OWA has reduced functionality in comparison to Outlook.
+
+---++ Microsoft Outlook 2007
+Microsoft Outlook 2007 is the only officially supported client, and is available in the Windows VM on your workstation. When you start it, enter your details into the dialogs presented to you and leave it to Outlook to detect all settings automatically. If any problem occurs, please contact the system administrators by opening an issue in the issue tracker.
+
+To add an Account manually go to SETTINGS and select "Access Outlook from an aribitrary location" ("Von beliebiger Stelle auf Outlook zugreifen"). also make sure to choose HTTPS as a protocol and add =tba-owa.dipf.de= to the Exchange proxy settings.
+
+---+++ Notes
+   * The very same configuration settings apply for Apple iPhone or Google Android OS.
+
+---++ Thunderbird 17.0
+Create a new account in Thunderbird. The following settings must be provided with your own credentials as appropriate.
+---+++ Setup IMAP
+Our Exchange server provides the standard IMAP access for checking mail with other mail clients. Use the following settings, substituting your user name for mine.  (The exact names of the fields may vary from client to client; these are the ones used by Thunderbird.) By default, your e-mail client might subscribe you only to your "Inbox" folder. You may need to edit your IMAP account settings to subscribe to other folders which you may have been using, such as "Gesendete Elemente".
+   * Server type: IMAP
+   * Server name: =mx.ukp.informatik.tu-darmstadt.de=
+   * Server IP: =130.83.167.135=
+   * Port: =993=
+   * Authentication method: Normal Password
+   * Connection security: SSL/TLS
+   * User Name: =AD username=
+<img src="%ATTACHURLPATH%/UKP_IMAP_settings.png" />
+
+---+++ Setup SMTP
+Our Exchange server provides the standard SMTP access for sending mail with other mail clients. Use the following settings, substituting your user name for mine.  (The exact names of the fields may vary from client to client; these are the ones used by Thunderbird.)
+   * Server type: SMTP
+   * Server name: =mx.ukp.informatik.tu-darmstadt.de=
+   * Server IP: =130.83.167.135=
+   * Port: =587=
+   * Authentication method: NTLM
+   * Connection security: STARTTLS
+   * User Name: =AD username=
+<img src="%ATTACHURLPATH%/UKP_SMTP_settings.png" />
+
+---+++ Subscription
+However without a subscription of the correct Exchange directories one will have problems to use the account at its full potential. Subscription helps you to use the directories in Thunderbird in a similar way than in Outlook. Otherwise one would use Thunderbirds local directories which is actually not helpful. To get this windows right-click on your account in the left pane of Thunderbirds main window and choose "subscribe".
+
+<img src="%ATTACHURLPATH%/thunderbird-subscribe.png" alt="Thunderbirds subscription window for registered mail accounts"/>
+
+After the subscriptions were made successfully one should reconfigure the e-mail account. The recommended settings for the section Copies & Folders are displayed in the screenshot below. It is important to select the directory/folder, previously subscribed to as a different storage location, from the list.
+
+<img src="%ATTACHURLPATH%/thunderbird-copies.png" alt="Thunderbirds subscription window for registered mail accounts"/>
+
+---+++ Notes
+   * The very same configuration settings apply for Apple iPhone or Google Android OS.
+
+---++ Mail Forwarding
+   * It is possible to do mail forwarding of your UKP-TUDA mail to your UKP-DIPF mailbox. There are two ways to do this either by setting the redirect manually in OWA or open a ticket within the BugTracker and request a permanent redirect. However there is indeed an incompatibility between the versions of the Microsoft Exchange servers from both locations that makes this complicated. This may be rectified as a long term goal, but no remedy is possible at the time of this writing (SB: 22 May 2013).
+
+---++ Known Issues
+If your account was migrated from the TK to the new UKP Exchange server, you may find that e-mail messages created on the old TK Exchange server now have mangled e-mail addresses, such as &lt;IMCEAEX-_O=ASC_OU=EXCHANGE+20ADMINISTRATIVE+20GROUP+20+28FYDIBOHF23SPDLT+29_CN=RECIPIENTS_CN=ZESCH@ukp.informatik.tu-darmstadt.de&gt;.  This is a known issue and prevents you from directly responding to old e-mails. You will have to manually change the address when replying.
+
+---++ Further Information
+   * See also the [[MigrationTK2UKPExchangeKnownIssues][Exchange/Outlook/Mail Known Issues]] page. Common mail isues are stored there to avoid redundancy.
+
+-- Main.StevenBurrows - 2013-02-18
+
+%META:FILEATTACHMENT{name="UKP_IMAP_settings.png" attachment="UKP_IMAP_settings.png" attr="" comment="UKP SMTP server settings (Thunderbird)" date="1329407107" path="UKP_IMAP_settings.png" size="6266" user="TristanMiller" version="3"}%
+%META:FILEATTACHMENT{name="UKP_SMTP_settings.png" attachment="UKP_SMTP_settings.png" attr="" comment="UKP SMTP server settings (Thunderbird)" date="1329391065" path="UKP_SMTP_settings.png" size="7088" user="TristanMiller" version="2"}%
+%META:FILEATTACHMENT{name="thunderbird-copies.png" attachment="thunderbird-copies.png" attr="" comment="" date="1369838656" path="thunderbird-copies.png" size="140922" user="hollstein" version="1"}%
+%META:FILEATTACHMENT{name="thunderbird-subscribe.png" attachment="thunderbird-subscribe.png" attr="" comment="" date="1369838699" path="thunderbird-subscribe.png" size="55791" user="hollstein" version="1"}%

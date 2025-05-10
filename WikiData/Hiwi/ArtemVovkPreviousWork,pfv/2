@@ -1,0 +1,102 @@
+%META:TOPICINFO{author="JohannesHoffart" date="1243935404" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+---+ Artem Vovk Previous Work
+
+---++ March to May 2009
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Integrate Lucene into Wikulu | 100 |
+| !DocWriter enhancement | 100 |
+| WikuluDemo | 100 |
+| Konvertieren von HTML | 50 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| DocWriter enhancement | 12.03.2009 | 5 | <ul><li>Problem Analyse</li><li>HTML struktur Darstellung</li><li>Anfang von Implementation(index.html)</li></ul> |
+| DocWriter enhancement | 13.03.2009 | 3 | <ul><li>HTML Design</li><li>Weitere implemetation</li></ul> |
+| DocWriter enhancement | 14.03.2009 | 5 | <ul><li>Weitere Implementation</li><li>HTMLCreateDoc wurde erledigt</li></ul> |
+| DocWriter enhancement | 16.03.2009 | 5 | <ul><li>Java Dokumentation von neue Klassen</li><li>Testen von HTMLCreateDoc</li><li>Integration ins Dkpro release tool</li></ul> |
+| DocWriter enhancement | 18.03.2009 | 5 | <ul><li>Weitere Integration ins Dkpro release tool</li><li>Realisierung der Dokumentation von Aggregate Descriptoren</li></ul> |
+| DocWriter enhancement | 19.03.2009 | 2 | <ul><li>Implementation von der Nutzung der Typen</li><li>Kode Korrectur</li></ul> |
+| DocWriter enhancement | 22.03.2009 | 3 | <ul><li>Implementation von der Nutzung der Typen</li></ul> |
+| DocWriter enhancement | 23.03.2009 | 3 | <ul><li>Implementation von der Nutzung der Typen erledigt</li></ul> |
+| DocWriter enhancement | 24.03.2009 | 3 | <ul><li>Java docs fuer neue Klassen</li><li>Testen von doc_writer</li><li>Testen von dkpro_release_tool</li></ul> |
+| Integrate Lucene into Wikulu | 02.04.2009 | 1 | <ul><li>Problem Analyse</li></ul> |
+| Integrate Lucene into Wikulu | 03.04.2009 | 4 | <ul><li>Problem Analyse</li><li>Lesen von Dokumentation</li></ul> |
+| Integrate Lucene into Wikulu | 04.04.2009 | 3 | <ul><li>IR Componenten Analyse</li><li>Anfang von Implementation</li></ul> |
+| Integrate Lucene into Wikulu | 05.04.2009 | 3 | <ul><li>Implementation von Beispiel</li><li>Process Analyse</li></ul> |
+| Integrate Lucene into Wikulu | 07.04.2009 | 5 | <ul><li>Umbau von Projekt(Add Descriptoren und UIMA nature)</li><li>Implementation von AggregateDescriptor(IndexCreator)</li><li>Lesen von UIMA Dokumentation </li></ul> |
+| Integrate Lucene into Wikulu | 08.04.2009 | 3 | <ul><li>LuceneIndexCreator Implemetation</li></ul> |
+| Integrate Lucene into Wikulu | 11.04.2009 | 4 | <ul><li>LuceneIndexCreator wurde implemenetiert, getestet und zur Suche mit LuceneSearcher adaptiert</li></ul> |
+| WikuluDemo | 18.04.2009 | 3 | <ul><li>Installation von webrserver(Apache+PHP+MySql)</li><li>Installation vin wikimedia</li><li>Information ueber wikiDump</li></ul> |
+| WikuluDemo | 23.04.2009 | 3 | <ul><li>Versuche wikiDump zu importieren</li></ul> |
+| WikuluDemo | 24.04.2009 | 3 | <ul><li>Information ueber mwimport und mwdumper</li><li>Weitere Versuche Dump zu imprtieren</li></ul> |
+| WikuluDemo | 25.04.2009 | 4 | <ul><li>Weitere Versuche</li><li>Dump wurde ohne Fehler importiert!</li></ul> |
+| WikuluDemo | 29.04.2009 | 3 | Implementation von WikuluDemo |
+| WikuluDemo | 30.04.2009 | 4 | Implementation von WikuluDemo |
+| WikuluDemo | 01.05.2009 | 1 | <ul><li>enwiki wurde importiert</li><li>Versuch Index zu erstellen</li></ul> |
+| WikuluDemo | 03.05.2009 | 4 | <ul><li>Versuche Index zu erstellen</li></ul> |
+| WikuluDemo | 04.05.2009 | 8 | <ul><li>Implementation von Lucene Indexing</li><li>Bearbeitung von MediaWiki Klasse</li><li>Testen</li><li>Versuche Index zu erstellen</li></ul> |
+| WikuluDemo | 05.05.2009 | 1 | <ul><li>Erstellung von Index</li><li>Index wurde erstellt</li></ul> |
+| WikuluDemo | 06.05.2009 | 2 | <ul><li>Erstellung von TWiki index</li><li>Inegrierung von StemmFilter into Lucene Index</li></ul> |
+| Konvertieren von HTML | 21.05.2009 | 2 | <ul><li>Problem und Komponent Analyse</li></ul> |
+| Konvertieren von HTML | 27.05.2009 | 3 | <ul><li>Problem Analyse</li></ul> |
+| Konvertieren von HTML | 28.05.2009 | 5 | <ul><li>Problem Analyse</li><li>Lesen die Documentation ueber XPath und SAX</li><li>Anfang von Implementation</li></ul> |
+| Konvertieren von HTML | 29.05.2009 | 3 | <ul><li>Implementation</li></ul> |
+| Konvertieren von HTML | 30.05.2009 | 3 | <ul><li>Implemetation fertig</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 125 (5 Übertrag von Februar) | bis Ende Mai |
+
+
+---++ January/February 2009
+
+| *Artem Aufgaben* |
+| Einarbeitung in UIMA | 100 |
+| DKPro Release Tool Enhancement | 100 |
+
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung in UIMA | 15.01.2009 | 4 | Einfuehrung in UIMA. UIMA wurde instaliert und mit Eclipse verbunden, ganzer Stoff von Torsten und Mark-Christoph wurde gelesen. Jetzt probieren etwas zu schreiben |
+| Einarbeitung in UIMA | 20.01.2009 | 3 | Projekt Installation(dkpro_core, ukp_lib) |
+| Einarbeitung in UIMA | 21.01.2009 | 7 | Weitere Projekt Installation(dkpro_core, ukp_lib). Testen von "src_test". Dokumentation schreiben. Doc: Projekt Installation - https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/Projekt.pdf . Doc: Testfehler - https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/Fehler.pdf |
+| Einarbeitung in UIMA | 23.01.2009 | 3 | Einarbeitung in ukp_dkpro (dkpro_core_release_12_08). Installation und Testen des Projekts. ReportHere |
+| Einarbeitung in UIMA | 28.01.2009 | 3 | Einarbeitung in ukp_dkpro, das Problem mit relativen Pfad (in CPE Descriptor -> ConfigurationParameterSettings) wurde geloest. LoesungHere |
+| DKPro Release Tool Enhancement | 30.01.2009 | 3 | Installation von Tool. Start von Fehlersuche. |
+| DKPro Release Tool Enhancement | 31.01.2009 | 4 | Problem wurde gefunden, Suche nach Loesung. (Leider ab 00:00 1 Februar mein SVN Account nicht gueltig ist...) |
+| DKPro Release Tool Enhancement | 03.02.2009 | 4 | Code Korrektur fuer Aggregate Descriptors |
+| DKPro Release Tool Enhancement | 04.02.2009 | 2 | Code Korrektur. Debuging. Vorbereitung zum Kommit. |
+| DKPro Release Tool Enhancement | 05.02.2009 | 4 | Anfang von Implementation des Passwort Fenster(SVN). Encryption von Passwort(frueher Passwort war  direct in config File). |
+| DKPro Release Tool Enhancement | 06.02.2009 | 2 | Fehlersuche in den "Agregate Descriptors" Aenderungen. Fehlerkorrektion und Kommit. |
+| DKPro Release Tool Enhancement | 08.02.2009 | 6 | Weitere Implementation des Passwort Fenster(SVN). Jetzt kann man waehlen Speicherung von Passwort. Testen von Passwort Fenster. Fehler mit der Erneuerung der Descriptorlist wurde gefunden und korrigiert(Wenn man neue config File gewaehlt hat, dann in der Liste der Descriptoren waren keine Aenderungen). |
+   | DKPro Release Tool Enhancement | 11.02.2009 | 2 | Anfang von der Realisierung "Preloaded descriptor selection" <ul><li>  Problem Analyse </li><li>Aenderungen im Parser</li> </ul> |
+   | DKPro Release Tool Enhancement | 12.02.2009 | 3 | Realisierung "Preloaded descriptor selection" <ul><li>  Parser wurde erledigt </li> <li>GUI Design </li></ul> |
+| DKPro Release Tool Enhancement | 14.02.2009 | 5 | Corrections in agregate descriptor . <br/> Realisierung "Preloaded descriptor selection" <ul><li> Weitere GUI implementierung </li> <li>Implementierung von DescriptorSet class</li> |
+| DKPro Release Tool Enhancement | 15.02.2009 | 8 | Realisierung "Preloaded descriptor selection" (wurde erledigt. Noch fehlt load von KommandLine) <ul><li>Implementierung von DescriptorSetManager class</li><li>Testen</li> <li> JavaDocs </li> <li>Vorbereitung zum Kommit</li> |
+| DKPro Release Tool Enhancement | 16.02.2009 | 4 | "Preloaded descriptor selection" ist wieder geprueft und kommited. Auch noch klein Manual dazu MiniManual (Pdf format https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/MiniManual.pdf) <br/> Implementierung von Funktion "create project from command line"<ul><li>Problem Analyse</li><li>Analyse von Code</li> <li>Funktion wurde implementiert(noch Testen)</li></ul> |
+| DKPro Release Tool Enhancement | 19.02.2009 | 2 | <ul><li>Testen von Funktion "create project from cmd" </li><li>Option "save source" wurde hinzugefuegt</li><li>Ptojekt Name ist jetzt von Projekt ID abhaengig</li></ul> |
+| Integrate Lucene into Wikulu | 26.02.2009 | 2 | Implementierung Search Klasse: <ul><li>Lesen von Information</li><li>Problem Analyse</li></ul> |
+| Integrate Lucene into Wikulu | 27.02.2009 | 4 | Implementierung Search Klasse: <ul><li>Problem Analyse</li><li>Schreiben von Kode</li><li>Testen</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 80 | bis Ende Februar |
+
+---------------------
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+---------------------
+
+ReleasePackageErrors
+
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"

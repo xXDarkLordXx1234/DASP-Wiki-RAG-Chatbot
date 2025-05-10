@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1314195081" format="1.1" version="269"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ZijadMaksuti - 29 Oct 2009
+
+   * LSR.ResearchTaskDictionaryIntegration
+   * MyNotes
+
+---+++ Zeiterfassung (aktuell)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" format=" | text,10 | date | text,4 | textarea,3x30" }%
+| *Zijad's Stunden* | | | |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| LMFConverter for !WordNet | 28. Juni 2011 | 4 | Programming !SynsetRelationGenerator. |
+| LMFConverter for !WordNet | 29. Juni 2011 | 4 | Evaluation of the XML generated on mrburns and correction of detected errors. Programming !SynsetRelationGenerator. |
+| Uby-Meeting | 30. Juni 2011 | 1 | Meeting. |
+| LMFConverter for !WordNet | 1. Juli 2011 | 3 | Programming !SynsetRelationGenerator. |
+| Uby-Meeting | 7. Juli 2011 | 1 | Meeting. |
+| LMFConverter for !WordNet | 8. Juli 2011 | 4 | Programming !SynsetRelationGenerator. |
+| LMFConverter for !WordNet | 9. Juli 2011 | 4 | !LexicalEntry.RelatedForm class is mapped. |
+| LMFConverter for !WordNet | 10. Juli 2011 | 4 | !SenseRelation class is mapped. |
+| LMFConverter for !WordNet | 11. Juli 2011 | 3.5 | Consultation with JEK. Programming of !SynsetRelationGenerator. |
+| LMFConverter for !WordNet | 1. August 2011 | 3.5 | Programming !SynsetRelationGenerator. |
+| LMFConverter for !WordNet | 3. August 2011 | 4 | Adapting Uby-Framework, !SenseRelationGenerator (done) and !SynsetRelationGenerator  to changes made in DTD_Version13 |
+| LMFConverter for !WordNet, Uby-Meeting | 4. August 2011 | 4 | Consulation with JEK. Meeting. Programming of !SynsetRelationGenerator|
+| LMFConverter for !WordNet | 6. August 2011 | 4 | !SubjectField, Synset and !SenseRelation classes are now mapped. Running !WNConverter, evaluation of generated XML. |
+| LMFConverter for !WordNet | 7. August 2011 | 4 | Programming !SubcategorizationFrameExtractor (adapting the one used in !GNConverter). Running !WNConverter, evaluation of generated XML.  |
+| LMFConverter for !WordNet | 8. August 2011 | 8 | Programming !SubcategorizationFrameExtractor (adapting the one used in !GNConverter). Running !WNConverter, evaluation of generated XML: !LexicalEntryGenerator did not extract all informations out of WN. This is caused due to inconsistency of information representation in WN-Files, example :  "eastern_white_pine" vs. "eastern white pine". Fixing this. |
+| LMFConverter for !WordNet | 9. August 2011 | 4 | Running !WNConverter, evaluation of generated XML. Correction of errors. |
+| LMFConverter for !WordNet | 10. August 2011 | 5 | Running !WNConverter, evaluation of generated XML: Some lexemes in WN have a syntactic marker (adjectives) which is directly appended to lexeme's lemma. This causes errors when creating !LexicalEntries: fixing this. |
+| Uby-Meeting | 11. August 2011 | 2 | Consultation with JEK. Uby-Meeting. |
+| LMFConverter for !WordNet | 12. August 2011 | 4 | !SubcategorizationFrame class is now mapped. Running !WNConverter, evaluation of generated XML. Correction of errors. |
+| LMFConverter for !WordNet | 16. August 2011 | 5.5 | Syntactic markers of adjectives are now mapped. Running !WNConverter, evaluation of generated XML. Correction of errors.  |
+| LMFConverter for !WordNet | 17. August 2011 | 4.0 | Running !WNConverter, evaluation of generated XML. Correction of errors.  |
+| LMFConverter for !WordNet; Uby-Meeting | 18. August 2011 | 4.0 | Looking for possibility to extract verb example sentences from WN. Consultation with JEK. Meeting. Uby-LMF DTD is updated to newer version. Commiting changes regarding semanticRole and selectionalRestriction, in !SemanticArgument class, to !SubcategorizationFrameExtractor. |
+| LMFConverter for !WordNet | 21. August 2011 | 4.0 | Looking for possibility to extract verb example sentences from WN:  jwnl cannot access these informations. This is a known issue in jwnl since 2002. A possibility of extracting this valuable informations still exists: I could write a parser in the future. A list of informations that !WNConterter is currently processing is updated. Running !WNConverter, fixing problems regarding validations against DTD_13_1. |
+| LMFConverter for !WordNet | 22. August 2011 | 4.0 | Running !WNConverter, fixing problems regarding validations against DTD_13_1.  Consulatation with JEK and REC. Switching Uby-Framework to Maven with REC and JEK. |
+| LMFConverter for !WordNet | 23. August 2011 | 4.0 | Consultation with JEK. Adding further changes to DTD. Fixing some minor errors in the converter. Validation against DTD_13_2 successful. Uby-Meeting. |
+      | *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 180 | bis Ende August |
+
+---+++++ Vergangene Monate
+   * [[Archiv][Vergangene Monate]]<br />

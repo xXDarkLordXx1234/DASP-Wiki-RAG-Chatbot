@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="NicoErbs" date="1244039632" format="1.1" version="7"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+%TOC%
+
+---+++ 04.06.2009
+
+   * @action(NE): add UIMA nature to existing project and apply Coding Rules and best Practices
+
+<strong style="font-weight: bold">DONE</strong>
+   * @action(NE): prepare 2000 sentences from corpus and send to Cigdem
+   * @action(NE): create and synchronize with repository on share
+   * @action(CT): Nico's TK account dringend
+
+---+++ 27.05.2009
+
+   * @action(NE): prepare 300000 sentence corpus from FAZ
+      * Crawl the data from the archive files.
+      * CD-Search interface enables an option "Export mit Umbruch"
+      * Search options:
+         * Ressort: Bildung, Hochschule, Wissensschaft, Meinung
+         * Art: Kommentar, TAZ-Bericht, Dokumentation
+         * Länge: nur mittlere
+         * Make a corpus of 300000 (half from Kommentar, half from Bericht)
+   * @action(CT): Nico's TK account dringend
+   * @action(CT): look for suitable German Parsers, send Nico the <span style="color: blue; text-decoration: underline">BitPar</span> Parser
+      * Students repository, core project has all the components except Parser
+   * @action(NE): harvest the forum data.
+      * Course name: Basics September 2006, 2007
+   * @discuss(): Manual annotation.
+      * Read the <span style="color: blue; text-decoration: underline"><span style="color: blue; text-decoration: underline">[[http://www.cs.pitt.edu/~wiebe/pubs/papers/lre05.pdf][manual]]</span></span>
+      * <span style="color: blue; text-decoration: underline"><span style="color: blue; text-decoration: underline">[[http://www.cs.pitt.edu/~wiebe/pubs/pub1.html][Wiebe's page for more info. on sentiment and subjectivity analysis]]</span></span>
+      * <span style="color: blue; text-decoration: underline"><span style="color: blue; text-decoration: underline">[[http://mmax2.sourceforge.net/][Annotation Tool]]</span></span>
+   * @action(CT): create the annotation project after receiving the evaluation data set from Nico
+   * two ways to retrieve data:
+      * Get one file for each article directly from huge data file with lots of brackets.
+      * Use Interface from CD
+   * @action(NE): add UIMA nature to existing project and apply Coding Rules and best Practices
+   * @action(NE): create and synchronize with repository on share
+   * @action(NE): prepare 2000 sentences from corpus and send to Cigdem
+   * @action(NE): manually annotate 2000 sentences and send Cigdem
+   * @action(NE): send 100 annotated sentences to Cigdem to check if annotated in a proper way
+   * @action(NE): install and use MMAX
+   * @action(NE): run UIMA Sentence Splitter and Tokenizer in data
+
+<strong style="font-weight: bold">DONE</strong>
+   * @action(CT): mail German opinion lexicon for high-precision subj. classifiers.
+
+---+++ 18.05.2009
+
+Presentation of preliminary version of Status Meeting Presentation.
+
+Discussion of approach to determine polarity of forum entries.
+
+   * @action(NE): improve presention for next day
+   * @action(CT): upload German opinion lexicon to TWiki
+
+---+++ 11.05.2009
+   * @action(CT): prepare 300000 sentence corpus from FAZ
+   * @action(CT): prepare preprocessing components (sentece splitter, tokenizer, POS tagger, parser (German Parser))
+   * @action(NE): harvest the forum data. (CT will give the name of the course.)
+   * @action(CT): mail German opinion lexicon for high-precision subj. classifiers.
+
+-- Main.CigdemToprak - 11 May 2009

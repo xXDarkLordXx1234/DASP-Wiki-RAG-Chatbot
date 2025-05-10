@@ -1,0 +1,35 @@
+%META:TOPICINFO{author="ShuoYang" date="1336943818" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ShuoYangKeyphrases"}%
+---++ Tfidf
+---+++ Versuch2
+
+<div id="_mcePaste">Dokument *1020*:</div> <div id="_mcePaste">
+   * *Gold*: Deutschland, Erziehungswissenschaft, Identität, Jugend, Jugendlicher, Migration
+   * *Extracted*: Alexandra, Selbstverortungen, TransmigrantInnen, Transmigrantinnen, Claudia, Portugiesin, Ghana, Fürstenau, Selbstverortung, Hybride, hybrid
+</div> <div id="_mcePaste">Warum Gold nicht extrahiert?</div> <div id="_mcePaste">
+   * Deutschland -&gt; häufig in alle Dokumente, groß Df
+   * Erziehungswissenschaft -&gt; kommt 3 mal vor, nicht häufig
+   * Identität -&gt; große Tf, große Df (55,4%, 1724/3111)
+   * Jugend -&gt; große Tf, große Df (71,7%)
+   * ? Jugendlicher -&gt; normal Tf, normal Df (17,6%)
+   * ? Migration -&gt; große Tf, normal Df (18,1%)
+</div> <div id="_mcePaste">Warum Wörter doch extrahiert?</div> <div id="_mcePaste">
+   * Alexandra -&gt; Personname, große Tf, kleine Df (2,6%)
+   * Selbstverortungen -&gt; winzige Df (0,13%)
+   * TransmigrantInnen -&gt; winzige Df (0,13%)
+   * TransmigrantInnen -&gt; Fehler, muss ignore case mergen, nicht lemmatized?
+   * Claudia -&gt; Personname, große Tf, normale Df (14,4%)
+   * Portugiesin -&gt; winzige Df (nur dieses Dokument), nicht lemmatized
+   * Ghana -&gt; kleine Df (1,1%)
+   * Fürstenau -&gt; Personname (1,4%)
+   * Selbstverortung -&gt; nicht lemmatized!
+   * Hybride -&gt; große Tf, kleine Df (1,86%)
+   * hybrid -&gt; nicht lemmatized
+</div> <div id="_mcePaste">Einblick:</div> <div id="_mcePaste">
+   * Personname ignoieren
+   * Df?
+   * Lemmatize!
+   * Ignore case
+</div>
+
+-- Main.ShuoYang - 2012-05-13

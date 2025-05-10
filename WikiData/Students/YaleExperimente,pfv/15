@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1180722704" format="1.1" reprev="15" version="15"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Hier eine Übersicht über die bisher durchgeführten Experimente und die Ergebnisse der Grid Search und der Evaluation.
+
+Die Experimente wurden wie folgt durchgeführt: Aus der Datenbank wurden alle Rezensionen ausgelesen, die der folgenden Bedingung genügen: _SELECT * FROM REVIEW WHERE TotalVotes>=5 AND DATE<='2006-03-18'_ . Von dem resultierenden Datensatz wurden 10% der Daten als Development Corpora zur Durchführung der Grid Search zurückgehalten. Die Grid Search wurde wie bei Hsu et al. 2003 beschrieben durchgeführt, jeweils für das Performanzmaß "Pearson'scher Korrelationskoeffizient" sowie "Spearman'scher Rangkorrelationskoeffizient". Die anderen 90% dienten als Test-Datensatz. Die Tests wurden per 10-fold Cross Validation mit den optimalen Parametern aus der Grid Search für einen RBF-Kernel durchgeführt: Vor den Tests wurden die Daten auf den Bereich [0,1] normalisiert.
+
+---++Digitalkameras
+
+Insgesamt 14460 Rezensionen (Kim et al.: 14467)
+
+| *Features* | *Opt. Parameter Pearson* | *Performanz Pearson* | *Opt. Parameter Spearman* | *Performanz Spearman* |
+| LEN | C=32, Gamma=8 | 0.463 +/- 0.056 | C=0.0, Gamma=0.001953125 | 0.411 +/- 0.028 |
+| UGR | C=0.0, Gamma=0.03125 | 0.557 +/- 0.020 | C=0.03125, Gamma=1.220703125E-4 | 0.447 +/- 0.036 |
+| Stars | C=8.0. Gamma=8.0 | 0.424 +/- 0.025 | C=32, Gamma=1.220703125E-4 | 0.353 +/- 0.026 |
+| Stars+Len+UGR | C=8.0, Gamma=0.03125 | 0.598 +/- 0.025 | C=128.0. Gamma=0.0001220703125 | 0.545 +/- 0.019 |
+| Technical Terms (TT)* | C=8.0, Gamma=8.0 | 0.494 +/- 0.053 | C=512.0, Gamma=0.03125 | 0.447 +/- 0.019 |
+| UGR+TT | C=, Gamma= | | C=, Gamma= |  |
+
+
+* Zur Erstellung der TechnicalTerms wurde für jede Wortform ihre Häufigkeitsklasse (HKL) berechnet. Als Technical Terms wurden alle Wortformen mit HKL kleiner gleich 7 verwendet.
+
+---++ !MP3Player
+
+Insgesamt 11372 Rezensionen (Kim et al.: 11374)
+| *Features* | *Opt. Parameter Pearson* | *Performanz Pearson* | *Opt. Parameter Spearman* | *Performanz Spearman* |
+| Stars+Len+UGR | C=32.0, Gamma=0.03125 | 0.602 +/- 0.019 | C=8192.0, Gamma=3.051758125E-5 | 0.532 +/- 0.024 |
+| Stars | C=2048.0, Gamma=8.0 | 0.386 +/- 0.026 | C=512.0, Gamma=2.0 | 0.393 +/- 0.027 |
+| LEN | C=32768.0, Gamma=8.0 | 0.493 +/- 0.020 | C=2.0, Gamma=0.0078125  | 0.443 +/- 0.018 |
+| UGR | C=8192.0, Gamma=0.0 | 0.502 +/- 0.019 | C=0.0, Gamma=4.8828125E-4  | 0.539 +/- 0.013 |
+| 4. Wurzel | C=8.0, Gamma=0.125 | 0.490 +/- 0.020 | C=32768.0, Gamma=2.0  | 0.438 +/- 0.014 |
+
+
+-----------------------------------------------------
+
+*Alte Ergebnisse Digitalkameras*:
+
+Stehen noch drin, werden vielleicht noch gebraucht.
+
+Hier wird eine Übersicht über durchgeführte Experimente geboten. Dies beinhaltet Testaufbau und Testergebnisse
+
+| *Datenbank* | *SQL-Query* | *LEN* | *UGR* | *Stars* | *Stoppwörter entfernt* | *Competitor* | *Correlation* | *Spearman* | *Kendall* |
+| Digitalkameras | A | X | X | X | | | 0.454 +/- 0.020 | 0.452 +/- 0.019 | 0.319 +/- 0.013 |
+| Digitalkameras | A | X | X | X | X | | 0.441 +/- 0.022 | 0.455 +/- 0.013 | 0.321 +/- 0.009 |
+| Digitalkameras | A | X |  |  | | | 0.316 +/- 0.024 | 0.412 +/- 0.024 | 0.292 +/- 0.017 |
+| Digitalkameras | A |  | X |  |  |  | 0.497 +/- 0.017 | 0.448 +/- 0.019 | 0.318 +/- 0.015 |
+| Digitalkameras | A |  | X |  | X | | 0.478 +/- 0.016 | 0.448 +/- 0.016 | 0.317 +/- 0.013 |
+| Digitalkameras | A |  |  | X | | | 0.414 +/- 0.025 | 0.357 +/- 0.018 | 0.286 +/- 0.014 |
+| Digitalkameras | A |  |  |  | | X | 0.119 +/- 0.016 | 0.134 +/- 0.025 | 0.107 +/- 0.020 |
+| Digitalkameras | A | X |  |  | | X | 0.306 +/- 0.020 | 0.398 +/- 0.020 | 0.282 +/- 0.014 |
+| Digitalkameras | A |  | X |  | | X | 0.498 +/- 0.023 | 0.449 +/- 0.027 | 0.319 +/- 0.019 |
+
+
+A = SELECT * FROM REVIEW WHERE !TotalVotes>=5 AND DATE<='2006-06-01'
+
+Parameter C und Gamma noch nicht getunt (C=Gamma=0).
+
+
+-- Main.KaiMichaelHoever - 08 May 2007

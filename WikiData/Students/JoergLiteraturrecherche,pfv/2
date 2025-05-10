@@ -1,0 +1,159 @@
+%META:TOPICINFO{author="JoergHellms" date="1217586715" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="JoergMaterial"}%
+---+ Literaturrecherche
+
+| *Titel* | *Autor(en)* | *Topic* | *Relevanz* | *Link* | 
+| [[#SchemaMatching][Schema Matching]] | Andreas Rumpf | Methoden zum Vergleich von Schemata | <span class="red">hoch </span>| [[%ATTACHURL%/Folien05_Rumpf.ppt][Folien05_Rumpf.ppt]] |
+| Automatic Analysis of Lexical Cohesion | Florian Schwager | Repräsentation des lexikalischen Zusammenhangs mittels Graphen und Vergleich mit lexikalischen Ketten | <span class="red">hoch </span>| [[%ATTACHURL%/Diplomarbeit_Schwager.pdf][Diplomarbeit_Schwager.pdf]] |
+| What to be? - Electronic Career Guidance Based on Semantic Relatedness | Iryna Gurevych, Christof Müller and Torsten Zesch | Semantisches Information Retrieval bei der elektronischen Berufsberatung | <span class="red">hoch </span>| [[%ATTACHURL%/p446_Gurevychetal_what_to_be.pdf][p446_Gurevychetal_what_to_be.pdf]] |
+| Extracting Lexical Semantic Knowledge from Wikipedia and Wiktionary | Torsten Zesch and Christof Müller and Iryna Gurevych | Einführung zweier APIs für den Zugriff auf semantische Informationen aus Wikipedia and Wiktionary | <span class="red">hoch </span>| [[%ATTACHURL%/wikipedia_wiktionary_api.pdf][wikipedia_wiktionary_api.pdf]] |
+| Flexible UIMA Components for Information Retrieval Research | Christof Müller, Torsten Zesch, Mark-Christoph Müller, Delphine Bernhard, Kateryna Ignatova, Iryna Gurevych und Max Mühlhäuser | Entwickelte UIMA-Komponenten fürs Information Retrieval | <span class="red">hoch </span>| [[%ATTACHURL%/uima_ir.pdf][uima_ir.pdf]] |
+| Integrating Semantic Knowledge into Text Similarity and Information Retrieval | Christof Müller, Iryna Gurevych Max Mühlhäuser | Untersuchung des Einflusses von semantischem Wissen bei ad-hoc IR und Test auf Textgleichheit. Testcollections: GIRT und eCarrer | <span class="red">hoch </span>| [[%ATTACHURL%/ICSC2007_Mueller_et_al.pdf][ICSC2007_Mueller_et_al.pdf]] |
+| A framework for adaptive Information Retrieval | Axel-Cyrille Ngonga Ngomo, Hans Friedrich Witschel | MLAGs (Multi-level association graphs) als Framework für ein adaptives IR | ? | [[%ATTACHURL%/emlags.pdf][emlags.pdf]] |
+| Graph Matching: Fast Candidate Elimination using machine learning techniques | M.Lazarescu, H.Bunke, S.Vankatesh | Vorauswahl von Graphen aus der Vergleichsdatenbank mittels C4.5 Algorithmus (arbeitet mit Entscheidungsbäumen) mit dem Ziel die Suche zu beschleunigen. | mittel | [[%ATTACHURL%/graphmatchLazarescu.pdf][graphmatchLazarescu.pdf]] |
+| Recent Developments in Graph Matching | Horst Bunke | Allgemeiner Überblick über Theorien und Methoden zur Bestimmung von Ähnlichkeitsmaßen von Graphen und deren Beziehung untereinander. Mit umfassendem Quellenverzeichnis! | <span class="red">hoch </span>| [[%ATTACHURL%/graphmatchrecdev.pdf][graphmatchrecdev.pdf]] |
+| Applications of Graph Probing to Web Ducoment Analysis | Daniel Lopresti and Gordon Wilfong | Erste Schritte zum Graph-Testing | mittel | [[%ATTACHURL%/wda2001.pdf][wda2001.pdf]] |
+| Evaluating Document Analysis Results via Graph Probing | Daniel Lopresti and Gordon Wilfong | Vergleich von Dokumenten mittels "Testen" der gerichteten, azyklischen Graphen. Beim Testen werden mehr oder weniger einfache Eigenschaften abgeprüft und deren Übereinstimmung verglichen. | mittel | [[%ATTACHURL%/icdar01a.pdf][icdar01a.pdf]] <br />[[%ATTACHURL%/sdiut01.pdf][sdiut01.pdf (mit Kapitel über Graphenmodelle)]] |
+| Comparing Semi-Structured Documents via Graph Probing | Daniel Lopresti and Gordon Wilfong | Vergleich von Graphen mittels Testen auf bestimmte Eigenschaften. Vorberechnungen dazu sind möglich. Paper beschreibt Stand der laufenden Entwicklung. | <span class="red">hoch </span>| [[%ATTACHURL%/mis01.pdf][mis01.pdf]] |
+| Präsentation der bisherigen Arbeit (Mai 2008) | Urs Glaubitt | Berufsbeschreibungen aus Wikipedia extrahieren und Vergleich von semantischen Graphen (Conceptual Similarity von SimPack und Similarity Flooding) | <span class="red">hoch </span> | [[%ATTACHURL%/presentation_urs_glaubitt.pdf][presentation_urs_glaubitt.pdf]] |
+| SimRank: A Measure of Structural-Context Similarity | Glen Leh, Jennifer Widom | Messen von Kontext-Ähnlichkeit von Objekten. Dabei wird die Graphstruktur untersucht. Ähnlichkeit von Objekten basiert auf Ähnlichkeit deren Beziehungen zu anderen Objekten. Angewendete Methode ist sehr praktikabel und effektiv. | <span class="red">hoch </span> | _keine Datei vorhanden_ |
+| Vertex similarity in networks | E.A. Leicht, Petter Holme, M.E.J. Newman | Ähnlichkeitsbestimmung von Netzwerkknoten mittels Vergleich der Ähnlichkeit der Nachbarknoten. Die vorgestellte Methode benutzt nur die Adjazenz-Matrix des Graphen. | <span class="red">hoch </span> | _keine Datei vorhanden_ |
+| DEX: High-Performance Exploration on Large Graphs for Information Retrieval | Norbert Martínez-Bazan, Victor Muntés-Mulero, Sergio Gómez-Villamor, Jordi Nin, Mario-A. Sánchez-Martínez, Josep-L. Larriba-Pey | Vorstellung von DEX, einem "high performance graph database querying system". Es werden die Rahmenbedingungen erklärt und die Performanz anhand einzelner Abfragen demonstriert. | <span class="gray">niedrig</span> | [[%ATTACHURL%/p573-martinez.pdf][p573-martinez.pdf]] |
+| SHINE: Search Heterogeneous Interrelated Entities | Xuanhui Wang, Jian-Tao Sun, Zheng Chen | Suche mittels "bag-of-objects". Collaborate filtering mit Pearson Korrelation (Kosinus-Wert). | <span class="gray">niedrig</span> | [[%ATTACHURL%/p583-wang.pdf][p583-wang.pdf]] |
+| A Novel Algorithm for Matching Conceptual and Related Graphs | Jonathan Poole, J.A. Campell | Vergleich von Knoten mittels deren geteilter Informationen (interest). Untersuchung der Anwendbarkeit der Methode auf surface, structural und thematic similarity. Sehr allgemein gehalten. | mittel - <span class="red">hoch</span> | [[%ATTACHURL%/poole95novel.pdf][poole95novel.pdf]] |
+| Graph-based Algorithms for Information Retrieval and Natural Language Processing | Rada Milhalcea, Dragomir Radev | Einführung in Graphen und spezielle Graphenalgorithmen für NLP | <span class="blue">sehr hoch</span> | [[%ATTACHURL%/tut.pdf][tut.pdf]] |
+| Graph-Based Text Representation for Novelty Detection | Michael Gamon | Aufspüren von Veränderungen in Dokumenten mittels Untersuchung des Graphen (KL-Divergenz, Attributen) | mittel | [[%ATTACHURL%/W06-3803.pdf][W06-3803.pdf]] |
+| Comparison of Conceptual Graphs | Manuel Montes-y-Gómez, Alexander Gelbukh, Aurelio López-López | In der Einführung werden Methoden zum Graph-Matching erwähnt: Huibers et. al. 1996 (Subgraph finden im Dokumentengraph), Ellis and Lehmann 1994 (Vergleich nur mittels Graphenstruktur), Myaeng and López-López 1992 (Größter gemeinsamer Subgraph).<br />Vergleich mittels Suche nach größter Überschneidung zweier Graphen und bewerten der Ähnlichkeit der Graphen aufgrund der relativen Größe der Überschneidung. Berechnung basiert auf dem Dice Koeffizienten. Beim Ähnlichkeitsmaß wird neben der konzeptionellen Ähnlichkeit auch die relationale Ähnlichkeit einbezogen. | <span class="red">hoch </span> | [[%ATTACHURL%/ComparisonCGs-micai00.pdf][ComparisonCGs-micai00.pdf]] <br />[[%ATTACHURL%/IRwithCG_New-dexa00.pdf][IRwithCG_New-dexa00.pdf (ähnliches Paper)]] |
+| Semantic Search of Unstructured Data using Contextual Network Graphs | Maciej Ceglowski, Aaron Coburn, and John Cuadrado | Erklärung von LSI <br />Contextual network graph: Gewichteter, bipartiter Graph der Zusammenhang von Termen zu Dokumenten darstellt (Ersetzt TD-Matrix) <br />Vergleich von Query zu Dokument mittels Algorithmus, der dem Dokumenten-Graph "Energie" zuführt und den Teilgraph untersucht, der durch den Energieabfluss über die Kanten und Knoten entstanden ist. <br />Vorteil gegenüber LSI ist das leichtere Hinzufügen von Dokumenten. | <span class="red">hoch </span> | [[%ATTACHURL%/Contextual_Network_Graphs.pdf][Contextual_Network_Graphs.pdf]] |
+| Flexible Comparison of Conceptual Graphs | M. Montes-y-Gómez, A. Gelbukh, A. López-López, R. Baeza-Yates | Comparison of conceptual graphs with taking into account synonymy and subtype/supertype realtionships. The method allows to measure the similarity and gives also a description of the similarity. The overall similarity is a combination of relational and conceptual similarity. (Because of its simplicity and normalization properties, they take the Dice coefficient as the basis for the similarity measure they proposed.) Interests of the user (more structural, or more conceptual) are considered during the computation of the similarity. | <span class="red">hoch </span> | [[%ATTACHURL%/DEXA-2001-Flexible.pdf][DEXA-2001-Flexible.pdf]] <br />[[%ATTACHURL%/FlexibleComparisonCG-dexa01.pdf][FlexibleComparisonCG-dexa01.pdf]] |
+| Random-Walk TermWeighting for Improved Text Classification | Samer Hassan, Rada Mihalcea, Carmen Banea | Verweis auf TextRank von Mihalcea und Tarau. Term weighting based in a random-walk-approach in a graph, representing the text. | mittel - <span class="red">hoch</span> | [[%ATTACHURL%/hassan.ieee07.pdf][hassan.ieee07.pdf]] |
+| Learning to Transform Linguistic Graphs | Valentin Jijkoun, Maarten de Rijke | Consider NLP tasks as transformations of a graph. They introduce a general method for learning graph transforamtions. | mittel | [[%ATTACHURL%/hlt-naacl-2007-textgraphs.pdf][hlt-naacl-2007-textgraphs.pdf]] |
+| A Graph-based Recommender System for Digital Library | Zan Huang, Wingyan Chung, Thian-Huat Ong, Hsinchun Chen | Parameter erleichtern die Flexibilität eines Modells. Graphen haben in diesem Modell zwei Schichten. They used the Hopfield Net Algorithm for detecting associations | mittel - <span class="red">hoch</span> | [[%ATTACHURL%/72984955.pdf][72984955.pdf]] |
+| Random Walk Term Weighting for Information Retrieval | Roi Blanco, Christina Lioma | Kurze Abhandlung über RandomWalk Algorithmen im IR im Vergleich zu TF-Methoden. | mittel | [[%ATTACHURL%/56081018.pdf][56081018.pdf]] |
+| Multi-level Association Graphs - A New Graph-Based Model for Information Retrieval | Hans Friedrich Witschel | Multi-level association graphs (MLAGs): First to be a meta-model, second to model different forms of searching (associative retrieval, feedback, browsing). | mittel | [[%ATTACHURL%/W07-0202.pdf][W07-0202.pdf]] |
+| Phrase-based Document Similarity Based on an Index Graph Model | Khaled M. Hammouda, Mohamed S. Kamel | Neues Datenmodell: Document Index Graph, indiziert ein Web Dokument phrasen-basiert zwecks Clustering. <br />Die phrase-based similarity measure basiert auf Anzahl der übereinstimmenden Phrasen, deren Länge, die Häufigkeit von übereinstimmenden Phrasen in beiden Dokumenten und dem Gewicht der übereinstimmenden Phrasen in den Dokumenten. <br />Das endgültige Ähnlichkeitsmaß wird aus phrase-based und single-term Ähnlichkeit berechnet. | mittel - <span class="red">hoch</span> | [[%ATTACHURL%/hammouda_icdm02.pdf][hammouda_icdm02.pdf]] |
+| Document Similarity Using a Phrase Indexing Graph Model | Khaled M. Hammouda and Mohamed S. Kamel | Inhalt wie [%ATTACHURL%/hammouda_icdm02.pdf][hammouda_icdm02.pdf]], aber ausführlicher (Aufbau des DIG, Matching im DIG) | mittel - <span class="red">hoch</span> | [[%ATTACHURL%/hammouda_kais.pdf][hammouda_kais.pdf]] |
+| Subgraph Isomorphism in Polynomial Time | B.T. Messmer, H. Bunke | Subgraph isomorphism detection by using decision trees. A input graph (a priori not known) is compared with model graphs (already known and classified) by using decision trees. The decision trees are optimized und pruned. <br />Ullman's Algorithm for graph and subgraph isomorhism detection is mentioned for comparison reasons. <br />Alles sehr mathematisch. | mittel - <span class="red">hoch</span> | [[%ATTACHURL%/iam-95-003.pdf][iam-95-003.pdf]] |
+| | | | | [[%ATTACHURL%/xx][xx]] |
+
+#SchemaMatching
+---++ Schema Matching. <br />Seminar Informationsintegration und -qualität. <br />Andreas Rumpf - 07.07.2006
+Methoden zum Schemavergleich:
+   * Cupid (2001, Rahm, Bernstein, Madhavan)
+      * Besteht aus linguistischem und strukturellem Matcher
+      * + generisch
+      * - für große Schemata ungeeignet
+   * Similarity Flooding (2001, Melnik, Garcia-Molina, Rahm)
+      * + allgemeiner Graphenalgorithmus
+      * + einfach zu implementieren
+      *  - stark abhängig von der Struktur
+   * S-Match (2005, Giunchiglia, Shvaiko, Yatskevich)
+      * + Relationen statt nur Ähnlichkeiten
+      * + schnell
+      * - Überlappungen werden nicht gefunden
+      * - arbeitet ausschließlich auf XML-Schemata
+   * LSD (2001, Doan, Domingos, Halevy)
+      * + lernt dazu
+      * + kann z.T. mit unstrukturiertem Text umgehen
+      * - Mappings und Constraints müssen manuell eingegeben werden
+      * - arbeitet nur auf XML und DTD
+   * SEMINT (2000, Li, Clifton)
+      * benutzt neuronale Netze
+      * + vollautomatisch
+      * + skaliert gut
+      * - Mehraufwand durch Clusterbildung
+      * - String Daten machen Probleme
+
+---++ F. Schwager: Automatic analysis of lexical cohesion. <br />Diploma Thesis. <br />Computer Science Department. Technische Universität Darmstadt. 2008.
+Darstellung des lexikalischen Zusammenhangs mittels Graphen statt wie bisher mit Ketten.<br />Es wird erklärt was ein lexikalischer Zusammenhang ist und welche Arten es gibt.
+
+---++++ Lexikalische Ketten
+   * Zusammenhängende Wörter verketten
+   * Wort gehört nur zu einer Kette
+
+---++++ Erzeugen von Ketten mittels Graphen
+Galley and McKeown (Galley, et al., 2003)
+
+---++++ *Lexikalische Graphen*
+Größerer Aufwand (Zeit und Speicherplatz) beim Erzeugen von Graphen als von Ketten.
+Aufgrund der im Graph enthaltenen Informationen aber besser bei Anwendungen, bei denen der lexikalischen Zusammenhang hilfreich ist.
+Bildung von Clustern zur Bestimmung von Wortbedeutungen.
+
+*Erzeugen von lexikalischen Graphen:*
+   * Identifizieren aller Wörter, die in den Graph aufgenommen werden sollen
+   * Verbinden der Wörter, aufgrund ihrer Beziehungen untereinander mit Gewichtung der Kanten z.B. mit Explicit Semantic Analysis (ESA) (Gabrilovich, et al., 2007).
+
+Zur Optimierung kann am erstellten Baum die Gewichtung der Kanten nochmals angepasst werden und es können auch Kanten ganz entfernt werden.
+
+---++++ UIMA
+   1 Preprocessing
+      2 Paragraph splitter
+      2 Sentence splitter
+      2 Tokenizer
+      2 TreeTagger
+      
+   1 *Lexical graph computation*
+      2 Part-of-speech Filter (Nicht alle POS werden benötigt, z.B. nur Nomen, etc.)
+      2 Word Pair Annotator (Erstellen aller möglichen Wortpaare mit speziellen Attributen)
+      2 Semantic relatedness analysis
+         * Simple string matching (Gleiches Wort -> 1, sonst 0)
+         * Path length (Länge des Pfades zwischen den Wörtern in einem semantischen Hilfsgraph)
+         * *ESA* Beziehung (mehrdimensionaler Vektor für jedes Wort basierend auf tf-idf) Formel auf Seite 22
+   1 *Graph Augmentation* (Optimierung der Performanz und Präzision)
+      2 Link Weight Adjustment
+         3 Berechnen der minDistance und maxDistance
+         3 maxDistance = maxDistance +1
+         3 Neue Kantengewichtung wird berechnet, Formel Seite 23
+      2 Link Prunning
+
+---++++ Darstellung von lexikalischen Graphen
+   * Prefuse (http://prefuse.org)
+   * MMAX 2 
+
+---++++ Text segmentation
+Markov clustering algorithm of van Dongen (van Dongen, 2000) which is based on stochastic flow simulation.
+
+---++++ Keyword extraction
+   1 KEA key-phrase extraction algorithm (Witten, et al., 1999) - als Baseline System
+      * tf-idf
+      * first occurrence in the text
+   1 Keyword extraction based on lexical chains
+      2 Starke lexikalische Ketten identifizieren
+      2 Diese Ketten sortieren
+      2 Die ersten n Wörter sind die gesuchten Schlüsselwörter
+   1 Keyword extraction based on lexical graphs
+      2 Dominante Knoten identifizieren (PageRank)
+
+-- Main.JoergHellms - 29 Jul 2008
+
+%META:FILEATTACHMENT{name="56081018.pdf" attachment="56081018.pdf" attr="" comment="" date="1217259264" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.56081018.pdf" movedwhen="1217328510" movefrom="Teaching.JoergMaterial.56081018.pdf" path="56081018.pdf" size="226322" stream="56081018.pdf" tmpFilename="/var/tmp/CGItemp33107" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="72984955.pdf" attachment="72984955.pdf" attr="" comment="" date="1217259275" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.72984955.pdf" movedwhen="1217328544" movefrom="Teaching.JoergMaterial.72984955.pdf" path="72984955.pdf" size="435121" stream="72984955.pdf" tmpFilename="/var/tmp/CGItemp33104" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="ComparisonCGs-micai00.pdf" attachment="ComparisonCGs-micai00.pdf" attr="" comment="" date="1216909753" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.ComparisonCGs-micai00.pdf" movedwhen="1217328564" movefrom="Teaching.JoergMaterial.ComparisonCGs-micai00.pdf" path="ComparisonCGs-micai00.pdf" size="55139" stream="ComparisonCGs-micai00.pdf" tmpFilename="/var/tmp/CGItemp28631" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="Contextual_Network_Graphs.pdf" attachment="Contextual_Network_Graphs.pdf" attr="" comment="" date="1217251755" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.Contextual_Network_Graphs.pdf" movedwhen="1217328593" movefrom="Teaching.JoergMaterial.Contextual_Network_Graphs.pdf" path="Contextual_Network_Graphs.pdf" size="239897" stream="Contextual_Network_Graphs.pdf" tmpFilename="/var/tmp/CGItemp28576" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="DEXA-2001-Flexible.pdf" attachment="DEXA-2001-Flexible.pdf" attr="" comment="" date="1217251768" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.DEXA-2001-Flexible.pdf" movedwhen="1217328610" movefrom="Teaching.JoergMaterial.DEXA-2001-Flexible.pdf" path="DEXA-2001-Flexible.pdf" size="143254" stream="DEXA-2001-Flexible.pdf" tmpFilename="/var/tmp/CGItemp28487" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="Diplomarbeit_Schwager.pdf" attachment="Diplomarbeit_Schwager.pdf" attr="" comment="" date="1216212245" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.Diplomarbeit_Schwager.pdf" movedwhen="1217328628" movefrom="Teaching.JoergMaterial.Diplomarbeit_Schwager.pdf" path="Diplomarbeit_Schwager.pdf" size="2234954" stream="Diplomarbeit_Schwager.pdf" tmpFilename="/var/tmp/CGItemp28541" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="FlexibleComparisonCG-dexa01.pdf" attachment="FlexibleComparisonCG-dexa01.pdf" attr="" comment="" date="1217251787" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.FlexibleComparisonCG-dexa01.pdf" movedwhen="1217328642" movefrom="Teaching.JoergMaterial.FlexibleComparisonCG-dexa01.pdf" path="FlexibleComparisonCG-dexa01.pdf" size="65319" stream="FlexibleComparisonCG-dexa01.pdf" tmpFilename="/var/tmp/CGItemp28536" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="Folien05_Rumpf.ppt" attachment="Folien05_Rumpf.ppt" attr="" comment="" date="1216208385" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.Folien05_Rumpf.ppt" movedwhen="1217328659" movefrom="Teaching.JoergMaterial.Folien05_Rumpf.ppt" path="Folien05_Rumpf.ppt" size="266752" stream="Folien05_Rumpf.ppt" tmpFilename="/var/tmp/CGItemp28543" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="IRwithCG_New-dexa00.pdf" attachment="IRwithCG_New-dexa00.pdf" attr="" comment="" date="1217251798" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.IRwithCG_New-dexa00.pdf" movedwhen="1217328678" movefrom="Teaching.JoergMaterial.IRwithCG_New-dexa00.pdf" path="IRwithCG_New-dexa00.pdf" size="61744" stream="IRwithCG_New-dexa00.pdf" tmpFilename="/var/tmp/CGItemp28531" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="W06-3803.pdf" attachment="W06-3803.pdf" attr="" comment="" date="1216644965" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.W06-3803.pdf" movedwhen="1217328695" movefrom="Teaching.JoergMaterial.W06-3803.pdf" path="W06-3803.pdf" size="154412" stream="W06-3803.pdf" tmpFilename="/var/tmp/CGItemp28511" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="W07-0202.pdf" attachment="W07-0202.pdf" attr="" comment="" date="1217258894" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.W07-0202.pdf" movedwhen="1217328714" movefrom="Teaching.JoergMaterial.W07-0202.pdf" path="W07-0202.pdf" size="181690" stream="W07-0202.pdf" tmpFilename="/var/tmp/CGItemp28602" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="emlags.pdf" attachment="emlags.pdf" attr="" comment="" date="1216221143" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.emlags.pdf" movedwhen="1217328731" movefrom="Teaching.JoergMaterial.emlags.pdf" path="emlags.pdf" size="93117" stream="emlags.pdf" tmpFilename="/var/tmp/CGItemp28400" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="graphmatchLazarescu.pdf" attachment="graphmatchLazarescu.pdf" attr="" comment="" date="1216221155" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.graphmatchLazarescu.pdf" movedwhen="1217328746" movefrom="Teaching.JoergMaterial.graphmatchLazarescu.pdf" path="graphmatchLazarescu.pdf" size="330597" stream="graphmatchLazarescu.pdf" tmpFilename="/var/tmp/CGItemp28493" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="graphmatchrecdev.pdf" attachment="graphmatchrecdev.pdf" attr="" comment="" date="1216221170" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.graphmatchrecdev.pdf" movedwhen="1217328764" movefrom="Teaching.JoergMaterial.graphmatchrecdev.pdf" path="graphmatchrecdev.pdf" size="200597" stream="graphmatchrecdev.pdf" tmpFilename="/var/tmp/CGItemp28432" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="hammouda_icdm02.pdf" attachment="hammouda_icdm02.pdf" attr="" comment="" date="1217258911" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.hammouda_icdm02.pdf" movedwhen="1217328785" movefrom="Teaching.JoergMaterial.hammouda_icdm02.pdf" path="hammouda_icdm02.pdf" size="152816" stream="hammouda_icdm02.pdf" tmpFilename="/var/tmp/CGItemp28520" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="hammouda_kais.pdf" attachment="hammouda_kais.pdf" attr="" comment="" date="1217258922" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.hammouda_kais.pdf" movedwhen="1217328800" movefrom="Teaching.JoergMaterial.hammouda_kais.pdf" path="hammouda_kais.pdf" size="400429" stream="hammouda_kais.pdf" tmpFilename="/var/tmp/CGItemp28414" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="hassan.ieee07.pdf" attachment="hassan.ieee07.pdf" attr="" comment="" date="1217258824" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.hassan.ieee07.pdf" movedwhen="1217328817" movefrom="Teaching.JoergMaterial.hassan.ieee07.pdf" path="hassan.ieee07.pdf" size="524039" stream="hassan.ieee07.pdf" tmpFilename="/var/tmp/CGItemp28479" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="hlt-naacl-2007-textgraphs.pdf" attachment="hlt-naacl-2007-textgraphs.pdf" attr="" comment="" date="1217258838" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.hlt-naacl-2007-textgraphs.pdf" movedwhen="1217328836" movefrom="Teaching.JoergMaterial.hlt-naacl-2007-textgraphs.pdf" path="hlt-naacl-2007-textgraphs.pdf" size="93788" stream="hlt-naacl-2007-textgraphs.pdf" tmpFilename="/var/tmp/CGItemp28485" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="iam-95-003.pdf" attachment="iam-95-003.pdf" attr="" comment="" date="1217258937" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.iam-95-003.pdf" movedwhen="1217328857" movefrom="Teaching.JoergMaterial.iam-95-003.pdf" path="iam-95-003.pdf" size="931138" stream="iam-95-003.pdf" tmpFilename="/var/tmp/CGItemp28584" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="icdar01a.pdf" attachment="icdar01a.pdf" attr="" comment="" date="1216221183" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.icdar01a.pdf" movedwhen="1217328873" movefrom="Teaching.JoergMaterial.icdar01a.pdf" path="icdar01a.pdf" size="473295" stream="icdar01a.pdf" tmpFilename="/var/tmp/CGItemp28404" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="mis01.pdf" attachment="mis01.pdf" attr="" comment="" date="1216221200" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.mis01.pdf" movedwhen="1217328888" movefrom="Teaching.JoergMaterial.mis01.pdf" path="mis01.pdf" size="299936" stream="mis01.pdf" tmpFilename="/var/tmp/CGItemp28532" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="p446_Gurevychetal_what_to_be.pdf" attachment="p446_Gurevychetal_what_to_be.pdf" attr="" comment="" date="1216212282" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.p446_Gurevychetal_what_to_be.pdf" movedwhen="1217328903" movefrom="Teaching.JoergMaterial.p446_Gurevychetal_what_to_be.pdf" path="p446_Gurevychetal_what_to_be.pdf" size="150737" stream="p446_Gurevychetal_what_to_be.pdf" tmpFilename="/var/tmp/CGItemp28540" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="p573-martinez.pdf" attachment="p573-martinez.pdf" attr="" comment="" date="1216645053" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.p573-martinez.pdf" movedwhen="1217328919" movefrom="Teaching.JoergMaterial.p573-martinez.pdf" path="p573-martinez.pdf" size="500021" stream="p573-martinez.pdf" tmpFilename="/var/tmp/CGItemp28350" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="p583-wang.pdf" attachment="p583-wang.pdf" attr="" comment="" date="1216645033" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.p583-wang.pdf" movedwhen="1217328933" movefrom="Teaching.JoergMaterial.p583-wang.pdf" path="p583-wang.pdf" size="341440" stream="p583-wang.pdf" tmpFilename="/var/tmp/CGItemp28510" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="poole95novel.pdf" attachment="poole95novel.pdf" attr="" comment="" date="1216645019" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.poole95novel.pdf" movedwhen="1217328950" movefrom="Teaching.JoergMaterial.poole95novel.pdf" path="poole95novel.pdf" size="199331" stream="poole95novel.pdf" tmpFilename="/var/tmp/CGItemp28601" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="presentation_urs_glaubitt.pdf" attachment="presentation_urs_glaubitt.pdf" attr="" comment="" date="1216645007" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.presentation_urs_glaubitt.pdf" movedwhen="1217328968" movefrom="Teaching.JoergMaterial.presentation_urs_glaubitt.pdf" path="presentation_urs_glaubitt.pdf" size="86140" stream="presentation_urs_glaubitt.pdf" tmpFilename="/var/tmp/CGItemp28469" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="sdiut01.pdf" attachment="sdiut01.pdf" attr="" comment="" date="1216644991" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.sdiut01.pdf" movedwhen="1217328984" movefrom="Teaching.JoergMaterial.sdiut01.pdf" path="sdiut01.pdf" size="240545" stream="sdiut01.pdf" tmpFilename="/var/tmp/CGItemp28576" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="tut.pdf" attachment="tut.pdf" attr="" comment="" date="1216644980" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.tut.pdf" movedwhen="1217329004" movefrom="Teaching.JoergMaterial.tut.pdf" path="tut.pdf" size="4663630" stream="tut.pdf" tmpFilename="/var/tmp/CGItemp28533" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="uima_ir.pdf" attachment="uima_ir.pdf" attr="" comment="" date="1216212294" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.uima_ir.pdf" movedwhen="1217329020" movefrom="Teaching.JoergMaterial.uima_ir.pdf" path="uima_ir.pdf" size="211638" stream="uima_ir.pdf" tmpFilename="/var/tmp/CGItemp28398" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="wda2001.pdf" attachment="wda2001.pdf" attr="" comment="" date="1216644951" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.wda2001.pdf" movedwhen="1217329039" movefrom="Teaching.JoergMaterial.wda2001.pdf" path="wda2001.pdf" size="265931" stream="wda2001.pdf" tmpFilename="/var/tmp/CGItemp28573" user="JoergHellms" version="1"}%
+%META:FILEATTACHMENT{name="wikipedia_wiktionary_api.pdf" attachment="wikipedia_wiktionary_api.pdf" attr="" comment="" date="1216212307" moveby="JoergHellms" movedto="Teaching.JoergLiteraturrecherche.wikipedia_wiktionary_api.pdf" movedwhen="1217329054" movefrom="Teaching.JoergMaterial.wikipedia_wiktionary_api.pdf" path="wikipedia_wiktionary_api.pdf" size="164143" stream="wikipedia_wiktionary_api.pdf" tmpFilename="/var/tmp/CGItemp28496" user="JoergHellms" version="1"}%

@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="JohannesHoffart" date="1244186653" format="1.1" version="3"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ Open Question
+
+Some questions about the entities to extract.
+
+   * Extract table-of-content for *single page*. <br /> Does single page mean: the single article we are viewing?
+      * Page and article are the same in this case. (JH)
+   * Extract links *from and to single pages*. <br /> Does from and to single pages mean: the article links in the current article and the articles, which have links to current article? (like caller & callee links)
+      * Exactly! (JH)
+   * Extract *tags* (if available). <br /> What kind of tags are they? Are they tags, which are already there in the article (e. g.: categories in wikipedia or wiktionary), or are they tags that we define by ourselves by extracting from the article?
+      * Not every wiki has tags, MediaWiki has categories (which are often used as tags though). TWiki has a plug-in to add tags to articles. So, tags means the tags that are already present (JH)
+
+
+-- Main.FabianTamin - 27 May 2009

@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="HristoLulev" date="1244125534" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="HristoLulev"}%
+After you have successfully installed Ubuntu you will need to set up a few further programs.
+   * the Jabber client Gajim, search for "gajim" in the Synaptic - Package Manager/Paketverwaltung, after installation completes you will be asked to enter your username and password, they are the same you exchange/ etc., select the "use existing account" and you should be done. The Jabber Server is: jabber.tk.informatik.tu-darmstadt.de
+   * install java, search for sun-java in the Synaptic - Package Manager/Paketverwaltung, select the newest JDK and install it
+   * Install Eclipse. UKP has its own 64 bits eclipse wich is on the server or on the exernal hard drive, which is mainly in E226. Copy the folder "eclipse-SDK-3.4.2-linux-gtk-x86_64_UKP" in your home and create ashortcut on the Panel(if you want)
+   * Install the [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/CreateVirtualMashine][virtual mashine]] and anythingelse you need after that
+
+
+
+-- Main.HristoLulev - 04 Jun 2009

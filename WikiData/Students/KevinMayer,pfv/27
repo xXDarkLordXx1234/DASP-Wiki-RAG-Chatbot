@@ -1,0 +1,218 @@
+%META:TOPICINFO{author="kmayer" comment="save topic" date="1516094083" format="1.1" reprev="25" version="27"}%
+%META:TOPICPARENT{name="StudentsList"}%
+[[Ergebnisse]]
+
+---++ 2018-01-16
+   * Status / Fortschritt
+      * Mentions in den Clustern werden sortiert
+      * Vergleich von eigenem Clustering mit CompClusterer und GreedyLocalOptimizer, s. [[Ergebnisse]]
+      * noch kein Laufzeitvergleich mit nlogn-Verfahren möglich
+
+
+---++ 2018-01-08
+   * Status / Fortschritt
+      * Separate Testumgebung für einfacheres Evaluieren/Vergleichen der verschiedenen Ansätze implementiert
+      * Clustering in Baseline + allen Ansätzen angepasst und Vergleiche erneut durchgeführt (s. [[Ergebnisse]])
+      * Fast Hamming Distance (Laufzeit nlog(n) statt n²) implementiert, bisher noch kein Vergleich mit Baseline möglich (Bugs)
+   * Nächste Schritte
+      * eigenes Clustering gegen grouping.clusterer.CompClusterer (similarities als predictions, threshold im Konstruktor)
+      * alternativ auch grouping.clusterer.GreedyLocalOptimizer (similarities als predictions, reductionOnly=false für stabiles Ergebnis, MAX_ITER niedrig für Laufzeit)
+      * sortieren der Mentions im Cluster für sinnvolles P/R/F1 
+      * nlogn Verfahren fertigstellen und auswerten
+      * Laufzeitvergleich
+
+---++ 2017-12-11
+   * Status / Fortschritt
+      * Vergleich zwischen baseline und alt. baseline mit korrekter cosine sim approx. wiederholt
+      * Fehler in LSH-Implementierung behoben und Evaluation für verschiedene d durchgeführt
+
+
+---++ 2017-12-04
+   * Status / Fortschritt
+      * Implementierung und Testen von Version B fortgesetzt
+      
+
+---++ 2017-11-23
+   * Status / Fortschritt
+      * LSH vA mit d=16 liefert vegleichbare Ergebnisse auf anderen Clustern
+      * LSH Version B implementiert (Approximation von cosine sim durch Hamming-Distanz zwischen Hashes)
+      * Vergleiche mit 2. Baseline (cosine sim) durchgeführt
+   *  besprochen / nächste Schritte
+      * 1) Möglichkeit, d für große Cluster zu bestimmen:
+         * kleine Menge von Paaren manuell labeln, beste d entsprechend wählen
+         * kleine Menge mit Baseline, damit d bestimmen
+      * 2/3) 
+         * nochmal testen: bei baseline vs. alt. baseline gleiches Clustering nutzen
+         * Fehler in Cosine Sim Approximation finden 
+      * Ergebnisse mit ins Wiki 
+      
+---++ 2017-11-13
+   * Status / Fortschritt
+      * LSH Version "A" implementiert (gleicher Hash -> gleicher Cluster)
+      * verschiedene Größen von d (Länge der Hashes) getestet und bezüglich folgender Metriken mit Baseline verglichen:
+         * #cluster
+         * avg cluster size
+         * ARI (Adjusted Rand Index)
+         * recall/precision/F1-score
+   *  besprochen / nächste Schritte
+      * weitere Tests mit A auf anderen Clusters -> was ist der beste Parameter?
+      * als zweite Baseline: Clustering basierend auf korrekter Cosine Similarity
+      * Ansatz B testen
+
+---++ 2017-11-06
+   * Status / Fortschritt
+      * Profiling ohne Cache/mit Feature-Berechnung wiederholt
+      * Paper zu Locality-Sensitive Hashing (LSH) gelesen
+      * Implementierung von LSH begonnen
+   *  besprochen / nächste Schritte
+      * Ansätze mit LSH
+      * zuerst probieren: gleicher Hash = gleiches Cluster
+      * testen für 50 Dokumente, Vergleich der Clusterings
+
+---++ 2017-10-26
+   * Status / Fortschritt
+      * Code der Pipeline analysiert und ein paar Möglichkeiten zur Laufzeitoptimierung gefunden
+      * Profiler (jvmtop) für verschiedene Testfälle laufen lassen
+   * Protokoll Treffen
+      * Profiling war ohne Features, am besten nochmal mit
+      * Lowercasing/Tokenization eher weniger relevant
+   * Nächste Schritte 
+      * Optionen ausarbeiten für Quadrat-Problem:
+         * Ansatz 1: hierarchisch   
+            * zB Kombination aus paarweisem und linearem Verfahren
+         * Ansatz 2: nur bestimmte Paare anschauen
+            * heuristisch anschauen?
+         * siehe auch Slides
+
+---++ 2017-10-19
+   * Status / Fortschritt
+      * siehe letztes Treffen bezüglich Preprocessing und Laufzeit
+      * VisualVM läuft noch nicht - bisher nur über VPN getestet, nicht aus Uni-Netz
+
+---++ 2017-10-09
+   * Status / Fortschritt
+      * allgemeine Analyse der gml-Dateien bezüglich Anzahl Connected Components, relative Größe des größten CC
+      * Laufzeiten/RAM-Verbrauch für versch. Clustergrößen mit/ohne Word Embeddings
+      * Vergleich zwischen Concept Maps für 50-doc Cluster mit/ohne WE bezüglich Größe/connected components/etc.
+      * verschiedene Möglichkeiten für Verbesserung der Skalierung
+      * Ideen für spezifisches Preprocessing gesammelt
+   * Protokoll Treffen
+      * eher nicht zielführend: einzelne Features weglassen
+      * kurz anschauen: Laufzeit Word Embedding Features, Profiling with VisualVM, warum dauert es so lang?
+      * Quadrat-Problem:
+         * Ansatz 1: hierarchisch   
+            * zB Kombination aus paarweisem und linearem Verfahren
+         * Ansatz 2: nur bestimmte Paare anschauen
+            * heuristisch anschauen?
+         * siehe auch Slides
+      * Preprocessing:
+         * Überschriften vorbearbeiten
+         * Schlechte Konzepte rausfiltern (nur Sonderzeichen etc.)
+         * kleine Dateien
+   * Next Steps
+      * siehe Status
+
+
+---++ 2017-09-25
+   * Status / Fortschritt
+      * Graphen für den Rest der Daten erstellt
+      * Statistiken für alle Dateien geupdatet
+
+
+---++ 2017-09-13
+   * Status / Fortschritt
+      * Graphen für 3/4 der einzelnen Dokumente erstellt
+      * Statistiken für Konzepte/Relationen der Einzeldokument-Graphen erstellt
+      * Laufzeit ohne Word Embeddings für verschiedene Clustergrößen gemessen
+      * Recherche zu spezifischem Preprocessing begonnen
+   * Protokoll Treffen
+      * erste Statistiken zur Größe der Dateien
+      * ohne word embeddings geht es schneller
+   * Next Steps
+      * für genauere Analyse der Graphen: erstellen der .graph-Datei, einlesen als gml mit networx in python
+         * https://networkx.github.io/documentation/latest/reference/readwrite/gml.html
+         * https://networkx.github.io/documentation/latest/reference/algorithms/component.html
+         * Anzahl connected components
+         * Größe connected components
+      * ohne word embeddings
+         * nochmal für 200 testen
+         * 50: Resultat vergleichen - wie unterscheidet sich der Graph ohne WE?
+      * preprocessing zu Ende
+      * Recherche zu spezifischem Preprocessing
+      * was wären erste, einfache Maßnahmen, die Qualität zu erhöhen:
+         * als Preprocessing zwischen PDF->Text und Pipeline
+         * oder als Filter in der Pipeline (schlechte Konzepte und Relation ausfiltern)
+         * testen mit dem 50-doc cluster
+      * Idee zum Vergleichen: Klassen im eval package
+
+---++ 2017-09-04
+   * Status / Fortschritt
+      * 1. Pipeline-Schritt (Preprocessing) für 3/4 der Dateien durchgelaufen
+      * vorläufige Statistik zu Anzahl Konzepte erstellt
+      * Laufzeit von PipelineGraph für verschiedene Clustergrößen gemessen:
+         * 10 Dokumente: 5 min
+         * 50 Dokumente: 30 min
+         * 100 Dokumente: 15 h
+   * Protokoll Treffen
+      * Warnings weniger schlimm
+      * Preprocessing speziell für Papers wäre vermutlich gut, um Qualität zu steigern
+         * Kopf-, Fußzeilen, Caption, Inhalte von Tabellen
+         * Leerzeilen mitten im Wort
+         * ggf. noch andere Probleme
+         * gibt es hier Tools, die das fixen könnten?
+         * Zitierungen, z.b. [5]
+         * Formeln - erkennen und entfernen?
+         * Überschriften - vllt. Satzzeichen hinter eindeutige Überschriften (INTRODUCTION)
+      * Weitere Options um Qualität zu verbessern:
+         * auch Summarization steps nutzen -> schlechtes fällt weg
+         * post-processing: Konzepte und Relation herausfiltern 
+   * Nächste Schritte
+      * Einzeldokument-Graphen für alle Dokumente erstellen
+      * Statistiken
+         * Konzepte, Relation
+         * Verteilung
+      * Recherche zu Preprocessing
+      * Verbesserung der Skalierung bei Clustern
+         * Word2Vec herausnehmen?
+         * gar nicht alles mit einander vergleichen
+            * zB erst pro Dokument, dann mergen -> vermutlich immer noch quadratisch
+         * weitere Ideen?
+
+---++ 2017-08-24
+   * Status / Fortschritt
+      * Pipeline läuft auf Server
+      * Laufzeit der aktuellen Implementierung lokal/auf Server getestet
+      * Statistiken erstellt zu Anzahl/Länge der Dokumente
+   * Protokoll Treffen
+      * Bedeutung der Logs
+      * Zählen der Konzepte -> Log oder Lesen der .cmap-Dateien
+   * Nächste Schritte
+      * siehe letzte Woche
+      * 1) Prepocessing für alle
+      * 2) ganze Pipeline für verschiedenen Cluster
+         * 10
+         * 50
+         * 100   
+
+---++ 2017-08-17
+   * Status / Fortschritt
+      * ...
+   * Protokoll Treffen
+      * Pipeline läuft mit GloVe 300d lokal, Zugriff für Server auch vorhanden
+      * Sowohl für 1 also auch 10 Paper
+      * Zum Anschauen der Graphen auch Textformat möglich (extraction.AllPropsMap)
+   * Nächste Schritte
+      * Pipeline auf Server
+      * Bis zu wie vielen Dokumenten skaliert die aktuelle Implementierung
+         * lokal
+         * Server
+      * Statistiken
+         * Wie viele Dokumente
+         * Wie lang sind die Dokumente (avg, min, max)
+         * Wie viele Konzepte im Schnitt pro Dokument
+         * Wie viele Relationen ...
+         * Laufzeit
+         * Speicher
+
+
+   

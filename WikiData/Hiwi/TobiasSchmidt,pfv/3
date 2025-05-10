@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="tschmidt" comment="" date="1627745394" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.TobiasSchmidt - 2021-07-24
+---++ 01.07 - 04.07
+   * Started researching about multi modal features and searched related work, starting from a reference paper about Deep Spectral Features
+   * Began making a list about these features
+
+---++ 05.07 - 11.07
+   * Started researching about multi modal features and searched related work, starting from a reference paper about Deep Spectral Features
+   * Began making a list about these features
+
+---++ 12.07 - 18.07
+   * Read more papers, especially related to the AVEC 2019 challenge and the DAIC Corpus. 
+  
+---++ 19.07 - 25.07
+   * Finished reading last related work papers from the AVEC 2019 challenge; finalised the found feature list and put it into a table.
+
+   * Tried implementing basic functions to extract standard key features from the raw input data via openSMILE while only using python packages. 
+
+---++ 26.07 - 01.08 (currently, goal:)
+   * Implementing the following features: Pause rate / pause total / pause variability / utterance duration  (split and not split) / speech rate / time talking (with different silence detections)
+
+   * test some transcript models
+
+   * Start making list for relted work
+
+---++ 01.08 - 09.08
+   * Implementing the following features: Pause rate / pause total / pause variability / utterance duration  (split and not split) / speech rate / time talking (with different silence detections)
+
+   * test some transcript models
+
+   * Start making list for relted work

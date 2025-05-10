@@ -1,0 +1,63 @@
+version: "3.9"
+
+
+services:
+  index-service:
+    build:
+      context: ./process_data
+      dockerfile: Dockerfile
+    environment:
+      - EXTERNAL_PATH=/external/directory
+      - CHROMA_DB_HOST=chroma-db
+      - CHROMA_DB_PORT=8000
+      - IS_PERSISTENT=TRUE
+      - EMBEDDING_MODEL_NAME=sentence-transformers/paraphrase-MiniLM-L6-v2
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - "${SOURCE_DATA_PATH:-./WikiData}:/external/directory:ro"
+      - "${INDEX_DATA_PATH:-./data/index}:/index/index"
+    depends_on:
+      - chroma-db
+    networks:
+      - app-network
+
+  chroma-db:
+    image: chromadb/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - ANONYMIZED_TELEMETRY=FALSE
+    ports:
+      - "8000:8000"
+    volumes:
+      - "${CHROMA_DATA_PATH:-./data/chroma}:/chroma/chroma"
+    networks:
+      - app-network
+
+  rag-service:
+    build:
+      context: ./rag_retriever_service
+      dockerfile: Dockerfile
+    networks:
+      - app-network
+    ports:
+      - "4096:4096"
+    depends_on:
+      - chroma-db
+    environment:
+      - CHROMA_DB_HOST=chroma-db
+      - CHROMA_DB_PORT=8000
+      - CHROMA_DB_COLLECTION_NAME=WikiData
+      - HUGGING_FACE_EMBEDDING_MODEL=sentence-transformers/paraphrase-MiniLM-L6-v2
+      - SIMILARITY_TOP_K=15
+      - CROSS_ENCODER_MODEL=cross-encoder/ms-marco-MiniLM-L-6-v2
+      - USE_KEYCLOAK_AUTH=TRUE
+  
+networks:
+  app-network:
+    driver: bridge

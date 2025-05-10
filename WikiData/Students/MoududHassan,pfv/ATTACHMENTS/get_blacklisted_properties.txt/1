@@ -1,0 +1,17 @@
+PREFIX e:<http://www.wikidata.org/entity/>
+        PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+        PREFIX base:<http://www.wikidata.org/ontology#>
+        SELECT DISTINCT ?_p WHERE {
+
+
+            VALUES ?topic {e:Q19847637 e:Q18610173 e:Q18667213 e:Q18608359 e:Q21077852 e:Q18609040}
+            {GRAPH <http://wikidata.org/properties> { ?_p e:P31s / e:P31v  ?__p}
+            GRAPH  <http://wikidata.org/statements> { ?__p (e:P279s/e:P279v)+ ?topic}}
+            UNION
+            { GRAPH <http://wikidata.org/properties> { ?_p e:P31s / e:P31v  ?topic}}
+
+}
+
+
+Q18609040 - Taxon property

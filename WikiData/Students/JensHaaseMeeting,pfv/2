@@ -1,0 +1,41 @@
+%META:TOPICINFO{author="MichaelMatuschek" date="1272454973" format="1.1" version="2"}%
+%META:TOPICPARENT{name="JensHaase"}%
+---++++  Meeting 21.04.2010
+
+   * Projekt-Setup steht, Zugriff auf Datenbank über VPN ist auch möglich
+   * Diplomarbeit S. Kulessa ist durchgearbeitet 
+   * Vorhandene Trainingsdaten tw. gesichtet, aber nur für Vandalismus geeignet 
+      * Prüfung notwendig, ob sie trotzdem eingebunden werden sollen
+      * Wikipedia-Bots als weitere mögliche Quelle?
+   * Für Annotation von Artikeln: Graphische Oberfläche möglicherweise sinnvoll
+      * Nicht viel Arbeit bei der Umsetzung
+      * Ermöglicht die effizientere Annotation
+   * Falls nur wenige Trainingsdaten vorhanden: Bootstrapping (iteratives Vergrößern der Trainingsmenge)
+      * Genaue Vorgehensweise wird noch besprochen
+   * Beschluss: Änderungen sollten auf Dokument- und Abschnittebene annotiert werden
+   * Gewisse Änderungen können regelbasiert erkannt werden (z.B. Setzen von Links), Kombination mit ML erscheint sinnvoll
+   * Grundlagen ML wurden besprochen
+      * Beschluss: Weka wird verwendet, stabil, einfach einzubinden
+   * Weiteres Vorgehen
+      * Weiteres Einarbeiten in die Literatur 
+      * Features ausarbeiten
+      * Einarbeiten in ML
+
+---++++  Meeting 21.04.2010
+
+   * Projekt-Setup, benötigte Ressourcen und Beispielpipeline wurden besprochen
+   * Besprochene Referenzen: Diplomarbeit S. Kulessa, Paper von Potthast et.al., Paper von Smets et. al.
+   * Mögliche Klassen wurden diskutiert
+      * Beschlüsse:
+      * Konzentration auf Nicht-Vandalismus-Änderungen, da diese durch die Literatur noch nicht abgedeckt sind
+      * Klassifikation von Vandalismus kann im Wesentlichen auf den Verfahren aus der Literatur basieren
+      * Inhaltliche Merkmale (z.B. um sinnverändernde Edits zu erkennen) werden zunächst nicht behandelt, da dies evtl. zu aufwändig ist
+      * Konzentration vorerst auf oberflächliche Features, z.B. Textlängen
+   * Weiteres Vorgehen
+      * Einrichtung von eclipse-Projekt, Lösung evtl. technischer Probleme
+      * Einarbeiten in die besprochene Literatur und Herausarbeiten nützlicher Ansätze (z.B. Diff-Berechnung)
+      * Zu erkennende Klassen festlegen und beginnen, Merkmale einer Revision auszuarbeiten, die für die Erkennung interessant sein können
+      * Überlegen, welche Trainingsdaten es gibt (Potthast?), wie sie annotiert sind und ob bzw. wie das für unsere Aufgabe passt
+
+
+-- Main.MichaelMatuschek - 21 Apr 2010

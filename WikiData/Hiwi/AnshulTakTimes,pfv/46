@@ -1,0 +1,121 @@
+%META:TOPICINFO{author="tak" comment="reprev" date="1475100825" format="1.1" reprev="43" version="46"}%
+%META:TOPICPARENT{name="AnshulTak"}%
+---+ September 2016 
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 1-9-2016 | Date format changes in webanno | 1 | Date format #324 |
+| 2-9-2016 | Meeting | 1 | |
+| 2-9-2016 | Tigerreader and tuepp reader code browsing | 1 | |
+| 5-6-2016 | New xces reader | 2.5 | xces reader |
+| 6-9-2016 | Xces reader continue | 2 | xces reader |
+| 6-9-2016 | Xces reader test case | 2.5 | xces reader |
+| 7-9-2016 | Xces reader basic and complex integration problem | 3 | xces reader |
+| 8-9-2016 | new Xces writer | 3 | xces writer |
+| 9-9-2016 | Meeting | 1 | |
+| 12-9-2016 | Xces writer test integration | 2.5 | xces writer |
+| 13-9-2016 | Dataset script | 1.5 | |
+| 15-9-2016 | Dataset script | 1 | |
+| 20-9-2016 | Meeting | 1 | |
+| 20-9-2016 | Dataset encoding values | 2.5 | #911 Dkpro-core |
+| 23-9-2016 | Webanno remote api | .5 | Sample outputs |
+| 26-9-2016 | XCES changes and checkin | 1 | XCES changes and dataset encoding changes |
+| 27-9-2016 | Build failure fix | .5 | |
+| 27-9-2016 | InterOp Component overview | 1 | added UKP repository resolver |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+---+ August 2016 
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2-8-2016 | meeting | 1 | meeting |
+| 3-8-2016 | URI scheme for webanno | 3.5 | Scheme changes |
+| 4-8-2016 | Work on different catalog integrationg | 3 | catalog in Openminted |
+| 9-8-2016 | Catalog | 2.5 | catalog changes and commit |
+| 11-8-2016 | ILSP webservice code browsing | 2.5 | |
+| 12-8-2016 | Catalog comment changes and Webanno enhancement with bugs | 3.5 | #325 #324 #323 |
+| 15-8-2016 | Webanno | 2.5 | #327, #324 |
+| 16-8-2016 | Webanno curated document | 3.5 | #327 |
+| 17-8-2016 | Changes in webanno API | 2 | |
+| 18-8-2016 | ILSP code browsing | 2 | ILSP code browsing |
+| 19-8-2016 | ILSP experiment code modification | 4.5 | |
+| 22-8-2016 | ILSP return status code | 1.5 | Not able to find a way to get the service pipeline status as COMPLETE or RUNNING |
+| 22-8-2016 | Webanno eric's changes | 1 | Webanno eric's changes |
+| 25-8-2016 | meeting | 1 | |
+| 26-8-2016 | Webanno changes | 2.5 | #324 reopened again |
+| 29-8-2016 | Openminted | 1 | Xces schema browsing |
+| 30-8-2016 | Webanno | 2 | Upload problem for #323 |
+| 31-8-2016 | Timesheet Fillup | .5 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+---+ July 2016 
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 1-7-2016 | Metashare desc | 1.5 | complete |
+| 5-7-2016 | meeting | 1 | meeting |
+| 7-7-2016 | add button | 4.5 | req add button feature |
+| 8-7-2016 | add button | 4 | |
+| 11-7-2016 | Mapping conversion | 3 | |
+| 14-7-2016 | work on mapping conversion changes | 2 | |
+| 18-7-2016 | DKPro catalog and previous changes | 3 | catalog |
+| 19-7-2016 | Meeting | 1 | |
+| 20-7-2016 | Req button js changes | 1.5 | |
+| 21-7-2016 | Req compliance template with groupby product and requirement parser | 3.5 | |
+| 22-7-2016 | Req compliance template with groupby product and requirement parser | 4 | |
+| 26-7-2016 | meeting | 1 | meeting |
+| 27-7-2016 | webaano | 5.5 | webanno api |
+| 28-7-2016 | webanno api and some problem that were encountered | 2.5 | errors and new api |
+| 29-7-2016 | Webanno api correction | 2 | Webanno API modification and additions of new API |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+---+ March 2016 - May 2016
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 24-3-2016 | meeting | .5 | |
+| 28-3-2016 | Understand project and project setup | 1.5 | |
+| 29-3-2016 | Groovy | 3.5 | Did sample groovy tutorial |
+| 29-3-2016 | Project | 2 | Script for issue #3 |
+| 30-3-2016 | Meeting | .5 | |
+| 4-4-2016 | Change in spec project and git | 2.5 | |
+| 5-4-2016 | Update datamodel and changes component parse function to include parameter | 3.5 | |
+| 6-4-2016 | make detailed overview adoc | 3 | template |
+| 7-4-2016 | meeting | 1 | |
+| 9-4-2016 | parameter change | 2.5 | comments for parameter changes and commit |
+| 13-4-2016 | Refactoring | 3.5 | refactor the monolithic file |
+| 15-4-2016 | Specification project changes | .5 | Generated adocs in target and then utilise it for rendering from target folder |
+| 18-4-2016 | meeting | 1 | |
+| 23-4-2016 | crawler code | 5 | tried understanding and fix to get descriptor |
+| 25-4-2016 | modified crawler code | 4.5 | fixed req for gid and get desc with highest version for a gid and artifactid |
+| 27-4-2016 | crwaling for dkpro done | 2.5 | fixed issues |
+| 28-4-2016 | Integrate crawler with exisiting code | 3.5 | issue |
+| 3-5-2016 | understand DKPro DSL script code | 4.5 | DKPro DSL |
+| 5-5-2016 | Modified spec project and continue understant DSL | 1 | try setup machine and understand the DSL code |
+| 9-5-2016 | Build error | 3.5 | error in mapping conversion project |
+| 10-5-2016 | meeting | 1 | meeting |
+| 10-5-2016 | looked for the issue "components missing from component overview" | 3 | "components missing from component overview" |
+| 11-5-2016 | code changes | 2 | 1. Moved index, ivy files and descriptor to src/test/test-output so that changes are not lost when running 'mvn clean install' 2. Added ivy, groovy and htmlclient logging 3. Used 'transitive:false' in Grape.grab so that no transitive dependency is downloaded 4. Used streamcopying in 'FindComponentDescriptor.groovy'. This copying is for copying XML from JAR to outside JAR i.e. locally |
+| 14-5-2016 | Spec project changes | 2 | |
+| 17-5-2016 | mapping conversion changes | 1 | changing original descriptor link |
+| 19-5-2016 | Meeting | 1 | meeting |
+| 25-5-2016 | Get POMs of DKPro artifact similar to descriptor using classifier 'POM' | 2.5 | Get POMs of DKPro artifact similar to descriptor using classifier 'POM' |
+| 28-5-2016 | Add component json into script project | 5 | Add component json into script project |
+| 28-5-2016 | commit and further changes in dkpro-script and mapping conversion project | 2 | commit and further changes in dkpro-script and mapping conversion project |
+| 2-6-2016 | meeting | 1 | meeting |
+| 2-6-2016 | gate integration | 3.5 | gate integration |
+| 3-6-2016 | parameter changes | 1 | parameter changes |
+| 6-6-2016 | CREOLE descriptor | 1.5 | Looked into the problem |
+| 7-6-2016 | issue #3 in spec project | 3 | |
+| 8-6-2016 | Extracting info from POM | 1 | not yet complete still finding solution |
+| 8-6-2016 | issue 7 & 8 | 3 | |
+| 9-6-2016 | meeting | 1 | meeting |
+| 17-6-2016 | Spec changes | 5.5 | spec proj changes |
+| 18-6-2016 | Gate integration | 6 | gate |
+| 20-6-2016 | tranformation error and jar download | 4 | dependency resolve error and transformation update |
+| 21-6-2016 | pipeline with gate and UIMA | 5 | pipeline with gate and UIMA |
+| 24-6-2016 | Pipeline from gate to UIMA | 3 | Incomplete |
+| 27-6-2016 | Gate->UIMA | 3 | with previous modification and exceptions |
+| 29-6-2016 | MetaShare Decriptors | 5 | MetaShare Decriptors |
+| 30-6-2016 | MetaShare Decriptors version and license | 4 | MetaShare Decriptors |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 120

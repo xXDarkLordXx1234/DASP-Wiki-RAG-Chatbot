@@ -1,0 +1,161 @@
+%META:TOPICINFO{author="buth" comment="reprev" date="1418766619" format="1.1" reprev="29" version="31"}%
+%META:TOPICPARENT{name="StudentsList"}%
+%TOC%
+
+---+++ Meeting 17.12.2014, 12 Uhr
+   * Code-Anpassungen
+      * Kommentare aus letztem Meeting eingearbeitet
+         * Verwendung von JCasTransformerChangeBased_ImplBase
+         * Korrektur und Garbage-Entfernung in einer Pipeline
+      * Garbage-Entfernung erweitert
+   * Gutenbergkorpus erweitert + DTA-Korpus angepasst
+   * eMop: Juxta-CL für Evaluierung?
+   * Nächster Termin
+      * DeBu: erst wieder ab 12.01.
+
+---+++ Meeting 04.12.2014, 12 Uhr
+   * Motivationsschreiben - %ATTACHURL%/Motivation.pdf
+      * Kommentare
+         * nicht wirklich vollständig automatisch, da Ressources (Wörterbücher) benötigt werden
+         * "Hierbei empfiehlt sich die Verwendung eines Korpus mit Dokumenten eines ähnlichen Zeitalters. Dies erhöht die Wahrscheinlichkeit der Worterkennung und der korrekten Verbesserungsvorschläge." -> ist eine Hypothese, Begründung
+         * Konkreter: Daten (Welt der Kinder, Natur und Staat)
+         * "Unsupervised Post-Correction of OCR Errors" war Diplom-Arbeit (nicht PhD)
+         * Evaluierung
+            * Auch auf modernen Daten?
+               * Twitter falls Corpus auffindbar
+               * Lerner-Corpus falls verfügbar (Stefanie Dipper, Anke Lüdeling)
+                  * Falko: Fehlerannotiertes Lerner-Corpus  
+            * Wie genau evaluieren, welche Fehlertypen usw.
+   * Titelvorschläge:
+      * Corpus-Based OCR Post-Processing of German historical texts 
+      * Corpus-Based OCR Error Correction (and Normalization)
+      * Corpus-Based OCR Error Correction of Historical Texts
+      * Handling Different OCR Error Types by Corpus-Based Correction
+   * Code
+      * Regelbasierter Ansatz zur Entfernung von Garbage nach Wudtke et al.
+      * (Teil der) Test-Daten ins Repository
+   * Nächste Schritte
+      * Ziel, Ergebnisse
+      * Zeitplan
+      * Code: Regeln usw.
+      * Anmeldung: [[https://www.informatik.tu-darmstadt.de/fileadmin/user_upload/Group_Studbuero/formulare/AMT_e.pdf][Anmeldung Master-Thesis]]
+      * VARD2 (-> Software)
+   * Nächstes Treffen (Anfang Januar)
+      * CaS: 15. oder 17.12.
+
+---+++ Meeting 27.11.2014
+   * Motivationsschreiben - %ATTACHURL%/Motivation.txt
+      * Kommentare !CaS
+         * 99% Genauigkeit, höhere Fehlerrate bei schlechterer Qualität -> Quellen / Referenzen
+         * Korrekturarten:
+            * halb-automatisch -> "supervised machine learning", Referenz
+            * vollständig automatisch:
+               * "ergiebiger"? -> Referenz
+               * nicht wirklich vollständig automatisch, da Ressources (Wörterbücher) benötigt werden
+         * Was soll in der Arbeit umgesetzt werden? (-> Nächste Schritte)
+            * Garbage Collection?
+   * Zusammenfassung bisherige Arbeit - %ATTACHURL%/Stand_14-11-27.txt
+   * Code
+      * Ergebnisse - %ATTACHURL%/Ergebnisse_14-11-27.txt
+   * Garbage Collection
+      * Paper Wudtke et al.
+   * Nächste Schritte
+      * Motivationsschreiben:
+         * Literaturrecherche
+         * Plan für die Arbeit konkretisieren
+      * Implementierung
+         * Regelbasierte Garbage Collection (Wudtke et al.)
+         * Probabilistische Fehlererkennung (evtl. Smoothing und Backoff-Modelling)
+         * DKPro Core 1.8.0-SNAPSHOT textnormalizer-asl
+      * Fehlertypen:
+         * garbage detection - e.g. "ijiilaAll"
+         * segmentation - e.g. "dasHaus"
+         * correction - e.g. "konnnen" -> "kommen"
+         * normalization - e.g. "Thür" -> "Tür"
+      * Ziele der Arbeit
+         * Analyse der Fehler in WdK und NuS
+         * Implementierung von Baselines (state of the art)
+         * Anforderungen in WdK und NuS
+         * Entwicklung von Verbesserungen
+
+---+++ Meeting 13.11.2014
+   * Transponder: ist freigeschaltet
+   * Status
+      * Modell-Erstellung
+      * Unit-Tests
+      * Mögliche Korpora:
+         * [[http://www.deutschestextarchiv.de/download][DTA-Korpora]] (Gesamtkorpus oder für bestimmten Zeitraum 1600-1699, 1700-1799, 1800-1899)
+         * <del>[[http://korpora.zim.uni-due.de/Fnhd/][Das Bonner Frühneuhochdeutschkorpus]] (1350-1400, 1450-1500, 1550-1600 und 1650-1700)</del>
+         * Gutenberg-Korpus
+         * <del>COSMAS (Onlinekorpus)</del>
+      * Evaluation der Fehlerklassen - %ATTACHURL%/Fehlerevaluation.ods
+      * Anmeldung (Vorschläge für Titel)
+         * Corpus-based OCR Error Correction
+         * Normalization of Historical OCR-Texts
+         * Adaptive Text Normalization
+   * Nächste Schritte
+      * Implementation: Model nutzen, um neue Sequenzen zu bewerten
+      * Model auf Referenz-Korpora bauen
+      * Erste Evaluierung
+         * Automatisch
+      * (Anmeldung) Welche Richtung weiter?
+         * Error Model
+         * Language Model (n-grams etc.)
+   * Nächstes Treffen: 20.11. 15.00 Uhr
+
+---+++ Meeting 05.11.2014
+   * SVN repository?
+   * TUDA-DH Meeting am 1.12. 14 bis 17 Uhr
+   * Welt der Kinder Projekttreffen am 7.11.
+     
+   * Abtretungserklärung
+   * Grober Zeitplan für Masterarbeit
+   * Fehlerklassen (Beispielsätze) - %ATTACHURL%/Fehlerklassen.txt
+   * Implementierung - Char Trie (siehe Masterarbeit v. Lenz Furrer)
+   * Code
+      * See comments in code
+      * Use Code Style template: https://code.google.com/p/dkpro-core-asl/wiki/DeveloperSetup
+   * Nächste Schritte
+      * Frage: Kann man im Type eigene Methoden deklarieren?
+      * Model aus allen Dokument-CharTries generieren
+         * Welches Corpus?
+      * Model verwenden, um Korrekturen vorzuschlagen
+      * Model evaluieren in Bezug auf Fehlerklassen
+   * Nächstes Treffen: Donnerstag, 13.11., 15 Uhr
+
+---+++ Meeting 27.10.2014
+   * Nächste Schritte:
+      * Character-based normalization: erste Implementierungsschritte
+   * Status?
+   * Implementation -> [[https://code.google.com/p/dkpro-core-asl/][DKPro]]
+      * DKPro Normalization
+   * Furrer (2013): "Unsupervised Text Segmentation for Correcting OCR Errors" (http://www.cl.uzh.ch/studies/theses/lic-master-theses/Masters_Thesis_Lenz_Furrer.pdf)
+   * (Kooperation mit [[UteWinchenbach][Ute Winchenbach]])
+   * Teilnahme an SIG PrintMedia
+
+---+++ Meeting 06.10.2014
+
+   * Konkretisierung des Themas: Automatische Normalisierung und Korrektur von Texten
+   * N&auml;chste Schritte: 
+      * Titel ausformulieren
+      * Grundstruktur ausarbeiten (Ziele, Literatur)
+      * Erster Blick auf OCR-Texte
+      * Zugang zur Infrastruktur (Wiki, Transponder, SVN) (-> !CaS)
+
+---+++ Relevant Resources (Software, Papers)
+---++ Software
+   * [[http://ucrel.lancs.ac.uk/vard/][VARD2]]
+---++ Literature
+   * MSc Lenz Furrer
+
+-- Main.CarstenSchnober - 2014-10-06
+
+%META:FILEATTACHMENT{name="Fehlerklassen.txt" attachment="Fehlerklassen.txt" attr="" comment="Fehlerklassen inkl. Beispielsätze" date="1415347640" path="Fehlerklassen.txt" size="1783" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Gliederung.txt" attachment="Gliederung.txt" attr="" comment="Gliederung der Arbeit" date="1415832194" path="Gliederung.txt" size="1989" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Zeitplan.ods" attachment="Zeitplan.ods" attr="" comment="Grober Zeitplan der Arbeit" date="1415833564" path="Zeitplan.ods" size="12013" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Fehlerevaluation.ods" attachment="Fehlerevaluation.ods" attr="" comment="Evaluation der definierten Fehlerklassen" date="1415885655" path="Fehlerevaluation.ods" size="15161" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Motivation.txt" attachment="Motivation.txt" attr="" comment="Motivationsschreiben" date="1417022137" path="Motivation.txt" size="2968" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Stand_14-11-27.txt" attachment="Stand_14-11-27.txt" attr="" comment="Zusammenfassung der bisherigen Arbeit (bis 27.11.14)" date="1417094422" path="Stand_14-11-27.txt" size="2496" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Ergebnisse_14-11-27.txt" attachment="Ergebnisse_14-11-27.txt" attr="" comment="Evaluation der Textkorrektur auf Zeichenebene" date="1417094475" path="Ergebnisse_14-11-27.txt" size="743" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Motivation.pdf" attachment="Motivation.pdf" attr="" comment="Motivationsschreiben inkl. Fehlerarten" date="1417634039" path="Motivation.pdf" size="101241" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="TaskDescriptionTemplate.docx" attachment="TaskDescriptionTemplate.docx" attr="" comment="" date="1417689706" size="62648" user="schnober" version="1"}%

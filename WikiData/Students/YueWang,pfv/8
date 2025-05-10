@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="wang" comment="" date="1553524235" format="1.1" reprev="6" version="8"}%
+%META:TOPICPARENT{name="StudentsList"}%
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *task* | *status* | *start* | *update* | *goal* | *comment*|
+|check tf*idf |in progress |04.03 |11.03 Summary: The profiles are short sentences, so the profiles containing the same informative word/words are easier to be clusered together. The sentences are short and there are generally only one or two informative words, and the frequencies of these words are usually only 1 in one sentence. With this approach the cope of stop words is very important in order to confirm which words are informative. |Clustering profiles | |
+|bert sentence similarity |in progress |04.03 |11.03 Output of the last layer of transformer is used as sentence vector. Example results in Overleaf. Problem is that the same sentence are not embedded as the same vector. |clustering profiles |Deep detection clustering algorithm available to limit the maximum member number. |
+|seq2seq model + evaluation metrics |in progress |04.03 |11.03 Results are worse than the paper. Details in the ParlAI model should be compared with the currently used seq2seq model. The metric hits@1 is not easy to be 1 for a single sample. Ranking models may be combined(TODO)? |run my code on a GPU server + get evaluation metrics mentioned in the paper |  |
+|use bert & ELMo in the embedding layer |New |10.03 | |use the state-of-the-art embedding |  |
+|add Profile information to encoder and decoder |New |10.03 |11.03 tbd: position. |an encoder function that maps a profile to a vector | CNN, CNN-based encoder-decoder or Transformer |
+|create a list of profiles and utterances said by each profile |New |10.03 | |training set for finding how much utterances are related to profiles | p0,u0,u1,u2,... \n p1,u0,u1,u2,... |
+|create a list of profiles and utterances heard by each profile |New |10.03 | |training set for finding how much utterances are related to profiles | p0,u0,u1,u2,... \n p1,u0,u1,u2,... |
+|create training/valid/test sets for experimenting how utterances are related to profiles of speaker and addresses |New |10.03 | |utterances are related to profiles of speakers or address? | create positive and negative labels |
+|check the accuracy of the system on profile identification on utterances |New |10.03 | |train/test a neural model which takes a vector representation of an utterance and a vector representation of a profile and returns the probability of their association. | use CNN or transformer, we need to know why the system says that two inputs are not related! |
+| | | | | |  |
+|Read MIXER Paper |New |10.03 | |how to use rewards and policy gradient in the decoder? | https://arxiv.org/pdf/1511.06732.pdf |
+|Implement paper: Deep Reinforcement Learning for Dialogue Generation |New |10.03 | |their source code is available, integrate it in my code | rl-based baseline |
+
+
+
+-- Main.MohsenMesgar - 2019-02-25

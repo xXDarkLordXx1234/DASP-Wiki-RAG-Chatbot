@@ -1,0 +1,220 @@
+%META:TOPICINFO{author="starke" comment="save topic" date="1446399142" format="1.1" reprev="95" version="96"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ Tasks
+   * *NEW*: Obligatorische wöchentliche Dokumentation der Arbeitszeiten (für die Verwaltung): [[%ATTACHURL%/SHK_-_Hiring_Process_-_Form_10_-_Dokumentation_der_SHK_Arbeitszeit.docx][.docx]]
+   * Getting Started [Done, 3 March]
+   * Getting Familiar with UBY [Done, 3 April]
+   * Analyse/Korrektur des !GermaNet-IMSLexSubcat Alignment [Done, 3 Mai, file attached below:ims_gn_sorted2_erweitert.xlsx]
+      * SH: 408 automatisch generierte Alignment-Paare wurden korrigiert
+         * bei strenger Lesart sind 56% (227) korrekt, 
+         * bei lockerer Lesart sind 94% korrekt (384 vs 24) 
+   * Update UBY overview diagram according to dtd [Done, 18 May]
+   * Analyse des !GermaNet-SALSA alignment [90% done]
+      * Establish SALSA-FN alignment
+         * match !SemanticPredicates via label [done]
+         * identify matching Senses (and their lemma, pos) via matched !SemanticPredicates (=> sense mapping candidates) [done]
+            * FN.senseId,FN.semanticPredicateId,FN.semanticPredicate.label, FN.lemma, FN.pos (same for SALSA)
+            * take into account label-renamings (list)
+         * determine German translations for FN lemmata, English translations for SALSA lemmata [done]
+            * !SenseAxis GN-WN (in current db)
+            * Wiktionary-EN, Wiktionary-DE translations (new db), Equivalent class
+            * !OmegaWiki sense axis (!SenseAxis OWen-OWde, new db)
+         * filter sense mapping candidates by matching lemma-translation and pos => FN-SA sense alignment [done]
+         * Collect statistics on mapped senses, lemma-pos, etc.
+      * Infer SA-GN sense alignment via transitive sense alignments: GN->ImsLex->VN->FN->SA, collect statistics [done, 31 May]
+         * SH: Wo finde ich die Statistiken? 
+            * % Abdeckung der Ausgangsressourcen in verschiedenen Kategorien, e.g., Lemmata, Senses [done]
+            * Wie viele Alignments pro GN-Sense bzw. pro Salsa-Sense? (Max, Min, Durchschnitt)
+            * Anteil Alignment Paare mit gleichen bzw. unterschiedlichen Lemmata
+         * SH: Gibt es Besonderheiten,? 
+         * ES: Die Statistiken befinden sich hier: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Hiwi/Statistics_SALSA-GN_Alignment
+      * Manually evaluate subset [done, 19 June]
+         * Statistical analysis of evaluated subset 
+   * [20150615] Analyse des SALSA-VerbNet role-level alignment (SALSA-FN-VN)
+      * Extraktion von !SemanticPredicate-Paaren und !SemanticArgument-Paaren (für die Predicate-Paare), siehe auch !PredicateArgumentAxis 
+      * Statistische Analyse
+         * ES: Die Statistiken sind zu finden unter: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Hiwi/Statistics_SALSA-VN_Alignment
+      * Manuelle Plausibilisierung 
+   * Pilot GN Sense Annotation for KP3 using WebAnno
+   * Curation for WebAnno Sense Annotation Study
+
+---+++ Resources       
+   * [[Statistics_SALSA-GN_Alignment]]
+   * [[Statistics_SALSA-VN_Alignment]]
+   * SALSA download: http://www.coli.uni-saarland.de/projects/salsa/corpus/
+   * uby auf googlecode:https://github.com/dkpro/dkpro-uby
+---+++ Meeting Minutes
+   * 2015-07-28
+      * Current Status
+      * Next Steps
+         * SH: please add link to source file or script in [[Statistics_SALSA-VN_Alignment]] 
+
+   * 2015-06-30
+      * Current Status
+      * New: Meetings continue Tuesdays at 16:30
+      * Next steps
+         * correct SALSA-GN alignment
+         * prepare SALSA-FN-VN role level alignment (as discussed)  
+   * 2015-06-15
+      * Contract issues
+      * Next meetings: Tuesday 23rd and 30th instead of Monday (16:30-17:00)
+      * Current status (What have I done?/What will I do?/What's in my way?)
+      * Next steps (Meeting summary by Elisa):
+         * finish annotation of SALSA-GN alignment pairs [done, files can be found attached below]
+         * collect statistics for annotated pairs 
+         * fix UBY Diagramm (color axes black)
+         * SA-FN-VN alignment
+
+   * 2015-06-08
+      * Contract issues
+      * Current status (What have I done?/What will I do?/What's in my way?)
+      * Next steps (Meeting summary by Elisa):
+         * annotation of alignment pairs: 2 versions -> attach file to moodle [done]
+         * find lemma with 137 alignments [done]
+
+   * 2015-05-29
+      * Contract issues
+      * Current status (What have I done?/What will I do?/What's in my way?)
+      * Next steps (Meeting summary by Elisa):
+         * edit createAlignment.java -> static method to call Main with parameters (DB Config)  [done]
+         * access + download SALSA corpus with example sentences -> perhaps try annotation [done]
+         * try accessing interface (VPN) for salsa frame definitions [done]
+         * work further on statistics (new ratio only for verb senses/lemmas) [done]
+      * Nächstes Meeting erst am 8. Juni
+
+---+++ Aktueller Vertrag (01.11.2015-31.12.2015)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Meeting | 12.10.2015 | 1.25 | |
+| !WebAnno Sense Anntoation | 16.10.2015 | 3.25 | Adjudikation |
+| !WebAnno Sense Anntoation | 19.10.2015 | 3 | Adjudikation |
+| !WebAnno Sense Anntoation | 23.10.2015 | 4 | Adjudikation |
+| !WebAnno Sense Anntoation | 25.10.2015 | 3.5 | Adjudikation |
+| !WebAnno Sense Anntoation | 31.10.2015 | 4 | Adjudikation |
+| !WebAnno Sense Anntoation | 01.11.2015 | 2.5 | Adjudikation |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60.00 | until the end of December 2015 |
+
+---+++ Aktueller Vertrag (01.06.2015-31.08.2015)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Code überarbeiten + Nutzung SALSA Interface | 01.06.2015 | 8 | <ul><li>statische Methode um Main aufzurufen</li><li>Probeannotation von Alignmentpaaren</li></ul> |
+| Code Überarbeitung + Annotation von Alignmentpaaren | 02.06.2015 | 2 | neue Version eingecheckt |
+| Annotation von Alignmentpaaren | 05.06.2015 | 1 | |
+| Annotation von Alignmentpaaren | 08.06.2015 | 2 | |
+| Meeting | 08.06.2015 | 0.25 | |
+| Annotation von Alignmentpaaren | 09.06.2015 | 5 | |
+| Annotation von Alignmentpaaren | 10.06.2015 | 0.5 | |
+| Meeting | 15.05.2015 | 0.25 | |
+| Annotation von Alignmentpaaren | 18.06.2015 | 2.5 | |
+| Annotation von Alignmentpaaren + Statistiken | 19.06.2015 | 4.75 | |
+| Meeting | 30.06.2015 | 0.75 | |
+| Statistiken GN-SALSA Alignment, Überarbeitung fehlerhafter Spalten in Annotationsdatei | 30.06.2015 | 1.75 | |
+| Korrektur GN-SA Annotation | 02.07.2015 | 1 | |
+| Korrektur GN-SA Annotation | 03.07.2015 | 2 | |
+| Korrektur GN-SA Annotation + Statistiken | 06.07.2015 | 4 | |
+| Statistiken | 07.07.2015 | 2 | |
+| Meeting | 07.07.2015 | 0.75 | |
+| Statistiken für positiv annotierte Paare + SALSA-FN-VN role level alignment | 14.07.2015 | 3 | |
+| Meeting | 14.07.2015 | 0.75 | |
+| SALSA-FN-VN role level alignment | 19.07.2015 | 4.5 | <ul><li>Extraktion zusätzlicher Informationen </li><li>Plausibilisierung</li></ul> |
+| SALSA-FN-VN role level alignment | 20.07.2015 | 3.75 | <ul><li>Plausibilisierung</li><li>Statistiken</li></ul> |
+| SALSA-FN-VN role level alignment | 21.07.2015 | 3.00 | |
+| Meeting | 21.07.2015 | 1 | |
+| SALSA-FN-VN role level alignment | 27.07.2015 | 4.25 | |
+| SALSA-FN-VN role level alignment | 28.07.2015 | 1.25 | |
+| Meeting | 28.07.2015 | 1 | |
+| SALSA-FN-VN role level alignment | 02.08.2015 | 1 | |
+| SALSA-FN-VN role level alignment | 03.08.2015 | 1.5 | |
+| SALSA-FN-VN role level alignment | 04.08.2015 | 1 | |
+| !WebAnno Sense Anntoation | 05.08.2015 | 2 | Zugänge testen + Probeannotation |
+| Meeting | 05.08.2015 | 1.5 | |
+| !WebAnno Sense Anntoation | 06.08.2015 | 0.5 | Trainingsset nach Variante B |
+| !WebAnno Sense Anntoation | 11.08.2015 | 3.5 | Trainingsset nach Variante A + Pilotstudie Teil 1 |
+| !WebAnno Sense Anntoation | 13.08.2015 | 2.75 | Pilotstudie |
+| Meeting | 29.09.2015 | 0.25 | |
+| !WebAnno Sense Anntoation | 30.09.2015 | 4 | Pilotstudie |
+| !WebAnno Sense Anntoation | 01.10.2015 | 0.5 | Pilotstudie |
+| !WebAnno Sense Anntoation | 05.10.2015 | 3.5 | Adjudikation |
+| !WebAnno Sense Anntoation | 06.10.2015 | 4 | Adjudikation |
+| !WebAnno Sense Anntoation | 08.10.2015 | 4 | Adjudikation |
+| !WebAnno Sense Anntoation | 09.10.2015 | 2.75 | Adjudikation |
+| !WebAnno Sense Anntoation | 11.10.2015 | 2 | Adjudikation |
+| !WebAnno Sense Anntoation | 12.10.2015 | 2 | Adjudikation |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 97.75 | until the end of August 2015 |
+
+---+++ Aktueller Vertrag (01.03.2015-31.05.2015)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Meeting | 02.03.2015 | 3.5 | <ul><li> weekly meeting: Thursdays 2:15-3:15,B120 (until term starts) </li><li> setting up workspace; |
+| Getting Started | 03.03.2015 | 3.5 | <ul><li> setting up workspace </li><li> checking out uby example project from tutorial |
+       | Meeting | 04.03.2015 | 1 | <ul><li> discussing next task (analysing SALSA conversion) |
+| Getting Familiar with UBY | 10.03.2015 | 2 | <ul><li> Analysing SALSA conversion |
+| Getting Familiar with UBY | 11.03.2015 | 2 | <ul><li> Analysing SALSA conversion |
+| Analyse des !GermanNet-IMSLexSubcat Alignments | 15.03.2015 | 1.5 | <ul><li> Extraktion relevanter Informationen zur Korrektur |
+| Meeting | 18.03.2015 | 0.75 | <ul><li> discussing results/problems of tasks (Salsa conversion + IMS-GN-Alignment) |
+| Analyse des !GermanNet-IMSLexSubcat Alignments | 20.03.2015 | 2 | <ul><li> Extraktion weiterer Informationen aus der Datenbank </li><li> Import neuer Datenbank, da fehlerhaft |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 22.03.2015 | 2 | <ul><li> manuelle Überprüfung der Paare |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 23.03.2015 | 2 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 24.03.2015 | 1 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 25.03.2015 | 1.75 | |
+| Meeting | 25.03.2015 | 0.75 | <ul><li> discussing problems (database error) </li><li> discussing next task (analyzing !GermaNet-SALSA alignment) |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 26.03.2015 | 1.5 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments / Analysing SALSA conversion | 29.03.2015 | 4.25 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments / Analysing SALSA conversion | 30.03.2015 | 1.25 | |
+| Finishing off !UbySalsa Analysis | 03.04.2015 | 1.5 | |
+| Analyse des !GermaNet-SALSA alignment | 04.04.2015 | 1.25 | Establishing SALSA-FN alignment |
+| Analyse des !GermaNet-SALSA alignment | 07.04.2015 | 1.75 | Establishing SALSA-FN alignment |
+| Meeting | 08.04.2015 | 1 | |
+| Updating UBY overview diagram according to dtd | 08.04.2015 | 1.75 | extending the current version by the new classes |
+| Updating UBY overview diagram according to dtd | 09.04.2015 | 1 | |
+| Analyse des !GermaNet-SALSA alignment | 10.04.2015 | 1 | <ul><li> importing new db/fixing problems </li><li> establishing alignment with UBY API |
+| Analyse des !GermaNet-SALSA alignment | 12.04.2015 | 3.75 | <ul><li> identifying sense mapping candidates </li><li> determining translations |
+| Analyse des !GermaNet-SALSA alignment | 13.04.2015 | 3.5 | determining translations |
+| Analyse des !GermaNet-SALSA alignment | 14.04.2015 | 4.25 | <ul><li> determining translations  </li><li> filtering sense mapping candidates </li><li> collecting statistics |
+| Analyse des !GermaNet-SALSA alignment | 16.04.2015 | 5 | <ul><li> Infering SA-GN sense alignment </li><li> extending !GermaNet-IMSLexSubcat Alignment |
+| Meeting | 16.04.2015 | 0.5 | |
+| Meeting | 20.04.2015 | 0.75 | |
+| Korrektur !IMS-GN Alignment + Analyse des GN-Salsa Alignments | 20.04.2015 | 4.5 | Optimierung des Codes |
+| Analyse des GN-Salsa Alignments | 26.04.2015 | 2.5 | Umstrukturierung des Codes |
+| Analyse des GN-Salsa Alignments | 27.04.2015 | 3.5 | |
+| Analyse des GN-Salsa Alignments | 28.04.2015 | 4 | Code optimieren + SVN Projekt aufräumen |
+| Analyse des GN-Salsa Alignments + Überarbeitung UBY Diagramm | 04.05.2015 | 7.5 | |
+| Meeting | 04.05.2015 | 0.5 | |
+| Analyse des GN-Salsa Alignments | 05.05.2015 | 2 | Überarbeitung createAlignment.java |
+| Analyse des GN-Salsa Alignments | 14.05.2015 | 7 | Überarbeitung !TranslationsProvider.java + Anpassung createAlignment.java |
+| Überarbeitung UBY Diagramm + Evaluierung des Alignments | 16.05.2015 | 2 | Extraktion von hilfreichen Informationen zu Alignmentpaaren |
+| Code aufräumen GN-Salsa alignment + Evaluierung Alignment + Überarbeitung UBY Diagramm | 18.05.2015 | 6 | |
+| Code aufräumen GN-Salsa alignment + Evaluierung Alignment | 19.05.2015 | 5 | |
+| Code aufräumen + Statistiken erstellen | 26.05.2015 | 4 | |
+| Code aufräumen + Statistiken erstellen | 29.05.2015 | 2 | |
+| Meeting | 29.05.2015 | 0.5 | |
+| Statistiken erstellen + Evaluation alignment Paare | 31.05.2015 | 3.5 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | until the end of May 2015 |
+
+-- Main.SilvanaHartmann - 2015-03-02
+
+   * [[%ATTACHURL%/alignmentPlusInfo_annotiert.csv][alignmentPlusInfo_annotiert.csv]]: Annotation of GN-SALSA alignment pairs
+
+   * [[%ATTACHURL%/alignmentPlusInfo_annotiert.xlsx][alignmentPlusInfo_annotiert.xlsx]]: Annotation of GN-SALSA alignment pairs
+
+%META:FILEATTACHMENT{name="Uby-LMF_15_2_public_release4.png" attachment="Uby-LMF_15_2_public_release4.png" attr="" comment="uby overview diagram png" date="1428483093" path="Uby-LMF_15_2_public_release4.png" size="65147" user="hartmann" version="2"}%
+%META:FILEATTACHMENT{name="ims_gn_checked_sorted.csv" attachment="ims_gn_checked_sorted.csv" attr="" comment="Checked and corrected version of GN-IMSLex alignment" date="1427710912" path="ims_gn_checked_sorted.csv" size="123872" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="salsaAnalysis.txt" attachment="salsaAnalysis.txt" attr="" comment="ubySALSA Analysis" date="1428084408" path="salsaAnalysis.txt" size="1227" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="Uby-LMF_15_2.zargo" attachment="Uby-LMF_15_2.zargo" attr="" comment="uby overview diagram argouml" date="1428483073" path="Uby-LMF_15_2.zargo" size="30128" user="hartmann" version="1"}%
+%META:FILEATTACHMENT{name="ims_gn_checked_sorted2.xlsx" attachment="ims_gn_checked_sorted2.xlsx" attr="" comment="wip" date="1428500890" path="ims_gn_checked_sorted2.xlsx" size="57948" user="hartmann" version="1"}%
+%META:FILEATTACHMENT{name="SHK_-_Hiring_Process_-_Form_10_-_Dokumentation_der_SHK_Arbeitszeit.docx" attachment="SHK_-_Hiring_Process_-_Form_10_-_Dokumentation_der_SHK_Arbeitszeit.docx" attr="" comment="stundenzettel" date="1428500971" path="SHK_-_Hiring_Process_-_Form_10_-_Dokumentation_der_SHK_Arbeitszeit.docx" size="118736" user="hartmann" version="1"}%
+%META:FILEATTACHMENT{name="UBY-LMF_15_2_extended_cleaned.png" attachment="UBY-LMF_15_2_extended_cleaned.png" attr="" comment="erweiterte Version" date="1428659207" path="UBY-LMF_15_2_extended_cleaned.png" size="50363" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="Uby-LMF_15_2_extended_cleaned.zargo" attachment="Uby-LMF_15_2_extended_cleaned.zargo" attr="" comment="erweitere Version" date="1428659240" path="Uby-LMF_15_2_extended_cleaned.zargo" size="31717" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="ims_gn_checked_sorted2b.xlsx" attachment="ims_gn_checked_sorted2b.xlsx" attr="" comment="updated version of alignments" date="1430293532" path="ims_gn_checked_sorted2b.xlsx" size="44232" user="hartmann" version="2"}%
+%META:FILEATTACHMENT{name="ims_gn_sorted2_erweitert.xlsx" attachment="ims_gn_sorted2_erweitert.xlsx" attr="" comment="final version of alignment check" date="1430740797" path="ims_gn_sorted2_erweitert.xlsx" size="59370" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="UBY-LMF_15_2_extended_cleaned_coloured.png" attachment="UBY-LMF_15_2_extended_cleaned_coloured.png" attr="" comment="" date="1435675326" path="UBY-LMF_15_2_extended_cleaned_coloured.png" size="42819" user="starke" version="2"}%
+%META:FILEATTACHMENT{name="alignmentPlusInfo_annotiert.csv" attachment="alignmentPlusInfo_annotiert.csv" attr="" comment="Annotation of GN-SALSA alignment pairs" date="1435045073" path="alignmentPlusInfo_annotiert.csv" size="239405" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="alignmentPlusInfo_annotiert.xlsx" attachment="alignmentPlusInfo_annotiert.xlsx" attr="" comment="fixed Version" date="1436178938" path="alignmentPlusInfo_annotiert.xlsx" size="168189" user="starke" version="2"}%
+%META:FILEATTACHMENT{name="Uby-LMF_15_2_extended_cleaned_coloured.zargo" attachment="Uby-LMF_15_2_extended_cleaned_coloured.zargo" attr="" comment="" date="1435675343" path="Uby-LMF_15_2_extended_cleaned_coloured.zargo" size="29210" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="SALSA_VN_alignmentWithRoles_v2.csv" attachment="SALSA_VN_alignmentWithRoles_v2.csv" attr="" comment="" date="1438785314" path="SALSA_VN_alignmentWithRoles_v2.csv" size="740598" user="starke" version="1"}%

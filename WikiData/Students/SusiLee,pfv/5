@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="slee" comment="reprev" date="1521745605" format="1.1" reprev="3" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Finding Conceptual Metaphors with Semantically Enriched Embeddings
+
+---++ Meetings
+   * 22.03.2018:
+      * extract source terms with relation to target term from LCC Metaphor Dataset
+      * find instances of source term with relation in parsed wiki dump
+      * DKPro: write pipeline
+   * 07.03.2018:
+      * ClueWeb: on cluster, there might be a parsed version
+      * try using MaltParser, what does the output look like
+      * reader for embeddings
+      * read paper: Semi-supervised methods for expanding psycholinguistics norms by integrating distributional similarity with the structure of WordNet
+      * register thesis
+   * 22.02.2018:
+      * Multilingual Conceptual Metaphor Recognition: write down steps, find out necessary resources for steps
+      * reader for embeddings
+      * create git project
+
+---++ Notes
+   * Dates:
+      * Midterm-presentation: 12.06.2018
+      * Final presentation: 21.08.2018
+
+---++ Paper
+   * A Novel Distributional Approach to Multilingual Conceptual Metaphor Recognition (http://www.aclweb.org/anthology/C14-1165)
+   * Semi-supervised methods for expanding psycholinguistics norms by integrating distributional similarity with the structure of WordNet (http://www.lrec-conf.org/proceedings/lrec2014/pdf/1043_Paper.pdf)
+
+-- Main.ErikLanDoDinh - 2018-02-22

@@ -1,0 +1,149 @@
+%META:TOPICINFO{author="ChristofMueller" date="1193485291" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="LizhenWork"}%
+---+ Wiktionary API        
+
+%TOC%
+
+---++ Tasks (nach Priorität)      
+
+| *Status ( /partly/done)* | *Aufgabe* | *Bemerkungen* |
+| done |  <nop>WordEntry entfernen ||
+|  done |  fehlerhafte Einträge durch Statistik erkennen und bereinigen (überlange Glossen, extrem viele Synonyme...) ||
+|  partly done <br /> | Language anpassen  |  except translation |
+|  done <br /> | Pos anpassen  ||
+|  in progress | Sense Speicherung anpassen |  Except german wiktionary <br /> |
+|  part | Evaluation ||
+|  in progress <br /> | Häufig vorkommende Sonderfälle bereinigen ||
+
+Weitere Punkte (Groß-/Kleinschreibung, Translation, Inflection usw.) nach Absprache.
+
+---++ Zeitplanung      
+
+| *Datum* | *Stunden* | <b>Anmerkungen<br /></b> |
+| 26-09<br /> | 3<br /> | WordEntry Elimination and  remove errors<br /> |
+| 29-09<br /> | 4<br /> | Language anpassen<br /> |
+| 27-10<br /> | 5<br /> | Sense Speicherung anpassen,Evaluation<br /> |
+
+---++ Layout in Wiktionary
+
+   * German
+      * [[http://de.wiktionary.org/wiki/Hilfe:Verwenden_der_Formatvorlage][Hilfe:Verwenden der Formatvorlage]] 
+      * [[http://de.wiktionary.org/wiki/Wiktionary:Formatvorlagen][Formatvorlagen]]
+   * English
+      * [[http://en.wiktionary.org/wiki/Wiktionary:Entry_layout_explained#Related_terms][Entry layout explained]]  
+    
+
+---++ Wiktionary Content / API Capabilities
+
+%EDITTABLE{}%
+| *GERMAN* ||| *ENGLISH* |||
+| *Wiktionary* | *API* | *STATUS* | *Wiktionary* | *API* | *STATUS* |
+| *POS* | POS | | *POS* | | |
+| Geschlecht | | | Gender | | |
+| Silbentrennung | | | Hyphenation | | |
+| Aussprache (IPA, Hörbeispiele) | | | Pronunciation (IPA,SAMPA,audio) | | |
+| *Bedeutungen* | | | *Meaning* | | |
+| *Abkürzungen* | | | *Abbreviations* | | |
+| *Herkunft* | | | *Etymology* | | |
+| *Synonyme* | Synonym (Rel.type) | | *Synonymy*  | Synonym (Rel.type) | |
+| *Gegenwörter* | Antonym (Rel.type) | | *Antonymy*  | Antonym (Rel.type) | |
+| *Oberbegriffe* | Hypernym (Rel.type) | | *Hypernymy* | Hypernym (Rel.type) | |
+| *Unterbegriffe* | Hyponym (Rel.type) | | *Hyponymy*  | Hyponym (Rel.type) | |
+| *Beispiele* | | | *Example sentences*  | | |
+| Redewendungen | | | | | |
+| *Charakteristische Wortkombinationen* | | | | | |
+| *Abgeleitete Begriffe* | | | *Derived terms* | | |
+| Übersetzungen | | | Translations | | |
+| Dialektausdrücke | | | | | |
+| *Referenzen und weiterführende Informationen* | | | | | |
+| Ähnliche Wörter/Ähnlichkeiten | | | | | |
+| *Kategorien* | | | *Category Links* | | |
+|  | | | Homophones | | |
+|  | | | Rhymes | | |
+|  | | | Inflections | | |
+|  | | | *Quotations* | | |
+|  | | | *References* | | |
+|  | | | Usage notes | | |
+|  | | | *Descendants* | | |
+|  | | | *Related terms* | | |
+|  | | | Anagrams or trivia | | |
+|  | | | *Interwiki links* | | |
+|  | | | *Meronymy* | | |
+|  | | | *Holonymy* | | |
+|  | | | *Troponymy* | | |
+|  | | | *Coordinate term | | |
+|  | | | *Otherwise related* | | |
+| Deklination (Verb) | | | Declension | | |
+| Konjugation (Substantiv) | | | Conjugation | | |
+|  | | | *External Links* | | |
+|  | | | Inflections (Noun) | | |
+| Positiv (Adjektiv) | | | | | |
+| Komparativ (Adjektiv) | | | | | |
+| Superlativ (Adjektiv) | | | | | |
+
+%EDITTABLE{}%
+| *Relation Types in API* |
+| HYPERNYM |
+| HYPONYM |
+| SYNONYM |
+| ANTONYM |
+| MERONYM |
+| HOLONYM |
+| TROPONYM |
+| COORDINATE_TERM |
+| SEE_ALSO |
+
+
+---++ Statistics from API
+
+GERMAN:
+number of words: 58190
+%EDITTABLE{}%
+| TYPE | MEAN | VAR | STD | MIN | MAX |
+| categories | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| posEntries | 0.89 | 0.22 | 0.47 | 0.00 | 9.00 |
+| senses | 1.12 | 1.33 | 1.15 | 0.00 | 31.00 |
+| synonyms | 0.68 | 4.80 | 2.19 | 0.00 | 117.00 |
+| hyponyms | 0.40 | 6.09 | 2.47 | 0.00 | 109.00 |
+| hypernyms | 0.53 | 1.60 | 1.27 | 0.00 | 29.00 |
+| antonyms | 0.30 | 1.34 | 1.16 | 0.00 | 53.00 |
+| glossLength | 42.57 | 2579.97 | 50.79 | 0.00 | 2385.00 |
+| examples | 0.37 | 0.40 | 0.64 | 0.00 | 12.00 |
+
+English:
+number of words: 598364
+%EDITTABLE{}%
+| TYPE | MEAN | VAR | STD | MIN | MAX |
+| categories | 0.42 | 0.52 | 0.72 | 0.00 | 31.00 |
+| posEntries | 0.99 | 0.46 | 0.68 | 0.00 | 37.00 |
+| senses | 1.28 | 2.57 | 1.60 | 0.00 | 239.00 |
+| synonyms | 0.01 | 0.06 | 0.25 | 0.00 | 38.00 |
+| hyponyms | 0.00 | 0.00 | 0.01 | 0.00 | 8.00 |
+| hypernyms | 0.00 | 0.00 | 0.00 | 0.00 | 1.00 |
+| antonyms | 0.00 | 0.01 | 0.09 | 0.00 | 14.00 |
+| glossLength | 60.16 | 3719.47 | 60.99 | 0.00 | 1131.00 |
+| examples | 0.06 | 0.11 | 0.33 | 0.00 | 20.00 |
+
+---++ Wiktionary Elements        
+|| *German* || *English* ||
+| *Element* | *exists in wiktionary* | *extracted / in progress / not started* | *exists in wiktionary* | *extracted / in progress / not started* |
+| synonyms | yes  | extracted  | yes  | extracted |
+| hypernyms<br /> | yes<br /> | extracted<br /> | yes <br /> | extracted<br /> |
+| category<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| hyponym<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| antonym<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| gloss<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| example<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| translation<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| word language<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| part of speech <br /> | yes<br /> | improvement | yes<br /> | extracted<br /> |
+| derived terms<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| Inflection<br /> | yes<br /> | in progress<br /> | yes<br /> | in progress<br /> |
+| meronym<br /> | have not seen<br /> | not started | yes<br /> | extracted |
+| Verb entailment<br /> | have not seen | not started | no | not started |
+| Holonym<br /> | have not seen <br /> | not started<br /> | yes<br /> | extracted<br /> |
+| See also<br /> | have not seen <br /> | not started <br /> | yes<br /> | extracted<br /> |
+| troponym<br /> | have not seen<br /> | not started<br /> | yes<br /> | extracted<br /> |
+| Coordinate terms<br /> | have not seen<br /> | not started<br /> | not but header defined<br /> | extracted<br /> |
+
+-- Main.ChristofMueller - 17 Aug 2007

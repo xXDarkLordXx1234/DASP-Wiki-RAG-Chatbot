@@ -1,0 +1,84 @@
+%META:TOPICINFO{author="roehrig" comment="save topic" date="1366637043" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="RouvenRoehrig"}%
+---+!! Minutes
+---++++ Master Thesis of Rouven Roehrig
+
+This page contains the minutes of the weekly meetings.
+
+---++ 22 Apr 2013
+*Attendees*: lb, tz, rr
+
+*<u>Task Description</u>*
+   1 Motivation und abstract zusammenfügen.
+   2 Goals ergänzen, insbesondere konkrete Ansätze nennen.
+   3 Die Ziel-Definition und die Idee der Fallunterscheidung für Phrasen ist gut. Erwähne dies auch in der Task Description.
+   4 Schicke uns dann die Task Description zu
+
+*<u>Zieldefinition</u>*
+   1 Was soll bei der Interaktion (user - system) genau passieren?
+   2 Wann soll der Interaktionsprozess beginnen? D.h. ob die Texte schon vorliegen oder ob sie gerade geschrieben werden?
+   3 Ist der Reviewer system-relevant? D.h. sind die korrekten Daten fix gegeben oder verändern sie sich (z.B. durch den Reviewer)? 
+     Das muss genau definiert werden!
+   4 Definiere Eingaben und Ausgaben (das System ist hier noch eine Black-Box).
+   5 Erstelle ein Diagramm, der den Ablauf modelliert und formalisiert.
+   6 Wenn Diagramm steht, versuche Use Cases durchzuspielen, ob das Diagramm plausibel ist oder ob noch etwas fehlt.
+
+---++ 16 Apr 2013
+*Attendees*: lb, tz, rr
+
+*<u>Task Description</u>*
+   1 Arbeitstitel
+	   * Geht im Grunde in die richtige Richtung.
+   2 Fokus der Task Description
+	   * Viel zu viel!
+	   * Versuche höchsten deine "abstraction" und "problem description" in die aktuellen task description einzubauen.
+   3 Format der Quellenangabe
+	   * siehe latex-Vorlage
+
+
+*<u>Related work</u>*
+
+Du kannst dir z.B. folgende Gebiete anschauen, die in eine ähnlich Richtung gehen:
+   * translation memory
+      * Das ist nicht dasselbe, ABER die Matching-Alorithmen könnten ähnlich sein
+   * near duplicate detection
+      * Auch nicht dasselbe
+      * Versuchen häufig durch z.b. fingerprint schnelle Ergebnisse zu liefern, um große Datenmengen behandeln zu können
+
+   * *Def. Paraphrase*: zwei Phrasen sind Paraphrasen gdw. die gleiche Bedeutung haben
+      * Im Gegensatz zu translation memory-Algorithmen, bei denen hohe Übereinstimmungen auch gut sind, selbst wenn es eine gegenteilige Bedeutung hat.
+         * z.B. "This is valid" und "This is invalid"
+
+*<u>Abgrenzung</u>*:
+   * Was sind speziellen Anforderungen in meiner Arbeit?
+   * Das muss genau definiert werden!
+
+*<u>Clustering verbessern</u>*:
+   * Zunächst herausfinden, was einfache Algorithmen für das Problem leisten können
+   * Dann schauen, was noch fehlt und wo investiert werden muss
+      * z.B. über Synonyme
+
+*<u>Zieldefinition</u>*:
+   1 Welche Art der Hilfe möchte ich geben?
+   2 Was fehlt noch?
+
+---++ 04 Apr 2013
+*Attendees*: lb, tz, rr
+   * Transponder is set up for A326 (D017 should be activated too)
+   * New meeting date: *Mo. 11 am*
+   * DKPro: Hint: Every AnalysisComponent implements collectionProcessComplete
+   * Error message analysis:
+      * rr: Data analysis: I've used DKPro to generate statistics (word and sentence diversity) and paired sentences based on an edit distance (Levenshtein) below 10.
+      * tz: Paired sentences (that rr generated) are soft clusters
+      * Try to find better clusters using (for instance): EditDistance on words, NGramOverlap or similar measures
+      * Plagiarism detection is similar: Read papers about plagiarism detection!
+
+---++ 28 Mar 2013
+*Attendees*: lb, rr
+   * lb: There are three construction sites: DKPro (programming), literature work and data analysis
+      * You should focus on literature work and data analysis first
+   * lb: Summarize your literature work
+   * lb: Do some data analysis, e.g. lexical diversity, 'how many times occurs the same sentence?' etc.
+   * lb: Check out the similarity package (can be used without DKPro)
+
+-- Main.RouvenRoehrig - 12 Apr 2013

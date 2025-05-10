@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="eckle" comment="reprev" date="1368711166" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+---++ Tutorials DKPro
+
+
+---+++ DKPro Tutorial Part 1
+
+Outline
+   1 Java: Development Environment and Best Practices (Maven etc.)
+   2 UIMA & uimaFIT: Introduction and basic Background
+   3 DKPro-Core for linguistic preprocessing (Tokenizer, POS-Tagger, Named Entity Recognizer, Chunker, Parser)
+   4 UBY Basics (UBY is a linked Lexical Resource)
+----
+
+Interview Questions in preparation of the Introduction tutorial: (see also https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/DIPF/FAQDKPro, this FAQ list has been originally created by Lisa, Lucie and others at DIPF - JEK restructured and added some answers)
+
+Maven etc (Eclipse, subclipse, Maven, Artifactory, Jenkins)
+   *     What is a pom
+   *     how to add dependencies to a pom
+   *     How to create a single module project
+   *     How to create a tag
+   *     How to make a release with maven
+   *     How to create a multi-module project
+   *     How to create a job in jenkins
+   *     How to use the dependency management section in a pom
+
+UIMA
+   *         What is UIMA?
+   *         What is an Annotation?
+   *         How do you create a new annotation type?
+   *         How do you add annotations to a Jcas?
+   *         What is the basic structure of a UIMA pipeline
+   *         When do you need aggregate analysis engines?
+
+DKPro Core
+   *         What are the basic steps for implementing a new reader?
+   *         How is the DKPro-Core type hierarchy organized?
+   *         How do I access a corpus from a DKPro-Core pipeline?
+   *         What are important DKPro-Core coponents and how are they used for accessing linguistic annotations
+
+UBY
+   *     How to import a UBY dump on your local machine
+   *     How to use the UBY-API for retrieving information from UBY
+   *     How to access UBY from within a UIMA/DKPro pipeline
+
+
+
+---+++ DKPro Tutorial Part 2
+   1 DKPro Lab, use case: Evaluation of DKPro-Core components 
+   3 Wrapping new components in DKPro-Core
+   4 Using UBY in UIMA pipelines (in combination with DKPro-Core components)
+   5 UIMA - advanced concepts
+
+---+++ !TextMarker Tutorial
+
+
+-- Main.JudithEckleKohler - 08 May 2013

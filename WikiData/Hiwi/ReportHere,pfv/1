@@ -1,0 +1,8 @@
+%META:TOPICINFO{author="ArtemVovk" date="1232910107" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+-- Main.ArtemVovk - 25 Jan 2009
+---+ Report
+
+   Dokumentation(doc/README.pdf) was completly readed and "tested", all is good except  5th part (Running Examples). It conatains some inexactnesses:
+ 
+   * at point 3 in *./dkpro_core_run.sh $WORKING_DIR core_1208_stem_sampleCPE.xml* , at the second parameter must be set absolute path to CPE descriptor	

@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="StefanHenss" date="1351323172" format="1.1" version="1"}%
+%META:TOPICPARENT{name="StefanHenss"}%
+---+ Dossier Extraction
+
+---++ Current Design
+   * State: Currently selected resources.
+   * Actions: Add a resource, remove a resource, stop process.
+   * Rewards: Difference between F1 scores for the current selection before and after the action.
+   * Future Rewards: Discount factor of 0.25. Will be increased when performance improves.
+   * Predictions: The observed reward from past actions is stored and future reward predicted through supervised learning.
+
+---++ Current Features
+
+Features for this task are primarily a copy of web crawling features, since we already try to evaluate the credibility of the source and relevance of the content there. Furthermore, to evaluate representation and redundancy, we will have to compute similarity measures between the resource to be added and the original corpus, as well as the current selection. Those additional features will likely be the same as for single- and multi-document summarization, since selecting representative, non-redundant sentences is much comparable.
+
+---++ Evaluation
+
+The evaluation will primarily make use of standard IR metrics and benchmarks. Furthermore, it could be interesting to calculate semantic similarity and credibility measures for the gold-standard dossiers r.s.t. the corpus to see if they actually are selected in the fashion that the DIPF claimed (e.g., state resources first, commercial last).

@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1173527227" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="AmazonDatenbank"}%
+Hier können Besonderheiten o.ä. aufgeführt werden.
+
+%TOC%
+
+---++Customer ID
+Ich musste feststellen, dass es auch Kunden ohne ID gibt. Ich werde diese Kunden alle unter der Customer ID "n/a" zusammenfassen. Eine statistische Auswertung für diese noname-Kunden ist natürlich nicht mehr möglich.
+
+---++Produkte ohne Herstellername
+Es gibt einige wenige Produkte, die keinen Hersteller besitzen (z.B. !B00004W18U und !B000069D08). Diese werde ich nicht in die DB aufnehmen.
+
+---++ !NumberFormatException Error bei AWS
+Bei Holen von Produktinformationen einiger Produkte kommt es zu einer _NumberFormatException_. Dies ist leider ein Bug beim Amazon Web Service (s.a. http://developer.amazonwebservices.com/connect/thread.jspa?messageID=32002&#32002).
+
+-- Main.KaiMichaelHoever - 08 Mar 2007

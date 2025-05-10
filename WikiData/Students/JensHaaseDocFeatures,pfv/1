@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="JensHaase" date="1273648540" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="JensHaaseDoc"}%
+---+ ML Features
+
+---++ Feature list
+
+Features with (i) are already implemented
+
+   * Text length
+   * Nb of paragraphs
+   * Nb of sentence
+   * Longest / shortest sentence
+   * Nb of token
+   * Longest / (shortest) token (shortest token will mostly be 2)
+   * Nb of stopwords
+   * Nb of incorrect words (Spellchecker)
+   * Nb of Inserts/Deleltes/Replaces/...
+   * Nb of links (internal / external)
+   * (i) Char distribution (max bi-gram)
+   * (i) Longest char sequence
+   * (i) Compression rate
+   * (i) Upper case ratio
+   * term frequency
+   * pronoun frequency
+   * pronoun impact
+   * vulgarism frequency
+   * vulgarism impact
+   * replacement similarity
+   * context relation (keywords similarity)
+   * <strike>anonymity</strike> (no data)
+   * <strike>comment length</strike> (no data)
+   * <strike>edits per user</strike> (no data)

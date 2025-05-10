@@ -1,0 +1,119 @@
+%META:TOPICINFO{author="NikolayGeorgiev" date="1249332371" format="1.1" version="34"}%
+%META:TOPICPARENT{name="NikolayGeorgiev"}%
+---+ Work By Days
+
+Currently: Reading papers on Paraphrasing and Evaluation of MT/Paraphrases (after that - Plausibility Evaluator implementation)<br/>
+Remaining Next Chapters - Chapter 1.1; 2; 5.2;
+
+   * 3 August 2009
+      * Reading papers on Paraphrasing.
+   * 2. August 2009
+      * Chapter 4 and 5.1 completed.
+   * 31. July - 1. August 2009
+      * Chapter 3 completed.
+   * 30. July 2009
+      * Chapter 3.1 done.
+   * 29. July 2009
+      * Chapter 1 - Motivation - almost done.
+   * 28. July 2009
+      * Starting with the writing.
+   * 25-27. July 2009
+      * Nothing.
+   * 24. July 2009
+      * Others - Work and others.
+   * 23. July 2009
+      * Others - Work.
+      * Formatting the Thesis Document.
+   * 22. July 2009
+      * Others - Work.
+      * Formatting the Thesis Document.
+   * 21. July 2009
+      * Plausibility - MySQL DB installed on Desktop and Laptop Ubuntu. The whole system works on the laptop also.
+   * 20. July 2009
+      * Plausibility - Queries to the Leipzig MySQL DB - for fw(x,y)
+      * Installing the part of the system on the laptop.
+      * Writing - started reading about writing a bachelor thesis.
+   * 19. July 2009
+      * Others.
+   * 18. July 2009
+      * Plausibility - Sending queries to the Leipzig cooccurrance web service
+      * Others.
+   * 17. July 2009
+      * Others - Work and others.
+   * 16. July 2009
+      * Others - Work.
+      * Testing the Leipzig Services.
+   * 15. July 2009
+      * DistortionEvaluator supports Sentence-Level by default.
+      * few fixes in the Translation Wrappers.
+      * CPE Configurator updated.
+      * Found strange behavior of the DKPro Lemmatizer: [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Teaching/MaterialsLemmatizer][More Info ...]]
+   * 14. July 2009
+      * Transforming the DistortionEvaluator to a Sentence-Level.
+   * 13. July 2009
+      * Installing Ubuntu with Eclipse, UIMA and DKPro
+      * DistortionAnnotator (Document-based) first version implemented.
+      * Appropriate CPE Configurator added. [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Teaching/MaterialsNikolayDistortionCPE][More Info ...]]
+      * All Sources in SVN.
+   * 12. July 2009
+      * Fixing the AnnotationWriter.xml (the problem from 11. July, see below) in order to Run DKPro under WIndows. The Sentence and Token Annotators are working, but couldn't lemmatize with the TreeTagger - [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Teaching/MaterialsNikolayDKProTreeTaggerWin][More Info ...]]
+   * 11. July 2009
+      * Reading about Linguistics. Downloading papers and reading the MAX2008 paper.
+      * Installing DKPro on Windows (FIXED on 12. July, see above). Running - with Eclipse couldn't do it. With a *.bat file it worked, but the CPE is hard to configure without a GUI in this way. [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Teaching/MaterialsNikolayDKProOnWindows][More Info ...]]
+         * IG: we do not support DKPro for Windows. Contact your supervisors regarding this.
+   * 10. July 2009
+      * Others - Computer and others.
+   * 9. July 2009
+      * Others - Work.
+   * 8. July 2009
+      * Others - Work.
+      * TranslationWrappers - now all are using POST Request (more text can be translated), refactored.
+      * TranslationWrappers JUnit - Long Text Test Cases added.
+      * new RTTranslatorAnnotator.
+   * 6-7. July 2009
+      * Others - Pause.
+   * 4-5. July 2009
+      * Others - Computer Upgrade
+   * 3. July 2009
+      * Developed simple TranslationAnnotator - but can't find the MessageBundle, when an error occurs.
+   * 2. July 2009
+      * JUnit Test Cases - for LanguageSupport, AbstractTranslator and RoundTripTranslator.
+      * Modifying the RoundTripTranslator.
+      * Others - Work.
+   * 1. July 2009
+      * Others - Work.
+   * 30. June 2009
+      * Implementation of the Round Trip Translator Java Class.
+   * 29. June 2009
+      * Others - choosing and buying a new computer
+   * 28. June 2009
+      * UIMA Annotator Tutorial
+      * Others - Bachelor Praktikum
+   * 27. June 2009
+      * Others - ehrenamtlich
+   * 25-26. June 2009
+      * Others - Work 
+   * 24. June 2009
+      * Others - Work + Bachelor Praktikum - finalizing
+   * 22-23. June 2009
+      * Others - Bachelor Praktikum - almost finished :) happy about that.
+   * 21. June 2009
+      * Design of the wrappers and implementation of Google, Yahoo and Microsoft Wrappers. Need to be tested with more data.
+   * 18. June 2009
+      * *DB*: What have you done?
+      * *NG*: Missed it. 19 and 20. June also.
+   * 17. June 2009
+      * Installing UIMA locally
+      * Starting with the design of the wrappers
+   * 16. June 2009
+      * Searching for a HTTP Sniffer - for looking at the body in the HTTP requests<br />
+     HTTP Sniffer 1.2 - crashed Firefox 3.0.11 (NO)<br />
+     https://addons.mozilla.org/en-US/firefox/addon/6647 - firefox plugin (YES :))<br />
+      * Preparing the presentation
+      * Checking out the BING Translation Service, Registering for an inivation code and sending them an email.<br />
+      http://sdk.microsofttranslator.com/ - MS Translator SDK<br />
+      http://msdn.microsoft.com/en-us/library/dd575235.aspx - Getting Started with Microsoft Translator<br />
+      http://www.microsofttranslator.com/dev/ajax/ - Request an invite code<br />
+      
+
+-- Main.NikolayGeorgiev - 24 Jun 2009

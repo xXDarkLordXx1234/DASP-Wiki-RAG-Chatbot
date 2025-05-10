@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="ShuoYang" date="1286865563" format="1.1" reprev="101" version="101"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Okt 2010
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. =XMLFileReader= mit =XPath= | 95 |  |
+| 2. !WikiWörterbuch | 85 | * | 
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !WikiWörterbuch | 10.10.2010 | 6 | <ul><li>Bugbehoben: u.ä. Titel-Elemente wurden konkateniert. </li><li>Nun liefert der Parser (fast) richtige Übersetzungen. </li><li> Außer kleine Mengen Ausnahmen von ungültige CLL-Formate</li></ul> | * |
+| !WikiWörterbuch | 08.10.2010 | 1 | Weitere Entwicklung von !WikiWörterbuch | * |
+| !WikiWörterbuch | 02.10.2010 | 6.5 | <ul><li>Unterstützung von Parsen redirecter Links</li><li>Zu große Speicherverbrauch (>2GB) mit One-Pass parsen (gleichzeitig direct- und redirect-Übersetzungen. Nur kleine Prozent von redirect haben deutsche Übersetzungen aber alle müssen zunächst gespeichert), so dass System abnormal langsam geworden</li><li>Dazu probiert FileHashMap (clapper.org), was alle Values von HashMap direkt im Festplatt speichert. Aber zu langsam (>30min). </li><li>Gelöst mit Two-Pass parsen. Erst mal alle direkte Übersetzungen, zweites Mal alle redirect Übersetzungen. So dass nur gültige redirect werden gespeichert, daher viel kleiner Speicherverbrauch, und viel schneller (alle two passes insgesamt 20 min, mit 1-Pass allein redirect-Zwischenspeicherung dauert 19.3min)</li><li>Wörter mit =""= getrennt in string representation, da =,= auch in Titel enthalten ist und daher nicht eindeutig.</li><li>Redirect-Ergebnis evtl. nicht vollständig (A-Bomb nicht gefunden :( ). Versuche noch, die Ursache herauszufinden</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 40)$EXEC($GET(total_hour))"}% | bis Ende Oktober noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden | |
+<nop>
+
+---+++ Dokumente
+*WikiWörterbuch:* <br>
+StatistikInterlanguageLinksWikipedia <br>
+[[http://www.ishuo.de/storage/wikipediaTitlesWithBrackets.txt][List of wikipedia articles, whose title entails brackets]] <br>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ShuoYang/titleWithMultipleTranslations.txt][List of wikipedia articles with multiple interlanguage links]]
+
+*Lucene Scoring:* <br>
+ChangingLuceneScoring <br>
+BM25Guide
+
+*XMLReader:* <br>
+XPathPerformanceAnalysis
+
+*Google Translate:* <br>
+GoogleTranslatePerformanceAnalysis <br>
+GoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+-- Main.ShuoYang - 02 Oct 2010
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%
+%META:FILEATTACHMENT{name="titleWithMultipleTranslations.txt" attachment="titleWithMultipleTranslations.txt" attr="" comment="List of wikipedia articles with multiple interlanguage links" date="1285170011" path="titleWithMultipleTranslations.txt" size="22805" stream="titleWithMultipleTranslations.txt" tmpFilename="/var/tmp/CGItemp3071" user="ShuoYang" version="1"}%

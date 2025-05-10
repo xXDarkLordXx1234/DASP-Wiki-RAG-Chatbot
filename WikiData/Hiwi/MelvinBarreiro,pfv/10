@@ -1,0 +1,236 @@
+%META:TOPICINFO{author="barreiro" comment="reprev" date="1402697515" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="WebHome"}%
+<!--
+This line only protects this topic, if the hash/number sign is removed.
+   * Set ALLOWTOPICVIEW = Main.MelvinBarreiroMartin, Main.IrynaGurevych, Main.SebastianHarrach
+//-->
+
+---+++ Kommentare SeH
+
+Sehr schöne Dokumentation, danke. Du hast bei protocol den 24.04. genannt, Du meinst verm. den 24.05.? Sieht sonst alles aus wie geplant :-)
+
+IT-Infrastructure
+@info(REC) Do not use URLs to link between wiki pages:
+   * for intra-web links write just the name of the page, e.g. MeetingProtokolle instead of https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/MeetingProtokolle
+   * for cross-web links prefix the page name with the wiki web name, e.g. UKP.Teaching.SenseLinkCuration instead of https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/Teaching/SenseLinkCuration
+
+http://www.hrz.tu-darmstadt.de/id/tuid/tu_id_mitarbeiter/inh_tuid_mitarbeiter.de.jsp
+
+---+++ Projects Melvin Barreiro Martin
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"}%
+| *Aufgabe* | *% done* |
+| Einarbeitungsprozess UKP für neue Mitarbeiter designen | 35 |
+| | |
+| | |
+
+
+---+++ Protocol
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Melvin, Stunden 2014* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| UKP | 24.05.2014 | 3 | <ul><li> Vertiefung der Einarbeitung in das UKP-Wiki </li><li> Ausarbeitung der Einarbeitungsstruktur II </li><li> Implementierung der Grundstruktur |
+| UKP | 24.05.2014 | 1 | <ul><li> Ausarbeitung der Einarbeitungsstruktur I |
+| UKP | 23.05.2014 | 2 | <ul><li> Einarbeitung in das UKP-Wiki und Erfassen der Aufgabe </li><li> Aufgebe: Einarbeitungsprozess UKP für neue Mitarbeiter designen </li><li> Lektionen erstellen   </li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+       | *Soll* | | 24 | until the end of june 2014 |
+
+
+---+++ Einarbeitungsprozess für neue Mitarbeiter am UKP
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Lektion, Inhaltsübersicht* |
+| *lection* | *amount of chapters* | *content* | *table chapters* | *tasks* | *completed* | *question* |
+| lection 1:[[#GettingStarted][getting started]] | 02 | day to day business | </li><li> [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/FirstSteps][First Steps]] </li><li>  [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/Calendar][UKP Calendar]] | </li><li>make your UKP Calendar readable | | |
+| | | subcriptions | | x | x | |
+| lection 2:[[#UkpWebsite][UKP website]] | 02 | </li><li>[[#UkpSetup][UKP setup]]</li><li>[[#UkpTalks][UKP talks]] | </li><li>x | | | |
+| lection 3:[[#AboutStaff][about staff]] | 03 | </li><li>[[#UkpMeetings][meetings]] </li><li>[[#WeeklyReports][weekly reports]] </li><li>[[#CommuniCation][communication]] | </li><li> | | | |
+| lection 4:[[#EverydayLife][everyday life]] | 04 | </li><li>[[#LifeDarmstadt][life in Darmstadt]] </li><li> [[#PromotionsFoerderung][Promotionsförderung in Deutschland]] </li><li> [[#VisumVisa][visum/visa]] | </li><li> | | | |
+| lection 5:[[#ResearchInfrastructure][setting up your research infrastructure]] | 03 | </li><li>[[#SetupInfrastructure][setup infrastructure]]</li><li>[[#ReSources][ressources]]</li><li>[[#ResearchProjects][applying for research projects]] </li><li>[[#ScientificHowto][scientific howto]] | </li><li> | | | |
+| lection 6:[[#ItStructure][IT-structure]] | 03 | </li><li> [[#OfficeImplements][office implements]]</li><li> [[#SoftWare][software]]</li><li> [[#SerVices][services]] | </li><li> | | | |
+| lection 7:[[#EventOrganization][event organization]] | 02 | </li><li>[[#GraduationCeremony][graduation ceremony]]</li><li>[[#TeachIng][teaching]] | </li><li> | | | |
+| | | | | | | |
+
+
+<ul><li>Zu klärende Fragen:<ul><li>Wie werden intern verlinkte Seiten angelegt?</li><li>Was kann an der Grundstruktur verbessert werden?
+                    
+   * UKP_setup_structure.jpg: <br />
+     <img src="%ATTACHURLPATH%/UKP_setup_structure.jpg" alt="UKP_setup_structure.jpg" width='1840' height='3264' />
+</li><li> getting startet 
+</li><li> ___day-to-day business
+</li><li> ___subscriptions
+</li><li> UKP website
+</li><li> ___setup
+</li><li> ___UKP talks
+</li><li> about staff
+</li><li>___meeting
+</li><li>___weekly reports
+</li><li>___communication
+</li><li> everyday life
+</li><li>___life in Darmstadt
+</li><li> ___Promotionsförderung in Deutschland
+</li><li>___visum/visa
+</li><li>setting up your research infrastructure
+</li><li>___setup infrastructure
+</li><li>___resources
+</li><li>___applying for research projects
+</li><li>___scientific howto
+</li><li>IT-structure
+</li><li>___office implements
+</li><li>___software
+</li><li>___services
+</li><li>___event organization
+</li><li>___graduation ceremony
+</li><li>___teaching
+
+#GettingStarted </li><li> getting startet 
+---++ First steps
+   * Read about the [[OurAbbreviations][abbreviations of colleagues]]
+   * Get a transponder (an electronic key for the office doors).
+      * If you have an RBG Account you can ask for a transponder yourself.
+      * If you don't -> Contact office admin
+      * Permissions to open certains rooms -> office-admin
+   * Create your personal page at the UKP people website, see OurWebsite
+   * [[Calendar][Make your Outlook calendar readable]]
+   * Get a [[StudentidHowto][Student-ID]]
+   * Get a [[TuidHowto][TU-ID]]
+   * Browse through [[HowTo]] for basic information of interest (e.g., how to use the office phones, how to recycle waste, etc.)
+#daytodayBusiness </li><li> ___day-to-day business
+---++ Alltag / Everyday Life
+   * [[ArbeitenUnterLinux][Working in Linux]]
+   * [[InternetPerLaptop][Mobile internet (WLAN, VPN)]]
+   * [[MultifunktionsRaeume][Book a room]]
+   * [[PdfViewingAndManipulation][Viewing and manipulating PDF files]]
+   * [[PublicWWWShare][Sharing files with external people]]
+   * [[UseFileserver][Share files with internal people (DataRepository)]]
+   * [[Telephone]]
+   * UkpITStructure
+   * [[WasteDisposal]]
+   * [[Backups]]
+
+---+ Working with Linux ...
+
+   * [[http://linuxundich.de/de/ubuntu/aero-snap-mit-gnome-und-compiz/][Aero Snap for Ubuntu]] - Allows the easy positioning of two windows side by side by docking them to the left and right side. Good for comparing documents or having an IDE and Browser side by side
+
+   * SSH/SCP: If you are looking for a graphical client, you can use gFTP (available in the ubuntu software repository). Connection type has to be set to SSH, of course.
+ 
+   * Outlook: See [[HowTo#Services]] and [[DavMail]] for how to access mail, address books, and calenders from GNU/Linux.
+
+---++ Working hours
+   * Während Kernarbeitszeiten (von 10 bis 16 Uhr) sollte man (bis auf Meetings natürlich) im Büro erreichbar sein
+      * Bei Teilzeit-Beschäftigung ist die Kernzeit entsprechend kürzer (z.B. von 10 bis 14 Uhr bei 50%, manchmal gelten andere Absprachen)
+---++ Raum / Multifunktionsraum buchen / Buchung eines Multifunktionsraums / Book a room for a meeting
+
+---+++ UKP rooms
+
+UKP rooms such as B120 can be booked through the [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/Calendar][Exchange Calendar]].  If you are booking a recurring meeting, make sure to specify an end date, or else the room's calendar may reject your meeting request.
+
+---+++ Department rooms
+
+You can book a room on the room booking system from the Department:
+   * Login with you TU ID 
+      * http://www.informatik.tu-darmstadt.de/de/intern/multifunktionsraeume/
+   * Direct access if you are already logged in: http://www.informatik.tu-darmstadt.de/Dekanat/cgi-bin/mrbs
+
+---++ Absence because of sickness or emergencies 
+   * Bei Abwesenheit im Büro diese bitte immer melden:
+      * Krankheit: Meldung an Sekretariat, CC: an Iryna
+      * wenn nicht gearbeitet wird, Urlaubsantrag an Iryna mit einigem Vorlauf
+      * zu-Hause-arbeiten bei Sonderabsprachen wie z.B. Krankheit eines Familienangehörigen, akute Not bzgl. der Kinderbetreuung
+      * see "Workflow Urlaubsantrag", "Workflow Heimarbeitstag" in UkpSekretariat
+
+---+ Viewing and manipulating PDF files
+%TOC%
+
+
+
+---++ Viewing PDF files
+
+---+++ Evince
+
+The default document viewer on the desktops is Evince, which is very fast and handles PDF documents (among many other  formats).
+
+---++++ Problems viewing documents with East Asian (Chinese, Japanese, and Korean) characters
+
+You may find on your system that Evince fails to display some or all CJK characters.  This is [[https://bugs.launchpad.net/ubuntu/+source/poppler/+bug/197537][a longstanding issue in Ubuntu]], and can normally be solved simply by installing the package =poppler-data=:
+
+   =sudo apt-get install poppler-data=
+   
+You may still find that some character forms aren't displayed correctly (regular weight forms are substituted for text that should be in bold).
+
+---+++ Adobe Reader
+
+As an alternative reader, the proprietary (but zero-cost) [[http://wiki.ubuntuusers.de/Adobe_Reader][Adobe Reader]] is also available for Ubuntu.
+
+---++ Manipulating PDF files
+
+---+++ pdfimages
+
+pdfimages allows you to extract bitmap images from PDF files in their original format and quality.  This is really useful if you have a paper and want to extract the diagrams for a reading group presentation.
+
+---++++ Installation
+
+To install on Ubuntu: =sudo apt-get install poppler-utils=
+
+To install on openSUSE: =sudo zypper in poppler-tools=
+
+---++++ Examples
+
+=pdfimages -j foo.pdf bar=
+
+This exacts all the images from =foo.pdf= and puts them in the directory =bar=.  DCT images are saved as JPEG files, and all other bitmap images are stored as PBM/PPM files.
+
+---+++ pdftk
+
+There is a wonderful tool for PDF Manipulation called =pdftk=.
+
+---++++ Installation
+   * =sudo apt-get install pdftk=
+
+---++++ Examples / Usage
+   * =pdftk in.pdf cat 1 3-5 7S 8-end output out.pdf= 
+   * this would do: take _in.pdf_, strip of page 2 and 6, turn page 7 upside down and add the rest.. write to _out.pdf_
+   * There are many examples available, see [[http://www.accesspdf.com/pdftk/#examples][the pdftk examples page]]
+
+---+++ Acrobat Professional
+
+You also can use Acrobat Professional in your Microsoft Windows virtual machine, if you like GUIs :)
+
+
+#SubScriptions </li><li> ___subscriptions
+---++ Subscriptions
+   * Subscribe to TWiki notifications of TWiki Webs relevant to you
+      * most important TWiki Webs: [[UKP.WebHome][UKP]], [[UKP/Reports.WebHome][UKP/Reports]], [[DKPro.WebHome][DKPro]], [[UKP/Blog.WebHome][UKP/Blog]], [[UKP/QA.WebHome][UKP/QA]]
+      * other active Wiki Webs (add them depending on your interests): [[LSR.WebHome][LSR]], [[Disambiguation.WebHome][Disambiguation]], [[Hiwi.WebHome][Hiwi]], [[Students.WebHome][Students]], [[UKP/Publications.WebHome][UKP/Publications]], [[UKP/Teaching.WebHome][UKP/Teaching]]
+      * how to subscribe to TWiki notifications: on the left-hand side of each TWiki Web, there is a "Notifications" item; by clicking on it, a TWiki page is displayed, listing all subscribers for this TWiki Web. To subscribe, simply edit this page and add your TWiki name to this list.
+   * Subscribe to general mailing lists: FachbereichsMailingLists
+#UkpWebsite </li><li> UKP website
+#UkpSetup </li><li> ___setup
+#UkpTalks </li><li> ___UKP talks
+#AboutStaff  </li><li> about staff
+#UkpMeetings </li><li>___meetings
+#WeeklyReports </li><li>___weekly reports
+#CommuniCation </li><li>___communication
+#EverydayLife </li><li> everyday life
+#LifeDarmstadt </li><li>___life in Darmstadt
+#PromotionsFoerderung </li><li> ___Promotionsförderung in Deutschland
+#VisumVisa </li><li>___visum/visa
+#ResearchInfrastructure</li><li>setting up your research infrastructure
+#SetupInfrastructure</li><li>___setup infrastructure
+#ReSources</li><li>___resources
+#ResearchProjects</li><li>___applying for research projects
+#ScientificHowto</li><li>___scientific howto
+#ItStructure</li><li>IT-structure
+#OfficeImplements</li><li>___office implements
+#SoftWare</li><li>___software
+#SerVices</li><li>___services
+#EventOrganization</li><li>___event organization
+#GraduationCeremony</li><li>___graduation ceremony
+#TeachIng</li><li>___teaching
+
+
+
+
+
+
+
+%META:FILEATTACHMENT{name="UKP_setup_structure.jpg" attachment="UKP_setup_structure.jpg" attr="" comment="" date="1401838137" path="UKP setup structure.jpg" size="3267239" user="barreiro" version="1"}%

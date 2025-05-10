@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="lee" comment="" date="1624006909" format="1.1" reprev="8" version="11"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Master Thesis* : 
+
+*Supervisor*: JL
+
+*Start Date* : 17.02.2021
+
+*Mid-Term Presentation Date* : 27.05.2021
+
+*Final Presentation Date* : 
+
+*End Date*: 23.08.2021
+
+---++++ *xx.xx.xxxx - xx.xx.xxxx*
+
+---++++ Meeting *18.06.2021*
+   * Created benchmark: with initial results + CL strategies + visualization
+   * proxy active learning repo -> Einlesen
+
+---++++ Meeting *04.06.2021*
+   * Created benchmark: with initial results + CL strategies + visualization
+   * todo (JL) -> proxy active learning repo
+
+---++++ Meeting *21.05.2021*
+   * Created benchmark: with initial results
+   * CL strategies + visualization
+   * next week: midterm presentation
+
+---++++ Meeting *07.05.2021*
+   * Models will always be trained from scratch for now (proxy training and active learning updates)
+   * Created benchmark: with initial results
+   * next steps:
+      * CL strategies
+
+---++++ Meeting *23.04.2021*
+   * [[https://documentcloud.adobe.com/link/track?uri=urn:aaid:scds:US:864ffcce-01fc-4feb-a80c-b7454f5d8bef#pageNum=1][Flow chart]]
+   * Models will always be trained from scratch for now (proxy training and active learning updates)
+   * next steps:
+      * repeated runs 
+      * evaluate on additional datasets
+      * CL strategies
+
+---++++ Meeting *09.04.2021*
+   * Implemented Iterators for curriculum learning (sentence length, etc.) -> much faster training now
+   * next steps:
+      * repeated runs 
+      * evaluate on additional datasets
+
+---++++ Meeting *21.03.2021*
+   * SST-5 : 0.45 F1 (micro)
+   * TREC : 0.85 F1 (micro)
+   * !DistilRoBERTa -> how to tokenize?
+   * next steps:
+      * slurm setup
+      * simple curriculum learning baseline (sentence length)
+
+---++++ Meeting *10.03.2021*
+   * Preliminary results on various datasets
+   * TREC data has the labels in the first word! 
+   * By next week: finetuning !RoBERTa
+
+---++++ Meeting *24.02.2021*
+   * preliminary results on SUBJ
+   * extending to other models and data
+
+---++++ Meeting *03.02.2021*
+   * Check tasks and architectures
+   * Currently reading [[https://arxiv.org/pdf/2010.13166.pdf][survey paper]] about curriculum learning
+   * Todo: Distilroberta base vs sentenencedistilroberta (across datasets on slurm)
+
+---++++ Meeting *20.01.2021*
+   * Check tasks and architectures
+   * More reading
+   * Distilroberta base vs sentenencedistilroberta (across datasets on slurm)
+
+*To-Dos For xx.xx. - xx.xx.:*
+
+-- Main.JiUngLee - 2021-01-20

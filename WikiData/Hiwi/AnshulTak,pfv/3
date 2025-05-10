@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="tak" comment="reprev" date="1428941143" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Next Meeting
+   * @discuss(CS): time form
+
+---++ 2015-03-30
+   * @discuss(CS): Next steps in self training experiment
+      * provided the data set of unlabeled data
+   * @Discuss(CS): planed next annotation steps
+
+---++ 2015-03-23
+   * @discuss: Annotation of major claim... investigated results.
+   * @discuss: solved issue with the annotation environment. 
+
+----+ April 2015
+
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2015-04-02 | Annotation Guideline V2.0 | 2 | understanding the concept of claims in inner paragraph and introduction and conclusion |
+| 2015-04-03 | Claim annotation for 9 essays | 4 | Applying annotation guidelines to 9 essays |
+
+
+----+ Mar 2015
+
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2015-03-02 | Initial meeting, contract information and project explanation | 2 |  |
+| 2015-03-03 | Research on UIMA and DKPro and DKPro TC | 3 |  |
+| 2015-03-04 | Manual annotations and reading Annotation guidelines | 3 | Brat setup, Guidelines version 1.0 and manual annotation |
+| 2015-03-06 | Manual annotation continue ..  | 1 |  |
+| 2015-03-09 | Project setup for the PersuasiveClassification | 4 | Study on maven projects setup and Worked on errors for the project |
+| 2015-03-11 | Understanding the PC experiment with various feature extractor and Understanding DKPro TC  | 3 |  |
+| 2015-03-12 | Manual annotations for remaining 30 essays | 3 | Major Claim |
+| 2015-03-16 | Manual annotation continue..  | 1 |  |
+| 2015-03-18 | Excess issue resolved and SVN checkout for the project | 2 |  |
+| 2015-03-19 | Meeting and understanding the logic and flow for the PC classification model  | 5 | Introduction to self learning Model and PC experiment  |
+| 2015-03-20 | Running PC experiment with GOLD preprocessed dataset | 2 |  |
+| 2015-03-23 | Meeting for Major claim annotation results/ Resolving errors in the annotation environment/ Re-running PC classification for understanding various parameters which are used  | 3 |  |
+| 2015-03-25 | Setting up self training experiment | 5 | Modifing PC to run test-train model rather than cross validation task |
+| 2015-03-27 | Adding features used in PersuasiveClassification to selfTraining experiment and resolving issues that arised | 2 |  |
+| 2015-03-31 | Running PC experiment and discrepancy analysis about the difference in the result at each run | 4 |  |
+
+
+-- Main.ChristianStab - 2015-03-23

@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1379451948" format="1.1" reprev="121" version="121"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * today (17.09.2013):
+      * *spearman* value for tipster
+      * <s>robustwsd *twsi* index per doc</s> running!
+      * <s>*tipster twsi* index per term/doc</s> running!
+      * include tipster baseline *references*
+
+   * idea: distribution verbs -> less than JJ, but still better performance!
+   * results discussion: by resource, by side (q,docs)?
+
+   * <s>Du sagst nicht, *warum* du das machst. Da braucht es eine *Einführung* in das Thema mit Motivation und Forschungsfrage</s>
+   * Du *interpretierst* nicht. Zumindest muss klar gesagt werden, dass es mit den hier eingesetzten Methoden keine Verbesserung bringt (zumindest bisher auf Datensatz 1). Du erklärst auch nicht, was das nun heisst mit der Spearman-Korrelation von 0.5: das heisst doch, dass sich viel ändert, und laut scores nicht negativ. Nun schauen wie der Anteil der non-judged bei Baseline und bei Expansion ist, und schon kann man argumentieren, dass dies evtl. daran liegt, oder eben auch nicht.
+   * Du ziehst am Ende keine *Schlüsse*. Auch wenn es hat ist, aber ein möglicher Schluss kann durchaus sein: "bringt nix", oder "Effekt kaum messbar", oder "Datenlage macht dies unmöglich, das hat schon damals bei der challenge nichts gebracht"
+   * Du *lobst* manchmal Dinge zu sehr, weil du sie magst  z.B. den DT. Wissenschaftlicher Stil ist das neutrale Berichten, auch wenn man sein eigenes Zeug (oder das Zeug des Betreuers) in vermeindlich negativem Licht erscheinen lässt. Keine Sorge vor Biemann-bashing :) bins gewohnt.
+   * *Illustrative Beispiele* aus dem Datensatz, bei denen es klappt und bei denen es schieflaeuft, würden das Verständnis beim Leser deutlich erhöhen.
+
+   * <s>write about and</s> *apply new data set*
+      * <s>transforming Tipster docs into !RobustWSD format ...</s>
+         * after: transform to Terrier tagged format
+            * <s>for baseline</s>
+            * <s>for query side DT experiments</s>
+            * <s>for index side DT experiments</s>
+            * TWSI ...
+
+   * run *delex query side on frink*
+      * the sense substituter contains an old version of asv toolbox, dt lemmatizer has new one
+         * re-pack the sensesubstituter jar and remove the asv package
+      * implement second term selecting method and (just by annotations overlap) count how many terms would be expanded by each of the two methods
+
+<!--
+steuer@frink:~/topics/tipster/twsi$ grep -i adjective *
+systemqueryLemmaEXPANSION_TWSI_TOP10_PERTERM.txt:402 behavioral^1.0 genetics^1.0 happen^1.0 field^1.0 behavioral^1.0 genetics^1.0 study^1.0 relative^1.0 influence^1.0 genetic^1.0 environmental^1.0 factor^1.0 individual's^1.0 behavior^1.0 personality^1.0  area^0.18 work^0.18 vocation^0.18 speciality^0.18 subject^0.27 analysis^0.18 examination^0.1 learning^0.1 research^0.18 investigation^0.19 somewhat^0.08 --adjective--^0.13 approximate^0.15 respective^0.15 comparative^0.33 power^0.11 control^0.09 authority^0.08 impact^0.24 sway^0.19 performance^0.11 manner^0.08 response^0.05 conduct^0.26 action^0.33 person^0.08 attitude^0.06 being^0.08 disposition^0.08 character^0.35
+systemqueryLemmaEXPANSION_TWSI_TOP20_PERDOC.txt:402 behavioral^1.0 genetics^1.0 happen^1.0 field^1.0 behavioral^1.0 genetics^1.0 study^1.0 relative^1.0 influence^1.0 genetic^1.0 environmental^1.0 factor^1.0 individual's^1.0 behavior^1.0 personality^1.0  investigation^0.19 analysis^0.18 research^0.18 learning^0.1 examination^0.1 respective^0.15 --adjective--^0.13 approximate^0.15 comparative^0.33 authority^0.08 control^0.09 power^0.11 impact^0.24 sway^0.19 action^0.33 conduct^0.26 response^0.05 manner^0.08 performance^0.11 character^0.35
+systemqueryLemmaEXPANSION_TWSI_TOP5_PERTERM.txt:402 behavioral^1.0 genetics^1.0 happen^1.0 field^1.0 behavioral^1.0 genetics^1.0 study^1.0 relative^1.0 influence^1.0 genetic^1.0 environmental^1.0 factor^1.0 individual's^1.0 behavior^1.0 personality^1.0  subject^0.27 speciality^0.18 vocation^0.18 work^0.18 area^0.18 research^0.18 examination^0.1 learning^0.1 analysis^0.18 investigation^0.19 --adjective--^0.13 somewhat^0.08 approximate^0.15 respective^0.15 comparative^0.33 power^0.11 control^0.09 authority^0.08 sway^0.19 impact^0.24 manner^0.08 response^0.05 conduct^0.26 performance^0.11 action^0.33 attitude^0.06 being^0.08 disposition^0.08 person^0.08 character^0.35
+-->

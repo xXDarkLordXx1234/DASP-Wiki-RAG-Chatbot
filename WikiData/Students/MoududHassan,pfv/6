@@ -1,0 +1,35 @@
+%META:TOPICINFO{author="sorokin" comment="reprev" date="1480668426" format="1.1" reprev="4" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Thesis Topic
+
+---++ Intro
+
+---++ Next meeting
+   * @todo(DS): Dr. Eichberg
+   * @todo(MH): fill out the wiki
+   * @todo(MH): DKPro: [[https://dkpro.github.io/dkpro-core/]]
+         * MH : Installed Maven and tried to setup a test project as instructed at [[https://dkpro.github.io/dkpro-core/pages/java-intro/]]. But getting the following error inside main method where I am calling runPipeline : 
+         * The method createReaderDescription(Class<? extends CollectionReader>, TypeSystemDescription, TypePriorities, FsIndexCollection, Capability[], Object...) from the type CollectionReaderFactory refers to the missing type CollectionReaderDescription
+         * The method createEngineDescription(AnalysisEngineDescription...) from the type AnalysisEngineFactory refers to the missing type AnalysisEngineDescription
+         * I checked inside the Maven dependencies that the required dependencies already exists!
+   * @todo(MH): take a a closer look at the code 
+      * MH : Trying to understand knowledgebase KbSPARQLAccess type you implemented the type as enum instead of a class. Would like to know why you choose enum over class?
+      * DS's code
+      * Raktim's code on extracting data from the Wikipedia corpus: CreateAnnotations.java
+         * I want to debug the code to understand how it works. I need wikidata dump file to do that. Where do I get wiki data dump file?
+         * DS: I think he has used the JSON dump for this task, it is available here: [[https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29][Wikidata:Database_download#JSON_dumps]]. The RDF dump that is loaded into the local installation of Virtuoso at UKP can be downloaded  [[http://tools.wmflabs.org/wikidata-exports/rdf/exports.html][here]].
+   * @info(DS): [[http://www.cray.com/blog/tuning-sparql-queries-performance/][Tuning SPARQL Queries for Performance]] - just a couple of good practices, though I have found them pretty useful. 
+
+---++ 2016-11-25
+   * @info(DS): organisational issues
+   * @info(DS): relevant code repositories:
+      * [[https://github.com/sivareddyg/graph-parser]] - this is a Semantic Parser that uses a different knowledge base (Freebase), but the queries and their structure are very similar to WikiData. We can definitely learn something from his implementation. It seems like SPARQL relevant classes are located here: [[https://github.com/sivareddyg/graph-parser/tree/master/src/in/sivareddy/graphparser/util/knowledgebase]]
+      * [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/]] - This is a code of a UKP master student who had to implement some SPARQL queries last year. He has used the same WikiData endpoint. The Queries are implemented in this class: [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/java/src/main/java/de/tudarmstadt/ukp/raktim/SparqlHandler.java]]
+      * Finally here is some code that I have been working on, relevant WikiData objects are located here: [[https://git.ukp.informatik.tu-darmstadt.de/sorokin/semantic-parsing-training-data-pipeline/tree/master/src/main/java/knowledgebase]] - get acquainted with it, as we'll probably use it as the starting point. 
+
+---++ 2016-11-XX
+   * @todo(MH): test task results, link the code 
+
+
+
+-- Main.DaniilSorokin - 2016-11-25

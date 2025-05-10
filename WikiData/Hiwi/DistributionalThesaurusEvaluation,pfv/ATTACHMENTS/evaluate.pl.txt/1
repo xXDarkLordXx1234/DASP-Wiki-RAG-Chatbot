@@ -1,0 +1,344 @@
+#!/usr/bin/perl -w
+use strict;
+use Cwd 'abs_path';
+use WordNet::QueryData;
+use WordNet::Similarity::jcn;
+use WordNet::SenseRelate::Word;
+
+### compute Wordnet similary
+### Richard Steuer, 09/2011
+
+my ($p, $s, $t);
+
+for $p ( (200,300,400,500) ) {
+
+    for $s ( (10,15,20,25,30) ) {
+
+	# LMI:
+	next if($s != 10);
+
+	# LL:
+	#next if( $p==200 && $s>25); next if( $p==300 && ($s<20 or $s>30)); next if( $p==400 && ($s<20 or $s>30)); next if( $p==500 && ($s<20 or $s>30));
+
+	for $t ( (2,5,10,15,20) ) {
+
+	    # LMI:
+	    next if ($p==200 && $t != 10);
+	    next if ($p==300 && $t==15);
+	    next if ($p==400 && $t>15);
+	    next if ($p==500 && ($t<5 or $t>10));
+
+	    # LL:
+	    #next if( $p==200 && $t>2); next if( $p==400 && $t!=10); next if( $p==500 && $t!=10);
+
+	    # do the dt chain (after context extraction)
+	    &doChain($p,$s,$t);
+
+	    system "echo '\nPARAMETERS: $p;$s;$t;' >> results.log";
+
+	    # get evaluation value for this run
+	    my $val = &doEvaluation("dt_file.txt");
+
+	    # output tuple (parameters, similarity value)
+	    system "echo '$p;$s;$t;$val' >> results.csv";
+
+	} # t
+
+    } # s
+
+} # p
+
+############################################################
+######################### sub functions ####################
+############################################################
+
+sub doChain {
+
+    my $p = $_[0];
+    my $s = $_[1];
+    my $t = $_[2];
+
+    system "hadoop dfs -rmr freqsig-out";
+    system "pig -param t=$t -param s=$s ~/pig/FreqSig.pig";
+    system "hadoop dfs -rmr prunegraph-out";
+    system "pig -param p=$p ~/pig/PruneGraph.pig";
+
+    system "he AggrPerFt.java prunegraph-out aggr-out";
+    system "he SimCounts.java aggr-out simcounts-out";
+
+    system "hadoop dfs -rmr simsort-out";
+    system "pig src/SimSort.pig";
+
+    # copy dt from hdfs to local
+    system "rm -f dt_file.txt && hadoop dfs -cat simsort-out/p* > dt_file.txt";
+
+}
+
+
+sub doEvaluation {
+
+    #######################################################
+    #################### configuration ####################
+    #######################################################
+
+    my $dt_file = $_[0];
+
+    # the file with the sample nouns
+    my $nounfile = "vergleichsnomen100selten.txt";
+
+    # use the top N similar words of each list
+    my $top = 5;
+
+    # turn on autoflush for the console
+    $| = 1;
+
+    # the POS we want to regard
+    my $tag = "#NN";
+
+    # compare a word to itself?
+    my $self = 0;
+
+    # show debugging information
+    my $debug = 1;
+
+    # log all details (comparisons between each word)
+    my $log = 1;
+
+    # file with the pre-cached similarity calculations
+    my $cachefile = "simcache.csv";
+
+    #######################################################
+    #######################################################
+    #######################################################
+
+    my (@simlist, $noun, $line);
+    my ($w1,$w2,$simval,$sum,$cnt,$avg,$total,$tmp);
+
+    # read the nouns used as an evaluation base
+    my @nouns = &readNouns( $nounfile );
+
+    # sum the total similarity values
+    $total = 0;
+
+    # process each noun: compute average similarity value for its list
+    foreach $noun (@nouns) {
+
+	print "\nProcessing \"$noun\" ...\n" if ($debug);
+	system "echo '\nWORD: $noun' >> results.log";
+
+	# grep the sorted list for each noun
+	@simlist = `grep "^$noun$tag" $dt_file | sort -k3nr`;
+
+	# sum all the values for each word pair in the list
+	$sum = 0;
+
+	# count all the comparisons
+	$cnt = 0;
+
+	if(@simlist) {
+
+	    # walk through the list of similar words
+	    foreach $line (@simlist) {
+
+		# assign the three values of the line
+		($w1,$w2,$simval) = split(/\s+/, $line);
+
+		# remove the tag at the end of the word/string
+		$w1 =~ s/(#[A-Z]+\$?)$//;
+		$w2 =~ s/(#[A-Z]+\$?)$//;
+
+		# skip comparison to itself
+		next if( !$self && $w1 eq $w2 );
+
+		# skip if the words only consists of one underline (happened)
+		next if $w2 =~ /^_/;
+		# skip if empty
+		next if $w2 =~ /^\s*$/;
+
+		# get the similarity measure value for the two terms
+		$tmp = &getMaxSense($w1,$w2,$cachefile); $cnt++; print "$cnt ... " if ($debug);
+
+		if($tmp > 1) {
+
+		    $tmp = 1;
+
+		}
+
+		#debug
+		print "now getting the max sense of $w1 and $w2 ... \"$tmp\"\n" if ($debug);
+		system "echo -n '\t$w1\t$w2\t$tmp\n' >> results.log" if ($log);
+
+		$sum += $tmp;
+
+		last if $cnt >= $top;
+
+	    } # foreach list of similar words
+
+	    # the average similarity value for the list of one term
+	    $avg = ($cnt>0) ? $sum/$cnt : 0;
+
+	    # add the value for this word/list
+	    $total += $avg;
+
+	    # output
+	    print "$noun: $avg\n" if ($debug);
+	    system "echo 'AVERAGE: $avg' >> results.log" if ($log);
+
+
+	} else {
+
+	    print "$noun: list is empty\n";
+	    system "echo '$noun: list is empty' >> results.log" if ($log);
+
+	} # else
+
+    } # foreach noun
+
+    # the total average for all the words tested
+    $total /= ($#nouns+1);
+    #print "\nTOTAL: $total\n\n";
+
+    return $total;
+
+} # doEvaluation()
+
+sub readNouns {
+
+    # open file
+    open(FILE, $_[0]) or die("Unable to open $_[0]: $!");
+
+    # read file into an array
+    my @data = <FILE>;
+
+    # close file
+    close(FILE);
+
+    # remove trailing newline from each element of the array
+    chomp @data;
+
+    # return data
+    return @data;
+
+} # readNouns
+
+sub getMaxSense {
+
+    my ($object, @senses1, @senses2, $s1, $s2, $value, $max);
+
+    ###
+    ### read simcache
+    ###
+    my @simcache = &readCache($_[2]);
+
+    my @ret = &isCached($_[0],$_[1],\@simcache);
+
+    if( $ret[0] ) {
+
+        return $ret[1];
+
+    } else {
+
+	# new wordnet instance
+	my $wn = WordNet::QueryData->new;
+	# the similarity measure used
+	my $measure = WordNet::Similarity::jcn->new($wn);
+
+	# get senses for the first word
+	$object = WordNet::SenseRelate::Word->new( $_[0] );
+	$object->retrieveSenses($wn, "nva");
+	$object->restrictSenses("n");
+	@senses1 = $object->getSenses();
+
+	# get senses for the second word
+	$object = WordNet::SenseRelate::Word->new( $_[1] );
+	$object->retrieveSenses($wn, "nva");
+	$object->restrictSenses("n");
+	@senses2 = $object->getSenses();
+
+	$max = 0;
+
+	# compare each sense pairwise
+	foreach $s1 (@senses1) {
+
+	    foreach $s2 (@senses2) {
+
+		$value = $measure->getRelatedness($s1, $s2);
+
+		my ($error, $errorString) = $measure->getError();
+
+		if($error) {
+
+		    print "Fehler: $errorString";
+
+		} else {
+
+		    # set new max
+		    $max = $value if $value > $max;
+
+		} # else
+
+	    } # inner foreach
+
+	} # outer foreach
+
+	# first: add to cache
+        &addToCache($_[0],$_[1],$max,$_[2]);
+
+	return $max;
+
+    } # else: is not cached, so has to be calculated
+
+} # sub getMaxSense()
+
+sub readCache {
+
+    open CACHE, "$_[0]" or die "Could not open $_[0]: $!";
+    my @sim;
+    while (<CACHE>) {
+	#print "reading a line from the csv file ...: \"$_\"\n";
+	push @sim, $_;
+    }
+    close CACHE;
+
+    # remove trailing newline from each line
+    chomp @sim;
+
+    return @sim;
+
+} # readCache
+
+sub addToCache {
+
+    open CACHE, ">>$_[3]" or die "Could not open $_[3]: $!";
+
+    print CACHE "$_[0];$_[1];$_[2]\n";
+
+    close CACHE;
+
+
+} # addToCache
+
+sub isCached {
+
+    my $ref = $_[2];
+    my @scache = @$ref;
+
+    foreach my $line (@scache) {
+
+	next if $line =~ /^\s*$/;
+
+	my ($w1,$w2,$val) = split(/;/,$line);
+
+	if( ($w1 eq $_[0] && $w2 eq $_[1]) || ($w2 eq $_[0] && $w1 eq $_[1])) {
+
+	    # return true and the value
+	    return (1,$val);
+
+	} # if
+
+    } # foreach
+
+    # else: is not in cache
+    return (0,"");
+
+} # isCached

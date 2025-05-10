@@ -1,0 +1,94 @@
+%META:TOPICINFO{author="joshi" comment="reprev" date="1486310186" format="1.1" reprev="9" version="15"}%
+%META:TOPICPARENT{name="WikiUsers"}%
+---++++ *Masters Thesis* : Collaborative Web-based Tool for the Annotation of Syntactic Parse Trees
+
+*Start date* :  31.10.2016
+
+*Supervisor*: Dr. Richard Eckart de Castilho 
+
+
+
+---++++ *Current Status*
+   * Working on Thesis introduction section review comments 
+   * Working on Chapter 2
+   * Visualization component implementation - done
+   * Definition of the client/server communication protocol - done
+   * Definition of the actions/requests between client/server - done
+   * Server side implementation - done
+
+---++++ *Meeting 17.01.2017*
+
+Todos:
+   * Chapter 1 - work on review comments - In progress
+   * <del>Mid-term presentation update and preparation</del>
+   * <del>Adjust constituent tree container dimensions until a max dimension is reached (after max container dimension are reached they will remain constant and tree contents will become scrollable).</del>
+   * Try modifying animation on text and nodes.
+   * <del>Instead of using document name, use sentence ID and provide user option for statement selection. ( this I would like to do after mid-term presentation because there will be many changes corresponding to this )</del>
+   * <del>Send Implementation part for review (will send on 24th Jan).</del>
+
+---++++ *Meeting 21.12.2016*
+
+Todos:
+   * Chapter 1 - work on review comments - In progress
+   * <del>Client-Server - Add new request "add node on edge"</del>
+   * <del>Animations to notify last update(different for addition and deletion)</del>
+   * <del>Calculate time taken for message delivery ( client to server )</del>
+   * <del>Fix dragging options</del>
+   * <del>Add new feature "version" to CAS.</del>
+   * <del>Identify and implement conflicting cases ( concurrent requests ).</del>
+
+
+
+---++++ *Meeting 08.12.2016*
+
+Todos:
+   * Chapter 1 - work on review comments 
+   * <del>Document the implementation details of Web-Tool</del> for client side ToDo next ( document server side implementation )
+   * <del>Handling special cases when multiple user request change at same time for the same annotation (include timestamp and request prioritization)</del>
+   * <del>last updated node - should be highlighted to all clients</del>
+
+
+
+---++++ *Meeting 25.11.2016*
+
+Todos:
+
+   * <del>Make UI scale able</del> 
+   * <del>Complete Test environemt for concurrently server accessing .</del>
+   * <del>work on conflicts and special cases due to concurrent access.</del>
+
+
+
+---++++ *Meeting 14.11.2016*
+
+Todos:
+
+   *   <del>Bug fix - overlapping nodes</del>
+   *   <del>Update - Client/Server implementation - for tokens and Spans (misunderstanding)</del>
+   *   <del>Create test environment for clients concurrently accessing server.</del>
+
+
+
+
+
+
+%META:FORM{name="%25SYSTEMWEB%25.UserForm"}%
+%META:FIELD{name="FirstName" attributes="" title="<nop>FirstName" value=""}%
+%META:FIELD{name="LastName" attributes="" title="<nop>LastName" value=""}%
+%META:FIELD{name="OrganisationName" attributes="" title="<nop>OrganisationName" value=""}%
+%META:FIELD{name="OrganisationURL" attributes="" title="<nop>OrganisationURL" value=""}%
+%META:FIELD{name="Profession" attributes="" title="Profession" value=""}%
+%META:FIELD{name="Country" attributes="" title="[[System.CountryList][Country]]" value=""}%
+%META:FIELD{name="State" attributes="" title="State" value=""}%
+%META:FIELD{name="Address" attributes="" title="Address" value=""}%
+%META:FIELD{name="Location" attributes="" title="Location" value=""}%
+%META:FIELD{name="Telephone" attributes="" title="Telephone" value=""}%
+%META:FIELD{name="VoIP" attributes="" title="<nop>VoIP" value=""}%
+%META:FIELD{name="InstantMessagingIM" attributes="" title="<nop>InstantMessaging (IM)" value=""}%
+%META:FIELD{name="Email" attributes="" title="Email" value=""}%
+%META:FIELD{name="HomePage" attributes="" title="<nop>HomePage" value=""}%
+%META:FIELD{name="Comment" attributes="" title="Comment" value=""}%
+%META:TOPICMOVED{by="eckart" date="1479136641" from="Main.AshaJoshi" to="Students.AshaJoshi"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Local" value="System.LdapUserView"}%
+%META:PREFERENCE{name="PERMSET_VIEW_DETAILS" title="PERMSET_VIEW_DETAILS" type="Local" value="RichardEckartDeCastilho"}%
+%META:PREFERENCE{name="PERMSET_CHANGE_DETAILS" title="PERMSET_CHANGE_DETAILS" type="Local" value="RichardEckartDeCastilho"}%

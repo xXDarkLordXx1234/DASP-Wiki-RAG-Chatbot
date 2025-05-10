@@ -1,0 +1,139 @@
+%META:TOPICINFO{author="wiedmeier" comment="save topic" date="1507051145" format="1.1" reprev="14" version="15"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Thesis: Enhanced Representation Learning for Question Retrieval with Transfer Learning
+
+*Goals:*
+   * Use representation learning to find question duplicates
+   * Find strategies to train model without using question duplicate labels (unsupervised learning, transfer learning)
+   * Examine how answer information can be used to improve the representation
+
+*Repository:* 
+   * https://git.ukp.informatik.tu-darmstadt.de/Thesis-Johann-Wiedmeier/enhancing-representations 
+
+*Datesets:*
+   * Askubuntu by Tao Lei (https://github.com/taolei87/askubuntu)
+
+*Results:*
+   * https://docs.google.com/spreadsheets/d/1uv49Vzm3OqQ4jwlWzrqmCj15dKFTbK6VFSCXW8of70s
+
+*Literature List / References:*
+   * https://docs.google.com/document/d/18jnNDjj7q5_g76N3qEWLarbCo9_36QWM3-5iK-2q1GM 
+
+---++ Reports
+---+++ TODO
+Bis Mid-Term Talk
+   * Transfer Learning Ergebnisse
+   * Unsupervised fix prüfen und ggf. Ergebnisse
+
+Mitte Oktober
+   * RCNN transfer learning (da anderes framework mal LSTM vergleichen)
+   * Hier wissen wir wie effektiv transfer ist in dem Task ist
+   * Vergleich mit RCNN ist wichtig, weil unsere eigenen Modelle mit init. Aus transfer learning nicht besser werden.
+      * RCNN hat gezeigt dass auf unsupervised Initialisierung Verbesserungen erzielt werden (im gegensatz zu lstm) -> geht das hier auch mit Transfer Learning
+         * Warum?
+
+Mitte November
+   * Ergebnisse zu Unsuperv. + Transfer
+   * Vergleichbare Ergebnisse um thesis schreiben zu können
+
+Wenn Zeit ist:
+   * Bestes Attention Modell in Lei implementieren (& Attention Visualization)
+   * Answer Kombinationen Evaluieren
+
+
+Langfristig: 
+   * Use transfer learning with RCNN
+   * Extend RCNN with the attention mechanisms
+   * Prepare other datasets
+   * Setup the attention visualization webapp
+      * Implement reliable save/restore for model
+      * Implementing configurable attention visualization
+   * Evaluate ways to include answer information into the representation
+
+---+++ 04.10.2017
+   * Implement title-body-similarity and transfer learning:answer reranking for RCNN
+   * Reach a performance similar to supervised learning using transfer learning: answer reranking
+   * Reach State-of-the Art performance levels using only unsupervised learning.
+Details ([[%ATTACHURLPATH%/Report11_12.09.-04.10.pdf][pdf]]) 
+
+---+++ 19.09.2017
+   * Prepare Midterm Talk
+Presentation ([[%ATTACHURLPATH%/Midterm_19.09.pdf][pdf]]) 
+
+---+++ 11.09.2017
+   * Implement script for running experiments n times and printing summary
+   * Encoder-Decoder: Fix Memory requirements by reducing vocabulary size
+   * Implement title-body similarity for unsupervised pre training alternative
+Details ([[%ATTACHURLPATH%/Report10_02.09.-11.09.pdf][pdf]]) 
+
+---+++ 01.09.2017
+   * Manual Hyperparameter optimization for our ssa_bilstm Model
+   * First implementations of Unsupervised Models
+Details ([[%ATTACHURLPATH%/Report9_24.08.-01.09.pdf][pdf]]) 
+
+---+++ 23.08.2017
+   * Evaluation of different models using transfer learning as pre-training
+   * Start implementing unsupervised pre-training
+Details ([[%ATTACHURLPATH%/Report8_16.08.-23.08.pdf][pdf]]) 
+
+---+++ 16.08.2017
+   * Implement pre training with question-answer pairs
+   * Research transfer learning
+Details ([[%ATTACHURLPATH%/Report7_27.07.-16.08.pdf][pdf]]) 
+
+---+++ 26.07.2017
+   * Implement Lin et al. "A Structured Self-attentive Sentence Embedding" as an alternative baseline model (https://arxiv.org/abs/1703.03130)
+   * Combine question and answer before pooling on cnn/lstm (no working configuration found)
+Details ([[%ATTACHURLPATH%/Report6_21.07.-26.07.pdf][pdf]]) 
+
+---+++ 20.07.2017
+   * Error Analysis intra_attention_lstm (valid)
+   * Test word importance layer with other models
+   * Combine question and answer before pooling on cnn/lstm (no good models found yet)
+   * Research Tan "Improved Representation Learning" paper
+Details ([[%ATTACHURLPATH%/Report5_14.07.-20.07.pdf][pdf]]) 
+
+---+++ 13.07.2017
+   * Re-run best Models from 06.07.2017 for 5 total runs to increase significance of the results
+   * Use word_importance_layer with attention pooling models
+   * Research character embedding models
+   * Answer integration and evaluation 
+Details ([[%ATTACHURLPATH%/Report4_06.07.-13.07.pdf][pdf]]) 
+
+---+++ 06.07.2017
+   * Implement (vanilla) CNN, biLSTM and word-averaging baselines
+   * Integrate Andreas Rücklé's attention pooling models into the project
+   * Evaluate all models to find a model that potentially beats RCNN (SOTA)
+Details ([[%ATTACHURLPATH%/Report3_30.06.-06.07.pdf][pdf]]) 
+ 
+---+++ 29.06.2017
+   * Research approaches to combine question and answer representations
+      * Use the Neural Tensor Network (Socher) to build an advanced question-answer combination layer (Qiu: https://www.aaai.org/ocs/index.php/IJCAI/IJCAI15/paper/view/11401)
+      * Use Parikh et al. (2016) or other attention mechanisms (https://arxiv.org/abs/1606.01933)
+      * Use cutoff attention to reduce noise when combining representations (See [[%ATTACHURLPATH%/cutoff-attention.pdf][pdf]])
+      * ...
+Details ([[%ATTACHURLPATH%/Report2_23.06.-29.06.pdf][pdf]]) 
+
+---+++ 22.06.2017
+   * Literature Review
+   * Run first experiments to include answers using a weighted average of the representations
+   * Research state of the art (RCNN by Tao Lei https://arxiv.org/abs/1512.05726)
+   * Examine the dataset used by Tao Lei for his RCNN experiment
+   * Analyse the potential improvement when including answers ([[%ATTACHURLPATH%/ImprovementPotentialbyUsingAnswers.pdf][pdf]]) 
+   * Extend RCNN to also use answers using a weighted average of the representations
+      * Including answers in this naíve way seemed to only introduce noise
+Details ([[%ATTACHURLPATH%/Report1_14.06.-22.06.pdf][pdf]]) 
+
+%META:FILEATTACHMENT{name="cutoff-attention.pdf" attachment="cutoff-attention.pdf" attr="" comment="Motivation and idea behind %22Cutoff-Attention%22" date="1499075325" path="cutoff-attention.pdf" size="75952" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report1_14.06.-22.06.pdf" attachment="Report1_14.06.-22.06.pdf" attr="" comment="Detailed report for %2222.06.2017%22" date="1499075803" path="Report1_14.06.-22.06.pdf" size="84626" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report2_23.06.-29.06.pdf" attachment="Report2_23.06.-29.06.pdf" attr="" comment="Detailed report for %2229.06.2017%22" date="1499075830" path="Report2_23.06.-29.06.pdf" size="34767" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="ImprovementPotentialbyUsingAnswers.pdf" attachment="ImprovementPotentialbyUsingAnswers.pdf" attr="" comment="Analysis of the potential improvement by using answers with RCNN" date="1499075865" path="ImprovementPotentialbyUsingAnswers.pdf" size="55606" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report3_30.06.-06.07.pdf" attachment="Report3_30.06.-06.07.pdf" attr="" comment="Detailed report for %2206.07.2017%22" date="1499674098" path="Report3_30.06.-06.07.pdf" size="57131" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report4_06.07.-13.07.pdf" attachment="Report4_06.07.-13.07.pdf" attr="" comment="Detailed report for %2213.07.2017%22" date="1500581898" path="Report4_06.07.-13.07.pdf" size="50507" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report5_14.07.-20.07.pdf" attachment="Report5_14.07.-20.07.pdf" attr="" comment="Detailed report for %2220.07.2017%22" date="1500581916" path="Report5_14.07.-20.07.pdf" size="92678" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report6_21.07.-26.07.pdf" attachment="Report6_21.07.-26.07.pdf" attr="" comment="Detailed report for %2226.07.2017%22" date="1501179277" path="Report6_21.07.-26.07.pdf" size="83297" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report7_27.07.-16.08.pdf" attachment="Report7_27.07.-16.08.pdf" attr="" comment="Detailed report for %2216.08.2017%22" date="1502993293" path="Report7_27.07.-16.08.pdf" size="90985" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report8_16.08.-23.08.pdf" attachment="Report8_16.08.-23.08.pdf" attr="" comment="Detailed report for %2223.08.2017%22" date="1503781641" path="Report8_16.08.-23.08.pdf" size="107964" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report9_24.08.-01.09.pdf" attachment="Report9_24.08.-01.09.pdf" attr="" comment="Detailed report for %2201.09.2017%22" date="1504273054" path="Report9_24.08.-01.09.pdf" size="96772" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Report10_02.09.-11.09.pdf" attachment="Report10_02.09.-11.09.pdf" attr="" comment="Detailed report for %2211.09.2017%22" date="1505117398" path="Report10_02.09.-11.09.pdf" size="84126" user="wiedmeier" version="1"}%
+%META:FILEATTACHMENT{name="Midterm_19.09.pdf" attachment="Midterm_19.09.pdf" attr="" comment="Midterm Presentation (19.09.2017)" date="1507043488" path="Midterm_19.09.pdf" size="597760" user="wiedmeier" version="1"}%

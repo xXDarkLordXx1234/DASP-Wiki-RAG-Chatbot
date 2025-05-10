@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="CigdemToprak" date="1243428586" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+---+ Open Questions
+
+   * In which format is FAZ corpus?
+      * Depends on which archive you use to crawl the data. 
+   * Is there already a file to CAS loader?
+   * The output of the parsing will be CAS?
+   * Will parser and tokenizer be integrated in my implementation?
+      * The tokenizer it is provided,  parser may need to be wrapped as a UIMA annotator, depends on the parser we will use.
+      * They will be called in your CPE descriptor as the pre-processing pipeline annotators.  
+   * How does a template for a grammatical pattern look like?
+      * good question, got to check that out for you. 
+
+-- Main.NicoErbs - 14 May 2009

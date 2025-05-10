@@ -1,0 +1,69 @@
+%META:TOPICINFO{author="ShuoYang" date="1300137732" format="1.1" version="143"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - März 2011
+
+*Klausurvorbereitung* bis 16.03
+
+http://soziologie-koeln.de/old/wp-content/myfotos/pruefung/klausur.jpg
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Einarbeiten Spring WS | 80 |  |
+| 2. Einarbeiten SIGMUND | 70 | * |
+| 3. Vorbereitung Test Search Module (2x) | 10 | * |
+| 4. Architektur & Implementierung von Result Integrator (flexibel, robust) | 0 | |
+
+---+++ Subtasks
+---++++ 3. Vorbereitung Test Search Module (2x)
+   1. Vergleich verschiedener Umsetzungsmöglichkeiten, =SearchModule= als Server und =SearchController= als Client
+      * 1-2 Blatt DINA4, stichpunktartig, gegenüber mit Vor- und Nachteilen
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Einarbeiten SIGMUND | 11.03.2011 | 2.5 | Testen und Bug-Berichten von SIGMUND-APIs | * |
+| Treffen | 07.03.2011 | 1.5 | Treffen mit Benjamin über u.ä. Bugs von CAS-Web Service |  |
+| Vorbereitung Test Search Module | 06.03.2011 | 1 | Auschecken von Existierende Projekte, Lösen von Dependency-Probleme |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 32)$EXEC($GET(total_hour))"}% | bis Ende März noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 12 Stunde Untertrag von Februar) | |
+<nop>
+
+---+++ Projekte
+ShuoYangSigmundProjekt <br>
+ShuoYangSpringWebServicesNotes
+
+---+++ Dokumente
+ShuoYangMemo
+
+
+*WikiWörterbuch:* <br>
+ShuoYangStatistikInterlanguageLinksWikipedia <br>
+[[http://www.ishuo.de/storage/wikipediaTitlesWithBrackets.txt][List of wikipedia articles, whose title entails brackets]] <br>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ShuoYang/titleWithMultipleTranslations.txt][List of wikipedia articles with multiple interlanguage links]] <br>
+ShuoYangMysqlimportErrorReport
+
+*Lucene Scoring:* <br>
+ShuoYangChangingLuceneScoring <br>
+ShuoYangBM25Guide
+
+*XMLReader:* <br>
+ShuoYangXPathPerformanceAnalysis
+
+*Google Translate:* <br>
+ShuoYangGoogleTranslatePerformanceAnalysis <br>
+ShuoYangGoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangWork1H2011
+
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+-- Main.ShuoYang - 2011-03-13
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%
+%META:FILEATTACHMENT{name="titleWithMultipleTranslations.txt" attachment="titleWithMultipleTranslations.txt" attr="" comment="List of wikipedia articles with multiple interlanguage links" date="1285170011" path="titleWithMultipleTranslations.txt" size="22805" stream="titleWithMultipleTranslations.txt" tmpFilename="/var/tmp/CGItemp3071" user="ShuoYang" version="1"}%

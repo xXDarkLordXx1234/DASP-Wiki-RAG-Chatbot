@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="NicoErbs" date="1242655284" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+%TOC%
+---+++ 11.05.2009
+
+   * @action(CT): prepare 300000 sentence corpus from FAZ
+   * @action(CT): prepare preprocessing components (sentece splitter, tokenizer, POS tagger, parser (German Parser))
+   * @action(NE): harvest the forum data. (CT will give the name of the course.)
+   * @action(CT): mail German opinion lexicon for high-precision subj. classifiers.
+
+---+++ 18.05.2009
+
+Presentation of preliminary version of Status Meeting Presentation.
+
+Discussion of approach to determine polarity of forum entries.
+
+   * @action(NE): improve presention for next day
+   * @action(CT): upload German opinion lexicon to TWiki
+
+---+++ 
+
+-- Main.CigdemToprak - 11 May 2009

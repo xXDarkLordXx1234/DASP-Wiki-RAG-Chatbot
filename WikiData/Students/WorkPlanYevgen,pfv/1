@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1304253402" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Done
+---++ 1. Data preprocessing
+   * _(23.04-24.04)_ Einarbeitung in Discussion Pages und Wikipedia Revision-Api
+   * _(25.04-26.04)_ Entwicklung eines Algorithmus für User- und Timestamp-Identifizierung der Diskussion-Beiträge
+   * _(26.04-27.04)_ Extrahierung von Topic-Segments, User-Turns, eingerückten Referenzen
+   * _(29.04-29.04)_ Erstellung eines Maven-Projekts für UIMA-Pipeline
+   * _(30.04-01.05)_ UIMA-CollectionReader für Wikipedia Discussions
+   * _(30.04-01.05)_ UIMA-Annotator für Topic-Segments
+   * _(30.04-01.05)_ UIMA-Annotator für User-Turns
+   * _(30.04-01.05)_ UIMA-Annotator für eingerückte Referenzen
+
+---+ To Do
+---++ 1. Data preprocessing
+   * UIMA-Consumer für MMAX2
+   * UIMA-Annotator für Zitaten
+   * Test-Cases

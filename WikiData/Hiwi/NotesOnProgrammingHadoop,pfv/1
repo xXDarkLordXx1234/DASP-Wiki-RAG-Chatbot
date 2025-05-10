@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="RichardSteuer" date="1330956381" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+Let's collect some common errors and their fixes.
+
+-- Main.RichardSteuer - 2012-03-05
+
+---+++memForMapTasks -1 memForReduceTasks: Invalid job requirements.
+
+Note: Since Hans-Peter Zorn installed the task scheduler, it is required for every job to determine the amount of memory to be used. Each job is allowed 6GB in total. You have to denote this in the job configuration in the main function and can e.g. do so like this:
+
+<verbatim>
+
+		/*
+		 * how much virtual memory the entire process tree of each map/reduce
+		 * task will use
+		 */
+		conf.set("mapred.job.map.memory.mb", "4096");
+		conf.set("mapred.job.reduce.memory.mb", "4096");
+		
+</verbatim>
+
+
+You have to do this with the Pig jobs as well.
+
+<verbatim>
+SET mapred.job.map.memory.mb 4096
+SET mapred.job.reduce.memory.mb 4096
+</verbatim>

@@ -1,0 +1,2 @@
+ChristianKirschner
+Übersetzung der Tabelle wkten1104_sense

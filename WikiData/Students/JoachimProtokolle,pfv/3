@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="JoachimCaspar" date="1228497991" format="1.1" version="3"}%
+%META:TOPICPARENT{name="JoachimCaspar"}%
+---+ Treffen mit Niklas, 4. Dezember 08
+   * Folienkritik
+   * intrinsische Evaluierung des Log-Likelihood für single word Terminologie mittels externer Liste (Eurovoc) braucht keine Trennung in train/test-set, da keine annotierten Daten vorhanden, LL nur statist. ad-hoc-Verfahren ohne Parametertuning/lernen ist. Sind meine Ideen zur Eval. wie in Folien gezeigt so korrekt? Ja.
+   * Log-Likelihood: warum sind "website", "site" usw. also Wörter aus off-topic Korpus (UkWaC) hoch gerankt... frequencies anschauen; echte random-Samples benutzen (java: math.random oder so), größere Samples benutzen
+   * rec/prec-Kurven OK, zusätzlich: F-Maß; pareto-Punkt von F-Maß wäre mögliches rec/prec-Optimierungsziel für (in diesem Rahmen nicht durhcgeführtes Parametertuning)
+   * Gesamtarchitektur: mehrere UIMA-Vorverarbeitungs-CPEs, eine End-CPE, dazwischen die ganzen Berechnungen auf Korpusebene auf Filesystem speichern (besser: Datenbank, nur wenn Zeit, nicht notwendig); xmi-Serialisierung usw. bei n-Grammen geht nicht wegen Speicher/Memory-Problematik
+   * Annotations-Typen entwickeln für Giza++ Übersetzungsinfos: begin...end term, score, list<translation candidates, score> usw.
+   * generell Giza: soviel wie möglich Infos in UIMA einbinden
+   * Screenshot type an Niklas
+   * Multi words mittels Kollokationsanalyse: braucht nur Europarl-Korpus, kein Vergl.korpus (so machen es die Papers). Wahrscheinlich hab ich [Jo] dir [Niklas] da was falsch erzählt, weil das gilt wohl nur für allgemeinsprachliche Kollokationen. mal sehen wie die ersten Ergebnisse aussehen, vllt. zusätzlich dann doch noch Log-Likelihood auf Multi word n-grammen zwischen europarl und Vergleichskorpus, damit domänenspezifische kollokationen rauskommen...
+   * Anfang Jan. mit Chefin abklären: optionale Verlängerung der Diplomarbeit notwendig oder ich hab bis dahin das Programm wieder aufgeholt
+   * Programm bis Ende Dez: multi words + translations, vorläufige eval. währenddessen
+   * Jan: End-Settings für automatisierte Durchläufe bekannt, Gesamt-Evaluierung
+   * Mit Chefin klären, ob dritte eval. (cross-lang IR) noch notwendig oder zeitl/methodischer overkill für "nur" Diplomarbeit; dito klären ob deutsch reicht als Sprache für Ausarbeitung
+   * nächstes Treffen 22.12. 16 Uhr
+
+---+ Treffen mit Niklas, 27. November 08, 12-13.15 Uhr
+
+   * Folien für 2. Vortrag
+   * tk-Account? Ja habe ich
+   * AnnotationViewer geht nicht? Lsg: Projektname in Eclipse-Startkonfigurtation ändern
+   * TypeSystem für annotationViewer? baue einen all-inclusive-type
+   * Treetagger broken-pipe/write-error: Übergangslsg: Split der infiles in kleinere Dokumente
+   * Wie auf mehrere Annotationen gleichzeitig zugreifen? Sub-Iteratoren.
+   * falsches PoS-mapping? wahrscheinlich ein fehlender Startparameter "document language" in den CPEs
+   * Sclano 07 (Termextractor, Paper aus Aufgabenstellung): domain relevance ist term-frequency (und wird so nicht genannt), domain consensus ist Formel sehr unüblich geschrieben (mit Bindestrichen die wie Subtraktionszeichen aussehen), kurz: paper vielleicht Schrott. Alternativ: tf*idf benutzen wie in Witschel 05 beschrieben: Terminology extraction and automatic indexing - comparison and qualitative evaluation of methods, Proceedings of Terminology and Knowledge Engineering 2005
+   * Architektur: mehrere CPEs notwendig die nacheinander/hintereinander Laufen; Zwischenergebnisse auf korpusebene in filesystem abspeichern und dann eine/mehrere CPEs, die alle Inputs nehmen und End-Annotation erzeugen (oder auch Zwischenannotationen "Terminologiekandidat" usw.)
+
+---+ Treffen mit Niklas, 20. Oktober 08, 18-19 Uhr
+
+   * Folien: Kritik & Feedback
+
+   * svn-Account aktiviert
+
+   * Wie DkPro in UIMA einbinden? done
+
+   * Welchen Vergleichskorpus nehmen? BNC? besser: UkWak
+
+   * Wie kann man eine Schranke bei Ranking-Maßen (loglikelihood, chisquare usw) festlegen? Mittels outlier detection.
+
+   * Homogenität bzw. Abstand zweier Korpora messen mit spearman rank correlation co-efficient? Nur wenn Zeit.
+
+   * Einzelevaluierung single-words, dann multi-words auf Kollokationsbasis, dann Adja-NN-artige Terminologie, dann Gesamtterminologie evaluieren? Nicht notwendig, nur wenn Zeit.
+
+   * Eval ähnlich zu IR-Methode mit prec-rec-Kurve, da rankingbasierte Maße verwendet werden? Nein, eher outlier detection und verbleibende Gesamtmenge an Terminologien unabhängig von Ranks betrachten.
+
+-- Main.JoachimCaspar - 21 Oct 2008

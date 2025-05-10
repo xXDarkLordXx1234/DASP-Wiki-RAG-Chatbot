@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="ShuoYang" date="1282796489" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Changing Lucene Scoring
+
+---++ Introduction
+
+---++ Same Formula, Different Components: Changing Similarity
+---+++ When Appropriate
+
+---++ Completely New: Creating Your Own Query
+---+++ When Appropriate
+---+++ Implementation
+---++++ Structure: the Query - Weight - Scorer Modell of Lucene
+---++++ Example: !NaïveScoring
+---++++ Query
+---++++ Weight
+---++++ Scorer
+
+---++ Summary
+
+
+-- Main.ShuoYang - 26 Aug 2010

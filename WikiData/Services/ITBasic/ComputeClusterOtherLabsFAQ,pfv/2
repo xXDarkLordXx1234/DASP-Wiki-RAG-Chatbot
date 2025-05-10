@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="alles" comment="" date="1706110868" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ComputeCluster"}%
+<div style="border: solid 2px lightblue; background-color: yellow; font-weight:600; padding: 5px">
+<p align="center">
+This page hosts additional information for "ATHENE only" people (which are <u>not</u> member / student of UKP Lab) <br />
+Most of the [[ComputeClusterFAQ][Compute Cluster FAQ]] still applys and should still be studied.
+</p>
+</div>
+
+<div style="float:right;background-color:white; z-index:999; border: solid 2px lightblue;">
+---++++ !!Content
+%TOC%
+</div>
+
+---++ First steps
+---+++ How do I know if i'm "ATHENE only"?
+   * You can check which accounts you have been assigned with =sshare -U= executed on the login node, your username should be only present at lines starting with =athene-= 
+   * If you are also part uf a =ukp-= group, consider going back to [[/Services/Campus/ComputeCluster][the computer cluster faq]].
+
+---++ ATHENE only special setup
+---+++ Storage
+   * *LOCATION*: Your storage path to use / specify is =/storage/athene/work/$USERNAME=
+   * *QUOTA*: There is a soft quota of 10TB / hard quota of 15TB diskspace per user. The grace period is one week. If usage is not reduced to a level below the soft limit during that time, the quota system interprets the soft limit as the hard limit and no further allocation is allowed. 
+
+---+++ Compute-nodes
+%INCLUDE{ "Services.Campus.ComputeClusterGPUs" pattern="---\+\+\+ Detailed Node Information(.*?)---\+\+\+" }%
+
+The following compute-nodes are ATHENE exclusive:
+
+%INCLUDE{ "Services.Campus.ComputeClusterGPUs" pattern="---\+\+\+\+ ATHENE compute-nodes(.*?)---\+\+\+" }%
+
+---+++ Running Jobs
+---++++ Example 1
+   * <u>If you are researcher and associated ONLY with ATHENE and not UKP</u>, you would want to specify the partition "gpu-athene" (selecting the compute-nodes) and the account "athene-researcher" (your "piggy bank") e.g. like <verbatim>sbatch -p gpu-athene -a athene-researcher your_script.sh</verbatim> to submit your jobs. You can also put these values to your sbatch script. 
+   * *Explanation:* 
+      * There is no need to specify the qos, as "gpu" is the default qos for account athene-researcher
+
+-- Main.SebastianAlles - 2024-01-24

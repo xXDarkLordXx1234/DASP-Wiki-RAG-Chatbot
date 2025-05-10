@@ -1,0 +1,285 @@
+%META:TOPICINFO{author="diehl" comment="save topic" date="1468275272" format="1.1" reprev="52" version="52"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ July 2016
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Hours* | *Supervisor* | *Timesheet submitted* |
+| 25.6. - 29.7. | ? | ? | ? | ? |
+| 18.7. - 22.7. | ? | ? | ? | ? |
+| 11.7. - 15.7. | Argument Annotation Pilot | 10 | TM | no |
+| 4.7. - 8.7. | Argument Annotation Pilot | 10 | TM | no |
+
+---++ June 2016
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Hours* | *Supervisor* | *Timesheet submitted* |
+| 27.6. - 1.7. | Argument Annotation Pilot | 10 | TM | no |
+| 20.6. - 24.6. | Argument Annotation Pilot | 10 | TM | no |
+| 13.6. - 17.6 | Argument Annotation Pilot | 10 | TM | yes |
+| 6.6. - 10.6. | Argument Annotation Pilot | 10 | TM | yes |
+
+---++ May 2016
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Hours* | *Supervisor* | *Timesheet submitted* |
+| 30.5. - 5.6. | Annotations for Real-Time Summarization / Nugget Matching | 0 | AR | yes |
+| 23.5. - 29.5 | Annotations for Real-Time Summarization / Nugget Matching | 10 | AR | yes |
+| 20.5. - 22.5 | Annotations for Real-Time Summarization / Nugget Matching | 0 | AR | yes |
+| 16.5. - 20.5. | Annotations for Real-Time Summarization / Nugget Matching | 10 | AR | yes |
+| 9.5. - 13.5. | Annotations for Real-Time Summarization / Nugget Matching | 10 | AR | yes |
+| 2.5. - 6.5. | Annotations for Real-Time Summarization / Nugget Matching | 10 | AR | yes |
+
+---++ April 2016
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Hours* | *Supervisor* | *Timesheet submitted* |
+| 25.4. - 29.4. | Annotations for Real-Time Summarization / Nugget Matching | 10 | AR | yes |
+| 18.4. - 22.4. | Annotations for Real-Time Summarization / Nugget Matching | 10 | AR | yes |
+| 11.4. - 15.4. | Erste Aufgaben für Annotations for Real-Time Summarization / Nugget Matching | 10 | AR | yes |
+| 4.4. - 8.4. | Writing results of corpus statistics in latex | 10h | CS | yes |
+
+---++ March 2016
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Hours* | *Supervisor* | *Timesheet submitted*|
+| 28.3. - 31.3. | Finalize tables in report | 10h | CS | yes |
+| 21.3. - 25.3. | Verification of results & code cleaning | 10h | CS | yes |
+| 14.3. - 18.3. | Corpus statistics: Arguments per paragraph | 10h | CS | yes |
+| 7.3. - 11.3. | Corpus statistics: Position analysis | 10h | CS | yes |
+
+---++ February 2016
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Hours* | *Supervisor* | *Timesheet submitted*|
+| 22.2. - 26.2. | Corpus statistics: Position analysis | 10h | CS | yes |
+| 15.2. - 19.2. | Analysis of argumentation structures (depth & source/target)| 10h| CS | yes |
+| 8.2. - 12.2. | Corpus statistics: relation types | 10h | CS | yes |
+| 1.2. - 5.2. | Corpus statistics: non-argumentative text units and type statistics | 10h | CS | yes |
+
+---++ January 2016
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Hours* | *Supervisor* | *Timesheet submitted*|
+| 25.1. - 29.1. | Verification of thesis statistics to previous results | 10h | CS | yes |
+| 18.1. - 22.1. | Corpus statistics: Argument Components | 10h | CS | yes |
+| 11.1. - 15.1. | Parallelization of CNN for sufficiency detection | 10h | CS | yes |
+| 4.1. - 8.1. | Parallelization of CNN for sufficiency detection | 10h | CS | yes |
+
+<!--
+---++ 2016-03-30
+   * Discuss current status of corpus statistics
+      * Solution of the difference between "depth" and "unsupported claims"
+      * Code is committed (check)
+   * TODO:
+      * Create latex tables of all statistics
+      * Include numbers for each bullet point
+
+---++ 2016-03-02
+   * Discuss statistics
+   * TODO: Identify reasons for different values as follows:
+      * 1) Label identification auslagern und in beiden Ansätzen dieselbe Methode verwenden
+      * 2) TSV-file mit (file-name, label) für beide erstellen
+      * 3) Finde Dateien die unterschiedliche labels haben
+      * 4) Suche nach Auffälligkeiten im Cas-Editor
+      * 5) gib in Methode A & B für die betroffenen Essays verschiedene Dinge aus (bspw. alle Claims inkl. stance)
+
+
+---++ 2016-02-15
+   * discussed current status of corpus statistics
+   * next steps:
+      * continue with determining the statistics 
+      * Write a brief description of how (and why) you determined the values in table 1 (2-4 sentences)
+      * combine "body" and "body_end" in table 1
+      * include percentage numbers (in brackets behind the absolute numbers)
+      * verify none column
+      * Eclipse tool: Cas Editor (can be installed as part of the UIMA plugin suite)
+
+
+---++ 2016-02-08
+   * discussed the required statistics / code and examples   
+      * Für "segment-zuordnung" versuchen wir mal MaxSegment
+      * Namen eindeutig schrieben: "Claim for" / "Claim against" 
+      * Spalte für None-argumentative
+      * Empfehlung: Spalte für Claim und Premise einfügen (aggregiert support + attack); könnte alles vereinfachen
+   * Struktur für Report Dokument 
+
+---++ 2016-01-25
+   * @discuss: Recent results of experiments
+   * *New task*: Advanced Statistics of our dataset
+      * Bisher haben wir relativ simple Statistiken zu unseren Argumentationsstrukturen. Diese wollen wir erweitern und in einem ausführlichen Report zusammen fassen.
+      * Als Anregung zu solchen Analysen, könnte folgendes Paper helfen: http://www.ling.uni-potsdam.de/~peldszus/eca2015-preprint.pdf (Bitte lesen)
+      * Die Analysen werden wir in Java durchführen. 
+      * Den Corpus gibt es im UIMA XMI format. Er enthält alle Argumentationsstrukturen und Segmentations (Sätze, tokens und paragraphen)
+      * Schritt 1: Zusammenstellen von möglichen Analysen:
+         * Claim Position in einem Paragraphen
+         * Anzahl "Argumente" pro paragraph (Body vs. surrounding)
+         * Tiefe der Argumente 
+         * Zwischen welchen Typen sind die Relationen (support und attack)
+         * an welcher Stelle sind attacking claims
+         * Wie viele argument Komponenten pro SATZ und welche typen kommen gemeinsam in einem Satz vor.
+         * etc.
+      * Ein Java project mit den Daten und ein Beispiel schicke ich per Mail.
+
+
+---++ 2016-01-11
+   * Reviewed results of previous experiments (LSTM/CNN/Pretraining)
+      * Pretraining slightly improved the results
+      * LSTM seem to not work well
+   * TODO: Run CNN without embedings
+      *  Question: are the embeddings responsible for the good improvement or is the improvement due to the CNN structure
+   * TODO: Run experiments with more iterations
+   * TODO: Run autoencoders only once (pretraining only once)
+   * TODO: End to end training for autoencoders (see code here: https://github.com/nreimers/deeplearning4nlp-tutorial/blob/master/2015-10_Lecture/Lecture4/code/20Newsgroups/Autoencoder.ipynb)
+
+---++ 2015-12-21
+   * next meeting: 2016-01-11 (12:00)
+   * @todo:
+      * experiment with pre-training / representation learning
+      * Autoencoders:
+         * http://ufldl.stanford.edu/tutorial/unsupervised/Autoencoders/
+         * http://ufldl.stanford.edu/wiki/index.php/Stacked_Autoencoders
+         * http://ufldl.stanford.edu/wiki/index.php/Fine-tuning_Stacked_AEs
+      * http://dl.acm.org/citation.cfm?id=2145450
+      * Restricted Boltzman Machine (RBM) as alternative to autoencoders?
+         * No implementation in keras yet (CD)
+      * Document results in a table
+      * Difference between common MLP and pretrained is interesting
+      * Is dropout in encoding layers included in the MLP model (MLP1-pretrained.py)
+         * It is included in the model (CD)
+      * Define the vector space from training or unlabeled data? (CS: I guess from unlabeled data makes more sense). 
+         * Experiments run better with unlabeled data (CD)
+
+
+---++ 2015-12-07
+   * next meeting: 12:00
+   * @info(CS): Contract extension?! Is it right that your current contract ends end of december?
+   * @info(CS): Discuss status of current tasks and next steps
+      * Clarified the design of the iterative save procedure
+         * Concert nested i*k structure in one list (list containing all the experiments)
+         * Save result of experiments as an appended file including a dictionary for each experiment
+         * After all experiments convert the stored file into a list format
+         * Hint: Implement one method which can read list AND appended dictionary files to facilitate the task
+
+---++ 2015-11-30
+   * @info(CD): Implemented Parallelization of MLP
+   * @discuss: LSTM model does not work
+      * try to run example from the Nils' deep learning course
+      * check data encoding; the approach might require to encode the data as sequence
+      * You can also take a look at rnn
+   * @todo
+      * Extend the project so that the results of each iteration are saves securely
+      * Make sure that an interrupted experiment can be resumed without running all iterations
+
+
+
+---++ 2015-11-23
+   * @discuss(CS): Parallelization 
+   * @discuss(CS): Slight difference in the results.. What can we do?
+   * @discuss(CS): !F1-macro-impl1 vs F1-macro-impl2
+   * @duscuss(CS): Open Tasks from last week
+      * Task1: Parallelize MLP1.py
+      * Task2: Get familiar with LSTMs and RNN see lecture 6
+         * Are these models suited for *document classification*? If so, why? Are those better for document classification than CNN
+         * Is there an implementation that we can try with our data? if so, try it :)
+
+---++ 2015-11-16
+   * Task1: Parallelize the CNN code
+      * make #cores configurable
+   * Task2: Try to run it on GPU
+   * Task3: Get familiar with LSTMs and x(?) see lecture 6
+      * Are these models suited for *document classification*? If so Why? Are those better for document classification than CNN
+      * Is there an implementation that we can try with our data? if so, try it :)
+
+---++ 2015-11-05
+   * time: 10:00
+   * Workshop Gold Standard Creation
+
+---++ 2015-10-19
+   * time: 10:00
+   * @info(CS): current agreement scores
+   * @info(CS): In the next annotation we will focus on sufficiency only and annotate as much as possible
+      * starting at essay_21
+      * *targeted deadline 9.11.*
+   * @discuss(CD): suggestions for labels
+      * Maybe judge good vs bad arguments before assessing the RSA-categories to filter out good arguments in advance?!
+
+---++ 2015-10-05
+   * @info(CS): annotated 51 arguments
+   * @info(CS): Relevance and Acceptability is still bad
+      * We will consider relevance only in the standard form and expect that there will be few cases of it
+      * Acceptability considers really bad cases and unwarranted claims which directly support the major claim
+      * We will not consider reformulations as relevance anymore.
+   * @todos
+      * Re-annotate 51 arguments and write down justifications for the decisions, mainly focus on acceptability and relevance (deadline 9.10.2015 CTB)
+      * Find other categories which we could annotate (until next meeting 19.10. at 10:00)
+
+---++ 2015-08-10
+   * @info(CS): Results quality annotation
+   * @info(CS): Next task
+      * Investigate Argoratio!: https://argue.ukp.informatik.tu-darmstadt.de/arguegame/www/index.html
+      * Make suggestions for improving the game
+      * Get familiar with the game concepts: https://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/publikationen/2015/Master_Thesis_Raffael_Hannemann.pdf
+      * Find potential interest groups
+   * @info: 26.8. - 10.09. Urlaub (Erreichbar per Mail)
+   * @info: Auslandssemester vom 19.9 - Ende Februar 2016
+
+---++ 2015-07-27
+   * Annotation Workshop with Radhika
+
+---++ 2015-07-13 
+   * *Time: 10:00*
+   * @discuss(CS): Quality annotations
+      * make appointment with Radhika
+
+
+---++ 2015-07-06
+   * *Time: 10:00* 
+   * @discuss(CS) annotation relsults together with Anshul
+
+---++ 2015-06-29 
+   * @discuss(CS) Relation Annotation
+
+---++ 2015-06-08 
+   * Evaluated annotation results
+   * Identified four essays for revision: 91, 119, 129, 352
+   * Discussed quality annotations
+   * *Next Step*
+      * revise annotations of 91, 119, 129, 352
+      * revise major claims in 352
+      * Argumentation quality revision
+
+---++ 2015-05-18 
+   * *Time*: 10:00
+   * @info(CS): Contract extension...
+   * @info(CS): CS vacation 23.5. - 6.6.
+      * During this time continue with the annotations of the next 40 essays.
+   * @dicsuss(CS): Annotation results
+   * *Next Steps*
+      * Continue with Argumentation Structure Annotations (finish all 80 essays)
+      * Revise the claim annotations (find concrete essays in mail)
+      * If done, start reading annotation guidelines for quality annotations
+
+---++ 2015-05-11 
+   * @info(CS): Results of major claim annotations
+   * @info(CS): User Credentials (Done)
+   * @info(CS): Regarding essay 211
+      * Is there a error message from brat? (I was able to open the file)
+      * Please check if there is a file called essay211.ann (it should be empty)
+      * Rename the files (txt and ann) e.g. essay211_.txt and essay211_.ann
+   * @info(CS): Time record for 4.5. - 15.5. (Done)
+   * @info(CS): Final annotation guideline
+   * *Next Steps*
+      * Annotation of claims and premises
+      * Note: Do not annotated argumentative relations
+
+
+---++ 2015-05-04 Kickoff Meeting
+   * @discuss(CS): Tasks
+      * Setup brat (done)
+      * Read Guidelines
+      * Setup annotation project
+      * Start annotating major claim only
+   * @info(CS): Weekly time record
+   * @discuss(CS): Regular weekly meeting
+      * Monday 10:00
+   * @discuss(CS): Next meeting this week. 
+
+-->
+
+-- Main.ChristianStab - 2015-05-04

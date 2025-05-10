@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="alles" comment="" date="1728466686" format="1.1" reprev="4" version="5"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}%%IF{"$WEBSUMMARY != ''" then="
+---++!! %WEBSUMMARY%"}%
+
+<div style="border: solid 4px red; font-weight:800; padding: 5px">
+<p align="center">
+🚧 *09/2024: This web is currently being dismantled / transferred to a new structure.* 👷🔨 🚧 <br />
+Please check the linked subwikis on the [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Main/WebHome?refresh=cache][main welcome page]]. 
+</p>
+</div>
+
+<div style="float:right;background-color:white; z-index:999;">
+  <div style="border: solid grey 1px; padding: 0.25em; margin: 0.25em">
+
+---++++ !! Content of this page
+%TOC%
+
+---++++ !! <nop>%WEB% Web Utilities
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes %IF{"istopic '%STATISTICSTOPIC%'" then="
+   * %STATISTICSTOPIC% - listing popular topics and top contributors"}%
+   * WebPreferences - preferences of this web
+
+  </div>
+</div>
+
+<table>
+<tr>
+<td style="vertical-align: top"><img src="%ICONURL{"Hardware"}%" style="width:4em"/>&nbsp;&nbsp;&nbsp;</td>
+<td style="vertical-align: top">
+---### Hardware & Software
+   * [[Services/IT.UsingPrivateHardwareAtUKP][Private Hardware at Work]]
+   * [[Services/Lab.ServerJobs][Compute Servers]]
+   * [[Services/ITBasic.ComputeCluster][Slurm Compute Cluster]]
+</td>
+
+<td style="vertical-align: top">&nbsp;&nbsp;&nbsp;<img src="%ICONURL{"Mainframe"}%" style="width:4em"/>&nbsp;&nbsp;&nbsp;</td>
+<td style="vertical-align: top">
+---### IT Services
+   * [[Services/ITBasic.AccountChangePassword][Change password]]
+   * [[Services/IT.MessagingService][Instant Messaging]]
+   * [[Services/ITBasic.OfficeAndEmailSetup][Mail]]
+   * [[Services/IT.ServiceNextcloud][NextCloud]] (Calendar / File sharing)
+   * [[Services/Lab.Videoconference][Videoconference]]
+   * [[Services/ITBasic.VpnService][VPN]]
+   * [[Services/IT.ServicePrinter][Printer]]
+   * [[Services/ITBasic.WirelessNetworkService][Wireless]]
+   * [[Services/Lab.TuDarmstadtCertificates][Add TU-Darmstadt Server Certifications]]
+   * [[Services/IT.ServiceGitlab][Gitlab]] (Configuration)
+</td>
+</tr>
+
+</table>
+
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value=""}%

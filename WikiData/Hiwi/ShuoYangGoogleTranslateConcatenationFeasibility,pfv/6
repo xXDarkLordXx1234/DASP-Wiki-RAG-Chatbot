@@ -1,0 +1,192 @@
+%META:TOPICINFO{author="ShuoYang" date="1269212849" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Influence of Concatenation on Google Translate (Draft)
+_not done yet_
+
+---++ Motivation
+As shown in [[GoogleTranslatePerformanceAnalysis#AverageSpeed]], it takes only 1.61 times to translate a long query of 4485 characters, than that of a short query of 26 characters. In addition Google doesn't allow too frequent queries, so we must have (long) breaks after each certain amount of queries which is the main speed limiting factor. For the same queries, if we can concatenate them together within Google's query length limit, we can have a much smaller number of query thus avoid breaks and improve translation performance considerably. 
+
+We must make sure though, that the translation of a concatenation of several queries is the same as separate translations of each query, because separate queries are not related to each other and thus must not be considered related by Google Translate.
+
+---++ Approach of Google Translate
+According to [[http://en.wikipedia.org/wiki/Google_Translate#Approach Wikipedia]], 
+
+_Google translate is based on an approach called statistical machine translation, ..._
+_Statistical models from this data (large parallel text collections) are then used to translate between those languages. ..._ 
+_It does not apply grammatical rules, since its algorithms are based on statistical analysis rather than traditional rule-based analysis._ 
+
+Which means although a structural analysis of sentence may not be performed, the translation result is still strongly context aware. Examples below reflects this point. Therefore, we must let Google treat our concatenated query as several standalone queries.
+
+---++ Different APIs, Same Engine
+In its [[http://code.google.com/apis/ajaxlanguage/documentation/#fonje Developer's Guide]] on Language APIs, Google has documented a set of !JavaScript APIs (1) and a RESTful interface (2) for non-JavaScript environments. Through inspecting HTTP traffic, i've found the !JavaScript APIs calls internally not the RESTful URI, but rather an undocumented API. It is also possible to access Google Translate directly through its website http://translate.google.com. Queries in this page, however, call yet another undocumented API (3) .
+
+I initially thought they were different engines. I thought I should concatenate two sentences with a =newline= character =\n=, so I did so with (2) in Java, and used "enter" key with (1) and (3) in HTML/website. In this case the results are different; =\n= from (2) were ignored. It turns out, however, that *instead of =\n= , Google Translate requires the HTML-style =<= =br= =>= to separate paragraphs* (which encodes to URI-safe =%3Cbr%3E=). After replacement the results were the same, so I believe now they use the same engine.
+
+In spite of the same engine, let's take a look at the different APIs translating "Hallo du.=<= =br= =>= Wie geht es dir?", as the results are interesting:
+
+---
+
+*1. With the undocumented API used internally in the _documented_ !JavaScript API:*
+
+Request:
+<verbatim>http://www.google.com/uds/Gtranslate?callback=google.language.callbacks.id101&context=22&q=
+Hallo%20du.%3Cbr%3EWie%20geht%20es%20dir%3F&langpair=de%7Cen&key=notsupplied&v=1.0</verbatim>
+Response:
+<verbatim>google.language.callbacks.id101('22',{"translatedText":"Hey pal \u003cbr\u003e How are you?"}, 200, null, 200)</verbatim>
+
+---
+
+*2. With the documented RESTful interface for non-JavaScript environments:*
+
+Request:
+<verbatim>http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=Hallo+du.%3Cbr%3EWie+geht+es+dir%3F&langpair=de|en</verbatim>
+Response:
+<verbatim>{"responseData": {"translatedText":"Hey pal \u003cbr\u003e How are you?"}, "responseDetails": null, "responseStatus": 200}</verbatim>
+
+---
+
+*3. With the undocumented API used internally by http://translate.google.com*
+
+Request:
+<verbatim>http://translate.google.com/translate_a/t?client=t&text=Hallo%20du.%0AWie%20geht%20es%20dir%3F&
+hl=en&sl=de&tl=en&prev=enter&pc=0</verbatim>
+Response:
+<verbatim>{"sentences":[{"trans":"Hey pal\n","orig":"Hallo du.","translit":""},{"trans":"How are you?","orig":
+"Wie geht es dir?","translit":""}],"src":"de"}</verbatim>
+
+---
+
+As we can see, they all returned "Hey pal =newline= How are you?" but (1) and (2) used =<= =br= =>= to separate paragraphs while (3) used =\n=. More interesting is that result of (3) contained a list of _two_ separated =trans= items. I also tried removing the =<= =br= =>= in the query, and it only returned a list of _one_ =trans= item. Therefore, it is likely that Google treats sentences separated by =<= =br= =>= as standalone ones.
+
+
+---++ Statistical Machine Translation and its Influence
+Due to its statistical nature, Google Translate doesn't analyze sentence the usual way and apply rules to it. Instead, it primarily looks up its huge translation database and choose the translation with the biggest probability. 
+
+*Example 1. "Er/sie/es ist rot"*
+| *German source* | *English translation* |
+| Er ist rot. | He is red. |
+| Sie ist rot. | _It_ is red. (not she) |
+| Es ist rot. | It is red. |
+| Ich liebe meine Freundin. Sie ist rot. | I love my girlfriend. _It_ is red. (still it) |
+
+Rules are not applied since "sie" (she) was translated to "it". Even after adding a context "girlfriend", "sie" was still translated to "it". It is likely that in Google database "Sie ist rot" has the highest probability to be translated to "It is red", thus Google has chosen it. It also means the result can change as Google evaluates new text corpus and evolves its probability database. The next examples further show its ruleless attribute.
+
+---
+
+*Example 2. "Schöne Katze"*
+| *German source* | *English translation* |
+| Sie ist schön. | She is beautiful. |
+| Es ist schön. | It is beautiful. |
+| Ich habe eine Katze. Sie ist schön. | I have a cat. _She_ is beautiful. |
+| *English source* | *German translation* |
+| I have a cat. It is beautiful. | Ich habe eine Katze. _Es_ ist schön. |
+
+This example also shows that Google doesn't analyze sentence, keep track of objects within it and apply their grammatical gender to pronouns afterwards.
+
+---
+
+*Example 3. "Miscellaneous"*
+| *German source* | *English translation* |
+| hallo du. Wie geht es dir? | hi pal, what are you doing? |
+| Hallo du. Wie geht es dir? | Hey pal, How are you? |
+| Hallo du, Wie geht es dir? | Hello you, How are you? |
+
+Source on 1st and 2nd line differ only by capitalization of first letter, which are almost the same grammar/rule-wise. Likewise on the 2nd and 3rd lines, they differ only by period and comma. On the 2nd and 4th lines, they differ only by a space character after the first period, which is absolutely the same grammar-wise. But the translation differ greatly. 
+
+---
+
+*Example 4. "Unknown"*
+| *German source* | *English translation* |
+| Hallo du.Wie geht es dir? | Hello du.Wie are you? |
+| Hallo du,Wie geht es dir? | Hello you, How are you? |
+| Ich hatte eine Freundin.Sie ist rot. | I had a Freundin.Sie is red. |
+| Sind Ihre Fenster bei der Explosion kaputtgegangen? | Are your windows kaputtgegangen in the explosion? |
+| kaputtgehen | break |
+
+By the 1st and 3rd sentences, Google seems to have treated a.b as one word which it doesn't know. So it left them there unmodified. 
+On the 2nd line, however, no space after comma seems not to be problematic. This suggests that *it is necessary for sentences to be preprocessed, so that they are separated by not only a period but also a space after the period.* The 7th line further adds evidence that Google leaves words it doesn't know unmodified (It knows "kaputtgehen" though - again, no grammar rules applied). It is thus also meaningful to keep an eye on the unknown words.
+
+---
+
+*Example 5. "The bright side"*
+| *German source* | *English translation* |
+| Guten Morgen! Herrlich heute! | Good morning! Glorious day! |
+
+This statistical approach has of course its bright side.
+
+
+---++ Concatenation with =<= =br= =>=
+
+
+
+---++ Different Translation APIs
+<del>In its [[http://code.google.com/apis/ajaxlanguage/documentation/#fonje Developer's Guide]] on Language APIs, Google provides a set of !JavaScript APIs and a RESTful interface for non-JavaScript environments. Through inspecting HTTP traffic, i've found the !JavaScript APIs calls internally not the URL given by the RESTful interface, instead it calls a undocumented API. The result of the both are also different, including, but maybe not limited to, that the RESTful interface always return results without =newline= character. In other words, =newline= are replaced by a =space= character after translation.</del>
+
+Google Translate is also directly accessible through its website http://translate.google.com. With the inspector, i've found the site calls internally _yet another_ undocumented API, although until now the two undocumented APIs return the same result. It should be noted that unlike documented APIs, which Google promise to continue to serve for at least 3 years after deprecation ([[http://code.google.com/apis/ajaxlanguage/terms.html terms]]), undocumented APIs can be changed or disappear altogether at any time. So using undocumented APIs in one's own programs poses a higher risk of it working incorrectly.
+
+---+++ 1. With the documented RESTful interface for non-JavaScript environments:
+*Translate "Hallo du. Wie geht es dir?":*
+
+Requst: 
+<verbatim>http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=Hallo+du.+Wie+geht+es+dir%3F&langpair=de|en</verbatim>
+Response: =Hey pal, How are you?=
+<verbatim>{"responseData": {"translatedText":"Hey pal, How are you?"}, "responseDetails": null, "responseStatus": 200}</verbatim>
+---
+
+*Translate "Hallo du.\nWie geht es dir?":*
+
+Request: 
+<verbatim>http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=Hallo+du.%0AWie+geht+es+dir%3F&langpair=de|en</verbatim>
+Response: =Hey pal, How are you?= (_the same_ as without =newline= )
+<verbatim>{"responseData": {"translatedText":"Hey pal, How are you?"}, "responseDetails": null, "responseStatus": 200}</verbatim>
+
+*Another encoding:* with %3Cbr%3E for \n instead of %0A
+
+Request:
+<verbatim>http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=Hallo+du.%3Cbr%3EWie+geht+es+dir%3F&langpair=de|en</verbatim>
+Response: =Hey pal\nHow are you?=
+<verbatim>{"responseData": {"translatedText":"Hey pal \u003cbr\u003e How are you?"}, "responseDetails": null, "responseStatus": 200}</verbatim>
+
+---+++ 2. With the undocumented API used internally in the _documented_ !JavaScript API:
+*Translate "Hallo du. Wie geht es dir?":*
+
+Request caught by the inspector:
+<verbatim>http://www.google.com/uds/Gtranslate?callback=google.language.callbacks.id101&context=22&q=
+hallo%20du.%20Wie%20geht%20es%20dir%3F&langpair=de%7Cen&key=notsupplied&v=1.0</verbatim>
+Result: =hi pal, what are you doing?=
+<verbatim>google.language.callbacks.id101('22',{"translatedText":"hi pal, what are you doing?"}, 200, null, 200)</verbatim>
+
+---
+
+*Translate "Hallo du.\nWie geht es dir?":*
+
+Request:
+<verbatim>http://www.google.com/uds/Gtranslate?callback=google.language.callbacks.id101&context=22&q=
+hallo%20du.%3Cbr%3EWie%20geht%20es%20dir%3F&langpair=de%7Cen&key=notsupplied&v=1.0</verbatim>
+Response: =hallo du\nHow are you?=
+<verbatim>google.language.callbacks.id101('22',{"translatedText":"hallo du \u003cbr\u003e How are you?"}, 200, null, 200)</verbatim>
+
+_hmm mit %3Cbr%3E statt %0A ist doch diesselbe!_
+
+---+++ 3. With the undocumented API used internally by http://translate.google.com
+*Translate "Hallo du. Wie geht es dir?":*
+
+Request:
+<verbatim>http://translate.google.com/translate_a/t?client=t&text=Hallo%20du.%20Wie%20geht%20es%20dir%3F&
+hl=en&sl=de&tl=en&prev=conf&otf=1&pc=0</verbatim>
+Response: =Hey pal, How are you?=
+<verbatim>{"sentences":[{"trans":"Hey pal, How are you?","orig":"Hallo du. Wie geht es dir?","translit":""}],"src":"de"}</verbatim>
+
+---
+
+*Translate "Hallo du.\nWie geht es dir?":*
+
+Request:
+<verbatim>http://translate.google.com/translate_a/t?client=t&text=Hallo%20du.%0AWie%20geht%20es%20dir%3F&
+hl=en&sl=de&tl=en&prev=enter&pc=0</verbatim>
+Response: =Hey pal\nHow are you?=
+<verbatim>{"sentences":[{"trans":"Hey pal\n","orig":"Hallo du.","translit":""},{"trans":"How are you?","orig":
+"Wie geht es dir?","translit":""}],"src":"de"}</verbatim>
+
+
+-- Main.ShuoYang - 21 Mar 2010

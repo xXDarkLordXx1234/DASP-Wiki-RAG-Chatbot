@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="RichardSteuer" date="1338383910" format="1.1" version="3"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+We evaluated the context step of the DistributionalThesaurus in Nov 2011 to find the "best" parameters p, s and t. This page is a revival of that evaluation which will be used to evaluate all the new contexts. It is done using jcn (Wordnet).
+
+-- Main.RichardSteuer - 2012-05-16
+
+---++Evaluation: Level 1
+The purpose of the evaluation was to find the best parameters p, s and t. To accomplish this, the first (context) step was executed once. Then, the following steps were executed several times while looping over different parameter combinations. Then, the resulting DT was copied from the hdfs to the local fs. At last, we took 100 nouns (for comparison) and got the DT entries for them and computed the JCN similarity value (!WordNet). For each word (and its DT entry) we took the top 5 similar words from the DT and computed the average jcn measure. In the end, all the 100 word similarity numbers were averaged into a single score. This is the score for the specific given parameter set.
+The original script is attached to this document.
+
+We computed evaluations for the following combinations:<br/>
+
+LL100mixed<br/>
+LL100mixed_1<br/>
+LL100mixed_log<br/>
+LL100rare<br/>
+LL100rare_1<br/>
+LL100rare_log<br/>
+LMI100mixed<br/>
+LMI100mixed_1<br/>
+LMI100mixed_log<br/>
+LMI100rare<br/>
+LMI100rare_1<br/>
+LMI100rare_log<br/>
+
+These are folder names and its parts consist of:
+LL: Log-Likelihood<br/>
+LMI: Lexicographer's Mutual Information<br/>
+_1: Weighting 1 per word pair<br/>
+_log: 1/log(x) per word pair<br/>
+rare: rare nouns<br/>
+mixed: frequent nouns<br/>
+
+Each of those directories consists of a cvs and a log file (for debugging). The csv file contains the results and looks like this (excerpt):<br/>
+
+200;10;2;0.225607796526234<br/>
+200;15;2;0.25974055350559<br/>
+200;20;2;0.280370125033348<br/>
+200;25;2;0.281431696154524<br/>
+300;20;2;0.285079205572701<br/>
+300;20;5;0.288556558060645<br/>
+300;20;10;0.292572023684899<br/>
+
+The values in order are: p, s, t, jcn-average (for the selected 100 nouns)
+
+The implementation is done using the Perl module WordNet::Similarity::jcn and WordNet::SenseRelate.
+
+---++Evaluation: Contexts
+We want to revive this evaluation and apply it for the following contexts: !ContextDP_POS, !ContextCo_S, !ContextCo_S_Position
+
+---+++ContextCo_S
+
+Here are the results so far:
+
+200;5;2;0.0920301493507698<br/>
+200;5;10;0.0897001723594482<br/>
+200;10;2;0.0920301493507699<br/>
+200;10;10;0.0897001723594482<br/>
+200;20;2;0.0920301493507699<br/>
+200;20;10;0.0897001723594482<br/>
+300;5;2;0.105697214770216<br/>
+300;10;2;0.105697214770216<br/>
+400;10;2;0.117317031927376<br/>
+
+Each row took approx. 10 hours to calculate.
+
+%META:FILEATTACHMENT{name="evaluate.pl.txt" attachment="evaluate.pl.txt" attr="" comment="original evaluation script" date="1337180541" path="evaluate.pl.txt" size="7409" user="RichardSteuer" version="1"}%

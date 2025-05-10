@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="RichardEckart" date="1331823548" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="Resources"}%
+---+ !! SSH Service
+
+Sometimes it is not possible to set up a VPN connection to UKP. In such cases it is possible to connect to the UKP network using only SSH (no VPN) via a hop host.
+
+Currently available hop hosts are:
+
+   * headnode.ukp.informatik.tu-darmstadt.de
+
+These hosts run additional tools to ensure the SSH service is not used by hackers. For example, if you repeatedly fail to log in, your IP will be banned for some time.
+
+---++++ Terms of Use
+
+   * Hop hosts are meant to be used *only* as an intermediate connection to the UKP network. That means you log in via SSH to the hop host and then immediately open another SSH connection to your final destination. In particular you are *not meant to store data* on the hop host.
+
+---++++ Tips
+
+   * If you need to copy data from outside UKP to e.g. a compute server via SSH, you should do so via a SSH port forwarding:
+      * Set up forwarding connection in one terminal. This example will create forwarding from port 2222 on your machine to port 22 on selma:
+         * =ssh -L 2222:selma.ukp.informatik.tu-darmstadt.de:22 headnode.ukp.informatik.tu-darmstadt=
+      * Copy data in another terminal. This will use the port forwarding set up above to copy =myfile.txt= to your home directory on selma.
+         * =scp -P 2222 myfile.txt myukpusername@localhost:~/=
+   * Such forwardings only work for your machine, so you do not have to be afraid that somebody else in your network might hijack your port forwarding.
+   * As it is likely that your UKP username is different from your username on whatever machine your are on outside UKP, make sure you always use the "username@host" notation as in the example above.
+   * This also works with rsync: =rsync -e 'ssh -p 2222' myfile.txt myukpusername@localhost:~/=
+
+-- Main.RichardEckart - 2012-03-15

@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="JoergHellms" date="1219421136" format="1.1" version="8"}%
+%META:TOPICPARENT{name="JoergHellms"}%
+---+ Meeting-Protokolle
+ 
+%TOC%
+
+---++ 22.08.2008
+Teilnehmer: Christof Müller, Jörg Hellms<br />
+Besprochene Themen:
+   * Über Code-Basis von Florian Schwager gesprochen
+      * von den Ressourcen wird nur der ESA-Index benötigt
+      * Annotation von paragraph, sentence, token und treetagger aus dkpro_core verwenden
+      * treetagger läuft nur unter Linux (casWriter und xmiReader verwenden für den Übergang Linux/Windows)
+      * Annotation des Graphs von Florian Schwager verwenden
+      * Möglichkeiten zur Darstellung des Graphs sind MMAX2 oder prefuse (Überlegen was besser)
+      * Zu Debug-Zwecken kann die CPE die Ausgabe mittels 'AnnotationWriter' (dkpro_core) als Text-Datei schreiben
+   * Anmeldung der Diplomarbeit abgegeben 
+
+action@Jörg:
+   * Entscheiden ob Diplomarbeit in englisch oder deutsch schreiben (wegen Titel)
+
+action@Christof:
+   * BerufeNet Korpus schicken 
+   * ESA-Index schicken
+
+
+---++ 07.08.2008
+
+Teilnehmer: Konstanina Garoufi, Christof Müller, Jörg Hellms<br />
+Besprochene Themen:
+   * Programm-Code von Florain Schwager (Stand und weitere Verwendung)
+   * Status und Ergebnisse Literatur- und Patentrecherche
+   * Weiteres Vorgehen besprechen
+action@Christof:
+   * <strike>relevante UIMA Komponenten zusammenstellen oder Verzeichnis freigeben</strike>
+   * mit Torsten den Fortschritt beim Code-Aufräumen von Florian klären 
+action@Konstantina
+   * <strike>UIMA Tutorial mailen</strike>
+
+---++ 16.07.2008
+Teilnehmer: Konstanina Garoufi, Christof Müller, Jörg Hellms<br />
+Besprochene Themen:
+   * Vorhabensbeschreibung unterschrieben
+   * Hilfestellung zur Literaturrecherche bekommen
+
+---++ 02.07.2008
+Teilnehmer: Christof Müller, Jörg Hellms<br />
+Besprochene Themen:
+   * Vorläufige Aufgabenstellung durchgesehen (Endfassung kommt demnächst)
+   * Auszug aus Projektbeschreibung bekommen (Arbeitspaket 6-8)
+   * TWiki erklärt bekommen und rege Nutzung meinerseits zugesichert
+   * TK-Pool Benutzerordnung unterschrieben
+   * TK-Account aktiviert
+   * Arbeitsplatz in Uni bis September möglich
+   * Transponder wird noch freigeschaltet (TK-Pool und Arbeitsplatz)
+
+---++ 17.06.2008
+Teilnehmer: Christof Müller, Jörg Hellms<br />
+Besprochene Themen:
+   * Unterschriebener Vertrag (UKP) abgegeben
+   * Programmiertest-Verbesserungen 
+      * Parameterübergabe bei Methodenaufruf
+      * UFT8 benutzen
+      * Map statt HashMap
+      * StringBuffer / StringBuilder verwenden
+
+---++ 28.05.2008
+Teilnehmer: Christof Müller, Jörg Hellms<br />
+Besprochene Themen:
+   * Auswahl des Diplomarbeitsthemas
+      * *Graphenalgorithmen im Information Retrieval*
+      * <strike>Cross-lingual Information Retrieval </strike>
+      * <strike>Methoden zur Bestimmung von Textähnlichkeit </strike>
+      * <strike>Einfluss der Semantik im Information Retrieval </strike>
+   * Vetrag (UKP) bekommen zum Durchlesen
+   * Infoblatt "Anforderungen an eine Diplomarbeit/Master Thesis in UKP" bekommen
+
+
+-- Main.JoergHellms - 02 Jul 2008

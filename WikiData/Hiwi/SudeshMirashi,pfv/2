@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="mirashi" comment="reprev" date="1458489273" format="1.1" reprev="2" version="2"}%
+---+!! %TOPIC%
+%TOC%
+
+----+ March 2016
+
+* Topic Correlations
+   * Compute TopicDistribution annotations for each documents
+      * Re-use pipeline from IndexMalletLDA (wdk-core)
+   * Get familiar with DKPro Core development
+      * https://dkpro.github.io/dkpro-core/documentation/
+      * https://github.com/dkpro/dkpro-core-examples
+   * Implement one DKPro Core component:
+      * process(): extract and store TopicDistribution annotation and store in memory
+         * (!CaS) MTJ matrix library: https://github.com/fommil/matrix-toolkits-java
+      * collectionProcessComplete(): get topic vectors and compute correlations, store in file
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 5.02.2016 | Analyzing force directed graph | 4 | |
+
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+
+
+
+
+

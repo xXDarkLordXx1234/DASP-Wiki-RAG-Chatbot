@@ -1,0 +1,100 @@
+%META:TOPICINFO{author="IvanGalkin" date="1256854014" format="1.1" reprev="52" version="52"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Ivan Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung !DataMachine | 95 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Ivan Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung !DataMachine | 13.01.2009 | 4 | Installation von MySQL, Einrichtung der Datenbank, Einlesen in Quellcode und UKP-Seite, Download von SimpleEnglish-Dump, Starten der DataMachine (in einigen Stunden wurden die Daten erfolgreich generiert) |
+| Einarbeitung !DataMachine | 14.01.2009 | 2 | Einlesen in den Programm-Quellcode und die Modifikation dieses Programmcodes, erfolgreicher DataMachine-Programmstart mit dem GZip-on-the-fly-Parser |
+| Einarbeitung !DataMachine | 15.01.2009 | 5 | Recherche nach BZip2-Parser; Enwickeln, Implementieren und Testen der neuen Funktionalitäten für on the fly entpacken. Start des Zwischentests. |
+| Einarbeitung !DataMachine | 16.01.2009 | 1 | Bearbeitung von Testergebnissen, Fehlerkorrekturen, Testen (Zwischenergebnisse an Torsten gesendet) |
+| Einarbeitung !DataMachine | 19.01.2009 | 4 | Recherche nach LZMA bzw. 7Zip Entpackungsmöglichkeiten: kein funktionsfähiger Java-Code gefunden. Als Variante - Verwendung von Binaries (7z.exe, 7za) in pipe möglich |
+| Einarbeitung !DataMachine | 20.01.2009 | 3 | Test eines 7Zip-Java-Frameworks (https://sourceforge.net/projects/sevenzipjbind/). Schien zu funktionieren (nur unter Windows) aber entpackt nur solche Datenmenge, die in VM Heap passt |
+| Einarbeitung !DataMachine | 30.01.2009 | 7 | <ul><li>Installation von Eclipse, .NET Framework, !MySQL etc; </li><li>Runterladen von Dump-Dateien; </li><li>Testen des korrigierten 7Zip-JBinding-Framework (unbefriedigende Ergebnisse); </li><li>Enwicklung einer eigenen Entpackungmethode (Pipe zwischen 7z.exe / 7z und den Parsern - im Vergleich zu 7Zip-JBinding gibt es die Möglichkeit ans Betriebsystem anzupassen)</li><li>Start der Applikation mit dem deutschen Dump von 20081206; Erwartung - Abbruch wegen des Speichermangels</li></ul> |
+| Einarbeitung !DataMachine | 31.01.2009 | 6 | <ul><li>Weiterentwicklung der Entpackungsmethoden</li><li>Detailierte Analyse des Quellcodes der Appliaktion Schlussfolgerung - inkonsequente Benutzung der Resourcen, Für die Analyse der aktuellen deutschen/englischen Dumps grundsätzliche Korrekturen notwendig.</li><li> Erstellung der HIlfstabelle (s. DataMachineReview )</li></ul> |
+| Einarbeitung !DataMachine | 02.01.2009 | 1 | <ul><li>Prüfung des Ablaufsprotokolls - Absturz wegen des Festplattenmangels</li><li>Testen von Streaming-Verfahren</li></ul> |
+| Einarbeitung !DataMachine | 06.02.2009 | 6 | Entwicklung und Testen der Klasse XMLInputStream, die eine InputStream "dekoriert", wobei XML Darstellung in SQL Format umgewandelt wird |
+| Einarbeitung !DataMachine | 07.02.2009 | 6 | <ul><li>Entwicklung und Testen der Klasse SQLInputStream, die eine InputStream aus SQL- ins textuellen Format umwandelt, wobei für jede Tabelle (page, revision, text etc) in ihre eigene Ergebnis-Stream geschrieben wird.</li><li>Analyse der Programm-Architektur (s. StreamConcept )</li></ul> |
+| Einarbeitung !DataMachine | 08.02.2009 | 3 | Analyse der Programm-Architektur (s. StreamConcept ) |
+| Einarbeitung !DataMachine | 18.02.2009 | 5 | <ul><li>Entwikicklung von Konvertierungsklassen</li><li>Modifikation des Programms</li><li>Teststart</li></ul> |
+| Einarbeitung !DataMachine | 19.02.2009 | 5 | <ul><li>Bug Fixing</li><li>Testen</li></ul> |
+| Einarbeitung !DataMachine | 20.02.2009 | 2 | Dokumentieren des Quellcodes (gesendet an Torsten) |
+| Einarbeitung !DataMachine | 24.02.2009 | 1.5 | <ul><li>Fehlerkorrekturen</li><li>Start des Programms für 1 dewiki-Snapshot auf dem TKPool-Rechner</li></ul>Bitte beachten Sie, dass auch in Windows der Slash ('/') als path separator in den XML-Konfigurationsdateien verwendet sein soll. Das Fehler wird beseitigt. <br /><em>Update:</em>Restarten des Programms mit der richtigen Hauptkategorie. Zu dieser Zeit erreichter Arbeitsspeicher-Bedarf war &gt; 700 MB. Möglicherweise zusätzliche Programmänderungen notwendig. |
+| Einarbeitung !DataMachine | 05.03.2009 | 0 | Nach mehreren Tagen des Programmablaufs wurde der Rechner von dem Windows Update Service automatisch restartet. Der Neustart der DataMachine ist bis Performance-Verbesserungen verschoben und wird voraussichtlich auf einem Hochleistungsserver statt finden. |
+| Einarbeitung !DataMachine | 16.03.2009 | 1.5 | <ul><li>Erlernen von dem Quellcode des DataMachine</li><li>Prüfung, ob die parallele Dateienbearbeitung möglich ist</li></ul>S. ParallelismImpossibility |
+| Einarbeitung !DataMachine | 17.03.2009 | 8.5 | <ul><li>Einsatz der neuen MWDumper-Version - Anpassen und Testen des Programms</li><li>Erlernen des DataMachine- und MWDumper-SourceCodes</li></ul>S. LayerReduce |
+| Einarbeitung !DataMachine | 18.03.2009 | 5 | Erweiterung des MWDumper-Codes und Einsatz des LayerReduce-Konzepts um die Arbeitsleistung zu verbessern |
+| Einarbeitung !DataMachine | 19.03.2009 | 7.5 | Entwicklung der Klassen für XML-Parsing der revision-Tabelle in Rahmen von s.g. LayerReduce |
+| Einarbeitung !DataMachine | 01.04.2009 | 4 | <ul><li>Entwicklung der Klassen !RevisionWriter: Output-Format vom XML-Parser für die "revision"-Tabelle enthält nur notwendige Daten und zwar im binären Format</li><li>Anpassung der !RevisionParser-Klasse</li></ul> |
+| Einarbeitung !DataMachine | 02.04.2009 | 5 | <ul><li>Entwicklung der Klassen !PageWriter, !TextWriter</li><li>Anpassung der Klassen PageParser, TextParser</li><li>Testen, Validation der Output-Data mit dem Original-Programm</li></ul> |
+| Einarbeitung !DataMachine | 03.04.2009 | 5 | <ul><li>Bug Fixing</li><li>Entwicklung der Klassen !FragmentedDataInputStream und !FragmentedDataOutputStream</li><li>Testen</li></ul> |
+| Einarbeitung !DataMachine | 04.04.2009 | 3 | Vergleich der Arbeitsleistung vom unmodifizierten und modifizierten Programm auf Beispiel von !SimpleEnglish-Wikipedia-Dump. Bei denselben Input- und Output-Daten bestand je nach Programmversion folgender Zeitbedarf: <br /> =Stream-Verfahren 197 Minuten= <br /> =LayerReduce-Verfahren 39 Minuten (~197 / 5)= <br /> Aus der Dump-Größenrelation zwischen deutschen und simple-englischen Wikipedia kann man erwarten, dass die Bearbeitung des deutschen Dumps nur vier Tage brauchen wird. Um diese Behauptung zu prüfen, wurde die modifizierte !DataMachine mit dewiki-20081206 gestartet |
+| Einarbeitung !DataMachine | 08.04.2009 | 1 | Erfolgreiche Beendung der !DumpAnalyse: Bewertung (s. DumpAnalyseLayerReduce0), Starten des neuen Tests |
+| Einarbeitung !DataMachine | 15.04.2009 | 2.5 | <ul><li>Neustart der Dumpanalyse wegen inkonsistenter CPU-Lastverteilung (Performance sinkt drastisch nachdem man das Bildschirmsperrung entlockt. Dabei sinkt die CPU-Auslastung von ~100 bis 3 %)</li><li>Einlesen in !JWPLRevisions</li></ul> |
+| Einarbeitung !DataMachine | 16.04.2009 | 4.5 | <ul><li>Anhalten der Dumpanalyse wegen dem Swapping bzw. dem starken Performance-Verlust</li><li>Grundlegende und umfangreiche Überarbeitung der Klasse !DumpVersion</li></ul> |
+| Einarbeitung !DataMachine | 17.04.2009 | 3.5 | Aufgrund von Arbeitsspeichermangel des PCs im TK-Rechenpool, wurde das Programm für den Start auf dem Server-Rechner vorbereitet. Bearbeitung des dewiki-dumps (13 Snapschüsse) auf dem Server gestartet. |
+| Einarbeitung !DataMachine | 22.04.2009 | 1 | Vervollständigung des Programms für die Überwachung des Arbeitsspeichers. Analyse auf Basis von simpleenglish-Dump. Start der ähnlichen Analyse für dewiki |
+| Einarbeitung !DataMachine | 23.04.2009 | 1 | <ul><li>Einlesen in die Dokumentation von GNU Trove.</li><li>Kompletter Austausch der Klassen aus JDK Collection mit den entsprechenden Klassen aus GNU Trove.</li></ul> |
+| Einarbeitung !DataMachine | 24.04.2009 | 0 | Absturz der dewiki-Bearbeitung auf dem Server wegen des Arbeitsspeichermangels |
+| Einarbeitung !DataMachine | 27.04.2009 | 4 | <ul><li>Auswertung der Memory-Log-Datei</li><li>Suche der Inkonsistenzen im Speicherverbrauch &ndash; Programmänderungen, Testen</li></ul> |
+| Einarbeitung !DataMachine | 28.04.2009 | 1 | Weitere Optimierung der Klassen DumpVersion und Revision |
+| Einarbeitung !DataMachine | 29.04.2009 | 4 | Optimierung der Applikation und Start der dewiki-Bearbeitung |
+| Einarbeitung !DataMachine | 04.05.2009 | 5 | <ul><li>Auswertung der JDKvsGNUTrove-Ergebnissen</li><li>Bugfixing</li><li>Einarbeitung in die Generation der ESA-Indexen</li></ul> |
+| Einarbeitung !Datamachine | 05.05.2009 | 2 | Einlesen in bzw. Testen von GNU Trove |
+| Einarbeitung !DataMachine | 06.05.2009 | 4 | <ul><li>Anpassung von der DumpVersion-Klasse um den Nutzen von GNU Trove zu maximieren</li><li>Testen</li></ul> |
+| Einarbeitung !DataMachine | 09.05.2009 | 3 | Einarbeiten in die Generierung der ESA-Indexe. Starten der ESATest-Applikation |
+| Einarbeitung !DataMachine | 11.05.2009 | 3 | <ul><li>Auswertung der Memory-Logs der letzten dewiki-Generierung.</li><li>Einarbeitung in die Generierung der ESA-Indexe und Starten des Generierungsprogramms</li></ul> |
+| Einarbeitung !DataMachine | 13.05.2009 | 4 | <ul><li>Aktualisierung des Quell-Codes in SVN</li><li>Vorbereitung der TimeMachine für den Start auf dem Server</li><li>Import der Snapshots der deutschen Wikipedia in die Datenbank</li><li>Starten der ESA-Generierung</li></ul> |
+| Einarbeitung !DataMachine | 14.05.2009 | 0.5 | Das Programm ist mit einem Fehler "keine Methode vorhanden" terminiert. Rebuild und restart |
+| Einarbeitung !DataMachine | 15.05.2009 | 3 | <ul><li>Rebuild und Restart auf Windows</li><li>Behebung des "Out Of Bounds"-Problems</li><li>Start unter Linux. Obwohl das "Out Of Bounds"-Fehler nicht mehr auftritt und das Programm länger funktionsfähig bleibt, terminiert die Applikation wegen schwerwiegenden Fehler trotzdem</li></ul> |
+| Einarbeitung !DataMachine | 25.05.2009 | 3 | Fehlersuche auf Basis von !SimpleEnglish-Wikipedia-Dumps. Verwendung von einer neueren !TreeTagger-Version. |
+| Einarbeitung !DataMachine | 26.05.2009 | 6 | <ul><li>Besprechung mit Torsten</li><li>Nachdem das Fehler in der !Klasse ExtendedWikipediaReader beseitigt wurde, erfolgreiche Generierung der ESA Indexe auf Basis von !SimpleEnglish-Dumps</li><li>Wegen der Vorbereitung für zeitintensive Tests und da manche Klassen (sowie TreeTagger) nur für Linux funktionieren - Installation von !VMPlayer und !Ubuntu</li></ul> |
+| Einarbeitung !DataMachine | 27.05.2009 | 7 | ESA Indexe<ul><li>Installation von Eclipse und JDKauf die virtuelle Maschine</li><li>Erfolgreiche Wiederholung der ESA Generierung auf der VM</li><li>Import der zusätzlichen DBs für die deutsche Wikipedia</li><li>Erfolglose Generierung der ESA Indexe für deutsche Wikipedia - mehrmalige Fehlermeldungen (sowohl auf VM als auch auf dem Linux-Laptop)</li></ul>Datamachine<ul><li>Einlesen in den Quellcode</li><li>Refactoring, Erstellung der Klasse !FileNames mit den !Dateinamen-Konstanten und einfachen Regeln der Definition vom Input-/Outputpfad</li><li>Erstellung vom XML-Parser auf Basis von MWDumper-Engine entsprechend LayerReduce</li></ul> <br /> DataMachineOptimisation |
+| Einarbeitung !DataMachine | 28.05.2009 | 7 | !DataMachine<ul><li>Tests und Anpassungen für den neuen XML-Dump-Parser</li><li>Einbauen der Lesefunktion von komprimierten Daten</li><li>Einbauen der Logging-Funtion</li><li>Analyse vom Verwendungsbereich der benutzten Collections &ndash; Optimierung und Ersetzen von einigen mit GNU Trove-Collections</li></ul>DataMachineOptimisation |
+| Einarbeitung !DataMachine | 29.05.2009 | 2 | 4 verschiedene Varianten des Programms erstellt und für Testzwecke gestartet <br />DataMachineOptimisation |
+| Einarbeitung !DataMachine | 02.06.2009 | 1 | Auswertung der Ergebnissen |
+| Einarbeitung !DataMachine | 03.06.2009 | 4 | <ul><li>Erstellung der Finalversion</li><li>Testen</li><li>Hochladen der Finalversion in SVN-Repository</li><li>Erstellung des Reports DataMachineOptimisation</li></ul> |
+| Einarbeitung !Datamachine | 04.06.2009 | 0.5 | Starten von weiteren Memory-Tests. Vorbereitung zum Testen auf Basis von enwiki20090520 |
+| Einarbeitung !DataMachine | 05.06.2009 | 1 | <ul><li>Auswertung von Ergebnissen des vorigen Testes</li><li>Starten des Testes auf Basis von enwiki20090520-Dump</li></ul> |
+| Einarbeitung !DataMachine | 08.06.2009 | 5 | Es wurde festgestellt, dass die Teste auf Basis von enwiki20090520-Dump ähnlich wie in dem Bug-Report terminieren. Aus diesem Grund wurde die originelle XML-Parsing-Klasse von MWDumper überarbeitet, wobei alle überflüssige Attribute (inklusive "Contributor") ausgeschlossen wurden. Das Programm wurde auf SimpleEnglish-Wikipedia mehrmals getestet und in SVN hochgeladen. <br />Der wiederholte Test auf Basis von enwiki20090520 wurde gestartet. |
+| Einarbeitung !DataMachine | 09.06.2009 | 0 | Bearbeitung vom genannten Dump wurde erfolgreich abgeschlossen. |
+| Einarbeitung !DataMachine | 12.06.2009 | 2 | Auswertung der Ergebnissen, bug fixing |
+| Einarbeitung !DataMachine | 15.06.2009 | .5 | Besprechung mit Torsten. Die Lösung für !ESA-Generierung wurde von Torsten Bereitgestellt |
+| Einarbeitung !DataMachine | 16.06.2009 | 1 | Versuch die !ESA-Generierung auf dem !TK-Pool-Rechner zu starten. |
+| Einarbeitung !DataMachine | 17.06.2009 | 3 | <li>Änderungen in !ESA-Generierung (bzw. in der !TreeTagger-Klasse wurden vorgenommen </li><li>Generierung mehrmals erfolglos gestartet: auf der !UbuntuVM führen die !TreeTagger-Abbrücke zur frühzeitigen Terminierung</li><li>ESA-Indexe für de20057806 zu Hause erfolgreich generiert</li></ul> |
+| Einarbeitung !DataMachine | 22.06.2009 | 3 | Einlesen in MWDumper-Quellcode um die Bearbeitung der Diskussionsseiten zu ermöglichen. Änderungen in der DataMachine |
+| Einarbeitung !DataMachine | 24.06.2009 | 3.5 | <ul><li>Änderungen in !DataMachine bzgl. der Bearbeitung von Diskussionsseiten</li><li>Testen, Ferhlerbeseitigung</li><li>Vorbereitung des ausführbaren Programms für Torsten</li></ul> |
+| Einarbeitung !DataMachine | 29.06.2009 | 1.5 | Zusätzliche Verbesserungen in !TimeMachine-Parsing. Testen, !Bugfixing |
+| Einarbeitung !DataMachine | 08.07.2009 | 5.5 | [[%SCRIPTURL%/view/Hiwi/Mergen][Mergen von DataMachine und TimeMachine]] |
+| Einarbeitung !DataMachine | 09.07.2009 | 7 | [[%SCRIPTURL%/view/Hiwi/Mergen][Mergen von DataMachine und TimeMachine]] |
+| Einarbeitung !DataMachine | 10.07.2009 | 10 | [[%SCRIPTURL%/view/Hiwi/Mergen][Mergen von DataMachine und TimeMachine]] |
+| Einarbeitung !DataMachine | 17.07.2009 | 9 | Weitere Verbesserungen in !TimeMachine: Anstatt der Nutzung von !Standard-XML-Dump-Parser aus dem MWDumper Faramework wurde für alle Etappen der !Dump-Parsing eigener Parser entwickelt. Solche Lösung ist <ul><li>weniger fehleranfällig, weil der !StandardParser !XmlDumpReader für Inkonsistenzen in XML-Datei sehr sensibel war.</li><li>schneller, weil an jedem Schritt nur solche XML-Tags bearbeitet werden, die notwendig sind</li><li>flexibler, weil sie bessere !Filtering-Möglichkeiten anbietet.</li></ul> Außerdem wurde die !TimeMachine <ul><li>getestet</li><li>für den Start auf dem Server vorbereitet</li><li>für die Generierung der Enwiki-Dumps auf patty gestartet</li></ul> |
+| Einarbeitung !DataMachine | 23.07.2009 | 1 | !TimeMachine hat die Bearbeitung von enwiki-Dump erfolgreich beendet<br>Bearbeitung und Analyse der Ablauf-Protokolle. |
+| Einarbeitung !DataMachine | 05.10.2009 | 5 | <ul><li>Suche nach dem Fehler der Massenauslassung der Datensätzen</li><li>Einlesen in MySQL-Dokumentation</li></ul> |
+| Einarbeitung !DataMachine | 06.10.2009 | 8 | <ul><li>weiteres Redesign von DataMachine und TimeMachine: gemeinsamme Klassen und Interfaces wurden ins Projekt "WikiMachine" verschoben</li><li>Kommentare zu wichtigen Klassen und Methoden der genannten Projekte hinzugefügt</li><li>Ant-Scripts erstellt, die zum Kompilieren von JARs dienen sollen</li><li>Weitere suche nach dem Fehler</li></ul> |
+| Einarbeitung !DataMachine | 07.10.2009 | 5 | Lesen von MySQL-/Unicode-Dokumentation und Such nach dem Fehler. Grund der fehlerhaften Importierung der Datensätze - primäre Schlüssel sich nicht einmalig |
+| Einarbeitung !DataMachine | 08.10.2009 | 2 | Vorbereitung der Daten zum Starten von !WikiMachine auf dem patty-Server. Die fehlerhafte Dumps wurden mit der Memory-Strategie INTHASHKEYTROVE generiert. Starten der Generierung mit der sicheren (aber weniger sparsamen) Strategie STRINGKEYS |
+| Einarbeitung !DataMachine | 12.10.2009 | 3 | <ul><li>Prüfung der generierten Dumps (beide Memory-Strategien haben einen gleiche Ergebnisse gebracht)</li><li>Weitere Suche nach den Fehlergründen</li></ul> |
+| Einarbeitung !DataMachine | 16.10.2009 | 4 | <ul><li>Fehlersuche durch Erstellen einer !TimeMachine-Version, die der originalen sehr ähnlich ist</li><li>Neue Version wurde auf dem patty-Server gestartet</li></ul> |
+| Einarbeitung !DataMachin | 19.10.2009 | 2 | <ul><li>Import von dem generierten Schnappschuss. Originalversion von DumpVersion-Klasse hat das Problem nicht gelöst  bei dem englischen Schnappschuss  20010603010000 wurden  60799 Einträge übersprungen. Mögliche Ursachen: 1. Fehler beim XML-Parsen  2. Fehlerhafter enwiki-Dump</li><li>Suche nach dem möglichen Parsen-Fehler</li></ul> |
+| Einarbeitung !DataMachine | 21.10.2009 | 2 | <ul><li>XML Parsen von !TimeMachine wurde auf den sicheren Stand zurückgerollt</li><li>Starten von !TimeMachine auf dem !patty-Server um !Parsen-Probleme zu finden bzw. auszuschließen. Soll das Massenauslassung-Fehler bleiben, liegt das Problem wahrscheinlich an dem fehlerhaften enwiki-Snapshot</li></ul> |
+| Einarbeitung !DataMachine | 23.10.2009 | 2 | Das vorige Start von der Generierung wurde [von Außen] abgebrochen: Analyse der möglichen Gründe, neues Start der Generierung |
+| Einarbeitung !DataMachin | 26.10.2009 | 3 | Generierung der Snapshots wurde erfolgreich abgeschlossen und getestet. Analyse der Ergebnissen und Suche des ursprüngliches Fehlers |
+| Einarbeitung !DataMachine | 27.10.2009 | 1 | <ul><li>Vorbereitung der Daten für die Generierung der enwiki-Snapshots auf patty</li><li>Generierung gestartet</li></ul> |
+| Springer-Projekt | 28.10.2009 | 5 | <ul><li>Einlesen in JAXB</li><li>Konvertieren von DTD in XSD und Nachbearbeitung von der Schema-Datei</li><li>Erstellung und Anpassung von Java-Klassen, die von JAXB generiert wurden</li><li>Entwicklung eines Parsers</li></ul> |
+| Springer-Projekt | 29.10.2009 | 4 | Entwicklung des Parsers |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 300 | bis Ende Oktober |
+
+   * DataMachineReview
+   * StreamConcept
+   * ParallelismImpossibility
+   * LayerReduce
+   * DumpAnalyseLayerReduce0
+   * JDKvsGNUTrove
+   * DataMachineOptimisation
+   * [[%SCRIPTURL%/view/Hiwi/Mergen][Mergen von DataMachine und TimeMachine]]

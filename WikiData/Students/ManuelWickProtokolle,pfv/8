@@ -1,0 +1,61 @@
+%META:TOPICINFO{author="ManuelWick" date="1277142702" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ Meeting-Protokolle
+
+%TOC%
+
+---++21.06.2010
+Questions:
+   * Why do we exactly compare Tf-Idf, BM-25 and Esa?
+   * Even mention topics I don't really use? (e.g. Recall)
+   * How should I describe topics such as InvertedIndexConstruction? Problem: the question of the work is not how indexing works, but I can't just mention the word without any explanation.
+   * First discussing theory with some imaginary examples, then discussing the pipelines and architecture with real examples (crm)? I'm just not sure of that...
+   * Esa Indexing takes too long and too much space. See [[ManuelWickLogbuch][Logbuch 17.06.2010]]
+
+---++ 1 June 2010
+   * @info(BH): no news from itCampus about the data, I will ask again tomorrow in the telco
+   * @info()
+
+---++ 20th April 2010
+   * Discussed ESA
+   * Solved problem to precompute ESA vectors
+   * @info(BH): Terrier + ESA:
+      * also see provided file: ESA-terrier.txt
+      * =weightingModel=ESA.class.getName();= 
+      * =ComponentFactory.getSearcher(indexingEngine, aContext.getStorageLocation(DOCUMENT_INDEX_KEY,
+						AccessMode.READONLY), weightingModel, weightingModelParameter,
+						matchingModel, esaIndexPath)=
+   * provide slides of upcoming presentation by next Friday
+   * next steps: 
+      * finalize Lucene and Terrier Retrieval
+      * output results for manual inspection (relevant, not relevant)
+      * store results in Trec format
+      * integrate in ESA retrieval model
+      * work on structure for thesis
+---++!! 30th March 2010
+   * Current status?
+   * Next steps:
+      * Perform retrieval with Lucene, Terrier
+      * Use provided keywords lists
+---++ 25.01.2010
+Teilnehmer: Manuel Wick, BH <br>
+Discussed Topics:
+   * Student pool access
+   * UKP Eclipse
+   * SVN Access
+   * Jabber Access
+   * Pointing to Apache Tika + UIMA Sandbox Tika Annotator
+
+---++ 23.03.2010
+Teilnehmer: MW, BH <br>
+Discussed Topics:
+   * Pipeline uutuc style
+      * @action(BH): provide IR components and Examples for uutuc-style components *done*
+   * Speed problems in PDF parsing
+      * not to be considered (now)
+   * File formats
+      * sufficient for now are: pdf, doc, xls, eml, ppt. txt
+      * optional: docx,xlsx, pptx
+
+
+-- Main.BenjaminHerbert - 25 Jan 2010

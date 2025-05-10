@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="6"}%
+%META:TOPICPARENT{name="NicoErbsExperiments"}%
+---+ Evaluation of High-Precision-Subjectivity-Sentence-Classifier
+
+%TOC%
+
+---+++ Evaluation of a implementation of a HPSSC with UIMA
+
+   * Aim is to get precise results for the performance of the HPSSC
+
+---+++ Evaluation of a basic implementation of a HPSSC without UIMA
+
+   * Aim is to get a quick overview of the performance of the HPSSC
+   * Three relevant values are measured 
+      * Precision: Correct found sentences divided by all found sentences
+      * Recall:Correct found sentences divided by all correct sentences
+      * F-Measure: 2*Precision*Recall / (Precision + Recall)
+   * A sentence is classified as subjective depending on the amount of subjective clues in this sentence
+   * Subjective clues are word that appear in a lexicon (list of words)
+   * Two lexica are use; One with positive subjective clues (~1000) and one with negative subjective clues (~1000)
+   * Depending on the threshold (necessary amount of subjective clues) there are different results
+   * It compares only sentences marked as certain as well as all sentences (certain and not_sure)
+      * one subjective clues
+         * Precision: 0.71 (certain), 0.70 (all)
+         * Recall: 0.18 (certain), 0.17 (all)
+         * F-Measure 0.29 (certain), 0.28 (all)
+      * two subjective clues
+         * Precision: 0.78 (certain), 0.79 (all)
+         * Recall: 0.04 (certain), 0.04 (all)
+         * F-Measure 0.08 (certain), 0.07 (all)
+      * three subjective clues
+         * Precision: 1.0 (certain), 1.0 (all)
+         * Recall: 0.004 (certain), 0.004 (all)
+         * F-Measure 0.09 (certain), 0.008 (all)
+       * four subjective clues
+         * Precision: 1.0 (certain), 1.0 (all)
+         * Recall: 0.004 (certain), 0.004(all)
+         * F-Measure 0.09 (certain), 0.008 (all)
+   * Results:
+      * For none of the thresholds the combination of precision and recall is sufficient for a HPSSC
+      * The difference between sentences marked as certain and marked as not_sure is not significant
+      * Examples for subjective sentences rated as objective:
+         * Nun ist alles ein bisschen bürokratischer geworden.
+         * Kann ein deutlich verkürzter Wahlkampf überhaupt noch etwas bewirken?
+      * Examples for objective sentences rated as subjective:
+         * Die Forscher wollen mit ihren Experimenten untersuchen, ob es möglich ist, Erbkrankheiten, die mit den Mitochondrien weitergegeben werden, zu verhindern.
+         * Forscher haben herausgefunden, dass die Medien unser Bild von der Wichtigkeit von Nachrichten stark beeinflussen.
+      * A complete list of the results can be found [[%ATTACHURL%/HPSSCCBasicResults.tar][here]]
+   * Improvements:
+      * The lexica should be exchanged by lexica with more words
+      * Lemmatisation should be used to cover derivated forms of words
+      * UIMA should be applied to simplify the 
+
+
+-- Main.NicolaiErbs - 03 Aug 2009
+
+%META:FILEATTACHMENT{name="HPSSCCBasicResults.tar" attachment="HPSSCCBasicResults.tar" attr="" comment="Results of the HPSSC basic implementation" date="1249851177" path="HPSSCCBasicResults.tar" size="1085440" stream="HPSSCCBasicResults.tar" tmpFilename="/var/tmp/CGItemp50303" user="NicoErbs" version="1"}%

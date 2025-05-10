@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1284477921" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+%TOC%
+
+---++++++ 14 Sep 2010 (TZ)
+   * Discussed pipeline layout: 
+      * Pipeline should consist of Keyphrase Extraction on subCASes followed by a postprocessing step that filters suitable index entry candidates.
+      * Rather focus on Keyphrase Extraction then Named Entity Recognition.
+      * Discussed possibility of using "global" information to enhance postprocessing step.
+   * Discussed technical details: 
+      * Looked at (de)multiplication for subcas-processing. Awaiting demo code for proper UIMA-Settings when (de)multiplying.
+   * Next steps:
+      * Attapt _KeyphraseEvaluatorApproximate_ to evaluate BOTBI-Pipeline with recall, precision, f-measure
+      * Write simple pipeline that processes a whole book and evaluate index entries with gold standard

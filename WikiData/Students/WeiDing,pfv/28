@@ -1,0 +1,87 @@
+%META:TOPICINFO{author="ding" comment="save topic" date="1523366697" format="1.1" reprev="24" version="28"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! %TOPIC%
+---++ 2018 April 11
+   * Questions:
+      * Add statement id also in KBStatement field?
+      * How is statement id generated?
+
+---++ 2018 April 4
+   * still cannot set KB item from dropdownlist to modifier
+   * KB UI for modifiers - have a button to show the create form
+   * move modifier branch to !GitHub - done
+   * write thesis - have set the latex tu design fonts
+
+---++ 2018 March 28
+   * cannot set KB item from dropdownlist to modifier
+   * need a meeting with MB for KB set, edit and show modifier - had a meeting, talked about KB UI for modifiers
+   * If there is more than one KB, how could user know an item from dropdown is from which KB? - cannot
+   * If user updates the statement value, create a new one or update one? - should delete the old one and write a new one
+
+---++ 2018 March 14
+   * Modifier feature support and editor
+   * use log in exception - done
+   * change properties to concepts and instances for dropdownlist of subject and object - done 
+   * set false to listProperties/concepts/instances - done
+   * create a description document - done
+   * think about link with a new layer
+   * Next step: with MB refication in KB 
+
+---++ 2018 March 5
+   * Selecting the first text, it works, selecting the second one, it has problem. - done
+      * Set breakpoint to write method of !FeatureState, and see when it is written.
+   * When combobox and select to fill shown in the same editor, how to handle the value of combobox to setfeature - done (key is !LambdaModelAdapter)
+      * Use another model for combobox, (examples: IModel in !RecommendationSidebar, new constructor for dropdwonlist id,model,choices)
+   * How did dropdwonlist handel selected value - done
+      * The value of dropdown is connected to the value of the slot. Method (actionHandler.actionCreateOrUpdate(aTarget, actionHandler.getEditorCas()) in !LinkFeatureEditor) is needed.
+   * How to set the rank of annotation features - done
+      * According to the alphabet
+   * Get the annotated value from linked layer - done
+
+
+---++ 2018 Feb 27
+   * !FeatureState vs !AnnotationState vs !AnnotatorState
+      * How is !FeatureState.feature set?
+      * What's the meaning of each filed in !AnnotationFeature
+   * Click and the label value didn't update
+
+---++ 2018 Feb 21
+   * To do:
+      * Prepare midterm presentation
+
+---++ 2018 Feb 5
+   * To do:
+      * create a new featureType for subject and object, including the text-mention selection and the dropdown to KB concept. The mention should also link to another layer storing the entity of mention. Consider !LinkWithRoleModel is used to select text span. !LinkFeatureEditor (!AnnotationActionHandler getEditorCas() could read Jcas)
+      * configure in !ProjectInitializer
+      * a draft for mid-term presentation
+
+---++ 2018 Jan 29
+   * To do:
+      * send the user study
+      * link the properties to dropdwon list (like !ConceptFeatureSupport, !LinkFeatureEditor)
+
+---++ 2018 Jan 23
+   * mid-term presentation: 27.02.2018, final presentation: 15.05.2018
+   * To do:
+      * change the explanation for fact linking
+      * change questions and mockups about annotation UI
+      * change questions and mockups about KB UI
+      * estimate time
+
+---++ 2018 Jan 15
+   * share the result of other manual annotation tools:Pundit, Neonion, Anafora (have problem installing knowtator and Semantator) 
+   * discuss the user study: https://docs.google.com/document/d/1a1UbX44-C1_4d42MNk15inpjIHHYrmcQoYJOMTkWv6c/edit?usp=sharing 
+      
+---++ 2018 Jan 08
+   * Access to thesis students page of UKP
+   * adjust the structure of my thesis: 
+      * the introduction part should set the stage and explain what, why, how
+      * add a section to compare manually fact extraction tools
+   * show the result comparison of fact extraction for 5 sentences
+   * discuss the user study
+   * for implementing, understand the code in class Feature support/ primitiveUimaFeatureSupport /SlotFeatureSupport und linkFeatureEditor 
+
+---++ 2017 Dec 12
+   * Discuss knowledge base in INCEpTION
+
+-- Main.RichardEckartDeCastilho - 2017-12-07

@@ -1,0 +1,137 @@
+%META:TOPICINFO{author="ding" comment="reprev" date="1521451977" format="1.1" reprev="30" version="30"}%
+%META:TOPICPARENT{name="Hiwi.WeiDing"}%
+---+ Time records
+---++ March 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-03-05 | !INCEpTION Sprint Meeting | 1.0 |  |
+| 2018-03-06 | issue#191, #287 | 3.5 |  |
+| 2018-03-06 | issue#164 | 1.5 |  |
+| 2018-03-07 | AL brief instructions | 2.0 |  |
+| 2018-03-07 | AL Meeting | 1.0 |  |
+| 2018-03-08 | Workshop preparation meeting | 1.5 |  |
+| 2018-03-12 | !INCEpTION workshop | 9.0 |  |
+| 2018-03-13 | !INCEpTION workshop + Stragegy meeting | 9.0 |  |
+| 2018-03-14 | AL Meeting | 1.5 |  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ February 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-02-01 | Change learning record database and add events | 4.0 |  |
+| 2018-02-05 | Sprint Meeting | 1.0 |  |
+| 2018-02-07 | Meeting | 1.0 |  |
+| 2018-02-07 | database and query changes | 0.5 |  |
+| 2018-02-09 | refine delete button | 2.0 |  |
+| 2018-02-09 | Not moving to next term in AL | 1.5 |  |
+| 2018-02-14 | Fill the Questionnaire | 0.5 |  |
+| 2018-02-20 | AL sprint meeting | 1.00 |  |
+| 2018-02-20 | Move events | 0.75 |  |
+| 2018-02-21 | Meeting | 1.0 |  |
+| 2018-02-21 | Highlighting Bug | 1.75 |  |
+| 2018-02-23 | Reset the document | 3.5 |  |
+| 2018-02-26 | Holiday | 7.0 |  |
+| 2018-02-27 | !WicketEvent | 4.0 |  |
+| 2018-02-28 | Documentation within last three months | 2.0 |  |
+| 2018-02-28 | Meeting | 2.0 |  |
+| 2018-02-28 | !WicketEvent | 3.0 |  |
+| 2018-02-28 | Disable link in history + icon| 2.0 |  |
+| 2018-02-28 | Ascii-doc + reject error| 1.5 |  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ January 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-01-09 | Meeting and creating issues | 1.5 |  |
+| 2018-01-09 | Sprint meeting | 1.5 |  |
+| 2018-01-09 | Solving mira dependency problem | 0.5 |  |
+| 2018-01-10 | Change the database structure of learning records | 2.25 |  |
+| 2018-01-10 | Clicking in the learning history jumps to the annotation | 2.25 |  |
+| 2018-01-13 | Cannot open active learning sidebar | 0.75 |  |
+| 2018-01-16 | Remove a learning record from learning history | 1.50 |  |
+| 2018-01-17 | 0.2.x and 0.1.x database conflict | 0.50 |  |
+| 2018-01-17 | Meeting | 1.50 |  |
+| 2018-01-18 | Bug-Internal error when no recommendation comes | 2.75 |  |
+| 2018-01-18 | Explain about get all records from database and check with peter how to use it | 0.5 |  |
+| 2018-01-19 | Enhancement AL (jump back to recommendation location, change the view of learning history) | 5.00 |  |
+| 2018-01-22 | !INCEpTION Sprint Meeting | 1.25 |  |
+| 2018-01-24 | Meeting | 1 |  |
+| 2018-01-24 | fix delete button bug | 0.75 |  |
+| 2018-01-24 | check merge conflict 0.2.x | 0.5 |  |
+| 2018-01-24 | change the method to call recommendation after reject/skip | 0.5 |  |
+| 2018-01-25 | add 2 new columns in learning records(add liquibase log, add eventListener, change writing methods in AL and recommendation model) | 7 |  |
+| 2018-01-29 | correct button(plan and discussions, add button and methodes, catch the event) | 7.5 |  |
+| 2018-01-31 | meeting | 1.0 |  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+---++ December 2017
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2017-12-01 | Meeting(2017-11-17) | 1 |  |
+| 2017-12-01 | Implement Strategy B: update recommendation after accept/reject| 1.25 |  |
+| 2017-12-01 | Use bootstrap class button + scroll learning history + add confidence and difference value to UI| 1.5 |  |
+| 2017-12-01 | Get Prediction for the whole document + jump to the corresponding suggestion location + get new predictions after accept| 2.5 |  |
+| 2017-12-04 | Create database and learning record service + connect learning history with database | 3.5 |  |
+| 2017-12-04 | Solve version conflict after merge, debug and test | 4.5 |  |
+| 2017-12-05 | Meeting(2017-11-27) | 1.0 |  |
+| 2017-12-05 | Add layer-id to database | 1.0 |  |
+| 2017-12-05 | Get !AnnotationPage in Sidebar and rerender after user rejects it | 0.25 |  |
+| 2017-12-05 | Update Version | 0.5 |  |
+| 2017-12-05 | Solve !OpenNLP doesn't work bug | 1.0 |  |
+| 2017-12-05 | Prepare Presentation | 4.0 |  |
+| 2017-12-06 | Highlight recommendation when learning | 3.0 |  |
+| 2017-12-06 | Presentation for active learning | 1.0 |  |
+| 2017-12-06 | Get predictions for all documents, testing | 1.5 |  |
+| 2017-12-06 | Refactoring codes for different strategies | 2.0 |  |
+| 2017-12-08 | Highlight recommendation bug | 1.5 |  |
+| 2017-12-11 | Update version, solve confilct and merge request | 1.0 |  |
+| 2017-12-11 | Testing !INCEpTION KB | 2.5 |  |
+| 2017-12-12 | Meeting | 1.5 |  |
+| 2017-12-18 | Highlight bug communication and testing | 0.75 |  |
+| 2017-12-27 | Highlight bug communication and testing | 0.75 |  |
+| 2017-12-27 | I'm not sure button | 0.5 |  |
+| 2017-12-29 | holiday | 2 |  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+---++ November 2017
+
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2017-11-02 | Set up !CheckStyle| 0.5 |  |
+| 2017-11-03 | Meeting + Meeting minutes| 1 |  |
+| 2017-11-03 | Change learingHistory to !ListView, click accept and recommendation shows in history| 1.5 |  |
+| 2017-11-07 | Show the accepted recommendation in !AnnotationPage as accepted| 6.5 |  |
+| 2017-11-09 | Modify reject button and clean code| 0.5 |  |
+| 2017-11-10 | Meeting + Meeting Notes| 2.25 |  |
+| 2017-11-13 | Filter already accepted recommendations(finding out annotations are stored in Jcas file in local, not in database)| 3.5 |  |
+| 2017-11-13 | Make a new class for active learning recommender, move relevant methods there| 1.0 |  |
+| 2017-11-14 | Try to get recommendations from !OpenNLP classifier, still not work| 0.5 |  |
+| 2017-11-14 | Implement Strategy A, sort according to confidence| 0.5 |  |
+| 2017-11-14 | Think about Strategy B| 0.5 |  |
+| 2017-11-15 | Implement Strategy B: getRecommendations/remove !NullRecommendations/DuplicateRecommendations/AlreadyAcceptedAnnotations| 3.0 |  |
+| 2017-11-15 | Implement Strategy B: calculate differences, return recommendation with lowest difference and higher confidence | 3.75 |  |
+| 2017-11-15 | Vacation | 5.0 |  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+
+---++ October 2017
+
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2017-10-09 | Meeting | 1 |  |
+| 2017-10-09 | Creating WikiPage | 0.5 |  |
+| 2017-10-10 | Exploring INCEpTION | 1.5 |  |
+| 2017-10-10 | Studying Active Learning | 1.5 |  |
+| 2017-10-11 | Reading code and trying some Wicket examples| 3 |  |
+| 2017-10-17 | Meeting | 1 |  |
+| 2017-10-17 | creating new child maven project for active learning, putting it into webapp pom.xml and solving the dependency problems | 1.5 |  |
+| 2017-10-19 | creating a simple hello world sidebar, solving tomcat problem because error from database caused by conflicting beanName | 2.5 |  |
+| 2017-10-20 | creating a simple dropdownchoice for layer and dive into code to find predefined layer-ui-name | 2.5 |  |
+| 2017-10-23 | Finishing rest mockup | 2.5 |  |
+| 2017-10-23 | Refactoring, creating git features branches and push | 1.5 |  |
+| 2017-10-24 | Discussing with Peter about prediction | 1 |  |
+| 2017-10-24 | Thinking about logic behind activeLearningSidebar | 1 |  |
+| 2017-10-25 | Meeting + Meeting minutes | 1.75 |  |
+| 2017-10-25 | Change page layout + AjaxButton(change button value and hiding/showing forms/disabling layer selection after start) | 4.50 |  |
+| 2017-10-27 | implement get recommendations | 2.75 |  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+%META:TOPICMOVED{by="ding" date="1521451977" from="Main.WeiDingTimes" to="Hiwi.WeiDingTimes"}%

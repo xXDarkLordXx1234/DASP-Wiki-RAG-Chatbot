@@ -1,0 +1,118 @@
+%META:TOPICINFO{author="pzhao" comment="" date="1589637804" format="1.1" reprev="21" version="22"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitszeiten - Pengfei Zhao
+
+|*Date*|*Topic*|*Hours*|
+|=Oktober=||||
+|4.10.2019|Recherche : DestillBert, Roberta, huggingface|5|
+|10.10.2019|Meeting|0.5|
+|14.10.2019|Vertrautmachen : Bert-API|4|
+|24.10.2019|Meeting|0.5|
+|28.10.2019|Stress Test : add scheduling, add parallel request|8|
+|29.10.2019|Stress Test : sample from wikipedia, set up in ukp server |7|
+|_Total Oktober_|||_25_|
+
+|*Date*|*Topic*|*Hours*|
+|=November=||||
+|5.11.2019|DestillBert: Basic Pipeline|8|
+|7.11.2019|Meeting|0.8|
+|12.11.2019|create dataset split script|6.5|
+|13.11.2019|Set up pipeline in Lisa, Set up remote debugging|4|
+|15.11.2019|Meeting|1|
+|19.11.2019|Transition to Pytorch|7|
+|20.11.2019|Adapt run_glue.py to usecase : input pipeline, training|5|
+|21.11.2019|Meeting|0.7|
+|26.11.2019|Remove duplicates in data, and intersection between traing and test|4|
+|26.11.2019|Check whether token or word-pieces are truncated|1|
+|26.11.2019|Research about best finetuning parameters|1|
+|26.11.2019|Write evaluation scheme|5|
+|28.11.2019|Meeting|0.8|
+|_Total November_|||_45_|
+
+|*Date*|*Topic*|*Hours*|
+|=Dezember=||||
+|4.11.2019|Set up Environment for Albert|6|
+|5.12.2019|Meeting|0.8|
+|10.12.2019|adapt splitting script|1|
+|10.12.2019|evaluate albertv2,1; bert|3|
+|11.12.2019|try run_classifier from albert repo|4.5|
+|11.12.2019|try to reproduce previous results with bert with transformers|0.5|
+|_Total Dezember_|||_16_|
+
+|*Date*|*Topic*|*Hours*|
+|=Januar=||||
+|7.1.20|Trying to run albert from google repo|3.5|
+|8.1.20|Trying to run albert from google repo|3|
+|10.1.20|Trying to run albert from google repo|3|
+|14.1.20|trying to resolve cuda conflict, run google repo on cpu|5.5|
+|21.1.20|understanding how to modify evaluation in google repo|2|
+|28.1.20|write evaluation function for huggingface tf|2|
+|28.1.20|handling errors in google repo|2|
+|29.1.20|handling errors in google repo|4|
+|_Total Januar_|||_25|
+
+|*Date*|*Topic*|*Hours*|
+|=Februar=||||
+|5.2.20|analyze why albert outputs same predictions|5|
+|6.2.20|meeting|0.5|
+|9.2.20|correct evaluation for tf|3|
+|9.2.20|evaluate pytorch models|4|
+|12.2.20|evaluate tf models|6|
+|13.2.20|meeting|0.5|
+|19.2.20|adapt and evaluate with google repo, find out batch size during prediction time|5|
+|19.2.20|evaluate other pytorch models, check how gpu ram changes with batch size|1|
+
+|_Total Februar_|||_25_|
+
+
+|*Date*|*Topic*|*Hours*|
+|=März=||||
+|12.3.20|Meeting|0.5|
+|16.3.20|trying to run api server, researching docker basics|3|
+|18.3.20|trying to run api server, researching flask, gunicorn basics|4.5|
+|19.3.20|Meeting|0.5|
+|20.3.20|investigate which part could cause for more time lag and which part is not accounted for yet, check if we actually log to the database|4|
+|26.3.20|Meeting|0.5|
+|30.3.20|exploring run_gunicorn.sh|2|
+|31.3.20|measuring time of operations and comparing it with total time measured|1|
+|31.3.20|profiling database operations|1|
+|31.3.20|understanding queuing system, analyzing monitoring tool, identifying error in monitoring tool, trying to fix logger|5|
+
+|_Total March_|||_22_|
+
+|*Date*|*Topic*|*Hours*|
+|=April=||||
+|1.4.20|further investigate monitoring code and see where logging errors might come from, check whether we log at all|2.5|
+|2.4.20|meeting|0.5|
+|3.4.20|briefly understand project structure & adapt input pipeline | 4 |
+|6.4.20|adapt evaluation function |4|
+|7.4.20|limit gpu & print gpu usage |2|
+|7.4.20|run experiments|2|
+|8.4.20|run experiments|2|
+|9.4.20|meeting|0.5|
+|13.4.20|deploy bert-api & send pseudo request|1.5|
+|13.4.20|send correct request & conceptualize time measurement functionality|2.5|
+|14.4.20|implement resonsetime measurement and execute experiments|7|
+|20.4.20|get familiar with slurm, senteval and given repositories|2|
+|21.4.20|set up environment, test run script|2|
+|22.4.20|meeting|0.5|
+|23.4.20|test run on lisa & investigate why it does not work|3|
+|25.4.20|write shell script for experiments, plan how results should be processed|3.5|
+|27.4.20|investigate where the "missing task" problem lies|1|
+|29.4.20|find out "missing task" lies in the problem that git submodule update does not give me the latest repository of those submodules|5|
+|4.5.20|test run all individual tasks in lisa, fix some small issues to make the whole thing run|4.5|
+|_Total April_||50||
+
+
+|*Date*|*Topic*|*Hours*|
+|=May=||||
+|5.5.20|finalizing script add time measurements & progress tracking|7|
+|5.5.20|Meeting|0.8|
+|10.5.20|Fixing bugs during experiment|8|
+|11.5.20|Fixing bugs|8|
+|_Total May_||||
+
+|*Total*| <p style="text-align:right">  </p> |||
+
+
+-- Main.BenjaminSchiller - 2019-10-24

@@ -1,0 +1,271 @@
+%META:TOPICINFO{author="stab" comment="save topic" date="1485961577" format="1.1" reprev="40" version="40"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Talks
+   * 2017-03-28 Bachelor thesis final presentation
+
+---++ 2017-02-02
+   * @info(CS): [[%ATTACHURLPATH%/TaskDescription_AndreasSchuck_v03.docx][Revised Task Description]]
+   * QuestionsRatioFeatureExtractor works and don't need further preprocessing. It extracts the ratio of questions (indicated by a single question mark at the end) to total sentences.
+
+---++ 2017-01-24
+   * Talk: Razuvaeskaya and Teufel (2016): Connection between let alone and a fortiori argumentation
+      * It's interesting how the occurrence of the word combination "let alone" almost certainly implies an enthymeme. 
+      * However, these enthymemes always lack a premise, not the claim. Since we decided to focus our research on missing claims we have no use for that.
+      * Nevertheless I added the talk to my references and mentioned it under related work in my thesis cause of it is still a good approach for recognizing enthymemes.
+   * Talk: Hunter - Mind the Gap! (2016)
+      * The best summarize for his talk is his own subtitle: "Handling of enthymemes is a critical step in formalizing natural language arguments"
+      * He shows why the reconstruction of enthymemes isn't possible without a proper background knowledge. 
+      * Down break: while reconstruction, there are usually very different options which fit in the logical gap. Some of these Options change the whole motivation of the statement. But,
+        and that's the crux: The different options are equally valid. Humans decide with only their backing knowledge which one to choose. And acquiring the commonsense knowledge required for handling enthymemes is challenging.
+      * For our work: This fact doesn't imply that the very only act of recognition needs backing knowledge as well. Also the step of recognition an enthymeme is not mentioned. 
+        But the talk refers to several other papers Hunter wrote which may be worth a closer look.
+      * Apart from that, I maybe can use the model Hunter describes for my first research question. I haven't decided yet whether to put it in my thesis or not.
+   * Experiments. Current state of [[%ATTACHURLPATH%/results23_01.pdf][results]]
+      * After observing that n-grams seem to have the best results so far I went further into this and tested all n-gram permutations from 1 to 5. I used the class LuceneNGramDFE (the same I was using to compute the Unigram baseline) and discovered, that Bigrams seems to work best. (55,8 Percent Macro F1)
+      * I run a set of Experiments, which tests all feature extractors I could find already provided by DKPro TC. Beside different NGram-FEs, FEs which analyze the raw lexical (length of Chars, Tokens, Sentences etc.), writing style and syntax. A Combination of Syntax (QuestionRatioFeatureExtractor) and NGram(LuceneSkipcharacterNGramDFE) provides the very best result at all until now. (58,7 Percent Macro F1) 
+      * I refactored the ClaimIndicatorsFE I wrote to lowercase the provided CAS. But alone the Classifier still won't learning anything out of it. 
+      * Then I wrote a FE which extracts ModalVerbs (should, could, must etc.) and single used it is of no use, but in combination with the Claim Indicators the Classifier reaches 47,1 %. According to our baselines, this is still disappointing, but this is the very first time the Classifier actually learned something out of an FE I wrote myself which I consider as a small success. 
+      * After that I learned that TC already provide a feature extractor for modal verbs called "ModalVerbsFeatureExtractor" but in combination with the ClaimIndicators there is no learning at all. That's weird cause of the set of modal verbs are pretty the same. I am still looking into this.
+      * I also wrote a FE called "ExplicitTopic", which tests whether the topic term is explicitly used in the argument. My thinking is that a statement which includes the topic noun is most likely an explicit claim cause the the noun will have an adjective which maybe could be a logic prädicats which tells us the proponents stand on the topic.
+      * I currently work on a possibility to create a set of nouns which indicates the topic. My motivation is that an explicit mentioning of the topic doesn't necessarly needs the very exact string of the topic. For example if someone say: "I rather send my child to a public school than educate it at home" The person used the topic in the claim, but the feature extractor won't recognize the string "homeschooling". I imagine to use somekind of wordnet, which breaks down "homeschooling" in a set of nouns like: {home, school, private, public, elementary, high-school...}
+      * Next Steps:
+         * Continue FE-development and try to improve F1 score.
+         * Continue examine related work and write the results directly into the thesis.
+         * Allocate new data by investigating Reed-Corpus (low priority).
+
+---++ 2017-01-17
+      * *High priority*: Clarify question about "Prüfungsberechtigung" (latest until next week)
+         * done, FB20 is fully entitled to granting
+      * Elaborate task description
+         * I sent you a version with suggestions for elaboration.
+         * I am not sure why we should use an example for an argument in the task description. Can we just use one (short) entry from Ivans corpus?
+         * Literature has been shorted. But I don't see how we should reduce corpus analysis. There is not rly a big corpus analysis task in the text.
+         * Issue: Referencing a talk? Proper scientific method?
+         * Change title to: Recognizing enthymemes in User-Generated Web Discourse
+      * Read and summarize the two papers above
+         * I asked Mrs. Teufel and Mr. Hunter for material and got the files.
+      * Start writing, e.g. motivation, related work, etc. 
+         * I started writing.
+         * The Language Issue. Compromise german text but main terms in English.
+         * PDF Document. Line spacing.
+         * Textlength you are willing to read. ;-)
+      * Experiment with new features
+         * pending
+      * Determine amount of missing argument components in araucaria corpus (e.g. missing claims or missing premises)
+         * pending
+
+---++ 2017-01-11 
+   * Task Description
+      * In welchem FB soll der Student die Arbeit schreiben? Haben wir alleine eine Prüfungsberechtigung dafür, oder braucht er einen weiteren Betreuer aus FB2?
+      * Was genau ist in der Arbeit als Argument definiert? Nenne ein Beispiel
+      * Generell etwas kürzen
+         * Auf "missing claim identification" in Ivan's Daten fokussieren 
+         * Literaturrecherche weniger prominent darstellen 
+         * Korpus Analyse reduzieren 
+      * Literatur einfügen
+         * Simone Teufel: "Let Alone: sentences and enthymeme reconstruction"
+         * Anthony Hunter: "Mind the Gap! Handling of enthymemes is a critical step in formalizing natural language arguments"
+   * TODOs
+      * *High priority*: Clarify question about "Prüfungsberechtigung" (latest until next week)
+      * Elaborate task description
+      * Read and summarize the two papers above
+         * Which data is used?
+         * Is there any computational approach or is it a pure theoretical work?
+         * Ask Simone about paper or slides: http://www.cl.uni-heidelberg.de/colloquium/
+      * Start writing, e.g. motivation, related work, etc. 
+      * Experiment with new features
+      * Determine amount of missing argument components in araucaria corpus (e.g. missing claims or missing premises)
+     
+
+
+---++ 2016-12-21  
+   * CS:
+      * Plan talks
+      * Status task description
+   * refreshed [[%ATTACHURLPATH%/statistics.pdf][statistics]] (also percentages included)
+   * Preparation cross-topic experiments
+      * Split Data for Cross-topic experiments
+      * I wrote a script which automatically creates the directory structure for cross-topic experiments. ("test" all arguments labeled with the topic and "train" all other topics available) as discussed
+      * Train/Test Experiment is now working (including evaluation)
+   * Question: Is there anything like "show_most_informative_features()" (python) in dkpro tc?
+   * Understand measurements for machine-learning statistics, precision, recall, f (macro/micro) confusion matrix
+      * done.
+   * Determine Baselines for CV experiment and cross-topic experiments
+      * Fill tables for majority, random, and unigram baseline
+      * (I suggest to put these tables in your thesis)
+      * done, we should discuss how I computed the [[%ATTACHURLPATH%/baselines.pdf][baselines]].
+   * Investigate Reed corpus
+      * pending
+   * Next Steps:
+      * Start writing, e.g. motivation, related work, etc. 
+      * Experiment with new features
+      * Determine amount of missing argument components in araucaria corpus (e.g. missing claims or missing premises)
+
+
+
+---++ 2016-12-14
+   * Preprocess the data with Stanford Parser
+      * done, [[%ATTACHURLPATH%/addedAnnotaions][addedAnnotations]]
+      * btw, there seems no 'warrant' annotation in habernal-corpus
+      * Big Problem: Experiment don't work with preprocessed corpus, further investigation reveals the experiment don't work with the original corpus either. See [[%ATTACHURLPATH%/error][errorMsg]]
+      * recherche of the error msg results in 
+         *  "The SMO algorithm in Weka only does binary classification between two classes. Sequential Minimal Optimization is a specific algorithm for solving an SVM and in Weka this a basic implementation of this algorithm. If you have some examples that are cancer and some that are not, then that would be binary, perhaps you haven't labeled them correctly."
+         * maybe i need to change a label during preprocessing
+   * prepare cross-topic experiments: (1) Split data (5 topics as train and 1 topic as test; result are 6 train-test splits) (2) setup and train test experiment in TC
+      * experiment with test/train set is working, but there are problems with the evaluation script. I don't fully understand how the evaluation script works, but it refers to cv directories so I guess I have to write a new one.
+      * I haven't split the data physically yet, but this should be no problem. Maybe there is a more elegant way than different folders which avoid duplicate files. I'll wait for the evaluation issue handled.
+      * *CS*: Try ExperimentUtilsComponents.evaluate(resultPath, testData, false); in line 66 of ImplicitClaimIdentificationTT.java
+   * send editable task description to CS
+      * done, btw. what means 'CS'?
+         * *CS*: this is me :)
+      * diskuss task description
+   * What are reasonable baselines?
+      * cause of the imbalance in cross-topic splits, a random baseline (maybe 20times) seems most reasonable to me.
+      * further we should carry on an unigram baseline for competition. 
+      * I don't see any use in a majority baseline, regarded how less data we've got
+      * I need more information about baselines in machine learning
+   * run experiments with different combination of features and compare results
+      * pending, cause of issues mentioned above
+   * try to consider new features
+      * in Addition to claim-indicators, we could try:
+         * modal verbs
+         * lemmatisation of the claim-indicators
+         * lemmatisation of the topic
+         * we could combine vocabulary and length and average tokens per sentences to measure the complexity of the argument. The hypothesis is that someone who makes his claim explicit, will not tend to an extravagant language (or will he?)
+   * Can you tell me more about sentiments?
+      * *CS*: https://en.wikipedia.org/wiki/Sentiment_analysis
+   * Next steps
+      * Determine Baselines for CV experiment and cross-topic experiments
+         * Split Data for Cross-topic experiments
+         * Fill tables for majority, random, and unigram baseline
+         * (I suggest to put these tables in your thesis)
+      * Investigate Reed corpus
+
+
+---++ 2016-11-30
+   * diskuss motivation part of task [[%ATTACHURLPATH%/TaskDescription.pdf][description]]
+   * corpus [[%ATTACHURLPATH%/statistics.pdf][statistics]]
+      * How can we preprocess the corpus to reintegrate topic information?
+   * Potential Features
+      * Lexical
+      * Structural 
+      * Syntactic
+      * Lexicons
+      * Semantic
+      * Sentiment
+   * Next Steps:
+      * send editable task description to CS
+      * What are reasonable baselines?
+      * Preprocess the data with Stanford Parser
+      * run experiments with different combination of features and compare results
+      * try to consider new features
+      * prepare cross-topic experiments: (1) Split data (5 topics as train and 1 topic as test; result are 6 train-test splits) (2) setup and train test experiment in TC
+
+
+---++ 2016-11-23
+   * Discuss thesis [[%ATTACHURLPATH%/structure.pdf][structure]]
+      * 1 Introduction
+         * (Motivation: Why is it important? What's new? What are the research questions?)
+         * 1.1 Contributions
+         * 1.2 Thesis Organization
+      * 2 Enthymemes: Theoretical Background
+         * What are arguments? Theoretical definition, etc. (Toulmin1958)
+         * What are enthymemes? Are there theoretically motivated classifications of enthymemes or varying definitions (e.g. formal logic vs. informal approaches)
+         * 2.x Chapter Summary
+      * 3 Argument Mining
+         * Argument Recognition
+         * Dealing with enthymemes
+         * 3.X Chapter Summary
+      * 4 Recognizing Enthymemes / Missing Claims
+         * (high-level idea and brief description)
+         * 4.1 Data (describe data... Statistics (size/distribution over topics); IMPORTANT: How did you derive your labels from the annotations? )
+         * 4.2 Preprocessing (Which tools? Maybe why?)
+         * 4.3 Models / Features / Baselines
+         * 4.4 Evaluation (Setup (e.g. train-test/cross-validation); Which measures and why? Feature Analysis; cross-topic experiment)
+         * 4.5 Error Analysis (Confusion Matrix; Manually investigate the wrongly classified instances and try to explain why the classifier failed)
+         * 4.6 Chapter Summary
+      * 5 Summary
+         * (5.1 Discussion)
+         * 5.2 Future Research directions 
+   * preprocessor
+   * feature extraction
+      * number of sentences
+      * number of tokens
+   * argument typ aproach, preprocessor
+   * Next Steps:
+      * Implement (at least) two feature extractors (#tokens, #sentences)
+      * Start estimating corpus statistics
+         * How many documents?
+         * How many documents per topic? BTW: Which topics? :) 
+         * How many arguments without claim in total and per topic
+         * Put everything in a nice looking table.
+      * Gets Latex Template working
+      * Motivation part of task description
+      * Continue literature research (Argument Theory, Argument mining, existing corpora)
+
+---++ 2016-11-16
+   * Discuss elaborated research questions
+      * Which classes of incomplete arguments must be considered?
+         * Which classes of enthymemes exists?
+      * How is the recognition of enthymemes possible?
+         * How can we automatically separate complete arguments from enthymemes?
+      * Are there domain-specific differences in the difficulty of the problem?
+         * Which features are stable over difference domains?
+   * Clarify understanding UIMA [[%ATTACHURLPATH%/uima summarize.pdf][terms]]
+   * UIMA Plugin. Is there a better way to identify available annotations?
+      * see statistics package
+   * Next Steps:
+      * Elaborate task description
+      * Structure thesis
+      * Continue literature research (Argument Theory, Argument mining, existing corpora)
+      * Try to preprocess Habernal's corpus (from web) using DKPro
+      * Get familiar with feature extraction and try to create and own feature extractor
+
+---++ 2016-11-09
+   * (Done) license contract
+   * (Done) UKP account
+   * (Done) communication channels
+   * progress and next steps
+      * technical
+      * literature
+   * task description (siehe Anhang)
+   * SVN: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/schuck
+      * This includes a preliminary DKPRO TC Experiment using the data from Habernal and Gurevych (2016)
+      * For "installing" the project: Browse the SVN using Eclipse's "SVN Repository Exploring", Then, right click on the project and select "Import as Maven Project"
+      * Running the experiment: Open de.tudarmstadt.ukp.dkpro.argumentation.implicitclaims.experiments.ImplicitClaimIdentification and run it.
+      * (it might be useful to select a result path that is not in your working space to prevent committing results in subversion) 
+      * As found in our last meeting, the data set in this project does not include information about the topics of the arguments. This information, however, will be extremely useful for conducting cross-topic experiments, etc.. This information is included in the original version of the corpus: https://www.ukp.tu-darmstadt.de/data/argumentation-mining/argument-annotated-user-generated-web-discourse/ 
+      * @discuss: How to include the missing meta data in the preprocessed data in the project?
+   * Next steps:
+      * Elaborate task description
+      * Structure thesis 
+      * Continue literature research (Argument Theory, Argument mining, existing corpora)
+      * Intall experiment (SVN project)
+      * Try to preprocess Habernal's corpus (from web) using DKPro
+
+
+
+---++ 2016-11-02
+   * Discussed topic in order to elaborate task description 
+   * Brief Introduction to DKPro TC
+   * Completed forms / contract / etc. 
+   * Next Steps: 
+      * Read literature about data
+      * Install DkPro TC and get familiar with it
+      * Preparation of task description 
+
+
+
+-- Main.ChristianStab - 2016-11-02
+
+%META:FILEATTACHMENT{name="uima summarize.pdf" attachment="uima summarize.pdf" attr="" comment="" date="1479222641" size="31977" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="structure.pdf" attachment="structure.pdf" attr="" comment="" date="1479832357" size="16732" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="statistics.pdf" attachment="statistics.pdf" attr="" comment="" date="1481808526" size="16614" user="schuck" version="2"}%
+%META:FILEATTACHMENT{name="Task_description_Andreas_Schuck_30_11.docx" attachment="Task_description_Andreas_Schuck_30_11.docx" attr="" comment="" date="1480460075" size="64012" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="TaskDescription.docx" attachment="TaskDescription.docx" attr="" comment="" date="1480460261" size="64012" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="TaskDescription.pdf" attachment="TaskDescription.pdf" attr="" comment="" date="1480460333" size="94297" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="addedAnnotaions" attachment="addedAnnotaions" attr="" comment="" date="1480753726" size="4395" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="error" attachment="error" attr="" comment="" date="1481623579" size="4853" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="baselines.pdf" attachment="baselines.pdf" attr="" comment="" date="1482229209" size="25844" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="results23_01.pdf" attachment="results23_01.pdf" attr="" comment="" date="1485178471" size="35561" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="TaskDescription_AndreasSchuck_v03.docx" attachment="TaskDescription_AndreasSchuck_v03.docx" attr="" comment="" date="1485961569" size="92134" user="stab" version="1"}%

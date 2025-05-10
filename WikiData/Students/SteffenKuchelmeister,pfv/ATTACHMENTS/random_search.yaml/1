@@ -1,0 +1,113 @@
+DROPOUT_PROBABILITY:
+  interval_type: continuous
+  start: 0.25
+  end: 0.75
+LAYER:
+  interval_type: discrete
+  start: 1
+  end: 3
+LAYER_SIZE_HIDDEN:
+  interval_type: discrete
+  start: 50
+  end: 200
+LAYER_SIZE_CHARACTER:
+  interval_type: discrete
+  start: 50
+  end: 200
+LAYER_SIZE_LSTM:
+  interval_type: discrete
+  start: 50
+  end: 200
+BATCH_SIZE:
+  interval_type: discrete
+  start: 16
+  end: 1024
+SHORT_CUT:
+  interval_type: list
+  values:
+    - True
+    - False
+EMBEDDINGS:
+  interval_type: list
+  values:
+    - path: data/wiki_extvec_words
+      encoding: utf8
+      size: 300
+      gzip: False   
+    - path: data/glove.6B.100d.txt
+      encoding: utf8
+      size: 100
+      gzip: False
+    - path: data/sskip.100.vectors
+      encoding: utf8
+      size: 100
+      gzip: False
+CLASSIFIER:
+  interval_type: list
+  values:
+    - CRF
+    - softmax
+---
+name: uas_en_5000
+num_runs: 1
+epochs: 5000
+batch_size: BATCH_SIZE
+optimizer: adam
+use_variational_dropout: True
+short_cut_connections: SHORT_CUT
+tasks:
+  - name: Dependency_Parsing
+    train_file:
+      path: data/en_uas/train_5000
+      column_separator: tab
+      word_column: 1
+      label_column: 6
+      encoding: utf8
+    dev_file:
+      path: data/en_uas/dev
+      column_separator: tab
+      word_column: 1
+      label_column: 6
+      encoding: utf8
+    test_file:
+      path: data/en_uas/test
+      column_separator: tab
+      word_column: 1
+      label_column: 6
+      encoding: utf8
+    output_layer: LAYER
+    hidden_layers:
+      - units: LAYER_SIZE_HIDDEN
+        activation: relu
+        dropout_keep_probability: DROPOUT_PROBABILITY
+        use_bias: True
+    eval_metrics:
+      - f1
+      - precision
+      - recall
+      - accuracy
+    classifier: CLASSIFIER
+    data_format: CONLL
+    dropout_keep_probability: DROPOUT_PROBABILITY
+    use_bias: True
+    encoding: NONE
+    type: GENERIC
+early_stopping:
+  task_name: Dependency_Parsing
+  metric: accuracy
+  patience: 5
+character_level_information:
+  network_type: LSTM
+  dimensionality: 100
+  hidden_units: LAYER_SIZE_CHARACTER
+eval_metrics:
+  - accuracy
+rnn_unit: LSTM
+rnn_dropout_input_keep_probability: DROPOUT_PROBABILITY
+rnn_dropout_output_keep_probability: DROPOUT_PROBABILITY
+rnn_dropout_state_keep_probability: DROPOUT_PROBABILITY
+use_bias: True
+units: LAYER_SIZE_LSTM
+word_dropout_keep_probability: DROPOUT_PROBABILITY
+embeddings:  
+  - EMBEDDINGS

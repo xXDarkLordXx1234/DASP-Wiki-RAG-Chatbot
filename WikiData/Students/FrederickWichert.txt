@@ -1,0 +1,127 @@
+%META:TOPICINFO{author="wichert" comment="" date="1684324190" format="1.1" reprev="12" version="12"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Utterance-level analysis of Psychotherapy Dialogues using Hierarchical Dialogue Modeling Approaches
+*Start date:* 02.01.2023
+
+*End date:* TBA
+
+*Supervisor:* Neha Warikoo, Tobias Mayer
+
+---++ Meeting 17.05.2023
+   * Schedule for remaining time:
+| *Week* | *Finished Work* | *Event* |
+| KW 20 - 15.05 | 3. Dataset, 4. Methodology | |
+| KW 21 - 22.05 | 4. Methodology, 5. Experimental Setup | |
+| KW 22 - 29.05 | 2. Background and related work | |
+| KW 23 - 05.06 | 6. Results, 7. Conclusion and Future Work | |
+| KW 24 - 12.06 | 7. Conclusion and Future Work, 1. Introduction | |
+| KW 25 - 19.06 | Presentation and working in feedback from presentation | Final Presentation |
+| KW 26 - 26.06 | Finishing up thesis | Submission |
+
+---++ Meeting 10.05.2023
+   * Continued writing on thesis
+   * Prepared to share thesis to supervisor to get feedback
+
+---++ Meeting 03.05.2023
+   * Meeting was cancelled due to illness
+   * Implemented Feedback on
+   * Experiments for Knowledge Graphs are finished now
+
+---++ Meeting 26.04.2023
+   * Shared outline of paper to get feedback
+   * Prepared Timeline for thesis in the reamining time
+   * Experiments for Dialogue Modeling are finished now 
+      * turns out, the increased performance did indeed come from the new labels
+      * although the performance is much more on par with the adapter experiments, some dialogue modelling approaches still yielded better results, though only by around 3 - 4 percent
+
+---++ Meeting 19.04.2023
+   * started rerunning experiments with the original emotion labels
+   * should be finished by next week   
+
+---++ Meeting 12.04.2023
+   * old emotions are now uploaded on SLURM Cluster
+      * now I can compare the performance on the old emotions compared to the newer emotions
+      * if that makes a difference, unfortunately the performance gain was because of the new labels, not because of English models
+
+---++ Meeting 06.04.2023
+   * Meeting got moves to Thursday
+   * The old Emotion Categories are still not working, Neha is going to take a look at it again and upload the correct file if necessary
+
+---++ Meeting 29.03.2023
+   * Discussed Feedback from Presentation
+   * Talked about specific future work related things. Stuff that seems interesting and worth investigating, but doesn't fit in the schedule
+
+---++ Midterm Presentation 24.03.2023
+   * Future Experiments:
+      * cross validation for different models
+      * run models with higher epochs
+   * Feedback:
+      * Additional ER data:
+         * Maybe include other ER training data with similar taxonomy
+         * Maybe exchange classification layer after pre-training on different ER data
+      * Context:
+         * Does the context make sense?
+         * Analyze context for length
+         * Maybe filter out too long or too small utterances
+         * Analyze results to see if length of context correlates to performance
+         * Repeat BERT context analysis with dialogue focused models
+         * Repeat BERT context analysis on IP
+      * Translation:
+         * Compare translation performance
+
+---++ Meeting 22.03.2023
+   * preparations for midterm presentation
+   * feedback on slides and content so far
+
+---++ Meeting 15.03.2023
+   * Results for Emotion Recognition seem rather high
+   * In the translated version, a new coding schema is used for the emotion labels
+   * Can't join on original data because the ER files do not have session id
+   * Discuss with Neha or Dana about these new ER labels
+
+---++ Meeting 08.03.2023
+   * Result table is halfway complete
+   * Intent Labels seem to be missing in the translated file
+   * Join on original data using session id and event id to uniquely identify utterance
+
+---++ Meeting 01.03.2023
+   * Discussed the exact structure of the BIU Translated file
+   * It seemed like a couple of labels were missing, or different to the original
+   * Emotion Labels are now constructed with the 
+
+---++ Meeting 22.02.2023
+   * Talked about Midterm presentation => Presentation will be on 24.03.2023
+   * Talked about main evaluation table for thesis, see below (TODO: add table here)
+   * Listed tasks to accomplish for midterm presentation
+      * fill out evaluation table
+      * start testing with curriculum learning
+      * gather ideas for second half of the experimentation
+
+---++ Meeting 15.02.2023
+   * Explanation of the structure the BIU Dataset
+   * Continued working on recreating the results from the paper
+   * Sketched out evaluation table
+
+---++ Meeting 08.02.2023
+   * Setup of overleaf workspace for thesis. Start writing as early as possible
+   * Repeating all the models and their tests on the SLURM cluster. The next step would be to adjust these for the BIU
+
+---++ Meeting 01.02.2023
+   * Questions about SLURM Cluster, basic setup of SLURM Cluster workplace
+
+---++ Meeting 25.01.2023
+   * UKP arrived that day. Talked about things to look into first from the wiki.
+
+---++ Meeting 19.01.2023
+   * Moved from originally Wednesday to Thursday.
+   * Discussion about selected models for the thesis
+      * TodBERT
+      * ConvBERT
+      * ConvBERT (DialoGLUE)
+      * HRLCE
+      * BERT
+
+---++ Meeting 11.01.2023
+   * Talked about the progress of the thesis. I started the outline of the thesis
+
+-- Main.TobiasMayer - 2023-01-11

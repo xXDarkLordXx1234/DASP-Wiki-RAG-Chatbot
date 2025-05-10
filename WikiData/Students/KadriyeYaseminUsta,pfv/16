@@ -1,0 +1,302 @@
+%META:TOPICINFO{author="usta" comment="" date="1600619548" format="1.1" reprev="9" version="16"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Masters Thesis* : Visualizing Argument Aspects in Cluster Networks 
+
+*Supervisor*: Dr.-Ing. Johannes Daxenberger     
+*Co-Supervisor*: M.Sc. Tilman Beck
+
+
+*Start Date*: 16-MAR-2020 
+
+*Mid-Term Presentation Date*: 23-JUNE-2020 [Done]
+
+*Final Presentation Date*: 10-NOV-2020  
+
+*End Date*: 09-NOV-2020
+
+---++++ *18.SEPTEMBER.2020*
+*Meeting Decisions:*
+   * We discussed the new schedule. The new schedule is:
+      * 21-27 Sep: Solve coding problems + Implement benchmark with intrinsic evaluation methods
+      * 28 Sep - 4 Oct: User study + Intrinsic evaluation
+      * 5-11 Oct: Prepare user study results + Start thesis writing
+      * 12-18 Oct: Thesis writing
+      * 15 October: 1st draft of Thesis Report (Send to Johannes and Tilman)
+      * 19-25 Oct: Thesis writing + Prepare final presentation
+      * 1 November: 2nd draft of Thesis Report (Sanity Check)
+      * 2-8 November: Presentation draft (beginning of the week) + Report correction
+   * For speed, HW needs to be reported. 
+
+*Status:*
+   * Wiki Page: Updated and prepared for tomorrow's new meeting
+   * Implementation: 
+      * I corrected the stemming strategy. Now I am using stems for detecting duplicates. Then, show unstemmed words.
+      * Combined bubble chart and network chart
+      * Implemented Silhouette Index for graph evaluation
+      * Working on pairwise F1-score calculation
+      * Selected circular layout, spring layout, and  Kamada-Kawai layout for benchmarking
+   * Report: Written literature part
+
+*TO-DO List:*
+   * Prepare Google Form's questionnaire for the evaluation part.
+   * Create a table with two spreadsheets. One is for clustering evaluation, and the other is for layout evaluation. 
+   * I need to check layout parameters for robustness.
+   * Share the code with Johannes.
+
+---++++ *9.SEPTEMBER.2020*
+*Meeting Decisions:*
+   * Discussed the layouts from the below and selected the combination of packet bubble and network drawing methods.
+   * Determined to choose 2-3 layouts and implemented them with the current UKP Aspect dataset.
+   * Discussed the incoming thesis schedule. Weekly meetings are determined.
+   * The current situation of Prof. Gurevych's signature was considered, and the result of the extension will define a new schedule.
+
+*Status:*
+   * Wiki Page: Updated and prepared for tomorrow's new meeting
+	* Implementation: Got a parametrized framework (It contains five modules; pre-processing, clustering, graph drawing, evaluation, front-end view)
+		* Added stemming and deleted punctuations from the arguments and aspects.
+		* Added lemmatization to the pre-processing
+		* Checked the UKP dataset and used as an input with tri-frames and ADU model
+		* Got first results of the ADU model both UKP and ArgumenText dataset  (going to show with graph)
+		* Got results of tri-frames clustering  both UKP and ArgumenText dataset (draw some graphs with it)
+		* Implemented different graph drawing methods
+			* Circular Layout:  Creates a chart with positions for nodes on a circle.
+			* Kamada-Kawai Layout:  A specialized force-directed layout for calculating forces. Provides positions using the Kamada-Kawai path-length cost-function.
+			* Planar Layout: Creates positions without or minimum edge intersections.
+			* Shell Layout: Provides positions of nodes as concentric circles.
+			* Spiral Layout: Creates a graph in a spiral layout.
+			* Spectral Layout: Calculates positions using the eigenvectors of the graph Laplacian.
+			* Spring Layout (Force-directed layout): The algorithm uses a force-directed representation of the network treating edges as springs holding nodes close while treating nodes as repelling objects, sometimes called an anti-gravity force. (Previous examples was uniform spring layout)
+			* Word Cloud (Experimental): Created word clouds according to the frequency of aspects.
+			* Packet Bubble: visualizations where the size and optionally the bubbles' color are used to show the data. The positioning of the bubbles is not significant.
+			* Split Packet Bubble: Split series into individual groups and creates a bubble graph.
+	* Documentation: Created the code framework graph, which shows input, outputs, and methods for each module.
+	* Report: Written some introduction, layout paragraphs, and used programming languages for the implementation section.
+   
+*TO-DO List:*
+	* Implementation: 
+		* Check functional correctness of intrinsic calculation parameters (precision, recall, modularity, silhouette index)
+		* Check functional correctness of pairwise F1-score
+		* Combine network and packet bubble graph with labels 
+		* Choose 2-3 layouts and finish graph drawing section
+		* Add arguments to the tooltip cards
+		* Correct stemming approach. Use stemming to remove duplicates then show the normal version of the word in the graph.
+		* Prepare a new schedule
+		* Prepare a Google Form questionnaire for the user study.
+		* Add Johannes to the git repository for coding feedback.
+
+---++++ *20.JULY.2020*
+*Meeting Decisions:*
+   * New Agenda discussed. The new agenda is:
+      * 20 - 27 July: Solve problems with graph drawing script (make optimizations) and check the intrinsic evaluation methods
+      * 27 - 3 August: Intrinsic evaluation and user study preparation
+      * 3 August - 17 August: User Study + Graph and Table preparation for thesis report and presentation
+      * 17 August: Start Thesis Writing (3 Weeks + 1 week for checking)
+      * 19 August: 1st draft of the Final Presentation
+      * 26 August: 2nd draft of the Final Presentation
+      * 1 September: Final presentation and 1st draft of Thesis Report (After presentation)
+      * 4 September: Finish Thesis Writing
+      * 4-14 September: Error and spelling check
+   * The problem of triframes disccused.
+   * New meeting set to 27th Monday.
+
+*Status:*
+   * Implementation: Created a parametrized framework (It contains five modules; preprocessing, clustering, graph drawing, evaluation, front-end view)
+      * Added stemming and deleted punctuations from the arguments and aspects
+      * Got first results of ADU model
+      * Checked the UKP dataset and implemented to the framework
+      * Implemented pairwise F1-score (needs functional check)
+      * Implemented basic clustering algorithms: Used scikit-learn library for basic clustering algorithms (Spectral clustering, agglomerative clustering, k-means)
+      * Got results of triframes clustering
+      * Implemented uniform force-directed layout 
+   
+*TO-DO List:*
+   * Documentation: Create the code framework graph which shows input, outputs, and methods for each module
+   * Implementation: Add other graph drawing methods (divide and conquer, Lombardi force-directed method (circular arcs), cluster node)   
+      * Add similarity (edge length) calculation methods
+      * Add intrinsic calculation parameters (precision, recall, modularity, silhouette index)
+      * Verify the triframes clustering's overlapping issue
+
+*Problem:*
+   * Not sure of triframes clustering method's output, it may be problematic. SVO input part is working well, but when I input arguments, it seems problematic. So just in case, I searched for new methods. There are two short text clustering methods that their code is available. (https://github.com/hadifar/stc_clustering, https://github.com/jacoxu/STC2)
+
+---++++ *30.JUNE.2020*
+*Meeting Decisions:*
+   * Mid-term presentation discussed. The feedback is:
+      * Underline difference between graph drawing and graph generation with <i>consistent vocabulary</i>
+      * Choose different example (Nuclear energy is confusing)
+   * Pre-processing module discussed. Adding stemming and deleting punctuations are decided.
+   * Pre-processing module is now doing respectively:
+      * Lowercase
+      * Delete punctuations
+      * Stemming
+      * Delete stopwords
+
+*Status:*
+   *  Mid-Term Presentation done
+   *  Solved Docker issue (ADU presentation [Lenz et al. 2020 article])
+   *  Corrected aspect finding algorithm and created new graphs
+   *  Lowercased aspects and arguments
+   *  Implemented basic postprocessing on the selection of aspects.
+   *  Started to graph drawing framework for visualizing different layout types.
+   
+*TO-DO List:*
+   * Add stemming and delete punctuations at preprocessing
+   * Create graphs with different layout and different clustering methods
+
+---++++ *16.JUNE.2020*
+*Meeting Decisions:*
+   
+   * Discussed how to implement an evaluation metric, F1-score, to the system. We decided to use pairwise F1-score comparison like ACL article.
+   * Decided to use annotated ACL data to evaluate the system.
+   * <b>Optimization Suggestion</b>: Aggregation of aspects in the cluster is suggested (using Levenshtein distance or BERT [which uses cosine similarity]).
+   * <b>Layout Suggestion</b>: Highlighting area of a cluster may be more useful than showing as dummy node.
+
+*Status:*
+
+   * Showed the graphs (top 5 most frequent terms with/out stopwords, top 5 highest confidence arguments, top 5 most used aspects)
+   * Explained triframes algorithm and docker problem
+   * Presentation feedback is discussed
+    
+*TO-DO List:*
+   
+   *  Submit 2nd draft until <i>Friday (19.06.2020)</i>
+   *  Visualize Triframes outputs
+   *  Solve Docker issue (ADU presentation [Lenz et al. 2020 article])
+   *  Correct aspect finding algorithm (The output aspects are sorted according to the input)
+   *  Lowercase, lemmatization  and stemming of aspects
+   *  Implement basic postprocessing on the selection of aspects. 
+
+---++++ *28.MAY.2020 - 16.JUNE.2020*
+*Decisions:*
+  
+   * Input: Clusters of arguments
+   * Output: A readable cluster visualization
+   * Start creating a baseline with Triframes-Triclusters algorithm (https://github.com/uhh-lt/triframes) 
+   * Note: Cluster API has a maximum capacity of 500 arguments.
+
+*Status:*
+
+   * Literature Review: Checked the feedback.
+   * Still working on grammar and reading flow.
+   * Searched recent studies on how to visualize clusters, how to label clusters (Found ANCA: Attributed Network Clustering Algorithm)
+   * Implementation: Created new offline-results with 125 documents that have 492 arguments. The results contain 36 clusters of 477 arguments with threshold 0.5, 783 aspects.
+   * Setup a new Linux machine for Triframes and set up the dependencies of Triframes to test the results.
+   * To preprocess the input(arguments) Watset algorithm is also used. 
+   * I got a result of basic test data. I hope to get results before our meeting on 9 June.
+   * I created two graphs: One is showing the top 5 most frequently used aspects in a cluster. The other shows the top 5 arguments that have the highest confidence in a cluster.
+   * As a baseline, I created an aspect graph too.
+   * I enhanced APIcaller with parametrizing which API to call.
+   * I improved the graph creation by taking data from API and preprocessing methods. (It was kinda hardcoded before)
+  
+*TO-DO List:*
+   
+   * Literature Review: Search cluster visualizing, labeling, and methods for ensuring readability
+   * Implementation: Enhanced the basic graph creation mechanism.
+   * Implementation: Setup Watset and get results
+ 
+---++++ *19.MAY.2020 - 28.MAY.2020*
+*Decisions:*
+  
+   * Use search and cluster API with the threshold of 0,4-0,5 and minimum 200 arguments.
+
+*Status:*
+
+   * Implementation: A basic graph is ready.
+   * Literature Review: 2nd draft submitted.
+   * Literature Review: Still working on grammar and reading flow.
+  
+*TO-DO List:*
+   
+   * Literature Review: Gonna get feedback
+   * RoadMap: Send a list of methods that I want to use for the thesis. (until Tuesday)
+   * Implementation: Implement a cluster graph that shows the top k most aspects.
+
+---++++ *27.APR.2020*
+*Status:*
+
+   * Literature Review: Checking "short-text clustering" articles
+   * Implementation: Basic word cloud created
+  
+*TO-DO List:*
+   
+   * Literature Review: Submit 2nd draft
+   * Implementation: Add distance function and connect the JSON input file
+   
+---++++ *07.APR.2020 - 21.APR.2020*
+*Decisions:*
+
+   *  We don’t need a vote from the ethics committee.
+
+*Status:*
+   * Setup: Python Flask and Vue.js integrated (a primary example website implemented)
+   * Setup: Implemented a basic API caller script that can access to search, cluster, aspect, and classify API and saves the output as a result. Also, after a search, it adds the arguments to cluster and aspect API as parameters.
+   * Setup: The outputs JSON are saved to my local for testing the functionality.
+   * Setup: ArgumenText UI codes checked and planned to integrate basic dashboard to my working place
+   * Working on: Create a basic ArgumenText dashboard UI for adding a section for graph
+   * Literature Review: 1st draft sent and got the feedback. Working on feedback.
+   * Literature Review: Still reading the new suggestions  
+
+*TO-DO List:*
+   
+   * Literature Review: Submit 2nd draft
+   * Implementation: Create a basic playground with the data. (Basic visualization of the network)
+
+---++++ *14.APR.2020*
+*Status:*
+   * Setup: API - got results from API calls
+   * Setup: Flask and Vue.js
+   * Literature Review: Still working on
+
+*TO-DO List:*
+
+   * Integrate Flask and Vue.js
+   * Create a JSON parser for API results
+
+---++++ *31.MAR.2020 - 07.APR.2020*
+*Decisions:*
+
+   * Submit Literature Review as soon as possible
+   * Use S-BERT technique for clustering on ArgumenText
+
+*Status:*
+   * Setup: Registered to ArgumenText
+   * Setup: Gitlab cloned to local and committed the folder structure (codes + thesis)
+   * Setup: Successfully connected to lisa and slurm (VPN setup success)
+   * Report: Main writing plan created
+   * Literature Review: Still working on
+   * Literature Review: Created a separate environment for the thesis on Mendeley and added the reference information.   
+
+*TO-DO List:*
+   
+   * Literature Review: Finish
+   * Setup APIs
+
+
+---++++ *16.MAR.2020 - 31.MAR.2020*
+*Status:*
+   
+   * The meeting delayed to 7.APR.
+   * Registration form of ArgumenText could not found.
+   * Not noteworthy progress
+   * Registered Tu-CAN
+
+
+---++++ *3.MAR.2020 - 16.MAR.2020*
+*Decisions:*
+
+   * Start implementing with ArgumenText Dashboard
+   * Setup the APIs and be sure they are working then implement functionality on local input.
+
+*Status after the Two Last Week:*
+   
+   * Report: Setup Latex template and filled elementary information
+   * Literature Review: Finished reading and summarizing papers 
+   * Setup Mendeley and added references
+   * Learned basics of vue.js
+   * Got credentials for UKP and API's
+
+*To-Dos For Current Two Week:*
+
+   * Setup: Register ArgumenText Dashboard
+   * Literature Review: Finish literature review and send for feedback
+   * Registration: Fill the form for registration

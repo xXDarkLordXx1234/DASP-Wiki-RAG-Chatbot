@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="hanselowski" comment="save topic" date="1524749468" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Meeting: 26.04.2018:
+   * Agenda: 
+      * Introduction
+      * Presentation of the task, dataset and baseline
+      * Discussion: Evidence selection: Ranking VS sequence labeling VS sentence classification  
+
+   * TODOs: 
+      * Formula for evaluation metric (link to the example, link to the challenge)
+      * Clarify Baseline Evaluation document selection 
+      * Clarify if we can use documents of classification
+
+   * Modules:
+      * Information retrieval: Andreas, Richard, Chris, ...
+      * Classifiction Classification Problem on sentence level, universal encoders, try our own sentence encoder, ....
+      * Claim validation: 
+
+   Zile start with claim validation
+   
+
+
+
+
+
+
+
+
+---++ Important information about the task
+
+   * Documents: The document collection is whole Wikipedia (5.4M pages)
+   * Evidence: "in 31.75% of the claims more than one sentence was considered appropriate evidence. Claims require composition of evidence from multiple sentences in 16.82% of cases. Furthermore, in 12.15% of the claims, this evidence was taken from multiple pages."
+      
+
+
+
+
+-- Main.AndreasHanselowski - 2018-04-24

@@ -1,0 +1,157 @@
+%META:TOPICINFO{author="dietl" comment="save topic" date="1485390668" format="1.1" reprev="18" version="18"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.TorstenDietl - 2016-01-25 - Telefonkonferenz
+   * 1. *<del>TODO</del>* DL4J Komponente fertigstellen
+      * BinaryVectorizer (zum Einlesen der Word-Embeddings) mal mit der DKPro Version probieren (https://github.com/dkpro/dkpro-core/tree/master/dkpro-core-api-embeddings-asl/src/main/java/org/dkpro/core/api/embeddings)
+      * Falls das nicht funktioniert mit den Textdateien von http://nlp.stanford.edu/projects/glove/ (6B) arbeiten und diese mit dem BinaryVectorizerTest aus dem DL4J Playground konvertieren.
+   * 2. Konfigurierbar machen 
+      * *<del>TODO</del>* Generell erstmal schauen welche Konfigparameter existieren und sinnvoll sind und vielleicht über eine Konfigklasse erstmal steuern
+      * *TODO* (mit JSON oder YAML), SnakeYAML als Framework/API nutzbar, oder Kommandozeilen Params, z.B. mit Args4J. .
+   * 3. *TODO* NamedEntityRecognizer zum Laufen bringen.
+   * 4. *TODO* Für Montagsmeeting etwas herstellen und mit Doku anfangen.
+   * 5. Einbauen in WebAnno.
+
+-- Main.TorstenDietl - 2016-01-18 - Telefonkonferenz
+Übrig gebliebene TODOs:
+   * *<del>TODO</del>* Randomisierungsfunktion für die Trainingsdaten (nur Sätze!)
+   * *TODO* DL4J einbauen, Zeit aufholen
+   * *TODO* Tests über z.B. JSON Config-Dateien konfigurierbar machen.
+   * *TODO* Testauszüge/kleinen Report für die drei Algos (OpenNlp, Mira, DL4j) mit verschiedenen Konfigurationen für die Special Interest Group (trifft sich Montags) umsetzen.
+   * *TODO* In WebAnno (System und die GUI) einarbeiten, Überlegungen/Gedanken zur Architektur der WebAnno Erweiterung machen (Ideen s.u.)
+   * *TODO* NamedEntityRecognizer zum Laufen bringen.
+   * *TODO* In Lambda Funktionen Exception fangen und RuntimeException schmeißen um StackTrace durchgeben zu können.
+   * *TODO* Issue mit GUM-Loading untersuchen und dann in DKPro eintragen
+
+Gedanken:
+- DL4J Tuning durch HistogrammEvaluationListener "sichtbar" machen. Diesen aktivieren um einen Webservice scharf zu schalten, der Fehlerquote etc. anzeigt.
+- Für WebAnno: Zwischen eigentlichem System und den BratAnnotator werden JSON Nachrichten verschickt. Idee: Sich dazwischen hängen, um das generierte JSON zu manipulieren und um z.B. die vom ML-Algo vorgeschlagenen Annotations erweitern.
+- Auf dem Rückweg, d.h. wenn der User auf solch eine Annotation klickt um sie zu akzeptieren, die Nachricht abfangen und z.B. in eine "Annotation erstellen" Message umwandeln
+
+-- Main.TorstenDietl - 2016-01-11 - Telefonkonferenz
+Übrig gebliebene TODOs:
+   * *TODO* In Lambda Funktionen Exception fangen und RuntimeException schmeißen um StackTrace durchgeben zu können.
+   * *TODO* Issue mit GUM-Loading untersuchen und dann in DKPro eintragen
+   * *<del>TODO</del>* Miralium Train Methode "nachbauen" um inkrementell selbst zu trainieren, da die Train Methode ein fertiges Dokument (Datei) erwartet.
+   * *<del>TODO</del>* Bei NextData wieder doch festen Batch-Size benutzen.
+   * *<del>TODO</del>* EvaluateNext prüfen/debuggen. Ergebnisse erscheinen falsch. Vielleicht mal "händisch" einen 80/20 Split oder ähnliches trainieren/testen und vergleichen.
+   * *<del>TODO</del>* Doch wieder Iterationsnummer auf der X-Achse nehmen. TrainingsSetSize nur in Tabelle nutzen.
+   * *<del>TODO</del>* Miralium zum Laufen bringen
+   * Nächster Termin: 18.01.2017 - 14:00
+
+
+-- Main.TorstenDietl - 2016-12-21 - Telefonkonferenz
+Es wurde der jetztige Codestand besprochen, und die weiteren Ziele/TODOs erarbeitet:
+   * *<del>TODO</del>* Auf DKPro.org --> Contributing --> CodeStyle Format runterladen und nutzen, d.h. Klassen formatieren. Klassen JavaDocs schreiben
+   * *<del>TODO</del>* IncrementalTrainer: SentenceData in AllData umbenennen.
+   * *<del>TODO</del>* Die loadAnnotationObjects Methode der Klasse GenericEvalUtil so abändern, das eine Liste von Listen von AnnotationObject zurückkommt, also eine Satzbasierte Liste, damit spart man sich die processData Methode, da diese aktuell noch Sentence Objekte nutzt und diese zum CAS gehören, d.h. am Ende des Lesens verworfen werden.
+   * *<del>TODO</del>* Hash und Equals Methoden im AnnotationObject deklarieren und direkt die Liste von AnnotationObjects der DumpResult Methode übergeben. Damit spart man sich die transformingFunction.
+   * *TODO* In Lambda Funktionen Exception fangen und RuntimeException schmeißen um StackTrace durchgeben zu können.
+   * *<del>TODO</del>* Die For-Schleife in der addIncrement Methode verständlicher schreiben.
+   * *<del>TODO</del>* Timeline in Google Doc erstellen (d.h. Ziele der Projektbeschreibung in einen Wochenplan eintragen)
+   * *TODO* Issue mit GUM-Loading untersuchen und dann in DKPro eintragen
+   * *<del>TODO</del>* In Git UKP ein neues Projekt für Miralium Source Code anlegen, dieses in Maven nutzen, um Miralizm debuggen zu können.
+   * *TODO* Miralium Train Methode "nachbauen" um inkrementell selbst zu trainieren, da die Train Methode ein fertiges Dokument (Datei) erwartet.
+
+   Weitere Anmerkungen/Anregungen/Ideen von Richard:
+   * *<del>TODO</del>* Ability to limit number of training samples, e.g. to 1000 to speed up the experimentation process.
+   * *<del>TODO</del>* use fibonacci scale for increasing training set size so we get more resolution in the beginning   
+   * Save results to files
+      * for tabular reports, can use DKPro Lab FlexTable class
+      * *<del>TODO</del>* for writing charts as PDFs can use DKPro Lab ChartUtil
+      * Generate images from saved results
+      * *<del>TODO</del>* Include curves for all measures (f, prec, rec, accuracy) in a single image
+      * *<del>TODO</del>* in the curve, show size of training set on x axis, not interation number
+      * ability to raw dump gold standard results to files
+      * ability to raw dump tagging results to files so we can compare directly against gold standard
+   * include confidence scores in dumps
+   * can we also get the second-best tagging option and its confidence score?
+   * *<del>TODO</del>* record time required for training/tagging in each step - that allows us to compare true online learning (e.g. using mira) vs always retraining
+   * *<del>TODO</del>* ability to run experiments as JUnit tests, not via GUI
+
+   Nächster Termin: 11.01.2017 - 10:00 Uhr
+
+-- Main.TorstenDietl - 2016-12-08 - Telefonkonferenz
+   * Folgende Anmerkungen:
+      * Eigenen Reader implementieren, geht schon, ist aber eher hinderlich, da die Formate sich durchaus sehr unterscheiden.
+      * *<del>TODO</del>*: Um an Sätze etc. zu kommen sollte folgendes Verfahren genutzt werden: Von Grob nach Fein, d.h. mit dem Reader über das JCas iterieren, um die gröbste Einheit (z.B. Sätze) auszulesen. Dann mit UIMA über diese Einheit, also z.B. die Sätze iterieren um die nächstfeinere Einheit auszulesen (z.B. Tokens und danach die POS Tags). Also insbesondere nicht versuchen, die POS-Tags auszulesen und danach diese irgendwie den Sätzen zuzuordnen.
+      * *<del>TODO</del>*: LinkedHashMap für das Zwischenspeichern der Chart Datasets nutzen, um die Sortierung zu gewährleisten.
+      * *<del>TODO</del>*: Mehr mit Argumenten und Returns arbeiten um das Codeverständnis zu vereinfachen (z.B. bei der Methode processData, hier nicht direkt auf die Klassenattribute zugreifen, sondern diese übergeben bzw. zurückgeben)
+      * *<del>TODO</del>*: Exceptions weiter werfen und nicht mit System.err.println o.ä. arbeiten
+      * *<del>TODO</del>*: Wirklich überall Try (Ressource) nutzen (insbesonder bei getTagger mit dem Stream.close) um dort unnötigen Code zu sparen.
+   * Ziele bis zum nächsten Mal:
+      * Code verbessern (d.h. Anmerkungen umsetzen, aufräumen, kommentieren)
+      * NamedEntityRecognizer zum Laufen bringen, die dortige IndexOutOfBounds Exception beheben.
+      * Miralium implementieren/nutzen
+         * Dafür Beispiele im Internet suchen bzw. WebAnno Code anschauen, dort wird es bereits genutzt
+      * Optional: Einstellungsmöglichkeiten des OpenNLP Taggers finden. Kann dieser konfiguriert werden, oder muss die Klasse DefaultPosTagGenerator (getContext-Methode) geändert werden, um unterschiedliche Features, n-gramme, etc. zu nutzen? Vielleicht auch mal in die model.bin reinschauen um zu sehen, was aktuell als Context so erzeugt wird.
+   * Nächster Termin: 21.12.2016 - 10:00 
+
+-- Main.TorstenDietl - 2016-12-01 - Telefonkonferenz
+   * Es wurde besprochen, wie DKPro auf Windows genutzt werden kann und wie Miralium eingebunden werden kann.
+   * Es sollten am besten die EvalUtil Methoden genutzt werden, um  zu evaluieren, da diese bereits generisch und entkoppelt sind. Wo nötig können eigene Evaluation Klassen geschrieben werden, wenn Evaluationsmethoden benötigt werden, die so nicht in der EvalUtil vorhanden sind (Named Entity Evaluation mit BIO Methode)
+   * Generell ist es in Ordnung eigene Klassen zu erstellen, die Verhalten von OpenNLP Klassen o.ä. klonen, um zum einen den Hintergrund zu verstehen und sich zum anderen nicht abhängig zu machen.
+   * Des Weiteren soll eine Generalisierung des Trainers eher weniger in Form von Klassenhierarchien und Vererbung gesehen, sondern eher durch lose Kopplung von generischen Util-Klassen. Dafür mal das Statistics Modul in DKPro anschauen, dass geht in ungefähr die gleiche Richtung.
+   * DKPro Statistics kann auch für Agreement Measures genutzt werden
+   * Notizen für Abarbeitung aktueller Probleme (Einrichtung unter Windows, etc.):
+      * Miralium: https://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/webapp/search/artifact?2&q=mira
+      * POM Dependencies:
+       <verbatim>
+<repositories>
+        <repository>
+            <id>ukp-oss-releases</id>
+            <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+ <dependency>
+   <groupId>de.tu-darmstadt.langtech.mira</groupId>
+   <artifactId>mira</artifactId>
+   <version>1.1.0</version>
+  </dependency>
+  <dependency>
+   <groupId>cplex</groupId>
+   <artifactId>cplex</artifactId>
+   <version>1.0.0</version>
+  </dependency>
+  <dependency>
+   <groupId>net.sf.trove</groupId>
+   <artifactId>trove</artifactId>
+   <version>2.1.0</version>
+  </dependency>
+</verbatim>
+      * snapshot von DKPRO für Windows nutzen. (https://dkpro.github.io/dkpro-core/pages/setup-maven/) um AUX Problem. M2E Ver. 1.7. nutzen um zu schauen ob Probleme mit POM.
+
+
+-- Main.TorstenDietl - 2016-11-21 - Telefonkonferenz
+
+   * POM auf 1.8 stellen durch:
+      * DKPro ParentPOM als Parent im Projekt eintragen. (um Java Encoding, und Version etc. voreinstellen zu lassen) (Version 15 ist die neuste)
+   * Anstelle von Main Methoden lieber Test Methoden und JUnit nutzen.
+   * In POM DependencyManagement die OpenNLP POM als Import POM eintragen. 
+   * Nächster Termin: 29.11.2016 10:00
+
+
+-- Main.TorstenDietl - 2016-11-14 - Telefonkonferenz
+
+   *  Es wurden die Zugangsdaten zu dem UKP Git und Wiki durchgegeben. Es wurde abgesprochen das Projekt auf das UKP Git zu ziehen und die Besprechungen, Fragen, o.ä. in Form von Notizen in der studentenspezifischen Seite im Wiki festzuhalten.
+
+   *  Die Verwirrung um UIMA Komponenten und den CasSampleStream wurde aufgelöst:
+      * Es soll in einem ersten Ansatz auf UIMA oder den CasSampleStream komplett verzichtet werden. Insbesondere ist ein inkrementelles "Befüllen" des CasSampleStreams nicht trivial und unnötig komplex.
+      * Stattdessen soll die OpenNLP API direkt genutzt und die EvalUtil Klasse genutzt werden um Samples aus dem GoldStandard als Liste zu laden, die dann inkrementell als TrainingSet genutzt werden kann.
+
+   * Des Weiteren wurden nochmal folgende Projektspezifizierungen festgehalten:
+      * Es soll in Batchgrößen trainiert werden (z.B. n=10)
+      * Die kleinste Einheit für ein (randomisiertes) Laden, sollte ein Satz sein. Achtung die EvalUtil Klasse liefert vermutlich noch keine Gruppierung von POSTag in ihre Sätze, allerdings sind vermutlich Meta Informationen,   wie z.B. die Id o.ä. vorhanden, um eine Gruppierung relativ einfach erstellen zu können. 
+      * Nach jedem Batch-Training sollen zwei Auswertungen geführt werden, zum einen eine Auswertung auf alle bisher gelernten Daten und zum anderen eine Auswertung auf die nächsten n Daten.
+      * Es sollen mehrere Ansätze getestet werden:
+         * Beginnend mit OpenNLP und lernen auf einem anwachsenden Trainingsdatenset
+         * Über Miralium für einen echten inkrementellen Ansatz
+         * Hin zu einem inkrementellen DeepLearning-Ansatz
+      * Es ist die Idee, später aus den verschiedenen Ansätzen einen mehrstufigen Klassifizierer zu erstellen, der bei wenig Trainingsdaten einen Ansatz wählt, der eine hohe Precision hat und bei einer größeren Trainingsdatenmenge dann zu Ansätzen wechselt, die einen höheren Recall haben. Damit soll der User am Anfang nicht mit vielen unsinnigen Vorschlägen überschüttet werden. Des Weiteren ist die Annahme, dass man den "Verlust" der Precision bei einem "komplexeren" Ansatz damit kompensieren kann, dass man zum Zeitpunkt des Wechsels auf den höheren Ansatz bereits genug Trainingsdaten hat.

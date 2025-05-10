@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1300532718" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WiktionaryAnalysis"}%
+---+ Wikisaurus Analysis
+Insgesamt gibt es zurzeit ungefähr 1.070 Wikisaurus-Seiten in WKT_EN<br>
+Alle Wikisaurus-Seiten: http://en.wiktionary.org/wiki/Wiktionary:All_Wikisaurus_pages <br>
+Hauptartikel über Wikisaurus: http://en.wiktionary.org/wiki/Wiktionary:Wikisaurus
+
+---++ Format
+Source: http://en.wiktionary.org/wiki/Wiktionary:Wikisaurus/Format <br>
+Ein Wikisaurus-Eintrag sieht normalerweise wie folgt aus:
+
+<verbatim>
+{{ws header}}
+
+==LANGUAGE==
+
+===POS===
+
+===={{ws sense|SENSE_1_DEFINITION}}====
+
+=====Synonyms=====
+{{ws beginlist}}
+{{ws|SYNONYM_1|SYNONYM_1_SENSE_DEFINITION}}
+{{ws|SYNONYM_2}}
+...
+{{ws endlist}}
+=====Antonyms=====
+...
+=====Hyponyms=====
+...
+=====Hypernyms=====
+...
+=====Instances=====
+...
+=====Meronyms=====
+...
+=====Holonyms=====
+...
+=====Various=====
+...
+===See also===
+...
+===External links===
+...
+</verbatim>
+Beim Header kann noch ein Wort spezifiziert werden:
+<verbatim>
+{{ws header|WORD}}
+</verbatim>
+*Sense-Definition* <br>
+Mit Hilfe von Sense-Beschreibung können wir die Relaionen einem konkretem Sense des Wiktionary-Artikels zuweisen. Z.B.: [[http://en.wiktionary.org/wiki/Wikisaurus:food][Wikisaurus:food]] _"substance eaten by living organisms"_ kann man mit Hilfe von Similarity-Analyse an den ersten Sense _"Any substance that is or can be consumed by living organisms, especially by eating, in order to sustain life. "_ von [[http://en.wiktionary.org/wiki/food][food]] zuweisen <br><br>
+*Target Sense-Definitions* <br>
+Einzelne Sektionen bestehen aus Listen von Relation-Targets. Einzelne Relation-Target kann noch zusätzlich mit einem Disambiguierung-Sensebeschreibung versehen werden:
+<verbatim>
+{{ws|SYNONYM_1|SYNONYM_1_SENSE_DEFINITION}}
+</verbatim>
+Z.B. in [[http://en.wiktionary.org/wiki/Wikisaurus:build][Wikisaurus:build]] sehen wir bei den Synonymen: _{{ws|assemble|to put together}}_ , das entspricht dem ersten Sense von [[http://en.wiktionary.org/wiki/assemble][assemble]]. Die Target-Beschreibung ist nicht immer der Sense-Beschreibung gleich oder hochähnlich. Z.B. bei [[http://en.wiktionary.org/wiki/Wikisaurus:build][Wikisaurus:build]] _{{ws|compile|turn code into machine language}}_ entspricht dem zweiten Sense von [[http://en.wiktionary.org/wiki/compile][compile]]: _"(transitive, computing) To use a compiler to process source code and produce executable code."_ <br>
+Wenn es einen Eintrag für eine Relation-Target in Wikisaurus gibt, dann wird beim Rendering noch ein Link auf den entsprechenden Wikisaurus-Artikel angezeigt. Z.B: "destroy [Ws]" bei [[http://en.wiktionary.org/wiki/Wikisaurus:build][Wikisaurus:build]], in Quellcode gibt es dafür keine besondere Markierung. <br> <br>

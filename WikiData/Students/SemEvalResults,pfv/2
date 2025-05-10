@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="NicoErbs" date="1269860092" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="SemEval"}%
+---+++ SemEvalResults
+
+%TOC%
+
+---++++ Official Results (Test dataset Stem Matching)
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+| Baseline TF.IDF | Combined | .2200 | .0750 | .1119 | .1770 | .1207 | .1435 | .1493 | .1528 | .1510 |
+| Combination | Combined | .0940 | .0321 | .0479 | .0590 | .0402 | .0478 | .0527 | .0539 | .0533 |
+| KEA | Combined | .2380 | .0812 | .1211 | .1300 | .0887 | .1055 | .0207 | .0211 | .0209 |
+| LSG | Combined | .0620 | .0211 | .0315 | .0540 | .0368 | .0438 | .0420 | .0430 | .0425 |
+| TF.IDF | Combined | .0940 | .0321 | .0479 | .0640 | .0437 | .0519 | .0527 | .0539 | .0533 |
+| CG segmented | Combined | .0860 | .0293 | .0437 | .0580 | .0396 | .0471 | .0520 | .0532 | .0526 |
+<!--edittable1-->
+
+---++++ Test dataset Token Matching
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+| Combination | Combined | .116 | .039 | .059 | .105 | 0.71 | .085 | .089 | .091 | .090 |
+| TF.IDF | Combined | .060 | .020 | .030 | .059 | .040 | .048 | .070 | .071 | .071 |
+| CG segmented | Combined | .196 | .067 | .100 | .145 | .099 | .117 | .125 | .128 | .127 |
+| KEA | Combined | .158 | .054 | .080 | .115 | .077 | .092 | .101 | .091 | .096 |
+| LSG | Combined | .008 | .003 | .004 | .010 | .007 | .008 | .009 | .010 | .009 |
+<!--edittable1-->
+
+---++++ Train dataset Stem Matching (as used by SemEval)
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+<!--edittable1-->
+
+---++++ Train dataset Token Matching
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+| CG | Combined | .112 | .037 | .055 | .098 | .064 | .077 | .094 | .091 | .092 |
+| CG segmented | Combined | .179 | .058 | .088 | .140 | .091 | .111 | .199 | .116 | .117 |
+| KEA | Combined | .160 | .052 | .078 | .115 | .074 | .090 | .099 | .082 | .089 |
+| LSG | Combined | . | . | . | . | . | . | . | . | . |
+| TF.IDF | Combined | .072 | .023 | .035 | .086 | .056 | .068 | .112 | .109 | .110 |
+<!--edittable1-->
+
+-- Main.NicoErbs - 29 Mar 2010

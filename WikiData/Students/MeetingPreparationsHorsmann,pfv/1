@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="horsmann" date="1379886355" format="1.1" version="1"}%
+%META:TOPICPARENT{name="TobiasHorsmann"}%
+---+++ 2013-09-24
+
+Was macht Schwierigkeit eines Worte aus, wenn dieses als Cloze oder C-Test Variante verwendet wird:
+
+Ich hab die Vorschläge aus der vorherigen Revision jetzt mal nach Art geordnet, hoffe das ist jetzt etwas übersichtlicher
+
+---++++ Satzlevel
+   * Wortlänge
+      * in Buchstaben
+      * in Silben
+      * Satzlänge
+   * Position der Lücke im Satz
+      * Anfang: Tendenz zu geringerer Lösbarkeit
+      * Ende: Tendenz zu höherer Lösbarkeit
+
+---++++ Statistik
+   * Frequenz des Wortes
+   * Frequenz der Phrase (Trigram oder Bigram mit vorherigen und nachfolgenden Wörtern)
+   * Anzahl Synonyme zu einem Wort
+      *wenn vorhanden -> Distraktoren/C-Test notwendig
+      *keine vorhanden -> Cloze möglich
+   * Type-Token Ratio des Textes
+
+---++++ Ressource-Basiert mit POS-Tagging
+   * Teil des Grundwortschatzes (gehen, sagen, kaufen, sehen, Auto, Fahrrad, einfach, schwer, teuer, billig,...)
+   * Bei Distraktoren: Ist Wort ein (entferntes) Synonym zu Grundwortschatz-Wörtern, höhere Vertrautheit -> guter Distraktor?
+   * Gibt es sub-/ oder superordinate-Worte zu dem Wort das Blank gesetzt werden soll
+   * Semantik relatedness des Lücken-Wort zu Synonym-Worten aus einer Ressource; e.g. wie ähnlich sind potenzielle Synonyme dem eigentlich gesuchten Wort?
+   * Named Entities in einem Satz
+   * Abstraktheit und Polysemie des Wortes
+   * ist das Wort ein Cognate in der Muttersprache
+   * ist das Wort ein Lemma oder konjugiert
+   * Wortart (POS), Frequenz der POS Sequenz ("Präposition Artikel Nomen" ist häufig, andere Sequenzen nicht unbedingt)
+   * Lücke teil eins Collocation-N-Grams? Häufigkeit dieses N-Grams?
+   * 5 Gram Nachbarschaft des Wortes das zur Lücke wird als Bag of Words Model, ist dieses Wort mit Nachbarschaft von w-2 bis w+2 in den X-häufigsten Mengen? Nein -> schwer
+   * Morphologie des Wortes: "un-ver-rück-bar" ist schwieriger als "bunt" (spielt für Englisch vermutlich keine Rolle
+
+---++++ Parsing
+   * Anzahl Noun-phrases pro Satz
+   * Anzahl Verb-phrases pro Satz
+   * Wenn die Lücke auf ein Verb gesetzt wird, ist dieses Head-Verb ? ja--> schwer? leichter?
+   * Tiefe des Parsebaum des Satzes

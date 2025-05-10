@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="NicoErbs" date="1263855635" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="NicoErbsHiWiWork"}%
+---++ Ranking algorithms and graphical representations
+
+ %TOC%
+
+---+++ Graphs
+
+Two different graphs for representing phrases and their relation are used.
+
+---++++ Lexical Semantic Graph
+The lexical semantic graph (LSG) consists of the phrases themself (nodes) and one link between two nodes (edges). The Edge contains a score which is calculated with a relatedness measure.
+The Annotation for the edge is called AnnotationPair. Additionally there is the annotation SemanticRelatedness, which consists amongst other of the AnnotationPair annotation and the score.
+
+---++++ Cooccurrence Graph
+As well as the LSG, the cooccurrence graph contains of phrases (nodes) and links between nodes (edges). The difference is, that an unlimited amount of edges can exist between two nodes. This corresponds to the number of cooccurrences between two phrases.
+Before the recent changes, there was a list of annotations (AnnotationPair) representing edges.
+Now there is only one edge and, like the LSG, one annotation for each AnnotationPair containing the score as well. The score is computed by normalizing the amount of cooccurrences.
+
+---+++ Ranking algorithms
+Two algorithms for ranking are used. Before recent changes only some combinations between graphs and ranking algorithms were possible.
+
+---++++ PageRank
+PageRank as it is used as well by Google takes links directing to the node into account. Furthermore it takes the importance from the connected node into account. This is done by iterating and updating neighbor-nodes. This updating (or improving of the graph) is done until no further improvements can be done. At the end each node has its corresponding score.
+This algorithm can be applied to weighted as well as unweighted graphs.
+
+---++++ NodeDegree
+This algorithm calculates a score of a node by summing over all edges. In case of unweighted edges it normalizes it with the total amount of edges. Nodes with more edges are rated higher than nodes with less edges.
+If edges should be weighted, the score of all edges linked to a node are summed. The sum is normalized with the number of edges connected to the node.
+
+---+++ Combinations
+%TABLE{ sort="off" tableborder="0" cellpadding="3" cellspacing="3" headerrows="3"}%
+| *Graph* | *weighted* | *Ranking* | *works* | *makes sense* | *comments* |
+| CG | weighted | PageRank | yes | yes | Now it works, because the same pair of node cannot be connected by more than one edge. |
+| CG | unweighted | PageRank | yes | yes | Information are lost, because the amount of cooccurrences is not considered. |
+| CG | weighted | NodeDegree | yes | probably | Works, but if two nodes are barely connected to other nodes but have many cooccurrences, then they are both ranked very good. Nodes with many words cooccurring words -but all with low frequency- are rated bad. |
+| CG | unweighted | NodeDegree | yes | yes | Information are lost, because the amount of cooccurrences is not considered. |
+| LSG | weighted | PageRank | yes | yes | The same as before. |
+| LSG | unweighted | PageRank | yes | no | LSG are often fully connected, because two phrases are mostly in some distant way related. |
+| LSG | weighted | NodeDegree | yes | yes | The same as before. |
+| LSG | unweighted | NodeDegree | yes | no | LSG are often fully connected, because two phrases are mostly in some distant way related. |
+
+--- Main.NicoErbs - 18 Jan 2010

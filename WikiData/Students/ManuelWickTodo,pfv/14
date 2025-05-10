@@ -1,0 +1,81 @@
+%META:TOPICINFO{author="ManuelWick" date="1269285361" format="1.1" version="14"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ Todo/Workflow
+   * Designstruktur für pluginfähigen CollectionReader
+      * <strike>Erste Idee: mehrere CRs, die im selben Verzeichnis arbeiten und von der CPE eingebunden werden</strike> <span class="red">gescheitert, da CPE aktuell nur eine Instanz eines CR zulässt</span>
+      * <strike>Zweite Idee: ein CollectionReader, der als PluginFramework dient und via Interface/XML externe Reader nutzen kann</strike> <span class="green">works, at the moment with .txt and .pdf</span>
+      * <span class="green">[Update: Work needless? Implementation of new readers in Apache-Tika?]</span>
+         * Implementation of IReaders - pdf, txt, word, eml, xls, openoffice
+   * <strike>Erste selbstgeschriebene Collection Processing Engine implementieren</strike>
+   * <strike>Become acquainted with Apache-Tika</strike>
+   * <strike>Implement Apache-Tika-Library</strike> <span class="green">Works fine</span>
+      * <strike>Get Apache-Maven running
+         * http://www.sonatype.com/books/m2eclipse-book/reference/creating.html</strike> <span class="red"> Not my goal </span>
+      * <strike>Main framework</strike>
+      * <strike>Integrate Tika-Readers in IReader [still makes sense? integrate missing readers in TIKA?]</strike> <span class="red">Makes no sense</span> <span class="green">Integrating missing parsers</span>
+         * Trying to build missing parsers for Apache-Tika
+            * *BH* Keep it simple
+               * integrate Tika into a reader
+               * Check if the filetype is handled by Tika -> let it handle it
+               * Check if the filetype is eml -> handle it with another component
+               * Tika is only a means to get to the text
+               * Remember that thesis goal is not to integrate Tika into a component, but to compare retrieval models...
+   * Integrating a minimal version of Tika (later)
+   * Integrating parser for file type...
+      * .txt
+      * .pdf
+      * .mbox
+      * .eml
+      * .doc
+      * .xls
+      * .odt
+      * .ods
+
+   * Writing EML-Parser
+
+   * Updating Tika from 0.5 to 0.6 (test failures in 0.6 ... )
+      * *BH*: try running with more RAM, this may fix it. TODO: try this
+
+22.03.2010
+
+   * <strike>Reading JavaMail-Doc</strike>
+   * <strike>Writing de.tudarmstadt.de.ukp.manuelwick.dkpro.tika.parser.EmlParser.java</strike> First version works
+      * Improve the parser
+   * Understanding org.xml.sax.helpers.DefaultHandler and subclasses
+   * Understanding index-construction (irbookonlinereading.pdf)
+   * Find out, how Lucene can be used to UIMA
+   * Find out, how Terrier can be used in UIMA
+   * Build underlying architecture in UIMA
+      * encodings, metadata-handling, interfaces, extensibility, simplicity
+   * Solve exercises in IR-Book
+   * How to work with the BodyContentHandler (how to create Elements in EML-Parser to work with)
+   * MBOX sequence of messages in it? (IR-Book page 21) for EML the same?
+   * IR-Book page 35 SS->SS ?
+   * IR-Book page 42 Algorithm
+   * IR-Book Permuterm, k-Gram
+   * IR-Book (realpages 96-104)
+   * BSBI & SPIMI why does BSBI need the termIDs? why not using terms like in SPIMI?
+   * What features does Lucene have?(IRB p.112)
+   * Log-Merge? (IRB p.116-117)
+   * NoSuchElementException while parsing with PDFParser Finanzierung___Part_3_1_2__4789437.pdf
+      * why? failure in PDFBox? how to solve it?
+   * Why compress dictionary? Its so small anyway?!  (IRB p. 132)
+   * Lucene, how to deal with terms?
+      * How to show their occurrence (position in a doc)?
+      * Deal with term frequencies?
+      * For what do you need offsets?
+   * Split large files in documents? Many segments? Common practice in Lucene?
+   * What should I write about in the thesis? How should the final bachelor-thesis look like?
+
+   * GermanAnalyzer, test1.txt, tanzen = tanx ?
+      * How can I use stemmers in a reasonable way?
+      * Where to find good lemmatization libraries? Are they needed? Given?
+   * <strike>CPE <-> CPM differences ?</strike>
+   * What UIMA-Components are exactly given?
+   * How does the project layout exactly look like?
+   * Will UIMA-Annotators collect any document information? If so, what kind of?
+   * In general, whats the important information, that should be indexed?
+
+   * Encoding-problems with Tika-Mbox parser. Isnt fully developed yet. EML-Parser works.
+
+-- Main.ManuelWick - 26 Jan 2010

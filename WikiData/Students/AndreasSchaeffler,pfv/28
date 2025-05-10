@@ -1,0 +1,229 @@
+%META:TOPICINFO{author="eger" comment="reprev" date="1513694102" format="1.1" reprev="28" version="28"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Bachelor Thesis* : GANs for data augmentation
+
+*Start date* :  
+
+*Supervisors*: Pedro Santos, Dr Steffen Eger
+
+*Mid-term presentation* : 30.01.2018
+
+*Final-term presentation* : 10.04.2018
+
+---++++ Current Status
+   * 18.12.2017
+      * Done last week
+         * As written by mail: Found out that the GAN generates samples similar to real data, but they are not consistently improving the classifier performance
+         * Started evaluation on the SST-dataset, but it's not finished yet
+      * Problems
+         * Not sure what else (besides the suggestions from Steffen) to try to improve the classifier with generated data 
+         * almost all memory on desktop-k40 GPU is currently in use => out of memory when trying to run job
+      * Plans for next week
+         * Find a way to consistently improve classifier performance with generated data
+         * Finish data sets chapter
+         * Finish updating the thesis from the feedback
+         * Read "Adversarial Generation of Natural Language"
+   * 11.12.2017
+      * Done last week
+         * Made the WGAN conditional (on the class labels), which made the discriminator cost go down to ~-0.23
+         * Trained classifier from InferSent Paper (Logistic Regression) on CR data set with equal amount of real and generated data: improved performance from 86.92 to 87.88. Not a big improvement, could just be random. The generated data seems to be not too far off, as training only on generated data results in a performance of 81.38
+         * Tried PCA and normalization, but was unable to achieve the same performance with them. Might have to do with the GAN architecture or the hyperparameters though. Dimensionality reduction could still be interesting, as it allows for faster GAN training. PCA seems to work fine for the InferSent embeddings and Logistic Regression, as training on 500-dimensional embeddings results in a performance of 87.24 (even slightly better than unreduced). T-SNE does not seem to scale well with the data size and number of dimensions.
+         * Found GAN architectures which might be worth looking further into: DRAGAN (https://arxiv.org/abs/1705.07215) and improved training of improved WGAN (https://openreview.net/forum?id=SJx9GQb0-)
+      * Problems
+         * Mostly working by trial and error when training the WGAN. Always quite unpredictable if an architecture and hyperparameter combination will lead to a good result. Combined with the long training time, I'm not very productive. Maybe I should set up a job doing hyperparameter search on the GPU.
+      * Plans for next week
+         * Further experiments, ideally in a more structured way
+         * Look into the mentioned GAN architectures, maybe try them
+         * Finish data sets chapter
+         * Finish updating the thesis from the feedback
+         * Read "Adversarial Generation of Natural Language"
+   * 4.12.2017
+      * Done last week
+         * Created InferSent embeddings for the CR-Dataset. It should be easy to create embeddings for most of the other data sets with the SentEval framework
+         * Trained Improved WGAN on these embeddings
+      * Problems
+         * When training the WGAN, the discriminator cost is decreasing to around -1, but it's not converging to 0. Also, the vector element representing the label is quite far from 0 or 1 most of the time in generated samples
+         * Not sure which generator and discriminator architecture (number and dimension of hidden layers) makes sense
+      * Plans for next week
+         * Research and experiment on GAN architecture
+         * Train a classifier with the artifical training data
+         * Finish data sets chapter
+         * Read "Adversarial Generation of Natural Language"
+   * 27.11.2017
+      * Done last week
+         * Wrote about most of the data sets in the thesis (see attachment for current version)
+      * Plans for next week
+         * Finish data sets chapter
+         * Read "Adversarial Generation of Natural Language"
+         * Try to generate artificial training data with a GAN
+   * 20.11.2017
+      * Done last week
+         * Read and took notes on the following papers: MOSI, "Tensor Fusion Network for Multimodal Sentiment Analysis" and "Adversarial Training Methods for Semi-Supervised Text Classification"
+            * SE: great! Also don't forget to read/write the other Goodfellow paper that we found
+         * Wrote about multimodal embeddings in the thesis
+      * Problems
+         * Not really a problem, but the thesis is not showing up in TuCan yet, so I can't send you the printout of the deadline
+      * Plans for next week
+         * Write about the datasets in the thesis
+         * I don't think I will be able to start experimenting in the next week, but I'm planning that for the week after next
+   * 12.11.2017 
+      * Done last week
+         * I started writing the related work section of the thesis, the PDF of the current version is attached to this page. I also found some additonal papers on data augmentation in NLP and GANs for data augmentation. Their description is included in the related work.
+            * SE: we can give you feedback on it. There's also the following paper: Adversarial Generation of Natural Language, https://arxiv.org/pdf/1705.10929.pdf, which has been slightly controversial. But you should probably know it.
+         * I had a look at the 20 Newsgroups and the argumentation mining dataset. The latter looks like a sequence labelling data set, but I guess I'm suppposed to just classify the sentences individually?
+            * SE: ArgMin has format "(DE_Sentence)TAB(LABEL)TAB(EN_Sentence)". Each sentence is an instance, the label is the label. Goal is to do standard classification, with one sentence as input and the label as output. Ignore the German data. Also don't forget to adapt the labels as mentioned previously.
+         * I was able to connect via ssh, install tensorflow and keras and run tensorflow on the gpu
+         * I downloaded the datasets from https://github.com/facebookresearch/SentEval
+      * Problems
+         * I'm unable to access the following pages ("Access check on UKP.GpuUsagePolicy failed. Action "VIEW": access not allowed on web."): https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/UKP/GpuUsagePolicy https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/UKP/ServerJobs
+            * PSa: Reported it to sys-admin. 
+            * These pages are not available for students, so I did this workaround: GpuServer GpuUsagePolicy
+         * Extracting some of the SentEval datasets failed because cabextract is not installed on desktop-k40 (I'm not allowed to use sudo, right?)
+            * SE: You should still be able to install it locally. Anyway, you can find the data in my home on desktop-k40: senteval.tgz  
+      * Plans for next week
+         * Read about multimodal embeddings and add them to the related work
+         * Have a look at the MOSI dataset and the SentEval datasets and write about all datasets in the thesis (in what detail?)
+            * SE: 2-3 pages overall suffice, maybe even less. Don't start initial preparations of the experiments too late. Experiments are after all the most important part of the thesis.
+            * PSa: When you start working on the MOSI dataset, you should give a try on this code: [[https://github.com/A2Zadeh/CMU-MultimodalDataSDK]] I have not used it yet, but it seems to facilitate the extraction of features and embeddings for all modalities, so you do not have to implement preprocessing code from scratch.
+   * 06.11.2017:
+      * thanks for the suggestions. I read them and took notes on them. Unfortunately, I didn't do more last week.
+      * Thanks for the mail concerning the GAN code from Yevgeniy, but it doesn't contain an attachment for me.
+
+---++++ Meeting protocol - 19.12.2017
+   * Determine similarity between generated data and gold data e.g., using correlations between random variables, cosine distance.
+      * Is your artificial data really too similar?
+      * If so, can try out several options:
+         * (1) Implement DAGANs strategy
+         * (2) Keep generated data point only if it is dissimilar to all points in the real data (from the same class)
+         * (3) Can also try out different embeddings, such as Sent2Vec
+         * (4) try out more GANs: Improvement of GANs?
+         * (5) Ideally also test on more than one task 
+         * If you face problems, write us email or even better: google, stackexchange (stats.stackexchange)
+         * Next regular meeting: January 9. Keep us updated on the Wiki even before this (SE: I will answer if you push updates)
+         * We want to experiment with GANs at least until end of January
+   * @info(PSa, SE) Points in the agenda:
+      * Try using "nvidia-smi" to check the usage of each GPU. Desktop-k40 has two GPUs, you should also specify which one you are using before running your script by the flag CUDA_VISIBLE_DEVICES="x", x being the id of the GPU.
+      * Perhaps a similarity metric could be used (e.g. cosine) to filter out fake embeddings which are too close to the real embeddings.
+      * Discussion (what has been done, what will be done, problems).
+
+---++++ Meeting protocol - 12.12.2017
+   * @discussion:
+      * Fine tuning of hyperparameters for training an improved WGAN was done manually and takes a lot of time.
+      * Training on a cpu of a normal laptop takes around 1 hour.
+         * SE: switch to our servers to run multiple processes in parallel
+      * A GPU should be used to diminish the time for training.
+      * The same set of hyperparameters should be tried for the other datasets. Hopefully the same good results can be achieved without any further tuning.
+      * If tuning is really necessary, then a cleverer strategy should be tried, something like using a hadoop cluster to perform grid search.
+   * @info(PSa, SE) Points in the agenda:
+      * Interesting partial results on InferSent
+      * Architecture used for WGAN
+         * How many different approaches for using WGAN on InferSent have you tried? Which were they?
+      * Are you documenting your results?
+         * Perhaps we could use a google docs.
+      * Concerning your results on the CR dataset
+         * How much artificial data have you created, and how balanced was it?
+         * When training only on fake data, how much fake data did you have?
+         * If results on the other datasets using only fake data are as good as on the CR dataset, then your thesis has a very good contribution to the field of NLP.
+      * Some colleagues are doing hyperparameter search using the cluster, I believe it makes more sense than doing it on a GPU.
+         * What is the name of the CPU server that you have access to? And is the name of the GPU server?
+      * When you normalize the embeddings for training the WGAN, and use the fake embeddings out of this WGAN trained with normalized sentence embeddings, do you normalize the real sentence embeddings when training the LR classifier?
+      * Discussion (what has been done, what will be done, problems).
+
+---++++ Meeting protocol - 05.12.2017
+   * @discussion:
+      * First try to generate InferSent embeddings using WGANs did not work so well. Training does not seem to converge, and generated samples are far from 0 and 1.
+      * Things that might play a role: embeddings dimensionality, dataset size, architecture.
+         * SE: what you could do: use 500-d Sent2Vec embeddings, OR project InferSent down to lower dimension (5 lines of numpy code via PCA or SVD). Can also look into Pedro's original implementation of GANs or the PyTorch implementation of Yewgeniy. 
+      * Conditional GANs actually would make more sense to be tried first: Either feed the label (the condition in this case) as a hot vector or a random sample from that particular label.
+      * Discussed reviewed text. Some content in the related work could be in the theoretical background chapter. Sending an example of a thesis to have a better idea of a thesis structure.
+         * SE: look into Students->SteffenKuchelmeister (bottom) for a potential thesis structure. I can also send you the Master thesis of Tobias Kahse.
+      * Commit code to avoid problems (computer crashing). Also backup your partial results somewhere on the cloud (either our internal cloud or google drive).
+   * @info(PSa) Points in the agenda:
+      * Perhaps it would make more sense to use different architectures for each dataset.
+      * The architecture from the discriminator and generator should be similar (almost the same).
+      * Perhaps the discriminator could have the same architecture from the baseline classifier from its respective dataset (if the baseline classifiers are different among the datasets).
+      * Also, it would make more sense to implement some sort of plugin and play "framework".
+      * To make things easier, your code could receive the parameters as input (e.g. conditional GAN/ "normal" GAN generating label with input).
+      * What some people do (myself included) is to use yaml files as configuration files.
+      * Always commit your code. And please send the url from your repository to us.
+      * Quite obvious, but nevertheless good to remind: Do not use the development/test set for training the GAN :)
+      * Discussion (what has been done, what will be done, problems).
+
+---++++ Meeting protocol - 28.11.2017
+   * @discussion: 
+      * Remember that the architecture used for a GAN in data augmentation can play a role in the results, as Antoniou et al. shows.
+      * Remember to add information about the size of the datasets in the section describing them in the thesis.
+      * It would be nice to evaluate how good semi-supervised adversarial training from Goodfellow works.
+         * But since there are many tasks with a higher priority, the focus should not be on this right now.
+      * Try to get code running until the end of this week, end of next week tops.
+         * You should either try to get our code running or some implementation that you are going to use running (e.g. Improved WGANs: [[https://github.com/igul222/improved_wgan_training]])
+   * @info(PSa, SE) Points in the agenda:
+      * DAGAN paper is interesting. One point to highlight: architecture influences in the variance of the created artificial samples.
+      * Code to use for the multimodal dataset: [[https://github.com/A2Zadeh/TensorFusionNetwork]]
+      * Information on how to use the GPU was copied here. Always ask us when you want to use the GPU so we can schedule a job for you.
+      * Discussion (what has been done, what will be done, problems).
+
+---++++ Meeting protocol - 13.11.2017
+   * @discussion: 
+      * NLP Datasets: Can choose the 6 datasets from Table 1 in the InferSent paper, plus SICK-E and SICK-R
+         * Arg.Min dataset: The data set is the 402 persuasive essays from Christian Stab (it's the 2017 paper from "Computational Linguistics"). However, the data is split into sentences, and the token-level annotations are projected onto the full-sentence
+      * Can try out three variants of using GANs for discrete labeled datasets:
+         * Conditional GANs (do they still use all of the data?)
+         * One GAN for each class 
+         * GANs that generate instances AND labels --> labels will be real numbers. How to discretize them?
+      * Starting early with experiments avoids mid-way surprises
+      * Make a plan for your framework
+      * Try doing the preprocessing of all the datasets once, creating pickle files for each dataset, so that you can easily use them later on without having to do any preprocessing again.
+   * @info(PSa, SE) Points in the agenda:
+      * Administration:
+         * Enrollment form
+         * Starting date?
+         * New midterm presentation date: 30.01.2018
+         * New final presentation date: 10.04.2018
+      * Discussion (what has been done, what will be done, problems).
+
+---++++ Meeting protocol - 07.11.2017
+   * Discussion:
+      * Finish related work section soon to get feedback from us
+      * Grade should be available by End of April
+         * Need to present twice (midterm, final) - so both need to be before End of April
+         * Then you have less than 6 months (plus two weeks of holiday/absence)
+            * organize your work schedule accordingly
+            * you need to work more because you have less time
+      * Register within the next 3-4 weeks
+      * Purpose of literature reading on data augmentation in NLP:
+         * identify good baselines
+         * if no good baselines can be identified, go with:
+            * self-training
+            * Language Model
+      * Come to the UKP Meetings on Tuesdays regularly
+      * Send us a status report every Monday evening
+      * Start writing as soon as possible, especially the related work section since you have just finished reviewing the literature
+      * Fill out an applicable form available here: [[https://www.informatik.tu-darmstadt.de/de/studierende/studium/abschlussarbeiten/]]
+         * Please hand enrollment form to us.
+         * Please send a TuCan printout to us which shows the official deadline to hand in the thesis.
+      * Information about the servers: [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ServerJobs]]
+         * Every job has to be scheduled in the server before being run
+         * If you need access to other servers, just let us know and we can see what we can do.
+         * Information on how to install the libraries in the GPU server: [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/DKPro/GpuServer]]
+         * Policies and some hints on how to use the GPU server, e.g. important details to pay attention when using tensorflow/keras: [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/UKP/GpuUsagePolicy]]
+   * @info(PSa, SE) Points in the agenda:
+      * Datasets;
+      * Code;
+      * Literature review (in case anything new was found) + Writing (templates): [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Students/InformationenFuerDiplomanden/UKPThesisTemplate.zip]];
+         * Template is neither complete nor obligatory, form of the thesis can vary depending on the context...
+      * Deadlines:
+         * Registration of thesis (inform us);
+         * Mid-term presentation: 06th March;
+         * Final presentation: 12th Jun.
+      * Change password for your user.
+
+---++++ Meeting protocol - 24.10.2017
+   * Discussed details about multimodal embeddings and the sentence classification tasks
+   * Explanation of the pipeline for preprocessing the sentence and document classification datasets
+   * Details about administrative issues
+   * Expected for next week: literature review on data augmentation for NLP, literature review on GANs (state-of-the-art)
+
+-- Main.PedroSantos - 2017-10-24
+
+%META:FILEATTACHMENT{name="thesis.pdf" attachment="thesis.pdf" attr="" comment="" date="1511832908" path="thesis.pdf" size="89599" user="schaeffler" version="2"}%

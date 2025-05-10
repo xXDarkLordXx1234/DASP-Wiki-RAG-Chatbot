@@ -1,0 +1,100 @@
+%META:TOPICINFO{author="bugert" comment="" date="1559743161" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ComputeCluster"}%
+<!--
+   * ALLOWTOPICCHANGE = System-Admin
+-->
+
+---+!! Slurm Compute Cluster FAQ
+
+%TOC%
+
+---++ What's the status of my jobs?
+
+---++ Why is my job pending?
+
+---++ How much FairShare do I have left?
+
+---++ How do I kill a compute job?
+
+To cancel a job, use =scancel=. You need the running or pending jobid. It is only the job's owner and SLURM administrators that can cancel jobs.
+
+<verbatim>
+$ scancel <jobid>
+</verbatim>
+
+To cancel all your jobs (running and pending) you can run
+
+<verbatim>
+$ scancel -u <username>
+</verbatim>
+
+You get the job id when you submit the job and you can look it up by =squeue -u <username>=. Interactive jobs are cancelled once you close the session, e.g. via =Ctrl + C=.
+
+<blockquote>
+Do not kill/skill =srun= to cancel a SLURM job! This will only remove it from the eyes of slurm while continuing to run.
+</blockquote>
+
+---++ How to debug an experiment?
+
+If you want to have an interactive shell on a slurm node, then on *wormulon*, you can run
+
+<verbatim>
+srun --pty bash
+</verbatim>
+
+=srun= accepts the same parameters as you can specify in a batch file, e.g. =srun --gres=gpu:1 --pty bash= would request one GPU.
+
+---++ Which nodes are there in the cluster?
+
+---++ Where to put code and data?
+
+See [[ComputeClusterStorage]].
+
+---++ How to use GPUs?
+
+---+++ nvidia-docker
+
+[[https://github.com/NVIDIA/nvidia-docker][nvidia-docker]] is installed on every GPU node. You can use it to run your jobs with a certain CUDA and CUDnn version.
+
+---++ How do I run jobs that run longer than three days?
+
+---++ Which software is available on each node?
+
+%TWISTY{ 
+    showlink="Installed software" 
+    hidelink="Hide _Installed software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+%TWISTY{ 
+    showlink="System programs" 
+    hidelink="Hide _System programs_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * wget
+   * gcc
+   * g++
+   * curl
+   * htop
+   * iotop
+   * ncdu
+   * atop
+   * screen
+   * nano
+   * vim
+%ENDTWISTY% 
+
+%TWISTY{ 
+    showlink="developer software" 
+    hidelink="Hide _developer software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * gcc
+   * gcc-c++
+   * python3.6
+   * python2
+%ENDTWISTY% 
+
+%ENDTWISTY% 

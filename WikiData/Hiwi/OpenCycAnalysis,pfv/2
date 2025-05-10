@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1296826111" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ OpenCyc Analysis
+
+---++ Statistics
+
+| *Feature* | *Number* |
+| *Concepts* | 153,920 |
+| *Individuals* | 96,867 |
+| *Collections* | 56,464 |
+| *Constants* | 123,145 |
+| *NARTs* | 30,775 |
+| *Functions* | 3,556 |
+| *isA / instanceOf* | 356,641 |
+| *genls / spec* | 93,336 |
+
+---++ Erklärungen
+Suche nach Konzepten wurde von dem Konzept "Thing" ausgehend gestartet.  Alle Spezialisierungen (cycAccess.getSpecs()), und alle Instanzen(cycAccess.getInstances()) wurden zu der Warteschlange hinzugefügt. 
+
+---+++ Concepts,  Individuals, Collections
+*Concepts* <br>
+Alle mit Hilfe von cycAccess.getSpecs() und cycAccess.getInstances() gefundene Konzepte
+*Individuals* <br>
+Alle Konzepte die bei cycAccess.isIndividual() TRUE liefern.<br><br>
+*Collections* <br>
+Alle Konzepte die bei cycAccess.isCollection() TRUE liefern.<br><br>
+*Individuals + Collections*<br>
+Im Idealfall sollte die Summe Individuals + Collections = 153,331 gleich der Summe aller Konzepte (153,920) sein. Es gibt jedoch ein Unterschiede von 589 Objekten. Bei diesen Objekten gibt sowohl cycAccess.isIndividual() als auch cycAccess.isCollection() FALSE zurück. Beim manueller Analyse einiger dieser Objekte im Cyc-Browser fällt auf, dass die analysierte Objekte Individuals sind und es ist nicht ganz klar wieso die Java-API für sie bei cycAccess.isIndividual() FALSE liefert. Beispiele für solche Objekte sind CycConstanten wie: "Tradition", "Nature", "ReformulationNeitherDirection", "Aorta-Femoral" oder CycNarts die mit "ThePartition" oder mit "TheCovering" anfangen: "(ThePartition MedicalFinding MedicalDiagnosis)", "(TheCovering GeographicalDirection TerrestrialNonGeographicDirection)", "(ThePartition Proton Neutron)", "TheCovering ContactPointSubOrganization IndependentOrganization)"
+---+++ Constants, NARTs
+*Constants*
+Alle Konzepte, die Objekte der Klasse "CycConstant" sind
+*NARTs*
+Alle Konzepte, die Objekte der Klasse "CycNart" sind
+
+---+++ Functions
+Alle Konzepte die bei cycAccess.isFunction() TRUE liefern.<br><br>

@@ -1,0 +1,13 @@
+%META:TOPICINFO{author="JohannesHoffart" date="1239697435" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+---+ Wikulu demo for 14.05.
+
+A demo for Wikulu will be created. It will allow keyphrase extraction and text segmentation for !MediaWiki. It will also support search for a local installation of Simple Wikipedia. The search will be executed while the user is still typing.
+
+---++ Steps
+
+   * Install Simple !MediaWiki on mrburns
+   * Install Wikulu for !MediaWiki on mrburns
+   * Integrate live search into Wikulu
+      * Create a bigger search field that can be invoked by clicking a button
+      * The search field will execute a search after every word and display the results on the side of the search field.

@@ -1,0 +1,94 @@
+%META:TOPICINFO{author="alles" comment="" date="1683293084" format="1.1" reprev="18" version="18"}%
+%META:TOPICPARENT{name="Services/Campus.ComputeCluster"}%
+---+!! %TOPIC%
+
+%TOC%
+
+---++ Principle
+User data in the cluster is stored via network file systems which are mounted on the headnode and each compute node at the same path. This means, you only need to copy code and data once to the network share, not to every single node. Jobs can then see your files no matter on which compute node a job runs.
+
+---+++ Key facts
+   * We do not create user homes (e.g. =/home/username/=) on compute nodes. Code and data has to be put on any of the network file systems. See also [[https://wiki.ukp.informatik.tu-darmstadt.de/Services/Campus/ComputeClusterFAQ#Why_do_I_get_Permission_denied_exceptions_when_my_job_tries_to_write_to_my_home_folder_63][this FAQ question]].
+      * Exception: user homes exist on the headnode (=wormulon=). Space is limited there, so please avoid storing large files in =/home=. Custom =bash_profile= and other small configuration files are okay.
+   * %RED%There is *no backup* system in place for any of the network file systems.%ENDCOLOR%
+
+---++ Available network file systems / shared folders
+
+%TABLE{columnwidths="10%,20%,20%,20%,10%,30%"}%
+| *Storage Server* | *User affiliation*            | *What*                                       | *Mount point*                              | *Quota* | *Description* |
+| Wormulon Home         | All users | user folder	                                  | =/home/$USER=                  | 15GB     | Your home folder. This is not mounted on compute notes, so it cannot be used in compute jobs.   | 
+| =beegfs=         | anyone except NLLG and ATHENE | user folder                                      | =/storage/ukp/work/$USER=                  | 25TB     |   |
+| =UKP temp=         | anyone except NLLG and ATHENE |                                       | =/storage/ukp/temporary=                  | n/a     | Files get deleted after 2 weeks |
+| =shared=       | UKP                           | Project Folder                                   | =/storage/ukp/shared/$PROJECT=        | n/a     | Request a shared folder [[https://service.ukp.informatik.tu-darmstadt.de/shared-slurm-folder][here]]  |
+| =brentano=       | NLLG                          | user folder                                      | =/storage/nllg/compute-share/$USER=        | n/a     |   |
+
+User folders are created automatically for new users at these locations. 
+
+If you want to quickly share files with other users, you can use one of the temporary locations. *Files older than two weeks are deleted automatically from time to time in these locations.*
+
+---+++ More information on shared folders
+---++++ Request
+You can request shared folders for project work collaborations [[https://service.ukp.informatik.tu-darmstadt.de/shared-slurm-folder][here]]. 
+---++++ Maintain the shared folder
+You are responsible for maintaining your shared folder, this includes the permissions. We do not want to give a full tutorial on how permissions work with linux, but consider the following:
+   * if you move data from your personal folders to the shared folder, make sure the permissions are set to the group
+   * every share has a matching user group that includes the users requested while asking for the shared folder at system admin
+      * you can check if a users is in the group by the command "id $USERNAME" to list the groups the user is assigned to
+      * you can check the permissions of files by issueing the "ls -lsa" command while beeing in the folder - e.g.
+         * <verbatim>[nobody@slurm-login meme_lords]# ls -lsa
+total 25
+  PERMISSIONS     OWNER         GROUP
+1 drwxrwx---    5 root          share_meme_lords    8 May  5 14:09 .
+</verbatim>
+         * the folder is setup by system-admin, so the permissions for the root folder are root:$SHARED_FOLDER_GROUPNAME, in this case root:share_meme_lords
+         * if your transferred files have another group name and user set, they are only accessible by those users and members of the group!
+         * more information on linux file and folder permissions can be found e.g. [[https://www.pluralsight.com/blog/it-ops/linux-file-permissions][here]]
+      * if you want to change the group or permissions, the following commands might help you:
+         * <verbatim> chgrp $SHARED_FOLDER_GROUPNAME somefile.txt 
+#sets the group to the name of the group the folder should belong to
+
+chmod 770 somefile.txt 
+#adds read,write,execute permissions for the group of the file (and read,write,execute for the owner)
+
+chmod 750 somefile.txt 
+#adds read and execute permissions for the group of the file (and read,write,execute for the owner)
+
+chmod 777 somefile.txt 
+#adds read,write,execute permissions for literally everyone
+</verbatim>
+         *  There is also the -R paramater for these commands to make the changes recursive
+
+---++ Example Usage for the UKP storage
+
+Here are some usage examples for /storage/ukp/work=.
+
+---+++ Copying data and code to the cluster
+
+You can copy data to this folder from your workstation via =rsync= or =scp=:
+
+From your workstation using =rsync=:
+<verbatim>
+rsync -aP data_folder wormulon:/storage/ukp/work/$USER
+</verbatim>
+
+From your workstation using =scp=:
+<verbatim>
+scp -r data_folder wormulon:/storage/ukp/work/$USER
+</verbatim>
+
+---+++ Accessing data and code in compute jobs
+
+When submitting compute jobs, you can now refer to your files on the storage. For example:
+<verbatim>
+#!/bin/bash
+#
+#SBATCH --job-name=test_job
+#SBATCH --output=/storage/ukp/work/klie/test/res.txt
+#SBATCH --mail-type=ALL
+#SBATCH --partition=ukp
+
+source /storage/ukp/work/klie/test/venv/bin/activate
+python /storage/ukp/work/klie/test/test.py
+</verbatim>
+
+%META:TOPICMOVED{by="bugert" date="1570804962" from="Services.ComputeClusterStorage" to="Services/Campus.ComputeClusterStorage"}%

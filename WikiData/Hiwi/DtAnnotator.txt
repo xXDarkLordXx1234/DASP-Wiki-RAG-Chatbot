@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1360923882" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="IrExperiments"}%
+Information about the Distributional Thesaurus (DT) that I use. More information can be found in the class *DTAnnotator* in the package *annotators.expansion* .
+
+---+++Version
+
+   * I use the database called *DT_120M_NP_POS* (that only uses the *lemma* form, but distinguishes between NNP and NN)
+
+---+++POS
+
+   * NP (singular or plural)
+   * NN (all noun forms except NP, singular or plural)
+   * VB (all verb forms, singular or plural, any tense)
+   * JJ (singular or plural)
+   * IN 
+   * RB
+   * ...

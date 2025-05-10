@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="petrak" comment="" date="1671806580" format="1.1" reprev="2" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+   * Talks/Deadline
+      * ????-??-?? final talk
+      * 2023-03-03 mid-term presentation
+      * 2023-06-12 planned submission deadline
+      * 2023-06-12 thesis submission deadline
+
+   * 2022-12-23
+      * Things we discussed:
+         * Prompting might be an interesting approach
+      * ToDo for next week:
+         * Next week we will discuss three approaches that are potentially usable as starting points for us (focus on prompting and/or the Geva et al. paper)
+         
+
+   * 2022-12-16
+      * Things we discussed:
+         * What are clarification questions? You found that the definition from literature is not generally applicable to open-domain dialogues. For this reason, we agreed on calling them "knowledge-seeking questions" for now. However, for the final write-up, we have to find a unified term.
+         * FITS dataset
+         * The task description
+      * ToDo for next week:
+         * Read the model papers
+         * Start to research towards how to identify gaps in model internal knowledge (use section 3, 5, 7 from the survey paper as starting point).
+         * We have to identify overlapping dialogues between v1 and v2 of the FITS dataset as ground truth. I will provide you with a proper task description to that by the beginning of next week.
+
+   * 2022-12-12
+      * Dataset
+      * Baselines
+      * Slurm
+      * Papers

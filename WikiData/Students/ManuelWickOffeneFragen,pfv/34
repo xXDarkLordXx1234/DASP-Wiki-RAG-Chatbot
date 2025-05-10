@@ -1,0 +1,231 @@
+%META:TOPICINFO{author="ManuelWick" date="1277202260" format="1.1" reprev="34" version="34"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+%TOC%
+
+---+ Open Questions
+
+---++22.06.2010
+   * The pre-processing of ESA takes really much space (please see [[ManuelWickLogbuch][Logbuch 17.06.2010]]). If you checkout the project from SVN you can find the pipeline in de.tudarmstadt.ukp.manuelwick.dkpro.pipeline.EsaPipeline. The important method is getCacheAggregator() where you can find the pre-processing of the documents to speed up 
+the searching. The test to run the Esa-Pipeline to index is called de.tudarmstadt.ukp.manuelwick.dkpro.experiments.Experiments.test_esa(). VM-Parameters: -Xmx1600m
+
+Pipeline in EsaPipeline.java:
+<verbatim>
+runPipeline(
+					getCRMCollectionReader(),
+					getSegmenter(),
+					getStemmer(),
+					getCacheAggregator(),
+					getIndexTermGenerator(false, true, false),
+					getIndexWriter()
+			);
+</verbatim>
+
+getCacheAggregator() where DocumentEsaIndex is created:
+<verbatim>
+File outputDir = new File(props.get(DIRECTORY_DOCS_ESA_INDEX));
+		if(!outputDir.exists()){
+			UIMAFramework.getLogger().log(Level.INFO, "Directory "+props.get(DIRECTORY_DOCS_ESA_INDEX)+" doesn't exist. Create directory.");
+			outputDir.mkdir();
+		}
+		return createPrimitiveDescription(
+			EsaVectorCacheAggregator.class, getDKProTypeSystem(),
+         EsaVectorCacheAggregator.PARAM_INPUT_PATH, props.get(DIRECTORY_TERM_ESA_INDEX),
+         EsaVectorCacheAggregator.PARAM_OUTPUT_PATH, props.get(DIRECTORY_DOCS_ESA_INDEX),
+         EsaVectorCacheAggregator.PARAM_FEATURE_PATHS, new String[] { Token.class.getName() },
+         EsaVectorCacheAggregator.PARAM_VECTOR_CACHE_SIZE, 32);
+</verbatim>
+
+---++21.06.2010
+   * Anything new with respect to the Recordings/Topics?
+
+---++15.06.2010
+   * I actual have difficulties with the language in which the thesis should be written: the thesis should be in english in general, the CRM data and the recordings/topics are in german. I want to create an example to explain the basics and the common structure of information retrieval - but i don't know whether i should use a german example rather than an english one. Especially interesting for ESA since there are totally different Synonyms and Polysemes in each language. 
+      * IG: you can use the German example taken from the real data.
+      * *MW* So there is no way to use an own simple example to first explain the common information retrieval process? The idea was to find an example that perfect meets the IR-models (e.g. contains synonyms) to explain them. And to explain the different pipeline steps. After that I wanted to continue with the Real Data and its challenges... But I'm opened up for everything!
+      * *BH* The decision is up to you. The choice of an example depends on what you want to explain. If you can find an example from the provided data this would be fine, if you cannot find an example that suits your needs, you of course have to take another one.
+
+---++08.06.2010
+   * Not enough literature for the theory part. Mainly the IR-Book. What to do?
+      * IG: you should provide a description and your own comparison of various IR models (their pros and concs)
+      * IG: you should research the literature, i.e. papers on using IR specifically in customer-relationship-management and discuss it in the thesis
+      * IG: describe and discuss your work in the light of the above said
+      * *BH* you can find plenty of literature in:
+         * citeseer
+         * google scholar
+         * acm portal
+         * the libraries
+   * There are no results using the BM-25 model in information retrieval if there are very few documents, but it works using Tf-Idf. [TODO Insert JUnit Test description here]
+   * *BH* information about database
+      * wiki_de was used - here are some stats <br>
+ | id |  language | disambiguationCategory |  mainCategory |  nrofPages |  nrofRedirects |  nrofDisambiguationPages |  nrofCategories |  version |
+ | 9 |	german | Begriffsklärung |!Hauptkategorie | 925249 | 376002 | 0 | 38057 | 	2007-02-06 |
+
+---++07.06.2010
+
+Indexing doesn't work with Terrier. <br /> Exception is thrown while building the inverted index after indexing the complete document folder (CRM data): java.lang.OutOfMemoryError: Java heap space <br />
+Please take a look at de.tudarmstadt.ukp.manuelwick.dkpro.experiments.Experiments terrier_indexing()<br />
+Just change the Pipeline_ImplBase.DIRECTORY_ROOT as explained in test and the Pipeline_ImplBase.DIRECTORY_DOCUMENTS to the sub-directory, in which the CRM data is located.<br />
+
+   * *BH* I am not able to run your code, it does not compile at my machine - you should clean up the libs
+   * *MW* Just checkout the whole project in SVN again. Should work now without any changes in the libs or sth. Align the directories in the first JUnit test (de.tudarmstadt.ukp.manuelwick.dkpro.experiments.Experiments.terrier_indexing()) and run the test. I could'nt replace the uutuc-0.9.12.jar with uimafit-0.9.13.jar completely, because some DKPro components rely on it. By trying to replace it the following exception was thrown: [[%ATTACHURL%/uutuc_2010_06_03.txt][uutuc_2010_06_03.txt]] <br />But anyway, it should work just like it is.
+      * *BH* I was not able to run it, as the directories can not be changed where the files are contained. It is a better idea to *not* hard encode the relationships between files.<br>
+      * *MW* Indeed it is possible to set the directory in the setup independently. Just remove the parameter Pipeline.DIRECTORY_ROOT in the setup. Then all directory-parameters are independent but must be set absolute (due to the missing root directory)
+      * *MW* VM-Parameters are: -Xmx2000m (I also tested it with 3000m in the StudentsLab, but it didn't change anything)
+      * *MW* (14.06.2010) <span class="lime">Problem solved. Indexing with Terrier works using a adjusted TerrierIndexWriter to not run in the jave heap space error</span>
+<verbantim>
+p.setProperty("invertedfile.processpointers", "5000000");
+</verbantim>
+
+ExceptionStackTrace and Console Output:
+<verbatim>
+Exception:
+
+java.lang.OutOfMemoryError: Java heap space
+	at gnu.trove.TIntArrayList.<init>(TIntArrayList.java:70)
+	at org.terrier.structures.indexing.InvertedIndexBuilder.createPointerForTerm(InvertedIndexBuilder.java:414)
+	at org.terrier.structures.indexing.InvertedIndexBuilder.scanLexiconForPointers(InvertedIndexBuilder.java:445)
+	at org.terrier.structures.indexing.InvertedIndexBuilder.createInvertedIndex(InvertedIndexBuilder.java:270)
+	at org.terrier.indexing.BasicIndexer.createInvertedIndex(BasicIndexer.java:410)
+	at de.tudarmstadt.ukp.dkpro.ir.terrier3.uima.TerrierIndexWriter.collectionProcessComplete(TerrierIndexWriter.java:128)
+	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.collectionProcessComplete(PrimitiveAnalysisEngine_impl.java:320)
+	at org.uutuc.util.SimplePipeline.runPipeline(SimplePipeline.java:66)
+	at org.uutuc.util.SimplePipeline.runPipeline(SimplePipeline.java:57)
+	at de.tudarmstadt.ukp.manuelwick.dkpro.pipeline.TerrierPipeline.indexDocuments(TerrierPipeline.java:38)
+	at de.tudarmstadt.ukp.manuelwick.dkpro.experiments.Experiments.testsector_terrier_indexing(Experiments.java:471)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:73)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:46)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:180)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:41)
+	at org.junit.runners.ParentRunner$1.evaluate(ParentRunner.java:173)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:220)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:46)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+
+
+Last console output:
+
+INFO - 20 lexicons to merge
+INFO - Optimising structure lexicon
+Optimsing lexicon with 841601 entries
+INFO - Started building the inverted index...
+INFO - Started building the inverted index...
+INFO - Iteration 1 of 1 iterations
+27.05.2010 13:45:18 de.tudarmstadt.ukp.manuelwick.dkpro.pipeline.Pipeline_ImplBase logTime(150)
+INFO: Time neeed for Indexing: 53:24 
+
+</verbatim>
+---++07.06.2010
+
+I got a question concerning the use of esa.
+how do I exactly use the pre-processed document vectors in the searching engine to fast it up?
+ 
+i got that the searching function which looks like that:
+<verbatim>
+private AnalysisEngineDescription getSearcher() throws ResourceInitializationException{
+		File aTermEsaIndexPath = new File(props.get(EsaPipeline.DIRECTORY_ESA_VECTOR));
+		return createAggregateDescription(
+				createPrimitiveDescription(
+						TerrierQueryGenerator.class, getDKProTypeSystem()),
+				createPrimitiveDescription(
+						TerrierSearcher.class, getDKProTypeSystem(),
+						TerrierSearcher.PARAM_ENABLE_ORQUERY_WITHINFIELDS, true,
+						TerrierSearcher.PARAM_MATCHING_MODEL, LexicalMatching.class.getName(),
+						TerrierSearcher.PARAM_WEIGHTING_MODEL, ESA.class.getName(),
+						TerrierSearcher.PARAM_WEIGHTING_PREFIX+EsaBasedWeightingModel.PARAM_TERM_ESA_INDEX_PATH, aTermEsaIndexPath.getAbsolutePath(),
+						TerrierSearcher.PARAM_INDEX_DIRECTORY, props.get(Pipeline.DIRECTORY_DOCUMENTS_INDEX),
+//						EsaBasedWeightingModel.PARAM_DOC_ESA_INDEX_PATH, props.get(EsaPipeline.DIRECTORY_ESA_OUTPUT),
+						IndexSearcherBase.PARAM_TERM_FIELD_NAME, new String[] {"token"},
+						IndexSearcherBase.PARAM_FIELD_WEIGHT, new float[] { 1.0f })
+						);
+	}
+</verbatim>
+I found out that EsaBasedWeightingModel.PARAM_DOC_ESA_INDEX_PATH is used to set the location to the documents that are transformed into an esa-vector, but where do i use that parameter? Or in what combination?
+   * *BH* I send some code snippet via Jabber
+   * *MW* Works fine and fast
+
+---++ 11.05.2010
+   * TerrierIndexing doesn't work using the complete CRM data. Crashes with an JavaHeapSpace Exception, while merging the several lexicons at the end of the indexing.
+   * Description how to easily reconstruct the error: [[%ATTACHURL%/terrier_3gb_error.txt][terrier_3gb_error.txt]]
+   * <span class="lime">Works, see 07.06.2010</span>
+
+---++ 04.05.2010
+   * Words are found, that do not appear in recordings
+      * Live_96447913_2219242910_090629_140652_1 - in deed none of the Words (zentrale, Minuten, Vertriebsprozess) is found
+      * (Live_96447912_7161802463_090706_102558_6 - not only Installation but also Probleme ("Problem") and Weiterleitung ("weiterleiten") were more or less correctly recognized.)
+      * Live_96447912_4215125337_090714_120308_1 - Degroot is correctly recognized
+      * Live_96447913_21578108021_090625_095838_0 - correctly recognized:
+         * Solution
+         * Problem
+         * Microsoft Windows ("Windows")
+         * Benutzername
+
+---++ old?
+   * <strike>How do I get Apache-Maven work? mvn install just throws BuildErrors: "Cannot execute mojo: clean. It requires a project with an existing pom.xml, but the build is not using one."
+      * http://docs.codehaus.org/display/MAVENUSER/FAQs-1</strike>
+   * <strike>Better work with Maven? Further dependencies would be solved better? (e.g. Lucene)
+      * HowTo? Eclipse Plugin? Introduction?</strike>
+         * *BH* Which eclipse plugin?
+         * *BH* You could use Maven, but for the time being, you should stick to plain Java/Eclipse projects. I will give you further information on next weekly meeting.
+   * PDF parsing is too slow for large docs - how to improve it?
+      * *BH* Creation of an Index is more or less a one time process, therefore it is ok if it takes a little longer
+
+---++ 23.03.2010
+   * How to find out, what a "createPrimitiveDescription", e.g. LuceneIndexWriter or AnnotationWriter, expects as parameters?
+   * LuceneWriter is working with an old version of Lucene
+   * java.lang.NoSuchMethodError: de.tudarmstadt.ukp.dkpro.core.util.CasUtils.getSingleRequired(Lorg/apache/uima/jcas/JCas;Ljava/lang/Class;)Lorg/apache/uima/cas/FeatureStructure;
+	at de.tudarmstadt.ukp.dkpro.ir.consumer.LuceneIndexWriter.process(LuceneIndexWriter.java:66)
+
+---++ 25.03.10
+   * How does Querying works with UIMA/Ukp-Pipeline?
+      *    XmlFileReader.PARAM_INPUT_DIRECTORY, "src/main/resources/topics" - queries in xml-files? format?
+
+---++ 26.03.10
+   * How is score computed in Lucene? Also in comparison with IR-Book page 112 "Weighted zone scoring"
+      * *BH* You should really take a look into the documentation... or just Google for an answer
+         * http://lucene.apache.org/java/3_0_0/scoring.html#Scoring
+         * http://lucene.apache.org/java/3_0_0/api/core/org/apache/lucene/search/Similarity.html
+
+---++06.03.10
+   * Documentations about TreeTaggerPosLemmaTT4j / LuceneQueryGenerator components, what features exist?
+
+---++ 08.03.10
+   * How to monitor progressing with DKPro-Pipeline? (UIMA got interfaces for that) 
+      * *BH* by e.g. writing some log entries?
+
+---++ 27.04.10
+While indexing with Terrier test "testsector_terrier_indexing_108()" throws an error - but same folder with lucene works:
+
+26.04.2010 22:37:51 main.java.de.tudarmstadt.ukp.manuelwick.dkpro.pipeline.PipelineFactory logTime(224)
+INFO: Time needed for indexing documents: 11:46:123
+
+
+Just check out the project from SVN (if sth. is missing, tell me, but normally all used libs should be up to date)<br />
+Then go into JUnit Test "testsector_terrier_indexing_108()" in test.java.de.tudarmstadt.ukp.manuelwick.dkpro.experiments.Experiments<br />
+Change the properties as it is shown in the test. IMPORTANT: The problem occurs only indexing folder 108 from the CRM data with Terrier, the other folders work.<br />
+Run the test. Error should be thrown around 2670/11146 document.
+
+Stack trace can be found in SVN wick/bachelorthesis/stack_traces
+
+   * *BH* Could not compile it, due to wrong package names
+      * if src/main/java is a src folder, package names should start with de.tudarmstadt
+         * *MW* yeah .. should be fixed
+      * wrong @Override annotations are used
+         * *MW* Where? Cant find any...
+            * *BH* then do a search or check in the most recent version
+      * I moved and resolved quite some errors, it still does not compile
+         * Please check it out yourself and check how we can run this project easily
+
+%META:FILEATTACHMENT{name="terrier_3gb_error.txt" attachment="terrier_3gb_error.txt" attr="" comment="" date="1273572816" path="terrier_3gb_error.txt" size="644" stream="terrier_3gb_error.txt" tmpFilename="/var/tmp/CGItemp46211" user="ManuelWick" version="1"}%

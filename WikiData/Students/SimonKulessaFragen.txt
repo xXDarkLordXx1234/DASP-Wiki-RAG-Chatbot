@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="4" version="5"}%
+%META:TOPICPARENT{name="SimonKulessa"}%
+---++ Offene Punkte
+
+JWPL:<br>
+	Schnittstellen<br>
+	DB-Zugriff<br>
+<br>
+SQL:<br>
+	Binäre Daten in eine DB schreiben<br>
+	(in einem Format das man auch im und exportieren kann, falls möglich ?)<br>
+	Wie ist das bei JWPL gelöst worden?<br>
+<br>
+	Datenbank-Struktur<br>
+	(Relationen, Inhalt, Anzahl voll Revisionen, Dauer für das erzeugen einer Revision)<br>
+<br>
+DiffTool:<br>
+	Output-Optimierung<br>
+	Richtung Größe DB oder Output-Files?<br>
+<br>
+Test:<br>
+	UKP-Server für 1 Tag reservieren<br>
+	Abschätzung Laufzeit, Speicherplatz<br>
+<br>
+Testrechner TKPool7:<br>
+	Partionierung, Speicherplatz, mehr RAM möglich?<br>
+<br>
+Allgemein:<br>
+	Sinn und Zweck der DB<br>
+
+-- Main.SimonKulessa - 01 Sep 2008

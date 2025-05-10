@@ -1,0 +1,156 @@
+%META:TOPICINFO{author="glockner" comment="" date="1607518137" format="1.1" reprev="196" version="201"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}% 
+
+Documentation:
+https://docs.google.com/spreadsheets/d/1mBqm_oT1Jdv5d4EBpo5yWVsDK52G147P3lf0SQ7Pxrs/edit#gid=0
+
+%INCLUDE{"Services.WebHome" pattern=".*?---.*?\n(.*)"}%
+
+<!--
+---++ !Projects
+   * [[PANChallenge][PAN Challenge (OF, Artem, Michael Kutschke)]]
+   * [[PedocsKeyphraseExtraction][Pedocs Keyphrase Extraction]] (Nico, Shuo, Artem)
+   * [[FlawFinder][Flaw Finder]] (OF, Michael Kutschke)
+-->
+
+---++ Current
+   * [[JekaterinaKuznecova][Jekaterina Kuznecova]] (IK, JB)
+   * [[HussainKamran][Hussain Kamran]] (IK, JB)
+   * [[Hiwi.AnnaFelicitasHausmann][Anna-Felicitas Hausmann]] (JCK)
+   * [[AndreiStefanov][Andrei Stefanov]] (!ChM)
+   * [[AnnikaPalm][Annika Palm]] (ChK)
+   * [[KaterynaShutiuk][Kateryna Shutiuk]] (ChK)
+   * [[KyraWittorf][Kyra Wittorf]] (!ClS)
+   * [[InesZelch][Ines Zelch]] (AR,TB)
+   * [[JanaVatter][Jana Vatter]] (LR, GV, MB)
+   * [[NinaKolmar][Nina Kolmar]] (BeS)
+   * [[NilsBeck][Nils Beck]] (JL)
+   * [[UKP/Reports.NadyaOfficeAdminReport][Nadya Smirnova]] (IG, formerly !MiM)
+   * [[Sarah Holschneider][Sarah Holschneider]] (Christopher)
+   * [[GregorGeigle][Gregor Geigle]] (NR)
+   * [[StefanThaut][Stefan Thaut]] (TA/CK)
+   * [[MichaelTilli][Michael Tilli]] (CK)
+   * [[MaxEichler][Max Eichler]] (IG, IK)
+   * [[SalvaRuehlingCachay][Salva Rühling Cachay]] (IH)
+   * [[Zlatko Kolev][Zlatko Kolev]] (JD)
+   * [[MuhammadUsman][Muhammad Usman]] (JD)
+   * [[FabianSchick][Fabian Schick]] (TA, MG)
+   * [[TillSteinert][Till Steinert]] (TA, MG)
+   * [[YingYin][Ying Yin]] (TA, MG)
+   * [[SwantjeLange][Swanje Lange]] (TA, MG)
+   * [[FelixRauterberg][Felix Rauterberg]] (TA, MG)
+   * [[HoaNguyen][Hoa Nguyen]] (MG)
+
+   
+---++ Past
+   * [[PatriciaHeidt][Patricia Heidt]] (TB)
+   * [[AlexanderZap][Alexander Zap]] (REC/ES)
+   * [[AakashSharma][Aakash Sharma]] (REC/!CaS)
+   * [[Hiwi.AndreMarkard][André Markard]] (!JCK)
+   * [[AndreasStraninger][Andreas Straninger]] (CLARIN - CB, REC)
+   * [[AndriyNadolskyy][Andriy Nadolskyy]] (JD)
+   * [[AnilNarassiguin][Anil Narassiguin]] (IH)
+   * [[DieterHofmann][Dieter Hofmann]] (DARIAH-AIB - REC)
+   * Dominik Fischer (CB)
+   * [[DominikPuellen][Dominik Püllen]] (DS,ChM, formerly LB, SE)
+   * [[ErikLanDoDinh][Erik-Lân Do Dinh]] (LOEWE-NCC - REC)
+   * ProbirBiswas (Uby - JEK)
+   * RichardSteuer (CB)
+   * AndreasKellner (TZ)
+   * AnouarWork
+   * [[AnshulTak][Anshul Tak]] (REC)
+   * ArtemUspenskiyWork (BH)
+   * ArtemVovkWork (NE, OF)
+   * AtifWork
+   * [[BenjaminPetry][Benjamin Petry]] (REC)
+   * [[CanDiehl][Can Diehl]] (TM)
+   * [[CarolinaCardenas][Carolina Cardenas]] (TM)
+   * CarolinDeeg (NE)
+   * ChristianHollubetz (!ChM)
+   * ChristianKirschner (!ChM)
+   * [[ChristopherKlamm][Christopher Klamm]] (IH)
+   * [[ClemensDeusser][Clemens Deusser]] (WS)  
+   * [[Clement Elvira][Clement Elvira]] (MaM)
+   * DimitriWork
+   * DongWork
+   * EliaWork
+   * [[ElisaStarke][Elisa Starke]] (SH)
+   * [[FaisalArshad][Faisal Arshad]] (JD,CST)
+   * [[HanishGoel][Hanish Goel]] (CaS/REC)
+   * [[HannahWieland][Hannah Wieland]] (DS,ChM)
+   * HosseinWork
+   * HristoLulev (BH, MS)
+   * [[IkiraSchielke][Ikira Schielke]] (ClS)
+   * IvanGalkinWork (TZ)
+   * [[KolfJan][Jan Kolf]] (ChK)
+   * [[JensHaase][Jens Haase]] (REC)
+   * [[Hiwi.JonasBelouadi][Jonas Belouadi (PidL)]] (MB)
+   * [[Julia Weise][Julia Weise]] (Christopher)
+   * [[JulianSteitz][Julian Steitz]] (ChT)
+   * [[Kamel Chelly][Kamel Chelly]] (Christopher)
+   * [[LinLi][Lin Li]] (JCK)
+   * LizhenWork
+   * [[Magdalena Bischoff][Magdalena Bischoff]] (Christopher)
+   * [[MalouOckenfels][Malou Ockenfels (NR)]]
+   * MarcelAckermann (GS)
+   * [[MarcelDeBoer][Marcel De Boer]] (!NaK/REC)
+   * [[HuberMarco][Marco Huber]] (ChK)
+   * MarkoMartin (TZ/NE)
+   * [[Hiwi.MartinKerscher][Martin Kerscher]] (MB)
+   * MateuszParzonka (TZ/NE)
+   * [[MaximilianFuchs][Maximilian Fuchs]] (HMS/BB/!ClS)
+   * [[MelvinBarreiro][Melvin Barreiro Martin]] (SeH)
+   * [[Melvin Laux][Melvin Laux]] (JD/CS, formerly: ES)
+   * [[MichaelaLestakova][Michaela Lestakova]] (ChT)
+   * MichaelKutschke (OF)
+   * MohsenParisay (SH)
+   * [[NicoErbsHiwi][Nicolai Erbs]] (TZ)
+   * [[NilsJansen][Nils Jansen]] (ChM)
+   * [[NilsReimers][Nils Reimers]] 
+   * [[PaulYoussefHiwi][Paul Youssef]] (MB, SE, NR)
+   * RolandKluge (Graduate program KDSL - JEK)
+   * [[SabaSabrin][Saba Sabrin]] (LB)
+   * [[SalisJoshi][Salis Joshi]] (BeS)
+   * [[SamaunIbnaFaiz][Samaun Ibna Faiz]] (!ClS)
+   * [[SandraSchafer][Sandra Schäfer]] (!ClS)
+   * [[ShuoYangDariahArbeit][Shuo Yang]] (REC)
+   * ShuoYangSigmundArbeit (BH)
+   * [[Silke Kalmer][Silke Kalmer]] (Christopher)
+   * [[Sibgha Nazir][Sibgha Nazir]] (UW)
+   * [[SudeshMirashi][Sudesh Mirashi]] (HMS)
+   * [[Susann Franke][Susann Franke]] (Christopher)
+   * [[SushilJain][Sushil Jain]] (REC)
+   * TobiasHorsmann (SH)
+   * [[TobiasRoeding][Tobias Roeding]] (LB, SE)
+   * UrsGlaubitt
+   * [[UteWinchenbach][Ute Winchenbach]] (ED)
+   * VladimirSchmidt (JEK/MiM)
+   * YevgenChebotar (UBY - JEK, !MiM)
+   * ZijadMaksutiWork (!MiM,SH)
+   * SilkeKalmer
+   * [[SophiePozniak][Sophie Pozniak]] (JD, ChT, TM)
+   * [[SvenBrauetigam][Sven Bräutigam]] (NE,DS)
+   * [[WeiDing][Wei Ding]] (BB/REC)
+   * [[PeterJiang][Peter Jiang]] (REC)
+   * [[FriederikeLenke][Friederike Lenke]](JD)
+   * [[KrisMarcelSchilling][Kris Marcel Schilling]] (JD)
+   * [[LianeVogel][Liane Vogel]] (CS, JD)
+   * [[LucasHadi][Lucas Hadi]] (BeS)
+   * [[PhilippNothvogelHiwi][Philipp Nothvogel]] (JD)
+   * [[VeliyanaSavova][Veliyana Savova]] (JD)
+   * [[Patrick Franz][Patrick Franz]] (JD)
+   * [[PengfeiZhao][Pengfei Zhao]] (BeS)
+   * [[NilsDycke][Nils Dycke]] (CST/JD)
+   
+---++ <nop>%WEB% Web Utilities 
+<form action='%SCRIPTURLPATH{"search"}%/%WEB%/'>
+   * <input name="search" type="text" size="22"></input> <INPUT type="submit" }="" search="" value="%MAKETEXT{" class="twikiSubmit" /> - [[WebSearchAdvanced][%MAKETEXT{"advanced search"}%]]
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes
+   * WebStatistics - listing popular topics and top contributors
+   * WebPreferences - preferences of this web
+</form>
+
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="Hiwi"}%

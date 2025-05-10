@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="ChristianJacobi" date="1163685176" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="ChristianJacobi"}%
+---+Meeting-Protokolle
+
+---++ 20.11.2006, 15:00 Uhr
+
+   * IP-Erklärung (CM)
+      * @action (CJ): unterschreiben
+   * Evaluierung des Parsing
+      * @action (CJ): in Zeitplanung berücksichtigen
+         * done
+   * Uses-Cases? (TZ)
+      * @action (CJ): Use cases auf neuesten Stand + Beispiel für jede Klasse
+   * @action (TZ): neuen Wiki Link schicken
+      * done
+   * EssayAufforderung geändert (nur Info)
+      * [[%ATTACHURL%/Aufgabe1.pdf][Aufgabe1.pdf]]: Aufgabe1.pdf
+      * [[%ATTACHURL%/Aufgabe2.pdf][Aufgabe2.pdf]]: Aufgabe2.pdf
+      * HP geändert
+
+---++ 13.11.2006, 15:00 Uhr
+   * Cigdems Essay-Sammlung (CM)
+      * nur Info
+   * IP-Erklärung (CM)
+      * @action (CJ): unterschreiben
+   * Evaluierung des Parsing
+      * @action (CJ): in Zeitplanung berücksichtigen
+   * API: Grundlegende Vorannahmen
+      * nur Info
+   * API: Realisierung der Sections
+      * nur Info, Realisierung ist soweit OK
+   * API: Integration von Sections in ParsedPage
+      * gemeinsames Interface für Section und ParsedPage bei sinnvollen Namen, ansonsten werden Funktionen einfach neu implementiert.
+   * API: FormatedText
+      * Umbenennungen:
+         * Klasse: FormatedText -> ContentComposite
+         * Funktion: FormatedText.toUnformatedString() -> ContentComposite.getText()
+         * Klasse: MFT -> ContentElement
+      * Spans als ImplementierungsMöglichkeit für Textformatierungen.
+   * API: Vererbungsproblematik
+      * Sections in Tabellen werden als Fehler in MediaWiki betrachtet (-> exception), sofern keine Beispiele gefunden werden, die die Implementierung nötig machen.
+   * Uses-Cases? (TZ)
+      * siehe nächstes Meeting
+  
+
+   * [[%ATTACHURL%/20061113CJ.pdf][20061113CJ.pdf]]: 20061113CJ.pdf
+
+   * UML1.png: <br />
+     <img src="%ATTACHURLPATH%/UML1.png" alt="UML1.png" width='800' height='742' />
+
+   * UML2.png: <br />
+     <img src="%ATTACHURLPATH%/UML2.png" alt="UML2.png" width='973' height='463' />
+
+
+%META:FILEATTACHMENT{name="UML1.png" attr="" autoattached="1" comment="" date="1163408158" path="UML1.png" size="12947" user="Main.TorstenZesch" version="1"}%
+%META:FILEATTACHMENT{name="Aufgabe1.pdf" attr="" autoattached="1" comment="" date="1163684967" path="Aufgabe1.pdf" size="87532" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061113CJ.pdf" attr="" autoattached="1" comment="" date="1163408191" path="20061113CJ.pdf" size="128811" user="Main.TorstenZesch" version="1"}%
+%META:FILEATTACHMENT{name="Aufgabe2.pdf" attr="" autoattached="1" comment="" date="1163684994" path="Aufgabe2.pdf" size="67664" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="UML2.png" attr="" autoattached="1" comment="" date="1163408172" path="UML2.png" size="8537" user="Main.TorstenZesch" version="1"}%

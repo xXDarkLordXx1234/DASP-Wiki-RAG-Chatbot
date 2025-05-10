@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1284072777" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+---++ Problems and Questions
+
+%TOC%
+
+---+++ Open
+   * *Question*: (Siehe Logbuch) Versuche mich in der Library zurechtzufinden. Gibt es eine Out-of-the-box-Implementierung von KEA und von TextRank die ich verwenden soll / darf? Laut einem TUD-Paper von 2009 gibt es eine Implementierung im DKPro. Aus der letzten Mail von NE reime ich mir zusammen dass ich TextRank selbst zusammenstecken soll, aber statt mit Coocurrence mit Semantic-Relatedness über ESA. Diese Implementierung eines Keyphrase-Candidate-Rankers gibt es auch noch nicht? In der Mail ist auch von tf-idf die Rede. Es soll also auch ein Ranking der Keyphrase-Candidates über tf-idf erstellt werden, als Baseline nehme ich an?
+
+---+++ Quickfixed
+
+   * *Problem*: english_keyphrase_stopwords.txt and english_stopwords.txt is missing in dkpro_semantics-0.0.1-SNAPSHOT.jar. There is no "stopwords"-directory in the "resource"-directory.
+      * *Quickfix*: decompiled de.tudarmstadt.ukp.dkpro.semantics.keyphrases.stopwordfilter-0.0.1-SNAPSHOT.jar from Schnupperphase and extracted stopword-texts. Saved them local for now.
+---+++ Solved
+
+nothing. 
+
+-- Main.MateuszParzonka - 09 Sep 2010

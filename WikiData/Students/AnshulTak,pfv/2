@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="stab" comment="reprev" date="1428917605" format="1.1" reprev="2" version="2"}%
+---++ Next Steps (updated meeting agenda)
+   * Form for weekly time schedule
+   * SelfTraining Experiment (see below)
+
+
+---++ Current task (AT)
+   * TODO: Include baseline results (train-test split)
+   * TODO: Provide train-test split data 
+
+   * Include Feature Extractors from PC into SelfTraining Experiment (done)
+      * TODO: Test the experiment with a small number of unlabeled data and few iterations for ensuring it works as expected
+      * If everything works, 
+         * Commit the source into SVN
+         * We will put the experiment on the server.
+
+
+---++ Time schedule table
+   * TODO: include tables
+
+-- Main.ChristianStab - 2015-03-23

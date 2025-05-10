@@ -1,0 +1,29 @@
+b.) [TASK: Check if lexical information from salsa_frames.xml is converted . Therefore, compare the instance counts of the corresponding xml-tags and UBY classes]
+
+salsa_frames.xml	UBY
+<frame>: 1023		SemanticPredicate: 1023
+<fe>: 5024		SemanticArgument: 5024
+<lexunit>: 1827		Sense: 1826
+<lexeme>: 649		LexicalEntry: 648
+
+
+c.) [TASK: Analyse two instances of <frame> from salsa_frames.xml and check if the information contained is mapped correctly to the UBY format.] 
+
+Analysed <frame> instances: 'Abnehmer1-salsa‘, 'Abwesenheit1-salsa'
+
+- Is there a SemanticPredicate entry in the DB with label? 
+YES
+
+- is it associated with a Definition containing the text in the definition tag? 
+YES
+
+- Is it associated with four SemanticArguments with the given labels and definitions and coreType information?
+YES
+
+- Is it associated with one Sense and one LexicalEntry with the given Lemma and pos?
+YES 
+
+- Is it associated with Frequency information (filled with information from the <annotated> tag in salsa_frames.xml)?
+YES
+
+I collected the information by querying the DB directly. I also tried using the uby api, which worked out fine for question 1-3, however I was not able to collect the associated Sense information that way.

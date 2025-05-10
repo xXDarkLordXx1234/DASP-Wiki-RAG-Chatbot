@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="NiklasJakob" date="1173696501" format="1.1" reprev="16" version="16"}%
+%META:TOPICPARENT{name="NiklasJakob"}%
+   * [[%ATTACHURL%/Fragen_12.03.07.doc][Fragen_12.03.07.doc]]: Fragen_12.03.07.doc
+------
+
+   * Beim Code kommentieren ist mir aufgefallen dass der Pfad zur GermaNet Installation noch "hardgecoded" ist. Ist es an der Stelle auch okay wenn dieser in einem property file eingestellt werden muss und dann eingelesen wird?
+
+*TZ:* Ist ok.
+
+------
+
+   * Gibt es eigentlich irgendwelche typischen Texte auf Deutsch und Englisch die ich für meine Evaluation der Extrahierung der lexikalischen Ketten verwenden könnte?
+
+*TZ:* Für Englisch müßte es die Summarization Texte, die zur Evaluierung benutzt wurden, irgendwo geben. Haben wir aber nicht da. Für Deutsch ist mir nichts bekannt. Die Frage hängt aber auch stark damit zusammen, wie eigentlich evaluiert werden soll. Wenn mich nicht alles täuscht, war das noch nicht 100%ig klar.
+
+------
+
+   * Ich bekomme manchmal wenn ich mir per Page.getOutLinks() die Links einer Seite hole und danach versuche mir eine verlinkte Seite per Wiki.getPage(Integer) zu holen NULL zurück. Hast du eine Ahnung woran das liegen könnte? Sind das vielleicht Links zu Seiten die noch nicht existieren oder werden diese herausgefiltert? Das Problem tritt z.B. bei der Seite "Drehmoment" auf bei den Links mit IDs 409712 und 1457377.
+
+*TZ:* Ja, dabei handelt es sich um Links auf Seiten, die noch nicht existieren. Ich habe sie mit drin, da man aus ihnen in gewissen Einsatzgebieten auch interessante Informationen beziehen kann. Das Verhalten sollte aber besser dokumentiert werden, vielleicht als boolean flag - muss ich mal drueber nachdenken.
+Im Moment solche Dinge einfach per Prüfung auf !=null abfangen.
+
+------
+
+   * Kann es sein, dass WikipediaAPI teilweise Probleme mit Umlauten hat? Wenn ich mir z.B. die Redirects einer Seite hole ( Page.getRedirects() ) und dieses Set dann ausgebe, sind die Ausgabestrings immer vor Umlauten abgeschnitten...
+*TZ:* Das ist mir nicht aufgefallen. Allerdings wurde die API auch noch nicht auf so vielen verschiedenen Systemen getestet. Kannst du hier mal ein Beispiel geben, bei dem das auftritt?
+     Das Problem tritt zum Beispiel bei der Page "Erde" auf: getRedirects() gibt zurück: "Erdk, Erde_(Planet), Blauer_Planet, Erdball, Erdkugel, Die_Geschichte_der_Erde, Erdumfang".
+     (Das erste Ergebnis soll wohl "Erdkörper" sein)
+*TZ:* Tatsächlich. Das Problem scheint aber nur bei Redirects aufzutreten, da ich sonst Umlaute habe. Das muss ich beheben, weiss allerdings noch nicht, wann ich dazu kommen werde :-/
+
+------
+   * Habt ihr zufällig einen POS annotierten Text in deutscher Sprache mit dem ich die Algorithmen in Verbindung mit dem GermaNet testen könnte? Der Text müsste im Format "Wort_Tag" annotiert sein. Alternativ wäre ein Link zu einem POS Tagger mit dem ich einen Text annotieren kann super. 
+
+*TZ:* Wir benutzen den !TreeTagger
+http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/
+Dessen Ausgabeformat ist unterschiedlich je nach angegebenen Parametern. Ich glaube aber, dass es Wort/Tag ausgibt. Aber das kann man ja leicht in jedes gewünschte Format umwandeln.
+
+------
+   * Gestern habe ich eine neue Seite in meiner "Personal Area" erstellt die heute weg ist :-(
+
+*TZ:* Meinst du die MMAX Seite? Die ist noch da :) Wenn du Links in der !SideBar auf "Index" klickst, wirst du sie wiederfinden.
+Wenn du eine Seite über "Create New Topic" anlegst, musst du selbst einen Link dazu anlegen (schlechtes UI Design, läßt sich aber nicht ändern ...)
+Am einfachsten legt man neue Topics an, wenn man dort, wo es sein soll so ein --> WikiWord <-- hinschreibt. Dort dann einfach auf das Fragezeichen klicken, das legt die Seite an und der Link ist auch schon da.
+
+
+-- Main.NiklasJakob - 16 Nov 2006
+
+
+%META:FILEATTACHMENT{name="Fragen_12.03.07.doc" attachment="Fragen_12.03.07.doc" attr="" comment="" date="1173696464" path="Fragen 12.03.07.doc" size="26624" stream="Fragen 12.03.07.doc" user="Main.NiklasJakob" version="1"}%

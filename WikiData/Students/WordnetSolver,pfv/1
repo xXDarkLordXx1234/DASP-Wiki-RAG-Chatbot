@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="GeorgiValkanov" date="1359318621" format="1.1" version="1"}%
+%META:TOPICPARENT{name="GeorgiValkanov"}%
+-- Main.GeorgiValkanov - 2013-01-27
+---+++ Implementation
+
+For each answer do:
+
+   1 Get similarity to each other answer (except self)
+   1 Sum up similarity values per answer
+   1 Get minimal similarity sum. 
+   1 OOO = answer with minimal similarity
+---+++ Technical
+
+Used the JiangConrathComparator
+---+++ Result
+
+38% correct guesses.

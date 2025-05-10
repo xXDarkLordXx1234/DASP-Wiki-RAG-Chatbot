@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="hartmann" comment="reprev" date="1426518143" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Studentische Arbeit: Automatically Aligning Role Schemas
+
+%TOC%
+
+---++ Meetings
+---+++ Meeting 24.3.2015, 16 Uhr
+   * Themen
+      * Detaillierte Thesis-Beschreibung "Thesis Plan"
+      * "Domäne" für Role Schema Alignment (!FrameNet-VerbNet): was wird aligniert? 
+   * Fragen
+---+++ Meeting 16.3.2015, 15 Uhr
+   * Themen
+      * Organisatorisches, Domain account, Wiki, "requirements and expectations", etc.
+         * TBD:
+            * Detaillierte Thesis Beschreibung "Thesis Plan"  
+            * Sprache für Thesis
+      * Weekly meeting: Dienstag, 16 Uhr, B120
+      * Vorläufiger Zeitplan: Halbzeit-Präsentation ~ Di,12.5.10h, Abschluss Präsentation ~ Di,23.6.
+      * Fragen zu UBY tutorial: uima-related code does not run yet (evtl. UBY/DKPro Versionskonsflikt) 
+---++ Resources/Related Work
+   * !FrameNet-VerbNet
+      * Resources, theoretical background
+         * Unified Verb Index: http://verbs.colorado.edu/verb-index/ 
+         * SRL book (Mail vom 26.2.)
+         * !FrameNet  
+            * https://framenet.icsi.berkeley.edu/fndrupal/index.php?q=luIndex
+            * !FrameNet book: https://framenet2.icsi.berkeley.edu/docs/r1.5/book.pdf
+         * !VerbNet
+            * http://verbs.colorado.edu/~mpalmer/projects/verbnet.html 
+         * !SemLink (existing !VerbNet-FrameNet sense-level and role-level mapping)
+            * http://www.aclweb.org/anthology/W13-5503
+            * http://verbs.colorado.edu/semlink/
+         * UBY lexical resource
+            * http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/publikationen/2012/uby_eacl2012_cameraready.pdf
+            * http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/publikationen/2012/LREC2012_ubyLMFcamera-Ready.pdf
+         * ILP Alignments (bereits bekannt):
+            * http://www.aclweb.org/anthology/D09-1002.pdf
+            * http://www.aclweb.org/anthology/E09-1026
+      * Resources, practical 
+         * UBY (wichtig: ich werde Dir die Ressourcen im UBY-format zur Verfügung stellen)            
+            * UBY Tutorial: http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/publikationen/2013/ubyTutorial_GSCL2013.pdf
+            * Im praktischen Teil des Tutorials wird erklärt, wie man einen UBY Datenbank Dump importiert und den Workspace zum Arbeiten einrichtet, und es werden im "examples-code" API-Aufrufe gezeigt. Den Link zur Anleitung findest Du hier: https://code.google.com/p/dkpro-tutorials/wiki/UbyTutorial2013. Probiere insbesondere, den Beispielcode laufen zu lassen.
+            * UBY class diagram (attached)
+         * DKPro (bereits bekannt)
+            * https://code.google.com/p/dkpro-core-asl/wiki/MyFirstDKProProject
+
+
+-- Main.SilvanaHartmann - 2015-03-16

@@ -1,0 +1,138 @@
+%META:TOPICINFO{author="schuck" comment="save topic" date="1480930274" format="1.1" reprev="15" version="16"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ 2016-12-02
+   * send editable task description to CS
+      * done, btw. what means 'CS'?
+   * What are reasonable baselines?
+   * Preprocess the data with Stanford Parser
+      * done, [[%ATTACHURLPATH%/addedAnnotaions][addedAnnotations]]
+      * btw, there seems no 'warrant' annotation in habernal-corpus
+   * run experiments with different combination of features and compare results
+   * try to consider new features
+   * prepare cross-topic experiments: (1) Split data (5 topics as train and 1 topic as test; result are 6 train-test splits) (2) setup and train test experiment in TC
+      * experiment with test/train set is working, but there are problems with the evaluation script.
+      * I haven't split the data physically yet, but there should be a problem. Maybe there is a more elegant way than different folders which avoid duplicate files
+
+---++ 2016-11-30
+   * diskuss motivation part of task [[%ATTACHURLPATH%/TaskDescription.pdf][description]]
+   * corpus [[%ATTACHURLPATH%/statistics.pdf][statistics]]
+      * How can we preprocess the corpus to reintegrate topic information?
+   * Potential Features
+      * Lexical
+      * Structural 
+      * Syntactic
+      * Lexicons
+      * Semantic
+      * Sentiment
+   * Next Steps:
+      * send editable task description to CS
+      * What are reasonable baselines?
+      * Preprocess the data with Stanford Parser
+      * run experiments with different combination of features and compare results
+      * try to consider new features
+      * prepare cross-topic experiments: (1) Split data (5 topics as train and 1 topic as test; result are 6 train-test splits) (2) setup and train test experiment in TC
+
+
+---++ 2016-11-23
+   * Discuss thesis [[%ATTACHURLPATH%/structure.pdf][structure]]
+      * 1 Introduction
+         * (Motivation: Why is it important? What's new? What are the research questions?)
+         * 1.1 Contributions
+         * 1.2 Thesis Organization
+      * 2 Enthymemes: Theoretical Background
+         * What are arguments? Theoretical definition, etc. (Toulmin1958)
+         * What are enthymemes? Are there theoretically motivated classifications of enthymemes or varying definitions (e.g. formal logic vs. informal approaches)
+         * 2.x Chapter Summary
+      * 3 Argument Mining
+         * Argument Recognition
+         * Dealing with enthymemes
+         * 3.X Chapter Summary
+      * 4 Recognizing Enthymemes / Missing Claims
+         * (high-level idea and brief description)
+         * 4.1 Data (describe data... Statistics (size/distribution over topics); IMPORTANT: How did you derive your labels from the annotations? )
+         * 4.2 Preprocessing (Which tools? Maybe why?)
+         * 4.3 Models / Features / Baselines
+         * 4.4 Evaluation (Setup (e.g. train-test/cross-validation); Which measures and why? Feature Analysis; cross-topic experiment)
+         * 4.5 Error Analysis (Confusion Matrix; Manually investigate the wrongly classified instances and try to explain why the classifier failed)
+         * 4.6 Chapter Summary
+      * 5 Summary
+         * (5.1 Discussion)
+         * 5.2 Future Research directions 
+   * preprocessor
+   * feature extraction
+      * number of sentences
+      * number of tokens
+   * argument typ aproach, preprocessor
+   * Next Steps:
+      * Implement (at least) two feature extractors (#tokens, #sentences)
+      * Start estimating corpus statistics
+         * How many documents?
+         * How many documents per topic? BTW: Which topics? :) 
+         * How many arguments without claim in total and per topic
+         * Put everything in a nice looking table.
+      * Gets Latex Template working
+      * Motivation part of task description
+      * Continue literature research (Argument Theory, Argument mining, existing corpora)
+
+---++ 2016-11-16
+   * Discuss elaborated research questions
+      * Which classes of incomplete arguments must be considered?
+         * Which classes of enthymemes exists?
+      * How is the recognition of enthymemes possible?
+         * How can we automatically separate complete arguments from enthymemes?
+      * Are there domain-specific differences in the difficulty of the problem?
+         * Which features are stable over difference domains?
+   * Clarify understanding UIMA [[%ATTACHURLPATH%/uima summarize.pdf][terms]]
+   * UIMA Plugin. Is there a better way to identify available annotations?
+      * see statistics package
+   * Next Steps:
+      * Elaborate task description
+      * Structure thesis
+      * Continue literature research (Argument Theory, Argument mining, existing corpora)
+      * Try to preprocess Habernal's corpus (from web) using DKPro
+      * Get familiar with feature extraction and try to create and own feature extractor
+
+---++ 2016-11-09
+   * (Done) license contract
+   * (Done) UKP account
+   * (Done) communication channels
+   * progress and next steps
+      * technical
+      * literature
+   * task description (siehe Anhang)
+   * SVN: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/schuck
+      * This includes a preliminary DKPRO TC Experiment using the data from Habernal and Gurevych (2016)
+      * For "installing" the project: Browse the SVN using Eclipse's "SVN Repository Exploring", Then, right click on the project and select "Import as Maven Project"
+      * Running the experiment: Open de.tudarmstadt.ukp.dkpro.argumentation.implicitclaims.experiments.ImplicitClaimIdentification and run it.
+      * (it might be useful to select a result path that is not in your working space to prevent committing results in subversion) 
+      * As found in our last meeting, the data set in this project does not include information about the topics of the arguments. This information, however, will be extremely useful for conducting cross-topic experiments, etc.. This information is included in the original version of the corpus: https://www.ukp.tu-darmstadt.de/data/argumentation-mining/argument-annotated-user-generated-web-discourse/ 
+      * @discuss: How to include the missing meta data in the preprocessed data in the project?
+   * Next steps:
+      * Elaborate task description
+      * Structure thesis 
+      * Continue literature research (Argument Theory, Argument mining, existing corpora)
+      * Intall experiment (SVN project)
+      * Try to preprocess Habernal's corpus (from web) using DKPro
+
+
+
+---++ 2016-11-02
+   * Discussed topic in order to elaborate task description 
+   * Brief Introduction to DKPro TC
+   * Completed forms / contract / etc. 
+   * Next Steps: 
+      * Read literature about data
+      * Install DkPro TC and get familiar with it
+      * Preparation of task description 
+
+
+
+-- Main.ChristianStab - 2016-11-02
+
+%META:FILEATTACHMENT{name="uima summarize.pdf" attachment="uima summarize.pdf" attr="" comment="" date="1479222641" size="31977" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="structure.pdf" attachment="structure.pdf" attr="" comment="" date="1479832357" size="16732" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="statistics.pdf" attachment="statistics.pdf" attr="" comment="" date="1480421020" size="14955" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="Task_description_Andreas_Schuck_30_11.docx" attachment="Task_description_Andreas_Schuck_30_11.docx" attr="" comment="" date="1480460075" size="64012" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="TaskDescription.docx" attachment="TaskDescription.docx" attr="" comment="" date="1480460261" size="64012" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="TaskDescription.pdf" attachment="TaskDescription.pdf" attr="" comment="" date="1480460333" size="94297" user="schuck" version="1"}%
+%META:FILEATTACHMENT{name="addedAnnotaions" attachment="addedAnnotaions" attr="" comment="" date="1480753726" size="4395" user="schuck" version="1"}%

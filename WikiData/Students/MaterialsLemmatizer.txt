@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="NikolayMaterials"}%
+---+ Lemmatizer Notes
+
+Sometimes the lemmatizer has interesting/unexpected behavior with CAPITAL Letters:
+
+Sentence(0,45): The word <span class="green">AIRPLANE</span> starts with the letter "A".<br />
+NN(9,17): AIRPLANE<br />
+Lemma(9,17): AIRPLANE  { value=<span class="green">airplane</span> }<br />
+<br />
+Sentence(48,79): An <span class="green">AIRPLANE</span> flies in the sky. <br />
+NN(51,59): AIRPLANE<br />
+Lemma(51,59): AIRPLANE  { value=<span class="green">airplane</span> }<br />
+<br />
+Sentence(79,95): This is a <span class="green">BEAR</span>.<br />
+NP(89,93): BEAR<br />
+Lemma(89,93): BEAR  { value=<span class="green">Bear</span> }<br />
+<br />
+Sentence(95,137): The word <span class="green">BEAR</span> starts with the letter "B".<br />
+NP(104,108): BEAR<br />
+Lemma(104,108): BEAR  { value=<span class="green">Bear</span> }<br />
+<br />
+Sentence(89,132):  The word <span class="green">BEARS</span> begins with the letter "B".<br />
+NP(99,104): BEARS<br />
+Lemma(99,104): BEARS  { value=<span class="green">BEARS</span> }<br />
+<br />
+Sentence(123,140): This is the <span class="green">CAT</span>.<br />
+NP(135,138): CAT<br />
+Lemma(135,138): CAT  { value=<span class="green">CAT</span> }<br />
+<br />
+Sentence(140,171): <span class="green">CAT</span> starts with the letter "C".<br />
+NP(140,143): CAT<br />
+Lemma(140,143): CAT  { value=<span class="green">CAT</span> }<br />
+<br />
+
+
+*DB*: Could you please also give the Part-of-speech tags associated with the words. Are they the same?<br />
+*NG*: Here they are.
+
+   -- Main.NikolayGeorgiev - 15 Jul 2009

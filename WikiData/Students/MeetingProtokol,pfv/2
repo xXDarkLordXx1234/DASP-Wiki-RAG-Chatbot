@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="CigdemToprak" date="1242055004" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+%TOC%
+---+++ 18.05.2009 
+
+   * @action(CT): prepare 300000 sentence corpus from FAZ 
+   * @action(CT): prepare preprocessing components (sentece splitter, tokenizer, POS tagger, parser (German Parser))
+   * @action(NE): harvest the forum data. (CT will give the name of the course.)
+   * @action(CT): mail German opinion lexicon for high-precision subj. classifiers.
+
+
+-- Main.CigdemToprak - 11 May 2009

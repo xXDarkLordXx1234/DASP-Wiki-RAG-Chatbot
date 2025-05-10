@@ -1,0 +1,65 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1381962755" format="1.1" reprev="30" version="30"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+%TOC%
+
+---+++ Aktueller Vertrag (September 2013 - Oktober 2013)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Richards Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung in Martins Aufgaben, [[https://docs.google.com/document/d/14PWeoTkrnKk9H8_7CfVbdvuoFZ7jYivNTkBX2Hj7qLw/edit?pli=1#][Google syntactic ngrams]] | 30.09.2013 | 1 | |
+| Task 1.1 und 1.2 beendet, Ergebnisse an Martin geschickt | 01.10.2013 | 6 | nodes: Abdeckung der Jahre |
+| Einarbeitung in [[http://sourceforge.net/projects/jobimtext/][JoBimText]] ([[http://www.ukp.tu-darmstadt.de/software/jobimtext/][UKP]]), mit Hadoop wieder vertraut gemacht | 03.10.2013 | 2 | |
+| Einarbeitung in !MateTools, Parser-Infrastruktur | 04.10.2013 | 4 | laden zu speicherintensiv, am besten gleich auf Cluster |
+| Hadoop-Skript mit Parser versucht auf Cluster auszuführen | 07.10.2013 | 3 | techn. Probleme, Hans-Peter geschrieben |
+| dt_arc_extractor_by_year und wordcount_by_year geschrieben | 08.10.2013 | 7 | auf Frink gestartet |
+| Ergebnisse der Prozesse mit Martin besprochen, Änderungen/Nachbearbeitungen programmiert (uniq) | 09.10.2013 | 6 | danach auf Headnode hochgeladen und alle Pipelines gestartet |
+| DT-Pipelines überwacht, Wordoverlaps zwischen Zeitscheiben berechnet | 10.10.2013 | 3 | alle fertig |
+| DT-Daten gefiltert und verschoben, dt. Parser weiter versucht | 13.10.2013 | 5 |  |
+| dt. Parser: POS-Tags | 14.10.2013 | 2 |  |
+| Paper Korrektur gelesen | 14.10.2013 | 1 |  |
+| Statistik der einzelnen Jahre angefangen | 15.10.2013 | 1,5 | Anzahl Wörter oder Anzahl verschiedener Wörter? |
+| Berechnung der gleichgroßen Intervalle (ist noch nicht perfekt) | 16.10.2013 | 5,5 | Eingabe hierfür ist die Ausgabe von coverage_nodes.py |
+| *Summe* | | 47 | bisher geleistet |
+| *Soll* | | 80 | (aktueller Vertrag, 40 h/Monat) |
+
+---+++ Verbleidende Aufgaben
+
+Google Books DT: 
+
+   * Daten der Jahre in 8 gleichgroße Intervalle aufteilen
+
+Deutsche Sätze parsen:
+   * 70+ M Sätze Deutsch parsen ([[Students.MateTools][MateTools]]), Ziel: Auf HDFS liegen die geparsen Sätze, so dass man dann eine DT-Pipeline starten kann.
+      * frink: /srv/data/LCC/de/denews70M_sorted_cleaned_uniq (hdfs://node-00:8020/user/riedl/denews70M_uniq)
+      * frink: /home/alles/UnsupParsing/data/de/de_news_10M.txt
+      * headnode-02: -Dmapreduce.queue.name=langtech
+      * es sind 2 Schritte notwendig bevor du den DT berechnen kannst:
+         * Parsen und so rausschreiben dass man Satz, Parse, POS (kannst ja das Format nehmen dass du letztes mal berechnet hast) e.g. Ich bin ein Satz#######Ich/POS1 bin/POS2###Ich#irgendeine parse Darstellung
+         * Diese Parses in das Format bringen
+            * I#PRP   -nsubj(@_give#VB)
+            * give#VB nsubj(@_I#PRP)
+            * give#VB prep(@_to#TO)
+            * ...
+
+---+++ Links
+
+   * Google Syntactic Ngrams
+      * [[https://docs.google.com/document/d/14PWeoTkrnKk9H8_7CfVbdvuoFZ7jYivNTkBX2Hj7qLw/edit?pli=1#][Readme (Data)]]
+      * [[http://commondatastorage.googleapis.com/books/syntactic-ngrams/syntngrams.final.pdf][Paper (pdf)]]
+      * [[Hiwi.GoogleSyntNgrams][Own explainations]]
+
+   * !MateTools
+      * Software
+         * [[https://code.google.com/p/mate-tools/wiki/DependencyParsing][How to use the dependency parser from the command line?]]
+         * [[https://code.google.com/p/mate-tools/downloads/list][Download list]]
+         * [[http://code.google.com/p/mate-tools/source/browse/trunk/mate-tools/src/examples/FullPipeline.java][Full Java pipeline]]
+            * [[http://code.google.com/p/mate-tools/source/browse/trunk/mate-tools/src/examples/][all examples]]
+         * [[http://de.sempar.ims.uni-stuttgart.de/][Deutsch online testen]]
+      * Meta
+         * [[http://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/TagSets/stts-table.html][STTS Tagset]]
+         * [[http://ufal.mff.cuni.cz/conll2009-st/task-description.html#Dataformat][CoNLL Data Format]]
+
+   * Hadoop
+      * [[http://hadoop.apache.org/docs/stable/file_system_shell.html][Hadoop Shell Guide]]
+      * [[http://www.cloudera.com/content/cloudera-content/cloudera-docs/HadoopTutorial/CDH4/Hadoop-Tutorial.html][Cloudera Tutorial]]

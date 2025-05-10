@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="HakanEroglu" date="1229026125" format="1.1" version="1"}%
+%META:TOPICPARENT{name="WebTopicList"}%
+ -- Main.HakanEroglu - 11 Dec 2008
+---++ Trend Analysis in Folksonomies
+
+Hier liste ich schon mal alle Recherchen und Analysen, die ich im ersten Monat erledigt habe:
+
+1. Auskundschaften, welcher Social Bookmarking Anbieter verlässliche und vollständige Informationen bietet
+
+* Technorati API: Bietet keine ausrecihenden Informationen zu den Relationen USER &lt;--&gt; TAG &lt;--&gt; RESOURCE
+
+* deli.cio.us API: Ist eine praktische Java API, die es jedoch nur registrierten Usern ermöglicht, eigene Daten aus dem eigenen Account herauszulesen
+
+* del.icio.us Crawler: Nach Absprache mit Lizhen habe ich einen Crawler in Java geschrieben, der automatisch zu einem TAG alle relevanten PERMALINKS, TITLES und TAGS inkl. USERNAMEs herausextrahiert und als XML-Corpus festhält
+
+2. Programmieren eines Blog Folksonomy Readers, der alle Einträge aus dem Corpus liest und den passenden Graphen baut - mithilfe des JUNG 2.0 frmeworks. Anschließend einige Experimente mit PageRank, um schon USERNAMEs, TAGs und POSTs zu ranken.

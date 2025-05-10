@@ -1,0 +1,214 @@
+%META:TOPICINFO{author="poth" comment="" date="1638214148" format="1.1" reprev="16" version="16"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Week 2021-11-29 - 2021-12-05
+AH:
+
+Square:
+   * Traefik configuration (3h)
+   * minor optimizations & fixes (3h)
+   * README updates
+
+---++ Week 2021-11-22 - 2021-11-28
+AH:
+   * reviewing, bug fixing & GH support
+   * fix adapters on HF hub
+Square:
+   * Re-enable score & get_document_embedding methods. (6.5h)
+   * Remove unsupported methods.
+   * bug fixes (0.5h)
+   * meeting (0.5h)
+
+---++ Week 2021-11-15 - 2021-11-21
+AH:
+   * AdapterEnbembles experiments
+   * finalize AH Inference API integration
+Square:
+   * Unified test suite with mocking (6h)
+   * "search_by_vector" API method.
+   * meeting (1h)
+
+---++ Week 2021-11-08 - 2021-11-14
+AH:
+   * EMNLP attendance
+Square:
+   * Batch-wise document uploading + upload script (2h)
+   * bug fixes (3h)
+   * deploy to Square VM (3h)
+   * meeting (0.5h)
+
+---++ Week 2021-11-01 - 2021-11-07
+AH:
+   * AdapterEnbembles experiments
+Square:
+   * Remove Vespa dependency & refactor integration tests. (8h)
+   * meeting (0.5h)
+
+---++ Week 2021-10-25 - 2021-10-31
+AH:
+
+Square:
+   * Basic integration of Faiss-based search (7h)
+   * meeting (0.5h)
+
+---++ Week 2021-10-18 - 2021-10-24
+AH:
+
+Square:
+   * Start with ES-based Datastore API implementation (8h)
+   * meeting (1h)
+
+---++ Week 2021-09-27 - 2021-10-03
+
+AH:
+   * AdapterEnsembles project
+   * finalizations & bug fixes for v2.2.0 AH release
+Square:
+   * Start with ES-based implementation (7h)
+   * meeting (1h)
+
+---++ Week 2021-09-20 - 2021-09-26
+AH:
+   * sync with newer transformers versions
+   * help with T5 implementation finalization
+Square:
+   * experiment with Milvus (6h)
+   * meeting (1h)
+
+---++ Week 2021-09-13 - 2021-09-19
+AH:
+   * review, repo maintenance
+   * sync with newer transformers versions
+Square:
+   * code review of Vespa-based implementation
+   * meeting (2h)
+   * review options for new datastore API implementations (1.5h)
+   * learn about Milvus (5h)
+
+---++ Week 2021-09-06 - 2021-09-12
+AH:
+   * prepared code for AdapterEnsembles project
+   * bug fixing & GH help
+Square:
+   * Finalizations (config, readme) of Vespa-based implementations (4h)
+   * meeting (1h)
+
+---++ Week 2021-08-30 - 2021-09-05
+AH:
+   * bug fixing
+   * Prepared code for EMNLP paper
+   * Prepared & uploaded adapters to HF Hub
+Square:
+   * meeting (0.5h)
+
+---++ Week 2021-08-23 - 2021-08-29
+AH:
+   * EncoderDecoderModel finalization
+Square:
+   * Final todos for Datastore API merge (CI, authorization, docs) (4.5h)
+   * deployment & Docker (2h)
+   * meeting (1h)
+
+---++ Week 2021-08-16 - 2021-08-22
+AH:
+   * EncoderDecoderModel implementation start
+   * PR merging
+   * Continued on HF inference API
+Square:
+   * Refactored unit tests & integration tests (5h)
+   * Updates & tests for document & embedding upload (5h)
+   * meeting (1h)
+
+---++ Week 2021-08-09 - 2021-08-15
+AH:
+   * PR review & merging; GH forum
+Square:
+   * Unit tests & API cleanup (8h)
+   * Score method, cleanup, logging, docker file (9h)
+   * meeting (1h)
+
+---++ Week 2021-08-02 - 2021-08-08
+AH:
+   * Reworked AF configuration
+   * set_active parameter
+   * Minor updates/ fixes; GH forum support
+Square:
+   * Model API integration, various fixes on index/ datastore management (2h)
+   * Improved setup; improve datastore creation; fixed query embedding issues (5h)
+   * meeting (1h)
+
+---++ Week 2021-07-26 - 2021-08-01
+AH:
+   * Familiarize with recent efficient transfer learning papers
+   * Started looking into HF inference API for possible integration
+   * Minor updates/ fixes; GH forum support
+Square:
+   * Upload documents & embeddings via fileserver (5h)
+   * meeting (1h)
+
+---++ Week 2021-07-19 - 2021-07-25
+AH:
+   * Started implementing LM flex heads & tested with example tasks
+   * Minor updates/ fixes; GH forum support
+Square:
+   * Methods for index management (5h)
+   * Updates to query method, fixes & config (2h)
+   * meeting (1h)
+
+---++ Week 2021-07-12 - 2021-07-18
+AH:
+   * Concept for hook-based adapters-vnext library
+   * Flex head for dependency parsing; ported & upgraded code from hgiyt
+Square:
+   * Implement datastore creation/ updating/ deletion via MongoDB & export to Vespa (6h)
+   * meeting (1h)
+
+---++ Week 2021-07-05 - 2021-07-11
+AH:
+   * continued on HF Hub integration
+   * HF upstream sync 4.8.2
+   * v2.1.0 release
+Square:
+   * Familiarize with Vespa; Methods for documents (5h)
+   * meeting (1h)
+
+---++ Week 2021-06-28 - 2021-07-04
+AH:
+   * Integration of HF Model Hub into AH (push_adapter_to_hub(), list_adapters())
+Square:
+   * Familiarize with Vespa & FastAPI (5h)
+   * meeting (1h)
+
+---++ Week 2021-06-21 - 2021-06-27
+AH:
+   * HF upstream sync v4.8.0
+   * delete_adapter(), delete_adapter_fusion() etc. methods
+Square:
+   * Familiarize with topic; look into different available libraries (Vespa, haystack, OpenDistro, ...)
+   * meeting (1h)
+
+---++ Week 2021-04-19 - 2021-04-25
+
+   * Refactoring of directory structure in library: [[https://github.com/Adapter-Hub/adapter-transformers/pull/149][(1)]]
+   * Implementation of parallel adapter inference for BART, MBart & GPT-2: [[https://github.com/Adapter-Hub/adapter-transformers/pull/150][(2)]]
+
+---++ Week 2021-04-12 - 2021-04-18
+
+   * Finished upgrade to HF v4.5.0
+   * Finalized upgrade to new Hub index in library: [[https://github.com/Adapter-Hub/adapter-transformers/pull/144][(1)]]
+   * Answered questions/ issues in GH repository
+
+---++ Week 2021-04-05 - 2021-04-11
+
+   * Upgraded adapter index generation in Hub repo to be compatible with v2 of library: [[https://github.com/Adapter-Hub/Hub/pull/25][(1)]]
+   * Upgraded some parts of the adapter docs to v2
+   * Added adapter support to summarization/ translation scripts in examples folder: [[https://github.com/Adapter-Hub/adapter-transformers/pull/141][(2)]]
+   * Started with upgrade to HF v4.5.0: [[https://github.com/Adapter-Hub/adapter-transformers/pull/142][(3)]]
+   * Answered questions/ issues in GH repository
+
+---++ Week 2021-03-29 - 2021-04-04
+
+   * Finished integration of HF v4.4.x into adapter-transformers: [[https://github.com/Adapter-Hub/adapter-transformers/pull/131][(1)]]
+   * Did some convenience improvements for adapter management in v2 of the library: [[https://github.com/Adapter-Hub/adapter-transformers/pull/133][(2)]], [[https://github.com/Adapter-Hub/adapter-transformers/pull/132][(3)]]
+   * Trained an adapter for MBart on WMT16 En-Ro: [[https://github.com/Adapter-Hub/Hub/pull/24][(4)]]
+   * Wrote blog post & documentation page for transition from v1 to v2: [[https://github.com/Adapter-Hub/adapter-transformers/pull/136][(5)]]
+   * Answered questions/ issues in GH repository

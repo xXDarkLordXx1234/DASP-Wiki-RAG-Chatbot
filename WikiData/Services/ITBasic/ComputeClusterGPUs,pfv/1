@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="alles" comment="" date="1692773937" format="1.1" reprev="1" version="1"}%
+---+++ Which nodes are there?
+
+The following command lists all nodes in the cluster alongside their number of CPUs, their RAM, GPUs and features:
+<verbatim>
+sinfo --format="%20n %8t %8c %10m %25G %100f"
+</verbatim>
+
+---+++ Which GPUs are there?
+
+As of 08/2023, the following GPU models are used throughout the cluster:
+
+| *Name*   | *GPU architecture* | *GFLOPs (FP64)* | *VRAM (!GiB)* |
+| h100pcie | hopper             |  26000          |            80 |
+| l40      | lovelace           |  1414           |            48 |
+| a6000    | ampere             |  1210           |            48 |
+| a180     | ampere             |  9700           |            80 |
+| a100     | ampere             |  9700           |            40 |
+| v100     | volta              |  7014           |            32 |
+| p100     | pascal             |  4353           |            16 |
+| titanrtx | turing             |   449.28        |            24 |
+
+For *live monitoring of nodes*, refer to [[ComputeClusterFAQ#How_can_I_see_monitoring_information_of_the_Slurm_cluster_63][this part of the FAQ]].
+

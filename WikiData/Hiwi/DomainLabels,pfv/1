@@ -1,0 +1,98 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1265367208" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Yevgen Aufgaben* |
+| *Aufgabe* | *% done* |
+| Task 1. Analysiere Domain Labels in Wikipedia | 90 |
+| Task 2. Analysiere die Qualität der Domainlabels, die Überlappung <br />und Unterschiede zu Wordnet Domainlabels | 70 |
+| Task 3. Statistiken aufstellen: Wikipedia und WordNet. | 100 |
+| Task 4. Wiktionary Domain Labels. | 40 |
+| Task. OpenThesaurus in LexSemRes | 100 |
+
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Wikipedia Domainlabels | 05.08.2009 | 4.5 | Bericht in PDF-Datei |
+| Wikipedia Domainlabels | 08.08.2009 | 3 | Einarbeitung in JWPL Framework |
+| Wikipedia Domainlabels | 09.08.2009 | 2.5 | Experiment: Extrahieren der Domainlabels aus Wikipedia-Dump. <br />Bericht in PDF. |
+| Büroarbeit | 12.08.2009 | 2 | Befüllung von Werbemappen |
+| Wikipedia Domainlabels | 12.08.2009 | 2.5 | Einfügung von DomainLabel-Funktionen in JWPL |
+| Wikipedia Domainlabels | 13.08.2009 | 1 | Einarbeitung in WordNet und JWNL-Framework |
+| WordNet Domains | 17.08.2009 | 3.5 | Analyse von WordNet Domains<br>Erstellung eines Frameworks für WordNet-Domains<br>Mehr im PDF |
+| WordNet Domains | 19.08.2009 | 2.5 | Mapping von WordNet 2.0 zu 3.0 |
+| WordNet Domains | 20.08.2009 | 2 | Mapping von WordNet 2.0 zu 3.0. Mehr im PDF |
+| Wikipedia Domainlabels | 23.08.2009 | 2.5 | Zuweisung von Domainlabels an Outlinks in Wikipedia Disambig.seiten<br>Mehr im PDF |
+| Wikipedia, WordNet Senses | 25.08.2009 | 2.5 | Erstellung von Funktionen für Berechnung der Statistiken<br>Zählen von Bullet Points in Disambig.seiten |
+| Wikipedia Domainlabels | 27.08.2009 | 5.5 | Vorbereitung von Tests<br>Erstellung der aktuellen Wikipedia-Datenbank |
+| Wikipedia-Dump | 01.09.2009 | 4.5 | Erstellung der Datenbank mit neuem Wiki-Dump |
+| Wiki Domainlabels | 02.09.2009 | 3 | Wiki-Dump. Ausführung von Tests. |
+| Wiki Domainlabels | 03.09.2009 | 1.5 | Ausführung von Tests. Extracting von Domainlabels. |
+| Wiki Domainlabels | 05.09.2009 | 2.5 | Extrahierung von Wiki-Domainlabels und ihrer Häufigkeiten. <br>Ergebnis in CSV-Datei, Trennzeichen : Semikolon |
+| Wiki Domainlabels | 08.09.2009 | 2.5 | Tests. Extrahieren von DomainLabels aus Wiki-Kategorien |
+| Wiki Domainlabels | 09.09.2009 | 2 | Tests. Einarbeitung in Wiktionary. |
+| Wiki Senses | 10.09.2009 | 2.5 | Ergebnis zu Task 3 in der Datei "Task3_Ergebnis.odt" |
+| WordNet Domains | 11.09.2009 | 2.5 | Neue XML-Hierarchy mit allen Domains in Datei<br>"WordNetHierarchyNew.xml" |
+| WordNet, Wiktionary | 13.09.2009 | 2 | DomainMapping Vorschlag in CSV-Datei.<br>Einarbeitung in JWKTL. |
+| Wiktionary Domains | 14.09.2009 | 2 | Wiktionary Domainlabels. Mehr in "Task4_WiktionaryDomains.pdf". |
+| Wiktionary Domains | 16.09.2009 | 4 | <ul><li>Topic Context Labels aus Wiktionary in CSV-Datei.</li><li>Ergebnise des Tests "Average Number of Senses/Definitions in Wiktionary"<br>in "Task4_WiktionaryNrOfSenses.odt"</li></ul> |
+| Wiktionary Domains | 18.09.2009 | 4 | <ul><li>Mapping von Definitions mit DomainLabels in "WiktionaryDomainLabels.csv"<br>- Für 85953 von 1942647 Definitions konnte ein Domain Label gefunden werden<br>- Format: ID;Word;Number of Gloss;Exact Domains;Approximate Domains</li><li>Häufigkeit von Domain Labels in "WiktionaryLabelsFrequency.csv"</li></ul> |
+| Wiki Domainlabels | 20.09.2009 | 2.5 | Extracting von Wiki-Domainlabels aus den Main-Topic Specification in Wikipedia<br>Mehr in "WikipediaDomainlabelsBericht.pdf"<br>Kategorien-Hierarchy in "WikiMainTopicsHierarchy.xml" |
+| Wiktionary Domains | 22.09.2009 | 2.5 | Extracting of Wiktionary Domains |
+| Domainlabels-Analyse | 25.09.2009 | 2 | Analyse von Domainlabels |
+| Domainlabels-Analyse | 01.10.2009 | 4 | Domainlabels vom Typ 2 in "WikiDomainsOutputType2.csv" |
+| Domainlabels-Analyse | 02.10.2009 | 4 | Ausführung von Tests |
+| Domainlabels-Analyse | 03.10.2009 | 3 | Analyse in Task4_WiktionaryNrOfSenses.odt wurde für Englisch angepasst |
+| Domainlabels-Analyse | 04.10.2009 | 1.5 | Ergebnisse des DomainLabel-Abdeckung Tests in "Task_AbdeckungDL.odt" |
+| Domainlabels in German Wikipedia | 14.10.2009 | 3.5 | Domainlabels in CSV-Dateien.<br>Bericht in "Task_DomainLabelsGerman.odt" |
+| Most Frequent Sense | 15.10.2009 | 3.5 | Most Frequent Sense Wikipedia/WordNet |
+| Most Frequent Sense | 17.10.2009 | 2 | Most Frequent Sense, Domains German Wikipedia |
+| Most Frequent Sense | 19.10.2009 | 3 | Domainlabels-Abdeckung German Wikipedia in "Task_AbdeckungDLGerman.odt"<br>Most Frequent Sense: <ul><li>Anzahl der Dis-Seitein mit einem Hauptartikel: 21891(19,1% aller Dis-Seiten)<li>Davon haben 14605(66.7%) den Hauptartikel als Most Frequent Sense</li></li></ul>Vergleich von Most Frequent Senses in Wiki und WordNet in "WordNetWiki_MostFrequent.ods" |
+| OpenThesaurus in LexSemRes | 22.10.2009 | 6 | OpenThesaurus API |
+| OpenThesaurus in LexSemRes | 23.10.2009 | 3 | OpenThesaurus API |
+| OpenThesaurus in LexSemRes | 24.10.2009 | 3.5 | OpenThesaurus API |
+| OpenThesaurus in LexSemRes | 25.10.2009 | 2.5 | OpenThesaurus API in LexSemRes ist fertig. |
+| English CombiLSR | 30.10.2009 | 2.5 | Einarbeitung in CombiLSR |
+| CombiLSR | 31.10.2009 | 4 | Einarbeitung in CombiLSR und Open Roget's |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende Oktober |
+<nop>
+   * [[%ATTACHURL%/WikipediaDomainlabelsBericht.pdf][WikipediaDomainlabelsBericht.pdf]]: Bericht zu Task 1 und Task 2, Analyse von Domainlabels in Wikipedia
+
+   * [[%ATTACHURL%/WikiDomainsOutput.csv][WikiDomainsOutput.csv]]: Domain labels, extracted from Wiki-Disambig. pages. Format: CSV. Separation: semicolon
+
+   * [[%ATTACHURL%/Task3_Ergebnis.odt][Task3_Ergebnis.odt]]: Ergebnisse zu Task 3. Anzahl von Senses in Wikipedia und WordNet.
+
+   * [[%ATTACHURL%/WordNetHierarchyNew.xml][WordNetHierarchyNew.xml]]: WordNet Domains-Hierarchy in XML. WordNet Domains 3.2.
+
+   * [[%ATTACHURL%/WordNetDomains.txt][WordNetDomains.txt]]: Alle in WordNet Domains verwendete Domains
+
+   * [[%ATTACHURL%/WikiWordNetDomainsMapping.csv][WikiWordNetDomainsMapping.csv]]: DomainsMapping Vorschlag: Wiki Domainlabels zu WordNet Domains. Trennzeichen:Semikolon.
+
+   * [[%ATTACHURL%/Task4_WiktionaryDomains.pdf][Task4_WiktionaryDomains.pdf]]: Task 4. Wiktionary Senses, Wiktionary Domain Labels.
+
+   * [[%ATTACHURL%/TopicContextLabels.csv][TopicContextLabels.csv]]: Topic Context Labels as found on http://en.wiktionary.org/wiki/Category:Topical_context_labels
+
+   * [[%ATTACHURL%/Task4_WiktionaryNrOfSenses.odt][Task4_WiktionaryNrOfSenses.odt]]: Ergebnisse des Tests: Average Number of Senses/Definitions in Wiktionary
+
+   * [[%ATTACHURL%/WiktionaryDomainLabels.csv][WiktionaryDomainLabels.csv]]: Mapping Definitions-Context/Domain labels from Wiktionary
+
+   * [[%ATTACHURL%/WiktionaryLabelsFrequency.csv][WiktionaryLabelsFrequency.csv]]: Frequency of Context/Domain labels in Wiktionary
+
+   * [[%ATTACHURL%/WikiMainTopicsHierarchy.xml][WikiMainTopicsHierarchy.xml]]: Hierarchy of main categories as found on http://en.wikipedia.org/wiki/Category:Main_topic_classifications
+
+   * [[%ATTACHURL%/WikiDomainsOutputType2.csv][WikiDomainsOutputType2.csv]]: Domainlabels extracted from Disambiguation tags
+
+   * [[%ATTACHURL%/Task_AbdeckungDL.odt][Task_AbdeckungDL.odt]]: DomainLabels - Abdeckung in Wikipedia und Wiktionary
+
+   * [[%ATTACHURL%/WikiDomainsOutputType1DE.csv][WikiDomainsOutputType1DE.csv]]: Domainlabels vom Typ 1. Deutsche Wikipedia.
+
+   * [[%ATTACHURL%/WikiDomainsOutputType2DE.csv][WikiDomainsOutputType2DE.csv]]: Domainlabels vom Typ 2. Deutsche Wikipedia.
+
+   * [[%ATTACHURL%/Task_DomainLabelsGerman.odt][Task_DomainLabelsGerman.odt]]: Domainlabels in deutscher Wikipedia. Bericht.
+
+   * [[%ATTACHURL%/Task_AbdeckungDLGerman.odt][Task_AbdeckungDLGerman.odt]]: DomainLabels? - Abdeckung in German Wikipedia
+
+   * [[%ATTACHURL%/WordNetWiki_MostFrequent.ods][WordNetWiki_MostFrequent.ods]]: Vergleich von Most Frequent Senses 100 beliebieger Begriffen in Wikipedia und WordNet

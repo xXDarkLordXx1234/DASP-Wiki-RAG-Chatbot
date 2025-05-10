@@ -1,0 +1,65 @@
+%META:TOPICINFO{author="JensHaase" date="1273660216" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="JensHaaseDoc"}%
+---+ How to choose training data
+
+---++ Calculation
+The manual annotation should not take longer than one week. Expect we can work on this task 4 hours a day, we have 7*4 hours = 28 hours totally. Now expect we need 1,5 minutes to annotate one revision than we are able to mark 28*60/1,5 = 1120 revisions. For each article we will take a sequence of 20 revision. That means we need 1120/20 = 56 different Articles. We choose the revision sequence randomly.
+
+---++ Choose article
+
+We choose 56 random article from article with more than 2000 revisions, based on the stats.
+
+---+++ Stats
+
+Example Query for > 2,000: SELECT count(*) FROM index_articleID_rc_ts i where RevisionCounter LIKE "1 1000 1001 2000 2001%"
+
+| *Nb of revision* | *Nb of Article* |
+| >1                      | 6,041,746       |
+| > 1,000              | 4,890              |
+| > 2,000              | 1,428              |
+| > 3,000              | 679                 |
+| > 4,000              | 395                 |
+| > 5,000              | 256                 |
+| > 6,000              | 181                 |
+| > 7,000              | 124                 |
+| > 8,000              | 98                   |
+| > 9,000              | 75                   |
+| > 10,000            | 63                   |
+| > 11,000            | 53                   |
+| > 12,000            | 50                   |
+| > 13,000            | 46                   |
+| > 14,000            | 41                   |
+| > 15,000            | 37                   |
+| > 16,000            | 32                   |
+| > 17,000            | 30                   |
+| > 18,000            | 29                   |
+| > 19,000            | 28                   |
+| > 20,000            | 26                   |
+| > 21,000            | 24                   |
+| > 22,000            | 21                   |
+| > 23,000            | 18                   |
+| > 24,000            | 16                   |
+| > 25,000            | 16                   |
+| > 26,000            | 15                   |
+| > 27,000            | 15                   |
+| > 28,000            | 15                   |
+| > 29,000            | 14                   |
+| > 30,000            | 13                   |
+| ************           | *************       |
+| > 35,000            | 9                     |
+| > 40,000            | 8                     |
+| > 45,000            | 6                     |
+| > 50,000            | 6                     |
+| ************           | *************       |
+| > 60,000            | 5                     |
+| > 70,000            | 3                     |
+| > 80,000            | 1                     |
+| > 90,000            | 1                     |
+| > 100,000          | 1                     |
+| ************           | *************       |
+| >= 129,327        | 1                     |
+| > 129,327          | 0                     |
+
+%ATTACHURL%/article_revision.png
+
+%META:FILEATTACHMENT{name="article_revision.png" attachment="article_revision.png" attr="" comment="Number of revsions compared to number of article" date="1273659365" path="article_revision.png" size="14837" stream="article_revision.png" tmpFilename="/var/tmp/CGItemp4434" user="JensHaase" version="1"}%

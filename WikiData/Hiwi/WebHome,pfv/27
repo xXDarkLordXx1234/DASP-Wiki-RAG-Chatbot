@@ -1,0 +1,35 @@
+%META:TOPICINFO{author="ElisabethWolf" date="1261386321" format="1.1" version="27"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}% 
+
+---++ Information
+   * [[DkproRepositoryForHiwis][Subversion]]
+
+---++ Current
+   * ArtemVovkWork (JH)
+   * IvanGalkinWork (TZ)
+   * YevgenChebotar (EW, ChM)
+   * ZijadMaksutiWork (BH,MS)
+   * ArtemUspenskiyWork (BH)
+
+---++ Past
+   * UrsGlaubitt
+   * AnouarWork
+   * AtifWork
+   * DimitriWork
+   * DongWork
+   * EliaWork
+   * HosseinWork
+   * LizhenWork
+   * HristoLulev (BH, MS)
+
+
+---++ <nop>%WEB% Web Utilities 
+<form action='%SCRIPTURLPATH{"search"}%/%WEB%/'>
+   * <input name="search" type="text" size="22"></input> <INPUT type="submit" }="" search="" value="%MAKETEXT{" class="twikiSubmit" /> - [[WebSearchAdvanced][%MAKETEXT{"advanced search"}%]]
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes
+   * WebStatistics - listing popular topics and top contributors
+   * WebPreferences - preferences of this web
+</form>

@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="roehrig" comment="reprev" date="1365793608" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="RouvenRoehrigDataAnalyses"}%
+---+!! Sentence Clustering
+---++++ Master Thesis of Rouven Röhrig
+
+This page contains results of the 'sentence clustering data analysis'.
+
+---++++ Description
+In this analysis I've used DKPro with the similarity package to generate clusters of similar sentences.
+I've implemented a pipeline which reads error messages (simple self-defined xml format).
+Different consumers create clusters of similar sentences based on a TextSimilarityMeasureBase and thresholds.
+A writer outputs the clusters (self-defined xml format) along with simple statistics.
+
+---++++ Statistics
+*Definitions*:
+   * Cluster := a cluster consists of a 'base sentence' and a set of member sentence.
+   * Base sentence := Every member of the cluster is similar with respect to the base sentence.
+   * Member sentence := a member is a sentence with is similar to the base sentence (the base sentence is also a member).
+   * Enclave (n) := an enclave is a cluster which contains _n_ members only (default n=1; then the member is the base sentence itself).
+      * Note: some setups define an enclave as a cluster with one or two members only.
+   * Real cluster := a real cluster contains at least two members.
+
+---++++ Statistics
+The following measures have been used:
+   * Number of enclaves
+   * Number of real clusters
+   * Average real cluster size:= number of real clusters / number of all members of all real clusters
+
+|*Test*|*Message types*|*Measure*|*enclave n=*|*included databases*|*Number of enclaves*|*Number of real clusters*|*Avg. real cluster size*|
+|1|action|CosineSimilarity (default setup) lower/upper bound: 0.7/1.0|1|BR, INM, INS|1776|1946|5.16|
+|2a|action|CosineSimilarity (default setup) lower/upper bound: 0.8/1.0|1|BR, INM, INS|2632|1090|3.12|
+|2b|action|CosineSimilarity (default setup) lower/upper bound: 0.8/1.0|2|BR, INM, INS|3270|452|4.71|
+|3a|expl|CosineSimilarity (default setup) lower/upper bound: 0.8/1.0|1|BR, INM, INS|4259|1660.0|3.236|
+|3b|expl|CosineSimilarity (default setup) lower/upper bound: 0.8/1.0|2|BR, INM, INS|5198|721.0|4.846|
+
+*Biggest cluster of Test 2a and 2b:*
+<verbatim>
+<cluster>
+   <base>Check the details in the exception message and define the topic.</base>
+      <members> 
+         <member> Check the details in the exception message and provide the correct Context . </member> 
+         <member> Check the details in the exception message and make sure the Broker connection is available . </member> 
+         <member> Check the details in the exception message and define the topic . </member> 
+         <member> Check the details in the exception message and specify the correct group that has the required subscribe permission . </member> 
+         <member> Check the details in the exception message and specify the correct group that has the required publish permission . </member> 
+         <member> Check the details in the exception message . </member> 
+         <member> Check the details in the exception message and specify the correct encoding format . </member> 
+         <member> Check the details in the exception message and take appropriate action . </member> 
+         <member> Check the details in the exception message and provide the correct command . </member> 
+         <member> Check the details in the exception message and provide the required parameter . </member> 
+         <member> Check the details in the exception message and specify the correct group and the event type . </member> 
+         <member> Check the details in the exception message and specify the correct Context . </member> 
+         <member> Check the details in the exception message and specify the correct group and event type . </member> 
+         <member> Check the details in the exception message and specify the correct name . </member> 
+   </members> 
+</cluster>
+</verbatim>
+
+
+*Enclave examples related to the biggest cluster of Test 2a and 2b:*
+<verbatim>
+Please check the exception message and take necessary action.
+Analyze the enclosed exception.
+See the embedded exception description.
+</verbatim>
+As we can see, the enclaves are very close but don't follow the standard pattern.
+-- Main.RouvenRoehrig - 12 Apr 2013

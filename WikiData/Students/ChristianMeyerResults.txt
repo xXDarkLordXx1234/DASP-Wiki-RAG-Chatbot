@@ -1,0 +1,55 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="ChristianMeyer"}%
+---+!! Results
+
+%TOC%
+
+---++ Passage Extraction
+---+++ Duplicate Document Remover
+ Remove documents, that are identical (i.e. same MD5 hash) to at least one other document of the retrieved collection. 
+| *data* | *removed* | *remaining* |
+| defQ-0 | 2d, 5p, 13s | 58d, 453p, 1388s |
+| defQ-1 | 8d, 8p, 32s | 52d, 286p, 1269s |
+| defQ-2 | 6d, 6p, 41s | 54d, 192p, 653s |
+| defQ-3 | 0d, 0p, 0s | 25d, 196p, 565s |
+| defQ-4 | 6d, 12p, 28s | 54d, 372p, 2402s |
+| defQ-9 | 0d, 0p, 0s | 60d, 594p, 2107s |
+| defQ-10 | 3d, 3p, 3s | 39d, 147p, 453s |
+| defQ-13 | 2d, 2p, 7s | 58d, 318p, 1145s |
+| defQ-14 | 2d, 2p, 25s | 58d, 310p, 952s |
+ d = document, p = paragraph, s = sentence
+ 
+---+++ Paragraph Filter
+ Remove paragraphs having a small similarity score. Used measures are Cosine (threshold = 0.065), Leacock/Chodorow (t = 0.513) and Resnik (t = 0.06); a paragraph is removed if at least one of the measures drops below the threshold (exception: paragraphs without a score are kept, i.e. paragraphs having only tokens, that are not in <nop>WordNet). Goal is to not filter relevant paragraphs (filtered-relevant). 
+| *data* | *filtered* | *filtered-relevant* | *precision* | *remaining* | *remark* |
+| defQ-0 | 206p, 455s | 1p, 1s | 99.51% | 58d, 247p, 933s | training data |
+| defQ-10 | 96p, 286s | 6p, 14s | 93.75 % | 39d, 51p, 167s | validation data |
+| defQ-14 | 143p, 391s | 3p, 6s | 97.90 % | 58d, 167p, 561s | validation data |
+ d = document, p = paragraph, s = sentence<br /> precision = (filtered &ndash; filtered-relevant) / filtered
+
+---+++ Sentence Selector
+ Select relevant sentences with a high similarity score. Sentences in filtered paragraphs are not processed. Used measures are <nop>AltaVista-based PMI (threshold = 0.15) and Wikipedia-based ESA (threshold = 0.017). Both similarity scores have to be above the threshold to select a sentence. Goal is to select many relevant sentences, while not filtering too much. 
+| *data* | *filtered* | *filtered-relevant* | *precision* | *selected-relevant* | *recall* | *remaining* | *remark* |
+| defQ-0 | 194s | 4s | 97.93 % | 106s | 96.36 % | 58d, 247p, 739s | training data |
+| defQ-10 | 21s | 10s | 52.38 % | 70s | 87.50 % | 39d, 51p, 146s | validation data |
+| defQ-14 | 72s | 2s | 97.22 % | 61s | 96.82 % | 58d, 167p, 489s | validation data |
+ d = document, p = paragraph, s = sentence<br /> precision = (filtered &ndash; filtered-relevant) / filtered<br /> recall = selected-relevant / (filtered-relevant + selected-relevant)
+
+---+++ Passage Extent Determination
+ To improve results of the Sentence Selector, a HMM-based technique is applied, that takes advantage of the (natural) distribution of relevant passages: relevant passages are found more likely near other relevant passages, and irrelevant near other irrelevant passages. The HMM holds the two states RELEVANT and IRRELEVANT with transition probabilities a(R,R) = 0.87, a(R, I) = 0.13, a(I, R) = 0.04, a(I, I) = 0.96 [He04]. As symbols, the sentence similarity score is used. Emission probability is the average of scaled PMI and scaled ESA similarity, where scaled means applying a monotoneous function with f(0) = 0, f(threshold) = 0.5, f(1) = 1 and 0 &lt;= f(x) &lt;= 1. The results below use a function determined with quadratic spline interpolation. 
+| *data* | *filtered* | *filtered-relevant* | *precision* | *selected-relevant* | *recall* | *remaining* | *remark* |
+| defQ-0 | 374s (+180s) | <strong>3s (-1s)</strong> | 99.19 % (+1.26 %) | 107s (+1s) | <strong>97.27 % (+0.91 %)</strong> | 58d, 247p, 559s | training data |
+| defQ-10 | 22s (+1s) | <strong>14s (+4s)</strong> | 36.36 %(-16.02 %) | 66s (-4s) | <strong>82.50 % (-5.00 %)</strong> | 39d, 51p, 145s | validation data |
+| defQ-14 | 29s (-43s) | <strong>2s (+0s)</strong> | 93.10 % (-4.11 %) | 61s (+0s) | <strong>96.82 % (+0.00 %)</strong> | 58d, 167p, 532s | validation data |
+ Better quality of results can be obtained with quadratic polynom interpolation: 
+| *data* | *filtered* | *filtered-relevant* | *precision* | *selected-relevant* | *recall* | *remaining* | *remark* |
+| defQ-0 | 44s (-150s) | <strong>0s (-4s)</strong> | 100,00 % (+2,06 %) | 110s (+4s) | <strong>100,00 % (+3,64 %)</strong> | 58d, 247p, 889s | training data |
+| defQ-2 | 12s (-27s) | <strong>0s (+0s)</strong> | 100,00 % (+0,00 %) | 34s (+0s) | <strong>100,00 % (+0,00 %)</strong> | 54d, 42p, 140s | validation data |
+| defQ-3 | 23s (-40s) | <strong>0s (-1s)</strong> | 100,00 % (+1,59 %) | 8s (+1s) | <strong>100,00 % (+12,50 %)</strong> | 25d, 30p, 88s | validation data |
+| defQ-4 | 22s (-46s) | <strong>1s (-2s)</strong> | 95,45 % (-0,13 %) | 24s (+2s) | <strong>96,00 % (+8,00 %)</strong> | 54d, 57p, 179s | validation data |
+| defQ-10 | 8s (-13s) | <strong>7s (-3s)</strong> | 12,50 % (-39,88 %) | 73s (+3s) | <strong>91,25 % (+3,75 %)</strong> | 39d, 51p, 159s | validation data |
+| defQ-13 | 2s (-32s) | <strong>0s (-1s)</strong> | 100,00 % (+2,94 %) | 13s (+1s) | <strong>100,00 % (+7,69 %)</strong> | 58d, 31p, 103s | validation data |
+| defQ-14 | 27s (-45s) | <strong>2s (+0s)</strong> | 92,59 % (-4,63 %) | 61s (+0s) | <strong>96,83 % (+0,00 %)</strong> | 58d, 167p, 532s | validation data |
+ d = document, p = paragraph, s = sentence<br /> precision = (filtered &ndash; filtered-relevant) / filtered<br /> recall = selected-relevant / (filtered-relevant + selected-relevant)<br /> values in brackets specify variations based on Sentence Selector results<br /> [He04] He, D./Demner-Fushman, D. et al. Improving Passage Retrieval Using Interactive Elicition and Statistical Modeling, In the proceedings of Text REtreival Conference (TREC) 2004.
+
+-- Main.ChristianMeyer - 08 Jan 2009

@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="TorstenZesch" date="1165567611" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="NiklasJakob"}%
+   * Habt ihr zufällig einen POS annotierten Text in deutscher Sprache mit dem ich die Algorithmen in Verbindung mit dem GermaNet testen könnte? Der Text müsste im Format "Wort_Tag" annotiert sein. Alternativ wäre ein Link zu einem POS Tagger mit dem ich einen Text annotieren kann super. 
+
+*TZ:* Wir benutzen den !TreeTagger
+http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/
+Dessen Ausgabeformat ist unterschiedlich je nach angegebenen Parametern. Ich glaube aber, dass es Wort/Tag ausgibt. Aber das kann man ja leicht in jedes gewünschte Format umwandeln.
+
+   * Gestern habe ich eine neue Seite in meiner "Personal Area" erstellt die heute weg ist :-(
+
+*TZ:* Meinst du die MMAX Seite? Die ist noch da :) Wenn du Links in der !SideBar auf "Index" klickst, wirst du sie wiederfinden.
+Wenn du eine Seite über "Create New Topic" anlegst, musst du selbst einen Link dazu anlegen (schlechtes UI Design, läßt sich aber nicht ändern ...)
+Am einfachsten legt man neue Topics an, wenn man dort, wo es sein soll so ein --> WikiWord <-- hinschreibt. Dort dann einfach auf das Fragezeichen klicken, das legt die Seite an und der Link ist auch schon da.
+
+
+-- Main.NiklasJakob - 16 Nov 2006

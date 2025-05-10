@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="NicoErbs" date="1266320789" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NicoErbsHiWiWork"}%
+---+++ FrameworkAdaptionResults
+
+To ensure that changes to the experimental framework did not result in any changes of the experimental results, a comparison of both results for a known dataset is done. Hulth dataset is used.
+
+%TOC%
+
+---++++ Results obtained by old framework (see Zesch09)
+
+---++++ Results obtained by new framework
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Candidates* | *Ranker* | *Structure* | *R-Precision (exact)* | *R-Precision (approximate)* |
+| Baseline | Token | Tfidf Max | 1 to 4 | 0.11 | 0.11 |
+
+
+
+-- Main.NicoErbs - 16 Feb 2010

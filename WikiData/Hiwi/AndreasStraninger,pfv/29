@@ -1,0 +1,64 @@
+%META:TOPICINFO{author="straninger" comment="save topic" date="1371559512" format="1.1" reprev="28" version="29"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll von Andreas Straninger
+
+---++ Aktuelle Arbeit: Dezember 2012 - Januar 2012
+
+---+++ Protokoll
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 08.11.2012 | Create dummy image | 1.5 | |
+| 08.11.2012 | Meeting | 0.5 | |
+| 27.11.2012 | Improve dummy image | 0.5 | |
+| 27.11.2012 | Installation | 2 | |
+| 28.11.2012 | Improve dummy image | 0.5 | |
+| 05.12.2012 | familiarization with CLARIN | 1 | |
+| 06.12.2012 | Meeting | 2 | |
+| 12.12.2012 | First contents to curation page | 1 | |
+| 13.12.2012 | | 1 | |
+| 06.01.2013 | component for brat embedding, usage of listview, getting familiar with ajax in apache widget | 4 | |
+| 09.01.2013 | json serialization, finished component for brat embedding | 3 | |
+| 10.01.2013 | Meeting, getting Ajax Clicks working in Wicket, Code Review with Seid, Analyzing Brat JS Code | 5.5 | |
+| 13.01.2013 | Refactoring JS Brat Code | 2.5 | |
+| 20.01.2013 | Workspace Setup + Installation Instructions, SVN Issues | 1.5 | |
+| 21.01.2013 | Implementation of Curation View | 7.5 | |
+| 24.01.2013 | Implementation of Curation View | 1 | |
+| 24.01.2013 | Meeting | 1 | |
+| 28.01.2013 | Code Review | 3 | |
+| 29.01.2013 | Implementing Diff for CAS | 3.5 | |
+| 31.01.2013 | Meeting | 0.5 | |
+| 31.01.2013 | Identify Line Number Generation | 1.5 | |
+| 05.02.2013 | Implementing Diff for CAS | 3.5 | |
+| 07.02.2013 | Meeting | 0.5 | |
+| 07.02.2013 | Adding Line Numbers to Brat, Adding some installation instructions to the wiki | 1.5 | |
+| 07.02.2013 | Adding cas-diff to curation page | 4 | |
+| 12.02.2013 | Display differences in the user interface | 3 | |
+| 14.02.2013 | Meeting | 0.5 | |
+| 14.02.2013 | Curation Page | 5 | |
+| 19.02.2013 | Curation Page: onClick Ajax Calls | 2 | |
+| 26.02.2013 | Curation Page: merge functionality implemented | 4 | |
+| 28.02.2013 | Bugfixes | 1.5 | |
+| 05.03.2013 | Bugfixes | 4 | |
+| 07.03.2013 | Meeting+Annotation+Discussion about Bugfixes and structural changes+Bugfixes | 3.5 | |
+| 08.03.2013 | Meeting | 0.5 | |
+| 26.03.2013 | Meeting with all project participants | 2 | |
+| 28.03.2013 | Refactoring Diff Class | 3.5 | |
+| 09.04.2013 | Refactoring Diff Class | 3.5 | |
+| 10.04.2013 | Refactoring Diff Class, Persisting Merge result | 4.5 | |
+| 17.04.2013 | Bugfixes | 1 | |
+| 22.04.2013 | Editable Merge editor | 8 | |
+| 23.04.2013 | Bugfixes, Importing test data, remove need for database user CURATION_USER | 4 | |
+| 24.04.2013 | Bugfixes, css | 2 | |
+| 25.04.2013 | Meeting + Setup Pool + Bugfixing with Seid | 4 | |
+| 29.04.2013 | Bugfixes | 0.5 | |
+| 02.05.2013 | Meeting + Bugfixes | 4 | |
+| 14.05.2013 | Bugfixes | 1.5 | |
+| 16.05.2013 | Meeting + Showing Code to Seid + Bugfixes | 7 | |
+| 21.05.2013 | Bugfixes | 3.5 | |
+| 22.05.2013 | Testing + Bugtracker updates | 0.5 | |
+| 23.05.2013 | Meeting + Bugfixing | 2 | |
+| 06.06.2013 | Meeting + Bugfixing | 2 | |
+| 18.06.2013 | Bugfixing + Code Refactoring | 1 | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 140)$EXEC($GET(total_hour))"}% | bis Ende Juni noch %CALC{"$EVAL( $GET( total_hour ) - ($GET( done_hour )) )"}% Stunden |
+<nop>

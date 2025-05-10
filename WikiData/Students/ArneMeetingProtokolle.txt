@@ -1,0 +1,189 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="16"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Meeting Protokolle
+%TOC%
+
+---++ 17.07.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob
+   * Besprechung der bisherigen Ausarbeitung
+   * Umstrukturierungen vornehmen:
+      * Ontology Learning als eigenes Kapitel
+      * Dann: Related Work als eigenes Kapitel
+      * Dann: Architektur (o. Systemarchitektur) (statt Implementierung) als eigenes Kapitel
+      * Alle Daten nach hinten die die Evaluation
+      * Analyse mehr herausstellen, "Preprocessing" -> "Vorverarbeitung", "Relationen finden" -> "Extraktion von Relationen"
+   * Fehleranalyse: Satzstrukturerkennung verbessern erklären
+   * Warum verwende ich Dependenzen? Unterschiede hervorheben!
+   * API in den Anhang, vorne nur kurz beschreiben
+   * "man könnte versuchen"
+
+---++ 17.06.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob
+   * Anmerkungen zur Präsentation:
+      * "Inhalte" statt "Wissen" zum Thema schreiben
+      * Kantenbezeichnungen bei K-Infinity einblenden
+   * Evaluation:
+      * Daten mit "Rauschen"/Fehlern verwenden, um Recall zu berechnen
+      * NE evaluieren
+      * Baseline-System: 
+   * POS-Annotierte Token an Stanford-Parser übergeben (siehe [[http://nlp.stanford.edu/software/parser-faq.shtml#f][FAQ#7]])
+   * Begriffe unterscheiden: Konstituent, POS-Tag, Dependenz
+
+---++ 29.05.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob, Iryna Gurevych
+   * Evaluation
+      * Problem: R.Snow muß ~10.000 Entitäten pro Relation zum Trainieren haben -> habe ich nicht, also: was anderes ausdenken
+      * Ideen: Wildcardsuche in den Texten analog zu _Blohm, Cimiano, Stemle_. Zusätzlich mit !TreeTagger POS annotieren, um Nomen (und Verben) zu finden.
+      * Welchen Corpus verwendet Espresso?
+   * "von" als Hinweis untersuchen -> was macht Stanford-Parser damit?
+      * *AP:* In den Heise-Texten kommen 6800 Sätze mit dem Wort "von" vor.
+
+---++ 21.05.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob
+   * Hyponyme der Hyperonyme verwenden ("Sister terms"), statt nur Synonyme
+   * Was genau soll gefunden werden? 
+      * Neue Relationsinstanz zwischen zwei bekannten Entitäten
+      * Synonym-"Instanzen" von bekannten Relationsinstanzen
+      * Template erstellen!
+   * Unbekannte Nomen mit Wikipedia abgleichen? (TF*IDF ?)
+   * Häufigste Relatonen (Verb) in den Korpus-Texten finden
+   * Word-Sense-Disambiguation erstmal zurückstellen
+
+   * Arne: In Leipzig nach Fehlfunktion des "Grundformreducers" fragen
+
+---++ 08.05.2008
+   * *Ort:* UKP/Herrngarten (schönes Wetter!)
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob
+   * Als Lemmatisierer am besten doch den !TreeTagger verwenden, Niklas hat was gebaut, damit er Satzweise angewendet wird und so weniger Probleme mit langen Dokumenten bestehen.
+      * Lemmatisierer wird dringend gebraucht, da !GermaNet nur mit Lemmata arbeiten kann.
+      * *NJ*: :-) In Word- und GermaNet stehen halt die Infinitive der Verben in den Synsets 
+   * Personalpronomen (Hans gibt der Katze Milch. Sie schmeckt ihr gut.) nicht berücksichtigen, weil zu kompliziert, Niklas fragt nochmal nach.
+   * Arne: Informationen zu Dependenz-Analyse für deutsche Sprache suchen.
+   * Arne: !GermaNet einbauen
+      * *IG:*: bitte beachten: Die Nutzung von GermaNet ist strikt Lizenz-pflichtig (Univ. Tübingen). Nach Ende der Diplomarbeit sollte Arne die Daten auf allen externen Rechnern und Datenträgern löschen, andernfalls macht man sich strafbar.
+
+---++ 22.04.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob
+   * Niklas: fragen nach Leipzig-Lemmatizer
+   * WordNet einbinden für Synonyme, Oberbegriffe
+   * statt "Named Entity" lieber "Entity of Interest" oder ähnliches verwenden, da Produkte wie "Festplatte" ja auch interessant sind, aber eben keine NEs sind.
+   * Arne: Prüfen, ob der !StanfordNE  Named Entities erkennen kann, die aus mehreren Wörtern bestehen (z.B. mehrwörtrige Firmennamen)
+   * Arne: abklären, ob Adjektive zu den Nomen auch betrachtet werden sollen (z.B. schnelle Festplatte)
+      * *AP*: Christian Schuckmann (i-views) meint, Nomen und Verben reichen aus, mehr Sachen sind im Moment nicht interessant. Wenn es von UKP-Seite gewünscht ist, können aber Adjektive hinzugenommen werden.
+   * Idee für Goldstandard: Fertige Ontologie erstellen aus Beispieltexten, dann Teile löschen, die im jeweiligen Beispieltext vorkommen und dann aus diesem Text neu lernen -> Evaluation vorher vs. nachher
+   * Arne: Arten der Dependencies feststellen, die der Stanford-Parser herausgibt (z.B. Subjekt "nsubj" Verb "dobj" Objekt)
+      * *AP*: Der Stanford-Parser an sich gibt für deutsch keine direkten Dependencies heraus, nur =dep(A-1, B-2)=, die anderen Dependencies werden aber intern gespeichert und z.B. bei der Ausgabe als Penn-Tree angezeigt. Evtl. weitere UIMA-Annotations-Typen für komplexere Satzstrukturen wie NP (noun phrase) oder VP (verb phrase)?
+
+---++ 17.04.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob
+   * Arne erstellt als nächstes eine UIMA-Komponente für den Stanford-NLP-Parser, die die Tokens mit POS-Typen annotiert, ähnlich wie das der !TreeTagger macht, hierfür bekommt er von Niklas die entsprechenden Quellen.
+   * Weiteres Vorgehen:
+      * Mit Hilfe des NER und des NLP sollen Nomen und insbesondere Namen bestimmt werden, die ausgewertet werden. Der NLP soll dann die Verben liefern, die die Relationen dazwischen bilden, das ganze soll dann im Wissensnetz gesucht werden.
+      * !GermaNet soll Lemmata und Synonyme (zu den Relationen) liefern, um bessere Ergebnisse zu erhalten.
+
+
+---++ 27.02.08
+
+   * Memo für NJ: bei Torsten ggf. zum Named Entity Corpus nachhaken
+   * NJ: Unsere Wikipedia API unterstützt auch Suchen mit Wildcards. Bitte binde sie so bald wie möglich statt einer Eigenimplementierung ein
+
+---++ 13.02.08
+
+   * Ort: UKP, Teilnehmer: Arne, Niklas
+   * Arne hat String Matching zwischen NER Kategorien und Wikipedia Kategorien implementiert
+   * Von heise.de, golem.de, etc. wurden 14000 Dokumente gecrawled, ein Dokument hat ~ 300 Wörter und beinhaltet nach dem momentanen Stand ~5 - 10% Named Entities
+   * Arne hat Probleme mit unserer Wikipedia Library - er schickt mir die Fehlermeldungen
+   * Wir haben die UIMA Pipeline erneut besprochen und sind an konkreten Beispielen die Erstellung der Komponenten durchgegangen
+
+---++ 30.01.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob, Iryna Gurevych
+
+   * Stanford Named Entity Recognizer
+      * Probieren, ob auf deutsch anpaßbar
+   * Implementierung des R.Snow-Papers anschauen
+   * Relation Learning: 3 Papers
+      * PrefixSpan: Mining Sequential Patterns Efficiently by Prefix-Projected Pattern Growth
+         * Ähnlichkeit von zwei Begriffspaaren zueinander
+         * hier gibt es eine Implementierung -> anschauen
+      * Learning to Extract Relations from the Web using Minimal Supervision
+         * Web als Quelle für Relationen verwenden
+      * Harvesting Relations from the Web - Quantifiying the Impact of Filtering Functions -
+         * Web als Quelle für Relationen verwenden
+         * evtl. gibt es hier eine Implementierung
+
+   * Aufgaben:
+      * Textkorpus erschließen
+      * Google verwenden, um Relationen zu finden
+
+---++ 08.01.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob
+
+   * Aufgabe an Arne: i-views nach Import-/Export-Möglichkeiten fragen
+   * Lernen:
+      * *Konzepte:* Entitäten finden
+         * Named Entity Recognition (Wissensquellen z.B. Wikipedia)
+         * Heurisitken auf Satzebene
+      * *Relationen:* Entitäten finden
+         * Semantische Netze (WordNet, Cyc)
+         * Heuristiken auf Netze (Subjekt, Prädikat, Objekt)
+
+---++ 12.12.2007
+   * *Ort:* i-views
+   * *Teilnehmer:* Arne Pottharst, Christian Schuckmann, Iryna Gurevych, Niklas Jakob, Christoph Müller
+
+   * Überthema: Strukturierte Datenbestände auf unstrukturierte Anwenden
+      * Strukturiert: Wissensnetz; unstrukturiert: Natürlichsprachlicher Fließtext
+   * Relationen gegeben, Instanzen finden
+   * ~600-800 Relationen in natura
+   * Ontology Learning
+   * population, wenig neue Relationen/Konzepte
+   * erkennen von:
+      * Wörtern (Instanzen mit bestimmter Wahrscheinlichkeit)
+      * Relationsinstanzen (A _stellt her_ B)
+   * Verwendete Daten:
+      * Redaktionelle Texte (z.B. heise.de)
+      * User Generated Content (z.B. Foren, Blogs)
+      * -> Methode von Textart abhängig?
+   * Domänenspezifische Instanzen/Relationen extrahieren
+   * Abgleich mit dem Netz
+   * Benötigt: Named Entity Recognition: Firmen, Personen, Orte, Produkte
+
+   * *Geplanter Ablauf der Diplomarbeit:*
+      * Einarbeitung
+      1 Wissensnetz+Daten erstellen/finden
+      1 Preprocessing
+         * NLP, Normalisierung
+      1 Implementieren, Testen...
+      1 Implementieren, Testen... 
+      1 Implementieren, Testen...
+      1 Aufarbeitung der Ergebnisse
+
+---++ 26.11.2007
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Iryna Gurevych, Niklas Jakob, Christoph Müller
+
+   * Abzuklären mit i-views: *Aufbau des Wissensnetz*
+      1 Zugrundeliegende Daten
+         * Statistiken, Beschaffenheit der Daten 
+         * ~> ähnliche Domäne aus dem Internet crawlen
+      1 Wie sieht das semantische Netz aus
+         * Beschaffenheit, Statistik
+      1 Welche Art von Erweiterungen sind erwünscht/notwendig?
+      1 Ausgabe von Textminingprogramm mit semantischem Netz vergleichen
+   
+   * *Term Extraction/Relation Learning*
+      * Extrahieren von Fakten
+      * Erkennen von Relationen (ist wohl schwer)
+      * tf*idf, rw -> Schlüsselwörter finden
+      * Differentialanalyse
+      * freie Softwarebibliotheken
+   * *Named Entity Recognition (NER)*
+      * Referenzimplementierung erstellen

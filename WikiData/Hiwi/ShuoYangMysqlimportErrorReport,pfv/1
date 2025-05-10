@@ -1,0 +1,61 @@
+%META:TOPICINFO{author="ShuoYang" date="1291040147" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ =mysqlimport= "slash" error report
+
+---++ Introduction
+This article discusses an error that will occur when importing data into mysql database using =mysqlimport=.
+
+The command =mysqlimport= imports data from files into mysql database. For each file it strips out all extension names, look up the table with the file name without extension, and write data from the file into the database, where =\t= in the file is used as delimiter to separate columns. 
+
+For example, there is a database =testdb= with a table =test= of structure
+<verbatim>
+col1 VARCHAR(30), col2 VARCHAR(30), col3 VARCHAR(30)
+</verbatim>and a file =test.txt= with content
+<verbatim>
+a<tab>b<tab>c
+</verbatim>
+where <tab> is a tab character
+
+Upon executing  =mysqlimport --local -u user testdb test.txt=, filename =test.txt= will be striped out of the extension name and become =test=, and thus its content will be added into table =test= of database =testdb= . Afterwards this record will be in the table:
+<verbatim>
++------+------+------+
+| col1 | col2 | col3 |
++------+------+------+
+| a    | b    | c    |
++------+------+------+
+</verbatim>
+
+---++ Error
+However, if =\= is the last character of a column, the =\t= afterwards will _no longer_ be correctly parsed as a delimiter. Thus two columns in the text file will be combined into one, and therefore the column count is no longer identical with that of the table in database. In this case, =NULL= will be the value of the last column.
+
+Example:
+For the same database =testdb= and table =test= and its structure, but with the new file =test.txt= with content
+<verbatim>
+a<tab>b\<tab>c
+</verbatim>
+
+If we import this file with =mysqlimport=, the following record will be resulted in the table:
+<verbatim>
++------+------+------+
+| col1 | col2 | col3 |
++------+------+------+
+| a    | b	c  | NULL |
++------+------+------+
+</verbatim>
+
+This table _isn't_ what we want. As we can see, =b= and =c= are combined into one column, and there is =NULL= in the third column, where =c= should be. All because of the =\= after =b= in =test.txt=.
+
+---++ Impact
+It leads to failures with =JWPL=, the Wikipedia APIs from UKP. And specifically when it comes to columns with primitive datatype, to which =NULL= cannot be assigned.
+
+For example,
+Some articles in Wikipedia has =\= as the last character of the text segment, such as the page =Lower Mickletown= in english Wikipedia.
+And some has =\= as the last character in the title segment, such as the page =Control-\= in english Wikipedia.
+
+After those pages being processed by DataMachine, a preprocessor of JWPL, =.txt= files with <verbatim>\<tab></verbatim> in it will be created. These files are then imported into the tables, with =NULL= as the value of some columns. Upon reading the value in 
+
+
+
+
+
+-- Main.ShuoYang - 2010-11-29

@@ -1,0 +1,164 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1173693707" format="1.1" reprev="23" version="23"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+%TOC%
+
+---++12.03.07
+---+++Einlesen der Digitalkamera-Daten
+Das Einlesen der Digitalkamera-Daten sowie der zugehörigen Rezensionen ist abgeschlossen. Insgesamt wurde 1668 Digitalkameras registriert und 29514 Rezensionen, wobei hier doppelte bereits herausgefiltert wurden. Verwendet wurden die folgenden !BrowseNodes:
+| *Beschreibung* | *BrowseNode* |
+| 2 to 2.9 Megapixels | 499058 |
+| 3 to 3.9 Megapixels | 1067692 |
+| 4 to 4.9 Megapixels | 1067694 |
+| 5 to 5.9 Megapixels | 3017951 |
+| 6 Megapixels & Up | 12942391 |
+
+---++09.03. - 06.03.2007
+Habe Methoden zum Auslesen der Amazon-Daten geschrieben sowie zum Einlesen dieser in eine lokale Datenbank. Habe allerdings noch immer Speicher-Probleme. 
+<verbatim>
+java.lang.OutOfMemoryError: Java heap space
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+</verbatim>
+Ich werde wohl das Einlesen in mehreren Schritte machen müssen.
+
+Anmerkung: Im embedded mode gab es bisher keine Probleme.
+
+---++05.03.2007
+Informationen zum Amazon Web Service hinzugefügt (s. AmazonECommerce) sowie zur Datenbank-Definition.
+
+---++02.03.2007
+---+++Verbesserung des DB-Entwurfs
+Nach dem heutigen Treffen mit Markus habe ich den Datenbankentwurf angepasst. Er ist jetzt zu finden unter AmazonDatenbank.
+---+++Produktdaten von Amazon.com
+Habe die Produktdaten von Digitalkameras von Amazon.com aus gelesen und mal in eine [[http://www.kai4all.de/AssessingReviews/Amazon/Products.txt Textdatei]] gespeichert. Die Liste enthält allerdings leider auch einige Zubehörteile. Amazon scheint da seine Daten nicht sauber zu trennen.
+
+---++01.03.2007
+---+++ ERM-Diagramm für die Amazon-Datenbank
+Habe ein [[http://www.kai4all.de/AssessingReviews/Datenbankentwurf/Datenbank-ERM3.jpg ERM]] für die Amazon-Daten mal erstellt. Die dazugehörige Erstellung der Tabellen könnte so aussehen:
+<verbatim>
+create table Product (
+  	ASIN CHAR(10) NOT NULL PRIMARY KEY,
+	Titel VARCHAR(50),
+	Manufacturer VARCHAR(30),
+	AverageRating DECIMAL(2,1),
+	SalesRank INTEGER,
+	TotalReviews INTEGER,
+	Features LONG VARCHAR,
+	EditorialReview LONG VARCHAR
+);
+create table Customer (
+	CustomerID VARCHAR(14) NOT NULL PRIMARY KEY,
+	TotalReviews INTEGER,
+	AverageRating DECIMAL(2,1),
+	TotalVotes INT,
+	HelpfulVotes INT
+);
+create table Review (
+	ASIN CHAR(10),
+	CustomerID VARCHAR(14),
+	Date DATE,
+	Rating DECIMAL(2,1),
+	Summary VARCHAR(50),
+	Content long VARCHAR,
+	TotalVotes SMALLINT,
+	HelpfulVotes SMALLINT,
+	Helpness FLOAT,
+	FOREIGN KEY (ASIN) REFERENCES Product (ASIN),
+	FOREIGN KEY (CustomerID) REFERENCES Customer (CustomerID)
+);
+</verbatim>
+
+---++28.02.2007
+---+++ !ReviewPage bei !CustomerContentLookup und viele Reviews
+Manche Kunden haben sehr viele Reviews geschrieben, wie z.B. Kunde !A2MQQI4UYT9C11. Dieser hat 129 Reviews geschrieben, die auf 13 !ReviewPages verteilt sind. Da jedoch der Parameter !ReviewPage bei der Operation !CustomerContentLookup nur Werte von 1 bis 10 annehmen darf, können gar nicht alle Reviews abgerufen werden.
+
+Bei einem !ItemLookup gibt es hingegen offenbar keine Probleme. Obwohl laut Spezifikation !ReviewPage hier nur Werte zwischen 1 und 20 annehmen darf, sind auch größere Werte unproblematisch.
+---+++Extraktion der "Technical Details" vom Amazon E-Commerce Service
+Leider ist es möglich, nur einige "Technical Details" zu einem Produkt zu extrahieren und nicht alle, die man auf der Webseite (nachdem man darauf kllickt) sieht. (s.a. http://developer.amazonwebservices.com/connect/thread.jspa?messageID=42837&#42837)
+
+---++27.02.2007
+---+++ _Hu, Liu: Mining Opinion Features in Customer Reviews_ (Hu2004a)
+Auch in diesem Paper werden Techniken vorgestellt, Produkteigenschaften, über die ein Kunde berichtet, zu extrahieren, sowie zu erkennen, ob dieser eine positive oder negative Meinung zu dieser Produkteigenschaft hat. Da in der Arbeit evtl. Produkteigenschaften extrahiert werden müssen, ist natürlich ersteres vor allem interessant. Die Extraktion einer Produkteigenschaft wird mit Hilfe eines Assoziationsregellerners gemacht. Eine genauere Beschreibung folgt noch, falls dieser Ansatz in der Arbeit Verwendung finden sollte.
+---++24.02.2007
+---+++ _Yi et al.: Sentiment Analyzer: Extracting Sentiments about a Given Topic using Natural Language Processing Techniques_ (Yi2003)
+In dieser Arbeit wurde u.a. ein Algorithmus entwickelt, der Fachbegriffe herausfiltert. Das könnte insofern interessant sein, wenn eine Referenzliste benötigt wird, auf die zurückgegriffen wird, um zu sehen, auf wie viele Eigenschaften eine Rezension eingeht. Andererseits existiert eine solche Liste (wenn auch nicht vollständig) bei einigen Produkten bei Amazon.com.
+---+++ _Wang et al.: A Semantic Classification Approach for Online Product Reviews_ (Wang2005)
+Wie bei [Hu2004] oder [Yi2003] wird hier versucht, eine Rezension nach ihrer Ausrichtung zu klassifizieren, dies allerdings satzweise. Verwendung findet dabei ein Naive Bayes Klassifikator. Außerdem wird eine Liste mit Adjektiven angegeben, mit deren Hilfe Sätze klassifiziert werden können.
+
+---++ 23.02.2007
+---+++ _Hu, Liu: Mining and summarizing customer reviews_ (Hu2004)
+Die Arbeit von Hu und Liu hat zum Ziel, die Kundenrezensionen eines Produktes zusammenzufassen. Dabei werden die Produkteigenschaften, auf welche die Kunden während ihrer Rezension eingegangen sind, herausgefiltert. In einem nächsten Schritt wird versucht herauszufinden, welche Meinung (positiv, negativ) zu einer Produkteigenschaft geäußert wurde.
+
+Meinungen interessieren den Leser einer Rezension zweifelsohne, denn aus diesem Grunde liest er sie. Daher wäre es denkbar, bei einer Rezension nach Produkteigenschaften und Meinungswörter zu suchen und als Bewertungskriterium heran zuzuziehen.
+
+---+++ Liste potentieller Merkmale
+Ich habe damit begonnen eine Liste der Merkmale, die zur Bewertung einer Rezension herangezogen werden könnten, zu erstellen. Sie leitet sich zum einen aus der Literatur ab und zum anderen aus eigenen Ideen.
+
+---+++ _Dave et al.: Mining the Peanut Gallery: Opinion Extraction and Semantic Classification of Product Reviews_ (Dave2003)
+In dieser Arbeit geht es u.a. darum, Kundenrezensionen zu klassifizieren ob sie positiv oder negativ sind. Dazu wird eine Liste von Features erstellt (n-Gramme) mit hohem information gain. Die Verwendung solcher n-Gramme zur Bewertung der Nützlichkeit einer Rezension könnte erfolgsversprechend sein, denn sind sie ein Maß dafür, ob der Rezensent eine positive oder negative Meinung über das Produkt hat. Bei Kim et al. wurde dies über die vergebenen Sterne bestimmt (STR1) und dies mit gutem Ergebnis. So gesehen könnten n-Gramme mit hohem Informationsgewinn Verwendung finden.
+
+---++ 21.02.2007
+---+++ _McCallum, Peterson: Computer-based readablility indexes_ (!McCallum1982)
+In der Arbeit von !McCallum und Petersen werden ähnliche Merkmale wie bei der Essay-Bewertung verwendet. Es geht in der Arbeit allerdings nicht um die Bewertung eines Essays, sondern um die Bewertung der Lesbarkeit. Da auch Rezensionen lesbar sein sollten, habe ich diese Arbeit mit aufgenommen.
+
+---++ 19.02.2007
+---+++ Titel für Diplomarbeit
+Folgende mögliche Titel für die Diplomarbeit sind mir bisher eingefallen:
+   * Entwicklung eines Systems zur Bewertung von Kundenrezensionen
+   * Entwicklung eines Systems zur automatischen Bewertung von Kundenrezensionen
+   * Automatically Assessing the helpfulness of customer reviews
+   * Automatically Assessing Review Helpfulness of Amazon Product Reviews
+
+---+++ _Page: Statistical and linguistic strategies in the computer grading of essays_ (Page1967)
+Bemerkung am Rande: Ich werde die Zusammenfassungen nicht mehr im Blog posten, damit die Sache hier übersichtlich bleibt. Stattdessen sind sie immer in der aktuellen Version der Ausarbeitung der Diplomarbeit nachzulesen (zu finden unter http://www.kai4all.de/AssessingReviews/Ausarbeitung.pdf). An Stelle der Zusammenfassungen poste ich hier evtl. Probleme und Fragen.
+
+Die Arbeit von Page war schon recht aufschlussreich (einfache features erzielen bereits gute Ergebnisse), auch wenn ich mir einige zusammensuchen musste. Das lag einfach daran, dass ich an einige Texte nicht rankomme (WantedPapers). 
+
+---+++ _Attali, Burstein: Automated essay scoring with e-rater v.2_ (Attali2006)
+Diesen Text fand ich schon etwas schwieriger zu verstehen. Dass lag zum einen daran, dass ich manchmal Schwierigkeiten hatte die passende Übersetzung zu finden (z.B. _mechanics_). Des Weiteren ist es schwierig nachzuvollziehen, wie die features erstellt werden und was sie abdecken, denn darüber gibt es so gut wie keine Informationen.
+
+---++ 13.02.2007
+Hallo Markus. Wollte dir nur mitteilen, dass sich die Literaturarbeit etwas verzögert, da ich krank im Bett liege. Ich hoffe aber, dass ich bald wieder auf den Beinen bin.
+
+---++ 09.02.2007
+---+++ _Callear et al.: Bridging Gaps in Computerised Assessment of Texts_ (Callear2001)
+Die Arbeit gibt einen kurzen Überblick über drei bedeutsame Textbewertungssysteme und kritisiert, dass bei allen die Bewertung des Inhalts nicht durchgeführt wird, da die Reihenfolge der Wörter nicht betrachtet wird.
+
+Project Essay Grade (PEG)
+Über PEG wird berichtet, dass die Reihenfolge der Wörter nicht betrachtet wird. Trotzdem stimmen die Bewertungen mit den menschlichen zu ca. 80% überein. PEG bewertet vor allem oberflächliche Eigenschaften eines Essays. Dazu zählen die Anzahl der Kommas, Anzahl der Semikolons, die durchschnittliche Anzahl der Wörter usw. PEG zeigt gute Ergebnisse bei der Bewertung ist jedoch nicht brauchbar, so wird kritisiert, wenn der Inhalt des Textes sehr wichtig ist.
+
+Intelligent Essay Assessor (IEA)
+IEA benutzt die sogenannte Latent Semantic Technik. Es wird kritisiert, dass die Grammatik und Reihenfolge der Wörter nicht betrachtet werden.
+
+Electronic essay rater (e-rater)
+e-rater führt eine syntaktische Strukturanalyse durch. Dabei werden die Anzahl der Komplementsätze (complement clauses) (auch: Objektsätze), Anzahl der Nebensätze (subordinate clauses), Anzahl der erweiterten Infinitive (infinitive clauses), Anzahl der Relativsätze (relative clauses), Anzahl der konjunktivischen modalen Hilfsverben (subjunctive modal auxiliary verbs) etc.
+Die Übereinstimmung mit der menschlichen Bewertung liegt bei 87%-94%. 
+
+Zum Schluss des Textes wird ein Prototyp names Automated Text Marker (ATM) vorgestellt, mit dessen Hilfe Prüfungsantworten mit denen eines Experten verglichen und bewertet werden. Dazu werden beide in kleine Einheiten aufgeteilt, um so die Bedeutung besser zu erfassen und zu vergleichen.
+
+Anmerkung: Ich denke gerade PEG und e-rater könnten in Hinblick auf die Bewertung der Rezensionen wertvoll sein.
+
+---++ 08.02.2007
+---+++ _Valenti et al.: An Overview of Current Research on Automated Essay Grading_ (Valenti2003)
+Die Arbeit gibt einen guten Überblick den Forschungsstand im Jahr 2003. Für die Diplomarbeit ist die Arbeit ansich jedoch kaum zu gebrauchen, da sie zu oberflächlich bleibt. Interessant ist jedoch, dass sie die Techniken der jeweiligen Bewertungsansätze für Essays zeigt. Dabei gibt es hauptsächlich 2 Gruppen, nämlich "statistical" und "NLP". Die Arbeit von Kim et al. (_Kim 2006_) folgt einem statistischen Ansatz. Da stellt sich die Frage, ob wir in dieser Richtung bleiben. Dann würde sich die Literatursuche auf statistischen Analyseansätzen beschränken.
+
+---++ 07.02.2007
+---+++ _Kim et al.: Automatically Assessing Review Helpfulness_ (Kim2006)
+In den letzten Tagen habe ich die Arbeit von _Kim et al.: Automatically Assessing Review Helpfulness_ (_Kim2006_) gelesen und zusammengefasst. Einige Dinge sind mir jedoch nicht ganz klar:
+   * Ist auf S. 3 eine falsche tf-idf Formel angegeben? Jedenfalls weicht sie von der üblichen, wie z.B. bei Jurafsky ab.
+   * Die Argumentation SVM Regression vs. SVM Ranking auf S. 4 ist mir nicht ganz klar (aber für die DA vermutlich auch gar nicht so wichtig). Es werden folgende Argumente für SVM Regression gebracht:
+      * _the helpfulness function provides non-uniform differences between ranks in the training set_
+Versteh ich leider nicht :-(
+      * _many products have only one review, which can serve as training data for SVM Regression but not SVM Ranking_
+Das Argument ist verständlich aber bei der Arbeit doch gar nicht relevant, da zum einen nicht einzelne Produkte sondern Produktgruppen betrachtet werden und zum anderen Produkte mit weniger als 5 Reviews sowieso ausgefiltert werden.
+      * _in large sites such as Amazon.com, when new reviews are written it is inefficient to re-rank all previously ranked reviews_
+Ok, ein Argument für die praktische Anwendung.
+   * S. 5: _10% of products for both datasets were withheld as development corpora_
+Warum werden 10% zurückgehalten?
+
+**MW:** Wenn man mit statistischem machine learning arbeitet, hat man immer das Problem, die Qualität der Ergebnisse zu beurteilen. Naheliegend ist, dazu die verfügbaren, schon gelabelten Daten zu verwenden. Daraus ergibt sich eine Aufteilung in Training- und Testdatensatz. Man entwickelt und trainiert das System auf dem Trainingsdatensatz, um dann die Evaluation auf dem Testdatensatz durchzuführen. Allerdings ist die Aufteilung oft willkürlich, was allerlei merkwürdige Effekte produzieren kann: Wenn z.B. der Testdatensatz eine andere Verteilung der Daten enthält. Beispiel Spam Filter: Man kann z.B. auf einem Datensatz mit 90% SPAM trainieren, aber auf einem mit nur 70% testen. Das macht dann die Evaluation eher nutzlos.
+
+Oft ist es besser, auf Cross Validation zu setzen: Man teilt die Daten in k Segmente. Dann trainiert man auf allen bis auf ein Segment und testet auf dem ausgelasenen. Das macht man für alle k Segmente. Man nennt das *k-fold crossvalidation*. Sinnvollerweise wird man beim bestimmen der Segmente darauf achten wollen, dass die vorherzusagenden Label darin gleich verteilt sind (nicht gleichverteilt!). Das nennt man dann *stratified k-fold crossvalidation*. Setzt man k auf die Anzahl der Datenpunkte, nennt man das "Leave one out bound". Es lässt sich zeigen, dass dies die beste Abschätzung des sogenannten Generalisierungsrisikos ist. Details dazu findest Du (recht mathematisch) in Schölkopf / Smola: Learning with kernels in Kapitel 7.3, in meiner Ausgabe ab Seite 197 und insbesondere in Kapitel 12.2 ab Seite 367.
+
+**KMH:** Danke für die ausführliche Antwort! Bei Jurafsky (_Jurafsky2000, S. 204_) habe ich auch noch was zum Thema _development corpora_ gefunden. Dort wird von einem _development test set_ gesprochen. Wenn ich es jetzt richtig verstehe, werden bei _Kim2006_ 10% der Daten (das _development test set_) zurückgehalten, um z.B. die Parameter der SVM zu "tunen". Das klingt plausibel, denn so wird erreicht, dass die Testergebnisse "fair" bleiben und nicht aus einer geschickten Wahl der SVM-Parameter resultieren. Die übrigen 90% der Daten werden schließlich zur 10-fold crossvalidation verwendet.
+
+%META:FILEATTACHMENT{name="ea3-gruen-1360x768.jpg" attachment="ea3-gruen-1360x768.jpg" attr="" comment="Mundobild" date="1170238280" path="ea3-gruen-1360x768.jpg" size="130612" stream="ea3-gruen-1360x768.jpg" user="Main.MarkusWeimer" version="1"}%

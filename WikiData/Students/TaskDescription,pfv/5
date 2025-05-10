@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="GeorgiValkanov" date="1354544666" format="1.1" version="5"}%
+%META:TOPICPARENT{name="GeorgiValkanov"}%
+-- Main.GeorgiValkanov - 2012-12-03
+
+   1. Motivation<br />
+---
+   Odd-one-out questions focus on the shared semantic properties of words. In order to solve the question, the entity that does not fit into a set with the other candidates has to be identified. This question type tests deep word knowledge and also the capabilities of analogical transfer. In various degrees of difficulty, these questions are used to assess the vocabulary skills of language learners and the general intellectual level of native speakers. The automatic generation of odd-one-out exercises can provide a good basis for adaptive testing environments. The determination of suitable candidate sets provides an interesting application area for semantic methods. 
+   
+   2.  Goal<br />
+---
+   The thesis can be structured into four phases:<br />
+1)	Data collection of existing odd-one-out questions<br />
+2)	Implementation of a method for correctly solving the odd-one-out questions in the collected data<br />
+3)	Generation of new odd-one-out questions<br />
+4)	Evaluation<br />
+   a)	Applying the solving method from 2) on the newly generated questions<br />
+   b)	User study<br />
+The primary focus should be on phase 1 and 2.

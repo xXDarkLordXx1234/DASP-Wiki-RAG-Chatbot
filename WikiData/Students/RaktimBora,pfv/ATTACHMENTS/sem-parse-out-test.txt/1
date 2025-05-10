@@ -1,0 +1,290 @@
+=============================================================================================================================
+Sentence:It was also an important force in the Spanish Civil War.=
+Parse Count: 1
+Semantic Parse:  [force.in.2(5:e , 8:spanish-civil-war), force.important(4:s , 0:it), force(5:s , 0:it), UNIQUE(8:spanish-civil-war), force.in.1(5:e , 0:it), force.also(2:s , 5:e)]
+Lexical items: [0, 2, 4, 5, 8]
+Node:8, Spanish_Civil_War UNIQUE  
+Events (with NN/NNP arguments)[5]
+
+Metaline:Q10859==Spanish Civil War==**==
+Node to ground: Spanish Civil War
+Annotated ID:Q10859 type: [civil war]
+Nodes not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:E. C. Walker was co-editor of the excellent free-thought / free love journal Lucifer, the Light-Bearer'.
+Parse Count: 1
+Semantic Parse:  [co-editor.of.2(2:e , 11:lucifer), free(8:s , 11:lucifer), co-editor(2:s , 0:e.-c.-walker), journal(10:s , 11:lucifer), '.'s.1(15:e , 0:e.-c.-walker), UNIQUE(0:e.-c.-walker), free-thought(6:s , 11:lucifer), love(9:s , 11:lucifer), '.'s.2(15:e , 14:light-bearer), excellent(5:s , 11:lucifer), UNIQUE(11:lucifer), co-editor.of.1(2:e , 0:e.-c.-walker)]
+Lexical items: [0, 11, 2, 14, 15, 5, 6, 8, 9, 10]
+Node:0, E._C._Walker UNIQUE co-editor
+Node:11, Lucifer UNIQUE free
+Node:14, Light-Bearer   
+Events (with NN/NNP arguments)[2, 15]
+
+Metaline:Hash mis-match or no Meta data found
+Node to ground: Lucifer
+Disambiguation: Q3265792,Q226254,Q706361,Q689282,Q6697172,Q456035,Q6320902,Q1343482,Q4185367,Q185498,Q4189134,Q11845128,Q2158022,Q19520525,Q6697170,Q6697174,Q18396969,Q16875897,Q2554694,Q6697173,
+Node to ground: E. C. Walker
+Id from query: Q5321792 type: 
+Nodes not connected by a relation 
+Node to ground: E. C. Walker
+Annotated ID:Q5321792 type: [human]
+Node to ground: Light-Bearer
+Annotation not found
+Nodes not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:Alabama is the 30th-most extensive and the 23rd-most populous of the 50 United States.
+Parse Count: 1
+Semantic Parse:  [extensive.1(4:e , 0:alabama), populous.23rd-most(7:s , 0:alabama), UNIQUE(0:alabama), populous.of.1(8:e , 0:alabama), populous.of.2(8:e , 12:united-states), UNIQUE(12:united-states)]
+Lexical items: [0, 12, 7, 8]
+Node:0, Alabama UNIQUE  
+Node:12, United_States UNIQUE  
+Events (with NN/NNP arguments)[4, 8]
+
+Metaline:Q173==Alabama==**==
+Node to ground: Alabama
+Annotated ID:Q173 type: [state of the United States]
+Nodes not connected by a relation 
+Node to ground: Alabama
+Annotated ID:Q173 type: [state of the United States]
+Node to ground: United States
+Disambiguation: Q3965121,Q232865,Q16959097,
+Nodes not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:The capital of Alabama is Montgomery.
+Parse Count: 1
+Semantic Parse:  [capital.of.2(1:e , 3:alabama), UNIQUE(5:montgomery), capital.of.1(1:e , 5:montgomery), capital(1:s , 5:montgomery)]
+Lexical items: [1, 3, 5]
+Node:3, Alabama   
+Node:5, Montgomery UNIQUE capital
+Events (with NN/NNP arguments)[1]
+
+Metaline:Q173==Alabama==**==Q29364 ref=Montgomery, Alabama|Montgomery==Montgomery==**==
+Node to ground: Alabama
+Annotated ID:Q173 type: [state of the United States]
+Node to ground: Montgomery
+Annotated ID:Q29364 type: [capital, city, county seat]
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding...
+Grounding nodes Alabama and Montgomery.  Grounded Properties: [[capital, P36]]
+Gronded Semantic parse:
+[state of the United States(Alabama) ^ capital(Montgomery) ^ city(Montgomery) ^ county seat(Montgomery) ^ capital.1(e , Alabama) ^ capital.2(e , Montgomery)] 
+
+Variable Replaced graph:state of the United States(X) ^ capital(Montgomery) ^ city(Montgomery) ^ county seat(Montgomery) ^ capital.1(e , X) ^ capital.2(e , Montgomery)
+
+=============================================================================================================================
+Sentence:Additionally, Alabama has four National Forests  Conecuh , Talladega , Tuskegee , and William B. Bankhead.
+Parse Count: 1
+Semantic Parse:  [has.2(3:e , 14:william-b.-bankhead), has.2(3:e , 11:tuskegee), has.1(3:e , 2:alabama), Forests(6:s , 4:type.int), has.2(3:e , 4:type.int), Conecuh.'s.1(7:e , 4:type.int), has.2(3:e , 9:talladega), Conecuh.'s.2(7:e , 5:national), has.Additionally(0:s , 3:e)]
+Lexical items: [0, 11, 2, 3, 14, 4, 5, 6, 7, 9]
+Node:11, Tuskegee   
+Node:2, Alabama   
+Node:14, William_B._Bankhead   
+Node:5, National   
+Node:7, Conecuh   
+Node:9, Talladega   
+Events (with NN/NNP arguments)[3, 7]
+
+Metaline:Hash mis-match or no Meta data found
+Node to ground: William B. Bankhead
+Id from query: Q960737 type: 
+Node to ground: Tuskegee
+Disambiguation: Q79718,Q4452326,Q424030,Q195731,
+Node to ground: Alabama
+Disambiguation: Q173,Q2829450,Q4705177,Q2140332,Q2829452,Q227051,Q4705171,Q4705174,Q4705176,Q4705175,Q3607615,
+Node to ground: Talladega
+Disambiguation: Q18163249,Q79975,Q1218331,
+Nodes not connected by a relation 
+Node to ground: National
+Disambiguation: Q411842,Q3336823,Q10594768,Q6970077,Q1797541,
+Nodes not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:UAB Hospital is the only Level I trauma center in Alabama.
+Parse Count: 1
+Semantic Parse:  [UNIQUE(0:uab-hospital), center.I(5:s , 0:uab-hospital), center.in.1(7:e , 0:uab-hospital), center(7:s , 0:uab-hospital), center.trauma.1(7:e , 0:uab-hospital), center.in.2(7:e , 9:alabama), center.Level(4:s , 0:uab-hospital), center.only(3:s , 0:uab-hospital)]
+Lexical items: [0, 3, 4, 5, 7, 9]
+Node:0, UAB_Hospital UNIQUE center
+Node:9, Alabama   
+Events (with NN/NNP arguments)[7]
+
+Metaline:Q7863705==UAB Hospital==**==Q3246647 ref=trauma center|Level I trauma center==Level I trauma center==**==
+Node to ground: UAB Hospital
+Annotated ID:Q7863705 type: [hospital]
+Node to ground: UAB Hospital
+Annotated ID:Q7863705 type: [hospital]
+Node to ground: Alabama
+Disambiguation: Q173,Q2829450,Q4705177,Q2140332,Q2829452,Q227051,Q4705171,Q4705174,Q4705176,Q4705175,Q3607615,
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding...
+No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:The current chief justice of the Alabama Supreme Court is Republican Roy Moore.
+Parse Count: 1
+Semantic Parse:  [justice.current(1:s , 9:roy-moore), justice.chief(2:s , 9:roy-moore), justice.of.1(3:e , 9:roy-moore), justice.of.2(3:e , 6:alabama-supreme-court), Republican(8:s , 9:roy-moore), justice(3:s , 9:roy-moore), UNIQUE(6:alabama-supreme-court), UNIQUE(9:roy-moore)]
+Lexical items: [1, 2, 3, 6, 8, 9]
+Node:6, Alabama_Supreme_Court UNIQUE  
+Node:9, Roy_Moore UNIQUE Republican
+Events (with NN/NNP arguments)[3]
+
+Metaline:Q3188089==chief justice==**==Q173==Alabama==**==Q5302905==Roy Moore==**==
+Node to ground: Roy Moore
+Annotated ID:Q5302905 type: [human]
+Node to ground: Alabama Supreme Court
+Id from query: Q4705352 type: 
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding...
+No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:Alabama has 67 counties.
+Parse Count: 1
+Semantic Parse:  [counties(3:s , 2:type.int), has.1(1:e , 0:alabama), has.2(1:e , 2:type.int)]
+Lexical items: [0, 1, 2, 3]
+Node:0, Alabama   
+Events (with NN/NNP arguments)[1]
+
+Metaline:Q173==Alabama==**==Q47168 ref=county (United States)|counties==counties==**==
+Node to ground: Alabama
+Annotated ID:Q173 type: [state of the United States]
+Nodes not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:Alabama has 67 counties.
+Parse Count: 1
+Semantic Parse:  [counties(3:s , 2:type.int), has.1(1:e , 0:alabama), has.2(1:e , 2:type.int)]
+Lexical items: [0, 1, 2, 3]
+Node:0, Alabama   
+Events (with NN/NNP arguments)[1]
+
+Metaline:Q173==Alabama==**==Q47168 ref=county (United States)|counties==counties==**==
+Node to ground: Alabama
+Annotated ID:Q173 type: [state of the United States]
+Nodes not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:Also, the Barber Motorsports Park has hosted IndyCar Series and Rolex Sports Car Series races.
+Parse Count: 1
+Semantic Parse:  [races.'s.1(9:e , 6:indycar-series), races.'s.2(9:e , 8:rolex-sports-car-series), races(9:s , 6:indycar-series), UNIQUE(3:barber-motorsports-park), hosted.Also(0:s , 5:e), hosted.1(5:e , 3:barber-motorsports-park), hosted.2(5:e , 6:indycar-series)]
+Lexical items: [0, 3, 5, 6, 8, 9]
+Node:3, Barber_Motorsports_Park UNIQUE  
+Node:6, IndyCar_Series  races
+Node:8, Rolex_Sports_Car_Series   
+Events (with NN/NNP arguments)[5, 9]
+
+Metaline:Hash mis-match or no Meta data found
+Node to ground: Barber Motorsports Park
+Id from query: Q807806 type: 
+Node to ground: IndyCar Series
+Disambiguation: Q832052,Q6028249,
+Nodes not connected by a relation 
+Node to ground: IndyCar Series
+Disambiguation: Q832052,Q6028249,
+Node to ground: Rolex Sports Car Series
+Id from query: Q766520 type: 
+Nodes not connected by a relation 
+
+
+=============================================================================================================================
+Sentence:His mother was the nymph Thetis , and his father, Peleus , was the king of the Myrmidons.
+Parse Count: 1
+Semantic Parse:  [mother(1:s , 5:thetis), nymph(4:s , 5:thetis), UNIQUE(18:myrmidons), UNIQUE(5:thetis), father(9:s , 5:thetis), king.of.1(15:e , 11:peleus), king(15:s , 11:peleus), father.his(8:s , 5:thetis), UNIQUE(11:peleus), king.of.2(15:e , 18:myrmidons), mother.His(0:s , 5:thetis)]
+Lexical items: [0, 11, 1, 4, 15, 5, 18, 8, 9]
+Node:11, Peleus UNIQUE king
+Node:5, Thetis UNIQUE mother
+Node:18, Myrmidons UNIQUE  
+Events (with NN/NNP arguments)[15]
+
+Metaline:Q184437==Thetis==**==Q178641==Peleus==**==Q466830==Myrmidons==**==
+Node to ground: Peleus
+Annotated ID:Q178641 type: [mythical character]
+Node to ground: Myrmidons
+Annotated ID:Q466830 type: []
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding...
+No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:He appointed five leaders (each leader commanding 500 Myrmidons) Menesthius, Eudorus, Peisander, Phoenix and Alcimedon (Book 16).
+Parse Count: 1
+Semantic Parse:  [appointed.2(1:e , 17:phoenix), Myrmidons.leader(6:s , 9:x), appointed.2(1:e , 15:peisander), appointed.2(1:e , 11:menesthius), leaders(3:s , 2:type.int), appointed.1(1:e , 0:he), appointed.3(1:e , 2:type.int), 16(22:s , 21:book), appointed.2(1:e , 13:eudorus), Myrmidons(9:s , 9:x), appointed.2(1:e , 19:alcimedon), Myrmidons.commanding(7:s , 9:x)]
+Lexical items: [11, 22, 13, 15, 17, 19, 0, 1, 2, 3, 6, 7, 9, 21]
+Node:11, Menesthius   
+Node:13, Eudorus   
+Node:15, Peisander   
+Node:17, Phoenix   
+Node:19, Alcimedon   
+Node:21, Book  16
+Events (with NN/NNP arguments)[1]
+
+Metaline:
+Node to ground: Phoenix
+Disambiguation: Q2481003,Q611679,Q16556,Q10441,Q3492749,Q18188415,Q20020611,Q4046855,Q1145956,Q1049877,Q1045752,Q1061747,Q1952747,Q1321785,Q27685,Q7186749,Q7186757,Q7186761,Q7186764,Q7186778,Q7186780,Q7186762,Q7186765,Q7186777,Q7186753,Q7186754,Q7186766,Q7186767,Q7186773,Q7186774,Q20829625,Q517640,Q1432072,Q105751,Q20775727,Q18750411,Q2725310,Q1853601,Q7186759,Q7186751,Q17150148,Q19900848,Q129091,Q224737,Q3381371,Q1006819,Q3381361,Q3327049,Q624772,Q7186752,Q7186756,Q7186760,Q7186768,Q7186770,Q7186772,Q7186763,Q16881190,Q19900849,Q2088479,Q18202704,Q16881188,Q16881189,Q17065955,
+Node to ground: Peisander
+Disambiguation: Q1233081,Q1176882,Q1974236,
+Node to ground: Menesthius
+Id from query: Q6816913 type: 
+Node to ground: Eudorus
+Annotation not found
+Node to ground: Alcimedon
+Id from query: Q2647447 type: 
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding...
+No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:He appointed five leaders (each leader commanding 500 Myrmidons) Menesthius, Eudorus, Peisander, Phoenix and Alcimedon (Book 16).
+Parse Count: 1
+Semantic Parse:  [appointed.2(1:e , 17:phoenix), Myrmidons.leader(6:s , 9:x), appointed.2(1:e , 15:peisander), appointed.2(1:e , 11:menesthius), leaders(3:s , 2:type.int), appointed.1(1:e , 0:he), appointed.3(1:e , 2:type.int), 16(22:s , 21:book), appointed.2(1:e , 13:eudorus), Myrmidons(9:s , 9:x), appointed.2(1:e , 19:alcimedon), Myrmidons.commanding(7:s , 9:x)]
+Lexical items: [11, 22, 13, 15, 17, 19, 0, 1, 2, 3, 6, 7, 9, 21]
+Node:11, Menesthius   
+Node:13, Eudorus   
+Node:15, Peisander   
+Node:17, Phoenix   
+Node:19, Alcimedon   
+Node:21, Book  16
+Events (with NN/NNP arguments)[1]
+
+Metaline:
+Node to ground: Phoenix
+Disambiguation: Q2481003,Q611679,Q16556,Q10441,Q3492749,Q18188415,Q20020611,Q4046855,Q1145956,Q1049877,Q1045752,Q1061747,Q1952747,Q1321785,Q27685,Q7186749,Q7186757,Q7186761,Q7186764,Q7186778,Q7186780,Q7186762,Q7186765,Q7186777,Q7186753,Q7186754,Q7186766,Q7186767,Q7186773,Q7186774,Q20829625,Q517640,Q1432072,Q105751,Q20775727,Q18750411,Q2725310,Q1853601,Q7186759,Q7186751,Q17150148,Q19900848,Q129091,Q224737,Q3381371,Q1006819,Q3381361,Q3327049,Q624772,Q7186752,Q7186756,Q7186760,Q7186768,Q7186770,Q7186772,Q7186763,Q16881190,Q19900849,Q2088479,Q18202704,Q16881188,Q16881189,Q17065955,
+Node to ground: Peisander
+Disambiguation: Q1233081,Q1176882,Q1974236,
+Node to ground: Menesthius
+Id from query: Q6816913 type: 
+Node to ground: Eudorus
+Annotation not found
+Node to ground: Alcimedon
+Id from query: Q2647447 type: 
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding...
+No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:Tall for his age, Lincoln was also strong and athletic.
+Parse Count: 1
+Semantic Parse:  [age.his(2:s , 3:x), athletic.1(10:e , 5:lincoln), strong.1(8:e , 5:lincoln), age(3:s , 3:x)]
+Lexical items: [2, 3, 5]
+Events (with NN/NNP arguments)[]
+
+Metaline:
+
+
+=============================================================================================================================
+Sentence:He was an affectionate, though often absent, husband and father of four children.
+Parse Count: 1
+Semantic Parse:  [absent.though(5:s , 7:e), father.of.1(11:e , 0:he), father.of.2(11:e , 13:type.int), husband(9:s , 0:he), children(14:s , 13:type.int), absent.often(6:s , 7:e), father(11:s , 0:he), absent.1(7:e , 0:he)]
+Lexical items: [0, 11, 13, 14, 5, 6, 7, 9]
+Events (with NN/NNP arguments)[]
+
+Metaline:
+
+

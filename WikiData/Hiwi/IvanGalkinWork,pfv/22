@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="IvanGalkin" date="1238776034" format="1.1" reprev="22" version="22"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Ivan Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung !DataMachine | 85 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Ivan Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung !DataMachine | 13.01.2009 | 4 | Installation von MySQL, Einrichtung der Datenbank, Einlesen in Quellcode und UKP-Seite, Download von SimpleEnglish-Dump, Starten der DataMachine (in einigen Stunden wurden die Daten erfolgreich generiert) |
+| Einarbeitung !DataMachine | 14.01.2009 | 2 | Einlesen in den Programm-Quellcode und die Modifikation dieses Programmcodes, erfolgreicher DataMachine-Programmstart mit dem GZip-on-the-fly-Parser |
+| Einarbeitung !DataMachine | 15.01.2009 | 5 | Recherche nach BZip2-Parser; Enwickeln, Implementieren und Testen der neuen Funktionalitäten für on the fly entpacken. Start des Zwischentests. |
+| Einarbeitung !DataMachine | 16.01.2009 | 1 | Bearbeitung von Testergebnissen, Fehlerkorrekturen, Testen (Zwischenergebnisse an Torsten gesendet) |
+| Einarbeitung !DataMachine | 19.01.2009 | 4 | Recherche nach LZMA bzw. 7Zip Entpackungsmöglichkeiten: kein funktionsfähiger Java-Code gefunden. Als Variante - Verwendung von Binaries (7z.exe, 7za) in pipe möglich |
+| Einarbeitung !DataMachine | 20.01.2009 | 3 | Test eines 7Zip-Java-Frameworks (https://sourceforge.net/projects/sevenzipjbind/). Schien zu funktionieren (nur unter Windows) aber entpackt nur solche Datenmenge, die in VM Heap passt |
+| Einarbeitung !DataMachine | 30.01.2009 | 7 | <ul><li>Installation von Eclipse, .NET Framework, !MySQL etc; </li><li>Runterladen von Dump-Dateien; </li><li>Testen des korrigierten 7Zip-JBinding-Framework (unbefriedigende Ergebnisse); </li><li>Enwicklung einer eigenen Entpackungmethode (Pipe zwischen 7z.exe / 7z und den Parsern - im Vergleich zu 7Zip-JBinding gibt es die Möglichkeit ans Betriebsystem anzupassen)</li><li>Start der Applikation mit dem deutschen Dump von 20081206; Erwartung - Abbruch wegen des Speichermangels</li></ul> |
+| Einarbeitung !DataMachine | 31.01.2009 | 6 | <ul><li>Weiterentwicklung der Entpackungsmethoden</li><li>Detailierte Analyse des Quellcodes der Appliaktion Schlussfolgerung - inkonsequente Benutzung der Resourcen, Für die Analyse der aktuellen deutschen/englischen Dumps grundsätzliche Korrekturen notwendig.</li><li> Erstellung der HIlfstabelle (s. DataMachineReview )</li></ul> |
+| Einarbeitung !DataMachine | 02.01.2009 | 1 | <ul><li>Prüfung des Ablaufsprotokolls - Absturz wegen des Festplattenmangels</li><li>Testen von Streaming-Verfahren</li></ul> |
+| Einarbeitung !DataMachine | 06.02.2009 | 6 | Entwicklung und Testen der Klasse XMLInputStream, die eine InputStream "dekoriert", wobei XML Darstellung in SQL Format umgewandelt wird |
+| Einarbeitung !DataMachine | 07.02.2009 | 6 | <ul><li>Entwicklung und Testen der Klasse SQLInputStream, die eine InputStream aus SQL- ins textuellen Format umwandelt, wobei für jede Tabelle (page, revision, text etc) in ihre eigene Ergebnis-Stream geschrieben wird.</li><li>Analyse der Programm-Architektur (s. StreamConcept )</li></ul> |
+| Einarbeitung !DataMachine | 08.02.2009 | 3 | Analyse der Programm-Architektur (s. StreamConcept ) |
+| Einarbeitung !DataMachine | 18.02.2009 | 5 | <ul><li>Entwikicklung von Konvertierungsklassen</li><li>Modifikation des Programms</li><li>Teststart</li></ul> |
+| Einarbeitung !DataMachine | 19.02.2009 | 5 | <ul><li>Bug Fixing</li><li>Testen</li></ul> |
+| Einarbeitung !DataMachine | 20.02.2009 | 2 | Dokumentieren des Quellcodes (gesendet an Torsten) |
+| Einarbeitung !DataMachine | 24.02.2009 | 1.5 | <ul><li>Fehlerkorrekturen</li><li>Start des Programms für 1 dewiki-Snapshot auf dem TKPool-Rechner</li></ul>Bitte beachten Sie, dass auch in Windows der Slash ('/') als path separator in den XML-Konfigurationsdateien verwendet sein soll. Das Fehler wird beseitigt.<br><i>Update:</i>Restarten des Programms mit der richtigen Hauptkategorie. Zu dieser Zeit erreichter Arbeitsspeicher-Bedarf war > 700 MB. Möglicherweise zusätzliche Programmänderungen notwendig. |
+| Einarbeitung !DataMachine | 05.03.2009 | 0 | Nach mehreren Tagen des Programmablaufs wurde der Rechner von dem Windows Update Service automatisch restartet. Der Neustart der DataMachine ist bis Performance-Verbesserungen verschoben und wird voraussichtlich auf einem Hochleistungsserver statt finden. |
+| Einarbeitung !DataMachine | 16.03.2009 | 1.5 | <ul><li>Erlernen von dem Quellcode des DataMachine</li><li>Prüfung, ob die parallele Dateienbearbeitung möglich ist</li></ul> S. ParallelismImpossibility |
+| Einarbeitung !DataMachine | 17.03.2009 | 8.5 | <ul><li>Einsatz der neuen MWDumper-Version - Anpassen und Testen des Programms</li><li>Erlernen des DataMachine- und MWDumper-SourceCodes</li></ul> S. LayerReduce |
+| Einarbeitung !DataMachine | 18.03.2009 | 5 | Erweiterung des MWDumper-Codes und Einsatz des LayerReduce-Konzepts um die Arbeitsleistung zu verbessern |
+| Einarbeitung !DataMachine | 19.03.2009 | 7.5 | Entwicklung der Klassen für XML-Parsing der revision-Tabelle in Rahmen von s.g. LayerReduce |
+| Einarbeitung !DataMachine | 01.04.2009 | 4 | <ul><li>Entwicklung der Klassen !RevisionWriter: Output-Format vom XML-Parser für die "revision"-Tabelle enthält nur notwendige Daten und zwar im binären Format</li><li>Anpassung der !RevisionParser-Klasse</li><ul> |
+| Einarbeitung !DataMachine | 02.04.2009 | 5 | <ul><li>Entwicklung der Klassen !PageWriter, !TextWriter</li><li>Anpassung der Klassen PageParser, TextParser</li><li>Testen, Validation der Output-Data mit dem Original-Programm</li></ul> |
+| Einarbeitung !DataMachine | 03.04.2009 | 5 | <ul><li>Bug Fixing</li><li>Entwicklung der Klassen !FragmentedDataInputStream und !FragmentedDataOutputStream</li><li>Testen</li></ul> |
+| Einarbeitung !DataMachine | 04.04.2009 | 3 | Vergleich der Arbeitsleistung vom unmodifizierten und modifizierten Programm auf Beispiel von !SimpleEnglish-Wikipedia-Dump. Bei denselben Input- und Output-Daten bestand je nach Programmversion folgender Zeitbedarf:<br> =Stream-Verfahren          197 Minuten= <br> =LayerReduce-Verfahren     39 Minuten (~197 / 5)= <br> Aus der Dump-Größenrelation zwischen deutschen und simple-englischen Wikipedia kann man erwarten, dass die Bearbeitung des deutschen Dumps nur vier Tage brauchen wird. Um diese Behauptung zu prüfen, wurde die modifizierte !DataMachine mit  dewiki-20081206 gestartet |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende April |
+
+   * DataMachineReview
+   * StreamConcept
+   * ParallelismImpossibility
+   * LayerReduce

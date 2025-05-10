@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="tauchmann" comment="save topic" date="1467205056" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Treffen 13.01.2016
+   * Aufteilung in 20 Prozent Test-und 80 Prozent Trainingsdaten: Probleme, was die genaue Größe von Daten-Sets bzw. Folds angeht, da Sentence Instanzen anstatt Ismus Instanzen     
+     verarbeitet werden (ev. Lsg. Sätze mehrfach aufnehmen, noch nicht ausprobiert)
+   * Überarbeitung der Feature Berechnung: Namensänderungen bei Lexikon-Features und POS Zähl-Feature, Aufteilung der Angabe der enthaltenen Lexikon-Wörter in neues Feature
+     -> vermutete Verbesserung für das POS Zähl-Feature, vermutet gleichbleibendes Ergebnis für Lexikon Features; Features funktionieren unterschiedlich gut bei verschiedenen       
+        Annotatoren und Ergebnisse habe geringere Precision bei 80 Prozent Testdaten anstatt allen (Buch 3)
+   * Starke Verschlechterung der Precision für Testdaten von Buch 3 (ca. 25 Ismen im Testset)
+   * IsmusKlasse als Feature scheint Verbesserung zu bewirken (basierend auf Ablation Test für Buch 3)
+
+-- Main.ChristopherTauchmann - 2016-06-29

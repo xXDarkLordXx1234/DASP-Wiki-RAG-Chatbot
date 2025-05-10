@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="bugert" comment="lost user_cert.pem" date="1551792693" format="1.1" reprev="69" version="70"}%
+%META:TOPICPARENT{name="WebHome"}%
+<!--
+This line only protects this topic, if the hash/number sign is removed.
+   #* Set ALLOWTOPICVIEW = Main.Student, Main.UKPStaff, Main.StudentHelper, Main.langtech-researcher
+//-->
+
+---+ !!VPN Service
+
+%TOC%
+
+---+ Terms of Use
+
+   * This page explains how to make a VPN connection into the UKP network to use the internal services.
+   * Use VPN only when necessary to access UKP resources. 
+   * VPN connections are limited. Disconnect when you do not need access anymore, so somebody else can use the VPN.
+   * It is possible to access the Hadoop cluster nodes via VPN.
+   * Also see [[PrivateHardwareUser][terms of use for private hardware]]
+<!---   * *All your Internet traffic will be routed through the VPN, so make sure you really only use the VPN when you need it.* -->
+
+---+ !OpenVPN
+
+Since PPTP has severe security issues (see, e.g., [[http://www.heise.de/security/artikel/Der-Todesstoss-fuer-PPTP-1701365.html][here]]), we have switched to [[http://openvpn.net/index.php/open-source/downloads.html][OpenVPN]]. PPTP is _not_ supported anymore.
+
+---++ Client configuration
+   
+---+++ Windows XP / 7 / 8 / 10
+   * Install the respective !OpenVPN client for your OS from [[http://openvpn.net/index.php/open-source/downloads.html][this page]]
+   * Download [[%ATTACHURLPATH%/ukp-vpn.ovpn][this file %N%]] and put it into your =YOUR_OPENVPN_INSTALLATION_DIRECTORY\config= folder
+   * Start the !OpenVPN Gui with *adminitrative user privileges* (you will need adminitrator privileges anytime you start !OpenVPN Gui<!--, [[http://www.google.de/search?&q=openvpn+UAC][Google]] for =UAC !OpenVPN= on that problem-->)
+   * Right-click the !OpenVPN Gui icon in the systray, enter your UKP username and password and =connect= <!--(if this option in not available, you either haven't copied the .ovpn file to the right directory, or you started the !OpenVPN Gui without super user rights)-->
+
+---+++ Ubuntu using Terminal
+   * =sudo apt-get install openvpn=
+   * Download [[%ATTACHURLPATH%/ukp-vpn.ovpn][this file %N%]] and put it into your home folder
+   * =sudo /etc/init.d/openvpn restart= 
+   * Now you can start OpenVPN via Terminal: =sudo openvpn ~/ukp-vpn.ovpn=
+
+---+++ Mac (NOT UP TO DATE!)
+   * Install Tunnelblick from ==http://code.google.com/p/tunnelblick/wiki/DownloadsEntry?tm=2==
+   * Download [[%ATTACHURLPATH%/ukp-vpn.ovpn][this file %N%]] file (the same as for Ubuntu) and import it into Tunnelblick with a double click. (DS: I have just tested it with my Mac)
+   * Start Tunnelblick and connnect the VPN. It will ask for your AD Username and Password.
+
+
+---+++ Known Issues
+   * To connect to some servers (e.g., krusty) you need to set the MTU to 1200 or lower. This can be done by appending "link-mtu 1200" to the config. See https://bugzilla.ukp.informatik.tu-darmstadt.de/show_bug.cgi?id=4956
+
+---++ Access to paywalled publications via VPN
+   * Access is possible via the VPN provided by the HRZ [[http://www.hrz.tu-darmstadt.de/netz/vpn_wlan/vpn_service/index.de.jsp]]. We grant VPN access to people that are not eligible to such paywall services because they are not affiliated directly with the TU Darmstadt, therefore our VPN cannot be used to access such services. The UKP VPN allows only access to internal UKP services and only accepts network traffic to internal destinations. VPN traffic is not routed to the internet.
+
+---+++ Force all traffic through OpenVPN connection
+   * Modify the =ukp-vpn.ovpn= file that you downloaded in section "Client configuration" by addding the following line at the end of the file: =redirect-gateway def1=
+   * Restart the !VPN connection
+   * Source: [[https://blog.sellorm.com/2017/03/01/force-all-traffic-through-openvpn-connection/][link]]
+
+%META:FILEATTACHMENT{name="add_ukp_route.pl.txt" attachment="add_ukp_route.pl.txt" attr="" comment="" date="1340747145" path="add_ukp_route.pl.txt" size="476" user="ChristianMeyer" version="1"}%
+%META:FILEATTACHMENT{name="vpn1.png" attachment="vpn1.png" attr="" comment="" date="1343980576" path="vpn1.png" size="37131" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="vpn2.png" attachment="vpn2.png" attr="" comment="" date="1343980576" path="vpn2.png" size="45258" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="vpn3.png" attachment="vpn3.png" attr="" comment="" date="1343980576" path="vpn3.png" size="40943" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="ukp-vpn.ovpn" attachment="ukp-vpn.ovpn" attr="" comment="OpenVPN config as of 2019-03" date="1551792682" path="ukp-vpn.ovpn" size="7015" user="bugert" version="4"}%
+%META:FILEATTACHMENT{name="openvpn1.png" attachment="openvpn1.png" attr="" comment="" date="1354383511" path="openvpn1.png" size="58377" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="openvpn2.png" attachment="openvpn2.png" attr="" comment="" date="1354383510" path="openvpn2.png" size="63128" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="openvpn3.png" attachment="openvpn3.png" attr="" comment="" date="1358237179" path="openvpn3.png" size="42651" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="vpnport.png" attachment="vpnport.png" attr="" comment="" date="1404898444" path="vpnport.png" size="52692" user="flekova" version="1"}%
+%META:TOPICMOVED{by="eckart" date="1426603024" from="UKP.VpnService" to="Services.VpnService"}%
+%META:PREFERENCE{name="DENYTOPICVIEW" title="DENYTOPICVIEW" type="Set" value="WikiGuest"}%
+%META:PREFERENCE{name="PERMSET_VIEW" title="PERMSET_VIEW" type="Local" value="registeredusers"}%

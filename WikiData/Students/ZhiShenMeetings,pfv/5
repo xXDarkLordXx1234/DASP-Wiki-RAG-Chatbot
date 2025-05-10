@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="DelphineBernhard" date="1208939456" format="1.1" version="5"}%
+%META:TOPICPARENT{name="ZhiShen"}%
+---+ Meetings
+
+---++ ??.04.2008 (ZS, DB)
+   * @action(DB): ask NJ about Amazon API
+   * @action(ZS): Extraction of 1,000 questions with their answers for all top-categories in YahooAnswers, 1,000 review for each top-level product category in Amazon and 1,000 articles for each top-level category in Wikipedia
+   * @action(ZS): Define concepts: dialogue-like discourse, social media, user-generated discourse, swear words, slang words, emoticons, IMS
+      * DB: see http://www.languageatinternet.de/articles/2007/761/Faceted_Classification_Scheme_for_CMD.pdf
+   * @action(ZS): Introduction slide about the project, to use for status meetings
+   * @action(ZS): Implement ListLookup annotator
+   * @action(DB): Send SwearWordTagger
+   * @action(DB): References for lookup algorithms   
+
+---++ 22.04.2008 (ZS, DB)
+   * @action(ZS): How many words in !UrbanDictionary?
+   * @action(ZS): Assess the utility of !UrbanDictionary
+   * @info(DB): Swear word list: https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Teaching/ZhiShenMaterials/swearwords.txt 
+   * @info(DB): other resource for slang: http://en.wiktionary.org/wiki/Category:en:Slang
+   * @action(DB): ask NJ about Amazon API
+   * @action(ZS): Extraction of 1,000 questions with their answers for all top-categories in YahooAnswers, 1,000 review for each top-level product category in Amazon and 1,000 articles for each top-level category in Wikipedia
+
+
+*Done*
+   * @action(DB): Meeting in Google Agenda
+
+---++ 16.04.2008 (ZS, KI, DB)
+
+   * @action(ZS): detaillierte Beschreibung von relevante Daten die man aus Urban Dictionary und netlingo extrahieren kann
+      * ZS: es gibt eine API for !UrbanDictionary, just for lookup, not to extract words
+   * @question(ZS): Format für die Liste (Swear words, slang words, emoticons, IM short forms)
+      * CSV Text ist besser, aber eine Datenbank ist OK wenn man leicht die Listen in andere Formate exportieren kann
+   * @action(ZS): über related Work lesen
+   * @info(KI): zur Frage über Kategorie-Extraction: Yahoo API bietet das als getByCategory an ([[http://developer.yahoo.com/answers/V1/getByCategory.html][Link]])
+
+*Done*
+   * @action(ZS): Diploma beim Prüfungssekretariat anmelden
+   * @action(ZS): Liste von Material im Wiki erstellen (Papers, Tools, etc) siehe Teaching.ArneMaterial für ein Beispiel
+   
+---++ 10.04.2008 (ZS, KI, DB)
+
+   * @info(ZS): hat angefangen, mit Amazon API, Yahoo! Answers API zu arbeiten
+   * @info(ZS): hat angefangen aus Urban Dictionary and netlingo Daten zu extrahieren
+   * @info(ZS,DB,KI): wir haben beschlosssen, ein ListLookup Komponent zu implementieren für Swear words detection, Slang words detection, Emoticons identification, Instant Messaging short forms identification (4 verschiedene Deskriptoren?)

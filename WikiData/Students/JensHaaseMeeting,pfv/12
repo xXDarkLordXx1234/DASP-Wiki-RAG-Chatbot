@@ -1,0 +1,168 @@
+%META:TOPICINFO{author="MichaelMatuschek" date="1279708742" format="1.1" version="12"}%
+%META:TOPICPARENT{name="JensHaase"}%
+---++++  Meeting 21.07.2010
+
+   * Problem: Artikel mit vielen Änderungen bereiten Schwierigkeiten beim Annotieren/Klassifizieren
+      * Lassen sich schlecht konsistent bzw. vollständig einordnen
+      * Daher: Zunächst Konzentration auf Annotation auf Artikelebene bzw. Artikel mit einzelnen Änderungen
+      * Verfahren für "schwierige" Artikel muss noch ausgearbeitet werden
+         * Idee: Mehr Fokus auf Features basierend auf den einzelnen Änderungen (s.u.), um diese zu klassifizieren
+   * Experimente mit Machine Learning wurden begonnen
+      * Einige Features wurden implementiert
+         * Bislang wird hauptsächlich die einzelne Revision betrachtet
+      * Präzision bis jetzt schlecht: Max. 36%
+         * Ursache laut Analyse: Features sind nicht aussagekräftig genug, Ausprägungen bei einigen nahezu gleichverteilt unter den Klassen
+      * Lösungsansätze:
+         * Mehr Features, die Unterschiede zwischen der Revision und dem Vorgänger (jeweils bezogen auf den kompletten Artikel) abbilden
+         * Mehr Features, die die tatsächlich gemachten Änderungen (z.B. den eingefügten Text) abbilden
+         * Die Informationen, die man durch die Revision History erhält. müssen effektiver genutzt werden
+            * Ansonsten hätte man quasi nur einen "Artikel-Klassifikator" mit geringer Aussagekraft!
+         * Andere Möglichkeit: Zunächst eine grobe Klassifikation in die Oberklassen vornehmen, dann verfeinern
+            * Sollte zumindest ausprobiert werden                     
+      * Weiteres wichtiges Feature: N-Gramme
+         * Term Frequencies im Feature Space abzubilden ist nicht möglich/sinnvoll
+            * Alternative: Standard-Ähnlichkeitsmaß zw. Texten berechnen (z.B. cosine) und als Feature verwenden
+         * 1/2/3-Gramme könnten hingegen relativ problemlos direkt als Features verwendet werden
+            * Frage: Sinnvoll?
+   * Weiteres Problem: Wiki-Markup wird nicht entfernt
+      * Passende Parser-Komponenten müssen noch einmal geprüft werden
+   * Auch Spellchecker soll eingebaut werden
+      * Zugriff darauf muss gegeben werden
+   * Nötig generell: Anpassung der Komponenten für UIMA-Kompatibilität
+      * Sollte zügig zu machen sein
+   * Folien für Vorstellung der Bachelorarbeit sind in der Mache
+      * Angepeilter Termin: Ende der Woche
+
+---++++  Meeting 23.06.2010
+
+   * Schriftliche Ausarbeitung wurde begonnen
+      * Outline und Einleitung bislang
+      * Wird ins Wiki nachgetragen
+   * Exportieren der Annotationen in XML möglich
+      * Probleme mit Senden/Herunterladen noch nicht behoben, umständlich in Google Apps mit großen Datenmengen
+      * Wird nun nach und nach durchgeführt
+   * Arbeit an Feature-Extraktion folgt im Anschluss 
+   * Datenbankserver hat sich geändert, muss angepasst und getestet werden
+   * Vortrag wird soll bis Juli im Entwurf vorbereitet sein
+   * Nächstes Treffen: 21.07.
+
+---++++  Meeting 16.06.2010
+
+   * Annotation ist abgeschlossen
+   * Kleiner Fehler im Programm (DB-Abfrage) wurde lokalisiert und behoben
+   * Nächster Schritt: Exportieren der Annotationen in geeignetes Format
+      * Dann: Beginn der schriftlichen Ausarbeitung
+   * Erste (grobe) Analyse der Annotationen:
+      * Synonym/Wortersetzungen sind sehr selten
+      * Etwa 70% entfallen auf Vandalismus   
+    
+---++++  Meeting 02/09.06.2010
+
+   * Annotations-Tool ist fertig, abrufbar unter: [[http://wikiannotator.appspot.com/][http://wikiannotator.appspot.com/]]
+      * Technische Probleme mit dem Speichern der Annotationen sind gelöst
+   * Stand Annotationen:
+      * 38 Artikel * 20 Revisionen, zufällig ausgewählt aus Artikeln mit > 3000 Revisionen
+      * Talk-Seiten wurden aus dem ursprünglichen Datensatz entfernt, diese sind für die Analyse nicht interessant
+      * Problem: Manche Artikel haben extrem viele parallele Änderungen, was die Annotation erschwert
+         * Werden zunächst zurückgestellt, da nicht viele Revisionen betroffen sind
+      * Insgesamt bis jetzt ca. die Hälfte annotiert
+   * Weitere Schritte:
+      * Fertigstellen der Annotationen
+      * Export der Annotationen in geeignetes Format
+      * Erstellen von Statistiken über beobachtete Änderungen
+      * Anfangen mit Schreiben (Beschreibung Annotationstool + Vorgehensweise)
+   * Anmeldebogen für das Prüfungsamt ist ausgefüllt
+   * Termin für das Student Status Meeting wurde auf 2.8. festgelegt
+   
+---++++  Meetings 21/26.05.2010
+
+   * Einrichtung des Annotations-Tool-Servers mit Google App Engine geht voran, erste Version ist online
+      * Technische Probleme sind soweit ausgeräumt
+      * Letzter Schritt: Korrektes Speichern der gemachten Annotationen
+   * Auswahl der zu annotierenden Revisionen für das Trainingsset (aktueller Stand):
+      * 60 Artikel * 20 Revisionen, zufällig ausgewählt aus Artikeln mit > 3000 Revisionen
+   * Klassifizierung:
+      * Zunächst Konzentration auf Single-Label, falls erforderlich werden weitere Schritte besprochen
+   * Anmeldebogen für das Prüfungsamt liegt vor, wird jetzt gemacht
+
+---++++  Meeting 12.05.2010
+
+   * Einrichtung des Annotations-Tool-Servers voraussichtlich mit Google App Engine
+      * Direkter Zugriff der Wikipedia auf UKP-Server damit nicht möglich
+      * (Wahrscheinlich) kein Problem, da Vorverarbeitung und Zwischenspeicherung (!DropBox) aus Performancegründen ohnehin sinnvoll scheint
+      * Ausgabe dann evtl. als XML? Sinnvolle Alternativen sollten geprüft werden
+   * Arbeit an Tool schreitet voran
+   * Auswahl der zu annotierenden Revisionen sollte zufällig erfolgen, um ein aussagekräftiges Training-Set zu erhalten
+      * Evtl. sollten unbrauchbare (z.B. leere) Revisionen gefiltert werden
+   * Mögl. Problem: Weka unterstützt keine Mulitklassifizierung, nochmal prüfen!
+   * Altenativen:
+      * Klassifikation auf Abschnittsebene (ist ohnehin vorgesehen)
+      * Verwendung einer expliziten "Multi-Klasse" auf Dokumentebene, vielleicht experimentell testen
+      * Erweiterungen für Weka prüfen, die die Funktionalität bereitstellen        
+   * Verwendung von DKPro-Komponenten wurde besprochen
+      * !StanfordSegmenter ist geeigneter wg. Kompatibilität zu anderen Annotatoren
+      * Evtl. Segmenter für Wikipedia-Artikel verwenden, je nachdem wie der Output aussieht
+      * Wiki-Parser kann verwendet werden
+         * Externe Komponenten für fehlende Funktionen können verwendet werden, GPL spielt zunächst eine untergeordnete Rolle
+   * Offene Fragen:
+      * Welche Komponenten/Ansätze für Keyword-Extraktion -> Vorhandene DKPro-Komponenten prüfen
+      * Einbinden von Nicht-Maven-Komponenten in die Maven-Infrastruktur -> Prüfen, wie die Abhängigkeiten aufgelöst werden können
+   * Weiteres Vorgehen
+      * Weitere Arbeit am Annotations-Tool und evtl. Beginnen mit Annotation
+      * Weitere Arbeit an der Feature-Extraktion
+      * Demnächst Anmeldung beim Prüfungsamt durchführen
+
+---++++  Meeting 05.05.2010
+
+ 
+   * Übersicht möglicher Features ist weitgehend fertig, wird ins Wiki nachgetragen
+   * Verwendung einzelner DKPro-Komponenten muss  geprüft werden (LanguageToolChecker, SpellChecker,...)
+      * Könnte für Konstruktion entsprechender Features nötig sein
+      * Alternative: Naiver Ansatz z.B. mit Edit-Distanz
+      * Umgang mit Stoppwörtern muss für die jeweiligen Features gesondert betrachtet werden
+   * Berechnung von n-Grammen etc. abhängig vom Aufwand, Feature Space sollte für den Anfang nicht zu groß werden
+   * Benutzeroberfläche für das Annotieren von Revisionen liegt in erster Version vor
+      * Aufsetzen auf Webserver muss geprüft werden
+   * Weiteres Vorgehen
+      * Weitere Arbeit am Annotations-Tool
+      * Beispielhafte Extraktion der ersten Features in einem lauffähigen Annotator
+
+---++++  Meeting 28.04.2010
+
+   * Projekt-Setup steht, Zugriff auf Datenbank über VPN ist auch möglich
+   * Diplomarbeit S. Kulessa ist durchgearbeitet 
+   * Vorhandene Trainingsdaten tw. gesichtet, aber nur für Vandalismus geeignet 
+      * Prüfung notwendig, ob sie trotzdem eingebunden werden sollen
+      * Wikipedia-Bots als weitere mögliche Quelle?
+   * Für Annotation von Artikeln: Graphische Oberfläche möglicherweise sinnvoll
+      * Nicht viel Arbeit bei der Umsetzung
+      * Ermöglicht die effizientere Annotation
+   * Falls nur wenige Trainingsdaten vorhanden: Bootstrapping (iteratives Vergrößern der Trainingsmenge)
+      * Genaue Vorgehensweise wird noch besprochen
+   * Beschluss: Änderungen sollten auf Dokument- und Abschnittebene annotiert werden
+   * Gewisse Änderungen können regelbasiert erkannt werden (z.B. Setzen von Links), Kombination mit ML erscheint sinnvoll
+   * Grundlagen ML wurden besprochen
+      * Beschluss: Weka wird verwendet, stabil, einfach einzubinden
+   * Weiteres Vorgehen
+      * Weiteres Einarbeiten in die Literatur 
+      * Features ausarbeiten
+      * Einarbeiten in ML
+
+---++++  Meeting 21.04.2010
+
+   * Projekt-Setup, benötigte Ressourcen und Beispielpipeline wurden besprochen
+   * Besprochene Referenzen: Diplomarbeit S. Kulessa, Paper von Potthast et.al., Paper von Smets et. al.
+   * Mögliche Klassen wurden diskutiert
+      * Beschlüsse:
+      * Konzentration auf Nicht-Vandalismus-Änderungen, da diese durch die Literatur noch nicht abgedeckt sind
+      * Klassifikation von Vandalismus kann im Wesentlichen auf den Verfahren aus der Literatur basieren
+      * Inhaltliche Merkmale (z.B. um sinnverändernde Edits zu erkennen) werden zunächst nicht behandelt, da dies evtl. zu aufwändig ist
+      * Konzentration vorerst auf oberflächliche Features, z.B. Textlängen
+   * Weiteres Vorgehen
+      * Einrichtung von eclipse-Projekt, Lösung evtl. technischer Probleme
+      * Einarbeiten in die besprochene Literatur und Herausarbeiten nützlicher Ansätze (z.B. Diff-Berechnung)
+      * Zu erkennende Klassen festlegen und beginnen, Merkmale einer Revision auszuarbeiten, die für die Erkennung interessant sein können
+      * Überlegen, welche Trainingsdaten es gibt (Potthast?), wie sie annotiert sind und ob bzw. wie das für unsere Aufgabe passt
+
+
+   -- Main.MichaelMatuschek - 21 Apr 2010

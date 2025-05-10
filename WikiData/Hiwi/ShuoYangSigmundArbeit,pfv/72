@@ -1,0 +1,48 @@
+%META:TOPICINFO{author="ShuoYang" date="1279744894" format="1.1" version="72"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Juli 2010
+
+---+++ Aufgabenübersicht
+| *Aufgabe* | *% done* | *Neu* |
+| 1. BM25 | 80 | * |
+| 2. Pipeline mit Ausgabe in TWiki Markups | 0 |  |
+| 3. =XMLFileReader= mit =XPath= | 85 | *  |
+| 4. Monolinguales Retrieval auf GIRT (MrGIRT) | | |
+| 5. Crosslinguales Retrieval auf GIRT (CrGIRT) | | |
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !XPathReader, Meeting | 20.07.2010 | 2 | Testen von !XmlFileReader und Meeting mit Benjamin | * | 
+| BM25, !XPathReader | 17.07.2010 | 3 | Testen und Fixieren von !BM25Modell <br> Modifizierung von !XmlFileReader mit XPath für höherer Flexibilität |  |  
+| BM25 | 15.07.2010 | 3 | Debug von !BM25Modell für spezielle Queries |  |
+| BM25 | 13.07.2010 | 2.5 | Anpassungen und Testen von !BM25Modell unter Lucene 3.0 |  |
+| BM25 | 11.07.2010 | 2.5 | Einarbeiten in Lucene !TermQuery als Beispiel für Scoring, und <br> Anpassungen von !BM25Modell <ul><li> funktioniert schon mit Lucene 3.0 (ohne Explanation) </li><li> Korrektheit allerdings noch nicht testiert </li></ul> |  |
+| Lucene Scoring | 10.07.2010 | 3 | Einarbeiten in Lucene Scoring |  |
+| BM25 | 08.07.2010 | 1 | Anpassungen |  |
+| BM25, Meeting | 06.07.2010 | 3 | Weiteres Anpassen und Meeting mit Benjamin |  |
+| BM25 | 04.07.2010 | 2 | Weiteres Anpassen |  |
+| BM25 | 02.07.2010 | 2 | Anpassen von BM25 für Lucene 3.0 |  |
+| BM25 | 01.07.2010 | 2 | Einarbeiten in BM25 |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 52)$EXEC($GET(total_hour))"}% | bis Ende Juli noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (inkl. 12 Übertrag von Mai) |  |
+<nop>
+
+---+++ Dokumente
+BM25Guide <br>
+XPathPerformanceAnalysis
+
+GoogleTranslatePerformanceAnalysis <br>
+GoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangPreviousWork
+
+-- Main.ShuoYang - 14 Jul 2010
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%

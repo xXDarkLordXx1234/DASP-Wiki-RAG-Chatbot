@@ -1,0 +1,302 @@
+%META:TOPICINFO{author="nothvogel" comment="" date="1557352839" format="1.1" reprev="41" version="41"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+
+---++ Arbeitsstunden
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Datum* | *Beginn* | *Ende* | *Täglich (hh:mm)* | *Notiz* |
+|  | 10:00 | 16:00 | 06:00 |Quali Test |
+|  |  |  | 07:00 |Arg Sim / Funkstandard |
+| | | |06:00 |Arg Sim / Funkstandard |
+| | | |01:00 |Arg Sim / Funkstandard |
+|06.03.2019 | | |02:00 |Arg Sim / Funkstandard |
+|07.03.2019 | | |03:30 |Arg Sim / Funkstandard |
+|08.03.2019 | | |08:00 |Arg Sim / Funkstandard |
+|11.03.2019 | | |03:00 |Hyperparam Optimization |
+|12.03.2019 | | |02:30 |Final Model |
+|13.03.2019 | | |01:00 |Custom MSE, BERT |
+|14.03.2019 | | |00:30 |Meeting, Notizen |
+|20.03.2019 | | |01:00 |BERT |
+|21.03.2019 | | |02:00 |BERT |
+|22.03.2019 | | |02:00 |BERT |
+|25.03.2019 | | |04:00 |BERT |
+|26.03.2019 | | |02:00 |BERT |
+|27.03.2019 | | |04:00 |BERT |
+|28.03.2019 | | |02:30 |BERT |
+|29.03.2019 | | |02:00 |BERT |
+|01.04.2019 | | |05:00 |BERT |
+|02.04.2019 | | |07:00 |BERT |
+|05.04.2019 | | |02:00 |BERT |
+|08.04.2019 | | |03:00 |BERT |
+|09.04.2019 | | |01:30 |BERT |
+|11.04.2019 | | |01:30 |BERT |
+|12.04.2019 | | |01:00 |BERT/Misra |
+|16.04.2019 | | |01:30 |BERT/Misra |
+|17.04.2019 | | |05:30 |BERT/Misra |
+|23.04.2019 | | |04:00 |BERT/Misra |
+|25.04.2019 | | |01:00 |BERT/Misra |
+|26.04.2019 | | |02:00 |BERT/Misra |
+|29.04.2019 | | |03:00 |Misra |
+|30.04.2019 | | |02:00 |Misra |
+|02.05.2019 | | |01:30 |BERT/Misra |
+|03.05.2019 | | |01:00 |BERT/Misra |
+|06.05.2019 | | |05:30 |BERT/Misra |
+|07.05.2019 | | |01:00 |BERT/Misra |
+
+Summe Mai: ~ 09:00
+
+Stand: inklusive 07.05.
+
+---++ Meetings
+
+---+++ Neu
+   * Es gibt einige Duplikat Argumente im Corpus, zur Reproduzierbarkeit wird nur das 1. (nach Hash) gespeichert. Leicht verschiedene URLs, aber der selbe Satz.
+   * Code für die Auswahl der Paare ist fertig und scheint gut zu laufen.
+   * Noch zu erledigen: 
+      * Gun control (Features, Predictions) <- erst mal zurück stellen?
+      * Überprüfung der Verteilung mit BERT Model
+
+---+++ 07.05.2019
+
+   * Welches Model zum Predicten nehmen: Was auf Misra Daten trainiert wurde
+   * Auswahl der Paare: ca. 350 Paare pro Topic aus Stab Corpus, 75 Paare Webforum
+   * 50% ziehen wir aus dem HS Bucket => HS Bucket braucht mindestens 175 Paare, sagen wir Top 1% nach Predictions
+   * 2-50% Some Similarity, Rest No Similarity
+   * 25% SS, 25% NS
+   * Verteilung überprüfen mit BERT. Stichprobe, z.B. ein Thema.
+   * Mit festen Seeds arbeiten (auch beim Ziehen der Paare)
+   * Zum Crowdsourcing selber: Mal nachsehen, wie viele HITs es pro Topic werden. Es kann sein, dass wir 1 Batch pro Topic brauchen. Evt. trotzdem HITs mit verschiedenen Topics mischen.
+
+---+++ 30.04.2019
+
+   * Vorgehen: Histogramme der Predictions per Email schicken, dann überlegen wir, wie die Sätze ausgewählt werden sollen
+   * Score-Verteilung überprüfen mit BERT Model
+   * Crowdsourcing, evt. muss mir JD neue Keys für AWS schicken.
+   * Scripts für Crowdsourcing: Extra Infos müssen noch mit gespeichert werden (stance, urls, hash für jeden Satz).
+
+   * Takelab STS wird jetzt jedes Paar in-memory übergeben.
+   * Progress Logs alle 1000 Paare hinzugefügt.
+   * Geschwindigkeit: 10 000 Paare in ~ 10 min. mit 10 Workers (frisch gestartet)
+      * Möglich, dass die Prozesse bei längerer Laufzeit gedrosselt werden (besonders der Java / Stanford Tagger Prozess).
+   * Death Penalty Feature Extraction hat noch Fehler
+   * Misra System zu trainieren funktioniert, der beste Estimator wird gespeichert/gepickled (so hat Joy wahrscheinlich predicted)
+      * Geringe Anpassungen für die neue Version von sklearn waren nötig. 
+      * Potenzieller Bug behoben: Feature Spalten waren nicht alphabetisch sortiert; jetzt ist die Feature Reihenfolge garantiert gleich.
+      * Wir können das beste Model nehmen, das jeweils auf Death Penalty, Gun Control und auf allen drei Topics zusammen trainiert wurde.
+   * Predictions der Paare (selbst >100k) dauern nur wenige Sekunden.
+   * Was genau mit den Predictions speichern?
+      * Wahrscheinlich nicht sinnvoll: Sämtliche Features (wo2vec1,wo2vec2,...600 etc.)
+      * Notwendig: topicName, argument1, argument2, prediction 
+      * Wahrscheinlich sinnvoll: 
+         * hash1, hash2 für Reproduzierbarkeit. Wird auch die Quell-URL für jedes Argument benötigt? Ja!
+         * stance1, stance2
+         * retrievedUrl, archivedUrl
+
+---+++ 23.04.2019
+   * Ca. 10% der Paare zufällig ziehen, damit die Feature Extraction schneller geht.
+   * Takelab STS von Dateibasiert auf in-memory ändern (wenn in vertretbarem Zeitaufwand machbar)
+   * Fortschritt Logs in Feature Extraction einbauen!
+   * SVM hat Gamma und C Hyperparameter. Sollte ich aus der `results.csv` übernehmen können (oder nach dem Trainieren der SVM direkt die unbekannten Paare predicten).
+   * Für die Zukunft: BERT mit mehreren vorgegebenen Seeds testen; mind. 3 Seeds. Besten Seed auf dem Dev Set dann zum Testen benutzen.
+   * Plan: 
+      * Features generieren(in absehbarer Zeit, ggf. mit weniger getesteten Paaren)
+      * Mit Misra predicten
+      * Paare auswählen wie vorher besprochen
+      * Mit BERT Sanity Check der Klassenverteilung machen
+      * Crowdsourcing
+   * Nochmal ein Update via Email diese Woche schicken. 
+
+   * Es müssen sehr viele Paare pro Topic getestet werden: Abortion hat 1 127 251 Paare (nur Stab, noch kein Webforum Corpus); Alle Topics (Paare nur als Text, noch nicht als Features) haben zusammen 3.1 GB Dateigröße als CSV.
+   * Resultierende Feature Dateien werden sehr groß, deshalb: Nur Word2Vec und Cosinus wie im Misra Paper, kein GloVe.
+   * Code von Joy wurde optimiert: Cache für Sätze, Multiprocess.
+   * Trotzdem dauert die Feature Extraction ewig; läuft gerade auf dem lisa Server.
+      * Feature Extraction für 1 Paar dauert ca. 1 Sekunde; Läuft mit 10 Prozessen; Also nur für Abortion erwarte ich ca. 24-31h Rechenzeit.
+      * Cache für Sätze wird das evt. etwas bescheunigen. Mehr Prozesse erlaubt?
+
+---+++ 11.04.2019
+   * 8 Themen für das Paper
+   * Pro Topic: Paare samplen mit Misra
+   * Nicht einfach bei einem Score Threshold abschneiden.
+   * Vorwiegend hohe Predictions, ein Paar aus der Mitte und niedrige
+   * Auswahl der Paare: Zufällig ziehen aber mit vorgegebenen Seed. Score wird in Wahrscheinlichkeit, das Paar zu ziehen umgerechnet.
+   * JD schickt mir den Corpus
+
+   * Timesheets (Originale) abgeben!
+   * Alle möglichen Splits mit 2 Test Topics ergeben fast 150 zu testende Paare. Mit 3 Topics sind es noch mehr.
+   * Daher: Einfache Splits, sodass jedes Thema genau einmal getestet wird. Es werden aber nicht alle möglichen Paare beachtet. Das ergibt 6 Splits mit je 3 Test Topics.
+   * Ergebnis vom besten BERT Regression Model auf diesen einfachen Splits:
+      * selbe Hyperparameter, die auf dem maLSTM Split ermittelt wurden (auf Teilmenge von allen Themen).
+      * Trotzdem bekommt das Model jetzt nur einen Teil der Themen als Trainingsdaten. Die Test Topics sind "ungesehen".
+   * Von Menschen lesbare Predictions und Plots: [[%ATTACHURLPATH%/bert.regression.best.simple-splits.zip][bert.regression.best.simple-splits.zip]]  
+%EDITTABLE{format="| text,20| text,20| text,20| text,20|"}%
+| *Split#* | *Test Topic* | *Pearson R* | *Spearman R* |
+| 0.  | Fracking | 0.50 | 0.48 |
+| 0.  | Gmo | 0.62 | 0.56 |
+| 0.  | Electronic voting | 0.46 | 0.46 |
+| 1 | Electric cars | 0.65 | 0.63 |
+| 1 | Organ donation | 0.68 | 0.69 |
+| 1 | Recycling | 0.76 | 0.77 |
+| 2 | Offshore drilling | 0.53 | 0.51 |
+| 2 | Hydrogen fuel cells | 0.72 | 0.67 |
+| 2 | Big data | 0.77 | 0.77 |
+| 3 | Hydroelectric dams | 0.72 | 0.72 |
+| 3 | Robotic surgery | 0.76 | 0.76 |
+| 3 | Net neutrality | 0.67 | 0.66 |
+| 4 | Stem cell research | 0.72 | 0.73 |
+| 4 | Geoengineering | 0.60 | 0.54 |
+| 4 | Internet of things | 0.59 | 0.54 |
+| 5 | Nanotechnology | 0.74 | 0.73 |
+| 5 | Solar energy | 0.71 | 0.70 |
+| 5 | Genetic diagnosis | 0.74 | 0.74 |
+
+
+---+++ 05.04.2019
+   * Cross-topic Experimente: 2 Themen zum Testen rauslassen, Dev Split prozentual von den Trainingsdaten.
+   * Einmal mit jetzigen besten Hyperparams. Neue Optimierung für jeden Split.
+   * Misra zum laufen bekommen.
+   * Wenn misra lauft, dann crowdsourcing.
+   * Wahrscheinlich nur 8 Themen, dann aber mehr Paare.
+
+   * BERT Regression Model sieht vielversprechend aus: Bestes Model ohne hidden Layer bzw. das nur eine Linearkombination des BERT Outputs bildet:
+      * Global Pearson/Spearman ~ 0.75 auf Dev Set.
+   * Wichtig: Evaluation bisher als Correlation über dem kompletten Dev/Test Set (global). In der Bachelor Arbeit/maLSTM wurde aber Avg Correlation pro Topic getestet.
+   * Damit die Ergebnisse vergleichbar sind, werden die bisherigen Tests mit `bert.regression` wiederholt. 
+      * Evt. macht es aber für das Konferenz-Paper mehr Sinn, einfach die Correlation über dem kompletten Set zu bilden, weil es einfacher von anderen Teams anwendbar ist.
+      * Ansonsten kann es Probleme mit der Avg Berechnung geben (Fisher Z-Transformiert oder nicht)
+   * Bestes Regression Model mit zusätzlichem hidden Layer: 680 hidden Nodes, Learn Rate = 1.3e-5, Batch Size = 32 .
+   * Zum Vergleich: Die maLSTM aus der Bachelor Arbeit hat Spearman pro Topic von 0.65 erreicht.
+Correlation der Predictions mit echten Scores auf dem Test Set (maLSTM Split):
+| *Modus* | *pearsonR* | *spearmanR* |
+| Global | 0.800 | 0.803 |
+| Pro Topic | 0.816 | 0.801 |
+   * Correlation pro Topic Plot und Predictions (für Menschen lesbar): [[%ATTACHURLPATH%/bert-regression-best.zip][bert-regression-best]]
+   * Prediction Histogramm: %IMAGE{"bert.regression.prediction.hist.png" caption="bert-regression-prediction-hist" size="200"}%
+   
+   * Misra: Immer noch Fehler bei `Rouge/FeatureRouge.py`: 
+      * Ich verwende diese Library (wird auch von `pip install rouge` benutzt): https://github.com/pltrdy/rouge
+      * Problem beim Code von Joy: rouge Implementierung hat sich geändert (oder ich benutze die falsche).
+      * Was im Code wahrscheinlich erwartet wird: Numerischer Rouge Score.
+      * Was die Library aktuell ausspuckt: Dictionary mit `{"f": _, "p": _, "r": _}` Einträgen
+      * Außerdem ist Rouge Score auf dem Sentence Level nicht implementiert.
+      * Welchen Wert soll ich benutzen (f/p/r?)
+   * Ansonsten scheint alles (Java- und Python-Teil) zu funktionieren.
+
+---+++ 28.03.2019
+   * Wenn überhaupt mehr Tests mit Labels dann nur 1 Stunde investieren
+   * Nächster Schritt: BERT Regression Model direkt mit den Scores (statt diskreten Labels)
+      * Evaluation: Wieder Correlation: Spearman/Pearson. Vergleich mit maLSTM.
+      * Hyperparam Optimierung: Hidden Nodes, Learning Rate, Batch Size.
+      * Weitere Varianten testen: 
+         * Topic Split fuer train/dev/test benutzen. Z.b. 6 topics train/dev und 2 test.
+         * Topic als Feature? Z.B. appenden vorne an jeden Satz.
+   * Arg Sim Model für Konferenz (etwa bis Mai):
+      * Daten: 8 Themen, die oeffentlich sind. Argumente sind schon annotiert. Thema, Stance (pro/con/no argument).
+      * Misra System zur Vorauswahl der Paare. Müsste off the shelf laufen
+   * UKP-intern: Dann spaeter ca. 500 Paare pro Topic mit Daten aus ArgumenText.
+   
+   * BERT mit diskreten Labels (0/1):
+   * Fuer Threshold 0 ist die Verteilung der Klassen fast gleich, aber in der Praxis ist dieser Threshold nicht sehr nuetzlich.
+   * Daher wird jetzt Threshold 0.25 getestet (ca. 25% der Daten sind damit Label 1 bzw. similar), Score Range von -1 bis 1.
+   * Test setup: BERT model Parameter unveraendert. 10 Trainings Epochen. BertAdam Optimizer.
+      * Daten: BWS Corpus, Splits von maLSTM. Wichtig: Score range: von 0 bis 1, daher muss threshold im Code gleich 0.625 sein.
+      * Hyperparam Range:
+         * learnRate = 1 0.1 0.01 0.001 0.0001 2e-5
+         * batchSize = 16 32
+   * Hohe Learning Rate mit Adam (lr=1) sorgt dafuer, dass nur 1 Klasse predictet wird (scheinbar), da Accuracy genau den Klassenanteilen entspricht.
+   * Learning Rates kleiner 0.0001 funktionieren gut. Neue Hyperparam Range:
+      * learnRate = 6e-6 8e-6 10e-6 12e-6 14e-6
+      * batchSize = 16 32
+   * learnRate = 8e-6 funktioniert am Besten unabhängig vom Threshold. 
+   * Bester F1 Score der Klasse "1" nach Threshold (auf maLSTM Score Range, also von 0 bis 1) auf dem Dev Set:
+      * Labelled Similar: Anteil der Daten mit Label "1" auf dem kompletten Corpus  
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20| text,20|"}%
+| *Threshold* | *Dev F1* | *Labelled Similar* | *Test F1* | *Test P* | *Test R* |
+| 0.5 | 0.79 |47% |0.79 |0.78 |0.80 |
+| 0.625 | 0.70 |27% |0.68 |0.66 |0.70 |
+| 0.66 | 0.69 |24% |0.64 |0.63 |0.65 |
+
+---+++ 21.03.2019
+   * CSV einlesen für BERT Format funktioniert scheinbar.
+   * Score Threshold t für Konversion zu 0/1 Labels:
+      * t=0.49 ergibt 244 similar Paare (ca. 12% vom Corpus)
+      * Statistiken pro Topic:
+         * Mean: 13.56
+         * Std: 3.84
+         * Min: 6
+         * Max: 20
+   * Threshold 0 und 0.25 mal testen als Threshold. Some Similarity waere in dem Sinne schon noch 1/similar
+   * Train/Dev/Test Sets: Das Dev Set nicht anfügen ans Train Set
+   * Seed mal konstant setzen
+   * Hyperparam Tuning: Batch Sizes, Learning Rate
+   * Zugang zu Lisa zum laufen bringen
+   * Nächster Schritt: Übergang zu real valued scores.
+   
+---+++ 14.03.2019
+   * Pearson Correlation ist leider ungeeignet als Loss Function (nicht differenzierbar?), Predictions werden NaN
+   * Hyperparameter Optimization: 1 hidden LSTM layer, 2 hidden LSTM layer + return_sequences. Bias/initalization. Bidirectional.
+   * Bidirectional reduziert Bias auf letzte Wörter im Satz.
+   * Bestes Deep Model: (27, 27), bidirectional, initializer: zeros, unitForgetBias=False
+   * Custom MSE: Bestraft Fehler härter, je weiter sie von 0.5 (mittlerer Score) entfernt liegen.
+      * Zieht die Predictions auf unknown Daten (Funkstandard) weiter auseinander. Trotzdem sind die Predictions nicht besonders gut.
+   * Mit den aktuellen Daten / Models ist maLSTM nicht gut genug, um ähnliche Argumente auf komplett unbekannten Themen zu finden.
+   * => BERT: Pretrained Transformer, der kontext-abhängige Wort Vektoren liefert.
+      * 1. Schritt: Daten Parser anpassen
+         * Argumente aus der CSV in das BERT-Format bringen: Sentence1, Sentence2, Topic
+         * Scores zu binären Labels konvertieren: 0/1
+         * => Threshold?
+      * Mittelfristig BERT mit unseren Scores benutzen 
+
+---+++ 07.03.2019
+   * Bidirectional LSTM: Prediction von 250k Paaren dauert jetzt etwa doppelt so lange (ca. 5 min 30 sec). Bei selber Trainingsdauer keine Verbesserung der Predictions.
+   * Padding umdrehen hilft nichts - jetzt matcht die LSTM nur den Anfang des Satzes
+   * Grund fuer das Verhalten (wahrscheinlich): 
+      * Beispiele in den Trainingsdaten sind eher kurz und der input bias wurde komplett mit 0 initialisiert 
+      * (== nicht genug Daten, um bias fuer laengere Saetze zu lernen)
+      * Daher wird der Beginn des Satzes nicht gewichtet.
+   * Neuer Test mit Bias = 1 bringt kaum Verbesserung
+   * Verschiedene Architekturen: 
+      * LSTM mit weniger Nodes overfittet nicht auf die letzten Worte
+      * Deep LSTM mit return_sequences=True und z.B. (20,20) Nodes funktioniert auch gut
+      * Neues Hyperparameter Tuning mit Correlation als Metrik?
+   * Bias im Gold Standard: Training und Dev Set ueberprueft:
+      * Es gibt einige Beispiele mit hoher Similarity (>0.9) und gleichem Suffix
+      * Aber nicht mehrheitlich, d.h. genug Beispiele mit unterschiedlichem Suffix
+      * Mehr Trainingsdaten sammeln?
+   * Neue Trainingsdaten:
+      * Argumente aus statischem Web Crawl
+      * Mit existierendem System (maLSTM) ähnliche Argumente finden
+      * Bis dahin: Neue Hyperparameter Optimization!
+      * Ergebnisse vor dem nächsten Meeting schicken (Correlation und Beispiele)
+      * Predictions auf dem Gold Test Set überprüfen!
+
+---+++ 26.02.2019
+   * Predictions liegen selten über 0.6
+   * Argumente, die nicht Wort für Wort gleich sind haben bis zu 0.85
+   * Threshold schwierig zu setzen: 
+      * Bei 0.7 wären es nur etwa 40 Paare
+      * Um 0.6 hohe Fehlerquote
+   * Pearson Correlation als Metric auf Validation Set scheint vielversprechend:
+      * Correlation verbessert sich noch, obwohl der min loss sich nicht grossartig ändert.
+   * Problem: Letzten Wörter im Satz werden übergewichtet
+      * 0-padding umdrehen?
+      * Trainingsdaten gebiased? Also auch immer selbe Worte am Ende
+      * mal bidirectional LSTM testen
+   * Generell: Irgendwann auch cross-topic ähnliche Paare finden.
+
+---+++ 19.02.2019
+   * Funkstandard Argumente: Etwas noisy, quasi-duplikate vorhanden, teilweise andere Sprache (kyrillisch)
+   * Paare per brute-force innerhalb der 13 Themen generiert: 250k
+   * Embedding Layer in der maLSTM von meiner Bachelor Arbeit ungeeignet für unbekannte Argumente
+   * Prediction mit maLSTM trainiert auf arg-sim-bws Corpus: 
+      * Extreme (0 und 1) machen Sinn, aber sind relativ uninteressant
+      * 0: Normale Argumente mit kyrillischen Zeichen
+      * 1: Argumente, die bis auf wenige Zeichen identisch sind
+   * Ziel: Paare finden, die nicht genau die gleichen Wörter haben, aber immer noch sehr ähnlich sind.
+      * Entweder einen Prediction Threshold setzen oder automatisch suchen mit Substring-Maßen 
+
+-- Main.JohannesDaxenberger - 2019-02-20
+
+%META:FILEATTACHMENT{name="bert-regression-best.zip" attachment="bert-regression-best.zip" attr="" comment="" date="1554244329" size="96173" user="nothvogel" version="1"}%
+%META:FILEATTACHMENT{name="bert.regression.prediction.hist.png" attachment="bert.regression.prediction.hist.png" attr="" comment="" date="1554245137" size="18151" user="nothvogel" version="1"}%
+%META:FILEATTACHMENT{name="bert.regression.best.simple-splits.zip" attachment="bert.regression.best.simple-splits.zip" attr="" comment="" date="1554739910" size="181715" user="nothvogel" version="1"}%

@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="eger" comment="reprev" date="1511262309" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Dependency Parsing as a Sequence Tagging Problem
+*Start Date*: 
+
+*Supervisor*: Dr. Steffen Eger
+
+---++ Current Status
+---+++ 20.11.2017
+   * Ich habe die related work section angefangen und den Teil für transition based parsing bis die Nachteile fertig. Ich habe das ganze erstmal in Google Docs geschrieben, weil man besser kommentieren kann und ich die TudFonts noch nicht auf meinem       Laptop installiert habe. https://docs.google.com/document/d/1l-p8eYNSxZT2KiTYiJjlHqRgZzof2dh4PcMIgHUZt-Y/edit?usp=sharing
+      * SE: once it is in a progressed stage, I can give you feedback on it. (I can give you feedback on written parts 3 times during the supervision). Overall, your related work section should have around 3 pages, I think.
+   *    Zu Graph based dependency Parsing, geht die Literatur bis in die 60er zurück und auf manche Paper die zitiert worden habe ich nicht online gefunden. Es ist auch die Frage, wie weit man zurückgehen soll.
+      * SE: Definitely do NOT go back to the 60s. We're only interested in 2000+ and, for the most part, 2014+.
+   *   Es gibt auch ein paar Joint Ansätze, diese sollte man vielleicht auch erwähenen. https://dl.acm.org/citation.cfm?id=1613784
+      * SE: "joint" has another meaning for us (e.g., "joint POS tagging and dependency parser"). You mean "combined" here, I think. Of course, you can mention them if you think they're relevant.
+
+---+++ 13.11.2017
+   * Ich habe mich ein wenig mit graph based dependency Parsern auseinander gesetzt. Ich habe mich für den Parser von Dat Quoc Nguyen, Mark Dras and Mark Johnson entschieden. Hier ist das Paper dazu: http://www.aclweb.org/anthology/K17-3014
+      * SE: Problem might be: it's a joint POS tagger and parser. To make a fair comparison overall, you would need to disable POS tagging.
+   * Ich habe das Framework bereits installiert und zum laufen bekommen.
+   * Ich habe noch nicht mit der related work section begonnen.
+   * Ich habe versucht mich schon auf den einen Server mit ssh zu verbinden, das hat aber bisher noch nicht geklappt. Ich denke das irgentwas mit dem vpn nicht stimmt, aber ich bin mir nicht sicher.
+
+   *    Du hattest gesagt, dass du noch Doku zu dem arc standard oracle parser für das lstm-parser (https://github.com/clab/lstm-parser, ParserOracleArcStdWithSwap.jar).
+      * SE: See here for a sample input file to this parser: https://github.com/UKPLab/acl2017-neural_end2end_am/tree/master/progs/LSTM-Parser/sample_data
+
+---++ Meeting Minutes
+
+   * 21.11.2017
+      * SE: Code von TK zippen und zuschicken
+      * Selection von Daten: En, Ch, De, [...]
+      * Registration: bring registration formula next week
+      * SE: Outline possible Structure of thesis
+      * Differences between graph- and transition based parsing: look up (papers, google, stack exchange)
+      * Related work: Describe neural parsers in more detail
+      * Port architectures to our servers
+      * If you need GPU, send me an email, and I will forward you the respective pages, if necessary
+      * Don't wait too long with starting to run the experiments: best is if you schedule a small preliminary experiments soon
+
+   * 14.11.2017: 
+      * Check again that the current graph-based parser is good. Additionally/alternatively, include another parser building on Kiperwasser.
+      * May write an email to Miguel Ballesteros concerning the usage of the *jar File in LSTM-Parser
+      * Contact MB regarding problems with SSH
+
+---++ General
+
+   
+   * Server names: desktop-titanx@ukp.informatik.tu-darmstadt.de, etc.
+
+   * Useful linux commands/programs:
+      * ssh, scp, filezilla, nohup (to run a job without being logged in!), ...
+
+   * Information about the servers: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ServerJobs
+      * Every job has to be scheduled in the server before being run
+      * If you need access to other servers, just let us know and we can see what we can do.
+      * Information on how to install the libraries in the GPU server: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/DKPro/GpuServer
+      * Policies and some hints on how to use the GPU server, e.g. important details to pay attention when using tensorflow/keras: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/UKP/GpuUsagePolicy
+
+   * VPN: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/VpnService
+
+
+
+-- Main.SteffenEger - 2017-11-10

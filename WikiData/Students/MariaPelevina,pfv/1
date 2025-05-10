@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="stab" comment="reprev" date="1447230803" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+2015-11-11 Meeting Minutes
+   * @discuss(CS): Working Group with two UKP colleagues. Both will contribute to the thesis.
+      * Chinnappa Guggilla (Topic: Fact checking)
+      * Tobias Falke (Topic: Structured Summaries)
+   * @info(CS): There is another and more recent Semantic Parser which might be an alternative to the Bos parser: http://sivareddy.in/downloads
+      * According to Mirella Lapata they will submit a TACL article by December 1st.
+      * We will get a copy of the submission
+      * Some notes from the correspondence with Lapata
+         * 1. Siva will submit the dependency semantic parsing work to TACL (by December 1). Once we submits it, we can make the paper available to you, have a read see if it is useful at all.
+         * 2. Then he will immediately start working on substituting the google dependency parser with a generic one. At the moment google has to parse sentences, send them the output, and so on. I believe he will spend some time making sure everything works as expected. This may take a month or so, I will be able to tell you more concretely once he starts working on it. Once we have a version, we can share it with you.
+         * 3. He has made available his parser which takes NL as input and computes logical forms using CCG (similar to Bos): http://sivareddy.in/downloads (under GraphParser), you may want to use this until the dependency-to-LF parser is ready.
+   * @info(CS): Another hint from Iryna which might be interesting: http://de.slideshare.net/markogrobelnik/from-texttoreasoning-markogrobelnikswank16apr2014
+
+
+-- Main.ChristianStab - 2015-11-11

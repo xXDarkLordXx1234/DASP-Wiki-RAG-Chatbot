@@ -1,0 +1,29 @@
+%META:TOPICINFO{author="blei" comment="" date="1591178730" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+++ *Bachelor-Thesis: Style Transfer for Creative Text Generation* 
+
+*Start date:* 27.05.2020
+
+*Supervisor:* Kevin Stowe
+
+
+---+++++ Week 27.05 - 03.06.2020
+   * Done:
+      * Code refactoring.
+      * Trained it on the lyric + blogs data.
+      * Shrinked the vocabulary from 75k -> 25k
+      * Read: [[https://paperswithcode.com/paper/multiple-text-style-transfer-by-using-word][Multiple Text Style Transfer by using Word-level Conditional Generative Adversarial Network with Two-Phase Training]]
+      * Started reading: [[https://arxiv.org/abs/1706.03762][Attention Is All You Need]] 
+   * Problems:
+      * Performance is really bad, it takes 24h for 45.000 iterations, not fully utilizing the GPU.
+      * The resulting transfers are bad, due to the low number of iterations.
+   * TODO
+      * Reclone the repository and train it on the original data, to check the performance.
+      * Try to train with fewer tokens.
+      * Build my own transformer model.
+      * Use transfer learning for metaphore style transfer or set the metaphore style as an additional style (N:N transfer).
+      * Train on the metaphore data directly.
+
+
+
+-- Main.TobiasBlei - 2020-06-03

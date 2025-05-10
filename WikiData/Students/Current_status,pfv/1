@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="LizhenQu" date="1186573525" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="LizhenQu"}%
+
+Current running experiment:<br />Put dependency parse tree into mysql. (10% finished, 5 days may be required)
+
+Encounted problems:<br />Programs incapable to large amount of data:<br />    Problems and Mistakes:
+   1   Third party programs can't deal with large amount of data. e.g. JWNL can't release memory of synset lookup. Standford parser is too slow for current application.<br />
+   1 Didn't estimate the CPU, memory disk requirement in advance.
+   1 Underestimate of overhead of implementing the methods in (Snow 2006)
+   1 Third party library errors by dealing with certain data. e.g. Minipar consumes all memory when it encounters a sentence having words repeated several times.
+   1 Have to fix the errors and find methods to handle uncovered details in the papers.
+   1 Overcome the shortage of the third party library. e.g. Minipar can't deal with adverb and verb after punctuation properly.<br />
+A comment on the report on 07.31:<br />The tree model is actually a byproduct of performance tunning.  All
+optimization is actually motivated by improving performance and finding methods for the uncovered details in the papers. The
+detailed description of the tree model may be misleading that I'm
+focusing on optimization.<br />
+
+Current coding status:<br />750K (91 classes ) java source code and a small c++ program for putting parsing results into database.<br />
+
+-- Main.LizhenQu - 08 Aug 2007
+   * [[%ATTACHURL%/Jul31.pdf][Jul31.pdf]]: a work report on 07.31. <br />
+
+%META:FILEATTACHMENT{name="Jul31.pdf" attachment="Jul31.pdf" attr="" comment="a work report on 31,07. The tree model is actually a byproduct of performance tunning. All optimization is actually motivated by improving performance. The detailed description of the tree model may be misleading that I'm focusing on optimization." date="1186572691" path="Jul31.pdf" size="62733" stream="Jul31.pdf" user="Main.LizhenQu" version="1"}%

@@ -1,0 +1,61 @@
+%META:TOPICINFO{author="ShuoYang" date="1334781570" format="1.1" version="7"}%
+%META:TOPICPARENT{name="ShuoYangDariahArbeit"}%
+Application of existing keyphrase extraction infrastructure to new data sets
+
+
+
+
+---++ Problems
+---+++ Gold Keyphrases Inclusion Ratio
+   *  *How to compare? Noun phrase keyphrases cannot match any lemma in document.* <br>
+   For example, "psychosoziale entwicklung" is in Gold Keyphrase. "psychosozialeentwicklung" is in text. They should count as match but in the current comparison method, they don't. <br>
+   In a wider scope, since texts are lemmatized, all gold keyphrases containing more than one token are automatically counted as "not in the text".
+      * Should we lemmatize the gold keyphrases too? But could it change the semantics?
+      * Maybe compare not only lemmas but also other units?
+
+
+---++ Results
+
+---+++ Basic Statistics
+| *Corpus* | *# Documents* | *Tokens / Document* | *# Keyphrases* | *Keyphrases / Document* | *Characters / Keyphrase* | *Tokens / Keyphrase* | *Pearson Correlation r* |
+| Pedocs (German) | 3115 | 14590.50 | 35169 | 11.29 | 13.76 | 1.18 (±0.54) | 0.2342 |
+| Pedocs (All Languages) | 3424 | 14531.57 | 39607 | 11.57 | 13.85 | 1.20 (±0.55) | 0.0946 |
+
+Note: 
+   * Many documents (but not all) have cover page containing metadata of the document and license disclaimers in English. These text are currently included as document text.
+
+---+++ How to run (Pedocs)
+For the first time:
+   1. Extract =pedocs-volltexte.tar.gz= and note the path
+   2. Extract =pedocs_sql.tar.gz= and import =pedocs.sql= into a database
+   3. Check out <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases/de.tudarmstadt.ukp.dkpro.semantics.keyphrasepipelines</verbatim> 
+   4. Open =PedocsPipelines.java= in =src/test/java= , configure the paths and database access info, and run the tests:
+      1. preprocess
+      2. printStatistics
+
+After the first time:
+   1. Open =PedocsPipelines.java= in =src/test/java= and run the test =preprocess=.
+
+---+++ Gold Keyphrases Inclusion Ratio
+What's the percentage of gold keyphrases that are present in the text?
+
+| *Corpus* | *# of Included Gold Keyphrases* | *Total # of Gold Keyphrases* | *% of Included Keyphrases* |
+| Pedocs (German - with lemmatization of texts) | 21100 | 35207 | 0.59931266 |
+| Pedocs (German - without lemmatization of texts) | 9042 | 35207 | 0.25682393 |
+
+Note: 
+   * One document is corrupt and could not be parsed properly: =2010/1472/pdf/SenatsberichtD_A.pdf=
+
+---+++ How to run (Pedocs)
+Assume you already produced Basic Statistics:
+   1. Open =PedocsPipelines.java= in =src/test/java= and run the test =printGoldKeyphrasesInclusionRatio=.
+
+
+---++ URLs
+   * Components usable for the pipeline: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_ng/dkpro/semantics</verbatim>
+   * Experimental projects should be stored in: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases</verbatim>
+
+
+
+
+-- Main.ShuoYang - 2012-04-04

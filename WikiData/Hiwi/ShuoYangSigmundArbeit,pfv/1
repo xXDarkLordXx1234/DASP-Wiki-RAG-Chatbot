@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="ShuoYang" date="1266326313" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ShuoYang - 16 Feb 2010
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Shuo Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| UIMA | 16.02.2010 | 1 | <ul><li>Besprechung mit Benjamin</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 40 | bis Ende Februar |
+<nop>

@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="matuschek" comment="save topic" date="1381743547" format="1.1" reprev="94" version="94"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}% 
+
+---++ Information
+   * [[DkproRepositoryForHiwis][Subversion]]
+
+---++ !HowTo
+   * [[UKP.VpnService][Connect to VPN]]
+
+---++ !Projects
+   * [[PANChallenge][PAN Challenge (OF, Artem, Michael Kutschke)]]
+   * [[PedocsKeyphraseExtraction][Pedocs Keyphrase Extraction]] (Nico, Shuo, Artem)
+   * [[FlawFinder][Flaw Finder]] (OF, Michael Kutschke)
+
+---++ Current
+   * [[AndreasStraninger][Andreas Straninger]] (CLARIN - CB, REC)
+   * AndriyNadolskyy (TM)
+   * [[DieterHofmann][Dieter Hofmann]] (DARIAH-AIB - REC)
+   * Dominik Fischer (CB)
+   * [[ErikLanDoDinh][Erik-Lân Do Dinh]] (LOEWE-NCC - REC)
+   * NadyaSmirnova (!MiM)
+   * RichardSteuer (CB)
+   * RolandKluge (Graduate program KDSL - JEK)
+   * YevgenChebotar (UBY - JEK, !MiM)
+
+---++ Past
+   * AndreasKellner (TZ)
+   * AnouarWork
+   * ArtemUspenskiyWork (BH)
+   * ArtemVovkWork (NE, OF)
+   * AtifWork
+   * [[BenjaminPetry][Benjamin Petry]] (REC)
+   * CarolinDeeg (NE)
+   * ChristianHollubetz (!ChM)
+   * ChristianKirschner (!ChM)
+   * [[ClemensDeusser][Clemens Deusser]] (WS)  
+   * DimitriWork
+   * DongWork
+   * EliaWork
+   * HosseinWork
+   * HristoLulev (BH, MS)
+   * IvanGalkinWork (TZ)
+   * [[JensHaase][Jens Haase]] (REC)
+   * LizhenWork
+   * MarcelAckermann (GS)
+   * MarkoMartin (TZ/NE)
+   * MateuszParzonka (TZ/NE)
+   * MichaelKutschke (OF)
+   * MohsenParisay (SH)
+   * [[NicoErbsHiwi][Nicolai Erbs]] (TZ)
+   * [[ShuoYangDariahArbeit][Shuo Yang]] (REC)
+   * ShuoYangSigmundArbeit (BH)
+   * TobiasHorsmann (SH)
+   * UrsGlaubitt
+   * VladimirSchmidt (JEK/MiM)
+   * ZijadMaksutiWork (!MiM,SH)
+   
+---++ <nop>%WEB% Web Utilities 
+<form action='%SCRIPTURLPATH{"search"}%/%WEB%/'>
+   * <input name="search" type="text" size="22"></input> <INPUT type="submit" }="" search="" value="%MAKETEXT{" class="twikiSubmit" /> - [[WebSearchAdvanced][%MAKETEXT{"advanced search"}%]]
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes
+   * WebStatistics - listing popular topics and top contributors
+   * WebPreferences - preferences of this web
+</form>

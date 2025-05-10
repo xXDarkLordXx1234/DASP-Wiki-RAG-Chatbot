@@ -1,0 +1,93 @@
+%META:TOPICINFO{author="jiang" comment="save topic" date="1522693873" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Bachelor Thesis* : Interactive Concept Linking 
+
+*Supervisor*: Dr Richard Eckart de Castilho
+
+
+*Start Date* : 01-DEZ-2017 
+
+*Mid-Term Presentation Date* : 06-MAR-2017 
+
+*Final Presentation Date* : 22-MAY-2018  
+
+*End Date*: 31-MAY-2018 
+
+
+
+---++++ *11.APR.2018 - 17.APR.2018*
+*To-Dos For Current Week:*
+   * conduct user study 1
+   * evaluate user study 1
+   * continue writing thesis
+
+---++++ *Meeting 10.APR.2018*
+
+
+
+---++++ *03.APR.2018 - 09.APR.2018*
+*To-Dos For Current Week:*
+   * win over researchers for user study 1
+   * improve candidate ranking approach
+      * Learn feature weights with (https://sourceforge.net/p/lemur/wiki/RankLib/) 
+      * show already linked entities
+      * show result from previous query
+   * improve entity selector UI
+      * #202 Search as you type (contd.)
+      * #323 Allow user to select entities not in result list
+      * show extra information on overlay
+
+---++++ *Meeting 03.APR.2018*
+   * Found this Java library with Learning-To-Rank implementations: 
+      * https://sourceforge.net/p/lemur/wiki/RankLib/
+      * Will try to generate a training data file by modifying the Evaluation project.
+
+
+---++++ *27.MAR.2018 - 02.APR.2018*
+*To-Dos For Current Week:* 
+   * improve entity selector UI: 
+      * #205 Search for any concept
+
+   * Thesis
+      * Revise outline and write introductions
+   
+---++++ *Meeting 27.MAR.2018*
+   * discuss User Study on Entity Selector (UI & Ranking)
+      * https://docs.google.com/document/d/1-_5O8VKiwogxKROhTjaXQn4Uaav1lKDCqHFSYtxC3bg/edit?usp=sharing
+   * discuss the problem that the concept feature editor does not update the value.
+      * JCK wants to take a look, but maybe REC can help more
+
+
+
+---++++ *20.MAR.2018 - 26.MAR.2018*
+*To-Dos For Current Week:*
+   * Improve entity selector UI: #202
+   * continue designing user study
+
+---++++ *Meeting 20.MAR.2018*
+   * No meeting, JCK was sick
+
+
+---++++ *06.MAR.2018 - 19.MAR.2018*
+*To-Dos For Current Week:*
+   * Integrate disambiguation feature Issue #16
+   * commit uncommited changes to Evaluation module 
+   * start designing user study for entity selector
+
+---++++ *Meeting 2018*
+
+---++++ *27.FEB.2018 - 06.MAR.2018*
+
+*To-Dos For Current Week:*
+   * Prepare Mid-Term-Presentation
+
+---++++ *Meeting 27.FEB.2018*
+   * Richard will return on 19th of April.
+   * Until then, meetings with Jan.
+
+---++++ *13.FEB.2018 - 26.FEB.2018*
+
+*To-Dos For Current Week:*
+   * Write Outline for Thesis
+   * Do Research on Related Work
+   * Prepare Mid-Term-Presentation

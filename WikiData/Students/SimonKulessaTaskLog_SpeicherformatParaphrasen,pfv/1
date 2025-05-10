@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212843151" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="SimonKulessaTaskLog"}%
+*Komponente:*
+<br>Paraphrasen Kandidaten Extraktion 
+
+*Beschreibung:*
+<br>Abspeicherformat der Paraphrasen (Kandidaten)-Cluster
+
+*Bisherige Lösung:*
+<br>Verwendung eines eigenen Formats ...
+
+<verbatim>
+<ArtikelName>{
+Hier folgt nun eine Liste mit den Paraphrasen des Clusters
+{ID} ... Extrahierter Satz ...
+}>>>
+</verbatim>
+
+
+*Alternativen:*
+<br>Verwendung eines XML Formats ...
+<verbatim>
+<cluster>
+  <context></context>
+  <candidate>
+    <revisionid></revisionid>
+    <sentence></sentence>
+  </candidate>
+  ...
+<cluster>
+</verbatim> 
+
+*Anmerkungen:*
+   * Die ID beschreibt derzeit eine interne ID meines Programmes und ist nicht die Revisions ID der Wikipedia.
+
+   * Existiert ein allgemein verwendetes Format für das Abspeichern von Paraphrasen?
+
+-- Main.SimonKulessa - 07 Jun 2008

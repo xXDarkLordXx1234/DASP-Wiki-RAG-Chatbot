@@ -1,0 +1,165 @@
+%META:TOPICINFO{author="MarkoMartin" date="1281290863" format="1.1" reprev="13" version="13"}%
+%META:TOPICPARENT{name="MarkoMartin"}%
+%TOC%
+
+---++07.08.2010 - 08.08.2010
+   * C99 component included to Eclipse project and evaluation pipeline
+   * component consumer.ChoiFormatWriter created
+      * Writes document text in Choi's format to an output file: Every sentence is written to a new line; every segment is terminated by a line containing "==========".
+      * test added
+   * measure.MalioutovMeasure added
+      * wraps Malioutov's evaluation component into a Measure class
+   * consumer.DefaultSegmentationEvaluator adapted for optional usage of Malioutov's evaluation component additionally to my P<sub>k</sub> and WindowDiff implementations
+   * evaluation pipeline executed on Choi's corpus with TextTile and C99, with my evaluation components and Malioutov's implementation
+      * <a href="%ATTACHURL%/Evaluation_Choi.pdf">results</a>
+
+---++05.08.2010
+   * further literature search (BibTeX database)
+   * thesis chapter "Related Work" begun
+
+---++03.08.2010 - 04.08.2010
+   * LaTeX template for thesis installed and configured
+   * revision of possibly useful evaluation corpora (All named entries are contained in the BibTeX database.)
+      * Eisenstein2009
+         * request mail prepared
+      * Ferret2007
+      * Galley2003
+         * request mail prepared
+      * Malioutov2006
+         * obtained from NE
+      * Marathe2010
+         * request mail prepared
+      * Purver2006
+         * also uses Galley's corpus
+   * Malioutov's evaluation component (P<sub>k</sub>, WindowDiff) analyzed
+      * works on tokens (not on sentences)
+      * parameter <i>k</i> slightly different implemented than defined by Beeferman
+         * definition: consider segment assignments of tokens which span a range of k + 1 tokens
+         * Malioutov's implementation: considers segment assignments of tokens which span a range of k + 2 tokens
+
+---++30.07.2010 - 01.08.2010
+   * Choi data set transformed to necessary format: corpus/choi (SVN repository)
+   * pipelines.ChoiEvaluation added
+      * evaluates baseline algorithms (no segments, segments everywhere) and TextTile on the Choi data set
+      * <a href="%ATTACHURL%/Evaluation_Choi.pdf">results</a>
+
+---++29.07.2010
+   * thesis registration handed in at UKP office
+      * will be deposited (stamped and signed) in TZ's box
+
+---++28.07.2010
+   * consumer.DefaultSegmentationEvaluator added
+      * UIMA component for evaluating a given segmentation with respect to gold standard segments
+      * uses the P<sub>k</sub> and WindowDiff metrics
+      * prints results in a table to an output file
+   * annotator.DegeneratedSegmenter added for testing purposes
+      * a "segmenter" which adds no segment boundaries or a boundary wherever possible
+   * reader.ChoiDataSetReader added
+      * reads original files of the Choi dataset and adds segment annotations as defined in these files
+   * pipelines.Evaluation added: generic pipeline for evaluation of a segmentation algorithm
+      * configurable with concrete corpus directories and segmenter component to be used
+   * pipelines.ChoiDataSetCorpusGeneration added
+      * transforms the Choi data set to the necessary format
+
+---++27.07.2010
+   * WikipediaIdFileReader added for reading articles with certain IDs (which are content of a file)
+      * This can be used for reading all featured articles with the ID file corpus/wikipedia/IDs.txt (SVN repository).
+   * WikipediaSegmentationReader: parameter PARAM_SEGMENT_DELIMITER added for defining the string to be inserted between segments
+   * filtering of line delimiters added to corpus generation (util.Wikipedia)
+   * new Wikipedia corpus generated for section granularity 1, i.e. main sections constitute segments
+      * Format is the same as mentioned below (26.07.2010).
+      * The text files of the old corpus (with line breaks) have been replaced by the new ones without line breaks.
+
+---++26.07.2010
+   * Corpus generation succeeded
+      * Runtime: ca. 37 hours, 20 minutes
+      * saved in SVN at https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/m_martin/trunk/GraphBasedTextSegmentation/corpus/wikipedia
+   * Corpus statistics (to be extended)
+      * Number of texts: 1244
+      * Corpus size (incl. meta data for segmentation): 75.8 MB
+      * Corpus size (w/o meta data): 64.2 MB
+   * Corpus format
+      * The folder "text" contains a file for each text.
+         * The filenames have the format "ID - TITLE" where ID is the Wikipedia article ID and TITLE is its URL-encoded title.
+         * Texts are encoded in UTF-8 and using unix-style line delimiters.
+      * The folder "segments/3" contains the segment offsets for each file.
+         * The filenames equal those of the "text" folder.
+         * Each file contains a number followed by a line delimiter for each segment boundary. The number denotes the boundary offset, i.e., the number of characters before the boundary.
+
+---++23.07.2010
+   * Corpus generation initiated in TK pool with parameters:
+      * SECTION_GRANULARITY = 3: Sections up to level 3 are separated into different segments, more fine-grained sections are put together into one segment.
+      * SPLIT_PARAGRAPHS = false: Paragraphs are not split into separate segments.
+      * Only featured articles are processed.
+   * tests for the P<sub>k</sub> measure implemented
+   * WindowDiff measure implemented (de.tudarmstadt.ukp.dkpro.semantics.segmentation.evaluation.measure.WindowDiff)
+      * not yet wrapped into UIMA component
+   * tests for the WindowDiff measure implemented
+
+---++22.07.2010
+   * Corpus generation generates StackOverflowError in some rare cases of very long expressions to be filtered out from Wikipedia documents.
+      * => Solution: Stack size set to 2 MB.
+   * UIMA logging configured
+   * P<sub>k</sub> measure implemented (de.tudarmstadt.ukp.dkpro.semantics.segmentation.evaluation.measure.Pk)
+      * not yet wrapped into UIMA component
+
+---++21.07.2010
+   * corpus generation pipeline implemented (CorpusGeneration.java)
+   * some optimization of wikipedia document filters (in order to leave out irrelevant parts of Wikipedia documents in the corpus)
+      * de.tudarmstadt.ukp.dkpro.semantics.segmentation.util.Wikipedia uses regular expressions for filtering.
+      * Tests for filtering added (WikipediaTest).
+
+---++11.07.2010 - 14.07.2010
+   * some generic (non-UIMA) components for evaluation and output of evaluation results implemented, amongst others:
+      * Evaluator: Coordinates and accumulates evaluation results. Can handle multiple document groups and measures.
+      * EvaluationPrinter: Prints results of an Evaluator either in table view or in a semicolon-separated view.
+
+---++08.07.2010
+   * PlainTextWriter, AnnotationOffsetWriter, and SegmentationEvaluator now obtain file names from the document URI in the meta data.
+   * another update of UIMA pipeline for corpus generation:<br>
+     <img src="%ATTACHURL%/Pipeline_-_Corpus_Generation.png"/>
+      * The WikipediaTemplateUsingArticlesReader reads all articles which refer a template that can be specified with the <code>PARAM_TEMPLATE_NAME</code> parameter; in this case, the template name "featured article" will be used.
+      * PARAM_SECTION_GRANULARITY constitutes the level on which sections are divided into multiple segments. E.g., a value of 1 indicates that only top-level sections are separated; 2 would cause also sections on the second level to be separated etc.
+      * PARAM_SPLIT_PARAGRAPHS constitutes whether paragraphs are considered as separate segments.
+      * PARAM_FILTERED can be set to true in order to filter out page data which cannot be reasonably used for text segmentation, e.g., sections with only references, short image descriptions etc.
+   * WikipediaTemplateUsingArticlesReader implemented and unit-tested
+      * WikipediaArticleSegmenter implemented as separate testable (non-UIMA) component which separates a Wikipedia page into segments, according to the user-defined parameters (granularity, paragraph splitting)
+      * Searching featured articles is very slow due to the approach of iterating through all Wikipedia pages.
+         * *NE:* You may run the corpus generation process on one of our servers or any of the pc in the students lab?
+            * *MM:* Yes, this would be helpful and probably much faster(?)... I will likely do this the week after next.
+
+---++02.07.2010 - 04.07.2010
+   * update of UIMA pipeline concepts:
+      * corpus generation:<br><img src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/viewfile/Students/MarkoMartinWorkflow?filename=Pipeline_-_Corpus_Generation.png;rev=2"/>
+      * evaluation:<br><img src="%ATTACHURL%/Pipeline_-_Evaluation.png"/>
+   * implementation of PlainTextWriter, AnnotationOffsetWriter, and abstract SegmentationEvaluator
+      * some simple unit tests added
+   * tried to connect the JWPL database (with VPN connection)
+      * error: java.sql.SQLException: Access denied for user 'm_martin'@'130.83.163.244' (using password: YES)
+      * _05.07.2010:_ solved with correct user name and password
+   * implementation of WikipediaCategoryReader initiated
+      * This component is to receive documents of a certain category and annotate them with segment annotations on a certain level of granularity.
+   * all necessary libraries added to Eclipse project and saved in SVN repository (Project should now be compilable on other systems.)
+      * URL: https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/m_martin/trunk/GraphBasedTextSegmentation
+
+---++28.06.2010
+   * first ideas for UIMA pipelines
+      * corpus generation:<br><img src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/viewfile/Students/MarkoMartinWorkflow?filename=Pipeline_-_Corpus_Generation.png;rev=1"/>
+      * evaluation:<br><img src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/viewfile/Students/MarkoMartinWorkflow?filename=Pipeline_-_Evaluation.png;rev=1"/>
+
+---++26.06.2010
+   * new DKPro libraries from NE imported
+      * => solves problem with AnnotationWriter
+   * VPN connection tested with login data as specified by TZ
+      * => failed
+   * Wiki pages Workflow and Questions set up
+
+---++24.06.2010
+   * mail to Malioutov and Barzilay concerning P<sub>k</sub> and WindowDiff implementation
+   * JWPL library downloaded and imported
+
+-- Main.MarkoMartin - 26 Jun 2010
+
+%META:FILEATTACHMENT{name="Pipeline_-_Corpus_Generation.png" attachment="Pipeline_-_Corpus_Generation.png" attr="" comment="UIMA pipeline for corpus generation" date="1278620379" path="Pipeline - Corpus Generation.png" size="22535" stream="Pipeline - Corpus Generation.png" tmpFilename="/var/tmp/CGItemp24350" user="MarkoMartin" version="3"}%
+%META:FILEATTACHMENT{name="Pipeline_-_Evaluation.png" attachment="Pipeline_-_Evaluation.png" attr="" comment="UIMA pipeline for evaluation" date="1278269291" path="Pipeline - Evaluation.png" size="23436" stream="Pipeline - Evaluation.png" tmpFilename="/var/tmp/CGItemp23627" user="MarkoMartin" version="2"}%
+%META:FILEATTACHMENT{name="Evaluation_Choi.pdf" attachment="Evaluation_Choi.pdf" attr="" comment="Evaluation of baseline algorithms, TextTile and C99 on the Choi data set with P<sub>k</sub> and WindowDiff" date="1281290862" path="Evaluation Choi.pdf" size="453443" stream="Evaluation Choi.pdf" tmpFilename="/var/tmp/CGItemp22911" user="MarkoMartin" version="2"}%

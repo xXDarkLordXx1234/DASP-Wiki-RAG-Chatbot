@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="NicoErbs" date="1244813016" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+---+ Resources
+
+   * Moodle plattform for department of mathematics: http://fb04267.mathematik.tu-darmstadt.de/moodle/
+   * German opinion lexicon: 
+      * [[%ATTACHURL%/negativeSentimentComponentLexicon.txt][negative polarity]]
+      * [[%ATTACHURL%/positiveSentimentComponentLexicon.txt][positive polarity]]
+   * [[%ATTACHURL%/tazexample.xml][TAZ example file]]
+   * TAZ corpus files
+      * <span style="color: #0000ff; -webkit-text-decorations-in-effect: underline" class="Apple-style-span"><span style="color: blue; text-decoration: underline">[[%ATTACHURL%/2000evaluationSet.rar][approx. 2000 sentences from TAZ corpus for evaluation as single documents in rar-file]]</span></span>
+      * <span style="color: #0000ff; -webkit-text-decorations-in-effect: underline" class="Apple-style-span"><span style="color: blue; text-decoration: underline">[[%ATTACHURL%/evaluationDataSet.txt][approx. 2000 sentences from TAZ corpus for evaluation as one text-file]]</span></span>
+      * <span style="color: #0000ff; -webkit-text-decorations-in-effect: underline" class="Apple-style-span"><span style="color: blue; text-decoration: underline"><span style="color: #000000; -webkit-text-decorations-in-effect: none" class="Apple-style-span">[[%ATTACHURL%/subjectiveDataSet.rar][approx. 180.000 subjective sentences from TAZ corpus for bootstrapping]]</span></span></span>
+      * <span style="color: #0000ff; -webkit-text-decorations-in-effect: underline" class="Apple-style-span"><span style="color: blue; text-decoration: underline"><span style="color: #000000; -webkit-text-decorations-in-effect: none" class="Apple-style-span"><span style="color: #000000; -webkit-text-decorations-in-effect: none" class="Apple-style-span">[[%ATTACHURL%/NicoElifPilotManualAnnotation_SentenceLevelSubjectivity_level.xml][Result of annotation test with mmax]]</span></span></span></span>
+
+-- Main.NicoErbs - 14 May 2009
+
+%META:FILEATTACHMENT{name="negativeSentimentComponentLexicon.txt" attachment="negativeSentimentComponentLexicon.txt" attr="" comment="German opinon lexicon, negative polarity" date="1242654809" path="negativeSentimentComponentLexicon.txt" size="12277" stream="negativeSentimentComponentLexicon.txt" tmpFilename="/var/tmp/CGItemp41838" user="CigdemToprak" version="1"}%
+%META:FILEATTACHMENT{name="positiveSentimentComponentLexicon.txt" attachment="positiveSentimentComponentLexicon.txt" attr="" comment="German opinon lexicon, positive polarity" date="1242654836" path="positiveSentimentComponentLexicon.txt" size="12901" stream="positiveSentimentComponentLexicon.txt" tmpFilename="/var/tmp/CGItemp41828" user="CigdemToprak" version="1"}%
+%META:FILEATTACHMENT{name="tazexample.xml" attachment="tazexample.xml" attr="" comment="" date="1243426610" path="tazexample.xml" size="4792" stream="tazexample.xml" tmpFilename="/var/tmp/CGItemp42324" user="CigdemToprak" version="3"}%
+%META:FILEATTACHMENT{name="outputBoth.txt" attachment="outputBoth.txt" attr="" comment="Both corpora (Meinung and Wirtschaft/Umwelt) combined" date="1243768851" path="outputBoth.txt" size="282110" stream="outputBoth.txt" tmpFilename="/var/tmp/CGItemp45111" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="outputObjective.txt" attachment="outputObjective.txt" attr="" comment="Corpus with approx. 1000 sentences from TAZ, Wirtschaft/Umwelt, Agentur, only medium length" date="1243768896" path="outputObjective.txt" size="136830" stream="outputObjective.txt" tmpFilename="/var/tmp/CGItemp45099" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="outputSubjective.txt" attachment="outputSubjective.txt" attr="" comment="Corpus with approx. 1000 words from TAZ, Meinung, Kommentar, only medium length" date="1243768920" path="outputSubjective.txt" size="145280" stream="outputSubjective.txt" tmpFilename="/var/tmp/CGItemp45199" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="2000evaluationSet.rar" attachment="2000evaluationSet.rar" attr="" comment="2000EvaluationDataSet" date="1244502682" path="2000evaluationSet.rar" size="99184" stream="2000evaluationSet.rar" tmpFilename="/var/tmp/CGItemp49864" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="178735_objective.rar" attachment="178735_objective.rar" attr="" comment="objective data set" date="1244560453" path="objectiveDataSet.rar" size="12907166" stream="objectiveDataSet.rar" tmpFilename="/var/tmp/CGItemp59441" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="NicoElifPilotManualAnnotation_SentenceLevelSubjectivity_level.xml" attachment="NicoElifPilotManualAnnotation_SentenceLevelSubjectivity_level.xml" attr="" comment="Result for annotation test" date="1244810653" path="NicoElifPilotManualAnnotation_SentenceLevelSubjectivity_level.xml" size="12672" stream="NicoElifPilotManualAnnotation_SentenceLevelSubjectivity_level.xml" tmpFilename="/var/tmp/CGItemp59861" user="NicoErbs" version="2"}%
+%META:FILEATTACHMENT{name="subjectiveDataSet.rar" attachment="subjectiveDataSet.rar" attr="" comment="subjective data set" date="1244561287" path="subjectiveDataSet.rar" size="11484888" stream="subjectiveDataSet.rar" tmpFilename="/var/tmp/CGItemp55904" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="evaluationDataSet.txt" attachment="evaluationDataSet.txt" attr="" comment="Evaluation data set in only one text file" date="1244812775" path="evaluationDataSet.txt" size="298748" stream="evaluationDataSet.txt" tmpFilename="/var/tmp/CGItemp59933" user="NicoErbs" version="1"}%

@@ -1,0 +1,41 @@
+%META:TOPICINFO{author="hanselowski" comment="save topic" date="1485451454" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Meeting 2017-1-26
+   * TODO:
+   * First corpus:
+      * Origin to be included in the corpus
+      * Compute statistics for:
+         * Claims with labels: true, false, mostly false, mostly true, mixed, unproven, ...
+         * How many claims are there with evidence
+      * Share program with Andreas once the corpus is constructed
+   * Second corpus:
+      * Statistics:
+         * For how many claims the original documents (following the links) cannot be recovered 
+      * Collect information from crawling experiments to request a server
+         * Time to dowload a webpage
+         * How many webpages need to be downloaded 
+         * CPU power, number of cores, memory required
+         * ...
+      * Document all errors which are encountered while crawling snopes.com for the discussion later on with Chris
+
+---++ Meeting 2016-12-14
+   * Corpus statistics so far
+      * Number claims: 9250
+      * Categories: 41
+      * Claim per category approx.: 225
+      * ...
+   * Two 3 credits lectures to be completed --> 2 exams in February
+   * TODO:
+      * Additional file with statistics: Time, number webpages, number of false, true, mixture, ...
+      * Information to be extracted: CSV file: category, claim, url, headline, thruthiness, origin, evidence, links to original documents
+      * Setup meeting with Chris 
+      * Clarify program storage
+      * Discuss problems with Chris
+   * Software libraries: crawler4j, parsing jsoup
+   * Emergent webpage: https://www.aclweb.org/anthology/N/N16/N16-1138.pdf
+
+
+
+
+
+-- Main.AndreasHanselowski - 2016-12-06

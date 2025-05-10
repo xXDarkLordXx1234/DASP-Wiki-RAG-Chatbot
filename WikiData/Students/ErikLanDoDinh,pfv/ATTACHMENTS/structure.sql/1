@@ -1,0 +1,146 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               5.5.27 - MySQL Community Server (GPL)
+-- Server OS:                    Win64
+-- HeidiSQL version:             7.0.0.4183
+-- Date/time:                    2013-06-18 01:59:30
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Dumping database structure for diplom
+CREATE DATABASE IF NOT EXISTS `diplom` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `diplom`;
+
+
+-- Dumping structure for table diplom.candidates
+CREATE TABLE IF NOT EXISTS `candidates` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `documentId` varchar(215) NOT NULL,
+  `sBeginOffset` int(9) NOT NULL COMMENT 'sentence begin',
+  `sEndOffset` int(9) NOT NULL COMMENT 'sentence end',
+  `coveredText` text,
+  `c1begin` int(9) NOT NULL COMMENT 'context 1 begin',
+  `c1end` int(9) NOT NULL COMMENT 'context 1 end',
+  `c2begin` int(9) NOT NULL COMMENT 'context 2 begin',
+  `c2end` int(9) NOT NULL COMMENT 'context 2 end',
+  `c3begin` int(9) NOT NULL COMMENT 'context 3 begin',
+  `c3end` int(9) NOT NULL COMMENT 'context 3 end',
+  `f1` varchar(255) NOT NULL COMMENT 'focus 1 lemma',
+  `f2` varchar(255) NOT NULL COMMENT 'focus 2 lemma',
+  `candidateType` varchar(31) NOT NULL COMMENT 'candidate type',
+  `contextSize` tinyint(1) NOT NULL,
+  `withOneFocus` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unquieId1` (`documentId`,`sBeginOffset`,`sEndOffset`,`c1begin`,`c2begin`,`c2end`,`c3end`,`candidateType`,`contextSize`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table diplom.candidates: 0 rows
+/*!40000 ALTER TABLE `candidates` DISABLE KEYS */;
+/*!40000 ALTER TABLE `candidates` ENABLE KEYS */;
+
+
+-- Dumping structure for table diplom.documents
+CREATE TABLE IF NOT EXISTS `documents` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `documentId` varchar(255) DEFAULT NULL,
+  `year` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `documentId` (`documentId`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table diplom.documents: 6 rows
+/*!40000 ALTER TABLE `documents` DISABLE KEYS */;
+INSERT INTO `documents` (`id`, `documentId`, `year`) VALUES
+	(2, 'hegel-grundlinien-der-philosophie-des-rechts-einleitung-annotiert-final.docx', 1820),
+	(3, 'hegel-grundlinien-der-philosophie-des-rechts-vorrede-annotiert-final.docx', 1820),
+	(4, 'Helmholtz-Ueber-die-Erhaltung-der-Kraft-Final.docx', 1847),
+	(5, 'kant-was-ist-aufklaerung-annotiert-110804.docx', 1784),
+	(6, 'Nietzsche-Vom-Nutzen-und-Nachteil-1-5-Final.docx', 1874),
+	(7, 'weber-wissenschaft-als-beruf-wikisource-annotiert-110804.docx', 1919);
+/*!40000 ALTER TABLE `documents` ENABLE KEYS */;
+
+
+-- Dumping structure for table diplom.gbn_frequencies
+CREATE TABLE IF NOT EXISTS `gbn_frequencies` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `ngram` varchar(319) DEFAULT NULL,
+  `years` text,
+  `matchCounts` text,
+  `volumeCounts` text,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ngram` (`ngram`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- Dumping data for table diplom.gbn_frequencies: 0 rows
+/*!40000 ALTER TABLE `gbn_frequencies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gbn_frequencies` ENABLE KEYS */;
+
+
+-- Dumping structure for table diplom.gold
+CREATE TABLE IF NOT EXISTS `gold` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `documentId` varchar(256) DEFAULT NULL,
+  `sBeginOffset` int(11) DEFAULT NULL,
+  `sEndOffset` int(11) DEFAULT NULL,
+  `coveredText` text,
+  `fBeginOffset` int(11) DEFAULT NULL,
+  `fEndOffset` int(11) DEFAULT NULL,
+  `comment` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `documentId_beginOffset_endOffset` (`documentId`,`sBeginOffset`,`sEndOffset`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table diplom.gold: 0 rows
+/*!40000 ALTER TABLE `gold` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gold` ENABLE KEYS */;
+
+
+-- Dumping structure for table diplom.selpref_lemma
+CREATE TABLE IF NOT EXISTS `selpref_lemma` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `head` varchar(160) NOT NULL,
+  `label` varchar(160) DEFAULT NULL,
+  `count` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `head_label` (`head`,`label`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table diplom.selpref_lemma: 0 rows
+/*!40000 ALTER TABLE `selpref_lemma` DISABLE KEYS */;
+/*!40000 ALTER TABLE `selpref_lemma` ENABLE KEYS */;
+
+
+-- Dumping structure for table diplom.selpref_lemma_verbs_dewac
+CREATE TABLE IF NOT EXISTS `selpref_lemma_verbs_dewac` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `head` varchar(160) COLLATE utf8_bin NOT NULL,
+  `label` varchar(160) COLLATE utf8_bin DEFAULT NULL,
+  `count` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `head_label` (`head`,`label`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table diplom.selpref_lemma_verbs_dewac: 0 rows
+/*!40000 ALTER TABLE `selpref_lemma_verbs_dewac` DISABLE KEYS */;
+/*!40000 ALTER TABLE `selpref_lemma_verbs_dewac` ENABLE KEYS */;
+
+
+-- Dumping structure for table diplom.vectors
+CREATE TABLE IF NOT EXISTS `vectors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `candidateId` int(11) NOT NULL,
+  `vector` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `candidateId` (`candidateId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table diplom.vectors: 0 rows
+/*!40000 ALTER TABLE `vectors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vectors` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

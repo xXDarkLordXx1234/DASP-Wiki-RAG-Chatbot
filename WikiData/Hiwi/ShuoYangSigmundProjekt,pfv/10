@@ -1,0 +1,158 @@
+%META:TOPICINFO{author="ShuoYang" date="1299838635" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ All things Sigmund related
+
+
+---++ Sigmund Interfaces
+
+---+++ { Vocal Coach, Frontend } to Search Controller
+Search controller is handed search requests
+
+   * Start search: =ExtendSearch= method (defined?)
+   * Extend search: =ExtendSearch= method (defined?)
+   * End search: =StopSearch= method
+
+---+++ Search Controller to Frontend
+Search controller returns search result documents descriptions, including how to obtain the document. If Frontend is interested, it can then progress to obtain the document.
+
+   * Result is sent in < resultList > . Contains "the results for the most confident variant"
+   * Where and how to send alternative results?
+ 
+---+++ Search Controller to Search Modules
+Search controller searches through Search modules
+
+---++++ To CRM Search Module
+
+---+++++ Request =StartSearch= (=SIGGSStartSearchRequest=)
+   * Input: 
+      1. inputXml ( < =InputValues= > )  
+      2. resultCount (int)
+   * Output: XML < =ResultSet= >
+
+   * Conflict? "WordA, WordB -> A OR B.", "Currently the web service can't handle input like A OR B ..."
+   * =startSearch=, =startAddressSearch=, =giveFeedback=. (tablename is the document type: Word, PDF, email, contact, ...)
+
+---++++ To Semantic Search Module
+   * Takes requests to perform the desired action. Requests are mostly handled by =execute(ExecuteRequest)=
+   * Only =LoginRequest= is handled by =executeUnauthenticated(ExecuteUnauthenticatedRequest)=
+   * Availability of the web service can be tested using =echo(EchoRequest)=
+   * =LoginRequest=, =LogoutRequest=, =SearchStringRequest=
+
+---+++ Search Modules to Search Controller
+Search module returns search result back to Search controller
+   * From CRM Search Module: =<= =resultList= =>= or =<= =ResultSet= =>= ? (startSearch =ResultSet= =>=)
+   * From Semantic Search Module: =<= =ResultSet= =>=
+
+
+---++ Projekt Zustand
+
+---+++ Existierende Projekte
+
+=de.tudarmstadt.ukp.sigmund.searcher=
+   * Searches a given string in the index with Lucene
+   * Convert the result hitlist to xml
+
+
+---++ Misc
+
+CAS uses JAXB. Their web service is document based, instead of RPC-based. It can be seen from the generated request types,
+and the way a request is sent. 
+
+
+---++ Kapitel 19 Verteilte Programmierung / Java ist auch eine Insel (8. Auflage)
+[[http://openbook.galileocomputing.de/javainsel8/javainsel_19_007.htm#mjb4dfc636ba13cc04d06f489cade6978b Buch]]
+
+Zugriff entfernter Ressourcen / Aufruf entfernter Methoden:<br>
+über HTTP:<br>
+   * + Verbreitet
+   * + idR keine Beschränkungen von Firewalls
+
+SOAP - Simple Object Access Protocol<br>
+bietet einfachen Zugriff auf Server-Ressourcen mit HTTP und XML
+   * + Entfernter Methodenaufruf, dessen Parameter und Ergebnisse in XML kodiert
+   * + Programmiersprache-neutral
+   * - XML-Overhead (Dateigröße, Benötigen von Parsen)
+   * - Potentielle Sicherheitsprobleme (Berechtigung, Übertragung in Klartext - SSL to the rescue)
+
+Implementierung:<br>
+Mit Java 6 kommt JAX-WS 2.0 - Java API für XML-Based Web Services
+
+package =javax.xml.ws= : ([[http://download.oracle.com/javase/6/docs/api/javax/xml/ws/package-summary.html javadoc]], [[http://www.w3.org/TR/ws-gloss/ W3C Glossary]])
+   * =Endpoint= : An association between a *binding* and a *network address*, that may be used to communicate with an instance of a service (Glossary). Always tied to one *binding* and one *implementor* (javadoc)
+   * =Binding=: Specifies the protocol and data format to be used in transmitting messages defined by the associated interface (Glossary)
+   * =Implementor=: a java class annotated with @WebService specifying remote methods and binding information.
+   * =Executor=: executes submitted Runnable tasks, may be set on the endpoint in order to gain better control over the threads used to dispatch incoming requests (for example, pooling)
+
+
+   1. One creates Web Services and runs it
+   1. One generates Stubs from the WSDL file
+   1. One calls the Stubs and get results from remote web service
+ 
+
+---++ http://java.sun.com/developer/technicalArticles/xml/webservices/
+
+SOAP client: creates XML document which has the information needed for remote method invocation<br>
+SOAP server:listens for SOAP messages, acts as a distributor and interpreter of SOAP documents
+
+
+----++ Anhang
+----+++ XML-Strukturen
+
+----++++ =ResultSet=
+CheckArchiveFilesResponse.ResultXML vom Typ String enthält die übliche XML-Struktur mit den Metadaten:
+<verbatim>
+<ResultSet>
+    <Data>
+        <GUID>[GUID des Datensatzes]</GUID>
+        <FILENAME>[Dateiname, wie er als Parameter im Request angegeben wird]</FILENAME>
+        <KEYWORD>[Stichwort]</KEYWORD>
+        <NUMBER>[Nummer]</NUMBER>
+        <TYPE>["DOCUMENT" für Dokumente und -versionen, "EMAIL" für E-Mails]</TYPE>
+        <NOTES2>[Notizen des Dokuments als unformatierter Text, bei E-Mails nicht verwendet]</NOTES2>
+        <NOTES2>[Notizen der E-Mail als unformatierter Text, bei Dokumenten nicht verwendet]</NOTES2>
+    </Data>
+    <Data>
+        ...
+    </Data>
+</ResultSet>
+</verbatim>
+
+
+----++++ =InputValues=
+Ein Beispiel:
+<verbatim>
+<sticky>
+%CODE{lang="xml" [num="10"]}% 
+
+<?xml version="1.0"?>
+<InputValues>
+	<Searchwords>uk</Searchwords>
+	<UserID>1</UserID>
+	<SessionID>1</SessionID>
+	<Notes2>
+		<WithNotes2>true</WithNotes2>
+	</Notes2>
+	<LinkCount>
+		<WithLinkCount>true</WithLinkCount>
+	</LinkCount>
+	<IndexingService>
+		<WithIndexingService>true</WithIndexingService>
+	</IndexingService>
+	<StandardRestrictions>
+		<WithStandardRestrictions>true</WithStandardRestrictions>
+	</StandardRestrictions>
+	<!-- <TablePreferences>
+		<table tablename=...>
+			<percent>INTEGER</percent>
+		</table>
+		<table tablename=...>
+			<percent>INTEGER</percent>
+		</table>
+	</TablePreferences>  -->
+</InputValues>
+
+%ENDCODE%
+</sticky>
+</verbatim>
+
+-- Main.ShuoYang - 2011-03-11

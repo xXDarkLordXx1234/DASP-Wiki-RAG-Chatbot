@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---++ Problems
+   * *Numbers in keyphrases are incorrectly lemmatized* (not critical).
+      * TreeTager lemmatizes numbers in keyphrases to special token @card@. For example, both "Schuljahr 01" and "Schuljahr 02" are lemmatized to "Schuljahr @card@".
+      * Nonetheless the impact of this should be small. Only keyphrases in 77 of the 3114 documents are affected, and from each only a small percentage of keyphrases. Therefore we would first ignore this problem.
+
+
+---+++ Resolved
+   * *Problem:* How to compare? Noun phrase keyphrases cannot match any lemma in document.
+      * For example, "psychosoziale entwicklung" is in Gold Keyphrase. "psychosozialeentwicklung" is in text. They should count as match but in the current comparison method, they don't. 
+      * In a wider scope, since texts are lemmatized, all gold keyphrases containing more than one token are automatically counted as "not in the text".
+      * Should we lemmatize the gold keyphrases too? But could it change the semantics?
+      * Maybe compare not only lemmas but also other units?
+   * *Solution:* 
+      * Lemmatize the gold keyphrases too. After lemmatization, concatenate all lemmas of the text, and concatenate all lemmatized tokens of each keyphrase, then compare the concatenated text with each concatenated keyphrase.
+      * Compare only lemmas with lemmas, non-lemmas with non-lemmas; don't mix.
+
+
+-- Main.NicolaiErbs - 2012-06-22

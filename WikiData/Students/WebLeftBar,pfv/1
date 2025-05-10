@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="ArthurClemens" date="1092635522" format="1.1" version="1"}%
+   * <b>%INCLUDINGWEB% Web</b>
+   * [[%HOMETOPIC%][%INCLUDINGWEB% Web Home]]
+   * [[WebChanges][Changes]] 
+   * [[WebIndex][Index]]
+   * [[WebSearch][Search]]
+---
+   * *Webs*
+%WEBLIST{"      * [[$name.%HOMETOPIC%][$name]]" separator=""}%
+<div class="twikiLeftBarPersonal">
+%INCLUDE{"%MAINWEB%.%WIKINAME%LeftBar" warn="<a href=\"%SCRIPTURLPATH%/edit%SCRIPTSUFFIX%/%MAINWEB%/%WIKINAME%LeftBar?templatetopic=%TWIKIWEB%.WebLeftBarPersonalTemplate\">Create</a> personal sidebar"}%
+</div>

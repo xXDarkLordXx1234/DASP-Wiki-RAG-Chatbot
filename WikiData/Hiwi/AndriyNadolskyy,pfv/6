@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="AndriyNadolskyy" date="1315956569" format="1.1" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Work
+
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Andriy Aufgaben* |
+| *Aufgabe* | *% done* |
+|Übungsblätter erstellen| 67|
+| | |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Andriy Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Das 1. Übungsblatt erstellen | 10.09.2011 | 9.5 | <ul><li> fertig </li></ul> |
+| Das 2. Übungsblatt erstellen | 12.09.2011 | 10 | <ul><li> 2/3 gemacht </li></ul> |
+| Das 2. Übungsblatt erstellen | 13.09.2011 | 9 | <ul><li> fertig </li></ul> |
+| Das 3. Übungsblatt erstellen | 13.09.2011 | 1 | <ul><li> angefangen </li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | |20 | |
+
+-- Main.NicoErbs - 2011-08-08

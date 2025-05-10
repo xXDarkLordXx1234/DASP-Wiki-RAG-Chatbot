@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="kluge" comment="save topic" date="1365748578" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+   * =mvn dependency:get -DrepoUrl=https://maggie.tk.informatik.tu-darmstadt.de/artifactory/ -DgroupId=org.springframework  -DartifactId=spring-jms -Dversion=3.1.0.RELEASE=
+   * =mvn dependency:resolve -Dclassifier=javadoc;mvn dependency:resolve -Dclassifier=sources=
+   * =mvn eclipse:eclipse -DdownloadSources=true=
+   * =mvn install:install-file -DgroupId=com.wcohen.ss -DartifactId=secondstring -Dversion=20120620 -Dpackaging=jar -Dfile=secondstring-20120620.jar=
+
+Install jar and war of an artifact at  the same time:
+   * http://communitygrids.blogspot.de/2007/11/maven-making-war-and-jar-at-same-time.html
+
+Create executable Jars:
+   * http://maven.apache.org/shared/maven-archiver/examples/classpath.html
+
+Enable WTP support:
+   * =mvn -Dwtpversion=2.0 eclipse:eclipse=
+   * http://maven.apache.org/plugins/maven-eclipse-plugin/wtp.html
+
+Updating Maven Project. Unsupported IClasspathEntry kind=4
+
+   1 m2eclipse version >= 1.1.0
+   2 disable Maven nature
+   3 =mvn eclipse:clean= (while project is open)
+   4 re-enable Maven Nature
+   * http://stackoverflow.com/questions/10564684/how-to-fix-error-updating-maven-project-unsupported-iclasspathentry-kind-4
+
+---++ Export Maven Dependencies
+
+   * Description: http://maven.apache.org/plugins/maven-dependency-plugin/copy-dependencies-mojo.html
+   * Copy all dependencies to _/tmp/dependencies_ =mvn dependency:copy-dependencies -DoutputDirectory=/tmp/dependencies=
+   * Copy all dependencies to _<proj-dir>/target/dependency_ =mvn dependency:copy-dependencies=

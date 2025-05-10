@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="santos" date="1510910759" format="1.1" version="1"}%
+%META:TOPICPARENT{name="AndreasSchaeffler"}%
+---+!! GPU Server Usage Policies
+
+---++ Using GPUs in krusty and other servers
+
+   * You do not have sudo rights on GPU servers (if you still need to become =root= for some reason, please contact system-admin via Bugzilla)
+   * You need to install drivers and software for the GPUs locally for your user
+   * Use nvidia-smi to get an overview of used GPU / used GPU memory
+
+---++ IMPORTANT: GPU Sharing (servers with multiple GPU cards)
+
+In most cases, it does not make sense to compute with more than one GPU. However, if you do not explicitly tell tensorflow etc. to use only one GPU, your program might block others users by automatically using all GPUs available. To avoid this:
+   * Option 1) Start your script with an environment variable =CUDA_VISIBLE_DEVICES="0" python script.py=
+   * Option 2) Export the variable: <code>export CUDA_VISIBLE_DEVICES="0"</code>
+   * Option 3) Add this python code to the start of your code: <code>import os; os.environ["CUDA_VISIBLE_DEVICES"] = "0"</code>
+   * The value "0" is the ID of the GPU. Use <code>nvidia-smi</code> to check for available GPUs. 
+
+
+By default tensorflow will allocate a lot of GPU memory. This usually causes other programs that use the same GPU to crash (OOM). Please, *always* use the following tensorflow configuration so that other people can run code on the GPU as well:
+
+<verbatim>
+sess_config = tf.ConfigProto()
+sess_config.gpu_options.allow_growth = True
+with tf.Session(config=sess_config) as sess:
+   ... (code) ...
+</verbatim>
+
+For Keras with tensorflow as backend, add the following code at the beginning of your script:
+<verbatim>
+import keras
+import tensorflow as tf
+
+sess_config = tf.ConfigProto()
+sess_config.gpu_options.allow_growth = True
+from keras.backend.tensorflow_backend import set_session
+set_session(tf.Session(config=sess_config))
+
+# Keras code....
+</verbatim>
+
+
+
+-- Main.PedroSantos - 2017-11-17

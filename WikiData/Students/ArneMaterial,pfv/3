@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="ArnePottharst" date="1205228763" format="1.1" version="3"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Material
+
+---++ Links
+---+++ Papers
+   * [[http://www.amazon.de/Ontology-Learning-Text-Applications-Intelligence/dp/1586035231/ref=sr_1_2?ie=UTF8&s=books-intl-de&qid=1197541245&sr=1-2][Ontology Learning from Text: Methods, Evaluation And Applications: Methods, Evaluation and Applications (Frontiers in Artificial Intelligence and Applications)]] von Paul Buitelaar, Philipp Cimiano, und Bernardo Magnini von IOS Press,US (Gebundene Ausgabe - 30. Juli 2005)
+   * [[http://ai.stanford.edu/~rion/]] \\
+Rion Snow, Daniel Jurafsky, and Andrew Y. Ng. [[http://ai.stanford.edu/~rion/papers/semtax_acl06.pdf][Semantic taxonomy induction from heterogenous evidence.]] In ''Proceedings of COLING/ACL 2006. Received Best Paper Award.''
+   * Dekang Lin and Patrick Pantel. 2001. Discovery of Inference Rules for Question Answering. ''Natural Language Engineering'' 7(4):343-360. ([[http://www.cs.ualberta.ca/%7Elindek/papers/jnle01.pdf][PDF]])([[http://www.cs.ualberta.ca/%7Elindek/papers/jnle01.ps][PS]])
+   * D. Lin and P. Pantel. 2001. Induction of Semantic Classes from Natural Language Text. In ''Proceedings of ACM SIGKDD Conference on Knowledge Discovery and Data Mining 2001''. pp. 317-322. ([[http://www.cs.ualberta.ca/%7Elindek/papers/kdd01-2.pdf][PDF]])([[http://www.cs.ualberta.ca/%7Elindek/papers/kdd01-2.ps][PS]])
+   * D. Lin and P. Pantel. 2001. DIRT - Discovery of Inference Rules from Text. In ''Proceedings of ACM SIGKDD Conference on Knowledge Discovery and Data Mining 2001''. pp. 323-328. ([[http://www.cs.ualberta.ca/%7Elindek/papers/kdd01-1.pdf][PDF]])([[http://www.cs.ualberta.ca/%7Elindek/papers/kdd01-1.ps][PS]])
+
+
+---+++ Tools
+   * [[http://www.gate.ac.uk/ie/annie.html][GATE's ANNIE]]
+   * [[http://www.alphaworks.ibm.com/tech/uima][IBM: UIMA]]
+   * [[http://incubator.apache.org/uima/][Apache UIMA]]
+      * [[http://www.apache.org/dist/incubator/uima/eclipseUpdateSite/][Apache UIMA Eclipse Plugin Update Site]]
+   * [[http://www.mpi-inf.mpg.de/~suchanek/downloads/yago/][YAGO]]
+   * [[http://dbpedia.org/][DBpedia]]
+   * [[http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/][TreeTagger]]
+
+
+---++ Helferlein
+---+++ SQL
+---++++ Wikipediaartikel anhand der ID ermitteln
+=SELECT * FROM page p LEFT JOIN revision r ON (p.page_latest = r.rev_id) LEFT JOIN `text` t ON (r.rev_text_id = t.old_id) WHERE page_id = $id;=
+---++++ Wikipedia: Alle Einträge zu einer Kategorie ermitteln 
+= SELECT cl_from, CONVERT(cl_sortkey USING utf8) AS cl_sortkey FROM categorylinks c WHERE cl_to = CONVERT ($category USING utf8);=

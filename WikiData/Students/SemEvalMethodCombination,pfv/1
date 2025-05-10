@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="NicoErbs" date="1268132064" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="SemEval"}%
+---+++ SemEvalMethodCombination
+
+ %TOC%<br /><br />---++++ Idea<br />The idea is to combine all methods (Kea, tf.idf, Cooccurrence and LSG) to improve results. Each of those methods have unique strengths and weaknesses. A combination of all could compnesate the weaknesses.
+
+---++++Processing steps
+
+%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Component* | *KEA* | *tf.idf* | *LexSem* | *Co-Occurrence* |
+| Reader | PreprocessedDataReader | PreprocessedDataReader | PreprocessedDataReader | PreprocessedDataReader |
+| Candidate | | Candidate | Candidate | Candidate |
+| MethodComponent I | Model | SimpleKeyphraseAnnotator | LexSemGraphAnnotator | CooccurrenceGraphAnnotator |
+| MethodComponent II | | | SemRel | |
+| MethodComponent III | | | WeightedRanking | StructuralRanking |
+| Merger | KeyphraseMerger | KeyphraseMerger | KeyphraseMerger | KeyphraseMerger |
+| Stopword | StopwordFilter | StopwordFilter | StopwordFilter | StopwordFilter |
+| Strucutre | StructureFilter | StructureFilter | StructureFilter | StructureFilter |
+| MethodComponent IV | | TfidfAnnotator | | |
+| Evaluator | KeyphraseEvaluator | KeyphraseEvaluator | KeyphraseEvaluator | KeyphraseEvaluator |
+
+
+-- Main.NicoErbs - 09 Mar 2010

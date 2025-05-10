@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="MarcelAckermann" date="1301951206" format="1.1" version="2"}%
+
+---+++Vertrag
+Laufzeit: 01.04.2011-31.06.2011
+
+---+++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Priorität* | *ID* | *Beschreibung* | *Status* |
+| 1 | 1 | TODO | 0 % |
+
+
+---+++ Arbeitszeit
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2" footerrows = "1" }%
+| *Datum* | *Stunden* | *Aufgabe-ID* | *Beschreibung* |
+| 01.04.2011 | 1 | 1 | Projektantrag durchlesen |
+| 02.04.2011 | 2 | 1 | NL Watermarking (Topkara) |
+| *Summe* | %CALC{"$SUM( $ABOVE() )"}% | | |
+| *Soll* | 90 | | bis 31.6. |
+<nop>

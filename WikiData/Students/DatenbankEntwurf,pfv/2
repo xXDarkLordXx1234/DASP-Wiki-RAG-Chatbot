@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1173385112" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="AmazonDatenbank"}%
+%TOC%
+
+---++ Entwurf der Datenbank
+
+---+++ Entitiy Relationship Model
+[[http://www.kai4all.de/AssessingReviews/Datenbankentwurf/Datenbank-ERM4.jpg ERM-Diagramm]]
+
+---+++ Entwurf der Datenbank in DLL
+[[http://www.kai4all.de/AssessingReviews/Datenbankentwurf/DDLv4.sql Relationenmodell]] als SQL-Befehle zur Erstellung der Datenbank.
+
+---++ Felder der Datenbank
+Die folgende Tabelle gibt eine Übersicht über die Bedeutung der Attribute im ERM-Diagramm und aus welcher Quelle diese Informationen stammen:
+
+| *Attribut* | *Bedeutung* | *Quelle* |
+| !Manufacturer.ID | interne ID | selbst erstellt |
+| !Manufacturer.Name | Herstellername | Amazon |
+| !Product.ASIN | Amazon Standard Identification Number | Amazon |
+| !Product.Titel| Name des Produktes | Amazon |
+| !Product.SalesRank | Verkaufsrang | Amazon |
+| !Product.EditorialReview | Produktbeschreibung von Amazon | Amazon |
+| !Product.TotalReviews | Anzahl der Reviews zum Produkt | Amazon |
+| !Product.AverageRating | durchschn. Kundenbewertung zum Produkt | Amazon |
+| !Feature.ID | interne ID | selbst erstellt |
+| !Feature.Name | Produkteigenschaft | Amazon |
+| !Customer.CustomerID | Kundennummer | Amazon |
+| !Customer.TotalReviews | Anzahl der vom Kunden geschriebenen Reviews | Amazon |
+| !Customer.AverageRating | durchschn. Bewertung des Kunden | errechnet |
+| !Customer.TotalVotes | Anzahl der Kunden, die die Reviews des Kunden bewertet haben | errechnet |
+| !Customer.HelpfulVotes | Anzahl der Kunden, die die Reviews des Kunden positiv bewertet haben | errechnet |
+| !Review.Date | Erstellungsdatum des Reviews | Amazon |
+| !Review.Rating | vergebene Produktbewertung | Amazon |
+| !Review.Summary | Zusammenfassung des Reviews (Betreff) | Amazon |
+| !Review.Content | Review-Text | Amazon |
+| !Review.TotalVotes | Anzahl der Bewertungen des Reviews | Amazon |
+| !Review.HelpfulVotes | Anzahl der positiven Bewertungen des Reviews | Amazon |
+
+---++ Klassendiagramm
+Ein aktuelles Klassendiagramm gibt's [[http://www.kai4all.de/AssessingReview/Programm/amazon-i.jpg hier]].
+
+---++ Dokumentation
+Eine aktuelle Dokumention der Klassen wird [[http://www.kai4all.de/AssessingReview/Programm/doc/index.html hier]] bereitgestellt.
+
+
+-- Main.KaiMichaelHoever - 07 Mar 2007

@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="ShuoYang" date="1302107366" format="1.1" version="154"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - April 2011
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Einarbeiten Spring WS | 80 |  |
+| 2. Einarbeiten SIGMUND | 80 |  |
+| 3. Architektur & Implementierung von Result Integrator (flexibel, robust) | 10 | * |
+
+---+++ Subtasks
+---++++ 4. Architektur & Implementierung von Result Integrator (flexibel, robust)
+   1. <del>Plan April - Mai, 1 Blatt DINA4</del>
+   1. <del>Plan nacharbeiten</del>
+   1. <del>Architektur nacharbeiten</del>
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Architektur, Treffen | 05.04.2011 | 5 | Alternative Architekturen erstellen <p> Treffen mit Benjamin über den Plan und Architektur <p> Architektur nacharbeiten | * |
+| Email | 04.04.2011 | 0.5 | Einige Email-Verkehr mit Benjamin bezüglich dem Plan für SIGMUND | * |
+| Plan, Grobe Architektur | 02.04.2011 | 4 | Erstellung Zeitplan von SIGMUND für April und Mai <p> Dabei Überlegung der grobe Architektur von SC+RI |   |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 44)$EXEC($GET(total_hour))"}% | bis Ende April noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 14 Stunde Übertrag von März) | |
+<nop>
+
+---+++ Projekte
+---++++ Sigmund
+ShuoYangSigmundProjekt <br>
+ShuoYangSpringWsNotes <br>
+ShuoYangJaxWsNotes
+
+---+++ Dokumente
+ShuoYangMemo
+
+
+*WikiWörterbuch:* <br>
+ShuoYangStatistikInterlanguageLinksWikipedia <br>
+[[http://www.ishuo.de/storage/wikipediaTitlesWithBrackets.txt][List of wikipedia articles, whose title entails brackets]] <br>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ShuoYang/titleWithMultipleTranslations.txt][List of wikipedia articles with multiple interlanguage links]] <br>
+ShuoYangMysqlimportErrorReport
+
+*Lucene Scoring:* <br>
+ShuoYangChangingLuceneScoring <br>
+ShuoYangBM25Guide
+
+*XMLReader:* <br>
+ShuoYangXPathPerformanceAnalysis
+
+*Google Translate:* <br>
+ShuoYangGoogleTranslatePerformanceAnalysis <br>
+ShuoYangGoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangWork1H2011
+
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+-- Main.ShuoYang - 2011-04-05
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%
+%META:FILEATTACHMENT{name="titleWithMultipleTranslations.txt" attachment="titleWithMultipleTranslations.txt" attr="" comment="List of wikipedia articles with multiple interlanguage links" date="1285170011" path="titleWithMultipleTranslations.txt" size="22805" stream="titleWithMultipleTranslations.txt" tmpFilename="/var/tmp/CGItemp3071" user="ShuoYang" version="1"}%

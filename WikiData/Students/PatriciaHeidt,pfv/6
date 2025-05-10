@@ -1,0 +1,53 @@
+%META:TOPICINFO{author="beck" comment="" date="1587374798" format="1.1" reprev="5" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis
+
+*Supervisor:*
+   * Tilman Beck
+
+
+
+---+!! Bachelor Thesis
+
+*Supervisors:*
+   * Daniil Sorokin
+   * Maxime Peyrard
+   * Teresa Botschen
+
+---++ Meetings:
+
+---+++ 25.09.2018:
+Final Talk is schedueled for 11.12.2018 <br>
+*TODOs:* <br>
+   * prepare slides until the end of the week and send them
+   * run Rouge on Frames
+
+---+++ 11.09.2018:
+*TODOs:* <br>
+   * create a ranking of Rouge scores and human scores to find those which are overestimated/underestimated most
+   * run Rouge-1 and Rouge-2 on only the entities
+   * replace words with entities and run Rouge on this (might be hard to do, in that case won't be done)
+
+---+++ 14.08.2018:
+   * Entity Linker had some issue
+   * Entity Linking will probably need several days -> run on server
+   * TODOs from last meeting are still open
+   * mid-term talk can be held on 02.10.
+   * task description has been signed
+
+---+++ 24.07.2018:
+*TODOs:* <br>
+   * try other baselines (ROUGE-2, ROUGE-WE, ...)
+   * run entity linker on data
+   * find some examples where ROUGE fails
+
+
+---+++ 12.07.2018:
+*TODOs:* <br>
+Create Pipeline:
+   1 Load data
+   2 Rouge as baseline
+   3 Compute 2 different correlations and plot results
+
+
+-- Main.PatriciaHeidt - 2018-07-12

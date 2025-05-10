@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="ShuoYang" date="1284966256" format="1.1" reprev="89" version="89"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Sept 2010
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. =XMLFileReader= mit =XPath= | 95 | *  |
+| 2. !WikiWörterbuch | 30 | * | 
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !WikiWörterbuch | 19.09.2010 | 9.5 | Erstellung von Statistik über Anteil der Seiten in Wikipedia, die mit Interlanguage-Link in Zielsprache sind. <br> Probiert mit SAX Parser und rein BufferedReader, Performanzvergleich <br> Allerdings unterscheiden sich die Resultate voneinander. Versuchen, die Ursache herauszufinden <br> Untersuchung der Möglichkeiten zur effizienten Speicherung von großer Menge Daten | * |
+| !WikiWörterbuch | 18.09.2010 | 1.5 | Einarbeiten in Struktur von XML Dateien von MediaWiki <br> Untersuchung der Möglichkeiten von XML-Parsen mit Java | * |
+| !WikiWörterbuch, Meeting | 17.09.2010 | 3 | Einarbeiten in JWPL <br> Meeting mit Benjamin über erneute Aufgaben und Zeitplanung | * |
+| !NewXmlFileReader,<br> Wörterbuch aus Wikipedia | 16.09.2010 | 3 | =NewXmlFileReader= fast fertig. Test <br> Herunterladen von WikiDump, Einarbeiten in JWPL |  |
+| !NewXmlFileReader | 15.09.2010 | 1 | Weitere Implementierung von =NewXmlFileReader= |  |
+| !NewXmlFileReader | 02.09.2010 | 2.5 | Weitere Implementierung von =NewXmlFileReader= |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 57.5)$EXEC($GET(total_hour))"}% | bis Ende September noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (inkl. 17,5 Übertrag von August) | |
+<nop>
+
+---+++ Dokumente
+StatistikInterlanguageLinksWikipedia
+
+ChangingLuceneScoring <br>
+BM25Guide
+
+XPathPerformanceAnalysis
+
+GoogleTranslatePerformanceAnalysis <br>
+GoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangPreviousWork
+
+-- Main.ShuoYang - 02 Sep 2010
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%

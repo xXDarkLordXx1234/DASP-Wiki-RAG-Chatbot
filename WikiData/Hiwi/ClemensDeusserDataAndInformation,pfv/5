@@ -1,0 +1,60 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1338912602" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+(will format properly once I figure out how)
+
+---+++++ Chinese Whispers clustering results including keywords and number of occurrences per cluster:
+
+   * [[ClemensDeusserCluster1][Version 1 / 10 iterations / 22 cluster / normalised edges]]
+
+---+++++ Keywords in both Fachsystematik and pedocs:
+
+   * [[ClemensDeusserFSPedocsKeywords1][Per document, in SQL statements]]
+   * [[ClemensDeusserFSPedocsKeywords2][Across database, in plain text]]
+
+---+++++ Statistics of pedocs:
+
+Keywords in pedocs can be found in the "opus" table, "subject_uncontrolled_german" column.
+
+   * Number of different keywords: 5817
+   * Number of papers (in opus): 3411
+   * Number of papers (in opus_autor): 3552
+   * Total Number of words: 38040
+That means:
+   * Average number of keywords per paper: 11.152154793315743
+   * Average times a word appears: 6.539453326456937
+
+Top 3 most common words and the number of occurences:
+   * deutschland: 1304
+   * rezension: 640
+   * schule: 423
+
+Authors, found in opus_autor:
+   * Number of authors: 2949
+   * Authors per paper with 5230 database entries and 3552 papers:
+      * ~1.4724 authors per paper on average.
+      * Between 1 and 18 authors per paper.
+      * 915 papers with more than one author,
+      * 2637 papers with only one author.
+   * 1800 authors have written a paper with somebody else.
+
+
+
+
+SQL statements documentation:
+
+
+<blockquote>
+SELECT COUNT(DISTINCT source_opus) FROM opus;
+
+SELECT COUNT(DISTINCT source_opus) FROM opus_autor;
+
+SELECT COUNT(creator_name) FROM opus_autor;
+
+SELECT COUNT(DISTINCT creator_name) FROM opus_autor;
+
+SELECT reihenfolge FROM opus_autor ORDER BY reihenfolge DESC;
+
+SELECT COUNT(source_opus) FROM opus_autor where reihenfolge = 2;
+
+SELECT COUNT(DISTINCT creator_name) FROM opus_autor WHERE source_opus IN (SELECT source_opus FROM opus_autor WHERE reihenfolge = 2);
+</blockquote>

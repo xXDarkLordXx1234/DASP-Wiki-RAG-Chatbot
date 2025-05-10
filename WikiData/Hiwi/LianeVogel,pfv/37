@@ -1,0 +1,71 @@
+%META:TOPICINFO{author="vogel" comment="" date="1536224835" format="1.1" reprev="37" version="37"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Time Tracking
+
+Internal timesheet complete up to *31.08.2018*
+
+---+++ 2018-04
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 08.04.2018 | Seite /upload angelegt und in die Navigationsleiste eingebunden | 1.5 | |
+| 09.04.2018 | Dateien werden im Ordner gespeichert. Einlesen der Dateien, zählen von Labels nach Themen getrennt. | 2.5 | |
+| 10.04.2018 | Metadaten werden in json Datei abgespeichert. Labels werden vereinheitlicht. | 1 | |
+| 11.04.2018 | Erstellen der merge HTML Seite. | 1 | |
+| 12.04.2018 | Backend für die Tabelle im /upload_merge. | 2 | |
+| 12.04.2018 | Default-Strategie implementiert | 2 | |
+| 17.04.2018 | Amb-Column aus dem Interface herausgenommen. Checkbox für Case-sensitivity eingebaut | 1.5 | |
+| 18.04.2018 | Normieren der Labels in den tsv Dateien. Random Strategie zur Auswahl implementiert. Gesamtzahl Sätze wird angezeigt. | 2.5 | |
+| 19.04.2018 | Annotationsübersicht an neue Daten angepasst, info.json erweitert. Prozentzahlen werden hinter den Werten angezeigt. | 2.5 | |
+| 20.04.2018 | Hit-Template. Versuche mit buttons und checkboxen (und checkboxen, die wie Buttons aussehen). | 2 | |
+| 23.04.2018 | Bug Fixes. Hit Template dynamische Anzeige der Auswahl. | 2 | |
+| 25.04.2018 | Einarbeitung Javascript, Speichern eines Aspektes jetzt als eigenes Objekt mit Methoden um Wörter hinzuzufügen/zu löschen. | 3 | |
+| 26.04.2018 | Wörter werden in der richtigen Reihenfolge angezeigt. Bei Klick auf OK öffnet sich ein Input-Fenster. | 2 | |
+| 27.04.2018 | Bearbeitung eines Aspektes aktivieren/deaktivieren möglich. Dynamische Anzeige der ausgewählten Wörter eines Aspektes. | 3 | |
+| 30.04.2018 | Wörter können nur zusammenhängend ausgewählt werden, beim Abwählen können nur die äußeren Wörter abgewählt werden. | 3 | |
+| 02.05.2018 | Zweiten Aspekt hinzugefügt, Logik für das aktivieren/deaktivieren von Buttons geschrieben. | 2 | |
+| 07.05.2018 | Versuche die Checkboxen über tabbing zu highlighten.Beliebige Anzahl Aspekte hinzufügbar. | 4 | |
+| 11.05.2018 | Styling und Spacing angefangen. Checkbox bezieht sich auf Topic eingebaut. Delete button erstellt. | 4 | |
+| 15.05.2018 | Meeting. Ändern der Checkboxes zu anklickbaren Spans. Tabbing funktioniert. | 3 | |
+| 18.05.2018 | Zusammenhängende Auswahl jetzt auch mit spans möglich. Alle Aspekte werden aktiv/inaktiv im Satz angezeigt. | 2 | |
+| 22.05.2018 | Bugfixes. Mit n wird ein aspekt als abgeschlossen markiert, durch anklicken eines noch nicht gewählten Wortes wird ein neuer Aspekt angelegt. | 3 | |
+| 23.05.2018 | Einbauen der Radiobuttons yes/no. Klick auf yes bei der Frage nach Simplification öffnet input Feld. Spacing angepasst | 2.5 | |
+| 28.05.2018 | Meeting. Fehlersuche NLPC | 3 | |
+| 30.05.2018 | Fehlersuche und Fehlerbehebung Blockierte Worker | 4 | |
+| 01.06.2018 | Pluginsuche. Einbauen des Multiselects für Geolocations in NLPC. | 4 | |
+| 04.06.2018 | Ärger mit erstem Plugin, zweites Plugin eingebunden. Backend für Qualificationen geschrieben. | 3 | |
+| 05.06.2018 | Testen in verschiedenen Browsern. Einbauen der default-Block-Nachricht & Anpassen des Hit-Templates. | 2 | |
+| 07.06.2018 | NLPC: Update der Projektstruktur, Testen | 1 | |
+| 15.06.2018 | NLPC: Default-Messages und Checkboxen eingebaut | 2 | |
+| 19.06.2018 | NLPC: Frontend mehrere Worker rejecten/blocken | 2 | |
+| 21.06.2018 | NLPC: Backend multiple worker rejecten/blocken, Testen | 3 | |
+| 26.06.2018 | NLPC: Bug fixen, Fußleiste zum anzeigen der Versionsnummer einbauen | 2 | |
+| 27.06.2018 | Template: Umbau des Backends damit mehrere Sätze angezeigt werden können | 2 | |
+| 28.06.2018 | Template: Backendumbau weitergemacht | 5 | |
+| 02.07.2018 | NLPC: Erstellung results_rejected.json | 3 |  |
+| 04.07.2018 | Template: Usability verbessert, delete Funktion eingebaut | 6 |  |
+| 05.07.2018 | Annotation: Einarbeiten & 15 Hits | 1 |  |
+| 05.07.2018 | NLPC: Skript um assignments.csv für rejectete Arbeit zu erstellen | 1 |  |
+| 09.07.2018 | NLPC: accepten von rejecteten HITs | 3 |  |
+| 12.07.2018 | Annotation Sarah | 2 |  |
+| 16.07.2018 | Template: diverse kleine Anpassungen | 2 |  |
+| 18.07.2018 | Template: Satzzeichen nicht anklickbar | 2 |  |
+| 19.07.2018 |Space zwischen verschiedenen Aspekten | 2 | |
+| 24.07.2018 | JS Fehler gefixed | 2 |  |
+| 25.07.2018 | Aspekt speichert nur Anfangs- und Endindex | 5 |  |
+| 27.07.2018 | Meeting | 2 |  |
+| 06.08.2018 | Rückwärts markieren gefixed  | 3 |  |
+| 08.08.2018 | Annotation Sarah | 3 |  |
+| 09.08.2018 | Template: Responsiv für kleinere Bildschirme | 3 |  |
+| 10.08.2018 | Meeting | 1 |  |
+| 14.08.2018 | Evaluation | 3 |  |
+| 16.08.2018 | Evaluation, Fix Satzzeichen nicht anklickbar | 5 |  |
+| 17.08.2018 | Meeting, Annotation | 2 |  |
+| 22.08.2018 | Annotation | 3 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+|  |  |  |  |
+|  |  |  |  |
+| | | | |
+
+
+-- Main.ChristianStab - 2018-04-06

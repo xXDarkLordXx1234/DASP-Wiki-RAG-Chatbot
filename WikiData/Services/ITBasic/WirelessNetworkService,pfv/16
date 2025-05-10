@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="alles" comment="" date="1688467168" format="1.1" reprev="15" version="16"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ !!Wireless Network Service
+
+*%RED%UKP does not offer a wireless network. We also don't support it. Check the setup documentation of HRZ and report to them if you encounter any issues.%ENDCOLOR%*
+
+Wireless network access is possible via the the HRZ, either with a TU-ID (special device wlan account is needed from 2023) or with an external eduroam account. For more information please refer to the [[https://www.hrz.tu-darmstadt.de/netz/netzzugang_internet/netz_datennetz_internet_wlan_1/index.en.jsp][HRZ documentation]]. To access UKP-internal services after connecting to the HRZ wireless network, you have to open a [[Services/Lab.VpnService][VPN connection]] to the UKP network.
+
+Quicklinks:
+   * [[https://www.hrz.tu-darmstadt.de/media/hrz/responsive_design/support_und_anleitungen/anleitungen/infrastruktur/wlan_2/W-LAN_manuelle_Konfiguration-Linux.pdf][Manual Setup of eduroam on Linux]]
+   * [[https://www.idm.tu-darmstadt.de/wlan/][IDM System of TU Darmstadt to create WLAN login account]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/wlan_anleitungen/index.en.jsp][Use the configuration assistant tool - esp. on MAC!]]
+
+Notes:
+   * HRZ also offers the possibility to create temporary eduroam guest accounts. Follow the HRZ documentation link from above.
+   * TM: Note that the instructions provided by HRZ say that you need to point your network configuration to a Deutsche Telekom certificate in PEM format.  This didn't work for me; I had to use the CRT version of the certificate.
+
+%META:TOPICMOVED{by="bugert" date="1570805548" from="Services.WirelessNetworkService" to="Services/Lab.WirelessNetworkService"}%

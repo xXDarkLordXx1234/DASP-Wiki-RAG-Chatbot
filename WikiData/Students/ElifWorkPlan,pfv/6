@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="CigdemToprak" date="1258712819" format="1.1" version="6"}%
+%META:TOPICPARENT{name="ElifTekes"}%
+%TOC%
+---+ Work Plan
+   * Official start: 15.06.2009
+   
+---+ Timeline
+   * week 25 (7.12-15.12):
+      * Corrections in the thesis + submission
+   * week 24 (20.11-6.12):
+      * *Implementation:*
+         * Missing parts (contingency week), fixing problems
+      * *Writing:*
+         * Evaluation
+         * Conclusion
+   * week 23 (23.11-29.11): 
+      * *Implementation:*
+         * Pruning the Wiktionary bootstrapping results with (possibly DISCO) corpus based similarity
+         * Compare the pruned lexicon to the other created resources
+            * Applying Nico's evaluation cycle (rule based subjectivity classifier) with the generated lexicons and a combination of them. 
+      * *Writing:*
+         * Approach
+         * Sentiment lexicons including the source lexicon !OpinionFinder (how many multi-word expressions, POS distributuion)
+   * <span class="red">week 22 (19.11-22.11): </span> 
+      * *Writing:* 
+         * Introduction
+         * Related work
+         * References
+      * *Implementation:* 
+         * !GermaNet Bootstrapping anolog to Wiktionary bootstrapping (same relations) 
+         * Comparison of all lexicons created so far (GermaNet bootstrapped, Wiktionary bootstrapped, Bilingual dictionary translated lexicon, SMT translated lexicon, Manual GermaNet created lexicon (used in Nico's work, find [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Teaching/NicoErbsResources][here]]))
+
+
+-- Main.CigdemToprak - 12 Jun 2009

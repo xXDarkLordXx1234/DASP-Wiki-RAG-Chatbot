@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="MichaelKutschke" date="1334664659" format="1.1" version="12"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Michael Kutschke Work
+---++ Resources
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/LOEWE-TP23/trunk/de.tudarmstadt.ukp.loewe.tp23.quality/][SVN]]
+   * Computeserver =moe.ukp.informatik.tu-darmstadt.de= has been reserved for the challenge
+   * JWPL Database incl. revisions has been installed on moe
+      * wiki_en_20120104_rev
+      * Access to db from outside only via ssh-tunnel (open a ssh-tunnel to moe and connect to mysql on moe through the tunnel)
+
+-- Main.OliverFerschke - 2012-03-16
+
+ * [[http://sweble.org/gitweb/?p=sweble-wikitext.git;a=blob;f=swc-parser-lazy/doc/ast.txt;h=64fa42dd5883e00349a619ce3040c2ff26402b2d;hb=wom][Sweble AST-Node dokumentation]]
+
+---
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Michael Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| PAN2012 | 30.3.2012 | 2 | Einführung in die Infrastruktur |
+| PAN2012 | 30.3.2012 | 1.5 | Oliver's Papers |
+| PAN2012 | 31.3.2012 | 1.5 | Oliver's Papers |
+| PAN2012 | 2.4.2012 | 4 | Einarbeitung in UIMA etc. (Tutorials) |
+| PAN2012 | 3.4.2012 | 1.5 | Besprechung |
+| PAN2012 | 4.4.2012 | 2 | Setup des Rechners mit Oliver (verbuggt) |
+| PAN2012 | 10.4.2012 | 4 | Besprechung & erste einfache Pipeline |
+| PAN2012 | 11.4.2012 | 2.5 | Papers & weitere Programmierung |
+| PAN2012 | 12.4.2012 | 2 | LinkFeatureExtractor & Einarbeitung in Sweble |
+| PAN2012 | 14.4.2012 | 2.5 | mehr Features |
+| PAN2012 | 16.4.2012 | 2.5 | Besprechung, Extraktion der ArtikelIds |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | bis Ende Juni |
+<nop>

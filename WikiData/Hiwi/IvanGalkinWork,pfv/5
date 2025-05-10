@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="IvanGalkin" date="1232110293" format="1.1" version="5"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Ivan Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung !DataMachine | 75 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Ivan Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung !DataMachine | 13.01.2009 | 4 | Installation von MySQL, Einrichtung der Datenbank, Einlesen in Quellcode und UKP-Seite, Download von SimpleEnglish-Dump, Starten der DataMachine (in einigen Stunden wurden die Daten erfolgreich generiert) |
+| Einarbeitung !DataMachine | 14.01.2009 | 2 | Einlesen in den Programm-Quellcode und die Modifikation dieses Programmcodes, erfolgreicher DataMachine-Programmstart mit dem GZip-on-the-fly-Parser |
+| Einarbeitung !DataMachine | 15.01.2009 | 5 | Recherche nach BZip2-Parser; Enwickeln, Implementieren und Testen der neuen Funktionalitäten für on the fly entpacken. Start des Zwischentests. |
+| Einarbeitung !DataMachine | 16.01.2009 | 1 | Bearbeitung von Testergebnissen, Fehlerkorrekturen, Testen (Zwischenergebnisse an Torsten gesendet) |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+<nop>

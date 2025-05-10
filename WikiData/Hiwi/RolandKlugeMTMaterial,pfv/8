@@ -1,0 +1,144 @@
+%META:TOPICINFO{author="kluge" comment="reprev" date="1381217986" format="1.1" reprev="7" version="8"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+%TOC%
+
+---++ Notes/other resources
+   * Search terms (school materials): Erörterung, Argumentation Redewendung, Überleitung, Argumente verknüpfen
+   * Search terms (literature): argumentation cues, argumentation schemes, argumentation layout, discourse markers, argumentation for decision making, arguing subjectivity, argument extraction, journalistic argumentation, reasoning pattern
+
+   *  Krippendorfs scale to judge Kappa scores (K. Krippendorff. 2004. Content analysis: an introduction to its methodology. Sage.)
+   * agr measure for measuring annotation overlap (Theresa Wilson and Janyce Wiebe. 2003. Annotating opinions in the world press. In SIGdial, pages 1322.)
+   
+   * [[http://www.sfs.uni-tuebingen.de/Elwis/stts/stts.html][STTS tagset documentation]]
+
+---++ Argumentation and discourse schemata
+   * *Toulmin* (according to Judith's lexicon)
+      * <img src="%ATTACHURLPATH%/toulmin_scheme.png" height="250px"/>
+      * Conventional transitions that connect _data_(reasons, facts) with _claims_(conclusions) are formed by a _warrant_. 
+        A warrant certifies that the presented data are really suitable to support the claim.
+      * These conventions are supported by the _backing_
+         * Typical sources of the backing 'Gesetze, Normen, Regeln, Prinzipien, Allgemeine Tatsachen, Anerkannte Bestimmungen, Anerkannte Erfahrungen, Bedürfnisse, Taxonomische Klassifikationen'
+         * "In der Alltagsargumentation dagegen bleibt einem [...] häufig nichts anderes übrig, als den Übergang von Argument (Daten) zur Schlussfolgerung (Konklusion) [...] durch Appelle an den mehr oder weniger gesunden Menschenverstand" zu stützen.
+      * Exceptional conditions under which the claim will not hold are called _rebuttal_ ([[https://en.wikipedia.org/wiki/Counterargument][Wikipedia]]
+      * (Modal) _qualifiers_ may reduce the degree of certainty that the author puts in his arguments.
+      * [[https://en.wikipedia.org/wiki/Toulmin_method][Wiki: Toulmin Method]]
+      * [[http://changingminds.org/disciplines/argument/making_argument/toulmin.htm][Very(!) good, yet concise explanation]]
+      * [[http://www.teachsam.de/deutsch/d_rhetorik/argu/arg_mod_toul_4.htm][Example: Stephan ist ein guter Schüler]]
+   * *argumentum* (Latin rethoric, according to Judith's lexicon)
+      * Principles of proving/procedures: _a. exclusionis_, _a. e contrario_: prove that the counterclaim is false, _a. fortiori_: proof by concluding from already proven claims, _a. ex concesso_: (similar to previous), proof by concluding from already acknowledged claim, _a. negativum_
+      * Categorization based on sentence structure: _a. priori_ vs. _a. posteri_
+      * Categorization based on refered instance: _a. ad hominem_, _a. ad rem_, _a. ad iudicium_, ...
+   * *Swale's CARS* model (Create A Research Space, territory->find niche->occupy niche)
+      * Reference: Swales J.M. 1990, Genre Analysis: English in academic and research settings. Cambridge. Cambridge University Press
+      * [[http://www.sp.uconn.edu/~jbl00001/swales_cars_introductions_model.htm][Concise overview]
+      * [[http://sana.tkk.fi/awe/style/reporting/sections/intros/cars/cars.pdf][More extensive survey with examples, 'argumentation cues'(pdf)]
+   * *Teufel's CARS* (sentence classification into background, own, aim, textual, contrast, basis, other; Teufel,Carletta,Moens: An Annotation Scheme for Discourse-Level Argumentation in Research, EACL 1999, 110-117)
+   * Hyland's metadiscourse schema (Persuasion and Context: The Pragmatics of Academic Metadiscourse, Journal of Pragmatics 30, 1990, 437-455)
+   * *ScholOnto/ClaiMaker*
+      * [[http://projects.kmi.open.ac.uk/scholonto/docs/VizNetArg2002.pdf]]
+
+
+---++ Paper summaries
+(subsections ordered by title)
+
+---+++ Argumentation mining by Raquel Mochales and Marie-Francine Moens 
+   * argumentation in law
+   * *Argumentation scheme*: argument = premises + conclusion/proposition/claim (anything beyond is "controversial", p.4)
+      * most arguments have implicit parts [[https://en.wikipedia.org/wiki/Enthymeme][Enthymeme]]
+      * need to distinguish "argument" from "statement" (context!)
+      * based on Walton, 1996: identify argumentation schemes by relations among propositions
+   * *Data*: Araucaria corpus (641 arg.includes newspaper articles), ECHR corpus
+   * *Classification*: MaxEnt (for argumentative/non-argumentative), SVM (for premise/conclusion)
+      * *Features* for MaxEnt: 1-/2-/3-grams; adverbs; verbs; modal auxilaries; word couples; text statistics; punctuations; key words; parse features(depth, num. subclauses)
+      * *Features* for SVM: position in doc.; sent. length; tense of main verb; context labels; discursive cues; ...
+   * *'Argumentative Parsing'*: 
+      * CFG-based approach
+   * *Reference*: [[http://www.cs.kuleuven.be/publicaties/lirias/mypubs.php?unum=U0054309][bib]]
+
+---+++ Argument Mining by Applying Argumentation Schemes by Walton
+   * List of 29 most general argumentation schemes (p.3)
+   * Sec. 7 summarizes the state-of-the-art in AM
+
+---+++ Automatic Argumentation Extraction by Sergeant
+   * Work in progress
+   * Pipeline: argument identification (also called proposition) -> classification by type (premise, conclusion) -> identification of relationships (tree-like argumentation graph)
+   * *Objective*: "This research aims to provide decision support [...], enabling a decision maker to follow more closely the reasoning process, to examine premises and counter-arguments, and to reach better informed decisions."
+      * "[Argument] Identification is the task of determining the conclusion, premises and scheme of an argument*
+      * "What is an argument? The building blocks of every argument are propositions: a statement or assertion that expresses a judgement or opinion. An argument consists of two or more propositions, one proposition functions as the claim (also known as the conclusion), and a set of one or more propositions serve as supports (also known as premises). The relationship between the propositions (premises and conclusions) is important"
+   * *Annotation*: What level of annotation?
+      * preliminary results on Car Review Corpus (CRC): "highlight the fact that sentences are not appropriate  as the fundamental elements of an argument"
+
+---+++ [[http://dl.acm.org/citation.cfm?id=1276362][Automatic detection of argumentation in legal texts]]
+
+   * strong focus on argumentation in legal texts (seems to be a lot of previous work there!)
+   * Prominent features: "lexical cues, pronouns and other forms of phoric reference, and tense and aspec", "adverbial groups"
+   * *Level*: classify each sentence in isolation
+   * *Features*: 1-/2-/3-grams, adverbs, full verbs, modals (binary), word couples (all possible pairs), punct, arg. keywords, sentence statistics (word/sent. length)
+      * Argumentation cues come from:  A. Knott and R. Dale. Using linguistic phenomena to motivate a set of rhetorical relations. Technical Report HCRC/RP-39, Edinburgh, Scotland, 1993.
+   * *Classifier*: Multinomial Naive Bayes, MaxEnt
+
+---+++ Automatic extraction of knowledge from student essays
+   * survey of annotation schemes
+   * presents a lot of argumentation schemes
+
+---+++ [[http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.207.5857&rep=rep1&type=pdf][Classifying Arguments by Scheme]]
+   * *Task*: given argument (premise+conclusion), choose 1 of 5 argumentation schemes
+      * "Our ultimate goal is to reconstruct the enthymemes in an argument"
+   * *Data*: Araucaria dataset
+   * *Features*: 
+      * general and scheme dependent features (p.5/991)
+      * sentiment may be interesting for some schemes (a. by consequence)
+   * *Classifier*: C4.5(pruned)/Weka
+
+---+++ Identifying Comparative Claim Sentences in Full-Text Scientific Articles
+   * *Features (excerpt)*
+      * L1: boolean, check for presence of *comparison keywords* from 'SPECIALIST lexicon' (Browne, McCray, & Srinivasan, 2000)
+         * modification: "We modified the lexicon by adding terms in {better&#8223;, more&#8223;, less&#8223;, worse&#8223;, fewer&#8223;, lesser&#8223;} and removing terms in {few&#8223;, good&#8223;, ill&#8223;, later&#8223;, long-term&#8223;, low-dose&#8223;, number&#8223;, well&#8223;, well-defined&#8223;}"
+      * L2: boolean, check for presence of *direction verbs* from inhouse-produced lexicon
+      * L3/L4/L5/L6: boolean, sentence contains one of *{from, over, above}*, *versus/vs.*, *twice the*, *{times that of, half that of, third that of, fourth that of}*
+      * more (syntactic) features based on a similarity-and-diffence lexicon (SIMDIF, 31 terms)
+    * *Classifiers:* Naive Bayes, SVM, Bayesian Networks
+   
+
+---+++ Recognizing Arguing Subjectivity and Argument Tags
+
+   * Field: "arguing subjectivity"
+   * Dataset: blog posts and open editorial entries dealing with "ObamaCare"
+   * Annotation unit: Argument="... spans of 1 sentence or less in which a writer 'conveys a controversial private state concerning what she believes to be true or what action she believes should be taken'
+   * In political science, there seems to be some kind of "arguing dimension"
+   * Features: "investigate the utility of a sentiment lexicon, discourse parser, and semantic similarity measures with respect to recognizing arguments."
+       * Discourse? Discourse parser by Lin, using Penn Discourse TreeBank (PDTB) tagset. (Lin et al., Automatically evaluating text coherence using discourse relations.),
+       * Sentiment score? Lexicon with lemmas being marked as strong/weak. Mark sentence if num. of words with strong(weak) sent. score is two(three) or more (Theresa Wilson. 2005. Recognizing contextual polarity in phrase-level sentiment analysis. In EMNLP, pages 347354.)
+
+---++ Scientific argumentation
+
+---+++ [[http://cs-wwwarchiv.cs.unibas.ch/lehre/fs12/cs304/_Downloads/samraj_on_introductions.pdf][Introductions in research articles]]
+
+---++ High-school material
+   * [[http://lehrerfortbildung-bw.de/faecher/deutsch/gym/fb1/02_komp_unterricht/04_diagnose/4_argument/][Einfaches Argumentieren]] ([[http://lehrerfortbildung-bw.de/faecher/deutsch/gym/fb1/02_komp_unterricht/04_diagnose/4_argument/017_eingdiagn_argument7.pdf][pdf]])
+      * Terminology: These,Argument,Folgerung
+      * Argumentation cues: denn,weil,nämlich,auch,zum Beispiel/beispielsweise
+      * Sentence structure: Wenn ... , dann...
+      * Classification for argumentation level: A,B,C
+   *  [[http://do.nw.schule.de/jgrdo-medien/li_leiste/faecher/de/7/argumentieren/argumentieren_schulbeginn.htm][Argumentieren in der Klasse 7c 2006/07]]
+      * Ask the 6 "W" questions: Who,What,When,Where,Why,How
+      * [[http://do.nw.schule.de/jgrdo-medien/li_leiste/faecher/de/7/argumentieren/sanduhr.pdf][Sanduhr]]: gutes Argument = Behauptung+Begründung+Beweis
+      * Subjectivity cues: "Ich finde", "Meiner Meinung nach", "Ich will"
+      * Conclusion/cause cues: "So [VV.*]", "Jedoch", "Durch NP-action VP NP-result", "Falls/Wenn ... , dann"
+   * [[http://www.digitale-schule-bayern.de/ds.py?sid=a042f94e44516405bf&_controller=DSController2&schreibformen_78_sparte_hmid=20&faecherid=30&themaid=585][Example Discussions]]
+      * Sequences: erstens,zweitens,(nicht) zuletzt, schließlich
+   * [[http://www.unterrichtsmaterial-schule.de/deutschvorschau67.shtml][So schreibt man eine Argumentation]]
+      * General argumentation scheme:
+         * One topic/thesis is supported by several arguments
+         * Each argument may be supported by additional facts/examples/observations ("Beleg")
+      * Idiomatic expressions (Blatt 3):
+         * Introduction: "Immer wieder", "Es ist wichtig, dass", "Nur wenige"
+         * Argumentation: "Dafür spricht", "Dagegen spricht", "Gegen ... spricht", "Hinzu kommt", "Darüber hinaus", "Zusätzlich (ist festzustellen, dass)", "Allerdings (muss man auch sehen, dass)", "Man darf auch nicht übersehen/vergessen", "Entscheidend ist", "Beleg dafür ist", "spielt eine wichtige Rolle", "hauptsächlich"
+         * Conclusion: "abschließend" ("schließlich",...), "(vertritt den) Standpunkt(, dass)"
+   * [[http://www.lehrerfreund.de/schule/1s/ueberleitung-argumente/2662][Überleitung zwischen Argumenten]]
+      * long list of connectives (support, contradiction, emphasis)
+
+
+-- Main.RolandKluge - 2013-10-01
+
+%META:FILEATTACHMENT{name="toulmin_scheme.png" attachment="toulmin_scheme.png" attr="" comment="Argumentation scheme by Toulmin" date="1380620081" path="toulmin_scheme.png" size="20458" user="kluge" version="1"}%

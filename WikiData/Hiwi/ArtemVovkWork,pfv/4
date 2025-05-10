@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="ArtemVovk" date="1232577681" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung in UIMA | 30 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung in UIMA | 15.01.2009 | 4 | Einfuehrung in UIMA. UIMA wurde instaliert und mit Eclipse verbunden, ganzer Stoff von Torsten und Mark-Christoph wurde gelesen. Jetzt probieren etwas zu schreiben |
+| Einarbeitung in UIMA | 20.01.2009 | 3 | Projekt Installation(dkpro_core, ukp_lib) |
+| Einarbeitung in UIMA | 21.01.2009 | 7 | Weitere Projekt Installation(dkpro_core, ukp_lib). Testen von "src_test". Dokumentation schreiben. Doc: Projekt Installation - https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/Projekt.pdf . Doc: Testfehler - https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/Fehler.pdf |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+<nop>
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%

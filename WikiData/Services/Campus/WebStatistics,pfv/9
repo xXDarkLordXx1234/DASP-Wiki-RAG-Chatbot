@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1593569811" format="1.1" version="9"}%
+%META:TOPICPARENT{name="WebHome"}%
+%IF{
+"istopic '%USERSWEB%.Default%STATISTICSTOPIC%'"
+then="$percentINCLUDE{$quot%USERSWEB%.Default%STATISTICSTOPIC%$quot}$percent"
+else="$percentINCLUDE{$quot%SYSTEMWEB%.Default%STATISTICSTOPIC%$quot}$percent"
+}%
+| <!--statDate--> | <!--statViews--> | <!--statSaves--> | <!--statUploads--> | <!--statTopViews--> | <!--statTopContributors--> |
+| Jun 2020 |  142 |  3 |  0 | &nbsp;86 [[ComputeCluster]]<br />&nbsp;25 [[ComputeClusterFAQ]]<br />&nbsp;23 [[WebHome]]<br />&nbsp;&nbsp;4 [[AccountChangePassword]]<br />&nbsp;&nbsp;2 [[ComputeClusterStorage]]<br />&nbsp;&nbsp;1 [[WebSearch]]<br />&nbsp;&nbsp;1 [[WebTopicList]] | &nbsp;&nbsp;3 Main.MichaelBugert |
+| May 2020 |  94 |  0 |  0 | &nbsp;52 [[ComputeCluster]]<br />&nbsp;25 [[ComputeClusterFAQ]]<br />&nbsp;&nbsp;6 [[AccountChangePassword]]<br />&nbsp;&nbsp;6 [[WebHome]]<br />&nbsp;&nbsp;5 [[ComputeClusterStorage]] |  |
+| Apr 2020 |  219 |  0 |  0 | 118 [[ComputeCluster]]<br />&nbsp;49 [[ComputeClusterFAQ]]<br />&nbsp;26 [[WebHome]]<br />&nbsp;21 [[ComputeClusterStorage]]<br />&nbsp;&nbsp;3 [[WebSearch]]<br />&nbsp;&nbsp;1 [[WebPreferences]]<br />&nbsp;&nbsp;1 [[WebStatistics]] |  |
+| Mar 2020 |  150 |  5 |  0 | &nbsp;82 [[ComputeCluster]]<br />&nbsp;37 [[ComputeClusterFAQ]]<br />&nbsp;23 [[WebHome]]<br />&nbsp;&nbsp;5 [[ComputeClusterStorage]]<br />&nbsp;&nbsp;1 [[WebSearch]]<br />&nbsp;&nbsp;1 [[AccountChangePassword]] | &nbsp;&nbsp;3 Main.MichaelBugert<br />&nbsp;&nbsp;2 Main.JanChristophKlie |
+| Feb 2020 |  121 |  1 |  0 | &nbsp;56 [[ComputeCluster]]<br />&nbsp;31 [[ComputeClusterFAQ]]<br />&nbsp;17 [[WebHome]]<br />&nbsp;11 [[ComputeClusterStorage]]<br />&nbsp;&nbsp;6 [[WebSearch]] | &nbsp;&nbsp;1 Main.MichaelBugert |
+| Jan 2020 |  225 |  40 |  0 | 113 [[ComputeCluster]]<br />&nbsp;60 [[ComputeClusterFAQ]]<br />&nbsp;22 [[WebHome]]<br />&nbsp;12 [[ComputeClusterStorage]]<br />&nbsp;11 [[WebSearch]]<br />&nbsp;&nbsp;5 [[ComputeClusterTestingPartition]] | &nbsp;36 Main.MichaelBugert<br />&nbsp;&nbsp;4 Main.JanChristophKlie |
+| Dec 2019 |  106 |  0 |  0 | &nbsp;54 [[ComputeCluster]]<br />&nbsp;25 [[ComputeClusterFAQ]]<br />&nbsp;10 [[ComputeClusterStorage]]<br />&nbsp;&nbsp;9 [[WebHome]]<br />&nbsp;&nbsp;8 [[WebSearch]] |  |
+| Nov 2019 |  178 |  2 |  0 | &nbsp;75 [[ComputeCluster]]<br />&nbsp;55 [[ComputeClusterFAQ]]<br />&nbsp;20 [[WebHome]]<br />&nbsp;13 [[ComputeClusterStorage]]<br />&nbsp;&nbsp;8 [[WebSearch]]<br />&nbsp;&nbsp;5 [[AccountChangePassword]]<br />&nbsp;&nbsp;1 [[WebStatistics]]<br />&nbsp;&nbsp;1 [[WebPreferences]] | &nbsp;&nbsp;2 Main.MichaelBugert |
+| Oct 2019 |  292 |  15 |  0 | 137 [[ComputeCluster]]<br />&nbsp;58 [[WebHome]]<br />&nbsp;51 [[ComputeClusterFAQ]]<br />&nbsp;17 [[ComputeClusterStorage]]<br />&nbsp;11 [[AccountChangePassword]]<br />&nbsp;&nbsp;4 [[WebPreferences]]<br />&nbsp;&nbsp;4 [[ComputeClusterDetermineFairShare]]<br />&nbsp;&nbsp;3 [[ComputeClusterLongRunningJobs]]<br />&nbsp;&nbsp;3 [[WebSearch]]<br />&nbsp;&nbsp;1 [[WebTopicList]]<br />&nbsp;&nbsp;1 [[WebNotify]] | &nbsp;15 Main.MichaelBugert |

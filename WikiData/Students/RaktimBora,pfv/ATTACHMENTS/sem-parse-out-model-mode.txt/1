@@ -1,0 +1,764 @@
+=============================================================================================================================
+Sentence:position Bar1 China Joins W.T.O.
+Parse Count: 1
+Semantic Parse:  [Joins.2(3:e , 4:w.t.o.), Bar1(1:s , 2:china), position(0:s , 2:china), Joins.1(3:e , 2:china)]
+Lexical items: [0, 1, 2, 3, 4]
+Node:2, China  Bar1
+Node:4, W.T.O.   
+Events (with NN/NNP arguments)[3]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: W.T.O.
+Annotation not found
+
+Node to ground: China
+Disambiguation: Q3674754,Q2681898,Q29520,Q20898938,Q3447500,Q5099551,Q2261236,Q5099549,Q20197129,Q1364589,Q692303,Q932423,Q7704180,Q19601344,Q5099553,Q288864,Q942154,Q14625391,Q2052807,Q6075995,
+Adding an ambiguous node to LEFT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:'We Need Evidence' Yi Xiaozhun, China's ambassador to the WTO, dismissed Punke's comments.
+Parse Count: 53
+Semantic Parse:  [dismissed.2(14:e , 15:punke), ambassador.to.1(9:e , 5:yi-xiaozhun), ambassador(9:s , 5:yi-xiaozhun), dismissed.1(14:e , 1:we), Need.1(2:e , 1:we), UNIQUE(12:wto), ambassador.to.2(9:e , 12:wto), ambassador.'s.2(9:e , 7:china), Need.2(2:e , 5:yi-xiaozhun), comments(17:s , 15:punke), ambassador.'s.1(9:e , 5:yi-xiaozhun), Evidence(3:s , 3:x)]
+Lexical items: [1, 12, 2, 3, 14, 15, 5, 17, 7, 9]
+Node:12, WTO UNIQUE  
+Node:15, Punke  comments
+Node:5, Yi_Xiaozhun  ambassador
+Node:7, China   
+Events (with NN/NNP arguments)[2, 14, 9]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Yi Xiaozhun
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: Punke
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: Yi Xiaozhun
+Annotation not found
+
+Node to ground: WTO
+Id from query: Q253228 type: [Wikimedia disambiguation page]Wikimedia disambiguation page
+Added node to RIGHT list
+
+Node to ground: China
+Disambiguation: Q3674754,Q2681898,Q29520,Q20898938,Q3447500,Q5099551,Q2261236,Q5099549,Q20197129,Q1364589,Q692303,Q932423,Q7704180,Q19601344,Q5099553,Q288864,Q942154,Q14625391,Q2052807,Q6075995,
+Adding an ambiguous node to RIGHT list
+
+Node to ground: Yi Xiaozhun
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:We all need a proactive China.
+Parse Count: 1
+Semantic Parse:  [proactive(4:s , 5:china), need.1(2:e , 0:we), need.2(2:e , 5:china)]
+Lexical items: [0, 2, 4, 5]
+Node:5, China  proactive
+Events (with NN/NNP arguments)[2]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: China
+Disambiguation: Q3674754,Q2681898,Q29520,Q20898938,Q3447500,Q5099551,Q2261236,Q5099549,Q20197129,Q1364589,Q692303,Q932423,Q7704180,Q19601344,Q5099553,Q288864,Q942154,Q14625391,Q2052807,Q6075995,
+Adding an ambiguous node to RIGHT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:It's flat.
+Parse Count: 160
+Semantic Parse:  ['s.flat(2:s , 1:e), 's.1(1:e , 0:it)]
+Lexical items: [0, 1, 2]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:And it was during those desperate times that this group was formed, Midland's chapter of Community Bible Study, or CBS, as it's called.
+Parse Count: 1597
+Semantic Parse:  [chapter.of.1(15:e , 1:it), those(4:s , 4:x), chapter(15:s , 6:x), called.1(25:e , 23:it), chapter(15:s , 13:midland), chapter.of.2(15:e , 17:community-bible-study)]
+Lexical items: [1, 23, 13, 4, 15, 6, 17]
+Node:13, Midland  chapter
+Node:17, Community_Bible_Study   
+Events (with NN/NNP arguments)[15]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Community Bible Study
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:MARK LEAVERTON When he came, it was noteworthy.
+Parse Count: 1
+Semantic Parse:  [noteworthy.1(7:e , 5:it), came.1(3:e , 2:he), noteworthy.MARK_LEAVERTON(0:s , 7:e)]
+Lexical items: [0, 2, 5, 7]
+Node:0, MARK_LEAVERTON   
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:NARRATOR Bush's family were East Coast Episcopalians, churchgoing but not particularly devout.
+Parse Count: 1
+Semantic Parse:  [devout.1(11:e , 5:east-coast-episcopalians), devout.particularly(10:s , 11:e), NEGATION(7:e), churchgoing.1(7:e , 5:east-coast-episcopalians), family.'s.2(3:e , 1:bush), family.'s.1(3:e , 5:east-coast-episcopalians), family(3:s , 5:east-coast-episcopalians), NARRATOR(0:s , 1:bush)]
+Lexical items: [0, 11, , 1, 3, 5, 7, 10]
+Node:1, Bush  NARRATOR
+Node:5, East_Coast_Episcopalians  family
+Events (with NN/NNP arguments)[11, 3, 7]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: East Coast Episcopalians
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: Bush
+Disambiguation: Q1484464,Q247949,Q5001360,Q19111926,Q1017464,Q17661323,Q1017471,Q17661334,Q17661337,Q224168,Q5001365,Q20482703,
+Adding an ambiguous node to RIGHT list
+
+Node to ground: East Coast Episcopalians
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: East Coast Episcopalians
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:When he had married Laura Welsh, Bush had adopted her family's United Methodist Church.
+Parse Count: 80
+Semantic Parse:  [married.2(3:e , 4:laura-welsh), married.1(3:e , 1:he), adopted.1(8:e , 6:bush), adopted.2(8:e , 12:united-methodist-church)]
+Lexical items: [1, 12, 3, 4, 6, 8]
+Node:12, United_Methodist_Church   
+Node:4, Laura_Welsh   
+Node:6, Bush   
+Events (with NN/NNP arguments)[3, 8]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Laura Welsh
+Id from query: Q18668225 type: [human]human
+Added node to RIGHT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: Bush
+Disambiguation: Q1484464,Q247949,Q5001360,Q19111926,Q1017464,Q17661323,Q1017471,Q17661334,Q17661337,Q224168,Q5001365,Q20482703,
+Adding an ambiguous node to LEFT list
+
+Node to ground: United Methodist Church
+Disambiguation: Q7888246,Q7888249,Q329646,Q7888247,Q2495241,Q7888245,Q7888250,
+Adding an ambiguous node to RIGHT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 8
+Dismabiguation not possible as both nodes are ambigous..Grounding nodes Bush and United Methodist Church....No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:DOUG WEAD He woke up one morning and he said, Eureka.
+Parse Count: 1
+Semantic Parse:  [said.1(8:e , 7:he), morning(5:s , 4:type.int), woke.up(3:s , 2:e), woke.1(2:e , 1:he), said.2(8:e , 10:eureka), woke.2(2:e , 0:doug-wead), said.1(8:e , 0:doug-wead)]
+Lexical items: [0, 1, 2, 3, 4, 5, 7, 8, 10]
+Node:0, DOUG_WEAD   
+Node:10, Eureka   
+Events (with NN/NNP arguments)[2, 8]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: DOUG WEAD
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: Eureka
+Disambiguation: Q20641744,Q666688,Q217454,Q961919,Q482398,Q488702,Q1374359,Q4529724,Q575158,Q5411133,Q5411144,Q5411146,Q614574,Q5411136,Q452122,Q12864003,Q5411139,Q5411134,Q5411137,Q5411138,Q16992781,Q965170,Q2278475,Q975307,Q5411135,Q5411128,Q5411141,Q373849,Q226998,
+Adding an ambiguous node to RIGHT list
+
+Node to ground: DOUG WEAD
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:NARRATOR The Bible study that Bush joined was evangelical Christian.
+Parse Count: 1
+Semantic Parse:  [joined.2(6:e , 9:christian), study.'s.2(3:e , 2:bible), study(3:s , 9:christian), study.'s.1(3:e , 9:christian), UNIQUE(9:christian), evangelical(8:s , 9:christian), study.NARRATOR(0:s , 9:christian), joined.1(6:e , 5:bush)]
+Lexical items: [0, 2, 3, 5, 6, 8, 9]
+Node:2, Bible   
+Node:5, Bush   
+Node:9, Christian UNIQUE study
+Events (with NN/NNP arguments)[3, 6]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Bible
+Disambiguation: Q1845,Q20155177,Q343399,
+Adding an ambiguous node to RIGHT list
+
+Node to ground: Christian
+Disambiguation: Q18001597,Q106039,Q44537,Q16865575,Q229188,Q5109245,Q3675612,Q19036472,Q2964993,Q19036462,Q19036491,Q18001598,Q12305810,Q19036502,Q19036482,
+Adding an ambiguous node to LEFT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 3
+Dismabiguation not possible as both nodes are ambigous..Grounding nodes Christian and Bible....No property found in WikiData..Grounding not possible
+
+Node to ground: Christian
+Annotated ID:Q18001597,Q106039,Q44537,Q16865575,Q229188,Q5109245,Q3675612,Q19036472,Q2964993,Q19036462,Q19036491,Q18001598,Q12305810,Q19036502,Q19036482, type: null
+Added node to RIGHT list
+
+Node to ground: Bush
+Disambiguation: Q1484464,Q247949,Q5001360,Q19111926,Q1017464,Q17661323,Q1017471,Q17661334,Q17661337,Q224168,Q5001365,Q20482703,
+Adding an ambiguous node to LEFT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 6
+Dismabiguation not possible as both nodes are ambigous..Grounding nodes Bush and Christian....No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:And I'm sure that's exactly what George was feeling.
+Parse Count: 1
+Semantic Parse:  [what.exactly(6:s , 7:e), sure(3:s , 7:x), feeling.1(10:e , 8:george), sure(3:s , 1:i), that(4:s , 7:x)]
+Lexical items: [1, 3, 4, 6, 7, 8]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:Christ died for us.
+Parse Count: 243
+Semantic Parse:  [died.for.2(1:e , 3:we), died.1(1:e , 0:christ)]
+Lexical items: [0, 1, 3]
+Node:0, Christ   
+Events (with NN/NNP arguments)[1]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Christ
+Disambiguation: Q418999,Q642420,Q19036371,Q19036381,Q1077933,Q20783193,Q16865574,Q20816790,Q17007436,Q20201745,
+Adding an ambiguous node to LEFT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:BIBLE STUDY PARTICIPANT It's Romans 58.
+Parse Count: 1
+Semantic Parse:  [PARTICIPANT(2:s , 3:it), STUDY(1:s , 1:x), STUDY.BIBLE(0:s , 1:x), PARTICIPANT(2:s , 1:x), 58(6:s , 3:it)]
+Lexical items: [0, 1, 2, 3, 6]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:It was something deep.
+Parse Count: 1
+Semantic Parse:  [something(2:s , 0:it), deep.1(3:e , 0:it)]
+Lexical items: [0, 2]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:Round two is over.
+Parse Count: 281
+Semantic Parse:  [two(1:s , 0:round), over.1(3:e , 0:round)]
+Lexical items: [0, 1]
+Node:0, Round  two
+Events (with NN/NNP arguments)[3]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Round
+Disambiguation: Q7370971,Q398690,Q1145381,Q15637587,
+Adding an ambiguous node to LEFT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:ROBERTSON SUPPORTERS Hats off for Pat! Hats off for Pat! NARRATOR The Bush campaign was stunned when their candidate came in third in the Iowa caucus behind televangelist Pat Robertson.
+Parse Count: 143
+Semantic Parse:  [for.2(0:e , 4:pat), off(2:s , 0:e)]
+Lexical items: [0, 2, 4]
+Node:0, ROBERTSON_SUPPORTERS  off
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:Rev. PAT ROBERTSON, Presidential Candidate Thank you very much!
+Parse Count: 1
+Semantic Parse:  [Thank.2(3:e , 4:you), Thank.1(3:e , 0:rev.-pat-robertson), Thank.very(5:s , 3:e), Thank.much(6:s , 3:e), Thank.1(3:e , 2:presidential-candidate)]
+Lexical items: [0, 2, 3, 4, 5, 6]
+Node:0, Rev._PAT_ROBERTSON   
+Node:2, Presidential_Candidate   
+Events (with NN/NNP arguments)[3]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Rev. PAT ROBERTSON
+Annotation not found
+
+Node to ground: Presidential Candidate
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:I suspected it was Billy Graham.
+Parse Count: 771
+Semantic Parse:  [was.Billy_Graham(4:s , 3:e), suspected.1(1:e , 2:it)]
+Lexical items: [2, 3, 4]
+Node:4, Billy_Graham   
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:He was very good.
+Parse Count: 1
+Semantic Parse:  [good.1(3:e , 0:he), good.very(2:s , 3:e)]
+Lexical items: [0, 2, 3]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:They were really tough.
+Parse Count: 1
+Semantic Parse:  [tough.1(3:e , 0:they), tough.really(2:s , 3:e)]
+Lexical items: [0, 2, 3]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:He's a real bornagain Christian.
+Parse Count: 341
+Semantic Parse:  [real(3:s , 5:christian), 's.1(1:e , 0:he), bornagain(4:s , 5:christian), 's.2(1:e , 5:christian)]
+Lexical items: [0, 1, 3, 4, 5]
+Node:5, Christian  real
+Events (with NN/NNP arguments)[1]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Christian
+Disambiguation: Q18001597,Q106039,Q44537,Q16865575,Q229188,Q5109245,Q3675612,Q19036472,Q2964993,Q19036462,Q19036491,Q18001598,Q12305810,Q19036502,Q19036482,
+Adding an ambiguous node to RIGHT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:We lost the Catholic vote.
+Parse Count: 365
+Semantic Parse:  [vote.Catholic(3:s , 4:x), vote(4:s , 4:x), lost.1(1:e , 0:we)]
+Lexical items: [0, 3, 4]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:You know, We're different.
+Parse Count: 199
+Semantic Parse:  [different.1(5:e , 3:we), know.1(1:e , 0:you)]
+Lexical items: [0, 3]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:And he got beat.
+Parse Count: 1
+Semantic Parse:  [got.1(2:e , 1:he), got.beat(3:s , 2:e)]
+Lexical items: [1, 2, 3]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:DOUG WEAD Now, he had become an evangelical Christian himself.
+Parse Count: 1
+Semantic Parse:  [become.Now(1:s , 5:e), evangelical(7:s , 9:himself), become.2(5:e , 9:himself), become.1(5:e , 3:he), Christian(8:s , 9:himself), become.DOUG_WEAD(0:s , 5:e)]
+Lexical items: [0, 1, 3, 5, 7, 8, 9]
+Node:0, DOUG_WEAD   
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:NARRATOR Ken Herman was a reporter for The Houston Post.
+Parse Count: 1
+Semantic Parse:  [NARRATOR(0:s , 1:ken-herman), reporter.for.2(4:e , 7:houston-post), reporter.for.1(4:e , 1:ken-herman), UNIQUE(7:houston-post), reporter(4:s , 1:ken-herman)]
+Lexical items: [0, 1, 4, 7]
+Node:1, Ken_Herman  NARRATOR
+Node:7, Houston_Post UNIQUE  
+Events (with NN/NNP arguments)[4]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Houston Post
+Id from query: Q1390845 type: [newspaper]newspaper
+Added node to RIGHT list
+
+Node to ground: Ken Herman
+Id from query: Q6387780 type: [human]human
+Added node to LEFT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 4
+Grounding nodes Ken Herman and Houston Post....No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:It was called God Blessed Texas.
+Parse Count: 1
+Semantic Parse:  [called.2(2:e , 0:it), called.1(2:e , 3:god-blessed-texas)]
+Lexical items: [0, 2, 3]
+Node:3, God_Blessed_Texas   
+Events (with NN/NNP arguments)[2]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: God Blessed Texas
+Id from query: Q16994226 type: [single]single
+Added node to LEFT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:God blessed Texas.
+Parse Count: 1
+Semantic Parse:  [blessed.1(1:e , 0:god), blessed.2(1:e , 2:texas)]
+Lexical items: [0, 1, 2]
+Node:0, God   
+Node:2, Texas   
+Events (with NN/NNP arguments)[1]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: God
+Disambiguation: Q5575799,Q190,Q59939,Q16870212,Q825,Q2316138,Q5575807,Q5575800,Q3648715,Q386933,Q5575801,Q5575804,Q1531114,Q5575806,Q5575809,Q16839428,
+Adding an ambiguous node to LEFT list
+
+Node to ground: Texas
+Disambiguation: Q1439,Q7707412,Q916484,Q14761926,Q7707411,Q7707414,Q7707419,Q3985371,Q2407574,Q7707415,Q10694553,Q1572485,Q3519335,Q1887280,Q7707417,
+Adding an ambiguous node to RIGHT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 1
+Dismabiguation not possible as both nodes are ambigous..Grounding nodes God and Texas....No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:RENA PEDERSON, EditoratLarge, Dallas Morning News  It was former President George Bush and Barbara Bush, the Bush daughters, their very closest friends and closest party supporters.
+Parse Count: 2413
+Semantic Parse:  [It(7:s , 4:dallas), daughters.'s.2(16:e , 15:bush), supporters(25:s , 25:x), former(9:s , 10:president-george-bush), daughters(16:s , 12:barbara-bush), daughters.'s.1(16:e , 12:barbara-bush), Morning(5:s , 4:dallas), UNIQUE(12:barbara-bush), friends.their(18:s , 21:x), friends(21:s , 21:x), friends.very(19:s , 21:e), supporters.closest(23:s , 25:x), friends.closest(20:s , 21:x), supporters.party(24:s , 25:x)]
+Lexical items: [12, 23, 24, 25, 15, 16, 18, 19, 4, 5, 7, 9, 20, 10, 21]
+Node:12, Barbara_Bush UNIQUE daughters
+Node:15, Bush   
+Node:4, Dallas  It
+Node:10, President_George_Bush  former
+Events (with NN/NNP arguments)[16]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Bush
+Disambiguation: Q1484464,Q247949,Q5001360,Q19111926,Q1017464,Q17661323,Q1017471,Q17661334,Q17661337,Q224168,Q5001365,Q20482703,
+Adding an ambiguous node to RIGHT list
+
+Node to ground: Barbara Bush
+Disambiguation: Q190628,Q4858792,
+Adding an ambiguous node to LEFT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 16
+Dismabiguation not possible as both nodes are ambigous..Grounding nodes Barbara Bush and Bush....No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:Steve Forbes answered John Locke.
+Parse Count: 1
+Semantic Parse:  [answered.2(1:e , 2:john-locke), answered.1(1:e , 0:steve-forbes)]
+Lexical items: [0, 1, 2]
+Node:0, Steve_Forbes   
+Node:2, John_Locke   
+Events (with NN/NNP arguments)[1]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: John Locke
+Disambiguation: Q9353,Q399587,Q51311,Q6245090,Q6245088,Q4265771,Q673638,Q933652,Q1700872,Q6245092,
+Adding an ambiguous node to RIGHT list
+
+Node to ground: Steve Forbes
+Disambiguation: Q780842,Q19957796,Q7612567,Q133569,
+Adding an ambiguous node to LEFT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 1
+Dismabiguation not possible as both nodes are ambigous..Grounding nodes Steve Forbes and John Locke....No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:It was headed by a young Southerner named Ralph Reed, and it was called the Christian Coalition.
+Parse Count: 1
+Semantic Parse:  [named.2(7:e , 6:southerner), called.1(13:e , 16:coalition), Christian(15:s , 16:coalition), named.1(7:e , 8:ralph-reed), called.2(13:e , 11:it), young(5:s , 6:southerner), headed.2(2:e , 0:it), UNIQUE(16:coalition), headed.1(2:e , 6:southerner)]
+Lexical items: [0, 11, 2, 13, 15, 5, 16, 6, 7, 8]
+Node:16, Coalition UNIQUE Christian
+Node:6, Southerner  young
+Node:8, Ralph_Reed   
+Events (with NN/NNP arguments)[13, 2, 7]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Coalition
+Disambiguation: Q5137897,Q5137895,Q5137892,Q5137896,Q1065320,Q5137893,Q5137894,Q19824607,
+Adding an ambiguous node to LEFT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: Southerner
+Disambiguation: Q7570741,Q7570742,Q7570740,Q7570743,
+Adding an ambiguous node to LEFT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: Southerner
+Annotated ID:Q7570741,Q7570742,Q7570740,Q7570743, type: null
+Added node to RIGHT list
+
+Node to ground: Ralph Reed
+Disambiguation: Q7288001,Q7288004,
+Adding an ambiguous node to LEFT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 7
+Dismabiguation not possible as both nodes are ambigous..Grounding nodes Ralph Reed and Southerner....No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:NARRATOR And Clinton won the White House.
+Parse Count: 697
+Semantic Parse:  [won.1(3:e , 2:clinton), won.2(3:e , 5:white-house), UNIQUE(5:white-house), won.NARRATOR(0:s , 3:e)]
+Lexical items: [0, 2, 3, 5]
+Node:2, Clinton   
+Node:5, White_House UNIQUE  
+Events (with NN/NNP arguments)[3]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Clinton
+Disambiguation: Q11003143,Q2414182,Q755130,Q2979345,Q19826492,Q3461582,Q575118,Q218946,Q1021657,Q2346791,Q2074188,Q755090,Q19044246,Q19044249,Q19044261,Q19044275,Q19044285,Q80062,Q1515068,Q5134050,Q19044254,Q19044266,Q19044270,Q1101665,Q964126,Q16949261,Q483185,Q385697,Q2979346,Q2979347,Q5134023,Q5134049,Q19044244,Q19044257,Q19044279,
+Adding an ambiguous node to LEFT list
+
+Node to ground: White House
+Disambiguation: Q35525,Q17546945,Q224152,Q7994844,Q7994847,Q7994853,Q7994854,Q20741728,Q7994850,Q7994851,Q7994852,Q7994855,Q844124,Q2566904,Q7994845,Q7994846,Q7994848,Q1066932,Q20776081,Q20859895,Q20862112,Q17535689,Q17544106,
+Adding an ambiguous node to RIGHT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 3
+Dismabiguation not possible as both nodes are ambigous..Grounding nodes Clinton and White House....No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:They called it compassionate conservatism.
+Parse Count: 2101
+Semantic Parse:  [called.1(1:e , 0:they), called.conservatism(4:s , 1:e), compassionate.1(3:e , 2:it), called.2(1:e , 2:it)]
+Lexical items: [0, 1, 2, 4]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:And religion, it turned out, was key.
+Parse Count: 1826
+Semantic Parse:  [turned.out(5:s , 4:e), religion(1:s , 1:x), turned.1(4:e , 3:it), key.1(8:e , 3:it)]
+Lexical items: [1, 3, 4, 5]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:It's a good goby.
+Parse Count: 1249
+Semantic Parse:  [goby.good(3:s , 4:x), 's.1(1:e , 0:it), goby(4:s , 4:x)]
+Lexical items: [0, 3, 4]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:It's no longer about the word of God, the light of Christ, it's about us.
+Parse Count: 1
+Semantic Parse:  ['s.about.2(16:e , 18:we), word.about.1(6:e , 0:it), light(11:s , 0:it), word(6:s , 0:it), light.of.1(11:e , 0:it), word.of.2(6:e , 8:god), 's.1(16:e , 15:it), UNIQUE(0:it), light.of.2(11:e , 13:christ), word.of.2(6:e , 13:christ), word.of.1(6:e , 0:it)]
+Lexical items: [0, 11, 13, 15, 16, 6, 18, 8]
+Node:13, Christ   
+Node:8, God   
+Events (with NN/NNP arguments)[11, 6]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Christ
+Disambiguation: Q418999,Q642420,Q19036371,Q19036381,Q1077933,Q20783193,Q16865574,Q20816790,Q17007436,Q20201745,
+Adding an ambiguous node to RIGHT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: God
+Disambiguation: Q5575799,Q190,Q59939,Q16870212,Q825,Q2316138,Q5575807,Q5575800,Q3648715,Q386933,Q5575801,Q5575804,Q1531114,Q5575806,Q5575809,Q16839428,
+Adding an ambiguous node to RIGHT list
+
+Node to ground: Christ
+Annotated ID:Q418999,Q642420,Q19036371,Q19036381,Q1077933,Q20783193,Q16865574,Q20816790,Q17007436,Q20201745, type: null
+Added node to RIGHT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:RICHARD LAND George Bush is prolife.
+Parse Count: 1471
+Semantic Parse:  [is.prolife(2:s , 1:e), is.1(1:e , 0:richard-land-george-bush)]
+Lexical items: [0, 1, 2]
+Events (with NN/NNP arguments)[]
+
+Metaline:Hash mis-match or no Meta data found
+
+
+=============================================================================================================================
+Sentence:We've got one in the Oval Office.
+Parse Count: 1519
+Semantic Parse:  [got.in.2(2:e , 6:oval-office), got.1(2:e , 0:we), UNIQUE(6:oval-office), got.2(2:e , 3:type.int)]
+Lexical items: [0, 2, 3, 6]
+Node:6, Oval_Office UNIQUE  
+Events (with NN/NNP arguments)[2]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Oval Office
+Disambiguation: Q338067,Q7113213,
+Adding an ambiguous node to RIGHT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:He later collaborated with Terry Jones, another Python team member.
+Parse Count: 1
+Semantic Parse:  [collaborated.1(2:e , 0:he), member.'s.2(9:e , 7:python), collaborated.with.2(2:e , 4:terry-jones), member.'s.1(9:e , 4:terry-jones), collaborated.later(1:s , 2:e), member.team(8:s , 4:terry-jones), member(9:s , 4:terry-jones)]
+Lexical items: [0, 1, 2, 4, 7, 8, 9]
+Node:4, Terry_Jones  member
+Node:7, Python   
+Events (with NN/NNP arguments)[2, 9]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Terry Jones
+Disambiguation: Q166159,Q7704581,Q285754,Q363969,Q16238983,Q6380490,Q7704587,Q20684269,Q7704580,Q7704582,Q7704586,
+Adding an ambiguous node to RIGHT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+Node to ground: Python
+Disambiguation: Q28865,Q271218,Q15721,Q3411448,Q18613777,Q18691580,Q15728,Q7263917,Q16104367,Q15727,Q747452,Q7263918,Q7263920,
+Adding an ambiguous node to RIGHT list
+
+Node to ground: Terry Jones
+Annotated ID:Q166159,Q7704581,Q285754,Q363969,Q16238983,Q6380490,Q7704587,Q20684269,Q7704580,Q7704582,Q7704586, type: null
+Added node to LEFT list
+
+Atleast two nodes connected by a relation in un-grounded graph.Initialising grounding for event/edge: 9
+Dismabiguation not possible as both nodes are ambigous..Grounding nodes Terry Jones and Python....No property found in WikiData..Grounding not possible
+
+
+=============================================================================================================================
+Sentence:Take the Highgate Hill exit.
+Parse Count: 637
+Semantic Parse:  [exit(3:s , 2:highgate-hill), UNIQUE(2:highgate-hill), Take.1(0:e , 2:highgate-hill)]
+Lexical items: [2, 3]
+Node:2, Highgate_Hill UNIQUE exit
+Events (with NN/NNP arguments)[0]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Highgate Hill
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:Buses 143, 210 and 271 stop at Waterlow Park on Highgate Hill.
+Parse Count: 3216
+Semantic Parse:  [stop.at.1(6:e , 3:type.datetime), Buses(0:s , 0:x), stop.at.2(6:e , 8:waterlow-park), stop.on.2(6:e , 10:highgate-hill), stop(6:s , 3:type.datetime), Buses.143(1:s , 0:x), stop.on.1(6:e , 3:type.datetime)]
+Lexical items: [0, 1, 3, 6, 8, 10]
+Node:8, Waterlow_Park   
+Node:10, Highgate_Hill   
+Events (with NN/NNP arguments)[6]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: Waterlow Park
+Id from query: Q7974321 type: []
+Added node to RIGHT list
+
+Node to ground: Highgate Hill
+Annotation not found
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+
+=============================================================================================================================
+Sentence:AMERICAN ATHEISTS Mr. Adams, you have been described as a radical Atheist.
+Parse Count: 1
+Semantic Parse:  [described.2(5:e , 2:you), described.2(5:e , 0:american-atheists-mr.-adams), described.as.2(5:e , 9:atheist), radical(8:s , 9:atheist)]
+Lexical items: [0, 2, 5, 8, 9]
+Node:0, AMERICAN_ATHEISTS_Mr._Adams   
+Node:9, Atheist  radical
+Events (with NN/NNP arguments)[5]
+
+Metaline:Hash mis-match or no Meta data found
+
+Node to ground: AMERICAN ATHEISTS Mr. Adams
+Annotation not found
+
+Node to ground: Atheist
+Disambiguation: Q4813309,Q755034,
+Adding an ambiguous node to RIGHT list
+
+Insufficient Nodes for this edge/event OR Node pair not connected by a relation. Grounding not possible 
+
+

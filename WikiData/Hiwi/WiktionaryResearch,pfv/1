@@ -1,0 +1,84 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1278408097" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+-- Main.YevgenChebotar - 06 Jul 2010
+
+---+ Bots
+Source: [[http://en.wiktionary.org/wiki/Wiktionary:Bots][http://en.wiktionary.org/wiki/Wiktionary:Bots]]
+
+---++ Currently active bots
+| *Bot name* | *Language/Activity Field* | *Function* |
+| AutoFormat | General | Entry format||
+| Conrad.Bot | General | Link fixing for deleted/deletable redirects.||
+| Doddebot | General | HTML replacement||
+| Interwicket | General | Interwiki links||
+| MalafayaBot | General | Interwiki links in Category namespace||
+| Mzajacbot | General | Replace obsolete Script templates||
+| PolyBOT | General | Column templates||
+| Tbot  | Translations | Maintain {{t}} links||
+| DerbethBot  | Audio | Adding IPA and pronunciation files to entries||
+| Dvortybot | Audio | Bulk linking of audio||
+| TheCheatBot | English | Noun plurals||
+| Dawnraybot  | French | Verb forms||
+| KassadBot  | German | Verb forms||
+| BuchmeierBot  | Spanish | Verb forms||
+| MewBot  | Dutch | Verb and adjective forms||
+| MglovesfunBot  | Dutch | Verb forms||
+| SemperBlottoBot  | Italian | Inflected forms||
+| FitBot  | Latin/Galician | Latin - inflected forms; Galician - verb forms||
+| Neskbot  | Hiligaynon | Entry creation||
+| Opiaterein Inflectobot | Lithuanian | Entry creation; template replacement||
+| UllmannBot  | CJK characters | Format Kanji/Han characters||
+
+---++ Currently in-active bots
+| *Bot name* | *Language/Activity Field* | *Function* |
+| DblRedirBot | General | Eliminate double redirects||
+| ScsHdrRewrBot | General | Simple rewrites of section headings, in an ongoing effort to keep them consistent and normalized.||
+| ScsRhymeBot | General | Maintenance of Wiktionary rhyme lists and links.||
+| TempBot | General | Template replacement||
+| ComparBot | English | Adj. comparative forms||
+| PastBot | English | Verb past forms||
+| SuperlBot | English | Adj. superlative forms||
+| ThirdPersBot | English | 3rd-pers. verb forms||
+| Websterbot | English | Importing Webster's (1913) entries||
+| TheDaveBot   | Spanish | Verb forms||
+| NanshuBot | CJK characters | CJK ideographs||
+
+---+ English Wiktionary
+---++ History
+Source: [[http://en.wikipedia.org/wiki/Wiktionary][http://en.wikipedia.org/wiki/Wiktionary]]
+
+Wiktionary was brought online on December 12, 2002, following a proposal by Daniel Alston. On March 29, 2004, the first non-English Wiktionaries were initiated in French and Polish. Wiktionary was hosted on a temporary URL (wiktionary.wikipedia.org) until May 1, 2004, when it switched to the current full URL.
+
+Despite Wiktionary's large number of entries, most of the entries and many of the definitions at the project's largest language editions were created by bots that found creative ways to generate entries or (rarely) automatically imported thousands of entries from previously published dictionaries. Seven of the 18 bots registered at the English Wiktionary created 163,000 of the entries there. Only 259 entries remain (each containing many definitions) on Wiktionary from the original import by Websterbot from public domain sources; the majority of those imports have been split out to thousands of proper entries manually. Another one of these bots, "ThirdPersBot," was responsible for the addition of a number of third-person conjugations that would not receive their own entries in standard dictionaries; for instance, it defined "smoulders" as the "third-person singular simple present form of smoulder." Excluding these 163,000 entries, the English Wiktionary would have about 137,000 entries, including terms unique to languages other than English, making it smaller than most monolingual print dictionaries.
+
+---++ Criteria for inclusion of new entries
+Source: [[http://en.wiktionary.org/wiki/Wiktionary:Criteria_for_inclusion][http://en.wiktionary.org/wiki/Wiktionary:Criteria_for_inclusion]]
+
+A term should be included if it's likely that someone would run across it and want to know what it means. A term need not be limited to a single word in the usual sense. Any of these are also acceptable:
+   * Compounds and multiple-word terms such as post office.
+   * Idioms such as go on and give up the ghost.
+   * Proverbs
+   * Abbreviations, acronyms, and initialisms such as NBA.
+   * Prefixes and suffixes such as re- and -ist.
+   * Characters used in ideographic or phonetic writing such as &#23383; or &#643;.
+
+*Attestation*: Attested means verified through
+   1. Clearly widespread use,
+   2. Usage in a well-known work,
+   3. Appearance in a refereed academic journal, or
+   4. Usage in permanently recorded media, conveying meaning, in at least three independent instances spanning at least a year.
+
+*Conveying meaning*
+Filters out made-up words and terms with made-up examples of how the word can be used.
+
+*Independence*
+Exclude multiple references that draw on each other. If a term is only used in a narrow community, there is no need to refer to a general dictionary such as Wiktionary to find its meaning.
+
+*Spanning at least a year*
+Filter out words that may appear and see brief use, but then never be used again.
+
+*Idiomaticity*
+An expression is idiomatic if its full meaning cannot be easily derived from the meaning of its separate components. For example  , _this is a door_ is not idiomatic, but _shut up_ is.
+
+*Inflections*
+The entries for such inflected forms as _cameras_, _geese_, _asked_, and _were_ should indicate what form they are, and link to the main entry for the word.

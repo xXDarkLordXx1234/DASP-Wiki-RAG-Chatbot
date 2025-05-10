@@ -1,0 +1,9 @@
+%META:TOPICINFO{author="LizhenQu" date="1190759360" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="LizhenQu"}%
+
+Current running:<br />Clustering of topic words and as a unification framework.<br />Import english Wiktionary into Database as the basis of ontology.<br />
+
+Current coding status:<br />over 1.7 MB (120 classes, nearly no duplicate code) java source code and a small c++ program for putting parsing results into database.  - 25 10 2007
+   * [[%ATTACHURL%/Jul31.pdf][Jul31.pdf]]: a work report on 07.31. <br />
+
+%META:FILEATTACHMENT{name="Jul31.pdf" attachment="Jul31.pdf" attr="" comment="a work report on 31,07. The tree model is actually a byproduct of performance tunning. All optimization is actually motivated by improving performance. The detailed description of the tree model may be misleading that I'm focusing on optimization." date="1186572691" path="Jul31.pdf" size="62733" stream="Jul31.pdf" user="Main.LizhenQu" version="1"}%

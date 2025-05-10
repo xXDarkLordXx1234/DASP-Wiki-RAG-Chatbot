@@ -1,0 +1,29 @@
+%META:TOPICINFO{author="NicoErbs" date="1278405454" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="MarkoMartin"}%
+%TOC% 
+
+---++04.07.2010
+   * How can the original file name of a CAS that has been read by a FileSystemReader be obtained?
+      * *TZ:* should be in DocumentMetaData.getDocumentUri()
+         * *MM:* How can I get the DocumentMetaData object? I tried it with "(DocumentMetaData) cas.getDocumentAnnotationFs()" and with extracting all annotations with that type - both did not work...
+            * *NE*: Try this:   DocumentMetaData meta = jcas.getAnnotationIndex(DocumentMetaData.type).iterator().next();<br>
+                        or this: DocumentMetaData meta = CasUtils.getSingleRequired(jcas, DocumentMetaData.class);<br>
+                        or even better: DocumentMetaData meta = CasUtils.getMetaData(jcas);
+
+   * Does UIMA use the same AnalysisEngine instance for all processed CASes?
+      * *TZ:* I would say yes, but I am not 100% sure, whether I understand the question right
+   * How should a consumer be implemented which "consumes all CASes"? E.g., for evaluation, a component would be desirable which writes evaluation results (as an average or a sum of all single per-document results) to a file.
+      * *TZ:* collectionProcessComplete() is called after all CASes are processed, you can override that method and put your code in there
+   * Are these package names appropriate?
+      * de.tudarmstadt.ukp.dkpro.semantics.segmenter.consumer (for PlainTextWriter, AnnotationOffsetWriter, SegmentationEvaluator)
+      * de.tudarmstadt.ukp.dkpro.semantics.reader (for WikipediaCategoryReader)
+         * *TZ:* please use de.tudarmstadt.ukp.dkpro.semantics.segmentation and put all the files that you created in there (e.g. in sub-packages reader/annotator/consumer)
+            * *MM:* done
+
+---++26.06.2010 
+   * How to connect with Cisco VPN Client? Do I need "Group Authentication" data?
+      * _29.06.2010_: Problem solved with generic Windows VPN connection
+   * Wikipedia articles are divided both in paragraphs and sections - what would be the appropriate granularity for segmentation algorithms?
+      * _29.06.2010_: The Wikipedia reader component should be able to mark regions as segments such as defined with a parameter (e.g., only for sections, for sections and sub sections, for paragraphs etc.); however, for sake of simplicity, flat (not hierarchical) segment annotations are sufficient. Other components do not have to distinguish between different kinds of segments.
+
+-- Main.MarkoMartin - 26 Jun 2010

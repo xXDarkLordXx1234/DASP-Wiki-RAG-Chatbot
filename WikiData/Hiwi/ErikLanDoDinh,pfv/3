@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="RichardEckart" date="1294041800" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+
+---+ Aktueller Vertrag (Dez 2010-Jan 2011)
+
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+|   | Übertrag | 0.5 |  |
+| 04.12.10 | Maven/UIMAfit einlesen, installieren, ausprobieren | 4 | Maven Installation, Uimafit und Beispielprogramm |
+| 07.12.10 | TueBaDZ -> Annis2 | 2.5 | TueBaDZ export (negra) zu tiger-xml konvertieren (mittels Tigersearch), Pepper Konvertierung testen |
+| 12.12.10 | TueBaDZ -> Annis2 | 2 | Lösung für Pepper Konvertierung suchen |
+| 14.12.10 | TueBaDZ -> Annis2 | 3 | TueBaDZ in relANNIS konvertieren, Fehler suchen, testen |
+| 15.12.10 | TueBaDZ -> Annis2 | 1 | TueBaDZ in relANNIS konvertieren, Fehler suchen, testen |
+| 20.12.10 | TueBaDZ -> Annis2 | 1 | 2x relANNIS -> 1x relANNIS testen, Mail an Pepper-Team wegen Konvertierung |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+---+ Vergangene Verträge
+
+---++ Vertrag Nov 2010
+
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 06.11.10 | MaltParser mit TueBaDZ trainieren | 1.5 | treeconv ausprobieren, in TueBaDZ einlesen |
+| 07.11.10 | MaltParser mit TueBaDZ trainieren | 1.5 | MaltParser Doku lesen, ausprobieren, .conll Format |
+| 14.11.10 | MaltParser mit TueBaDZ trainieren | 6 | MaltParser Negra Input testen, Converter (negra->malttab) programmieren |
+| 21.11.10 | Evaluation Annis2 | 4.5 | Lesen: Dependency Relations in TueBaDZ, Annis2, PAULA, relANNIS |
+| 28.11.10 | Evaluation Annis2 | 7 | PostgreSQL/Annis2 Installation, Tests mit PAULA, Pepper |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 20
+
+-- Main.RichardEckart - 2010-12-21

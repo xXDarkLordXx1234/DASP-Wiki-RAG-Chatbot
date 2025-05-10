@@ -1,0 +1,5 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1366023841" format="1.1" reprev="16" version="17"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * separate Token, Lemma and POS annotations (in terms of their offsets)
+      * *Important*: Make sure, the evaluations results are the same before and after.
+      * TODO: !XmlReaders: set correct (disjoint) offsets

@@ -1,0 +1,101 @@
+%META:TOPICINFO{author="nadolskyy" comment="reprev" date="1413997121" format="1.1" reprev="235" version="235"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ Tasks
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Aufgaben, Andriy* |
+| *Aufgabe* | *% done* |
+| Einführung für GIS Tutorium erstellen | 100 |
+| Erstellung von Musterlösung für NLP and the Web | 100 |
+| Annotationsstudie von Daniel | 100 |
+| Annotationsstudie von Silvana | 100 |
+| Wrapper für Mate-Tools; dazugehörige Annotatoren | 100 |
+| Anpassungen und Deployment von SIDIM | 100 |
+| Anpassungen für WSD | 100 |
+| | |
+
+
+---+++ Protocol
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Andriy, Stunden 2014* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| hours left from the year 2014 | 01.01.2014 | -32.0 | <ul><li> - (195 (from the contract of year 2013) - 163 (worked))  = -32 </li></ul> |
+| WSD | 14.01.2014 | 1.75 | <ul><li> get used to the work of the "Issue 29: Chaining of backoff algorithms" </li></ul> |
+| WSD | 15.01.2014 | 2.25 | <ul><li> install gnuplot; import and show the test project </li><li> run the test project and check the output; </li></ul> |
+| WSD | 16.01.2014 | 6.75 | <ul><li> edit hour protocols: create one new for year 2014 and move the old to the year 2013; </li><li> "," in my pr.tsv compared to "." in example-pr.tsv: that's why could not plot my results before;  </li><li> any pdf-terminal on windows -> used postscript and became the same output (visually); looked some short tutorials to gnuplot; </li><li> set my own test-environment for "PrecisionRecallTest"; </li><li> write code regarding chaining and debug; </li></ul> |
+| WSD | 18.01.2014 | 5.25 | <ul><li> prepared "complete infrastructure" for chain of backoff algorithms; </li><li> still have a comprehension question -> asked Tristan for short meeting with him </li></ul> |
+| WSD | 21.01.2014 | 2 | <ul><li> meeting with Tristan </li><li> reduce d000.xml to test; debug </li></ul> |
+| WSD | 22.01.2014 | 3.5 | <ul><li> Issue 29:	Chaining of backoff algorithms </li></ul> |
+| WSD | 24.01.2014 | 5.5 | <ul><li> meeting with Tristan and Johannes; </li><li> Issue 29: Chaining of backoff algorithms; </li><li> Chaining of backoff algorithms works already at PrecisionRecallGraph </li></ul> |
+| WSD | 02.02.2013 | 3.25 | <ul><li> change dynamically names at header of the output (dynamically add names of backoff algorithms); </li><li> done with "Issue 29: Chaining of backoff algorithms"; </li></ul> |
+| WSD | 05.02.2014 | 3.5 | <ul><li> "Issue 30: Dynamic generation of precisionrecall graph": looking for a matching library; </li><li> study JavaPlot library; </li></ul> |
+| WSD | 06.02.2014 | 0.5 | <ul><li> meeting with Tristan </li></ul> |
+| WSD | 02.03.2013 | 6.75 | <ul><li> data set with 27 instances at d000.xml; </li><li> three files for SensevalAnswerKeyReader objects; </li><li> writing the test class and testing the given scenario;  </li></ul> |
+| WSD | 06.03.2014 | 4.75 | <ul><li> meeting with Johannes; </li><li> add comments to the test class of issue 29; </li><li> find out how to commit to google code -> did it the first time and didn't know how it works; </li><li> adapt paths and commit data of issue 29; </li><li> email to Tristan with description of commited stuff and other files which could be useful (e.g. for issue 30) </li></ul> |
+| DKPRO-TC | 26.03.2014 | 2 | <ul><li> read paper to TC; join mailing lists; </li><li> download new eclipse, install plug-ins; </li></ul> |
+| DKPRO-TC | 01.04.2014 | 3.75 | <ul><li> Developer Setup and Groovy Setup </li><li> Getting Started: Demo Experiments </li></ul> |
+| DKPRO-TC | 02.04.2014 | 1 | <ul><li> Getting Started: Mandatory and optional parameters to configure DKPro-TC experiments; </li><li> Cross-Validation and Fold Control: Reducing Information Leak; </li></ul> |
+| DKPRO-TC | 03.04.2014 | 4.25 | <ul><li> Howto: Using JSON instead of Groovy to configure your experiments; </li><li> Howto: Running DKPro-TC experiments on a server (using external configuration files); </li><li> meeting with Johannes; </li><li> ideas to unit mode use-case sent to Johannes; </li></ul> |
+| DKPRO-TC | 04.04.2014 | 2 | <ul><li> read documentation to german NER corpus at: https://sites.google.com/site/germeval2014ner/data </li><li> run BrownUnitPosDemo </li></ul> |
+| DKPRO-TC | 06.04.2014 | 1.5 | <ul><li> update website for "Getting Started: Demo Experiments"; </li></ul> |
+| DKPRO-TC | 09.04.2014 | 3.5 | <ul><li> read documentation: "Guidelines NER" and "NoSta-D Named Entity Annotation for German: Guidelines and Dataset"; </li><li> begin construct the data set: write a parser for NER format and write it into .xml file </li></ul> |
+| DKPRO-TC | 10.04.2014 | 3.75 | <ul><li> constructed the data set: write a parser for NER format and write it into a .xml file; </li><li> begin create the own example experiment in unit mode; </li></ul> |
+| DKPRO-TC | 17.04.2014 | 2.75 | <ul><li> debug BrownUnitPosDemo and BrownCorpusReader to get better understanding how it works; </li></ul> |
+| DKPRO-TC | 20.04.2014 | 1.25 | <ul><li> debug BrownUnitPosDemo and BrownCorpusReader to get better understanding how it works; </li></ul> |
+| DKPRO-TC | 22.04.2014 | 1.75 | <ul><li> look for a matching reader: SingleLabelReaderBase, TwentyNewsgroupsCorpusReader; </li><li> read https://www.werc.tu-darmstadt.de/fileadmin/user_upload/GROUP_WERC/Guest_Lectures/DKPro_TC_Intro.pdf; </li><li> read/write emails </li></ul> |
+| DKPRO-TC | 24.04.2014 | 1 | <ul><li> meeting with Johannes; </li><li> write down the procedure for unit mode </li></ul> |
+| DKPRO-TC | 07.05.2014 | 3.5 | <ul><li> Write the Reader </li></ul> |
+| DKPRO-TC | 08.05.2014 | 1.75 | <ul><li> Write the Reader </li><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 10.05.2014 | 4.25 | <ul><li> write a relative simple rule-based detokenizer; </li></ul> |
+| DKPRO-TC | 11.05.2014 | 1.25 | <ul><li> test the detokenizer; </li></ul> |
+| DKPRO-TC | 12.05.2014 | 0.75 | <ul><li> done with the detokenizer: 1)it assembles the sentence; 2)saves spans of tokens and corresponding tokens </li></ul> |
+| DKPRO-TC | 15.05.2014 | 1.75 | <ul><li> putting all parts together; </li><li> meeting with Johannes; </li></ul> |
+| DKPRO-TC | 18.05.2014 | 2.25 | <ul><li> debug NERUnitDemoReader </li></ul> |
+| DKPRO-TC | 19.05.2014 | 2.5 | <ul><li> write simple reader; take BatchTaskTrainTest instead of BatchTaskCrossvalidation and debug with taking all possibilities </li><li> meeting with Johannes; </li></ul> |
+| DKPRO-TC | 21.05.2014 | 2.0 | <ul><li> clean code; </li><li> get example running (tried with BatchTaskTrainTest and BatchTaskCrossValidation); </li><li> add sentence annotation; </li></ul> |
+| DKPRO-TC | 22.05.2014 | 5.5 | <ul><li> add more files=sentences (to the folder with training files) and look to the results before and after; </li><li> add source info (where the files come from); </li><li> meeting with Johannes; </li><li> improve description and variable names inside of InitialCharacterUpperCaseUFE and NrOfCharsUFE; </li><li> write feature extractor SituatedBetweenTwoTokensUFE; </li><li> email traffic; </li></ul> |
+| DKPRO-TC | 23.05.2014 | 1.25 | <ul><li> add the feature extractor SituatedBetweenTwoTokensUFE; </li><li> rethink the concept of SituatedBetweenTwoTokensUFE (due to same boundary values); </li><li> check the .arff-files; </li></ul> |
+| DKPRO-TC | 25.05.2014 | 4.25 | <ul><li> implement the new concept and debug it with 2 possible test cases; </li><li> clean the code; </li><li> update all projects (including forced maven dependencies); </li><li> NrOfCharsFeatureExtractorTest fixed; </li><li> commit with "issue 60 is resolved + added new/adjusted feature extractors"; </li><li> marked issue 60 as "fixed"; </li><li> update/clean projects and check if NERUnitDemo is running after that; </li></ul> |
+| DKPRO-TC | 26.05.2014 | 1.75 | <ul><li> update projects and dependencies and take a look to changes at NERDemoReader; </li><li> show case for a simple DKPro TC reader; </li></ul> |
+| DKPRO-TC | 27.05.2014 | 0.75 | <ul><li>  meeting with Johannes; </li></ul> |
+| DKPRO-TC | 04.06.2014 | 5.0 | <ul><li>  Test for the InitialCharacterUpperCaseUFE feature extractor; </li><li> Issue 62: demo/documentation on how to configure a (Weka/Meka) classifier with more complex options; spent a lot of time to find out how to configure an inner classifier e.g. for Bagging; </li></ul> |
+| DKPRO-TC | 05.06.2014 | 3.0 | <ul><li> show case for a simple DKPro TC reader; </li><li> meeting with Johannes; </li></ul> |
+| DKPRO-TC | 07.06.2014 | 1.75 | <ul><li> update and clean all projects; </li><li> write ComplexConfigurationSingleDemo; </li></ul> |
+| DKPRO-TC | 08.06.2014 | 3.75 | <ul><li> try different configurations of ComplexConfigurationSingleDemo: so that it's meaningful (e.g. greater selection of features gives better result); </li><li> write ComplexConfigurationMultiDemo and try different configurations; </li></ul> |
+| DKPRO-TC | 09.06.2014 | 2.75 | <ul><li> look to the output of different configurations at ComplexConfigurationMultiDemo and try other configurations; </li><li> commit and close issue 62; </li><li> email traffic; </li><li> continue with the simple DKPro TC reader; </li></ul> |
+| DKPRO-TC | 11.06.2014 | 1.5 | <ul><li> create a simple dataset; </li><li> write SimpleDkproTCReaderDemo; </li></ul> |
+| DKPRO-TC | 12.06.2014 | 6.0 | <ul><li> get SimpleDkproTCReaderDemo running; </li><li> write text for wiki site "How to set up a DKPro-TC reader"; </li><li> meeting with Johannes; </li><li> commit example reader and data which will be described on wiki page "Creating custom data readers"; <li> formated text for wiki site "How to set up a DKPro-TC reader" and saved it; </li></ul> |
+| DKPRO-TC | 15.06.2014 | 2.5 | <ul><li> look to changes at SimpleDkproTCReaderDemo, SimpleDkproTCReader and wiki "Creating a reader for your data"; </li><li> email traffic; </li><li> study structure of reports and tasks; </li></ul> |
+| DKPRO-TC | 19.06.2014 | 2.75 | <ul><li> errors after updating of projects -> delete all and check it out; </li><li> sketch for the evaluation module; </li></ul> |
+| DKPRO-TC | 24.06.2014 | 1.25 | <ul><li> meeting with Johannes; </li><li> overfly paper names "2012pr_ml_comparison"; </li></ul> |
+| DKPRO-TC | 07.08.2014 | 3.25 | <ul><li> update all projects </li><li> creating a basic structure for the evaluation module </li><li> meeting with Johannes; </li></ul> |
+| DKPRO-TC | 13.08.2014 | 3.75 | <ul><li> get the input file </li><li> think about the data structures which will be used </li><li> begin with implementation </li></ul> |
+| DKPRO-TC | 14.08.2014 | 3 | <ul><li> meeting with Johannes </li><li> continue with implementation </li></ul> |
+| DKPRO-TC | 17.08.2014 | 2.25 | <ul><li> test the decomposed confusion matrix, fix it and begin with implementing of evaluation statistics </li></ul> |
+| DKPRO-TC | 18.08.2014 | 5 | <ul><li> eliminate some global variables </li><li> end with implementing of evaluation statistics </li><li> add comments to the code </li><li> manually calculate and implement tests for computation of evaluation metrics for single label version </li></ul> |
+| DKPRO-TC | 24.08.2014 | 1.75 | <ul><li> read paper: "2012pr_ml_comparison" </li></ul> |
+| DKPRO-TC | 26.08.2014 | 4.75 | <ul><li> read paper "2012pr_ml_comparison" to the end </li><li> looking for possibilities to build a confusion matrix for multilabel classification --> asked question to that at stackoverflow </li><li> look to the meaning of threshold at multilabel classification </li><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 06.09.2014 | 6 | <ul><li>change file format for input data and rewrite accordingly code; </li><li> change files with input data; </li><li> check test class, adapt it and get to pass junit tests; </li><li> write an abstract class for Multi and Single case and inherit from it + begin with implementing of abstract methods for single case; </li></ul> |
+| DKPRO-TC | 09.09.2014 | 1.5 | <ul><li> rewrite SingleEvaluator due to new design/data types and get it running; </li><li> meeting with Johannes; </li></ul> |
+| DKPRO-TC | 24.09.2014 | 10.0 | <ul><li> construct a dataset for MultiEvaluator; </li><li> adjust the abstract class SingleMultiBase and classes which extend it; </li><li> write MultiEvaluator; </li></ul> |
+| DKPRO-TC | 25.09.2014 | 1.25 | <ul><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 04.10.2014 | 1 | <ul><li> rethink design of evaluation package; </li></ul> |
+| DKPRO-TC | 05.10.2014 | 2.75 | <ul><li> look to factory pattern description; </li><li> creating a sketch of evaluator package; </li><li> beginning with implementation of sketch of evaluator package; </li></ul> |
+| DKPRO-TC | 06.10.2014 | 5.75 | <ul><li> implementing and redisigning due to implementation issues; </li></ul> |
+| DKPRO-TC | 07.10.2014 | 9.0 | <ul><li> continue with implementing: get SingleEvaluator running, implement MacroPrecision, implement MultiConfusionMatrix; </li><li> clean old code; </li><li> refactoring; </li><li> meeting with Johannes; </li><li> get SingleEvaluatorTest and MultiEvaluatorTest running; </li><li> checkout dkpro-tc; </li><li> update package names after moving it local to repository; </li><li> commit code; </li><li> added flag for "soft evaluation" and commited the code; </li><li> begin with "issue" / design decision: treshold is higher than all predictions (for multilable case); </li></ul> |
+| DKPRO-TC | 13.10.2014 | 7 | <ul><li> updating of code; email traffic; </li><li> look to changes in evaluation module; </li><li> fix ContingencyTable and so get MacroEvalTest to pass all tests; </li><li> resolve TODO: "what means bipartition based" and other; </li><li> resolve two FIXME due to empty predictions (values are under threshold); </li><li> remove unused interface and "references" to that; </li><li> implement micro measures and test for that; </li><li> moved CombinedContingencyTable and ContingencyTable to package de.tudarmstadt.ukp.dkpro.tc.evaluation.confusion.matrix and updated references to it; </li><li> commit changes; </li></ul> |
+| DKPRO-TC | 15.10.2014 | 3.75 | <ul><li> meeting with Johannes; </li><li> fix index for one of methods from ContingencyTable so that MacroEvalTest passes all tests; </li><li> refactoring; </li><li> commit changes; </li><li> email to Johannes with "code sketch" due to separate label measures; </li></ul> |
+| DKPRO-TC | 19.10.2014 | 2 | <ul><li> add flag for separated label measures and beginning with implementing of its functionality; </li></ul> |
+| DKPRO-TC | 20.10.2014 | 5.25 | <ul><li> reimplement macro measures; </li><li> change return type of micro measures; </li><li> look to TODOs and remove done; </li><li> commit code; </li><li> update projects; </li><li> take a look to reports; </li></ul> |
+| DKPRO-TC | 21.10.2014 | 1.75 | <ul><li> create an example project; </li><li> meeting with Johannes; </li></ul> |
+| DKPRO-TC | 22.10.2014 | 6.75 | <ul><li> modify a copy of WekaOutcomeIDReport due to data format of evaluation module; </li><li> modify a copy of WekaBatchTrainTestReport due calculation from evaluation module; </li><li> get the example project running; </li><li> look to class FlexTable due to switch of columns and rows of output table; </li><li> update projects and commit changes; </li><li> email traffic; </li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+       | *Soll* | | 195 | until the end of january 2015|
+
+
+
+---++ Previous work
+AndriyStunden2011 <br>
+AndriyStunden2012 <br>
+AndriyStunden2013 <br>
+
+                        

@@ -1,0 +1,212 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1350491647" format="1.1" version="33"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+---++++ October 17
+
+Error persists, ignoring it for now. Changed clustering representation from collection of collections to a dedicated object, I feel this is useful as it introduces a consistent Index per cluster while still being convenient, changes to the project are somewhat extensive, didn't manage to finish today.
+
+---++++ October 16
+
+Fixing an error in the Writer for the Fulltext data, DKPro is not very precise in its error messages and it works with every single year (documents are ordered by year), so I'm currently clueless as to what the cause could be.
+
+---++++ October 10
+
+Implemented similarity measure changes, including Jaccard index and cosine similarity. Tested inter cluster edges (results are up), started overnight test with emphasis on similarity measures.
+
+---++++ October 9
+
+Finished coding for saving/reading input information. Had a meeting with Wolfgang.
+
+Upcoming is implementation of different similarity measures and ensuring they follow a standard (which standard? metric?), implementing cluster similarity, for which I need to analyze the edges between clusters first, a better way of displaying results (tf*idf) and the previous tasks (they just keep adding up...).
+
+---++++ October 8
+
+PDF test has had enough time to complete after my involuntary absence, results are up (haven't analyzed yet). For faster testing in the future I'm currently writing a filewriter/reader to save tfidf and extraction information. Need to figure out a way to calculate tfidf average on reading, probably going to do it on a per document basis rather than temp storing all results.
+
+Next up is still more measures and additional input (see previous and meeting sheet).
+
+---++++ October 1
+
+Implemented entropy, number of nouns (NN and NP) for all pdfs is ~784k. Retrieval of document meta data failed due to changed folder structure, fixed and running test again.
+
+Leaving earlier since I caught a cold.
+
+---++++ September 28
+
+Fixed several design hiccups.
+
+Decided on architecture for measures (previously conflicting, now using one delegating class with static getters, not pretty but okay).
+
+Scheme does not have a statistically significant effect on V or F measure.
+
+Testing PDF input (NN/NP only due to size, for now), checking number of nouns and other useful statistics.
+
+CW results [[ClemensDeusserSteffenChineseWhispersResults][are up]].
+
+---++++ September 27
+
+Meeting: CW results to wiki, implement additional measures, possibly implement additional algorithms, test more input. Began with measures, overnight test tests the effect of scheme in MCL.
+
+---++++ September 26
+
+Got Steffen's CW version, ported to my code, results are varied. Using no adjustment, they are as bad as mine (blob syndrome), with adjustment the clusters become more equally spread, but the v-measure value is extremely low (~0.25 for one version, below 0.1 for the others, for comparison MST is usually around 0.5, MCL even higher).
+
+Analysed some of the data from the overnight tests, summarised results are in the clustering results section. Coming up... more testing and perhaps implementation of more advanced testing methods and suits.
+
+---++++ September 25
+
+messed up version nr, had to rerun test due to files being indistinguishable, implemented stopword removal (no real application yet), decided to not implement synonyms for now since the list I have does not work for my purpose, still need to call Steffen.
+
+---++++ September 24
+
+weekend test too big, scaling it down for tonight, not staying long due to dental pain (not sure why I'm writing that), tested CW with refinements, terrible results, will need to contact Steffen for his version.
+
+---++++ September 21
+
+forgot to write, results were inconclusive, implemented graph to file saving and loading, some other things I can't remember and wrote a weekend test
+
+---++++ September 20
+
+test was not finished, implementing own stopwordremoval, DKPro one isn't working for me. Couldn't stay long due to construction work, will let a more detailed test run overnight.
+
+---++++ September 19
+
+added more or less automated table generation (for the wiki), tested some parameters for other kinds of input, added abstract input measurements to wiki, pdf measurements are running over night, hopefully results tomorrow (heavily pruning).
+
+---++++ September 18
+
+fixed MST clustering, put first result tables up (in clustering results)
+
+---++++ September 14
+
+implemented MST clustering, doesn't seem to be working so far (v-measure jumps from 1 to 0, no clustering information lost and then everything?), will fix/check first thing next week.
+
+other tasks next week: table with some results for wiki, different inputs (title and abstract with varying extractions), synonym list implementation and hierarchical clustering (not sure if that fits within next week, will see).
+
+---++++ September 13
+
+v-measure results surprisingly good (too good?), found a couple mistakes in my code and some inconsistencies in the paper, so there may be more.
+
+specificity and synonyms not done yet.
+
+---++++ September 12
+
+I was wrong about v-measure, it does not require the matching of class to cluster, merely the number of nodes of a class in a cluster. I tried to finish implementing it today, but didn't quite make it (divided by zero somewhere, math in java is a mess), will be done tomorrow.
+
+Wanted to finally implement the synonymes table, but realized that I cannot implement it the way I want since you need to map combination of words and not just individual words, will need to talk about that.
+
+Still need to analyse specificity.
+
+---++++ September 11
+
+(insert arbitrary remembrance for 9/11)
+
+Implemented MST, much faster than the JUNG version.
+
+Attempted to find a way to determine specificity, my current implementation simply squares the number of times a keyword appears in a cluster for each cluster, sums all these squares and then divides that by the square of the overall occurences of that keyword (normalising). Results don't look too bad for now, will analyse/talk more tomorrow.
+
+---
+<span class="red">Will attempt to update daily from this point on, I'm treating the content as primarily for myself though, so it may not be very accessible.</span>
+---
+
+---++++ July 24
+
+Got a response from Werner Dees, he sent me a register with an intellectually created mapping of keywords and key phrases to FS category IDs.
+
+After a first quick look, about two thirds, or 3850, of the pedocs keywords appear in this register, which is a rather significant increase from the previously parsed ~190.
+
+I will add proper statistics to the Data and Information section (I may restructure though, it's getting a little crowded there) once I have them, but it's safe to say that this is very good news for this Thesis.
+
+---++++ June 25
+
+   * Wrote E-mail to Frau Paulokat, kindly asking for a meeting, awaiting an answer
+   * Restructuring the way I read data (both pedocs and the FS), the opportunity arose since I have to refine the way I parse the FS anyway
+   * Should have results from pedocs matching respectively the main and sub categories of the FS tomorrow
+
+---++++ June 15
+
+   * Tested current approach with varying parameters and included a few results here, although they are not particularly enlightening.
+   * Cannot currently create SVN repository, not sufficient access rights?
+   * To reiterate the current approach:
+      * Document IDs (source_opus) and keywords (subject_uncontrolled_german) are extracted from pedocs database.
+      * Nodes of graph represent documents by their IDs, (undirected) edges between nodes occur when the corresponding documents have keywords in common, the weight of this edge depends on the number of keywords in common and their relevance (using tf*idf to determine the latter). After building the graph, all edges below a certain threshold are cut, the value of this threshold is currently determined experimentally. 
+      * Chinese Whispers clusters by first assigning a class to every node and then checking the neighbours of every node in each iteration (nodes selected pseudo randomly) and letting it assume the class with the strongest combined (inbound) weight.
+
+---++++ June 14
+
+   * Begun more detailed documentation on this wiki, although I am actually not entirely sure what else to document. I'm already documenting progress that can be documented, so instead of just more colorful elaboration I'll include a section with my thoughts on the state of the project, the project itself and just random rambling somewhat concerning the project. Those thoughts may not necessarily be understood by anybody but myself and I may not always wish to explain them in great detail although I will attempt to do so if pressed.
+   * Note to self: Fix normalised weight calculation.
+
+---++++ June 13
+
+   * Implemented tf*idf for keywords and implemented randomisation for CW.
+   * Results disappointing so far, tweaking the threshold and number of iterations does not necessarily help. While reduction in edges may lead to more clusters, it may also lead to more components.
+
+---++++ June 4
+
+   * Begun work on tf*idf implementation and implementing proper tools to record results more quickly.
+
+---++++ June 1
+
+   * Intersected pedocs and FS keywords.
+   * Formatted and sent results to Wolfgang
+
+---++++ May 29
+
+   * Normalized distances and fixed error in CW, now 1 cluster with previous distances, 22 with normalized distances.
+   * Working on parsing and analyzing FS keywords in relation to existing pedocs keywords.
+
+---++++ May 11
+
+Building Framework on JUNG (v.2, external jar still), can hopefully finish that before weekend.
+
+---++++ May 10
+
+Just brainstorming and reading, some personal notes:
+   * Efficient java vector framework?
+   * High correlation = actual relation, low correlation usually nonsense.
+   * High correlation not nearly enough to build graph, unsurprisingly.
+   * Need more than those keywords, combined approaches? (co-author?)
+   * Need to know what sort of "topic extraction" is actually feasible.
+   * Prepare for insufficient detection, build scalable and modular structure anyway.
+
+---++++ May 9
+
+   * Chinese Whispers results somewhat sobering so far.
+   * Number of clusters in ~100-300 range (depending on number of iterations).
+   * Sampling the results reveals little to no actual correlation topic wise.
+   * Will implement vector distance approach, see if something changes.
+   * According to the algorithm, the assignments can be (should be?) randomised, not sure if that is a good idea considering consistent results, currently not random.
+   * Code still very "prototype-ish", not sure of structure yet, need to know how it fits into "pedocseer" & DKPro, what kind of modularity is desired etc.
+
+---++++ May 8
+
+   * Keywordgraph of pedocs is connected (has 1 connected component), no isolated nodes.
+      * *IG:* which Keywords do you mean? How are they computed?
+         * The keywords in the pedocs database have been manually entered as far as I know, we haven't really tackled the problem of untagged papers (DIPF) yet.
+   * Removing common keywords appears to have no effect on nr of components, but reduces nr of edges significantly.
+   * 517 inconsistent papers between opus and opus_autor. 3007 (!) including opus_sama_publisher.
+   * Started on Chinese Whispers.
+
+---++++ May 7
+
+   * Implemented keyword based graph with: vertices = papers, edges = correlations, correlation = keyword in common, weight = number of correlations.
+   * Graph has 1.5mill edges, which seems surprisingly high.
+   * Reason is that some keywords are very common and form large complete components, "deutschland" alone forms component with ~850.000 edges.
+   * May have to adjust graph as these keywords do not seem to be particularly significant, not sure how to determine significance of keywords though
+   * Will analyze number of components and isolated nodes tomorrow.
+
+Current problems:
+   * DKPro still largely a mystery to me.
+   * Need to figure out how to extract my results from "AnalysisEngine" in Richard&Shuo's JDBC adapter.
+   * Haven't yet figured out a proper structure for the graphs. Custom classes for vertices and edges may be cleaner, but don't seem to make sense both for efficiency and avoiding redundancies.
+   * Keyword graph appears to run somewhat "sluggish", will look for coding mishaps.
+   * This wiki.
+
+---++++ Previous to May 2012:
+
+   * Reading on NLP
+   * Installed Maven, DKPro, Treetagger etc.
+   * Installed MySQL, entered pedocs, connected to Java (JDBC)
+   * Built Co-Author Network
+   * Ported to Richard&Shuo's JDBC code, not yet working.
+   * Roughly analyzed the database, concerning eligibility of a keyword based graph

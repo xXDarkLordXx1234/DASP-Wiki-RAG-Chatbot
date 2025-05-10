@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="RichardSteuer" date="1360399207" format="1.1" version="6"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+---+++ comparison 0 to 1 expansion terms on query side
+
+---++ helped
+   * query 041: "meat" (1.884) helped for "food" (10.261)
+   * query 201: "blaze" (1.478) helped for "fire" (14.261)
+   * query 210, 219: "nominee" (827) helped for "candidate" (6.499)
+   * query 216: "child" (23.658) [as lemma of "children"] helped for "youngster" (2.268)
+  
+---++ did not help
+   * query 213: "transportation" (3.620) for "travel" (9.665)

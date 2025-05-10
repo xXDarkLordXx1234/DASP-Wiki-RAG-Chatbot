@@ -1,0 +1,150 @@
+%META:TOPICINFO{author="heidt" comment="" date="1589897169" format="1.1" reprev="5" version="11"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis
+
+*Supervisor:*
+   * Tilman Beck
+
+*Presentations*
+   * 11.08.2020 Mid-term presentation
+   * 27.10.2020 final presentation 
+
+
+---++ 18.05. - 24.05.:
+
+---+++ Related Work
+
+---+++ Argument Aspect Classification
+
+*Argumentation Mining in Parliamentary Discourse (Naderi and Hirst)*
+   * approach:
+      * SVM with (similarity of) sum of word embeddings, stance, POS tags, and type dependencies as features
+   * dataset:
+      * ComArg corpus by Boltuzic and Snajder as training set
+      * speeches from Canadian parliament as test set
+      * use same aspect classes as ComArg
+   * results:
+      * word2vec works better than other embeddings (syntactic embeddings & skip-thought)
+      * stance information helpful (in the setting where aspects are stance specific)
+      * sum of word2vec vectors best feature set
+
+*From Arguments to Key Points: Towards Automatic Argument Summarization*
+   * dataset:
+      * 24,000 argument - key point pairs
+      * 6,515 arguments for 28 topics (~230 arguments per topic)
+      * 8.67 key points per topic (up to 7 key points per topic and stance)
+      * remove arguments with low likelihood of it being an argument and of the stance being correct
+      * professional debater provided key points
+      * all matching key points assigned to each argument
+      * 67.5% of arguments assigned to one key point (5% assigned to multiple)
+   * approach:
+      1 score how well each pair matches. 4 approaches:
+         * cosine similarity of TF-IDF
+         * cosine similarity of word embeddings (GloVe and BERT)
+         * BERT trained on part of dataset
+         * BERT trained on bigger natural language inference dataset
+      2 choose key point(s) for each argument based on the scores. 4 approaches:
+         * choose all key points over certain threshold
+         * choose best scored key point for each argument
+         * choose best scored key point if the score exceeds a certain threshold
+         * choose two best arguments if one exceeds some higher threshold and other exceeds lower threshold; else like before
+   * results
+      * BERT-large trained on fold of dataset works best
+      * pretraining on bigger natural language inference dataset does not improve results
+
+---++++ Short Text Clustering
+
+*Self-Taught Convolutional Neural Networks for Short Text Clustering (Xu et al.)*
+   * approach:
+      * use unsupervised dimensionality reduction on bag-of-words
+      * binarize the output
+      * fit cnn with word embeddings as input to these binary vectors
+      * apply k-means
+   * 3 datasets:
+      * web search results for different search phrases
+      * questions from stack overflow with some chosen tags as clusters
+      * paper titles with clusters as categorized in database
+   * results:
+      * cnn performs best on 2 datasets
+      * same system using rnn with gru instead of cnn works better on stack overflow dataset
+
+*A Dirichlet Multinomial Mixture Model-based Approach for Short Text Clustering (Yin and Wang)*
+   * approach:
+      * randomly assign all documents to clusters
+      * reassign each document to its best cluster (the most similar but prioritize larger clusters)
+      * repeat this step about 5 times
+   * datasets:
+      * google news headlines and/or snippets with clusters based on what google considers to be on the same topic
+      * tweets corresponding to different search queries with each query being one cluster; manually annotated and only using tweets annotated as highly relevant for the query
+   * results:
+      * works better than k-means, agglomerative clustering, and some probabilistic model
+
+*Comparative Study of Clustering Techniques for Short Text Documents (by Rangrej et al.)*
+   * compare k-means, singular value decomposition, and graph based method using affinity propagation
+   * compare cosine similarity and Jaccard similarity for k-means and affinity propagation
+   * dataset: handpicked tweets from different search queries
+   * evaluation function (cluster error) = (number of pairs clustered differently in gold clustering vs. performed clustering) / (number of pairs)
+
+
+---++ Meetings:
+
+---+++ 15.05.2020
+   * an Related Work weiterarbeiten
+      * auch Paper erwähnen, die nur ungefähr zum Thema passen
+      * bis ~22.05. abschließen
+      * besonders auch Paper, die die Annotation von Clustering Datensätzen beschreiben
+   * Überblick über bestehende Datensätze erstellen (Domäne, Größe, Annotationsschema, ...)
+   * Gedanken machen, wie man Unsicherheit in der Zuordnung im Clustering modellieren kann (z.B. Soft Clustering)
+   * Clusteringalgorithmen, -metriken ausprobieren
+
+---+++ 05.05.2020
+   * Besprechung des bisherigen Standes der Related Work
+      * Paper zur Aspect Classification deutlich ausführlicher beschreiben
+      * auf Unterschiede zur Arbeit eingehen
+   * Literatur zur Annotation von Clusterings und zu Short Text Clustering lesen
+   * Thema überlegen und per E-Mail abklären, dann Anmeldeformular ausfüllen und ans Prüfungssekretariat schicken
+   * nächstes Meeting am 15.5.
+
+---+++ 20.04.2020
+
+---+!! Bachelor Thesis
+
+*Supervisors:*
+   * Daniil Sorokin
+   * Maxime Peyrard
+   * Teresa Botschen
+
+---++ Meetings:
+
+---+++ 25.09.2018:
+Final Talk is schedueled for 11.12.2018 <br>
+*TODOs:* <br>
+   * prepare slides until the end of the week and send them
+   * run Rouge on Frames
+
+---+++ 11.09.2018:
+*TODOs:* <br>
+   * create a ranking of Rouge scores and human scores to find those which are overestimated/underestimated most
+   * run Rouge-1 and Rouge-2 on only the entities
+   * replace words with entities and run Rouge on this (might be hard to do, in that case won't be done)
+
+---+++ 14.08.2018:
+   * Entity Linker had some issue
+   * Entity Linking will probably need several days -> run on server
+   * TODOs from last meeting are still open
+   * mid-term talk can be held on 02.10.
+   * task description has been signed
+
+---+++ 24.07.2018:
+*TODOs:* <br>
+   * try other baselines (ROUGE-2, ROUGE-WE, ...)
+   * run entity linker on data
+   * find some examples where ROUGE fails
+
+
+---+++ 12.07.2018:
+*TODOs:* <br>
+Create Pipeline:
+   1 Load data
+   2 Rouge as baseline
+   3 Compute 2 different correlations and plot results

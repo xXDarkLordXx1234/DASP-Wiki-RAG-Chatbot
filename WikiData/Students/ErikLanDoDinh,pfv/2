@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="ErikLanDoDinh" date="1355924445" format="1.1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Thesis: Automatic Identification of Novel Metaphorical Expressions
+
+Short notes on ongoing work.
+---++++ 13.12.2012 - 19.12.2012
+   * Refactoring
+   * Test Pipeline for evaluation of labeled Metaphors (atm not Lab-based)
+   * Normalized Google Distance as similarity measure, which uses web1t 5-gram as corpus (untested -&gt; need web1t)
+   * Different approaches to efficiently reading Google Books Ngrams: directly from the .gz files (slow), from a lucene index (building takes ages, querying faster than .gz, but maybe not enough), currently trying BerkeleyDB
+   * Organisation: Finished short mathematical abstract for Prof. Kohler (see attachment)
+
+-- Main.ErikLanDoDinh - 2012-12-19
+%META:FILEATTACHMENT{name="using_gmm_for_metaphor_identification_v3.pdf" attachment="using_gmm_for_metaphor_identification_v3.pdf" attr="" comment="Using GMM for Metaphor Identification" date="1355924444" path="using_gmm_for_metaphor_identification_v3.pdf" size="43851" user="ErikLanDoDinh" version="1"}%

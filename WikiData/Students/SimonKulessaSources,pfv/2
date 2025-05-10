@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212757961" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="SimonKulessa"}%
+---++ Wikipedia Dumps
+
+*Testset:*
+<br>SimpleWiki Dump
+<br>Stand: 16.03.2008
+<br>Größe: 139.3 MB
+<br>Link: http://download.wikimedia.org/simplewiki/20080316/simplewiki-20080316-pages-meta-history.xml.bz2
+
+*Datenset:*
+<br>Letzter erfolgreicher Dump (?) der englischen Wikipedia.
+<br>Stand: 31.03.2008
+<br>Größe: 147.7 GB
+<br>Link: http://download.wikimedia.org/enwiki/latest/enwiki-latest-pages-meta-history.xml.bz2
+
+---++ Literaturliste
+
+*Paraphrasen Extraktion*
+   * Aligning Needles in a Haystack: Paraphrase Acquisition Across the Web<br>Marius Pasca and Peter Dienes
+
+*Paraphrasen Generierung*
+   * Learning to paraphrase: an unsupervised approach using multiple-sequence alignment<br>Regina Barzilay and Lillian Lee
+   * Syntax-based alignment of multiple translations: extracting paraphrases and generating new sentences<br>Bo Pang and Kevin Knight and Daniel Marcu
+
+*Satz Erkennung*
+   * What is a word, What is a sentence?<br>Problems of Tokenization<br>Gregory Grefenstette, Pasi Tapanainen
+
+---++ Externe Javacode-Sourcen:
+<table border=1>
+<tr>
+<td>Packet Name</td>
+<td>Author</td>
+<td>Lizenz</td>
+<td>Link</td>
+</tr>
+<tr>
+<td>org.apache.tools.bzip2</td>
+<td>Keiron Liddle</td>
+<td>Apache Software License, Version 1.1</td>
+<td>http://www.kohsuke.org/bzip2/</td>
+</tr>
+</table>
+
+
+-- Main.SimonKulessa - 06 Jun 2008

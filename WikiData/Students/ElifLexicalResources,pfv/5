@@ -1,0 +1,78 @@
+%META:TOPICINFO{author="ElifTekes" date="1258635135" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="ElifTekes"}%
+%TOC%
+
+   * This page explains the lexical resources used for translating a English subjectivity lexicon (!OpinionFInder) to German.
+
+---++ Source lexicon - !OpinionFinder
+
+---++ Universal Dictionary
+   * Downloaded from here: http://www.dicts.info/uddl.php
+   * "Full" dictionary: english-german-ud-2009-08-11.txt
+      * Example entry: any ; whatever ; whatsoever 	 ein ; beliebig 	 adjective 
+   * "Light" dictionary: Included in the application downloads here: http://www.dicts.info/offline2.php
+      * Example entry: accumulate	anhäufen; ansammeln; kumulieren	
+   * Problems
+      * The full dictionary does not contain the words in the "light" dictionary! 
+      * The light dictionary does not include part-of-speech entries, making translation disambiguation difficult
+
+---++ Wiktionary
+   * Used for translation disambiguation help when using UD (see above)
+      * Full UD doesn't have POS entries, so Wiktionary is used to the POS of the translation results and eliminate those that do not fit the POS of the !OpinionFinder entry.
+
+---++ MOSES
+   * *Installation done on Ubuntu*
+      * After the installation of Ubuntu
+         1. edit apt.sources
+            * sudo gedit /etc/apt/sources.list
+            * #write in first line: 
+            * deb http://cl.naist.jp/~eric-n/ubuntu-nlp/ hardy all
+         1. download keys
+            * wget http://cl.naist.jp/~eric-n/ubuntu-nlp/8ABD1965.gpg -O- | sudo apt-key add -
+         1. initialize apt-get
+            * sudo apt-get update
+         1. install moses
+            * sudo apt-get install moses
+         1. test moses
+            * mkdir ~/mosesdecoder
+            * cd ~/mosesdecoder
+            * wget http://www.statmt.org/moses/download/sample-models.tgz
+            * tar xzf sample-models.tgz
+            * cd sample-models/phrase-model/
+            * moses -f moses.ini < in > out
+         1. control the correctness via gedit. result should be : this is a small house
+            * gedit out
+   * *Patch GIZA*
+         1. Install g++
+            * sudo aptitude install g++
+         1. Edit file-spec.h
+            * http://code.google.com/p/giza-pp/issues/detail?id=11
+            * See instructions: [[%ATTACHURL%/InstructionsForGIZApp.txt][InstructionsForGIZApp.txt]]
+         1. Build it
+            * cd GIZA++-v2/
+            * make
+            * make snt2cooc.out
+            * cd ..
+         1. Continue
+            * cp GIZA++-v2/GIZA++ /usr/bin/
+            * cp GIZA++-v2/snt2cooc.out /usr/bin/
+   * *Other Configurations* 
+      * As Ubuntu Repository already installs MOSES, we will follow the steps in the How-To starting with "MOSES Scripts" and skip the ones before that. http://www.guardiani.us/index.php/Moses_Language_Model_Howto_v2#Moses_Scripts
+      * Please note that there is a mistake in the How-To. The command in Section "Train Model" creates a German-to-English Model, not vice versa as claimed in the Introduction. The correct command (to create an English-to-German Model) would be: 
+         * train-factored-phrase-model.perl -scripts-root-dir working-dir -scripts-root-dir /MOSES_scripts_Directory/ -corpus working-dir/corpus/europarl.lowercased -f en -e de -parallel -alignment grow-diag-final-and -reordering msd-bidirectional-fe -lm 0:5:/WORKING-DIR_directory/lm/europarl.lm:0 
+         * Where "MOSES_scripts_Directory" is the full path of the directory where MOSES scripts is installed (i.e. "/.../moses/scripts/"), and WORKING-Dir_directory" the full path of working-dir (i.e. "/.../working-dir/).
+   * *Other Configurations 2*
+         * Before the following steps, you need to switch into the "model" directory and do the following commands
+            * gunzip phrase-table.gz
+            * gunzip reordering-table.gz
+         * Binary Phrase Tables with On-demand Loading
+            * So that we don't have Memory Allocation Errors, we need to convert the Tables (which can be very large) from ASCII to Binary, and only the part that is needed should be loaded into memory (see MOSES User Manual and Code Guide, section 2.4.3 Binary Phrase Tables with On-demand Loading, page 42) 
+               * cat phrase-table | mosesdecoder/misc/processPhraseTable \-ttable 0 0 - -nscores 5 -out phrase-table
+               * In the manual, there is also a "sort" in the above command, which caused the program to abort on my computer 
+         * Binary Reordering Tables with On-Demand Loading
+            * processLexicalTable -in reordering-table -out reordering-table
+            * see MOSES User Manual and Code Guide, section 2.4.3 Binary Phrase Tables with On-demand Loading:, page 42
+
+   -- Main.ElifTekes - 25 Aug 2009
+
+%META:FILEATTACHMENT{name="InstructionsForGIZApp.txt" attachment="InstructionsForGIZApp.txt" attr="" comment="Part of the instructions for installing and patching GIZA++" date="1258634031" path="InstructionsForGIZApp.txt" size="957" stream="InstructionsForGIZApp.txt" tmpFilename="/var/tmp/CGItemp59738" user="ElifTekes" version="1"}%

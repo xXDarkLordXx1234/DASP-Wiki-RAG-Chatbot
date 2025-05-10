@@ -1,0 +1,171 @@
+%META:TOPICINFO{author="RichardEckart" date="1358759686" format="1.1" version="47"}%
+%META:TOPICPARENT{name="HowTo"}%
+<!--
+This line only protects this topic, if the hash/number sign is removed.
+   * Set ALLOWTOPICVIEW = Main.UkpGroup, Main.HiwiGroup
+
+-->
+---+ !!VPN Service
+
+%TOC%
+
+---+ Terms of Use
+
+   * This page explains how to make a VPN connection into the UKP network to use the internal services.
+   * Use VPN only when necessary to access UKP resources. 
+   * VPN connections are limited. Disconnect when you do not need access anymore, so somebody else can use the VPN.
+   * It is possible to access the Hadoop cluster nodes via VPN.
+   * Also see [[PrivateHardwareUser][terms of use for private hardware]]
+<!---   * *All your Internet traffic will be routed through the VPN, so make sure you really only use the VPN when you need it.* -->
+
+---+ !OpenVPN
+
+Since PPTP has severe security issues (see, e.g., [[http://www.heise.de/security/artikel/Der-Todesstoss-fuer-PPTP-1701365.html][here]]), we have switched to [[http://openvpn.net/index.php/open-source/downloads.html][OpenVPN]]. PPTP is _not_ supported anymore.
+
+---++ Client configuration
+   
+---+++ Windows XP / 7 / 8
+   * install the respective !OpenVPN client for your OS from [[http://openvpn.net/index.php/open-source/downloads.html][this page]]
+   * download [[%ATTACHURLPATH%/ukp-vpn.ovpn][this]] file and put it into your =YOUR_OPENVPN_INSTALLATION_DIRECTORY\config= folder
+   * start the !OpenVPN Gui with *adminitrative user privileges* (you will need adminitrator privileges anytime you start !OpenVPN Gui, [[http://www.google.de/search?&q=openvpn+UAC][Google]] for =UAC !OpenVPN= on that problem)
+   * right-click the !OpenVPN Gui icon in the task panel and =connect= (if this option in not available, you either haven't copied the .ovpn file to the right directory, or you started the !OpenVPN Gui without super user rights)
+   * enter your UKP username and password and connect
+
+---+++ Ubuntu using Terminal
+   * =sudo apt-get install openvpn=
+   * download [[%ATTACHURLPATH%/ukp-vpn.ovpn][this]] file and put it into your home folder
+   * =sudo /etc/init.d/openvpn restart= 
+   * Now you can start OpenVPN via Terminal: =openvpn ~/ukp-vpn.ovpn=
+
+---+++ Ubuntu using Network Manager
+   * =sudo apt-get install openvpn=, =sudo apt-get install network-manager-openvpn=
+   * download [[%ATTACHURLPATH%/ukp-vpn-noinline.ovpn][this]] file and put it into your home folder
+   * import the =ukp-vpn-noinline.ovpn= via the network-manager GUI. Rename the Connection to UKP-OpenVPN or something.
+   * Unfortunately, the import doesn't work properly in most cases. Therefore, you have to import the [[%ATTACHURLPATH%/ca_cert.pem][ca_cert.pem]], [[%ATTACHURLPATH%/priv_key.pem][priv_key.pem]], [[%ATTACHURLPATH%/user_cert.pem][user_cert.pem]] and [[%ATTACHURLPATH%/priv_static_key.key][static_key.key]] (containing the respective certificates/keys) manually. See screenshots.
+   * In the =VPN= tab, you have to import the certificates. VPN type is =TLS= (Password with certificates).
+<img src="%ATTACHURLPATH%/openvpn1.png" alt="vpn"  style="max-width: 400px"/>
+   * In the =Advanched= Menu, you have to import the key file and set key direction to =1=.
+<img src="%ATTACHURLPATH%/openvpn2.png" alt="vpn" style="max-width: 400px"/>
+   * UKP VPN only routes UKP network traffic through the VPN tunnel. In the =IPv4 Settings= tab, please make sure, that "Use this connection only for resources on its network" is enabled in the =Routes= context menu (if this option is disabled, you will not be able to access external resources as long as you are connected to VPN).
+<img src="%ATTACHURLPATH%/openvpn3.png" alt="vpn" style="max-width: 400px"/>
+
+---+++ Mac
+   * Install Tunnelblick from ==http://code.google.com/p/tunnelblick/wiki/DownloadsEntry?tm=2==
+   * Download [[%ATTACHURLPATH%/UKP-VPN.tblk.zip][this]] file, unzip it and import the .tblk Config with a double click.
+   * Start Tunnelblick and connnect the VPN. It will ask for your AD Username and Password.
+
+<!--
+
+---+ PPTP VPN
+
+<center style="font-size:200%;color:red"> *The below information refers to the old PPTP VPN, which can not be used anymore due to security reasons* </center>
+
+---++ General configuration
+
+| Server | vpn.ukp.informatik.tu-darmstadt.de (130.83.167.254) |
+| Login | UKP domain account (without leading "UKP\") |
+| Domain | UKP |
+| Connection type | PPTP |
+| Options | enable software compression, enable remote gateway |
+| Requirements | working internet connection | 
+
+---++ Notes on specific VPN clients
+
+---+++ Graphical VPN client in Ubuntu
+
+If you have troubles accessing the VPN configuration in your network connections, you might have to install the package =pptp-linux= first.
+
+This is a basic UKP-VPN configuration using the graphical client in Ubuntu. If this does not work for you or you prefer to use the command-line, see below.
+
+In Ubuntu, to create a new VPN configuration, click on your internet connection icon at the top-right of your screen, then "VPN Connections", then "Configure VPN".  This will get you to the images shown below.  After you have saved a new configuration, click on your internet connection icon again, then "VPN Connections", then select the configuration you just saved, and it will connect.
+
+<img src="%ATTACHURLPATH%/vpn1.png" alt="vpn" style="max-width: 400px"/>
+
+In the Advanched tab, enable =mppe=:
+
+<img src="%ATTACHURLPATH%/vpn2.png" alt="vpn" style="max-width: 400px"/>
+
+<img src="%ATTACHURLPATH%/vpn3.png" alt="vpn" style="max-width: 400px"/>
+
+---+++ Alternative Instructions: PPTP-linux
+
+PPTP-linux is the PPTP VPN client usually used by GNU/Linux distributions, and this section shows working configuration files and instructions for it. Most graphical VPN clients (such as the ones provided by KDE and GNOME) are simply front ends to PPTP-linux, so if you can't get them to work, you can always examine what PPTP-linux configuration files they are creating, or use PPTP-linux directly.
+
+PPTP-linux stores its connection configuration files in the directory =/etc/ppp/peers=.  Create a new file =/etc/ppp/peers/UKP= with the following contents, replacing my UKP user name with yours:
+
+<pre>pty "pptp vpn.ukp.informatik.tu-darmstadt.de --nolaunchpppd"
+name "UKP\\miller"
+remotename PPTP
+require-mppe-128
+file /etc/ppp/options.pptp
+ipparam UKP
+refuse-eap
+refuse-chap
+defaultroute
+</pre>
+
+PPTP-linux stores the connection credentials in the file =/etc/ppp/chap-secrets=.  Create or edit this file and append the following line, replacing my UKP user name and password with yours:
+
+<pre>UKP\\miller	PPTP	mypassword	*</pre>
+
+<!--
+PPTP-linux stores its network traffic routing configuration in the file =/etc/ppp/ip-up.d/route-traffic=.  Create or edit this file and ensure the contents are as follows, modifying the value of the =NET= and =IFACE= variables as appropriate.
+
+<pre>#!/bin/bash
+NET="10.0.0.0/8" # set me
+IFACE="ppp0" # set me
+#IFACE=$1
+route add -net ${NET} dev ${IFACE}
+</pre>
+-->
+
+Now you are ready to connect to the VPN.  Enter the following command as root:  =pppd call UKP=
+
+If everything goes well you should see something like the following:
+
+<pre>Using interface ppp0
+Connect: ppp0 <--> /dev/pts/5
+CHAP authentication succeeded
+MPPE 128-bit stateless compression enabled
+not replacing default route to eth0 [192.168.0.1]
+local  IP address 130.83.163.249
+remote IP address 130.83.163.236
+Script /etc/ppp/ip-up finished (pid 7020), status = 0x0</pre>
+
+You are now connected to the VPN, but your network traffic will not be routed through it by default.  To make the VPN connection your default route for all traffic, issue the following command as root: =route add default ppp0=  This way all Internet connections originating from your machine will appear to be coming from TU Darmstadt.  This is useful if you plan to connect to websites of journals for which TU Darmstadt has a subscription.  However, it may slow down your Internet connection somewhat. If you don't need your web traffic to appear to originate from TU Darmstadt (for example, you just want to be able to connect to your desktop machine or the UKP infrastructure), then it might be better to restrict VPN routing to the TU Darmstadt network: =route add -net 130.83.0.0 netmask 255.255.0.0 dev ppp0=
+
+When you are done using the VPN connection, you can simply kill the =pppd= command by pressing Ctrl+C or issuing =killall pppd=.
+
+---++ Manual routing to UKP's 130.83.0.0 net
+
+If you want to or have to avoid sending your entire network traffic to UKP while being connected to VPN, you can define the necessary routes manually using the following steps:
+
+*Windows 7*
+   * Open the properties pane of your UKP-VPN adapter.
+   * Find the TCP/IPv4 section on the network tab and open its properties pane.
+   * Click on "advanced" and remove the checkbox marker regarding the standard gateway (so far, this procedure is similar to the old TK network)
+   * Now, you can only access hosts in the UKP private network (IP addresses starting with 10); desktop machines, however, have public IPs starting with 130.
+   * Therefore, you need to define a route to this network, which can be done using the following command:
+      * =route ADD 130.83.0.0 MASK 255.255.0.0 $gateway METRIC 3 IF $adapter= (you have to be administrator to do that)
+      * where $gateway is the standard gateway of the VPN connection and $adapter is the ID of the VPN adapter.
+   * You can find the correct settings for $adapter and $gateway by typing =route print=
+   * Unfortunately, you have to add the route each time you connect to the VPN. To keep things easy and fast, you might want to use this [[%ATTACHURL%/add_ukp_route.pl.txt][simple perl script]], which you can call shortly after connecting to the VPN.
+      * Simply adjust =$ADAPTER_NAME= to match the name of your VPN adapter (if not =UKP=)
+      * 
+
+-->
+
+%META:FILEATTACHMENT{name="add_ukp_route.pl.txt" attachment="add_ukp_route.pl.txt" attr="" comment="" date="1340747145" path="add_ukp_route.pl.txt" size="476" user="ChristianMeyer" version="1"}%
+%META:FILEATTACHMENT{name="vpn1.png" attachment="vpn1.png" attr="" comment="" date="1343980576" path="vpn1.png" size="37131" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="vpn2.png" attachment="vpn2.png" attr="" comment="" date="1343980576" path="vpn2.png" size="45258" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="vpn3.png" attachment="vpn3.png" attr="" comment="" date="1343980576" path="vpn3.png" size="40943" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="ukp-vpn.ovpn" attachment="ukp-vpn.ovpn" attr="" comment="UKP VPN Config File. Keys and Certificates." date="1354022102" path="ukp-vpn.ovpn" size="7092" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="UKP-VPN.tblk.zip" attachment="UKP-VPN.tblk.zip" attr="" comment="UKP VPN Tunnelblick Config" date="1354027393" path="UKP-VPN.tblk.zip" size="9020" user="TimoHarder" version="1"}%
+%META:FILEATTACHMENT{name="ca_cert.pem" attachment="ca_cert.pem" attr="" comment="" date="1354383058" path="ca_cert.pem" size="2321" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="priv_key.pem" attachment="priv_key.pem" attr="" comment="" date="1354383058" path="priv_key.pem" size="1675" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="priv_static_key.key" attachment="priv_static_key.key" attr="" comment="" date="1354383058" path="priv_static_key.key" size="602" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="user_cert.pem" attachment="user_cert.pem" attr="" comment="" date="1354383212" path="user_cert.pem" size="2082" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="openvpn1.png" attachment="openvpn1.png" attr="" comment="" date="1354383511" path="openvpn1.png" size="58377" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="openvpn2.png" attachment="openvpn2.png" attr="" comment="" date="1354383510" path="openvpn2.png" size="63128" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="ukp-vpn-noinline.ovpn" attachment="ukp-vpn-noinline.ovpn" attr="" comment="UKP-VPN NoInline Auth" date="1355842320" path="ukp-vpn-noinline.ovpn" size="293" user="TimoHarder" version="1"}%
+%META:FILEATTACHMENT{name="openvpn3.png" attachment="openvpn3.png" attr="" comment="" date="1358237179" path="openvpn3.png" size="42651" user="JohannesDaxenberger" version="1"}%

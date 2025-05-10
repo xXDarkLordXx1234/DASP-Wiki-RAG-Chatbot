@@ -1,0 +1,88 @@
+%META:TOPICINFO{author="kluge" comment="reprev" date="1381481444" format="1.1" reprev="15" version="15"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+---+++ Abbr.
+   * AM = Argumentation Mining
+
+---++ 2013-10-15, 0950
+
+---+++ Open issues
+   * RK: Everything OK for the MT application?
+
+---+++ Todo for the next meeting
+   * %X% Hand in MT application
+
+---+++ What has been done
+   * Migrate paper notes to AM Wiki
+   * Try to run !WebAnno (only managed to get 0.3.0 to work)
+      * 
+   * More literature research, especially in the direction of 'journalistic argumentation'
+      * Results suggest that (1) there is not much in literature; (2) persuasion is an important concept
+
+---++ 2013-10-08, 0830
+
+---+++ Minutes
+   * %X% *@action*: More literature research: Is there anything on AM in the journalistic area?
+   * Shall we follow Toulmin's scheme?
+      * Problem: arguments tend to be very short (2 sentences on avg.); a single argument cannot contain all essential parts according to Toulmin
+      * Preliminary results show that it is quite hard to annotate the Web dataset with this scheme (using the pre-identified argument annotations)
+      * %X% *@action*: Try to find more
+      * %X% *@action*: It seems sensible to figure out an individual annotation scheme.
+   * Annotation tools
+      * %X% *@action:* Survey annotation tools
+      * Use Artem's? Seems to fit the task very well (multi-sentence annotations, context is visible), but it is non-standard
+      * MMAX2? Standard tool, but is there a multi-annotator interface?
+      * !WebAnno? Own argumentation scheme possible? Argumentation units larger than 1 sentence possible?
+      * Annotate on the level of Argument annotations or re-annotate the whole text?
+   * Is there a standard way to detect comparative adjective forms in German (schneller, besser, 
+      * Not necessary, currently -> postponed
+      * (%X% @action) DKPro Core morpho-syntactic analyzer
+
+---+++ Manual annotation with Toulmin's scheme
+   * Try to annotate the dev. set with the roles in Toulmin's scheme
+   * Problems:
+      * How to judge whether a quoted statement is a ground or a claim? (fundamental problem!)
+         * "'Sitzenbleiben bringt dem Schüler nichts und ist außerdem ineffizient. Dieser Unsinn ist nämlich ziemlich teuer', hatte auch Pisa-Chef Andreas Schleicher im Interview mit SPIEGEL ONLINE gesagt."
+         * "Die Bertelsmann-Stiftung dagegen kann darin wenig pädagogischen Sinn entdecken. Dieses Denken müsse sich ändern, da 'wir weder mit der Lebenszeit und dem Entwicklungspotential der Kinder noch mit den öffentlichen Mitteln verantwortungsvoll umgehen', kritisierte Jörg Dräger."
+         * "Die Ausgaben von fast einer Milliarde Euro jährlich für das Sitzenbleiben könnten daher erheblich besser investiert werden, sagt Jörg Dräger, Vorstandsmitglied der Bertelsmann-Stiftung."
+      * How about grounds that base on subjective feelings?
+         * "Den Gewinn, den die Promotion, diese intensive Vertiefung, ihr gebracht hat, möchte sie nämlich nicht missen: 'Ich habe gelernt, kritisch zu denken und Dinge durchzuziehen', sagt sie."
+         * "'Wir waren alle frustriert'', erzählt sie."
+
+---+++ Statistics
+   * Per-argument statistics
+      * Num. sentences OK
+      * Average sentence length, distribution of sentence lengths (tokens)
+      * modal verbs (VM.*), full verbs (VV.*)
+      * adverbs
+   * Per-document statistics
+      * Document length
+   * Per-corpus
+      * Distribution of Qual/Quant,Ref/Unref,Pro/Contra
+   * Comparative terms?
+      * superlatives (simple rule: "am <ADJ.*>_endsWith("sten")"):
+      * comparatives (simple rule: adjective with covered text = lemma + "er")
+
+---++ 2013-09-27
+
+   * Thesis template (!LaTeX)?
+   * Corpus statistics of Artem's raw corpus
+
+Results:
+   * Use DKPro 1.5
+   * tokit-asl: Execute !GermanSeparateParticleAnnotator after lemmatizer
+   * Linguistic statistics: frequency lists (lemma, frequency), sorted by decreasing frequency
+      * adverbs
+      * most frequent verbs (VV.*, also modal: VM.*)
+         * lemmatization of main verbs (VV.*)
+      * conjunctions (KOUS, KOUI)
+   * Manfred Stede, Discourse Processing, 4.3: list of connectives?
+   * Argumentation cues
+      * compile a list of words from school resources
+   * Create dev./test. set (JSON)
+   * Go through dev. set and try to identify other argumentation dimensions
+      * Toulmin argumentation scheme (see [[http://en.wikipedia.org/wiki/Practical_arguments][Practical Argumentation]]
+      * E.g., advice, explanation, reason(ing), persuade, beliefs
+   * Next meeting: Oct. 08, 0830
+
+
+-- Main.RolandKluge - 2013-09-27

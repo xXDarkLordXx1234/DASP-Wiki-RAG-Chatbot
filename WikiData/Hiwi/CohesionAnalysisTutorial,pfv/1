@@ -1,0 +1,100 @@
+%META:TOPICINFO{author="UrsGlaubitt" date="1232126625" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="UrsGlaubitt"}%
+*Wofür ist dieses Tutorial?*
+
+Dieses Tutorial ist eine Anleitung wie man eine semiautomatisierte Cohesion Analysis erstellen kann.
+
+*Allgemeiner Ablauf*
+Ein Experiment, bzw. eine Cohesion Analysis, wie sie mithilfe dieses Tutorials erstellt wird, besteht aus vier Abschnitten:
+   * Der Vorverarbeitung (Preprocessing),
+   *  der Aufteilung in relevante und irrelevante Dokumente (DocumentSelection),
+   *  der Erstellung eines RelatednessCache ( _de.tudarmstadt.ukp.dkpro.ir.util.retrieval.semantics.RelatednessCacher_ )
+   *  und der eigentlichen Cohesion Analysis.
+Jeder dieser Schritte ist optional und kann je nach Bedarf ein- oder ausgeschaltete werden.
+Sofern es nicht explizit in dem Quellcode der Klasse _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.Experiment_ geändert wurde, so existiert eine fest vorgegebene Verzeichnisstruktur.
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="3"}%
+| *Verzeichnis* | *Frei wählbar* | *Bemerkung* |
+| $homeDir$ | Ja | Das Verzeichnis in dem alle weiteren Dateien und Unterorder für das Experiment erstellt werden |
+| $homeDir$/berkeley_db | Nein | In diesem Verzeichnis werden die eingelesenen Dokumente und Anfragen jeweils in einer Berkeley Datenbank gespeichert |
+| $homeDir$/berkeley_db/documents | Nein | Die Berkeley Datenbank in der die Dokumente gespeichert sind |
+| $homeDir$/berkeley_db/topics | Nein | Die Berkeley Datenbank in der die Anfragen gespeichert sind |
+| $homeDir$/document_selection | Nein | In diesem Verzeichnis werden zwei Dateien gespeichert. Eine enthält alle IDs der relevanten Anfrage-Dokument-Paare und die andere die IDs der irrelevanten Paare |
+| $homeDir$/lucene_repository | Nein | Die während der Vorverarbeitung erzeugten Lucene Repositories, die für das erzeugen eines Relatedness Caches erforderlich sind, werden hier gespeichert. |
+| $homeDir$/cache_files | Nein | Hier werden die Cache-Dateien gespeichert, die für die spätere Verwendung von de.tudarmstadt.ukp.dkpro.ir.annotator.RelatednessScorer nötig sind |
+| $homeDir$/$ExperimentDir$ | Ja | Hier werden alle Dateien gespeichert, die nur für genau eine Cohesion Analysis gültig sind. Dieser Ordner ist frei konfigurierbar, damit mehrere Durchläufe mit verschiedenen Parametern auf den selben Daten möglich sind. |
+| $homeDir$/$ExperimentDir$/cohesion_analysis | Nein | Verschiedene Dateien mit (Zwischen-)Ergebnissen der Cohesion Analysis |
+
+*Erstellen der eigenen Experiment-Klasse*
+
+Um eine "eigene" Cohesion Analysis durchzuführen muss man eine neue Instanz der Klasse _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.ExperimentConfig_ erstellen, ihre Parameter setzen und anschließend die Methode _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.Experiment.run(ExperimentConfig config)_ ausführen.
+---
+<blockquote>
+
+ public class MyCohesionAnalysis {<br />   <br />   public static void main(String[] args) {<br />      <br />      String dataPath = null;<br />      try {<br />         dataPath = UimaUtils.getDataPath();<br />      } catch (IOException e1) {<br />         e1.printStackTrace();<br />      }<br />      <br />      ExperimentConfig config = new ExperimentConfig();
+
+      ...
+
+    //setting the config parameters
+
+       ...
+
+      <br />      Experiment.run(config);
+</blockquote>
+---
+
+Diese paar Zeilen Code sind fast alles was für einen automatischen Experimentdurchlauf benötigt wird. "Fast" deswegen, da in diesem Beispiel der Teil übersprungen wurde, in dem die Parameter des config Objekts gesetzt werden. Dazu mehr im nächsten Abschnitt.
+
+<strong>Parameter der Klasse ExperimentConfig</strong>
+
+Alle Parameter sind als public deklariert und somit direkt ohne get- oder set-Methode modifizierbar.
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="5"}%
+
+| *Parameter* | *Standardwert* | *Bedeutung* | *Verwendet in Schritt* | *Optional* |
+| dataDir | - | Das $homeDir$ des Experiments | Allen | nein |
+| experimentDir | - | Das $homeDir$/$experimentDir$ | Cohesion Analysis | nur wenn doAnalysis = false ist |
+| doPreprocessing | false | Schaltet den Preprocessing-Schritt ein oder aus | Preprocessing | ja |
+| doDocumentSelection | false | Schaltet den Document Selection-Schritt ein oder aus | DocumentSelection | ja |
+| createRelatednessCache | false | Schaltet das Erstellen des RelatednessCache ein oder aus | RelatednessCache | ja |
+| doAnalysis | false | schaltet den Cohesion Analysis-Schritt ein oder aus | Cohesion Analysis | ja |
+| topics_luceneIndexId | - | blub | bla | blub |
+| documents_luceneIndexId | - | blub | bla | blub |
+| topics_readerDesc | - | blub | bla | blub |
+| topics_readerParams | - | blub | bla | blub |
+| topics_treeTaggerParamFile | - | blub | bla | blub |
+| topics_stopWordListFiles | - | blub | bla | blub |
+| documents_readerDesc | - | blub | bla | blub |
+| documents_readerParams | - | blub | bla | blub |
+| documents_treeTaggerParamFile | - | blub | bla | blub |
+| documents_stopWordListFiles | - | blub | bla | blub |
+| docs_BerkeleyDbPath | - | blub | bla | blub |
+| esaRepositoryPath | - | blub | bla | blub |
+| esaIndexId | - | blub | bla | blub |
+| topicEsaIndexId | - | blub | bla | blub |
+| documentEsaIndexId | - | blub | bla | blub |
+| srThreshold | - | blub | bla | blub |
+| outFile | - | blub | bla | blub |
+| loadEsaInRam | - | blub | bla | blub |
+| esaCacheSizeInMb | - | blub | bla | blub |
+| nThread | - | blub | bla | blub |
+| msg | - | blub | bla | blub |
+| maxRank | - | blub | bla | blub |
+| maxDifStdDev | - | blub | bla | blub |
+| maxDifMean | - | blub | bla | blub |
+| irResultFile | - | blub | bla | blub |
+| relevanceAssessmentFile | - | blub | bla | blub |
+| doAnalysis | - | blub | bla | blub |
+| setsToAnalyse | - | blub | bla | blub |
+| relatednessMeasureClassName | - | blub | bla | blub |
+| relCacheFile | - | blub | bla | blub |
+| relatednessMeasureParameters | - | blub | bla | blub |
+| relatednessScorerThreshold | - | blub | bla | blub |
+| windowSize | - | blub | bla | blub |
+| windowGeneratorThreshold | - | blub | bla | blub |
+| windowLinkerThreshold | - | blub | bla | blub |
+| windowLinkConsumerResultFile | - | blub | bla | blub |
+| windowLinkConsumerDebugFile | - | blub | bla | blub |
+
+
+-- Main.UrsGlaubitt - 16 Jan 2009

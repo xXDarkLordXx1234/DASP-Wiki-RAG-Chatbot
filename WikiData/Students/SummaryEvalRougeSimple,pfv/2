@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="BastianChristoph" date="1286819812" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="SummaryEvaluation"}%
+---++ Setup for Simple Example
+
+This example uses ROUGE-N with N=2.
+
+---++++ (1) Download core library & include
+
+Download the jar file named "dragontool.jar" at:
+
+http://dragon.ischool.drexel.edu/download.asp
+<br>-> Dragon Toolkit Core Library and Source Code 
+<br>-> http://dragon.ischool.drexel.edu/lib/dragontool.jar
+
+Include it into your java build path.
+
+---++++ (2) Class: SimpleRouge
+
+Create a class file "SimpleRouge.java" and insert the following code:
+
+<blockquote style="border-top-color: #fbfbfb; border-right-color: #fbfbfb; border-bottom-color: #fbfbfb; border-left-color: #dddddd; border-top-width: 1px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 3px; padding-top: 0.5em; padding-right: 1.25em; padding-bottom: 0.5em; padding-left: 1.25em; background-color: #fbfbfb; border-style: solid">
+<p>
+   public static void main(String[] args) {
+      <br>ROUGE rouge = new ROUGE();
+      <br>String input = "This is the first sentence. This is the second sentence. This is the not contained third.";
+      <br>String[] ref = {
+      <br>"This is the first sentence.", 
+      <br>"This is the second sentence."}
+      <br>rouge.useRougeN(2);
+      <br>rouge.evaluate(input, ref);
+      <br>rouge.printResult();
+      <br>}
+</p>
+</blockquote>
+
+---++++ (3) Result
+
+In this example we should get a result like this:
+
+<blockquote style="border-top-color: #fbfbfb; border-right-color: #fbfbfb; border-bottom-color: #fbfbfb; border-left-color: #dddddd; border-top-width: 1px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 3px; padding-top: 0.5em; padding-right: 1.25em; padding-bottom: 0.5em; padding-left: 1.25em; background-color: #fbfbfb; border-style: solid">
+<br>--------------------------------------------------
+<br>ReferenceModel: 1
+<br>Average_R: 1.0
+<br>Average_P: 0.2857142857142857
+<br>Average_F: 0.4444444444444445
+<br>ReferenceModel: 2
+<br>Average_R: 1.0
+<br>Average_P: 0.2857142857142857
+<br>Average_F: 0.4444444444444445
+<br>--------------------------------------------------
+</blockquote>

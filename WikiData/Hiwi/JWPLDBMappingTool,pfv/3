@@ -1,0 +1,65 @@
+%META:TOPICINFO{author="TorstenZesch" date="1202818041" format="1.1" version="3"}%
+%META:TOPICPARENT{name="AnouarWork"}%
+<center><b>
+---+ JWPL DBMapping Tool 
+</b></center>
+---++ Functionalities: 
+   * The DBMapping Tool performs the mapping of Wikipedia dumps to dumps for the JWPL.
+   * The DBMapping Tool is able to extract multiple dump versions (as JWPL dumps) from the input dumps starting from a given 'from' timestamp and ending with a given 'to' timestamp using regular intervals (in days) between them.
+   * The DBMapping Tool performs the transformation of xml-files to sql-files using the mwdumper.
+   * The DBMapping Tool is also able to extract txt-dumps (for mysql) from sql-dumps. However only the functions RAND() and&nbsp; <font color="#000000"><font face="Times New Roman, serif"><font size="3">DATE_ADD('1970-01-01', INTERVAL UNIX_TIMESTAMP() SECOND)+0</font></font></font> are supported.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The DBMapping&nbsp;Tool is the unique java program (plattform independent) that performs this task!!!! 
+   * The DBMapping Tool performs the extraction of 'gz' and 'bz2' files.
+---++ Usage:&nbsp; 
+
+   1 Download the Wikipedia dumps from http://dumps.wikimedia.org/backup-index.html
+      * Select the language of your choice. The link should be LANGUAGE-CODE + "wiki".
+         * Example: "enwiki" links to the English Wikipedia dumps, "dewiki" links to the German dumps.
+      * The final download URL should be  http://dumps.wikimedia.org/{LANGUAGEwiki}/{YYYYMMDD}
+         * Example:&nbsp;to download the dumps of the simplewiki&nbsp;version 17.01.2008 =&gt; http://dumps.wikimedia.org/simplewiki/20080117 
+
+   1 Download the files:
+      * {LANGUAGE-CODE}-yyyymmdd-pages-meta-history.xml.bz2 
+      * {LANGUAGE-CODE}-yyyymmdd-pagelinks.sql.gz 
+      * {LANGUAGE-CODE}-yyyymmdd-categorylinks.sql.gz 
+
+   1 Create a properties file for the configuration of the _DBMapping Tool_ : _configuration.xml_ 
+      * You can use the =org.tud.ukp.wikipedia.dbmapping.ConfigFormularGenerator= class to get an template for the config file. In this case you must pass the name of the file to be created to the main method of that class. Table 1 describes the content of the config file: _configuration.xml_
+
+   1 Start the DBMapping Tool
+      * pass the path of the config file as argument to the main method of =de.tud.ukp.wikipedia.dbmapping.StartDBMapping=
+      * allocate enough heap size to speed up the execution (use "-Xmx" JVM parameter to increase heap space; e.g. =-Xmx512m= gives you 512MB heap space). Note that the DBMapping Tool performs all its task with linear complexity=
+      * If no exception has been thrown, the extracted dumps are now available in the output directory each in a directory with the belonging timestamp as name. The exact list of the tables of each version is the following:
+         * Category.txt
+         * category_pages.txt
+         * category_inlinks.txt
+         * category_outlinks.txt
+         * Page.txt
+         * page_inlinks.txt
+         * page_outlinks.txt
+         * page_redirects.txt
+         * page_categories.txt
+         * PageMapLine.txt
+         * MetaData.txt
+
+   1 Impoting the dumps in a MySQL database:
+      * Create a database and name it {language_code}wiki (for example enwiki for the english Wikipedia and dewiki for the german Wikipedia):
+         * =&gt;mysql &#8211;user=**** --password=**** {language_code}wiki &lt; jwpl_tables.sql=
+      * The file jwpl_tables.sql is available in the root directory of the _DBMapping Tool_.
+      * Insert the tables into the database:
+         * =&gt;mysqlimport &#8211;user=**** --password=**** --default-character-set=utf8 {database_name} {txt_file1} {txt_file2} ... {txt_file11}=
+
+
+| *key* | *value* | *comments* |
+| &nbsp;id | an integer that corresponds to the id of the used language in the MetaData &nbsp;table&nbsp; | &nbsp; |
+| &nbsp;language | the used language&nbsp; | the language string must correspond to&nbsp;one of the&nbsp;values enumerated in WikiConstants.Language in the JWPL. Examples: english, german, frensh, arabic&nbsp; | 
+| &nbsp;mainCategory | the title of the main category of the used wikipedia | &nbsp; |
+| &nbsp;disambiguationCategory | the title of the disambiguation category of the used wikipedia&nbsp; | &nbsp; |
+| &nbsp;fromTimestamp | yyyymmddhhmmss&nbsp; | the timestamp of the first version to be extracted |
+| &nbsp;toTimestamp | yyyymmddhhmmss&nbsp; | the timestamp of the&nbsp;last version to be extracted&nbsp; |
+| &nbsp;each | the number of days to be used as regular interval for extracting versions&nbsp; | &nbsp; |
+| &nbsp;metaHistoryFile | the path of the pages-meta-history file &nbsp; | only .xml and .xml.bz2 extensions are supported&nbsp; |
+| &nbsp;pageLinksFile | the path of the pagelinks file&nbsp; | only .sql and .sql.gz extensions are supported&nbsp; |
+| &nbsp;categoryLinksFile | the path of the categorylinks file&nbsp; | only .sql and .sql.gz extensions are supported&nbsp; |
+| &nbsp;outputDirectory | the path of the directory to which the versions&nbsp;will be extracted&nbsp; | the outputDirectory will be created if it does not exist.&nbsp;However its parent directory must exist.&nbsp; |
+| &nbsp;removeInputFilesAfterProcessing | a boolean that specifies whether the meta history file, the pagelinks file and the category links file&nbsp;should be removed after the processing&nbsp; |

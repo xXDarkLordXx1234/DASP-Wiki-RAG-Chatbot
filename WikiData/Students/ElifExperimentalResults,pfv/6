@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="ElifTekes" date="1254747202" format="1.1" version="6"}%
+%META:TOPICPARENT{name="ElifTekes"}%
+---+ Experimental results
+   * Translation with Universal Dictionary yields low results
+      * Only ~500 words from !OpinionFinder were translated (out of ~8200 entries) by using the "full" UD dictionary
+      * Only ~1000 words were translated by using both the "full" and the "light" UD dictionary
+         * See ElifLexicalResources for further information
+
+   * Translation of OpinionFinder lexicon with self-written parser for Wiktionary yields following results: 
+      * Number of translated words 2052 out of 8221 total. Not translated: 6169
+      * Of those not translated
+         * 1273 because lack of Part-of-Speech
+         * Many more because lack of Translations entries (see .ods document)
+      * *Questions:*
+         1 Do all the OpinionFinder entries exist in the English Wiktionary? you should look for the lemma form of the ones with stemmed=y.
+
+   * Bootstrapping
+      * Testing with 10 words yielded very good results
+         * List of 780 words after 3 passes, approximately 600 after repeat words have been deleted.
+         * Rare cases of wrong results, such as "Gutshof" as a synonym for "gut"
+      * *Questions*: 
+         1 Do you use only synonomy in the bootstrapping process? Why not other lexical relationships?
+         1 Distinguish polarity of the source seed term. Syn relation preserves the polarity, ant. relation switches etc. 
+         1 Where did you find starting seed terms? You can use the translation of Turney seed terms. 
+         1 How do you stop the bootstrapping process? No substantial gain in the list size. Refer to "simple expand" algorithm in Esuli's paper.
+         1 Comparison to bootstrapping from !GermaNet
+         1 Comparison to manually pruned list created from the !GermaNet. 
+      * *Answers*:
+         1 Including Antonymy in the bootstrapping process gave very good results. Hyponymy and Hypernymy however resulted in very low quality word lists with words like "Autonummer" and "Vorentscheid" being included. 
+         1 Included polarity now
+         1 TODO
+         1 I've experimented with various methods, including fixed number of iterations or stopping the process if the increase of the word list is less than 10%. 
+            * Durchlauf 0, Positive Words Size 37, Negative Words Size 60
+            * Durchlauf 1, Positive Words Size 83, Negative Words Size 150
+            * Durchlauf 2, Positive Words Size 205, Negative Words Size 345
+            * Durchlauf 3, Positive Words Size 515, Negative Words Size 689
+            * Durchlauf 4, Positive Words Size 1092, Negative Words Size 1289
+            * Durchlauf 5, Positive Words Size 2086, Negative Words Size 2247
+            * Durchlauf 6, Positive Words Size 3652, Negative Words Size 3670
+            * Durchlauf 7, Positive Words Size 5910, Negative Words Size 6008
+            * Had to abort after that, as my slow laptop could not finish the calculations for the next iteration in an hour
+
+-- Main.ElifTekes - 21 Sep 2009
+   * [[%ATTACHURL%/Statistik_Wictionary.ods][Statistik_Wictionary.ods]]: The statistics of the failed translations of the self-written Wikipedia parser
+
+   * [[%ATTACHURL%/bootstrappedlist0.txt][bootstrappedlist0.txt]]: Test seed list for bootstrapping
+
+   * [[%ATTACHURL%/bootstrappedlist1.txt][bootstrappedlist1.txt]]: Bootstrapping result after first pass
+
+   * [[%ATTACHURL%/bootstrappedlist2.txt][bootstrappedlist2.txt]]: Bootstrapping result after second pass
+
+   * [[%ATTACHURL%/bootstrappedlist3.txt][bootstrappedlist3.txt]]: Bootstrapping result after third pass
+
+%META:FILEATTACHMENT{name="Statistik_Wictionary.ods" attachment="Statistik_Wictionary.ods" attr="" comment="The statistics of the failed translations of the self-written Wikipedia parser" date="1253532954" path="Statistik_Wictionary.ods" size="116220" stream="Statistik_Wictionary.ods" tmpFilename="/var/tmp/CGItemp63049" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="bootstrappedlist0.txt" attachment="bootstrappedlist0.txt" attr="" comment="Test seed list for bootstrapping" date="1253533634" path="bootstrappedlist0.txt" size="77" stream="bootstrappedlist0.txt" tmpFilename="/var/tmp/CGItemp62995" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="bootstrappedlist1.txt" attachment="bootstrappedlist1.txt" attr="" comment="Bootstrapping result after first pass" date="1253533659" path="bootstrappedlist1.txt" size="730" stream="bootstrappedlist1.txt" tmpFilename="/var/tmp/CGItemp62997" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="bootstrappedlist2.txt" attachment="bootstrappedlist2.txt" attr="" comment="Bootstrapping result after second pass" date="1253533676" path="bootstrappedlist2.txt" size="1448" stream="bootstrappedlist2.txt" tmpFilename="/var/tmp/CGItemp63071" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="bootstrappedlist3.txt" attachment="bootstrappedlist3.txt" attr="" comment="Bootstrapping result after third pass" date="1253533690" path="bootstrappedlist3.txt" size="5259" stream="bootstrappedlist3.txt" tmpFilename="/var/tmp/CGItemp62890" user="ElifTekes" version="1"}%

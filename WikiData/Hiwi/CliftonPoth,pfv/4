@@ -1,0 +1,81 @@
+%META:TOPICINFO{author="poth" comment="" date="1628609790" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Week 2021-08-02 - 2021-08-08
+AH:
+   * Reworked AF configuration
+   * set_active parameter
+   * Minor updates/ fixes; GH forum support
+Square:
+   * Model API integration, various fixes on index/ datastore management (2h)
+   * Improved setup; improve datastore creation; fixed query embedding issues (5h)
+
+---++ Week 2021-07-26 - 2021-08-01
+AH:
+   * Familiarize with recent efficient transfer learning papers
+   * Started looking into HF inference API for possible integration
+   * Minor updates/ fixes; GH forum support
+Square:
+   * Upload documents & embeddings via fileserver (5h)
+
+---++ Week 2021-07-19 - 2021-07-25
+AH:
+   * Started implementing LM flex heads & tested with example tasks
+   * Minor updates/ fixes; GH forum support
+Square:
+   * Methods for index management (5h)
+   * Updates to query method, fixes & config (2h)
+
+---++ Week 2021-07-12 - 2021-07-18
+AH:
+   * Concept for hook-based adapters-vnext library
+   * Flex head for dependency parsing; ported & upgraded code from hgiyt
+Square:
+   * Implement datastore creation/ updating/ deletion via MongoDB & export to Vespa (6h)
+
+---++ Week 2021-07-05 - 2021-07-11
+AH:
+   * continued on HF Hub integration
+   * HF upstream sync 4.8.2
+   * v2.1.0 release
+Square:
+   * Familiarize with Vespa; Methods for documents (5h)
+
+---++ Week 2021-06-28 - 2021-07-04
+AH:
+   * Integration of HF Model Hub into AH (push_adapter_to_hub(), list_adapters())
+Square:
+   * Familiarize with Vespa & FastAPI (5h)
+
+---++ Week 2021-06-21 - 2021-07-27
+AH:
+   * HF upstream sync v4.8.0
+   * delete_adapter(), delete_adapter_fusion() etc. methods
+Square:
+   * Familiarize with topic; look into different available libraries (Vespa, haystack, OpenDistro, ...)
+
+---++ Week 2021-04-19 - 2021-04-25
+
+   * Refactoring of directory structure in library: [[https://github.com/Adapter-Hub/adapter-transformers/pull/149][(1)]]
+   * Implementation of parallel adapter inference for BART, MBart & GPT-2: [[https://github.com/Adapter-Hub/adapter-transformers/pull/150][(2)]]
+
+---++ Week 2021-04-12 - 2021-04-18
+
+   * Finished upgrade to HF v4.5.0
+   * Finalized upgrade to new Hub index in library: [[https://github.com/Adapter-Hub/adapter-transformers/pull/144][(1)]]
+   * Answered questions/ issues in GH repository
+
+---++ Week 2021-04-05 - 2021-04-11
+
+   * Upgraded adapter index generation in Hub repo to be compatible with v2 of library: [[https://github.com/Adapter-Hub/Hub/pull/25][(1)]]
+   * Upgraded some parts of the adapter docs to v2
+   * Added adapter support to summarization/ translation scripts in examples folder: [[https://github.com/Adapter-Hub/adapter-transformers/pull/141][(2)]]
+   * Started with upgrade to HF v4.5.0: [[https://github.com/Adapter-Hub/adapter-transformers/pull/142][(3)]]
+   * Answered questions/ issues in GH repository
+
+---++ Week 2021-03-29 - 2021-04-04
+
+   * Finished integration of HF v4.4.x into adapter-transformers: [[https://github.com/Adapter-Hub/adapter-transformers/pull/131][(1)]]
+   * Did some convenience improvements for adapter management in v2 of the library: [[https://github.com/Adapter-Hub/adapter-transformers/pull/133][(2)]], [[https://github.com/Adapter-Hub/adapter-transformers/pull/132][(3)]]
+   * Trained an adapter for MBart on WMT16 En-Ro: [[https://github.com/Adapter-Hub/Hub/pull/24][(4)]]
+   * Wrote blog post & documentation page for transition from v1 to v2: [[https://github.com/Adapter-Hub/adapter-transformers/pull/136][(5)]]
+   * Answered questions/ issues in GH repository

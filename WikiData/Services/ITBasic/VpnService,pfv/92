@@ -1,0 +1,174 @@
+%META:TOPICINFO{author="alles" comment="" date="1721211590" format="1.1" reprev="92" version="92"}%
+%META:TOPICPARENT{name="WebHome"}%
+<div style="padding:10px;border:3px solid red" align="center">
+<b>
+Students normally do not get UKP VPN access and should use the [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/tu_vpn/windows__macos_x_und_linux/index.en.jsp][TU Darmstadt HRZ Cisco VPN]] to access Slurm!
+
+<br />
+
+⚠️⚠️⚠️ Careful - after <u>3 failed login attempts</u> you will get <u>blocked for 24 hours</u> from your current IP. ⚠️⚠️⚠️
+
+</b>
+</div>
+
+<div style="float:right; border: solid grey 1px; padding: 0.25em; margin: 0.25em;">
+%TOC%
+</div>
+---+!! VPN Service
+
+---+ Terms of Use
+   * This page explains how to make a VPN connection into the UKP network to use the internal services.
+   * Use VPN only when necessary to access UKP resources. 
+   * VPN connections are limited. Disconnect when you do not need access anymore, so somebody else can use the VPN.
+   * Also see [[Services/Lab.PrivateHardwareUser][terms of use for private hardware]]
+
+---++ Geoblocking
+   * Due to various reasons only a few countrys are allowed to access vpn
+   * Sadly we can't forbid countrys, but just allow a list of trusted ones
+   * If you're traveling and can't find your destination on the list, consider opnening a ticket and we'll enable the country if possible. 
+   * Currently the following regions are allowed:
+      * Armenia
+      * Belgium
+      * Brasil
+      * Canada
+      * Emirates
+      * Finland
+      * France
+      * Germany
+      * Italy
+      * Japan
+      * Mexico
+      * Netherlads
+      * Switzerland
+      * UK
+      * USA 
+
+---+ UKP VPN / !FortiClient VPN configuration
+---++ General Information needed to access VPN
+   * To connect to vpn you need the follwoing parameters in any configuration scenario. 
+   * Which network segments you are allowed to access is centrally controlled by group-memberships of your UKP account.
+   * Parameters:
+      * *%RED%Server: vpn-portal.ukp.informatik.tu-darmstadt.de%ENDCOLOR%*
+      * *%RED%Port: 10443%ENDCOLOR%*
+      * User: your UKP account (usually your name)
+      * Password: your UKP account password
+   * For specific install instructions see the following information matching your OS
+
+---++ *Windows*
+   * [[https://www.fortinet.com/support/product-downloads#vpn][Download the clientsoftware]]
+   * Install the software (it can take some time - up to a few minutes)
+   * Open the new installed VPN-Client
+   * Setup the new connection like this:
+      * <img src="%ATTACHURL%/vpn_01.png">
+      * (for a screenshot in english check linux settings below!)
+   * *Optional:*
+      * If you have a stable network connection you can enable the following setting to have better performance using the VPN. 
+      * If your network connection is <u>not very stable</u> we recommend to <u>not turn it on</u>. 
+      * Enable special settings in your client by clicking on the *lock sign* in the top right corner and confirming the changes:
+         * <img src="%ATTACHURL%/vpn_02.png">
+   * Now click on the *small gear symbol* and tick the first box at the VPN settings to activate *DTLS tunneling* for the connection:
+      * <img src="%ATTACHURL%/vpn_03.png">
+   * Connecting the VPN by clicking on connect on the main page of the client
+      * <img src="%ATTACHURL%/vpn_04.png">
+   * Now the client is minimized to the taskbar and will notify you if something changes. 
+
+---++ *Linux*
+   * [[https://www.fortinet.com/support/product-downloads#vpn][Download the clientsoftware]]
+   * Install the software
+      * sudo dpkg -i forticlient_vpn_< version >_amd64.deb 
+      * sudo apt-get -f install
+   * Refer to the Windows settings above as they are the same
+      * the client might look slightly different, but the settings are exactly the same
+         * %IMAGE{"VPN.png" size="500"}% 
+
+---+++ OpenFortiClient (unsupported by Sysadmin, but might work for you, tested on Xubuntu 22.04)
+
+Install the [[https://github.com/adrienverge/openfortivpn][openfortivpn]] and network manager plugin via 
+
+<verbatim>
+sudo apt-get install network-manager-fortisslvpn openfortivpn
+</verbatim>
+
+Alternatively, just install =openfortivpn= and follow [[https://github.com/adrienverge/openfortivpn#examples][this guide]] if you do not need a GUI and just start VPN from a terminal.
+
+Add new VPN connection as usual, select Fortinet SSL VPN
+
+%IMAGE{"openfortivpnstep1.png" size="500"}% 
+
+Edit the "Gateway":
+
+=vpn-portal.ukp.informatik.tu-darmstadt.de:10443=
+
+leave the rest as default, and save
+
+%IMAGE{"openfortivpnstep2.png" size="500"}% 
+
+Connect to VPN simply using your UKP login and password
+
+%IMAGE{"openfortivpnstep3.png" size="500"}% 
+
+---++ *macOS*
+   * [[https://www.fortinet.com/support/product-downloads#vpn][Download the clientsoftware]]
+   * Install the software (it can take some time - up to a few minutes)
+   * Refer to the Windows settings above as they are the same
+
+---+++ Alternative (unsupported by Sysadmin, tested on macOS Ventura)
+   * Install [[https://github.com/adrienverge/openfortivpn][openfortivpn]], e.g. using Homebrew =brew install openfortivpn=
+   * Create a config file with =host=, =port=, =username=, =password=, =set-dns=, and =pppd-use-peerdns= values, as described in the repository and using values from UKP
+   * You can create an Apple Shortcut with the "Run Shell Script" action
+      * =/opt/homebrew/opt/openfortivpn/bin/openfortivpn -c /&lt;path-to-you-config-file>=
+      * Set "Run as administrator"
+      * Set "Shortcut Details" (the "I" button in the top right) > "Details" > "Pin in Menu Bar"
+      * Tap the Shortcut in the Menu Bar to start the VPN, tap again to stop
+
+---++ One-Shot Browser Connection
+   * With the new VPN it's also possible to use it in the browser for a one time connection to UKP internal services (useful if you are on a device that does not have the fortiCLient installed and just want to e.g. check your only internally reachable VM)
+   * Head to https://vpn-portal.ukp.informatik.tu-darmstadt.de:10443 and login with your UKP account
+   * The browser window is now connected to the UKP VPN
+   * Using the selection at the top of the page you can start a one shot connection e.g. to an UKP internal website using the VPN
+
+---+ HRZ VPN
+---++ Why you should use the HRZ VPN in some cases
+   * UKP VPN allows only access to internal UKP services, while only traffic that matches <u>UKP internal webpages and services</u> is sent trough the VPN tunnel, usual network traffic (like youtube) is not. 
+   * Students only receive UKP VPN permissions in rare cases, e.g. when they need to access a special VM, so if a studnets needs access to e.g. th SLURM CLuster of UKP the HRZ should be used. 
+   * Also if you want to access special paywalled sites where you need to be inside the campus network you can use the HRZ VPN for that, see example instructions below.
+   * General instructions about the HRZ VPN can be found here: [[http://www.hrz.tu-darmstadt.de/netz/vpn_wlan/vpn_service/index.de.jsp]]. 
+
+---++ Access to paywalled publications via HRZ VPN instructions
+   * Open browser
+   * Copy the following URL to access a webpag into your browser: https://vpn.hrz.tu-darmstadt.de/+CSCOE+/logon.html#form_title_text
+   * Sign in using your TU ID ( not UKP account!) - choose "extern" as connection profile
+   * Follow the instructions of the webpage:
+      * Click on "download for windows"
+      * Wait until the file was downloaded and open it
+      * If there is a popup "this app wants to make changes on your computer..." click on accept / yes
+      * Simply click on next until the setup is finished
+   * Open up the newly installed programm by searching it in your installed programs via windows search (bottom left); its called "Cisco AnyConnect Secure Mobilityclient"
+   * Look for the small cisco icon (little world with a lock) in your taskbar (bottom right) - maybe it's hiding, so click on the "small arrow" pointing up to see more icons
+   * Once you've opened the programm, as a server address, use "vpn.hrz.tu-darmstadt.de" without "
+   * Then click on connect and wait a few seconds, after that is asks for your TU ID again, select "extern" as profile
+
+
+%META:FILEATTACHMENT{name="add_ukp_route.pl.txt" attachment="add_ukp_route.pl.txt" attr="" comment="" date="1340747145" path="add_ukp_route.pl.txt" size="476" user="ChristianMeyer" version="1"}%
+%META:FILEATTACHMENT{name="vpn1.png" attachment="vpn1.png" attr="" comment="" date="1343980576" path="vpn1.png" size="37131" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="vpn2.png" attachment="vpn2.png" attr="" comment="" date="1343980576" path="vpn2.png" size="45258" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="vpn3.png" attachment="vpn3.png" attr="" comment="" date="1343980576" path="vpn3.png" size="40943" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="openvpn1.png" attachment="openvpn1.png" attr="" comment="" date="1354383511" path="openvpn1.png" size="58377" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="openvpn2.png" attachment="openvpn2.png" attr="" comment="" date="1354383510" path="openvpn2.png" size="63128" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="openvpn3.png" attachment="openvpn3.png" attr="" comment="" date="1358237179" path="openvpn3.png" size="42651" user="JohannesDaxenberger" version="1"}%
+%META:FILEATTACHMENT{name="vpnport.png" attachment="vpnport.png" attr="" comment="" date="1404898444" path="vpnport.png" size="52692" user="flekova" version="1"}%
+%META:FILEATTACHMENT{name="ukp-vpn.ovpn" attachment="ukp-vpn.ovpn" attr="" comment="" date="1665953279" path="ukp-vpn.ovpn" size="8937" user="klie" version="1"}%
+%META:FILEATTACHMENT{name="UKP_v2.ovpn" attachment="UKP_v2.ovpn" attr="" comment="" date="1666355574" path="UKP_v2.ovpn" size="8938" user="alles" version="1"}%
+%META:FILEATTACHMENT{name="vpn_01.png" attachment="vpn_01.png" attr="" comment="" date="1678717214" path="vpn_01.png" size="38691" user="alles" version="1"}%
+%META:FILEATTACHMENT{name="vpn_02.png" attachment="vpn_02.png" attr="" comment="" date="1678717236" path="vpn_02.png" size="2309" user="alles" version="1"}%
+%META:FILEATTACHMENT{name="vpn_03.png" attachment="vpn_03.png" attr="" comment="" date="1678717248" path="vpn_03.png" size="12341" user="alles" version="1"}%
+%META:FILEATTACHMENT{name="vpn_04.png" attachment="vpn_04.png" attr="" comment="" date="1678717313" path="vpn_04.png" size="19610" user="alles" version="1"}%
+%META:FILEATTACHMENT{name="VPN.png" attachment="VPN.png" attr="" comment="" date="1678726908" size="56919" user="zyska" version="1"}%
+%META:FILEATTACHMENT{name="openfortivpnstep3.png" attachment="openfortivpnstep3.png" attr="" comment="" date="1680263970" path="openfortivpnstep3.png" size="19960" user="klie" version="1"}%
+%META:FILEATTACHMENT{name="openfortivpnstep2.png" attachment="openfortivpnstep2.png" attr="" comment="" date="1680263986" path="openfortivpnstep2.png" size="55538" user="klie" version="1"}%
+%META:FILEATTACHMENT{name="openfortivpnstep1.png" attachment="openfortivpnstep1.png" attr="" comment="" date="1680263997" path="openfortivpnstep1.png" size="84211" user="klie" version="1"}%
+%META:TOPICMOVED{by="bugert" date="1570805500" from="Services.VpnService" to="Services/Lab.VpnService"}%
+%META:PREFERENCE{name="DENYTOPICVIEW" title="DENYTOPICVIEW" type="Set" value="WikiGuest"}%
+%META:PREFERENCE{name="PERMSET_VIEW" title="PERMSET_VIEW" type="Local" value="registeredusers"}%
+%META:PREFERENCE{name="DENYTOPICCHANGE" title="DENYTOPICCHANGE" type="Set" value="WikiGuest"}%
+%META:PREFERENCE{name="PERMSET_CHANGE" title="PERMSET_CHANGE" type="Local" value="registeredusers"}%

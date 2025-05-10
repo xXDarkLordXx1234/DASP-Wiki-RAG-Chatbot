@@ -1,0 +1,64 @@
+%META:TOPICINFO{author="klie" comment="" date="1666265169" format="1.1" reprev="15" version="16"}%
+%META:TOPICPARENT{name="Services/Campus.ComputeCluster"}%
+---+!! %TOPIC%
+
+%TOC%
+
+---++ Principle
+User data in the cluster is stored via network file systems which are mounted on the headnode and each compute node at the same path. This means, you only need to copy code and data once to the network share, not to every single node. Jobs can then see your files no matter on which compute node a job runs.
+
+---+++ Key facts
+   * We do not create user homes (e.g. =/home/username/=) on compute nodes. Code and data has to be put on any of the network file systems. See also [[https://wiki.ukp.informatik.tu-darmstadt.de/Services/Campus/ComputeClusterFAQ#Why_do_I_get_Permission_denied_exceptions_when_my_job_tries_to_write_to_my_home_folder_63][this FAQ question]].
+      * Exception: user homes exist on the headnode (=wormulon=). Space is limited there, so please avoid storing large files in =/home=. Custom =bash_profile= and other small configuration files are okay.
+   * There is *no backup* system in place for any of the network file systems.
+
+---++ Available network file systems
+
+%TABLE{columnwidths="10%,20%,20%,40%,10%,10%"}%
+| *Storage Server* | *User affiliation*            | *Location*                                       | *Mount point*                              | *Quota* | *Description* |
+| =beegfs=         | anyone except NLLG and ATHENE | user folder                                      | =/storage/ukp/work/$USER=                  | n/a     |   |
+| =UKP temp=         | anyone except NLLG and ATHENE |                                       | =/storage/ukp/temporary=                  | n/a     | Files get deleted after 2 weeks |
+| =brentano=       | NLLG                          | user folder                                      | =/storage/nllg/compute-share/$USER=        | n/a     |   |
+
+User folders are created automatically for new users at these locations. 
+
+
+If you want to quickly share files with other users, you can use one of the temporary locations. *Files older than two weeks are deleted automatically from time to time in these locations.*
+
+
+You can also request shared folders for project work collaborations [[https://service.ukp.informatik.tu-darmstadt.de/shared-slurm-folder][here]] .
+
+---++ Example Usage for the UKP storage
+
+Here are some usage examples for /storage/ukp/work=.
+
+---+++ Copying data and code to the cluster
+
+You can copy data to this folder from your workstation via =rsync= or =scp=:
+
+From your workstation using =rsync=:
+<verbatim>
+rsync -aP data_folder wormulon:/storage/ukp/work/$USER
+</verbatim>
+
+From your workstation using =scp=:
+<verbatim>
+scp -r data_folder wormulon:/storage/ukp/work/$USER
+</verbatim>
+
+---+++ Accessing data and code in compute jobs
+
+When submitting compute jobs, you can now refer to your files on the storage. For example:
+<verbatim>
+#!/bin/bash
+#
+#SBATCH --job-name=test_job
+#SBATCH --output=/storage/ukp/work/klie/test/res.txt
+#SBATCH --mail-type=ALL
+#SBATCH --partition=ukp
+
+source /storage/ukp/work/klie/test/venv/bin/activate
+python /storage/ukp/work/klie/test/test.py
+</verbatim>
+
+%META:TOPICMOVED{by="bugert" date="1570804962" from="Services.ComputeClusterStorage" to="Services/Campus.ComputeClusterStorage"}%

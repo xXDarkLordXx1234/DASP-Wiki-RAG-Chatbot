@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="NicoErbs" date="1347346631" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++TfIdf Extraction Overview
+
+%EDITTABLE{ sort="off" tableborder="0" cellpadding="3" cellspacing="3" headerrows="1"}%
+| *Corpus* | *Pedocs* | *Inspec<br>(Hulth)* | *DUC* | *Scientific<br>papers* |
+| *Tokens / Document* | 14,590.5 | 138.6 | 902.8 | 8,491.6 |
+| *R-Precision (Lemmas)* | .15 | .28 | .12 | .13 |
+| *R-Precision (Tokens)* | .09 | .27 | .12 | .12 |
+| *R-Precision (Noun phrases)* | .07 | .27 | .12 | .10 |
+
+Pedocs experimental results
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="3" cellspacing="3" headerrows="1"}%
+| *Corpus* | *Candidate* | *tf type* | *idf type* | *R-Precision* |
+| Pedocs | Lemma | Normal | Binary | .1531 |
+| Pedocs | Lemma | Normal | Log | .1212 |
+| Pedocs | Token | Normal | Binary | .0873 |
+| Pedocs | Token | Normal | Binary | .0868 |
+| Pedocs | NP | Normal | Log | .0675 |
+| Pedocs | Named entity | Normal | Binary | .0307 |
+| Pedocs | Lemma | Normal | Normal | .0299 |
+
+-- Main.NicoErbs - 2012-09-10

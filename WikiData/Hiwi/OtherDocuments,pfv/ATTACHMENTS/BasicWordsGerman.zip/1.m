@@ -1,0 +1,2 @@
+YevgenChebotar
+Basic Words German. Description in BasicWordsGermanDescription.odt

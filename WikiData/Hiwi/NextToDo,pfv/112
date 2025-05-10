@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1379016768" format="1.1" reprev="112" version="112"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * *info graphic*: (tipster docs/topics => ) !RobustWSD format => Terrier tagged format
+
+   * <s>write about and</s> *apply new data set*
+      * <s>transforming Tipster docs into !RobustWSD format ...</s>
+         * after: transform to Terrier tagged format
+            * for baseline
+            * for first DT experiments
+
+   * run *delex query side on frink*
+      * the sense substituter contains an old version of asv toolbox, dt lemmatizer has new one
+         * re-pack the sensesubstituter jar and remove the asv package
+      * implement second term selecting method and (just by annotations overlap) count how many terms would be expanded by each of the two methods
+
+   * points to *extend the thesis*: experiments with new data set, intro

@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="NataliyaSinkevych" date="1210331244" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NataliyaSinkevych"}%
+-- Main.NataliyaSinkevych - 09 May 2008
+
+---++ Treffen am 10. März (NS, MCM)
+   * Crawling von PW ist soweit abgeschlossen, Daten liegen vor
+   * Problem: Die meisten Services verwenden das SOAP-Protokoll, welches von der aktuellen Version des WSDL-Readers nicht vollständig gelesen werden kann. Vergleiche
+      * [[%ATTACHURL%/out_http.html][out_http.html]]: out_http.html
+      * [[%ATTACHURL%/out_soap.html][out_soap.html]]: out_soap.html
+   * Die Eingabeparameter im SOAP-Protokoll sind 'complex', können aber nicht analysiert werden. Im HTTP-Protokoll sind mehrere Eingabeparameter einzeln aufgeführt.
+   * @action(MCM): Checken, ob Reader modifiziert werden kann um auch SOAP zu lesen. (Die bisher verwendeten Datensätze hatten hauptsächlich HTTP verwendet, daher war die Einschränkung bisher kein Problem).
+
+---++ Treffen am 20. März (NS, MCM)
+   * Auslesen von XML-Schema funktioniert jetzt (bisher noch im eigenständigen Programm)
+   * Keine Arbeit investieren in die Verarbeitung nicht-wohlgeformter WSDL-Dateien!
+   * Nächste Schritte:
+      * UIMA installieren
+      * Parametrisierbare Methode zum Schema-Parsen schreiben (max. Rekursionstiefe 2)
+      * Existierenden WSDLReader um Schema-Unterstützung ergänzen
+
+%META:FILEATTACHMENT{name="out_http.html" attachment="out_http.html" attr="" comment="" date="1205250777" moveby="NataliyaSinkevych" movedto="Teaching.NataliyaSinkevychMeetingProtokolle.out_http.html" movedwhen="1210331181" movefrom="Teaching.NataliyaSinkevych.out_http.html" path="out_http.html" size="561565" stream="out_http.html" user="Main.ChristophMueller" version="1"}%
+%META:FILEATTACHMENT{name="out_soap.html" attachment="out_soap.html" attr="" comment="" date="1205250796" moveby="NataliyaSinkevych" movedto="Teaching.NataliyaSinkevychMeetingProtokolle.out_soap.html" movedwhen="1210331244" movefrom="Teaching.NataliyaSinkevych.out_soap.html" path="out_soap.html" size="988059" stream="out_soap.html" user="Main.ChristophMueller" version="1"}%

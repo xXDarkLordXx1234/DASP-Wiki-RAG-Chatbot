@@ -1,0 +1,88 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+%TIMELINE%
+ImageSize  = width:400 height:60
+PlotArea   = left:30 bottom:30 top:0 right:20
+DateFormat = x.y
+Period     = from:0 till:18
+TimeAxis   = orientation:horizontal
+AlignBars  = justify
+ScaleMajor = gridcolor:black increment:1 start:0
+ScaleMinor = gridcolor:black increment:1 start:0
+
+PlotData=
+  bar:p color:red width:10 align:left fontsize:S
+  from:2 till:3
+  from:5 till:6
+  from:12 till:13
+  from:14 till:15
+
+  bar:Np color:red width:10 align:left fontsize:S
+  from:1 till:2
+  from:4 till:5
+  from:10 till:15
+%ENDTIMELINE%
+
+%TIMELINE%
+ImageSize = width:800 height:142
+PlotArea  = width:720 height:112 left:65 bottom:25
+AlignBars = justify
+
+Colors =
+  id:16BIT      value:redorange
+  id:16BITFADE1 value:orange
+  id:16BITFADE2 value:lightorange
+  id:9XLINIE    value:green
+  id:9XLINIEFADE1 value:yellowgreen
+  id:9XLINIEFADE2 value:limegreen
+  id:NTLINIE    value:magenta
+  id:CELINIE    value:skyblue
+  id:black      value:black
+
+Period     = from:1983 till:2005.5
+TimeAxis   = orientation:horizontal
+ScaleMajor = unit:year increment:2 start:1984
+ScaleMinor = unit:year increment:1  start:1983
+
+PlotData=
+  align:left textcolor:black fontsize:8 mark:(line,black) width:28 shift:(3,1)
+
+  bar:16-Bit color:16BIT
+  from:1983.83 till:1994.83 mark:(line,16BIT)
+  from:1994.83 till:1995.83 color:16BITFADE1 mark:(line,16BITFADE1)
+  from:1995.83 till:1996.83 color:16BITFADE2 mark:(line,16BITFADE2)
+  at:1983.83  text:Windows 1.0
+  at:1987     text:Windows 2.0
+  at:1990.33  text:Windows~3.0
+  at:1992     text:Windows~3.1
+  at:1993.83  text:Windows 3.11
+
+  bar:9x-Linie color:9XLINIE
+  from:1995 till:2001.83 mark:(line,9XLINIE)
+  from:2001.83 till:2002.83 mark:(line,9XLINIEFADE1) color:9XLINIEFADE1
+  from:2002.83 till:2003.83 mark:(line,9XLINIEFADE2) color:9XLINIEFADE2
+  at:1995  text:Windows 95
+  at:1998  text:Windows 98
+  at:2000.83  text:Windows ME
+
+  bar:NT-Linie color:NTLINIE
+  from:1993.5 till:end
+  at:1993.5  text:NT~3.1
+  at:1994.67 text:NT~3.5
+  at:1995.33 text:NT~3.51
+  at:1996.5  text:Windows~NT 4.0
+  at:1999.92 text:Windows~2000
+  at:2001.58 text:Windows~XP
+  at:2003.17 text:Windows~Server 2003
+
+  bar:CE-Linie color:CELINIE
+  from:1996.83  till:end
+  at:1996.83 text:CE~1.0
+  at:1997.67 text:Windows~CE 2.0
+  at:2000.25 text:Windows~CE 3.0
+  at:2002.17 text:CE~4.0
+  at:2003.67 text:Mobile~2003
+%ENDTIMELINE%
+
+
+-- Main.NicolaiErbs - 2010-10-16

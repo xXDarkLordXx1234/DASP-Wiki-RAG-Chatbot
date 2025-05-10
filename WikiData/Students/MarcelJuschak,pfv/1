@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="schulz" date="1523874506" format="1.1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2018-04-11
+   * agreed on aim of thesis: automatically detect medical diagnosis (e.g. disease), medical test, and test results in texts --> unsupervised, there will only be a few documents for testing
+   * talked about general expectations for thesis at UKP
+   * discussed various possible dictionaries: UMLS, Wikipedia
+   * either use various dictioniaries and dict extraction methdos and compare their usefulness
+   * or go in the ML direction, i.e. train a classifier (on Medical word embeddings??) to also predict unknown medical words
+   * Marcel will contribute to writing task description
+      * TODO(!ClS): Send some examples of task description
+   * programming language dependent on task
+   * next steps: decide which direction to take, check possible dictionaries and data sources, draft task description
+
+
+
+-- Main.ClaudiaSchulz - 2018-04-16

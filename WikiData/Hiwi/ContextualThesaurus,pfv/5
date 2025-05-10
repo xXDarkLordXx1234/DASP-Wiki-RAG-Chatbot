@@ -1,0 +1,82 @@
+%META:TOPICINFO{author="RichardSteuer" date="1328269425" format="1.1" version="5"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+---+Contextual Thesaurus
+
+This page documents our work on the next level of the DistributionalThesaurus (DT),
+the *Contextual Thesaurus*.
+
+The implementation to this research is based on a local UIMA pipeline (i.e. the
+cluster is not used here). It relies on the output of the *ContextParses* step,
+see the corresponding paragraph at the DT page.
+
+Furthermore, the Berkeley Database (BDB) is used:
+
+   * the complete DT (simsort-out) is put into one BDB
+   * the results of the !FeatureCount step are put into another
+
+The goal of this second version of the DT is to examine whether or not a _local_
+_context_ could help with automatic similarity (or disambiguation) calculation.
+
+The current results are very promising.
+
+-- Main.RichardSteuer - 2012-01-29
+
+---++Level 1
+
+I'd like to illustrate this by example. Consider the following sentence:
+
+   * _I started to work it out._
+
+The sentence has the following dependency relations (according to the [[http://nlp.stanford.edu/software/lex-parser.shtml][Stanford Parser]]):
+
+   * nsubj(started-2, I-1)
+   * root(ROOT-0, started-2)
+   * aux(work-4, to-3)
+   * *xcomp(started-2, work-4)*
+   * dobj(work-4, it-5)
+   * prt(work-4, out-6)
+
+Remember, we read all the sentences (and its parses) from a text file generated
+by the *ContextParses* step. This is what we read into the UIMA Cas. This way,
+we instantly have access to all dependency relations for each word within the
+sentence.
+We process sentence by sentence. Next, we process each word within that
+sentence and get its corresponding DT entry. We go through each line of the DT
+entry and look, how many of the dependency relations (of e.g. _started#VBD_)
+appear in the feature list of each DT entry (which is a similar word).
+The (fictitious) end results (for e.g. _started#VBD_) may look like this:
+
+| 1 | started#VBD | 279.0 | [ ... i#NNP#nsubj ... ] |
+| 1 | began#VBD | 142.0	| [ ... work#VB#xcomp ...] |
+| 0 | start#VBP | 93.0 | [ ... ] |
+| 2 | ... | ... | [ ... ] |
+
+We create a new first column to note the count of how many direct dependency
+relations appear in the feature list. We call this new column the _local context_.
+The second column denotes the similar word and the third is the integer
+similarity count which at the same time denotes the number of features it
+shares with the DT entry word (e.g. _started#VBD_).
+
+At last, we ran this Level 1 with 1000 parsed sentences and calculated
+statistics of how many words (and the sentences) at least have a local context of
+&gt; 0 or &gt; 5 in their DT entry. Most
+entries will be zero. The results are:
+
+Level 1, 1000 sentences, entry &gt;= 1
+| V: | 12,22% |
+| N: | 18,96% |
+| O: | 35,89% |
+| J: | 5,27% |
+
+Level 1, 1000 sentences, entry &gt;= 5
+| V: | 4,88% |
+| N: | 1,79% |
+| O: | 24,02% |
+| J: | 0,86% |
+
+(V=Verbs, N=Nouns, J=Adjectives, O=Other)
+
+Read it this way: In the 1000 sentences (parses), 12,22% of the verbs have an
+entry >= 1 in the contextual column of their DT entry.
+
+---++Level 2

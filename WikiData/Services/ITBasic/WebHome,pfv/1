@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="alles" comment="" date="1725449026" format="1.1" reprev="1" version="1"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}%%IF{"$WEBSUMMARY != ''" then="
+---++!! %WEBSUMMARY%"}%
+
+<div style="border: solid 4px #FBD603; font-weight:800; padding: 5px">
+  <p align="center">
+🚧 *09/2024: This web is under active development.* 👷🔨 🚧
+  </p>
+</div>
+
+<div style="float:right;background-color:white; z-index:999;">
+  <div style="border: solid grey 1px; padding: 0.25em; margin: 0.25em">
+
+---++++ !! Content of this page
+%TOC%
+
+---++++ !! Permissions
+This web and it's contents are available for:
+   * Everyone that can login (just denied for guest users)
+   * Subpages below are restricted further.
+
+---++++ !! <nop>%WEB% Web Utilities
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes %IF{"istopic '%STATISTICSTOPIC%'" then="
+   * %STATISTICSTOPIC% - listing popular topics and top contributors"}%
+   * WebPreferences - preferences of this web
+
+  </div>
+</div>
+
+---++ %MAKETEXT{"Available Basic IT Services"}%
+   * VPN %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% available for everyone in Main.vpn-minimal, Main.vpn-cluster-only, Main.ukp-tuda-staff, Main.ukp-tuda-associated-researcher, Main.ukp-tuda-researcher, Main.ukp-tuda-irg, Main.ukp-tuda-intern %ENDTWISTY% 
+   * UKP account password change %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% available for everyone that can login, no additional restriction %ENDTWISTY% 
+   * UKP SLURM cluster %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% availabe for everyone in Main.slurm-user %ENDTWISTY% 

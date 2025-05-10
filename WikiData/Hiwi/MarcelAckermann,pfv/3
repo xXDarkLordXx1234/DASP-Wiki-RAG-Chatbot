@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="MarcelAckermann" date="1303482998" format="1.1" reprev="3" version="3"}%
+
+---+++Vertrag
+Laufzeit: 01.04.2011-31.06.2011
+
+---+++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Priorität* | *ID* | *Beschreibung* | *Status* |
+| 1 | 0 | Meetings | |
+| 1 | 1 | einlesen SiDiM.Literature | 0 % |
+| 1 | 2 | Initialisierung | |
+
+
+---+++ Arbeitszeit
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2" footerrows = "1" }%
+| *Datum* | *Stunden* | *Aufgabe-ID* | *Beschreibung* |
+| 01.04.2011 | 1 | 1 | Projektantrag durchlesen |
+| 02.04.2011 | 2 | 1 | NL Watermarking (Topkara) |
+| 06.04.2011 | 2 | 1 | einlesen |
+| 09.04.2011 | 2 | 1 | einlesen |
+| 11.04.2011 | 2 | 1 | einlesen |
+| 13.04.2011 | 2 | 1 | einlesen |
+| 17.04.2011 | 4 | 2 | Konfiguration, Accounts |
+| 22.04.2011 | 4 | 2 | Konfiguration |
+| *Summe* | %CALC{"$SUM( $ABOVE() )"}% | | |
+| *Soll* | 90 | | bis 31.6. |
+<nop>

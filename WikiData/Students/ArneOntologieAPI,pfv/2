@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="ArneLogbuch"}%
+Methoden der *OntologyAPI*
+
+   * =boolean existsRelation(String relation)=
+   * =boolean isRelated(String fromEntity, String toEntity)=
+   * =boolean isSubclass(String subClass, String topClass)=
+   * =List&lt;String&gt; getRelations(String fromEntity, String toEntity)=
+   * =List&lt;String&gt; getSuperclasses(String name)=
+   * =List&lt;String&gt; getClasses(String name)=

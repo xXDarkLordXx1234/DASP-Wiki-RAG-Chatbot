@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212987390" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="SimonKulessaTaskLog"}%
+*Komponente:*
+<br>Delta Tool
+
+*Beschreibung:*
+<br>Auslesen der Tasks aus der XML-Datei des Wikipedia-Dumps.
+
+*Bisherige Lösung:*
+<br>Verwendung von mehreren parallel arbeitenden !TaskReadern die jeweils alle Tasks lesen.
+<br>Ein Teil davon wird (abhängig von der Anzahl der !TaskReader) ignoriert.
+<br><br>
+_Beispiel:_
+<br>
+!TaskCount entspricht der Anzahl der aller gelesen Artikel.
+<br>Sollten zwei !TaskReader (A und B) existieren würde
+<br> A alle Artikel mit dem Ergebnis !TaskCount % 2 == 0 und 
+<br> B alle Artikel mit dem Ergebnis !TaskCount % 2 == 1 extrahieren. 
+
+*Alternative:*
+<br>Aufteilen des Wikipedia-Dumps in mehrere kleine Dateien
+<br><br>
+_Nachteil:_
+<br>Um diese Alternative zu realisieren würden ich insgesamt um die 1 TB Speicherplatz (grobe Schätzung) benötigt.
+<br><br>
+_Vorteil:_
+<br>   * Man könnte das ganze letztendlich einfacher auf mehrere Rechnern betreiben.
+<br>   * Ich bräuchte euren Server nicht "am Stück" zu belegen.
+
+
+-- Main.SimonKulessa - 09 Jun 2008

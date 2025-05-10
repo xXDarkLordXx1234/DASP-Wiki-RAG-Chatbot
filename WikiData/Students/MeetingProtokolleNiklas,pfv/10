@@ -1,0 +1,86 @@
+%META:TOPICINFO{author="TorstenZesch" date="1168872360" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="NiklasJakob"}%
+---+Meeting-Protokolle
+
+---++ 05.02.2007, 15:45 Uhr
+
+---++ 15.01.2007, 14:00 Uhr
+
+   * Wikipedia API: Filter erstellen um Wikipedia-"Debug"-Kategorien wie " Cleanup from ...", "All pages needing cleanup", "Articles for deletion", "All pages needing to be wikified" bei Page.getCategories() herauszufiltern? (Tragen ja keinerlei semantische Informationen)
+      * @action (TZ): wird noch eingebaut
+   * @action (TZ): Umlaut-Fehler bei Redirects => beheben
+
+---++ 18.12.2006, 16:00 Uhr
+
+   * Vorhandene UIMA Annotator und Analysis Engines kopieren
+
+   * Pro / Contra Abwägung zur Klasse "Synset" für alle Wissensdatenbanken. Eventuell neues Interface dafür erstellen?   
+      * evtl. zweistufige Abstraktion - aber Abhängigkeiten zum Mapping von den Relationen der Wissensquellen zum Interface
+
+   * Tips zur Wikipedia + API Installation
+
+   * Relevante Funktionen der Wikipedia API:
+      * Page (wiki.getPage()):
+         * getCategories()
+         * Unterschied zwischen getId() und getPageId()?
+         * getIsDisambiguation()
+         * getRedirects()
+         * getPageLinks()
+      * Category (wiki.getCategory()):
+         * getPages()
+      * CategoryGraph (???):
+         * getChildren()
+         * getParents()
+         * stellen "Neighbours" semantische Relation dar?
+      * Comparator
+         * getDisambiguationPageSet() ?
+         * getRelatednessValue() ?
+
+Wikipedia Relationen lassen sich nicht sinnvoll auf rein-taxonomische Relationen wie bei den bestehenden Algorithmen abbilden - es ist eine Generalisierung notwendig (3 Klassen)
+
+
+---++ 04.12.2006, 15:30 Uhr
+
+   * UIMA zum parsen des bereits getaggedten Eingabetextes? Wie ist das Ausgabeformat des POS Taggers?
+   * _Wird am kommenden Montag in einer kleinen Sitzung besprochen_
+
+   * GermaNet Packages und deren Abhängigkeiten abgleichen... habe ich alles was ich benötige?
+   * _Es wurde nochmal ein komplettes Paket kopiert._
+
+   * Synset "Offset" Eigenschaft in GermaNet vorhanden ("Identifier" eines Wortes)? Ausblick auf Möglichkeit bei Wikipedia API?
+   * _Der Offset scheint im GermaNet vorhanden zu sein, es ist jedoch bisher per API nicht möglich auf diesen Wert zuzugreifen (idSynMap). Ggf. muss die API dahingehend erweitert werden. Bei der Wikipedia API ist ein Offset/Identifiert vorhanden._
+
+   * UML Diagramm besprechen und ggf. bereits verfeinern.
+   * _Die Funktionsnamen und Parameter sollten weiter Abstrahiert werden, die Synset Klasse wird aus dem SemanticNet Interface entfernt. Ich werde abwägen ob der Datentyp "Synset" in diesem Zusammenhang erhalten werden soll, oder ob es, da dieses Konstrukt im Kontext der Wikipedia nicht direkt Existiert, durch ein abstrakteres Modell ersetze wird._
+
+   * Problem des Zugriffs auf "leere" Datenstrukturen (z.B. Array / ArrayList / Vector) --> NullPointerException --> try + catch vermeidbar / eleganter lösbar?
+   * _Das Problem kann umgangen werden indem man die Datenstrukturen nicht mit dem Objekt "Float" sondern dem elementaren Datentyp "float" erzeugt._
+
+---++20.11.2006, 15:30 Uhr
+
+   * IP-Vereinbarung: Zusätzlicher Vertrag wird zum nächsten Treffen unterzeichnet mitgebracht.
+
+   * Eingabedaten: Das Konzept des CAS Objekts als Datenquelle wurde verfeinert und für gut befunden.
+
+   * Programmstruktur: Zwecks Erweiterbarkeit und guter Struktur soll für die Algorithmen ein Java Interface ("LexicalChainExtractor"?) definiert werden. Ebenso soll für den Zugriff auf die Semantischen Netze ein Interface ("SemanticNet"?) definiert werden.
+
+   * Eingabedaten: Es muss wahrscheinlich eine Klasse die UIMA implementiert definiert werden, welche den Input ersetzt.
+
+   * Programmstruktur: Ein UML Diagramm der gesamten Anwendung wird erstellt welches bei fortschreitender Analyse des Zugriffs auf die Informationsquellen verfeinert wird.
+
+---++06.11.2006, 15:30 Uhr
+
+   * Format der Eingabedaten: Ziel ist es Texte von der UIMA Platform verarbeiten zu können. Dazu könnte den Algorithmen z.B. ein CAS Objekt zur Analyse übergeben werden. Dazu muss wahrscheinlich eine eigene Klasse zur Annotation geschrieben oder ein eigenes Token definiert werden.
+
+   * Eingabeparameter: Der Threshold Wert zur Bestimmung der "Strong Chains" sollte bei beiden Algorithmen frei einstellbar sein. (Von den Autoren definiert sind "Strong Chains" alle diejenigen deren Wert um die zweifache Standardabweichung höher als der Mittelwert aller Chains ist)
+
+   * Zugriff auf die Informationsquellen: Der Zugriff auf die Wikipedia, WordNet und GermaNet sollte eventuell über eine Dummy Klasse erfolgen, sodaß dies später auch über CAS geschehen kann.
+
+   * Wikipedia API: Die wichtigsten Funktionen sind wahrscheinlich getCategories() und isDisambiguation() und für die Verwendung der Wikipedia als Informationsquelle elementar.
+
+   * Evaluation: Es existieren Texte die manuell hinsichtlich lexikalischer Ketten ausgewertet wurden. Diese könnten bei der Evaluierung der Algorithmen verwendet werden. Zusätzlich könnte man empirisch die Qualität von automatisch extrahierten Ketten bewerten lassen.
+
+   * Programmstruktur: Die Referenzimplementierung des Galley/McKeown Algorithmus wird von C++ nach Java portiert. Aus der Implementierung des Silber/McCoy Algorithmus müssen sämtliche Zugriffe auf das MMAX Eingabeformat entfernt und ersetzt werden.
+
+   
+-- Main.NiklasJakob - 22 Nov 2006

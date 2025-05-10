@@ -1,0 +1,53 @@
+%META:TOPICINFO{author="tran" comment="" date="1685095690" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+   * Talks/Deadline
+      * ????-??-?? final talk
+      * ????-??-?? mid-term presentation
+      * 2023-10-17 submission deadline
+      
+   * *Week 5*
+      * sanity checking intermediate results (model output, datasets, seq. formatting)
+      * print results on reranked results
+      * train only on en -> eval en   
+         * en -> set retrieval epochs to 10
+      * evaluate on: fr + vn; fr; vn; en;
+         * summarize in table
+
+---
+
+   * *Week 4*
+      * create dataset for retrieval: add pos, neg examples    
+      * evaluate on: fr + vn; fr; vn; en; cn; en + cn    
+      * further literature review
+      * set up: Overleaf thesis template
+         * status quo: general results    
+         * Look into the outputs of the baseline (can be done non-rigorously): check for patterns and errors   
+---
+
+   * *Week 3*
+      * experiments on generation: for cn/en dataset 
+      * further literature review
+      * set up: Overleaf thesis template
+         * add Nico!   
+         * status quo: general results    
+         * Look into the outputs of the baseline (can be done non-rigorously): check for patterns and errors   
+---
+
+   * *Week 2*
+      * Tasks    
+         * Split train dataset -> into dev set
+         * run experiments on English + Chinese datasets   
+         * Look into the outputs of the baseline (can be done non-rigorously): check for patterns and errors
+         * Literature Review of the baseline models that are used in the baseline code and the details of the dataset (e.g. read the doc2dial paper and the multidoc2dial paper, which are the predecessor datasets)
+         * add batch/gradient accumulation
+         * (optional: add language token <lan> to input; dont forget: add new token to tokenizer)
+---
+
+   * *Week 1*
+      * Tasks
+         * Run Baseline code & fix OOM issues
+         * Version the repo on git and invite ndaheim as a collaborator
+         * Look into the outputs of the baseline (can be done non-rigorously): check for patterns and errors
+         * Literature Review of the baseline models that are used in the baseline code and the details of the dataset (e.g. read the doc2dial paper and the multidoc2dial paper, which are the predecessor datasets)
+
+-- Main.NicoDaheim - 2023-04-19

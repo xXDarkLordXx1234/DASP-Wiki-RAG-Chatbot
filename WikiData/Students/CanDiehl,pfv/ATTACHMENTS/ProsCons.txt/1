@@ -1,0 +1,19 @@
+Hierarchical Clustering:
+
++ Easy to Rank		- Very Slow
++ Easy to find a label		- Hierarchy must be resolved into clusters
++ No Fixed Cluster Size needed
+
+Centroid-based Clustering:
+
++ Easy to implement		- Fixed Cluster Size Needed
++ Faster than HC		- Good Seeds should be assured
++ Efficient with good seeds	- Ranking need to be implemented
++ Label are naturaly created
+
+Density-based clustering:
+
++ Can be much faster		- Parameter Sensitive
++ No Fixed Cluster Size needed	- Ranking need to be implemented
++ Arbitary shaped solutions	- Need Strategy to find a label (no direct center)
++ Ignores outliers			

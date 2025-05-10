@@ -1,0 +1,41 @@
+%META:TOPICINFO{author="starke" comment="reprev" date="1447964319" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="ElisaStarke"}%
+*- Overarching question: how do both versions of the corpus relate to each other, what are the differences (check Paper!)?*
+Preprocessing and Annotations include:
+   * 	Tokenization
+   * 	Normalization: state interpretation of utterances that can be dealt with by standard grammar
+   *    Annotations: 
+		* automatically POS-tagged and lemmatized + manually corrected
+		* dependency relations
+		* named entities
+		* coreference 
+
+*- What is the size of the corpus (tokens, sentences)*
+   * tokens => 5655
+   * sentences => 786
+   * SH: Kann es sein, dass sich diese Ergebnisse auf die Summe von Norm und Orig beziehen? Wie groß sind diese jeweils (beide enthalten ja den gleichen Inhalt, das Ziel ist entweder auf Orig oder auf Norm zu arbeiten, nicht auf beiden zusammen)?
+   * ES: Die Zahlen sind richtig sowohl für Norm als auch Orig, da sie identisch sind, zumindest wenn man nach dem Markup in "unicom_orig.tcf" bzw. "uniform_norm.tcf" geht. Das liegt daran, dass jedes Token, was in dem anderen Korpus keine Entsprechung hat als "_" gesetzt wird, jedoch auch als eigenes Token zählt. Dadurch gibt es in beiden Korpora genau die gleiche Anzahl an Tokens bzw. Sätzen. Ich habe noch eine neue Statistik erstellt, welche nur Tokens zählt, welche nicht einem "_" entsprechen da ergeben sich folgende Zahlen:
+   * Orig: tokens => 3694
+   * Norm: tokens => 4732
+   * Die Anzahl der Sätze bleibt aber dennoch für beide Korpora gleich.
+
+*- What kind of dependency labels were used in the paper (check Paper!)*
+	- Dependenz-Annotation wird aus TIGER-Annotatin der Normalisierung übersetzt
+	
+*- Was there a different set of dependency labels used for the original version (orig) compared to the normalized version (norm)?*
+	- NO
+	
+*- Write each verb lemma and the corresponding sentence to file*
+--> files are attached (analysisResults_norm.txt and analysisResults_orig.txt)
+
+
+-- Main.ElisaStarke - 2015-11-14
+
+%META:FILEATTACHMENT{name="analysisResults_norm.txt" attachment="analysisResults_norm.txt" attr="" comment="normalized corpus" date="1447964010" path="analysisResults_norm.txt" size="16384" user="starke" version="2"}%
+%META:FILEATTACHMENT{name="analysisResults_orig.txt" attachment="analysisResults_orig.txt" attr="" comment="original corpus" date="1447964041" path="analysisResults_orig.txt" size="16384" user="starke" version="2"}%
+%META:FILEATTACHMENT{name="averageNumberofDependentsByLemma_norm.txt" attachment="averageNumberofDependentsByLemma_norm.txt" attr="" comment="average number of dependents by lemma (norm)" date="1447964138" path="averageNumberofDependentsByLemma_norm.txt" size="1937" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="averageNumberOfDependentsByLemma_orig.txt" attachment="averageNumberOfDependentsByLemma_orig.txt" attr="" comment="average number of dependents by lemma (orig)" date="1447964165" path="averageNumberOfDependentsByLemma_orig.txt" size="1716" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="instancesOfLemma_orig.txt" attachment="instancesOfLemma_orig.txt" attr="" comment="distribution over verb lemmas (orig)" date="1447964232" path="instancesOfLemma_orig.txt" size="1963" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="instancesOfLemma_norm.txt" attachment="instancesOfLemma_norm.txt" attr="" comment="distribution over verb lemmas (norm)" date="1447964254" path="instancesOfLemma_norm.txt" size="2046" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="numberOfDependentsByVerb_orig.txt" attachment="numberOfDependentsByVerb_orig.txt" attr="" comment="number of direct dependents for each verb (orig)" date="1447964291" path="numberOfDependentsByVerb_orig.txt" size="3278" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="numberOfDependentsByVerb_norm.txt" attachment="numberOfDependentsByVerb_norm.txt" attr="" comment="number of direct dependents for each verb (norm)" date="1447964319" path="numberOfDependentsByVerb_norm.txt" size="4044" user="starke" version="1"}%

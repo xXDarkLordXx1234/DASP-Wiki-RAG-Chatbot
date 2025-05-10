@@ -1,0 +1,39 @@
+%META:TOPICINFO{author="nadolskyy" comment="save topic" date="1390587748" format="1.1" reprev="185" version="188"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ Tasks
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Aufgaben, Andriy* |
+| *Aufgabe* | *% done* |
+| Einführung für GIS Tutorium erstellen | 100 |
+| Erstellung von Musterlösung für NLP and the Web | 100 |
+| Annotationsstudie von Daniel | 100 |
+| Annotationsstudie von Silvana | 100 |
+| Wrapper für Mate-Tools; dazugehörige Annotatoren | 100 |
+| Anpassungen und Deployment von SIDIM | 100 |
+| Anpassungen für WSD |  |
+| | |
+
+
+---+++ Protocol
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Andriy, Stunden 2013* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| hours left from the year 2013 | 01.01.2014 | -32.0 | <ul><li> - (195 (from the contract of year 2013) - 163 (worked))  = -32 </li></ul> |
+| WSD | 14.01.2013 | 1.75 | <ul><li> get used to the work of the "Issue 29: Chaining of backoff algorithms" </li></ul> |
+| WSD | 15.01.2013 | 2.25 | <ul><li> install gnuplot; import and show the test project </li><li> run the test project and check the output; </li></ul> |
+| WSD | 16.01.2013 | 6.75 | <ul><li> edit hour protocols: create one new for year 2014 and move the old to the year 2013; </li><li> "," in my pr.tsv compared to "." in example-pr.tsv: that's why could not plot my results before;  </li><li> any pdf-terminal on windows -> used postscript and became the same output (visually); looked some short tutorials to gnuplot; </li><li> set my own test-environment for "PrecisionRecallTest"; </li><li> write code regarding chaining and debug; </li></ul> |
+| WSD | 18.01.2013 | 5.25 | <ul><li> prepared "complete infrastructure" for chain of backoff algorithms; </li><li> still have a comprehension question -> asked Tristan for short meeting with him </li></ul> |
+| WSD | 21.01.2013 | 2 | <ul><li> meeting with Tristan </li><li> reduce d000.xml to test; debug </li></ul> |
+| WSD | 22.01.2013 | 3.5 | <ul><li> Issue 29:	Chaining of backoff algorithms </li></ul> |
+| WSD | 24.01.2013 | 5.5 | <ul><li> meeting with Tristan and Johannes; </li><li> Issue 29: Chaining of backoff algorithms; </li><li> Chaining of backoff algorithms works already at PrecisionRecallGraph </li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+       | *Soll* | | 15 | until the end of january 2014|
+
+
+
+---++ Previous work
+AndriyStunden2011 <br>
+AndriyStunden2012 <br>
+AndriyStunden2013 <br>
+
+                        

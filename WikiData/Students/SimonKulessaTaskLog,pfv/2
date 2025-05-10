@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212842618" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="SimonKulessa"}%
+*Hier werde ich in Zukunft mal einige der Tasks auflisten die mein Programm lösen muss und wie ich diese momentan gelöst habe. Anmerkungen und Verbesserungsvorschläge sind erwünscht :).*
+
+
+---++ Delta-Tool : Übertragen des Wikipedia Dumps in eine SQL Datenbank
+   * [[SimonKulessaTaskLog_Delta][Delta]]
+   * [[SimonKulessaTaskLog_Diff][Diff]]
+   * [[SimonKulessaTaskLog_DeltaVSDiff][Vergleich: Delta vs Diff]]
+   * [[SimonKulessaTaskLog_KompressionTaskReader][Kompression TaskReader]]
+   * [[SimonKulessaTaskLog_BottleneckTaskReader][Bottleneck TaskReader]]
+   * [[SimonKulessaTaskLog_ExterneDeltaClients][Externe DeltaClients]]
+
+---++ Extraction-Tool : Paraphrasen Kandidaten Extraktion
+   * [[SimonKulessaTaskLog_ParaphrasenExtraktionAllgemein][Paraphrasen Extraktion Allgemein]]
+   * [[SimonKulessaTaskLog_SatzErkennung][Satz Erkennung]]
+   * [[SimonKulessaTaskLog_SpeicherformatParaphrasen][Speicherformat Paraphrasen]]
+
+-- Main.SimonKulessa - 07 Jun 2008

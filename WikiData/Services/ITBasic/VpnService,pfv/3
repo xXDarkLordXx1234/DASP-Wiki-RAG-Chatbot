@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="TristanMiller" date="1322762701" format="1.1" version="3"}%
+%META:TOPICPARENT{name="HowTo"}%
+---+ Connecting to the UKP VPN
+
+---++ General configuration
+<table align="left" style="width: 453px; height: 149px;" cellspacing="1" border="1"> <tbody> <tr> <td>Server:</td> <td>vpn.ukp.informatik.tu-darmstadt.de</td> </tr> <tr> <td>Login:</td> <td>UKP Account (ohne führendes UKP\)</td> </tr> <tr> <td>Passwort:</td> <td>Passwort für den UKP Account</td> </tr> <tr> <td>Domäne:</td> <td>UKP</td> </tr> <tr> <td>Art:</td> <td>PPTP mit Softwarekompimierung und deak. Remote Gateway</td> </tr> <tr> <td>Vorbedingung:</td> <td>Bestehende Netzwerk/Internet Verbindung</td> </tr> </tbody> </table><br /><br /><br /><br /><br /><br /><br /><br /><br />
+   * With the data in the table above, you can make a VPN connection into the UKP network &#8203;&#8203;to use the internal services. For details on the individual operating systems, see the HowTo of TK: https://wiki.tk.informatik.tu-darmstadt.de/bin/view/ASCAll/TKVPN
+   * Please replace all ... tk.informatik.tu-darmstadt.de details with ... ukp.informatik.tu-darmstadt.de.
+
+---++ Notes on specific VPN clients
+---+++ KVpnc
+In the profile settings under Profile->Connection specific->PPTP/L2TP->Authentication, it is necessary to change the "Authorization method" to MSCHAP (not MSCHAP-v2).

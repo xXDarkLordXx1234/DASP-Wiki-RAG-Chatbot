@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="poth" comment="" date="1618229902" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Week 2021-04-12 - 2021-04-18
+
+   * Finished upgrade to HF v4.5.0
+   * Answered questions/ issues in GH repository
+
+---++ Week 2021-04-05 - 2021-04-11
+
+   * Upgraded adapter index generation in Hub repo to be compatible with v2 of library: [[https://github.com/Adapter-Hub/Hub/pull/25][(1)]]
+   * Upgraded some parts of the adapter docs to v2
+   * Added adapter support to summarization/ translation scripts in examples folder: [[https://github.com/Adapter-Hub/adapter-transformers/pull/141][(2)]]
+   * Started with upgrade to HF v4.5.0: [[https://github.com/Adapter-Hub/adapter-transformers/pull/142][(3)]]
+   * Answered questions/ issues in GH repository
+
+---++ Week 2021-03-29 - 2021-04-04
+
+   * Finished integration of HF v4.4.x into adapter-transformers: [[https://github.com/Adapter-Hub/adapter-transformers/pull/131][(1)]]
+   * Did some convenience improvements for adapter management in v2 of the library: [[https://github.com/Adapter-Hub/adapter-transformers/pull/133][(2)]], [[https://github.com/Adapter-Hub/adapter-transformers/pull/132][(3)]]
+   * Trained an adapter for MBart on WMT16 En-Ro: [[https://github.com/Adapter-Hub/Hub/pull/24][(4)]]
+   * Wrote blog post & documentation page for transition from v1 to v2: [[https://github.com/Adapter-Hub/adapter-transformers/pull/136][(5)]]
+   * Answered questions/ issues in GH repository

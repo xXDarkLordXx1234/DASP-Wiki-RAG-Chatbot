@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="habernal" comment="reprev" date="1451914447" format="1.1" reprev="6" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ Master thesis
+
+---++ Meeting 2016-01-04
+   * PVP round design agreed
+   * PVP - compose round: ready
+   * TBD: PVP assessment from other players round
+   * Bottlenecks: speed of the backend Bass-Box (not the database itself)
+   * Ideen: Player of the week
+
+---++ Meeting 2015-12-09
+   * Signing up the thesis
+   * Regular meetings every Monday 14.00
+   * @action(IH): Send thesis template
+   * @action(CP): first draft of thesis structure
+   * @discuss(): fallacy-free version for Dagstuhl
+      * Two days of development, is feasible
+      * Open to decision
+   * 0151-50709470
+
+---+ Meeting 2015-12-25
+   A    Dagstuhl-playing of Argotario showed some bugs and lead to some ideas: 
+   
+   * no topics at some valid arguments, 
+   * timeouts
+   * argument-composing for same topic
+   * database highschores did not update
+   * get rid of webkit
+   * suggest topics yourself
+   * argument comparison to find best ones
+   * spam auto-delete
+   * maybe remove topic for stance-recognition
+  
+   B   Insert new fallacy-types into game:
+     
+   * Non-context
+      * appeal to emotion,
+      * irrelevant authority
+      * hasty generalization
+      * appeal to consequences
+   * context:
+      * ad hominem
+      * red herring
+ 
+   C   Develop ideas for PvP-Gamecontent

@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="ChristianHollubetz" date="1331333650" format="1.1" version="2"}%
+%META:TOPICPARENT{name="ChristianHollubetz"}%
+   * 1.) Aufsetzen einer MySQL-Datenbank und Import des Sense-Alignment-Datensatzes in eine Tabelle (für den Moment übernehmen wir die Struktur genauso wie im Datensatz; Änderungen später)
+      * *Done!* de.tudarmstadt.ukp.ukpwap.tools.databasefiller.DemoContentFiller erstellt. Dem Konstruktor werden übergeben: Datenbank-Host, Benutzer, Passwort, Datenbank-Name, Pfad zur Quell-Datei. Dann kann auf der Instanz die Methode fillDatabase() aufgerufen werden.
+
+   * 2.) Schaffung einer ausführbaren Webseite z.B. auf Basis von Tomcat (Hello World!)
+
+   * 3.) Index-Seite anlegen, auf die zunächst die Links zu den einzelnen Demo-Spielen, die wir erstellen werden kommen
+
+   * 4.) Erstes Demo-Spiel anlegen, d.i.
+      * a) Von der Index-Seite gelange ich auf eine weitere Seite
+      * b) Hier wird mir ein Sense-Paar aus der Datenbank zufällig angezeigt, z.B. oben das Wort, untendrunter die beiden Beschreibungen
+      * c) Darunter Anzeige der Frage, ob die beiden Texte die gleiche Bedeutung repräsentieren
+      * d) Rechts ein Bild mit einem großen Haken, links ein Bild mit einem großen X
+      * e) Auf die Bilder kann ich klicken und kann das nächste zufällig ausgewählte Paar einsehen
+
+   * 5.) Daraufhin können wir uns dann nochmal das SCATTER-Spiel vornehmen; erste Schritte hier
+      * a) Weitere Seite von der Index-Seite aus anlegen
+      * b) K zufällige Sense-Paare aus der DB auswählen
+      * c) Die einzelnen Beschreibungen zufällig auf dem Bildschirm verteilen
+      * d) Diese per Maus herumschieben können  besprechen wir nochmal
+
+
+-- Main.ChristianHollubetz - 2012-03-09

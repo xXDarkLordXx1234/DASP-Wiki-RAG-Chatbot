@@ -1,0 +1,25 @@
+%META:TOPICINFO{author="RichardSteuer" date="1334343152" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+---+++16.04.2012
+   * migrated featurecount db from mysql to bdb
+   * uploaded 9gb bdb to frink
+
+---+++Chris
+   * created https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/NotesOnProgrammingHadoop
+   * added parse tree to ContextParses and extended [[DistributionalThesaurus#Full_parses][https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/DistributionalThesaurus#Full_parses]]
+   * started parses:
+      * he ContextParses.java news100M/news100M-afp_2004-2006 parses-100M/parses-afp_2004-2006
+      * he ContextParses.java news100M/news100M-apw_1999-2000 parses-100M/parses-apw_1999-2000
+      * he ContextParses.java news100M/news100M-apw_2004-2006 parses-100M/parses-apw_2004-2006
+      * he ContextParses.java news100M/news100M-eng_news_2005_10M-sentences/ parses-100M/parses-eng_news_2005_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2006_10M-sentences/ parses-100M/parses-eng_news_2006_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2007_10M-sentences/ parses-100M/parses-eng_news_2007_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2008_10M-sentences/ parses-100M/parses-eng_news_2008_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2009_10M-sentences/ parses-100M/parses-eng_news_2009_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2010_10M-sentences/ parses-100M/parses-eng_news_2010_10M-sentences/
+      * he ContextParses.java news100M/news100M-ltw_2004-2006 parses-100M/parses-ltw_2004-2006
+      * he ContextParses.java news100M/news100M-nyt_1998-2000 parses-100M/parses-nyt_1998-2000
+      * he ContextParses.java news100M/news100M-nyt_2004-2006 parses-100M/parses-nyt_2004-2006
+      * he ContextParses.java news100M/news100M-nyt_x-2007 parses-100M/parses-nyt_x-2007
+      
+-- Main.RichardSteuer - 2012-03-05

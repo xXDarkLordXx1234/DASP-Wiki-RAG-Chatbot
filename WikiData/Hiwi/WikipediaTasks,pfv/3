@@ -1,0 +1,13 @@
+%META:TOPICINFO{author="MohsenParisay" date="1310935080" format="1.1" version="3"}%
+%META:TOPICPARENT{name="MohsenParisay"}%
+-- Main.MohsenParisay - 2011-07-13
+   * local !MySqlServer <span class="red">Done</span>
+   * install DKPro-IR <span class="red">(DKPro.IR)</span> <span class="red">Done</span>
+      * Meaning: connect maven to our artifactory to get access to dkpro-ir
+      * Directions here: Connecting to the Maven Infrastructure under https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/HowToMaven
+   * make a test pipeline <span class="red">10%</span>
+      * consisting of 3 components: 
+         * !TextReader, 
+         * Regular Expression
+            * use apache regular expression annotator - add dependency to POM:  "add" button and  "RegularExpression" in the search field 
+         * Annotator, Writer

@@ -1,0 +1,84 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1312986616" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="LmfProcessing"}%
+---+ Uby LMF tutorial
+---++ Uby packages
+
+|*Package/Class name*|*Description*|
+| __de.tudarmstadt.ukp.lmf.model__ and subpackages|All LMF elements as classes|
+| __de.tudarmstasdt.ukp.lmf.transform__|Classes needed for transformation of resources in XML and Database|
+| - LMFTransformer | Abstract class for a resource transformer|
+| - LMFXMLTransformer | Abstract class (derives from LMFTransformer) for a resource transfromation in LMF XML format|
+| - LMFDBTransformer | Abstract class (derives from LMFTransformer) for a resource transformation in Database with Hibernate|
+| - XMLTo<nop>DBTransformer | Transforms any LMF XML file to Database |
+| - DBTo<nop>XMLTransformer | Transforms any Lexical<nop>Resource saved in Database into LMF XML |
+| - DBConfig | Holds settings for database connection and path to Hibernate map files|
+| - LMFDBUtils | Useful functions for Database transformation, such as: creation of all needed tables and constraints, complete deleting of a LexicalResource or Lexicon from Database|
+| - String<nop>Utils | Useful functions for dealing with strings, such as filtering of characters that can not be saved in a Database|
+|__de.tudarmstadt.ukp.lmf.writer__| Classes needed for writing LMF model to the XML | 
+| - LMFWriter | Abstract class for an XML (or other file format) writer |
+| - LMFXml<nop>Writer | Writes LMF-Model directly to given XML file|
+| - LMFXml<nop>Writer<nop>DOM | Saves LMF-Model to a DOM-Object, that can be optionally written to a XML file | 
+| __de.tudarmstadt.ukp.lmf.hibernate__ | Classes needed for establishing of Hibernate connection and reading of map files|
+| - Hibernate<nop>Connect | Reads Hibernate map files and creates Hibernate configuration for given DBConfig settings|
+| - Custom<nop>MySQLDialect | Needed for creation of Database tables for the LMF Model|
+| - Enum<nop>User<nop>Type | Needed for mapping of Enums from LMF Model to database |
+|__de.tudarmstadt.ukp.lmf.api__ | Access and search functions to Uby database |
+| - Uby | Main entrance point to the model. Searching functions for lexical entries etc. Creation of Iterators over LMF elements (Synset-Iterator, Sense-Iterator, LexicalEntry-Iterator)|
+| - Criteria<nop>Iterator<T> | Universal iterator that can be used for iteration over any LMF element. Needs a Hibernate-Criteria object with predefined selection/filtering settings|
+| - Criteria<nop>Iterable<T> | Iterable that uses the Criteria<nop>Iterator<T> |
+
+---++ Transformation
+---+++ Create new transformation
+LMFDBTransformer can be used for transforming a resource to a database, LMFXMLTransformer transforms the resource directly to XML file.  The transformation class should derive from one of these classes. The transformation is sequential, i.e. the LMF elements are saved one by one and removed from memory afterwards.  In this away we avoid running out of memory. In both cases following functions should be implemented:
+
+|*Function name* | *Description*|
+|getResourceAlias() | Should return an abbreviation or alias of the transformed resource (e.g. WktEn or WikiEn)|
+|createLexicalResource() | Should return a _LexicalResource_ . Only _name_ and _globalInformation_ should be set (Lexicons and other subelements should not be set)|
+|createNextLexicon() | Should return the next Lexicon that should be transformed. If there is no next Lexicon, i.e. all lexicons have been transformed, then return _null_ . Only direct attributes of the Lexicon are required(e.g. id, languageIdentifier), subelements such as LexicalEntries should not be set. |
+|||
+<br>
+Each of the following functions is called successively in a loop for each Lexicon. When the function returns null, the transformer goes on to the next function and calls it successively. If all functions have returned null, i.e. there are no further elements of current Lexicon that should be saved, then the createNextLexicon() function is called again to get the next Lexicon. If there is another Lexicon (i.e. createNextLexion() does not return null), the process starts over.
+<br>
+|*Calling order*| *Function name* | *Description* |
+|1|getNextLexicalEntry() | Should return the next _LexicalEntry_ with all its subelements from current _Lexicon_ , i.e. the Lexicon that was last returned by createNextLexicon(). If there is no next LexicalEntry, should return _null_. |
+|2|getNextSubcategorizationFrame()| Should return the next  _SubcategorizationFrame_ with all its subelements form current _Lexicon_. If there is no next SubcategorizationFrame, should return _null_. |
+|3|getNextSubcategorizationFrameSet()| The same for _SubcategorizationFrameSet_  |
+|4|getNextSemanticPredicate()| The same for _SemanticPredicate_ |
+|5|getNextSynset()| The same for _Synset_ |
+|6|getNextSynSemCorrespondence()| The same for _SynSemCorrespondence_ |
+|7|getNextConstraintSet()| The same for _ConstraintSet_ |
+<br>
+After all lexicons have been saved, function for saving SenseAxis is called:
+|*Function name*| *Description*|
+|getNextSenseAxis()|Should return the next SenseAxis of the LexicalResource with all its subelements. If there are no SenseAxis left, should return null|
+<br>
+At the end of the transformation the transformer will call _finish()_ function. In this function some unfinished task can be specified.
+<br>
+
+*Generation of LMF IDs* <br>
+The LMFTransformer class has a function _getLmfId(Class clazz, String originalId)_. The function returns unique LMF ID of a form  Resource<nop>Alias<nop> _<nop>ClassName<nop>_<nop>Counter. The function needs class of the element, for which the ID should be generated and original ID of the element in the original resource. Internally, the transformer saves the mappings of the original IDs  to the generated LMF IDs. In such a way, for an element with the same original ID the getLmfId(..) - method returns the same LMF ID. For example, there is a SenseRelation between two Senses. We extract this relation from the source Sense, but it can happen that the target Sense is not yet saved(e.g. it will first occur later in the iteration process). For the source Sense we call getLmfId(Sense.class, originalTargetSenseID), we get LMF ID for the target Sense and save the relation. When the target Sense occurs later in the resource, we call getLmfId(Sense.class, senseID) for it and get the same LMF ID as it had in the SenseRelation. Therefore, the connection between two senses is established through the same senseID. <br>
+It is possible that the original resource does not explicitly have a unique identifier for some element, but normally it should be possible to uniquely identify these elements by their properties and create some artificial ID.
+<br>
+
+*Access to already saved elements* <br>
+By using database and LMFDBTrasnformer it is possible to access objects that have already been saved to the database. By calling _getLmfObjectById(Class clazz, String id)_ , the object of specific class with given LMF ID is returned. If this object was not yet saved in the database, then _null_ is returned. It is possible to modify this object and update it in the database by calling _update(Object obj)_ if the changes were made directly to some object attributes or _saveList(Object parent, List list)_ if some Collection/List of the object was changed (e.g. if some new Senses were added to the LexicalEntry then we call _saveList(lexicalEntry, lexicalEntry.getSenses())_. In this way all Senses are saved to the database and LexicalEntry is updated)
+
+---+++ Start Transformation
+For the transformation, LMFDBTransformer requires DBConfig object with all database and path settings, which is passed to the constructor. LMFXMLTransformer requires LMFWriter object that handles the writing to XML file.
+The transformation is then started by calling _transform()_ method.
+<br>
+
+*Creation of tables* <br>
+If the database was just created and there are no LMF tables yet, they can be created by calling _LMFDBUtils.createTables(DBConfig)_ . The function needs database configuration. It automatically creates all tables that are needed for Hibernate mapping that is specified in the hibernate map files ( which are stored in _DBConfig.hibernateMapMath_ )
+<br>
+
+*Deleting of existing resource* <br>
+If some lexical resource was already imported to the database, it is necessary to completely remove it before importing it again. There are methods _LMFDBUtils.deleteLexicalResourceFromDatabase(LexicalResource, DBConfig)_ for deleting LexicalResource and _LMFDBUtils.deleteLexiconFromDatabase(LexicalResource, DBConfig)_ for deleting of single lexicon. The method _deleteLexicalResourceFromDatabase(..)_ is automatically called when starting the transformation in LMFDBTransformer. The delete process is very fast, as the delete command is cascaded to all subelements of the LexicalResource or Lexicon by using ON DELETE CASCADE option on foreign key constraints in the database. Most of the constraints are automatically created by Hibernate. However, some constraints should be created manually. _LMFDBUtils.turnOnConstraints()_ adds missing constraints to the database. _LMFDBUtils.turnOffConstraints()_ removes these constraints from the database as they may cause some errors during the import process. These methods are automatically called during the transformation in LMFDBTransformer: before transformation start _turnOffConstraints()_ is called and after transformation is finished _turnOnConstraints()_ is called.
+
+---+++ XML to database and database to XML
+*XMLToDBTransformer* <br>
+For importing of existing LMF XMLs in the database XMLToDBTransformer can be used. It uses the XML to database mapping feature of Hibernate. The XML file is parsed sequentially with DOM4J library. Such elements as LexicalEntry, SubcategorizationFrame, Synset etc. are periodically committed to the database and removed from the memory. The transformer needs DBConfig object. To start the transformation we call the function _transform(File xmlFile, String lexicalResourceName)_ with path to XML-File and name of the resource that should be converted. Similar to LMFDBTransformer the existing resource is first completely deleted from the database and the new version is imported afterwards.
+<br>
+
+*DBToXMLTransformer* <br>
+In order to dump the LexicalResource from the database to a XML-File, _DBToXMLTransformer_ can be used. It needs DBConfig with all database settings and LMFWriter which holds the writer settings for the XML-file. The transformation is started by calling _transform(LexicalResource lexicalResource)_ . For the given _lexicalResource_ the _name_ -Attribute should be set. Other attributes are not required.

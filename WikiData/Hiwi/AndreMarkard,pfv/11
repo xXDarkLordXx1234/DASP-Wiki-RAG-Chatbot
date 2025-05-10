@@ -1,0 +1,103 @@
+%META:TOPICINFO{author="markard" comment="" date="1567162228" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+%TOC%
+
+----+ November 2018
+
+*Workload: 40h*
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20|"}%
+| *Date* | *Task* | *Hours* | *Notes* |
+|13.11.2018 / Tuesday | pyfn setup + research | 2.0 |  |
+|14.11.2018 / Wednesday | PyTorch + data structuring | 1.5 | |
+|26.11.2018 / Monday | Python Package + data reader + PyTorch integration | 7 | |
+|27.11.2018 / Tuesday | TorchText + embeddings loading and processing + network integration | 9.5 | |
+|28.11.2018 / Wednesday | vocabulary building + batch processing usage + evaluation + alternative network | 8.5 | |
+|29.11.2018 / Thursday | structuring data + preprocessing | 4 | |
+|30.11.2018 / Friday | FEE identifier + integration + testing | 7.5 | |
+|13.12.2018 / Thursday | F1-Score for FEEs and Frames | 3.5 | |
+|14.12.2018 / Friday | Identifying raw text | 2 | |
+|18.12.2018 / Tuesday | Reader adjusting | 1 | |
+|20.12.2018 / Thursday | Restructuring dataset | 3.5 | |
+|22.12.2018 / Saturday | Model saving/loading + train on all data | 5 | |
+|27.12.2018 / Thursday | Code structuring | 3.5 | |
+|28.12.2018 / Friday | Pip adjusting + argparse + config files | 5.5 | |
+|29.12.2018 / Saturday | FEE identification wrapper | 4 | |
+|12.2018 | Vacation | 12 | |
+|15.01.2019 / Tuesday | Hyperparameter config | 2.5 | |
+|17.01.2019 / Thursday | Loss/Batching problem fixed | 3 | |
+|21.01.2019 / Monday | Ignite | 3.5 | |
+|21.01.2019 / Monday | Improved FrameEvokingElement identification | 2.5 | |
+|22.01.2019 / Tuesday | Progressbar added + improved Ignite | 2.5 | |
+|23.01.2019 / Wednesday | Tests network + tests reader + tests utils | 5.5 | |
+|24.01.2019 / Thursday | Tests improved | 1.5 | |
+|25.01.2019 / Friday | FrameEvokingElement only prediction + some fixes + tests | 5 | |
+|26.01.2019 / Saturday | Tests prediction + random file generation | 4.5 | |
+|27.01.2019 / Sunday | Autostopper + epoch evaluation | 6 | |
+|27.01.2019 / Sunday | Model checking + nltk requirements checker | 2.5 | |
+|29.01.2019 / Tuesday | Restructuring + formatting | 1 | |
+|07.02.2019 / Thursday | Accuracy and Loss running and after epoch | 5 | |
+|09.02.2019 / Saturday | Tensorboard + Logging | 2.5 | |
+|12.02.2019 / Tuesday | Left ToDos + start span identification | 4 | |
+|14.02.2019 / Thursday | Spacy version | 1.5 | |
+|14.02.2019 / Thursday | Integrated spacy + syntax tree span id | 4.5 | |
+|18.02.2019 / Monday | BIO-tagger | 4.5 | |
+|22.02.2019 / Friday | Semeval reader | 3.5 | |
+|22.02.2019 / Friday | Research different approaches | 1.5 | |
+|25.02.2019 / Monday | Pytorch LSTM | 3.5 | |
+|26.02.2019 / Tuesday | LSTM version implementation | 5 | |
+|27.02.2019 / Wednesday | Reader tests extension + refactoring | 2.5 | |
+|28.02.2019 / Thursday | Span identification tests | 2 | |
+|08.03.2019 / Friday | AllenNLP + ELMo | 3 | |
+|08.03.2019 / Friday | Flair | 2.5 | |
+|12.03.2019 / Tuesday | Error fixing + Research | 2 | |
+|13.03.2019 / Wednesday | ELMo implementation + testing | 2.5 | |
+|25.03.2019 / Monday | Reimplementation of Ouchi et al. (2018) | 3 | |
+|27.03.2019 / Wednesday | Refactoring/Restructuring | 4 | |
+|28.03.2019 / Thursday | Improved SpanID + changed BiLSTM | 3 | |
+|30.03.2019 / Saturday | Implementation + Testing of PropBank tagger | 5 | |
+|31.03.2019 / Sunday | Integrated Lexicon for RoleID | 3 | |
+|03.2019 | Vacation | 12 | |
+|09.04.2019 / Tuesday | Manager for Frame- + Wordembeddings | 3.5 | |
+|11.04.2019 / Thursday | Reimplementation of Thesis neural network in PyTorch | 4.5 | |
+|15.04.2019 / Monday | Switch to pipeline structure | 5 | |
+|18.04.2019 / Thursday | POS-tag Handler + Refactoring | 3 | |
+|19.04.2019 / Friday | Integration/Abstraction in Reader + nn | 3.5 | |
+|21.04.2019 / Sunday | Commenting + prettifying | 3.5 | |
+|23.04.2019 / Tuesday | Config updater + checker | 2 | |
+|26.04.2019 / Friday | RoleID integration | 2.5 | |
+|26.04.2019 / Friday | Network for RoleID | 3.5 | |
+|27.04.2019 / Saturday | Adjusted tests | 4.5 | |
+|29.04.2019 / Monday | Leftover pipeline changes | 2 | |
+|30.04.2019 / Tuesday | Fixes + checked compatibility | 2.5 | |
+|7.05.2019 / Tuesday | (Re)structuring system | 3 | |
+|10.05.2019 / Friday | Tests + issues | 2 | |
+|10.05.2019 / Friday | Evaluation + Autostopper fixes | 4 | |
+|13.05.2019 / Monday | Relocating + Argumentparser changes | 4 | |
+|14.05.2019 / Tuesday | Complete system tests | 2 | |
+|17.05.2019 / Friday | Finished tests + fixes | 4 | |
+|21.05.2019 / Tuesday | FrameId preparations for gh | 5 | |
+|22.05.2019 / Wednesday | FEE preparations for gh | 2 | |
+|22.05.2019 / Wednesday | Final preparations for gh | 4 | |
+|30.05.2019 / Thursday | Intelligent LSTM batching | 6 | |
+|31.05.2019 / Friday | Adjust + test SpanId | 4 | |
+|04.06.2019 / Tuesday | CI | 3 | |
+|06.06.2019 / Thursday | GL runner + Tests | 5 | |
+|11.06.2019 / Tuesday | Tests | 3 | |
+|14.06.2019 / Friday | Sphinx | 2.5 | |
+|15.06.2019 / Saturday | Sphinx + ReadtheDocs | 5 | |
+|17.06.2019 / Monday | Documentation fixes + improvements | 4 | |
+|20.06.2019 / Thursday | Travis CI | 3.5 | |
+|24.06.2019 / Monday | Build fixes | 3 | |
+|26.06.2019 / Wednesday | Jupyter Notebook | 4 | |
+|28.06.2019 / Friday | Notebook improvements + examples | 3 | |
+|29.06.2019 / Saturday | Dummy testing | 4 | |
+
+---++ April 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 1.04.2019 | Example | 1.5 | |
+| *SUM* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+-- Main.JanChristophKlie - 2018-11-01

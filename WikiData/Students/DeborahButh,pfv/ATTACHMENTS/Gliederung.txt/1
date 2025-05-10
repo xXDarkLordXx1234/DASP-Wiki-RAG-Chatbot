@@ -1,0 +1,60 @@
+Gliederung
+
+Titel-Vorschläge
+	- Adaptive Text Normalization
+	- Normalization of Historical OCR-Texts
+	- Corpus-based OCR Error Correction
+
+1) Einleitung
+	1.1) Motivation
+		- Fehler der OCR verbessern
+		- Unabhängig von Wörterbüchern -> Verwendung von anderen Korpora
+		- Fokus liegt auf der Verbesserung von historischen Texten (was macht historische Texte aus?)
+	1.2) Ziel der Arbeit
+		- Verbesserung des OCR-Texts
+		- Ähnliche Verbesserungsrate bei verschiedenen OCR-Dokumenten (historisch vs. aktuell)
+		- Keine Verwendung von Wörterbüchern
+		- Verbesserung im Gegensatz zu bestehenden Umsetzungen?
+	1.3) Inhaltlicher Aufbau der Arbeit
+	
+2) State of the Art Recherche
+	2.1) OCR
+	2.2) Fehler
+		- Verschiedene Fehlerklassen (Ursachen und Beispiele)
+		- Fehlerklassen speziell auf historische Texte bezogen
+	2.3) Fehlerverbesserung
+		- Arten: Manuell, Wörterbuch-basiert, Kontext-basiert (Beispiele, effektivste Methoden)
+	2.4) Verwandte Arbeiten
+		- OCR-Text-Verbesserung
+		- Mit Hilfe von anderen Korpora
+		- Speziell auf historische Texte bezogen
+
+3) Analyse
+	- Erkennen von fehlerhaften, zerissenen, zusammengezogenen Wörtern etc. (Fehlerklassen erkennen)
+	- Normalisierung der erkannten Wörter
+	- "Unverbesserbare" Abschnitte herausfiltern
+		* Seiten ignorieren auf denen zu viele unkorrigierbare Wörter/Zeichen sind
+		* Kein "Topwort" auf dieser Seite -> Seite ignorieren
+
+4) Konzept
+
+5) Implementierung
+
+6) Evaluation
+	- Messen der Verbesserung mit versch. Testsätzen (versch. Zeiten: historisch vs. aktuell)
+	- Messmethoden
+		- Manuell Sätze aussuchen und Verbessern
+		- (Korrekte Sätze "kaputt" machen)
+	- Vergleich mit anderen Implementierungen
+	- Vergleich mit Twitter
+	- Aktuelle Verfahren (Twitter-Textverbesserung) auf historische Texte anwenden -> Verbesserung mit eigener Implementierung?
+
+7) Fazit
+	7.1) Zusammenfassung
+	7.2) Ausblick
+
+___________________________
+Glossar
+Literaturverzeichnis
+...
+		

@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="JudithEckleKohler" date="1288272616" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="ResearchTaskDictionaryIntegration"}%
+---+++++Judiths Sammlung offener Fragen
+
+---++++++Geklärte Fragen
+   * EACL09 Paper: An Empirical Study on Class-based Word Sense Disambiguation. Rubén Izquierdo & Armando Suárez, German Rigau (http://portal.acm.org/citation.cfm?id=1609067.1609110)
+      * "Most of the later approaches used the original Lexicographical Files of WN (more recently called !SuperSenses) as very coarsegrained sense distinctions."
+      * Frage zum !WordNet API: Ist das Attribut lex_id der Klasse Lexeme zugreifbar?
+      * Antwort: nein, momentan nicht
+
+   * ACL-IJCNLP 2009 Linguistic Annotation Workshop: WordNet and FrameNet as Complementary Resources for Annotation. Collin F. Baker, Christiane Fellbaum. (http://www.aclweb.org/anthology/W/W09/W09-3021.pdf)
+      * Darin ist ein schöner, detaillierter Vergleich von FN und WN anhand von 3 Sätzen. Könnte das für das Verständnis der speziellen Eigenheiten der Ressourcen nützlich sein? Mir hat es sehr gefallen.
+
+
+
+-- Main.JudithEckleKohler - 2010-10-26

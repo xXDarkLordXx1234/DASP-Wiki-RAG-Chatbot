@@ -1,0 +1,101 @@
+%META:TOPICINFO{author="ArtemVovk" date="1334673994" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="PANChallenge"}%
+%TOC%
+
+---+ Features for quality flaw classification
+
+---++ Features for simple flaw types
+     
+<img src="%ATTACHURLPATH%/FeatureEngineeringSimple.png" alt="FeatureEngineeringSimple.png" width="733" height="408" />
+
+---++ Features for complex flaw types
+
+<img src="%ATTACHURLPATH%/FeatureEngineeringComplex.png" alt="FeatureEngineeringComplex.png" width="857" height="532" />
+
+---++ Revision Features
+
+    <img src="%ATTACHURLPATH%/RevisionFeatures.png" alt="RevisionFeatures.png" width="727" height="312" />
+
+
+---+ Flaws
+---++ Unreferenced
+   * Number of references
+   * Lexical features (word prefix)
+
+---++ Orphan
+   * Incoming links < 3
+
+---++ Refimprove
+   * Number of tokens
+   * Ratio: text_length/number_of_references
+   * Ratio: sentences/references
+---++ Empty Section
+   * Number of words in section = 0
+   * Number of words in section
+---++ Notability
+   * In/outlinks
+   * Footnotes
+   * Tag: proposed deletion (see http://en.wikipedia.org/wiki/Template:Notability)
+   * Number of sections
+   * Number of tokens
+   * Revision features (age, number of revision etc.)
+---++ No footnotes
+   * Footnotes = 0
+   
+---++ Primary Sources
+   * Revision features
+   * Lexical features(unigrams, bigrams)
+   * Number of references
+   
+---++ Wikify
+   * Number of wikilinks
+   * Revision features
+   * Ratio: plain_text/markup_text
+   * Number of different markup elements (number of sections etc.)
+   * Section length
+---++ Advert
+   * List of ad words
+   * Lexical features (unigrams, bigrams)
+   * Page parameters (locked page etc.)
+   * Last modification by unregistered user?
+---++ Original research
+   * Revision features
+   * Lexical features
+   * Number of references
+   * Ratio: number_of_references/text_length
+
+---+ Revision Features
+   * Page age
+   * Number of reviews
+   * Number of reviews per user
+   * Number of reviews by registered users
+   * Number of reviews by experienced users
+   * Number of discussions posted
+   * Modified lines rate
+ 
+ 
+-- Main.ArtemVovk - 2012-04-16
+  
+     
+   * [[%ATTACHURL%/FeatureEngineeringComplex.pdf][FeatureEngineeringComplex.pdf]]: FeatureEngineeringComplex.pdf
+
+ 
+     
+
+   * [[%ATTACHURL%/FeatureEngineeringSimple.pdf][FeatureEngineeringSimple.pdf]]: FeatureEngineeringSimple.pdf
+
+   
+
+   * [[%ATTACHURL%/RevisionFeatures.pdf][RevisionFeatures.pdf]]: RevisionFeatures.pdf
+
+
+
+%META:FILEATTACHMENT{name="FeatureEngineeringSimple.pdf" attachment="FeatureEngineeringSimple.pdf" attr="" comment="" date="1334615736" path="FeatureEngineeringSimple.pdf" size="64571" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="FeatureEngineeringSimple.png" attachment="FeatureEngineeringSimple.png" attr="" comment="" date="1334615736" path="FeatureEngineeringSimple.png" size="56706" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="FeatureEngineeringSimple.mm" attachment="FeatureEngineeringSimple.mm" attr="" comment="" date="1334615870" path="FeatureEngineeringSimple.mm" size="1179" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="RevisionFeatures.mm" attachment="RevisionFeatures.mm" attr="" comment="" date="1334660104" path="RevisionFeatures.mm" size="856" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="RevisionFeatures.pdf" attachment="RevisionFeatures.pdf" attr="" comment="" date="1334660104" path="RevisionFeatures.pdf" size="53329" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="RevisionFeatures.png" attachment="RevisionFeatures.png" attr="" comment="" date="1334660104" path="RevisionFeatures.png" size="50851" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="FeatureEngineeringComplex.mm" attachment="FeatureEngineeringComplex.mm" attr="" comment="" date="1334673994" path="FeatureEngineeringComplex.mm" size="3424" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="FeatureEngineeringComplex.pdf" attachment="FeatureEngineeringComplex.pdf" attr="" comment="" date="1334673994" path="FeatureEngineeringComplex.pdf" size="159990" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="FeatureEngineeringComplex.png" attachment="FeatureEngineeringComplex.png" attr="" comment="" date="1334673994" path="FeatureEngineeringComplex.png" size="142992" user="ArtemVovk" version="1"}%

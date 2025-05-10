@@ -1,0 +1,25 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1343339175" format="1.1" version="12"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Mai-Juli 2012
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| SeerSuite | 14.05.2012 | 3 | Einarbeitung in CiteSeer |
+| SeerSuite | 24.05.2012 | 6 | Installation von JDK, Tomcat, Solr, Ant etc. am Server |
+| SeerSuite | 26.05.2012 | 6 | CiteseerX-Webapp läuft auf localhost:8080/citeseerx |
+| SeerSuite | 05.06.2012 | 2 | Seersuite installation guide:[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/SeerSuite/InstallingSeersuite.pdf][InstallingSeersuite.pdf]] |
+| SeerSuite | 17.06.2012 | 6 | Test Data ist importiert. Man kann über die Suche darauf zugreifen. z.B.<br>[[http://seersuite.ukp.informatik.tu-darmstadt.de:8080/citeseerx/search?q=nlp&submit=Search&sort=rel][http://seersuite.ukp.informatik.tu-darmstadt.de:8080/citeseerx/search?q=nlp&submit=Search&sort=rel]] |
+| SeerSuite | 21.06.2012 | 2 | MyCiteSeer funktioniert. Test user: csxuser, password: csx-devel.<br>Installation von Perl-Modulen und PDFBox für Ingestion. Konfiguration von FileConversion service. |
+| SeerSuite | 25.06.2012 | 3 | FileConversionService und ParsCit funktionieren |
+| SeerSuite | 02.07.2012 | 6 | Seersuite ingestion guide:[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/SeerSuite/SeersuiteIngestion.pdf][SeersuiteIngestion.pdf]] |
+| SeerSuite | 13.07.2012 | 5 | Import von deutschen Papers |
+| SeerSuite | 17.07.2012 | 2 | Import von deutschen Papers |
+| SeerSuite | 21.07.2012 | 5 | Einarbeitung in Re-Training von ParsCit und SVMHeaderParser |
+| SeerSuite | 24.07.2012 | 4 | Automatic ingestion of Pedocs PDFs |
+| SeerSuite | 26.07.2012 | 5 | Automatic ingestion of Pedocs PDFs |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60 | bis Ende Juli 2012 |
+<nop>

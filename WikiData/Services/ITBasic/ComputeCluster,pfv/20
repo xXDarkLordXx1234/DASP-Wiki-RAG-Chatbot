@@ -1,0 +1,72 @@
+%META:TOPICINFO{author="klie" comment="" date="1568191185" format="1.1" reprev="16" version="20"}%
+%META:TOPICPARENT{name="WebHome"}%
+<div style="background: orange; color: #F8F8F8; border: solid 2px darkred; padding: 5px">
+<p align="center">
+Beta Phase until roughly Sep 26
+</p>
+</div>
+
+---+!! Slurm Compute Cluster
+%TOC%
+
+---++ Frequently Asked Questions
+See [[ComputeClusterFAQ]].
+
+---++ Principle of Slurm
+On traditional compute servers (the way we had them at UKP before summer 2019), running compute experiments works by connecting to a specific server, then starting a script with GNU screen or tmux.
+
+Slurm is a job scheduling service. With Slurm, compute experiments are done by connecting to a headnode where one can submit a compute job into a queue of compute jobs. Slurm prioritizes compute jobs in a way that every user gets his/her share of the compute resources that he/she deserves. If a compute job has a high enough priority and a node (== compute server) with sufficient resources is free, Slurm will automatically start the compute experiment. Once a job finishes, an email notification is sent.
+
+---++ Walkthrough Usage Example
+
+Jobs on slurm are started by writing a shell script and then calling it via =sbatch myscript.sh= . The [[https://slurm.schedmd.com/sbatch.html][official sbatch documentation]] describes all parameters that can be used. More examples can be found on the websites of the [[https://www.hhlr.tu-darmstadt.de/hhlr/arbeit_auf_dem_cluster/arbeit_mit_lsf_1/index~1.de.jsp][TU Darmstadt Lichtenberg]] or the [[https://doku.lrz.de/display/PUBLIC/Example+parallel+job+scripts+on+the+Linux-Cluster][Leipzig Rechenzentrum]], or at [[https://www.ch.cam.ac.uk/computing/slurm-usage][Univ Cambridge]].
+
+<div style="background: lightblue; color: black; border: solid 2px darkred; padding: 5px">
+<p align="center">
+<u>[[https://public.ukp.informatik.tu-darmstadt.de/slurm-tutorial/slurm-tutorial.zip][You can find a walkthrough here]].
+</u>
+</p>
+</div>
+
+---++ Resource Limits
+
+%TABLE{ headerrows="2" }%
+| *User Group* | *Researchers* || *Students* |
+| *Available QOS* | *researcher (default)* | *snail* | *student* |
+| Max nodes per job | 1 | 1 | 1 |
+| Max CPUs per job | 24 | 6 | 24 |
+| Max GPUs per job | unlimited | 1 | unlimited  |
+| Max GPUs per user %ICON{new}% | 4 | 4 | 2 |
+| Max memory per job (GB) | 128 | 64 | 64 |
+| Max job duration (days) | 3 | 7 | 3 |
+| sudo rights | no | no | no |
+
+When submitting a job, one can request different *quality of service (QOS)* settings. The QOS determines the resource limits. %INCLUDE{"ComputeClusterLongRunningJobs"}%
+
+---++ Quota
+
+Before explaining how user quotas work, you need to learn about accounts in Slurm.
+
+---+++ Accounts
+Slurm tracks resource usage via so-called *accounts*. Slurm accounts work a bit like bank accounts, i.e. a single user can have multiple accounts.
+The total compute power of the cluster is distributed across all accounts, meaning every account receives a percentage of the total compute power. Your affiliation (UKP or AIPHES) and your employment relation (researcher or student) decides over your accounts and their quota. If your affiliation is UKP/AIPHES, you will have one UKP account and one AIPHES account, giving you a larger share of the total compute power.
+
+You can see your accounts via =sshare -U=. Add =--account=SOME_ACCOUNT= to your =sbatch= or =srun= call to run using a different account.
+
+---+++ !FairShare
+Account quotas in Slurm are not hard limits. Instead, every account has a !FairShare value between 0.0 and 1.0 attached to it. Jobs can be submitted independent of the !FairShare value. However, *jobs by accounts with higher !FairShare value are prioritized by the scheduler*. By running jobs, the !FairShare value decreases depending on the duration and the resource requirements of the jobs. The !FairShare value recovers over time (it has a half-life of two weeks).
+
+%INCLUDE{"ComputeClusterDetermineFairShare"}%
+
+---++ Slurm Command Documentation / External References
+
+| *Command* | *Purpose* | *Example* | *Documentation* |
+| =srun= | Schedule a compute job. Executed in the foreground (directly on your terminal). | =srun --pty bash=  | [[https://slurm.schedmd.com/srun.html]] |
+| =sbatch= | Schedule a compute job. Executed in the background. | =sbatch my_script.sh= | [[https://slurm.schedmd.com/sbatch.html]] |
+| =squeue= | Show the job queue and status. | =squeue --user=bugert= | [[https://slurm.schedmd.com/squeue.html]] |
+| =scancel= | Cancel a job. | =scancel [job_id]= | [[https://slurm.schedmd.com/scancel.html]] |
+| =sinfo= | Show status of cluster nodes and available resources. | =sinfo --Format=nodehost,statelong,cpus,memory,gres= | [[https://slurm.schedmd.com/sinfo.html]] |
+| =sshare= | Display accounts and !FairShare. | =sshare -a= | [[https://slurm.schedmd.com/sshare.html]] |
+
+---++ Moving code and data into the cluster
+See [[ComputeClusterStorage]].

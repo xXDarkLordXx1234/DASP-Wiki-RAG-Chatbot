@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="3"}%
+%META:TOPICPARENT{name="UKP/Personal.BenjaminHerbert"}%
+---++ Ramblings about DKPRo
+   * UkpTokenizer
+      * Has an option to split at apostrophe, which is then included in second token - this is *counter-intuitive* IMHO
+      * What about a UkpTokenization using Regexp?
+   * In General
+      * Many components are tailored to very specific annotations
+         * e.g. the StemSnowballAnnotator only Stems Token Annotations
+         * This should be somehow generalized that everything can be stemmed.

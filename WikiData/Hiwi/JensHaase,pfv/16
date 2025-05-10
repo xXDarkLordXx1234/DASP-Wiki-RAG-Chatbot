@@ -1,0 +1,72 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="16"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Resources
+
+   * Subversion: https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/haase
+
+---+ Tasks
+
+   1 Vergleich mit anderen existierenden Splitting algos (JWordSplit, BananaSplit)
+   1 DKPro Typen für Noun Compounds neu definieren und bestehende Komponenten dahingehend überarbeiten - e.g. Unterstützung für mehr als 1 Split und für linking morphemes
+      * *JH* soll ich den öffentlichen Code verändern (http://code.google.com/p/dkpro-core-asl/) oder gibt es noch ein internes SVN?
+   1 shorten code using features from uimaFIT 1.2.0
+   1 keine Exceptions verschlucken (e.printStackTrace())
+   1 Webanwendung so ändern, dass Splitter/Ranker ausgewählt werden können
+   1 Resource-Bundles zur Verfügung stellen, z.B. benutzbares Dictionary für Deutsch - ANT file welchs diese Bundles baut, wg. Lizenzeissues.
+      * *JH* Aktuelle Version bekommt man hier: http://www.j3e.de/ispell/igerman98/dict/ (Letzte Version: 2011-06-09). Diese müssen  aber erst gebaut werden (mittels make). Eine Fertige Version kann man auch bekommen (http://www.j3e.de/hunspell/), ist aber veraltet und wird nicht mehr aktualisiert. Letzte Version von Dez 2007.
+      * Erstmal "veraltete" URL im Ant Script einbinden
+   1 Umbenennen der Packages, artifactId und groupID: de.tudarmstadt.ukp.dkpro.core.decompounding(-asl) (-asl nur in der artifactId!)
+   1 Umstellen auf DKPro Core Master POM als Parent
+   1 Einfügen der Lizenzen
+   1 Eintragen in Masterpom (als Modul und unter JavaDoc)
+   1 Tests fixen
+   1 Typen mit in api.lexmorph packen
+   1 _Fixed_: Parameter zum einstellen der maximalen Splittiefe
+   1 _Fixed_: Splitting Algo im Annotator konfigurierbar machen - ggf. auch als external resource.
+   1 _Fixed_: Dictionary & linking morphemes konfigurierbar machen (UIMA external resource)
+   1 _Fixed_: Annotator sollte mit CAS arbeiten(kein JCas), Typen per default Split/LinkingMorpheme, aber via Parameter überschreibbar
+   1 _Fixed_ : DKPro Core Style 
+      * *JH* wie sehen die genau aus? Dokumentation?
+      * *REC* siehe Code Style File [[DKPro/EclipseSettings][hier]]
+   1 _Fixed_ : Interfaces nicht mit I einleiten
+   1 _Fixed_ : @override annotations
+   1 _Fixed_: Verwenden von DKPro Komponenten (Tokenizer, etc) und DKPro Typesystem
+   1 _Fixed_: Splits als annotationen auf dem text verankern (start-end offset) anstatt als array
+   1 _Fixed_: Parameter sollten mit "a" beginnen (steht für Argument) - kein this benutzen
+   1 _Fixed_: static imports for JCasUtil etc.
+   1 _Fixed_: Enums sollten top-level Klassen sein oder wenigstens static
+   1 _Fixed_: kein Exception Handling in Test Cases durchführen - einfach throws 
+   1 _Fixed_: LRU cache - bestehende Implementierung von Apache Commons oder Google Collections?
+
+---+ Aktueller Vertrag (Mai 2011 - Jun 2011)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 0.0 | |
+| 06.05.11 | Setup | 1 | Moved code to svn, Set up local project |
+| 14.05.11 | Code Cleanup | 3 | Code Style, Renamed Interfaces, <a href="mailto:.@.o.v.e.r.r.i.d.e.">@override</a>, parameter start with "a" |
+| 14.05.11 | Split Annotation | 1 | |
+| 15.05.11 | Code Cleanup | 1 | static imports, enums, exceptions in test cases |
+| 15.05.11 | LRU Cache | 0.5 | Replaced by LRUMap of apache commons collection |
+| 20.05.11 | Annotator | 6 | Complete new annotator, with external resoures and more configuration options |
+| 02.06.11 | Annotator | 3 | Algorithm are resources |
+| 02.06.11 | JWordSplit and BananaSplit | 4 | Added 2 new algorithm |
+| 02.06.11 | ResourceUtils | 1 | ResourceUtils to find correct locations |
+| 15.06.11 | Refactoring and ANT-Build Skript | 3 | Started ANT-Build Skript. But Dictionary must be build with make itsself. |
+| 17.06.11 | Clean up for DKPro | 7 | ANT-Skript, POM, Remamed packages, Tests with new Jar |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+---+ Meeting 2011-05-27
+
+   * Test case LuceneIndexerTest fails
+   * Variant 2: abstract SplittingResource
+   * Implement wrappers for JWordSplit and BananaSplit as SplitAlgorithms and integrate them via SplittingResource
+   * Add parameter to configure maximal splitting depth to SplittingAlgorithm
+   * Provide German models that can be used out of the box
+      * Ant script to download model, check checksum and package as a jar
+      * Use document language to automatically load model from the classpath (jar) if not model is explicitly specified
+      * Model location parameter should accept a simple path or URL or classpath: URL (see de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceUtils.resolveLocation(String, Object, UimaContext))
+
+
+   -- Main.RichardEckart - 2010-12-21

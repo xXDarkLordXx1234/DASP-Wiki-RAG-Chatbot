@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1285189087" format="1.1" reprev="12" version="12"}%
+%META:TOPICPARENT{name="ZijadMaksutiWork"}%
+---+++ Verständnisfragen  
+   * Keine momentan
+---+++The _real_ notes and stuff
+----+++++ Further steps: <br /> Representation of Recourses (!Wikipedia (WP), !Wiktionary (WKT), !OmegaWiki, !WordNet (WN), !FrameNet ) and relations between them in an UML-like diagram. <br /> Bottom-up phases:
+   1 Get familiar with APIs used at UKP; starting with  !WordNet API JWNL
+      * API cannot extract all informations provided by the recourses -> these informations should be marked in the diagram in order to know which parts of API should be developed later.
+   2 Create separate diagram for every recourse
+   3 Combine the diagrams and connect them with relations
+
+----+++++ Usage of sense graph
+   * A tool for generating a definition graph.
+      * Nodes are the senses of the definitons. Edges represent the relations.
+         * The graph should be adapted for our needs, weighted edges can represent the similarity.
+   * Finding the relations between definitions by using the graph in order to integrate them.
+      * Problem: How can definitions be integrated?
+         * Example: Definiton A and B overlap partially. Concatenating them would lead to redundant Information. Low-level text manipulation needed.
+----+++++ !WordNet
+   * Contains only open word classes: nouns, verbs, adjectives, adverbs
+      * New forms constantly added
+   * Does not contain closed word classes: determiners, prepositions, pronouns, conjunctions and particles.
+   * _Word class == POS_
+----+++++ Wiktionary vs. !WordNet
+   * Wiktionary is more focused on word senses from natural sciences rather than social sciences or humanities, which are predominantly found in WordNet
+   * !WordNet contains (on average) more word senses for verbs
+   * Wiktionary has a higher number of maximum word senses for nouns.
+   * WIktionary encodes additional word senses for seldomly used terms.
+   * Wiktionary has better coverage of slang-related word senses. <br />
+   * Wordnet does not represent pronunciation, Wiktionary does.
+----+++++ Jurafsky & Martin: Speech and Language Processing, Chapter 19 and 20
+   * Lemma ist not necessarily the same as the stem from the morphological parse. Example: _celebrations -> celebrate (stem)_ and _celebrations -> celebration (lemma)_
+   * *Polysemy* is when one word (term) has several meanings.
+   * A practical technique for determining if two senses are distinct is to conjoin two uses of a word in a single sentence. This kind of conjunction of antagonistic readings is called *zeugma*.
+   * *Homographs* are distinct senses linked to lemmas with the same orthographic form but different pronunciations.
+      
+-- Main.ZijadMaksuti - 16 Aug 2010
+
+%META:FILEATTACHMENT{name="ijcai-2007-sim.pdf" attachment="ijcai-2007-sim.pdf" attr="" comment="ESA - Explicit Semantic Analysis" date="1282002488" path="ijcai-2007-sim.pdf" size="295399" stream="ijcai-2007-sim.pdf" tmpFilename="/var/tmp/CGItemp32942" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="N09-2030.pdf" attachment="N09-2030.pdf" attr="" comment="Topic Identification Using Wikipedia Graph Centrality" date="1282155741" path="N09-2030.pdf" size="137710" stream="N09-2030.pdf" tmpFilename="/var/tmp/CGItemp37946" user="ZijadMaksuti" version="1"}%

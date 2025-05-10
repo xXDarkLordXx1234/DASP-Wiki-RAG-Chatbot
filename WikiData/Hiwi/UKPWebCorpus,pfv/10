@@ -1,0 +1,165 @@
+%META:TOPICINFO{author="LeonardSwiezinski" date="1337174087" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ WebCorpus
+
+---++ About
+This project aims to generate information (using hadoop) from a large corpus of content from webpages (Leipzig Corpus). 
+
+---++ Project Goals
+   * Segment documents, paragraphs, sentences, tokens. 
+   * Filter duplicates. 
+   * Filter unexpected languages. 
+   * Generate corpus of n-grams. 
+   * Generate corpus of cooccurrences. 
+   * Integrate with DKPro
+
+---+ Pipeline
+
+---++ Visualization
+<img src="%ATTACHURLPATH%/main.gif" alt="main.gif" width="928" height="997" />
+ 
+---++ Hadoop Jobs
+All jobs are located in the package webcorpus.hadoopjobs.
+
+---+++ DocumentJob
+   * Takes raw input data and retrieves single documents. 
+   * Filters documents with missing URL, or content=null or content="null".
+   * Wraps URL entries in source metadata (*sm*) with CDATA markup. 
+   * Normalizes Encoding to UT8 if other source encoding is given in source metadata. 
+   * Adds processing metadata (*pm*) and adds document length as entry "length". 
+   * Detects paragraphs by multiple line breaks and wraps them with p-tags. 
+   * Normalizes whitespace (replace all line breaks, tabs and multiple whitespaces with single whitespaces) and trim text. 
+   * Detects duplicates by same URL, same length and same content in first and last n characters. 
+   * Output one document per line. Format (replace # with tab): *URL#sm#pm#document*
+
+---+++ DeduplicationJob
+   * Create key, by concatenating document length and first and last n characters. 
+   * Use BloomFilter, to test, if document already appeared. 
+   * If *Conf.dropFilteredItems* is set to false, every item with reoccurring URL will be labeled with _is_duplicate:=[true|false]_.
+
+---+++ UTF8Job
+   * Labels (_encoding_error:=[true|false]_) or removes documents with defective encoding.
+   * Detects defective encoding just by looking for "&#65533;" (unknown glyph).
+
+---+++ SentenceJob
+   * Wraps sentences with "s"-Tags.
+   * webcorpus_conf/segmentizer.zip 
+      * boundariesFile.txt 
+      * postList.txt 
+      * postRules.txt 
+      * preList.txt 
+      * preRules.txt
+Adding these files as single files to the distributed cache has been problematic (reason unclear yet), but adding them as an archive file finally worked as expected. 
+
+<verbatim>
+// Add to the cache with symlink "segmentizer" in public int run(String[] args):
+DistributedCache.addCacheArchive(new URI("webcorpus_conf/segmentizer.zip#segmentizer"), conf);
+DistributedCache.createSymlink(conf);
+
+// The segmentizer expects an URL for every config file as parameter 
+// create a HashMap to store all the URLs in the Mapper
+private Map<String, URL> urlMap;
+
+// retrieve from cache in mapper
+private void getResources(){
+	URL resource = job.getResource("segmentizer");
+	File inputPath = new File(resource.getPath());
+	for (File f : inputPath.listFiles()) {
+		File file = new File(f.getAbsolutePath());
+		if(file.exists()){
+			try {
+				urlMap.put(file.getName(), file.toURI().toURL());
+			} catch (MalformedURLException e) {}
+		}
+	}
+}
+</verbatim>
+
+---+++ LanguageJob
+Sentence based language detection using jlani. 
+   * Takes optional parameter [language_name] (ISO 639-1) to set language to look for. 
+      * hadoop jar webcorpus.jar webcorpus.hadoopjobs.LanguageJob webcorpus_data/sentence webcorpus_data/language [language_name] 
+   * Sentences, where the detected language (lani) matches language_name, will be labeled with: lang=language_name, lani=language_name
+   * Where lani does not match language_name for a sequence of sentences, following rules apply:
+      * if sequence is at the beginning of a paragraph: lang=lani, lani=lani
+      * if sequence is at the end of a paragraph: lang=lani, lani=lani
+      * else if sequence is not longer than Conf.maximumUnknownLanguageLength: lang=language_name, lani=lani
+      * else: lang=lani, lani=lani
+   * if Conf.dropFilteredItems is true, only sentences with lang=language_name will be kept. 
+   * jlani expects some files. In order to work with hadoop, they are packed into jlani.zip, which remains in the hdfs (webcorpus_conf/jlani.zip): 
+      * blacklist_utf8.txt 
+      * mappings.txt 
+      * de.ser.gz 
+      * en.ser.gz 
+      * ... (models for more languages) 
+   * The files are loaded from the distributed cache in a similar way, SentenceJob loads files.
+
+---+++ TokenJob
+   * Tokenizes sentences and wraps all tokens with t-tag. 
+   * Employs Stanford Tokenizer from the Stanford POS-Tagger package. 
+   * Writes number of tokens to processing metadata: token_count
+
+---+++ NGramJob
+   * Counts n-grams based on tokens. 
+   * expects a pameter to set n: 
+      * hadoop jar webcorpus.jar webcorpus.hadoopjobs.NGramJob webcorpus_data/token webcorpus_data/ngram [n]
+
+---+ How to setup
+FIXME
+
+---+ How to run
+FIXME
+<verbatim>
+# hadoop path (change according to target system)
+hadoop=hadoop
+
+# remove config files (if exist)
+$hadoop dfs -rmr webcorpus_conf
+
+# create config directory on hdfs
+$hadoop dfs -mkdir webcorpus_conf
+
+# copy config files
+$hadoop dfs -copyFromLocal conf/segmentizer webcorpus_conf/segmentizer
+$hadoop dfs -copyFromLocal conf/jlani.zip webcorpus_conf
+
+# remove data from hdfs (if exist)
+$hadoop dfs -rmr webcorpus_data
+
+# create data directory on hdfs
+$hadoop dfs -mkdir webcorpus_data
+
+# copy data to hdfs
+$hadoop dfs -copyFromLocal data/raw webcorpus_data/raw
+
+# run
+$hadoop jar webcorpus.jar webcorpus.hadoopjobs.DocumentJob webcorpus_data/raw webcorpus_data/document
+$hadoop jar webcorpus.jar webcorpus.hadoopjobs.DeduplicationJob webcorpus_data/document webcorpus_data/deduplication
+$hadoop jar webcorpus.jar webcorpus.hadoopjobs.UTF8Job webcorpus_data/deduplication webcorpus_data/utf8
+$hadoop jar webcorpus.jar webcorpus.hadoopjobs.SentenceJob webcorpus_data/utf8 webcorpus_data/sentence
+$hadoop jar webcorpus.jar webcorpus.hadoopjobs.LanguageJob webcorpus_data/sentence webcorpus_data/language de
+
+</verbatim>
+
+---+ Data example
+FIXME
+---++ Example of raw data entry
+<verbatim>
+<source><location>http://www.arturbecker.de/Prosa/Milchstrasse/Milchstrasse_Leseprobe/milchstrasse_leseprobe.html</location><date>2011-02-02</date><user>Treasurer</user><original_encoding>utf-8</original_encoding><language>deu</language><issue>none</issue></source>
+Artur Becker machte mit seiner Lesung aus dem Roman »Onkel Jimmy, die Indianer und ich« in Klagenfurt zwar keinen Preis, gewann dafür aber beim 
+Publikum, bei Rezensenten und Lesern Komplizen fürs Leben.
+</verbatim>
+
+---++ Same data after sentence splitting
+<verbatim>
+http://www.arturbecker.de/Prosa/Milchstrasse/Milchstrasse_Leseprobe/milchstrasse_leseprobe.html <source><location><![CDATA[http://www.arturbecker.de/Prosa/Milchstrasse/Milchstrasse_Leseprobe/milchstrasse_leseprobe.html]]></location><date>2011-02-02</date><user>Treasurer</user><original_encoding>utf-8</original_encoding><language>deu</language><issue>none</issue></source> <process><length>5934</length><is_duplicate>false</is_duplicate><is_duplicate>false</is_duplicate><encoding_error>false</encoding_error></process>  <p><s>Artur Becker machte mit seiner Lesung aus dem Roman »Onkel Jimmy, die Indianer und ich« in Klagenfurt zwar keinen Preis, gewann dafür aber beim Publikum, bei Rezensenten und Lesern Komplizen fürs Leben.</s></p>
+</verbatim>
+
+---+ Configuration
+ All configuration settings are set in the java class webcorpus.Conf.java. To change any of those, edit the file and recompile (export jar). 
+
+---+ Configuration options
+   * FIXME
+
+%META:FILEATTACHMENT{name="main.png" attachment="main.png" attr="h" comment="" date="1333904121" path="main.png" size="224788" user="LeonardSwiezinski" version="1"}%
+%META:FILEATTACHMENT{name="main.gif" attachment="main.gif" attr="h" comment="WebCorpus hadoop flow" date="1333904228" path="main.gif" size="96653" user="LeonardSwiezinski" version="1"}%

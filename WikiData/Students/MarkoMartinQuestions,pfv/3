@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="MarkoMartin" date="1278270973" format="1.1" version="3"}%
+%META:TOPICPARENT{name="MarkoMartin"}%
+%TOC% 
+
+---++04.07.2010
+   * How can the original file name of a CAS that has been read by a FileSystemReader be obtained?
+   * Does UIMA use the same AnalysisEngine instance for all processed CASes?
+   * How should a consumer be implemented which "consumes all CASes"? E.g., for evaluation, a component would be desirable which writes evaluation results (as an average or a sum of all single per-document results) to a file.
+   * Are these package names appropriate?
+      * de.tudarmstadt.ukp.dkpro.semantics.segmenter.consumer (for PlainTextWriter, AnnotationOffsetWriter, SegmentationEvaluator)
+      * de.tudarmstadt.ukp.dkpro.semantics.reader (for WikipediaCategoryReader)
+
+---++26.06.2010 
+   * How to connect with Cisco VPN Client? Do I need "Group Authentication" data?
+      * _29.06.2010_: Problem solved with generic Windows VPN connection
+   * Wikipedia articles are divided both in paragraphs and sections - what would be the appropriate granularity for segmentation algorithms?
+      * _29.06.2010_: The Wikipedia reader component should be able to mark regions as segments such as defined with a parameter (e.g., only for sections, for sections and sub sections, for paragraphs etc.); however, for sake of simplicity, flat (not hierarchical) segment annotations are sufficient. Other components do not have to distinguish between different kinds of segments.
+
+-- Main.MarkoMartin - 26 Jun 2010

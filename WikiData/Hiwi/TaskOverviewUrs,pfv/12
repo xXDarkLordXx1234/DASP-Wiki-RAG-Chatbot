@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="ChristofMueller" date="1213890167" format="1.1" version="12"}%
+%META:TOPICPARENT{name="UrsGlaubitt"}%
+---+ Task Overview Urs Glaubitt
+
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="4"}%
+
+
+| *Aufgabe*  | *Tag*  | *Stunden*  | *Bemerkungen*  |
+| Lesen der Papers "Flexible UIMA Components .." und "What to be?- Electronic Career Guidance..." | 01.04.2008 | 1 ||
+| Erste Einarbeitung in UIMA mithilfe des Tutorials | 02.04.2008 | 5 ||
+| Einarbeitung in SIM Pack | 02.04.2008 | 4 ||
+| Einarbeitung in SIM Pack (Continued) | 10.04.2008 | 1 ||
+| Einarbeitung in die JWPL API | 18.04.2008 | 2 ||
+| Berufe aus Wikipedia extrahieren | 18.04.2008 | 2 | Habe mir die verschiedenen Kategorien und Artikel angeschaut, um zu sehen inwieweit man nicht relevante Artikel herausfiltern kann. Genauere Doku kommt noch in den nächsten Tagen. |
+| WikiMiner / TK-Account Problem (Verbindung zur Datenbank) | 21.04.2008 | 2 ||
+| Berufe aus Wikipedia extrahieren | 21.04.2008 | 3 | Habe mir die verschiedenen Kategorien und Artikel angeschaut, um zu sehen inwieweit man nicht relevante Artikel herausfiltern kann. Genauere Doku kommt noch in den nächsten Tagen. |
+| Programmieren (Berufsbeschreibungen extrahieren) | 30.04.2008 | 7 | |
+| Programmieren (Berufsbeschreibungen extrahieren) | 03.05.2008 | 6 | |
+| Programmieren (Berufsbeschreibungen extrahieren) | 04.05.2008 | 5 | |
+| Programmieren (Berufsbeschreibungen extrahieren) | 05.05.2008 | 1 | |
+| Programmieren (Berufsbeschreibungen extrahieren) | 19.05.2008 | 5 | Bug bzgl. der Blacklist gefixt; es wird nun auch eine csv-Datei mit allen rausgefilterten Pages angelegt; "fehlerhafte" reguläre Ausdrücke gefixt; einige neue reguläre Ausdrücke hinzugenommen;|
+| Programmieren (Berufsbeschreibungen extrahieren) | 20.05.2008 | 1.5 | Alles nötige fürs Projekt im TK-Pool eingerichtet; Code überarbeitet; Diverse Mining-Prozesse durchlaufen lassen|
+| Programmieren (Berufsbeschreibungen extrahieren) | 23.05.2008 | 5 | Deutsche Ergebnisse überarbeitet und (hoffentlich) alle nichtrelevanten Artikel aussortiert; paralell dazu erste Versuche das gleiche auch für die englische Wikipedia zu machen|
+| Programmieren (Berufsbeschreibungen extrahieren) | 25.05.2008 | 4 | Folien; "Recherche" für das Vergleichen von semantischen Graphen; Modifikation des Codes für die englische Wikipedia|
+| Programmieren (Berufsbeschreibungen extrahieren) | 26.05.2008 | 1.5 | "Verfeinerung" des englischen Berufsminings|
+| UIMA | 14.06.2008 | 1 | "Einrichten" des Workspaces; auschecken, entpacken, etc. und überfliegen wichtiger Stellen des UIMA-Tutorials;|
+| UIMA | 16.06.2008 | 2 | Erstellung eines BerkeleyDbReaders für eine CAS mit 2 Views; Erstellung eines entsprechenden Descriptors|
+| UIMA | 17.06.2008 | 1 | Bindingklasse für  IndexTerm erstellt und Descriptor für den BerkeleyDbReader angepasst; Versuch automatisch generierte Dateien zu erzeugen, bzw. entsprechende Stellen im UIMA-Tutorial zu finden; Einarbeitung in die Erstellung eines Annotators (habe mir beispielhaft den RelatednessScorer angesehen)|
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | bis Ende Juni |
+
+-- Main.ChristofMueller - 16 Apr 2008
+   * [[%ATTACHURL%/prsentation.pdf][prsentation.pdf]]: Folien für den 26.05.2008
+
+%META:FILEATTACHMENT{name="prsentation.pdf" attachment="prsentation.pdf" attr="" comment="Folien für den 26.05.2008" date="1211801675" path="präsentation.pdf" size="86140" stream="präsentation.pdf" tmpFilename="/var/tmp/CGItemp31309" user="UrsGlaubitt" version="1"}%

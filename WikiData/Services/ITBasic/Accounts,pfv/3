@@ -1,0 +1,25 @@
+%META:TOPICINFO{author="alles" comment="" date="1727866957" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="UKP.UkpItProcesses"}%
+---+!! Accounts Explained
+
+---++ Accounts Types Overview
+   * *UKP Account:* 
+      * UKP maintains its own user database in addition to the TU ID you got from the HRZ / TU Darmstadt. 
+      * All services <u>hosted at UKP Lab like wiki, messenger, laptop login, SLURM,</u> ... use the UKP account (mostly your surname)
+      * Usually the account will be closed on your last working day if not stated otherwise in the exit WF.
+   * *TU-ID:* 
+      * Centrally hosted services of TU Darmstadt use the TU ID (mostly a letter / digit combination like sa12egal). 
+      * Used for <u>E-Mail, Services managed via SSO (single sign on), Hessenbox, IDM System,</u> ..
+      * Usually the account becomes invalid a few weeks after your contract at TU Darmstadt ends. 
+   * *Cloud ID:*
+      * Used to activate Office Licences, usually yourtuid@tu-darmstadt.de (like sa12egal@tu-darmstadt.de)
+
+---++ Nice to know
+   * If you have issues with your own account, please open up a ticket. 
+   * Student accounts are only active for a limited time, mostly for the duration of the contract or during the thesis, so you have to request an extension if something changes here. The accounts supervisor will receive an automated notification 2 weeks before a students or shks account expires. If you are a student and you can't login anymore, your acount might be expired - please contact your *supervisor first*.
+   * For every UKP account system-admin and office-admin need a filled out entry workflow. 
+   * The exit workflow is a mandatory checklist to fill out if someone leaves - if you don't want that we just delete potentially important data, fill out the form. 
+
+-- Main.SebastianAlles - 2023-09-19
+
+%META:TOPICMOVED{by="alles" date="1727865228" from="Services.AccountsExplained" to="Services/ITBasic.Accounts"}%

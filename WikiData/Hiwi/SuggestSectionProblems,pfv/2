@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="ArtemVovk" date="1262880642" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+-- Main.ArtemVovk - 07 Jan 2010
+
+---+ Suggest Section Problems
+
+*1) Character convertation problems* <verbatim>(for example plainText: ' -> wikiText: &rsquo;)</verbatim>
+
+Example:
+
+&nbsp;&nbsp;&nbsp; _PlainText:_   <verbatim>I wasn't at all sure it was going to work.(insert) But I'm happy to say</verbatim>
+
+&nbsp;&nbsp;&nbsp; _WikiText:_ <verbatim>I wasn&rsquo;t at all sure it was going to work. But I&rsquo;m happy to say</verbatim>
+
+     
+
+Solution: increase threshold
+
+*2) To much html tags in wiki text*
+
+Example:
+
+&nbsp;&nbsp;&nbsp; _PlainText:_ <verbatim>I realized that I was finally in a position to try to do it.(insert) I had two</verbatim>
+
+&nbsp;&nbsp;&nbsp; _WikiText:_ <verbatim>I realized that I was finally in a position to try to do it.<br /><br />I had two</verbatim>
+
+Solution: increase surrounding text length and threshold
+
+*3) TODO: False insertion in html tags*
+
+Example:
+
+&nbsp;&nbsp;&nbsp; _PlainText:_ <verbatim>I realized that I was finally in a position to try to do it.(insert) I had two</verbatim>
+
+&nbsp;&nbsp;&nbsp; _WikiText:_ <verbatim>I realized that I was finally in a position to try to do it.<br /><br />I had two</verbatim>
+
+&nbsp;&nbsp;&nbsp; _AfterInsertion(WikiText)_ :
+<verbatim>
+I realized that I was finally in a position to try to do it.<
+
+---+ Titel
+
+br /><br />I had two
+</verbatim>

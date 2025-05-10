@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="ShuoYang" date="1274423373" format="1.1" version="43"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Mai 2010
+
+---+++ Aufgabenübersicht
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Monolinguales Retrieval auf GIRT (MrGIRT) | | |
+| 2. Crosslinguales Retrieval auf GIRT (CrGIRT) | | |
+| 3. !FastTranslationAnnotator | 95 | *  |
+| 4. Gegebene Pipelines laufen zu lassen | 50  |  |
+| 5. Pipeline mit Ausgabe in TWiki Markups | 0 |  |
+| 6. !TikaReader v1.3 | 80 |  |
+| 7. =XMLFileReader= mit =XPath= | 0 |  |
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| FTA | 20.05.2010 | 4 | !FeaturePath Teil 1: Typ fertig. <br /> Lernen von Exception Handling <br /> Versuche, ein Problem zu lösen: Annotator hängt von Zeit zu Zeit | * |
+| FTA | 19.05.2010 | 2 | Erweiterung von =FastTranslationAnnotator= um =FeaturePath= |  |
+| FTA und Meeting | 18.05.2010 | 5 | Erweiterung von =FastTranslationAnnotator= <ul><li>Nun ein Maven-Projekt</li><li>Einbauen von !FeaturePath</li><li>Dafür Einarbeiten in =IndexTermAnnotator= </li></ul> Meeting mit Benjamin über <ul><li>Probleme bei Projekte</li><li>Priorität von Projekten</li></ul> |  |
+| !TikaReader | 16.05.2010 | 3 | !TikaReader v1.3 (fast) fertig: <ul><li> =EmlParser= als eigner Tika Parser</li><li>Verwendung des  =CompositeDetector= von =NameDetector= und =MimeTypes= als Detector</li><li>Erhöhung von Stablität</li><li>Weitere TODO: Behandlung von =WriteLimitReachedException= </li></ul> |  |
+| !TikaReader | 15.05.2010 | 1 | Teilweise gelöst: mit =NameDetector= als Detektor von Parser |  |
+| !TikaReader | 14.05.2010 | 1.5 | Lösen vom Problem mit Content Type |  |
+| !TikaReader | 13.05.2010 | 2 | Weitere Modularisierung von =EmlParser= <ul><li>Ab Tika 0.7 kann man in META-INF\services\org.apache.tika.parser.Parser den Klassenname eignes Parsers eintragen, um AutoDetectParser ihn erkennen und verwenden zu können<li> Problem mit Content Type: .eml Dateien mit mancher Encoding lassen sich nicht korrekt dekodieren</li></ul> |  |
+| !TikaReader | 12.05.2010 | 1.5 | Weitere Modularisierung von =EmlParser= als eigenes Parser von Tika |  |
+| !TikaReader | 10.05.2010 | 1 | Weitere Modularisierung von =EmlParser= als eigenes Parser von Tika |  |
+| !TikaReader | 09.05.2010 | 2.5 | Erhöhen von Stabilität von =TikaReader= <br /> Ausziehen von =EmlParser= aus =TikaReader= <br /> (Beide noch nicht fertig) | |
+| Meeting | 07.05.2010 | 0.5 | Meeting mit Benjamin über <ul><li> =TikaReader= und</li><li> !FeaturePath (für =FastTranslationAnnotator= )</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 50)$EXEC($GET(total_hour))"}% | bis Ende Mai noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (10 Übertrag von April) |  |
+<nop>
+
+---+++ Dokumente
+GoogleTranslatePerformanceAnalysis
+
+GoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangPreviousWork
+
+-- Main.ShuoYang - 21 May 2010

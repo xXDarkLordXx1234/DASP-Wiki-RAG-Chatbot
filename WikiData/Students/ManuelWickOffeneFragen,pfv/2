@@ -1,0 +1,6 @@
+%META:TOPICINFO{author="ManuelWick" date="1264610194" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ OffeneFragen
+   * <strike>How do I get Apache-Maven work? mvn install just throws BuildErrors: "Cannot execute mojo: clean. It requires a project with an existing pom.xml, but the build is not using one."
+      * http://docs.codehaus.org/display/MAVENUSER/FAQs-1</strike>
+   * Better work with Maven? Further dependencies would be solved better? (e.g. Lucene)

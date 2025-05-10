@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="MichaelKutschke" date="1347105353" format="1.1" version="8"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ FlawFinder
+
+*Coordinator:* OF<br/>
+*Involved staff and students:* Michael Kutschke
+
+---++ Current deadlines
+
+COLING Deadline August 25
+
+---++ TODO
+   * *Implement support for WEKA*
+      * Maybe the following issues will be obsolete once we use Weka.
+   * Fix (mallet-)support for libsvm and liblinear
+   * In a crossfold validation setting, feature extraction should only be performed once.
+   * Output/Input folder during Training/Classification should be fixed (-> location of train-data.mallet)
+   * Lexical features do not have a name. (new Feature() does not assign a key - just a value)
+   * Close writers in a finally-block.
+   * Pipeline does not work with Java7
+
+---++ Done
+   * Weka support
+   * Lexical feature names
+   * For Weka, we can now perform Crossfold validation, extracting the features only once for each configuration
+   * writers get properly closed (and readers and other streams)
+   * Inout/output folder during Training/Classification fixed
+   * Weka-Pipeline works with Java7
+   * libSVM support through weka
+
+---++ Notes
+   * Articles with inline flaw-markers should be classified only using the section of the article containing the flaw marker
+      * OR: features should only be extracted from the section with the marker/template - classification can then be done based on the whole articlelib

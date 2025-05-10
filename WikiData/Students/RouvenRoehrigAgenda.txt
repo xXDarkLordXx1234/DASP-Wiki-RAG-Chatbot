@@ -1,0 +1,124 @@
+%META:TOPICINFO{author="roehrig" comment="reprev" date="1375088354" format="1.1" reprev="1" version="12"}%
+%META:TOPICPARENT{name="RouvenRoehrig"}%
+---+!! Agendas
+---++++ Master Thesis of Rouven Röhrig
+This page contains the agendas of the weekly meetings.
+
+---++++ Agenda for 29 July 2013, 11 am
+* *Glossary*
+   * tfidf (implemented and looks good!)
+   * Situation: "Specify a valid ..."
+      * Glossary: e.g. "valid user name", "valid taxonomy", "valid address" etc.
+      * BUT: Better would be: "user name", "taxonomy" and "valid address" etc.
+
+* *Comments from the midterm talk*:
+   * Glossary categorization (e.g. (CentraSite Administrator, Broker Administrator, etc.) and (user name, taxonomy, address, etc.))
+   * Statistics: How many sentences could be standardized by the system in theory
+   * Handling of long sentences
+
+* *Nomalized Edit Distance*
+   * I've implemented:  ned(s1,s2) = -(ed(s1,s2) / max(len(s1),len(s1))) + 1
+      * scales edit distance linearly to the set [0,1]
+
+---++++ Agenda for 1 July 2013, 11 am
+   * Feedback for chapter 3 (draft version)
+
+---++++ Agenda for 10 June 2013, 11 am
+   * *Proper nouns (key phrases)*
+      * LMpointKL (mit "add one smoothing") implementiert.
+      * Cluster neu generiert bei denen die Key Phrases mit Platzhaltern (PROPER-NOUN) ersetzt wurden.
+      * Cluster unterscheiden sich nur minimal.
+         * D.h. entweder unverändert, minimal größer oder "Qualität" schlechter
+         * Schlechter (z.B.): Vorher: "See the embedded exception description" und "See embedded exception description" sind nicht mehr in einem Cluster
+           (wobei es ohnehin nur eine der beiden Varianten geben sollte!)
+
+
+   * *Proper nouns korrigieren*:
+      * -> Problem: SpellChecker arbeitet auf Token-Ebene
+      * -> Proper nouns bestehen häufig aus mehr als einem Token
+      * -> Frage: Wie kann ich falsch geschriebene proper nouns erkennen?
+      * -> Idee/Ansatz: Man könnte auf Chunk-Ebene arbeiten.
+		-> Problem: Ein SpellChecker auf Chunk-Ebene würde nur funktioniert, wenn alle chunks bekannt wären (sind sie aber nicht)
+
+   * *Phrase standardization modi*
+      * "Messages mit Anomalien finden aus Menge von Messages." implementiert (einfacher Ansatz)
+      * und in GUI integriert
+
+---++++ Agenda for 03 June 2013, 11 am
+   * Discussion of proper noun generation
+      * (simple diagram and result file will be sent by email)
+
+   * (Other work done (fyi):)
+      * Code is using DKPRO_HOME instead of the resource folder.
+      * GUI edit dialog added (independent from input file)
+      * Glossary generation:
+         * Pipeline to generate web1t n-gram files
+         * Pipeline to generate SIPs using "Log-Liklyhood"
+
+---++++ Agenda for 27 May 2013, 11 am
+   * Discussion of the implemented cluster algorithm
+      * The clustering has been implemented as discussed last week
+      * A 'centroid' is selected by using the most similar sentence within a cluster 
+      * A pipeline has been implemented as discussed last week
+         * However, similar centroids are proposed instead of the most frequent sentence.
+   * Open question:
+      * My pipeline is using a resource (src/main/resource). When I build a jar, the resources cannot be resolved!?
+   * Planned tasks for this week (27. - 02.06.)
+      * Correcting the maven packaging
+      * LaTeX investigations...
+      * Writing some thesis texts
+      * tbd
+      * (If time remains, try to generate glossary resource)
+      * (If time remains, integrating glossary like resource)
+   * (sorry for the late agenda)
+
+---++++ Agenda for 21 May 2013, 11 am
+   * Status of the (minimal) system
+   * Discussion of planned algorithms
+      * Strategy for the problem identification
+         * Current approach idea:
+            1 Find/select the most similar cluster for a given sentence (using Text similarity measures)
+            2 If the given sentence is not the most frequent one of the selected cluster, return diff to most frequent sentence
+      * Strategy for the problem correction
+         * Current approach idea:
+            1 (same as above) 
+            2 (same as above) 
+            3 Propose most frequent sentence of the most similar cluster
+   * General question:
+      * I've corrected the 'Denglish' in the thesis template (I hope this is okay)
+   * (Other work done (fyi):)
+      * System infrastructure implemented (including proper tests)
+      * Correction module for spelling mistakes implemented (including identification and simple proposals)
+      * System is being used by the simple GUI (the one I've shown last meeting)
+      * Some thesis chapters started/written (or added from existing text files)
+   * Planned tasks for this week (21. - 27.05.)
+      * Implementation of the planned clustering algorithm (see above)
+      * LaTeX investigations...
+      * Writing some thesis texts
+      * (If time remains, try to generate glossary resource)
+      * (If time remains, integrating glossary like resource)
+   * (sorry for the late agenda)
+
+---++++ Agenda for 6 May 2013, 11 am
+   * Demo/Discussion of minimal system
+   * Demo of message editor
+   * (Other work done (fyi):)
+      * System design corrected
+      * Good example last week corrected
+      * Tried/Started setting up latex environment
+
+---++++ Agenda for 29 Apr 2013, 11 am
+   * System design discussion
+      * See sequence and component diagram
+   * <del>Demo of message editor (iff I can set up the database on time)</del>
+   * Data analysis (including duplicates)
+
+---++++ Agenda for 22 Apr 2013, 11 am
+   * State of task description
+   * Goal definition/description
+
+---++++ Agenda for 16 Apr 2013, 11 am
+   * State of task description
+   * State of data analysis (see also [[RouvenRoehrigSentenceClustering][Sentence Clustering]])
+
+-- Main.RouvenRoehrig - 12 Apr 2013

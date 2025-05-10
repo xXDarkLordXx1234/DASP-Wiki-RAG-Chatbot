@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="ManuelWick" date="1271254121" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+--++ Workflow
+
+---++14.04.10
+*Tika version change from 0.5 to 0.7*
+   * XML-File for parsers deprecated. New methodology is to declare MediaTypes, that a parser supports. Adjusted EML-Parser and DocCollectionReader to work fine with 0.7.
+   * Version conflict with POI provided by DKPro.poi-3.2-FINAL.jar -> Using the version 3.5 Beta provided by tika-app-0.7.jar
+   * <span class="green">Tika parser work, even with encrypted PDFs</span>
+
+*Indexing CRM*
+   * Error thrown "Out of memory error"
+   * Try to fix it with more heap memory. Failed
+   * Error is thrown in de.tudarmstadt.ukp.dkpro.core.annotator.TreeTaggerPosLemmaTT - Assumption: Eml-Parser doesn't work correctly
+   * Eml-Parser wasn't the fault - Tika hasn't recognized an Encapsulated Mail as an EML, but as an text/plain file. Thus, TreeTaggerPosLemmaTT tried to tag binary data and failed?!
+
+-- Main.ManuelWick - 14 Apr 2010

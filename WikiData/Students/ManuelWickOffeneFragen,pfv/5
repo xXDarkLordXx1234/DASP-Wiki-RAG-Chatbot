@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="ManuelWick" date="1268328096" format="1.1" version="5"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ OffeneFragen
+   * <strike>How do I get Apache-Maven work? mvn install just throws BuildErrors: "Cannot execute mojo: clean. It requires a project with an existing pom.xml, but the build is not using one."
+      * http://docs.codehaus.org/display/MAVENUSER/FAQs-1</strike>
+   * <strike>Better work with Maven? Further dependencies would be solved better? (e.g. Lucene)
+      * HowTo? Eclipse Plugin? Introduction?</strike>
+         * *BH* Which eclipse plugin?
+         * *BH* You could use Maven, but for the time being, you should stick to plain Java/Eclipse projects. I will give you further information on next weekly meeting.
+   * PDF parsing is too slow for large docs - how to improve it?

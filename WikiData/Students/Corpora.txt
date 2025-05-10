@@ -1,0 +1,95 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="IrinaAlles"}%
+---+ Corpora
+The here presented corpora TiGER and Tüba D/Z are both German treebanks consisting of sentences extracted from newspapers as Frankfurter Rundschau and Die Tageszeitung. Both data sets have been syntactically annotated but unfortunately the used tag sets differ. This implies that results achieved on one corpus are not comparable with results from the other. 
+Nevertheless both corpora have been used to train dependency parsers and [[ParserEvaluation][evaluations]] show that the annotated dependency structure of TiGER seems to be more predictable than the structure in Tüba D/Z.
+---++ TIGer Corpus
+
+The TIGER Treebank (Version 2.1) consists of app. 900,000 tokens (50,000 sentences) of German newspaper text, taken from the Frankfurter Rundschau. The corpus was semi-automatically POS-tagged and annotated with syntactic structure. Moreover, it contains morphological and lemma information for terminal nodes.
+<SMALL>(taken from http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/)</SMALL>
+It be downloaded [[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/download/start.shtml][here]]
+---++++ Formats
+The corpus is available in 
+   * [[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/annotation/sample1.export][Negra Export format]]
+   * [[http://www.ims.uni-stuttgart.de/projekte/TIGER/TIGERCorpus/annotation/sample2.xml][Tiger XML format]]
+   * PennTreebank format (first version of the treebank)
+and thanks to the CoNLL-X shared task on dependency parsing the data is also provided in CoNLL format.
+
+We used especially the CoNLL format (and adjusted versions of it) to train and test the parsers. 
+An example for a sentence in the CoNLL format from the TiGER corpus looks like this:
+<verbatim>1	``	_	$(	$(	_	4	PUNC	4	PUNC
+2	Ross	_	NE	NE	_	4	SB	4	SB
+3	Perot	_	NE	NE	_	2	PNC	2	PNC
+4	wäre	_	VAFIN	VAFIN	_	0	ROOT	0	ROOT
+5	vielleicht	_	ADV	ADV	_	4	MO	4	MO
+6	ein	_	ART	ART	_	8	NK	8	NK
+7	prächtiger	_	ADJA	ADJA	_	8	NK	8	NK
+8	Diktator	_	NN	NN	_	4	PD	4	PD
+9	''	_	$(	$(	_	4	PUNC	4	PUNC</verbatim>
+
+A further format used to train the StanfordParser is the PennTreebank format:
+<verbatim>%% Sent 1
+(
+	($( ``)
+	(S
+		(PN-SB
+			(NE-PNC Ross)
+			(NE-PNC Perot)
+		)
+		(VAFIN-HD wäre)
+		(ADV-MO vielleicht)
+		(NP-PD
+			(ART-NK ein)
+			(ADJA-NK prächtiger)
+			(NN-NK Diktator)
+		)
+	)
+	($( '')
+)</verbatim>
+
+
+
+---++ Tüba-D/Z Corpus
+The TüBa-D/Z treebank is a syntactically annotated German newspaper corpus based on data taken from the daily issues of 'die tageszeitung' (taz). The treebank currently comprises 65,524 sentences (1,164,766 tokens). The annotation is performed manually.
+
+The annotation comprises information on
+   * inflectional morphology
+   * lemmas
+   * syntactic constituency
+   * grammatical functions
+   * (complex) named entities
+   * anaphora and coreference relations
+   * dependency relations (only in CoNLL format; automatic annotation only) chunk annotation (automatic annotation only)
+
+
+The annotation scheme is surface-oriented in that it relies on a context-free backbone and uses neither crossing branches nor traces. Instead, it describes long-distance relations by specific functional labels.
+ <br/><SMALL>(taken from http://www.sfs.uni-tuebingen.de/en/tuebadz.shtml)</SMALL>
+
+---++++Formats
+
+The TüBa-D/Z web page states that the corpus is available in five different formats:
+   * Negra export format
+   * [[http://www.sfs.uni-tuebingen.de/en/en_exportxml.shtml][Export-XML format]] (including anaphora and coreference relations)
+   * Dependency version of the treebank in CoNLL Format
+   * TIGER-XML Format
+   * Penn treebank format
+At least the CoNLL format is not freely available .
+
+The Tüba D/Z version available for this study was in MaltTab format which was converted to CoNLL using the MaltParser as described in the [[Setup#Format_Conversion][Format Conversion]] section. The resulting output is annotated in the following way:
+
+<verbatim>1	Auch	_	_	ADV	_	2	ADV	_	_
+2	Busse	_	_	NN	_	8	SUBJ	_	_
+3	und	_	_	KON	_	2	KON	_	_
+4	Bahnen	_	_	NN	_	3	CJ	_	_
+5	im	_	_	APPRART	_	2	PP	_	_
+6	öffentlichen	_	_	ADJA	_	7	ATTR	_	_
+7	Nahverkehr	_	_	NN	_	5	PN	_	_
+8	seien	_	_	VAFIN	_	0	ROOT	_	_
+9	noch	_	_	ADV	_	10	ADV	_	_
+10	lange	_	_	ADV	_	11	ADV	_	_
+11	nicht	_	_	PTKNEG	_	14	ADV	_	_
+12	alle	_	_	PIS	_	2	ADV	_	_
+13	behindertengerecht	_	_	ADJD	_	14	ADV	_	_
+14	gestaltet	_	_	VVPP	_	8	AUX	_	_
+15	.	_	_	$.	_	14	-PUNCT-	_	_
+</verbatim

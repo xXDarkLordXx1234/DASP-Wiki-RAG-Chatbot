@@ -1,0 +1,41 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1338282498" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+(will format properly once I figure out how)
+
+---+++++ Statistics of pedocs:
+
+Keywords in pedocs can be found in the "opus" table, "subject_uncontrolled_german" column.
+
+   * Number of different keywords: 5817
+   * Number of papers (in opus): 3411
+   * Number of papers (in opus_autor): 3552
+   * Total Number of words: 38040
+That means:
+   * Average number of keywords per paper: 11.152154793315743
+   * Average times a word appears: 6.539453326456937
+
+Top 3 most common words and the number of occurences:
+   * deutschland: 1304
+   * rezension: 640
+   * schule: 423
+
+Authors, found in opus_autor:
+Number of authors: 2949
+
+
+Co-Author network:
+   * Connects 1802 authors, inadequate.
+
+
+
+SQL statements used:
+
+
+<blockquote>
+SELECT COUNT(DISTINCT source_opus) FROM opus;
+
+SELECT COUNT(DISTINCT source_opus) FROM opus_autor;
+
+SELECT COUNT(DISTINCT creator_name) FROM opus_autor;
+
+</blockquote>

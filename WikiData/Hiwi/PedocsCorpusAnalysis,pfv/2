@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++ Basic Statistics
+| *Corpus* | *# Documents* | *Tokens / Document* | *# Keyphrases* | *Keyphrases / Document* | *Characters / Keyphrase* | *Tokens / Keyphrase* | *Pearson Correlation r* |
+| Pedocs (German) | 3115 | 14590.50 | 35169 | 11.29 | 13.76 | 1.18 (±0.54) | 0.2342 |
+| Pedocs (All Languages) | 3424 | 14531.57 | 39607 | 11.57 | 13.85 | 1.20 (±0.55) | 0.0946 |
+
+Note: 
+   * Many documents (but not all) have cover page containing metadata of the document and license disclaimers in English. These text are currently included in document text.
+
+---+++ Corrupt files - these files are removed from the corpus:
+      * Cannot be read by PDFBox: 
+         * =1472.pdf=
+      * IOException from PDFStreamEngine, Could not find font(COSName{TT1}) in map={}: 
+         * =2966.pdf=
+         * =2971.pdf=
+         * =2973.pdf=
+
+
+
+-- Main.NicolaiErbs - 2012-06-22

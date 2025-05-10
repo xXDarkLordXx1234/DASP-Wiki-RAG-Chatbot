@@ -1,0 +1,2 @@
+SimonKulessa
+Paraphrasen Kandidaten im SQL Format

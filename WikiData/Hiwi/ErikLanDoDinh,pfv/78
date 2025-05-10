@@ -1,0 +1,483 @@
+%META:TOPICINFO{author="dodinh" comment="save topic" date="1378714366" format="1.1" reprev="76" version="78"}%
+%META:TOPICPARENT{name="WebHome"}%
+[[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Hiwi/DiplomaAdd][Additional work to my diploma thesis]]
+
+---+ Tasks
+
+Siehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/buglist.cgi?product=LOEWE+NCC][Bugzilla]].
+
+---+ Meetings
+
+   * [[ExtLOEWE_TP2_2/DeveloperMeetings][LOEWE Meeting Minutes]]
+
+---+ Aktueller Vertrag (Jul 2013 - Aug 2013)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | -16.25 | |
+| 04.07.13 | Meeting | 1 | |
+| 07.07.13 | Find vs Queries | 3 | |
+| 08.07.13 | Find vs Queries | 2 | |
+| 09.07.13 | Meeting | 1 | |
+| 11.07.13 | Meeting | 1 |  |
+| 13.07.13 | Kappa alternatives | 3 |  |
+| 16.07.13 | Compute Scott's Pi | 1 |  |
+| 18.07.13 | Meeting | 1 |  |
+| 24.07.13 | Find vs Queries aggregated | 2 |  |
+| 25.07.13 | Find vs Queries aggregated | 2 |  |
+| 25.07.13 | Meeting | 1 |  |
+| 26.07.13 | CSniper: Fix query statistics | 2.5 |  |
+| 27.07.13 | CSniper: Fix jumpto | 0.5 |  |
+| 31.08.13 | Fix DocxComment bug | 3 |  |
+| 01.08.13 | Metaphor pipeline | 2 |  |
+| 01.08.13 | Meeting | 2.5 |  |
+| 05.08.13 | Pipeline, Error analysis | 2.5 |  |
+| 06.08.13 | Pipeline, errors | 2.5 |  |
+| 08.08.13 | Pipeline, errors | 2 |  |
+| 08.08.13 | Meeting | 1 |  |
+| 11.08.13 | Error analysis | 1.5 |  |
+| 12.08.13 | Error analysis | 1.5 |  |
+| 15.08.13 | Meeting | 1 |  |
+| 18.08.13 | Find vs Queries -> Lab | 3 |  |
+| 19.08.13 | SVM | 4 |  |
+| 21.08.13 | Meeting | 0.5 |  |
+| 23.08.13 | Standalone pipeline | 2 |  |
+| 28.08.13 | Standalone pipeline | 3 |  |
+| 29.08.13 | Meeting | 0.75 |  |
+| 04.09.13 | Cleanup, Groovy | 2 |  |
+| 08.09.13 | Cleanup, Groovy | 1.5 |  |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+---+ Vergangene Verträge
+
+---+ Mai 2013 - Jun 2013
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 24.25 | |
+| 08.05.13 | CSniper upload and wiki | 4 | |
+| 16.05.13 | DKPro statistics 1.0, mysql connector | 0.5 | |
+| 29.05.13 | DARIAH-DE meeting | 7 | |
+| 22.06.13 | MateTools | 2 | |
+| 23.06.13 | MateTools | 1 | |
+| 25.06.13 | Meeting | 1 | |
+| 27.06.13 | MateTools | 2 | |
+| 30.06.13 | Find vs Queries | 2 | |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 60
+
+---+ Feb 2013 - Apr 2013
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | -7.25 | |
+| 01.01.13 | It-cleft, PP-inversion experiments | 4 | |
+| 05.02.13 | StanfordParser: use existing tags | 1 | |
+| 08.02.13 | PosMapper | 1 | |
+| 12.02.13 | Kappa Scores | 2 |
+| 14.02.13 | Meeting | 0.5 | |
+| 15.02.13 | Experiments | 1.5 | |
+| 16.02.13 | Experiments | 1.5 | |
+| 17.02.13 | Experiments | 2 | |
+| 18.02.13 | Experiments, Folien | 5 | |
+| 19.02.13 | Folien | 1 | |
+| 20.02.13 | Reorganize feature extractors | 3 | |
+| 24.02.13 | PosMapper | 1.5 | |
+| 08.03.13 | Additional columns | 2 | |
+| 10.03.13 | Additional columns | 2 | |
+| 12.03.13 | Additional columns | 3.5 | |
+| 13.03.13 | Additional columns | 2 | |
+| 14.03.13 | Meeting, Export addiotional columns | 3 | |
+| 16.03.13 | Validators | 4 | |
+| 18.03.13 | Check licenses | 1 | |
+| 19.03.13 | Fixed incomplete not showing in statistics | 1 | |
+| 22.03.13 | Check licenses, cosmetics | 2 | |
+| 24.03.13 | Fix kappa | 1.5 | |
+| 25.03.13 | Refactoring and modularizing | 3 | |
+| 26.03.13 | Refactoring and modularizing | 3 | |
+| 28.03.13 | Meeting, Bugs | 2 | |
+| 01.04.13 | Manage users | 5 | |
+| 02.04.13 | Manage users | 3 | |
+| 04.04.13 | Meeting, Manage users | 3 | |
+| 05.04.13 | Manage users | 2 | |
+| 08.04.13 | CSniper Doku | 2 | |
+| 09.04.13 | CSniper Doku | 3 | |
+| 11.04.13 | CSniper Doku | 4 | |
+| 13.04.13 | Confidence threshold | 2 | |
+| 14.04.13 | User management | 2 | |
+| 15.04.13 | Jump-To Box | 2 | |
+| 16.04.13 | Jump-To Box, Bugs | 2 | |
+| 18.04.13 | Meeting | 1 | |
+| 20.04.13 | loewencc->csniper | 2.5 | |
+| 22.04.13 | Licenses for image files | 1.5 | |
+| 25.04.13 | Meeting | 0.5 | |
+| 26.04.13 | Cleanup, AD, textmarker | 1 | |
+| 27.04.13 | Licenses | 1 | |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 60
+
+---+ Nov 2012 - Jan 2013
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | -2.5 | |
+| 01.11.12 | Meeting | 0.75 | |
+| 06.11.12 | Parse BNC | 2 | |
+| 07.11.12 | Parse BNC, TGrep | 4 | |
+| 08.11.12 | Parse BNC | 3 | |
+| 09.11.12 | Meeting | 0.5 | |
+| 10.11.12 | Parse BNC, Dewac | 2 | |
+| 12.11.12 | ML | 2 | |
+| 14.11.12 | ML | 1 | |
+| 15.11.12 | Meeting, TGrep Match | 4.5 | |
+| 16.11.12 | TGrep Match | 2.5 | |
+| 19.11.12 | Fix match | 4 | |
+| 20.11.12 | Fix match | 3 | |
+| 22.11.12 | Meeting | 1 | |
+| 23.11.12 | Fix match | 1 | |
+| 25.11.12 | Tried fixing CSNIPER-183: Switching type resets query engine | 3.5 | |
+| 27.11.12 | enhanced data selection for crossvalidation | 3 | |
+| 28.11.12 | enhanced data selection for crossvalidation | 2.5 | |
+| 29.11.12 | Meeting | 1 | |
+| 30.11.12 | CV fix (augmented PennTrees) | 1 | |
+| 02.12.12 | FLinK Output | 1 | |
+| 06.12.12 | Aggregated Results | 1 | |
+| 09.12.12 | Aggregated Results | 1 | |
+| 10.12.12 | Aggregated Results | 4.5 | |
+| 11.12.12 | Aggregated Results | 3 | |
+| 12.12.12 | Aggregated Results, FLinK | 2 | |
+| 14.12.12 | Flink | 1 | |
+| 19.12.12 | Fix offset alignment | 1.5 | |
+| 20.12.12 | Meeting | 1 | |
+| 21.12.12 | Fix POS tags not showing in Context-View | 1 | |
+| 28.12.12 | Examine 0% bug | 3 | |
+| 06.01.13 | Flink | 2 | |
+| 07.01.13 | Flink | 2.5 | |
+| 08.01.13 | Feature Extractor Tests | 3 | |
+| 09.01.13 | Feature Extractor Tests | 2 | |
+| 10.01.13 | Feature Extractor Tests, Kappa | 4 | |
+| 14.01.13 | Test Summarization | 1.5 | |
+| 20.01.13 | Fixed statistics sql, updated statistics page | 3.5 | |
+| 21.01.13 | Trying to fix tests for EvaluationRepository | 3 | |
+| 24.01.13 | Meeting | 0.5 | |
+| 30.01.13 | Feature Extractors | 1 | |
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 90
+
+---+ Jul 2012 - Okt 2012
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 4.0 | |
+| 30.06.12 | CSniper: Create export page | 1 | |
+| 02.07.12 | CSniper: Export | 1.5 | |
+| 03.07.12 | CSniper: Fix Type changing when table page is switched | 1 | |
+| 05.07.12 | Meeting | 0.5 | |
+| 10.07.12 | CSniper: Samplesets | 3 | |
+| 11.07.12 | CSniper: Samplesets | 0.25 | |
+| 18.07.12 | CSniper: Export / Statistics page | 6 | |
+| 19.07.12 | Meeting | 0.25 | |
+| 20.07.12 | CSniper: extract sampleset | 2.5 | setup local bnc (cqp, xmi) |
+| 20.07.12 | CSniper: annotate | 0.5 | |
+| 24.07.12 | CSniper: annotate | 2.5 | |
+| 25.07.12 | Annotate, bugs | 2 | |
+| 26.07.12 | Meeting | 0.25 | |
+| 28.07.12 | Annotate, prediction  | 1.5 | |
+| 29.07.12 | Prediction | 1 | |
+| 30.07.12 | Prediction | 4 | |
+| 31.07.12 | Crossvalidation | 1.5 | |
+| 03.08.12 | Meeting, comment bug, separate penn trees | 1.5 | |
+| 06.08.12 | Cache parses | 1.5 | |
+| 07.08.12 | Update, annotate | 1.5 | |
+| 08.08.12 | Annotate | 1.5 | |
+| 09.08.12 | Bugs | 1 | |
+| 10.08.12 | Statistics image, threshold page | 1 | |
+| 11.08.12 | Samplesets | 1 | |
+| 13.08.12 | Bugs | 3 | |
+| 15.08.12 | tksvmlight feature tests | 3 | |
+| 20.08.12 | Annotate | 1 | |
+| 03.09.12 | CSniper bugs + Meeting | 4.5 | |
+| 04.09.12 | CSniper bugs | 6 | |
+| 05.09.12 | Feature Extraction | 3 | |
+| 06.09.12 | Feature Extraction | 3 | |
+| 07.09.12 | Feature Extraction | 2 | |
+| 17.09.12 | Meeting + HTML Export + Misc | 2.75 | |
+| 20.09.12 | Review Tab | 1 | |
+| 24.09.12 | Annotate NP, Hadoop | 1 | |
+| 25.09.12 | Extend context | 0.5 | |
+| 30.09.12 | Extend context | 0.5 | |
+| 01.10.12 | Extend context | 2 | |
+| 04.10.12 | Hadoop | 1 | |
+| 07.10.12 | Demonstrator | 2 | |
+| 08.10.12 | Meeting, Hadoop | 3.5 | |
+| 09.10.12 | Hadoop | 3 | |
+| 10.10.12 | Hadoop, TRegex | 2.5 | |
+| 11.10.12 | Meeting, Hadoop | 3 | |
+| 12.10.12 | TRegex | 2 | |
+| 14.10.12 | TRegex, TGrep | 2 | |
+| 15.10.12 | TGrep | 7 | |
+| 16.10.12 | TGrep | 2 | |
+| 18.10.12 | Meeting, TGrep->CSniper | 2 | |
+| 19.10.12 | TGrep->CSniper | 2 | |
+| 21.10.12 | TGrep->CSniper | 4 | |
+| 22.10.12 | CorpusService | 4 | |
+| 23.10.12 | CorpusService | 2 | |
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 120
+
+---+ Apr 2012 - May 2012
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 12.0 | |
+| 16.04.12 | Meeting | 0.5 | |
+| 28.04.12 | TKSVM | 1.5 | |
+| 29.04.12 | TKSVM | 2.5 | |
+| 30.04.12 | TKSVM | 3.5 | |
+| 01.05.12 | TKSVM | 1.5 | |
+| 02.05.12 | TKSVM, Meeting | 2.5 | |
+| 06.05.12 | TKSVM | 1 | |
+| 07.05.12 | Sql, TKSVM | 4 | |
+| 08.05.12 | TKSVM | 1 | |
+| 10.05.12 | Meeting, sql | 3 | |
+| 11.05.12 | Build ML pipeline into evaluation | 3 | |
+| 13.05.12 | Build ML pipeline into evaluation | 1 | |
+| 15.05.12 | Build ML pipeline into evaluation  | 1.5 | |
+| 17.05.12 | ML testing, time tracking | 3 | |
+| 22.05.12 | ML cross validation, sql | 3 | |
+| 23.05.12 | ML cross validation | 4 | |
+| 24.05.12 | Meeting | 0.75 | |
+| 25.05.12 | TKSVM time tests | 1 | |
+| 29.05.12 | TKSVM classifiying time reducing | 3.5 | |
+| 30.05.12 | Extracing scores and outcomes for cleft examples | 1 | |
+| 31.05.12 | Meeting, Preview Button for type description, JIRA orientation | 2.5 | |
+| 03.06.12 | CSniper: Add preview button to annotation type editor | 2 | |
+| 04.06.12 | CSniper: Add preview button to annotation type editor, wiki help | 2.75 | |
+| 06.06.12 | CSniper: Cache parse trees | 4 | |
+| 10.06.12 | CSniper: Move annotation type editor | 2.25 | |
+| 11.06.12 | CSniper: Move annotation type editor | 0.75 | |
+| 21.06.12 | CSniper: Add sampleset tab | 4 | |
+| 25.06.12 | CSniper: Add sampleset tab | 3.5 | |
+| 26.06.12 | CSniper: Create export page | 2.5 | |
+| 29.06.12 | Meeting | 4 | |
+| 30.06.12 | CSniper: Create export page | 1 | |
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 80
+
+---+ Oct 2011 - Mar 2012
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 29.0 | |
+| 02.10.11 | Evaluation Page | 2 | |
+| 03.10.11 | Evaluation Page | 3 | |
+| 04.10.11 | Evaluation Page + Meeting | 3.25 | |
+| 05.10.11 | Evaluation Page | 1 | |
+| 06.10.11 | Evaluation Page | 3 | |
+| 09.10.11 | Evaluation Page | 1 | |
+| 10.10.11 | Evaluation Page | 3 | |
+| 15.10.11 | Evaluation Page Bugfixing | 3 | |
+| 16.10.11 | Evaluation Page Bugfixing | 5 | |
+| 17.10.11 | Evaluation Page Bugfixing | 6.5 | |
+| 22.10.11 | EvaluationPage | 2 | |
+| 23.10.11 | EvaluationPage | 2 | |
+| 24.10.11 | EvaluationPage | 1 | |
+| 25.10.11 | Meeting | 0.5 | |
+| 28.10.11 | EvaluationPage cleanup | 1 | |
+| 30.10.11 | Annis installation | 1 | |
+| 31.10.11 | Annis installation | 3 | |
+| 01.11.11 | Meeting | 0.75 | |
+| 07.11.11 | usertest, annis | 2 | |
+| 08.11.11 | usertest, annis | 2 | |
+| 08.11.11 | meeting | 0.5 | |
+| 09.11.11 | pipeline | 1.5 | |
+| 10.11.11 | bncbaby pipeline | 3.5 | |
+| 12.11.11 | bncbaby pipeline, convert | 2 | |
+| 13.11.11 | convert | 1 | |
+| 14.11.11 | tuebadz import | 3 | |
+| 16.11.11 | EvaluationPage, convert corpora | 2 | |
+| 17.11.11 | Trying to convert bncbaby | 2 | |
+| 20.11.11 | Evaluation: Fix error when saving an already saved query/items | 1 | |
+| 21.11.11 | Repair evaluation, some results weren't saved | 2 | |
+| 28.11.11 | EvaluationPage: change result column | 3 | |
+| 29.11.11 | EvaluationPage: change result column, SentenceRemover | 5 | |
+| 01.12.11 | ParsingPage: selection-field for types | 2 | |
+| 04.12.11 | EvaluationPage, ParsingPage: selection-field for types | 3 | |
+| 05.12.11 | UI tweaks | 4 | |
+| 06.12.11 | Meeting | 1 | |
+| 06.12.11 | Queries | 1.5 | |
+| 07.12.11 | Add macros to help, queries | 2 | |
+| 12.12.11 | Meeting | 2 | |
+| 13.12.11 | EvaluationPage, BNC encode | 1 | |
+| 15.12.11 | Meeting | 0.25 | |
+| 17.12.11 | CqpQuery: offset output and parsing | 1.5 | |
+| 19.12.11 | CqpQuery, Macro displaying | 1.5 | |
+| 19.12.11 | Meeting | 0.25 | |
+| 03.01.12 | EvaluationPage: Macro displaying; Limit results, let user choose amount | 5 | |
+| 04.01.12 | EvaluationPage: Limit results, let user choose amount | 3 | |
+| 13.01.12 | Macros | 3 | |
+| 14.01.12 | CqpManager | 2.5 | |
+| 15.01.12 | CqpManager + EvaluationPage | 5 | |
+| 16.01.12 | EvaluationPage + Meeting | 1.5 | | 
+| 22.01.12 | EvaluationPage | 1 | | 
+| 23.01.12 | EvaluationPage | 2.5 | | 
+| 26.01.12 | EvaluationPage Context | 2.5 | | 
+| 30.01.12 | EvaluationPage + Statistics Mockup | 2 | | 
+| 31.01.12 | Statistics Mockup + Info Box | 1.5 | | 
+| 01.02.12 | Mockup, Statistics | 3 | |
+| 04.02.12 | Statistics | 4 | |
+| 05.02.12 | Statistics | 2 | |
+| 06.02.12 | Meeting + PieChart | 2 | |
+| 07.02.12 | PieChart + Histogram | 4 | |
+| 08.02.12 | Histogram + Test | 2 | |
+| 09.02.12 | Histogram + Test | 3 | |
+| 10.02.12 | Histogram | 2 | |
+| 12.02.12 | Checkboxes | 1 | |
+| 13.02.12 | Meeting + Statistics | 5.5 | |
+| 14.02.12 | Statistics | 4 | |
+| 16.02.12 | Misc | 0.25 | |
+| 19.02.12 | Kappa + "Complete" bug | 2 | |  
+| 26.02.12 | Kappa Test + "Multiple sesults" bug | 3 | |
+| 01.03.12 | Meeting + Statistics/bug | 1.5 | |
+| 02.03.12 | Annotation | 0.25 | |
+| 05.03.12 | Annotation | 1 | |
+| 08.03.12 | Statistics2 | 0.5 | |
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 180
+
+---+ Vertrag Mar 2011 - Jun 2011
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | -2.0 | |
+| 10.03.11 | Dependenzen in relAnnis Dateien ausgeben | 3 | Dependenzen in relAnnis Dateien ausgeben fertig, Bugs gefixt |
+| 16.03.11 | Einfache Pipeline mit Wicket kombinieren | 5 | Einfache DKPro Pipeline (mit Stanford Parser) mit Wicket kombiniert |
+| 19.03.11 | Wicket-Beispiel vorbereitet und ins SVN hochladen | 0.5 | |
+| 22.03.11 | Progressmeter/weitere Statusmeldungen in Annis einbauen | 0.5 | schwer möglich, Hauptarbeit ist in ein SQL Script "ausgelagert" |
+| 23.03.11 | TextMarker Einarbeitung | 3 | Script für simple Spaltsätze |
+| 30.03.11 | Diverse Verbesserungen im AnnisWriter, Textmarker in Pipeline einbauen | 7 | Diverse Probleme beim Einbau eines Textmarker Scripts |
+| 31.03.11 | NegraExportReader Testcase | 4 | Bug im ExportReader gefixt |
+| 04.04.11 | MaltParser zum laufen bringen, in Wicket Anwendung einbauen | 2 | Noch Pfad-Probleme mit Wicket |
+| 09.04.11 | In TRegex/TSurgeon einlesen, TRegex zum laufen bringen, in Wicket-Projekt integrieren | 4 | |
+| 11.04.11 | NegraExportReader umschreiben, TRegex und TextMarker ins Wicket-Projekt integrieren | 4 | |
+| 16.04.11 | Einfachen HTML Consumer schreiben | 3 | |
+| 18.04.11 | Wicket Pipeline anpassen (XML schreiben) | 2 | |
+| 19.04.11 | Wicket: Homepage erweitern, anpassen (TRegex) | 3 | |
+| 21.04.11 | TRegex Integration in die Wicket-Anwendung verbessern | 2.5 | |
+| 24.04.11 | TypeSystemDescription aus TextMarker Script erstellen | 3 | |
+| 25.04.11 | TypeSystemDescription aus TextMarker Script erstellen | 4 | |
+| 28.04.11 | HTML Consumer verbessern | 2 | |
+| 29.04.11 | TextmarkerDescriptorCreator anpassen | 3 | |
+| 02.05.11 | Wicket-Anwendung erweitern/anpassen | 3 | |
+| 05.05.11 | Wicket-Anwendung erweitern/anpassen, commit | 3 | |
+| 06.05.11 | TextmarkerDescriptorCreator vereinfachen | 3 | |
+| 08.05.11 | HTML Consumer verbessern | 4 | |
+| 09.05.11 | Wicket: dynamische Textareas etc. | 3 | |
+| 13.05.11 | Bug in TRegex suchen (Sätze werden falsch annotiert) | 3 | |
+| 14.05.11 | Wicket-Anwendung: erweitern, Bugs fixen | 3 | |
+| 15.05.11 | Bugs in Wicket-Pipeline gefixt | 1 | |
+| 16.05.11 | Wicket-Anwendung: erweitern, Bugs fixen | 3 | |
+| 27.05.11 | Mockup,Temp-Files als Zwischenspeicher | 2 | |
+| 28.05.11 | Negra-Reader, ImsCwbWriter | 3.5 | |
+| 02.06.11 | ImsCwbWriter, Annis Tree Drawing untersuchen | 2 | |
+| 03.06.11 | NegraExporter | 1 | |
+| 04.06.11 | ImsCwbWriter umbauen, Programme zum (Parse)-Baum zeichnen suchen | 2.5 | |
+| 09.06.11 | Mockup | 0.5 | |
+| 10.06.11 | Untersuchen, ob Annis Komponente oder eigene JUNG Komponente zum Baum-Zeichnen benutzt werden soll | 1 | |
+| 12.06.11 | Einarbeiten in JUNG 2 | 4.5 | |
+| 13.06.11 | Annis2 TreeVisualizer umbauen, in UIMA Annotator wrappen | 6 | |
+| 15.06.11 | Annis2 TreeVisualizer umbauen, in UIMA Annotator wrappen | 1 | |
+| 16.06.11 | Annis2 TreeVisualizer umbauen, in UIMA Annotator wrappen | 2.5 | |
+| 20.06.11 | Demonstrator Pipeline aufsplitten | 2 | |
+| 23.06.11 | Demonstrator Pipeline aufsplitten | 1.5 | |
+| 26.06.11 | Demonstrator Pipeline aufsplitten, VM  first steps | 0.5 | |
+| 04.07.11 | IMS CWB auf der VM kompilieren, installieren | 3 | |
+| 05.07.11 | TüBa D/Z in die Corpus Workbench importieren, Maven Probleme | 0.5 | |
+| 07.07.11 | Demonstrator Pipeline aufsplitten | 1.5 | |
+| 15.07.11 | Demonstrator Pipeline aufsplitten | 2 | |
+| 18.07.11 | Demonstrator Bugfixing | 1 | |
+| 22.07.11 | Demonstrator Bugfixing | 2 | |
+| 23.07.11 | Demonstrator Bugfixing | 2 | |
+| 25.07.11 | Annis kompilieren | 2 | |
+| 08.08.11 | Annis | 0.5 | |
+| 09.08.11 | Demonstrator | 2 | |
+| 10.08.11 | CQP, Makros | 4 | |
+| 11.08.11 | Makros zu Birner Sätzen, parsen | 2 | |
+| 22.08.11 | CQPweb einrichten | 4 | |
+| 23.08.11 | NegraReader, ImsCwbWriter | 2 | |
+| 26.08.11 | CQPweb Usermanagement | 1 | |
+| 27.08.11 | CQPweb Usermanagement | 1 | |
+| 28.08.11 | TüBa D/Z reencoden für CQPweb, BNC testen | 1.5 | |
+| 29.08.11 | CQPweb Usermanagement | 2 | |
+| 30.08.11 | /demonstrator mit AJP auf Tomcat umleiten | 1.5 | |
+| 01.09.11 | BNC re-encode testen | 0.5 | |
+| 02.09.11 | BNC re-encode testen | 1 | |
+| 05.09.11 | Evaluation Page | 6 | |
+| 06.09.11 | Evaluation Page | 2 | |
+| 07.09.11 | Meetings | 26.25 | Überschlagen: 1 Meeting / Woche * (45-10) Wochen (von 01.11.10 bis 11.09.11, abzl. 10 Wochen Urlaub, Krankheit, etc.) * 45 min / Meeting (im Schnitt) |
+| 07.09.11 | Evaluation Page | 1 | |
+| 09.09.11 | Evaluation Page | 2 | |
+| 11.09.11 | BNC Corpus re-encoden | 2 | |
+| 12.09.11 | Evaluation Page | 4 | |
+| 13.09.11 | Evaluation Page | 4 | |
+| 13.09.11 | Meeting | 0.75 | |
+| 17.09.11 | CQP Manager | 1 | |
+| 18.09.11 | CQP Manager | 2 | |
+| 19.09.11 | CQP Manager / Evaluation Page | 2 | |
+| 25.09.11 | Evaluation Page | 2.5 | |
+| 26.09.11 | Evaluation Page | 1.5 | |
+| 26.09.11 | Meeting | 1 | |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 176
+
+---+ Vertrag Feb 2011
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 1.5 | |
+| 06.02.11 | !TüBa D/Z Reader schreiben | 6 | !RelAnnis Consumer anpassen, Reader schreiben |
+| 12.02.11 | !TüBa D/Z Reader schreiben | 6.5 | !RelAnnis Consumer überarbeiten, Reader fertigschreiben |
+| 20.02.11 | Dependanzen in relAnnis Dateien ausgeben | 3 | Dependanzen in relAnnis Dateien ausgeben |
+| 28.02.11 | Projekte im SVN einchecken | 1 | Projekte vorbereiten, einchecken |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 20
+
+---++ Vertrag Dez 2010 / Jan 2011
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 0.5 | |
+| 04.12.10 | Maven/UIMAfit einlesen, installieren, ausprobieren | 4 | Maven Installation, Uimafit und Beispielprogramm |
+| 07.12.10 | TueBaDZ -> Annis2 | 2.5 | TueBaDZ export (negra) zu tiger-xml konvertieren (mittels Tigersearch), Pepper Konvertierung testen |
+| 12.12.10 | TueBaDZ -> Annis2 | 2 | Lösung für Pepper Konvertierung suchen |
+| 14.12.10 | TueBaDZ -> Annis2 | 3 | TueBaDZ in relANNIS konvertieren, Fehler suchen, testen |
+| 15.12.10 | TueBaDZ -> Annis2 | 1 | TueBaDZ in relANNIS konvertieren, Fehler suchen, testen |
+| 20.12.10 | TueBaDZ -> Annis2 | 1 | 2x relANNIS -> 1x relANNIS testen, Mail an Pepper-Team wegen Konvertierung |
+| 28.12.10 | Output von Stanford Parser -> Annis | 2 | DKPro Installation |
+| 30.12.10 | Output von Stanford Parser -> Annis | 1 | DKPro Installation |
+| 02.01.11 | Output von Stanford Parser -> Annis | 3 | DKPro Installation |
+| 07.01.11 | DKPro Tutorial überarbeiten | 4.5 | DKPro Tutorial überarbeiten |
+| 08.01.11 | DKPro Tutorial überarbeiten | 1 | DKPro Tutorial überarbeiten |
+| 16.01.11 | Consumer schreiben um geparste Texte in Annis zu importieren | 5 | TreeTagger ins Tutorial, Consumer->Annis |
+| 23.01.11 | Consumer schreiben um geparste Texte in Annis zu importieren | 4.5 | ANT Installation ins Tutorial, TextMarker Installation, Consumer weiterbauen (SQL Schema, etc.) |
+| 30.01.11 | Consumer schreiben um geparste Texte in Annis zu importieren | 6.5 | Consumer schreiben |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+---++ Vertrag Nov 2010
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 06.11.10 | MaltParser mit TueBaDZ trainieren | 1.5 | treeconv ausprobieren, in TueBaDZ einlesen |
+| 07.11.10 | MaltParser mit TueBaDZ trainieren | 1.5 | MaltParser Doku lesen, ausprobieren, .conll Format |
+| 14.11.10 | MaltParser mit TueBaDZ trainieren | 6 | MaltParser Negra Input testen, Converter (negra->malttab) programmieren |
+| 21.11.10 | Evaluation Annis2 | 4.5 | Lesen: Dependency Relations in TueBaDZ, Annis2, PAULA, relANNIS |
+| 28.11.10 | Evaluation Annis2 | 7 | PostgreSQL/Annis2 Installation, Tests mit PAULA, Pepper |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 20
+
+-- Main.RichardEckart - 2010-12-21

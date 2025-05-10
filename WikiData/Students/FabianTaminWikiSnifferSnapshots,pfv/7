@@ -1,0 +1,112 @@
+%META:TOPICINFO{author="FabianTamin" date="1260968446" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ Wiki-Sniffer Snapshots
+This page collects snapshots of Wiki-Sniffer.
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" width="480" height="360">
+<embed src="http://www.walkernews.net/mediaplayer.swf" width="480" height="360" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="file=%ATTACHURL%/Wiki-Sniffer_-_Comparing_MSWindows_Editions.flv&image=http://files.myopera.com/motyus/albums/545446/Wiki-Sniffer_-_Comparing_MSWindows_Editions.jpg" />
+</object>
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" width="480" height="360">
+<embed src="http://www.walkernews.net/mediaplayer.swf" width="480" height="360" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="file=%ATTACHURL%/Browsing_with_Wiki-Sniffer.flv&image=http://files.myopera.com/motyus/albums/545446/1Browsing%20with%20Wiki-Sniffer.png" />
+</object>
+
+---++ Screenshots
+*Previous version of Wiki-Sniffer*:<br />
+<a href="%ATTACHURL%/Wiki-Sniffer.png"><img src="%ATTACHURL%/Wiki-Sniffer.png"></a>
+
+*Wiki-Sniffer Layout*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer01.png" alt="wiki-sniffer01.png" width='352' height='422' /><br />
+The design layout can be grouped to four main components: dragger frame [1], main navigation [2], content frame [3], tag frame [4], and keyphrase frame [5]. Three information can be viewed simultaneously, i.e. the information in content frame, tags/categories, and keyphrases. The information in the content frame can be either summary, table of contents, related articles, external links, backlinks (what links here), or a list of images. The content can be chosen in the main navigation or the submenu of &#8220;more action&#8221;. This implementation is similar to the design of the first mockup but the displayed menu items are reduced by using submenu to avoid information overload. The submenu is opened automatically by hovering &#8220;more action&#8221; menu item. The selected item [2.1] font style is also distinguished from the unselected ones [2.2] to enhance the clarity.
+
+A Summary contains a flowing text [3.1] as its main part. If the summary is longer than one paragraph, toggle more [3.2] is displayed. By clicking the toggle, the summary will be expanded. Additionally, a thumbnail [3.3] will be displayed if at least an image is found in the article.
+Only maximal five categories [4.1] are shown at snippet initialization. To show more categories, toggle &#8220;more/less&#8221; [4.2] can be clicked. Keyphrases [5.3] can be hidden manually to avoid information overloading. As keyphrase&#8217;s label we chose &#8220;keywords or keyphrases&#8221; instead of words &#8220;keyphrases&#8221; to enhance the context and information scent. It is done because, the word &#8220;keyphrase&#8221; is still rarely used and many people still do not recognize about its meaning. As the separator between two items, middle dot [5.4] is used instead of comma or squared bracket. It gives better clarity to show the boundary between two items. Additionally, it does not cause an impression of information overloading. When a keyphrase is clicked it will search the term in a previously defined user engine, for example, Wikipedia search. The search engine itself can be defined in the !JavaScript data of Wiki-Sniffer.
+
+*Implementation of Tooltip*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer02.png" alt="wiki-sniffer02.png" width='352' height='56' /><br />
+To reduce user&#8217;s memory load, a small details is provided by giving a tooltip to each component in the snippet.
+
+*Multiple Snippets are Open*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer03.png" alt="wiki-sniffer03.png" width='1084' height='619' style="border-style:solid; border-width:thin;" /><br />
+Three snippets are expanded. One of them [1] is in the auto-close mode, and the two others [2] are in the hold mode. Three other snippets are collapsed and manually arranged as a stack. They [3] are in the auto-collapsible mode. To make the user interface simple, there are overall only three states of snippet control buttons instead of five: auto-close mode is identified by color yellow-red-green [1.1]; hold mode is identified by color green-red-green [2.1]; and auto-collapse mode is identified by color yellow-red-yellow [3.1].
+
+*Rapid Response (Feedback)*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer04.png" alt="wiki-sniffer04.png" width='352' height='69' /><br />
+Fast rotating busy icon is used to give a user some feedback that the snippet is working and is still processing some data.
+
+*Wiki-Sniffer &#8211; Summary*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer05.png" alt="wiki-sniffer05.png" width='352' height='424' />
+
+*Wiki-Sniffer &#8722; Related Articles*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer06.png" alt="wiki-sniffer06.png" width='352' height='479' />
+
+*Wiki-Sniffer &#8722; Table of Contents*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer07.png" alt="wiki-sniffer07.png" width='352' height='502' />
+
+*Wiki-Sniffer &#8722; External Links*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer08.png" alt="wiki-sniffer08.png" width='352' height='432' />
+
+*Wiki-Sniffer &#8722; List of Images*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer09.png" alt="wiki-sniffer09.png" width='352' height='442' />
+
+*Wiki-Sniffer &#8211; Keyphrases are hidden*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer10.png" alt="wiki-sniffer10.png" width='352' height='262' />
+
+*Bloodhound, the best scenthound*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer11.png" alt="wiki-sniffer11.png" width='352' height='411' />
+
+*Beagle article*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer12.png" alt="wiki-sniffer12.png" width='352' height='458' />
+
+*Jack Russel Terrier article &#8722; snippet is loading*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer13.png" alt="wiki-sniffer13.png" width='352' height='69' />
+
+*Jack Russel Terrier article &#8722; snippet is in auto-collapsible mode*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer14.png" alt="wiki-sniffer14.png" width='352' height='23' />
+
+*Jack Russel Terrier article &#8722; snippet is ready*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer15.png" alt="wiki-sniffer15.png" width='352' height='436' />
+
+*Jack Russel Terrier article &#8722; table of contents*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer16.png" alt="wiki-sniffer16.png" width='352' height='423' />
+
+*Jack Russel Terrier article &#8722; related articles*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer17.png" alt="wiki-sniffer17.png" width='352' height='436' />
+
+*Jack Russel Terrier article &#8722; external links*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer18.png" alt="wiki-sniffer18.png" width='352' height='288' />
+
+*Jack Russel Terrier article &#8722; backlinks (what links here)*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer19.png" alt="wiki-sniffer19.png" width='352' height='436' />
+
+*Jack Russel Terrier article &#8722; list of images*: <br />
+<img src="%ATTACHURLPATH%/wiki-sniffer20.png" alt="wiki-sniffer20.png" width='352' height='450' />
+
+
+-- Main.FabianTamin - 14 Nov 2009
+   * [[%ATTACHURL%/Wiki-Sniffer_-_Comparing_MSWindows_Editions.flv][Wiki-Sniffer_-_Comparing_MSWindows_Editions.flv]]: Comparing MS Windows versions and editions with Wiki-Sniffer
+   * [[%ATTACHURL%/Browsing_with_Wiki-Sniffer.flv][Browsing_with_Wiki-Sniffer.flv]]: Autozoom & autocollapse functionality
+
+%META:FILEATTACHMENT{name="Wiki-Sniffer_-_Comparing_MSWindows_Editions.flv" attachment="Wiki-Sniffer_-_Comparing_MSWindows_Editions.flv" attr="" comment="Comparing MS Windows versions and editions with Wiki-Sniffer" date="1258210115" path="Wiki-Sniffer - Comparing MSWindows Editions.flv" size="10256094" stream="Wiki-Sniffer - Comparing MSWindows Editions.flv" tmpFilename="/var/tmp/CGItemp54525" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="Wiki-Sniffer.png" attachment="Wiki-Sniffer.png" attr="h" comment="Wiki-Sniffer Screenshot" date="1258888219" path="Wiki-Sniffer.png" size="23188" stream="Wiki-Sniffer.png" tmpFilename="/var/tmp/CGItemp62959" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="Browsing_with_Wiki-Sniffer.flv" attachment="Browsing_with_Wiki-Sniffer.flv" attr="" comment="Browsing with Wiki Sniffer" date="1259282084" path="Browsing with Wiki-Sniffer.flv" size="15100247" stream="Browsing with Wiki-Sniffer.flv" tmpFilename="/var/tmp/CGItemp54450" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer01.png" attachment="wiki-sniffer01.png" attr="" comment="wiki-sniffer01" date="1260958134" path="wiki-sniffer01.png" size="595636" stream="wiki-sniffer01.png" tmpFilename="/var/tmp/CGItemp59701" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer02.png" attachment="wiki-sniffer02.png" attr="" comment="wiki-sniffer02" date="1260958342" path="wiki-sniffer02.png" size="59388" stream="wiki-sniffer02.png" tmpFilename="/var/tmp/CGItemp59731" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer03.png" attachment="wiki-sniffer03.png" attr="" comment="wiki-sniffer03" date="1260958449" path="wiki-sniffer03.png" size="2689016" stream="wiki-sniffer03.png" tmpFilename="/var/tmp/CGItemp59838" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer04.png" attachment="wiki-sniffer04.png" attr="" comment="wiki-sniffer04" date="1260958480" path="wiki-sniffer04.png" size="73146" stream="wiki-sniffer04.png" tmpFilename="/var/tmp/CGItemp59858" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer05.png" attachment="wiki-sniffer05.png" attr="" comment="wiki-sniffer05" date="1260958538" path="wiki-sniffer05.png" size="448988" stream="wiki-sniffer05.png" tmpFilename="/var/tmp/CGItemp59965" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer06.png" attachment="wiki-sniffer06.png" attr="" comment="wiki-sniffer06" date="1260958564" path="wiki-sniffer06.png" size="507217" stream="wiki-sniffer06.png" tmpFilename="/var/tmp/CGItemp59853" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer07.png" attachment="wiki-sniffer07.png" attr="" comment="wiki-sniffer07" date="1260958671" path="wiki-sniffer07.png" size="531569" stream="wiki-sniffer07.png" tmpFilename="/var/tmp/CGItemp59980" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer08.png" attachment="wiki-sniffer08.png" attr="" comment="wiki-sniffer08" date="1260958698" path="wiki-sniffer08.png" size="457456" stream="wiki-sniffer08.png" tmpFilename="/var/tmp/CGItemp60020" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer09.png" attachment="wiki-sniffer09.png" attr="" comment="wiki-sniffer09" date="1260958723" path="wiki-sniffer09.png" size="468055" stream="wiki-sniffer09.png" tmpFilename="/var/tmp/CGItemp59747" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer10.png" attachment="wiki-sniffer10.png" attr="" comment="wiki-sniffer10" date="1260958751" path="wiki-sniffer10.png" size="277477" stream="wiki-sniffer10.png" tmpFilename="/var/tmp/CGItemp59871" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer11.png" attachment="wiki-sniffer11.png" attr="" comment="wiki-sniffer11" date="1260958774" path="wiki-sniffer11.png" size="45919" stream="wiki-sniffer11.png" tmpFilename="/var/tmp/CGItemp59943" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer12.png" attachment="wiki-sniffer12.png" attr="" comment="wiki-sniffer12" date="1260958794" path="wiki-sniffer12.png" size="47093" stream="wiki-sniffer12.png" tmpFilename="/var/tmp/CGItemp59977" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer13.png" attachment="wiki-sniffer13.png" attr="" comment="wiki-sniffer13" date="1260958814" path="wiki-sniffer13.png" size="6147" stream="wiki-sniffer13.png" tmpFilename="/var/tmp/CGItemp58845" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer14.png" attachment="wiki-sniffer14.png" attr="" comment="wiki-sniffer14" date="1260958836" path="wiki-sniffer14.png" size="3590" stream="wiki-sniffer14.png" tmpFilename="/var/tmp/CGItemp58744" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer15.png" attachment="wiki-sniffer15.png" attr="" comment="wiki-sniffer15" date="1260958894" path="wiki-sniffer15.png" size="58410" stream="wiki-sniffer15.png" tmpFilename="/var/tmp/CGItemp59821" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer16.png" attachment="wiki-sniffer16.png" attr="" comment="wiki-sniffer16" date="1260958920" path="wiki-sniffer16.png" size="29088" stream="wiki-sniffer16.png" tmpFilename="/var/tmp/CGItemp59834" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer17.png" attachment="wiki-sniffer17.png" attr="" comment="wiki-sniffer17" date="1260958947" path="wiki-sniffer17.png" size="30441" stream="wiki-sniffer17.png" tmpFilename="/var/tmp/CGItemp60000" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer18.png" attachment="wiki-sniffer18.png" attr="" comment="wiki-sniffer18" date="1260958965" path="wiki-sniffer18.png" size="25738" stream="wiki-sniffer18.png" tmpFilename="/var/tmp/CGItemp59824" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer19.png" attachment="wiki-sniffer19.png" attr="" comment="wiki-sniffer19" date="1260958982" path="wiki-sniffer19.png" size="33226" stream="wiki-sniffer19.png" tmpFilename="/var/tmp/CGItemp59758" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="wiki-sniffer20.png" attachment="wiki-sniffer20.png" attr="" comment="wiki-sniffer20" date="1260959003" path="wiki-sniffer20.png" size="130763" stream="wiki-sniffer20.png" tmpFilename="/var/tmp/CGItemp60011" user="FabianTamin" version="1"}%

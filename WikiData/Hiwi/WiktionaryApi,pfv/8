@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="LizhenQu" date="1193403691" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="LizhenWork"}%
+
+---+ Wiktionary API     
+
+---++ Tasks (nach Priorität)   
+
+| *Status ( /partly/done)* | *Aufgabe* | *Bemerkungen* |
+| done |  <nop>WordEntry entfernen ||
+|  done |  fehlerhafte Einträge durch Statistik erkennen und bereinigen (überlange Glossen, extrem viele Synonyme...) ||
+|  partly done <br /> | Language anpassen  |  except translation |
+|  done <br /> | Pos anpassen  ||
+|  in progress | Sense Speicherung anpassen |  Except german wiktionary <br /> |
+|  part | Evaluation ||
+|  in progress <br /> | Häufig vorkommende Sonderfälle bereinigen ||
+
+Weitere Punkte (Groß-/Kleinschreibung, Translation, Inflection usw.) nach Absprache.
+
+---++ Zeitplanung   
+
+| *Datum* | *Stunden* | <b>Anmerkungen<br /></b> |
+| 26-09<br /> | 3<br /> | WordEntry Elimination and  remove errors<br /> |
+| 29-09<br /> | 4<br /> | Language anpassen<br /> |
+| 27-10<br /> | 5<br /> | Sense Speicherung anpassen,Evaluation<br /> |
+| 28-10<br /> | 2<br /> | API schreiben<br /> |
+
+---++ Wiktionary Elements     
+|| *German* || *English* ||
+| *Element* | *exists in wiktionary* | *extracted / in progress / not started* | *exists in wiktionary* | *extracted / in progress / not started* |
+| synonyms | yes  | extracted  | yes  | extracted |
+| hypernyms<br /> | yes<br /> | extracted<br /> | have not seen | not started<br /> |
+| category<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| hyponym<br /> | yes<br /> | extracted<br /> | have not seen<br /> | not started<br /> |
+| antonym<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| gloss<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| example<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| translation<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| word language<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| part of speech <br /> | yes<br /> | improvement | yes<br /> | improvement<br /> |
+| derived terms<br /> | yes<br /> | extracted<br /> | yes<br /> | extracted<br /> |
+| Inflection<br /> | yes<br /> | in progress<br /> | yes<br /> | in progress<br /> |
+| meronym<br /> | have not seen<br /> | not started | no<br /> | extracted |
+| Verb entailment<br /> | have not seen | not started | no | not started |
+
+-- Main.ChristofMueller - 17 Aug 2007

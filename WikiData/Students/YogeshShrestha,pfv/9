@@ -1,0 +1,76 @@
+%META:TOPICINFO{author="petrak" comment="" date="1673019769" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="StudentsList"}%
+   * Talks/Deadline
+      * ????-??-?? final talk
+      * 2023-03-03 mid-term presentation
+      * 2023-06-12 planned submission deadline
+      * 2023-06-12 thesis submission deadline
+
+     * *2023-01-13 (Week 4)*
+         * Things we discussed:
+           * How to check whether to ask a clarification question or not?
+              * A naive approach would be to check the models confidence (probability in the last FFN) for the word filled in the prompt (and this will be our starting point).
+           * We have to find a way to identify whether the utterance is (or contains) a knowledge question.
+              * You found that are pretrained models available that could be used for that. We said to use them as a first step.
+              * Alternatively, you could also check for sentence with a question mark at the end (but this would be extremely naive).
+              * We discussed that question detection can be divided into multiple stages of increasing difficulty:
+                 * Direct questions ("Who is the current president of the United States?")
+                 * Implicit questions ("Please, tell me the name of the current president of the United States.")
+                 * Context-related questions ("Abraham Lincoln was a president of the United States. To be precise, he was the 16th president. Do you know what day he was murdered?")
+              * We said that we start with direct questions.
+           * How to generate the prompt?
+              * We have discussed to use rules.
+              * Please make sure that there are really no other works available that generate prompts from input sequences to query the model for knowledge. Please also check other fields, e.g., question answering. If so, please justify why we can't use them (their limitations).
+        * Next time we will discuss evaluation + how and what to train.
+        * Our next meeting will be on 16th January, 3pm.
+        * To discuss in the near future:
+           * Is it a good idea to generate clarification questions? Or would it be more natural to output the model's knowledge in a questioning and doubting way to the user, e.g., "[questioning / doubting phrase], [subject] [relation] [object]" -> "As far as I know, Abraham Lincoln was the president of the United States" (with "As far as I know" as doubting phrase). 
+              * Maybe you could also use templates for this (in either way)
+           * Regarding evaluation:
+              * As the models to use are trained on internet data, it might be hard to find cases where they really lack knowledge. For this reason, it might be easier to evaluate them using adversarial data (e.g., knowledge that is wrong or makes no sense).  
+              * Your overall task is to generate clarification questions. But how to measure the quality of the clarification questions? I.e., whether they address the missing knowledge, whether they motivate the user to provide the missing knowledge etc. I think for this we need a human evaluation (you have to check a representative amount of samples on your own).
+              * As your baseline models are trained on internet data, you have to give insights on the overlap between training data and eval data (e.g., what is the number of Wikipedia articles that were used in the training data and that are also contained in the evaluation data (FITS)). You could also remove overlapping data from the eval data (if this would not reduce the data too much). These insights are necessary to judge the representativeness of your evaluation. 
+
+   * *2022-12-30 (Week 3)*
+      * Things we discussed:
+         * ideas on potential baselines for identifying knowledge gaps
+            * We decided to probe the models using prompts that are generated from the dialogue context but target the current user utterance, e.g., Abraham Lincoln was the president of [MASK].
+      * ToDo for next week:
+         * We have to find answers for the following questions:
+            * How to check whether to ask a clarification question or not?
+               * A naive approach would be to check the models confidence (probability in the last FFN) for the word filled in the prompt.
+            * We have to find a way to identify whether the utterance is (or contains) a knowledge question.
+            * How to generate the prompt?
+               * You could use predefined relations, but then you need to decide which relation to use
+               * You could use templates
+               * ...
+      * To discuss in the near future:
+         * Is it a good idea to generate clarification questions? Or would it be more natural to output the model's knowledge in a questioning and doubting way to the user, e.g., "[questioning / doubting phrase], [subject] [relation] [object]" -> "As far as I know, Abraham Lincoln was the president of the United States" (with "As far as I know" as doubting phrase). 
+            * Maybe you could also use templates for this (in either way)
+         * Regarding evaluation:
+            * As the models to use are trained on internet data, it might be hard to find cases where they really lack knowledge. For this reason, it might be easier to evaluate them using adversarial data (e.g., knowledge that is wrong or makes no sense).  
+            * Your overall task is to generate clarification questions. But how to measure the quality of the clarification questions? I.e., whether they address the missing knowledge, whether they motivate the user to provide the missing knowledge etc. I think for this we need a human evaluation (you have to check a representative amount of samples on your own).
+            * As your baseline models are trained on internet data, you have to give insights on the overlap between training data and eval data (e.g., what is the number of Wikipedia articles that were used in the training data and that are also contained in the evaluation data (FITS)). You could also remove overlapping data from the eval data (if this would not reduce the data too much). These insights are necessary to judge the representativeness of your evaluation.
+
+   * *2022-12-23 (Week 2)*
+      * Things we discussed:
+         * Prompting might be an interesting approach
+      * ToDo for next week:
+         * Next week we will discuss three approaches that are potentially usable as starting points for us (focus on prompting and/or the Geva et al. paper)
+         * We also need to discuss how the models we want to use work and how they are trained. I think this is important as a first step (before thinking about how to access their internal knowledge). Please prepare something on that.
+
+   * *2022-12-16 (Week 1)*
+      * Things we discussed:
+         * What are clarification questions? You found that the definition from literature is not generally applicable to open-domain dialogues. For this reason, we agreed on calling them "knowledge-seeking questions" for now. However, for the final write-up, we have to find a unified term.
+         * FITS dataset
+         * The task description
+      * ToDo for next week:
+         * Read the model papers
+         * Start to research towards how to identify gaps in model internal knowledge (use section 3, 5, 7 from the survey paper as starting point).
+         * We have to identify overlapping dialogues between v1 and v2 of the FITS dataset as ground truth. I will provide you with a proper task description to that by the beginning of next week.
+
+   * 2022-12-12
+      * Dataset
+      * Baselines
+      * Slurm
+      * Papers

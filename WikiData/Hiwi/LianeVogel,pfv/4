@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="vogel" comment="save topic" date="1523446050" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+---++ Time Tracking
+
+Internal timesheet complete up to *dd.mm.yyyy*
+
+---+++ 2018-04
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 08.04.2018 | Seite /upload angelegt und in die Navigationsleiste eingebunden | 1.5 | |
+| 09.04.2018 | Dateien werden im Ordner gespeichert. Einlesen der Dateien, zählen von Labels nach Themen getrennt. | 2.5 | |
+| 10.04.2018 | Metadaten werden in json Datei abgespeichert. Labels werden vereinheitlicht. | 1 | |
+| 11.04.2018 | Erstellen der merge HTML Seite. | 1 | |
+| SUM | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+-- Main.ChristianStab - 2018-04-06

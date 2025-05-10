@@ -1,0 +1,132 @@
+%META:TOPICINFO{author="senge" comment="" date="1619607986" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Bachelor Thesis* : A Survey on the Effectiveness of Differential Privacy in the NLP Domain  
+
+*Supervisor*: Timour Igamberdiev
+
+*Start Date* : 05.04.2021 
+
+*Mid-Term Presentation Date* :  xx.xx.2021 
+
+*Final Presentation Date* : 28.09.2021  
+
+*End Date*: 04.10.2021
+
+---++++ *Weekly overview*
+---+ *05.04.2021 - 09.04.2021*
+
+*Status after the Last Week:*
+Currently Working on the Sentiment Analysis Task
+   * LSTM and Bert models are both implemented
+   * The ability to switch between DP and no DP was included
+   * Fintuning (explicitly state which layer of the Bert model should be trained) was included
+
+*To-Dos For Current Week:*
+Currently Working on the Sentiment Analysis Task
+   * implement early stopping class for epochs
+   * check accuracy for model improvements instead of loss
+   * use 5 different seeds for training
+   * run on the cluster and get accurate results for different model architectures 
+
+---+ *12.04.2021 - 16.04.2021*
+
+*Status after the Last Week:*
+Currently Working on the Sentiment Analysis Task
+   * implemented early stopping with accuracy and 5 Seeds.
+   * started to run the following models on the cluster:
+      * LSTM with no differential privacy and small spacy English model
+      * LSTM with no differential privacy and large spacy English model
+      * Transformer with no differential privacy where all layers of the Bert model are frozen
+      * Transformer with no differential privacy where all but the last two layers are frozen
+      * Transformer with no differential privacy and no Bert layers frozen 
+
+*To-Dos For Current Week:*
+Currently Working on the Sentiment Analysis Task
+   * Run the following models:
+      * LSTM with differential privacy
+      * Transformer with no DP and large Bert model
+      * All Transformer models with differential Privacy
+   * Start explaining the task and structure in the Thesis
+
+---+ *19.04.2021 - 23.04.2021*
+
+*Status after the Last Week:*
+Currently Working on the Sentiment Analysis Task
+   * ran DP on LSTM
+   * started DP with Transformer
+
+*To-Dos For Current Week:*
+Currently Working on the Sentiment Analysis Task
+   * try different learning rate for Transformers to achieve better results
+   * Fix division by zero error
+   * fix precision, recall F1 score function
+   * bert-base with DP
+   * separate trained part from frozen part of the model to only attach the trainable part to the PrivacyEngine
+
+---+ *26.04.2021 - 30.04.2021*
+
+*Status after the Last Week:*
+Currently Working on the Sentiment Analysis Task
+   * Fixed division by zero
+   * precision recall returns positive value (but still sometimes 0)
+   * created nn.Modules list for trainable parameters of the model to feed it into the PrivacyEngine
+   * Results for all no DP networks with different learning rates
+   * DP networks are running/scheduled
+   * Started to explain the task and structure in the Thesis
+
+*To-Dos For Current Week:*
+
+   *
+
+---+ *03.05.2021 - 07.05.2021*
+
+*Status after the Last Week:*
+
+   * 
+
+*To-Dos For Current Week:*
+
+   * 
+
+---+ *10.05.2021 - 14.05.2021*
+
+*Status after the Last Week:*
+
+   * 
+
+*To-Dos For Current Week:*
+
+   * 
+
+---+ *17.05.2021 - 21.05.2021*
+
+*Status after the Last Week:*
+
+   * 
+
+*To-Dos For Current Week:*
+
+   * 
+   * 
+
+---+ *24.05.2021 - 28.05.2021*
+
+*Status after the Last Week:*
+
+   * 
+
+*To-Dos For Current Week:*
+
+   * 
+   * 
+
+---+ *31.05.2021 - 04.06.2021*
+
+*Status after the Last Week:*
+
+   * 
+
+*To-Dos For Current Week:*
+
+   * 
+   * 

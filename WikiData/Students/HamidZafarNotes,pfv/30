@@ -1,0 +1,117 @@
+%META:TOPICINFO{author="aelmi" comment="reprev" date="1483555554" format="1.1" reprev="29" version="30"}%
+%META:TOPICPARENT{name="HamidZafar"}%
+---++ [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafar][Back]] 
+
+---+!! Notes
+---++ TODO
+   * Evaluation for distributed schema:
+      * Merge all models into one and run it on test set
+      * Load all models and run them on test set: Test set has to be big enough
+   * Synthesized dataset with more clusters *Done*
+   * Moving statistical strength to save computation time
+   * Find a optimal cluster assignment to available processes according to 
+      * Previous cluster assignments
+      * Balance load 
+---++ Evaluation
+   * As below:
+      * Split dataset into training and testing set
+      * Pre-process the input text data (train and test)
+         * Tokenize, Stemmer, Remove stop words
+         * four results:
+            * tokenized stemmed documents after removing stop words
+            * vocabulary
+            * coded documents
+            * position of target word in each documents
+      * Learn HDP topic model using training data, include vocabulary of test set
+      * Find test set topics using HDP topic model
+      * Learn a classifier using word sense training data and HDP topic model (
+         * A mapping between topics and word sense
+      * Evaluate HDP performance for word sense disambiguous on test set
+         * *Base line*
+      * Learn IMMC model using HDP topic model on training set
+         * *Using only one process*
+         * Start with small synthetic dataset 
+      * Learn a classifier using word sense training data and IMMC model (
+         * A mapping between segment-type and word sense
+      * Evaluate IMMC performance for word sense disambiguous on training set
+         * *sanity check* 
+      * Implement predication for IMMC
+      * Find test set segment-type using IMMC model and newly implemented prediction part
+      * Evaluate IMMC performance for word sense disambiguous on test set
+      * If everything works out so far, run the IMMC model with multiple processes
+   * How to combine the results of multiple processes of IMMC??
+      * if get to the point that all the data points belong to a actual cluster located on one node, then we just need to combine all results together
+         * this way, MCs are fine, but transition between MCs is not well defined
+   * Add Predication to IMMC:
+      * Run sampler on test is enough
+---++ Event Sequence Description 
+There are some problems:
+   * Still the vocabulary size huge. (134k datapoint/ 2k vocab, 3k only happened one)
+   * The patterns are not that complicated, usually just a line with some branches and no loops
+   * Perhaps using pattern of each event sequence to put them into a segment-type
+---++ Topic modeling
+---++++ Perplexity 
+   <latex title="Example">
+per(D_{test})=exp\{-\frac{\sum_{d=1}^{M}\log p(\mathbb{w}_d)}{\sum_{d=1}^{M}N_d}\}
+   </latex>
+integrate over the Dirichlet prior for all possible topic mixtures and use the learned topic multinomials.
+Sum over all topics, probability of a word given the topic.
+
+---++ Further impl
+   * split the data of a heavy node between e.g. two nodes and merge the stats after inference
+
+---++ Smart Move Proposal
+   * Find similar segment-type between processors
+   * Should compare intra-transition matrix
+      * Normalize the transition matrix for each segment-type
+      * create a distance matrix consists of similarity between all possible combination of segment-types in all processors
+         * The MC's states of a segment-type consist of the unique observations. Hence the internal representation of each segment-type (MCs) between different processor are comparable.
+         * Make sure that two matrices have at least a similar item.
+         * Use a threshold to not propose movement beyond it. *Done*
+      * Choose the most similar one
+      * Move stats if there is a empty slot in the destination process 
+         * Doesn't work, possible explanation: we move the segment-type based on their similarities, so by moving the stats, we actually creating a new segment-type very similar to existing one in the destination cluster.
+      * Based on above, don't move stats.Just assign update pid (keep the load balance by moving stuff to the proc with less points)
+         * Perhaps merge stats. *Done, simple average*
+         * Try out weighted average.
+      * Change the number of local iteration for each process based on their local dataset's size. 
+         * Log the duration and dataset size of a sample run, did linear regression to find out the coefficient. used it to maximize the processing utilization by setting the number of iteration based on the dataset size.
+         * Works well in this respect.
+         * Perhaps can be more dynamic, e.g. adapt the current run info (not necessary now)
+   * *Too many clusters*: makes it time consuming to find similar clusters.
+      * p: number of proc, c: number of clusters, 
+
+Scalable IMMC implementation
+   * According to AVParallel of Williamson, I splitted the dataset according to a Dirichlet distribution. 
+   * After each iteration, coordinator should propose a cluster to be moved. Williamson uses a proposal based on size of clusters. 
+      * I think the goal is to move data around so that each process would have all the data belong to a cluster
+      * So we can, compute similarity of each clusters in different process and choose one according to a similarity metric.
+   * Then a metropolis hasting step decides whether or not it would be moved.
+   * Move the cluster from a proc to another one
+      * Data
+      * Stats info
+         * What variable should be moved?
+         * IMMC uses L as approximate upper limit. What if there is no empty cluster in the destination proc?
+
+Further works:
+   * Evaluation: Precision/recall 
+      * Synthesized data: 
+         * we have the ground truth + each process internal structure
+         * Precision/recall/f1
+         * Use internal structure
+   * We need a metric to measure goodness of a model in regard to the dataset. So that we could compare different models. also to make sure that the scalable version keep the quality while brings speed up
+   * Visualization
+      * Goals: 
+         * It should be easy to grasp. 
+         * It should a have fixed structure so that one can compare two visualizations.
+         * It should show how data are clustered and their internal Markov chain
+   * Merge split step
+   * present final model by using each processor model
+      *  Merge similar cluster
+   * How scalable can it get in regard to the number of processing resources?
+   * What we can do to parallelize local computation?
+   * Find a NLP application!
+      * Word Sense Induction (WSI)
+      * Event Sequence Description (ESD)
+
+-- Main.HamidZafartavanAelmi - 2016-10-16

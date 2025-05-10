@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="nazir" comment="" date="1546175943" format="1.1" reprev="13" version="13"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+%TOC%
+
+----+ November 2018
+
+*Workload: 40h*
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20|"}%
+| *Date* | *Task* | *Hours* | *Notes* |
+|07.11.2018 |setting up environment |4.0 | |
+|09.11.2018 |reading publication and manuals. Experimenting with the website |5.0 | |
+|14.11.2018 |understanding the code, learning wicket framework,  |6.0 | |
+| | | | |
+|15.11.2018 |logged event from the server to UI, understanding ajax (confusions), tried HighCharts javascript library |6.0 | |
+|22.11.2018 |include javascript to wicket, learning/working with ajax, creating chart on the recommendationSidebarPanel |9.0 | |
+|24.11.2018 |code refactoring, Changed Highchart to c3 finished with AJAX. fixing chart CSS (In progress). code push |4.0 | |
+|27.11.2018 |changes after code review. |6.0 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+|3.12.2018 |css rendering issue |3.0 | |
+|5.12.2018 |graph for multiple recommenders |8.0 | |
+|10.12.2018 |from november |3.0 | |
+|11.12.2018 |PR comments |7.0 | |
+|17.12.2018 |Work Changes requested  |5.0 | |
+|19.12.2018 |Work Changes requested  |6.0 | |
+|20.12.2018 |Work Changes requested |8.0 | |
+|01.01.2019 |from december. (Issue #770 and corresponding changes in #649. Some fixes. Unit test for RecommendationServiceImpl) |15.0 | |
+
+-- Main.JanChristophKlie - 2018-11-01

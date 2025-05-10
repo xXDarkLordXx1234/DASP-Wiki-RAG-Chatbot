@@ -1,0 +1,96 @@
+%META:TOPICINFO{author="MichaelKutschke" date="1351945283" format="1.1" version="74"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Michael Kutschke Work
+---++ Resources
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/LOEWE-TP23/trunk/de.tudarmstadt.ukp.loewe.tp23.quality/][SVN]]
+   * Computeserver =moe.ukp.informatik.tu-darmstadt.de= has been reserved for the challenge
+   * JWPL Database incl. revisions has been installed on moe
+      * wiki_en_20120104_rev
+      * Access to db from outside only via ssh-tunnel (open a ssh-tunnel to moe and connect to mysql on moe through the tunnel)
+
+-- Main.OliverFerschke - 2012-03-16
+
+ * [[http://sweble.org/gitweb/?p=sweble-wikitext.git;a=blob;f=swc-parser-lazy/doc/ast.txt;h=64fa42dd5883e00349a619ce3040c2ff26402b2d;hb=wom][Sweble AST-Node dokumentation]]
+
+---
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Michael Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| PAN2012 | 30.3.2012 | 2 | Einführung in die Infrastruktur |
+| PAN2012 | 30.3.2012 | 1.5 | Oliver's Papers |
+| PAN2012 | 31.3.2012 | 1.5 | Oliver's Papers |
+| PAN2012 | 2.4.2012 | 4 | Einarbeitung in UIMA etc. (Tutorials) |
+| PAN2012 | 3.4.2012 | 1.5 | Besprechung |
+| PAN2012 | 4.4.2012 | 2 | Setup des Rechners mit Oliver (verbuggt) |
+| PAN2012 | 10.4.2012 | 4 | Besprechung & erste einfache Pipeline |
+| PAN2012 | 11.4.2012 | 2.5 | Papers & weitere Programmierung |
+| PAN2012 | 12.4.2012 | 2 | LinkFeatureExtractor & Einarbeitung in Sweble |
+| PAN2012 | 14.4.2012 | 2.5 | mehr Features |
+| PAN2012 | 16.4.2012 | 2.5 | Besprechung, Extraktion der ArtikelIds |
+| PAN2012 | 17.4.2012 | 3 | CV-Pipeline |
+| PAN2012 | 18.4.2012 | 2 | CV-Pipeline |
+| PAN2012 | 21.4.2012 | 2.5 | Organisation des Projektes, Recherche |
+| PAN2012 | 23.4.2012 | 3.5 | dynamische Erzeugung von Classifiern, Features |
+| PAN2012 | 24.4.2012 | 3 | Features |
+| PAN2012 | 2.5.2012 | 3 | Besprechung |
+| PAN2012 | 4.5.2012 | 2 | Weitere Konfigurationsmöglichkeiten der Pipeline, Vorbereitung auf die Ausführung auf dem Computeserver |
+| PAN2012 | 5.5.2012 | 1.5 | Vorbereitung auf Ausführung auf dem Computeserver |
+| PAN2012 | 7.5.2012 | 4 | Einarbeitung in Weka (in Vorbereitung auf Feature Selection), export des Projekts für Ausführung auf Moe |
+| PAN2012 | 8.5.2012 | 2.5 | Besprechung m. Oliver und Artem |
+| PAN2012 | 9.5.2012 | 2 | Arbeit mit Artem an Feature Selection |
+| PAN2012 | 10.5.2012 | 1 | Bugfixing mit Artem |
+| PAN2012 | 11.5.2012 | 1.5 | Parametrisierung, Klassen für "Nur-Training" und "Nur-Klassifizierung" |
+| PAN2012 | 14.5.2012 | 3.5 | LIBLINEAR integration, lexikalische Features für Discussion Pages |
+| PAN2012 | 15.5.2012 | 3.5 | Feature pruning and discretization |
+| PAN2012 | 16.5.2012 | 3 | Feature discretization |
+| PAN2012 | 21.5.2012 | 6 | AdaBoost Trainer, see wiki for the results :-) |
+| PAN2012 | 22.5.2012 | 3.5 | Vorbereitung der Läufe |
+| PAN2012 | 23.5.2012 | 4 | Featuresets |
+| PAN2012 | 24.5.2012 | 1.5 | Runs |
+| PAN2012 | 28.5.2012 | 1.5 | Speichernutzung |
+| PAN2012 | 28.5.2012 | 2 | Besprechung und Anpassung des Trainingsprogramms (JSON Konf.) |
+| PAN2012 | 30.5.2012 | 1.5 | |
+| PAN2012 | 11.6.2012 | 1 | bugfixing, Kommentare |
+| PAN2012 | 12.6.2012 | 3 | Besprechung, Classify.java |
+| FlawFinder | 7.7.2012 | 5 | Weka support |
+| FlawFinder | 13.7.2012 | 1.5 | Weka-based Crossfold validation |
+| FlawFinder | 19.7.2012 | 2.5 | kleinere Verbesserungen (siehe FlawFinder wiki), neue DKPRO-Version |
+| FlawFinder | 20.7.2012 | 2.5 | Debuggen der neuen DKPRO-Version :S |
+| FawFinder | 23.7.2012 | 2.5 | Trennen von Feature Extraction und Evaluation |
+| FlawFinder | 27.7.2012 | 6 | Vorbereitung auf revisionsbasierte Pipeline |
+| FlawFinder | 30.7.2012 | 1.5 | |
+| FlawFinder | 2.8.2012 | 4 | Feature selection output, new features |
+| FlawFinder | 3.8.2012 | 3 | Feature Extraktoren |
+| FlawFinder | 4.8.2012 | 3 | Bugfixes |
+| FlawFinder | 6.8.2012 | 4 | Bugfixes |
+| FlawFinder | 7.8.2012 | 1.5 | Bugfixes |
+| FlawFinder | 16.8.2012 | 0.5 | Besprechung |
+| FlawFinder | 18.8.2012 | 3 | TODOs bearbeiten |
+| FlawFinder | 20.8.2012 | 1 | GracefulRanker |
+| FlawFinder | 21.8.2012 | 1 | |
+| FlawFinder | 4.9.2012 | 1 | Besprechung |
+| FlawFinder | 5.9.2012 | 1.5 | Vorbereitung Section-based pipeline |
+| FlawFinder | 6.9.2012 | 3 | Section-based pipeline, variance between folds |
+| FlawFinder | 7.9.2012 | 2 | wordlist based feature extractor |
+| FlawFinder | 8.9.2012 | 4 | letzte ToDos, one-class classification |
+| FlawFinder | 10.9.2012 | 2 | one-class classification |
+| FlawFinder | 11.9.2012 | 0.5 | Besprechung |
+| FlawFinder | 17.9.2012 | 1 | one-class classification |
+| FlawFinder | 21.9.2012 | 2 | one-class classification |
+| FlawFinder | 24.9.2012 | 1 | one-class class. |
+| FlawFinder | 25.9.2012 | 3.5 | experiments |
+| FlawFinder | 1.10.2012 | 3 | experiments |
+| FlawFinder | 2.10.2012 | 0.5 | Besprechung |
+| FlawFinder | 9.10.2012 | 1.5 | Überarbeitung Feature Pruning |
+| FlawFinder | 13.10.2012 | 3 | Überarbeitung Feature Pruning, Kommentare, Testen |
+| FlawFinder | 17.10.2012 | 4 | Bugfixing & Besprechung |
+| FlawFinder | 22.10.2012 | 1 | Einrichtung des Workspace auf Laptop |
+| FlawFinder | 24.10.2012 | 1.5 | cleaning up, better performance for feature pruning |
+| FlawFinder | 26.10.2012 | 1.5 | refactoring |
+| FlawFinder | 29.10.2012 | 1 | maintenance |
+| FlawFinder | 31.10.2012 | 2.5 | bugfixing |
+| FlawFinder | 2.11.2012 | 1.5 | Feature Pruning recoded |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 180 | bis Ende September |
+<nop>

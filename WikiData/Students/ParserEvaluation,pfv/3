@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="IrinaAlles" date="1340790694" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="IrinaAlles"}%
+-- Main.IrinaAlles - 2012-06-26
+
+---+ Parser Evaluation
+
+---++ Malt Parser
+---++++ Stackproj
+
+| *Data Set* | *accuracy / Metric:LA* |  *counter / Metric:LA* |  *correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token* |
+| *10%* | 0.87 |  1 |  0.87 | 0.763  | 1  | 0.763  |  0.8 |  1  |  0.8 |  Row mean |
+| *50%* | 0.893  | 1  |  0.893 |  0.804 | 1  | 0.804  |  0.833 |  1 |  0.833 |  Row mean |
+| *100%* |-||||||||||
+
+---++++ Covproj
+
+| *Data Set* | *accuracy / Metric:LA* |  *counter / Metric:LA* |  *correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token* |
+| *10%* | 0.825  | 1  | 0.825  | 0.748  | 1  | 0.748  | 0.782  | 1  | 0.782  | Row mean |
+| *50%* | 0.856  |  1 |  0.856 |  0.793 | 1  |  0.793 |  0.819 |  1 |  0.819 |  Row mean |
+| *100%*|-||||||||||
+
+---++++ Covnonproj
+
+| *Data Set* | *accuracy / Metric:LA* |  *counter / Metric:LA* |  *correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token* |
+| *10%* | 0.87  |  1  |  0.87  |  0.78 | 1  | 0.78  |  0.817  | 1  | 0.817  |  Row mean |
+| *50%* |-||||||||||
+| *100%*|-||||||||||
+
+---++ Mate Tools Parser
+
+Gold: /srv/home/alles/DependencyParsing/data/tigerSplit/dev_prep.conll<br /> Parsed: /srv/home/alles/DependencyParsing/parser/mateToolsParser/output/mate10TigerModel_out_06.conll
+
+| *DataSet* | *accuracy / Metric:LA* |  *counter / Metric:LA* |  *correctcounter / Metric:LA*  | *accuracy / Metric:LAS* |  *counter / Metric:LAS* |  *correctcounter / Metric:LAS* |  *accuracy / Metric:UAS* | *counter / Metric:UAS* |  *correctcounter / Metric:UAS*  | *Token* |
+| *10%* | 0.909  | 1  | 0.909  |  0.835 |  1  |  0.835 |  0.871 |  1  |  0.871  |  Row mean |
+| *50%* | 0.935  | 1  | 0.935  |  0.879 |  1  | 0.879  |  0.905 |  1 |  0.905 |  Row mean |
+| *100%* | 0.945  |  1 | 0.945  |  0.897 | 1  | 0.897  |  0.919 | 1  |  0.919 |  Row mean |
+
+---++ Stanford Parser
+---++ Confusion Matrix
+| *dev/gold* || *Malt stackproj* | *Malt covproj* | *Malt nivrestandard* | *Malt covnonproj* | *Mate* | *Stanford* |
+| *Malt*  | *stackproj* | 1 |||| 0.902 | ? |
+| ^ | *covproj* | ? | 1 ||| 0.871 | ? |
+| ^ | *nivrestandard* | ? | ? | 1 || 0.866 | ? |
+| ^ | *covnonproj* | ? | ? | ? | 1 | 0.912 | ? |
+| *Mate* || 0.908 | 0.878 | 0.866 | 0.91 | 1 | ? |
+| *Stanford* || ? ||||  ? ||

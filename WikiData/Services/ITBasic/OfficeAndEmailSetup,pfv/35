@@ -1,0 +1,118 @@
+%META:TOPICINFO{author="bugert" comment="" date="1570805052" format="1.1" reprev="35" version="35"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ !! UKP Mail Service
+<div style="float:right; border: solid grey 1px; padding: 0.25em; margin: 0.25em;"> %TOC% </div>
+
+(More information about your [[#AnchorTUEmail][additional personalized email address]] from the TU Darmstadt can be found at the end of this page.)
+
+---++ Terms of Use
+   * Observe netiquette at all times!
+
+---++ Outlook Web Access (Webmail)
+You can read and send mail in your web browser through TUDA [[https://mx.ukp.informatik.tu-darmstadt.de/owa/][Outlook Web Access (OWA)]] at https://mx.ukp.informatik.tu-darmstadt.de/owa/. Your username is =UKP\&lt;username>=. However this is more for situations when there is no Outlook client available, since OWA has reduced functionality in comparison to Outlook.
+   * *note*: When using outlook web access with Chrome browser you will not have access to full functionalities of outlook (such as calendar and contacts). Please use IE or Firefox and be sure that the option 'Use the light version of Outlook Web App' is unchecked to access full functionalities of outlook.
+
+---++ Microsoft Outlook 2010
+Microsoft Outlook is the only officially supported client, and is available in the Windows VM on your workstation. When you start it, enter your details into the dialogs presented to you:<br>
+   * Username: !YourUsername@ukp.informatik.tu-darmstadt.de (note: the domain name, after the @, *<span style="color:red">has to be ukp.informatik.tu-darmstadt.de, regardless of your affiliation</span>*; this is just for login purposes)
+   * Password: !YourPassword
+
+ and leave it to Outlook to detect all settings automatically. If any problem occurs, please contact the system administrators by opening an issue in the issue tracker.
+
+To add an account manually go to SETTINGS and select "Access Outlook from an arbitrary location" ("Von beliebiger Stelle auf Outlook zugreifen").
+
+---+++ Notes
+   * The very same configuration settings apply for Apple iPhone or Google Android OS.
+
+---++ Thunderbird
+
+Mozilla Thunderbird is not officially supported by UKP TUDA.  The process of creating a new account within Thunderbird is described below. The given settings must be provided with your own credentials as appropriate.
+
+---+++ Setup IMAP
+The Exchange server provides the standard IMAP access for checking mail with other mail clients. Use the following settings, substituting your user name for =UKP domain account username=. The exact names of the fields may vary from client to client; these are the ones used by Thunderbird.
+   * Server type: IMAP
+   * Server name: =mx.ukp.informatik.tu-darmstadt.de=
+   * Server IP: =130.83.167.135=
+   * Port: =993=
+   * Authentication method: NTLM
+   * Connection security: SSL/TLS
+   * User Name: =UKP domain account username=
+<img src="%ATTACHURLPATH%/UKP_IMAP_settings.png" />
+
+---+++ Setup SMTP
+Our Exchange server provides the standard SMTP access for sending mail with other mail clients. Use the following settings, substituting your user name for mine.  (The exact names of the fields may vary from client to client; these are the ones used by Thunderbird.)
+   * Server type: SMTP
+   * Server name: =mx.ukp.informatik.tu-darmstadt.de=
+   * Server IP: =130.83.167.135=
+   * Port: =587=
+   * Authentication method: NTLM
+   * Connection security: STARTTLS
+   * User Name: =UKP domain account username=
+<img src="%ATTACHURLPATH%/UKP_SMTP_settings.png" />
+
+If Thunderbird does not allow you to send mails, look in the [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/Lab/MailService#Known_Issues][Troubleshooting section]] (notably Thunderbird > v38).
+
+---+++ Subscription
+By default the e-mail client may subscribe you only to the "Inbox" folder. You may need to edit the IMAP account settings to subscribe to other directories such as "Sent" (or "Gesendete Elemente"). To subscribe right-click on your account in the left pane of Thunderbird's main window and choose "subscribe".
+
+<img src="%ATTACHURLPATH%/thunderbird-subscribe.png" alt="Thunderbirds subscription window for registered mail accounts"/>
+
+After subscribing, you should reconfigure the e-mail account. The recommended settings for the section Copies & Folders are displayed in the screenshot below. It is important to select the directory/folder, previously subscribed to as a different storage location, from the list.
+
+<img src="%ATTACHURLPATH%/thunderbird-copies.png" alt="Thunderbirds subscription window for registered mail accounts"/>
+
+---+++ Notes
+   * The very same configuration settings apply for Apple iPhone or Google Android OS.
+
+---++ Mail Forwarding
+It is possible to do mail forwarding of your UKP-TUDA mail to any given mailbox (e.g. a UKP-DIPF mailbox). There are two ways to do this either by setting the redirect manually in OWA or by opening a ticket in the !BugTracker and requesting a permanent redirect within Exchange.
+
+The forwarding can be configured with OWA or the desktop Outlook client. The following description is for OWA. When logging in, it is important to *not* choose the OWA light version: You must untick "Use the light version of Outlook Web App" at the initial login screen and use a supported web browser. Then to create the rule after login, select "Options" --> "Create an Inbox rule..." --> "New..." --> "When the message arrives, and: [Apply to all message]" --> "Do the following: Redirect the message to...". Then type in your destination email into the "Message recipients" field --- don't use something like "Surname, !FirstName" from an address book, in case these resolve to multiple email addresses. Then you are done.
+
+Notes:
+   * The redirection rule leaves a copy of the original mail on the server, so you can create additional rules to mark the email as read and delete it too if you want to be clever. Take care that multiple rules are ordered correctly.
+   * The "mark as read" rules in the desktop Outlook client are only processed when the client is running. So it is better to use the OWA web client for configuration of this rule in particular.
+   * There may be a delay of a few minutes for your mail to be redirected after the rules have been applied.
+
+---++ Known Issues
+
+<!-- If your account was migrated from the TK to the new UKP Exchange server, you may find that e-mail messages created on the old TK Exchange server now have mangled e-mail addresses, such as &lt;IMCEAEX-_O=ASC_OU=EXCHANGE+20ADMINISTRATIVE+20GROUP+20+28FYDIBOHF23SPDLT+29_CN=RECIPIENTS_CN=ZESCH@ukp.informatik.tu-darmstadt.de&gt;.  This is a known issue and prevents you from directly responding to old e-mails. You will have to manually change the address when replying. -->
+
+---+++ Problems sending mail
+
+For Thunderbird 38 and newer:
+
+   * Go to =Edit > Preferences > Advanced > General > Config Editor=
+   * Enter =network.auth.force-generic-ntlm-v1=
+   * Set value to =true=
+See also https://support.mozilla.org/en-US/questions/1067385.
+
+If you still have problems sending mail via the UKP SMTP server, you can alternatively use the HRZ SMTP server. This requires that you have a TU-ID.
+
+   * SMTP: smtp.tu-darmstadt.de
+   * Port: 465
+   * Username: TU-ID
+   * TLS/SSL
+   
+See also the [[http://www.hrz.tu-darmstadt.de/mail/e_mail/mail_mitarbeiter/mail_mitarbeiter_einrichten/mail_mitarbeiter_programme/index.de.jsp][official HRZ pages]].
+
+---+++ Global Address Book doesn't update
+*Only for Windows!!* If the Outlook address book is missing new researchers, students or interns, please download [[%ATTACHURLPATH%/adressbook.cmd][this script]].
+Run instructions:
+   * Make sure file extension of the downloaded script is ".cmd"
+   * Open Windows cmd (Win+R, "cmd", Enter), navigate to location of script
+   * Run "adressbook.cmd" and follow instructions
+   
+---++ Additional personalized email address from TU Darmstadt
+#AnchorTUEmail
+   * In September 2019 the HRZ (University IT-Service and Computing Centre) has launched new personalized email addresses with the format [first name].[last name]@tu-darmstadt.de.
+   * It is your responsibility to set up a forwarding from this new @tu-darmstadt.de address to your @ukp.informatik.tu-darmstadt.de address. Official instructions: [[https://www.hrz.tu-darmstadt.de/media/e_mail_und_groupware/groupware_1/2019-08-29_Anleitung_zur_Weiterleitung.pdf][German]] or [[https://www.hrz.tu-darmstadt.de/media/e_mail_und_groupware/groupware_1/2019-08-29_Anleitung_zur_Weiterleitung_English.pdf][English]] 
+   * %ICON{warning}% Please make sure to continue to use your UKP mail address for all official purposes and communication you do as a UKP member (on the UKP website, for conference registrations, on slides, business cards, ...).
+
+
+%META:FILEATTACHMENT{name="UKP_IMAP_settings.png" attachment="UKP_IMAP_settings.png" attr="" comment="UKP SMTP server settings (Thunderbird)" date="1329407107" path="UKP_IMAP_settings.png" size="6266" user="TristanMiller" version="3"}%
+%META:FILEATTACHMENT{name="UKP_SMTP_settings.png" attachment="UKP_SMTP_settings.png" attr="" comment="UKP SMTP server settings (Thunderbird)" date="1329391065" path="UKP_SMTP_settings.png" size="7088" user="TristanMiller" version="2"}%
+%META:FILEATTACHMENT{name="thunderbird-copies.png" attachment="thunderbird-copies.png" attr="" comment="" date="1369838656" path="thunderbird-copies.png" size="140922" user="hollstein" version="1"}%
+%META:FILEATTACHMENT{name="thunderbird-subscribe.png" attachment="thunderbird-subscribe.png" attr="" comment="" date="1369838699" path="thunderbird-subscribe.png" size="55791" user="hollstein" version="1"}%
+%META:FILEATTACHMENT{name="adressbook.cmd" attachment="adressbook.cmd" attr="" comment="" date="1539354892" size="666" user="herrlich" version="1"}%
+%META:TOPICMOVED{by="bugert" date="1570805052" from="Services.MailService" to="Services/Lab.MailService"}%

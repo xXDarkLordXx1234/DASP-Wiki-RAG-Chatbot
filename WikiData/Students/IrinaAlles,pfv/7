@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="IrinaAlles" date="1343982913" format="1.1" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.IrinaAlles - 2012-06-21
+---+ Unstructured Information Management Lab
+_Comparative study of dependency parsers for the German language._
+
+This study's goal is the evaluation and comparison of dependency parsers for the German language.
+Dependency parsers produce a grammar called "dependency grammar" which describes the structure of a sentence in terms of words and the binary syntactic and semantic relations between them. 
+
+The parsers for English are very advanced and can be considered as reliable pre processing step for further NLP tasks, whereas the number of dependency parsers and available models for the German language is humble and their performance often unclear.
+Therefore this study focuses especially parsers for the German language. The evaluation does not only consider traditional performance measures but also usablility factors as ease of use, training and parsing time and performance on different data sets.
+
+The following sections give an introduction to the evalutated parsers, the data sets used for training and testing, and the evaluation setup. The evaluation results are presented in the last section.
+
+
+   * [[Dependency Parser][Dependency Parsers]]
+   * [[Corpora][Corpora]]
+   * [[Setup][Setup]]
+   * [[ParserEvaluation][Evaluation]]

@@ -1,0 +1,122 @@
+%META:TOPICINFO{author="ArtemVovk" date="1281081313" format="1.1" reprev="200" version="200"}%
+%META:TOPICPARENT{name="WebHome"}%
+   ---+ Artem Vovk Work
+
+---++ Work
+
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Redirect Service (instead of proxy) | 90 |
+| Wikulu fuer DIPF | 90 |
+| Wikulu Refactoring | 90 |
+| Configuration manager | 25 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Wikulu fuer DIPF | 01.07.2010 | 4 | <ul><li>Keyphrase highlighting wurde fuer plural Woerte angepasst(RegExp). Testen. Beim Testen wurde browser incompatibility entdeckt(Es wurde in Mozilla nicht immer richtig gezeigt). Versuche dieses Problem zu loesen</li></ul> |
+| Wikulu fuer DIPF | 02.07.2010 | 3 | <ul><li>Weitere versuche Keyphrase Highlighting zu korrigieren</li><li>Es wurde andere jQuery Library(replacer) gefunden und fuer highlighting angepasst</li></ul> |
+| Wikulu fuer DIPF | 04.07.2010 | 2 | <ul><li>Testen und Anpassen von Keyphrase Highlighting. Jetzt es funktioniert in jedem Browser</li></ul> |
+| Wikulu Refactoring | 05.07.2010 | 3 | <ul><li>Refactoring von wikulu</li><li>Beratung mit Nico</li></ul> |
+| Wikulu Refactoring;Wikulu fuer DIPF | 08.07.2010 | 4 | <ul><li>InjectService Refactoring</li><li>Index fuer Wikipedia</li><li>"Muendigkeit" Problem</li></ul> |
+| Wikulu fuer DIPF | 09.07.2010 | 4 | <ul><li>"Muendigkeit" problem wurde geloest!</li><li>Wikipedia index</li></ul> |
+| Wikulu fuer DIPF | 13.07.2010 | 2 | <ul><li>Beratung mit Nico</li><li>Lucene index update</li><li>Deploying vom aktuellen Wiki</li></ul> |
+| Studie | 28.07.2010 | 1 | <ul><li>Daniel Studie</li></ul> |
+| Wikulu Refactoring | 30.07.2010 | 4 | <ul><li>Aenderungen in KeyPhraseExtractor plugin(wurde fuer neues Pluginsystem angepasst)</li><li>Versuche LinkSuggestion zum laufen zu bringen</li></ul> |
+| Wikulu Refactoring | 31.07.2010 | 4 | <ul><li>Fehler in LinkSuggestion wurde gefunden</li><li>Design von ConfigManager</li></ul> |
+| Configuration manager | 04.07.2010 | 7 | <ul><li>Beratung mit Nico</li><li>Design von ConfigurationManager</li><li>Implementierung von ConfigurationReader</li></ul> |
+| Configuration manager | 05.07.2010 | 5 | <ul><li>Weiteres Design(UML)</li><li>Implementierung</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 135 (15 Übertrag von Juni) | bis Ende September |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+ImportingWikipedia
+
+SuggestSectionProblems
+
+TestPage?
+
+
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+   * [[%ATTACHURL%/build.xml][build.xml]]: Script for importing wikipedia
+
+---------------------
+
+ReleasePackageErrors
+
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"
+
+
+---++ Previous Work
+
+   * ArtemVovkPreviousWork
+
+   
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="MiniManual.pdf" attachment="MiniManual.pdf" attr="" comment="Manual to %22Preloaded descriptor selection%22" date="1234806618" path="MiniManual.pdf" size="40665" stream="MiniManual.pdf" tmpFilename="/var/tmp/CGItemp37940" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="build.xml" attachment="build.xml" attr="" comment="Script for importing wikipedia" date="1248857901" path="build.xml" size="2013" stream="build.xml" tmpFilename="/var/tmp/CGItemp61365" user="ArtemVovk" version="1"}%

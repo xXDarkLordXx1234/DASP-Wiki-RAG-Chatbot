@@ -1,0 +1,104 @@
+%META:TOPICINFO{author="NiklasJakob" date="1204125948" format="1.1" version="5"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Meeting Protokolle
+%TOC%
+
+---++ 27.02.08
+
+   * Memo für NJ: bei Torsten ggf. zum Named Entity Corpus nachhaken
+   * NJ: Unsere Wikipedia API unterstützt auch Suchen mit Wildcards. Bitte binde sie so bald wie möglich statt einer Eigenimplementierung ein
+
+---++ 13.02.08
+
+   * Ort: UKP, Teilnehmer: Arne, Niklas
+   * Arne hat String Matching zwischen NER Kategorien und Wikipedia Kategorien implementiert
+   * Von heise.de, golem.de, etc. wurden 14000 Dokumente gecrawled, ein Dokument hat ~ 300 Wörter und beinhaltet nach dem momentanen Stand ~5 - 10% Named Entities
+   * Arne hat Probleme mit unserer Wikipedia Library - er schickt mir die Fehlermeldungen
+   * Wir haben die UIMA Pipeline erneut besprochen und sind an konkreten Beispielen die Erstellung der Komponenten durchgegangen
+
+---++ 30.01.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob, Iryna Gurevych
+
+   * Stanford Named Entity Recognizer
+      * Probieren, ob auf deutsch anpaßbar
+   * Implementierung des R.Snow-Papers anschauen
+   * Relation Learning: 3 Papers
+      * PrefixSpan: Mining Sequential Patterns Efficiently by Prefix-Projected Pattern Growth
+         * Ähnlichkeit von zwei Begriffspaaren zueinander
+         * hier gibt es eine Implementierung -> anschauen
+      * Learning to Extract Relations from the Web using Minimal Supervision
+         * Web als Quelle für Relationen verwenden
+      * Harvesting Relations from the Web - Quantifiying the Impact of Filtering Functions -
+         * Web als Quelle für Relationen verwenden
+         * evtl. gibt es hier eine Implementierung
+
+   * Aufgaben:
+      * Textkorpus erschließen
+      * Google verwenden, um Relationen zu finden
+
+---++ 08.01.2008
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Niklas Jakob
+
+   * Aufgabe an Arne: i-views nach Import-/Export-Möglichkeiten fragen
+   * Lernen:
+      * *Konzepte:* Entitäten finden
+         * Named Entity Recognition (Wissensquellen z.B. Wikipedia)
+         * Heurisitken auf Satzebene
+      * *Relationen:* Entitäten finden
+         * Semantische Netze (WordNet, Cyc)
+         * Heuristiken auf Netze (Subjekt, Prädikat, Objekt)
+
+---++ 12.12.2007
+   * *Ort:* i-views
+   * *Teilnehmer:* Arne Pottharst, Christian Schuckmann, Iryna Gurevych, Niklas Jakob, Christoph Müller
+
+   * Überthema: Strukturierte Datenbestände auf unstrukturierte Anwenden
+      * Strukturiert: Wissensnetz; unstrukturiert: Natürlichsprachlicher Fließtext
+   * Relationen gegeben, Instanzen finden
+   * ~600-800 Relationen in natura
+   * Ontology Learning
+   * population, wenig neue Relationen/Konzepte
+   * erkennen von:
+      * Wörtern (Instanzen mit bestimmter Wahrscheinlichkeit)
+      * Relationsinstanzen (A _stellt her_ B)
+   * Verwendete Daten:
+      * Redaktionelle Texte (z.B. heise.de)
+      * User Generated Content (z.B. Foren, Blogs)
+      * -> Methode von Textart abhängig?
+   * Domänenspezifische Instanzen/Relationen extrahieren
+   * Abgleich mit dem Netz
+   * Benötigt: Named Entity Recognition: Firmen, Personen, Orte, Produkte
+
+   * *Geplanter Ablauf der Diplomarbeit:*
+      * Einarbeitung
+      1 Wissensnetz+Daten erstellen/finden
+      1 Preprocessing
+         * NLP, Normalisierung
+      1 Implementieren, Testen...
+      1 Implementieren, Testen... 
+      1 Implementieren, Testen...
+      1 Aufarbeitung der Ergebnisse
+
+---++ 26.11.2007
+   * *Ort:* UKP
+   * *Teilnehmer:* Arne Pottharst, Iryna Gurevych, Niklas Jakob, Christoph Müller
+
+   * Abzuklären mit i-views: *Aufbau des Wissensnetz*
+      1 Zugrundeliegende Daten
+         * Statistiken, Beschaffenheit der Daten 
+         * ~> ähnliche Domäne aus dem Internet crawlen
+      1 Wie sieht das semantische Netz aus
+         * Beschaffenheit, Statistik
+      1 Welche Art von Erweiterungen sind erwünscht/notwendig?
+      1 Ausgabe von Textminingprogramm mit semantischem Netz vergleichen
+   
+   * *Term Extraction/Relation Learning*
+      * Extrahieren von Fakten
+      * Erkennen von Relationen (ist wohl schwer)
+      * tf*idf, rw -> Schlüsselwörter finden
+      * Differentialanalyse
+      * freie Softwarebibliotheken
+   * *Named Entity Recognition (NER)*
+      * Referenzimplementierung erstellen

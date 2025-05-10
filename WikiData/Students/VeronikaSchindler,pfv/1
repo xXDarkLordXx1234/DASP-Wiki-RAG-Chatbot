@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="simpson" date="1510141660" format="1.1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master's Thesis: Combining Crowdsourced Annotations Using HeatmapBCC For NLP Tasks
+
+---++ Meetings
+
+---+++ 14.11.17
+
+---+++ 07.11.17
+
+   * Progress on implementing MACE, IBCC, and majority vote baselines
+   * Data imported for weather dataset into local format
+   * Emails sent to author of comparison paper asking for access to data/code
+   * Todos: 
+      * set IBCC parameters in constructor according to example sent by email
+      * set MACE to provide probabilities using --distribution
+      * Produce plots using the baselines with increasing numbers of annotations per document
+      * Contact Paul Felt if no luck from Kevin Seppi; if this is unsuccessful look at how code from ES can be adapted to implement their baseline
+
+-- Main.EdwinSimpson - 2017-11-08

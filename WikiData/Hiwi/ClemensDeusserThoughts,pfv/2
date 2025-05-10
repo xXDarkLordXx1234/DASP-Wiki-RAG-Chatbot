@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1339750396" format="1.1" version="2"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+<!--
+  * Set ALLOWTOPICVIEW = Main.IrynaGurevych, Main.WolfgangStille
+  * Set ALLOWTOPICCHANGE =  Main.IrynaGurevych, Main.WolfgangStille
+//-->
+
+---++++ June 14
+
+I'm beginning to think that a dozen keywords per document is not enough for a statistical approach, which is essentially what we're doing right now. I think we either need many more keywords per document or some sort of interpretation of those keywords.
+
+Germanet/Wordnet/UBY *may* be an answer and I'll definitely check those out, but for now I remain unconvinced for the following reasons:
+
+1: How usable are they? What I've seen so far is underwhelming, they could very well be another case of DKPro that'd take ages to learn for a more questionable benefit.
+2: Generalising words to synonyms or hypernyms never generates data, you always lose data, is that really a good way to go if you don't have much data to begin with?
+3: Even as a human I have a hard time roughly classifying a pedocs paper just by looking at the keywords, how could a rather rudimentary method that just generalises information produce better results? While being far from an expert, I think we need actual sophisticated NLP to squeeze information from the bits of data we have.
+
+To illustrate the last point, a random example:
+
+"Geschichtsunterricht ; Kooperation; Thema; Norm; Oral History; Moral; Sekundarstufe II; Unterrichtsprojekt; Grundschule; Berufsbildung; Außerschulische Einrichtung; Sekundarstufe I; Entwicklung;; Deutschland"
+
+This seems to be about history lessons, yet only two of the keywords actually pertain to that and one is in another language. All the other keywords are so general in their meaning that they barely help to specify the document further. While tf*idf helps against that, it only helps if those keywords are not just general, but also common in our database, which is not necessarily the case.
+
+"Sekundarstufe II; Grundschule; Rechtsextremismus; Sekundarstufe I; Deutschland"
+
+What is this one about? Radical right extremism in elementary schools, highschools and "Gymnasium"? So just right extremism in any school? Then "Schule, Rechtsextremismus" seems more fitting, so if we assume that the people setting the keywords did a good job, and they probably did, then the document is about something else, perhaps right extremism detailed in each of those stages, or perhaps a document *about* those stages with an interlude about right extremism? It could even be a document about teaching about right extremism.
+
+Without even the title of the document, it becomes pure guess work what it's about and the keywords seem to be less of a help than one would expect.

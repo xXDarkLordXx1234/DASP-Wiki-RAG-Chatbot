@@ -1,0 +1,156 @@
+%META:TOPICINFO{author="klie" comment="" date="1561645527" format="1.1" reprev="10" version="11"}%
+%META:TOPICPARENT{name="ComputeCluster"}%
+---+!! Slurm Compute Cluster FAQ
+
+%TOC%
+
+---++ What's the status of my jobs?
+Run:
+<verbatim>
+squeue --user=$USER
+</verbatim>
+
+To see live stdout/stderr for a running job, run
+<verbatim>
+sattach <jobid.stepid>
+</verbatim>
+for example =sattach 42.0=. =stepid= will be 0 unless you run multiple compute steps in one job.
+
+For more monitoring commands, see e.g. [[https://hpcf.umbc.edu/general-productivity/tools-for-monitoring-your-jobs/][here.]]
+
+---++ Why is my job pending?
+Check the REASON column of the =squeue= output.
+   * "Resources" means that there is currently no free compute node with the resource requirements of your job.
+   * "Priority" means that other jobs in the same partition have a higher priority than yours.
+   * For other codes, check [[https://slurm.schedmd.com/squeue.html#lbAF][the Slurm documentation]].
+
+You can increase your chances by:
+   * Requesting fewer resources (CPUs, GPUs, Memory).
+   * Using the =--time= option of =sbatch= to limit the execution time of your jobs.
+   * Using an account with higher !FairShare, if you have multiple accounts at your disposal.
+
+---++ How much !FairShare do I have left?
+%INCLUDE{"ComputeClusterDetermineFairShare"}%
+
+---++ How do I kill a compute job?
+
+To cancel a job, use =scancel=. You need the running or pending jobid. It is only the job's owner and SLURM administrators that can cancel jobs.
+
+<verbatim>
+scancel <jobid>
+</verbatim>
+
+To cancel all your jobs (running and pending) you can run
+
+<verbatim>
+scancel -u <username>
+</verbatim>
+
+You get the job id when you submit the job and you can look it up by =squeue -u <username>=. Interactive jobs are cancelled once you close the session, e.g. via =Ctrl + C=.
+
+<!--
+<verbatim>
+Do not kill/skill =srun= to cancel a SLURM job! This will only remove it from the eyes of slurm while continuing to run.
+</verbatim>
+-->
+
+---++ How to debug an experiment?
+
+If you want to have an interactive shell on a slurm node, then on *wormulon*, you can run
+
+<verbatim>
+srun --pty bash -i
+</verbatim>
+
+=srun= accepts the same parameters as you can specify in a batch file, e.g. =srun --gres=gpu:1 --pty bash= would request one GPU.
+
+---++ Where to put code and data?
+
+See [[ComputeClusterStorage]].
+
+---++ How to submit jobs using GPUs?
+Use the =--gres= option of =sbatch= or =srun=. For example, use =--gres=gpu:p100:2= to request two P100 GPUs. If the GPU model is not of importance, you can also use =--gres=gpu:1= to request one GPU of any model available. For details, refer to [[https://slurm.schedmd.com/sbatch.html][the sbatch documentation]].
+
+---++ Which nodes are there? Which GPUs are there?
+
+The following command lists all nodes in the cluster alongside their number of CPUs, their RAM and GPUs (in the "GRES" column):
+<verbatim>
+sinfo --Format=nodehost,statecompact,cpus,memory,gres,gresused
+</verbatim>
+
+---++ How do I get a certain version of CUDA?
+
+In your batch script, use =module load cuda= for the newest version or =module load cuda/$version=. Currently installed are
+
+| cuda/10.1 | (default) |
+| cuda/10.0 | |
+| cuda/9.2 | |
+| cuda/9.1 | |
+| cuda/9.0 | |
+| cuda/8.0-ga2 | |
+| cuda/8.0 | |
+
+---++ How can I create a virtualenv?
+
+Use the =venv= module that comes with Python, e.g. 
+
+<verbatim>
+python3.6 -m venv venv
+</verbatim>
+
+Replace =python3.6= with the Python version of your choice. In your batch file, you can activate it by referencing its absolute path, e.g. =source /ukp-storage-1/$your_name/test/venv/bin/activate=
+
+---++ How can I use Python 3.7+?
+
+Use [[https://docs.conda.io/en/latest/miniconda.html][miniconda]] .
+
+---++ How do I run jobs that run longer than three days?
+
+Researchers can submit jobs taking up to seven days by using the "snail" QOS. This can be done by adding =--qos=snail= as an option for =sbatch=.
+
+---++ How can I achieve different working directories or output directories depending on the job?
+
+   * *For stdout, stderr*: You can use place holders in file names to create a different file for e.g. different runs. This could look like #SBATCH --output=/ukp-storage-1/my_user/myjob.%j.%N.out . A list of placeholders can be found in the sbatch documentation.
+   * *For anything else*: Slurm sets many environment variables before starting a job, see [[https://slurm.schedmd.com/sbatch.html#lbAJ][the documentation]] which can be used to create folders depending on job id and more.
+
+---++ Which software is available on each node?
+
+%TWISTY{ 
+    showlink="Installed software" 
+    hidelink="Hide _Installed software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+%TWISTY{ 
+    showlink="System programs" 
+    hidelink="Hide _System programs_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * wget
+   * gcc
+   * g++
+   * curl
+   * htop
+   * iotop
+   * ncdu
+   * atop
+   * screen
+   * nano
+   * vim
+%ENDTWISTY% 
+
+%TWISTY{ 
+    showlink="developer software" 
+    hidelink="Hide _developer software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * gcc
+   * gcc-c++
+   * python3.6
+   * python2.7
+   * OpenJDK 8
+%ENDTWISTY% 
+
+%ENDTWISTY% 

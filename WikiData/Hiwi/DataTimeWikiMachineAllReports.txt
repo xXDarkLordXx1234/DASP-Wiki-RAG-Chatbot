@@ -1,0 +1,647 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="3"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ *Anouar Reports*
+
+---+ 1. JWPL !TimeMachine Tool 
+
+---++ Functionality: 
+   * The !TimeMachine Tool performs the mapping of Wikipedia dumps to JWPL dumps.
+   * The !TimeMachine Tool is able to extract multiple dump versions (as JWPL dumps) from the input dumps starting from a given 'from' timestamp and ending with a given 'to' timestamp using regular intervals (in days) between them.
+   * The !TimeMachineTool performs the transformation of xml-files to sql-files using =mwdumper=.
+   * The !TimeMachine Tool is also able to extract txt-dumps (for mysql) from sql-dumps. However only the functions RAND() and&nbsp; <font color="#000000"><font face="Times New Roman, serif"><font size="3">DATE_ADD('1970-01-01', INTERVAL UNIX_TIMESTAMP() SECOND)+0</font></font></font> are supported.
+   * The !TimeMachine Tool is the first Java application (plattform independent) that performs this task. 
+   * The !TimeMachine Tool transparently performs the extraction of 'gz' and 'bz2' files.
+
+---++ Usage:
+
+   1 Download the Wikipedia dumps from http://dumps.wikimedia.org/backup-index.html
+      * Select the language of your choice. The link should be LANGUAGE-CODE + "wiki".
+         * Example: "enwiki" links to the English Wikipedia dumps, "dewiki" links to the German dumps.
+      * The final download URL should look like =http://dumps.wikimedia.org/{LANGUAGE-CODE}wiki/{YYYYMMDD}=
+         * Example:&nbsp;to download the dumps of the English Wikipedia dump from 17.01.2008 =&gt; http://dumps.wikimedia.org/enwiki/20080117=
+
+   1 Download the files:
+      * {LANGUAGE-CODE}-yyyymmdd-pages-meta-history.xml.bz2
+      * {LANGUAGE-CODE}-yyyymmdd-pagelinks.sql.gz
+      * {LANGUAGE-CODE}-yyyymmdd-categorylinks.sql.gz
+
+   1 Create a configuration file for the JWPL !TimeMachine. 
+      * You can edit one of the sample configuration files in folder =configuration= 
+      * Running =org.tud.ukp.wikipedia.dbmapping.ConfigFormularGenerator {FILENAME}= gives an empty template configuration file. Table 1 describes the elements of the configuration file.
+   1 Start the JWPL !TimeMachine
+      * pass the path of the config file as argument to the main method of =de.tud.ukp.wikipedia.dbmapping.StartDBMapping=
+      * allocate enough heap size to speed up the execution (use "-Xmx" JVM parameter to increase heap space; e.g. =-Xmx512m= gives you 512MB heap space). Note that the DBMapping Tool performs all its task with linear complexity=
+      * If no exception has been thrown, the extracted dumps are now available in the output directory each in a directory with the belonging timestamp as name. The exact list of the tables of each version is the following:
+         * Category.txt
+         * category_pages.txt
+         * category_inlinks.txt
+         * category_outlinks.txt
+         * Page.txt
+         * page_inlinks.txt
+         * page_outlinks.txt
+         * page_redirects.txt
+         * page_categories.txt
+         * !PageMapLine.txt
+         * !MetaData.txt
+
+   1 Importing the dumps in a MySQL database:
+      * Make sure the database encoding is set to UTF8.
+      * Create a database: =mysqladmin -uUSER -p create DB_NAME=
+      * Create the necessary tables.
+         * =mysql -uUSER -p DBNAME &lt; jwpl_tables.sql=
+         * The file =jwpl_tables.sql= comes with the JWPL !TimeMachine package.
+      * Insert the data into the database.
+         * If there are only the output files in that directory you can use:
+            * =mysqlimport -uUSER -p --default-character-set=utf8 {database_name} `pwd`/*.txt=
+            * Otherwise, you need to do it the long way =mysqlimport -uUSER -p --default-character-set=utf8 {database_name} {txt_file1} {txt_file2} ... {txt_file_n}=
+         * If you encounter a &#8220;broken pipe&#8221; error in this step, try adding the --max_allowed_packet parameter to the above query. Set it to something reasonable high, e.g., --max_allowed_packet=128M.
+          * Setting the --max_allowed_packet parameter on the console only changes it for the client, but the problem can also be on the server side. Thus, if adding max_allowed_packet=128M doesn&#8217;t work on the command line, try entering it into the my.cnf file in the MySql directory under the [mysqld] section.
+   * For a large Wikipedia, this may take a while &#8230;
+   * If you are using MySQL 4.x or previous:
+      * MySQL 4.x supports only 4GB MyISAM tables with the default settings.
+      * Unfortunately, the English Wikipedia is already much larger than this. Given the growth rates, many Wikipedias will reach that size sooner than later.
+      * The solutions here where provided by Christian Pietsch.
+         * Solution 1:
+            * You may need to have root access, depending on you server&#8217;s configuration.
+            * If you are using a MySQL version before 5.0.6 and at least 4.1.2, do prior to import on the mysql command line:
+               * SET GLOBAL max_allowed_packet=1000000000;
+               * SET GLOBAL myisam_data_pointer_size=5;
+         * Solution 2:
+            * Adapted from http://jeremy.zawodny.com/blog/archives/000796.html and untested.
+            * <verbatim>
+gunzip < DUMPFILE.sql.gz | \
+sed 's/^) ENGINE=MyISAM DEFA/) ENGINE=MyISAM MAX_ROWS=200000000000 AVG_ROW_LENGTH=50 DEFA/g' | \
+mysql -uUSER -p --default-character-set=utf8 --max_allowed_packet=1000000000 DB_NAME
+</verbatim>
+
+---++ Configuration File
+   * The configuration file must be UTF8 encoded.
+
+---+++ Explanation of field
+
+| *Key* | *Value* | *Comments* |
+| language | the used language | the language string must correspond to one of the values enumerated in WikiConstants.Language in the JWPL. Examples: english, german, frensh, arabic | 
+| mainCategory | The title of the main category of the Wikipedia language version used. | For example, "Categories" for the English Wikipedia or "!Hauptkategorie" for the German Wikipedia. |
+| disambiguationCategory | The title of the disambiguation category of the Wikipedia language version used. | For example, "Disambiguation" for the English Wikipedia or "Begriffsklärung" for the German Wikipedia.|
+| fromTimestamp | yyyymmddhhmmss | The timestamp of the first version to be extracted. |
+| toTimestamp | yyyymmddhhmmss | The timestamp of the last version to be extracted. |
+| each | The number of days to be used as regular interval for extracting versions. |  |
+| metaHistoryFile | The absolute path to the pages-meta-history file. | Only .xml and .xml.bz2 extensions are supported |
+| pageLinksFile | The absolute path to the pagelinks file | only .sql and .sql.gz extensions are supported |
+| categoryLinksFile | The absolute path to the categorylinks file | only .sql and .sql.gz extensions are supported |
+| outputDirectory | The absolute path to the directory to which the transformed files will be written. | The outputDirectory will be created if it does not exist. However its parent directory must exist. |
+| removeInputFilesAfterProcessing | A boolean that specifies whether the meta-history file, the pagelinks file and the categorylinks file should be removed after the processing | |
+
+---+++ Example file
+<verbatim>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <comment>This a configuration formular for the JWPL TimeMachine</comment>
+  <entry key="language">greek</entry>
+  <entry key="mainCategory"></entry>
+  <entry key="disambiguationCategory"></entry>
+  <entry key="fromTimestamp">20060101000000</entry>
+  <entry key="toTimestamp">20060102000000</entry>
+  <entry key="each">1</entry>
+  <entry key="metaHistoryFile">/home/zesch/wiki_data/elwiki/elwiki-20080205-pages-meta-history.xml.bz2</entry>
+  <entry key="categoryLinksFile">/home/zesch/wiki_data/elwiki/elwiki-20080205-categorylinks.sql.gz</entry>
+  <entry key="pageLinksFile">/home/zesch/wiki_data/elwiki/elwiki-20080205-pagelinks.sql.gz</entry>
+  <entry key="outputDirectory">/home/zesch/wiki_data/elwiki_test</entry>
+  <entry key="removeInputFilesAfterProcessing">false</entry>
+</properties>
+</verbatim>
+
+---+2. Transformation Tool
+
+---++ Assumption
+
+   * You are using *MySQL*.
+   * You are running *Linux*.
+
+---++ Preparation
+
+---+++ Importing Wikipedia into Mediawiki
+   1 Get the database layout
+      * Download the the correct version of !MediaWiki that Wikipedia was running at the time of dumping
+      * The database layout is in =maintenance/tables.sql=.
+   1 Delete anything except of the tables =categorylinks=, =page=, =pagelinks=, =revision=, and =text=
+   1 Change the table type from !InnoDb to !MyISAM.
+   1 Delete the indexes for the =categorylinks= and =pagelinks= tables.
+   1 Import the layout from =tables.sql= into a !MySQL database
+   1 Make sure that your database is in UTF8 mode.
+   1 Download the Wikipedia dumps from http://download.wikimedia.org/backup-index.html
+      * XXwiki-YYYYMMDD-pages-articles.xml.bz2
+      * XXwiki-YYYYMMDD-pagelinks.sql.gz
+      * XXwiki-YYYYMMDD-categorylinks.sql.gz
+   1 Download the program xml2sql from http://meta.wikimedia.org/wiki/Xml2sql
+      * Compile and install it (assuming that you are under Linux)
+   1 Convert the xml file into sql
+      * bunzip2 -c XXwiki-YYYYMMDD-pages-articles.xml.bz2 | xml2sql
+   1 Import the data into the database
+      * =mysqlimport --verbose -u USER -p DB_NAME `pwd`/{page,revision,text}.txt= for the =.txt= files.
+      * =gunzip < XXwiki-YYYYMMDD-[page|category]links.sql.gz | mysql -u USER -p --default-character-set=utf8 DB_NAME= for the =.sql.gz= files.
+      * Get a cup of coffee :) -- this takes a while.
+
+---++ Running the database transformer
+
+The database transformer uses the data that is scattered in the original representation to create Java objects representing Page (articles, redirects, disambiguation pages) and Category objects. These objects are persisted in the API database using the Hibernate object-relational mapping framework.
+
+   1 For processing the English Wikipedia you will need ~40-50GB disk space, a fast machine and >1GB RAM. (Other languages consume far less resources.)
+   1 For a JDBC connection to a !MySQL database, you need to have !MySQL Connector/J installed.
+   1 Adjust the database connection parameters in Constants.java
+      * =String JDBC_USERNAME = "WIKIUSER";=
+         * Make sure that this user can write the database.
+      * =String JDBC_PASSWORD = "WIKIPASSWORD";=
+      * =String JDBC_URL = "jdbc:mysql://SERVER/DATABASE?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8";=
+         * If you are running a local server, SERVER is =localhost=.
+         * Set that to the correct database, otherwise Hibernate will write to an existing database. You might possibly not want that.
+   1 Edit some language specific settings (example is for German). Adjust that to the language you are using.
+      * static final String DISAMB_CATEGORY = "Begriffskl\u00e4rung";
+         * Note that it is actually "Begriffsklärung" including a with diaeresis. It is written as a Unicode escape sequence here. If you do not write non-ASCII characters as unicode sequences, the transformation tool might not be portable between operating systems using different character sets.
+         * You can use the tool =native2ascii= that is shipped with Java to transform a string into a unicode escape sequece.
+      * static final String MAIN_CATEGORY = "!Hauptkategorie";
+   1 In case you added a new language, you have to create a new config file in =org.tud.sir.wiki.hibernate.config= and adjust =org.tud.sir.wiki.hibernate.util.WikiHibernateUtil= to load the new config file.
+      *Edit the "database connection settings" part in the config file.
+         * <verbatim>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://SERVER/DATABASE</property>
+        <property name="hibernate.connection.characterEncoding">UTF-8</property>
+        <property name="hibernate.connection.hibernate.connection.useUnicode">true</property>
+        <property name="connection.username">USERNAME</property>
+        <property name="connection.password">PASSWORD</property>
+        </verbatim>
+      * Create the API database.
+      * Make sure that the specified user can write this database.
+      * Make sure that this database is in UTF-8 mode.
+      
+
+---+ *Ivan Galkin Reports*
+
+---+ 1. DataMachine Review
+<font face="Albany, sans-serif"><font size="4">DataMachine &ndash; Programmablauf, Probleme und Lösungsvorschläge</font></font>
+
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Entpacken der Dateien <span style="background: #ffff00 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">{LANG}wiki-{TIMESTAMP}-categorylinks.sql.gz</span> und <span style="background: #ffff00 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">{LANG}wiki-{TIMESTAMP}-pagelinks.sql.gz</span>, wodurch entsprechende temporäre Files entstehen</font></font>%ENDCOLOR%</p> 
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #ff3366 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">%TEMPDIRECTORY%/{LANG}wiki-{TIMESTAMP}-categorylinks.sql</span></font></font>%ENDCOLOR%</p>
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #ff3366 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">%TEMPDIRECTORY%/{LANG}wiki-{TIMESTAMP}-pagelinks.sql</span></font></font>%ENDCOLOR%</p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Verwendung der Klasee XML2SQL, bzw. der Klasse org.mediawiki.dumper.Dumper um die Datei <span style="background: #ffff00 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">{LANG}wiki-{TIMESTAMP}-pages-meta-history.xml.bz2</span> zu entpacken und aus dem XML in SQL-Format umzuwandeln. Ergebnis &ndash; temporäre Datei </font></font>%ENDCOLOR% </p> 
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #ff3366 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">%TEMPDIRECTORY%/{LANG}wiki-{TIMESTAMP}-pages-meta-history.sql</span></font></font>%ENDCOLOR%</p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Die SQL-Datei aus dem zweiten Schritt wird mithilfe der statischen Klasse SQL2TXT bearbeitet, woraus 3 temporäre Dateien entstehen</font></font>%ENDCOLOR%</p> 
+      1 <p>%BLACK%<span style="background: #ff3366 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">&bdquo;<font face="Thorndale AMT, serif"><font size="3">%TEMPDIRECTORY%/page.txt&ldquo;, </font></font></span>%ENDCOLOR% </p>
+      1 <p>%BLACK%<span style="background: #ff3366 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">&bdquo;<font face="Thorndale AMT, serif"><font size="3">%TEMPDIRECTORY%/text.txt&ldquo;, </font></font></span>%ENDCOLOR% </p>
+      1 <p>%BLACK%<span style="background: #ff3366 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">&bdquo;<font face="Thorndale AMT, serif"><font size="3">%TEMPDIRECTORY%/revision.txt&ldquo; </font></font></span>%ENDCOLOR% </p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Bearbeitung der &bdquo;%TEMPDIRECTORY%/revision.txt&ldquo; (processRevision()) und das Ausfüllen der HashMap mit allen Artikel-Änderungen.</font></font>%ENDCOLOR%</p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Parsen der Datei &bdquo;%TEMPDIRECTORY%/page.txt&ldquo; (processPage()), Speicherung der Ergebnisse</font></font>%ENDCOLOR%</p> 
+      1 <p>%BLACK%<span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">&bdquo;<font face="Thorndale AMT, serif"><font size="3">Category.txt&ldquo;</font></font></span>%ENDCOLOR%</p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Parsen der Datei &bdquo;%TEMPDIRECTORY%/{LANG}wiki-{TIMESTAMP}-categorylinks.sql&ldquo; (processCategoryLinks()), Speicherung der Ergebnisse</font></font>%ENDCOLOR%</p> 
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">page_categories.txt</span></font></font>%ENDCOLOR%</p>
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">category_pages.txt</span></font></font>%ENDCOLOR%</p>
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">category_inlinks.txt</span></font></font>%ENDCOLOR%</p>
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">category_outlinks.txt</span></font></font>%ENDCOLOR%</p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Parsen der Datei &bdquo;%TEMPDIRECTORY%/{LANG}wiki-{TIMESTAMP}-pagelinks.sql&ldquo; (parocessPageLinks()), Speicherung der Ergebnisse </font></font>%ENDCOLOR% </p> 
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">page_inlinks.txt</span></font></font>%ENDCOLOR%</p>
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">page_outlinks.txt</span></font></font>%ENDCOLOR%</p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Parsen der Datei &bdquo;%TEMPDIRECTORY%/text.txt&ldquo; (processText()), Speicherung der Ergebnisse</font></font>%ENDCOLOR%</p> 
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Page.txt</span></font></font>%ENDCOLOR%</p>
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">PageMapLine.txt</span></font></font>%ENDCOLOR%</p>
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">page_redirects.txt</span></font></font>%ENDCOLOR%</p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Speicherung der Beschreibung (writeMetedata())</font></font>%ENDCOLOR%</p> 
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: #008000 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">MetaData.txt</span></font></font>%ENDCOLOR%</p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3">Entfernung der temporalen Dateien</font></font>%ENDCOLOR%</p>
+
+%BLACK%<font face="Thorndale AMT, serif"><font size="3"> *Legende*: </font></font>%ENDCOLOR%
+
+%BLACK%<font face="Thorndale AMT, serif"><font size="3">GELB Wikipedia Dumps</font></font>%ENDCOLOR%
+
+%BLACK%<font face="Thorndale AMT, serif"><font size="3">ROT Temporäre Dateien</font></font>%ENDCOLOR%
+
+%BLACK%<font face="Thorndale AMT, serif"><font size="3">GRÜN Output-Dateien</font></font>%ENDCOLOR%
+
+%BLACK%<font face="Thorndale AMT, serif"><font size="3">Jeder Schritt der Schritte 5 bis 9 erstellt so viel Dateien, wie viel Wikipdia-Snapshots gewünscht wurden.</font></font>%ENDCOLOR%
+
+%BLACK%<font face="Thorndale AMT, serif"><font size="3"> *Schlussfolgerung:* </font></font>%ENDCOLOR%
+   1 <p><font face="Thorndale AMT, serif"><font size="3">Es ist nicht notwendig, die Dateien <span style="background: #ffff00 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">{LANG}wiki-{TIMESTAMP}-categorylinks.sql.gz</span><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> und </span><span style="background: #ffff00 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">{LANG}wiki-{TIMESTAMP}-pagelinks.sql.gz </span><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">im ersten Schritt zu entpacken, weil es möglich ist die genannte Dateien in den Schritten 6 und 7 durch den Einsatz der Java-Klasse</span>%BLACK%<span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> </span>%ENDCOLOR%%BLACK%<span style="text-decoration: none"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">GZIPInputStream direkt aus der komprimierten Datei zu parsen. Dies wurde erfolgreich mit Klasse BufferedReaderFactory eingesetzt.</span></span>%ENDCOLOR%</font></font></p>
+   1 <p><font face="Thorndale AMT, serif"><font size="3">%BLACK%<span style="text-decoration: none"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Die Verwendung der Klasse org.mediawiki.dumper.Dumper (Schritt 2) zwingt uns</span></span>%ENDCOLOR%</font></font></p> 
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">entweder BZ2 oder entpackte Dateien zu verwenden (10 Mal größer als 7Zip-Archiv)</span></font></font>%ENDCOLOR%</p>
+      1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Ergebnisse der XML-&gt;SQL Konvertierung auf der Festplatte zu speichern (Äquivalent der kompletten entpacken) </span></font></font>%ENDCOLOR% </p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Die SQL2TXT-Konvertierung ist so entwickelt, dass die Ergebnis-Daten auch auf der Festplatte gespeichert werden sollen. Diese Tatsache ist einem nochmaligen Entpacken ähnlich. </span></font></font>%ENDCOLOR% </p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Dadurch entstehende Datenmengen verhindern die Bearbeitung größerer Wikipediaen</span></font></font>%ENDCOLOR%</p>
+
+%BLACK%<font face="Thorndale AMT, serif"><font size="3"> *Lösungsvorschläge* </font></font>%ENDCOLOR%
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Entwicklung eines 7Zip-Entpackers. Da es momentan kompliziert ist einen funktionsfähigen Java-Code zu finden, ist es möglich folgendes Schema zu verwenden: </span></font></font>%ENDCOLOR% </p> 
+      1 <p><font face="Thorndale AMT, serif"><font size="3">%BLACK%<span style="text-decoration: none"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Process proc = Runtime.</span></span>%ENDCOLOR%%BLACK%<span style="text-decoration: none"><em><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">getRuntime</span></em></span>%ENDCOLOR%%BLACK%<span style="text-decoration: none"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">().exec(&bdquo;7z[.exe] e -so &ldquo;.concat(archiveFilename));</span></span>%ENDCOLOR%</font></font></p>
+      1 <p><font face="Thorndale AMT, serif"><font size="3">%BLACK%<span style="text-decoration: none"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Verwendung von Ouput-Streams des </span></span>%ENDCOLOR%%BLACK%<span style="text-decoration: none"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Originalentpackers InputStream input</span></span>%ENDCOLOR%%BLACK%<span style="text-decoration: none"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> = proc.getInputStream();</span></span>%ENDCOLOR%</font></font></p> <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Dieses Schema ist leicht an jedes Betriebssystem anzupassen, für das ein 7Zip Entpacker implementiert ist</span></font></font>%ENDCOLOR%</p>
+   1 <p><font face="Thorndale AMT, serif"><font size="3">%BLACK%<span style="text-decoration: none"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Anstatt die Klasse org.mediawiki.dumper.Dumper, die Klassen XmlDumpWriter xmldDumpReader zu verwenden, die Stream-Konzepte unterstützen, und dadurch nicht aus einer Datei, sondern aus einem dem Stream lesen und in einen Stream schreiben können. (S. Punkt 1)</span></span>%ENDCOLOR%</font></font></p>
+   1 <p>%BLACK%<font face="Thorndale AMT, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">Grundsätzlich wo es möglich ist Dateien mit den Streams ersetzen. Dadurch kann man es versuchen, die temporäre Dateien überhaupt zu vermeiden</span></font></font>%ENDCOLOR%</p>
+ 
+---+ 2. Streaming-Konzept in WikipediaTimeMachine: Vor- und Nachteile
+---++ Vorteile:
+
+Die Verwendung von Streams im Zusammenhang mit dem Decorator Design Pattern bietet viele Möglichkeiten an, die die Datenverarbeitung leichter und schneller machen. Um die Wikipeda Dump-Dateien in die gewünschte textuelle Form zu konvertieren und Resourcen intensive Klassen XML2SQL und SQL2TXT zu ersetzen, wurden folgende neue Klassen entwickelt:
+   * *XMLInputStream* - eine Klasse, die mit einem InputStream initialisiert wird und ihn aus XML- ins SQL-Format umwandelt. Dabei weitert die Klasse XMLInputStream selbst die abstrakte Klasse InputStream aus, was dem Programmierer erlaubt gleich die konvertierte SQL-Daten daraus zu lesen. Die Datenverarbeitung wird in einem separaten Thread mithilfe folgender Klassen gemacht, die auch das Stream-Konzept unterstützen und keine temporäre Speicherung der Daten brauchen. 
+      * org.mediawiki.importer.XmlDumpReader
+      * org.mediawiki.importer.SqlWriter15
+   * *SQLInputStream* - eine Klasse, die auch mit einem InputStream initialisiert wird und ihn aus dem SQL-Format in die textuelle Form konvertiert. Diese Konvertierung erfolgt auch in einem separaten Thread (dabei wurden die Methoden der alten Klasse SQL2TXT verwendet), was uns ermöglicht die Ergebnisdaten "on the fly" zu lesen. Der Unterschied zu der oben beschriebenen Klasse XMLInputStream besteht darin, dass anstatt einem Ergebnisstream, hier wenigstens drei verwendet werden, da jede DB-Tabelle separat behandelt wird.
+
+So einfach kann man die temporäre Dateien page.txt, revision.txt und text.txt mit folgender Kette ersetzen:
+
+=SQLInputStream sqlInputStream = new !SQLInputStream(new !XMLInputStream(new !SevenZipInputStream("dump.7z")))= <br /> =InputStream textInputStream = sqlInputStream.getInputStream("text");= <br /> =InputStream revisionInputStream = sqlInputStream.getInputStream("revision");= <br /> =InputStream pageInputStream = sqlInputStream.getInputStream("page");=
+
+---++ Nachteile:
+ Die sequenzielle Datenverarbeitung, die uns vom Stream-Konzept bereitgestellt wird, hat auch ihre Nachteile. Falls die Dateien fragmentiert sind, wird die aufeinanderfolgende Analyse nicht mehr so einfach möglich sein. So wurde die bestehende Klasse MediaWiki2JWPL so entwickelt, dass die temporären Dateien folgendermaßen bearbeitet werden: zuerst revision.txt, dann page.txt und zum Schluß text.txt. Die Darstellung der XML-Dump {LANG}wiki-{TIMESTAMP}-pages-meta-history.xml ist gemischt, d.h. die oben genannte textInputStream, revisionInputStream und pageInputStream sollen nicht ein nach dem anderen, sondern gleichzeitig ausgelesen werden. Da es unerwünscht ist, die bestehende Analyselogik zu ändern, gibt es zwei Varianten dieses Problem zu lösen:
+
+   1 die temporären Dateien revision.txt, page.txt und text.txt doch auf der Festplatte zu speichern. Diese Lösung ist deswegen schlecht, weil die Datei text.txt ungefähr genau so viel Speicherplatz braucht, als wenn der Dump komplett ausgepackt würde. (Bei der Deutschen Wikipedia entspricht es ~ einem Terabyte)
+   1 der 7ZipEntpacken-&gt;XMLParsen-&gt;SQLParsen-Prozess soll drei mal wiederholt werden, wobei die Reihenfolge der SQL-Tabellen dem weiteren Programmablauf entsprechen wird (die Klasse SQLInputStream wird so angepasst, dass pro einmal nur eine bestimmte Tabelle gelesen wird). Diese Lösung ist 3 mal langsamer als die zuerst geplante voll streamkonforme Lösung, aber trotzdem nicht viel langsamer als die bestehende, weil der 7ZipEntpacken-&gt;XMLParsen-&gt;SQLParsen-Prozess in mehreren Threads parallel läuft.
+Da bei uns der sparsame Umgang mit Speicherkapazität Priorität vor einer schnellen Bearbeitung hat, wird die zweite Lösung eingesetzt.
+
+---+ 3. Unmöglichkeit einer parallelen Tabellenbearbeitung
+---++ Problemstellung:
+Nach dem Einsatz des so genannten StreamConcept ist eine Notwendigkeit entstanden, das Entpacken und die Bearbeitung der pages-meta-history-Datei drei Mal durchzuführen. Obwohl dieses Verfahren ohne temporäre Dateien auskommt, vergrößert es stark die Arbeitszeit des Programms. Um diese Zeit zu reduzieren, wurde die Möglichkeit betrachtet, die Datenverarbeitung parallel zu gestalten.
+
+---++ Analyse:
+Die Dumpanalyse besteht aus 6 grundsätzlichen Schritten (s. DataMachineReview)... 
+   * processRevision
+   * processPage
+   * processCategoryLinks
+   * parocessPageLinks
+   * processText
+   * writeMetedata
+
+... und ist größtenteils innerhalb der Klasse =de.tudarmstadt.ukp.wikipedia.timemachine.DumpVersion= realisiert. Aus diesem Grund ist die Möglichkeit, eine oder mehrere Bearbeitungen parallel laufen zu lassen, wegen den gemeinsamen Ressourcen (Felder der Klasse DumpVersion) beschränkt. Nach der Analyse dieser Ressourcen ist folgende Tabelle entstanden, die die Benutzung der Klassenfelder auf jedem der Schritte zeigt.
+
+<!-- BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Albany AMT"; font-size:x-small } -->
+| |  <font face="Courier New">ProcessRevision</font>  |  <font face="Courier New">processPage</font>  |  <font face="Courier New">processCategorylinks</font>  |  <font face="Courier New">processPagelinks</font>  |  <font face="Courier New">processText</font>  |  <font face="Courier New">writeMetaData</font>  |
+   | %GREEN%txtFW%ENDCOLOR%  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%pageCategories%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%categoryPages%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%categoryInlinks%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%categoryOutlinks%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%pageInlinks%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%pageOutlinks%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%page%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %GREEN%pageMapLine%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %GREEN%pageRedirects%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %RED%timestamp%ENDCOLOR%  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  |
+   | %RED%metaData%ENDCOLOR%  | <strong><br /></strong>  | *x*  | *x*  | <strong><br /></strong>  | *x*  | *x*  |
+   | %RED%outputPath%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %RED%pageIdRevMap%ENDCOLOR%  | *x*  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %RED%disambiguations%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %RED%textIdPageIdMap%ENDCOLOR%  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %RED%pPageIdNameMap%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | *x*  | *x*  | <strong><br /></strong>  |
+   | %RED%cPageIdNameMap%ENDCOLOR%  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %RED%pNamePageIdMap%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | *x*  | <strong><br /></strong>  |
+   | %RED%cNamePageIdMap%ENDCOLOR%  | <strong><br /></strong>  | *x*  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %RED%rPageIdNameMap%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | |  <font face="Monospace" color="#000000">MetaHistoryFile</font>  ||  <font face="Monospace" color="#000000">CategoryLinksFile</font>  |  <font face="Monospace" color="#000000">PageLinksFile</font>  |  <font face="Monospace" color="#000000">MetaHistoryFile</font>  | |
+
+Die mit grün markierten Klassenfelder werden nur für den Output verwendet und spielen in unserem Fall keine Rolle. Die restlichen Klassenfelder werden in mehreren Schritten verwendet und zwar so, dass der nächste Schritt die Daten von dem vorigen Schritt als Input benutzt, deshalb ist es unmöglich, die oben genannten Methoden unabhängig von einander parallel laufen zu lassen ohne starke Modifikationen im Algorithmus vorzunehmen.
+
+Die Funktionsfähigkeit der Klasse =DumpVersion= ist für großen Wikipedien nicht nachgewiesen, weil die rot markierten Strukturen während des Programmablaufs sehr große Datenmengen speichern müssen, was zum Arbeitsspeicher-Mangel führen kann.
+
+---+ 4. Reduzierung der Bearbeitungsebenen
+---++ Problemstellung:
+
+Die sehr lange Arbeitszeit des Programms dient als ein Zeichen für ineffiziente Algorithmen der Datenverarbeitung und die Notwendigkeit, diese Algorithmen zu optimieren.
+
+---++ Analyse:
+
+Nach der ausführlichen Analyse des Programmablaufs kann man die Bearbeitung einer Dump-Datei als mehrere Bearbeitungsebenen darstellen. Da der größte Zeitaufwand offensichtlich mit dem pages-meta-history-Dump verbunden ist, werden hier nur seine Bearbeitungsschritte beschrieben.
+
+<img width="500" height="400" alt="" src="%ATTACHURL%/layersBefore.png" />
+
+Dabei spielen die dargestellten Schichten folgende Rollen:
+   * *Archivdatei* - die einzige Möglichkeit, die Dumps runter zu laden und auf der Festplatte zu speichern, weil die entpackte Information mehrere Terabyte groß sein kann
+   * *XML-Darstellung* - wird durch das Entpacken der Archivdatei mithilfe der Klasse =UniversatDecompressor= erstellt.
+   * *SQL-Darstellung* -  wird durch den Einsatz der Bibliothek =MWDumper= bzw. der Klasse =XMLInputStream= aus der XML-Darstellung konvertiert.
+   * *textuelle Darstellung* - separiert verschiedene Tabellen aus der SQL-Darstellung von einander und stellt die Daten tabellenartig dar (CSV-ähnlich, wobei der Tabulator als Separater benutzt wird). Diese Darstellung wird mithilfe der Klasse =SQLInputStream= erstellt
+ 
+Je nach Bearbeitungsschritt (s. DataMachineReview oder ParallelismImpossibility) werden verschiedene Parser eingesetzt, um die notwendigen Werte aus der textuellen Darstellung zu extrahieren.
+
+Die Bearbeitungsschritte von dem pages-meta-history-Dump kann man folgendermaßen skizzieren:
+   1 processRevision
+      1 komplettes Entpacken der Dump-Datei  (für deutsche Wikipedia zurzeit > 1 Terabyte)
+      1 *komplettes* Umwandeln der XML-Darstellung in die SQL Darstellung (> 1 Terabyte)
+      1 Umwandeln der "revision"-Tabelle mit allen ihren *neun Spalten*
+      1 Parsing der textuellen Darstellung und Auslesen von *drei* ihren Feldern
+   1 processPage
+      1 komplettes Entpacken der Dump-Datei
+      1 *komplettes* Umwandeln der XML-Darstellung in die SQL Darstellung (> 1 Terabyte)
+      1 Umwandeln der "page"-Tabelle mit allen ihren *11 Spalten*
+      1 Parsing der textuellen Darstellung und Auslesen von *vier* ihren Feldern
+   1 processText
+      1 komplettes Entpacken der Dump-Datei
+      1 *komplettes* Umwandeln der XML-Darstellung in die SQL Darstellung (> 1 Terabyte)
+      1 Umwandeln der "text"-Tabelle mit allen ihren *3 Spalten* 
+      1 Parsing der textuellen Darstellung und Auslesen von *zwei* ihren Feldern
+
+Die Notwendigkeit, der aufeinander folgenden Bearbeitung, ist in ParallelismImpossibility bewiesen. Aus diesem Grund bewerten wir den Aufwand, der mit dem Entpacken verbunden ist, als unvermeidbar.
+
+Eine weitere Quelle des zeitlichen Aufwandes ist die Tatsache, dass trotz der relativ kleinen Menge der notwendigen Informationen auf jedem Schritt der ganze Dump unnötigerweise in SQL umgewandelt und danach mehrmals gefiltert werden soll. Es ist einfach zu sehen, dass durch komplette Konvertierung XML2SQL schon 3 Terabyte der überflüssigen Informationen entstehen. Die endgültige textuelle Darstellung enthält auch viel unnützlicher Daten, was wieder sehr viel Rechenkapazität und Zeit braucht.
+
+---++ Lösungsvorschlag:
+
+Es ist grundsätzlich unnötig, die XML-Datei ins SQL-Format zu konvertieren. Die verwendete Bibliothek MWDumper bietet die Möglichkeit, die Informationen, die aus XML-Darstellung bekommen werden, nach beliebiger Art und Weise darzustellen. Diese Darstellung ist mit dem bis jetzt verwendeten SQL-Format nicht beschränkt und lässt sich mithilfe der Ableitungen der Klasse =org.mediawiki.importer.DumpWriter= beeinflussen.
+
+Momentan wird für die XML2SQL-Konvertierung folgender Quellcode verwendet:
+
+
+=SqlStream= stellt eine ZielStream dar und wird mit =OutputStream= initializiert
+<verbatim>SqlStream output = new SqlFileStream(someOutputStream);</verbatim>
+=DumpWriter= ist ein Interface, das für Transformationen der Dump-Information zuständig ist. In diesem Fall wird es als Output-Format SQL 1.5 verwendet
+<verbatim>DumpWriter sqlWriter = new SqlWriter15(new MySQLTraits(), output);</verbatim>
+=xmlReader= liest den Dump, transformiert ihn auf Grund vom =DumpWriter= und schreibt den in =SqlStream=
+<verbatim>xmlReader = new XmlDumpReader(someInputStream, sqlWriter);</verbatim>
+Starten
+<verbatim>xmlReader.readDump();</verbatim>
+
+Für unsere Lösung sollen wir die Klasse =SqlWriter15= mit unseren eigenen Klassen ersetzen, die das Interface =DumpWriter= implementieren. So könnte man drei verschiedene DumpWriter schreiben, die sich jeweils an den konkreten Schritten der Dumpbearbeitung orientieren (processRevision, processPage oder processText) und *nur* die notwendige Daten zurückliefern.
+
+Durch solche Modifikationen kann man erhebliche Arbeitszeit sparen, indem mehrere komplette Dump-Konvertierungen mit einer gezielten Konvertierung ersetzt werden:
+
+<img width="500" height="400" alt="" src="%ATTACHURL%/layersAfter.png" />
+
+---+ 5. Optimierung des Speicherverbrauchs
+---++ Timestamp vs Integer:
+
+Der Zeitpunkt jeder Wikipedia-Artikeländerung wurde ursprünglich mithilfe der Klasse java.sql.Timestamp gespeichert. Diese basiert auf dem long -Typ, der 64 bit Arbeitsspeicher braucht. Um den Speicherverbrauch zu reduzieren, wurde die oben genannte Klasse mit dem Typ Integer ersetzt (32 bit), wobei die Genauigkeit bzw. die Auflösung der Zeitabmessung reduziert wurde. Da die Anzahl der Artikeländerungen sehr groß sein kann (englische Wikipedia z.Z. 304 084 575 Stück), kann diese Reduzierung eine wichtige Einsparung bringen.
+
+---++ Behälteroptimierung:
+ Nach der nächsten Quellcode-Analyse wurde bemerkt, dass man auf einige der Container-Objekte der Klasse !DumpVersion verzichten oder ihre Benutzung effizienter machen kann: 
+   * pageIdRevMap &ndash; Änderung der Collection-Klasse: Map &rarr; !TIntLongHashMap, dabei wurde die Klasse Revision mit Long ersetzt, die nach der Art von C++ unions verwendet wird. Nach dem Parsen der Revision-Information wird diese !HashMap in einen !TIntHashSet transformiert, was zusätzlichen Speicher freigibt und den funktionalen Anforderungen entspricht.
+
+   * Das Paar von !HashMaps !cPageIdNameMap und !cNamePageIdMap haben ursprünglich dieselbe Information, aber in verschiedenen Richtungen &bdquo;gemapt&ldquo;. Da mithilfe von !cPageIdNameMap nur die Schlüssel-Existenz geprüft wurde, konnte man auf diesen Behälter verzichten und die genannte Verantwortung an !cNamePageIdMap übergeben.
+
+   * Ein ähnliches Paar bestand aus den !HashMaps !pPageIdNameMap und !pNamePageIdMap. Da die beiden Behälter aktiv benutzt werden, führt die Ablösung von einem der Objekte zu starken Zeitverlusten. Die Optimierung wurde dadurch erreicht, dass sowohl bei !cPageIdNameMap als auch bei !pNamePageIdMap der String-Hashcode anstatt dem String selbst als Schlüssel verwendet wurde. Sollte das zu Zweideutigkeiten führen, könnte man String-Hashing-Algorithmus aus dem Apache-Serializierung-Framework als eine Alternative benutzen.
+
+   * Alle Container, die primitive Datentype enthalten, (!HashMap, !HashMap, !HashSet<Integer>) wurden durch entsprechende Klassen der GNU-Trove-Bibliothek ersetzt, was sowohl den Zeit- als auch den Arbeitsspeicher-Bedarf positiv beeinflusst hat.
+
+   * Alle Container werden freigegeben, nachdem die dort gespeicherte Information nicht mehr benutzt wird.
+
+---++ GNU Trove:
+
+Der Einsatz der GNU Trove Bibliothek, die sich als schnelle und leichtgewichtige Alternative zu den JDK Collections positioniert, erschien als nicht triviale Aufgabe, die mehrere Tage Testen erfordert hat. So führte die einfache Ersetzung der JDK Container-Klassen zu rasanten Verschlechterungen. Nachdem der Inhalt der meisten Behälter in Form von primitiven Datentypen dargestellt wurde, konnte man die Speicherverbrauch-Minimierung beobachten:
+<blockquote>
+
+Simple-Eglish-Wikipedia - 7 Snapshots
+
+Blau - nur GNU Trove Collections
+
+Gelb - nur JDK Collections
+
+Grün - JDK + GNU Trove
+</blockquote>
+
+<img width="557" alt="" src="%ATTACHURL%/enwiki_7.png" height="404" />
+<blockquote>
+
+Deutsche Wikipedia - 4 Snapshots
+
+Blau / Rot - Total / Used Memory - nur JDK Collection
+
+Gelb / Grün - Total / Used Memory - JDK Collections +GNU Trove
+</blockquote>
+
+<img alt="" src="%ATTACHURL%/dewiki_4.png" />
+
+<blockquote>
+Alle test wurden durchgeführt unter Windows XP und JRE 1.6.0_13
+</blockquote>
+
+---+ 6. Datamachine optimization report
+Optimierung von DataMachine? . Grün - Original, andere farben - verschiedene Varianten nach Refactoring :
+<img  alt="" src="%ATTACHURL%/datamachine.png"  />
+
+modified DataMachine? on enwiki-20090530 :
+<img  alt="" src="%ATTACHURL%/enwiki-20090530.jpg"  />
+
+---+ 7. Mergen von !DataMachine und !TimeMachine:
+
+   * Nach dem Fusionieren von beiden Projekten entstand ein gemeinsamer Teil, der sowohl in !DataMachine als auch in !TimeMachine seine Benutzung fand: Nach der entsprechenden Generalisierung wurden solche Klassen und Packages ins Projekt &bdquo;WikiMachine&ldquo; verschoben.
+   * Viele mehrmals eingesetzten Algorithmen und Datenstrukturen wurden ebenso extrahiert und wiederverwendbar gemacht.
+   * Die Hauptlogik der! Dump-Bearbeitung, dessen Algorithmus und Containerklassen einen großen Einfluss auf den Speicherverbrauch und die Bearbeitungszeit hat, ist mit flexibel parametresierbar geworden.
+   * Nach dem Mergen, wurden Projekte ausführlich getestet.
+<blockquote><img width="374" alt="WikiMachine" src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/Mergen/WikiMachine.png" title="WikiMachine" height="355" /></blockquote>
+
+---+8.  Integration von Data-, Time- und !WikiMachine mithilfe von Spring-Beans
+---++ Problemstellung
+   1 DataMachine und TimeMachine (weiter als !xMachine genannt) haben viele Gemeinsamkeiten. Die meisten davon wurden in das separate Projekt WikiMachine ausgelagert. Wegen der breiten Zerstreuung von Klassen, gibt es eine Notwendigkeit in einem übersichtlichem und standardisierten Integrationswerkzeug
+   1 Die für xMachine entwickelte verschiedene Memory-Strategien und weitere austauschbare Komponente wie Logger, Archive Extractor oder Parser sollen maximal flexibel und anpasbar sein.
+---++ Lösung
+
+Gewünschte Flexibilität könnte dadurch erreicht werden, dass die austauschbare Komponente mithilfe von Factroy-Klassen erzeugt werden. Eine sehr breite Funktionalität bieten die so genannte Spring-Beans, wobei alle für die Application notwendige Objekte (nach ihre Funktionalität) als Beans in einer Aplication-Context-Datei erfasst werden.
+
+Solche Objekte werden in unserem Fall sowohl für Data- als auch für TimeMachie ähnlich. Ihre Auflistung befindet sich in der Datei /src/context/applicationContext.xml des jeweiligen Eclipse-Projektes.
+
+---++ Anpassungen
+
+Um Änderungen im Application Context zu machen, ohne dabei die Jar-Resource context/applicationContext.xml zu modifizieren und die Archivdatei neu zu verpacken, folgen Sie bitte diesen Schritten
+   1 entpacken Sie applicationContext.xml aus der Jar-Archiv ihrer xMachine und speichern Sie diese XML-Datei im denselben Verzeichnis. Jar- und Xml-Dateien sollen im denselben Ordner liegen und ihren ursprünglichen Namen beibehalten.
+   1 ändern Sie die genannte Application-Context-Datei und vergessen Sie nicht diese Änderungen zu speichern.
+
+Die ausgelagerte Application-Context-Datei hat immer einen Vorrang vor der eingebauten.
+
+---++ Beans
+Wir gehen auf jeden einzelnen Bean ein:
+---+++ environmentFactory
+Springbasierte Implementierung von IEnvironmentFactory. Dieser Bean wird nicht nach außen gegeben, sondern dient der Übergabe von Parameter an andere Beans. Ziel des Objektes - Erzeugung der für !xMachine notwendigen Elementen (repräsentiert als folgende Beans).
+
+<verbatim>
+	<bean id="environmentFactory" class="de.tudarmstadt.ukp.wikipedia.wikimachine.factory.SpringFactory" scope="singleton">
+	</bean>
+</verbatim>
+
+---+++ logger
+
+Jeder einzelne Logger-Bean ist eine Implementierung des Interfaces ILogger. Log4jLogger ist ein universaler Logger, der mithilfe von log4j.properties konfigurierbar ist. Die *MemoryLogger dienen der Vermittlung der Speicher-Verbrauch-Information via File oder Email-Schnittstelle. Soll es mehrere Logger verwendet werden, sollte ein CompositeLogger benutzt werden, der als Constructor-Parameter weritere ILogger-Ableitungen übergeben bekommen soll (die leere Liste der Parameter bedeutet den Verzicht auf Loggen-Funktionalität).
+
+<verbatim>
+	<!-- variants: use one or several loggers from the list
+		de.tudarmstadt.ukp.wikipedia.wikimachine.debug.FileMemoryLogger
+		de.tudarmstadt.ukp.wikipedia.wikimachine.debug.MailMemoryLogger
+		de.tudarmstadt.ukp.wikipedia.wikimachine.debug.Log4jLogger
+	-->
+	<bean id="logger" class="de.tudarmstadt.ukp.wikipedia.wikimachine.debug.CompositeLogger" scope="singleton">
+		<constructor-arg>
+			<list>
+				<bean id="fileLogger" class="de.tudarmstadt.ukp.wikipedia.wikimachine.debug.FileMemoryLogger" scope="singleton" />
+				<bean id="log4jLogger" class="de.tudarmstadt.ukp.wikipedia.wikimachine.debug.Log4jLogger" scope="singleton" />
+			</list>
+		</constructor-arg>
+	</bean>
+</verbatim>
+
+---+++ decompressor
+
+Jeder einzelne Decompressor-Bean ist eine Implementierung von IDecompressor. Die Aufgabe solcher Klassen ist das Extrahieren der komprimierten Dateien. BZip2- und GZipDecompressor entpacken die gleichnamige Archivdateien und sind komplett in Java implementiert. UniversalDecompressor ist eine Komposition aus den genannten Klassen und den flexibel anschließbaren zusätzlichen (auch native) Entpackungsprogrammen.
+
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.wikimachine.decompression.UniversalDecompressor [default]
+	de.tudarmstadt.ukp.wikipedia.wikimachine.decompression.BZip2Decompressor
+	de.tudarmstadt.ukp.wikipedia.wikimachine.decompression.GZipDecompressor	
+	-->
+	<bean id="decompressor" class="de.tudarmstadt.ukp.wikipedia.wikimachine.decompression.UniversalDecompressor" scope="singleton">
+	</bean>
+</verbatim>
+
+---+++ snapshotGenerator
+ISnapshotGenerator ist eine Abstraktion, die sowohl Data- (!DataMachineGenerator) als auch TimeMachine (!TimeMachineGenerator) miteinander ähnelt. Das einzige was für erfolgreiche Generierung der Schnappschüsse notwendig ist ist die Übergabe des Configuration- und der File-Objects.
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.datamachine.domain.DataMachineGenerator [datamachine]
+	de.tudarmstadt.ukp.wikipedia.timemachine.domain.TimeMachineGenerator [timemachine]
+	-->
+	<bean id="snapshotGenerator" class="de.tudarmstadt.ukp.wikipedia.datamachine.domain.DataMachineGenerator" scope="singleton">
+		<constructor-arg ref="environmentFactory" />
+	</bean>
+</verbatim>
+
+---+++ dumpVersionProcessor
+
+Die Abarbeitung der Dump-Dateien für xMachine erfolgt nach demselben Prinzip. Dieses ist in dem dumpVersionProcessor implementiert.
+
+ <verbatim>
+	<!-- single variant
+		de.tudarmstadt.ukp.wikipedia.wikimachine.domain.DumpVersionProcessor
+		TODO: maybe a multithread dump version processor will be added
+		
+		step2Log, step2GC and step2Flush are settings used to find/ to aboid memory leaks
+		use property's value="0" to disable it 
+	-->
+	<bean id="dumpVersionProcessor" class="de.tudarmstadt.ukp.wikipedia.wikimachine.domain.DumpVersionProcessor" scope="singleton">
+		<constructor-arg ref="logger" />
+		<property name="step2Log" value="10000" />
+		<property name="step2GC" value="100000" />
+		<property name="step2Flush" value="100000" />
+	</bean>
+</verbatim>
+
+---+++ dumpTableInputStream
+Die XML-Basierte Wikipedia-Dump-Dateien beinhalten 3 uns interessierende Tabellen - Page, Revision und Text. Diese je nach xMachine-Variante können nach 3 verschiedenen Varianten abgearbeitet werden
+<ol><li>Auslesen des im voraus geparsten Dumps aus einer Binärdatei (DataMachine)</li><li>Parsen nur notwendigen Tags des XML-Dumps</li><li>Vollständiges Parsen der XML-Datei mir dem originalen MWDumper-Algorithmus</li></ol>
+
+ <verbatim>
+	<!-- variants [datamachine]
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.xml.BinaryDumpTableInputStream
+	-->
+	<!-- variants [timemachine]
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.xml.light.XMLDumpTableInputStream
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.xml.original.XMLDumpTableInputStream [default]
+	-->
+
+	<bean id="dumpTableInputStream" class="de.tudarmstadt.ukp.wikipedia.datamachine.dump.xml.BinaryDumpTableInputStream" scope="prototype">
+	</bean>
+</verbatim>
+
+---+++ dumpVersionFactory & dumpVersion
+DumpVersion-Klassen sind besonders intensiv im Bezug auf Arbeitsspeicherverbrauch, weil sie die komplette Information eines Schnappschusses beinhalten. Um solchen Verbrauch zu reduzieren wurden verschiedene Container-Klassen und Hashing-Algorithmen kombiniert. Die IDumpVersion-Implementierungen, die durch Java-Generics generalisiert wurden werden in unserem ApplicationContext mithilfe der FactoryClassen implementiert. Solche und gewöhnliche Instantiierung sind ausführlich im folgenden Beispiel beschrieben:  
+
+ <verbatim>
+	<!-- variants [datamachine]
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.SingleDumpVersionJDKIntKeyFactory (bean id="dumpVersionFactory") [default]
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.SingleDumpVersionJDKLongKeyFactory (bean id="dumpVersionFactory")
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.SingleDumpVersionJDKStringKeyFactory (bean id="dumpVersionFactory")
+	-->
+
+	<!-- variants [timemachine]
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.DumpVersionJDKIntKeyFactory (bean id="dumpVersionFactory")
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.DumpVersionJDKLongKeyFactory (bean id="dumpVersionFactory")
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.DumpVersionJDKStringKeyFactory (bean id="dumpVersionFactory")
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.DumpVersionTroveIntKey (bean id="dumpVersion" without factory) [default]
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.OriginalDumpVersion (bean id="dumpVersion" without factory)
+	-->
+
+	<!-- examples
+	
+	Factory Template:
+		
+	<bean id="dumpVersionFactory" class="factoryClass" scope="singleton"/>
+	<bean id="dumpVersion" factory-bean="dumpVersionFactory" factory-method="getDumpVersion" scope="prototype">
+		<property name="logger">
+			<ref bean="logger" />
+		</property>
+	</bean>
+	
+	Constructor Template:
+	
+	<bean id="dumpVersion" class="dumpVersionClass" scope="prototype">
+		<property name="logger">
+			<ref bean="logger" />
+		</property>
+	</bean>
+	
+	-->
+	<bean id="dumpVersionFactory" class="de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.SingleDumpVersionJDKIntKeyFactory" scope="singleton" />
+	<bean id="dumpVersion" factory-bean="dumpVersionFactory" factory-method="getDumpVersion" scope="prototype">
+		<property name="logger">
+			<ref bean="logger" />
+		</property>
+		<property name="categoryRedirectsSkip" value="true" />
+		<property name="pageRedirectsSkip" value="true" />
+	</bean>
+</verbatim>
+
+Zusätzliche boolesche Parameter categoryRedirectsSkip und pageRedirectsSkip bestimmen, wie Wikipedia-Redirects behandelt werden. Soll der Wert als "true" definiert sein, werden Kategorien bzw Artikel ignoriert, die eine Rolle von Redirects spielen.
+
+Mehr Information bezüglich verschiedene Memory-Strategien gibt es auch unter DataMachineMemoryStrategies
+
+---+++ XMLParser
+Für Parsen des OutputStreams, der mithilfe des Beans "dumpTableInputStream" produziert wird, werden für jede Tabelle jeweils ein Parser verwendet. Diese sind im ApplicationContext als
+<ul><li>pageParser</li><li>revisionParser</li><li>textParser</li></ul>
+definiert und unterscheiden sich je nach xMachine.
+---+++ pageParser
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.wikimachine.dump.xml.PageParser [datamachine] & [timemachine]
+	-->
+	<bean id="pageParser" class="de.tudarmstadt.ukp.wikipedia.wikimachine.dump.xml.PageParser" scope="singleton">
+	</bean>
+</verbatim>
+
+---+++ revisionParser
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.xml.DataMachineRevisionParser [datamachine]
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.xml.TimeMachineRevisionParser [timemachine]
+	-->
+	<bean id="revisionParser" class="de.tudarmstadt.ukp.wikipedia.datamachine.dump.xml.DataMachineRevisionParser" scope="singleton">
+	</bean>
+</verbatim>
+
+---+++ textParser
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.wikimachine.dump.xml.TextParser [datamachine] & [timemachine]
+	-->
+	<bean id="textParser" class="de.tudarmstadt.ukp.wikipedia.wikimachine.dump.xml.TextParser" scope="singleton">
+	</bean>
+</verbatim>
+
+
+---+9.  DataMachine Memory Strategies
+
+Spring based application context of xMachine applications (namely TimeMachine and DataMachine) allows advanced users to affect many important settings. One of this settings is memory strategy: a compromise between processing speed/quality and main memory usage. To change the application context you have to
+   1 <p>Extract it from the Jar archive (context/applicationContext.xml) to the same directory where the Jar achive is placed.</p>
+   1 <p>Change beans configuration of extracted file with some unicode able editor</p>
+   1 <p>Save your changes and run xMachine</p>
+   
+Please note, that such an external application context file has a higher priority then the internal one.
+
+Replace an old strategy class, defined in the bean &ldquo;dumpVersionFactory&rdquo; with a desired class name. In doing so the factory bean will be defined like this:
+<p align="left" style="margin-bottom: 0cm"><font face="Courier New, monospace"><font size="2">%NAVY%&lt;bean%ENDCOLOR%%BLACK% %ENDCOLOR%%NAVY%id=%ENDCOLOR%%GREEN%"dumpVersionFactory"%ENDCOLOR%%BLACK% %ENDCOLOR%%NAVY%class=%ENDCOLOR%%GREEN%"de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.CLASS"%ENDCOLOR%%BLACK% %ENDCOLOR%%NAVY%scope=%ENDCOLOR%%GREEN%"singleton"%ENDCOLOR%%BLACK% %ENDCOLOR%%NAVY%/&gt;%ENDCOLOR%</font></font></p>
+
+CLASS placeholder for DataMachine might be chosen between:
+   * <p>%BLACK%<span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"><font face="Times New Roman, serif"><font size="3">SingleDumpVersionJDKIntKeyFactory &ndash; this strategy uses standard hashing algorithm to reduce main memory usage and increase the processing speed. Choosing of this value allows you the fastest processing, which needs smallest possible amount of main memory. Certainly there is a non-nil probability of erroneous hash code, which cannot identify the text on the unique way. This error appear very seldom, to you can see it as </font></font>negligible.</span>%ENDCOLOR%</p>
+   * <p>%BLACK%<font face="Times New Roman, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">SingleDumpVersionJDKLongKeyFactory &ndash; using a bigger hash code range as a previous strategy (64 bits instead of 32 bits), this one allows to reduce an error probability to very small rates. Unfortunately you have to pay with twice bigger information amount and rather slow hash generation time.</span></font></font>%ENDCOLOR%</p>
+   * <p>%BLACK%<font face="Times New Roman, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">SingleDumpVersionJDKStringKeyFactory - this strategy doesn't use any hashing algorithms at all, so it needs the biggest amount of main memory. The prime reason to use this strategy is unmistakably processing (at least according to hashing mistakes ;) ).</span></font></font>%ENDCOLOR%</p>
+
+For more information about application context please read SpringWikiIntegration
+
+%META:FILEATTACHMENT{name="datamachine.png" attachment="datamachine.png" attr="" comment="" date="1268649505" path="datamachine.png" size="23183" stream="datamachine.png" tmpFilename="/var/tmp/CGItemp42765" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="dewiki_4.png" attachment="dewiki_4.png" attr="" comment="" date="1268649530" path="dewiki_4.png" size="19310" stream="dewiki_4.png" tmpFilename="/var/tmp/CGItemp42567" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="enwiki_7.png" attachment="enwiki_7.png" attr="" comment="" date="1268649539" path="enwiki_7.png" size="26207" stream="enwiki_7.png" tmpFilename="/var/tmp/CGItemp42694" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="enwiki-20090530.jpg" attachment="enwiki-20090530.jpg" attr="" comment="" date="1268649554" path="enwiki-20090530.jpg" size="162564" stream="enwiki-20090530.jpg" tmpFilename="/var/tmp/CGItemp42805" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="layersAfter.png" attachment="layersAfter.png" attr="" comment="" date="1268649571" path="layersAfter.png" size="28809" stream="layersAfter.png" tmpFilename="/var/tmp/CGItemp42705" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="layersBefore.jpg" attachment="layersBefore.jpg" attr="" comment="" date="1268649580" path="layersBefore.jpg" size="11790" stream="layersBefore.jpg" tmpFilename="/var/tmp/CGItemp42706" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="layersBefore.png" attachment="layersBefore.png" attr="" comment="" date="1268649601" path="layersBefore.png" size="25896" stream="layersBefore.png" tmpFilename="/var/tmp/CGItemp42675" user="YevgenChebotar" version="1"}%
+%META:TOPICMOVED{by="YevgenChebotar" date="1268650511" from="Hiwi.DataTimeWikiMachineReportsSummary" to="Hiwi.DataTimeWikiMachineAllReports"}%

@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="6" version="7"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+---++ Sentence Selection
+
+%TOC%
+
+---++++ LexRank: Setup using Dragon Toolkit 
+   * [[SentenceSelectionLexRankSimple][Setup for Simple Example]]
+   
+---++++ Graph based
+   * Sentence centrality: LexPageRank
+   * Directed Graphs: Hidden Markov Models (HMM)
+   * Undirected Graphs: Conditional Random Fields (CRF)
+
+---++++ Query-related (user needs)
+   * Maximal Marginal Relevance (MMR)
+      * -> Topic selected by the user
+      * -> User profile representing information needs (to be trained)
+      * -> Individual summary: Selection of Summary-Sentences related to user (needs)
+
+---++++ Others
+   * Randomized local search
+   * Relevance measure and latent semantic analysis
+   * Maximum entropy

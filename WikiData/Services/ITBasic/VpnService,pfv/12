@@ -1,0 +1,95 @@
+%META:TOPICINFO{author="RichardEckart" date="1339509790" format="1.1" version="12"}%
+%META:TOPICPARENT{name="HowTo"}%
+<!--
+This line only protects this topic, if the hash/number sign is removed.
+   * Set ALLOWTOPICVIEW = Main.UkpGroup, Main.HiwiGroup
+
+-->
+---+ !!VPN Service
+
+%TOC%
+
+---+ Terms of Use
+
+   * Use only when necessary to access UKP resources. 
+   * VPN connections are limited. Disconnect when you do not need access anymore, so somebody else can use the VPN.
+
+---+ Connecting to the UKP VPN
+
+<div style="background: yellow; font-size: 50px; border: solid black 5px; line-height: 100%; text-align: center;">
+Service is up again for testing.
+</div>
+
+---++ General configuration
+
+| Server | vpn.ukp.informatik.tu-darmstadt.de (130.83.167.254) |
+| Login | UKP domain account (without leading "UKP\") |
+| Domain | UKP |
+| Connection type | PPTP |
+| Options | enable software compression, enable remote gateway |
+| Requirements | working internet connection | 
+
+   * With the data in the table above, you can make a VPN connection into the UKP network &#8203;&#8203;to use the internal services.
+   * It is possible to access the Hadoop cluster nodes via VPN.
+   * *The complete internet traffic is routed through the VPN, so make sure you really only use the VPN when you need it.*
+
+---+ Connecting to the TK VPN
+
+---++ General configuration
+
+| Server | vpn.tk.informatik.tu-darmstadt.de (130.83.164.229) |
+| Login | TK domain account (without leading "TK\") |
+| Domain | TK |
+| Connection type | PPTP |
+| Options | enable software compression, disable remote gateway |
+| Requirements | working internet connection | 
+
+---++ Notes on specific VPN clients
+---+++ PPTP-linux
+
+PPTP-linux is the PPTP VPN client usually used by GNU/Linux distributions, and this section shows working configuration files and instructions for it. Most graphical VPN clients (such as the ones provided by KDE and GNOME) are simply front ends to PPTP-linux, so if you can't get them to work, you can always examine what PPTP-linux configuration files they are creating, or use PPTP-linux directly.
+
+PPTP-linux stores its connection configuration files in the directory =/etc/ppp/peers=.  Create a new file =/etc/ppp/peers/TK= with the following contents, replacing my TK user name with yours:
+
+<pre>pty "pptp vpn.tk.informatik.tu-darmstadt.de --nolaunchpppd"
+name "TK\\miller"
+remotename PPTP
+require-mppe-128
+file /etc/ppp/options.pptp
+ipparam TK
+refuse-eap
+refuse-chap
+defaultroute
+</pre>
+
+PPTP-linux stores the connection credentials in the file =/etc/ppp/chap-secrets=.  Create or edit this file and append the following line, replacing my TK user name and password with yours:
+
+<pre>TK\\miller	PPTP	mypassword	*</pre>
+
+<!--
+PPTP-linux stores its network traffic routing configuration in the file =/etc/ppp/ip-up.d/route-traffic=.  Create or edit this file and ensure the contents are as follows, modifying the value of the =NET= and =IFACE= variables as appropriate.
+
+<pre>#!/bin/bash
+NET="10.0.0.0/8" # set me
+IFACE="ppp0" # set me
+#IFACE=$1
+route add -net ${NET} dev ${IFACE}
+</pre>
+-->
+
+Now you are ready to connect to the VPN.  Enter the following command as root:  =pppd call TK=
+
+If everything goes well you should see something like the following:
+
+<pre>Using interface ppp0
+Connect: ppp0 <--> /dev/pts/5
+CHAP authentication succeeded
+MPPE 128-bit stateless compression enabled
+not replacing default route to eth0 [192.168.0.1]
+local  IP address 130.83.163.249
+remote IP address 130.83.163.236
+Script /etc/ppp/ip-up finished (pid 7020), status = 0x0</pre>
+
+You are now connected to the VPN, but your network traffic will not be routed through it by default.  To make the VPN connection your default route for all traffic, issue the following command as root: =route add default ppp0=  This way all Internet connections originating from your machine will appear to be coming from TU Darmstadt.  This is useful if you plan to connect to websites of journals for which TU Darmstadt has a subscription.  However, it may slow down your Internet connection somewhat. If you don't need your web traffic to appear to originate from TU Darmstadt (for example, you just want to be able to connect to your desktop machine or the UKP infrastructure), then it might be better to restrict VPN routing to the TU Darmstadt network: =route add -net 130.83.0.0 netmask 255.255.0.0 dev ppp0=
+
+When you are done using the VPN connection, you can simply kill the =pppd= command by pressing Ctrl+C or issuing =killall pppd=.

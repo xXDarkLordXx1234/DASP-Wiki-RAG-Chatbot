@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1310416459" format="1.1" version="26"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---++ Mai-Juli 2011
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Januar | 30.04.2011 | -5 | Nachtrag vom April |
+| LMF | 01.05.2011 | 1.5 | Einarbeitung in LMF. Besprechung mit Zijad |
+| LMF | 02.05.2011 | 3 | LMF Struktur in Java in SVN:<br>dkrpo_students/LMF_Blaster/LMF_Resource |
+| LMF | 03.05.2011 | 5.5 | XML-Writer for LMF |
+| LMF Wiktionary | 05.05.2011 | 2.5 | Meeting. Wiktionary LMF transformation |
+| LMF Wiktionary | 06.05.2011 | 2.5 | Wiktionary LMF transformation |
+| LMF Wiktionary | 08.05.2011 | 3 | Prototyp von LMFTransformer und WiktionaryLMFTransformer in<br>de.tudarmstadt.ukp.lmf.transform |
+| LMF Wiktionary | 10.05.2011 | 2 | LmfProcessing |
+| LMF Wiktionary | 12.05.2011 | 2.5 | Meeting. LmfProcessing updated WiktionaryLmfExample.xml |
+| LMF | 16.05.2011 | 2.5 | XML Hibernate map |
+| LMF | 17.05.2011 | 2 | Mapping XML to Database with Hibernate |
+| LMF | 19.05.2011 | 3.5 | XML-Hibernate mapping. Creation of mapping file |
+| LMF | 20.05.2011 | 2.5 | Lmf to MySQL-Export Prototyp in <br>de.tudarmstadt.ukp.lmf.hibernate |
+| LMF | 23.05.2011 | 3 | Mapping von LMF-Java Klassen zur Datenbank |
+| LMF | 25.05.2011 | 4 | Hibernate LMF: Viele Sets/Lists in einem Knoten Lösung: http://opensource.atlassian.com/projects/hibernate/browse/HHH-2656<br>Lösung des Mapping-Problems von IDREFs |
+| LMF | 26.05.2011 | 1 | LSR-Meeting |
+| LMF | 28.05.2011 | 3 | Hibernate LMF: Erstellung von XML aus Datenbank. Besprechung mit Zijad |
+| LMF | 29.05.2011 | 2 | Lösen des Performance-Problems bei Konvertierung von großen XMLs |
+| Evaluationsbogen | 02.06.2011 | 2 | Ausfüllen von Evaluationsbogen_eng |
+| Evaluationsbogen | 03.06.2011 | 2 | Ausfüllen von Evaluationsbogen_ger |
+| LMF | 04.06.2011 | 4 | Importierung von GermaNet LMF in die Datenbank |
+| LMF | 06.06.2011 | 2 | Importierung von GermaNet LMF in die Datenbank |
+| LMF | 07.06.2011 | 2 | Meeting mit Christian. Testing von Hibernate-Zugriffsmethoden |
+| LMF | 09.06.2011 | 1 | LSR Meeting |
+| LMF | 11.06.2011 | 7 | Performance/Feasibility Tuning: LMF Import in die Datenbank.<br>Import von gesamtem WKT_EN (XML-File-Size:2.2GB, 2.7Mio LexicalEntries). Dauer: 2 Stunden |
+| LMF Wiktionary | 15.06.2011 | 2.5 | Wiktionary Pronunciation in LMF<br>Extrahierung von Context Labels |
+| LMF Wiktionary | 21.06.2011 | 3.5 | LSR Meeting. Wiktionary Translations in LMF.<br>Listen von ContextLabels [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/WiktionaryAnalysis#Context_Labels][hier]] |
+| LMF Wiktionary | 24.06.2011 | 3 | Wiktionary Context Labels to LMF |
+| LMF Wiktionary | 30.06.2011 | 2 | LSR Meeting. RelatedForm Context Labels |
+| LMF Wiktionary | 03.07.2011 | 2 | Direkte Hibernate-Konvertierung von Wiktionary |
+| LMF Wiktionary | 07.07.2011 | 3.5 | Konvertierung von Form OF-Labels in LMF RelatedForms |
+| LMF Wiktionary | 11.07.2011 | 2 | Wiktionary LMF-Konvertierung über Datenbank |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende Juli 2011 |
+<nop>

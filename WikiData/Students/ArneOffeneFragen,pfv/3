@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+%TOC%
+
+---+ Offene Fragen
+
+
+---+ Beantwortete Fragen
+---++ Ist es möglich, aus dem Wissensnetz von i-views Daten zu bekommen?
+Ja, es gibt eine Schnittstelle (gennant Brigde), die die Möglichkeit bereitstellt mittels "KScript" und "KPath" (eine XML-Query-Sprache) auf das Wissensnetz lesend (und schreibend) zuzugreifen. In Java gibt es dafür die "KEM"-Schnittstelle, die Funktionen dafür bereitstellt.

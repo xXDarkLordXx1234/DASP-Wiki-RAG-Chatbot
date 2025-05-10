@@ -1,0 +1,185 @@
+%META:TOPICINFO{author="vogel" comment="" date="1553004050" format="1.1" reprev="50" version="51"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Time Tracking
+
+Internal timesheet complete up to *28.02.2019*
+
+---+++ 2019-03
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 04.03.2019 | Einarbeitung Dashboard | 4 |  |
+| 07.03.2019 | Meeting, Einlesen der XMI Files | 3 |  |
+| 11.03.2019 | Skript Tristan | 5 |  |
+| 12.03.2019 | Skript Tristan | 4 |  |
+| 14.03.2019 | Einarbeiung Frontendcode | 2 |  |
+| 18.03.2019 | Search-UI lokal | 2 |  |
+| 19.03.2019 | Meeting, Beginn Dockerfile | 3 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-02
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 01.02.2019 | Meeting, searching and deploying 4 missing HITs | 2 |  |
+| 04.02.2019 | Added code for merging annotations, bugfixes| 3 |  |
+| 07.02.2019 | Guideline HIT Template, Bugfix error messages | 3 |  |
+| 08.02.2019 | Bugfixes | 2 |  |
+| 12.02.2019 | Einarbeitung Docker, Meeting  | 3 |  |
+| 13.02.2019 | Searching bugs in bsc input code | 4 |  |
+| 14.02.2019 | Comparing bsc results | 2 |  |
+| 18.02.2019 | Wrote test for comparing two goldstandards | 2 |  |
+| 20.02.2019 | Bugfixes bsc, Einarbeitung | 4 |  |
+| 22.02.2019 | Einarbeitung | 2 |  |
+| 26.02.2019 | Bugfix data_model, missing classes, Meeting | 3 |  |
+| 27.02.2019 | Einarbeitung Dashboard | 4 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-01
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+|  |  |  |  |
+| 03.01.2019 | Qualification test frontend page | 4 |  |
+| 08.01.2019 | Bugfixes, added Parameters to bayesian tool| 3 |  |
+| 10.01.2019 | Added Qualification test to deployment | 2 |  |
+| 11.01.2019 | Bugfixes, Meeting| 2 |  |
+| 14.01.2019 | Updated Guideline, changed Hit Layout | 4 |  |
+| 17.01.2019 | Added math problems, Meeting | 3 |  |
+| 22.01.2019 | Qualification Backend & Frontend Worker Table | 5 |  |
+| 25.01.2019 | Meeting, Changes Hit Template | 3 |  |
+| 28.01.2019 | Frontend Error Messages, Bugfixes | 4 |  |
+| 30.01.2019 | Generation of math problems | 2 |  |
+| 31.01.2019 | Added Javascript to menus | 2 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2018-12
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+|  |  |  |  |
+| 03.12.2018 | modularity improvements, created info results files for token-level annotations | 2 |  |
+| 05.12.2018 | added bayesian annotator to nlpc | 3 |  |
+| 07.12.2018 | worker competences, integration of bayesian tool | 2 |  |
+| 11.12.2018 | worker table for token-level annotation | 4 |  |
+| 13.12.2018 | Meeting, Hit generation mixed topics | 4 |  |
+| 14.12.2018 | Hit generation uses all sentences | 2 |  |
+| 17.12.2018 | Bugfixes Pagination | 3 |  |
+| 18.12.2018 | Expertannotation + Deployment 10 Hits | 6 |  |
+| 20.12.2018 | Mergen 10 Hits | 3 |  |
+| 28.12.2018 | Integration of Bayesian settings | 5 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+
+---+++ 2018-11
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+|  |  |  |  |
+| 02.11.2018 | logging updated, started work on hit template | 2 |  |
+| 05.11.2018 | created hit_generation info file, and added info to batch_config, meeting | 4 |  |
+| 06.11.2018 | added timestamp to goldstandard filename | 1 |  |
+| 07.11.2018 | added more error messages  | 2 |  |
+| 08.11.2018 | reworked hit_generation frontend page | 4 |  |
+| 12.11.2018 | added hit generation of new template to backend | 3 |  |
+| 14.11.2018 | hit template, now spans selectable | 4 |  |
+| 16.11.2018 | Meeting, added guideline | 3 |  |
+| 22.11.2018 | hit template validation | 3 |  |
+| 26.11.2018 | prepared backend to get results from new template | 4 |  |
+| 28.11.2018 | bugfixes, added restriction for title to frontend | 2 |  |
+| 29.11.2018 | results.json for new template created | 2 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+
+---+++ 2018-04
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 08.04.2018 | Seite /upload angelegt und in die Navigationsleiste eingebunden | 1.5 | |
+| 09.04.2018 | Dateien werden im Ordner gespeichert. Einlesen der Dateien, zählen von Labels nach Themen getrennt. | 2.5 | |
+| 10.04.2018 | Metadaten werden in json Datei abgespeichert. Labels werden vereinheitlicht. | 1 | |
+| 11.04.2018 | Erstellen der merge HTML Seite. | 1 | |
+| 12.04.2018 | Backend für die Tabelle im /upload_merge. | 2 | |
+| 12.04.2018 | Default-Strategie implementiert | 2 | |
+| 17.04.2018 | Amb-Column aus dem Interface herausgenommen. Checkbox für Case-sensitivity eingebaut | 1.5 | |
+| 18.04.2018 | Normieren der Labels in den tsv Dateien. Random Strategie zur Auswahl implementiert. Gesamtzahl Sätze wird angezeigt. | 2.5 | |
+| 19.04.2018 | Annotationsübersicht an neue Daten angepasst, info.json erweitert. Prozentzahlen werden hinter den Werten angezeigt. | 2.5 | |
+| 20.04.2018 | Hit-Template. Versuche mit buttons und checkboxen (und checkboxen, die wie Buttons aussehen). | 2 | |
+| 23.04.2018 | Bug Fixes. Hit Template dynamische Anzeige der Auswahl. | 2 | |
+| 25.04.2018 | Einarbeitung Javascript, Speichern eines Aspektes jetzt als eigenes Objekt mit Methoden um Wörter hinzuzufügen/zu löschen. | 3 | |
+| 26.04.2018 | Wörter werden in der richtigen Reihenfolge angezeigt. Bei Klick auf OK öffnet sich ein Input-Fenster. | 2 | |
+| 27.04.2018 | Bearbeitung eines Aspektes aktivieren/deaktivieren möglich. Dynamische Anzeige der ausgewählten Wörter eines Aspektes. | 3 | |
+| 30.04.2018 | Wörter können nur zusammenhängend ausgewählt werden, beim Abwählen können nur die äußeren Wörter abgewählt werden. | 3 | |
+| 02.05.2018 | Zweiten Aspekt hinzugefügt, Logik für das aktivieren/deaktivieren von Buttons geschrieben. | 2 | |
+| 07.05.2018 | Versuche die Checkboxen über tabbing zu highlighten.Beliebige Anzahl Aspekte hinzufügbar. | 4 | |
+| 11.05.2018 | Styling und Spacing angefangen. Checkbox bezieht sich auf Topic eingebaut. Delete button erstellt. | 4 | |
+| 15.05.2018 | Meeting. Ändern der Checkboxes zu anklickbaren Spans. Tabbing funktioniert. | 3 | |
+| 18.05.2018 | Zusammenhängende Auswahl jetzt auch mit spans möglich. Alle Aspekte werden aktiv/inaktiv im Satz angezeigt. | 2 | |
+| 22.05.2018 | Bugfixes. Mit n wird ein aspekt als abgeschlossen markiert, durch anklicken eines noch nicht gewählten Wortes wird ein neuer Aspekt angelegt. | 3 | |
+| 23.05.2018 | Einbauen der Radiobuttons yes/no. Klick auf yes bei der Frage nach Simplification öffnet input Feld. Spacing angepasst | 2.5 | |
+| 28.05.2018 | Meeting. Fehlersuche NLPC | 3 | |
+| 30.05.2018 | Fehlersuche und Fehlerbehebung Blockierte Worker | 4 | |
+| 01.06.2018 | Pluginsuche. Einbauen des Multiselects für Geolocations in NLPC. | 4 | |
+| 04.06.2018 | Ärger mit erstem Plugin, zweites Plugin eingebunden. Backend für Qualificationen geschrieben. | 3 | |
+| 05.06.2018 | Testen in verschiedenen Browsern. Einbauen der default-Block-Nachricht & Anpassen des Hit-Templates. | 2 | |
+| 07.06.2018 | NLPC: Update der Projektstruktur, Testen | 1 | |
+| 15.06.2018 | NLPC: Default-Messages und Checkboxen eingebaut | 2 | |
+| 19.06.2018 | NLPC: Frontend mehrere Worker rejecten/blocken | 2 | |
+| 21.06.2018 | NLPC: Backend multiple worker rejecten/blocken, Testen | 3 | |
+| 26.06.2018 | NLPC: Bug fixen, Fußleiste zum anzeigen der Versionsnummer einbauen | 2 | |
+| 27.06.2018 | Template: Umbau des Backends damit mehrere Sätze angezeigt werden können | 2 | |
+| 28.06.2018 | Template: Backendumbau weitergemacht | 5 | |
+| 02.07.2018 | NLPC: Erstellung results_rejected.json | 3 |  |
+| 04.07.2018 | Template: Usability verbessert, delete Funktion eingebaut | 6 |  |
+| 05.07.2018 | Annotation: Einarbeiten & 15 Hits | 1 |  |
+| 05.07.2018 | NLPC: Skript um assignments.csv für rejectete Arbeit zu erstellen | 1 |  |
+| 09.07.2018 | NLPC: accepten von rejecteten HITs | 3 |  |
+| 12.07.2018 | Annotation Sarah | 2 |  |
+| 16.07.2018 | Template: diverse kleine Anpassungen | 2 |  |
+| 18.07.2018 | Template: Satzzeichen nicht anklickbar | 2 |  |
+| 19.07.2018 |Space zwischen verschiedenen Aspekten | 2 | |
+| 24.07.2018 | JS Fehler gefixed | 2 |  |
+| 25.07.2018 | Aspekt speichert nur Anfangs- und Endindex | 5 |  |
+| 27.07.2018 | Meeting | 2 |  |
+| 06.08.2018 | Rückwärts markieren gefixed  | 3 |  |
+| 08.08.2018 | Annotation Sarah | 3 |  |
+| 09.08.2018 | Template: Responsiv für kleinere Bildschirme | 3 |  |
+| 10.08.2018 | Meeting | 1 |  |
+| 14.08.2018 | Evaluation | 3 |  |
+| 16.08.2018 | Evaluation, Fix Satzzeichen nicht anklickbar | 5 |  |
+| 17.08.2018 | Meeting, Annotation | 2 |  |
+| 22.08.2018 | Annotation | 3 |  |
+| 28.08.2018 | Annotation | 4 |  |
+| 30.08.2018 | Annotation | 3 |  |
+| 07.09.2018 | Meeting, NLPC Tool | 3 |  |
+| 10.09.2018 | NLPC: Price Calculation | 2 |  |
+| 11.09.2018 | NLPC: Upload site | 4 |  |
+| 13.09.2018 | NLPC: Hit statistics | 4 |  |
+| 17.09.2018 | Meeting, Conversion info.stat to info.json | 4 |  |
+| 19.09.2018 | NLPC: Assignments for rejected hits | 4 |  |
+| 20.09.2018 | NLPC: Strict search | 2 |  |
+| 24.09.2018 | Meeting, Rework Upload | 3 |  |
+| 25.09.2018 | NLPC: fixed Status | 4 |  |
+| 27.09.2018 | NLPC: prepared Deployment, bugfixes | 4 |  |
+| 1.10.2018 | show number and price for adding new assignments for rejected ones | 3 |  |
+| 3.10.2018 | added error messages in frontend and icons | 3 |  |
+| 5.10.2018 | bugfix in stop experiment, changed labels | 2 |  |
+| 10.10.2018 | topic as first column in gold standard | 4 |  |
+| 11.10.2018 | additional input fields for topic, sort annotation page | 3 |  |
+| 15.10.2018 | show time in workers table, show user | 3 |  |
+| 17.10.2018 | bugfixes | 2 |  |
+| 18.10.2018 | tooltips, icons, bugfixes | 3 |  |
+| 22.10.2018 | error messages in get balance, median time | 4 |  |
+| 24.10.2018 | status bar rework & bugfixing | 3 |  |
+| 29.10.2018 | status bar fix complete, generate hits button disabled | 2 |  |
+| 30.10.2018 | error messages and descirption in upload  | 2 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+
+
+
+-- Main.ChristianStab - 2018-04-06

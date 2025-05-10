@@ -1,0 +1,97 @@
+%META:TOPICINFO{author="valkanov" comment="save topic" date="1364827224" format="1.1" reprev="13" version="13"}%
+%META:TOPICPARENT{name="GeorgiValkanov"}%
+-- Main.GeorgiValkanov - 2012-12-03
+---+++ Meeting 02.04.2013
+
+---++++ Filtering good  generated questions
+Filter criteria:
+   * 1. Level in Wordnet. (i.e. how far away are the words form the root) (higher level -> lower abstractness)
+   * 2. No words with capitals (named entities in WordNet, Latin names)
+   * 3. No words with _
+   * 4. The frequency of each answer is >=10 (Leipzig Wikipedia Corpus) (avoid very rarely used words)
+   * 5. The glossary overlap between the ooo and at least one  of the answers is > 0 (if possible)
+   * 6. Equal distribution of frequencies ?
+
+Open question: 
+How to determine the right solver? Confidence? Based on PoS?
+
+
+---+++ Meeting 12.02.2013
+
+Separation of the questions into categories
+
+   * Category 1 
+      * Answers are part of a specific well-defined group of terms (taxonomy)
+      * The answers share a common straight-forward property
+   * Category 2
+      * Answers share a property that is untypical, ambiguous od depends on additional logical conclusions 
+   * Category 3
+      * Elements a synonyms ( adjectives or verbs) therefore they don't build taxonomies in WordNet and some measures are undefined for them
+   * Category 4
+      * The odd one out answer is a general term and the rest are specializations or products of this term. 
+---+++ 
+---+++ Meeting on 05.02.2013
+
+Status update:
+
+Analyzed performance of GlossOverlap and Resnik similarity measures.
+
+Several insights:
+
+   * GlossOverlap works well on the verbs, whereas all path-based measures fail
+   * GlossOverlap often doesn't have values for simple words
+   * Path-based algorithms have more often meaningful values
+   * Problems with plural forms, complex words, plural forms
+   * giving 1/2 or 1/3 points will only increase performance slightly
+Split up of the questions in categories
+
+   * Sinonyms - the ooo is not a sinonym of the rest
+   * Taxonomies - the ooo is not part of the taxonomy
+   * Shared properties - the ooo does'n share the same property as the rest
+   * General term and specialization - the ooo is the general term (too few questions)
+Run sim. measures on categories
+
+   * GlossOverlap - Sinonyms (66%), Taxonomy (41%), Properties (34%)
+   * Resnik - Sinonyms (skipped), Taxonomy (70%), Properties (34%)
+
+---+++ Meeting on 18.12.2012
+   * Anmeldung
+   * Mendeley Tags
+   * Annotationsstudie
+   * Experimentprojekt ins SVN 
+      * Projekt angelegt unter: 
+         * https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/gvalkanov/trunk/de.tudarmstadt.ukp.students.oddoneout/
+   * DKPro Core 
+      * Maven Setup - http://code.google.com/p/dkpro-core-asl/wiki/UserSetup
+      * bei allen weiteren Fragen zum Setup 
+         * https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/DKProDeveloperResources
+   * DKPro Similarity 
+      * http://code.google.com/p/dkpro-similarity-asl/
+   * !LexicalSemanticResource (WordNet Zugriff) 
+      * https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/LexSemResProduct
+
+---+++ Meeting on 11.12.2012
+   * Question quality? - Some questions are way too easy for humans. Should we consider those as well?
+   * SemanticSimilarity ?
+
+---+++ Meeting on 04.12.2012
+   * How many questions needed in the corpus?
+   * Question solver 
+      * wia semantic relatedness (WordNet, Roget's Thesaurus)
+      * other way?
+   * Question generator 
+      * Wiki-based?
+      * or similar to solver - get N similar concepts, chose N+1th with a bigger distance to the rest?
+<span style="color: #630000; font-size: 17px; font-weight: bold; line-height: 1em;">Meeting on 29.01.2013</span>
+
+Open Questions:
+
+   * How to determine the PoS of the answers? Is this needed for the similarity check?
+   * Why are some of the comparators very slow and Java runs out of memory?
+   * How do I use the serialized graphs? Can a LSR be created from them?
+   * Is similarity reflexive?
+Discuss:
+
+   * Questionare results
+   * First solver results
+   * Algorithms and implementation

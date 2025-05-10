@@ -1,0 +1,100 @@
+%META:TOPICINFO{author="alles" comment="" date="1695038356" format="1.1" reprev="47" version="47"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ !! UKP Mail Service
+
+<div style="float:right; background-color:white; z-index:999; border: solid 2px lightblue; padding: 5px">
+---++++ !! Content of this page
+%TOC%
+</div>
+
+---++ How to use O365 and access mail
+*PLEASE NOTE: two different formats of your TU-ID are needed to activate office and setup your mail account in outlook!*
+---+++ *%RED%Download and Activate O365%ENDCOLOR%*
+   * *%RED%Short: use Cloud-ID in the form "sa12egal@tu-darmstadt.de" to activate office%ENDCOLOR%*
+   * Follow [[https://www.hrz.tu-darmstadt.de/services/it_services/campus_software/microsoft/microsoft_ees/informationen_beschaeftigte_ohne_gemanagten_pc/index.en.jsp][these instructions]].
+      1 Go to the following website: www.office.com (opens in new tab).
+      1 Click on “Sign in”.
+      1 Enter your *cloud ID* (TU-ID@tu-darmstadt.de like sa12egal@tu-darmstadt.de) as the username.
+      1 Use your *TU-ID password* as password.
+      1 Now you find yourself in the overview of your personal O365 area. On the top right, there is an orange button “Install Office”.
+      1 Click on the orange button and follow the instructions of the installation manager.
+      1 After about 30 minutes, the installation will be complete.
+      1 When using one of the O365 applications for the first time, you will be prompted to enter your credentials: you will need your Cloud-ID and TU ID password. 
+
+---+++ *%RED%Setup your Mailbox%ENDCOLOR%*
+   * *%RED%Short: use TU-ID in the form "ads\sa12egal" to login to mailbox%ENDCOLOR%*
+   * Follow [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_3200.en.jsp][these instructions]].
+      1 Press the“Windows” key and “R” to open the “Ausführen” (“Run”) window. Type the following command in the line and execute it by pressing the Enter key: 
+      1 <verbatim>reg.exe add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Outlook\AutoDiscover /v ExcludeExplicitO365Endpoint /t REG_DWORD /d 1 /f</verbatim>
+      1 In the first window enter your email address and mark the checkbox “Konto manuell einrichten” (“Set up account manually”).
+      1 “Exchange” must be selected in the advanced setup.
+      1 A login window will appear. 
+         * Click on “weitere Optionen” (“more options”) -> “Anderes Konto verwenden” (“Use other account”).
+         * Now enter the domain shorthands of groupware service followed by a backslash and your TU-ID, like *ads\TU-ID*, for TU ID sa12egal e.g. *ads\sa12egal*
+         * Enter your *TU-ID password* and Click on “OK”.
+      1 In the following window Outlook searches online for the server settings. This may take a few minutes.
+         * After the search is finished, you will get to the final dialog. Here you can add more mailboxes if required.
+         * Remove the checkmark for “Outlook Mobile auch auf meinem Telefon einrichten” (Also set up Outlook Mobile on my phone").
+         * Click on process completed. You can now use your groupware account in Outlook. 
+
+---++ About your mailaccount
+---+++ Does UKP Lab host mail services?
+   * No, UKP Lab is a customer of [[https://www.hrz.tu-darmstadt.de/services/it_services/groupware/index.en.jsp][HRZ Groupware]]. 
+   * UKP system-admin are just the "Groupware Beauftragte". 
+
+---+++ What is my email address? 
+   * When you first activate your TU ID you might have the choice to select your mail
+   * Usually you might select *firstname.lastname@tu-darmstadt.de* - *this is your primary mail to send and receive mails from*. 
+
+---+++ Are there any restrictions or limitations?
+   * Yes, you have 2.5GB of mail space if not communicated otherwise.
+
+---+++ Accessing mail on other OS / other how to's
+there are multiple ways - OWA is the easiest possibility to use your mailbox. you can also use outlook and many other clients, below you can find the how-tos from hrz. ukp system-admin only supports outlook and owa.
+   * [[https://mail.tu-darmstadt.de/owa][OWA - just login with TU-ID]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_3200.en.jsp][Outlook - German Version]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_5697.en.jsp][iOS]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/linux_mailbox/e_mail_einrichten/thunderbird_einrichten/index.en.jsp][Thunderbird]]
+
+---++ FAQ about the Migration to HRZ Groupware
+
+%TABPANE%
+ %TAB{"Info"}%
+
+Please Note - the following information is dated back to 2022. It may not apply anymore, but we keep it here in case someones stills needs it.
+
+ %ENDTAB%
+ %TAB{"Unfold old information about the migration"}%
+
+*<u>What about my old mails in UKP mailbox after the migration?</u>*
+
+All mails, contacts, and data have been transferred to your groupware mailbox, nothing should be missing.
+
+*<u>Something is missing!</u>*
+
+Please let system-admin know via ticket.
+
+*<u>What is my mail address now?</u>*
+
+Your primary mailaddress has changed, this is usually =firstname.lastname@tu-darmstadt.de=. you'll be sending mails from this address, so you should use this mail in your signatre and on any official stuff. your previous mailaddress like =lastname@ukp.tu-darmstadt.de= can still receive mails. New hires only have the =firstname.lastname@tu-darmstadt.de= address! If you want a shorter =@ukp.tu-darmstadt= address, then please open a ticket, specify your desired adress and TU ID.
+
+*<u>Have central mails changed?</u>*
+
+The central mails have not changed and any known mailaddress can still be used. in future, central addresses will only have the @ukp.tu-darmstadt.de ending, we'll stop using the "informatik" part.  Central mails should be listed in the central TU Darmstadt address book as well.
+
+*<u>What are the login credentials for my mailbox?</u>*
+
+You have to use your TU-ID to access mails, not UKP account.
+
+*<u>Are there any restrictions for my mailbox size?</u>*
+
+You have 2.5GB of mail space if not communicated otherwise.
+
+*<u>Something that I want to know is not explained here.</u>*
+
+There are also guides for other configurations if you search on the TU Darmstadt Groupware page. If you cant find it, let system-admin by opening a ticket.
+
+ %ENDTAB%
+%ENDTABPANE%
+
+%META:TOPICMOVED{by="bugert" date="1570805052" from="Services.MailService" to="Services/Lab.MailService"}%

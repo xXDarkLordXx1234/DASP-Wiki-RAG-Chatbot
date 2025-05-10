@@ -1,0 +1,125 @@
+%META:TOPICINFO{author="stab" comment="save topic" date="1403607566" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++2014-06-24 Status Meeting
+   * canceled by student due to sickness
+
+---+++2014-06-17 Status Meeting
+   * vacation CS
+
+---+++2014-06-10 Status Meeting
+   * vacation CS
+
+---+++2014-06-03 Status Meeting
+   * Weekly Standup (SM)
+      * Elaboration of annotation guidelines
+      * Implemented code for generating the annotation items of the study.
+   * @action(CS): Sign work description and hand it to our secretariat (done)
+   * @discuss(CS): Work plan for next two weeks (CS is on vacation)
+   * @discuss(CS): Results of second pre study (done)
+   * @discuss(CS): Status of annotation guidelines (done). Good progress :)
+   * @todo(SM): 
+      * Evaluate inter-annotator agreement of the second pre-study.
+      * Work plan next two weeks (because of vacation of CS):
+         * Elaborate annotation guidelines
+         * Prepare annotation items for the study
+         * Write thesis (introduction, SoTA, results + findings of pre study (How has the pre study influenced the elaboration of annotation guidelines? What were the findings?), Description of annotation study)
+         * Get familiar with DKPro-TC (https://code.google.com/p/dkpro-tc/)
+            * In particular: Pair classification task
+   * @todo(CS):
+      * Hand signed work description to secretariat. (done)
+
+
+---+++2014-05-27 Status Meeting
+   * Weekly Standup (SM)
+      * Annotation guidelines ausgearbeitet
+      * Prepared examples for second pre-study
+      * Investigated brat. Will conduct the annotation study using spreadsheets because of compatibility problems to student's hardware
+   * @discuss(): Discussed the annotation guidelines.
+   * @info: attacking faulty reasoning: http://www.gospellifechurch.com/thinktank/download/05_Faulty_Reasoning.pdf
+      * provides criteria for good arguments and discusses details
+   * @info(CS): Work Description
+   * @discuss(CS): annotation schema
+   * @discuss(SM): second pre-study
+   * @discuss(SM): annotation tools
+   * @todo(SM): 
+      * Elaboration of annotation guidelines
+      * Preparation of the data for the study
+   * @todo(CS):
+      * Annotated examples of pre-study (done).
+
+---+++2014-05-20 Status Meeting
+   * Appointments for mid-term and final talk 
+      * mid-term presentation: 19.08.2014
+      * final presentation: 14.10.2014
+   * @discuss: Results of pre-study
+      * Review of current guidelines; CS provided tips for improvement. 
+   * @discuss: work description and feedback from IG
+   * @discuss: Annotations Tools. Which are suited for the task?
+   * @todo(SM):
+      * Elaboration of annotation guidelines
+      * Setup of annotation Tool.
+      * Continue writing of the thesis (definition arguments, and quality metrics)
+   * @todo(CS):
+      * elaboration of work description (done)
+         * provide an operationalization of the task (done)
+
+---+++ 2014-05-13 Status Meeting
+   * canceled by student
+   * @info(CS): shared my annotations of the pre study
+
+---+++ 2014-05-08 Status Meeting
+  * @discuss: Elaboration of quality metrics.
+     * CS provided tips for scientific writing, forming arguments and structure of the thesis
+  * @discuss: Details of the pre study. It will help to elaborate the task and the elaboration of the annotation guidelines.
+  * @discuss: Structure of the essay
+  * @todo(SM):
+    * Prepare examples for the pre-study (Done)
+    * Elaborate the definition of arguments and argumentation quality
+    * Elaboration of annotation guidelines
+
+---+++ 2014-04-29 Meeting mit Sören
+   * @discuss: Possible metrics for assessing quality 
+   * @discuss: Example Aguments
+   * @todo(SM)
+      * Elaborate argument quality sota
+      * Prepare examples for a pre-study
+      * Elaborate annotation guidelines
+  * @todo(CS): 
+      * send guidelines of argument annotation study (Done)
+
+---+++ 2014-04-22 Status Meeting
+   * Questions regarding UIMA and DKPRO
+      * Import of AM-Projekts, Type-System, reading corpus
+      * Projects are now working and the data can be accessed
+   * Elaboration of work description
+      * The thesis will include an annotation task and a classification task
+   * Accounts are working
+      * Email is redirected to personal mail-account
+  * @todo(SM):
+      * Which dimensions are suited for assessing the quality of arguments?
+         * Which approaches are available? 
+         * Examples for bad and good arguments
+      * Recommendation: Start writing a first overview of existing approaches and define argument components, etc.
+   * @todo(CS):
+      * Grant access to UKP-Wiki (done)
+      * First Draft work description (done)
+
+---+++ 2014-04-15 Status Meeting
+   * canceled because of sickness (SM)
+
+---+++ 2014-04-08 Status Meeting
+   * Standup
+      * Familiarization with Argumentation (Toulmin-Scheme)
+      * Argumentation Quality (Sampson2006 and additional references)
+         * Elaboration likelyhood model (ELB) for assessing argument quality
+            * estimates cognitive aspects of arguments
+      * UIMA Tutorial 
+   * Accounts / administrative tasks
+   * @todo(SM) 
+      * Investigation of argumentation quality metrics/dimensions
+      * Examples of bad and good arguments 
+      * Setup Eclipse, etc. 
+   * @todo(CS):
+      * Send argument annotation guidelines (Done)
+      * Send data / Minimal Code for accessing the data (Done)
+-- Main.ChristianStab - 2014-05-21

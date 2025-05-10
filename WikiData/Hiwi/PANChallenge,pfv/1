@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="OliverFerschke" date="1333370098" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+%TOC%
+
+*DEADLINE: June 1st 2012*
+
+---++ Description
+Given a set of Wikipedia articles that have been tagged with a particular quality flaw, decide whether a previously unseen article suffers from this flaw. 
+
+---++ Work Plan
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Woche* | *Ziel* | *Michael* | *Artem* | *Oliver* | *Anmerkung* |
+| KW14 | Einarbeitung Infrastruktur | | | | Karfreitag Feiertag |
+| KW15 | Weitere Einarbeitung und Planung Framework | | | | Ostermontag Feiertag |
+| KW16 | Entwicklung Framework | | | | |
+| KW17 | | | | Konferenz Avignon | |
+| KW18 | | | | | 1. Mai Feiertag |
+| KW19 | | | | | |
+| KW20 | | | | | |
+| KW21 | | | | | |
+| KW22 | | | | | Deadline Freitag!! |
+<nop>
+
+---++ Resources
+---+++ Compute Server
+   * =moe.ukp.informatik.tu-darmstadt.de= has been reserved for the challenge (might still be used by others from time to time)
+---+++ Database
+   * JWPL Database incl. revisions has been installed on moe
+      * =wiki_en_20120104_rev=
+      * Access to db from outside only via ssh-tunnel (open a ssh-tunnel to moe and connect to mysql on moe through the tunnel)
+---+++ Workstations
+   * =ukp-pool-1= has been reserved
+---+++ Corpus
+   * The quality flaw dataset is available from the [[http://www.uni-weimar.de/medien/webis/research/events/pan-12/pan12-web/iq-wikipedia.html][task website]]
+---+++ SVN Repository
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/LOEWE-TP23/trunk/de.tudarmstadt.ukp.loewe.tp23.quality/][de.tudarmstadt.ukp.loewe.tp23.quality]]
+
+
+
+---++ Links
+   * [[http://www.uni-weimar.de/medien/webis/research/events/pan-12/pan12-web/iq-wikipedia.html][Task Website]]
+   * [[https://groups.google.com/forum/?fromgroups#!forum/pan-workshop-series][PAN Google Group]]
+   * [[http://clef2012.org/][CLEF 2012]]
+
+-- Main.OliverFerschke - 2012-03-16

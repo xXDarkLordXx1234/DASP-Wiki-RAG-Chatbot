@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="mischnaewski" comment="" date="1631746935" format="1.1" reprev="2" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelors Thesis: Reasoning over Knowledge Graphs for Generative Question Answering
+
+*Supervisor: Leonardo Ribeiro*
+
+---++++ Week 25.08 - 31.08.2021
+
+* Completed setting up Slurm, Wiki, including environments
+* Computed perplexity
+* Metrics in ELI5:
+   * F1 for ROUGE-{1,2,L}
+   * Human Judges
+   * ROUGE-20%
+   * FILL-1
+
+---++++ Week 01.09 - 07.09.2021
+
+* Ran baselines 
+   * This time with full dataset because of access to cluster
+   * Models: t5-base & bart-base
+   * Datasets: ELI5 & GOOAQ 
+      * (ELI5 transformed to pairs of questions and answers instead of 1:N relation)
+   * Completed:
+      * t5-base on gooaq
+
+
+---++++ Week 08.09 - 14.09.2021
+
+* Background research
+   * Look into SOTA on ELI5
+   * Look into using GNNs for QA
+   * Evaulate potential approaches for improving QA using GNNs
+   * Summarize in presentation for Leonardo
+* Run QA-GNN as a baseline (and proof of working on ukp slurm cluster)
+   * Had issues with running due to old gcc version
+      * Fixed by installing gcc over conda (important: first install gcc, then install pytorch-geometric etc. as otherwise geometric uses the wrong path)
+
+---++++ Week 15.09 - 21.09.2021
+
+* Fix Baselines
+   * Baselines use incorrect model parameters making them inferior to expected scores
+   * Reformulate background research (tabular data etc.)
+   * Perform entity extraction similar to QA-GNN
+   * Perform subgraph extraction similar to QA-GNN
+      * After that, think about extending subgraphs as they probably will not be large enough to contain the answer

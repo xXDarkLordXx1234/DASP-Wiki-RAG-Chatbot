@@ -1,0 +1,25 @@
+%META:TOPICINFO{author="kuczykowska" comment="" date="1695297489" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis: Predicting Depression Severity from Therapy Dialogues
+
+---++  Week #1, September 11th - 17th
+   * Literatur Review (wip) on:
+      * Text Classification
+      * Depression Severity Prediction 
+      * Long(ish) Text Processing
+      * SOTA Language Models
+   * Problem: none of the models considered (SLED, Unlmiformer, Landmark Attention) supports pure classification (or regression) task
+
+---++  Week #0, September 4th - 10th
+   * Environment set up
+      * Download the code base from the main three papers
+      * Install VS Code, Github, Tex Live
+   * Literatur Review (work in progress):
+      * Long transformers
+      * Long transformers that do not need to be re-trained
+      * Depression Severity Prediction & NLP
+   * First Code attempts
+      * install Unlimiformer
+         * update Unlimiformer & make pull-request
+         * Problem: Unlimformer does not support pure Classification or Regression models
+      * install SLED

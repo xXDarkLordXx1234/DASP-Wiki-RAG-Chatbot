@@ -1,0 +1,83 @@
+%META:TOPICINFO{author="ChristianKirschner" date="1309187446" format="1.1" version="20"}%
+%META:TOPICPARENT{name="WebHome"}%
+<!--
+   * Set ALLOWTOPICVIEW = Main.ChristianKirschner,Main.UkpGroup
+   * Set ALLOWTOPICCHANGE = Main.ChristianKirschner,Main.UkpGroup
+//-->
+
+---+ Christian Kirschner's Work
+
+---++ Project Plan (tentative)
+
+   * *Month 0.0 - 1.5 DATA*
+      * <span class="green">Part 1</span>
+         * <span class="green">Read task description (CICLing sec. 4; IGI sec. rel. anchoring)</span>
+         * <span class="green">Read annotation guidebook</span>
+         * <span class="green">Familiarize with task</span>
+      * Part 2
+         * <span class="green">Look into Wiktionary; structure and API access</span>
+         * <span class="green">Which dimensions are necessary/important to consider for a dataset?
+            * This will be a core question to be discussed</span>
+         * Include Wikisaurus?
+         * <span class="green">Develop a well-balanced reference dataset for the English relation anchoring task (maybe also for the German?) [with !ChM]</span>
+         * Update the annotation guidebook
+      * Part 3
+         * Annotate the data [@ChM find additional annotator(s)]
+         * Evaluate the dataset [with !ChM]
+
+   * *Month 1.5  3.0 METHOD*
+      * Part 4
+         * @ChM Update the anchoring framework
+         * Get the framework to work, familiarize with code
+         * Run the existing methods with old and new data
+         * Analyze errors
+            * What do we need to solve?
+            * What can be improved?
+            * This will be a core question to be discussed
+      * Part 5
+         * Try and develop heuristics
+         * Try and develop new methods, ideas:
+            * PPR?
+            * Graph-based method (Navid?)
+            * PROX?
+            * Milne/Witten?
+
+---++ GoldStandard Generation
+
+   * On the one hand the GoldStandard should build up in a way that weaknesses of disambiguation algorithms can be detected, on the other hand it should be quite representative. Therefore we are going to use the following criteria:
+      * Part of speech
+      * Relations
+      * Number of candidates
+      * Labels
+
+
+
+
+
+---++ Current Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Task* | *Date* | *Hours* | *Remarks* |
+| - | 28.03.2011 | 0 | Project Plan (!ChM) |
+| Part 1 + Meeting | 11.04.2011 | 1 | |
+| Datenbank aufsetzen + Workspace anlegen | 11.04.2011 | 0.75 | |
+| In Code einlesen | 12.04.2011 | 0.75 | |
+| Software testen, Abläufe bei Datenerzeugung nachvollziehen, Wiktionary genauer ansehen | 15.04.2011 | 2.5 | |
+| Daten in Datenbank analysieren, Gedanken über Erstellung eines GoldStandards machen | 24.04.2011 | 2.5 | |
+| Random und MFS Evaluationsdaten für WordNet-Wiktionary Alignment erstellen | 28.04.2011 | 1.5 | |
+| Meeting | 29.04.2011 | 0.5 | |
+| Erstellen einer Statistik über Verteilung von POS, Kandidaten, Relationen in englischer Wiktionary und Bewertung der Daten | 01.05.2011 | 2 | |
+| Programmaufbau überlegen, mit Umsetzung beginnen | 03.05.2011 | 3 | |
+| Statistik über Labels erstellen, analysieren, Programmieren: Code um Samples aus DB zu extrahieren soweit fertig, Textfile wird erstellt, Einbinden in vorgegebenen Code, Erstellung eines ersten (unaligned) GoldStandards, Analyse der Daten und Feststellung von Problemen | 04.05.2011 | 3.5 | |
+| Automatische Erstellung einer Statistik über erstellten GoldStandard programmieren | 07.05.2011 | 1.5 | |
+| Weitere Datenbank (en_ws) aufsetzen, de und en_ws Datenbanken ansehen und integrieren, Statistik erweitern | 14.05.2011 | 2.5 | |
+| Neue Daten importiert, Datensätze generiert | 31.05.2011 | 1 | |
+| Deutschen GoldStandard annotiert (Teil 1) | 07.06.2011 | 1.5 | |
+| Deutschen GoldStandard annotiert (Teil 2) | 16.06.2011 | 3.5 | |
+| Englischen GoldStandard annotiert (Teil 1) | 26.06.2011 | 1.5 | |
+| Englischen GoldStandard annotiert (Teil 2) | 27.06.2011 | 2 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 30 | bis Ende Juni 2011 |
+<nop>
+
+-- Main.ChristianMeyer - 2011-03-28

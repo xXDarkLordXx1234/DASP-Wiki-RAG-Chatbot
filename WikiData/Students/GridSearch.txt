@@ -1,0 +1,115 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="2"}%
+%META:TOPICPARENT{name="KaisBlog"}%
+<verbatim>
+<?xml version="1.0" encoding="UTF-8"?>
+<experiment version="3.4.1">
+
+  <operator name="Grid-search" class="Experiment">
+      <parameter key="logverbosity"	value="notes"/>
+      <operator name="Load Data" class="OperatorChain">
+          <operator name="ArffExampleSource" class="ArffExampleSource">
+              <parameter key="data_file"	value="/home/kai/DiplomarbeitDaten/arff/Digitalkameras/DevelopmentTestSets/DevelopmentTestSet_LEN.arff"/>
+              <parameter key="datamanagement"	value="double_sparse_array"/>
+              <parameter key="id_attribute"	value="IntegerAttributeValue_ReviewInformation_ID_0"/>
+              <parameter key="label_attribute"	value="DoubleAttributeValue_ReviewInformation_helpness_0"/>
+          </operator>
+          <operator name="Normalization" class="Normalization">
+              <parameter key="z_transform"	value="false"/>
+          </operator>
+      </operator>
+      <operator name="GridParameterOptimization Pearson" class="GridParameterOptimization">
+          <list key="parameters">
+            <parameter key="LibSVMLearner Pearson.C"	value="0,0.03125,0.125,0.5,2,8,32,128,512,2048,8192,32768"/>
+            <parameter key="LibSVMLearner Pearson.gamma"	value="0,3.0517578125e-05,0.0001220703125,0.00048828125,0.001953125,0.0078125,0.03125,0.125,0.5,2,8"/>
+          </list>
+          <operator name="XValidation Pearson" class="XValidation">
+              <parameter key="sampling_type"	value="shuffled sampling"/>
+              <operator name="LibSVMLearner Pearson" class="LibSVMLearner">
+                  <parameter key="cache_size"	value="120"/>
+                  <list key="class_weights">
+                  </list>
+                  <parameter key="keep_example_set"	value="true"/>
+                  <parameter key="svm_type"	value="epsilon-SVR"/>
+              </operator>
+              <operator name="OperatorChain" class="OperatorChain">
+                  <operator name="ModelApplier Pearson" class="ModelApplier">
+                      <list key="application_parameters">
+                      </list>
+                  </operator>
+                  <operator name="PerformanceEvaluator Pearson" class="PerformanceEvaluator">
+                      <list key="additional_performance_criteria">
+                      </list>
+                      <list key="class_weights">
+                      </list>
+                      <parameter key="correlation"	value="true"/>
+                      <parameter key="main_criterion"	value="correlation"/>
+                  </operator>
+              </operator>
+          </operator>
+          <operator name="ExperimentLog Correlation" class="ExperimentLog">
+              <parameter key="filename"	value="/home/kai/Diplomarbeit/Experimente/Digitalkameras/GridSearchLogs/LEN_Pearson.log"/>
+              <list key="log">
+                <parameter key="C"	value="operator.LibSVMLearner Pearson.parameter.C"/>
+                <parameter key="gamma"	value="operator.LibSVMLearner Pearson.parameter.gamma"/>
+                <parameter key="Correlation Performance"	value="operator.PerformanceEvaluator Pearson.value.correlation"/>
+              </list>
+          </operator>
+      </operator>
+      <operator name="Load Data (2)" class="OperatorChain">
+          <operator name="ArffExampleSource (2)" class="ArffExampleSource">
+              <parameter key="data_file"	value="/home/kai/DiplomarbeitDaten/arff/Digitalkameras/DevelopmentTestSets/DevelopmentTestSet_LEN.arff"/>
+              <parameter key="datamanagement"	value="double_sparse_array"/>
+              <parameter key="id_attribute"	value="IntegerAttributeValue_ReviewInformation_ID_0"/>
+              <parameter key="label_attribute"	value="DoubleAttributeValue_ReviewInformation_helpness_0"/>
+          </operator>
+          <operator name="Normalization (2)" class="Normalization">
+              <parameter key="z_transform"	value="false"/>
+          </operator>
+      </operator>
+      <operator name="GridParameterOptimization Spearman" class="GridParameterOptimization">
+          <list key="parameters">
+            <parameter key="LibSVMLearner Spearman.C"	value="0,0.03125,0.125,0.5,2,8,32,128,512,2048,8192,32768"/>
+            <parameter key="LibSVMLearner Spearman.gamma"	value="0,3.0517578125e-05,0.0001220703125,0.00048828125,0.001953125,0.0078125,0.03125,0.125,0.5,2,8"/>
+          </list>
+          <operator name="XValidation Spearman" class="XValidation">
+              <parameter key="sampling_type"	value="shuffled sampling"/>
+              <operator name="LibSVMLearner Spearman" class="LibSVMLearner">
+                  <parameter key="cache_size"	value="120"/>
+                  <list key="class_weights">
+                  </list>
+                  <parameter key="keep_example_set"	value="true"/>
+                  <parameter key="svm_type"	value="epsilon-SVR"/>
+              </operator>
+              <operator name="OperatorChain (2)" class="OperatorChain">
+                  <operator name="ModelApplier Spearman" class="ModelApplier">
+                      <list key="application_parameters">
+                      </list>
+                  </operator>
+                  <operator name="PerformanceEvaluator Spearman" class="PerformanceEvaluator">
+                      <list key="additional_performance_criteria">
+                      </list>
+                      <list key="class_weights">
+                      </list>
+                      <parameter key="main_criterion"	value="spearman_rho"/>
+                      <parameter key="spearman_rho"	value="true"/>
+                  </operator>
+              </operator>
+          </operator>
+          <operator name="ExperimentLog Spearman" class="ExperimentLog">
+              <parameter key="filename"	value="/home/kai/Diplomarbeit/Experimente/Digitalkameras/GridSearchLogs/LEN_Spearman.log"/>
+              <list key="log">
+                <parameter key="C"	value="operator.LibSVMLearner Spearman.parameter.C"/>
+                <parameter key="gamma"	value="operator.LibSVMLearner Spearman.parameter.gamma"/>
+                <parameter key="Spearman Performance"	value="operator.PerformanceEvaluator Spearman.value.spearman_rho"/>
+              </list>
+          </operator>
+      </operator>
+  </operator>
+
+</experiment>
+
+</verbatim>
+
+
+
+-- Main.KaiMichaelHoever - 23 May 2007

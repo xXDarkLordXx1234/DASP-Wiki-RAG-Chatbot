@@ -1,0 +1,140 @@
+%META:TOPICINFO{author="winchenbach" comment="" date="1539848653" format="1.1" reprev="13" version="13"}%
+%META:TOPICPARENT{name="StudentsList"}%
+%TOC%
+
+---+++ Meeting 18.10.2018
+   * *Status*:
+      * Midterm Thesis Vortrag: [[%ATTACHURL%/MultiUser_MidPres_v3.pdf][MidVortrag.pdf]]  
+      * Fine-Tuning mit User-Studies Links in Train/dev/test (80-10-10) für Forest und Nuclear Studien jeweils separat für beide vortrainierte Modelle (AM und TE) beendet.
+   * *Fragen etc.*:
+      * Mein Verständnis der verbleibenden Experimente abklären -> Frage bzgl. Training und Eval. bei sehr wenig Daten (ca. 40 pos. links, 80 gesamt links pro User -> für Einzel-User MTL mit AM, TE ca. 240 links. Vgl. Einzelstudie ca. 1300 Trainingbsp. und
+        Evaluationsergebnisse uneindeutig.).
+      * Meine Überlegung zur Implementierung von MTL mit Hard Param. Sharing abklären.
+
+---+++ Meeting 04.10.2018
+   * Probe-Vortrag
+
+---+++ Meeting 27.09.2018
+   * *Status*: Fine-Tuning mit User-Studies Links in Train/dev/test (80-10-10):
+      * Experiment 1: für jeweils eines der TE und AM 3-Klassenmodelle die Output-Layer weitertrainiert (gleiches Modell, Hyperparameter gleich bis auf learning rate eines neuen Optimizers (adam)) Experimente). Fazit: Lernt die Majority Class außer bei   
+        geringer Learning Rate, reicht dann aber in Genauigkeit nicht an diese heran. -> Hiernach Sample weights für Class Imbalance eingebaut
+      * Exp. 2: neue Output Layer für 2 Klassen statt 3, Möglichkeit diese zuerst etwas zu trainieren, dann nächste Dense-Layer aufzutauen und weiter zu trainieren (Hyperparameter: lr, dense dropout, initiale Trainingsepochen)
+      * Exp. 3: weitere Layers enttaut, für LSTM Layer und restliches Training die Learning Rate halbiert, init. Epochen 1
+      * Exp. 4: neue Dense-Layer zusätzlich zur neuen Output-Layer (trainiert allein für 1 Epoche), Unfreeze einschließlich LSTM Layer, für LSTM Layer und restliches Training die Learning Rate halbiert
+      |*Experiment* | *MW. Acc. [Stdabw.]* | *MW. Macro Prec [Stdabw.]* | *MW. Macro Recall [Stdabw.]*| *MW. Macro F1 [Stdabw.]* | *MW. Class 1 Prec [Stdabw.]* | *MW. Class 1 Recall [Stdabw.]*| *MW. Class 1 F1 [Stdabw.]*|
+      | Majority Class Baseline | 0,69 | 0,33 | 0,5 | 0,4 | 0,0 | 0,0 | 0,0 |
+      | Links Modell Baseline | *0,71* [0,016] | *0,66* [0,023] | *0,62* [0,029] | *0,63* [0,032] | *0,57* [0,036] | 0,37 [0,078] | 0,44 [0,062] |
+      | Exp.1 TE | 0,64 [0,005] | 0,46 [0,015] | 0,48 [0,006] | 0,44 [0,010]| 0,25 [0,027] | 0,07 [0,024] | 0,11 [0,020] |
+      | Exp.1 AM | 0,65 [0,002] | 0,53 [0,004] | 0,51 [0,002] | 0,49 [0,003]| 0,37 [0,007] | 0,13 [0,005] | 0,19 [0,005] |
+      | Exp.1 TE, weighted | 0,50 [0,012] | *0,54* [0,005] | *0,55* [0,006] | 0,49 [0,011]| 0,35 [0,005] | *0,68* [0,014] | *0,46* [0,002] |
+      | Exp.1 AM, weighted | 0,50 [0,007] | 0,50 [0,008] | 0,50 [0,009] | 0,48 [0,007]| 0,31 [0,008] | 0,49 [0,023] | 0,38 [0,012] |
+      | Exp.2 TE, weighted  | 0,53 [0,046] | 0,50 [0,023] | 0,50 [0,024] | 0,49 [0,024]| 0,32 [0,026] | 0,44 [0,137] | 0,36 [0,054] |
+      | Exp.2 AM, weighted  | *0,54* [0,031] | 0,50 [0,023] | 0,50 [0,024] | *0,50* [0,026]| 0,31 [0,029] | 0,39 [0,067] | 0,35 [0,039] |
+      | Exp.3 AM, weighted  | *0,54* [0,032] | 0,51 [0,011] | 0,51 [0,011] | *0,50* [0,016]| 0,32 [0,013] | 0,42 [0,077] | 0,36 [0,030] |
+      | Exp.4 AM, weighted  | 0,52 [0,074] | 0,50 [0,020] | 0,50 [0,020] | 0,48 [0,038]| 0,32 [0,025] | 0,45 [0,186] | 0,36 [0,081] |
+   * *Nächste Schritte*:
+      * Vortrag Mid 
+   * *Nächstes Treffen*: 4.10.2018 (Probevortrag)
+
+
+
+---+++ Meeting 13.09.2018
+   * *Status*: Auswertung jetzt auch mit Mittelwerten. Vorgehen: Hyperparameter bei festen Seeds auf Dev Set ausgewählt, dann mit festen Hyperparametern und variablen Seeds 9 bzw. 10 mal auf Test Set getestet, Mittelwert und Standardabweichung der
+       Metrikwerte berechnet.
+      * Experimente mit TE 3-Klassen-Modell (Für Test auf User-Studies Daten wurden Labels "neutral" und "contradiction" als eine Klasse gewertet): 
+      | *Daten [Acc. Majority Baseline]* | *Embedding* | *MW. Acc. [Stdabw.]* | *MW. Macro Prec [Stdabw.]* | *MW. Macro Recall [Stdabw.]*| *MW. Macro F1 [Stdabw.]*|
+      | SNLI Testdata [0,34]| 100min | 0,69 [0,004] | 0,70 [0,005] | 0,69 [0,003] | 0,69 [0,003]|
+      |^ | Fasttext | 0,68 [0,003] | 0,68 [0,003] | 0,68 [0,003] | 0,68 [0,003] |
+      |^ | 5min | 0,70 [0,004] | 0,70 [0,003] | 0,70 [0,004] | 0,70 [0,004] |
+      | User Study Nuklear [0,67] | 5min | 0,56 [0,019] | 0,51 [0,010] | 0,51 [0,010] | 0,51 [0,012] |
+      | User Study Wald [0,67] | 5min | 0,59 [0,023] | 0,49 [0,011] | 0,49 [0,009] | 0,48 [0,015] | 
+      * Experimente mit Argument Mining (AM) Corpora als Trainingsdaten (Sent Data: nur Sentenial Datensatz, AM Data: alle gemischt). Modell für User Studies ist AM Data Modell:
+      | *Daten [Acc. Majority Baseline]* | *Embedding* |*MW. Acc. [Stdabw.]* | *MW. Macro Prec [Stdabw.]* | *MW. Macro Recall [Stdabw.]*| *MW. Macro F1 [Stdabw.]*|
+      | AM Data [0,54]| 5min | 0,66 [0,009] | 0,61 [0,009] | 0,62 [0,013] | 0,61 [0,010]|
+      | Sent Data [0,56] | 5min | 0,67 [0,006] | 0,59 [0,009] | 0,57 [0,017] | 0,57 [0,020]|
+      | Essays Data [0,63] | 5min | 0,68 [0,009] | 0,51 [0,079] | 0,42 [0,012] | 0,42 [0,018]|
+      | User Study Nuklear [0,67] | 5min | 0,43 [0,018] | 0,51 [0,007] | 0,51 [0,006] | 0,43 [0,022] |
+      | User Study Wald [0,67] | 5min | 0,41 [0,024] | 0,51 [0,012] | 0,51 [0,08] | 0,40 [0,035] |
+      * Experimente mit TE 2-Klassen-Modell (Evaluationsmetriken für Positiv-Klasse):
+      | *Daten [Majority Baseline]* | *Embedding* | *MW. Acc. [Stdabw.]* | *MW. Class 1 Prec [Stdabw.]* | *MW. Class 1 Recall [Stdabw.]*| *MW. Class 1 F1 [Stdabw.]*|
+      | SNLI Testdata DE [0,66]| 100min | 0,79 [0,003] | 0,73 [0,008] | 0,63 [0,025] | 0,67 [0,012] |
+      | SNLI Testdata EN [0,66] | Glove 100d  | 0,80 [0,003] | 0,73 [0,007] | 0,67 [0,011]| 0,70 [0,006] | 
+      | User Study Nuklear [0,67] | 100min | 0,62 [0,014] | 0,30 [0,017] | 0,12 [0,038] | 0,17 [0,043] |
+      | User Study Wald [0,67] | 100min | 0,65 [0,007] | 0,33 [0,037] | 0,05 [0,016] | 0,08 [0,024] |
+      | Links Modell [0,67] | 5min | 0,71 [0,06] | 0,57 [0,010] | 0,52 [0,012] | 0,54 [0,009] |
+   * *Nächste Schritte*:
+      * Pre-Training (d.h. Weitertrainieren mit User Studies Daten) [Bem.: Komplizierte Methoden (variable learning rate etc. noch verschieben)]
+      * Ausarbeitung: Related Work, Direct Transfer beginnen [Bem: Corpus und Tools Chapters zusammenfassen]
+      * Vortrag: Was soll die Hauptaussage sein?
+      * Essays allein testen, um zu sehen, ob sie überhaupt hilfreich sind. Weitere Essays Relationen eventuell hinzunehmen ("Stance for/against" bezieht sich jeweils auf den/die Major Claims(s))
+   * *Nächstes Treffen*: 27.09.2018
+
+
+
+---+++ Meeting 06.09.2018
+   * *Status*: 
+      * Experimente mit TE 3-Klassen-Modell (neutral, entailment (Klasse 1), contradiction). NotShared Nadam BiLSTM Modelle haben zusätzliche Dropout-Layer, unterscheiden sich in Embeddings (UKP Word2Vec Deutsch 100min, 5min oder FastText Modell trainiert
+        auf deutschen Debatten (pre-processing: klein, ohne Satzzeichen) mit Vektor für alle Vokabular-Worte)), Ziel dabei war weniger OOV Worte zu versuchen bzw. mit Fasttext auf der politischen Domäne zu trainieren.
+      * TE 3 Klassen-Modell ohne zusätzlichen Dense Dropout auf SNLI EN Test: 0,71 Accuracy (Vgl. Veröffentlichungen: LSTM Modell auf engl. SNLI erreicht Test Accuracy von ca. 0,78 bis 0,8; BiLSTM ca. 0,83).
+      * Für Test auf User-Studies Daten wurden Labels "neutral" und "contradiction" als eine Klasse gewertet. 
+      | *Daten [Acc. Majority Baseline]* | *Embedding* | *Acc.* | *Macro Prec* | *Macro Recall*| *Macro F1*| *Kl. 1 Prec.* | *Kl. 1 Recall*| *Kl. 1 F1*|
+      | SNLI Testdata [0,34]| 100min |  0,69 | 0,69 | 0,69 | 0,69 | - | - | - |
+      |^ | Fasttext | 0,67 | 0,67 | 0,67 | 0,67 | - | - | - |
+      |^ | 5min | 0,70 | 0,70 | 0,70 | 0,70 | 0,69 | 0,75 | 0,72 |
+      | User Study Nuklear [0,67] | 5min | 0,57  | 0,51 | 0,51 | 0,51 | 0,35 | 0,35 | 0,35 |
+      | User Study Wald [0,67] | 5min |  0,59 | 0,48 | 0,49 | 0,48 | 0,31 | 0,19 | 0,23 |
+      | Baseline: Links Modell [0,67] | 100min |  0,72 | -  | - | - | 0,60 | 0,53 | 0,56 | 
+      * Experimente mit Argument Mining (AM) Corpora als Trainingsdaten (aus deutschem UKP SentenialArgumentMining Datensatz und mit Google Translate übersetztem UKP englischem Essay Datensatz: einmal nur Sentenial Datensatz und einmal gemischt, Labels sind
+        "neutral", "support" (Klasse 1), "attack" für Satzpaare (Premise, Premise/Claim/Topic). Modell ist BiLSTM wie oben mit 5min Embeddings. User Studies dann auf AM Data Modell getestet.
+      | *Daten [Acc. Majority Baseline]* | *Acc.* | *Macro Prec* | *Macro Recall*| *Macro F1*| *Kl. 1 Prec.* | *Kl. 1 Recall*| *Kl. 1 F1*|
+      | AM Data [0,54]| 0,67 | 0,63 | 0,63 | 0,62 | 0,57 | 0,64 | 0,60 |
+      | Sent Data [0,56] | 0,66 | 0,58 | 0,56 | 0,57 | 0,46 | 0,38 | 0,42 |
+      | User Study Nuklear [0,67] | 0,46  | 0,52 | 0,52 | 0,46 | 0,34 | 0,68 | 0,46 |
+      | User Study Wald [0,67] | 0,46 | 0,53 | 0,52 | 0,46 | 0,35 | 0,73 | 0,47 |
+      | Baseline: Links Modell [0,67] | 0,72 | -  | - | - | 0,60 | 0,53 | 0,56 | 
+   * *Nächste Schritte*:
+      * Ergebnisse Testdaten 10 random Seeds
+      * Pre-Training (d.h. Weitertrainieren mit User Studies Daten)
+      * Ausarbeitung: Related Work, Direct Transfer beginnen    
+   * *Nächstes Treffen*: 13.09.2018
+
+
+
+---+++ Meeting 23.08.2018
+   * *Status*: Experimente für 2-Klassen Klassifikation (Entailment, Kein Entailment) für Textual Entailment (TE) Modelle für Englisch und Deutsch abgeschlossen. BiLSTM Modelle unterscheiden sich in Input (Satzencoding mit oder ohne Parameter Sharing), 
+   Optimizer (Adam oder Nadam), Hyperparameter wie Dropout, Seeds etc. Aus mehreren Runs auf dem Cluster mit zufälligen Hyperparametern wurde das performanteste Modell gewählt (anhand von Metriken und Accuracy und Loss Kurven des Trainings-/Validierungsprozesses). 
+   Als Baseline wurde die Majority Baseline berechnet und ein BiLSTM auf allen Hypothesen-Evidenz Links trainiert (negative Bsp. sind zufällig zugeordnete Evidenzen, 
+   die Evaluation dieser Baseline ist 10fold CV auf allen Daten). Training auf 100k Trainingsdaten des SNLI für Englisch ([[https://nlp.stanford.edu/projects/snli/][SNLI]]) bzw. diesen mit Google API übersetzten SNLI Daten. Evaluation auf Testdaten des (übersetzten) 
+   SNLI, des englischen RTE3 und eines manuell übersetzten RTE3([[https://sites.google.com/site/excitementproject/results][RTE3-de]])
+   Corpus, sowie auf den User-Study Hypothesen-Evidenz Links. Für User-Study und RTE3 Daten wurde das auf SNLI (en bzw. de) trainierte Modell ohne weiteres Training übernommen. Als Metrik berechnet wurde Accuracy und Precision, Recall, F1 der positiv Klasse.
+   | *Daten [Majority Baseline]* | *Modell* | *DE* || *EN*||
+   | ^|^ | *Acc.* | *F1* |*Acc.*|*F1*|
+   | SNLI Testdata [0,66]|  Shared Adam  |  0,80 | 0,70 | 0,83 | 0,75 |
+   |^ |  Shared NAdam  |  0,81 | 0,72 | 0,83 | 0,75 |
+   | ^ |  Not Shared Adam  |  0,80 | 0,68 | 0,80 | 0,71 |
+   | RTE3 [0,51] |  Not Shared NAdam  |  0,49 | 0,07 | 0,49 | 0,25 |
+   | User Study Nuklear [0,67] |  Not Shared NAdam  |  0,62 | 0,17 | - | - |
+   | User Study Wald [0,67] |  Not Shared NAdam  |  0,65 | 0,08 | - | - |
+   | Links Modell [0,67] |  Not Shared NAdam  |  0,72 | 0,56 | - | - |
+
+   : Evaluationswerte für neue Daten (RTE3, User Studies) bei Training nur auf einem vorherigen Datenset sind schlecht. Vergleich mit dem Transfer Experiment des ursprünglichen SNLI Papers zeigt ähnlich schlechte Werte ohne weiteres Training auf neuen Daten (Bowman 
+   et al. 2015). Dort wurde ein LSTM auf SNLI trainiert, dann auf neuem Datensatz (SICK) getestet, anschließend wurde nur die letzte Dense Layer mit den neuen Daten neu trainiert.
+   |*Trainings-Daten*| *Test Acc. [%]*|
+   |SNLI only| 46,7|
+   |SICK only| 71,3|
+   |SNLI + SICK| 80,8|
+   * *Nächste Schritte*:
+      * 3 Klassen Modell trainieren und auf User Study Daten testen
+      * Argumentmining Daten vorbereiten, Modell trainieren und auf User Study Daten testen
+      * Verschiedene Embeddings testen
+   * *Nächstes Treffen*: 6.09.2018
+
+   
+
+---+++ Sources
+[Bowman et. al. 2015] Samuel R. Bowman, Gabor Angeli, Christopher Potts, and Christopher D. Manning. 2015. A large annotated corpus for learning natural language inference. In Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing (EMNLP). 
+
+
+-- Main.UteWinchenbach - 2018-08-27
+
+%META:FILEATTACHMENT{name="MultiUser_MidPres_v3.pdf" attachment="MultiUser_MidPres_v3.pdf" attr="" comment="Midterm Thesis Vortrag" date="1539847441" path="MultiUser_MidPres_v3.pdf" size="641341" user="winchenbach" version="1"}%

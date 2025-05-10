@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="biehl" comment="" date="1567101416" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ *Master Thesis*: Cross-Document Entity Coreference Resolution (working title)
+
+*Official Start Date*: _tbd_
+
+*Mid-Term Presentation Date*: 06.02.2020
+
+*Final Presentation Date*: _tbd_
+
+*End Date*: _tbd_
+
+
+---++ Todos, Meetings
+
+---+++ Meeting 2019-08-29
+   * MB:
+      * schedule mid-term and final presentation:
+         * midterm: 6.2.
+         * final: tbd
+      * UKP Seminar participation: https://docs.google.com/spreadsheets/d/1fWgHG13wpfPhaDYMhXuzZFTde2X2QHUMwrytYxLcJMY/edit?usp=sharing
+      * Anmeldung Masterarbeit: [[https://www.informatik.tu-darmstadt.de/studium_fb20/im_studium/formulare_und_dokumente/abschlussarbeiten_formulare/index.de.jsp][Formular]]
+      * Paper, ggf. relevant:
+         * https://arxiv.org/abs/1908.09091
+         * http://web.stanford.edu/class/cs224n/reports/custom/15735157.pdf
+         
+   * TODO CB:
+      * run cross-document coreference system (Barhom et al.) on football dataset with mention detection from within-document coreference and mention detection with BiLSTM-CNN-CRF
+      * manually evaluate the generated within- and cross-document coreference annotation by sampling and manually annotating single documents and coreference clusters
+      * write theory chapter on (cross-document) entity coreference resolution and transfer learning
+      * setup code base for transfer learning experiments
+
+   * TODO für MB:
+      * mention detection System trainiert auf ECB+ an CB schicken
+      * Terminserie auf Dienstag ändern wg. Seminar
+
+---+++ 2019-08-15 until 2019-08-29
+   * run !CDEnCR models of Lee et al. 2012 and Barhom et al. 2019 on football dataset

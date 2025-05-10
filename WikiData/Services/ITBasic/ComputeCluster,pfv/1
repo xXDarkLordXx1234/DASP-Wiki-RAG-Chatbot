@@ -1,0 +1,61 @@
+%META:TOPICINFO{author="herrlich" comment="" date="1557322284" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+<div style="float:right; border: solid grey 1px; padding: 0.25em; margin: 0.25em;">
+%TOC%
+</div>
+
+
+<div style="background: red; color: #F8F8F8; border: solid 2px darkred; padding: 5px">
+<p align="center">
+<u>*BETA PHASE!!*</u>
+</p>
+under construction
+</div><br/>
+%TWISTY{ 
+    showlink="Installed software" 
+    hidelink="Hide _Installed software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+%TWISTY{ 
+    showlink="System programs" 
+    hidelink="Hide _System programs_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * wget
+   * gcc
+   * g++
+   * curl
+   * htop
+   * iotop
+   * ncdu
+   * atop
+   * screen
+   * nano
+   * vim
+%ENDTWISTY% 
+
+%TWISTY{ 
+    showlink="developer software" 
+    hidelink="Hide _developer software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * eins
+   * zwei
+   * drei
+%ENDTWISTY% 
+
+%ENDTWISTY% 
+
+---+!! Important things
+   * Server 1: wormulon.ukp.informatik.tu-darmstadt.de
+   * Storage path: DON´T USE /home!
+      * ukp -> /ukp-storage-1
+
+---+!! My first login
+   1 Login to wormulon.ukp.informatik.tu-darmstadt.de
+
+-- Main.FabianHerrlich - 2019-05-08

@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="oertl" comment="" date="1566467550" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+%TOC%
+---+++ Master Thesis: Nutzen eines Klassifizierers um Multi-Satz-Sequenz-Labeler mithilfe von Reinforcement Learining zu trainieren
+*TODO:* Inserts description here.
+---+++ Meeting 18.07.2019
+   * *Status:* 
+   Three different datasets were in consideration, but only one was processable for usage. The dataset to use is the EMNLP-2015 from IBM. The data has been preprocessed and word embeddings should be trained, but self trained word embeddings seen to be not as good as pretrained ones. 
+   * *Next Steps:* 
+      * Use pretrained word embeddings (glove). 
+      * Start experiments with MLP and CNN.
+      * Develope state space and reward function for reinforcement learning
+      * What is evidence? Especially in comparison to an argument. See stanford enzyclopedia and ACL-15/18.
+      * Fill this Page.
+
+
+
+
+

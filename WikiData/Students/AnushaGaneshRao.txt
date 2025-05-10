@@ -1,0 +1,65 @@
+%META:TOPICINFO{author="rao" comment="" date="1541710267" format="1.1" reprev="7" version="8"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+++08-11-2018
+
+   * Find the datasets used to train and test the models
+   * Install the toolkits and run the same test dataset and compare the results with the results published
+   * Find different sources to extaract data. Eg. Soundcloud, youtube, movies, audio books, podcasts
+  
+
+---+++01-11-2018
+
+Speech Recognition systems: CMU Sphinx and DeepSpeech
+
+   Adapting acoustic and language models for our domains:
+   * Giving commands to Robot: Here the speech vocabulary is limited because number of natural sentence is short and limited as well.So we do not need a very large 
+     dictionary. In our work, we want to see how training the language model with small set of data can increase the accuracy.
+   * Conversational ASR: The ASR systems gives a bad WER when used to recognise speech data with technical jargons and named entities. In our work we will adapt the ASR 
+     system by extending the default models with our custom models. Our main focus would be to see how the WER improves after extending/adapting the models.
+
+
+---+++18-10-2018: Presentation on Dialog management system [[%ATTACHURLPATH%/dialog_system.pdf][ConQuest]] :
+
+---+++ Week 8.10.2018 -- 12.10.2018
+   Agenda:
+   * a high-level description about the work from Microsoft: https://blogs.microsoft.com/ai/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/
+   * checking if the dataset is useful for us?
+   * checking https://allenai.org/podcasts/podcasts-all.html if we can create a dataset from it
+   * TED talks and their transcripts (https://www.ted.com/talks/quick-list)
+   * (A Survey of Available Corpora for Building Data-Driven Dialogue Systems) https://breakend.github.io/DialogDatasets/
+   * http://www.openslr.org/resources.php
+   * read this paper: http://people.ict.usc.edu/~leuski/publications/papers/2013-sigdial-which-asr.pdf
+   * Check dataset: http://www.speech.kth.se/prod/publications/files/4048.pdf
+   * read the paper: Encoding Word Confusion Networks with Recurrent Neural Networks for Dialog State Tracking (https://arxiv.org/pdf/1707.05853.pdf)
+   * read the paper: CONTINUOUS ASR FOR FLEXIBLE INCREMENTAL DIALOGUE (http://mi.eng.cam.ac.uk/~sjy/papers/bghk13.pdf)
+   * read the thesis: Data-driven Methods for Spoken Dialogue Systems (http://kth.diva-portal.org/smash/get/diva2:906334/ATTACHMENT01.pdf)
+
+
+---+++ Week 8.10.2018 -- 12.10.2018
+   Tasks:
+   * Installation steps for all the above three
+   * Read the papers thoroughly
+   * Check if the words can be added dynamically
+   * Check if its useful for both command and control / Conversation
+
+    Summary:[[%ATTACHURLPATH%/Predicting Causes of Reformulation in Intelligent Assistants.pdf][Predicting Causes of Reformulation in Intelligent Assistants]]
+
+---+++ ASR toolkits 
+
+   * Kaldi
+   * CMU Sphinx
+   * DeepSpeech
+
+Need to decide on which one we will be using for our work (preferably 2)
+
+
+-- Main.MohsenMesgar - 2018-09-26
+   
+
+%META:FILEATTACHMENT{name="p9-bohus.pdf" attachment="p9-bohus.pdf" attr="" comment="" date="1539001524" path="p9-bohus.pdf" size="93157" user="rao" version="2"}%
+%META:FILEATTACHMENT{name="W17-5536.pdf" attachment="W17-5536.pdf" attr="" comment="" date="1539001490" path="W17-5536.pdf" size="434186" user="rao" version="1"}%
+%META:FILEATTACHMENT{name="asru11-kaldi.pdf" attachment="asru11-kaldi.pdf" attr="" comment="" date="1539001568" path="asru11-kaldi.pdf" size="136134" user="rao" version="1"}%
+%META:FILEATTACHMENT{name="comparision.pdf" attachment="comparision.pdf" attr="" comment="" date="1539001593" path="comparision.pdf" size="117109" user="rao" version="1"}%
+%META:FILEATTACHMENT{name="The_CMU_SPHINX-4_speech_recognition_syst.pdf" attachment="The_CMU_SPHINX-4_speech_recognition_syst.pdf" attr="" comment="" date="1539001613" path="The_CMU_SPHINX-4_speech_recognition_syst.pdf" size="70790" user="rao" version="1"}%
+%META:FILEATTACHMENT{name="dialog_system.pdf" attachment="dialog_system.pdf" attr="" comment="" date="1539870587" size="1964787" user="rao" version="1"}%
+%META:FILEATTACHMENT{name="Predicting Causes of Reformulation in Intelligent Assistants.pdf" attachment="Predicting Causes of Reformulation in Intelligent Assistants.pdf" attr="" comment="" date="1539873212" size="39528" user="rao" version="1"}%

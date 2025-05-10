@@ -1,0 +1,274 @@
+%META:TOPICINFO{author="ChristianMeyer" date="1225903275" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ChristianMeyer"}%
+---+!! Papers
+
+%TOC%
+
+---++ Primary Literature
+
+---+++ [de la Chica08] Pedagogically Useful Extractive Summaries for Science Education
+   * *Tags:* summary, MDS, sentence score, ranking
+   * Multi document summarization, Summary per sentence extraction
+   * System build upon MEAD http://www.summarization.com/mead
+   * Sentence scoring features:
+      * TFIDF-similarity against learning goal (learning corpus)
+      * ADL-Gazetteer feature for identifying geographic locations in entities http://www.alexandria.ucsb.edu/gazetteer/ http://middleware.alexandria.ucsb.edu/client/gaz/adl/index.jsp (TFIDF again)
+      * Hypertext feature: score depending on html-tags, header bonus, first sentences better
+      * Sentence length: sentence needs to contain at least 50% content words (apart from function words = stop words)
+      * MEAD sentence length: min. 9 words
+   * 5% compression rate (expert result)
+   * Knowledge maps from experts so far, next step is producing knowledge maps with ML
+   * *Idea:* Use MEAD or <nop>LexRank
+   * *Idea:* Evaluation: summary of science papers, compare with abstract (no special Q/A evaluation)
+   * *Idea:* Score sentences for educational purposes, use this to rank the sentences before the summary
+
+---+++ Hearst97, <nop>TextTiling - Segmenting Text into Multi-paragraph Subtopic Passages
+
+---+++ [Kaisser08] Improving Search Results Quality by Customizing Summary Lengths
+   * *Tags:* answer style, answer length
+   * Answer is tradeoff between informative summary (length) and number of results --> avoid scrolling
+   * Answer style: exact, sentence, paragraph, document; paragraph was best, but there's a very individual trend
+      * Chopping/Truncation (...) was bad, tags/keywors were good
+   * Answer presentation: standard (click for full text), instant (expand summary), dynamic (expand on mouse hover); instant was best
+   * Study 1: Find the right length for each answer category
+      * Fact (Time, Location, Number) = short answer, only phrase/sentence
+      * Advice/General Info = long answer, whole paragraphs/articles
+      * Person/Organisation is not clear: unique (CEO of MS) vs. list of names (travel agencies of a country)
+   * Study 2: Search WP for a question's answer, provide different lengths
+      * Corpus of 170 questions with answers via MTurk??? (useful for evaluation? available?)
+      * Average length for the answers provided (useful for scoring?)
+   * Study 3: Question with a random length (correct) answer, rate 0..10
+      * Only trend for a specific length, but not fixed for answer type
+      * e.g. for best answer sentence, phrase/paragraph is OK while article/document is not
+   * *Idea:* Answer in a paragraph, highlight the sentence/phrase answer if compatible
+   * *Idea:* Button to switch answer length/style
+
+---+++ [Nastase08] Topic-Driven Multi-Document Summarization with Encyclopedic Knowledge and Spreading Activation
+   * *Tags:* summary, MDS, query expansion, Wikipedia, WordNet
+   * Hyperlinks in WP articles to expand the query
+      * Stanford parser, dependency pairs, filter closed-class words, lemmatize, extract named entities (NEs), replace NE fragment with complete NE
+      * Open-class words and NEs: find WP articles, use link text of the first paragraph for expansion
+      * Expand query with all hyper-/hypo-/antonyms and words from definition in WordNet
+   * Stanford-dependency, Lemmatize (XTag), build graph with NE and dependency relations
+   * Send a signal through the graph to find expansions, use decay parameter for control
+   * Node ranking with <nop>PageRank
+   * Use this graph also for summarization: sentence score model, desired length!
+   * Evaluation with ROUGE
+
+---+++ [Thadani08] A Framework for Identifying Textual Redundancy
+   * *Tags:* redundancy, document as graph, summarization, set-covering
+   * Extraction based summary: choice of a representative can forget important information 
+      * Better: document as a graph, search for redundancy on subsentence level
+   * Snippet: Part of a document, ca be sentence/phrase/paragraph/sentence-part/..., lexical level
+   * Concept: atomic information
+   * Document: set of snippets x_S [maybe more than 1 info] vs. set of concepts z^C [atomic info]
+   * Nugget: representation of concept z^c in snippet x_s: y^c_s (<nop>SxC Matrix Y)
+   * Intersection: common information (Concepts) of two snippets
+   * Concept-Graph: bipartit graph with snipptes--concepts edges
+   * Snippet-alignment: dependency parsing (minipar), [Lin98] [Barzilay05]
+   * Construction of the graphs: compare alignments, depending on the overlap: new concept, same concept
+   * *Idea:* Create concet list of the documents (goes maybe together with concept graph [Barzilay99])
+
+---+++ [Silber02] Efficiently Computed Lexical Chains as an Intermediate Representation for Automatic Text Summarization
+   * *Tags:* co-reference, summarization
+   * Lexical chains: co-reference chains; identical, synonymy, hypernymy, siblings (first hyper- then hyponymy)
+   * Efficient algorithm with 2 steps to create the chains
+   * Different scores combined, fixed chains (strong chains = 2 std. deriv)
+   * *Idea:* Combinable with fuzzy chains?
+
+---+++ [Barzilay99] Information fusion in the context of multi-document summarization
+   * *Tags:* summarization, functional representation, FUF/SURGE, paraphrase, temporal order
+   * Automatic summaries tend to a certain source document
+   * Collins parser, DSYNT, remove functional words (DET, AUX), compare DSYNT, FUF/SURGE [http://www.cs.bgu.ac.il/surge/index.html] sentence generator
+      * Paraphrasing rules: Order, main clause/relative clause, syntactic category (Noun=Verb), active/passive, Time/Number agreement, head omission (leave out additions/details), semantische relatedness (synonymy...)
+      * Temporal ordering
+   * No automatic evaluation
+   * *Idea:* use FUF/SURGE with Java: [http://jacol.sourceforge.net/] (also available: Python integration http://jpype.sourceforge.net/ http://www.jython.org/Project/)
+
+---+++ [Liu08] Understanding and Summarizing Answers in Community-Based Question Answering Services
+   * *Tags:* question answering, question type, 
+   * Reuse of the best answer in Y!A
+   * Answer Type: also distribution in the paper
+      * FACT.UNIQUE (my birthdate)
+      * FACT.DIRECT (some birthdate of an (unknown) star)
+      * FACT.INDIRECT (url with birthday list)
+      * SUBJECTIVE (best movie-title)
+      * RELEVANT (relevant for the question/topic, but no answer)
+      * IRRELEVANT
+   * Question Type: 
+      * NAVIGATIONAL (url/search engine)
+      * INFORMATION.CONSTANT (answer is unique and constant)
+      * INFORMATION.DYNAMIC.OPINION (How's Vista?)
+      * INFORMATION.DYNAMIC.CONTEXT-DEPENDENT (Pop. of china [when???])
+      * INFORMATION.DYNAMIC.OPEN (birthdate of a star)
+      * TRANSACTIONAL (Software for some purpose / buy something)
+      * SOCIAL (no answer expected, comment only)
+   * Question Type-dependent summary:
+      * Open: cluster [hierarchical, cos-sim], NP extrator, relevance score for each NP and cluster (= PMI, KL-Divergence), choose answer with highest score (key answer), rank cluster with key answer score
+      * Sentiment-Opinion (What do U think of/Why): cluster, (word-based) polarity classification
+      * List-Opinion (What's the best...): sentence-segmenter, key-sentence for cluster, rank clusters
+   * Manual evaluation
+
+---+++ [Pang04] A Sentimental Education - Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts
+   * *Tags:* sentiment, opinion, polarity
+   * Gain polarity classification (YES, NO, Neutral) by text classification
+   * Subjectivity Detector: generate flow graph, find min cut = classification with looking at neighbors
+      * Scores: c(source, sentence) = ind1(sentence), c(sentence, sink) = ind2(sentence), c(sentence1, sentence2) = assoc(satz1, satz2) with
+      * ind1(s) = Pr_sub^NB(s); ind2(s) = 1 - ind1(s) "Naive Bayes PR"
+      * assoc(si, sj) = c * f(j - i) IF j - i <= T "Difference between sentences"
+         * f(d) = 1; f(d) = e^(1-d); f(d) = 1/d^2
+      * Implementation of <nop>MinCut-Algorithm: [http://www.avglab.com/andrew/soft.html] (non-comm)
+
+---+++ [Islam07] Inkpen, Semantic Similarity of Short Texts
+   * *Tags:* similarity
+   * Semantic Text Similarity (STS): combination of string matching and SOC-PMI
+   * Texts P = pi, R = rj // Tokenize, filter stop words, lemmatize
+   * \delta = #Tokens having pi == rj, delete those, ||R|| >= ||P|| WLOG.
+   * v1 = NLCS(pi, rj)
+   * v2 = NMCLCS1(pi, rj)
+   * v3 = NMCLCSn(pi, rj)
+   * aij = w1v1 + w2v2 + w3v3 (Experiments: w1 = w2 = w3 = 1/3) --> Matrix M1
+   * bij = normalized SOC-PMI(pi, rj) --> Matrix M2
+      * Normalisation: \lambda = max. Similarity. return (SOC-PMI > \lambda ? 1 : SOC-PMI / \lambda)
+      * Idea: \lambda = max PMI-IR(w1,w1); PMI-IR(w2,w2) = log_2 WebSize / max hits(w1); hits(w2) <back side of [Mihalcea06]>
+   * M = \psi M1 + \phi M2 (Experiments: \psi = \phi = 1/2)
+   * \rho = ordered set of Matrix-Maxima, delete corresponding cols/rows after finding a maximum
+      * Fill this set until an element = 0 or ||P|| - \delta - ||\rho|| = 0 "No more Maximum!"
+   * S(P, R) = (\delta + sum \rho_i) (||P|| + ||R||) / (2 ||P|| ||R||)
+   * Performance OK, although trend to underestimate (really similar ones are badly recognized)
+
+---+++ [Jijkoun07] de Rijke, Using Centrality to Rank Web Snippets
+   * *Tags:* ranking
+   * Snippet ranking: tokenize, segment sentences, paragraphs
+   * foreach (w1 \in snippet1) foreach (w2 \in snippet2) score(c) += sim(w1, w2)
+      * Similarity with word overlap (#shared-tokens / #all-tokens) and cosine-sim for sentence and paragraph
+   * Result: vector similarity with paragraphs works best (however bad performance for all of them)
+
+---+++ [Mihalcea06] Corpus-based and Knowledge-based Measures of Text Semantic Similarity
+   * *Tags:* similarity
+   * Similarity of two texts: sim(T1, T2) = (sum(w \in T1) max_T2 sim(w, T2) * IDF(w)) / (2 * sum(w \in T1) IDF(w)) + (sum(w \in T2) max_T1 sim(w, T1) * IDF(w)) / (2 * sum(w \in T2) IDF(w))
+   * Specifity of a term (opposite of generality), represented by inverse-document-frequency (IDF) in a large corpus
+   * Pointwise Mutial Information (PMI): PMI-IR(w1, w2) = log_2 p(w1 and w2) / p(w1) p(w2)
+      * Internet as corpus: log_2 hits(w1 AND w2) <nop>WebSize / hits(w1) * hits(2) --> normalisation?
+   * Latent Semantic Analysis (LSA): reduction in dimension with SVD, finds most possible relation (complex)
+   * Leacock & Chodrow: shortest path in WordNet, sim = -log (path / 2 #max-depth)
+   * Lesk: definition overlap
+   * Wu & Palmer: nearst/least common sumsumer LCS (= hypernym): sim = 2 * depth(LCS) / depth(w1) + depth(w2)
+   * Resnik: Information content of LCS: sim = IC(LCS) with IC(c) = -log p(c), with p(c) is PR of c = word-frequency / corpus-size
+   * Lin: sim = 2 * IC(LCS) / IC(w1)+IC(w2)
+   * Jiang & Conrath: sim = 1 / ( IC(w1) + IC(w2) - 2 IC(LCS) )
+   * http://books.google.de/books?hl=de&id=Rehu8OOzMIMC&dq=wordnet+an+electronic+lexical+database&printsec=frontcover&source=web&ots=IoibKgSXl9&sig=SbuAvqniO_9cPgJZYWviiijHf6Q&sa=X&oi=book_result&resnum=4&ct=result#PPA275,M1
+
+---+++ [Witte07b] Next-Generation Summarization - Contrastive, Focused, and Update Summaries
+   * *Tags:* summarization, answer-type, MDS
+   * Summary as Teaser/"Lockartikel": contains the searched topic? Which document to read in full?
+   * Goal: flexible summary depending on user choice, easy changeable
+   * Build topic cluster: POS Tagging, Chunking (NP-Detection), coreference chains [Witte03], Fuzzy Clustering [Witte07a]
+   * Constrastive summaries: first the common topics then specific ones of single documents
+      * Topic cluster in >90% of all documents = common topic
+      * Topic cluster in only <5% of all documents = specific topic
+   * Focused summaries: context/user profile dependend, use only the desired topics
+      * Context as document d0, normal use in topic clustering, summary has only topics, if the cluster appears in d0
+   * Update summaries: show only new information, omit topics that have already been read
+      * Context d0 and every already seen documents are given
+      * Ranking: high = overlap with context, other topics in the cluster are new (not in one of the already read documents) ... low = overlap mit context but only topics in the documents, that have already been read
+   * Evaluation: ROUGE, average of DUC Tasks
+   * Possible improvements: [Mani01]<Book>
+   * *Idea:* show common topics answer, then a list of links to the original answers with a short (specific) summary
+
+---+++ [Witte07a] Fuzzy Clustering for Topic Analysis and Summarization of Document Collections
+   * *Tags:* coreference chains
+   * Tokenize, Sentence split, POS-Tagger, NP-Detector (<nop>MuNPEx chunker, http://www.semanticsoftware.info/munpex)
+   * Fuzzy Coreference Resolution: [Witte03], [Witte02]<Book>
+   * Fuzzy Coreference Chains: PR-Matrix, with chain "membership" for every NP and chain
+      * Clustering with single-link hierarchical clustering
+      * Initial cluster: p = 1 (Medoid)
+      * \gamma = threshold for cluster merge
+      * Many similar stuff like [Witte07b]
+   * http://de.wikipedia.org/wiki/Fuzzy-Logik http://en.wikipedia.org/wiki/Fuzzy_set
+
+---++ Secondary Literature
+
+---+++ [Bergler97] Towards Reliable Partial Anaphora Resolution
+   * *Tags:* coreference chains
+   * *Referenced:* [Witte03], [Bergler03]
+   * Combination of some knowlege-poor methods to use in [Witte03]
+   * Details on the implementation only referenced
+
+---+++ [Bergler03] Using Knowledge-poor Coreference Resolution for Text Summarization
+   * *Tags:* coreference chains
+   * *Referenced:* [Witte03]
+   * nothing new, see [Witte03]
+
+---+++ [Witte03] Fuzzy Coreference Resolution for Summarization
+   * *Tags:* coreference chains
+   * *Referenced:* [Witte07a], [Witte07b]
+   * Summary of most frequent entities = longest coreference chains
+   * Fuzzy-Logic assigns each NP to all chains with a certain probability
+   * ERSS: POS-Tagger (Hepple/Brill), NP Extractor, Fuzzy-ERS, classifier and summarizer
+   * Fuzzy heuristics (Section 3.2)
+      * Synonymy/Hypernymy: use Wordnet, PR = 1 if synonymy; < 1 if hypernymy (based on the distance)
+      * LCS, substring based: the bigger the overlap, the bigger the score
+      * Akronyms and abbreviations: resolve with a list? Where to get?
+      * Pronoms: Gender match, Number match? ...
+      * Head overlap: 0.8
+      * Many more possible: Numbers, Dates,...
+      * Build a weighted sum of all heuristic scores
+   * Merge fuzzy chains: \gamma = desired score
+      * {np1=0.3, np2=0.6} \cap {np1=0.8, np2=0.7} = {np1=0.3, np2=0.6} <min>
+      * {np1=0.3, np2=0.6} \cup {np1=0.8, np2=0.7} = {np1=0.8, np2=0.7} <max>
+      * Consistency: C({np1=0.3, np2=0.6}) = 0.6 <max>
+      * Merge if C(K1 \cap K2) >= \gamma. Result: K1 \cup K2
+      * Defuzzification: D({np1=0.3, np2=0.6}) = {np2} for \gamma = 0.5 (certainty degree)
+   * *Idea:* Conditioned/Ranked execution of the heuristics (if <nop>WordNet = 1, no other is needed?)
+   * *Idea:* use SOC-PMI?
+
+---+++ [Collins96] A New Statistical Parser Based on Bigram Lexical Dependencies
+   * *Tags:* parser, dependency
+   * *Referenced:* [Barzilay99]
+   * Fast statistic parser
+   * Identifies head-word for each constituent
+   * Head can be used for topic-detection
+   * Head-structure (= tree) can be used for comparison [Barzilay99]
+
+---+++ [Islam06] Second Order Co-occurrence PMI for Determining the Semantic Similarity of Words
+   * *Tags:* similarity, SOC-PMI
+   * *Referenced:* [Islam07]
+   * Semantic similarity of two words
+   * PMI-IR [Turney01]: statistical method, uses search engine (Altavista)
+   * SOC-PMI: corpus C, words W1, W2, incl. word-window with 2a+1 words
+      * f^t(ti) = #frequency / #corpus-size "How often is ti in the corpus?"
+      * f^b(ti, W) = "How often is ti in the word-window of W?"
+      * f^{pmi}(ti, W) = log_2( f^b(ti, W) m / f^t(ti) f^t(W) )
+      * \beta(W) = (ln f^t(W))^2 log_2 n / \delta
+      * X resp. Y = TOP(\beta(W) elements of f^{pmi}(ti, W) sorted list with f^{pmi}(ti, W) > 0
+      * \beta~(W) = min(\beta(W), ||X||)
+      * f^\beta(W) = \sum_{ ti \in X } f^{pmi}(ti, W)^\gamma
+      * sim(W1, W2) = f^\beta~(W1) / \beta(W1) + f^\beta~(W2) / \beta(W2)
+      * \delta = 0.65 (corpus smaller -> \delta smaller)
+      * \gamma = 3 > 1
+      * m = # of (all) tokens in corpus, n = # of unique tokens in corpus
+   * Advantage: PMI requires p(W1 and W2) > 0, which needs a LARGE corpus, in SOC-PMI this p can be 0, cause all tokens in the word-window are considered and compared (ideas of LSA/Lesk...!)
+   * Disadvantage: computation of the sets X and Y is complex
+
+---+++ [Lin04] ROUGE - A Package for Automatic Evaluation of Summaries
+   * *Tags:* evaluation
+   * Automatic evaluation of summaries
+   * Manual evaluation features: content overlap with task description, linguistic quality
+   * Many differences between human judges [Nenkova/Passoneau04]
+   * Different methods are combined, compare reference and candidate summary
+   * Download needs contact details [http://berouge.com/contactus.aspx]
+
+---+++ [Madnani07] Multiple Alternative Sentence Compressions for Automatic Text Summarization
+   * *Tags:* Sentence Compression, Redundancy recognition
+
+---+++ [Mani99] Improving Summaries by Revising Them
+   * *Tags:* summarization
+   * Summarization: Text-to-text reduction
+   * Generic vs. Focused/Topic-related summary
+   * Indicative Function (Which topics are covered?) // Informative Function (Covering of the main-topics)
+   * Operations: choose salient[good] snippets, aggregate information, generalize [Mani/Maybury99]
+   * All-in-all very complex and time consuming
+
+
+      -- Main.ChristianMeyer - 05 Nov 2008

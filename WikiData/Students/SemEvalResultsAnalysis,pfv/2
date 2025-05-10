@@ -1,0 +1,153 @@
+%META:TOPICINFO{author="NicoErbs" date="1267547641" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="SemEvalStatus"}%
+---+++ SemEvalResultsAnalysis
+
+%TOC%
+
+---++++ Detailed Analysis for one file
+File: C-42
+   * 15 Gold Keyphrases
+      * cyberinfrastructure development project
+      * grid computing
+      * energy exploration
+      * tigre grid computing environment
+      * strategic application area
+      * ensemble kalman filter
+      * enkf
+      * grid-enabling
+      * gridway metascheduler
+      * high performance computing
+      * pooling license
+      * tigre grid middleware
+      * tigre
+      * hydrocarbon reservoir simulation
+      * reservoir model
+
+A restriction to 30 keyphrases at maximum was made. Matches are markes bold.
+---+++++ KEA, Token
+   * Precision: .077
+   * Recall: .067
+   * R-Precision: .067
+   * 13 keyphrases retrieved
+      * tigre grid computing
+      * grid
+      * grid-enabled ensemble
+      * grid-enabled ensemble kalman filter
+      * grid-enabled ensemble kalman
+      * geological models
+      * tigre environment
+      * kalman filter data assimilation
+      * number licenses
+      * reservoir modeling
+      * models in the ensemble
+      * grid-enabling enkf
+      * *gridway metascheduler*
+  
+---+++++ tf.idf, Lemma (N,A)
+   * Precision: .067
+   * Recall: .125
+   * R-Precision: .000
+   * 30 keyphrases retrieved
+      *  grid-enabled ensemble kalman filter
+      * data assimilation methodology
+      * reservoir characterization ravi vadapalli
+      * high performance computing center
+      * texas tech university lubbock
+      * ravi.vadapalli @ ttu.edu ajitabh
+      * kumar department
+      * petroleum engineering texas
+      * university college station
+      * akumar tamu.edu ping luo
+      * supercomputing facility texas
+      * pingluo sc.tamu.edu shameem siddiqui
+      * petroleum engineering texas tech
+      * university lubbock
+      * shameem.siddiqui @ ttu.edu taesung
+      * kim supercomputing facility texas
+      * university college
+      * tskim sc.tamu.edu abstract ensemble
+      * kalman filter datum assimilation
+      * popular approach
+      * *hydrocarbon reservoir simulation*
+      * *energy exploration*
+      * geological model
+      * production datum
+      * oil field
+      * dynamic response
+      * oil well
+      * schlumberger eclipse software
+      * good choice
+      * model check
+
+---+++++ LexSem, Lemma (N,A)
+   * Precision: .033
+   * Recall: .062
+   * R-Precision: .062
+   * 23 keyphrases retrieved
+      * education grid
+      * organization specific high performance
+      * state funded cyberinfrastructure development
+      * efficient use
+      * user management system
+      * supercomputing facility
+      * application general term algorithms
+      * high performance computing center
+      * schlumberger eclipse software
+      * major university system
+      * kumar department
+      * area such
+      * texas tech university lubbock
+      * up-to-date information
+      * port information repository
+      * *hydrocarbon reservoir simulation*
+      * present work
+      * future work
+      * ref http
+      * regional user
+      * time step
+      * web service
+      * john wiley
+      * customer service
+      * user jid dm em
+      * minimal set
+      * master control process
+      * filter datum assimilation methodology
+      * initial condition
+      * good choice
+
+---+++++ Co-occurrence, Lemma (N,A)
+   * Precision: .033
+   * Recall: .062
+   * R-Precision: .062
+   * 30 keyphrases retrieved
+      * *tigre grid computing environment*
+      * tigre environment
+      * tigre institutions
+      * tigre capability
+      * tigre project
+      * tigre site
+      * tigre software
+      * tigre service
+      * certificate authority the tigre
+      * tigre institution
+      * tigre grid service
+      * tigre content
+      * tigre resource status
+      * tigre gridway
+      * future work tigre
+      * tigre portal
+      * introduction grid computing
+      * texas internet grid
+      * state-of-the-art grid middleware
+      * open science grid
+      * grid proxy generation
+      * international grid trust federation
+      * resource grid certificate
+      * grid user management system
+      * grid job
+      * dynamic grid resource
+      * grid infrastructure
+      * grid port information repository
+      * grid approach
+      * grid scheduling
+-- Main.NicoErbs - 02 Mar 2010

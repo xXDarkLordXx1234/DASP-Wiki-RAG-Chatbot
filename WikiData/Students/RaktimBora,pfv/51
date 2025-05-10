@@ -1,0 +1,389 @@
+%META:TOPICINFO{author="sorokin" comment="save topic" date="1458298400" format="1.1" reprev="50" version="51"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Intro
+
+I'm doing my Master thesis here at UKP Labs under the supervision of Mr. Daniil Sorokin and Prof.Dr. Gurevych. The title of my work is 'Reference extraction for Knowledge Base Facts'. In my work, I will examine methods of extracting meaningful references as a supporting authority to claims expressed in a natural language statement.
+
+---++ Meetings
+
+---+++ Next Meeting
+   * todo(RB)?: Can you prepare surrogate training data in the following format:
+      * input sentence, replaced entity with WD id, derived surrogate parse with WD ids!
+
+---+++ 2016-03-18
+   * todo(RB): Remove uninstantiated variable constraints for the parser when parsing new sentences
+   * todo(RB): Use one unambiguous entity in a sentence to disambiguate all the others
+   * todo(RB): Add the lemma overlap feature 
+   * todo(DS): Results from the server
+   * todo(DS): List of most popular reference web sites: [[%ATTACHURLPATH%/HMS_reference_usage_count_analysis.xlsx][.xlsx]] (produced by Hatem)
+   * todo(DS): Free917 link:
+      * Original publication: [[http://cis-linux1.temple.edu/~yates/open-sem-parsing/index.html]]
+      * Pre-processed by Berant et al (2013): [[http://www-nlp.stanford.edu/software/sempre/]]
+   * discuss(): what other features from Reddy et al 2014 to add.
+
+---+++ 2016-03-14
+
+   * Surrogate and training example sentence:: [[%ATTACHURL%/gold_train_examples.txt][gold_train_examples.txt]]
+   * Full surrogate creation data-set on 0.5Mio sentences: https://drive.google.com/file/d/0B5jbb4z6k39Yalc3VmRhVUJBQUE/view?usp=sharing
+   * Full training creation data-set on 0.5Mio sentences: https://drive.google.com/file/d/0B5jbb4z6k39YX3pRZDFjeFF1a1k/view?usp=sharing
+   * Sample of reference extraction from Wikidata: [[%ATTACHURL%/references-extract.txt][references-extract.txt]]
+   * Sample of reference URLS from reference extraction: [[%ATTACHURL%/ref_urls.txt][ref_urls.txt]]
+   * Sample of model evaluation on reference sentences (on 600+ sentences only as of now): [[%ATTACHURL%/sem-parse-out-model-mode.txt][sem-parse-out-model-mode.txt]]  
+
+  
+
+---+++ 2016-03-07
+
+   * todo(RB) Select a library for learning 
+      * DS: Weka [[http://www.cs.waikato.ac.nz/ml/weka/]] and an extension: [[http://fantail.quansun.com/]]
+   * Stats on Google wiki-links: https://drive.google.com/folderview?id=0B5jbb4z6k39YYjVhYnp2NUcxOVk&usp=sharing
+   * Current Parse sample results: [[%ATTACHURL%/debug_iter20.txt][debug_iter20.txt]]
+   * Updated Semantic Parser (v4) recompiled for jdk1.7 : https://drive.google.com/file/d/0B5jbb4z6k39YbGdkM1lxSTdNQVU/view?usp=sharing
+   * Usage: java -jar <jar/file/path/name> <sentence/file/name/> <split/sentences/file/dir/> <semantic/parse/output/dir/> <semantic/parse/completed/files/dir/> <max_threads>
+
+---+++ 2016-02-26
+   * todo(RB) Surrogate graph pairs construction : [[%ATTACHURL%/sample_gold_parse][sample_gold_parse]]
+   * todo(RB) Feature extraction: [[%ATTACHURL%/feature_list][feature_list]]
+   * todo(DS) Run a test ungrounded parsing on a server. Works now
+
+---+++ 2016-02-19
+   * todiscuss: Data Set containing reference URL from wikipedia based on Google index: https://code.google.com/archive/p/wiki-links/downloads
+
+
+---+++ 2016-02-12
+   * Reddy's code:
+      * @done: Greedy disambiguation method for sentences without annotations: consider what possible senses are related and choose those
+         *   done:disambiguation with at least one confirmed annotation)  
+      * @done: Possibly include partial matches when retrieving word senses for a named entity
+         * done: String matches considered while disambiguation
+      * @done: Reddy's ungrounded parser multi-threaded? 
+         * done: Implemented a wrapper to achieve multi-threaded parsing
+         * JAR FILE: https://drive.google.com/file/d/0B5jbb4z6k39YMWRKaDBIdUJOelU/view?usp=sharing
+         * Sentences file: https://drive.google.com/file/d/0B5jbb4z6k39YSnhuelpSd2Fkb0k/view?usp=sharing
+         * Note: Must be started from graph-parser.jar and lib_data directory
+         * Usage: java -jar <jar/file/path/name> <sentence/file/name/> <split/sentences/file/dir/> <semantic/parse/output/dir/>
+      * @done: Reddy's ungrounded parser, reasons for crushes on some sentences?
+         * fixed: Due to un-parsable characters and dirty sentences (Annotated sentences further filtered out)
+         * Parser has memory leaks. Cannot accept "unlimited sentences" at a time.
+      * Statistics
+         * Sentences parsed: ~42000
+         * Selected un-grounded parses (Atleast 2 nodes + relation + no uninstantiated variable) : 1301
+         * Selected un-grounded parses without sufficient events/nodes per event: 289
+         * Clean parsed sentences (suitable for gold standard): 63
+         * Ratio: 0.0015
+         * Sentences to parse for 10K training sentences: 6,6 Mio sentences
+         * New sem parse file: [[%ATTACHURL%/sem-parse-out9898.txt][sem-parse-out9898.txt]]
+   * [[http://arxiv.org/pdf/1509.07179.pdf][Structured perceptron Java]]
+   * [[http://deeplearning4j.org/][Deeplearning4j]]
+
+---+++ 2016-01-29
+   * Reddy's code:
+      * @todo(RB): Surrogate gold graph creation
+      * @done(RB): Sample output of grounded graphs : [[%ATTACHURL%/sem-parse-out-test.txt][sem-parse-out-test.txt]]
+      * @don(RB): Code commit to SVN.
+
+---+++ 2016-01-29
+   * Training data
+      * @done(RB) Re-Run statistics on preprocessed training data
+         * Previous:
+            * Total sentences: 182,518
+            * Total annotations: 283,378
+            * Sentences with at least one annotation: 81,523
+            * Sentences with at least two annotations:  44,841
+            * Sentences with no annotations:  100,995
+            * Average link density:  1.552
+            * Average link density for sentences with at least one annotation: 3.476
+         * New:
+            * Total sentences: 188,940.0
+            * Total annotations: 276,467.0
+            * Sentences with at least one annotation: 92,053.0
+            * Sentences with at least two annotations: 47,577.0
+            * Sentences with atleast two named entities and an edge between them: ???
+            * Sentences with atleast two named entities and an edge between them and no uninstantiated variables: ???
+            * Sentences with no annotations 96,887.0
+            * Average link density 1.46325288451
+            * Average link density for sentences with at least one annotation 3.00334589856
+   * Reddy's code:
+      * @todo(RB): Surrogate gold graph creation
+      * @todo(RB): Sample output of grounded graphs
+   * Thesis structure
+      * Introduction
+         * Motivation 
+            * In the context of reference and the benefit of semantic parsing in general, is should be emphasized that we use reference as a motivating example, but it constitutes only one of many possible use cases.
+      * Related Work
+         * WikiData and other knowledge-bases
+         * Existing semantically enhanced tools for knowledge bases (what kind of tools people use to work with WikiData, e.g. Sourcerer tool)
+         * Semantic parsing approaches
+            * Including mentioning relation extraction approaches and different types of outputs/representations one can get for a parser?
+      * The semantic parser component
+         * Requirements
+            * What do we need to potentially be able to extract references? What restriction do we have (lack of annotated training data)?
+         * Reddy's approach
+            * Describe the approach
+            * Does it meets our requirements (e.g. it is unsupervised)? Why is it better than relation extraction (e.g. potentially more robust, doesn't make assumptions like distant supervsion)?
+            * Available code and resources? What do we have to change, modify on the code? What data we need for training/evaluation?
+         * Training Data aquisition
+            * Wikipedia as a WikiData corpus
+            * Format and implementation details
+         * Grounded semantic parser implementation
+            * Surrogate gold data construction
+            * Baseline
+            * Feature extraction
+            * Training
+         * Evaluation
+      * Semantic parsing as a web service
+         * Why it is important to give an access to the parser as a service? (Crucial for web tools for WikiData, very useful for other researches at the group: it is a common approach, see for example translation servers)
+         * Web-service structure and REST API design
+         * Implementation
+      * Optional: Candidate reference filtering with Semantic parsing
+      * Conclusion and future work
+
+---+++ 2016-01-22
+   * Training data
+      * @todo(RB) If a word is annotated in an article once, find all other occurrences of the same word/words in the article and annotate them with the same id (done)
+      * @todo(RB) Find all occurrences of the title in the article and annotate them with the current article id
+         * Only if the title is unambiguous 
+      * Data requirements:
+         * Reddy et al. 2014 has around 100000 sentences for training with at least two entities that are associated with a relation and have an edge between them in the ungrounded graph and the graph doesn't have uninstantiated variables.
+         * Currently preprocessed 4300 articles:
+            * Total sentences: 182,518
+            * Total annotations: 283,378
+            * Sentences with atleast one annotation: 81,523
+            * Sentences with atleast two annotations:  44,841
+            * Sentences with atleast two annotations and an edge between them: ???
+            * Sentences with atleast two annotations and an edge between them and no uninstantiated variables: ???
+   * Reddy's code:
+      * @todo(RB) Process the output of the ungrounded graph
+         * Later: filter out training sentences based on the ungrounded parse (see sec 4.2 in Reddy et al 2014)
+              * see "Training data"
+         * Later: surrogate gold graph creation
+            * Current state: ungrounded graphs are constructed for a sentence based on Reddy's output; all possible grounded graphs are generated by querying pairs of entities in Wikidata.
+      * @todo(DS) how Reddy uses tfidf to queue elements for grounding?
+
+
+---+++ 2016-01-08
+   * Training data
+      * @discuss(DS, RB) Reddy's method to create gold training data
+   * Reddy's code:
+      * Status update
+      * @discuss(): It might be reasonable to create surrogate gold graph ourselves without using the Reddy's code
+
+---+++ No meeting due to holidays
+   * @todo(DS) Forward statistics on WikiData; reference on semantic parsing for QA, knowledge extraction
+   * @done(RB) Update presentation: Add a slide about creation surrogate gold graphs, replication of Reddy's results (link to a wiki page with instructions), examples of acquired training data
+
+---+++ 2015-12-21
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * done(RB) expand the statistics on links per sentence in Wikipedia data (see the previous meeting)
+         * done(RB) How to restrict the data to a particular subset of Wikipedia (e.g. Film category)
+      * @discuss(DS, RB) Reddy's method to create gold training data
+   * Mid-term presentation:
+      * @done(RB) draft of the mid-term presentation: [[%ATTACHURL%/Mid_term-draft.ppt][Mid_term-draft.ppt]]
+   * Reddy's code:
+      * @todo(DS) Write Reddy
+         * DS: In the process of figuring out why we get different results
+      * @todo(RB) Write down the whole procedure to replicate the experiments (done)
+      * @todo(DS) Look into ccg_lexicon_questions. Can we use it unmodified for WikiData? ~/graph-parser/lib_data  (number of lexicon as well as grammar/rules files in this folder)
+         * DS: as far as i can tell, yes, we can use it unmodified with WikiData, it is olny relevant for CCG parsing
+      * @todo(DS) Look into Schema file: ~/graph-parser/data/freebase/schema
+         * Seems to be just a list of relevant relations listed for each item type, we can get it for WikiData, too
+      * @todo(DS) Look into tacl_grounded_lexicon: ~/graph-parser/data/tacl/grounded_lexicon
+      * @done(RB) Reddy's tacl evaluations results:  [[%ATTACHURL%/TACL_evalutaions.pdf][TACL_evalutaions.pdf]]
+
+
+---+++ 2015-12-11
+   * Training data
+      * @discuss(DS, RB) Reddy's method to create gold training data 
+   * @discuss(DS) other semantic parsing papers that try to convert semantic representation into a SPARQL/SQL query
+      * Poon, H. (2013). Grounded Unsupervised Semantic Parsing: Converts dependency structures to SQL queries; rather hard to read.
+   * @discuss(DS, RB) Mintz'09, distant supervision for relation extraction
+   * Reddy's code
+   * Mid term presentation, things to include:
+      * Topic description and motivation (see the proposal)
+      * Reddy's paper (requirements for training data) and related work
+      * Plan and the current state
+      * Collecting training data for WikiData from Wikipedia. How? Statistics?
+      * Replicating Reddy's experiments
+      * Plan and what needs to be done
+
+
+---+++ 2015-12-04
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * Store annotated data as one sentence per line and a separate index for annotations
+         * Done(RB) How many sentences with at least one link? 
+         * Done(RB) What is the link density? 
+         * Following statistics over a corpus of 100 documents (articles) (Corrected)
+         * Total sentences: 3365.0
+         * Total annotations: 3016.0
+         * Sentences with at-least one annotation: 1397.0
+         * Sentences with at-least two annotations 651.0
+         * Sentences with at-least no annotations 1968.0
+         * Average link density 0.896285289747
+         * Sentences with errors ???
+            * RB(Done): Correct this number 746+1815!=3365 (Done. Now 1397 + 1968 = 3365)
+         * Average link density 0.896285289747
+            * RB(Done): Average link density over sentences with at least one link? 2.15891195419
+            * RB: Average link density / number of sentences with at least one link over sentences longer than 5 words?
+         * [[%ATTACHURL%/Wikipedia-Annotations.zip][Wikipedia-Annotations.zip]]: Wikipedia sentences annotated with WikiData identifiers
+   * Reddy's code
+      * @todo(RB) create a table with experiments and commands to run them
+      * @todo(RB) try to run only test setup with the existing model
+      * @todo(DS) Virtuoso log file (done)
+   * Next time
+      * @discuss(DS, RB) Reddy's method to create gold training data 
+      * @todo(DS) other semantic parsing papers that try to convert semantic representation into a SPARQL/SQL query
+
+---+++ 2015-11-27
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * For WikiData hash Wikipedia URLs instead of titles
+         * todo(RB) How many sentences with at least one link? (Pending)
+         * todo(RB) What is the link density? (Pending)
+         * todo(RB) Prepare a training data sample (done)
+   * Reddy's code
+      *  todo(RB) Try it in test mode
+      *  todo(RB) What is needed to run the training?
+
+---+++ 2015-11-20
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * todo(RB) How many sentences with at least one link? (Pending)
+         * todo(RB) What is the link density? (Pending)
+         * todo(RB) Prepare a training data sample
+   * Reddy's code
+      * todo(RB) Try out the Virtuoso installation on DS's machine
+         * http://desktop-212:8890/sparql
+
+---+++ 2015-11-13
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * Wikipedia dump of article texts: https://dumps.wikimedia.org/enwiki/20151002/enwiki-20151002-pages-articles-multistream.xml.bz2
+         * Wikimedia project ids mapping: https://dumps.wikimedia.org/enwiki/20151002/enwiki-20151002-iwlinks.sql.gz
+         * todo(RB) How many sentences with at least one link? (Pending)
+         * todo(RB) What is the link density? (Pending)
+   * Reddy's code
+      * todo(DS) ask about reserving a server or hosting a Virtuoso database () 
+         * Virtuoso is running on DS's work station: desktop-212:8890/sparql
+      * todo(RB) instructions how to install Virtuoso and import Reddy's data (Done)
+
+
+---+++ 2015-11-06
+   * Training data
+      * Use Freebase - Wikidata identifiers mapping either on a subset of ClueWeb or on Free917 (only for debugging purposes)
+         * Google provides mapping of Freebase ids to WikiData (it is old, from 2013)
+         * todo(RB) try to extract mappings from WikiData (use Property "Freebase identifier"). How many of them is there? Overlap with the Google mapping?
+      * Wikipedia links as WikiData annotations
+         * Look only at the titles and abstracts first
+         * todo(RB) map Wikipedia links to WikiData item ids 
+   * Reddy's code
+      * Virtuoso is too large to run locally
+      * todo(DS) ask about reserving a server or hosting a Virtuoso database
+
+---+++ 2015-10-30
+   * Status Update
+      * Tried to obtain a subset of Freebase to actually test Reddy et.al results. But no small enough dataset was available.
+      * Subsequently tried downloading whole of Freebase but have been unsucccessful due to system constraints and performance (under-going).
+      * Read literature on deep learning and some NLP machine learning approaches.
+   * todo(RB): *Enroll at the Prüfungssekretariat*
+      * It is about time to do that. Figure out what do you need for that, there is some form that Prof. Gurevych has to sign.
+      * Form submitted to IG 
+   * todo(RB): description of packages (undergoing)
+   * todo(RB): how to get a sample of Freebase to try out the grounded semantic parsing (*status update*)
+      * Wait for Reddy's answer
+   * todo(DS): a paper on other features that could be used
+   * todiscuss: Could we e-mail Reddy to get access to the dataset and to replicate TACL results (as mentioned on his GitHub profile)
+      * Yes
+
+
+---+++ 2015-10-16
+   * Pool access
+   * Wiki Meeting Minutes (once the account is activated)
+      * Use them for progress updates, small question, to collect literature
+   * Latex template
+   * SVN
+
+---+++ 2015-10-09
+   * Regular meetings
+      * Friday at 12:00
+   * Mid-term, final presentation
+      * Mid-term: *05.01.16*
+      * Final: *05.04.16*
+   * Student presentations next week: 13.10.2015 at 11:30
+   * Computational Semantics book
+   * Update on Reddy's code
+      * todo(RB): description of packages
+   * WikiData: how to proceed with the scheme mapping
+      * First trying to replicate results with Freebase, then transition to WikiData
+   * Ungrounded semantic parsing is working out of the box
+   * todo(RB) What is need to run the grounded parsing with Freebase? To replicate Reddy's result with provided models (without retraining)?
+
+---+++ Summary of the initial meeting
+   * Starting date: 15.09.2015, Deadline: 31.03.2016
+   * Enroll at the Prüfungssekretariat: ~15.10.2015
+   * Official deadline: 02.05.2016
+   * Task description approved: Please refer attachments 
+
+
+---+++Tentative Schedule
+%EDITTABLE{format="| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Comment* |
+| 0 | Initial meeting; discussion of the project definition |  |
+| 0&#8211;2 | Familiarization with the project, literature review, setup of the environment and the datasets | Start writing the thesis (or takenotes for it) as early as possible! |
+| 3&#8211;5 | Requirements analysis | WP1 |
+| 6&#8211;9 | Semantic parsing systems review, pipeline draft | WP2 |
+| 8 &#8211; 12 | Training data acquisition, Semantic parser training | WP3 1 &#8211; 2 |
+| 12 | Mid-term presentation |  |
+| 13 &#8211; 16 | Implementing the semantic parsing service | WP3 3 &#8211; 4 |
+| 17 &#8211; 20 | Integrate the service with WikiData tools to search for reference suggestions, discuss results | WP4 |
+| 21 &#8211; 24 | Final thesis redaction | |
+| 24 | Final presentation | |
+| 24 | Submit the thesis | |
+
+
+
+-- Main.DaniilSorokin - 2015-10-08
+
+   * [[%ATTACHURL%/RaktimBora_MA_Thesis_Task_Description_v2.pdf][RaktimBora_MA_Thesis_Task_Description_v2.pdf]]: Master Thesis Proposal (Approved) for Raktim Bora
+
+   * [[%ATTACHURL%/Wikipedia-Annotations.zip][Wikipedia-Annotations.zip]]: Wikipedia sentences annotated with WikiData identifiers
+
+   * [[%ATTACHURL%/TACL_evalutaions.pdf][TACL_evalutaions.pdf]]: TACL_evalutaions.pdf
+
+   * [[%ATTACHURL%/Mid_term-draft.ppt][Mid_term-draft.ppt]]: Mid_term-draft.ppt
+
+   * [[%ATTACHURL%/sem-parse-out-test.txt][sem-parse-out-test.txt]]: Test ungrounded and grounded semantic parse
+
+   * [[%ATTACHURL%/sem-parse-out9898.txt][sem-parse-out9898.txt]]: Selected Sem-parses-v2
+
+   * [[%ATTACHURL%/sample_gold_parse][sample_gold_parse]]: sample_gold_parse
+
+   * [[%ATTACHURL%/feature_list][feature_list]]: feature_list
+
+   * [[%ATTACHURL%/debug_iter20.txt][debug_iter20.txt]]: debug_iter20.txt
+
+   * [[%ATTACHURL%/gold_train_examples.txt][gold_train_examples.txt]]: gold_train_examples.txt
+
+   * [[%ATTACHURL%/sem-parse-out-model-mode.txt][sem-parse-out-model-mode.txt]]: sem-parse-out-model-mode.txt
+
+   * [[%ATTACHURL%/ref_urls.txt][ref_urls.txt]]: ref_urls.txt
+
+   * [[%ATTACHURL%/references-extract.txt][references-extract.txt]]: references-extract.txt
+
+%META:FILEATTACHMENT{name="RaktimBora_MA_Thesis_Task_Description.pdf" attachment="RaktimBora_MA_Thesis_Task_Description.pdf" attr="" comment="" date="1444388492" path="RaktimBora_MA_Thesis_Task_Description.pdf" size="109064" user="sorokin" version="1"}%
+%META:FILEATTACHMENT{name="RaktimBora_MA_Thesis_Task_Description_v2.pdf" attachment="RaktimBora_MA_Thesis_Task_Description_v2.pdf" attr="h" comment="Master Thesis Proposal (Approved) for Raktim Bora" date="1447336153" path="RaktimBora_MA_Thesis_Task_Description_v2.pdf" size="109230" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="Wikipedia-Annotations.zip" attachment="Wikipedia-Annotations.zip" attr="" comment="Wikipedia sentences annotated with WikiData identifiers" date="1449807475" path="Wikipedia-Annotations.zip" size="502703" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="TACL_evalutaions.pdf" attachment="TACL_evalutaions.pdf" attr="" comment="" date="1450196497" path="TACL_evalutaions.pdf" size="183412" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="Mid_term-draft.ppt" attachment="Mid_term-draft.ppt" attr="" comment="" date="1450657129" path="Mid_term-draft.ppt" size="546304" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="Mid_term-draft-final.ppt" attachment="Mid_term-draft-final.ppt" attr="" comment="" date="1452249697" path="Mid_term-draft-final.ppt" size="1105408" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="sem-parse-out-test.txt" attachment="sem-parse-out-test.txt" attr="" comment="Test ungrounded and grounded semantic parse" date="1454648048" path="sem-parse-out-test.txt" size="15406" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="sem-parse-out9898.txt" attachment="sem-parse-out9898.txt" attr="" comment="Selected Sem-parses-v2" date="1455269175" path="sem-parse-out9898.txt" size="1250620" user="bora" version="2"}%
+%META:FILEATTACHMENT{name="sample_gold_parse" attachment="sample_gold_parse" attr="" comment="" date="1455875952" path="sample_gold_parse" size="23083" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="feature_list" attachment="feature_list" attr="" comment="" date="1455875968" path="feature_list" size="3171" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="debug_iter20.txt" attachment="debug_iter20.txt" attr="" comment="" date="1457345493" path="debug_iter20.txt" size="242775" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="gold_train_examples.txt" attachment="gold_train_examples.txt" attr="" comment="" date="1457948140" path="gold_train_examples.txt" size="6434" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="sem-parse-out-model-mode.txt" attachment="sem-parse-out-model-mode.txt" attr="" comment="" date="1457948246" path="sem-parse-out-model-mode.txt" size="33767" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="ref_urls.txt" attachment="ref_urls.txt" attr="" comment="" date="1457948340" path="ref_urls.txt" size="50264" user="bora" version="2"}%
+%META:FILEATTACHMENT{name="references-extract.txt" attachment="references-extract.txt" attr="" comment="" date="1457948379" path="references-extract.txt" size="263378" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="HMS_reference_usage_count_analysis.xlsx" attachment="HMS_reference_usage_count_analysis.xlsx" attr="" comment="" date="1458226801" size="371759" user="sorokin" version="1"}%

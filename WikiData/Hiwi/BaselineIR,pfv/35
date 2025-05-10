@@ -1,0 +1,75 @@
+%META:TOPICINFO{author="RichardSteuer" date="1357322776" format="1.1" version="35"}%
+%META:TOPICPARENT{name="IrExperiments"}%
+Until now (04.01.2013), my best baseline result (without any kind of expansion) is the following.
+
+---+++Evaluation results (trec_eval)
+   * 1.  all queries, indexed token and lemma; using DFR_BM25 and KL; using TDN (title, description, narrative)
+   * 2.  all queries, indexed token, lemma and stem; using DFR_BM25 and KL; using TDN (title, description, narrative)
+   * 3.  all queries, just indexed stem; using DFR_BM25 and KL; using TDN (title, description, narrative)
+
+
+<div id="table1" style="float:left; margin-left:25px">
+| num_q | all | 91 | 
+| num_ret | all | 8705348 | 
+| num_rel | all | 1045 | 
+| num_rel_ret | all | 1030 | 
+| *map* | all | 0.2992 | 
+| gm_ap | all | 0.0366 | 
+| R-prec | all | 0.2813 | 
+| bpref | all | 0.3766 | 
+| recip_rank | all | 0.5103 | 
+| *P5* | all | 0.3363 | 
+| P10 | all | 0.2560 | 
+| P15 | all | 0.2183 | 
+| P20 | all | 0.1945 | 
+| P30 | all | 0.1575 | 
+| P100 | all | 0.0737 | 
+| P200 | all | 0.0418 | 
+| P500 | all | 0.0185 | 
+| P1000 | all | 0.0098 |
+</div>
+
+<div id="table2" style="float:left; margin-left:25px">
+| num_q | all | 91 | 
+| num_ret | all | 9228997 | 
+| num_rel | all | 1045 | 
+| num_rel_ret | all | 1033 | 
+| *map* | all | 0.2994 | 
+| gm_ap | all | 0.0366 | 
+| R-prec | all | 0.2882 | 
+| bpref | all | 0.3752 | 
+| recip_rank | all | 0.4845 | 
+| *P5* | all | 0.3385 | 
+| P10 | all | 0.2516 | 
+| P15 | all | 0.2176 | 
+| P20 | all | 0.1962 | 
+| P30 | all | 0.1590 | 
+| P100 | all | 0.0742 | 
+| P200 | all | 0.0427 | 
+| P500 | all | 0.0188 | 
+| P1000 | all | 0.0099 |
+</div>
+
+<div id="table3" style="float:left; margin-left:25px">
+| num_q | all | 91 | 
+| num_ret | all | 8528837 | 
+| num_rel | all | 1045 | 
+| num_rel_ret | all | 1031 | 
+| *map* | all | 0.2914 | 
+| gm_ap | all | 0.0383 | 
+| R-prec | all | 0.2721 | 
+| bpref | all | 0.3742 | 
+| recip_rank | all | 0.4955 | 
+| *P5* | all | 0.3209 | 
+| P10 | all | 0.2516 | 
+| P15 | all | 0.2117 | 
+| P20 | all | 0.1912 | 
+| P30 | all | 0.1575 | 
+| P100 | all | 0.0764 | 
+| P200 | all | 0.0432 | 
+| P500 | all | 0.0193 | 
+| P1000 | all | 0.0101 |
+</div>
+
+
+<div style="clear:both;"></div>

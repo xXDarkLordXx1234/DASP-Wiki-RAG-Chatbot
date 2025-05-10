@@ -1,0 +1,56 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="5"}%
+%META:TOPICPARENT{name="StefanHenss"}%
+---+ Keyword Extraction/Assignment
+
+---++ Current Design
+   * State: Currently selected keywords and history of rewards for training and features.
+   * Actions: Add keyword (either from the document or from a given vocabulary), remove keyword, stop process.
+   * Rewards1: 0.001 for correct assignment, 0.001 for wrong assignment, 0.005 for removing wrong keywords, -0.02 for removing correct keywords and the selection's f-score for the terminal state.
+   * Rewards2: Difference in F1 score before and after a keyword was added/removed.
+   * Future Rewards: Discount factor of 0.25. Will be increased when crawler performance improves.
+   * Predictions: The observed reward from past actions is stored and future reward predicted through supervised learning.
+
+---++ Current Features
+Any occurence of a keyword and/or a text may result in multiple features, using the original version, lemmatization, etc. The optimal configuration will be determined through experiments. Also, term frequency and similarity measures will be evaluated in all possible combinations. So, there are no technical definitions yet and also further exploration of approaches for features will later be considered based on relevance measures for the currently implemented features.
+
+| *Feature* | *Description* | *Relevance** |
+| actionType | Whether this action adds a keyword, removes it or finishes the process. | tbd |
+| rewardHistoryKeyword | Statistics regarding how often this keyword was added/removed by the reinforcement learning agent and which rewards it received. | tbd |
+| rewardHistoryKnn | Using a kNN approach, what is the expected reward for this action, considering either the other features or semantic similarity measures between keywords? | tbd |
+| keywords | How many keywords will be assigned after the action is executed? | tbd |
+| keywords{Text,Corpus}Similarity{Before,After} | Similarity measure between keywords and the text and similarity between the keywords and the texts in the training corpus, as well as w.r.t. the distribution of the gold-standard keywords. All three measures are made before and after the action, so we can also consider the delta. | tbd |
+| keywordsOther| Similar to the measure above, we might consider statistics like the ones below for the whole set of currently selected keywords. | tbd |
+| keywordLength | The length of the keyword that is either added or removed. | tbd |
+| keywordWordType | The word type/POS tag of the keyword and also, if it is a named entity, abbreviation, etc. | tbd |
+| keywordFirstOccurence | The first occurence of the keyword within the text. | tbd |
+| keywordMatch | How long is the longest sequence of characters within the keyword, that is matching an already selected keyword? | tdb |
+| keywordPresence{Text,Corpus} | Term frequency of the keyword for the given text, all training texts and the gold standard. Also, we may use a neutral corpus to determine if the keyword is specific to the educational domain. | tbd |
+| keywordSemSim | Using semantic similarity measures, what is the average/max/... similarity with already selected keywords. | tbd |
+| keywordCoocurrences | Using a co-occurence graph, we can derive several graph metrics such as PageRank. | tbd |
+| keywordHtml | For HTML documents, we can consider the keyword's presence in header data (title, keyword, description, etc.) and tags like _h1_ . | tbd |
+| keywordWiki | Is there an article for the keyword? If so, we can also consider relevance measures like length, revisions, outgoing links, etc. | tbd |
+| keywordGoogle | How many results does Google estimate for the keyword? | tbd |
+| keywordReadability | FleschKincaid Grade Level für das Keyword, o.ä. | tbd |
+
+* Relevance measures for features will be given soon.
+
+---++ Keyword Extraction
+This section will contain details about how keyword candidates will be retrieved from the document.
+
+---++ Problems
+So far, only general issues are observed, such errors in PDF parsing, spelling, etc. Since those affect all tasks, they will be addressed in a separate document.
+
+---++ Evaluation
+As with other scenarios like summarization, we can use a cross-validation setup. First, a policy is learned on training data, using rewards as above. Second, the policy is used to extract keywords for validation texts and the outcome is evaluated using IR metrics. Also, rewards from the training phase can be sampled and used to analyze and optimize the predictive performance.
+
+---+++ Baselines
+   * Random selection of the given or extracted candidates.
+   * Top N terms according to tf*idf and alike, as well as according to our candidate model for keyword extraction.
+   * Various algorithms from related papers.
+   * An own ranking/classification approach, using the same features as for reinforcement learning, to see if reinforcement actually yields a benefit.
+
+---+++ Metrics
+   * Exact agreement using standard IR metrics.
+   * Since we don't want to set a fixed amount of expected keywords, we can also use ranking metrics, such as Precision@|Expected|
+   * Term similarity measures
+   * Especially for keyword extraction, we should also consider those metrics for stemmed or lemmatized words. 

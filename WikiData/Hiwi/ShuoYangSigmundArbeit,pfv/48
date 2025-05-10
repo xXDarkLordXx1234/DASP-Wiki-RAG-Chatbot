@@ -1,0 +1,55 @@
+%META:TOPICINFO{author="BenjaminHerbert" date="1275052684" format="1.1" reprev="48" version="48"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+---++ Temporär
+   * IMAG0103.jpg: <br />
+     <img src="%ATTACHURLPATH%/IMAG0103.jpg" alt="IMAG0103.jpg"  width="600" heigth="350" />
+
+---++ Aktuelle Arbeit - Mai 2010
+
+---+++ Aufgabenübersicht
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Monolinguales Retrieval auf GIRT (MrGIRT) | | |
+| 2. Crosslinguales Retrieval auf GIRT (CrGIRT) | | |
+| 3. =FastTranslationAnnotator= | 95 | *  |
+| 4. Gegebene Pipelines laufen zu lassen | 50  |  |
+| 5. Pipeline mit Ausgabe in TWiki Markups | 0 |  |
+| 6. =TikaReader= v1.3 | 100 |  |
+| 7. =XMLFileReader= mit =XPath= | 20 | * |
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| FTA | 26.05.2010 | 2 | Diskussion online mit Benjamin über XPath und Annotationen <br /> Weitere Entwicklung von =FastTranslationAnnotator= | * |
+| FTA | 23.05.2010 | 4 | Refactoring von =FastTranslationAnnotator= in <ul><li>Abstrakte Oberklasse =TranslationAnnotatorBase= , was Übersetzungsdienst bietet</li><li>Daraus vererbte =XmlTranslationAnnotator= für die Übersetzung von den durch =XmlFileReader= aus xml-Dateien erzeugenden Annotationen</li><li>und =GeneralTranslationAnnotator= für Übersetzungen allgemeiner Annotationen</li><li>Unterklassen sollen spezifizieren: 1) was zu übersetzen sind  2) wie und mit welcher Annotationen sie indexiert werden sollen</li><li> =GeneralTranslationAnnotator= nutzt !FeaturePath: Wählen von Typen schon unterstützt, Filterung kommt noch</li></ul> Darüber hinaus Testen und Clean-ups. |  |
+| FTA | 22.05.2010 | 6 | Weitere Entwicklung von =FastTranslationAnnotator= <ul><li>Beschränkte Textsegmente um Übersetzungsfehler zu vermeiden</li><li>Endlich Lösen von Hängen-Problem: Ein Bug von Sun, =getInputStream()= von =URLConnection= hängt unbegrenzt (eigentlich einige Minuten aber doch zu lang), falls es kein vollständiges Antwort bekommt.</li><li>Dafür Erweiterung von =google-api-translate-java= um Time-out von 5 Sekunde. Schreitet die Übersetzung diese Timeout über, wird eine Exception geworfen und die Übersetzung vom Aufrufenden erneut versucht</li><li>Dafür Ticket in =google-api-translate-java= geschrieben http://tinyurl.com/35lpq4k </li><li>Anfang mit der Implementierung von !FeaturePath Teil 2 - Filterung</li><li>Refactoring des Projektes als eine abstrakte =TranslationAnnotatorBase= und daraus herleitende =XmlTranslationAnnotator= und =GeneralTranslationAnnotator= </li><li>Weil mit Filterung XML-Tags zu spezifizieren bisschen inflexibel ist, denke ich</li><li>Werde noch darüber mit Benjamin diskutieren</li></ul> |  |
+| !TikaReader, FTA | 21.05.2010 | 6 | Nach der Aufräumarbeiten ist !TikaReader v1.3 fertig <br /> !FeaturePath Teil 1 von FTA <ul><li>Testen von mehrerer Typen</li><li> Entdeckung vom Fehler "Too many text segments or language pairs", wenn zu viele Sätze gleichzeitig übersetzt werden. Muss die Anzahl beschränken</li><li>Zum Debug wurde auch =XmlFileReader= als Maven-Projekt erstellt</li></ul> |  |
+| FTA | 20.05.2010 | 4 | !FeaturePath Teil 1: Typ fertig. <br /> Lernen von Exception Handling <br /> Versuche, ein Problem zu lösen: Annotator hängt von Zeit zu Zeit |  |
+| FTA | 19.05.2010 | 2 | Erweiterung von =FastTranslationAnnotator= um =FeaturePath= |  |
+| FTA und Meeting | 18.05.2010 | 5 | Erweiterung von =FastTranslationAnnotator= <ul><li>Nun ein Maven-Projekt</li><li>Einbauen von !FeaturePath</li><li>Dafür Einarbeiten in =IndexTermAnnotator= </li></ul> Meeting mit Benjamin über <ul><li>Probleme bei Projekte</li><li>Priorität von Projekten</li></ul> |  |
+| !TikaReader | 16.05.2010 | 3 | !TikaReader v1.3 (fast) fertig: <ul><li> =EmlParser= als eigner Tika Parser</li><li>Verwendung des  =CompositeDetector= von =NameDetector= und =MimeTypes= als Detector</li><li>Erhöhung von Stablität</li><li>Weitere TODO: Behandlung von =WriteLimitReachedException= </li></ul> |  |
+| !TikaReader | 15.05.2010 | 1 | Teilweise gelöst: mit =NameDetector= als Detektor von Parser |  |
+| !TikaReader | 14.05.2010 | 1.5 | Lösen vom Problem mit Content Type |  |
+| !TikaReader | 13.05.2010 | 2 | Weitere Modularisierung von =EmlParser= <ul><li>Ab Tika 0.7 kann man in META-INF\services\org.apache.tika.parser.Parser den Klassenname eignes Parsers eintragen, um AutoDetectParser ihn erkennen und verwenden zu können<li> Problem mit Content Type: .eml Dateien mit mancher Encoding lassen sich nicht korrekt dekodieren</li></ul> |  |
+| !TikaReader | 12.05.2010 | 1.5 | Weitere Modularisierung von =EmlParser= als eigenes Parser von Tika |  |
+| !TikaReader | 10.05.2010 | 1 | Weitere Modularisierung von =EmlParser= als eigenes Parser von Tika |  |
+| !TikaReader | 09.05.2010 | 2.5 | Erhöhen von Stabilität von =TikaReader= <br /> Ausziehen von =EmlParser= aus =TikaReader= <br /> (Beide noch nicht fertig) | |
+| Meeting | 07.05.2010 | 0.5 | Meeting mit Benjamin über <ul><li> =TikaReader= und</li><li> !FeaturePath (für =FastTranslationAnnotator= )</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 50)$EXEC($GET(total_hour))"}% | bis Ende Mai noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (inkl. 10 Übertrag von April) |  |
+<nop>
+
+---+++ Dokumente
+GoogleTranslatePerformanceAnalysis
+
+GoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangPreviousWork
+
+-- Main.ShuoYang - 26 May 2010
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%

@@ -1,0 +1,64 @@
+%META:TOPICINFO{author="RichardEckart" date="1266500404" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ DKPro repository for students
+
+%TOC%
+
+---++ Most important things to know
+   * Repository URL: https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students
+<!--   * Repository for external libraries: https://maggie.tk.informatik.tu-darmstadt.de/svn/lib
+      * *Important*: Do not check in anything here without asking for permission! -->
+   * Current UIMA Version: 2.3.0
+   * UIMA Data Path in Eclipse: =[PATH_TO_PROJECT]/=
+
+---++ Projects
+
+   * Your supervisor will provide you with a package containing all necessary libraries to start with. The package also contains JARs with the JavaDoc where available.
+   * one project for each student
+   
+---++ Code
+
+---+++ Project Layout
+
+The project layout should roughly follow the [[http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html][Maven Standard Directory]] Layout:
+
+| src/main/java | Application/Library sources | SD |
+| src/main/resources | Application/Library resources | SD |
+| src/main/webapp | Web application sources (for web applications only) | |
+| src/test/java | Test sources | SD |
+| src/test/resources | Test resources | SD |
+| doc | Documentation | |
+| lib | (when not using Maven) Required libraries. One directory per lib, that contains the jar, the docs, the license, and a link where to download the library | |
+| LICENSE.txt | Project's license | |
+| README.txt | Project's readme | |
+
+Directories marked as *SD* should be configured as source paths in Eclipse.
+
+When working with UIMA XML descriptors, these should go to the following directories:
+
+| src/main/resources/desc/reader | UIMA descriptors for collection readers |
+| src/main/resources/desc/consumer | UIMA descriptors for CAS consumers |
+| src/main/resources/desc/annotator | UIMA descriptors for analysis engines |
+| src/main/resources/desc/type | UIMA descriptors for annotation types |
+
+---+++ Package names
+
+Classes implementing UIMA components shall go to the following packages:
+
+   * de.tudarmstadt.ukp.student.PROJECT.reader
+   * de.tudarmstadt.ukp.student.PROJECT.consumer
+   * de.tudarmstadt.ukp.student.PROJECT.annotator
+   * de.tudarmstadt.ukp.student.PROJECT.type
+   * de.tudarmstadt.ukp.student.PROJECT.resource
+
+At each level, we have a util package that conatins any utils needed and a resources package for needed resources.
+
+---+++ Coding rules
+
+   1 No component may require resources or external software that is not part of the repository.
+   1 Quick hacks are done by cloning a component with a name that ends with the initials of the author. (first, put it in the incubator project)
+   1 Any big change needs to be discussed with the Group. A change is big if it may change the semantics of a component.
+   1 Whenever possible, import by name must be used
+   1 We should have unit tests for each component.
+
+-- Main.ChristofMueller - 02 Oct 2007

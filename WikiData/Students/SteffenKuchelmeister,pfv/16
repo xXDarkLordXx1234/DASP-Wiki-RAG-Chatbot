@@ -1,0 +1,163 @@
+%META:TOPICINFO{author="kuchelmeister" comment="reprev" date="1518989869" format="1.1" reprev="16" version="16"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Dependency Parsing as a Sequence Tagging Problem
+*Start Date*: 28.11.2017
+
+*Supervisor*: Dr. Steffen Eger
+
+*Midterm talk*: 13.02.18
+
+*Final talk*: 27.03.18
+
+*Planned submission*: 30.03.2018 or otherwise 19.03.2018
+
+---++ Current Status
+---+++ 19.12.2017
+   * Wrote an evaluation skript for the prediction and wrote a converter for the prediction format of the other frameworks
+   * Found and fixed a bug in the code from Nils Reimers
+   * Added early stopping to the transition based parser
+   * Added komninos embeddings to the random search
+   * Switched the parser from Nils to theano to be able to use character embeddings
+   * The parser from Kiperwasser uses an older Version of dynet, but i don't know which. I fixed all errors, but I don't yet know if something is broken. Currently training a test run on my laptop to see if it works. If not I will install older versions of dynet. 
+---+++ 12.12.2017
+   * Wrote a batch-skript for random search of hyperparameter for the mtl and the cnn-rnn-crf tagger and ran them with a 200 sentences train set and only the relatives head with no dependancy label. 
+   * I didn't look at the results of the mtl-tagger, but for the other one, it looks like a smaller net with a softmax performed better.
+   * The sskip.100d embeddings performed better then the glove. I didn't test with Komninos embeddings yet. Do I have to learn them myself or are there pre-trained ones online?
+      * SE: They're pretrained on the net. Just google them
+   * The LSTM-parser deosn't have any kind of stopping other then strg-c, which makes it hard to write a bash script for hyperparameter search, any suggestions?
+      * SE: Just adapt the source code
+   * My plan is to do the experiments for the UAS next week and then finish the related work and experiment section over christmas.
+      * SE: Well, yes. It's going rather slow at the moment. Be aware of your timing
+
+
+---+++ 27.11.2017
+   * Der MTL-Parser und der biLSTM-CNN-CRF sequence tagger ist auf dem titanx-desktop und läuft. 
+   * Ich habe auch versucht den Parser von Kiperwasser zu installieren allerdings braucht der CMAKE als requirement, welches nicht installiert ist. Ich habe auch keine Adminrechte, also kann ich es mir nicht schnell über den package manager holen. Evt. könnte man von source kompillieren, aber nur wenns sonst nicht geht.
+   * Ich habe an der related work section noch nicht weiter geschrieben.  
+---+++ 20.11.2017
+   * Ich habe die related work section angefangen und den Teil für transition based parsing bis die Nachteile fertig. Ich habe das ganze erstmal in Google Docs geschrieben, weil man besser kommentieren kann und ich die TudFonts noch nicht auf meinem       Laptop installiert habe. https://docs.google.com/document/d/1l-p8eYNSxZT2KiTYiJjlHqRgZzof2dh4PcMIgHUZt-Y/edit?usp=sharing
+      * SE: once it is in a progressed stage, I can give you feedback on it. (I can give you feedback on written parts 3 times during the supervision). Overall, your related work section should have around 3 pages, I think.
+   *    Zu Graph based dependency Parsing, geht die Literatur bis in die 60er zurück und auf manche Paper die zitiert worden habe ich nicht online gefunden. Es ist auch die Frage, wie weit man zurückgehen soll.
+      * SE: Definitely do NOT go back to the 60s. We're only interested in 2000+ and, for the most part, 2014+.
+   *   Es gibt auch ein paar Joint Ansätze, diese sollte man vielleicht auch erwähenen. https://dl.acm.org/citation.cfm?id=1613784
+      * SE: "joint" has another meaning for us (e.g., "joint POS tagging and dependency parser"). You mean "combined" here, I think. Of course, you can mention them if you think they're relevant.
+
+---+++ 13.11.2017
+   * Ich habe mich ein wenig mit graph based dependency Parsern auseinander gesetzt. Ich habe mich für den Parser von Dat Quoc Nguyen, Mark Dras and Mark Johnson entschieden. Hier ist das Paper dazu: http://www.aclweb.org/anthology/K17-3014
+      * SE: Problem might be: it's a joint POS tagger and parser. To make a fair comparison overall, you would need to disable POS tagging.
+   * Ich habe das Framework bereits installiert und zum laufen bekommen.
+   * Ich habe noch nicht mit der related work section begonnen.
+   * Ich habe versucht mich schon auf den einen Server mit ssh zu verbinden, das hat aber bisher noch nicht geklappt. Ich denke das irgentwas mit dem vpn nicht stimmt, aber ich bin mir nicht sicher.
+
+   *    Du hattest gesagt, dass du noch Doku zu dem arc standard oracle parser für das lstm-parser (https://github.com/clab/lstm-parser, ParserOracleArcStdWithSwap.jar).
+      * SE: See here for a sample input file to this parser: https://github.com/UKPLab/acl2017-neural_end2end_am/tree/master/progs/LSTM-Parser/sample_data
+
+---++ Meeting Minutes
+
+   * 09.01.2018
+      * Train with less data if it fails for larger data set sizes (50,200,400,1000)
+         * Nils Code: File memory bug on github
+         * Tobias Code: Send me link to reproduce bug
+      * As soon as you think that related work is finished, send it to me so that we can update
+      * Do comparison with taggers and parsers
+      * Write hyperparameters in Wiki (embeddings, which taggers and parsers, etc.)
+      * Keep up with time and planning: we are behind schedule both in experiments and writing
+
+   * 19.12.2017
+      * I can give you my version of the Kiperwasser adaptation 
+      * Tokenization in Nils Reimers tagger: fix or contact author
+      * Bug in NR tagger: maybe file an issue
+      * Keep code clean & document if necessary
+      * Finish STL experiments by end of January at the latest
+         * By end of January, you should also have Theory & Related + Data or Some parts of the experiment section
+      * Find out about your planned submission date
+      * Over Christmas: writing, LAS experiments (best is if you stay with STL setting)
+         * Once related work is finished, you can also send me this version (attach it to Wiki)
+      * Für MTL:
+         * Kahse Parser fix: https://git.ukp.informatik.tu-darmstadt.de/tk-master-thesis/mt-code
+         * In addition: EmbeddingsConfig.py --> use utf-8 reading
+
+   * 12.12.2017
+      * Komninos embeddings should work; we used them multiple times
+      * For other languages, just use Fasttext
+      * There's another update of the MTL-Tagger from Tobias Kahse: I will send you the update as soon as you do multi-task learning
+      * By next week, you should have your taggers & parsers installed (on dektop-titanx or krusty) and have some common evaluation script (UAS, macro-F1) and also some ideas about performance
+
+   * 28.11.2017
+      * Embeddings for English: Glove, Komninos (https://www.cs.york.ac.uk/nlp/extvec/), sskip.100.vectors
+      * Embeddings for other languages: https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md
+      * Sample for related work: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/AndreasSchaeffler
+         * For sequence tagging: can look into Tobias' Kahse Master Thesis
+      * TODO SE: 
+         * Tobias Kahse tagger --> send UTF-8 Fix+Dropout Fix
+            * SE: see attachment "fix.tgz"
+         * desktop-titanx: cmake
+            * SE: I filed a bug
+      * Hyperparamter: propose your own setup for different architectures
+      * For next week: start experimentation (with English, UAS)
+      * Optional: Use data from CONLL2017 shared task data
+      * SE: maybe find architecture about MTL with shared-private model
+         * SE: You can try out this one (it's for multi-lingual but maybe can easily be adapted to standard multi-task): https://github.com/OSU-slatelab/seq_tagger, Paper: http://aclweb.org/anthology/D17-1301
+      * You can make 3 training data sizes: tiny (~100 sentences?), medium, and full.
+
+   * 21.11.2017
+      * SE: Code von TK zippen und zuschicken
+      * Selection von Daten: En, Ch, De, [...]
+      * Registration: bring registration formula next week
+      * SE: Outline possible Structure of thesis
+      * Differences between graph- and transition based parsing: look up (papers, google, stack exchange)
+      * Related work: Describe neural parsers in more detail
+      * Port architectures to our servers
+      * If you need GPU, send me an email, and I will forward you the respective pages, if necessary
+      * Don't wait too long with starting to run the experiments: best is if you schedule a small preliminary experiments soon
+
+   * 14.11.2017: 
+      * Check again that the current graph-based parser is good. Additionally/alternatively, include another parser building on Kiperwasser.
+      * May write an email to Miguel Ballesteros concerning the usage of the *jar File in LSTM-Parser
+      * Contact MB regarding problems with SSH
+
+---++ General
+
+   
+   * Server names: desktop-titanx@ukp.informatik.tu-darmstadt.de, etc.
+
+   * Useful linux commands/programs:
+      * ssh, scp, filezilla, nohup (to run a job without being logged in!), ...
+
+   * Information about the servers: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ServerJobs
+      * Every job has to be scheduled in the server before being run
+      * If you need access to other servers, just let us know and we can see what we can do.
+      * Information on how to install the libraries in the GPU server: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/DKPro/GpuServer
+      * Policies and some hints on how to use the GPU server, e.g. important details to pay attention when using tensorflow/keras: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/UKP/GpuUsagePolicy
+
+   * VPN: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/VpnService
+
+---++ Possible thesis structure
+
+   * Introduction: 1-2 pages
+   * Theory & Related work (5-6 pages):
+      * Theory: (Neural) Dependency Parsing (>2 pages), Neural Sequence Tagging/Labeling (< 1 page)
+      * Related work: 2-3 pages
+         * older works (<2010): describe only marginally
+         * newer worker should be described in more depth
+   * Datasets & Systems (2-3 pages):
+      * which data are you using? Describe your data.
+      * Which metrics are you using? Accuracy? UAS, LAS?
+      * Which systems are you using? Describe them.
+   * Experiments (> 10 pages)
+      * all the experiments with nice plots and tables
+   * Evaluation & Discussion (5-10 pages)
+      * What worked?
+      * What didn't?
+      * Why?
+      * Error analysis --- with examples
+   * Conclusion and future work (1-3 pages)
+
+
+
+-- Main.SteffenEger - 2017-11-10
+
+%META:FILEATTACHMENT{name="fix.tgz" attachment="fix.tgz" attr="" comment="UTF-8 fix and Dropout fix for the tagger from Tobias Kahse" date="1511869497" path="fix.tgz" size="11699" user="eger" version="1"}%
+%META:FILEATTACHMENT{name="kiperwasser.tgz" attachment="kiperwasser.tgz" attr="" comment="Kiperwasser Parser DyNet changes by SE" date="1513680738" path="kiperwasser.tgz" size="48369" user="eger" version="1"}%
+%META:FILEATTACHMENT{name="TUDthesis.pdf" attachment="TUDthesis.pdf" attr="" comment="Related Word, Theory + Datasets and Sysyems section of Thesis" date="1518989650" path="TUDthesis.pdf" size="834946" user="kuchelmeister" version="1"}%
+%META:FILEATTACHMENT{name="random_search.yaml" attachment="random_search.yaml" attr="" comment="config used for hyperparameter optimisation for the sequence tagger from Kahse" date="1518989868" path="random_search.yaml" size="2376" user="kuchelmeister" version="1"}%

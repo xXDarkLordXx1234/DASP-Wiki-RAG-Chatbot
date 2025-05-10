@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="MarkoMartin" date="1299775436" format="1.1" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++Vertrag
+Laufzeit: 01.03.2011-31.05.2011
+
+---+++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Priorität* | *ID* | *Beschreibung* | *Status* |
+| 1 | 1 | Integration von Segmentierungskomponenten | 0 % |
+| 1 | 2 | Wrapper für Segementierung | 0 % |
+| 2 | 3 | Ideen für verbesserte Segmentierung erarbeiten | 0 % |
+| 2 | 4 | Experimente zur Evaluation neuer Ideen | 0 % |
+| 3 | 5 | Veröffentlichung planen | 0 % |
+| 4 | 6 | Graphenerstellung optimieren (externalisieren) | 0 % |
+
+---+++ Arbeitszeit
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2" footerrows = "1" }%
+| *Datum* | *Stunden* | *Aufgabe-ID* | *Beschreibung* |
+| 08.03.2011 | 1 | 1 | <ul><li>Auflistung relevanter Komponenten für Integration in DKPro</li><li>Versuch SVN-Verbindung</li></ul> |
+| *Summe* | %CALC{"$SUM( $ABOVE() )"}% | | |
+| *Soll* | 45 | | bis 31.5.|

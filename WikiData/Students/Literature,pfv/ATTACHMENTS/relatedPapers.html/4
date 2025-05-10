@@ -1,0 +1,1227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JabRef references</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+<!--
+// QuickSearch script for JabRef HTML export 
+// Version: 3.0
+//
+// Copyright (c) 2006-2011, Mark Schenk
+//
+// This software is distributed under a Creative Commons Attribution 3.0 License
+// http://creativecommons.org/licenses/by/3.0/
+//
+// Features:
+// - intuitive find-as-you-type searching
+//    ~ case insensitive
+//    ~ ignore diacritics (optional)
+//
+// - search with/without Regular Expressions
+// - match BibTeX key
+//
+
+// Search settings
+var searchAbstract = true;	// search in abstract
+var searchReview = true;	// search in review
+
+var noSquiggles = true; 	// ignore diacritics when searching
+var searchRegExp = false; 	// enable RegExp searches
+
+
+if (window.addEventListener) {
+	window.addEventListener("load",initSearch,false); }
+else if (window.attachEvent) {
+	window.attachEvent("onload", initSearch); }
+
+function initSearch() {
+	// check for quick search table and searchfield
+	if (!document.getElementById('qs_table')||!document.getElementById('quicksearch')) { return; }
+
+	// load all the rows and sort into arrays
+	loadTableData();
+	
+	//find the query field
+	qsfield = document.getElementById('qs_field');
+
+	// previous search term; used for speed optimisation
+	prevSearch = '';
+
+	//find statistics location
+	stats = document.getElementById('stat');
+	setStatistics(-1);
+	
+	// set up preferences
+	initPreferences();
+
+	// shows the searchfield
+	document.getElementById('quicksearch').style.display = 'block';
+	document.getElementById('qs_field').onkeyup = quickSearch;
+}
+
+function loadTableData() {
+	// find table and appropriate rows
+	searchTable = document.getElementById('qs_table');
+	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+	// split all rows into entryRows and infoRows (e.g. abstract, review, bibtex)
+	entryRows = new Array(); infoRows = new Array(); absRows = new Array(); revRows = new Array();
+
+	// get data from each row
+	entryRowsData = new Array(); absRowsData = new Array(); revRowsData = new Array(); 
+	
+	BibTeXKeys = new Array();
+	
+	for (var i=0, k=0, j=0; i<allRows.length;i++) {
+		if (allRows[i].className.match(/entry/)) {
+			entryRows[j] = allRows[i];
+			entryRowsData[j] = stripDiacritics(getTextContent(allRows[i]));
+			allRows[i].id ? BibTeXKeys[j] = allRows[i].id : allRows[i].id = 'autokey_'+j;
+			j ++;
+		} else {
+			infoRows[k++] = allRows[i];
+			// check for abstract/review
+			if (allRows[i].className.match(/abstract/)) {
+				absRows.push(allRows[i]);
+				absRowsData[j-1] = stripDiacritics(getTextContent(allRows[i]));
+			} else if (allRows[i].className.match(/review/)) {
+				revRows.push(allRows[i]);
+				revRowsData[j-1] = stripDiacritics(getTextContent(allRows[i]));
+			}
+		}
+	}
+	//number of entries and rows
+	numEntries = entryRows.length;
+	numInfo = infoRows.length;
+	numAbs = absRows.length;
+	numRev = revRows.length;
+}
+
+function quickSearch(){
+	
+	tInput = qsfield;
+
+	if (tInput.value.length == 0) {
+		showAll();
+		setStatistics(-1);
+		qsfield.className = '';
+		return;
+	} else {
+		t = stripDiacritics(tInput.value);
+
+		if(!searchRegExp) { t = escapeRegExp(t); }
+			
+		// only search for valid RegExp
+		try {
+			textRegExp = new RegExp(t,"i");
+			closeAllInfo();
+			qsfield.className = '';
+		}
+			catch(err) {
+			prevSearch = tInput.value;
+			qsfield.className = 'invalidsearch';
+			return;
+		}
+	}
+	
+	// count number of hits
+	var hits = 0;
+
+	// start looping through all entry rows
+	for (var i = 0; cRow = entryRows[i]; i++){
+
+		// only show search the cells if it isn't already hidden OR if the search term is getting shorter, then search all
+		if(cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
+			var found = false; 
+
+			if (entryRowsData[i].search(textRegExp) != -1 || BibTeXKeys[i].search(textRegExp) != -1){ 
+				found = true;
+			} else {
+				if(searchAbstract && absRowsData[i]!=undefined) {
+					if (absRowsData[i].search(textRegExp) != -1){ found=true; } 
+				}
+				if(searchReview && revRowsData[i]!=undefined) {
+					if (revRowsData[i].search(textRegExp) != -1){ found=true; } 
+				}
+			}
+			
+			if (found){
+				cRow.className = 'entry show';
+				hits++;
+			} else {
+				cRow.className = 'entry noshow';
+			}
+		}
+	}
+
+	// update statistics
+	setStatistics(hits)
+	
+	// set previous search value
+	prevSearch = tInput.value;
+}
+
+
+// Strip Diacritics from text
+// http://stackoverflow.com/questions/990904/javascript-remove-accents-in-strings
+
+// String containing replacement characters for stripping accents 
+var stripstring = 
+    'AAAAAAACEEEEIIII'+
+    'DNOOOOO.OUUUUY..'+
+    'aaaaaaaceeeeiiii'+
+    'dnooooo.ouuuuy.y'+
+    'AaAaAaCcCcCcCcDd'+
+    'DdEeEeEeEeEeGgGg'+
+    'GgGgHhHhIiIiIiIi'+
+    'IiIiJjKkkLlLlLlL'+
+    'lJlNnNnNnnNnOoOo'+
+    'OoOoRrRrRrSsSsSs'+
+    'SsTtTtTtUuUuUuUu'+
+    'UuUuWwYyYZzZzZz.';
+
+function stripDiacritics(str){
+
+    if(noSquiggles==false){
+        return str;
+    }
+
+    var answer='';
+    for(var i=0;i<str.length;i++){
+        var ch=str[i];
+        var chindex=ch.charCodeAt(0)-192;   // Index of character code in the strip string
+        if(chindex>=0 && chindex<stripstring.length){
+            // Character is within our table, so we can strip the accent...
+            var outch=stripstring.charAt(chindex);
+            // ...unless it was shown as a '.'
+            if(outch!='.')ch=outch;
+        }
+        answer+=ch;
+    }
+    return answer;
+}
+
+// http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+// NOTE: must escape every \ in the export code because of the JabRef Export...
+function escapeRegExp(str) {
+  return str.replace(/[-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
+
+function toggleInfo(articleid,info) {
+
+	var entry = document.getElementById(articleid);
+	var abs = document.getElementById('abs_'+articleid);
+	var rev = document.getElementById('rev_'+articleid);
+	var bib = document.getElementById('bib_'+articleid);
+	
+	if (abs && info == 'abstract') {
+		abs.className.indexOf('noshow') == -1?abs.className = 'abstract noshow':abs.className = 'abstract show';
+	} else if (rev && info == 'review') {
+		rev.className.indexOf('noshow') == -1?rev.className = 'review noshow':rev.className = 'review show';
+	} else if (bib && info == 'bibtex') {
+		bib.className.indexOf('noshow') == -1?bib.className = 'bibtex noshow':bib.className = 'bibtex show';
+	} else { 
+		return;
+	}
+
+	// check if one or the other is available
+	var revshow; var absshow; var bibshow;
+	(abs && abs.className.indexOf('noshow') == -1)? absshow = true: absshow = false;
+	(rev && rev.className.indexOf('noshow') == -1)? revshow = true: revshow = false;	
+	(bib && bib.className.indexOf('noshow') == -1)? bibshow = true: bibshow = false;
+	
+	// highlight original entry
+	if(entry) {
+		if (revshow || absshow || bibshow) {
+		entry.className = 'entry highlight show';
+		} else {
+		entry.className = 'entry show';
+		}
+	}
+	
+	// When there's a combination of abstract/review/bibtex showing, need to add class for correct styling
+	if(absshow) {
+		(revshow||bibshow)?abs.className = 'abstract nextshow':abs.className = 'abstract';
+	} 
+	if (revshow) {
+		bibshow?rev.className = 'review nextshow': rev.className = 'review';
+	}	
+	
+}
+
+function setStatistics (hits) {
+	if(hits < 0) { hits=numEntries; }
+	if(stats) { stats.firstChild.data = hits + '/' + numEntries}
+}
+
+function getTextContent(node) {
+	// Function written by Arve Bersvendsen
+	// http://www.virtuelvis.com
+	
+	if (node.nodeType == 3) {
+	return node.nodeValue;
+	} // text node
+	if (node.nodeType == 1 && node.className != "infolinks") { // element node
+	var text = [];
+	for (var chld = node.firstChild;chld;chld=chld.nextSibling) {
+		text.push(getTextContent(chld));
+	}
+	return text.join("");
+	} return ""; // some other node, won't contain text nodes.
+}
+
+function showAll(){
+	closeAllInfo();
+	for (var i = 0; i < numEntries; i++){ entryRows[i].className = 'entry show'; }
+}
+
+function closeAllInfo(){
+	for (var i=0; i < numInfo; i++){
+		if (infoRows[i].className.indexOf('noshow') ==-1) {
+			infoRows[i].className = infoRows[i].className + ' noshow';
+		}
+	}
+}
+
+function clearQS() {
+	qsfield.value = '';
+	showAll();
+}
+
+function redoQS(){
+	showAll();
+	quickSearch(qsfield);
+}
+
+function updateSetting(obj){
+	var option = obj.id;
+	var checked = obj.value;
+
+	switch(option)
+	 {
+	 case "opt_searchAbs":
+	   searchAbstract=!searchAbstract;
+	   redoQS();
+	   break;
+	 case "opt_searchRev":
+	   searchReview=!searchReview;
+	   redoQS();
+	   break;
+	 case "opt_useRegExp":
+	   searchRegExp=!searchRegExp;
+	   redoQS();
+	   break;
+	 case "opt_noAccents":
+	   noSquiggles=!noSquiggles;
+	   loadTableData();
+	   redoQS();
+	   break;
+	 }
+}
+
+function initPreferences(){
+	if(searchAbstract){document.getElementById("opt_searchAbs").checked = true;}
+	if(searchReview){document.getElementById("opt_searchRev").checked = true;}
+	if(noSquiggles){document.getElementById("opt_noAccents").checked = true;}
+	if(searchRegExp){document.getElementById("opt_useRegExp").checked = true;}
+	
+	if(numAbs==0) {document.getElementById("opt_searchAbs").parentNode.style.display = 'none';}
+	if(numRev==0) {document.getElementById("opt_searchRev").parentNode.style.display = 'none';}
+}
+
+function toggleSettings(){
+	var togglebutton = document.getElementById('showsettings');
+	var settings = document.getElementById('settings');
+	
+	if(settings.className == "hidden"){
+		settings.className = "show";
+		togglebutton.innerText = "close settings";
+		togglebutton.textContent = "close settings";
+	}else{
+		settings.className = "hidden";
+		togglebutton.innerText = "settings...";		
+		togglebutton.textContent = "settings...";
+	}
+}
+
+-->
+</script>
+<style type="text/css">
+body { background-color: white; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.2; padding: 1em; color: #2E2E2E; margin: auto 2em; }
+
+form#quicksearch { width: auto; border-style: solid; border-color: gray; border-width: 1px 0px; padding: 0.7em 0.5em; display:none; position:relative; }
+span#searchstat {padding-left: 1em;}
+
+div#settings { margin-top:0.7em; /* border-bottom: 1px transparent solid; background-color: #efefef; border: 1px grey solid; */ }
+div#settings ul {margin: 0; padding: 0; }
+div#settings li {margin: 0; padding: 0 1em 0 0; display: inline; list-style: none; }
+div#settings li + li { border-left: 2px #efefef solid; padding-left: 0.5em;}
+div#settings input { margin-bottom: 0px;}
+
+div#settings.hidden {display:none;}
+
+#showsettings { border: 1px grey solid; padding: 0 0.5em; float:right; line-height: 1.6em; text-align: right; }
+#showsettings:hover { cursor: pointer; }
+
+.invalidsearch { background-color: red; }
+input[type="button"] { background-color: #efefef; border: 1px #2E2E2E solid;}
+
+table { width: 100%; empty-cells: show; border-spacing: 0em 0.2em; margin: 1em 0em; border-style: none; }
+th, td { border: 1px gray solid; border-width: 1px 1px; padding: 0.5em; vertical-align: top; text-align: left; }
+th { background-color: #efefef; }
+td + td, th + th { border-left: none; }
+
+td a { color: navy; text-decoration: none; }
+td a:hover  { text-decoration: underline; }
+
+tr.noshow { display: none;}
+tr.highlight td { background-color: #EFEFEF; border-top: 2px #2E2E2E solid; font-weight: bold; }
+tr.abstract td, tr.review td, tr.bibtex td { background-color: #EFEFEF; text-align: justify; border-bottom: 2px #2E2E2E solid; }
+tr.nextshow td { border-bottom: 1px gray solid; }
+
+tr.bibtex pre { width: 100%; overflow: auto; white-space: pre-wrap;}
+p.infolinks { margin: 0.3em 0em 0em 0em; padding: 0px; }
+
+@media print {
+	p.infolinks, #qs_settings, #quicksearch, t.bibtex { display: none !important; }
+	tr { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<form action="" id="quicksearch">
+<input type="text" id="qs_field" autocomplete="off" placeholder="Type to search..." /> <input type="button" onclick="clearQS()" value="clear" />
+<span id="searchstat">Matching entries: <span id="stat">0</span></span>
+<div id="showsettings" onclick="toggleSettings()">settings...</div>
+<div id="settings" class="hidden">
+<ul>
+<li><input type="checkbox" class="search_setting" id="opt_searchAbs" onchange="updateSetting(this)"><label for="opt_searchAbs"> include abstract</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_searchRev" onchange="updateSetting(this)"><label for="opt_searchRev"> include review</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_useRegExp" onchange="updateSetting(this)"><label for="opt_useRegExp"> use RegExp</label></li>
+<li><input type="checkbox" class="search_setting" id="opt_noAccents" onchange="updateSetting(this)"><label for="opt_noAccents"> ignore accents</label></li>
+</ul>
+</div>
+</form>
+<table id="qs_table" border="1">
+<thead><tr><th width="20%">Author</th><th width="30%">Title</th><th width="5%">Year</th><th width="30%">Journal/Proceedings</th><th width="10%">Reftype</th><th width="5%">DOI/URL</th></tr></thead>
+<tbody><tr id="Andreas2016" class="entry">
+	<td>Andreas, J., Rohrbach, M., Darrell, T. and Klein, D.</td>
+	<td>Learning to compose neural networks for question answering <p class="infolinks">[<a href="javascript:toggleInfo('Andreas2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>arXiv preprint arXiv:1601.01705&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Andreas2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Andreas2016,
+  author = {Andreas, Jacob and Rohrbach, Marcus and Darrell, Trevor and Klein, Dan},
+  title = {Learning to compose neural networks for question answering},
+  journal = {arXiv preprint arXiv:1601.01705},
+  year = {2016}
+}
+</pre></td>
+</tr>
+<tr id="Angeli2016" class="entry">
+	<td>Angeli, G., Nayak, N. and Manning, C.D.</td>
+	<td>Combining Natural Logic and Shallow Reasoning for Question Answering <p class="infolinks">[<a href="javascript:toggleInfo('Angeli2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Angeli2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Angeli2016,
+  author = {Angeli, Gabor and Nayak, Neha and Manning, Christopher D},
+  title = {Combining Natural Logic and Shallow Reasoning for Question Answering},
+  year = {2016}
+}
+</pre></td>
+</tr>
+<tr id="Banko2007" class="entry">
+	<td>Banko, M., Cafarella, M.J., Soderland, S., Broadhead, M. and Etzioni, O.</td>
+	<td>Open Information Extraction from the Web. <p class="infolinks">[<a href="javascript:toggleInfo('Banko2007','bibtex')">BibTeX</a>]</p></td>
+	<td>2007</td>
+	<td><br/>Vol. 7IJCAI, pp. 2670-2676&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Banko2007" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Banko2007,
+  author = {Banko, Michele and Cafarella, Michael J and Soderland, Stephen and Broadhead, Matthew and Etzioni, Oren},
+  title = {Open Information Extraction from the Web.},
+  booktitle = {IJCAI},
+  year = {2007},
+  volume = {7},
+  pages = {2670--2676}
+}
+</pre></td>
+</tr>
+<tr id="Belinkov2015" class="entry">
+	<td>Belinkov, Y., Mohtarami, M., Cyphers, S. and Glass, J.</td>
+	<td>VectorSLU: A continuous word vector approach to answer selection in community question answering systems <p class="infolinks">[<a href="javascript:toggleInfo('Belinkov2015','bibtex')">BibTeX</a>]</p></td>
+	<td>2015</td>
+	<td>SemEval-2015, pp. 282&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Belinkov2015" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Belinkov2015,
+  author = {Belinkov, Yonatan and Mohtarami, Mitra and Cyphers, Scott and Glass, James},
+  title = {VectorSLU: A continuous word vector approach to answer selection in community question answering systems},
+  journal = {SemEval-2015},
+  year = {2015},
+  pages = {282}
+}
+</pre></td>
+</tr>
+<tr id="Beltagy2014" class="entry">
+	<td>Beltagy, I., Erk, K. and Mooney, R.J.</td>
+	<td>Probabilistic Soft Logic for Semantic Textual Similarity. <p class="infolinks">[<a href="javascript:toggleInfo('Beltagy2014','bibtex')">BibTeX</a>]</p></td>
+	<td>2014</td>
+	<td>ACL (1), pp. 1210-1219&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Beltagy2014" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Beltagy2014,
+  author = {Beltagy, Islam and Erk, Katrin and Mooney, Raymond J},
+  title = {Probabilistic Soft Logic for Semantic Textual Similarity.},
+  booktitle = {ACL (1)},
+  year = {2014},
+  pages = {1210--1219}
+}
+</pre></td>
+</tr>
+<tr id="Beltagy2015" class="entry">
+	<td>Beltagy, I., Roller, S., Cheng, P., Erk, K. and Mooney, R.J.</td>
+	<td>Representing Meaning with a Combination of Logical Form and Vectors <p class="infolinks">[<a href="javascript:toggleInfo('Beltagy2015','bibtex')">BibTeX</a>]</p></td>
+	<td>2015</td>
+	<td>CoRR<br/>Vol. abs/1505.06816&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://arxiv.org/abs/1505.06816">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Beltagy2015" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Beltagy2015,
+  author = {Islam Beltagy and<br> Stephen Roller and<br> Pengxiang Cheng and<br> Katrin Erk and<br> Raymond J. Mooney},
+  title = {Representing Meaning with a Combination of Logical Form and Vectors},
+  journal = {CoRR},
+  year = {2015},
+  volume = {abs/1505.06816},
+  url = {http://arxiv.org/abs/1505.06816}
+}
+</pre></td>
+</tr>
+<tr id="Bowman2014" class="entry">
+	<td>Bowman, S.R., Potts, C. and Manning, C.D.</td>
+	<td>Recursive neural networks can learn logical semantics <p class="infolinks">[<a href="javascript:toggleInfo('Bowman2014','bibtex')">BibTeX</a>]</p></td>
+	<td>2014</td>
+	<td>arXiv preprint arXiv:1406.1827&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Bowman2014" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Bowman2014,
+  author = {Bowman, Samuel R and Potts, Christopher and Manning, Christopher D},
+  title = {Recursive neural networks can learn logical semantics},
+  journal = {arXiv preprint arXiv:1406.1827},
+  year = {2014}
+}
+</pre></td>
+</tr>
+<tr id="Carlson2009" class="entry">
+	<td>Carlson, A., Betteridge, J., Hruschka Jr., E.R. and Mitchell, T.M.</td>
+	<td>Coupling Semi-supervised Learning of Categories and Relations <p class="infolinks">[<a href="javascript:toggleInfo('Carlson2009','bibtex')">BibTeX</a>]</p></td>
+	<td>2009</td>
+	<td>Proceedings of the NAACL HLT 2009 Workshop on Semi-Supervised Learning for Natural Language Processing, pp. 1-9&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://dl.acm.org/citation.cfm?id=1621829.1621830">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Carlson2009" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Carlson2009,
+  author = {Carlson, Andrew and Betteridge, Justin and Hruschka,Jr., Estevam R. and Mitchell, Tom M.},
+  title = {Coupling Semi-supervised Learning of Categories and Relations},
+  booktitle = {Proceedings of the NAACL HLT 2009 Workshop on Semi-Supervised Learning for Natural Language Processing},
+  publisher = {Association for Computational Linguistics},
+  year = {2009},
+  pages = {1--9},
+  url = {http://dl.acm.org/citation.cfm?id=1621829.1621830}
+}
+</pre></td>
+</tr>
+<tr id="Chang2012" class="entry">
+	<td>Chang, M.-W., Ratinov, L. and Roth, D.</td>
+	<td>Structured learning with constrained conditional models <p class="infolinks">[<a href="javascript:toggleInfo('Chang2012','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Chang2012','bibtex')">BibTeX</a>]</p></td>
+	<td>2012</td>
+	<td>Machine Learning<br/>Vol. 88(3), pp. 399-431&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://dx.doi.org/10.1007/s10994-012-5296-5">DOI</a> <a href="http://dx.doi.org/10.1007/s10994-012-5296-5">URL</a>&nbsp;</td>
+</tr>
+<tr id="abs_Chang2012" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: Making complex decisions in real world problems often involves assigning values to sets of interdependent variables where an expressive dependency structure among these can influence, or even dictate, what assignments are possible. Commonly used models typically ignore expressive dependencies since the traditional way of incorporating non-local dependencies is inefficient and hence leads to expensive training and inference.</td>
+</tr>
+<tr id="bib_Chang2012" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Chang2012,
+  author = {Chang, Ming-Wei<br>and Ratinov, Lev<br>and Roth, Dan},
+  title = {Structured learning with constrained conditional models},
+  journal = {Machine Learning},
+  year = {2012},
+  volume = {88},
+  number = {3},
+  pages = {399--431},
+  url = {http://dx.doi.org/10.1007/s10994-012-5296-5},
+  doi = {http://dx.doi.org/10.1007/s10994-012-5296-5}
+}
+</pre></td>
+</tr>
+<tr id="Chang2007" class="entry">
+	<td>Chang, M.-W., Ratinov, L. and Roth, D.</td>
+	<td>Guiding semi-supervision with constraint-driven learning <p class="infolinks">[<a href="javascript:toggleInfo('Chang2007','bibtex')">BibTeX</a>]</p></td>
+	<td>2007</td>
+	<td><br/>Vol. 45(1)Annual Meeting-Association for Computational Linguistics, pp. 280&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Chang2007" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Chang2007,
+  author = {Chang, Ming-Wei and Ratinov, Lev and Roth, Dan},
+  title = {Guiding semi-supervision with constraint-driven learning},
+  booktitle = {Annual Meeting-Association for Computational Linguistics},
+  year = {2007},
+  volume = {45},
+  number = {1},
+  pages = {280}
+}
+</pre></td>
+</tr>
+<tr id="Cohen2016" class="entry">
+	<td>Cohen, W.W.</td>
+	<td>TensorLog: A Differentiable Deductive Database <p class="infolinks">[<a href="javascript:toggleInfo('Cohen2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>arXiv preprint arXiv:1605.06523&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Cohen2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Cohen2016,
+  author = {Cohen, William W},
+  title = {TensorLog: A Differentiable Deductive Database},
+  journal = {arXiv preprint arXiv:1605.06523},
+  year = {2016}
+}
+</pre></td>
+</tr>
+<tr id="Demeester2016" class="entry">
+	<td>Demeester, T., Rockt&auml;schel, T. and Riedel, S.</td>
+	<td>Lifted Rule Injection for Relation Embeddings <p class="infolinks">[<a href="javascript:toggleInfo('Demeester2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>Empirical Methods in Natural Language Processing (EMNLP)&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Demeester2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Demeester2016,
+  author = {Demeester, Thomas and Rockt&auml;schel, Tim and Riedel, Sebastian},
+  title = {Lifted Rule Injection for Relation Embeddings},
+  booktitle = {Empirical Methods in Natural Language Processing (EMNLP)},
+  year = {2016}
+}
+</pre></td>
+</tr>
+<tr id="Druck2008" class="entry">
+	<td>Druck, G., Mann, G. and McCallum, A.</td>
+	<td>Learning from Labeled Features Using Generalized Expectation Criteria <p class="infolinks">[<a href="javascript:toggleInfo('Druck2008','bibtex')">BibTeX</a>]</p></td>
+	<td>2008</td>
+	<td>Proceedings of the 31st Annual International ACM SIGIR Conference on Research and Development in Information Retrieval, pp. 595-602&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://dx.doi.org/10.1145/1390334.1390436">DOI</a> <a href="http://doi.acm.org/10.1145/1390334.1390436">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Druck2008" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Druck2008,
+  author = {Druck, Gregory and Mann, Gideon and McCallum, Andrew},
+  title = {Learning from Labeled Features Using Generalized Expectation Criteria},
+  booktitle = {Proceedings of the 31st Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  publisher = {ACM},
+  year = {2008},
+  pages = {595--602},
+  url = {http://doi.acm.org/10.1145/1390334.1390436},
+  doi = {http://dx.doi.org/10.1145/1390334.1390436}
+}
+</pre></td>
+</tr>
+<tr id="Feng2015" class="entry">
+	<td>Feng, M., Xiang, B., Glass, M.R., Wang, L. and Zhou, B.</td>
+	<td>Applying deep learning to answer selection: A study and an open task <p class="infolinks">[<a href="javascript:toggleInfo('Feng2015','bibtex')">BibTeX</a>]</p></td>
+	<td>2015</td>
+	<td>2015 IEEE Workshop on Automatic Speech Recognition and Understanding (ASRU), pp. 813-820&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Feng2015" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Feng2015,
+  author = {Feng, Minwei and Xiang, Bing and Glass, Michael R and Wang, Lidan and Zhou, Bowen},
+  title = {Applying deep learning to answer selection: A study and an open task},
+  booktitle = {2015 IEEE Workshop on Automatic Speech Recognition and Understanding (ASRU)},
+  year = {2015},
+  pages = {813--820}
+}
+</pre></td>
+</tr>
+<tr id="Franca2014" class="entry">
+	<td>Fran&ccedil;a, M.V., Zaverucha, G. and Garcez, A.S.d.</td>
+	<td>Fast relational learning using bottom clause propositionalization with artificial neural networks <p class="infolinks">[<a href="javascript:toggleInfo('Franca2014','bibtex')">BibTeX</a>]</p></td>
+	<td>2014</td>
+	<td>Machine learning<br/>Vol. 94(1), pp. 81-104&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Franca2014" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Franca2014,
+  author = {Fran&ccedil;a, Manoel VM and Zaverucha, Gerson and Garcez, Artur S d’Avila},
+  title = {Fast relational learning using bottom clause propositionalization with artificial neural networks},
+  journal = {Machine learning},
+  publisher = {Springer},
+  year = {2014},
+  volume = {94},
+  number = {1},
+  pages = {81--104}
+}
+</pre></td>
+</tr>
+<tr id="Ganchev2010" class="entry">
+	<td>Ganchev, K., Gillenwater, J., Taskar, B. and others</td>
+	<td>Posterior regularization for structured latent variable models <p class="infolinks">[<a href="javascript:toggleInfo('Ganchev2010','bibtex')">BibTeX</a>]</p></td>
+	<td>2010</td>
+	<td>Journal of Machine Learning Research<br/>Vol. 11(Jul), pp. 2001-2049&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Ganchev2010" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Ganchev2010,
+  author = {Ganchev, Kuzman and Gillenwater, Jennifer and Taskar, Ben and others},
+  title = {Posterior regularization for structured latent variable models},
+  journal = {Journal of Machine Learning Research},
+  year = {2010},
+  volume = {11},
+  number = {Jul},
+  pages = {2001--2049}
+}
+</pre></td>
+</tr>
+<tr id="Garcez2012" class="entry">
+	<td>Garcez, A.S.d., Broda, K. and Gabbay, D.M.</td>
+	<td>Neural-symbolic learning systems: foundations and applications <p class="infolinks">[<a href="javascript:toggleInfo('Garcez2012','bibtex')">BibTeX</a>]</p></td>
+	<td>2012</td>
+	<td>&nbsp;</td>
+	<td>book</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Garcez2012" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@book{Garcez2012,
+  author = {Garcez, Artur S d'Avila and Broda, Krysia and Gabbay, Dov M},
+  title = {Neural-symbolic learning systems: foundations and applications},
+  publisher = {Springer Science &amp; Business Media},
+  year = {2012}
+}
+</pre></td>
+</tr>
+<tr id="Gupta2012" class="entry">
+	<td>Gupta, P. and Gupta, V.</td>
+	<td>A survey of text question answering techniques <p class="infolinks">[<a href="javascript:toggleInfo('Gupta2012','bibtex')">BibTeX</a>]</p></td>
+	<td>2012</td>
+	<td>International Journal of Computer Applications<br/>Vol. 53(4)&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Gupta2012" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Gupta2012,
+  author = {Gupta, Poonam and Gupta, Vishal},
+  title = {A survey of text question answering techniques},
+  journal = {International Journal of Computer Applications},
+  publisher = {Foundation of Computer Science},
+  year = {2012},
+  volume = {53},
+  number = {4}
+}
+</pre></td>
+</tr>
+<tr id="Hu2016" class="entry">
+	<td>Hu, Z., Ma, X., Liu, Z., Hovy, E. and Xing, E.</td>
+	<td>Harnessing Deep Neural Networks with Logic Rules <p class="infolinks">[<a href="javascript:toggleInfo('Hu2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>arXiv preprint arXiv:1603.06318&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Hu2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Hu2016,
+  author = {Hu, Zhiting and Ma, Xuezhe and Liu, Zhengzhong and Hovy, Eduard and Xing, Eric},
+  title = {Harnessing Deep Neural Networks with Logic Rules},
+  journal = {arXiv preprint arXiv:1603.06318},
+  year = {2016}
+}
+</pre></td>
+</tr>
+<tr id="IanGoodfellow2016" class="entry">
+	<td>Ian Goodfellow Yoshua Bengio and Courville, A.</td>
+	<td>Deep Learning <p class="infolinks">[<a href="javascript:toggleInfo('IanGoodfellow2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>&nbsp;</td>
+	<td>unpublished</td>
+	<td><a href="http://www.deeplearningbook.org">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_IanGoodfellow2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@unpublished{IanGoodfellow2016,
+  author = {Ian Goodfellow, Yoshua Bengio, and Aaron Courville},
+  title = {Deep Learning},
+  year = {2016},
+  note = {Book in preparation for MIT Press},
+  url = {http://www.deeplearningbook.org}
+}
+</pre></td>
+</tr>
+<tr id="Iyyer2014" class="entry">
+	<td>Iyyer, M., Boyd-Graber, J., Claudino, L., Socher, R. and Daum&eacute; III, H.</td>
+	<td>A Neural Network for Factoid Question Answering over Paragraphs <p class="infolinks">[<a href="javascript:toggleInfo('Iyyer2014','bibtex')">BibTeX</a>]</p></td>
+	<td>2014</td>
+	<td>Empirical Methods in Natural Language Processing&nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="docs/2014_emnlp_qb_rnn.pdf">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Iyyer2014" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Iyyer2014,
+  author = {Mohit Iyyer and Jordan Boyd-Graber and Leonardo Claudino and Richard Socher and Hal Daum&eacute; III},
+  title = {A Neural Network for Factoid Question Answering over Paragraphs},
+  booktitle = {Empirical Methods in Natural Language Processing},
+  year = {2014},
+  url = {docs/2014_emnlp_qb_rnn.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Jia2016" class="entry">
+	<td>Jia, C., Du, X., Sun, C. and Lin, L.</td>
+	<td>ITNLP-AiKF at SemEval-2016 Task 3: a question answering system using community QA repository <p class="infolinks">[<a href="javascript:toggleInfo('Jia2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>Proceedings of SemEval, pp. 904-909&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Jia2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Jia2016,
+  author = {Jia, Chang’e and Du, Xinkai and Sun, Chengjie and Lin, Lei},
+  title = {ITNLP-AiKF at SemEval-2016 Task 3: a question answering system using community QA repository},
+  journal = {Proceedings of SemEval},
+  year = {2016},
+  pages = {904--909}
+}
+</pre></td>
+</tr>
+<tr id="Niu2011" class="entry">
+	<td>Niu, F., R&eacute;, C., Doan, A. and Shavlik, J.</td>
+	<td>Tuffy: Scaling up statistical inference in markov logic networks using an rdbms <p class="infolinks">[<a href="javascript:toggleInfo('Niu2011','bibtex')">BibTeX</a>]</p></td>
+	<td>2011</td>
+	<td>Proceedings of the VLDB Endowment<br/>Vol. 4(6), pp. 373-384&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Niu2011" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Niu2011,
+  author = {Niu, Feng and R&eacute;, Christopher and Doan, AnHai and Shavlik, Jude},
+  title = {Tuffy: Scaling up statistical inference in markov logic networks using an rdbms},
+  journal = {Proceedings of the VLDB Endowment},
+  publisher = {VLDB Endowment},
+  year = {2011},
+  volume = {4},
+  number = {6},
+  pages = {373--384}
+}
+</pre></td>
+</tr>
+<tr id="Rocktaeschel2014" class="entry">
+	<td>Rockt&auml;schel, T., Bosnjak, M., Singh, S. and Riedel, S.</td>
+	<td>Low-dimensional embeddings of logic <p class="infolinks">[<a href="javascript:toggleInfo('Rocktaeschel2014','bibtex')">BibTeX</a>]</p></td>
+	<td>2014</td>
+	<td>Proceedings of the ACL 2014 Workshop on Semantic Parsing, pp. 45-49&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Rocktaeschel2014" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Rocktaeschel2014,
+  author = {Rockt&auml;schel, Tim and Bosnjak, Matko and Singh, Sameer and Riedel, Sebastian},
+  title = {Low-dimensional embeddings of logic},
+  booktitle = {Proceedings of the ACL 2014 Workshop on Semantic Parsing},
+  year = {2014},
+  pages = {45--49}
+}
+</pre></td>
+</tr>
+<tr id="Rocktaeschel2016" class="entry">
+	<td>Rockt&auml;schel, T. and Riedel, S.</td>
+	<td>Learning Knowledge Base Inference with Neural Theorem Provers <p class="infolinks">[<a href="javascript:toggleInfo('Rocktaeschel2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>NAACL Workshop on Automated Knowledge Base Construction (AKBC)&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Rocktaeschel2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Rocktaeschel2016,
+  author = {Rockt&auml;schel, Tim and Riedel, Sebastian},
+  title = {Learning Knowledge Base Inference with Neural Theorem Provers},
+  booktitle = {NAACL Workshop on Automated Knowledge Base Construction (AKBC)},
+  year = {2016}
+}
+</pre></td>
+</tr>
+<tr id="Rocktaeschel2015" class="entry">
+	<td>Rockt&auml;schel, T., Singh, S. and Riedel, S.</td>
+	<td>Injecting Logical Background Knowledge into Embeddings for Relation Extraction <p class="infolinks">[<a href="javascript:toggleInfo('Rocktaeschel2015','bibtex')">BibTeX</a>]</p></td>
+	<td>2015</td>
+	<td>NAACL&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Rocktaeschel2015" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Rocktaeschel2015,
+  author = {Rockt&auml;schel, Tim and Singh, Sameer and Riedel, Sebastian},
+  title = {Injecting Logical Background Knowledge into Embeddings for Relation Extraction},
+  booktitle = {NAACL},
+  year = {2015}
+}
+</pre></td>
+</tr>
+<tr id="Sanchez-Martinez2007" class="entry">
+	<td>S&aacute;nchez-Martinez, F., P&eacute;rez-Ortiz, J.A., Forcada, M.L. and others</td>
+	<td>Integrating corpus-based and rule-based approaches in an open-source machine translation system <p class="infolinks">[<a href="javascript:toggleInfo('Sanchez-Martinez2007','bibtex')">BibTeX</a>]</p></td>
+	<td>2007</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Sanchez-Martinez2007" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Sanchez-Martinez2007,
+  author = {S&aacute;nchez-Martinez, Felipe and P&eacute;rez-Ortiz, Juan Antonio and Forcada, Mikel L and others},
+  title = {Integrating corpus-based and rule-based approaches in an open-source machine translation system},
+  publisher = {University of Leuven. Centre for Computational Linguistics},
+  year = {2007}
+}
+</pre></td>
+</tr>
+<tr id="Santos2016" class="entry">
+	<td>dos Santos, C.N., Tan, M., Xiang, B. and Zhou, B.</td>
+	<td>Attentive Pooling Networks <p class="infolinks">[<a href="javascript:toggleInfo('Santos2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>CoRR<br/>Vol. abs/1602.03609&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://arxiv.org/abs/1602.03609">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Santos2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Santos2016,
+  author = {Ccero Nogueira dos Santos and<br> Ming Tan and<br> Bing Xiang and<br> Bowen Zhou},
+  title = {Attentive Pooling Networks},
+  journal = {CoRR},
+  year = {2016},
+  volume = {abs/1602.03609},
+  url = {http://arxiv.org/abs/1602.03609}
+}
+</pre></td>
+</tr>
+<tr id="Stanovsky2016" class="entry">
+	<td>Stanovsky, G., Ficler, J., Dagan, I. and Goldberg, Y.</td>
+	<td>Getting More Out Of Syntax with PropS <p class="infolinks">[<a href="javascript:toggleInfo('Stanovsky2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>arXiv preprint arXiv:1603.01648&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Stanovsky2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Stanovsky2016,
+  author = {Stanovsky, Gabriel and Ficler, Jessica and Dagan, Ido and Goldberg, Yoav},
+  title = {Getting More Out Of Syntax with PropS},
+  journal = {arXiv preprint arXiv:1603.01648},
+  year = {2016}
+}
+</pre></td>
+</tr>
+<tr id="Tan2015" class="entry">
+	<td>Tan, M., Xiang, B. and Zhou, B.</td>
+	<td>LSTM-based Deep Learning Models for non-factoid answer selection <p class="infolinks">[<a href="javascript:toggleInfo('Tan2015','bibtex')">BibTeX</a>]</p></td>
+	<td>2015</td>
+	<td>arXiv preprint arXiv:1511.04108&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Tan2015" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Tan2015,
+  author = {Tan, Ming and Xiang, Bing and Zhou, Bowen},
+  title = {LSTM-based Deep Learning Models for non-factoid answer selection},
+  journal = {arXiv preprint arXiv:1511.04108},
+  year = {2015}
+}
+</pre></td>
+</tr>
+<tr id="Towell1990" class="entry">
+	<td>Towell, G.G., Shavlik, J.W. and Noordewier, M.O.</td>
+	<td>Refinement of approximate domain theories by knowledge-based neural networks <p class="infolinks">[<a href="javascript:toggleInfo('Towell1990','bibtex')">BibTeX</a>]</p></td>
+	<td>1990</td>
+	<td>Proceedings of the eighth National conference on Artificial intelligence, pp. 861-866&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Towell1990" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Towell1990,
+  author = {Towell, Geoffrey G and Shavlik, Jude W and Noordewier, Michiel O},
+  title = {Refinement of approximate domain theories by knowledge-based neural networks},
+  booktitle = {Proceedings of the eighth National conference on Artificial intelligence},
+  year = {1990},
+  pages = {861--866}
+}
+</pre></td>
+</tr>
+<tr id="Trischler2016" class="entry">
+	<td>Trischler, A., Ye, Z., Yuan, X. and Suleman, K.</td>
+	<td>Natural Language Comprehension with the EpiReader <p class="infolinks">[<a href="javascript:toggleInfo('Trischler2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>arXiv preprint arXiv:1606.02270&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Trischler2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Trischler2016,
+  author = {Trischler, Adam and Ye, Zheng and Yuan, Xingdi and Suleman, Kaheer},
+  title = {Natural Language Comprehension with the EpiReader},
+  journal = {arXiv preprint arXiv:1606.02270},
+  year = {2016}
+}
+</pre></td>
+</tr>
+<tr id="Vendrov2015" class="entry">
+	<td>Vendrov, I., Kiros, R., Fidler, S. and Urtasun, R.</td>
+	<td>Order-embeddings of images and language <p class="infolinks">[<a href="javascript:toggleInfo('Vendrov2015','bibtex')">BibTeX</a>]</p></td>
+	<td>2015</td>
+	<td>arXiv preprint arXiv:1511.06361&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Vendrov2015" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Vendrov2015,
+  author = {Vendrov, Ivan and Kiros, Ryan and Fidler, Sanja and Urtasun, Raquel},
+  title = {Order-embeddings of images and language},
+  journal = {arXiv preprint arXiv:1511.06361},
+  year = {2015}
+}
+</pre></td>
+</tr>
+<tr id="Wang2016a" class="entry">
+	<td>Wang, B., Liu, K. and Zhao, J.</td>
+	<td>Inner Attention based Recurrent Neural Networks for Answer Selection <p class="infolinks">[<a href="javascript:toggleInfo('Wang2016a','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Wang2016a" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Wang2016a,
+  author = {Wang, Bingning and Liu, Kang and Zhao, Jun},
+  title = {Inner Attention based Recurrent Neural Networks for Answer Selection},
+  year = {2016}
+}
+</pre></td>
+</tr>
+<tr id="Wang2015" class="entry">
+	<td>Wang, Q., Wang, B. and Guo, L.</td>
+	<td>Knowledge base completion using embeddings and rules <p class="infolinks">[<a href="javascript:toggleInfo('Wang2015','bibtex')">BibTeX</a>]</p></td>
+	<td>2015</td>
+	<td>Proceedings of the 24th International Joint Conference on Artificial Intelligence, pp. 1859-1865&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Wang2015" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Wang2015,
+  author = {Wang, Quan and Wang, Bin and Guo, Li},
+  title = {Knowledge base completion using embeddings and rules},
+  booktitle = {Proceedings of the 24th International Joint Conference on Artificial Intelligence},
+  year = {2015},
+  pages = {1859--1865}
+}
+</pre></td>
+</tr>
+<tr id="Wang2014" class="entry">
+	<td>Wang, W.Y., Mazaitis, K. and Cohen, W.W.</td>
+	<td>Structure learning via parameter learning <p class="infolinks">[<a href="javascript:toggleInfo('Wang2014','bibtex')">BibTeX</a>]</p></td>
+	<td>2014</td>
+	<td>Proceedings of the 23rd ACM International Conference on Conference on Information and Knowledge Management, pp. 1199-1208&nbsp;</td>
+	<td>inproceedings</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Wang2014" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Wang2014,
+  author = {Wang, William Yang and Mazaitis, Kathryn and Cohen, William W},
+  title = {Structure learning via parameter learning},
+  booktitle = {Proceedings of the 23rd ACM International Conference on Conference on Information and Knowledge Management},
+  year = {2014},
+  pages = {1199--1208}
+}
+</pre></td>
+</tr>
+<tr id="Wang2016" class="entry">
+	<td>Wang, Z., Mi, H. and Ittycheriah, A.</td>
+	<td>Sentence Similarity Learning by Lexical Decomposition and Composition <p class="infolinks">[<a href="javascript:toggleInfo('Wang2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>CoRR<br/>Vol. abs/1602.07019&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://arxiv.org/abs/1602.07019">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Wang2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Wang2016,
+  author = {Zhiguo Wang and<br> Haitao Mi and<br> Abraham Ittycheriah},
+  title = {Sentence Similarity Learning by Lexical Decomposition and Composition},
+  journal = {CoRR},
+  year = {2016},
+  volume = {abs/1602.07019},
+  url = {http://arxiv.org/abs/1602.07019}
+}
+</pre></td>
+</tr>
+<tr id="Wu2016" class="entry">
+	<td>Wu, G. and Lan, M.</td>
+	<td>ECNU at SemEval-2016 Task 3: Exploring traditional method and deep learning method for question retrieval and answer ranking in community question answering <p class="infolinks">[<a href="javascript:toggleInfo('Wu2016','bibtex')">BibTeX</a>]</p></td>
+	<td>2016</td>
+	<td>Proceedings of SemEval, pp. 872-878&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Wu2016" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Wu2016,
+  author = {Wu, Guoshun and Lan, Man},
+  title = {ECNU at SemEval-2016 Task 3: Exploring traditional method and deep learning method for question retrieval and answer ranking in community question answering},
+  journal = {Proceedings of SemEval},
+  year = {2016},
+  pages = {872--878}
+}
+</pre></td>
+</tr>
+<tr id="Yu2014" class="entry">
+	<td>Yu, L., Hermann, K.M., Blunsom, P. and Pulman, S.</td>
+	<td>Deep Learning for Answer Sentence Selection <p class="infolinks">[<a href="javascript:toggleInfo('Yu2014','bibtex')">BibTeX</a>]</p></td>
+	<td>2014</td>
+	<td>CoRR<br/>Vol. abs/1412.1632&nbsp;</td>
+	<td>article</td>
+	<td><a href="http://arxiv.org/abs/1412.1632">URL</a>&nbsp;</td>
+</tr>
+<tr id="bib_Yu2014" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Yu2014,
+  author = {Lei Yu and<br> Karl Moritz Hermann and<br> Phil Blunsom and<br> Stephen Pulman},
+  title = {Deep Learning for Answer Sentence Selection},
+  journal = {CoRR},
+  year = {2014},
+  volume = {abs/1412.1632},
+  url = {http://arxiv.org/abs/1412.1632}
+}
+</pre></td>
+</tr>
+<tr id="Zhou2015" class="entry">
+	<td>Zhou, X., Hu, B., Chen, Q., Tang, B. and Wang, X.</td>
+	<td>Answer sequence learning with neural networks for answer selection in community question answering <p class="infolinks">[<a href="javascript:toggleInfo('Zhou2015','bibtex')">BibTeX</a>]</p></td>
+	<td>2015</td>
+	<td>arXiv preprint arXiv:1506.06490&nbsp;</td>
+	<td>article</td>
+	<td>&nbsp;</td>
+</tr>
+<tr id="bib_Zhou2015" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Zhou2015,
+  author = {Zhou, Xiaoqiang and Hu, Baotian and Chen, Qingcai and Tang, Buzhou and Wang, Xiaolong},
+  title = {Answer sequence learning with neural networks for answer selection in community question answering},
+  journal = {arXiv preprint arXiv:1506.06490},
+  year = {2015}
+}
+</pre></td>
+</tr>
+</tbody>
+</table>
+<footer>
+ <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 14/09/2016.</small>
+</footer>
+<!-- file generated by JabRef -->
+</body>
+</html>

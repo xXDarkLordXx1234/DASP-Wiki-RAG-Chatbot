@@ -1,0 +1,101 @@
+%META:TOPICINFO{author="kuznetsov" comment="reprev" date="1429022222" format="1.1" reprev="2" version="2"}%
+---+!! ILP Reference
+
+This page provides some short reference on Linear Programming, Integer Linear Programming and the lp_solve java library.
+
+%TOC%
+
+---++ Linear Programming
+
+*Linear Programming* is an optimization framework for finding a min/max of a linear *objective function* given a set of *constraints* expressed as linear inequalities.
+
+The problem formulation usually looks like this:
+
+<verbatim>
+Maximize: c1 * x1 + c2 * x2 + c3 * x3
+Subject to constraints:
+a11 * x1 + a12 * x2 <= b1
+a21 * x2 + a23 * x3 > b2
+and so on
+</verbatim>
+
+Where x's are the variables, which values we have to find, and a's, b's and c's are just some fixed coefficients. Variable values (in our case, the x's) should all be >=0.
+Sometimes linear programs are written in a compact *standard form*:
+
+<verbatim>
+Maximize c^T*x
+Subject to: A*x <= b
+</verbatim>
+
+If n is the number of variables and p is the number of conditions, then c is a _1*n_ objective function coefficient vector, A is a _p*n_ weight matrix that contains coefficients for each x for each condition, and b is a _1*p_ vector of free terms for each condition.
+The two views are basically equivalent.
+
+LP is a nice and elegant framework which is used for many tasks. A more elaborated description of LP can be found [[http://lpsolve.sourceforge.net/5.5/LPBasics.htm][here]]. It also makes sense to take a look at some [[http://www.sonoma.edu/users/w/wilsonst/courses/Math_131/lp/][examples]] (NB: there are also links to solutions).
+
+There exist several ways to solve LP problems. One simple but inefficient method is the [[http://en.wikipedia.org/wiki/Simplex_algorithm][Simplex algorithm]]. This functionality is usually provided by the solver, so it's unlikely that you will have to develop or implement a solving algorithm by yourself, or even decide which algorithm to use.
+
+---++ Integer Linear Programming
+
+In general, LP optimization can assign any values to the variables. In some cases having a real-numbered variable doesn't make much sense.
+For solving this type of tasks, *Integer Linear Programming* is used, that constraints all the variables to be integers. There is also the *Mixed-Integer Linear Programming* task, in which only _some_ of the variables have to be integers. Solving an ILP is not the same as solving an LP and there exist special algorithms for this case (e.g. the [[http://en.wikipedia.org/wiki/Branch_and_bound][Branch and bound]]). However, the overall setting remains the same.
+
+An interesting subclass of integer linear programs is the one where all variables are constrained to be either 0 or 1, it is called *Zero-one linear programming*. A nice property of such binary problems is that we can model [[http://cs.stackexchange.com/a/12118][logical relations between variables]] using helper variables and integer constraints. This makes ILP particularly useful for structure prediction tasks.
+
+Now suppose that we have two sets of objects: a _source set_ and a _target set_. We want to produce a <u>one-to-one alignment</u> from source to target. Each object in the source set has to be aligned, however, it is okay if some objects in the target set do not get any alignment. Moreover, we are given _scores_ for each pair of source and target objects.
+
+The ILP problem in this case can be defined in a following way.
+   * Let x_ij be a set of indicator variables, that take 1 if the object i from source is aligned to the object j from target, and 0 otherwise.
+   * Let w_ij be a set of corresponding scores which specify how likely it is, that two objects are aligned (e.g. similarity between them).
+Then the objective is
+<verbatim>
+Maximize: sum_i_j(x_ij * w_ij)
+</verbatim>
+
+Now we have to formulate the constraints. Each object from the source set _has_ to be aligned to some target object (as stated in our task definition). So we sum up by j for each i:
+<verbatim>
+for each i:
+   sum_j(x_ij) = 1
+</verbatim>
+In other words, for each source object i exactly one of the indicators should be active.
+
+At the same time, for the target set it is allowed that some objects don't get aligned, so here the constraint is more relaxed:
+<verbatim>
+for each j:
+   sum_i(x_ij) <=1
+</verbatim>
+
+This program will find an optimal alignment between source and target sets (expressed in terms of indicator variables), which maximizes the total score.
+
+One example of a more sophisticated ILP formulation for graph-based alignment can be found in [[http://www.aclweb.org/anthology/D09-1002.pdf][this paper]].
+
+---++ The lp_solve library
+
+---+++ Setup
+
+*Lp_solve* is an LP library for java. It uses native libraries, so some additional steps are required to run it (the java classes are just wrappers).
+The following [[http://lpsolve.sourceforge.net/5.5/Java/README.html][tutorial page]] describes those steps and has some example code to check if everything works. The required files can be found [[http://sourceforge.net/projects/lpsolve/files/lpsolve/][here]].
+
+There also is a lp_solve artifact in *Maven Central*, *<u>however</u>*, it requires a different java version than !DkPro currently uses, so it's recommended to install the dependency manually.
+
+If for some reason the approach described in the tutorial doesn't work, you can also set the native library dependency locally in Eclipse: 
+   * Go to =Project > Properties > Java Build Path=
+   * Go to the =Libraries= tab
+   * Add =lpsolve55j.jar= via =Add External !JARs=
+   * Unfold the lpsolve list item, and edit =Native Library location= so that it points to the location of the lp_solve native library files
+
+---+++ Writing programs
+
+Lp_solve format for writing down the problems takes some time to get used to. The [[http://lpsolve.sourceforge.net/5.5/formulate.htm][following page]] shows how to formulate LP problems in general and [[http://lpsolve.sourceforge.net/5.5/formulate.htm#Java][here]] you can find java code for this example problem. The code contains useful comments and can be used as a template.
+
+Some additional hints may help to understand the code:
+   * Lp_solve represents constraints as a matrix of coefficients. Variables are columns, constraints are rows. Each matrix entry is the value of the coefficient for i-th variable in the j-th constraint.
+   * In the example the matrix is populated row by row. The function that actually adds a row to the matrix is =lp.addConstraintex(j, row, colno, !LpSolve.LE, 15000)=. Here =j= is the number of columns that we are adding: for each constraint we only have to specify the non-zero coefficients. =Row= is an array of values, =colno= is an array of column indices that correspond to these values, =LpSolve.LE= stands for _less than or equal_ (other operators can be used, see API) and the last argument is the free term.
+   * After the rows are added (it's likely that you will put this process in a loop), the objective function is specified. The syntax is more or less the same.
+   * The =lp.setMaxim()= is called to tell the solver that the objective has to be maximized, not minimized
+   * The =lp.writeLp()= is a very useful method that prints the problem in a readable format. It is highly recommended to check its output from time to time.
+   * To make a variable binary, do =lp.setBinary(column_index, true)=. To make it integer, use =lp.setInt()= instead.
+
+The *[[http://lpsolve.sourceforge.net/5.5/Java/docs/api/lpsolve/LpSolve.html][API Reference]]* lists all available methods.
+   
+
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="ILP Reference"}%

@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="ShuoYang" date="1269179152" format="1.1" version="3"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Influence of Concatenation on Google Translate (Draft)
+_not done yet_
+
+---++ Motivation
+As shown in [[GoogleTranslatePerformanceAnalysis#AverageSpeed]], it takes only 1.61 times to translate a long query of 4485 characters, than that of a short query of 26 characters. In addition Google doesn't allow too frequent queries, so we must have (long) breaks after each certain amount of queries which is the main speed limiting factor. For the same queries, if we can concatenate them together within Google's query length limit, we can have a much smaller number of query thus avoid breaks and improve translation performance considerably. 
+
+We must make sure though, that the translation of a concatenation of several queries is the same as separate translations of each query, because separate queries are not related to each other and thus must not be considered related by Google Translate.
+
+---++ Approach of Google Translate
+According to [[http://en.wikipedia.org/wiki/Google_Translate#Approach Wikipedia]], 
+
+_Google translate is based on an approach called statistical machine translation, ..._
+_Statistical models from this data (large parallel text collections) are then used to translate between those languages. ..._ 
+_It does not apply grammatical rules, since its algorithms are based on statistical analysis rather than traditional rule-based analysis._ 
+
+Which means although a structural analysis of sentence may not be performed, the translation result is still strongly context aware. We must let Google treat our concatenated query as concatenated standalone queries.
+
+---++ Different Translation APIs
+There are two ways to access Google Translate. Through website http://translate.google.com (Translate Website) or through its APIs.
+
+In its [[http://code.google.com/apis/ajaxlanguage/documentation/#fonje Developer's Guide]] on Language APIs, Google provides a set of JavaScript-based APIs and a RESTFul interface non-JavaScript environments. With JavaScript debugger tools in browser I've also found 
+
+
+
+-- Main.ShuoYang - 21 Mar 2010

@@ -1,0 +1,35 @@
+%META:TOPICINFO{author="arshad" comment="reprev" date="1453126170" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.HatemMoussellySergieh - 2016-01-08
+
+---++ Intro
+
+I'm doing my Master thesis here at UKP Labs under the supervision of Hatem Mousselly Sergieh and Prof.Dr. Gurevych. The title of my work is 'Cross Resource Predicate Argument Linking'.
+
+---+++ Topic Description
+In my Thesis i aim to develop a Web application based on state of the art indexing and
+data visualization techniques supporting enormous number of concurrent users to establish 
+novel methods for analyzing frame based predicate­argument structures across a set of
+predicate­argument inventories e.g. Framenet flexibly composed from a sense linked lexical
+semantic knowledge base. More specifically, our goal is to identify predicate­argument
+structure in a given textual unit and link the participants of the structure to corresponding
+entities in external knowledge bases or linguistic resource. Furthermore, we focus on cross
+resource linking in the sense that the participants of predicate­argument structure are linked to
+multiple knowledge bases and lexical resources.  
+
+
+---++ Next Meetings 22.01.2016
+
+   * todo(Faisal): Further investigating semafor for training
+   * todo(Faisal): Studying a Wikidata-FrameNet alignment approach by (HMS)
+   * todo(Faisal): study the paper of semi-supervised semantic role labling by Fürstenau and Lapata
+   * todo(Faisal): Invesitgating a new approach based on Wikidata annotated corpus:
+      * todo(HMS): Checking with Raktim if we can use a part of his code for the corpus annotation.
+      * todo(Faisal): investigating methods for re-phrasing Wikdidata properties, e.g., reasonator (https://tools.wmflabs.org/reasonator/)
+   * todo(HMS): regarding the infra-structure. We need a machine with minimum of 8 GB RAM to run semafor
+
+---++ Meetings 17.12.2015
+
+   * First web interfance design
+   * Studied papers on semafor and Wikidata-FramentNet alginment
+   * Finished the task description and got the approval from DSS responsible

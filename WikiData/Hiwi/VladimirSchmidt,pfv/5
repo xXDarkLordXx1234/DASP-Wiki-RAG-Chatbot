@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="WladimirSchmidt" date="1319129685" format="1.1" version="5"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ Aufgabenüberblick
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| * Aufgaben* |
+| *Aufgabe* | *% done* |
+| Web-Service for Uby | 5 |
+
+---+++ Zeiterfassung
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Wladimir Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Web-Interface for Uby | 06.10.2011 | 3 | <ul><li>Einrichtung Maven/Eclipse/SVN</li><li>Lesen von TWiki Tutorials / Uby LMF tutorial und andere</li></ul> |
+| Web-Interface for Uby | 07.10.2011 | 3 | <ul><li>Einarbeitung ins Uby-API</li></ul> |
+| Web-Interface for Uby | 11.10.2011 | 5 | <ul><li>Einführung Wicket API</li><li>Einbindung von Jetty-Server in das Projekt LFM</li><li>Design von einer Startseite</li></ul> |
+| Web-Interface for Uby | 13.10.2011 | 4 | <ul><li>Dynamische Table-Rows in Wicket API</li><li>Beratung mit Judith Eckle Kohler</li></ul> |
+| Web-Interface for Uby | 17.10.2011 | 2 | <ul><li>Lösen von Problem beim Einbindung von dynamischen Tables</li></ul> |
+| Web-Interface for Uby | 19.10.2011 | 3 | <ul><li>Lösen von Problem beim Einbindung von dynamischen Tables</li></ul> |
+| Web-Interface for Uby | 20.10.2011 | 2 | <ul><li>Lösen von Problem beim Einbindung von dynamischen Tables</li><li>Beratung mit Judith Eckle Kohler</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 20 | bis Ende Oktober |
+<nop>

@@ -1,0 +1,9 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1173104063" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="AmazonDatenbank"}%
+Derby hat schon so seine Macken. Einige, auf die man achten sollte sind:
+   * Vergleiche gegenüber LONG VARCHAR sind nicht erlaubt. Man muss stattdessen VARCHAR verwenden.
+   * Zeichenketten müssen zwischen 2 Apostrophen (z.B. 'Zeichenkette') stehen. Anführungszeichen sind nicht erlaubt (z.B. "Zeichenkette"). Hier erhält man eine merkwürdige Fehlermeldung. Enthält die Zeichenkette selbst ein Apostroph muss ein weiteres davor gesetzt werden.
+
+
+
+-- Main.KaiMichaelHoever - 05 Mar 2007

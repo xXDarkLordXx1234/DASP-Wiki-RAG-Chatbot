@@ -1,0 +1,64 @@
+%META:TOPICINFO{author="ShuoYang" date="1297843861" format="1.1" version="138"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Feb 2011
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Einarbeiten Spring WS | 60 | * |
+| 2. Einarbeiten SIGMUND | 30 | * |
+| 3. Vorbereitung Test Search Module (2x) | 0 | |
+| 4. Architektur & Implementierung von Result Integrator (flexibel, robust) | 0 | |
+
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Einarbeiten SIGMUND, Treffen | 15.02.2011 | 4 | Maven-ize =CasSearchModule= Projekt <br> Weitere Einarbeiten in SIGMUND <br> Einlesen vorhandener Codes von UKP in SIGMUND <br> Treffen mit Benjamin<ul><li>Probleme bei SIGMUND (=SSSearchString=) </li><li> Erklärung von Spring WS</li><li>Besprechung nächster Schritte</li></ul> | * |
+| Einarbeiten SIGMUND | 14.02.2011 | 2.5 | Einlesen von SIGMUND Interfaces <br> =GSStartSearchRequest= zum Laufen gebracht |  | 
+| Spring WS | 09.02.2011 | 1.5 | Einarbeiten in Spring WS |  |
+| Spring WS | 08.02.2011 | 2.5 | Einlesen Document-basiert vs RPC-basiert SOAP-Stile. <br> Anschauen von CAS Klassen <p> Vorbereitung einer Folie zur Präsentierung von Spring WS | |
+| Spring WS | 07.02.2011 | 4.5 | Ein Spring-Stil Document-basierte Web Service Beispiel wurde geschrieben und funktionsfähig gebracht. | |
+| Spring WS | 06.02.2011 | 3 | Einarbeiten in Spring WS | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 30)$EXEC($GET(total_hour))"}% | bis Ende Februar noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 10 Stunde Untertrag von Januar) | |
+<nop>
+
+---+++ Projekte
+ShuoYangSigmundProjekt <br>
+ShuoYangSpringWebServicesNotes
+
+---+++ Dokumente
+ShuoYangMemo
+
+
+*WikiWörterbuch:* <br>
+ShuoYangStatistikInterlanguageLinksWikipedia <br>
+[[http://www.ishuo.de/storage/wikipediaTitlesWithBrackets.txt][List of wikipedia articles, whose title entails brackets]] <br>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ShuoYang/titleWithMultipleTranslations.txt][List of wikipedia articles with multiple interlanguage links]] <br>
+ShuoYangMysqlimportErrorReport
+
+*Lucene Scoring:* <br>
+ShuoYangChangingLuceneScoring <br>
+ShuoYangBM25Guide
+
+*XMLReader:* <br>
+ShuoYangXPathPerformanceAnalysis
+
+*Google Translate:* <br>
+ShuoYangGoogleTranslatePerformanceAnalysis <br>
+ShuoYangGoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangWork1H2011
+
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+-- Main.ShuoYang - 2011-02-14
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%
+%META:FILEATTACHMENT{name="titleWithMultipleTranslations.txt" attachment="titleWithMultipleTranslations.txt" attr="" comment="List of wikipedia articles with multiple interlanguage links" date="1285170011" path="titleWithMultipleTranslations.txt" size="22805" stream="titleWithMultipleTranslations.txt" tmpFilename="/var/tmp/CGItemp3071" user="ShuoYang" version="1"}%

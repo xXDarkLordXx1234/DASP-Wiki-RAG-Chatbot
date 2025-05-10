@@ -1,0 +1,68 @@
+%META:TOPICINFO{author="NicoErbs" date="1359723411" format="1.1" version="83"}%
+%INCLUDE{%SYSTEMWEB%.WebChangesRightBox}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}% 
+
+---++ Information
+   * [[DkproRepositoryForHiwis][Subversion]]
+
+---++ !HowTo
+   * [[ConnectToVPNUsingUbuntu][Connect to VPN using Ubuntu]]
+   * [[ConnectToVPNUsingWindows7][Connect to VPN using Windows 7]]
+
+---++ !Projects
+   * [[PANChallenge][PAN Challenge (OF, Artem, Michael Kutschke)]]
+   * [[PedocsKeyphraseExtraction][Pedocs Keyphrase Extraction]] (Nico, Shuo, Artem)
+   * [[FlawFinder][Flaw Finder]] (OF, Michael Kutschke)
+
+---++ Current
+   * [[AndreasStraninger][Andreas Straninger]] (REC)
+   * AndriyNadolskyy (TM)
+   * EliDuenisch (WS)
+   * Dominik Fischer (CB)
+   * RichardSteuer (CB)
+   * RolandKluge (WS)
+   * YevgenChebotar (NE)
+
+---++ Past
+   * AndreasKellner (TZ)
+   * AnouarWork
+   * ArtemUspenskiyWork (BH)
+   * ArtemVovkWork (NE, OF)
+   * AtifWork
+   * [[BenjaminPetry][Benjamin Petry]] (REC)
+   * CarolinDeeg (NE)
+   * ChristianHollubetz (!ChM)
+   * ChristianKirschner (!ChM)
+   * [[ClemensDeusser][Clemens Deusser]] (WS)  
+   * DimitriWork
+   * DongWork
+   * EliaWork
+   * [[ErikLanDoDinh][Erik-Lân Do Dinh]] (REC)
+   * HosseinWork
+   * HristoLulev (BH, MS)
+   * IvanGalkinWork (TZ)
+   * [[JensHaase][Jens Haase]] (REC)
+   * LizhenWork
+   * MarcelAckermann (GS)
+   * MarkoMartin (TZ/NE)
+   * MateuszParzonka (TZ/NE)
+   * MichaelKutschke (OF)
+   * MohsenParisay (SH)
+   * [[NicoErbsHiwi][Nicolai Erbs]] (TZ)
+   * [[ShuoYangDariahArbeit][Shuo Yang]] (REC)
+   * ShuoYangSigmundArbeit (BH)
+   * TobiasHorsmann (SH)
+   * UrsGlaubitt
+   * VladimirSchmidt (JEK/MiM)
+   * ZijadMaksutiWork (!MiM,SH)
+   
+---++ <nop>%WEB% Web Utilities 
+<form action='%SCRIPTURLPATH{"search"}%/%WEB%/'>
+   * <input name="search" type="text" size="22"></input> <INPUT type="submit" }="" search="" value="%MAKETEXT{" class="twikiSubmit" /> - [[WebSearchAdvanced][%MAKETEXT{"advanced search"}%]]
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes
+   * WebStatistics - listing popular topics and top contributors
+   * WebPreferences - preferences of this web
+</form>

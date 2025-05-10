@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="kluge" comment="reprev" date="1380622643" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+---++ 2013-10-08, 0830
+
+---+++ Ideas
+   * Search for more argumentation cues?
+      * Search terms (school materials): Erörterung, Argumentation Redewendung, Überleitung, Argumente verknüpfen
+      * Search terms (literature): argumentation cues, argumentation schemes, argumentation layout, discourse markers, argumentation for decision making
+   * Shall we follow Toulmin's scheme?
+
+---+++ Statistics
+   * Per-argument statistics
+      * Num. sentences OK
+      * Average sentence length, distribution of sentence lengths
+      * modal verbs (VM.*), full verbs (VV.*)
+      * adverbs
+   * Per-document statistics
+      * Document length
+   * Per-corpus
+      * Num. arguments OK
+      * Distribution of Qual/Quant,Ref/Unref,P/C
+
+---++ 2013-09-27
+
+   * Thesis template (!LaTeX)?
+   * Corpus statistics of Artem's raw corpus
+
+Results:
+   * Use DKPro 1.5
+   * tokit-asl: Execute !GermanSeparateParticleAnnotator after lemmatizer
+   * Linguistic statistics: frequency lists (lemma, frequency), sorted by decreasing frequency
+      * adverbs
+      * most frequent verbs (VV.*, also modal: VM.*)
+         * lemmatization of main verbs (VV.*)
+      * conjunctions (KOUS, KOUI)
+   * Manfred Stede, Discourse Processing, 4.3: list of connectives?
+   * Argumentation cues
+      * compile a list of words from school resources
+   * Create dev./test. set (JSON)
+   * Go through dev. set and try to identify other argumentation dimensions
+      * Toulmin argumentation scheme (see [[http://en.wikipedia.org/wiki/Practical_arguments][Practical Argumentation]]
+      * E.g., advice, explanation, reason(ing), persuade, beliefs
+   * Next meeting: Oct. 08, 0830
+
+
+-- Main.RolandKluge - 2013-09-27

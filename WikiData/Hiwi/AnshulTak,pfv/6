@@ -1,0 +1,77 @@
+%META:TOPICINFO{author="tak" comment="reprev" date="1429353575" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Meeting Minutes
+
+---++ Next Meeting
+   * @info(CS): Evaluation of Self Training Experiment
+      * Use de.tudarmstadt.ukp.dkpro.argumentation.selftrainingcomponents.evaluation.Evaluateparameters in project selftraining components
+      * Lines 40 and following have to be adapted according to the labels in the experiment ("P1" and "P2" instead of claim, etc.)
+      * It collects all confusion matrices from each iteration of the ST-Experiment and outputs the F1-macro scores for each iteration
+      * These scores should be put in a table (see [[%ATTACHURLPATH%/ResultTemplate.xlsx][template]]) tab "TT".
+   * @action(CS): sign time records
+   * @action(CS): Please try if you have access to [[UKP.ServerJobs][this]] page.
+
+---++ 2015-04-13
+   * Form for weekly time schedule
+   * SelfTraining Experiment (see below)
+
+
+---++ 2015-03-30
+   * @discuss(CS): Next steps in self training experiment
+      * provided the data set of unlabeled data
+   * @Discuss(CS): planed next annotation steps
+
+---++ 2015-03-23
+   * @discuss: Annotation of major claim... investigated results.
+   * @discuss: solved issue with the annotation environment. 
+
+
+---+ Results
+
+---++ Current task (AT)
+   * TODO: Include baseline results (train-test split) [DONE]
+   * [AT]: Baseline [[%ATTACHURLPATH%/PC-selftraining_ConfusionMatrix_result.txt][results]]
+   * TODO: Provide train-test split data 
+
+   * Include Feature Extractors from PC into SelfTraining Experiment (done)
+      * TODO: Test the experiment with a small number of unlabeled data and few iterations for ensuring it works as expected
+      * If everything works, 
+         * Commit the source into SVN
+         * We will put the experiment on the server.
+
+
+---+ Time records
+
+---++ April 2015
+
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2015-04-02 | Annotation Guideline V2.0 | 2 | understanding the concept of claims in inner paragraph and introduction and conclusion |
+| 2015-04-03 | Claim annotation for 9 essays | 4 | Applying annotation guidelines to 9 essays |
+
+
+---++ Mar 2015
+
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2015-03-02 | Initial meeting, contract information and project explanation | 2 |  |
+| 2015-03-03 | Research on UIMA and DKPro and DKPro TC | 3 |  |
+| 2015-03-04 | Manual annotations and reading Annotation guidelines | 3 | Brat setup, Guidelines version 1.0 and manual annotation |
+| 2015-03-06 | Manual annotation continue ..  | 1 |  |
+| 2015-03-09 | Project setup for the PersuasiveClassification | 4 | Study on maven projects setup and Worked on errors for the project |
+| 2015-03-11 | Understanding the PC experiment with various feature extractor and Understanding DKPro TC  | 3 |  |
+| 2015-03-12 | Manual annotations for remaining 30 essays | 3 | Major Claim |
+| 2015-03-16 | Manual annotation continue..  | 1 |  |
+| 2015-03-18 | Excess issue resolved and SVN checkout for the project | 2 |  |
+| 2015-03-19 | Meeting and understanding the logic and flow for the PC classification model  | 5 | Introduction to self learning Model and PC experiment  |
+| 2015-03-20 | Running PC experiment with GOLD preprocessed dataset | 2 |  |
+| 2015-03-23 | Meeting for Major claim annotation results/ Resolving errors in the annotation environment/ Re-running PC classification for understanding various parameters which are used  | 3 |  |
+| 2015-03-25 | Setting up self training experiment | 5 | Modifing PC to run test-train model rather than cross validation task |
+| 2015-03-27 | Adding features used in PersuasiveClassification to selfTraining experiment and resolving issues that arised | 2 |  |
+| 2015-03-31 | Running PC experiment and discrepancy analysis about the difference in the result at each run | 4 |  |
+
+
+-- Main.ChristianStab - 2015-03-23
+
+%META:FILEATTACHMENT{name="ResultTemplate.xlsx" attachment="ResultTemplate.xlsx" attr="" comment="" date="1429085394" size="109706" user="stab" version="1"}%
+%META:FILEATTACHMENT{name="PC-selftraining_ConfusionMatrix_result.txt" attachment="PC-selftraining_ConfusionMatrix_result.txt" attr="" comment="PC experiment with train test evaulation" date="1429353567" size="664" user="tak" version="2"}%

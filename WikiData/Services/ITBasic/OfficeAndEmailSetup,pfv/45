@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="alles" comment="" date="1685697175" format="1.1" reprev="45" version="45"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ !! UKP Mail Service
+
+---++ How to use O365 and access mail
+---+++ Download and activate O365
+   * Instructions on how to install and activate Office 365 can be found [[https://www.hrz.tu-darmstadt.de/services/it_services/campus_software/microsoft/microsoft_ees/informationen_beschaeftigte_ohne_gemanagten_pc/index.en.jsp][on the HRZ webpages]].
+   * %RED%Usually O365 is already preinstalled on your computer, you just need to take the steps to activate it using the cloud ID.%ENDCOLOR% 
+      * when starting word or outlook, a window will pop up requesting you to login
+      * the window will have the microsoft logo and asks for mail and password - you have to use the cloud ID here (usually YOURTUID@tu-darmstadt.de - like sa12egal@tu-darmstadt.de - and your tu id password)
+      * this is not to setup your account in outlook - just for activating the product licence!
+      * to add your mail account (usually name.lastname@tu-darmstadt.de) follow the next steps on this page
+   * More information about the cloud ID is [[https://www.hrz.tu-darmstadt.de/media/hrz/digitale_identitaet_hrz/Cloud_ID.en.pdf][on the webpages of HRZ]] again.
+
+---+++ Setup Outlook on Windows
+   * To %RED%add your mailbox to outlook%ENDCOLOR% follow these instructions [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_3200.en.jsp][on the webpages of HRZ Groupware.]]
+   * Notice: usually system-admin sets up a mail alias ending on @ukp.tu-darmstadt.de a few days after you actually joined the lab for you.
+      * the alias is usually LASTNAME@ukp.tu-darmstadt.de if it's not already taken.
+      * this address will forward any mails to your @tu-darmstadt.de mail address.
+
+---+++ Accessing mail on other OS / other how to's
+there are multiple ways - OWA is the easiest possibility to use your mailbox. you can also use outlook and many other clients, below you can find the how-tos from hrz. ukp system-admin only supports outlook and owa.
+   * [[https://mail.tu-darmstadt.de/owa][OWA - just login with TU-ID]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_3200.en.jsp][Outlook - German Version]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_5697.en.jsp][iOS]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/linux_mailbox/e_mail_einrichten/thunderbird_einrichten/index.en.jsp][Thunderbird]]
+
+---++ FAQ about the Migration to HRZ Groupware
+*<u>What about my old mails in UKP mailbox after the migration?</u>*
+
+All mails, contacts, and data have been transferred to your groupware mailbox, nothing should be missing.
+
+*<u>Something is missing!</u>*
+
+Please let system-admin know via ticket.
+
+*<u>What is my mail address now?</u>*
+
+Your primary mailaddress has changed, this is usually =firstname.lastname@tu-darmstadt.de=. you'll be sending mails from this address, so you should use this mail in your signatre and on any official stuff. your previous mailaddress like =lastname@ukp.tu-darmstadt.de= can still receive mails. New hires only have the =firstname.lastname@tu-darmstadt.de= address! If you want a shorter =@ukp.tu-darmstadt= address, then please open a ticket, specify your desired adress and TU ID.
+
+*<u>Have central mails changed?</u>*
+
+The central mails have not changed and any known mailaddress can still be used. in future, central addresses will only have the @ukp.tu-darmstadt.de ending, we'll stop using the "informatik" part.  Central mails should be listed in the central TU Darmstadt address book as well.
+
+*<u>What are the login credentials for my mailbox?</u>*
+
+You have to use your TU-ID to access mails, not UKP account.
+
+*<u>Are there any restrictions for my mailbox size?</u>*
+
+You have 2.5GB of mail space if not communicated otherwise.
+
+*<u>Something that I want to know is not explained here.</u>*
+
+There are also guides for other configurations if you search on the TU Darmstadt Groupware page. If you cant find it, let system-admin by opening a ticket.
+
+
+%META:TOPICMOVED{by="bugert" date="1570805052" from="Services.MailService" to="Services/Lab.MailService"}%

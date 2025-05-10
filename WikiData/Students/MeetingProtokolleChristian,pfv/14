@@ -1,0 +1,133 @@
+%META:TOPICINFO{author="ChristianJacobi" date="1169741856" format="1.1" reprev="14" version="14"}%
+%META:TOPICPARENT{name="ChristianJacobi"}%
+---+Meeting-Protokolle
+
+---++ 05.02.2007, 15.00 Uhr
+   * @action(CJ): etwas zu Spät kommen ;-)
+
+---++ 25.01.2007, 14.30 Uhr
+
+   * Package: ParsedPage: es reicht wenn Spans zurückgegeben werden, der User kann daraus selber Strings erstellen.
+   * @action(CJ): 
+      * HTML Tag annotation ermöglichen.
+      * Template Handling überdenken.
+      * MediaWikiParserFactory: Einfache initialisierung eines Parsers mit dem Parameter SPRACHE
+      * Tabelle von Template Namen und Häufigkeiten
+      * Tabelle von Häufigkeiten von Speziellen Strukturen, konkent: %Tabellen mit Sektionen in Anzahl Tabellen
+      * Evaluation planen:
+         * Spezifikation der Feautures die der Parser liefern soll und gewichtung dieser Feautures
+         * Automatisierung der Evaluation mithifle JUnit, hierzu Datenformat definieren.
+         * @not-now-action(CJ): Annotation des TrainingSet, (TestSet), EvaluationSet
+   * Wikipedia Dump ist vom 15.05.2006, es gibt keinen MediaWikiServer wo dieser Dump gerade läuft -> ggf. selber machen
+   * DefinitionLists: Der definierte Term ist kein BOLD text, auch wenn sie aktuell fett dargestellt werden.
+
+---++ 15.01.2007, 14.00 Uhr
+
+---++ 08.01.2007, 15.00 Uhr
+
+   * ca. zu 80% fertig
+   * neben XML noch Parameter auf Kommandozeile angeben können
+   * Evaluierung planen
+      * Evaluierung bestimmt Anzahl der noch in Parser zu investierenden Stunden!
+
+---++ 04.12.2006, 14:00 Uhr / 15.00 Uhr
+
+   * @action(TZ): Veröffentlichung der schriftlichen Diplomarbeit/Ausarbeitung - durch IP-Erklärung eingeschränkt?
+   * @action(CJ): Anmeldung Diplomarbeit
+
+---++ 27.11.2006, 15:00 Uhr
+  * IP-Erklärung (CM)
+      * @action (CJ): unterschreiben
+      * bis 27.11.2006
+   * @action(CJ): update Zeitplan verlinken
+      * [[%ATTACHURL%/20061127Zeitplan.pdf][20061127Zeitplan.pdf]]: 20061127Zeitplan.pdf
+   * @action(CJ): Wikipedia API DVD RW mitbringen
+      * done
+   * @action(TZ): Wikipedia API update?
+   * @action(CJ): Development und Testset auswählen
+   * Parser Realisierung?
+      * ParserUML.PNG: <br />
+     <img src="%ATTACHURLPATH%/ParserUML.PNG" alt="ParserUML.PNG" width='437' height='279' />
+   * API (nur Info)
+      * [[%ATTACHURL%/20061127API.pdf][20061127API.pdf]]: 20061127API.pdf
+   * UseCases (nur Info)
+      * [[%ATTACHURL%/20061127UseCases.pdf][20061127UseCases.pdf]]: 20061127UseCases.pdf
+
+---++ 20.11.2006, 15:00 Uhr
+   * CJ: spielt Quellcode bei Bewertung eine Rolle?
+      * ja, sollte auch sehr gut kommentiert sein
+   * IP-Erklärung (CM)
+      * @action (CJ): unterschreiben
+   * Evaluierung des Parsing
+      * @action (CJ): in Zeitplanung berücksichtigen
+         * done
+   * Uses-Cases? (TZ)
+      * @action (CJ): Use cases auf neuesten Stand + Beispiel für jede Klasse
+         * [[%ATTACHURL%/20061119UseCases.pdf][20061119UseCases.pdf]]: 20061119UseCases.pdf
+      * Anmerkungen (noch nicht vollständig):
+         * Use case 4: StringBuilder verwenden
+         * Use cas 10: 'bold' -> BOLD
+   * @action (TZ): neuen Wiki Link schicken
+      * done
+   * EssayAufforderung geändert (nur Info)
+      * [[%ATTACHURL%/Aufgabe1.pdf][Aufgabe1.pdf]]: Aufgabe1.pdf
+      * [[%ATTACHURL%/Aufgabe2.pdf][Aufgabe2.pdf]]: Aufgabe2.pdf
+      * HP geändert
+   * API:
+      * [[%ATTACHURL%/20061119API.pdf][20061119API.pdf]]: Die API UML als PDF
+         *Methoden hinzufügen: 
+            * List<FormatType> getFormat(int begin, int end)
+            * List getLinks(int begin, int end)
+         * italic => ITALIC usw.
+      * Tabellen sind noch nicht OK! Sonst sollte alles fertig sein.
+   * Parser:
+      * [[%ATTACHURL%/20061119Parser.pdf][20061119Parser.pdf]]: Grundlegende Fragen
+         * non-static und Interface
+
+---++ 13.11.2006, 15:00 Uhr
+   * Cigdems Essay-Sammlung (CM)
+      * nur Info
+   * IP-Erklärung (CM)
+      * @action (CJ): unterschreiben
+   * Evaluierung des Parsing
+      * @action (CJ): in Zeitplanung berücksichtigen
+   * API: Grundlegende Vorannahmen
+      * nur Info
+   * API: Realisierung der Sections
+      * nur Info, Realisierung ist soweit OK
+   * API: Integration von Sections in ParsedPage
+      * gemeinsames Interface für Section und ParsedPage bei sinnvollen Namen, ansonsten werden Funktionen einfach neu implementiert.
+   * API: FormatedText
+      * Umbenennungen:
+         * Klasse: FormatedText -> ContentComposite
+         * Funktion: FormatedText.toUnformatedString() -> ContentComposite.getText()
+         * Klasse: MFT -> ContentElement
+      * Spans als ImplementierungsMöglichkeit für Textformatierungen.
+   * API: Vererbungsproblematik
+      * Sections in Tabellen werden als Fehler in MediaWiki betrachtet (-> exception), sofern keine Beispiele gefunden werden, die die Implementierung nötig machen.
+   * Uses-Cases? (TZ)
+      * siehe nächstes Meeting
+  
+
+   * [[%ATTACHURL%/20061113CJ.pdf][20061113CJ.pdf]]: 20061113CJ.pdf
+
+   * UML1.png: <br />
+     <img src="%ATTACHURLPATH%/UML1.png" alt="UML1.png" width='800' height='742' />
+
+   * UML2.png: <br />
+     <img src="%ATTACHURLPATH%/UML2.png" alt="UML2.png" width='973' height='463' />
+
+
+%META:FILEATTACHMENT{name="ParserUML.PNG" attr="" autoattached="1" comment="" date="1164620516" path="ParserUML.PNG" size="2862" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061119UseCases.pdf" attr="" autoattached="1" comment="" date="1163958936" path="20061119UseCases.pdf" size="85121" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="UML1.png" attr="" autoattached="1" comment="" date="1163408158" path="UML1.png" size="12947" user="Main.TorstenZesch" version="1"}%
+%META:FILEATTACHMENT{name="Aufgabe1.pdf" attr="" autoattached="1" comment="" date="1163684967" path="Aufgabe1.pdf" size="87532" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061119API.pdf" attr="" autoattached="1" comment="" date="1163958882" path="20061119API.pdf" size="55411" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061113CJ.pdf" attr="" autoattached="1" comment="" date="1163408191" path="20061113CJ.pdf" size="128811" user="Main.TorstenZesch" version="1"}%
+%META:FILEATTACHMENT{name="20061119ParserUML.PNG" attr="" autoattached="1" comment="" date="1163958915" path="20061119ParserUML.PNG" size="1122" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061119Parser.pdf" attr="" autoattached="1" comment="" date="1163958903" path="20061119Parser.pdf" size="102884" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061127Zeitplan.pdf" attr="" autoattached="1" comment="" date="1164620502" path="20061127Zeitplan.pdf" size="54862" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="Aufgabe2.pdf" attr="" autoattached="1" comment="" date="1163684994" path="Aufgabe2.pdf" size="67664" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="UML2.png" attr="" autoattached="1" comment="" date="1163408172" path="UML2.png" size="8537" user="Main.TorstenZesch" version="1"}%
+%META:FILEATTACHMENT{name="20061127API.pdf" attr="" autoattached="1" comment="" date="1164620471" path="20061127API.pdf" size="54477" user="Main.ChristianJacobi" version="1"}%
+%META:FILEATTACHMENT{name="20061127UseCases.pdf" attr="" autoattached="1" comment="" date="1164620489" path="20061127UseCases.pdf" size="85889" user="Main.ChristianJacobi" version="1"}%

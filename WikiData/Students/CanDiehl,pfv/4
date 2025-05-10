@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="stab" comment="reprev" date="1459943769" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2016-04-13 
+   * SVN for students?
+
+---++ 2016-04-06 (open) Questions & Answers
+   * Discuss current state of task description
+   * What are arguments in the context of this thesis?
+      * Actually, it is not clear if the extracted propositions are "arguments", they could be "argument components" with unknown type or just "propositions/statements" on the queried subject.
+   * What are potential data sources?
+      * Question in that context: How does the ideal data look like?
+      1 Query Web search engine (e.g. faroo) per API or manually (potential violation of ToS) and save top n results
+         * Maybe use more than 1 query to get results on a subject (e.g. 1 for pro, one for con)
+      2 <del>Existing corpora with debate data (Probably difficult to find a fitting German corpus)</del>
+   * What are possible methods for evaluating?
+      * User Study:
+         * Users evaluate result on subjects according to relevance and correct side (pro/con) via web interface
+            * <del>Potential problem -> completeness of the collected information not guaranteed, how could this be evaluated?</del>
+         * Use automatically extracted pro con lists for several subjects and ask participants e.g. if polarity of items is correct, if clusters are redundant, if items are meaningful, etc.
+         * Evaluate results using IAA scores and conduct error analysis
+         * evaluation strategy similar to Levy, Ran, Yonatan Bilu, Daniel Hershcovich, Ehud Aharoni, and Noam Slonim. 2014. Con-text dependent claim detection. In Proceedings of the 25th International Conference on Computational Linguistics (COLING 2014), pages 14891500, Dublin, Ireland.
+   * Could document type/name and metadata help improve the Pro/Con Detection?
+      * Most documents state in their title, if they argue for or against the subject or both
+      * This could potentially be exploited in combination with html-metadata to easier identify Pro/Con statements
+   * How to detect indirect references to the subject?
+      * Research State of the Art, good solutions should be available
+      * This task is called co-reference resolution 
+   * Proposition extraction: http://u.cs.biu.ac.il/~stanovg/propextraction.html
+   * Clustering
+      * How important is domain knowledge or similarity measures?
+      * We might need Semantic Similarity (DKPro Similarity)
+      * Research clustering of short documents (single sentences / microblogs / twitter)
+
+   
+---++ 2016-03-30
+   * Discussed Workflow of the thesis and signed contract(s)
+   * Clarified expectations and requirements
+   * Started elaborating the topic
+      * Aggregation of arguments (what are arguments in the context of this thesis?)
+      * Potential data sources (English or German or both)
+      * "Search engine" that summarizes/aggregates argumentation relevant propositions structured as pro and con.
+      * Evaluation?
+
+
+-- Main.ChristianStab - 2016-03-30

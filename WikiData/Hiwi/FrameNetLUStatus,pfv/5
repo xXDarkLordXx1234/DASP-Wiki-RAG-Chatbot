@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="JudithEckleKohler" date="1297782467" format="1.1" version="5"}%
+%META:TOPICPARENT{name="LSR.FrameNetResourcebeschreibung"}%
+---+++ !FrameNet LU-Status
+   * Definition des LU-Status aus dem Buch _THE STRUCTURE OF THE FRAMENET DATABASE_ Abschnitt 2.3: <br /> _One or more statuses can be associated with each LU. Some of these are temporary, used for keeping track of the state of work on each lexical unit, e.g. whether subcorpora have been prepared for it, whether it is in the process of annotation, whether there is an unresolved problem regarding the frame and whether the LU belongs in it, etc. Others will be of interest to the end users of the !FrameNet data, as they indicate the final disposition of the lexical unit._
+---+++++ Im _luIndex.xml_ -File sind kurze Definitionen aller im !FrameNet vorkommenden Status der LU aufgelistet. Daraus ergibt sich folgende Tabelle:
+| *Lexical Unit Status * | *Definition* |
+| New | LU defined and sentences ready for annotation |
+| Created | LU defined in frame, but sentences not yet extracted from corpus |
+| FN1_Sent | !LexUnit was created during !FrameNet I and has some annotation |
+| FN1_NoSent | LU was defined in frame during !FrameNet I, but contains no sentences |
+| SC_Defined | !LexUnit's !SubCorpora have been defined but not yet created |
+| Problem | Not available for annotation due to problems with definition of frame or frame elements |
+| In_Use | !LexUnit is currently being annotated |
+| Finished_Initial | Regular annotation completed during !FrameNet II |
+| Finished_Checked | Annotation and final checking completed during !FrameNet II |
+| Finished_X-Gov | !LexUnit has been annotated only for X-Gov labels |
+| Insufficient_Attestations | Not enough examples to annotate completely |
+| Unknown | Status could not be determined |
+| Test | LU created only for software testing |
+| Rules_Defined | Subcorporation rules have been defined, but not run |
+| BTDT | This LU is left unannotated because it is so similar to others in this frame |
+| Add_Annotation | An LU whose status was !Needs_SCs has had more |
+| Needs_SCs | !LexUnit needs more sentences in new SCs |
+| Pre-Marked | !ProcessRules has run on the LU and some FEs have been pre-marked on the basis of the rules |

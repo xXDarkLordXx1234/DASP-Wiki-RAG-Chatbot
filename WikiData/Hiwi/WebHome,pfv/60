@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="NicoErbs" date="1318409586" format="1.1" version="60"}%
+%INCLUDE{%SYSTEMWEB%.WebChangesRightBox}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}% 
+
+---++ Information
+   * [[DkproRepositoryForHiwis][Subversion]]
+
+---++ !HowTo
+   * [[ConnectToVPNUsingUbuntu][Connect to VPN using Ubuntu]]
+   * [[ConnectToVPNUsingWindows7][Connect to VPN using Windows 7]]
+
+---++ Current
+   * AndriyNadolskyy (NE/TZ)
+   * ArtemVovkWork (NE)
+   * CarolinDeeg (!DaB)
+   * AndreasKellner (TZ)
+   * EliDuenisch (NE/TZ)
+   * ShuoYangSigmundArbeit (BH)
+   * ShuoYangDariahArbeit (REC)
+   * YevgenChebotar (EW, !ChM)
+   * ZijadMaksutiWork (!MiM,SH)
+   * [[ErikLanDoDinh][Erik-Lân Do Dinh]] (REC)
+   * [[JensHaase][Jens Haase]] (REC)
+   * [[BenjaminPetry][Benjamin Petry]] (REC)
+   * MateuszParzonka (TZ/NE)
+   * ChristianKirschner (!ChM)
+   * MarcelAckermann (IG)
+   * TobiasHorsmann (SH)
+   * VladimirSchmidt (JEK/MiM)
+
+
+---++ Past
+   * ArtemUspenskiyWork (BH)
+   * UrsGlaubitt
+   * AnouarWork
+   * AtifWork
+   * DimitriWork
+   * DongWork
+   * EliaWork
+   * HosseinWork
+   * HristoLulev (BH, MS)
+   * IvanGalkinWork (TZ)
+   * LizhenWork
+   * MarkoMartin (TZ/NE)
+   * MohsenParisay (SH)
+   * [[NicoErbsHiwi][Nicolai Erbs]] (TZ)
+
+---++ <nop>%WEB% Web Utilities 
+<form action='%SCRIPTURLPATH{"search"}%/%WEB%/'>
+   * <input name="search" type="text" size="22"></input> <INPUT type="submit" }="" search="" value="%MAKETEXT{" class="twikiSubmit" /> - [[WebSearchAdvanced][%MAKETEXT{"advanced search"}%]]
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes
+   * WebStatistics - listing popular topics and top contributors
+   * WebPreferences - preferences of this web
+</form>

@@ -1,0 +1,207 @@
+%META:TOPICINFO{author="sorokin" comment="save topic" date="1452248897" format="1.1" reprev="28" version="31"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Intro
+
+I'm doing my Master thesis here at UKP Labs under the supervision of Mr. Daniil Sorokin and Prof.Dr. Gurevych. The title of my work is 'Reference extraction for Knowledge Base Facts'. In my work, I will examine methods of extracting meaningful references as a supporting authority to claims expressed in a natural language statement.
+
+---++ Meetings
+
+---+++ Next meeting
+
+
+---+++ 2016-01-08
+   * Training data
+      * @discuss(DS, RB) Reddy's method to create gold training data
+   * Reddy's code:
+      * Status update
+
+---+++ No meeting due to holidays
+   * @todo(DS) Forward statistics on WikiData; reference on semantic parsing for QA, knowledge extraction
+   * @done(RB) Update presentation: Add a slide about creation surrogate gold graphs, replication of Reddy's results (link to a wiki page with instructions), examples of acquired training data
+
+---+++ 2015-12-21
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * done(RB) expand the statistics on links per sentence in Wikipedia data (see the previous meeting)
+         * done(RB) How to restrict the data to a particular subset of Wikipedia (e.g. Film category)
+      * @discuss(DS, RB) Reddy's method to create gold training data
+   * Mid-term presentation:
+      * @done(RB) draft of the mid-term presentation: [[%ATTACHURL%/Mid_term-draft.ppt][Mid_term-draft.ppt]]
+   * Reddy's code:
+      * @todo(DS) Write Reddy
+         * DS: In the process of figuring out why we get different results
+      * @todo(RB) Write down the whole procedure to replicate the experiments (done)
+      * @todo(DS) Look into ccg_lexicon_questions. Can we use it unmodified for WikiData? ~/graph-parser/lib_data  (number of lexicon as well as grammar/rules files in this folder)
+         * DS: as far as i can tell, yes, we can use it unmodified with WikiData, it is olny relevant for CCG parsing
+      * @todo(DS) Look into Schema file: ~/graph-parser/data/freebase/schema
+         * Seems to be just a list of relevant relations listed for each item type, we can get it for WikiData, too
+      * @todo(DS) Look into tacl_grounded_lexicon: ~/graph-parser/data/tacl/grounded_lexicon
+      * @done(RB) Reddy's tacl evaluations results:  [[%ATTACHURL%/TACL_evalutaions.pdf][TACL_evalutaions.pdf]]
+
+
+---+++ 2015-12-11
+   * Training data
+      * @discuss(DS, RB) Reddy's method to create gold training data 
+   * @discuss(DS) other semantic parsing papers that try to convert semantic representation into a SPARQL/SQL query
+      * Poon, H. (2013). Grounded Unsupervised Semantic Parsing: Converts dependency structures to SQL queries; rather hard to read.
+   * @discuss(DS, RB) Mintz'09, distant supervision for relation extraction
+   * Reddy's code
+   * Mid term presentation, things to include:
+      * Topic description and motivation (see the proposal)
+      * Reddy's paper (requirements for training data) and related work
+      * Plan and the current state
+      * Collecting training data for WikiData from Wikipedia. How? Statistics?
+      * Replicating Reddy's experiments
+      * Plan and what needs to be done
+
+
+---+++ 2015-12-04
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * Store annotated data as one sentence per line and a separate index for annotations
+         * Done(RB) How many sentences with at least one link? 
+         * Done(RB) What is the link density? 
+         * Following statistics over a corpus of 100 documents (articles) (Corrected)
+         * Total sentences: 3365.0
+         * Total annotations: 3016.0
+         * Sentences with at-least one annotation: 1397.0
+         * Sentences with at-least two annotations 651.0
+         * Sentences with at-least no annotations 1968.0
+         * Average link density 0.896285289747
+         * Sentences with errors ???
+            * RB(Done): Correct this number 746+1815!=3365 (Done. Now 1397 + 1968 = 3365)
+         * Average link density 0.896285289747
+            * RB(Done): Average link density over sentences with at least one link? 2.15891195419
+            * RB: Average link density / number of sentences with at least one link over sentences longer than 5 words?
+         * [[%ATTACHURL%/Wikipedia-Annotations.zip][Wikipedia-Annotations.zip]]: Wikipedia sentences annotated with WikiData identifiers
+   * Reddy's code
+      * @todo(RB) create a table with experiments and commands to run them
+      * @todo(RB) try to run only test setup with the existing model
+      * @todo(DS) Virtuoso log file (done)
+   * Next time
+      * @discuss(DS, RB) Reddy's method to create gold training data 
+      * @todo(DS) other semantic parsing papers that try to convert semantic representation into a SPARQL/SQL query
+
+---+++ 2015-11-27
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * For WikiData hash Wikipedia URLs instead of titles
+         * todo(RB) How many sentences with at least one link? (Pending)
+         * todo(RB) What is the link density? (Pending)
+         * todo(RB) Prepare a training data sample (done)
+   * Reddy's code
+      *  todo(RB) Try it in test mode
+      *  todo(RB) What is needed to run the training?
+
+---+++ 2015-11-20
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * todo(RB) How many sentences with at least one link? (Pending)
+         * todo(RB) What is the link density? (Pending)
+         * todo(RB) Prepare a training data sample
+   * Reddy's code
+      * todo(RB) Try out the Virtuoso installation on DS's machine
+         * http://desktop-212:8890/sparql
+
+---+++ 2015-11-13
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * Wikipedia dump of article texts: https://dumps.wikimedia.org/enwiki/20151002/enwiki-20151002-pages-articles-multistream.xml.bz2
+         * Wikimedia project ids mapping: https://dumps.wikimedia.org/enwiki/20151002/enwiki-20151002-iwlinks.sql.gz
+         * todo(RB) How many sentences with at least one link? (Pending)
+         * todo(RB) What is the link density? (Pending)
+   * Reddy's code
+      * todo(DS) ask about reserving a server or hosting a Virtuoso database () 
+         * Virtuoso is running on DS's work station: desktop-212:8890/sparql
+      * todo(RB) instructions how to install Virtuoso and import Reddy's data (Done)
+
+
+---+++ 2015-11-06
+   * Training data
+      * Use Freebase - Wikidata identifiers mapping either on a subset of ClueWeb or on Free917 (only for debugging purposes)
+         * Google provides mapping of Freebase ids to WikiData (it is old, from 2013)
+         * todo(RB) try to extract mappings from WikiData (use Property "Freebase identifier"). How many of them is there? Overlap with the Google mapping?
+      * Wikipedia links as WikiData annotations
+         * Look only at the titles and abstracts first
+         * todo(RB) map Wikipedia links to WikiData item ids 
+   * Reddy's code
+      * Virtuoso is too large to run locally
+      * todo(DS) ask about reserving a server or hosting a Virtuoso database
+
+---+++ 2015-10-30
+   * Status Update
+      * Tried to obtain a subset of Freebase to actually test Reddy et.al results. But no small enough dataset was available.
+      * Subsequently tried downloading whole of Freebase but have been unsucccessful due to system constraints and performance (under-going).
+      * Read literature on deep learning and some NLP machine learning approaches.
+   * todo(RB): *Enroll at the Prüfungssekretariat*
+      * It is about time to do that. Figure out what do you need for that, there is some form that Prof. Gurevych has to sign.
+      * Form submitted to IG 
+   * todo(RB): description of packages (undergoing)
+   * todo(RB): how to get a sample of Freebase to try out the grounded semantic parsing (*status update*)
+      * Wait for Reddy's answer
+   * todo(DS): a paper on other features that could be used
+   * todiscuss: Could we e-mail Reddy to get access to the dataset and to replicate TACL results (as mentioned on his GitHub profile)
+      * Yes
+
+
+---+++ 2015-10-16
+   * Pool access
+   * Wiki Meeting Minutes (once the account is activated)
+      * Use them for progress updates, small question, to collect literature
+   * Latex template
+   * SVN
+
+---+++ 2015-10-09
+   * Regular meetings
+      * Friday at 12:00
+   * Mid-term, final presentation
+      * Mid-term: *05.01.16*
+      * Final: *29.03.16*
+   * Student presentations next week: 13.10.2015 at 11:30
+   * Computational Semantics book
+   * Update on Reddy's code
+      * todo(RB): description of packages
+   * WikiData: how to proceed with the scheme mapping
+      * First trying to replicate results with Freebase, then transition to WikiData
+   * Ungrounded semantic parsing is working out of the box
+   * todo(RB) What is need to run the grounded parsing with Freebase? To replicate Reddy's result with provided models (without retraining)?
+
+---+++ Summary of the initial meeting
+   * Starting date: 15.09.2015, Deadline: 31.03.2016
+   * Enroll at the Prüfungssekretariat: ~15.10.2015
+   * Official deadline: 02.05.2016
+   * Task description approved: Please refer attachments 
+
+
+---+++Tentative Schedule
+%EDITTABLE{format="| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Comment* |
+| 0 | Initial meeting; discussion of the project definition |  |
+| 02 | Familiarization with the project, literature review, setup of the environment and the datasets | Start writing the thesis (or takenotes for it) as early as possible! |
+| 35 | Requirements analysis | WP1 |
+| 69 | Semantic parsing systems review, pipeline draft | WP2 |
+| 8  12 | Training data acquisition, Semantic parser training | WP3 1  2 |
+| 12 | Mid-term presentation |  |
+| 13  16 | Implementing the semantic parsing service | WP3 3  4 |
+| 17  20 | Integrate the service with WikiData tools to search for reference suggestions, discuss results | WP4 |
+| 21  24 | Final thesis redaction | |
+| 24 | Final presentation | |
+| 24 | Submit the thesis | |
+
+
+
+-- Main.DaniilSorokin - 2015-10-08
+
+   * [[%ATTACHURL%/RaktimBora_MA_Thesis_Task_Description_v2.pdf][RaktimBora_MA_Thesis_Task_Description_v2.pdf]]: Master Thesis Proposal (Approved) for Raktim Bora
+
+   * [[%ATTACHURL%/Wikipedia-Annotations.zip][Wikipedia-Annotations.zip]]: Wikipedia sentences annotated with WikiData identifiers
+
+   * [[%ATTACHURL%/TACL_evalutaions.pdf][TACL_evalutaions.pdf]]: TACL_evalutaions.pdf
+
+   * [[%ATTACHURL%/Mid_term-draft.ppt][Mid_term-draft.ppt]]: Mid_term-draft.ppt
+
+%META:FILEATTACHMENT{name="RaktimBora_MA_Thesis_Task_Description.pdf" attachment="RaktimBora_MA_Thesis_Task_Description.pdf" attr="" comment="" date="1444388492" path="RaktimBora_MA_Thesis_Task_Description.pdf" size="109064" user="sorokin" version="1"}%
+%META:FILEATTACHMENT{name="RaktimBora_MA_Thesis_Task_Description_v2.pdf" attachment="RaktimBora_MA_Thesis_Task_Description_v2.pdf" attr="h" comment="Master Thesis Proposal (Approved) for Raktim Bora" date="1447336153" path="RaktimBora_MA_Thesis_Task_Description_v2.pdf" size="109230" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="Wikipedia-Annotations.zip" attachment="Wikipedia-Annotations.zip" attr="" comment="Wikipedia sentences annotated with WikiData identifiers" date="1449807475" path="Wikipedia-Annotations.zip" size="502703" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="TACL_evalutaions.pdf" attachment="TACL_evalutaions.pdf" attr="" comment="" date="1450196497" path="TACL_evalutaions.pdf" size="183412" user="bora" version="1"}%
+%META:FILEATTACHMENT{name="Mid_term-draft.ppt" attachment="Mid_term-draft.ppt" attr="" comment="" date="1450657129" path="Mid_term-draft.ppt" size="546304" user="bora" version="1"}%

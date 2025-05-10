@@ -1,0 +1,643 @@
+%META:TOPICINFO{author="diehl" comment="reprev" date="1473091376" format="1.1" reprev="50" version="50"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Presentations
+   * 2016-10-11 final presentation
+   * 2016-12-05 thesis submission
+
+---++ 2016-09-05
+   * Status Update:
+      * Determined time for sentence vector building on development topic Cloning: ~52 minutes
+      * Implemented simple post-processing of propositions
+      * Discarded Ranking because it affects the evaluation too drastically
+      * Drafted Research questions
+         * [[%ATTACHURLPATH%/ResearchQuestions.pdf][Draft]], also contains a draft for the evaluation (is also contained in the new formular)
+            * Direct comparison between clustering algorithms no longer part of the evaluation
+            * Added question regarding embedding-comparison
+         * [[https://docs.google.com/forms/d/e/1FAIpQLSfFT8ZJfoje56ebFbA1xgoBB6_xX4kf_9aUZRFHH7JfQyUyTQ/viewform][new formular]]
+            * Examples and detailled explanations are added to the evaluation form
+            * Currently 2 versions of Step 2 are implemented for demonstration purpose
+            * Version 2 seems to be better suited for the evaluation
+
+---++ 2016-08-30
+   * Status Update:
+      * Determined time for clustering and similarity computation ([[%ATTACHURLPATH%/Performance.xhtml][Performance]], [[%ATTACHURLPATH%/SystemInfo.txt][System Information]])
+      * Fixed multiple bugs in MPQA
+      * Removed same documents duplicates for the development topic
+      * Selected a representative for each cluster
+         * The centroid for KMedoids
+         * The shortest sentence for !DBSCAN
+      * Evaluated results for the following setups:
+         * [[%ATTACHURLPATH%/evalEvaluation-DBSCAN_ProsAndCons_0.22.csv.tsv][DBSCAN]] (eps=0.22) vs [[%ATTACHURLPATH%/evalEvaluation-KMedoids_ProsAndCons_Div10.csv.tsv][KMedoids]] (sentences / 10 cluster, 10% noise filter)
+            * Noise filtering needs to be more aggressive for !KMedoids
+            * eps for !DBSCAN might be too low, most clusters consist of only 2 or 3 elements, that are often very similar
+            * Currently !DBSCAN works better than !KMedoids
+               * !DBSCAN has only 2 neutral cluster representives and !KMedoids has 11
+               * !DBSCAN cluster never contain elements not belonging to the cluster (Another indicator that eps might be too low)
+         * [[%ATTACHURLPATH%/evalEvaluation-DBSCAN_ProsAndCons_0.22.csv.tsv][MPQA]] (eps=0.22) ([[%ATTACHURLPATH%/ClusterDBSCAN_MPQA.tsv][txt]]) vs [[%ATTACHURLPATH%/evalEvaluation-DBSCAN_ProsAndCons_0.22_Sentiment.csv.tsv][Sentiment]] (eps=0.22) ([[%ATTACHURLPATH%/ClusterDBSCAN_S_Sentiment.tsv][txt]])
+            * Negative rating if the best negative score is higher than 0.5 and higher than positive and neutral ratings and vice versa for positive
+            * Only taking veryPositive and veryNegative into account yielded less than 10 not-neutral sentences
+            * Currently it looks like !StanfordSentiment is decreasing the quality of the results
+         * Links for evaluation form:
+            * !KMedoids: https://docs.google.com/forms/d/1epfZWBk5p0IFiadWdR9LZuQmBF3OazmRZ3hZuHipTGA/edit?usp=sharing
+            * !DBSCAN: https://docs.google.com/forms/d/16ohcYHgkj8Of-gUg-OOSltTeQoN2CZ87VgPNWFpp_vk/edit?usp=sharing
+            * !DBSCAN-Sentiment: https://docs.google.com/forms/d/1-T2U7IWG2kqhlDA_23AvT73X0McEzBxkz6no_TPH_n8/edit?usp=sharing
+   * Next Steps:
+      * Theoretical:
+         * Formulate unambiguous research questions
+         * Draft the evaluation scenario
+            * Specify how the evaluation helps answer the research questions
+      * Technical:
+         * Implement a cluster ranking (e.g. using a heuristic)
+         * Assure that both DBSCAN and KMedoids have a similar amount of clusters
+         * Clean the propositions a bit to increase readability
+         * Measure time for building sentence vectors
+
+---++ 2016-08-23
+   * Status Update:
+      * Decided on topic: cloning (First clustering results with DBSCAN: [[%ATTACHURLPATH%/ClusterDBSCAN_S_Cloning.txt][txt]])
+      * Finished GUI implementation ([[%ATTACHURLPATH%/GUI_Results.png][screenshot]])
+      * Decided on clustering approaches:
+         * KMedoids and DBSCAN (short justification is part of the following mockup)
+      * Created a [[%ATTACHURLPATH%/evaluation.pdf][mockup]] for the evaluation (also containing  links to google forms containing a questionnaire for one example cluster) 
+      * For improving the system:
+         * Proposition extraction, e.g. for representatives:
+            * Sometimes the results seem to be usable in other cases content gets lost ([[%ATTACHURLPATH%/triples.txt][triples.txt]])
+            * Might be worth risking to loose information
+         * Stance recognition:
+            * Encountered errors running the !DemoPipeline on the VM ([[%ATTACHURLPATH%/error.txt][exception]])
+   * Next steps:
+      * Determine time for clustering / similarity computation.
+         * Table including columns: Topic, #sentences, timeSimilarity, timeClustering
+         * Brief info of your system (CPU,RAM,HD)
+      * Evaluate the results on your own (development data)... bring results to next meeting.
+         * Improve google forms (include description, entire topic, macro-level questions, etc.)...
+         * Include posANDneg for stance questions, see: "Cloning to create human embryos for stem cell research which would destroy them should be allowed and only cloning for reproduction should be banned"
+         * Compare the following settings for optimizing the current approach on the development data:
+            * Clustering approach: DBScan vs Kmeans
+            * MPQA vs sentiment analyzer (Stanford)
+            * Stance summarization: e.g. sum vs majority
+      * How to identify the representative of each cluster?
+         * Kmeans: we have a centroid
+         * DBScan: maybe using the shortest sentence?
+      * Ranking of clusters?
+         * If we could rank the clusters, it would be possible to select the top n for the evaluation which could eliminate additional noise.
+      * Remove duplicates in the same document.
+      * Bug in MPQA-approach on stance recognition?
+         * "Human cloning is inherently unsafe ." should be negative and not positive as it is currently classified
+      * Try Stanford sentiment analyzer instead of MPQA
+
+---++ 2016-08-16
+   * Evaluation strategy
+      * Optimize the system (manually) for one topic (development set)
+      * All other topics are used for evaluation
+      * Doing so prevents bias, overfitting (to a particular topic)!!
+      * Which topic do we choose as a development topic?
+      * What do we want to evaluate? 
+      * What do we ask?
+         1) Micro-level evaluation (questions on clusters and propositions; objective)
+            * Is it a debatable claim?
+            * Is stance correct (of the cluster)?
+            * Are there outliers in the cluster / propositions that do not belong to the cluster?
+            * (Is the representative well choosen or is there a better one in the cluser?)
+         2) Macro-level evaluation (are the results together meaningfull; subjective opinion)
+            * Do the results provide a good overview of the topic?
+            * Is there some information missing? If so, which? Are the reuslts "complete".
+      * Whom to ask?
+         * How many people do we need?  
+         * Crowdsourcing?
+      * Is there a need to compare two different systems? 
+      * How does the evaluation interface look like? Google Forms? Something else? 
+   * Next steps:
+      * Finish GUI implementation so that (1) the clusters, (2) the propositions in a cluster, (3) the stance and (4) the representative is visible. Bring a screenshot showing the output for the "development topic". (1 day)
+      * Answer questions for evaluation strategy and draft (e.g. paper prototype or powerpoint mockup). Bring the mockup to the next meeting! (1 day)
+      * Decide on clustering approach(es)! Justify your decision (1 day)
+   * For improving the system:
+      * Stance recognition: We could try our own in-house stance classifier (1 day) 
+         1) CS: Send link of arg-parser to Can
+         2) Can: Check access to my repository
+         3) Can: Test stance recognition on your data
+      * Proposition extraction, e.g. for representatives:
+         * Stanford Open IE: http://nlp.stanford.edu/software/openie.html
+         * Check if the system can be used to extract representatives of a cluster, e.g. by selecting the most frequent proposition among all cluster sentences (1 day)
+
+
+
+---++ 2016-08-02
+   * Status Update:
+      * Removed subject from polarity detection
+         * Slight improvements, but still not good enough
+         * Maybe switching to another approach (sentiment?) could be more feasible
+      * Implemented local approach using averaged word embeddings from "Towards Universal Paraphrastic Sentence Embeddings" (John Wieting et al.) (Available at http://ttic.uchicago.edu/~wieting/)
+         * The results appear to be better
+         * Much faster than remote querying
+         * kMeans also possible on the sentenceVectors
+      * Implemented a German approach
+         * Currently automatically translate the sentence from German to English and than uses the English embeddings
+         * @info(CS): are there no german embeddings available? maybe there are some in our group... I will try to find that out!
+      * Switched to sentences instead of propositions
+      * Wrote Mid-Term presentation
+   * Next Steps:
+      * @info(CD): Next week I lack time to work on major improvements, that is why I only list minor tasks as TODO
+      * Writing
+      * Improve Clustering
+         * Algorithms as options in the GUI
+         * Only run one algorithm in a run
+         * Try out kmean
+
+---++ 2016-07-19
+   * @info(CS): Data needs to be sent to IG including a *description* of the data by tomorrow (20.7.)
+   * @question(CS): Where is the code for the clustering algorithm (Chris Stahlhut needs a link to the repository)
+   * @info(CS): Keywords für similarity measures: "skip thought" (Sentence embeddings) and "phrase embeddings"
+   * Status Update:
+      * Updated [[%ATTACHURLPATH%/extractionStatistic.tsv]] (Amount of German propositions improved slightly in one topic)
+      * Created a short [[%ATTACHURLPATH%/SummarizingPointsOnlineDebates.pdf][summary]] of "Summarising the points made in online political debates"
+      * Implemented similarity function based on swoogle
+         * Currently very slow, should probably be replaced with own implementation
+      * Implemented precomputing of distances
+      * Run 3 clustering algorithms based on precomputed distances:
+         * !KMedoidsPAM
+         * !KMedoidsEM
+         * !DBSCAN
+         * Results: [[%ATTACHURLPATH%/ClusteringResults.zip][Clustering]] (Only contains clustering 
+   * Next Steps:
+      * Documented in the [[%ATTACHURLPATH%/schedule.pdf][brief work schedule]]
+      * Similarity, stance recognition and clustering on sentences (does this produce better results?)
+      * Similarity measures... implement a better local approach
+      * Investigate dimensionality of clustering algorithms; what are common approaches to encode text?
+
+---++ 2016-07-13
+   * info(CS): "Summarising the points made in online political debates" http://homepages.abdn.ac.uk/advaith/pages/acl2016b.pdf
+   * Status Update:
+      * Mid Term:
+         * Created a [[%ATTACHURLPATH%/Preprocessing.pdf][pdf]] overview for the data acquisition 
+      * Short Term:
+         * Alterations for the two languages set
+            * Alterations EN: pro con, arguments, for against
+            * Alterations DE: Pro Contra, Argumente, Debatte
+         * Data Collected for following topics (n=100)
+            * Topics EN: Death penalty, School uniforms, Cloning, Abortion, Minimum wage
+            * Topics DE: Todesstrafe, Schuluniformen, Klonen, Abtreibung, Mindestlohn
+         * Created a [[%ATTACHURLPATH%/extractionStatistic.tsv][statistic]] to view the extracted propositions
+         * A qualitative comparison between clustering on sentences and propositions extraction is currently not possible for the following reasons
+            * The current similarity function is not good enough to detect anything besides near-duplicates
+            * The clustering algorithm runs with a "guessed" threshold, therefore it does not perform well
+   * Next Steps:
+      * Improve Clustering
+         * Implement different algorithms
+         * Implement other similarity functions
+            * Difficult to decide what the best options are (If we could use a measure, that does not need pairwise comparison the performance would greatly increase)
+            * http://swoogle.umbc.edu/SimService/index.html 
+      * Draft a brief work schedule for two weeks
+         * CS: absent 22.7.-8.8.2016
+      * First draft of slides for mid-term presentation are due 8th August
+         
+
+---++ 2016-07-05
+   * Status Update:
+      * Mid Term:
+         * Created simple cluster evaluation class
+            * Currently works with console
+            * 4 categories: Pro, Contra, !NotArgumentative, Incomplete
+            * First analysis showed, that too many clusters are incomplete, therefore I focused on improving the proposition extraction first
+      * Short Term:
+         * Further improved filtering of sentences and propositions
+            * Sentences containing more than 100 tokens get ignored
+         * Migrated to dkpro 1.8.
+            * Main Reason: Tagsets and documentation are better
+            * Additionally 1.8. correctly determines the ROOT of the dependency tree
+            * Tried out different Parser and Tagsets
+               * !StanfordParser is currently not running (needs to be fixed)
+               * !MaltParser has same Tagset as !StanfordParser
+               * !MateParser has a different Tagset, that contains less tags but is easier and faster to process ([[%ATTACHURLPATH%/PropFile.txt][mate]][[%ATTACHURLPATH%/PropFileStanford.txt][stanford]])
+                  * Currently I am using !MateParser
+         * Performance of Clustering is right now highly dependent on proposition (or sentence) length
+            * The reason for this is the pairwise comparison, that is used right now
+            * This problem can easily avoided by using word embeddings
+            * Removing stop words can also help improving the performance and filter noise
+   * Next Steps:
+      * Mid Term:
+         * Try out different clustering algorithms
+      * Short Term:
+         * Q: Should we apply stance recognition before or after clustering? (Stance-Clustering vs. Clustering-Stance)
+         * Q: Maybe we should include the negation and stance in the similarity measure?
+         * Define and implement new search strategy
+            * GoogleAPI only allows for maximum 100 search results, which is too little
+            * Even for the 100 search results there are too many irrelevant files (if not querying a popular topic)
+            * Possible solution: Scrape another web engine
+               * This will slow down the Link retrieval
+            * Alternative solution: multiple queries with different modifiers instead of pro con
+         * Try the system with more languages.
+         * Manually investigate the results (systematically)
+            * e.g. using the following categories: pro, contra, notAClaim
+      * *Until next week*:
+         * Fix data collection: Use a static set of queries; retrieve the urls and htmls; experiment with different query extensions until for each query enough data is present; *for bot english and german*
+         * Create a table that provides an overview of the data
+         * Figure out if clustering works better on sentence or propositions (Do we need proposition extraction at all?) (please provide examples of both for some of the queries)
+     
+
+
+---++ 2016-06-28
+   * Status Update:
+      * Short Term:
+         * Refined filtering of sentences and propositions, that do not contain the subject
+            * Documents, that do not contain the subject at all get filtered completely
+            * Extra file exists, that only contains the subject
+            * Light preprocessing is used on this file to get the lemmas and stems
+            * In candidates the stem and lemma gets compared with the subject lemma and stem
+         * Implemented various extensions to the GUI:
+            * New chain experiment checkbox allows multiple experiments to run (based on topics.tsv)
+            * New On Sentence check box, that uses sentences instead of propositions for clustering and stance recognition
+            * New option, that uses preprocessing but reruns proposition extraction, stance recognition and clustering
+         * Fixed some bugs, that lead to subjects with multiple words not being extracted properly
+   * Next Steps:
+      * Mid Term:
+         * Research Self Organizing Maps 
+            * Find a suitable implementation (Weka or Java-ML?)
+      * Short Term:
+         * Q: Should we apply stance recognition before or after clustering? (Stance-Clustering vs. Clustering-Stance)
+         * Q: Maybe we should include the negation and stance in the similarity measure?
+         * Try the system with more languages.
+         * Manually investigate the results (systematically)
+            * e.g. using the following categories: pro, contra, notAClaim
+         
+---++ 2016-06-21
+   * Status Update:
+      * Mid Term:
+         * Libraries for clustering in Java:
+            * [[http://elki.dbs.ifi.lmu.de/.CanDiehl][ELKI]]
+               * Specialized on clustering
+               * No SOM available
+               * Easily extendable
+            * [[http://www.cs.waikato.ac.nz/ml/weka/.CanDiehl][Weka]]
+               * Contains SOM
+               * Slower than ELKI for clustering ([[http://elki.dbs.ifi.lmu.de/wiki/Benchmarking.CanDiehl][see here]])
+            * [[http://java-ml.sourceforge.net/.CanDiehl][Java-ML]]
+               * Contains SOM
+            * All libraries need manual extension to work with text
+      * Short Term:
+         * Split preprocessing in 3 tasks
+            * light preprocessing: Segmentation, Lemmatization, Stemming
+            * splitting and filtering: Uses JCasMultiplier to save sentences separately (sentences without the subject are not saved)
+            * heavy preprocessing: Dependency Parsing
+         * Implemented first version of clustering
+            * Currently uses DBSCAN
+            * Implemented in ELKI
+               * Contains a custom similarity measure (Resnik)
+               * Contains a custom parser (to parse propositions)
+            * Results are currently saved in txts and not displayed in the GUI
+               * Example Abortion: [[%ATTACHURLPATH%/ClusterAbortion.txt][Cluster]], [[%ATTACHURLPATH%/NoiseAbortion.txt][Noise]]
+               * Example Cloning: [[%ATTACHURLPATH%/ClusterCloning.txt][Cluster]], [[%ATTACHURLPATH%/NoiseCloning.txt][Noise]]
+   * Next Steps:
+      * Mid Term:
+         * Research Self Organizing Maps 
+            * Find a suitable implementation (Weka or Java-ML?)
+      * Short Term:
+         * Q: Should we apply stance recognition before or after clustering? (Stance-Clustering vs. Clustering-Stance)
+         * Q: Maybe we should include the negation and stance in the similarity measure?
+         * Remove all propositions that do not include the subject
+         * Try the system with more topics / languages.
+         * Manually investigate the results (systematically)
+            * e.g. using the following categories: pro, contra, notAClaim
+         * Try clustering the entire sentence
+
+---++ 2016-06-15
+   * @info(CS): Hiwi-Vertrag + Zeitzettel? (DONE)
+   * @info(CS): Einträge in DnE Report
+   * Status Update:
+      * Short Term:
+         * Extended Similarity Measurements
+            * Currently uses WordNet-Path Based Similarity (Lexical features are optional and currently turned off)
+            * Adding TF-IDF weighting to terms lead to a big improvement
+            * Further experimented with Word Embeddings to build sentence vectors
+               * is currently way too slow to apply for entire propositions
+                  * Problem: If a lemma is not in the database it leads to very long searches
+            * Subjects are filtered from the propositions since they always contain a match
+            * Similarities are safed in a file
+         * Slightly changed proposition extraction to discard non-alphanumeric tokens
+   * Next Steps:
+      * Mid Term:
+         * Research Self Organizing Maps
+         * Java-Libraries for clustering?
+         * Develop a better strategy for similarity measurement
+            * Use multiple measures simultaneously
+               * Problem: How to weight every measure (some are better than others)
+            * Improve Word Embeddings
+               * Improve performance
+               * Add TF-IDF weighting
+            * Maybe some sort of ML can help improve the results
+      * Short Term:
+         * Implement first version of clustering algorithm
+         * Adapt preprocessing: Apply "heavy tasks" only on sentences including a subject for improving performance. *Hint*: Use a !JCasMultiplier To convert a document into sentences.
+         * Q: Should we apply stance recognition before or after clustering? (Stance-Clustering vs. Clustering-Stance)
+         * Q: Maybe we should include the negation and stance in the similarity measure?
+
+---++ 2016-06-07
+   * Status Update:
+      * Short Term:
+         * Implemented first version for measuring similarities
+            * Currently only uses lexical features
+               * Only works on obvious cases
+               * Cannot detect negations
+            * Experimented with Word Embeddings to build sentence vectors
+               * Cannot detect negations
+            * Subjects are filtered from the propositions since they always contain a match
+         * Slightly changed proposition extraction to safe lemmas for now (might be changed again later)
+            * Helps for proposition extraction
+   * Next Steps:
+      * Mid Term:
+         * Research Self Organizing Maps
+      * Short Term:
+         * Further experiment and improve the similarity measures
+         * Implement save file for similarity measures
+         * Register Thesis
+
+---++ 2016-06-01
+   * @info(CS): Today the task force on "Realtime analysis and UI" will participate in our meeting to discuss some technical requirements.
+   * @info(CS): Currently, the entire document is preprocessed with the entire preprocessing pipeline. This is very time consuming. Is it possible to first select only th sentences that include the subject and than run the preprocessing only on those sentence? This could speed up the system tremendously. 
+   * Status Update:   
+      * Midterm:
+         * Created a short overview of different similarity measures ([[%ATTACHURLPATH%/similarity_summary.pdf][pdf]])
+            * CS: Great. What about "semantic similarity measures" are those covered by "Corpus Based Similarity"?
+            * maybe wordnet is an option?
+      * Short-term:
+         * Finished 1-Pager
+         * Improved Proposition Extraction
+            * If the sentence contains a negation, this is saved in the result file
+            * "for" gets now added to the proposition if necessary
+            * *Problem*: double propositions (sometimes the exact same proposition is two times contained in the text due to the HTML-Fetcher)
+               * Maybe don't consider sentences, if they are identical to previous ones (but maybe this removes potential findings too...)
+         * Improved proposition extraction for German
+            * Added a bunch of rules (maybe too much, see [[%ATTACHURLPATH%/PropFile.txt][Todesstrafe]])
+               * Currently I'm not able to test the proposition extraction since I lack the RAM to run the german parser consistently
+                  * Simple solution --> ordered additional RAM, should arrive this week
+                  * CS: Thank you, this is great! another solution could be to run the system on one of our compute servers. However, it is easier if you have it on your own machine.
+               * *Problem*: It seems that I'm mainly extracting informal sentences, which is kind of the exact opposite of what we need
+                  * Possible Reasons:
+                     * The quality of the extracted german texts is significantly lower, than for english texts (way too much newspaper articles, teacher/school specific content, too little blogs or similar platforms)
+                        * CS: I expected that... thanks for figuring this out!  
+                     * The rules are not good/complete enough
+                        * CS: The syntax of german is more complex, right?
+                  * Possible Solution:
+                     * Improve the extraction (but how?)
+                     * Extract a set of relevant sentences from the files manually or build a set of basic sentences for the german languages and build rules around them
+         * Improved sentiment analysis for English
+            * Negates the sentiment if a negation is present in the proposition
+            * Result files for abortion n=50 ([[%ATTACHURLPATH%/negative.txt][negative.txt]],[[%ATTACHURLPATH%/neutral.txt][neutral.txt]],[[%ATTACHURLPATH%/positive.txt][positive.txt]])
+         * Implemented sentiment analysis for German
+            * Works exactly like english one (still need to do more testing)
+         * Expanded GUI
+            * It is now possible via the GUI to force the program to rerun an experiment(deletes old experiment)
+   * Next Steps:
+      * Midterm: 
+         * Expanding the GUI
+      * Short-term:
+         * Rework German proposition extraction
+         * Test german proposition extraction and sentiment analysis
+         * Test sentiment analysis with polarity detection for entire sentence and StanfordSentiment
+         * Extract two seperate propositions if a conjunction is present (currently one is extracted)
+         * Try out similarity measures
+
+---++ 2016-05-25
+   * Status Update:
+      * Midterm:
+         * Added big data dependency as a LDA disadvantage and an overly detailed reference slide ([[%ATTACHURLPATH%/clustering_summary.pdf][pdf]])
+      * Short-term:
+         * Improved Proposition Extraction
+            * Restructured Proposition Extraction to remove redundancy in the code
+            * Added POS to the output of the PropFile (This is necessary to use the Subjectivity Lexicons)
+            * Added the document ID and the sentence begin to the output of the PropFile to make the sentence findable
+            * Fixed problem with root
+            * Example Files: [[%ATTACHURLPATH%/PropFile.txt][school uniforms]], [[%ATTACHURLPATH%/PropFile.txt][Abortion]], [[%ATTACHURLPATH%/PropFile.txt][Death Penalty (no root check)]]
+         * Implemented simple proposition extraction for German
+            * Added stemming to preprocessing to improve topic identification
+            * Still only works for simple cases ([[%ATTACHURLPATH%/PropFile.txt][Todesstrafe]])
+         * Implemented very simple sentiment analysis for English
+            * Currently adds up occurences of positive and negative subjectivity clues and decides based on this information
+         * Implemented GUI
+   * Next Steps:
+      * Midterm: 
+         * Research Similarity measures for text clustering
+      * Short-term:
+         * Improve Proposition Extraction for German version
+         * Adapt GUI to enable better testing
+         * Improve Sentiment Analysis for English version
+         * Implement Sentiment Analysis for German version
+           
+---++ 2016-05-18
+   * Status Update:
+      * Midterm:
+         * Extended the overview of pro and cons for different clustering methods and added citations ([[%ATTACHURLPATH%/clustering_summary.pdf][pdf]])
+      * Short-term:
+         * Implemented simple Proposition extraction with various cases
+            * Example result files with n=50, subject=abortion yielded 250 Propositions ([[%ATTACHURLPATH%/PropFile.txt][txt]])
+            * Can still be extended by implementing additional rules
+               * Still a minor or problem: DKPro implementation does not save the root of the sentence, d an alternative to detect main clauseuse
+   * Next Steps:
+      * Midterm: 
+         * Research Similarity measures for text clustering
+      * Short-term:
+         * CS: Generate PropFiles.txt of other topics
+         * CS: Is it possible to generate PropFiles in german? 
+         * CS: Personal 1-pager until 1st June: https://docs.google.com/document/d/10at5K9vxuslrSt650uQ1ER7K5wkrf-ndLUT_lgvVHFs/edit#heading=h.ptjwmksp6e7v
+         * Implement Proposition Extraction for German version
+         * Implement Sentiment Analysis for English version
+            * http://alt.qcri.org/semeval2016/task6/
+         * Implement Prototype for GUI
+
+---++ 2016-05-11
+   * Status Update:
+      * Midterm:
+         * Defined first version of topic list ([[%ATTACHURLPATH%/topics.txt][txt]])
+         * Created short overview of pro and cons for different clustering methods ([[%ATTACHURLPATH%/ProsCons.txt][txt]])
+      * Short-term:
+         * Faroo Web Search not usable
+            * tried own implementation as well as already implemented JFreeWebSearch
+            * No results for queries containing too many words
+         * Extended boilerplate removal to add a dot if there is no punctuation before a linebreak
+         * Slightly changed html retrieval
+            *  htmls are directly downloaded via tika instead of saving them first
+         * Implemented German version (Retrieval, Preprocessing)
+         * Experimented with Proposition extraction
+            * No good results with manual created rules ([[%ATTACHURLPATH%/PropFile.txt][txt]])
+               * Hard to find relevant rules manually
+               * Quality of results is too low
+               * Amount of found results is to low
+               * English implementation completely unusable for German version
+            * Implemented target extraction based on rules by Somasundaran ([[%ATTACHURLPATH%/PropFile.txt][txt]])
+               * Way too much noise (even after filtering sentences without subject) 
+               * English implementation completely unusable for German version
+      * Next Steps:
+         * Midterm: 
+            * Write Related Work - Text Clustering and Sentiment Analysis
+            * Elaborate Thesis Structure ([[%ATTACHURLPATH%/structure.pdf][pdf]])
+         * Short-term:
+            * Find appropriate method for proposition extraction
+
+---++ 2016-04-27
+   * Scheduling of the tasks
+   * Administrative tasks
+      * todo(CS): Put thesis on ukp homepage (DONE)
+      * todo(CS): Wiki entry (running thesis) (DONE)
+      * Scheduled talks:
+         * 2016-08-16 midterm presentation
+         * 2016-10-11 final presentation
+   * https://sites.google.com/site/iggsasharedtask/tools -> german sentiment-analysis tools and lexicons
+   * Clustering with CLUTO package or similar existing tools ([[http://glaros.dtc.umn.edu/gkhome/views/cluto][link]])
+   * Status Update:
+      * Got a Faroo API Key
+      * Implemented Pro-Con Classification based on polarity of Propositions through Subjectivity Clues
+         * Currently it looks like most of the triples are neutral and are therefore discarded (Cloning, n=20 -> 13 positive, 14 negative, 108 neutral triples)
+            * More rules for Proposition Extraction could help.
+            * Coreference Solution could help
+         * Only polarity of predicate is checked currently
+      * Drafted first version of Thesis Structure ([[%ATTACHURLPATH%/structure.pdf][pdf]])
+      * Tried java word2vec from file
+         * Somehow i get different similarities when entering the same word combination twice
+   * Next Steps:
+      * Midterm:
+         * Write Related Work - Text Clustering and Sentiment Analysis
+         * Elaborate Thesis Structure
+         * Define a reasonable query list / topics for demonstration
+      * Short-term: 
+         * Implement Faroo Web Search!
+         * Improve proposition extraction and sentiment analysis (de/en)
+         * Revise boilerplate removal (line break bug)
+         * Implement German version (adapt preprocessing, etc.)
+         * Add list of extracted proposition to the wiki
+         * Implement similarity based on word2vec
+         * Get to know CLUTO
+
+
+---++ 2016-04-20
+   * Task description ([[%ATTACHURLPATH%/TaskDescription_v03.pdf][pdf]] / [[%ATTACHURLPATH%/TaskDescription_v03.docx][doc]])
+   * @info(CS): SVN access should work now.
+      * @info(CD): SVN access works, code committed
+      * <del>@todo: Send link to CS</del>
+      * <del>@todo: include readme.txt that describes how to run the system</del>
+   * Status Update:
+      * Preprocessing implemented: Segmentation, Lemmatization, Parsing (No Sentiment Analysis is used)#
+         * Currently only english; 
+         * @todo: Should be adapted to german as well
+      * Simple Proposition Extraction implemented
+         * Extracts only propositions where the subject is the nominal subject (nsubj) and a direct object (dobj) is targeted
+            * e.g. "uniforms improve attendance"
+      * (Mainly) implemented general Architecture including the HashClass that is responsible for assigning folder names and detect duplicates
+         * Classes in the pipeline can check if work is needed
+      * Literature Research: Only researched argument generation and stance recognition
+         * <del>@todo: draft thesis structure</del>
+      * Found a German lexicon with polarity clues online [[http://www.ulliwaltinger.de/sentiment/][here]]
+   * Next Steps:
+      * Implement Pro-Con Classification based on polarity of Propositions through Subjectivity Clues
+      * Research Clustering Literature (Especially "A survey of text clustering algorithms")
+      * Implement naive clustering
+   * @info(CS): Aspect Extraction with Automated Prior Knowledge Learning
+      * http://www.aclweb.org/anthology/P14-1033
+      * Might be relevant to the work. 
+      * There is a lot related work in sentiment analysis (keywords: aspect extraction / target extraction).
+         * http://de.slideshare.net/midorazaz/aspect-extraction-a-survey 
+      * Some approaches also use clustering / topic modeling approaches (see related work of the paper above)
+      * The evaluation is also interesting since it is based on user ratings. I could imagine a similar approach for your thesis.
+   * @info(CS): Identifying Prominent Arguments in Online Debates Using Semantic Textual Similarity
+      * http://www.aclweb.org/anthology/W15-0514
+      * Includes some information about argument similarity
+
+---++ 2016-04-13 
+   * SVN for students?
+      * Yes, but I have no access (https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students)
+   * Status Update:
+      * Java Web Search implemented 
+         * Currently using Google Custom Search (100 queries per day)
+         * Hint:
+            * Cache results of (each) step(s) on file system (use Hash as key for storage (maybe include classname as well))
+            * Use for each step a clear defined interface (in order to exchange the modules)
+            * Parameters: number hits, language (de/en)
+   * Next Steps:
+      * Implement general architecture (define interfaces, data flow, caching, etc. and implement it)
+      * Implement Proposition Extraction
+      * Research Clustering Literature
+
+---++ 2016-04-06 (open) Questions & Answers
+   * Discuss current state of task description
+   * What are arguments in the context of this thesis?
+      * Actually, it is not clear if the extracted propositions are "arguments", they could be "argument components" with unknown type or just "propositions/statements" on the queried subject.
+   * What are potential data sources?
+      * Question in that context: How does the ideal data look like?
+      1 Query Web search engine (e.g. faroo) per API or manually (potential violation of ToS) and save top n results
+         * Maybe use more than 1 query to get results on a subject (e.g. 1 for pro, one for con)
+      2 <del>Existing corpora with debate data (Probably difficult to find a fitting German corpus)</del>
+   * What are possible methods for evaluating?
+      * User Study:
+         * Users evaluate result on subjects according to relevance and correct side (pro/con) via web interface
+            * <del>Potential problem -> completeness of the collected information not guaranteed, how could this be evaluated?</del>
+         * Use automatically extracted pro con lists for several subjects and ask participants e.g. if polarity of items is correct, if clusters are redundant, if items are meaningful, etc.
+         * Evaluate results using IAA scores and conduct error analysis
+         * evaluation strategy similar to Levy, Ran, Yonatan Bilu, Daniel Hershcovich, Ehud Aharoni, and Noam Slonim. 2014. Con-text dependent claim detection. In Proceedings of the 25th International Conference on Computational Linguistics (COLING 2014), pages 14891500, Dublin, Ireland.
+   * Could document type/name and metadata help improve the Pro/Con Detection?
+      * Most documents state in their title, if they argue for or against the subject or both
+      * This could potentially be exploited in combination with html-metadata to easier identify Pro/Con statements
+   * How to detect indirect references to the subject?
+      * Research State of the Art, good solutions should be available
+      * This task is called co-reference resolution 
+   * Proposition extraction: http://u.cs.biu.ac.il/~stanovg/propextraction.html
+   * Clustering
+      * How important is domain knowledge or similarity measures?
+      * We might need Semantic Similarity (DKPro Similarity)
+      * Research clustering of short documents (single sentences / microblogs / twitter)
+
+   
+---++ 2016-03-30
+   * Discussed Workflow of the thesis and signed contract(s)
+   * Clarified expectations and requirements
+   * Started elaborating the topic
+      * Aggregation of arguments (what are arguments in the context of this thesis?)
+      * Potential data sources (English or German or both)
+      * "Search engine" that summarizes/aggregates argumentation relevant propositions structured as pro and con.
+      * Evaluation?
+
+
+-- Main.ChristianStab - 2016-03-30
+
+%META:FILEATTACHMENT{name="TaskDescription_v03.pdf" attachment="TaskDescription_v03.pdf" attr="" comment="" date="1460979768" size="266300" user="stab" version="1"}%
+%META:FILEATTACHMENT{name="TaskDescription_v03.docx" attachment="TaskDescription_v03.docx" attr="" comment="" date="1460979782" size="124683" user="stab" version="1"}%
+%META:FILEATTACHMENT{name="structure.pdf" attachment="structure.pdf" attr="" comment="" date="1462729384" size="55558" user="diehl" version="3"}%
+%META:FILEATTACHMENT{name="topics.txt" attachment="topics.txt" attr="" comment="" date="1462723171" size="279" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="ProsCons.txt" attachment="ProsCons.txt" attr="" comment="" date="1462731729" size="603" user="diehl" version="2"}%
+%META:FILEATTACHMENT{name="PropFile.txt" attachment="PropFile.txt" attr="" comment="" date="1467668004" size="68320" user="diehl" version="10"}%
+%META:FILEATTACHMENT{name="clustering_summary.pdf" attachment="clustering_summary.pdf" attr="" comment="" date="1464121491" size="102012" user="diehl" version="2"}%
+%META:FILEATTACHMENT{name="similarity_summary.pdf" attachment="similarity_summary.pdf" attr="" comment="" date="1464722873" size="96829" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="negative.txt" attachment="negative.txt" attr="" comment="" date="1464723317" size="4202" user="diehl" version="2"}%
+%META:FILEATTACHMENT{name="neutral.txt" attachment="neutral.txt" attr="" comment="" date="1464723343" size="10286" user="diehl" version="3"}%
+%META:FILEATTACHMENT{name="positive.txt" attachment="positive.txt" attr="" comment="" date="1464723361" size="2605" user="diehl" version="3"}%
+%META:FILEATTACHMENT{name="ClusterAbortion.txt" attachment="ClusterAbortion.txt" attr="" comment="" date="1466451987" size="2324" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="NoiseAbortion.txt" attachment="NoiseAbortion.txt" attr="" comment="" date="1466452040" size="3706" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="ClusterCloning.txt" attachment="ClusterCloning.txt" attr="" comment="" date="1466452094" size="2892" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="NoiseCloning.txt" attachment="NoiseCloning.txt" attr="" comment="" date="1466452111" size="9761" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="PropFileStanford.txt" attachment="PropFileStanford.txt" attr="" comment="" date="1467668055" size="34081" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="Preprocessing.pdf" attachment="Preprocessing.pdf" attr="" comment="" date="1468271827" size="23893" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="extractionStatistic.tsv" attachment="extractionStatistic.tsv" attr="" comment="" date="1468863545" size="330" user="diehl" version="2"}%
+%META:FILEATTACHMENT{name="SummarizingPointsOnlineDebates.pdf" attachment="SummarizingPointsOnlineDebates.pdf" attr="" comment="" date="1468863993" size="21893" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="ClusteringResults.zip" attachment="ClusteringResults.zip" attr="" comment="" date="1468864484" size="404925" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="schedule.pdf" attachment="schedule.pdf" attr="" comment="" date="1468864719" size="17008" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="triples.txt" attachment="triples.txt" attr="" comment="" date="1471895228" size="1553" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="ClusterDBSCAN_S _Cloning.txt" attachment="ClusterDBSCAN_S _Cloning.txt" attr="" comment="" date="1471899555" size="21761" user="diehl" version="2"}%
+%META:FILEATTACHMENT{name="GUIExample.png" attachment="GUIExample.png" attr="" comment="" date="1471895872" size="8667" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="evaluation.pdf" attachment="evaluation.pdf" attr="" comment="" date="1471898172" size="71948" user="diehl" version="3"}%
+%META:FILEATTACHMENT{name="error.txt" attachment="error.txt" attr="" comment="" date="1471899312" size="1310" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="GUI_Results.png" attachment="GUI_Results.png" attr="" comment="" date="1471899451" size="27484" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="ClusterDBSCAN_S_Cloning.txt" attachment="ClusterDBSCAN_S_Cloning.txt" attr="" comment="" date="1471899612" size="21761" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="Performance.xhtml" attachment="Performance.xhtml" attr="" comment="" date="1472498938" size="5297" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="SystemInfo.txt" attachment="SystemInfo.txt" attr="" comment="" date="1472498956" size="119" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="Evaluation- DBSCAN_ProsAndCons_0.22.csv" attachment="Evaluation- DBSCAN_ProsAndCons_0.22.csv" attr="" comment="" date="1472499028" size="4241" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="Evaluation- KMedoids_ProsAndCons_Div10.csv" attachment="Evaluation- KMedoids_ProsAndCons_Div10.csv" attr="" comment="" date="1472499046" size="7929" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="Evaluation- DBSCAN_ProsAndCons_0.22_Sentiment.csv" attachment="Evaluation- DBSCAN_ProsAndCons_0.22_Sentiment.csv" attr="" comment="" date="1472499085" size="5865" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="evalEvaluation- DBSCAN_ProsAndCons_0.22.csv.tsv" attachment="evalEvaluation- DBSCAN_ProsAndCons_0.22.csv.tsv" attr="" comment="" date="1472504000" size="370" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="evalEvaluation- KMedoids_ProsAndCons_Div10.csv.tsv" attachment="evalEvaluation- KMedoids_ProsAndCons_Div10.csv.tsv" attr="" comment="" date="1472504018" size="368" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="Evaluation-DBSCAN_ProsAndCons_0.22.csv" attachment="Evaluation-DBSCAN_ProsAndCons_0.22.csv" attr="" comment="" date="1472504101" size="4241" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="Evaluation-KMedoids_ProsAndCons_Div10.csv" attachment="Evaluation-KMedoids_ProsAndCons_Div10.csv" attr="" comment="" date="1472504122" size="7929" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="Evaluation-DBSCAN_ProsAndCons_0.22_Sentiment.csv" attachment="Evaluation-DBSCAN_ProsAndCons_0.22_Sentiment.csv" attr="" comment="" date="1472504149" size="5865" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="evalEvaluation-DBSCAN_ProsAndCons_0.22.csv.tsv" attachment="evalEvaluation-DBSCAN_ProsAndCons_0.22.csv.tsv" attr="" comment="" date="1472504242" size="370" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="evalEvaluation-KMedoids_ProsAndCons_Div10.csv.tsv" attachment="evalEvaluation-KMedoids_ProsAndCons_Div10.csv.tsv" attr="" comment="" date="1472504258" size="368" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="evalEvaluation-DBSCAN_ProsAndCons_0.22_Sentiment.csv.tsv" attachment="evalEvaluation-DBSCAN_ProsAndCons_0.22_Sentiment.csv.tsv" attr="" comment="" date="1472504283" size="438" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="ClusterDBSCAN_S_Sentiment.tsv" attachment="ClusterDBSCAN_S_Sentiment.tsv" attr="" comment="" date="1472654759" size="16954" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="ClusterDBSCAN_MPQA.tsv" attachment="ClusterDBSCAN_MPQA.tsv" attr="" comment="" date="1472654838" size="16942" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="ResearchQuestions.pdf" attachment="ResearchQuestions.pdf" attr="" comment="" date="1473090641" size="72239" user="diehl" version="1"}%

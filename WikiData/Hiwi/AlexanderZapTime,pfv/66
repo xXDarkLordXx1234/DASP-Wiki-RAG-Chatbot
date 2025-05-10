@@ -1,0 +1,183 @@
+%META:TOPICINFO{author="zap" comment="" date="1550160888" format="1.1" reprev="66" version="66"}%
+%META:TOPICPARENT{name="AlexanderZap"}%
+---+!! Time Table
+
+---++ January 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 08.01.2018 | Meeting | 1.5 | |
+| 11.01.2018 | Reader-Webapp Error Fix (solr-incompatibility) | 4 | |
+| 17.01.2018 | Creation of Wiki Page | 2 | |
+| 23.01.2018 | Meeting | 1 | |
+| 24.01.2018 | OpenVPN Setup | 1 | |
+| 24.01.2018 | Query Execution | 1.5 | |
+| 25.01.2018 | Reader Code Analysis | 2 | |
+| 26.01.2018 | Reader Code Analysis | 2 | |
+| 29.01.2018 | Building reader _(December)_ | 8 | |
+| 30.01.2018 | Building reader _(December)_ | 4 | |
+| 30.01.2018 | Testing reader _(December)_ | 4 | |
+| 31.01.2018 | Meetings _(December)_ | 6 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+---++ February 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 01.02.2018 | Meeting | 1.5 | |
+| 01.02.2018 | Creation of Wiki Page | 2 | |
+| 02.02.2018 | Creation of Wiki Page | 1 | |
+| 07.02.2018 | Bugsearching in local arXiv Crawler | 4 | |
+| 08.02.2018 | Meeting | 2 | |
+| 08.02.2018 | Wiki Page | 1.5 | |
+| 13.02.2018 | MetadataReader Bugsearch | 2 | |
+| 15.02.2018 | Meeting | 1 | |
+| 06.03.2018 | Meeting | 1 | |
+| 26.03.2018 | Pipeline for preference learning (Script) | 8 | |
+| 27.03.2018 | GitLab Wiki Expansion | 2 | |
+| 27.03.2018 | Bugsearching in local arXiv Crawler | 4 | |
+| 28.03.2018 | Pipeline for preference learning (Script) | 2 | |
+| 28.03.2018 | Bugsearch for missing recommendation display | 5 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ March 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 28.03.2018 | Bugsearch for missing recommendation display | 1 | |
+| 11.04.2018 | Fix of feature extraction error | 4 | |
+| 11.04.2018 | Optimization of feature extraction  | 2.5 | |
+| 12.04.2018 | Fix of SQL Error for recommendation generation| 3 | |
+| 12.04.2018 | Bugsearch for missing recommendation display| 2.5 | |
+| 13.04.2018 | Bugfix for missing recommendation display| 5 | |
+| 19.04.2018 | Meeting | 1 | |
+| 26.04.2018 | Bugfix for wrong recommendation order | 6 | |
+| 27.04.2018 | Preparation for preference learning script benchmark | 4 | |
+| 04.05.2018 | Meeting | 1 | |
+| 10.05.2018 | Recommendation Export Script | 0.5 | |
+| 10.05.2018 | Git Update (commits, issue tracker, wiki) | 0.5 | |
+| 10.05.2018 | Import function for external recommendations | 1 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ April 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 10.05.2018 | Import function for external recommendations | 3 | |
+| 11.05.2018 | Improved preference learning script (configurable) | 1 | |
+| 11.05.2018 | Import function for external recommendations | 4 | |
+| 18.05.2018 | Import function for external recommendations | 5 | |
+| 23.05.2018 | Import function for external recommendations | 3 | |
+| 23.05.2018 | Recommendation display from different sources | 1 | |
+| 24.05.2018 | Recommendation display from different sources | 5 | |
+| 25.05.2018 | Meeting | 1 | |
+| 30.05.2018 | Dropdown box for recommendation source selection | 2.5 | |
+| 30.05.2018 | Read arguments from command line argument (Python) | 0.5 | |
+| 30.05.2018 | Preference recommendation generation pipeline | 2 | |
+| 01.06.2018 | Call preference learning script from Java | 4 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ May 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 01.06.2018 | Call preference learning script from Java | 0.5 | |
+| 07.06.2018 | Meeting | 1 | |
+| 14.06.2018 | Benchmarking | 6 | |
+| 15.06.2018 | Benchmarking | 7 | |
+| 20.06.2018 | Modification and port of preference script to server | 6 | |
+| 21.06.2018 | Meeting | 1 | |
+| 27.06.2018 | Bug searching for preference script error on server | 3 | |
+| 27.06.2018 | Optimization of preference learning code | 1.5 | |
+| 28.06.2018 | Optimization of preference learning code | 3 | |
+| 03.07.2018 | Optimization of preference learning code | 3 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ August 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 05.07.2018 | Meeting | 1 | |
+| 11.07.2018 | Vacation | 5 | |
+| 17.07.2018 | Optimization of preference learning code | 3 | |
+| 17.07.2018 | Bug searching for preference script error on server | 1 | |
+| 18.07.2018 | Bug searching for preference script error on server | 3 | |
+| 18.07.2018 | Optimization of preference model prediction | 5 | |
+| 19.07.2018 | Meeting | 1 | |
+| 02.08.2018 | Interleaving of PREF/TFIDF recommendations | 5 | |
+| 03.09.2018 | Interleaving of PREF/TFIDF recommendations | 8 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ September 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 04.09.2018 | Meeting | 1 | |
+| 07.09.2018 | Investigating SQL bug (see [[https://git.ukp.informatik.tu-darmstadt.de/kiaeeha/arxiv-crawler/issues/131][gitlab-Issue]]) | 5 | |
+| 14.09.2018 | Investigating SQL bug (see [[https://git.ukp.informatik.tu-darmstadt.de/kiaeeha/arxiv-crawler/issues/131][gitlab-Issue]]) | 5 | |
+| 14.09.2018 | Research of possible evaluation measures for experiments | 3 | |
+| 17.09.2018 | Resolved SQL bug (see [[https://git.ukp.informatik.tu-darmstadt.de/kiaeeha/arxiv-crawler/issues/131][gitlab-Issue]]) | 3 | |
+| 18.09.2018 | Meeting | 1 | |
+| 05.10.2018 | Library export functionality | 6 | |
+| 08.10.2018 | Meeting | 1 | |
+| 11.10.2018 | Creation of reader-branch on [[https://git.ukp.informatik.tu-darmstadt.de/simpson/personalised_argumentation/tree/reader-branch][gitlab]] | 1 | |
+| 11.10.2018 | Implementation of k-fold evaluation | 3 | |
+| 12.10.2018 | Implementation of k-fold evaluation | 3 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ October 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 12.10.2018 | Implementation of k-fold evaluation | 3 | |
+| 15.10.2018 | Meeting | 1 | |
+| 15.10.2018 | Implementation of k-fold evaluation | 1 | |
+| 15.10.2018 | Implementation of k-fold heuristics | 6 | |
+| 22.10.2018 | Meeting | 1 | |
+| 29.10.2018 | Introduction to INCEpTION | 4 | |
+| 30.10.2018 | Introduction to INCEpTION | 8 | |
+| 06.11.2018 | Fixing INCEpTION Build Errors | 7 | |
+| 06.11.2018 | Sprint Meeting | 1 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ November 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 08.11.2018 | Fixing INCEpTION External Search Bugs | 5 | |
+| 08.11.2018 | Redesign of External Search Page | 3 | |
+| 13.11.2018 | Preparing pull request [[https://github.com/inception-project/inception/pull/302][#302]] | 8 | |
+| 14.11.2018 | Redesign of External Search Page | 8 | |
+| 20.11.2018 | Sprint Meeting | 1 | |
+| 20.11.2018 | Redesign of External Search Page | 7 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ December 2018
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 22.11.2018 | Redesign of External Search Page | 3 | |
+| 27.11.2018 | Redesign of External Search Page | 6 | |
+| 03.12.2018 | External Search Page | 6 | |
+| 04.12.2018 | Meeting | 1 | |
+| 05.12.2018 | Redesign of External Search Page PR | 4 | |
+| 10.12.2018 | Meeting | 1 | |
+| 11.12.2018 | Basic results reranking for external search | 8 | |
+| 13.12.2018 | PR Review | 1 | |
+| 18.12.2018 | Basic results reranking for external search | 2 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ January 2019
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 18.12.2018 | Basic results reranking for external search | 6 | |
+| 20.12.2018 | Meeting | 1 | |
+| 15.01.2019 | Reviewing PRs | 4 | |
+| 15.01.2019 | Basic results reranking for external search | 4 | |
+| 17.01.2019 | Meeting | 1 | |
+| 22.01.2019 | Meeting | 1 | |
+| 22.01.2019 | Basic results reranking for external search (sentence based)  | 7 | |
+| 29.01.2019 | Basic results reranking for external search (sentence based) | 4| |
+| 29.01.2019 | Indexing Gigaword on blinky | 4| |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ February 2019
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 31.01.2019 | Meeting | 1 | |
+| 05.02.2019 | Basic results reranking for external search (sentence based) | 4| |
+| 05.02.2019 | Import/export external search settings | 4| |
+| 14.02.2019 | Import/export external search settings | 4| |
+| 14.02.2019 | Creation of Gigawords ElasticSearch Index | 4| |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |

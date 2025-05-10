@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="kmayer" comment="reprev" date="1512898680" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="KevinMayer"}%
+---++ 2017-11-13
+   Approximation der Word Embeddings durch LSH vA für verschiedene Hashgrößen d:
+
+   * concepts: 2945
+   * baseline	 - # clusters: 1794, avg cluster size: 1.64
+   * d=64		 - # clusters: 2212, avg cluster size: 1.33, ARI: 0.62, precision: 0.79, recall: 0.97, F1: 0.87
+   * d=32		 - # clusters: 2194, avg cluster size: 1.34, ARI: 0.67, precision: 0.79, recall: 0.97, F1: 0.87
+   * d=16, run 1	 - # clusters: 1730, avg cluster size: 1.70, ARI: 0.51, precision: 0.80, recall: 0.77, F1: 0.79
+   * d=16, run 2	 - # clusters: 1704, avg cluster size: 1.73, ARI: 0.52, precision: 0.81, recall: 0.77, F1: 0.79
+   * d=16, run 3	 - # clusters: 1671, avg cluster size: 1.76, ARI: 0.54, precision: 0.81, recall: 0.75, F1: 0.78
+   * d=12		 - # clusters: 929,  avg cluster size: 3.17, ARI: 0.31, precision: 0.84, recall: 0.43, F1: 0.57
+   * d=8		 - # clusters: 213, avg cluster size: 13.83, ARI: 0.08, precision: 0.89, recall: 0.11, F1: 0.19
+
+
+---++ 2017-10-16
+   * Laufzeitanalyse der Pipeline:
+      * ohne Word Embeddings:
+         * Clustergröße 50: 20 min
+         * Clustergröße 100: 2,5 h
+      * mit Word Embeddings:
+         * Clustergröße 50: 30 min
+         * Clustergröße 100: 15 h

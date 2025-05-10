@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="ShuoYang" date="1270331577" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Arbeitsprotokoll-Archiv Shuo Yang
+
+---++ Mitte Februar ~ Mitte März
+
+---+++ (Quasi-) Abgeschlossene Aufgaben
+| *Aufgabe* | *% done* |
+| 1. TikaReader | 90 |
+| 2. Girt Topics '06~'08 DE-EN, EN-DE | 100 |
+| 3. Google Translate Analysis - Performanz | 100 |
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Übersetzung <br /> Girt Topics | 13.03.2010 | 1 | Mit GoogleTranslatePerformanceAnalysis <ul><li>Testcases von längerer Sätze erstellt</li><li>Dürchführen von Testcases daheim und in UKP-Pool</li><li>Dabei maximale Stringlänge von jeder Anfrage <br /> bestimmt, durch Encoding entstehende zusätzliche <br /> Länge muss man mit einbeziehen</li></ul> |  |
+| Übersetzung <br /> Girt Topics, <br /> Betreuung | 11.03.2010 | 2 | Mit GoogleTranslatePerformanceAnalysis <ul><li>Durchführen von Testcases mit kürzeren Sätzen</li><li>Dabei mehrfach Fehler von Google bekommen, <br /> wegen zu häufiger Zugriffe</li><li>Dafür versucht, optimale Pauseintervall für <br /> Google Translate zu bestimmen</li><li>Und danach Verarbeitung von Testergebnisse <br /> mit Google Spreadsheets</li></ul> und Betreuung von Benjamin, inklusive <ul><li>Ziele von Google Translate Konkatenation Test</li></ul> | |
+| Übersetzung <br /> Girt Topics | 10.03.2010 | 2 | Vervollständigen und Testen von <ul><li> =XmlTagRenamer= </li></ul> und mit GoogleTranslatePerformanceAnalysis angefangen, <br /> inklusive <ul><li>Entwurf Klassen von Testcases</li><li>Erstellen Testcases von kürzer Sätze </li><li>Dabei Zufallsatzgenerator für Übersetzungsmateriale <br /> verwendet (aus dem Internet)</li></ul> | |
+| Übersetzung <br /> Gir tTopics | 07.03.2010 | 3 | Übersetzung von Girt Topics '03-'08: English -> Deutsch <ul><li>Die sind von unterschiedlicher XML-Strukturen,<br /> wurden erst analysiert und eingeordnet</li><li>Zur einheitlichen Struktur umgewandelt</li><li>Dabei angefangen,  =XmlTagRename=  Annotator zu <br /> schreiben (nicht weit gekommen)</li><li>Mit  =TranslationAnnotator=  übersetzt und  <br /> =XmlFileWriter=  eingespeichert. </li></ul> |  |
+| Übersetzung <br /> Girt Topics | 04.03.2010 | 3 | Übersetzung von Girt Topics '06 ~ '08: Deutsch -> English <ul><li>Daten aus XML Datei auslesen</li><li>Mit  =TranslationAnnotator=  übersetzen.</li><li>In XML DOM-Modell zusammenfügen</li><li>Auf neue XML-Datei speichern</li><li>Dabei wurde Consumer  =XmlFileWriter=  für Girt- <br /> Dateiformat geschrieben, was XML DOM aus Features<br /> erstellt und es in neue Datei einschreibt</li></ul> |  |
+| TikaReader | 03.03.2010 | 2 | Erweiterung und Testen von =TikaReader= um <ul><li>Rekursives Dateilesen</li><li>Datentyp Filterung mit  =FileSet= </li></ul> und Ergänzung von !JavaDoc |  |
+| TikaReader | 24.02.2010 | 0.5 | Weitere Implementierung vom Parsen des =eml= Formats |  |
+| TikaReader | 19.02.2010 | 3.5 | Einarbeiten von <ul><li> =Tika= toolkit</li><li>dafür benötigte weiteren Bibliotheken</li></ul>   Implementierung und Testen von <ul><li> =TikaReader= , ein Component Reader, der Dateien <br /> mit verschiedener Formate (u.ä. =pdf= , =doc= , =eml= , =xml=) <br /> im Klartext parst, hauptsächlich mit =Tika= toolkit </li><li> auch inklusive Unterstützung von =eml= E-mail Format <br /> mit =javax.mail= (diese Format wurde noch nicht <br /> vom =Tika= unterstützt) </li></ul> |  |
+| CrGIRT,<br />Betreuung,<br />TikaReader | 18.02.2010 | 3 | Einarbeiten von <ul><li>Lucene Index Speicher und Zugriff mit Festplatt</li></ul> weitere Implementierung von <ul><li> =TranslationAnnotator= mit Caching (Timestamping <br /> und reguläre Aktualisierung des Caches auch möglich)</li><li> =TikaReader=, UIMA Component Reader, der mit Tika <br /> Framework Dateien wie PDF, doc zu reinem Text <br /> parst und in CAS speichert.</li></ul> und Betreuung über <ul><li> =TranslationAnnotator= </li><li>Neue Task: =TikaReader= </li></ul> |  |
+| CrGIRT | 17.02.2010 | 5 | Nachvollziehen der Ideen hinter <ul><li>Pipeline, uutuc, uutucs Java-Annotationen</li></ul> und Implementierung von <ul><li> =TokenAnnotator= mit Regex</li><li> =TranslationAnnotator= (umgebaut uutuc-Stil, <br /> Parameter als Java-Annotationen)</li><li>dazu über Typen von DKPro gearbeitet. Eigenen <br /> Type wusste ich noch nicht zu !DKProTypeSystem <br /> hinzuzufügen. Dafür habe ich =Stem= daraus genutzt </li></ul> |  |
+| CrGIRT und <br /> Betreuung | 16.02.2010 | 4.5 | Implementierung von  <ul><li> =TranslationAnnotator= mit Google Translate</li><li> =XMLReader= mit SAX-Modell, weil herausgefunden, <br /> DOM-Modell hat Dateigrößebeschrankungen und <br /> ist ineffizient für GIRT</li></ul> und Betreuung von Main.BenjaminHerbert über <ul><li>Frageerklärungen</li><li>Credentials bei UKP (Jabber, SVN, diese Wiki)</li><li>XML-los uutuc-basierte UIMA-Pipeline</li><li>uutuc-style AEs</li><li>DKPro Java-Library</li><li>Einrichung Arbeitsumgebung im UKP-Pool</li></ul> |  |
+| CrGIRT | 15.02.2010 | 5 | Einarbeiten von <ul><li>Apache Lucene: Indexieren, Suche, Ausgabe TOP10</li><li>Google Translate AJAX APIs (in Javascript) <br /> und deren Java Frameworks</li></ul> Implementierung von <ul><li>Component reader =XMLReader= fürs Einlesen <br /> von GIRT-Daten (mit DOM-Modell)</li><li>Bauen von Index aus GIRT gelesener Texte in Lucene, <br /> Suche und Ausgabe nach absteigender Scores</li></ul> |  |
+| Anfang UIMA | 14.02.2010 | 2.5 | Einrichtung Arbeitsumgebung<ul><li>Installation von UIMA, dessen Eclipse Plug-in</li></ul> und weiteres Einarbeiten von UIMA <ul><li>Implementierung =RoomNumberAnnotator= </li><li>dafür Lernen des Syntax von Regex</li><ul> |  |
+| Betreuung | 12.02.2010 | 2 | Von Main.BenjaminHerbert, diskutiert wurden <ul><li>Information Retrieval, Topic(Query), Document</li><li>Monolingual, Crosslingual IR - durch Übersetzung</li><li>Lucene Index, Suche</li><li>Wettbewerb Clef, GIRT Format, Evaluation</li></ul> und erste Aufgaben beauftragt |  |
+| Anfang UIMA | 08.02.2010 | 2 | Einarbeiten von UIMA, inkl. Konzepte <ul><li>CAS, Annotation</li><li>Reader, Analysis Engine, Consumer</li><li>Multi-View, Aggregate AEs</li></ul>und im Praxis <ul><li>Java Bindings</li><li>CPE GUI</li><li>Erzeugen von Annotations</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 40)$EXEC($GET(total_hour))"}% | bis 15. März noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |  |
+<nop>
+
+-- Main.ShuoYang - 03 Apr 2010

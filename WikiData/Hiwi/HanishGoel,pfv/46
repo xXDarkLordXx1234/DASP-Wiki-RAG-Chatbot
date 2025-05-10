@@ -1,0 +1,113 @@
+%META:TOPICINFO{author="goel" comment="reprev" date="1426704479" format="1.1" reprev="44" version="46"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+%TOC%
+
+---+ Meetings
+---++ Meeting 20/03/2015
+
+   * Walk through HistogramPage.java
+   * Web development tasks involving Uby/Wordnet for Tristan Miller in April?
+
+---+ Tasks
+Running tasks here, done tasks filed to months
+
+   * [[https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/issues/1118][Towards a simple Uby converter tool]] (subtasks!)
+      * SVN location (r/w access granted): https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_ng/uby/
+   * [[https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/issues/1115][Configure Apache to allow Solritas access only (Task #1115) ]] (hours?)
+      * http://httpd.apache.org/docs/2.2/howto/auth.html
+      * http://httpd.apache.org/docs/2.4/
+   * Wicket historgrams
+      * Retrieve data from Solr
+         * Solritas URL (Solr Web GUI): [[http://wdk.ukp.informatik.tu-darmstadt.de/solr/WdK/browse/]]
+         * SolrJ: [[https://cwiki.apache.org/confluence/display/solr/Using+SolrJ]]
+         * Solr Stats Component: [[https://cwiki.apache.org/confluence/display/solr/The+Stats+Component]]
+      * Sample case: "get the average value for topic =X= in all documents published in 1910
+         * query for documents from 1910: =PublicationYear:1910=
+         * get average value for =topic_capitals_lemmas_chapters_sentences_50_X= (-> Solr stats component)
+         * Sample code: (see also =src/test/java/de/tudarmstadt/ukp/wdk/corpusexplorer/webapp/TestQueries.java= in project =ukp-wdk-corpusexplorer-webapp=)
+<verbatim>
+String url = <URL>;
+String query = "PublicationYear:1910";
+String fieldName = "topic_capitals_lemmas_chapters_sentences_50_5";
+SolrServer server = new HttpSolrServer(url);
+SolrQuery query = new SolrQuery(query);
+query.setGetFieldStatistics(fieldName);   // or query.setGetFieldStatistics(true) ?
+QueryResponse response = server.query(query);
+FieldStatsInfo fieldStatsInfo = response.getFieldStatsInfo().get(fieldName);
+Double mean = (Double) fieldStatsInfo.getMean();
+</verbatim>
+
+---+ Mar/Apr 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| carry over | | -27 | |
+| 2015-03-14 | #1201 Integrating existing histogram with wicket | 4 | clubbed the two queries(for stats and facets), fixed the issue related to totals and nv function.After correcting all the javascript errors, data is successfuly loaded but still histogram is not showing up. |
+| 2015-03-15 | #1201 Integrating existing histogram with wicket | 6 | figuring out how after loading the data,how it is being populated for generating histogram in the existing functionality |
+| 2015-03-13 | Task Meeting | 2 | |
+| 2015-03-17 | #1201 Integrating existing histogram with wicket | 4 | debugging |
+| 2015-03-18 | #1201 Integrating existing histogram with wicket | 4 | debugging |
+| 2015-03-18 | #1183 Support for conversion of WordNet | 2 | finding out missing dependencied |
+| 2015-03-18 | #1222 "-v" option prints only error message, not stack trace | 1 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 80
+
+---+ Jan/Feb 2015
+---++ Tasks
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| carry over | | 0 | |
+| 2015-01-02 | #1115 Adding basic authentication to solr jetty server | 4 | |
+| 2015-01-03 | #1115 Adding authentication to Apache HTTP and limits authentication to post requests | 4 | |
+| 2015-01-06 | #1141:Help option | 2 | |
+| 2015-01-12 | Apache wicket documentation and examples | 2 | Walked through some examples of apache wicket |
+| 2015-01-13 | Apache wicket documentation and examples | 2 | Walked through some examples of apache wicket |
+| 2015-01-17 | #1155: Omitting CatalogIDDigital if it has anchorId attribute | 4 | Detecting and Removing the value of CatalogIDDigital when it has anchorId=true |
+| 2015-01-18 | #1155: Added testcase to verify the changes | 2 | Testcase omitCatalogIDDigital has been added into the MetsReader2Test.java |
+| 2015-01-22 | Corpus Explorer Wicket Application | 6 | Making understanding of wicket application example and running to display the histogram |
+| 2015-01-25 | #1141: reformated the help text | 4 | |
+| 2015-01-26 | #1161: Minimize ubycreate shaded-jar | 6 | |
+| 2015-01-30 | #1166: Conversion of GermaNet to H2 using is very slow | 4 | |
+| 2015-02-03 | #1141: reformed the message by adding exception trace | 2 | added new parameter to display the exception trace |
+| 2015-02-04 | Read solrJ documentation | 2 | |
+| 2015-02-05 | Read histogram d3 documentation | 2 | |
+| 2015-02-06 | #1171: added option to convert germanet,framenet to uby xml | 2 | |
+| 2015-02-07 | #1171: added option to convert germanet,framenet to uby xml | 2 | |
+| 2015-02-08 | retrieving data from solrj and generating histogram out of it | 3 | |
+| 2015-02-09 | retrieving data from solrj and generating histogram out of it | 3 | |
+| 2015-02-12 | integrating exisiting histogram with wicket | 2 | we will have to build map similar to json which is being populated in existing histogram js |
+| 2015-02-13 | #1182: Merge lexicon parameter into source parameter | .5 | |
+| 2015-02-13 | #1183: support for WordNet | .5 | |
+| 2015-02-14 | #1182: Merge lexicon parameter into source parameter | .5 | |
+| 2015-02-14 | #1183: support for WordNet | 2.5 | |
+| 2015-02-15 | integrating exisiting histogram with wicket | 1 | |
+| 2015-02-16 | #1195: Interface for "Creator | .5 | |
+| 2015-02-17 | #1195: Interface for "Creator | 2 | |
+| 2015-02-18 | integrating exisiting histogram with wicket | 4 | figuring out the data format that existing histogram js understands and tried converting the data into the required format |
+| 2015-02-19 | figuring out the reason for exception | 3.5 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 100
+
+---+ Dec 2014
+---++ Tasks
+   * [[DKPro/DKProDeveloperResources][Set up development environment]]
+   * [[https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/issues/1103][Read person and editor from meta.xml]]
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2014-12-01 | Set up development envoirment | 2 | setup eclipse and check out the project |
+| 2014-12-02 | Read person and editor from meta.xml | 4 | capability has been added to the parser to read editor and author data from  meta.xml |
+| 2014-12-04 | Added testcase for testing person metadata | 2 | tested the bug |
+| 2014-12-09 | #1119: Simple tool to convert Germanet to Uby DB | 6 | |
+| 2014-12-10 | #1119: Testing | 2 | tested the jar through CL |
+| 2014-12-12 | #1120: simple tool to convert framenet to DB | 6 | |
+| 2014-12-14 | #1120: testing framenet to DB | 2 | |
+| 2014-12-14 | #1121: UBYXML to DB | 4 | |
+| 2014-12-15 | #1122: Generalize into ubycreate | 4 | |
+| 2014-12-15 | #1122: Testing generalized tool | 2 | |
+| 2014-12-23 | #1115:Read documentation on Jetty Basic Authentication | 3 | Went through the documentation of Jetty basic authentication. |
+| 2014-12-24 | #1115: Read documentation on Apache HTTP configuration | 3 | Went through the documentation of apache http authentication |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+-- Main.RichardEckartDeCastilho - 2014-12-01

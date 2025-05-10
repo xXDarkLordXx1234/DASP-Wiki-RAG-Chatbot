@@ -1,0 +1,92 @@
+%META:TOPICINFO{author="gowda" comment="save topic" date="1493713374" format="1.1" reprev="15" version="27"}%
+%META:TOPICPARENT{name="WikiUsers"}%
+
+
+---++ 1. Trying basic DkPro components 
+
+ Segmenter : Opennlp Segmenter , Standford Segmenter , ClearNLP Segmenter
+ POS Tagger : Opennlp POSTagger , Standford POSTagger , ClearNLP POSTagger
+ Parser : Opennlp Parser , Standford Parser , ClearNLP Parser
+
+---++ 2. Deciding on Java API for Regression and neural networks support
+ Weka vs DeepLearning4j
+
+---+++ 3. Related Work on Measuring Performance for NLP tools 
+*Note*   Features :General vs component specific
+
+---+!! 22.12 & Until next year
+---++++ Profiling execution time & memory for sample Corpus.
+        Note:(Htmlreader unable to iterate over entire folder)
+        Note : (Heapspace)
+---++++ To build base classifier with execution profiles.
+---+!! until 19.1
+---++++ Building a sample neural networks in dl4j something in lines of cos(x)
+
+---+!! until 26.1
+---++++ building annotators with DkProTimer annotator and literature work on  experts network
+
+---+!! 2.2.2017
+---++++ *Create out first predictor for tokenizer*
+---+!! 9.2
+---++++ resolve errors and use multi datasets
+---++ until next
+   * Split raw data into train,dev,test
+   * Existing evalution function
+   * export to jar ,also save models
+---+!! 23.2
+   1 <del>New timer</del>
+   2 <del>pipelines for each process</del>
+---++++ 2.3
+   * <del>Profiling for all annotator and pipelines for MarinaSantini Web corpus.</del>
+   <opennlp-model-lemma-en-default.properties FileNotFound Exception>
+   * <del>create data point(txt files) from C4 warc files.</del>
+---+!! 16.3
+   1 <del>Split first warc file into train,test,develop data.Also train data into batches of 20.</del>
+   2 <del>Fat jar with all dependencies that does all our job.</del>
+   3 <del>Building model for lemmatizer-en .</del>
+   4 experts for Santini corpus.
+   
+---++++ 24.3
+   * Outline of thesis
+   * Presentation for SIGDev
+   * hyperparam optimization
+   * Optimization for Noises and error rate
+---+++ 30.3
+   1 Final ppt
+   2 format outline
+   3 MOE implemntation exist?
+   4 reservin n executing in a core
+---++++ 06.04
+   * Mixture of experts built -some irregularities
+   * Baseline model 
+   * preparations for cluster 
+---++++ until next
+   * baseline model using apache math ---done
+   * overhead modeling in MOE -done with sample data (6s)
+   * Cluster unable to login
+   *Related work chapter
+---++++ 27.04
+   1 Goals section
+   2 Experimental Setup section
+   3 Compare static vs real time MOE approaches
+   ---++++ 04.05
+   * data collection LC
+
+%META:FORM{name="%25SYSTEMWEB%25.UserForm"}%
+%META:FIELD{name="FirstName" attributes="" title="<nop>FirstName" value=""}%
+%META:FIELD{name="LastName" attributes="" title="<nop>LastName" value=""}%
+%META:FIELD{name="OrganisationName" attributes="" title="<nop>OrganisationName" value=""}%
+%META:FIELD{name="OrganisationURL" attributes="" title="<nop>OrganisationURL" value=""}%
+%META:FIELD{name="Profession" attributes="" title="Profession" value=""}%
+%META:FIELD{name="Country" attributes="" title="[[System.CountryList][Country]]" value=""}%
+%META:FIELD{name="State" attributes="" title="State" value=""}%
+%META:FIELD{name="Address" attributes="" title="Address" value=""}%
+%META:FIELD{name="Location" attributes="" title="Location" value=""}%
+%META:FIELD{name="Telephone" attributes="" title="Telephone" value=""}%
+%META:FIELD{name="VoIP" attributes="" title="<nop>VoIP" value=""}%
+%META:FIELD{name="InstantMessagingIM" attributes="" title="<nop>InstantMessaging (IM)" value=""}%
+%META:FIELD{name="Email" attributes="" title="Email" value=""}%
+%META:FIELD{name="HomePage" attributes="" title="<nop>HomePage" value=""}%
+%META:FIELD{name="Comment" attributes="" title="Comment" value=""}%
+%META:TOPICMOVED{by="stahlhut" date="1479137603" from="Main.AjaykumarSiddeGowda" to="Students.AjaykumarSiddeGowda"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Local" value="System.LdapUserView"}%

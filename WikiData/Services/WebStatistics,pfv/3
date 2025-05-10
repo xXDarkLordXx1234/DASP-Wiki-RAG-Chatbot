@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1535768302" format="1.1" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+%IF{
+"istopic '%USERSWEB%.Default%STATISTICSTOPIC%'"
+then="$percentINCLUDE{$quot%USERSWEB%.Default%STATISTICSTOPIC%$quot}$percent"
+else="$percentINCLUDE{$quot%SYSTEMWEB%.Default%STATISTICSTOPIC%$quot}$percent"
+}%
+| <!--statDate--> | <!--statViews--> | <!--statSaves--> | <!--statUploads--> | <!--statTopViews--> | <!--statTopContributors--> |
+| Jul 2018 |  117 |  5 |  0 | &nbsp;40 [[Printer]]<br />&nbsp;28 [[MailService]]<br />&nbsp;13 [[VpnService]]<br />&nbsp;11 [[WebHome]]<br />&nbsp;&nbsp;7 [[MessagingService]]<br />&nbsp;&nbsp;6 [[WebSearch]]<br />&nbsp;&nbsp;5 [[AccountChangePassword]]<br />&nbsp;&nbsp;3 [[NextCloud]]<br />&nbsp;&nbsp;3 [[PrivateHardwareUser]]<br />&nbsp;&nbsp;1 [[GITLAB]] | &nbsp;&nbsp;2 Main.RichardEckartDeCastilho<br />&nbsp;&nbsp;2 Main.MichaelBugert<br />&nbsp;&nbsp;1 Main.WikiGuest |
+| Aug 2018 |  88 |  3 |  0 | &nbsp;17 [[Printer]]<br />&nbsp;16 [[VpnService]]<br />&nbsp;15 [[MailService]]<br />&nbsp;14 [[WebHome]]<br />&nbsp;&nbsp;7 [[PrivateHardwareUser]]<br />&nbsp;&nbsp;6 [[WirelessNetworkService]]<br />&nbsp;&nbsp;5 [[MessagingService]]<br />&nbsp;&nbsp;3 [[GITLAB]]<br />&nbsp;&nbsp;2 [[TUDCertifications]]<br />&nbsp;&nbsp;2 [[AccountChangePassword]]<br />&nbsp;&nbsp;1 [[WebStatistics]] | &nbsp;&nbsp;2 Main.MichaelBugert<br />&nbsp;&nbsp;1 Main.SebastianAlles |

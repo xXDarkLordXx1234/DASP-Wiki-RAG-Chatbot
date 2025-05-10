@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="RichardEckart" date="1324595445" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="HowTo"}%
+---+ Connecting to the UKP VPN
+
+---++ General configuration
+
+| Server | vpn.ukp.informatik.tu-darmstadt.de (130.83.167.129) |
+| Login | UKP domain account (without leading "UKP\") |
+| Domain | UKP |
+| Connection type | PPTP |
+| Options | enable software compression, disable remote gateway |
+| Requirements | working internet connection | 
+
+   * With the data in the table above, you can make a VPN connection into the UKP network &#8203;&#8203;to use the internal services. For details on the individual operating systems, see the HowTo of TK: https://wiki.tk.informatik.tu-darmstadt.de/bin/view/ASCAll/TKVPN
+   * Please replace all ... tk.informatik.tu-darmstadt.de details with ... ukp.informatik.tu-darmstadt.de.
+
+---++ Known Issues
+
+   * Due to a misconfiguration of the DNS, you may be unable to log in to the VPN unless you use the IP address (130.83.167.129) .
+
+---++ Notes on specific VPN clients
+---+++ KVpnc
+In the profile settings under Profile->Connection specific->PPTP/L2TP->Authentication, it is necessary to change the "Authorization method" to MSCHAP (not MSCHAP-v2).

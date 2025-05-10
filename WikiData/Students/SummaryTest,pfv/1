@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="woeckener" comment="" date="1543439435" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="JoergWoeckener"}%
+*Summary 22.11. - 28.11.*
+
+- I updated the related work section in the thesis and read a few papers again and more detailed. That was quite enlightning and I have a clearer idea of what we can do in the experiments . The summarization is more or less in the related work section + I updated the spreadsheet on google drive
+
+- I trained a rhyme classifier and built an inference mode for it, so we can use it "easily"
+
+- I used wordlists for sentiment analysis. It's just an easy lookup + count pos/neg matches. Came to mind it's maybe too simplistic... Currently working on making bar plots to visualize the results/distribution
+
+- added a field "author" to the data and added a filter method
+
+- added a filter to get sonnets for all poems
+
+- Talking of bar plots... I created bar plots of time period distribution. Find an example attached to this mail.
+
+- I'm in contact with Kay Würzner, the creator of Gramophone. The tool is not very easy to use. I installed the requirements (one needed gcc compiling) but it turned out that the code on github is actually made for a web app and currently not working. Though it should be possible to run it on the console or even within python but I couldn't get it done. ALSO I'm not sure how important it is in the end. If we use it for rhyme detection we have another strong tool (~95% accuracy) working. For english we can still use the CMU dict if its about grapheme translation, which is quite often used in other works.  If we want to use it for meter detection it may not be overly important as the guys from deepspeare claim that even their vanilla language model recognized meter implicitly.
+
+- I also contacted Arthur Jacobs for a word list more suitable for poems. He doesn't
+
+To do (maybe tomorrow):
+- make sentiment plots / probably implement another more sophisticated option for sentiment analysis
+- push code and files to TU servers
+
+
+
+-- Main.JoergWoeckener - 2018-11-28
+
+
+%META:FILEATTACHMENT{name="dta_time.png" attachment="dta_time.png" attr="" comment="" date="1543439432" path="dta_time.png" size="13172" user="woeckener" version="2"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="Summary 22.11. - 28.11."}%

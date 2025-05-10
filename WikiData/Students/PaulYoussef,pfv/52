@@ -1,0 +1,290 @@
+%META:TOPICINFO{author="eger" comment="save topic" date="1519305447" format="1.1" reprev="50" version="52"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor thesis: Impact of activation functions in deep learning for NLP
+
+*Start date*: 01.11.2017
+
+*Supervisor*: Dr. Steffen Eger
+
+*Midterm Talk*: 20.02.2018
+
+*Final Talk*: 27.03.2018
+
+*Planned Submission*: spätestens 16.04.
+
+Links: 
+   * https://docs.google.com/spreadsheets/d/1PqFl8kC5yKkIqphP0x10CaelvISqBp_iWNRRS0LsHwA/edit?usp=sharing
+
+
+---++ Current Status
+---+++ 21.02.2018
+   * I started the experiments for arg.min with more parameters (2 optimizers, 1-3 layers, 2-dropout..)
+   * I corrected the implementation of the extended models of phase-3 and started the experiments
+---+++ 14.02.2018
+   * I run the experimetns of Phase-3 and evaluated the results
+   * I worked on the thesis
+   * I started the experimetns of CNN for 2 layers and for MLP (PE and MR)
+ 
+---+++ 07.02.2018
+   * I uploaded the results for CNN (1 layer) and started the experiments with 2 layers
+      * SE: can you give the exact link and a bit of interpretation?
+         * PY: [[https://git.ukp.informatik.tu-darmstadt.de/youssef/Phase-1/blob/master/Results/doc_classification/cnn-1-layer_2.png][My Link]]
+         * PY: penalized tanh has the highest accuracy. Functions that contain 'sin' seem to have similar performance. Maxout has a slightly lower accuracy, but with a smaller standard eviation 
+      * SE: I saw two graphs, but in one it was hard to figure out which function is which, because there were no labels
+      * SE: I forgot what in/out refers to?
+   * I tested the extended model for phase-3 without z in last layer and uploaded the results to git
+      * the normal models seem to be much better than the extended ones
+      * SE: same as above: can you give a bit of interpretation+exact link
+      * PY: [[https://git.ukp.informatik.tu-darmstadt.de/youssef/Phase-3/blob/master/Results/no_concat/Phase-3-no_concat.png][Link]]
+   * I updated the code for MLP and started the experiments on PE
+
+---+++ 31.01.2018
+   * Experiments of Phase-2 are still running on PE (I had to rerun them to calculate F1)
+   * I ran the experiments for IRNN and evaluated the results (see git)
+   * I uploaded the code and the evaluation scripts of phase1 and phase2 to git
+   * I uploaded the code and results of phase-3 to git
+---+++ 24.01.2018
+   * Experiments of phase-2 are still running (only on PE-infersent)
+   * I started the experiments of phase-3 on all datasets
+   * I visualised the results for MLP (MR, TREC, SUBJ) and CNN
+
+---+++ 17.01.2018
+   * I prepared the code for the experiments of phase 1 
+   * I plotted the results of all functions for sequence tagging
+   * I started the experiments of phase 3 
+   * Experiments of Phase 2 (TREC and PE) are still running 
+
+---+++ 10.01.2018
+   * I started the experiments with random activations for MLP on 31.12.2017 but they're still running
+   * I wrote the data-section of the thesis
+   * I also worked on the experiments section in the thesis - I described most of the experiments of phase-1 and listed its results
+---+++ 18.12.2017
+   * I started the experiments for phase-2
+   * I visualised the results of phase-1 with harmonic mean 
+---+++ 13.12.2017
+   * All Experiments are done, but i had to reduce the number of parameters for CNN and MLP of MR
+   * I evaluated all the results
+   * I worked on &#8220;Theory & Background&#8221; in the thesis. I&#8217;m not sure if what i wrote is enough. I don&#8217;t know what to add anymore...
+---+++ 07.12.2017
+   * POS-Tagging and Arg.Min experiments are finished
+      * SE: cool! general remark: if you start new experiments, please do it not on apu, but rather desktop-titanx or other servers that you have access to
+      * SE: Is MR finished? If not: do you think it's because of SGD? how many epochs do you have? If you: if it doesn't finish by next week, stop it, and run with adadelta or rmsprop instead of sgd 
+   * I plotted the results of POS-Tagging and Arg.Min, and the accuracy results of TREC and SUBJ
+      * Would be nice if you can share with me (e.g., make an attachment here)
+   * The Experiments of Document Classification are taking too long. I may have to reduce the number of parameters again. 
+      * SE: Yes, do so, if necessary.
+  
+---+++ 29.11.2017
+   * experiments on newsgroup (document classification) are running
+   * experiments on movie-reviews are still running 
+   * experiments on SUBJ, TREC, and PE are done 
+   * I added swish and penalized tanh to related work
+
+---+++ 22.11.2017
+   * experiments on movie-reviews dataset are not done yet 
+   * Implementation of CNN for document classification is done (I added the parameter to the wiki)
+   * I implemented swish and penalized tanh and added them to the experiments 
+   * I'm still working on the theory & background section in the thesis
+
+
+---+++ 15.11.2017
+   * experiments on movie-reviews dataset are still running (maxout, leakyrelu, prelu are done)
+   * I'm working on CNN and RNN for document classification and sequence tagging
+   * I'm also working on the theory & background section in the thesis
+
+---+++ 08.11.2017
+   * Filled out application form [...]
+
+---++ Meeting Minutes
+
+---+++ 15.2.2018
+   * Continue writing your thesis
+   * send me the tanhrev fix
+   * CNN: prepare one new dataset
+   * Intialization
+      * SELU and rectifiers (Deep Learning book)
+
+---+++ 08.02.2018
+
+   * Phase 3: Try out ReLU with p-mean and linear model (in 2nd layer) as comparison
+   * Phase 3: We finish after next week
+
+---+++ 01.02.2018
+
+   * Upload CNN results
+      * maybe CNN with two layers
+      * we can share hyperparams
+   * Phase-3: remove z from concatenated layer to see if p-means give reasonable results
+   * Perform analysis on the importance of hyperparameters
+      * e.g. 1 hidden layer vs 2 HL, 1-3, 2-3
+      * upload separated results to git
+   * continue writing
+   * Error analysis: why are some functions better than others / on which tasks / architectures? (in 1-2 weeks)
+   * Make a big average over all tasks / architectures (in 1-2 weeks)
+   * No meeting next week, but still update your current status
+
+---+++ 25.01.2018
+   * We discussed further todos regarding sentence classification, document classification, and RNNS
+      * Sentence Classification: 2,3 layers. Moreover, find important variables by doing Spearman correlation on ranked variables
+         * Split up basic functions in 2 parts and maybe share with me some part of the experimentation
+      * RNN: do identity initialization 
+   * Put cleaned code on github
+      * Also push the evaluation script
+   * Midterm presentation:
+      * Phase-1 and Phase-2 suffice
+
+---+++ 18.01.2018
+   * Check whether your results for phase-1 and phase-2 are consistent with the performance levels in the InferSent paper
+   * Phase 3: can try out different scenarios (p same, p learnable+same, p learnable+different, p learnable+v_i learnable)
+   * In the thesis: mention differences to Swish paper (other datasets, deep vs. shallow networks)
+   * UKP-Deep Day: 13. February, 9-11:30
+
+---+++ 11.01.2018
+   * In case you ever want to use GPU:
+      * Information about the servers: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ServerJobs
+      * Every job has to be scheduled in the server before being run
+      * If you need access to other servers, just let us know and we can see what we can do.
+      * Information on how to install the libraries in the GPU server: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/DKPro/GpuServer
+      * Policies and some hints on how to use the GPU server, e.g. important details to pay attention when using tensorflow/keras: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/UKP/GpuUsagePolicy
+   * Can you give me the code to fill in the remaining functions from the Swish paper for Phase-1?
+   * We try to publish at Coling, deadline is 16.03.2018
+   * I will send you an update for Phase-3
+   * You can stay with MLP for Phase-2 
+
+---+++ 19.12.2017
+   * Finish phase 2 (ideally) by next week
+   * Over Christmas: Maybe write data section
+   * Phase 3: we replace standard pre-activation by power-mean (https://en.wikipedia.org/wiki/Generalized_mean)
+      * we probably have to do this in Tensorflow or with custom layer
+      * use relu+epsilon as first layer so that we have positive numbers
+   *  Next meeting is 11.01.18. You can put status updates on wiki during holidays.
+
+---+++ 14.12.2017
+   * Repeat experiments with 5 remaining activation functions from Swish paper:
+      * MLP: just 1 layer, dropout 0.2,0.5; hidden units (4 different ones), optmizer (adam, rmsprop)
+      * CNN: replace or remove adadelta
+      * RNN: keep everything 
+   * Replace English Univ. Dependency Data with German (https://github.com/UniversalDependencies/UD_German)
+   * For ArgMin: Use ALL remaining documents for testing
+   * Report same graphics, but wiht arhitmetic mean and harmonic mean (https://en.wikipedia.org/wiki/Generalized_mean)
+
+---+++ 30.11.2017
+   * Score each activation function. For example, as follows:
+      * compute averages over all parameter settings. A parameter setting consists of: (dataset,hidden layers,dropout choice,...)
+         * can compute different averages: harmonic mean, arithmetic mean, etc., see here: https://en.wikipedia.org/wiki/Generalized_mean
+      * also compute standard deviation over the parameter settings for each activation function
+      * then plot in 2-d space
+   * RNN: take architecture from NR. Change activation function of LSTM unit (=recurrent unit); best is to tell me which and I give you feedback again  
+      * For Arg.Min. report Macro-F1 on Component Level (label set is: {B-Claim,I-Claim,B-Premise,I-Premise,B-MajorClaim,I-MajorClaim,O}). For POS tagging, report accuracy.
+      * In case of questions, ask me
+   * How to display your data in your thesis: https://arxiv.org/pdf/1705.02364.pdf
+   * Sample for a good related work section: see Andreas Schäffler
+   * For phase 2: prune away bad "parameter settings"; apply some of the good the activation functions from the swish paper; but can still combine them via {max,+,*}.  
+
+---+++ 23.11.2017
+   * Email to MB because of desktop-titanx and also ask why second job gets cancelled immediately
+   * Start to implement RNN (either Keras-based or Tensorflow-Based)
+   * For Phase 2: Normalization either batch normalization or something else
+   * Read the Swish paper and add it to related work (or theory). Also read what they said about beta 
+   * For theory chapter: if uncertain, can also post question in stats.stackexchange or cs.stackexchange
+
+---+++ 16.11.2017
+   * Can send me list about parameters including datasets, so that we can possibly reduce the amount of experiments
+      * possibly reduce one dataset
+   * Tensorflow RNN is on the webpage for DL4NLP: HEX 11
+   * Which parameters are you using for RNN? Please insert into Wiki
+   * Come to some of the UKP meetings on Tuesday
+   * We also talked about the plans for the 2nd phase (different activation functions per layer + combination of activation functions)
+
+---+++ 09.11.2017
+
+   * For CNN: play around with different filter sizes, potentially other hyperparameters
+      * can also play around with more optimizers if time permits: AdaGrad, AdaDelta, RMSprop
+   * For CNN: adaptation of code is completely ok, if you have good reasons for doing so
+   * Can also prepare RNN for Sequence Tagging Task: which implementation do you want to use?
+      * TK in Tensorflow
+      * NR in Keras
+   * I gave you a potential structure of the thesis (>40 pages including everything)
+      * For analysis: std is bad, mean is good
+   * I also gave you feedback on the related work section
+   * Maxout: k=4 (Optional k=2)
+
+-- Main.SteffenEger - 2017-11-09
+
+
+---+!! Hyper-Parameters & Datasets
+---Phase-2:
+   * only MLP
+   * Experiments are running now on MR and SUBJ. I intend to start them on the rest of the datasets of sentence classification
+   * 1 hidden layer of random activations for each unit from this list:'penalized_tanh', 'swish', 'sin', 'sigmoid', 'tanh', 'relu', 'prelu', 'lrelu', 'elu', 'selu', 'linear', 'max(x,sigmoid(x))', 'cos(x)-x', 'min(x,sin(x))', 'max(x,tanh(x))'
+   * Optimizers: Adam, rmsprop
+   * Dropout: 0.2, 0.5
+   * batch normalization is applied after the hidden layer and then dropout
+   * using keras
+   * I excluded some poor performing functions such cot(x)^2-x. I also excluded maxout 
+---Phase-1:
+   * MLP & Sentence Classification: 
+      * Datasets: movie-reviews (sent2vec) , TREC (InferSent), Subjectivity (InferSent), student-essays (PE) (sent2vec & InferSent)
+         * Hyper-Parameters for movie-reviews: 
+            * Optimizer: Adam, SGD
+            * Functions :  'x^3', 'sin', 'sigmoid', 'tanh', 'relu', 'elu', 'selu', 'softplus', 'softsign', 'linear', 'leaky relu', 'prelu', 'maxout'
+               * Update:  'x^3', 'sin', 'sigmoid', 'tanh', 'relu', 'elu', 'selu', 'linear', 'leaky relu(alpha =0.01)', 'prelu', 'maxout (k=3)', 'swish (beta=1)', penalized tanh
+            * layers:
+               * layers: 1,2,3 (with adam), 1,2 (with sgd)
+            * Dropout:
+               * 0.2, 0.5, 0.8 with 1 layer
+               * 0.2, 0.5, 0.8 with 2 layers and adam 
+               * 0.2, 0.5 with 2 layers and sgd
+               * 0.2, 0.5 with 3 layers and adam 
+            * Hidden units:
+               * with 1-2 layers: 50, 100, 300, 600, 1200
+               * wieh 3 layers:  300, 1200
+         * Update: For TREC, SUBJ:
+            * Optimizer: Adam
+            * Layers 1,2
+            * Dropout: 0.2
+            * Hidden units: 50,100,300
+         * For PE:
+            * Optimizer: Adam
+            * Layers: 1,2
+            * Dropout: 0.2
+            * Hidden units: 50,100,300
+
+   * CNN:
+      * Hyper-Parameters of CNN for document classification:
+         * Optimizers = ['adam', 'adadelta']&#8232;
+         * convolutional layers = [1]
+         * Filters = [75, 100, 125, 150]
+         * kernel_sizes = 3
+         * Activation functions: see MLP
+   * RNN:
+      * POS-Tagging:
+         * Dataset: UD
+         * Functions: 'x^3', 'sin', 'sigmoid', 'tanh', 'relu', 'elu', 'selu', 'linear', 'leaky relu',  'swish', 'penalized tanh'
+         * Layers : 1
+         * Units: 75, 100, 150
+         * network-type: LSTM, simple RNN
+         * Word Embeddings: levy_deps.words, dependency based embeddings 
+      * Argument-Mining:
+         * Dataset: conll
+            * 300 train sentences
+            * 199 dev sentences
+            * 449 test sentences
+         * Functions: 'x^3', 'sin', 'sigmoid', 'tanh', 'relu', 'elu', 'selu', 'linear', 'leaky relu',  'swish', 'penalized tanh'
+         * Layers : 1
+         * LSTM-Size: 75, 100, 150
+         * network-type: LSTM, simple RNN
+         * Word Embeddings: levy_deps.words
+-- Main.PaulYoussef - 2017-11-15
+
+
+
+ 
+
+%META:FILEATTACHMENT{name="seq-tagging-results.zip" attachment="seq-tagging-results.zip" attr="" comment="" date="1512650791" path="seq-tagging-results.zip" size="231625" user="youssef" version="1"}%
+%META:FILEATTACHMENT{name="eval-1.zip" attachment="eval-1.zip" attr="" comment="" date="1513620749" path="eval-1.zip" size="1300856" user="youssef" version="1"}%
+%META:FILEATTACHMENT{name="ThesisOutlinePY.pdf" attachment="ThesisOutlinePY.pdf" attr="" comment="Thesis Structure" date="1513697679" path="ThesisOutlinePY.pdf" size="25984" user="eger" version="1"}%
+%META:FILEATTACHMENT{name="eval-2.zip" attachment="eval-2.zip" attr="" comment="" date="1514037314" path="eval-2.zip" size="477242" user="youssef" version="1"}%
+%META:FILEATTACHMENT{name="thesis-draft.pdf" attachment="thesis-draft.pdf" attr="" comment="" date="1515602936" path="thesis-draft.pdf" size="681014" user="youssef" version="1"}%
+%META:FILEATTACHMENT{name="MLP.zip" attachment="MLP.zip" attr="" comment="MLP results (MR, TREC, SUBJ)" date="1516827417" path="MLP.zip" size="229562" user="youssef" version="1"}%
+%META:FILEATTACHMENT{name="CNN.zip" attachment="CNN.zip" attr="" comment="CNN results" date="1516827467" path="CNN.zip" size="190444" user="youssef" version="1"}%

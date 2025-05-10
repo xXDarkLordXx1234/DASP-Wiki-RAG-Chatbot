@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="5" version="6"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+---++ Problems and Questions
+
+%TOC%
+
+---+++ Open
+
+   * *Question 26.9.10*: Is this page actually needed? Emails seem to be the right choice for asking for solutions to be found in a reasonable timeframe. And conceptual questions with a longer response time could be embedden into the LogBook where its more natural... just thinking... It would be only one page to supervise, too (beeing the main reason to ditch this page :) )
+
+---+++ Quickfixed
+
+   * *Problem 9.9.10*: english_keyphrase_stopwords.txt and english_stopwords.txt is missing in dkpro_semantics-0.0.1-SNAPSHOT.jar. There is no "stopwords"-directory in the "resource"-directory.
+      * *Quickfix*: decompiled de.tudarmstadt.ukp.dkpro.semantics.keyphrases.stopwordfilter-0.0.1-SNAPSHOT.jar from Schnupperphase and extracted stopword-texts. Saved them local for now.
+ 
+---+++ Solved
+
+   * *Frage 9.9.10*: (Siehe Logbuch) Versuche mich in der Library zurechtzufinden. Gibt es eine Out-of-the-box-Implementierung von KEA und von TextRank die ich verwenden soll / darf? Laut einem TUD-Paper von 2009 gibt es eine Implementierung im DKPro. Aus der letzten Mail von NE reime ich mir zusammen dass ich TextRank selbst zusammenstecken soll, aber statt mit Coocurrence mit Semantic-Relatedness über ESA. Diese Implementierung eines Keyphrase-Candidate-Rankers gibt es auch noch nicht? In der Mail ist auch von tf-idf die Rede. Es soll also auch ein Ranking der Keyphrase-Candidates über tf-idf erstellt werden, als Baseline nehme ich an?
+      * NE: KEA ist als Out-of-the-Box-Komponente vorhanden. Sie heißt KeaKeyphraseAnnotator und arbeitet auf Tokens. Ein Modell kannst du mit dem KeaModelBuilder erstellen. Der müsste auch in semantics drin sein.
+      * NE: TextRank ist eine Kombination aus CooccurrenceGraph und PageRank. Ist aber ein schöner Name. Einfach beide Komponenten zusammenstecken.
+      * NE: LexRank ist eine Kombination aus LexSemGraph und PageRank. Hier musst du auch nur beide Komponenten zusammenstecken.
+      * NE: Tf.idf kann man sehr gut als Baseline verwenden.
+      * NE: Behalte generell einen Überblick über die Strukur: [[http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/publikationen/2010/PhD_TorstenZesch_SemanticRelatedness_2010.pdf][Torstens Diss]] (Seite 81ff) 

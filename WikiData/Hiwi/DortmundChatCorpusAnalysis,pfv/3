@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="hartmann" comment="reprev" date="1447924363" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="ElisaStarke"}%
+*- Overarching question: how do both versions of the corpus relate to each other, what are the differences (check Paper!)?*
+Preprocessing and Annotations include:
+   * 	Tokenization
+   * 	Normalization: state interpretation of utterances that can be dealt with by standard grammar
+   *    Annotations: 
+		* automatically POS-tagged and lemmatized + manually corrected
+		* dependency relations
+		* named entities
+		* coreference 
+
+*- What is the size of the corpus (tokens, sentences)*
+   * tokens => 5655
+   * sentences => 786
+   * SH: Kann es sein, dass sich diese Ergebnisse auf die Summe von Norm und Orig beziehen? Wie groß sind diese jeweils (beide enthalten ja den gleichen Inhalt, das Ziel ist entweder auf Orig oder auf Norm zu arbeiten, nicht auf beiden zusammen)?
+
+*- What kind of dependency labels were used in the paper (check Paper!)*
+	- Dependenz-Annotation wird aus TIGER-Annotatin der Normalisierung übersetzt
+	
+*- Was there a different set of dependency labels used for the original version (orig) compared to the normalized version (norm)?*
+	- NO
+	
+*- Write each verb lemma and the corresponding sentence to file*
+--> files are attached (analysisResults_norm.txt and analysisResults_orig.txt)
+
+
+-- Main.ElisaStarke - 2015-11-14
+
+%META:FILEATTACHMENT{name="analysisResults_norm.txt" attachment="analysisResults_norm.txt" attr="" comment="normalized corpus" date="1447512467" path="analysisResults_norm.txt" size="24576" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="analysisResults_orig.txt" attachment="analysisResults_orig.txt" attr="" comment="original corpus" date="1447512487" path="analysisResults_orig.txt" size="24576" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="instancesOfLemma.txt" attachment="instancesOfLemma.txt" attr="" comment="distribution over verb lemmas" date="1447836733" path="instancesOfLemma.txt" size="15194" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="numberOfDependentsByVerb.txt" attachment="numberOfDependentsByVerb.txt" attr="" comment="number of direct dependents for each verb" date="1447836764" path="numberOfDependentsByVerb.txt" size="30373" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="averageNumberOfDependentsByLemma.txt" attachment="averageNumberOfDependentsByLemma.txt" attr="" comment="average of direct dependents by lemma" date="1447836789" path="averageNumberOfDependentsByLemma.txt" size="14202" user="starke" version="1"}%

@@ -1,0 +1,33 @@
+75.0	29.0	
+36.0	58.0	
+198.0
+
+P1 (Persuasive):
+Category: P1
+  F         = 0.6976744186046512
+  precision = 0.6756756756756757
+  recall    = 0.7211538461538461
+  TP        = 75.0
+  FP        = 36.0
+  FN        = 29.0
+
+P2 (Non-Persuasive):
+Category: P2
+  F         = 0.6408839779005525
+  precision = 0.6666666666666666
+  recall    = 0.6170212765957447
+  TP        = 58.0
+  FP        = 29.0
+  FN        = 36.0
+
+Overall Results (micro-avg)
+  F         = 0.6717171717171717
+  acc       = 0.6717171717171717
+
+Overall Results (macro-avg)
+  acc       = 0.6717171717171717
+  F[macro]  = 0.6701277466492204
+  P[macro]  = 0.6711711711711712
+  R[macro]  = 0.6690875613747954
+
+

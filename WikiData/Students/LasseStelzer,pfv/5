@@ -1,0 +1,180 @@
+%META:TOPICINFO{author="stelzer" comment="save topic" date="1474375202" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Enriching Translations of Cuneiform Documents by Linkification
+%TOC%
+---++ Intro
+I'm doing my bachelor thesis under the supervision of Sven Bräutigam, Dr. Johannes Daxenberger and Prof. Dr. Iryna Gurevych.
+---++ Schedule
+%EDITTABLE{format="| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Comment* |
+| 0-1 | Familiarization with the datasets, literature review, setup of the environment | Start writing the thesis as early as possible! |
+| 2-3 | Identification of resources containing the potential link targets | |
+| 4-6 | Identification of link anchors, based on NER on the translations | Use DKPro Core, Uby, DKPro WSD |
+| 7-8 | Identification of internal link targets (within the collection of cuneiform documents) | Use DKPro Similarity |
+| 9-11 | Identification of external link targets | Use JWPL |
+| 12-13 | Development of backend: storing the enriched documents | |
+| 13 | Mid-term presentation | |
+| 14-16 | Development of frontend: UI for visualization of enriched documents and linked resources |  |
+| 17-20 | Crowd-sourcing study to evaluate the usefulness of the developed UI | Fallback solution in case crowd-sourcing is not feasible for this task: small-scale user study |
+| 21-24 | Final thesis redaction | |
+| 24 | Submit the thesis | |
+| 24 | Final presentation | |
+
+---++ Meeting 20.09.2016 16:00
+   * verschoben von 19.09.2016 16:00
+
+---++ Mailverkehr mit Susanne Görke
+   * Liste von Determinativen
+   * Liste von Götter-, Personen- und Geographischen Namen
+      * nicht nutzbar
+
+---++ Meeting 05.09.2016 16:00
+   * Problem: Footnotes werden vom Reader nicht richtig geladen
+      * Ursache: Löschen von unnötigen Zeichen verrückt Pointer
+      * Lösung: Abänderung Reader
+   * Vorstellung Frontend
+      * CSS Fehler müssen noch behoben werden   
+   * nicht alle Entitäten werden erkannt
+      * "nachladen" von Wikipedia-Einträgen auf token
+   * Mechanical Turk
+      * gute Texte für Studie sichten
+      * eventuell wird ein Tutorial aus dem UKP Bereich zur Verfügung gestellt
+   *  VM wird von UKP Seite zur Verfügung gestellt
+
+---++ Mid Term Talk 16.08.2016 11:30
+
+---++ Meeting 12.08.2016 11:00
+   * Besprechung Folien Mid Term Talk
+   * Zeitplan:
+      * Fertigstellung Back- und Front-End bis Anfang September
+      * anschließend Planung crowd-sourcing study
+   * Probleme Matching Fundort
+   * Front-End wahrscheinlich mit play-Framework
+   * Mechanical Turk für crowd-sourcing
+      * Sicherheitsabfragen
+      * Benutzerfreundlichkeit über Tasks abfragen?
+
+---++ Meeting 01.08.2016 16:00
+   * verwendbare Quellen:
+      * http://cdli.ucla.edu/
+         * Rechtlichkeit der Nutzung klären
+      * http://www.assyrianlanguages.org/hittite/en_lexique_hittite.htm
+      * Aufgabe: Crawler, der bei Übergabe einer URL nach relevanten Targets sucht.
+   * confidence Level für externe Links
+   * Beachtung der mobilen Darstellung
+   * Folien für Präsentation am 10./11. schicken
+
+---++ Meeting 21.07.2016, 16:00
+   * internal links funktioniert
+      * Problem: Richtigkeit der Relevanz nicht sicher feststellbar
+      * Für den Test des Programmes mehrere Varianten mit unterschiedlich hohen Thresholds
+   * nicht alle Texte in DB
+      * E-Mail Darjush
+   * Dokumentspezifische Parameter zum Bestimmen der Artikelsuche auf Wikipedia
+   * Originaltexte einbeziehen für internal links und Wörterbuch
+   * Wikieintrag auf die richtige Seite
+   * Sekundärquellen von Sven überprüfen
+
+---++ Meeting 11.07.2016, 16:00
+   * Frage nach Relevanz von Wikipedia-Artikel
+      * DKPro Similarity benutzen zur genaueren Auswahl der Wikipedia-Seiten
+   * Karten von Städten digital?
+   * Ressourcen mit Bildern zu Göttern / Königen / etc?
+   * Hethiterportal Semantik Zahlen der Bilder zu Steintafeln?
+   * Wiki-Seite aktualisieren
+
+---++ Meeting 04.07.2016, 16:00
+   * Autorensuche nicht sinnvoll, zu wenige Autoren bekannt / nur ein Autor mit 2 Texten
+   * Odt Dateien der Übersetzungen und Transkriptionen nötig (TODO: in Lasses SVN hochladen)
+   * Links im DB-Schema berücksichtigt, aktuell noch mit Dummy-Links zu Wikipedia
+   * Link-Anchors werden im Bezug auf Colon gespeichert, nicht auf Word
+   * Fundort von Dokumenten vllt gegen Ende der BT nochmal versuchen anzugehen (aktuell zu aufwändig)
+   * TODO:
+      * SQL-Schema anpassen
+      * Suche in JWPL implementieren
+      * Ersetzen von Dummylinks im Schema durch echte Link-Targets
+      * Titel für Ähnlichkeit zwischen Dokumenten einbeziehen
+   * MITTWOCH: Mainz nachfragen, ab wann dort ein Dokument als relevant betrachtet wird
+      * Sobald der Name der Entität darin vorkommt (beachte polysemische Namen und vergleiche diese über den Titel der Dokumente)
+
+---++ Meeting 20.06.2016, 16:00
+   * JWPL aufgesetzt, Formatierungproblem: Seiten können nicht durchsucht werden, da die Formatierung Sonderzeichen nicht zulässt
+   * Idee: Städte / Flüsse / etc. zusätzlich annotieren, um Open Street Maps Kartenausschnitt zu finden
+   * TODO: 
+      * UBY einbinden / auf Mehrwert prüfen
+      * Cross-documental reference (cross-document links), wann ist ein Dokument relevant
+      * Mehrere Dokumente des gleichen Autors filtern (als mögliche Idee)
+
+---++ Meeting 13.06.2016, 16:00
+   * JWPL problematisch, da Wikipedia Dumps sehr lange brauchen um in die Datenbank migriert zu werden
+   * Baumstruktur Webseite UI funktioniert
+   * TODO: JWPL
+
+---++ Meeting 06.06.2016, 16:00
+   * NER funktioniert besser, integriert in Pipeline
+   * Wikipedia Dump noch nicht in MySQL integriert
+   * SQL-Schema Problematik behoben (war nicht ladbar)
+   * Nächste Schritte: Relevanz von Link-Targets, Wikipedia-Seiten zu Städten / Göttern / Königen scannen und abgleichen, UBY / Wiktionary einbauen (gibt es dadurch einen Mehrwert?), cross-documental similarity
+   * Dictionary von Darjush ist per Wikipedia erstellt worden (ohne Experten aus Mainz)
+
+---++ Meeting 30.05.2016, 16:00
+   * Pipeline im SVN
+      * Einige Namen werden nicht erkannt
+      * Götter werden gefunden
+      * Johannes fragen, ob es weitere Ideen gibt um NE zu identifizieren
+      * Mainz nachfragen, ob es eine Liste von Gottheiten / Städten gibt
+      * Mainz das Dictionary von Darjush gegenchecken lassen
+      * Darjush: Frage nach Dict (Leerzeilen / ; oder , als Trennung von Einheiten)
+   * Baumstruktur Interface:
+      * Per Script
+   * Verlinkung intern zu anderen Dokumenten: ab wann ist ein anderes Dokument relevant, kann als Link genutzt werden? (Mainz: Sobald zB der Name auch im anderen Dokument vorkommt?)
+   * Wikipedia Dump da, noch nicht in die Pipeline eingebunden
+
+---++ Meeting 23.05.2016, 16:00
+   * NER allein erkennt nur recht wenig
+   * Pipeline erweitern um POS-Tagger (filtern nach Nomen und Dict mit einbeziehen für Wikipedia-Suche)
+   * SQL-Schema anpassen / erweitern / erstellen
+   * Erste Design-Idee für Seite (+ Liste für Einträge im Text)
+
+---++ Meeting 17.05.2016, 16:00
+   * Adaption Darjush Pipeline
+   * Wikipedia Dump lokal laufen lassen für JWPL
+   * Recherche zu Entity Target Matching
+   * Erstes Mockup (Wordpress)
+   * Anmeldung Bachelorthesis
+
+---++ Meeting 09.05.2016, 16:00
+   * UI-Design:
+      * Eventuell Tree-Liste am Rand als Übersicht für alle Links
+      * Tabs um zwischen Referenzen hin- und herzuschalten
+      * Startseite: Semantische Suche?
+   * Corpora als &#8222;Nachschlagewerke&#8220; bekannt? (Mainz nachfragen)
+      * Es gibt keine weiteren bekannten Online-Nachschlagewerke (nur in Buchform) -> Wikipedia erstmal gut
+   * JWPL ausprobieren
+   * Code für Mockup
+   * Pipeline von Darjush ausprobieren (ggf. anpassen)
+   * Matching zwischen Entity und Ressource
+      * Was funktioniert gut, was für Techniken gibt es?
+      * NLP-Liste zu Papern
+
+---++ Meeting 28.04.2016, 11:30
+   * Wöchentliche Treffen Montags, 16Uhr (E203), beginnend ab dem 09.05.2016
+   * TODOs (1)
+      * Abklärung mit Frau Görke, ob Darjushs Wörterbuch auch relevant für Link-Anchors und Link-Targets
+         * _Es existieren Inkonsistenzen in den Übersetzungen der Schreibweisen. Auch werden Namen unterschiedlich geführt._
+         * _Einsatz des Wörterbuchs sinnvoll._
+      * Darjushs Code eventuell früher verfügbar machen
+         * _Code ist verfügbar_
+      * Schließberechtigung / Buchung Raum E203 für regelmäßiges Meeting
+   * TODOs (2) 
+      * Recherche zu aktuellen Linking-Systemen (im Hinblick auf unter anderem folgende Fragestellungen):
+         * Wie werden Link-anchors ausgewählt?
+         * Wie werden Link-targets bestimmt? (Reine Textquellen, Bilder, andere &#8218;interne&#8216; Dokumente,&#8230;)
+         * Wie ist das Interface aufgebaut?
+         * Warum ist das so aufgebaut?
+         * Was gibt es eventuell für Probleme bei ihrem System? Kann ich das anders / besser machen?
+      * Tutorials zu DKPro pipelines / UIMA (CAS, Typesystem falls nötig) anschauen
+
+
+
+-- Main.SvenBraeutigam - 2016-04-18

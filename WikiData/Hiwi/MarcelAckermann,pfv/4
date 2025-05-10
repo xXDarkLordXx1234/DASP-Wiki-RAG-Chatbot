@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="MarcelAckermann" date="1303982892" format="1.1" reprev="4" version="4"}%
+---+++Vertrag
+Laufzeit: 01.04.2011-31.06.2011
+
+---+++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Priorität* | *ID* | *Beschreibung* | *Status* |
+| 1 | 0 | Meetings | |
+| 1 | 1 | Literatur | |
+| 1 | 2 | Konfigurationsmanagement | |
+
+
+---+++ Arbeitszeit
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2" footerrows = "1" }%
+| *Datum* | *Stunden* | *Aufgabe-ID* |
+| 01.04.2011 | 1 | 1 | 
+| 02.04.2011 | 2 | 1 | 
+| 06.04.2011 | 2 | 1 | 
+| 09.04.2011 | 2 | 1 | 
+| 11.04.2011 | 2 | 1 | 
+| 13.04.2011 | 2 | 1 | 
+| 17.04.2011 | 4 | 2 | 
+| 22.04.2011 | 4 | 2 | 
+| *Summe* | %CALC{"$SUM( $ABOVE() )"}% | | 
+| *Soll* | 90 | bis 31.6. |
+<nop>

@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="schuck" comment="reprev" date="1479287222" format="1.1" reprev="5" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ 2016-11-16
+   * Discuss elaborated research questions
+      * Which classes of incomplete arguments must be considered?
+         * Which classes of enthymemes exists?
+      * How is the recognition of enthymemes possible?
+         * How can we automatically separate complete arguments from enthymemes?
+      * Are there domain-specific differences in the difficulty of the problem?
+         * Which features are stable over difference domains?
+   * Clarify understanding UIMA [[%ATTACHURLPATH%/uima summarize.pdf][terms]]
+   * UIMA Plugin. Is there a better way to identify available annotations?
+
+---++ 2016-11-09
+   * (Done) license contract
+   * (Done) UKP account
+   * (Done) communication channels
+   * progress and next steps
+      * technical
+      * literature
+   * task description (siehe Anhang)
+   * SVN: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/schuck
+      * This includes a preliminary DKPRO TC Experiment using the data from Habernal and Gurevych (2016)
+      * For "installing" the project: Browse the SVN using Eclipse's "SVN Repository Exploring", Then, right click on the project and select "Import as Maven Project"
+      * Running the experiment: Open de.tudarmstadt.ukp.dkpro.argumentation.implicitclaims.experiments.ImplicitClaimIdentification and run it.
+      * (it might be useful to select a result path that is not in your working space to prevent committing results in subversion) 
+      * As found in our last meeting, the data set in this project does not include information about the topics of the arguments. This information, however, will be extremely useful for conducting cross-topic experiments, etc.. This information is included in the original version of the corpus: https://www.ukp.tu-darmstadt.de/data/argumentation-mining/argument-annotated-user-generated-web-discourse/ 
+      * @discuss: How to include the missing meta data in the preprocessed data in the project?
+   * Next steps:
+      * Elaborate task description
+      * Structure thesis 
+      * Continue literature research (Argument Theory, Argument mining, existing corpora)
+      * Intall experiment (SVN project)
+      * Try to preprocess Habernal's corpus (from web) using DKPro
+
+
+
+---++ 2016-11-02
+   * Discussed topic in order to elaborate task description 
+   * Brief Introduction to DKPro TC
+   * Completed forms / contract / etc. 
+   * Next Steps: 
+      * Read literature about data
+      * Install DkPro TC and get familiar with it
+      * Preparation of task description 
+
+
+
+-- Main.ChristianStab - 2016-11-02
+
+%META:FILEATTACHMENT{name="uima summarize.pdf" attachment="uima summarize.pdf" attr="" comment="" date="1479222641" size="31977" user="schuck" version="1"}%

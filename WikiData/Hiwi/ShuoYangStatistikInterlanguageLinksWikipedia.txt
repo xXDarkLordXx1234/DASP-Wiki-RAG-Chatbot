@@ -1,0 +1,55 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="8"}%
+%META:TOPICPARENT{name="ShuoYangSigmundArbeit"}%
+---+ Statistik von Interlanguage-Links der Wikipedia
+
+---++ Englische Wikipedia -> Deutsche Wikipedia
+
+---+++ Dump-Version 20101011
+| *Art* | *Anzahl* | *Kommentar* |
+| Insgesamt | 3.472.978 Seiten | ohne Redirects |
+| Direct Übersetzungen | 595.253 Paare | 17,14% aller Seiten |
+| Redirect Übersetzungen | 1.661.180 Paare | |
+| Disambiguation Übersetzungen | 92.702 Paare | 2,67% aller Seiten |
+
+---++ Deutsche Wikipedia -> Englische Wikipedia
+
+---+++ Dump-Version 20101013
+| *Art* | *Anzahl* | *Kommentar* |
+| Insgesamt | 1.150.000 ~ 1.159.999 Seiten | ohne Redirects (angenommen 1.155.000) |
+| Direct Übersetzungen | 593.529 Paare | 51,39% aller Seiten |
+| Redirect Übersetzungen | 552.901 Paare | |
+| Disambiguation Übersetzungen | 98.440 Paare | 8,52% aller Seiten |
+
+
+---++ Anhang: Struktur von Mediawiki-XML
+[[http://www.mediawiki.org/xml/export-0.4.xsd][XSD]]
+
+<verbatim>
+/* Structure
+	 * <mediawiki>
+	 *     <siteinfo>
+	 *     </siteinfo>
+	 *     <page>
+	 *         <title>xxx</title>
+	 *         ...
+	 *         <revision>
+	 *             <text>xxxxx</text>
+	 *         </revison>
+	 *     </page>
+	 *     <page>
+	 *         ...
+	 *     </page>
+	 *     ...
+	 *     <page>
+	 *         ...
+	 *     </page>
+	 * </mediawiki>
+	 * 
+	 */
+</verbatim>
+
+
+
+-- Main.ShuoYang - 2010-12-13
+
+%META:TOPICMOVED{by="ShuoYang" date="1288212143" from="Hiwi.StatistikInterlanguageLinksWikipedia" to="Hiwi.ShuoYangStatistikInterlanguageLinksWikipedia"}%

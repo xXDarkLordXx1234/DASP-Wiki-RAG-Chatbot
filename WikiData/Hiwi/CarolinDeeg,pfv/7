@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="DanielBaer" date="1264411467" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Carolin Deeg
+
+---+++Status:
+   * KW1:
+      * Eclipse eingerichtet und Projekt aufgesetzt (2)
+      * Kennenlernen der Wiki-API (1)
+      * Zerlegung der Aufgabe in einzelne Teilaufgaben und deren Implementierung (4)
+   * KW2:
+      * Optimierung des Codes und Bugfixes (2)
+      * Besprechung (1)
+      * Implementierung von zusätzlichen Hilfsmethoden (2)
+   * KW3:
+      * Ergänzen/Hinzufügen der Dokumentation (2)
+      * Einfügen des Projekts ins SVN (und benötigte Methoden in bereits vorhandenen Klassen hinzufügen) (3)
+
+---+++ Neues Format
+
+   * !DaB: Hi Carolin, bitte übernimm doch das folgende Format für deine Stundenauflistung. Prof. Gurevych möchte gerne eine einheitliche Übersicht aller Studenten in unserem Team. Habe ein Beispiel schonmal eingefügt. Gruß, Daniel
+
+---++++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" }%
+| *Aufgabe* | *% done* |
+| Extraktion der parallelen Wikiquotes |  |
+
+---++++ Stunden
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Parallele Wikiquotes | | 2 | Eclipse eingerichtet und Projekt aufgesetzt |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 30 | 01.01.2010 bis 31.01.2010 |
+<nop>

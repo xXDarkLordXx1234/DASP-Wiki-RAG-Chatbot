@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="FabianTamin" date="1250175949" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ Tools and Libraries
+
+---++ Computer languages
+Computer languages which are used in this project:
+   * *Java* [[http://java.sun.com/][(link)]]
+   * *JavaScript*
+   * *HTML (Hypertext Markup Language)* [[http://www.w3.org/][(link)]]
+
+---++ Tools
+   * *eclipse 3.4 (Ganymede)* [[http://www.eclipse.org/ganymede/][(link)]]: as Java IDE<br />Used Plugin:
+      * *eUML2* [[http://www.soyatec.com/euml2/][(link)]]: Model-Driven Architecture (MDA) tool (between UML (Unified Modeling Language) 2 and Java Code) for eclipse.
+      * *Subclipse* [[http://subclipse.tigris.org/][(link)]]: SVN tools for eclipse.
+      * *Mylyn* [[http://www.eclipse.org/mylyn/][(link)]]: WikiText editor for eclipse.
+      * *UIMA* [[http://incubator.apache.org/uima/][(link)]]: UIMA feature support for eclipse.
+   * *Komodo Edit 5.1* [[http://www.activestate.com/komodo_edit/][(link)]]: !JavaScript editor.
+   * *JUDE Community 5.5* [[http://incubator.apache.org/uima/][(link)]]: UML tools.
+   * *Maven*  [[http://maven.apache.org/][(link)]]: project management and comprehension tool based on the concept of a project object model (POM). Maven can manage a project's build, reporting and documentation from a central piece of information.
+
+---++ Libraries
+   * *UIMA (Unstructured Information Management Applications)* [[http://incubator.apache.org/uima/][(link)]]: framework for unstructured information management
+   * *Mylyn !WikiText* [[http://wiki.eclipse.org/Mylyn/Incubator/WikiText][(link)]]: library for parsing WikiText (MediaWiki, TWiki, etc.).
+   * *HTML Parser* [[http://htmlparser.sourceforge.net/][(link)]]: library for parsing HTML.
+   * *jQuery* [[http://jquery.com/][(link)]]: !JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.
+   * *The Yahoo! User Interface Library (YUI)* [[http://developer.yahoo.com/yui/][(link)]]: the YUI Library is a set of utilities and controls, written in !JavaScript, for building richly interactive web applications using techniques such as DOM scripting, DHTML and AJAX.
+   * *DWR (Direct Web Remoting)* [[http://directwebremoting.org/dwr/index.html][(link)]]: DWR is a Java library that enables Java on the server and !JavaScript in a browser to interact and call each other as simply as possible. DWR is Easy Ajax for Java
+
+---++ External Links
+   * [[http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks][Comparison of JavaScript Frameworks]]
+
+-- Main.FabianTamin - 05 Aug 2009

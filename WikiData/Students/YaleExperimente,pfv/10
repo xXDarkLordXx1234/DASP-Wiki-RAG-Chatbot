@@ -1,0 +1,47 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1179693131" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Hier eine Übersicht über die bisher durchgeführten Experimente und die Ergebnisse der Grid Search und der Evaluation.
+
+Die Experimente wurden wie folgt durchgeführt: Aus der Datenbank wurden alle Rezensionen ausgelesen, die der folgenden Bedingung genügen: _SELECT * FROM REVIEW WHERE TotalVotes>=5 AND DATE<='2006-03-18'_ . Von dem resultierenden Datensatz wurden 10% der Daten als Development Corpora zur Durchführung der Grid Search zurückgehalten. Die Grid Search wurde wie bei Hsu et al. 2003 beschrieben durchgeführt, jeweils für das Performanzmaß "Pearson'scher Korrelationskoeffizient" sowie "Spearman'scher Rangkorrelationskoeffizient". Die anderen 90% dienten als Test-Datensatz. Die Tests wurden per 10-fold Cross Validation mit den optimalen Parametern aus der Grid Search für einen RBF-Kernel durchgeführt: Vor den Tests wurden die Daten auf den Bereich [0,1] normalisiert.
+
+---++Digitalkameras
+
+Insgesamt 14460 Rezensionen (Kim et al.: 14467)
+
+| *Features* | *Opt. Parameter Pearson* | *Performanz Pearson* | *Opt. Parameter Spearman* | *Performan Spearman* |
+| LEN | C=512, Gamma=8 | 0.457 +/- 0.105 | C=0.5, Gamma=2.0 | 0.411 +/- 0.027 |
+| UGR | C=32768, Gamma=0 | 0.457 +/- 0.019 | C=0.125, Gamma=0.0 | 0.446 +/- 0.036 |
+| Stars | C=128. Gamma=0.0 | 0.410 +/- 0.024 | C=128, Gamma=0.0 | 0.353 +/- 0.026 |
+| Stars,Len,UGR | C=0.125, Gamma=3.0517578125E-5 | 0.445 +/- 0.017 | C=8.0. Gamma=0.0 | 0.497 +/- 0.014 |
+| Technical Terms (TT)* | C=32768.0, Gamma=2.0 | 0.113 +/- 0.397 | C=2.0, Gamma=0.03125 | 0.446 +/- 0.019 |
+| UGR, TT | C=0.5, Gamma=0.001953125 | 0.541 +/- 0.011| C=2048.0, Gamma=0.03125 | 0.442 +/- 0.023 |
+
+
+* Zur Erstellung der TechnicalTerms wurde für jede Wortform ihre Häufigkeitsklasse (HKL) berechnet. Als Technical Terms wurden alle Wortformen mit HKL kleiner gleich 7 verwendet.
+
+-----------------------------------------------------
+
+*Alte Ergebnisse*:
+
+Stehen noch drin, werden vielleicht noch gebraucht.
+
+Hier wird eine Übersicht über durchgeführte Experimente geboten. Dies beinhaltet Testaufbau und Testergebnisse
+
+| *Datenbank* | *SQL-Query* | *LEN* | *UGR* | *Stars* | *Stoppwörter entfernt* | *Competitor* | *Correlation* | *Spearman* | *Kendall* |
+| Digitalkameras | A | X | X | X | | | 0.454 +/- 0.020 | 0.452 +/- 0.019 | 0.319 +/- 0.013 |
+| Digitalkameras | A | X | X | X | X | | 0.441 +/- 0.022 | 0.455 +/- 0.013 | 0.321 +/- 0.009 |
+| Digitalkameras | A | X |  |  | | | 0.316 +/- 0.024 | 0.412 +/- 0.024 | 0.292 +/- 0.017 |
+| Digitalkameras | A |  | X |  |  |  | 0.497 +/- 0.017 | 0.448 +/- 0.019 | 0.318 +/- 0.015 |
+| Digitalkameras | A |  | X |  | X | | 0.478 +/- 0.016 | 0.448 +/- 0.016 | 0.317 +/- 0.013 |
+| Digitalkameras | A |  |  | X | | | 0.414 +/- 0.025 | 0.357 +/- 0.018 | 0.286 +/- 0.014 |
+| Digitalkameras | A |  |  |  | | X | 0.119 +/- 0.016 | 0.134 +/- 0.025 | 0.107 +/- 0.020 |
+| Digitalkameras | A | X |  |  | | X | 0.306 +/- 0.020 | 0.398 +/- 0.020 | 0.282 +/- 0.014 |
+| Digitalkameras | A |  | X |  | | X | 0.498 +/- 0.023 | 0.449 +/- 0.027 | 0.319 +/- 0.019 |
+
+
+A = SELECT * FROM REVIEW WHERE !TotalVotes>=5 AND DATE<='2006-06-01'
+
+Parameter C und Gamma noch nicht getunt (C=Gamma=0).
+
+
+-- Main.KaiMichaelHoever - 08 May 2007

@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="BenjaminHerbert" date="1242043163" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="BenjaminHerbert"}%
+---++ Datapath for the UIMA Cpe GUI
+The CPE Gui has to be told the datapath, as it does not access Eclipse settings.  <br />
+This can be done by providing an argument to the _run configuration_ in Eclipse:
+   * Add the following snippet to the VM Arguments ="-Duima.datapath=/home/herbert/workspace/dkpro_community_mining:/home/herbert/workspace/dkpro_core:/home/herbert/workspace/dkpro_ir:/home/herbert/workspace/dkpro_ml:/home/herbert/workspace/dkpro_opinion_mining:/home/herbert/workspace/dkpro_semantics:/home/herbert/workspace/lexsemresource"=
+   * Adjust this to *your* path, or it still will not work
+
+
+
+
+-- Main.BenjaminHerbert - 11 May 2009

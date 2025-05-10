@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="LizhenQu" date="1187279925" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="LizhenQu"}%
+
+WordNet 2.0 coverage test:<br />All phrases occur in TAGs are seperated into single word and try to find a corresponding match in WordNet 2.0. 20430 words are found in WordNet 2.0 among all 41631 words (uncovered is stemmed by SnowBall). So the coverage ratio is  0.4907400735029185.
+   * [[%ATTACHURL%/tag_phrase_count_16_08.txt][tag_phrase_count_16_08.txt]]: words and phrases in tags. All words and phrase are converted into lower case.
+
+   * [[%ATTACHURL%/tag_word_count_16_08.txt][tag_word_count_16_08.txt]]: Single word ranking, any phrase will be splitted into single word. all words are in lower case.
+
+   * [[%ATTACHURL%/tag_stemmed_word_count_16_08.txt][tag_stemmed_word_count_16_08.txt]]: single words ranking. All words are stemmed by snowball
+
+   * [[%ATTACHURL%/wordNet_uncovered_phrase][wordNet_uncovered_phrase]]: all phrases with at most 3 words. not covered by wordnet 2.0. Phrases are stemmed by Snowball.
+
+   * [[%ATTACHURL%/wordNet_uncovered_phrase_g3.rank][wordNet_uncovered_phrase_g3.rank]]: Phrases with more than 3 words, they are assumed not by covered by WordNet 2.0. Because the look up of multiwords phrase is quite slow in JWNL.
+
+   * [[%ATTACHURL%/wordNet_uncovered_words.rank][wordNet_uncovered_words.rank]]: all words not covered by WordNet 2.0. Multi-words phrase are splitted into single words.
+
+%META:FILEATTACHMENT{name="tag_phrase_count_16_08.txt" attachment="tag_phrase_count_16_08.txt" attr="" comment="words and phrases in tags. All words and phrase are converted into lower case." date="1187279294" path="tag_phrase_count_16_08.txt" size="898073" stream="tag_phrase_count_16_08.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tag_word_count_16_08.txt" attachment="tag_word_count_16_08.txt" attr="" comment="Single word ranking, any phrase will be splitted into single word. all words are in lower case." date="1187279367" path="tag_word_count_16_08.txt" size="401408" stream="tag_word_count_16_08.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tag_stemmed_word_count_16_08.txt" attachment="tag_stemmed_word_count_16_08.txt" attr="" comment="single words ranking. All words are stemmed by snowball" date="1187279437" path="tag_stemmed_word_count_16_08.txt" size="319488" stream="tag_stemmed_word_count_16_08.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="wordNet_uncovered_phrase" attachment="wordNet_uncovered_phrase" attr="" comment="all phrases not covered by wordnet 2.0. Phrases are stemmed by Snowball." date="1187279509" path="wordNet_uncovered_phrase" size="187547" stream="wordNet_uncovered_phrase" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="wordNet_uncovered_phrase_g3.rank" attachment="wordNet_uncovered_phrase_g3.rank" attr="" comment="all words not covered by WordNet 2.0. Multi-words phrase are splitted into single words." date="1187279590" path="wordNet_uncovered_phrase_g3.rank" size="122923" stream="wordNet_uncovered_phrase_g3.rank" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="wordNet_uncovered_words.rank" attachment="wordNet_uncovered_words.rank" attr="" comment="Phrases not covered by WordNet 2.0 with more than 3 words." date="1187279645" path="wordNet_uncovered_words.rank" size="203199" stream="wordNet_uncovered_words.rank" user="Main.LizhenQu" version="1"}%

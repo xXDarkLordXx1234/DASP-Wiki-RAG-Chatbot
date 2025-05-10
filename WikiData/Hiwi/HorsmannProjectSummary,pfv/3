@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="TobiasHorsmann" date="1339073209" format="1.1" version="3"}%
+%META:TOPICPARENT{name="TobiasHorsmann"}%
+   * JMWEProjectsHorsmann
+   * TEIReader
+      * Modified version of the TEIReader n order to use a local pos-tagging-2-uima mapping file for reading a TEI-Corpus
+      * pos-tagging2-uima mapping file for the tei-brown corpus
+      * Not yet integrated into DKPro
+   * freqExtraction
+      * Web1T Index for large corpora. Used for developing the index creation for larger Wikipedias (e.g. English). Already moved to DKPro.
+   * LinguisticInfoExtraction
+      * Extracts named entities based on a dictionary, their various part of speech tags with frequencies and lemmas
+   * externalFreqCountProvider
+      * Uses a Web1T Index to calculate the maximum likelihood and stores the result in a specified type's feature path. Requires a Web1T Index as resource. Interesting parts of this project is storing a result in a type's feature and the use of an external resource.
+   * mwe
+      * reads in articles from wikipedia and performs term extraction for bold, italic, header and link markup in the wikipedia article. The extracted multi word terms are annotated as WikiMWE types and added to the UIMA pipeline. The extracted terms are additionally stored in a Lucene index. For links, the link target is stored separately in the index. Afterwards a pipeline is run for extracting the wikipedia titles which are stored in the same index.
+      * _OPEN_ : Reading the created index and obtain only unique mulit words does not work with the currently available reader in dkpro, because it reads the index document-wise. Implementing a reader for uniquely reading each mwe was deferred.
+   * MWERanking
+      * Annotator that reads a lucene index and calculate PMI, SCP or PHI2 with fair or pessimistic strategy. This annotator is based on the old implementation of the measure calculation. A threshold can be specified to skip output of scored MWEs which are below the threshold. Above mentioned issue with the lucene reader leads to multiple processing of the same mwe's, because the data read are not unique and certain mwe's appear over and over again. The scoring is done based on the old project containing the measure implementations (see below for similar project using the new libraries);
+   * MWERankingv2
+      * Same as above MWERanking, just this one is based on the new measure libraries containing more measures then the old one. Additionally, this projects reads no longer from a lucene index but from a tab separated input. The sequence of words before the first tabulator character occurs is read as the mwe while the following values of a line are ignored.

@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="MarkoMartin" date="1277821701" format="1.1" version="2"}%
+%META:TOPICPARENT{name="MarkoMartin"}%
+%TOC% 
+
+---++26.06.2010 
+   * How to connect with Cisco VPN Client? Do I need "Group Authentication" data?
+      * _29.06.2010_: Problem solved with generic Windows VPN connection
+   * Wikipedia articles are divided both in paragraphs and sections - what would be the appropriate granularity for segmentation algorithms?
+      * _29.06.2010_: The Wikipedia reader component should be able to mark regions as segments such as defined with a parameter (e.g., only for sections, for sections and sub sections, for paragraphs etc.); however, for sake of simplicity, flat (not hierarchical) segment annotations are sufficient. Other components do not have to distinguish between different kinds of segments.
+
+-- Main.MarkoMartin - 26 Jun 2010

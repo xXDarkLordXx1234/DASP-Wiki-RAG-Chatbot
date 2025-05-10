@@ -1,0 +1,78 @@
+%META:TOPICINFO{author="lind" comment="" date="1559047212" format="1.1" reprev="2" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Week _23.05.-28.05._:
+   * created and trained languagemodel (show results)
+   * started explaining the attributes and structured thesis
+   * did not get vpn to work
+ 
+---+++++ Whats next? (this week):
+   * still need to calculate perplexity
+   * finish chapter datasets
+   * get vpn to work
+
+---++ Week _14.05.-23.05._:
+   * created Language Model without context (show github)
+   * refactored some of the code base
+   * integrated the datasets into my repository
+   
+---+++++ Whats next? (this week)
+   * run LM on krusty 
+      * calculate perplexity + loss for each
+   * start writing on thesis:
+      * preprocessing of datasets
+      * features of every datasets
+    
+
+---++ Week _07.05.-14.05._:
+   * created overview on [[https://git.ukp.informatik.tu-darmstadt.de/lind/style-variation-datasets][readme]]
+   * implemented first version language model 
+
+---+++++ Whats next?
+   * need to refactor everything
+   * run & test it on krusty
+   * i have a seminar next week i need to work on urgently
+---+++++ Future:
+   * reread papers of datasets to add comments 
+      * short description how it is used
+      * short description on which model is used
+  
+
+---++ Week _30.04-07.05._:
+   * compiled necessary datasets, uploaded to gitlab, made a nice structure to use in future that is modular
+   * tried, read and failed to learn how a Language Model in the style setting should work
+   1 All on datasets:
+---++++ downloaded and processed following datasets:
+   * rottentomatoes
+   * shakespear by jhamtani
+   * yelp_gender prabhumoye
+   * yelp sentiment
+---++++ on the dataset we were unsure of:
+   * imdb review
+my suggestion would be now:
+   * dropoff for equal distribution of attributes (we have enough datapoints)
+
+---++++ dataset im unsure to use:
+   * stanford sentiment treebank
+because it was used for a summarization task and they only got sentiment, but maybe still usable as the other datasets....
+
+---++++ other datasets:
+   * robvoigt (i will show you samples in my docs, lets discuss which may be usable)
+ 
+   2 All on the Language Model implementation:
+
+I think i have huge misunderstandings in Ficler & Goldberg, need to talk to you...
+I've created an overview of all technical details used in the paper (i will show and try to explain).
+Questions on:
+   1 Embeddings
+   2 Feature usage
+   3 Role of LSTM
+   4 n-grams and prediction
+
+My plans for following week:
+
+   * look what you say about the datasets
+   * may work on this aswell (create a overview, create examples etc.)
+
+   * Understand how the Language Model i try to implement should work (math and structure)
+   * Read the newest papers you suggested on mendeley (from 16. april to 1.may ...)
+   * inform goezde about my seminar

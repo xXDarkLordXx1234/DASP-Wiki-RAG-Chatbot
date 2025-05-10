@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="sorokin" date="1480071454" format="1.1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+
+---+!! Thesis Topic
+
+---++ Intro
+
+---++ Next meeting
+   * @todo(DS): Dr. Eichberg
+   * @todo(MH): fill out the wiki
+   * @todo(MH): DKPro: [[https://dkpro.github.io/dkpro-core/]]
+   * @todo(MH): take a a closer look at the code 
+      * DS's code
+      * Raktim's code on extracting data from the Wikipedia corpus: CreateAnnotations.java
+
+---++ 2016-11-25
+   * @info(DS): organisational issues
+   * @info(DS): relevant code repositories:
+      * [[https://github.com/sivareddyg/graph-parser]] - this is a Semantic Parser that uses a different knowledge base (Freebase), but the queries and their structure are very similar to WikiData. We can definitely learn something from his implementation. It seems like SPARQL relevant classes are located here: [[https://github.com/sivareddyg/graph-parser/tree/master/src/in/sivareddy/graphparser/util/knowledgebase]]
+      * [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/]] - This is a code of a UKP master student who had to implement some SPARQL queries last year. He has used the same WikiData endpoint. The Queries are implemented in this class: [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/java/src/main/java/de/tudarmstadt/ukp/raktim/SparqlHandler.java]]
+      * Finally here is some code that I have been working on, relevant WikiData objects are located here: [[https://git.ukp.informatik.tu-darmstadt.de/sorokin/semantic-parsing-training-data-pipeline/tree/master/src/main/java/knowledgebase]] - get acquainted with it, as we'll probably use it as the starting point. 
+
+---++ 2016-11-XX
+   * @todo(MH): test task results, link the code 
+
+
+
+-- Main.DaniilSorokin - 2016-11-25

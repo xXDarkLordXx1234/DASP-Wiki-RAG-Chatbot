@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="3"}%
+%META:TOPICPARENT{name="SemEval"}%
+---+ SemEvalSegmentation
+
+%TOC%
+
+---++ Possible approaches for segmentation
+   * After a fixed amount of sentences.
+   * When one or two linebreaks appear
+   * JTextTile (exisiting component in DKPro)
+
+---++ Possible approaches for recombining keyphrases from different segments
+A keyphrase annotation consists of its String representation and its score. The score can be changed to integrate a weight in some way. Different weights can be used:
+   * A keyphrase is rated higher if it appears in more segments
+   * A keyphrase is rated higher, the earlier it appears in a segment (only makes sense with some Segmenters)
+   * A keyphrase is rated higher, the earlier the segment of the keyphrase appears
+
+---++ Other approaches
+   * Only take the first / last / both segments into account
+   * Use the keyphrases in each segment to build a global model (coocc, LSG) - does not make much sense with tfidf

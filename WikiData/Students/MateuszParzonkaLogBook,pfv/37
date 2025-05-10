@@ -1,0 +1,346 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1290228425" format="1.1" reprev="37" version="37"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+---+++++ 19 Nov 2010
+Implemented experiment pipeline as clean as possible, made various tests and debugged minor errors. I hope its all fine now. Started experiments in the direction Seg->Rank since its more important then the other way around. Using 3 keyphrase candidate sets, 12 segmenters and 4 rankers, this makes 144 combinations, which are evaluated with 1 matching strategy, 2 different evaluation strategies (ratio and size) (plus a BatchEvaluation iterating over ratios) and 4 different aggregation strategies. This will make 1152 PRF values for the collection + 2880 additional PRF values for the collection in the batch evaluation. I just hope it won't take so long.
+
+---+++++ 18 Nov 2010
+Implemented aggregation methods using the GoF-strategy pattern. Integrated them into the evaluator because it was the easiest. Evaluator now uses 3 different strategies: matching, evaluation and aggregation - each having different classes that implement them. Four aggregation strategies will be used: Maximum, Sum, TopN with collision resolution using old score, and TopN with collision resolution using position. <br>
+Pool computer found crashed, not that bad, since experiments not the real ones. Hope that does not happen again. Network was having heavy problems.<br>
+Revamped SegmentStatistics-class. Outputs min, max, mean tokens for documents and collections.
+
+---+++++ 17 Nov 2010
+Talked to Nico about methods for score aggregation from segments. Sparked some helpful new ideas. <br>
+Started some experiments in the pool, still debugging some details.
+
+---+++++ 16 Nov 2010
+
+Created a wrapper for Gnuplot, so that it can be called from an annotator and plot automatically. The phrase dist plots can be used to visualize how good a metric separates the hits from the misses, but for clues on the horizontal plane are difficult to see and to exploit... :/
+ 
+     <img src="%ATTACHURLPATH%/phrasedist.jpg" alt="phrasedist.jpg" width="2217" height="522" />
+
+---+++++ 16 Nov 2010
+
+Created a SymmetricSegmenter: It annotates segments with the same number of sentences. Easy concept, hope it will help to really say something about effects of segmentation combined with ranks.
+With rising segmentation factor (sf) applied to ranked KCs, it seems that segmentation does not seem to have positive effects.
+
+| | *P* | *R* | *F* | *#IndexEntries* | *#GoldEntries* | *Timestamp* |
+|NERstanford Tfidf SymSeg, sf=1 EvalTheshold: 0.372 |29.67 | 27.00 | 28.27 | 12694 | 13471 |16.11.2010 05:58|
+|NERstanford Tfidf SymSeg, sf=2 EvalTheshold: 0.372 |29.47 | 26.21 | 27.75 | 12404 | 13471 |16.11.2010 10:43|
+|NERstanford Tfidf SymSeg, sf=4 EvalTheshold: 0.372 |29.60 | 25.29 | 27.27 | 11898 | 13471 |16.11.2010 10:50|
+
+Which can be the problem of this set of Candidates. The pipeline outputs warnings that there are not enough candidates in some segments. The number of index entries is too low, therefore the performance can't be great. It will be worth running the experiment with other KCs that have bigger set sizes. Hope there its no bug.
+
+---+++++ 15 Nov 2010
+TopNExtractor: Fighting a really annoying bug (= behaviour i don't understand) for +8 hours and building stuff to get him in the end. <br>
+The extractor is ready. It reranks the phrases in each segment, so that the jcas can be processed by a normal phrase evaluator.
+
+---+++++ 14 Nov 2010
+Embedded experiment that calculates the wanted percentage based on the .index.trimmed and the .index.full, evaluated NERstanford with smallLevenshtein matching strategy.
+| | *P* | *R* | *F* | *#IndexEntries* | *#GoldEntries* | *Timestamp* |
+| NERStanford Tf [wanted percentage trimmed=0,372]|29.41 | 26.76 | 28.02 | 12701 | 13471 |14.11.2010 18:13|
+| NERStanford Tf [wanted percentage full=0,449]|28.24 | 29.85 | 29.02 | 14738 | 13471 |14.11.2010 18:13|
+| NERStandford TfiDf [wanted percentage trimmed=0,372]|29.67 | 27.02 | 28.28 | 12701 | 13471 |14.11.2010 20:35|
+| NERStandford TfiDf [wanted percentage full= 0,449]|28.44 | 30.05 | 29.22 | 14738 | 13471 |14.11.2010 20:35|
+| Update: NERstanford Tfidf Threshold 0.372D |29.67 | 27.00 | 28.27 | 12694 | 13471 |16.11.2010 05:10|
+What is really interesting about this results, apart from the fact that TfiDf is not much better then Tf, is the point that the performance of this "method" is already better then in CM2007.
+C&M score 26.70, 26.37, 26.53 using their best unsupervised method on exactly the same dataset. The smallLevenshtein-Matching is very moderate, just to match plurals and punctuation differences, C&M even applied synonym-matching.
+
+---+++++ 11 - 14 Nov 2010
+Playing around with plotting in Python and Gnuplot. Gnuplot seems to offer more, and should be easier to intergrate.
+
+---+++++ 11 Nov 2010
+Created a TfidfConsumerTextBased that  does not depend on 4-Grams. The problem with 4-grams was, that not every keyphrase candidate could be found in the maps. Either it was too long, or the punctuation was different. That always resulted in a zero. Same applies to Web1t, since loglikelihood uses tf as well. The new textbased TfidfConsumer scans for every given KC the original text for occurrences. Therefore it is guaranteed that every KC has its proper count, so these things should work fine now. 
+
+---+++++ 11 Nov 2010
+Further refactored Evaluator. Still not happy with the structure. Should do something else.
+
+---+++++  9 - 10 Nov 2010
+Created an Evaluator that allows usage of separate evaluation and matching strategy that can be freely combined using configuration via parameters and invocation via reflection.
+Wrote some tests.
+
+---+++++ 4 - 7 Nov 2010
+Refactored BbiEvaluator to use new abstractions like matchingStrategies, evaluationStrategies and IDocuments. <br>
+Simplified pipelines to static pipeline methods.<br>
+Introduced new abstraction "Dataset" for the pipeline methods.<br>
+Simplified experiment setups to scripting static pipeline method calls.<br>
+Slight refactoring in web1t.<br>
+Deprecated and deleted obsolete stuff.<br>
+Fixed warnings.<br>
+Wrote some tests for new components, a lot of the old tests had to be deleted, since the architecture change.<br>
+
+---+++++ 2 Nov 2010
+Working on pipeline and experiment setup.
+
+---+++++ 1 Nov 2010
+Ranked tokens with loglikelihood based on web1t.
+
+| | *P* | *R* | *F* | *#IndexEntries* | *#GoldEntries* | Timestamp |
+|tokens (n, a) web1t ranked [BbiEvaluatorSmallLevenshtein]|16.82 | 15.82 | 16.31 | 12669 | 13471 |02.11.2010 03:49|
+
+---+++++ 30 Oct 2010
+Implemented Evaluator based on a small Levenshtein distance.
+
+---+++++ 25 Oct 2010
+Installed the web1t Google n-grams on the pool-machine. Takes up 90 GB of space. Integrated API that works in logarithmic time. Used in an annotator lookup for ca. 450000 nchunks took approx 1-2 hours.
+
+---+++++ 24 Oct 2010
+Baseline on C&M2007 using only subsets of {Token} with given post-processing. Sets are derived from the TextRank-paper to evaluate the gain of TextRank.<br>
+Since this is supposed to be the candidate extraction step, high recall is crucial.<br>
+Result: Tokens (N,A) merged (kept parts) has the highest recall with acceptable precision compared to NGrams. Removing the dangling adjectives (adjectives, that could not be merged with a noun) yields higher precision with minimal loss of recall, further increasing the quality of this token based candidate set.
+
+| | *P* | *R* | *F* | *#IndexEntries* | *#GoldEntries* | Timestamp |
+|Tokens (N) FilteredGold [BbiEvaluatorExact]|5.917 | 77.24 | 10.99 | 146094 | 11191 |25.10.2010 03:43|
+|Tokens (N) [BbiEvaluatorExact]|5.917 | 64.16 | 10.83 | 146094 | 13471 |25.10.2010 03:43|
+|Tokens (A) FilteredGold [BbiEvaluatorExact]|0.437 | 1.769 | 0.701 | 45329 | 11191 |25.10.2010 04:05|
+|Tokens (A) [BbiEvaluatorExact]|0.437 | 1.47  | 0.673 | 45329 | 13471 |25.10.2010 04:05|
+|Tokens (N) FilteredGold [BbiEvaluatorExact]|5.917 | 77.24 | 10.99 | 146094 | 11191 |25.10.2010 03:56|
+|Tokens (N) [BbiEvaluatorExact]|5.917 | 64.16 | 10.83 | 146094 | 13471 |25.10.2010 03:56|
+|Tokens (N,A) FilteredGold [BbiEvaluatorExact]|4.675 | 77.62 | 8.819 | 185811 | 11191 |25.10.2010 04:12|
+|Tokens (N,A) [BbiEvaluatorExact]|4.675 | 64.48 | 8.718 | 185811 | 13471 |25.10.2010 04:12|
+|Tokens (N,A) merged FilteredGold [BbiEvaluatorExact]|2.935 | 82.28 | 5.668 | 313754 | 11191 |25.10.2010 04:21|
+|Tokens (N,A) merged [BbiEvaluatorExact]|2.956 | 68.84 | 5.668 | 313754 | 13471 |25.10.2010 04:21|
+|Tokens (N,A) merged (kept parts) FilteredGold [BbiEvaluatorExact]|2.666 | 92.06 | 5.181 | 386500 | 11191 |25.10.2010 04:29|
+|Tokens (N,A) merged (kept parts) [BbiEvaluatorExact]|2.682 | 76.94 | 5.183 | 386500 | 13471 |25.10.2010 04:29|
+|Tokens (N,A) merged (kept parts, no dangling adj) FilteredGold [BbiEvaluatorExact]|2.959 | 91.68 | 5.732 | 346783 | 11191 |25.10.2010 15:30|
+|Tokens (N,A) merged (kept parts, no dangling adj) [BbiEvaluatorExact]|2.977 | 76.62 | 5.73  | 346783 | 13471 |25.10.2010 15:30|
+
+---+++++ 22 Oct 2010
+TextRank using different setting on unsegmented dataset. NChunks perform best, comforms to the results in _zesch2009approximate_ : SP dataset of long documents has R-precision of 12% using NChunks.
+
+| | *P* | *R* | *F* | *#IndexEntries* | *#GoldEntries* | Timestamp |
+|Lemma (N,A), windowSize=2, weighted=false [BbiEvaluatorExact]|1.271 | 1.195 | 1.232 | 12669 | 13471 |22.10.2010 22:11|
+|Lemma (N,A), windowSize=2, weighted=true [BbiEvaluatorExact]|1.492 | 1.403 | 1.446 | 12669 | 13471 |22.10.2010 22:02|
+|Lemma (N,A), windowSize=3, weighted=false [BbiEvaluatorExact]|1.184 | 1.114 | 1.148 | 12669 | 13471 |22.10.2010 22:33|
+|Lemma (N,A), windowSize=3, weighted=true [BbiEvaluatorExact]|1.334 | 1.255 | 1.293 | 12669 | 13471 |22.10.2010 22:22|
+|Lemma (N,A), windowSize=4, weighted=false [BbiEvaluatorExact]|1.058 | 0.995 | 1.025 | 12669 | 13471 |22.10.2010 22:59|
+|Lemma (N,A), windowSize=4, weighted=true [BbiEvaluatorExact]|1.31  | 1.232 | 1.27  | 12669 | 13471 |22.10.2010 22:46|
+|NChunks, windowSize=2, weighted=false [BbiEvaluatorExact]|13.46 | 12.66 | 13.05 | 12669 | 13471 |22.10.2010 21:08|
+|NChunks, windowSize=2, weighted=true [BbiEvaluatorExact]|13.57 | 12.76 | 13.16 | 12669 | 13471 |22.10.2010 20:58|
+|NChunks, windowSize=3, weighted=false [BbiEvaluatorExact]|13.45 | 12.64 | 13.03 | 12669 | 13471 |22.10.2010 21:28|
+|NChunks, windowSize=3, weighted=true [BbiEvaluatorExact]|13.61 | 12.80 | 13.19 | 12669 | 13471 |22.10.2010 21:18|
+|NChunks, windowSize=4, weighted=false [BbiEvaluatorExact]|13.39 | 12.59 | 12.98 | 12669 | 13471 |22.10.2010 21:52|
+|NChunks, windowSize=4, weighted=true [BbiEvaluatorExact]|13.57 | 12.76 | 13.16 | 12669 | 13471 |22.10.2010 21:40|
+|Token (N,A), windowSize=2, weighted=false [BbiEvaluatorExact]|1.271 | 1.195 | 1.232 | 12669 | 13471 |22.10.2010 23:18|
+|Token (N,A), windowSize=2, weighted=true [BbiEvaluatorExact]|1.492 | 1.403 | 1.446 | 12669 | 13471 |22.10.2010 23:08|
+|Token (N,A), windowSize=3, weighted=false [BbiEvaluatorExact]|1.184 | 1.114 | 1.148 | 12669 | 13471 |22.10.2010 23:41|
+|Token (N,A), windowSize=3, weighted=true [BbiEvaluatorExact]|1.334 | 1.255 | 1.293 | 12669 | 13471 |22.10.2010 23:29|
+|Token (N,A), windowSize=4, weighted=false [BbiEvaluatorExact]|1.058 | 0.995 | 1.025 | 12669 | 13471 |23.10.2010 00:07|
+|Token (N,A), windowSize=4, weighted=true [BbiEvaluatorExact]|1.31  | 1.232 | 1.27  | 12669 | 13471 |22.10.2010 23:54|
+
+---+++++ 21 Oct 2010
+Wrote AnnotationFilter. Drops all annotations except of the one specified. Purges your jcas before storing it. <br>
+Wrote JCasIterableStore aka JCasIterableIterable. Iterates over JCasIterables : Needed to reuse segments of documents stored to disk. These segments store f.e. ranked keyphrases that can be used lateron in an yet unknown new ranking function.
+
+---+++++ 20 Oct 2010
+Wrote MultiSegmentWriter. Stores segmented documents to disk as jcases in XMI-representation.
+
+---+++++ 19 Oct 2010
+Tagged a version of thesis: [[https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/parzonka/bachelor-thesis/tags/bachelor-thesis_0.0.2/bachelor-thesis.pdf][bachelor-thesis_0.0.2]] 
+
+---+++++ 18 Oct 2010
+Reading papers, writing thesis. <br>
+Prepared pipeline using TextRank with and without segmentation.
+
+---+++++ 17 Oct 2010
+First iteration of introduction and Related Work: GlossEx.
+
+---+++++ 15 Oct 2010
+Changed thesis structure after review by TZ and working on introductory parts of the thesis and "related work".
+
+---+++++ 14 Oct 2010
+Tagged a downloadable beta version of the thesis structure (comments colored red): [[https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/parzonka/bachelor-thesis/tags/bachelor-thesis_0.0.1_(structure_beta)/bachelor-thesis.pdf][bachelor-thesis_0.0.1]] 
+
+---+++++ 13 Oct 2010
+Working on a thesis structure.
+
+---+++++ 12 Oct 2010
+*Problem:* Preprocessing failed because the JVM hang while writing the XMI of the augmented JCas of the biggest book. No exception was thrown, XMI has size 0k and Eclipse is still processing since > 17 hours. =XmiWriterCasConsumer_type.xml= had size 0k too. Killed process, rebooted machine and increased heap size to 3GB. Restarted processing.<br>
+*Update:* Preprocessing succeeded using the settings specified above. Took 2 hours and 42 minutes on Dual Core Pentium 2.5 Ghz 4GB.
+
+---+++++ 11 Oct 2010
+Created baselines for the other indexes:
+   * Index.Full ("fine grained") - " _A long index, containing the full reconstructed index entries, which corresponds to a more fine-grained indexing strategy._ "
+   * Index.Full.Filtered ("filtered") - " _Excludes the potentially ungrammatical phrases created by reconstruction of the inverted compound entries. Allows us to measure a system performance with a higher upper bound, meaning that a larger number of index entries are present in the text and could be potentially found by an automatic indexing system. Filtering is applied by measuring the frequency of each index entry on the web and discarding all phrases with less then 2 occurences on AltaVista._ "
+   * Index.Trimmed ("coarse grained") " _A short index, consisting only of head phrases_ "
+
+| | *P* | *R* | *F* | *#IndexEntries* | *#GoldEntries* |
+|.index.full nchunk| 1.261 | 35.65 | 2.436 | 459815 | 16263 |
+|.index.full nerheur| 10.16 | 31.42 | 15.35 | 50276 | 16263 |
+|.index.full nerstanford [crf3]| 13.67 | 27.20 | 18.20 | 32361 | 16263 |
+|.index.full nerstanford [crf3distsim]| 13.58 | 26.74 | 18.01 | 32021 | 16263 |
+|.index.full ngram [no punctuation]| 0.112 | 51.61 | 0.223 | 7510468 | 16263 |
+|.index.full tfidf [ngram, top 0_0035]| 6.528 | 5.085 | 5.717 | 12669 | 16263 |
+|.index.full.filtered nchunk| 1.202 | 44.28 | 2.341 | 459815 | 12485 |
+|.index.full.filtered nerheur| 9.756 | 39.28 | 15.63 | 50276 | 12485 |
+|.index.full.filtered nerstanford [crf3]| 13.04 | 33.80 | 18.82 | 32361 | 12485 |
+|.index.full.filtered nerstanford [crf3distsim]| 12.96 | 33.25 | 18.65 | 32021 | 12485 |
+|.index.full.filtered ngram [no punctuation]| 0.107 | 64.12 | 0.213 | 7510468 | 12485 |
+|.index.full.filtered tfidf [ngram, top 0_0035]| 6.323 | 6.416 | 6.369 | 12669 | 12485 |
+|.index.trimmed nchunk| 1.608 | 54.88 | 3.125 | 459815 | 13471 |
+|.index.trimmed nerheur| 12.63 | 47.14 | 19.92 | 50276 | 13471 |
+|.index.trimmed nerstanford [crf3]| 17.48 | 42.00 | 24.69 | 32361 | 13471 |
+|.index.trimmed nerstanford [crf3distsim]| 17.50 | 41.61 | 24.64 | 32021 | 13471 |
+|.index.trimmed ngram [no punctuation]| 0.146 | 81.59 | 0.292 | 7510468 | 13471 |
+|.index.trimmed tfidf [ngram, top 0_0035]| 10.39 | 9.777 | 10.07 | 12669 | 13471 |
+| GiD .index.full nchunk| 1.261 | 68.59 | 2.476 | 459815 | 8453 |
+| GiD .index.full nerheur| 10.16 | 60.45 | 17.40 | 50276 | 8453 |
+| GiD .index.full nerstanford [crf3]| 13.67 | 52.34 | 21.68 | 32361 | 8453 |
+| GiD .index.full nerstanford [crf3distsim]| 13.58 | 51.44 | 21.49 | 32021 | 8453 |
+| GiD .index.full ngram [no punctuation]| 0.108 | 96.38 | 0.217 | 7510468 | 8453 |
+| GiD .index.full tfidf [ngram, top 0_0035]| 6.528 | 9.784 | 7.831 | 12669 | 8453 |
+| GiD .index.full.filtered nchunk| 1.202 | 68.53 | 2.363 | 459815 | 8067 |
+| GiD .index.full.filtered nerheur| 9.756 | 60.80 | 16.81 | 50276 | 8067 |
+| GiD .index.full.filtered nerstanford [crf3]| 13.04 | 52.32 | 20.88 | 32361 | 8067 |
+| GiD .index.full.filtered nerstanford [crf3distsim]| 12.96 | 51.46 | 20.71 | 32021 | 8067 |
+| GiD .index.full.filtered ngram [no punctuation]| 0.104 | 96.36 | 0.207 | 7510468 | 8067 |
+| GiD .index.full.filtered tfidf [ngram, top 0_0035]| 6.323 | 9.929 | 7.726 | 12669 | 8067 |
+| GiD .index.trimmed nchunk| 1.608 | 66.07 | 3.14  | 459815 | 11191 |
+| GiD .index.trimmed nerheur| 12.63 | 56.75 | 20.66 | 50276 | 11191 |
+| GiD .index.trimmed nerstanford [crf3]| 17.48 | 50.55 | 25.98 | 32361 | 11191 |
+| GiD .index.trimmed nerstanford [crf3distsim]| 17.50 | 50.09 | 25.94 | 32021 | 11191 |
+| GiD .index.trimmed ngram [no punctuation]| 0.144 | 96.95 | 0.289 | 7510468 | 11191 |
+| GiD .index.trimmed tfidf [ngram, top 0_0035]| 10.39 | 11.76 | 11.03 | 12669 | 11191 |
+
+Initiated preprocessing of XMI containing all needed annotations.
+
+---+++++ 9 Oct 2010
+Researched for Back-Of-The-Book Indexing papers. Updated [[MateuszParzonkaReferences][Bibliography]]. <br>
+Reorganized jUnit-tests.<br>
+Fixed all warnings in project.<br>
+
+---+++++ 8 Oct 2010
+Conducted baseline experiments on pool computer: <br>
+(GiD) means: Gold Index Phrases appeared in Document.
+
+| | *P* | *R* | *F* | *#IndexEntries* | *#GoldEntries* |
+| NGram | 0.146 | 81.59 | 0.292 | 7510468 | 13471 |
+| NGram (GiD) | 0.144 | 96.95 | 0.289 | 7510468 | 11191 |
+| NGram [tfidf-ranked, top 0.0035%] | 10.39 | 9.777 | 10.07 | 12669 | 13471 |
+| NGram [tfidf-ranked, top 0.0035%] (GiD) | 10.39 | 11.76 | 11.03 | 12669 | 11191 |
+| NChunk | 1.608 | 54.88 | 3.125 | 459815 | 13471 |
+| NChunk (GiD) | 1.608 | 66.07 | 3.14  | 459815 | 11191 |
+| NERheur | 12.63 | 47.14 | 19.92 | 50276 | 13471 |
+| NERheur (GiD) | 12.63 | 56.75 | 20.66 | 50276 | 11191 |
+| NERstanford [crf3] | 17.48 | 42.00 | 24.69 | 32361 | 13471 |
+| NERstanford [crf3] (GiD) | 17.48 | 50.55 | 25.98 | 32361 | 11191 |
+| NERstanford [crf3distsim] | 17.50 | 41.61 | 24.64 | 32021 | 13471 |
+| NERstanford [crf3distsim] (GiD) | 17.50 | 50.09 | 25.94 | 32021 | 11191 |
+
+Why NGram (GiD) has no recall of 100% using the BbiEvaluatorExact: Because =GiD(phrase) = true= when =document.contains(phrase) = true=. But =matches(phrase, gold) = true= when =phrase.equals(gold) = true=. Therefore we miss the plurals: when gold:= "cannon", phrase:="cannons",  then "cannon" is contained by "cannons" but not equal.<p>
+Updated [[MateuszParzonkaInstallation][installation instructions]]. Refresh is needed after postUpdateHook.
+
+---+++++ 7 Oct 2010
+Refactored and deployed project at a computer in the UKP-Pool. Supervisors can now check out and install the project using [[MateuszParzonkaInstallation][this instructions]]. All documented experiments should be conductable. I've just initiated the calculation of all baseline experiments on the pool machine to verify results. The heapsize of 2GB was enough so far, so the experiments should run through until the next morning.
+
+---+++++ 6 Oct 2010
+Refactoring, commenting and begin of deployment of project on a machine in the UKP-Pool.
+
+---+++++ 5 Oct 2010
+Tfidf-baseline: The extracted index entries are a subset of the 4-grams and ranked by Tfidf (created over the set of 29 in the dataset).
+The first 0.35 percent of these ranked index entries are taken into account for evaluation.
+
+*Tfidf on Ngrams, Top 0.35 percent*
+| | *P* | *R* | *F* | *#IndexEntries* | *#GoldEntries* |
+| All Gold Entries | 10.39 | 9.777 | 10.07 | 12669 | 13471 |
+| Only Gold Entries that appeared in document | 10.39 | 11.76 | 11.03 | 12669 | 11191 |
+
+Quite similar to the values of C&M with the same percentage of ranked 4-grams, although their Tfidf-Table was created using the British National Corpus.
+| | *P* | *R* | *F* | *#IndexEntries* | *#GoldEntries* |
+| C&M with British National Corpus as document-set | 10.33 | 11.12 | 10.71 | ? | ? |
+
+---+++++ 3 Oct 2010
+Heavy refactoring of pipelines and experiments. <br>
+Developing some utilities to make annotators testable.
+
+---+++++ 2 Oct 2010
+Heavy refactoring of pipelines and experiments.
+
+---+++++ 30 Sep 2010
+Researched in type system agnostic annotation techniques.<br>
+Implemented some tests.
+
+---+++++ 27 Sep 2010
+Implemented a TfidfConsumer that works with the C&M Dataset.
+Hopefully i will manage to evaluate a baseline of tfidf-weighted n-grams cut at a threshold derived from the appiopriate ratio (tokens-in-book / entries-in-index) for the next status meeting.
+
+---+++++ 25 Sep 2010
+Baselines for Stanford NER:
+| | *P* | *R* | *F* |
+| Stanford NER CRF3 | 18.33 |42.30| 25.58|   
+| Stanford NER CRF3Distsim |18.40| 41.93|25.58|
+| Lingpipe Toolkit (used by C&M)  |15.79|39.10|22.49|
+
+   * Stanford NER performs significantly better then the NER from the Lingpipe Toolkit which C&M used.
+   * *Problem:* Stanford offers a set of newer Models (from 2008) which doesn't work with the DKPro StanfordNamedEntityRecognizer.
+Rewrote the DKPro NGramAnnotator to allow a more sophisticated filtering of tokens. While using exact matching when evaluating it seems impossible to have an recall higher then 81.63 (at least with the used BreakIteratorSegmenter and exact evaluation).
+
+%EDITTABLE{}%
+| | *P* | *R* | *F* |
+| No filtering | 0.132 | 81.33 | 0.263 |
+| Filtering single characters that are punctuation signifying sentence endings | 0.137 | 81.32 | 0.273 |
+| Filtering single characters that are punctuation | 0.146 | 81.57 | 0.292 |
+| Filtering single characters that are not alphanumerics | 0.146 | 81.63 | 0.292 |
+
+*Problem:* DKPro TfidfConsumer builds such a huge HashMap during processing that the heap size is never (even when maxed to over 2.5 GM) enough. The hashmap stored to disk would be extremely big too. Trying to develop a tfidf annotator that uses one serialization per document for the term frequencies  instead of one per corpus.
+
+---+++++ 24 Sep 2010
+First baselines for "pure" candidate extraction (all micro):
+
+*NGrams:*
+| | *P* | *R* | *F* |
+| We | 0.146 | 81.63 | 0.292 |
+| C&M | 0.01 | 84.20 | 0.02 |
+So we have a slightly worse recall. But we have a ten-times higher precision then C&M do. _(Updated on 28.9. with best NGram filter setting)_
+
+
+*NChunks:*
+| | *P* | *R* | *F* |
+| We | 1.71 | 55.3 | 3.32 |
+| C&M | 4.40 | 28.99 | 7.64 |
+They use NP-Chunks, we use N-Chunks. So we have very different results.
+
+
+*Heuristic Named Entity Recognition:*
+| | *P* | *R* | *F* |
+| We | 3.11 | 47.37 | 20.54 |
+| C&M | 11.43 | 43.34 | 18.08 | 
+Our heuristic seems to be better then C&Ms.
+ 
+---+++++ 23 Sep 2010
+Heavy refactoring. Decided to separate the concerns of creating index entries and evaluation them into ExtractionPipelines and a EvaluationPipelines.
+
+---+++++ 22 Sep 2010
+Extracted the "unproblematic" subset from the main data set following Csomai & Mihalcea.
+
+---+++++ 21 Sep 2010
+Processing and evaluation of collections is working.
+
+---+++++ 18 Sep 2010
+Wrote PRF-Evaluator for back-of-the-book-indexing using gold index entries.
+
+---+++++ 17 Sep 2010
+Pipelines are now jUnit-testable.
+
+---+++++ 15 Sep 2010
+Wrote base pipeline for testing and experiments.
+
+---+++++ 13 Sep 2010
+Split initial jCas into segments with demultiplier and applied a simplified LexRank to the sub-CASes. Wrote a AnnotationPrinter to visualize the results.
+
+---+++++ 12 Sep 2010
+Played around with LexSemRank, seems to be quite slow. Using the  3,2GB "wikipedia_lemma_en" esa cached index.
+
+---+++++ 10 Sep 2010
+
+Played around with TextRank.
+
+---+++++ 09 Sep 2010
+
+Research about State-Of-The-Art Keyphrase Extraction. 
+
+---+++++ 08 Sep 2010
+
+Checked in project
+
+
+%META:FILEATTACHMENT{name="phrasedist.jpg" attachment="phrasedist.jpg" attr="" comment="" date="1289902059" path="phrasedist.jpg" size="154749" user="MateuszParzonka" version="1"}%

@@ -1,0 +1,64 @@
+%META:TOPICINFO{author="ShuoYang" date="1268646422" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Google Translate Performance Analysis (Draft)
+_not done yet_
+
+%TOC%
+
+---++ Overview
+*Google Translate* is a popular translation service provided by [[http://www.google.com Google Inc.]] with relatively good accuracy.
+Google provides interfaces like a web app and AJAX APIs for accessing it. In this article we are going to evaluate its performance over AJAX APIs on large quantity of inquiries, including the caveats on query frequency, general translation speed, influence of inquiry length on translation speed and possible errors during translation.
+
+---++ Test Environment
+Following tests were performed:
+   * Optimal query frequency
+   * Average query speed
+   * Influence of query length on translation speed
+      * Translate short sentences (average length 26 characters before encoding)
+      * Translate long sentences (average length 4485 characters before encoding)
+   * Influence of network speed on translation speed
+      * Run the short sentences test both at home and in the university
+
+Tests were conducted on a late-2008 !MacBook Pro with Core 2 Duo 2.4GHz CPU, 4GB memory running Mac OS X 10.6.2. Java was used as the programming language with [[http://code.google.com/p/google-api-translate-java/ Google-API-Translate-Java]] library which accesses Google Translate over [[http://code.google.com/apis/ajaxlanguage/documentation/ Google AJAX Language APIs]].
+
+The computer was connected to the Internet via 802.11g Wireless LAN with real world speed of maximal 2.5MB / s, which shouldn't be a limiting factor over Internet speed on translation queries.
+
+---++ Tests and Performance Results
+---+++ Optimal Query Frequency
+Google has an undocumented limit on number of queries performed uninterrupted. After reaching this limit Google returns a *403 error - suspected terms of service abuse* and refuses to work for a short period. To not abuse the term of service we need to find the optimal query frequency. 
+
+Query frequency is controlled by _number of queries per block_ n and _length of break between blocks_ l. After every n queries I made the system to sleep l seconds. With the optimal l Google Translate should work for arbitrary many queries without returning 403 error.
+
+---++++ Results
+| *Number of queries* | *Length of break (s)* | *Outcome* |
+| 500 | 5 | 403 error after 1xxx queries |
+| 200 | 5 | 403 error after 3000 queries |
+| 200 | 10 | 403 error after 500 queries |
+| 200 | 30 | 403 error after 7750 queries |
+| 200 | 50 | 403 error after 13500 queries |
+| 200 | 60 | No error at least after 75500 queries |
+| 500 | 60 | 403 error after 10250 queries |
+
+As we can see, a break of 60s after every 200 queries seems to be optimal and should work for arbitrary many queries. Google Translate also has "memory". Queries are _not_ accepted within a short interval directly after a 403 error: Google blocks those for a short period, which partly explains this interesting result of error after only 500 queries with the combination of (200, 10).
+
+Subsequent tests were all performed with the (200, 60) combination.
+
+---+++ Influence of Query Length on Translation Speed
+---++++ Short Sentences
+<img src="http://spreadsheets.google.com/oimg?key=0AoWF2gmb8eYodEpvdEhJTXlDbzlLb0lNc1M0Y2hFVWc&oid=2&v=1268646158411" /> <br />
+<img src="http://spreadsheets.google.com/oimg?key=0AoWF2gmb8eYodEpvdEhJTXlDbzlLb0lNc1M0Y2hFVWc&oid=3&v=1268646187414" />
+
+
+---+++ Average Query Speed
+See the following table, detailed data can be seen in [[http://spreadsheets.google.com/pub?key=tj8x6l5pMj-jkOfytxK7dmA&gid=0 Google Spreadsheet]]
+
+
+
+
+
+
+---++ Summary
+
+-- Main.ShuoYang - 15 Mar 2010
+
+%META:TOPICMOVED{by="ShuoYang" date="1268574785" from="Hiwi.GoogleTranslateSpeedAnalysis" to="Hiwi.GoogleTranslatePerformanceAnalysis"}%

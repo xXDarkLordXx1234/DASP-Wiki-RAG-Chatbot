@@ -1,0 +1,81 @@
+%META:TOPICINFO{author="FabianTamin" date="1258886916" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ User Study 1 &#8722; Result
+---++ Table of Contents
+   %TOC%
+
+---++ Participants
+   * Daily Wikipedia users.
+   * 6 male participants and 1 female participant.
+---++ Favorite prototypes
+   * Statistic
+      * 4 SD.
+      * 1 SA with sidebar feature (SA+SD).
+      * 2 HE.
+   * Result
+      * Dual-frame designed: main frame and frame for extra information.
+---++ Improvement
+---+++ Start point
+   * All participants like to use hovering mechanism.
+   * Icon would be implemented only as an option.
+---+++ Components
+   * Window arrangement
+      * It is recommended to use *golden ratio*.
+   * *Simultaneously shown items*
+      * Content frame.
+      * Sidebar frame.
+      * Tag frame.
+      * Keywords frame.
+   * Content Frame & Menu
+      * Menu should not show too many items simultaneously. Only items must used items should there. Further navigation, like extra submenu item is necessary to implement many features.
+      * Menu attracts user&#8217;s focus too much. The important parts are actually the contents. Menu should have softer look.
+      * Most participants want to see several types of main information (information in main frame) simultaneously. A user likes to see just one type of main information at certain time.
+      * *Recommended items*: summary, table of contents, images.
+      * *UI-implementation*: _tab_.
+   * Sidebar
+      * Sidebar is a nice feature. One can see many kinds of extra information simultaneously. 
+      * Keeping sidebar small.
+      * Implementation of scrollers for each sidebar.
+      * Hide and more toggle is jumpy.
+      * *Recommended items*: related links (links used by current article and backlinks), external links, sniffed articles.
+      * *UI-implementation*: _accordion_.
+   * Window
+      * Article name in window can be mixed with heading in main frame for simplicity.
+      * Icons for window controllers. Help icon should not attract user's attention too much.
+      * Scroller
+         * Some participants like it with scroller, some suggest about automatic resizing window
+      * Frame lines are distracting to one participant.
+   * Detail-meter
+      * For some participants it is not necessary or anyhow too much. Think about toggle &#8220;more&#8221;. One participant likes multi-iterations of toggle more.
+      * Adding sentences among read sentences could be distracting.
+      * It is better to think about this feature after or while implementing summary feature.
+---+++ Features
+   * Summary
+      * Summary is the most important thing for every participant.
+      * One participant likes to use 1st paragraph as a part of summary. He thinks that it would be too bad if it were not there.
+   * Table of contents
+      * Not so much important for many participants.
+      * The simple version of table of contents would be nice.
+      * Extra implementation: summary for each part.
+   * Keywords
+      * Many participants like this feature. But some say that it would be rarely used.
+      * Instead of brackets or commas underline would be used.
+      * The heading title distracts one participant. It should be removed or has softer look. It must not attract the attention too much.
+   * Images
+      * 3 users like image overview feature.
+   * Related articles
+      * The word phrase titles for this feature (used by &#8230; using this &#8230;) are confusing.
+      * Most participants don&#8217;t think to use this feature.
+   * External links
+      * Most participants don&#8217;t think this feature is important, but 2 of them think this feature is important.
+      * One participant uses Wikipedia to find external link, so this is an important feature for him.
+   * Tags
+      * Most participants haven&#8217;t ever used this feature in Wikipedia.
+      * It would be better always to show this because it seems to be very useful information.
+   * Sniffed articles
+      * Not mandatory.
+      * Most of participants are only rarely to use it but they don&#8217;t object the existent of this feature.
+   * Translations
+      * One participants asked about translation feature.
+
+-- Main.FabianTamin - 08 Jul 2009

@@ -1,0 +1,212 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="20"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+Results of my first experiments with the DT data. Results grepped on the 192 trec_eval output files this way:
+
+<div style="float:right; background: solid white; border: solid grey 1px; padding: 0.5em">
+<b>Quick links</b><br/>
+BaselineIR
+</div>
+
+<pre>
+> grep map *Test*T.* | sort -t " " -k3nr
+</pre>
+
+%TOC%
+
+---++Results
+
+---+++ Train T
+
+| !SearchTopic.TokenLemma_expansions1.Train.T.2.V.output.trec:map | all | 0.2687 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.3.V.output.trec:map | all | 0.2684 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.1.V.output.trec:map | all | 0.2681 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.5.V.output.trec:map | all | 0.2681 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.0.all.output.trec:map | all | 0.2675 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.0.V.output.trec:map | all | 0.2675 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.10.V.output.trec:map | all | 0.2672 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.1.all.output.trec:map | all | 0.2661 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.2.all.output.trec:map | all | 0.2543 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.2.all.output.trec:map | all | 0.2514 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.1.all.output.trec:map | all | 0.2487 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.1.V.output.trec:map | all | 0.2472 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.2.V.output.trec:map | all | 0.2465 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.0.all.output.trec:map | all | 0.2464 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.0.V.output.trec:map | all | 0.2464 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.5.V.output.trec:map | all | 0.2451 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.3.V.output.trec:map | all | 0.2448 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.10.V.output.trec:map | all | 0.2440 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.3.all.output.trec:map | all | 0.2409 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.2.V.output.trec:map | all | 0.2380 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.1.V.output.trec:map | all | 0.2378 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.0.all.output.trec:map | all | 0.2377 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.0.V.output.trec:map | all | 0.2377 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.3.V.output.trec:map | all | 0.2368 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.5.V.output.trec:map | all | 0.2361 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.1.all.output.trec:map | all | 0.2345 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.10.V.output.trec:map | all | 0.2339 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.3.all.output.trec:map | all | 0.2337 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.2.all.output.trec:map | all | 0.2295 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.3.all.output.trec:map | all | 0.2226 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.2.V.output.trec:map | all | 0.2178 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.1.all.output.trec:map | all | 0.2171 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.1.V.output.trec:map | all | 0.2170 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.0.all.output.trec:map | all | 0.2169 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.0.V.output.trec:map | all | 0.2169 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.3.V.output.trec:map | all | 0.2168 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.5.V.output.trec:map | all | 0.2168 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.10.V.output.trec:map | all | 0.2149 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.5.all.output.trec:map | all | 0.2090 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.5.all.output.trec:map | all | 0.2075 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.2.all.output.trec:map | all | 0.2031 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.3.all.output.trec:map | all | 0.1990 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.5.all.output.trec:map | all | 0.1898 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.5.all.output.trec:map | all | 0.1883 | 
+| !SearchTopic.TokenLemma_expansions10.Train.T.10.all.output.trec:map | all | 0.1807 | 
+| !SearchTopic.TokenLemma_expansions3.Train.T.10.all.output.trec:map | all | 0.1763 | 
+| !SearchTopic.TokenLemma_expansions5.Train.T.10.all.output.trec:map | all | 0.1649 | 
+| !SearchTopic.TokenLemma_expansions1.Train.T.10.all.output.trec:map | all | 0.1495 | 
+
+---+++ Train TD
+
+| !SearchTopic.TokenLemma_expansions1.Train.TD.0.all.output.trec:map | all | 0.3001 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.0.V.output.trec:map | all | 0.3001 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.1.V.output.trec:map | all | 0.2961 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.2.V.output.trec:map | all | 0.2928 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.3.V.output.trec:map | all | 0.2905 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.5.V.output.trec:map | all | 0.2897 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.0.all.output.trec:map | all | 0.2894 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.0.V.output.trec:map | all | 0.2894 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.1.all.output.trec:map | all | 0.2838 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.1.all.output.trec:map | all | 0.2837 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.1.V.output.trec:map | all | 0.2833 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.10.V.output.trec:map | all | 0.2814 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.2.V.output.trec:map | all | 0.2778 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.2.all.output.trec:map | all | 0.2733 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.3.V.output.trec:map | all | 0.2733 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.2.all.output.trec:map | all | 0.2684 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.5.V.output.trec:map | all | 0.2660 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.0.all.output.trec:map | all | 0.2658 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.0.V.output.trec:map | all | 0.2658 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.1.V.output.trec:map | all | 0.2642 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.3.all.output.trec:map | all | 0.2601 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.2.V.output.trec:map | all | 0.2578 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.3.all.output.trec:map | all | 0.2562 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.10.V.output.trec:map | all | 0.2547 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.3.V.output.trec:map | all | 0.2531 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.1.all.output.trec:map | all | 0.2530 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.2.all.output.trec:map | all | 0.2482 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.5.V.output.trec:map | all | 0.2481 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.3.all.output.trec:map | all | 0.2474 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.0.all.output.trec:map | all | 0.2411 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.0.V.output.trec:map | all | 0.2411 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.1.V.output.trec:map | all | 0.2373 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.1.all.output.trec:map | all | 0.2372 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.10.V.output.trec:map | all | 0.2348 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.2.V.output.trec:map | all | 0.2341 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.3.V.output.trec:map | all | 0.2300 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.2.all.output.trec:map | all | 0.2292 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.5.V.output.trec:map | all | 0.2286 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.3.all.output.trec:map | all | 0.2259 | 
+| !SearchTopic.TokenLemma_expansions5.Train.TD.5.all.output.trec:map | all | 0.2241 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.5.all.output.trec:map | all | 0.2147 | 
+| !SearchTopic.TokenLemma_expansions10.Train.TD.10.V.output.trec:map | all | 0.2143 | 
+| !SearchTopic.TokenLemma_expansions3.Train.TD.5.all.output.trec:map | all | 0.2097 | 
+| !SearchTopic.TokenLemma_expansions1.Train.TD.5.all.output.trec:map | all | 0.1990 | 
+
+---+++ Test T
+
+| !SearchTopic.TokenLemma_expansions1.Test.T.1.all.output.trec:map | all | 0.3361 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.1.all.output.trec:map | all | 0.3319 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.2.all.output.trec:map | all | 0.3315 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.1.V.output.trec:map | all | 0.3290 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.2.V.output.trec:map | all | 0.3283 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.3.all.output.trec:map | all | 0.3273 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.0.all.output.trec:map | all | 0.3272 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.0.V.output.trec:map | all | 0.3272 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.3.V.output.trec:map | all | 0.3263 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.10.V.output.trec:map | all | 0.3253 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.5.V.output.trec:map | all | 0.3252 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.5.all.output.trec:map | all | 0.3240 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.2.all.output.trec:map | all | 0.3165 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.2.V.output.trec:map | all | 0.3153 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.3.V.output.trec:map | all | 0.3150 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.1.all.output.trec:map | all | 0.3143 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.1.V.output.trec:map | all | 0.3142 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.3.all.output.trec:map | all | 0.3140 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.0.all.output.trec:map | all | 0.3134 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.0.V.output.trec:map | all | 0.3134 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.5.V.output.trec:map | all | 0.3132 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.10.V.output.trec:map | all | 0.3094 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.2.all.output.trec:map | all | 0.3067 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.2.V.output.trec:map | all | 0.3007 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.3.V.output.trec:map | all | 0.3005 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.5.V.output.trec:map | all | 0.2999 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.1.V.output.trec:map | all | 0.2998 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.5.all.output.trec:map | all | 0.2995 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.0.all.output.trec:map | all | 0.2990 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.0.V.output.trec:map | all | 0.2990 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.10.V.output.trec:map | all | 0.2976 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.3.all.output.trec:map | all | 0.2897 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.5.all.output.trec:map | all | 0.2880 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.3.all.output.trec:map | all | 0.2788 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.2.all.output.trec:map | all | 0.2720 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.1.all.output.trec:map | all | 0.2706 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.10.all.output.trec:map | all | 0.2643 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.2.V.output.trec:map | all | 0.2607 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.5.V.output.trec:map | all | 0.2606 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.3.V.output.trec:map | all | 0.2604 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.1.V.output.trec:map | all | 0.2601 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.10.V.output.trec:map | all | 0.2595 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.0.all.output.trec:map | all | 0.2587 | 
+| !SearchTopic.TokenLemma_expansions10.Test.T.0.V.output.trec:map | all | 0.2587 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.5.all.output.trec:map | all | 0.2553 | 
+| !SearchTopic.TokenLemma_expansions5.Test.T.10.all.output.trec:map | all | 0.2334 | 
+| !SearchTopic.TokenLemma_expansions3.Test.T.10.all.output.trec:map | all | 0.2268 | 
+| !SearchTopic.TokenLemma_expansions1.Test.T.10.all.output.trec:map | all | 0.1876 | 
+
+---+++ Test TD
+
+| !SearchTopic.TokenLemma_expansions1.Test.TD.1.all.output.trec:map | all | 0.3918 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.0.all.output.trec:map | all | 0.3831 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.0.V.output.trec:map | all | 0.3831 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.1.V.output.trec:map | all | 0.3829 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.2.V.output.trec:map | all | 0.3796 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.3.V.output.trec:map | all | 0.3768 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.5.V.output.trec:map | all | 0.3753 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.1.all.output.trec:map | all | 0.3730 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.0.all.output.trec:map | all | 0.3726 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.0.V.output.trec:map | all | 0.3726 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.1.V.output.trec:map | all | 0.3724 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.2.all.output.trec:map | all | 0.3671 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.2.V.output.trec:map | all | 0.3663 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.3.all.output.trec:map | all | 0.3618 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.2.all.output.trec:map | all | 0.3599 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.3.V.output.trec:map | all | 0.3595 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.10.V.output.trec:map | all | 0.3579 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.0.all.output.trec:map | all | 0.3545 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.0.V.output.trec:map | all | 0.3545 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.2.all.output.trec:map | all | 0.3539 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.1.all.output.trec:map | all | 0.3527 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.1.V.output.trec:map | all | 0.3512 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.5.V.output.trec:map | all | 0.3498 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.2.V.output.trec:map | all | 0.3479 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.5.all.output.trec:map | all | 0.3466 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.3.V.output.trec:map | all | 0.3430 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.3.all.output.trec:map | all | 0.3408 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.10.V.output.trec:map | all | 0.3366 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.5.V.output.trec:map | all | 0.3314 | 
+| !SearchTopic.TokenLemma_expansions3.Test.TD.5.all.output.trec:map | all | 0.3295 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.3.all.output.trec:map | all | 0.3294 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.2.all.output.trec:map | all | 0.3179 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.5.all.output.trec:map | all | 0.3170 | 
+| !SearchTopic.TokenLemma_expansions5.Test.TD.10.V.output.trec:map | all | 0.3156 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.0.all.output.trec:map | all | 0.3146 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.0.V.output.trec:map | all | 0.3146 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.1.all.output.trec:map | all | 0.3141 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.3.all.output.trec:map | all | 0.3131 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.1.V.output.trec:map | all | 0.3105 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.2.V.output.trec:map | all | 0.3089 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.3.V.output.trec:map | all | 0.3020 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.5.V.output.trec:map | all | 0.2946 | 
+| !SearchTopic.TokenLemma_expansions1.Test.TD.5.all.output.trec:map | all | 0.2908 | 
+| !SearchTopic.TokenLemma_expansions10.Test.TD.10.V.output.trec:map | all | 0.2677 | 

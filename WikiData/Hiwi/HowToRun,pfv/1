@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="NicoErbs" date="1340371722" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---++++ How to run (Pedocs)
+Preparation:
+   1. Extract =pedocs-volltexte.tar.gz= and note the path
+   2. Extract =pedocs_sql.tar.gz= and import =pedocs.sql= into a database
+   3. Check out <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases/de.tudarmstadt.ukp.dkpro.semantics.keyphrasepipelines</verbatim> 
+   4. Configure test environment in =PedocsPipelineConfiguration.java= (=src/main/java/.../keyphrasepipelines/pedocs/=)
+
+Experiment:
+   1. Open =PedocsBasicStatisticsPipelines.java= in =src/test/java=
+   2. Run the task =printStatistics()= (notice the preconditions in its !JavaDoc)
+   
+---++++ How to run (Pedocs)
+   1. Make sure you've run the "For the first time" part in "How to run" of Basic Statistics
+   2. Open =PedocsGoldKeyphraseInclusionRatioPipelines.java= in =src/test/java=
+   3. With lemmatization: start the task =printRatioWithLemmatization()= (notice the preconditions in its !JavaDoc) <br>
+   Without lemmatization: start the task =printRatioWithoutLemmatization= (notice the preconditions in its !JavaDoc)
+
+
+
+-- Main.NicoErbs - 2012-06-22

@@ -1,0 +1,2 @@
+ZijadMaksuti
+wordNet_Diagramm

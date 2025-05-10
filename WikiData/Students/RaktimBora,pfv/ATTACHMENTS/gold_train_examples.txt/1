@@ -1,0 +1,128 @@
+====================
+Surrogate Creation
+====================
+Sentence:Rosenallis (historically Rossinallis, from ) is a village in north County Laois , Ireland.
+Parse Count: 16
+Semantic Parse:  [village.in.1(9:e , 0:rosenallis), village.in.2(9:e , 12:county-laois), north(11:s , 12:county-laois), 
+historically(2:s , 3:e), from.1(5:e , 0:rosenallis), village.in.2(9:e , 14:ireland), village(9:s , 0:rosenallis)]
+Lexical items: [0, 11, 12, 2, 3, 14, 9]
+Node:0, Rosenallis  village
+Node:12, County_Laois  north
+Node:3, Rossinallis  historically
+Node:14, Ireland   
+Events (with NN/NNP arguments)[5, 9]
+
+Metaline:Q55299==County Laois==**==Q27 ref=Republic of Ireland|Ireland==Ireland==**==
+
+Node to ground: Rosenallis
+Id from query: Q282466 type: [human settlement]human settlement
+Added node to LEFT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+Node to ground: Rosenallis
+Annotated ID:Q282466 type: [human settlement]
+Added node to LEFT list
+
+Node to ground: County Laois
+Annotated ID:Q55299 type: [county of Ireland]
+Added node to RIGHT list
+
+Node to ground: Ireland
+Annotated ID:Q27 type: [country, island nation, member state of the United Nations, unitary state, member state of the European Union, sovereign state, member state of the Council of Europe]
+Added node to RIGHT list
+
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding for event/edge: 9
+
+Grounding nodes Rosenallis and County Laois. Grounded Properties: [[located in the administrative territorial entity, P131]]
+Candidate Surrogate Grounded phrase: country.1(e , Rosenallis) ^ country.2(e , x)
+Denotations: [Q27,Ireland]
+denotations:[Ireland] replacedEntity: County Laois
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Rosenallis) ^ located in the administrative territorial entity.2(e , x)
+Denotations: [Q55299,County Laois]
+denotations:[County Laois] replacedEntity: County Laois
+Successful denotation:[County Laois] Replaced Entity: County Laois
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Rosenallis) ^ instance of.2(e , x)
+Denotations: [Q486972,human settlement]
+denotations:[human settlement] replacedEntity: County Laois
+
+Grounding nodes Rosenallis and Ireland. Grounded Properties: [[country, P17]]
+
+
+Selected surrogate Grounded parse 0 : 
+
+located in the administrative territorial entity.1(e , Rosenallis) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Rosenallis) ^ country.2(e , Ireland)
+
+uG/gG node comparisonuGnodeList:[Rosenallis]:: gNodeList: [Rosenallis, Ireland] replacedEntity: County Laois
+uReg/gRel combination from::::country
+
+uG/gG node comparison: uGnodeList:[Rosenallis]:: gNodeList: [Rosenallis, County Laois] replacedEntity: County Laois
+Discarded combination : from::::located in the administrative territorial entity
+
+uGnodeList: [Rosenallis, County Laois, Ireland]:: gNodeList: [Rosenallis, Ireland] Replaced Entity: County Laois
+Recorded combination: village_in:country
+
+uGnodeList: [Rosenallis, County Laois, Ireland]:: gNodeList: [Rosenallis, County Laois] Replaced Entity: County Laois
+Recorded combination: village_in:located in the administrative territorial entity
+
+=============================================================================================================================
+Training
+=============================================================================================================================
+Sentence:Rosenallis (historically Rossinallis, from ) is a village in north County Laois , Ireland.
+Parse Count: 16
+Semantic Parse:  [village.in.1(9:e , 0:rosenallis), village.in.2(9:e , 12:county-laois), north(11:s , 12:county-laois), historically(2:s , 3:e), from.1(5:e , 0:rosenallis), village.in.2(9:e , 14:ireland), village(9:s , 0:rosenallis)]
+Lexical items: [0, 11, 12, 2, 3, 14, 9]
+Node:0, Rosenallis  village
+Node:12, County_Laois  north
+Node:3, Rossinallis  historically
+Node:14, Ireland   
+Events (with NN/NNP arguments)[5, 9]
+
+Metaline:Q55299==County Laois==**==Q27 ref=Republic of Ireland|Ireland==Ireland==**==
+
+Node to ground: Rosenallis
+Id from query: Q282466 type: [human settlement]human settlement
+Added node to LEFT list
+Insufficient Nodes OR Node pair not connected by a relation 
+
+Node to ground: Rosenallis
+Annotated ID:Q282466 type: [human settlement]
+Added node to LEFT list
+
+Node to ground: County Laois
+Annotated ID:Q55299 type: [county of Ireland]
+Added node to RIGHT list
+
+Node to ground: Ireland
+Annotated ID:Q27 type: [country, island nation, member state of the United Nations, unitary state, member state of the European Union, sovereign state, member state of the Council of Europe]
+Added node to RIGHT list
+Atleast two nodes connected by a relation in un-grounded graph...Initialising grounding for event/edge: 9
+Grounding nodes Rosenallis and County Laois. Grounded Properties: [[located in the administrative territorial entity, P131]]
+Replaced entity after first replacement for graph: County Laois
+
+Grounding nodes Rosenallis and Ireland. Grounded Properties: [[country, P17]]
+
+
+Selected Grounded parse 0 : country.1(e , Rosenallis) ^ country.2(e , x) ^ country.1(e , Rosenallis) ^ country.2(e , Ireland)
+
+
+Selected Grounded parse 1 : located in the administrative territorial entity.1(e , Rosenallis) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Rosenallis) ^ country.2(e , Ireland)
+
+
+Selected Grounded parse 2 : instance of.1(e , Rosenallis) ^ instance of.2(e , x) ^ country.1(e , Rosenallis) ^ country.2(e , Ireland)
+
+Parse list with Arg-Max scores:
+
+instance of.1(e , Rosenallis) ^ instance of.2(e , x) ^ country.1(e , Rosenallis) ^ country.2(e , Ireland)=-0.5624440815958631
+country.1(e , Rosenallis) ^ country.2(e , x) ^ country.1(e , Rosenallis) ^ country.2(e , Ireland)=0.17171775281547041
+located in the administrative territorial entity.1(e , Rosenallis) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Rosenallis) ^ country.2(e , Ireland)=0.255829856700407
+
+Selected Arg Max: located in the administrative territorial entity.1(e , Rosenallis) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Rosenallis) ^ country.2(e , Ireland)
+
+...(Arg Max is next taken for comparison with Surrogate Gold)
+
+
+=============================================================================================================================

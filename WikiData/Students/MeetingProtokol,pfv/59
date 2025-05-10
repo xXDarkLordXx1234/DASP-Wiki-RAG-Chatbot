@@ -1,0 +1,344 @@
+%META:TOPICINFO{author="TorstenZesch" date="1260440256" format="1.1" version="59"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+%TOC%
+
+---+++13.11.2009
+   * @discuss: review of written thesis
+   * @action(CT): manual annotation of the forums
+   * @action(CT): comparison of manual annotation of 1000 TAZ sentences by Elif and Nico
+   * @discuss: examples for good Masterhesis
+
+DONE
+   * @action(NE): create JUnit tests for readers and consumers (location should be in folder "src_test") (example StanfordTokenizerTest in dkpro_core)
+   * @question: Where are the subjective lexicons from?
+
+---+++28.10.2009
+   * @action(CT): manual annotation of the forums
+   * @action(CT): comparison of manual annotation of 1000 TAZ sentences by Elif and Nico
+   * @action(NE): create JUnit tests for readers and consumers (location should be in folder "src_test") (example StanfordTokenizerTest in dkpro_core)
+   * @action(NE): Subiterator should have boolean value included (good practice!)
+   * @discuss: examples for good Masterhesis
+   * @question: Where are the subjective lexicons from?
+
+DONE
+   * @action(NE): create target reader for mmax
+   * @action(NE): create own descriptor for SubjectiveExpressionAnnotator
+
+---+++21.10.2009
+   * @action(CT): manual annotation of the forums
+   * @action(CT): comparison of manual annotation of 1000 TAZ sentences by Elif and Nico
+   * @action(NE): create JUnit tests for readers and consumers (location should be in folder "src_test") (example StanfordTokenizerTest in dkpro_core)
+   * @action(CT): send BitPar templates with marked targets
+   * @action(NE): Subiterator should have boolean value included (good practice!)
+   * @action(NE): create target reader for mmax
+   * @action(NE): create own descriptor for SubjectiveExpressionAnnotator
+   * @discuss: Overtime for Masterthesis
+   * @discuss: examples for good Masterhesis
+
+DONE
+   * @action(NE): write motivation in introduction and related work again
+   * @action(NE): Compare Stuttgart-Tübingen-Tagset with Treetagger Tagset
+   * @action(NE): put some useful comments in code for code review
+
+---+++13.10.2009
+   * @action(NE): Evaluation with Elifs data
+   * @action(CT): manual annotation of the forums
+   * @action(CT): comparison of manual annotation of 1000 TAZ sentences by Elif and Nico
+   * @action(NE): complete JUnit tests for readers and consumers (location should be in folder "src_test") (example StanfordTokenizerTest in dkpro_core)
+   * @action(CT): send BitPar templates with marked targets
+   * @action(NE): put some useful comments in code for code review
+   * @action(NE): Compare Stuttgart-Tübingen-Tagset with Treetagger Tagset
+   * @action(NE): Subiterator should have boolean value included (good practice!)
+   * @action(NE): write motivation in introduction and related work again
+
+DONE
+   * @action(NE): find out how many subjective/objective sentences are in GoldStandard
+   * @action(NE): change thesis tex style to official template
+   * @action(NE): Generate chapter Introduction with related papers until Monday
+
+---+++08.10.2009 short meeting
+   * problems with BitPar <-- Cigdem is checking error
+   * problem with HPSSC JUnit test <-- solved
+   * additional literature <-- got additional papers
+   * @action(NE): Compare Stuttgart-Tübingen-Tagset with Treetagger Tagset
+   * @action(NE): Subiterator should have boolean valuea included (good practice!)
+   * @action(NE): Generate chapter Introduction with related papers until Monday
+
+---+++05.10.2009
+   * @action(NE): find out how many subjective/objective (positive, neutral, negative) sentences are in GoldStandard
+   * @action(NE): Evaluation with Elifs data
+   * @action(NE): change thesis tex style to official template
+   * @problem: Unable to get MaltParser working --> hard to implement wrapper
+      * model for German is missing
+      * solution: we'll try BitPar
+   * @discuss: create wrapper for MaltParser?
+      * seems unrealistic timewise
+   * @action(CT): manual annotation of the forums
+   * @action(CT): comparison of manual annotation of 1000 TAZ sentences by Elif and Nico
+   * @action(NE): create JUnit tests for readers and consumers (location should be in folder "src_test") (example StanfordTokenizerTest in dkpro_core)
+   * @action(NE): extract targets
+   * @action(NE): put some useful comments in code for code review
+
+DONE
+   * @action(NE): Use better formula for calculating probability
+   * @action(Elisabeth): tex template for master thesis
+   * @action(NE): future work: Polarity must be assigned to patterns
+   * @problem: JUnit testing doesn't work because of undefined types in xml files
+
+---+++21.09.2009
+   * @discuss: templates with target for Maltparser
+   * @discuss: structure of bootstrapping process
+   * @discuss: target and polarity extraction
+   * @discuss: create wrapper for MaltParser?
+   * @action(CT): look for additional good papers about opinion mining, sentiment analysis
+   * @action(NE): Use better formula for calculating probability
+   * @action(Elisabeth): tex template for master thesis
+   * @action(CT): manual annotation of the forums
+   * @action(CT): comparison of manual annotation of 1000 TAZ sentences by Elif and Nico
+   * @action(NE): create JUnit tests for readers and consumers (location should be in folder "src_test") (example StanfordTokenizerTest in dkpro_core)
+   * @action(NE): future work: Polarity must be assigned to patterns
+   * @action(NE): extract targets
+
+
+
+---+++03.09.2009 short meeting
+   * talking about presentation for Statusmeeting
+   * Bootstrapping must contain High Precision Objective Sentence Classifier
+   * maybe other formula to calculate subjective  probability
+   * create figure for bootstrapping process
+
+---+++31.08.2009
+   * @action(NE): prepare draft of presentation for Statusmeeting
+   * @action(NE): update timeline until September 2nd
+   * @action(NE): prepare graphical overview of process of [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Students/NicoErbsPatternChain][Pattern recognition, counting and classification implementation]]
+   * @action(CT): tex template for master thesis
+   * @action(CT): manual annotation of the forums
+   * @action(NE): generate any syntactical templates (check how Riloff/Wiebe did it)
+   * @action(NE): work on [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Students/NicoErbsPatternChain][Pattern recognition, counting and classification implementation]]
+   * @action(NE): create JUnit tests for readers and consumers (location should be in folder "src_test") (example StanfordTokenizerTest in dkpro_core)
+   * @action(NE): future work: Polarity must be assigned to patterns
+   * short meeting: Thursday 11am about progress and preperation for Statusmeeting
+
+DONE
+   * @action(NE): extend preprocessing chain with parser
+   * @action(NE): create consumer which compares GoldStandard with results from program
+      * consumer must map sentences between GoldStandard and preprocessed data
+   * @action(NE): test Annotation Viewer from UIMA
+   * @action(CT): send TFIDF annotator
+   * @action(NE): improve FileSystemReaderWithMmax
+ 
+---+++27.08.2009 short meeting
+   * discussed chain for bootstrapping and tfidf
+   * MaltParser might be an option instead of Stanford Parser. But as well a parser might not be needed. Test TreeTagger Chunker!
+   * Cigdem is checking BitPar if might be used
+   * TreeTaggerPosLemmaTT4J should be used instead of TreeTaggerPosLemma
+   * 1st step (to be done until statusmeeting): build chain with TFIDF with existing TreeTagger
+   * 2nd step (after statusmeeting): extend with parser or chunker
+   * gold standard shouldn't be annotated
+
+---+++25.08.2009
+   * @action(CT): manual annotation of the forums
+   * @action(NE): extend preprocessing chain with parser
+   * @action(NE): generate any syntactical templates (check how Riele did it)
+   * @action(CT): send TFIDF annotator
+   * @action(NE): test Annotation Viewer from UIMA
+   * @action(NE): improve FileSystemReaderWithMmax
+   * @action(NE): create JUnit tests for readers and consumers (location should be in folder "src_test") (example StanfordTokenizerTest in dkpro_core)
+   * @action(NE): create consumer which compares GoldStandard with results from program
+      * consumer must map sentences between GoldStandard and preprocessed data
+   * short meeting Thursday 2pm about progress      
+DONE
+   * @action(NE): manual annotation of the forums
+   * @action(all): what to do to get a transponder <-- Transponder requested
+   * @action(NE): HighPrecisionSubjectivitySentenceClassifier - generated descriptor and java class with helper
+   * @action(NE): create preprocessing pipeline for 300.000 taz sentences (use example)
+   * @action(NE): preprocess taz sentences and save them as xmi
+   * @action(NE): develop CPE for testing reasons
+   * @action(NE): add libraries to build path of "dkpro_core"
+   * @action(NE): delete package core.type
+
+---+++ 17.08.2009
+   * @action(all): manual annotation of the forums
+   * @action(all): what to do to get a transponder
+   * @action(NE): add libraries to build path of "dkpro_core"
+   * @action(NE): delete package core.type
+   * @action(NE): create preprocessing pipeline for 300.000 taz sentences (use example)
+   * @action(NE): preprocess taz sentences and save them as xmi
+   * @decision: Where to compare mmax results (gold standard) with program data?
+      * Create Consumer? <-- Yes
+         * Printout Precision, Recall and F-measure as well as misrated sentences
+   * [[NicoErbsTimeline][Timeline]]
+   * @action(NE): improve FileSystemReaderWithMmax
+   * @action(NE): create JUnit tests for readers and consumers (location should be in folder "src_test") (example StanfordTokenizerTest in dkpro_core)
+   * @action(NE): Requiremens for HPSSC annotation and evaluation: (Lemma is useful for this task)
+      * show whether opinionated or not
+      * list subjective expression hints
+      * print out evaluation results using Tokeniser and Lemmatiser (lexicon as well!) and FileSystemReader (dkpro.core)
+      * print out where UIMA and GoldStandard differ
+   * @action(NE): develop CPE for testing reasons
+   * @action(NE): take care of type priorities (sentence, token, lemma, ...)
+   * @action(NE): consumer must map sentences between GoldStandard and preprocessed data
+DONE
+   * @action(NE): adapt FIleSystemReader to load MMAX markables in second view (see de.tudarmstadt.ukp.dkpro.opinion_mining.reader.MMAXAnnotationBasedataReader from Greg as an example); (check availability of source of FileSystemReader)
+   * @action(NE): create SubjectiveExpression as own type (instead of putting it into SentenceSubjectivityClassifier)
+   * @action(NE): send moodle annotation data; One file for each comment
+   * @action(CT): send subiterator example --> see NGramAnnotator in method process
+ 
+---+++ 10.08.2009
+   * @timeline(NE):
+      * first week: complete reader, UIMA types and send forum annotation data
+      * second weeks: Forum annotation (agreement), everything else for UIMA, agreement taz annotation
+      * third & fourth week: Implementation and generation of patterns from templates
+      * end of fourth week: statusmeeting with presentation of first results (patterns)
+   * @action(NE): adapt FIleSystemReader to load MMAX markables in second view (see de.tudarmstadt.ukp.dkpro.opinion_mining.reader.MMAXAnnotationBasedataReader from Greg as an example); (check availability of source of FileSystemReader)
+   * @action(NE): create JUnit tests for readers and consumers
+   * @action(NE): create SubjectiveExpression as own type (instead of putting it into SentenceSubjectivityClassifier)
+   * @action(NE): send moodle annotation data; One file for each comment
+   * @action(CT): send subiterator example
+   * @action(NE): Requiremens for HPSSC annotation and evaluation: (Lemma is useful for this task)
+      * show whether opinionated or not
+      * list subjective expression hints
+      * print out evaluation results using Tokeniser and Lemmatiser (lexicon as well!) and FileSystemReader (dkpro.core)
+      * print out where UIMA and GoldStandard differ
+   * @action(NE): develop CPE for testing reasons
+DONE
+   * @action(NE): create uima annotator for High-Precison-Subjectivity-Classifier (as well objective) -->  [[%ATTACHURL%/../NicoErbsResources/moodleDataExample.tar][Example data for forum threads]]
+   * @action(NE): Experimental setup --> [[NicoErbsHPSSC_Evaluation][HPSSC evaluation]]
+      * Wiki page: size of the lexicons: how many positive, how many negative, link lexicons
+      * size of the evaluation data: how many sentence level annotated data
+      * HPSSC rules, HPSOC rules
+      * Evaluation: define, how do you calculate P,R,F
+      * Error analysis, e.g. examples of subjective but not identified sentences, is it due to lexicon coverage, are the look-ups working correctly? * @action(NE): generate raw data from forum (one file each thread)
+
+   * @action(NE): finish annotation of evaluation data
+   * @action(NE): implement High-Precison-Subjectivity-Classifier (as well objective)
+   * @action(NE): calculate precision and recall of HPSSC
+
+---+++ 03.08.2009
+   * @action(CT): subiterator example schicken.
+   * @action(NE): Experimental setup 
+      * Wiki page: size of the lexicons: how many positive, how many negative, link lexicons
+      * size of the evaluation data: how many sentence level annotated data
+      * HPSSC rules, HPSOC rules
+      * Evaluation: define, how do you calculate P,R,F
+      * Error analysis, e.g. examples of subjective but not identified sentences, is it due to lexicon coverage, are the look-ups working correctly? * @action(NE): generate raw data from forum (one file each thread)
+   * @action(NE): create uima annotator for High-Precison-Subjectivity-Classifier (as well objective)
+   * @action(NE): Requiremens for HPSSC annotation and evaluation:
+      * show whether opinionated or not
+      * list subjective expression hints
+      * print out evaluation rresults using Tokeniser and Lemmatiser (lexicon as well!) and FileSystemReader (dkpro.core)
+      * print out where UIMA and GoldStandard differ
+DONE 
+   * @action(NE): finish annotation of evaluation data
+   * @action(NE): implement High-Precison-Subjectivity-Classifier (as well objective)
+   * @action(NE): calculate precision and recall of HPSSC
+
+---+++ 13.07.2009
+   * @action(NE): finish annotation of evaluation data
+   * @discuss(): presentation for next day
+   * @action(NE): implement High-Precison-Subjectivity-Classifier (as well objective)
+   * @action(NE): generate raw data from forum (one file each thread)
+   * @action(NE): calculate precision and recall of HPSSC
+   * @discuss(): Future of Masterthesis 
+      * Generate Raw Data from Forum
+      * Implementation in the next 4 to 6 weeks
+      * Testing and generation of web based corpora
+
+DONE
+   * @action(NE): prepare presentation for next day (student status meeting 2)
+
+---+++ 06.07.2009
+   * @discuss: data for annotation project
+   * @decision(): parser
+   * @action(NE): get results from Stanford parser and compare them with patterns
+   * @action(NE): implement High-Precison-Subjectivity-Classifier (as well objective)
+
+DONE
+   * @action(CT): sign copy of Abtretungsdokument
+   * @action(CT+NE): share new annotation project on repository
+
+---+++ 15.06.2009
+   * @action(CT): new annotation scheme + project, take the file from resources link
+   * @decision(): Stanford parser ==&gt; not sure now. This point still open.
+   * @discuss(): Extraction pattern template.
+   * @discuss(): Annotation of the forum data
+
+DONE
+   * @action(NE): add UIMA nature to existing project and apply Coding Rules and best Practices
+   * @action(NE): prepare 300000 sentence corpus from TAZ (mixture from all types and ressort should be Bildung, Hochschule, Wissenschaft, Meinung)
+   * @action(NE): annotate 100 sentences to compare with Elif
+   * @action(CT): Send Nico the UIMA component for the St. parser
+   * @action(NE): Sign Abtretungsdocument
+   * @action(CT): Send EMail to admin concerning access with 'n_erbs' to SVN
+
+---+++ 04.06.2009
+   * @action(NE): add UIMA nature to existing project and apply Coding Rules and best Practices
+   * @action(NE): annotate 100 sentences to compare with Elif
+   * @action(NE): prepare 300000 sentence corpus from TAZ (mixture from all types and ressort should be Bildung, Hochschule, Wissenschaft, Meinung)
+   * @discuss(): Extraction pattern template.
+   * @action(CT): *dringend:* look for suitable German Parsers, send Nico the BitPar Parser
+   * Students repository, core project has all the components except Parser
+   * @dsscuss(): [[%ATTACHURL%/expectations_for_students.pdf][UKP expectations document]]
+   * @discuss(): How should we proceed with the actual annotation. Text file you sent me contains 104 sentences, are you planning to annotate in chunks? ==&gt; ignore (update on ressources)
+
+DONE
+   * @action(CT): send outlook invitation (reserve room for regular meetings); new date
+   * @action(NE): prepare 2000 sentences from corpus and send to Cigdem
+   * @action(NE): create and synchronize with repository on share
+   * @action(CT): Nico's TK account dringend
+   * @action(CT): create the annotation project after receiving the evaluation data set from Nico
+   * @action(CT): send email with step for step manual to import core project 
+      * To check out dkpro core project use eclipse and import new project from repository
+
+---+++ 27.05.2009
+
+   * @action(NE): prepare 300000 sentence corpus from FAZ 
+      * Crawl the data from the archive files.
+      * CD-Search interface enables an option "Export mit Umbruch"
+      * Search options: 
+         * Ressort: Bildung, Hochschule, Wissensschaft, Meinung
+         * Art: Kommentar, TAZ-Bericht, Dokumentation
+         * Länge: nur mittlere
+         * Make a corpus of 300000 (half from Kommentar, half from Bericht)
+   * @action(CT): Nico's TK account dringend
+   * @action(CT): look for suitable German Parsers, send Nico the <span style="color: blue; text-decoration: underline">BitPar</span> Parser 
+      * Students repository, core project has all the components except Parser
+   * @action(NE): harvest the forum data. 
+      * Course name: Basics September 2006, 2007
+   * @discuss(): Manual annotation. 
+      * Read the <span style="color: blue; text-decoration: underline"><span style="color: blue; text-decoration: underline">[[http://www.cs.pitt.edu/~wiebe/pubs/papers/lre05.pdf][manual]]</span></span>
+      * <span style="color: blue; text-decoration: underline"><span style="color: blue; text-decoration: underline">[[http://www.cs.pitt.edu/~wiebe/pubs/pub1.html][Wiebe's page for more info. on sentiment and subjectivity analysis]]</span></span>
+      * <span style="color: blue; text-decoration: underline"><span style="color: blue; text-decoration: underline">[[http://mmax2.sourceforge.net/][Annotation Tool]]</span></span>
+   * @action(CT): create the annotation project after receiving the evaluation data set from Nico
+   * two ways to retrieve data: 
+      * Get one file for each article directly from huge data file with lots of brackets.
+      * Use Interface from CD
+   * @action(NE): add UIMA nature to existing project and apply Coding Rules and best Practices
+   * @action(NE): create and synchronize with repository on share
+   * @action(NE): prepare 2000 sentences from corpus and send to Cigdem
+   * @action(NE): manually annotate 2000 sentences and send Cigdem
+   * @action(NE): send 100 annotated sentences to Cigdem to check if annotated in a proper way
+   * @action(NE): install and use MMAX
+   * @action(NE): run UIMA Sentence Splitter and Tokenizer in data
+
+DONE
+   * @action(CT): mail German opinion lexicon for high-precision subj. classifiers.
+
+---+++ 18.05.2009
+
+Presentation of preliminary version of Status Meeting Presentation.
+
+Discussion of approach to determine polarity of forum entries.
+
+   * @action(NE): improve presention for next day
+   * @action(CT): upload German opinion lexicon to TWiki
+
+---+++ 11.05.2009
+   * @action(CT): prepare 300000 sentence corpus from FAZ
+   * @action(CT): prepare preprocessing components (sentece splitter, tokenizer, POS tagger, parser (German Parser))
+   * @action(NE): harvest the forum data. (CT will give the name of the course.)
+   * @action(CT): mail German opinion lexicon for high-precision subj. classifiers.
+
+-- Main.CigdemToprak - 11 May 2009
+
+%META:FILEATTACHMENT{name="expectations_for_students.pdf" attachment="expectations_for_students.pdf" attr="" comment="" date="1245057214" path="expectations_for_students.pdf" size="124217" stream="expectations_for_students.pdf" tmpFilename="/var/tmp/CGItemp48185" user="CigdemToprak" version="1"}%

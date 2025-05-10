@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="schiller" comment="reprev" date="1507116509" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Meeting 2017-3-7
+
+   * Done must be included in the thesis: 
+      * most important sentences (cos-dist claim zu doc/evidence) 5% worse
+      * Hierarchisches BiLSTM mit GloVe / eigenen word2vec (Snopes Corpus) 
+       testen und falls die Ergebnisse besser sind als mit dem aktuellen Verfahren (also Embeddings initialisieren mit 0's und während dem trainieren des Models mittrainieren) 
+      * Hyper-parameter tuning mit dem besten feature, Attention models
+      * Daten verdoppelt durch halbieren des Textes der original documents und evidences und Erstellung eines neuen claims daraus
+   
+   * TODOs Master Thesis: 
+      
+      * Error analysis: missclassifieds examples to by analysed, what can be done better, why classification model perform so well, ... 
+         * Confusion matrix: false posi, ....
+
+      * Daten halbieren und LSTM und Clasifier testen: wenn LSTM noch schlechter sind die wenigen Daten ein Problem
+
+      * Verschiedene Attention models mit bestem Ergebnis aus 1. nochmal laufen lassen (falls keine anderen Tests laufen müssen hier ggf. auch noch tunen)
+
+      * Bestes Attention model visualisieren
+
+      * Alle modelle abschließend auf Test-set laufen lassen
+
+      * Extension of the corpus for examples with many documents, extra examples, splitting up examples with many documents
+
+      * Die restlichen besten Methoden aus der FNC einbauen für das MLP, Logistic Regression etc.
+
+      * BiLSTMs mit CNNs tauschen, damit wir auch CNNs getestet haben
+
+      * Eine 3. Klasse "others" einbauen
+      
+      * Document level LSTM
+
+
+
+
+   *  TODOs Paper: 
+      * zweiter corpus
+      * vergelich zu anderen methode CRF
+      * related work gegenüber stellen
+      * Memory Network Michael
+      * Information of the domain
+   
+
+
+
+-- Main.AndreasHanselowski - 2017-02-27
+
+-- Main.AndreasHanselowski - 2017-05-15

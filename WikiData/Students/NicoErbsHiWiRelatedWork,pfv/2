@@ -1,0 +1,92 @@
+%META:TOPICINFO{author="NicoErbs" date="1264173268" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="NicoErbsHiWi"}%
+---+ Related Work
+
+%TOC%
+
+   * [[NicoErbsHiWiBibTex][BibTex]]
+
+---++ Summaries
+A list of related work and their summaries.
+
+---+++Turney99
+   * Supervised
+   * Candidates
+      * NGrams up to length 3
+      * All NGrams with stopwords eliminated
+   * Features:
+      * Number of stemmed words in the phrase
+      * Location of the first stemmed phrase occurrence in the document (normalized by the number of words)
+      * Location of the first single stemmed phrase occurrence  in the document (normalized)
+      * Frequency of the stemmed phrase (normalized by the number of words)
+      * Frequency of the most frequent single stemmed word in the stemmed phrase (normalized)
+      * Relative length of phrase (# of characters) (normalized with average number of character in candidate phrases)
+      * Boolean: Is phrase a noun
+      * Boolean: Does phrase end with an adjective
+      * Boolean: Does phrase contain a common verb (based on a list)
+   * Corpus:
+      * Journal articles
+      * Email messages
+      * Aliweb web pages
+      * NASA web pages
+      * FIPS web pagesa
+
+Developed GenEx as program for keyphrase extraction. GenEx consists of Genitor for learning a model and Extractor for extracting keyphrases with this model. Compared to KEA, training with genitor takes a very long time. Extractor works in comparable time to KEA.
+Also C4.5 decision trees are used for creating a modell.
+
+---+++Frank99
+Eibe Frank, Gordon W. Paynter, Ian H. Witten, Carl Gutwin and Craig G. Nevill-Manning: Domain-Specific Keyphrase Extraction
+
+   * Supervised
+   * Candidates
+      * NGrams up to length 3
+      * All NGrams with stopwords eliminated
+   * Features:
+      * TF*IDF
+      * Distance (distance of first appearence to start)
+   * Corpus:
+      * Same as Turney99 used
+
+Developed Kea as program for keyphrase extraction. It is based on a Naive Bayes learning scheme.
+Better results (than GenEx ) if training data comes from same domain as evaluation data. Else comparable results.
+
+
+
+---+++Hulth2003
+Anette Hulth: Improved Automatic keyword Extraction Given More Linguistic Knowledge
+
+   * Supervised
+   * Candidates (3 different methods (not mixed))
+      * n-grams up to trigrams
+      * NP-chunks
+      * PoS Tag Patterns (manually defined)
+   * Features
+      * Within-document frequency
+      * Collection frequency
+      * Relative Position of the first occurrence
+      * PoS tags
+   * Corpus
+      * 2000 Abstracts from journal papers published at Inspec (Computers and Control, Information Technology)
+
+Hulth compared 4 different methods for creating candidates She used the "Rule Discovery System" from AB (www.compumine.com).
+As a special feature for the model she used PoS tags, hence she introduced linguistic knowledge into keyphrase extraction.
+
+---+++Milhalcea and Tarau
+Rada Milhalcea and Paul Tarau: TextRank: Bringing Order into Texts
+
+   * Unsupervised
+   * Candidates
+      * all open class words
+      * nouns and verbs only
+      * nouns and adjectives only
+      * several others
+   * Corpus
+      * same as Hulth03 (500 abstracts from Inspec database)
+
+
+Milhalcea and Tarau introduce TextRank as a method for extracting keyphrases. It is based on the PageRank algorithm, which is used frequently.
+TextRank uses a cooccurence relation to build a graph between keyphrase candidates and selecting most central candidates as keyphrases. The best results were obtained for keyphrase candidates, which are nouns and adjectives.
+Additional they applied this technique to sentence extraction, which is not further analyzed here.
+
+
+-- Main.NicoErbs - 07 Jan 2010

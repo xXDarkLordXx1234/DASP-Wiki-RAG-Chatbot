@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="3"}%
+%META:TOPICPARENT{name="LSR.WordNetResourcebeschreibung"}%
+---+++ !WordNets morphologische Operationen
+
+   * Morphologische Operationen wendet !WordNet an wenn das gesuchte Wort eine Flexionsform ist, und ihre Lemma ist benötigt um das entsprechende Synset zu extrahieren.
+   * In abhängigkeit von POS, in dessen Rahmen nach Synsets gesucht wird, sind unterschiedliche Operationen möglich.
+      * Falls das Wort mit einem bestimmten Suffix endet, wird dieser aus dem Wort entfernt und mit einer Endung ersetzt um eine Mögliche Lemma herzuleiten.
+         * Manchmal ist die hinzugefügte Endung ein leeres String, was bedeutet das die Operation nur aus dem Entfernen des Suffixes besteht.
+
+---++++ Operationen in abhängigkeit von POS
+---++++++ _Bemerkung: JWNL unterstüzt diese Operationen_
+| POS | Suffix | Endung |
+| NOUN | "s" | "" |
+| NOUN | "ses" | "s" |
+| NOUN | "xes" | "x" |
+| NOUN | "zes" | "z" |
+| NOUN | "ches" | "ch" |
+| NOUN | "shes" | "sh" |
+| NOUN | "men" | "man" |
+| NOUN | "ies" | "y" |
+| VERB | "s" | "" |
+| VERB | "ies" | "y" |
+| VERB | "es" | "e" |
+| VERB | "es" | "" |
+| VERB | "ed" | "e" |
+| VERB | "ed" | "" |
+| VERB | "ing" |	"e" |
+| VERB | "ing" | "" |
+| ADJ | "er" | "" |
+| ADJ | "est" | "" |
+| ADJ | "er" | "e" |
+| ADJ | "est" | "e" |
+
+-- Main.ZijadMaksuti - 12 Oct 

@@ -1,0 +1,1823 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1281366263" format="1.1" reprev="19" version="19"}%
+%META:TOPICPARENT{name="WiktionaryResearch"}%
+-- Main.YevgenChebotar - 24 Jul 2010
+%TOC%
+
+---+ Language 
+Bei allen betrachteten Wiktionaries steht Sprache am höchsten in dem hieararchischen Aufbau der Einträge. Diese Sektion ist vor allem für die Einträge wichtig, bei denen das Lemma in verschiedenen Sprachen vorkommt. Z.B. [[http://en.wiktionary.org/wiki/sensible][sensible]] hat Bedeutungen in Englisch, Französisch und Spanisch, wobei die Bedeutung in Englisch sich von den Bedeutungen in Französisch und Spanisch unterscheidet. Man muss zwischen den für die gegebene Wiktionary-Edition native Sprache und anderen Sprachen unterscheiden. Die Einträge in der nativen Sprache sind meistens mehr ausgearbeitet und haben auch manchmal eine andere Struktur als die Einträge in anderen Sprachen, die oft nur die Übersetzungen in die native Sprache darstellen. Betrachten wir die Einzelheiten der Kodierung der Sprach-Sektionen in verschiedenen Wiktionary-Editionen.<br>
+*English Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61;LANGUAGE&#61;&#61;"<br>
+Zwischen verschiedenen Sprach-Sektion steht normalerweise  "----" , was als eine horizontale Linie dargestellt wird.<br>
+*German Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; LEMMA ({{Sprache|LANGUAGE}}) &#61;&#61;"<br>
+Zwischen den Sprachsektionen steht normalerweise "{{2x----}}", was als eine doppelte horizontale Linie dargestellt wird. Beispiele: [[http://de.wiktionary.org/wiki/am][am]], [[http://de.wiktionary.org/wiki/klein][klein]]<br>
+*French Wiktionary* <br> 
+Format des Sektion-Titels: "&#61;&#61; {{&#61;LANGUAGE_ABBREVIATION&#61;}} &#61;&#61;". Z.B. "&#61;&#61; {{&#61;fr&#61;}} &#61;&#61;" für Französisch und "&#61;&#61; {{&#61;en&#61;}} &#61;&#61;" für Englisch in [[http://fr.wiktionary.org/wiki/mousse][mousse]]<br>
+*Russian Wiktionary* <br>
+Format des Sektion-Titels: "&#61; {{-LANGUAGE_ABBREVIATION-}} &#61;". Z.B. "&#61; {{-ru-}} &#61;" für Russisch und  "&#61; {{-bg-}} &#61;" für Bulgarisch [[http://ru.wiktionary.org/wiki/&#1089;&#1083;&#1086;&#1085;][&#1089;&#1083;&#1086;&#1085;]]<br>
+*Polish Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; LEMMA ({{LANGUAGE}}) &#61;&#61;". Z.B. "&#61;&#61; mama ({{j&#281;zyk polski}}) &#61;&#61;" und "&#61;&#61; mama ({{j&#281;zyk hiszpa&#324;ski}}) &#61;&#61;" in [[http://pl.wiktionary.org/wiki/mama][mama]]<br>
+*Lithuanian Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; {{LANGUAGE_ABBREVIATION}} &#61;&#61;". Z.B. "&#61;&#61; {{ltv}} &#61;&#61;" und "&#61;&#61; {{skv}} &#61;&#61;" in [[http://lt.wiktionary.org/wiki/Informatika][Informatika]]<br>
+*Turkish Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; {{Dil|LANGUAGE}} &#61;&#61;". Z.B. "&#61;&#61; {{Dil|Türkçe}} &#61;&#61;" und "&#61;&#61;{{Dil|Türkmence}}&#61;&#61;" in [[http://tr.wiktionary.org/wiki/gitmek][gitmek]]<br>
+*Vietnamese Wiktionary* <br>
+Format des Sektion-Titels: "{{-LANGUAGE_ABBREVIATION-}}". Z.B. "{{-vie-}}" und "{{-eng-}}" in [[http://vi.wiktionary.org/wiki/go][go]]<br>
+*Ido Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61;LANGUAGE&#61;&#61;" oder "&#61;&#61;{{LANGUAGE_ABBREVIATION}}&#61;&#61;". Z.B. "&#61;&#61;Ido&#61;&#61;" und "&#61;&#61;{{en}}&#61;&#61;" in [[http://io.wiktionary.org/wiki/per][per]]<br>
+*Portuguese Wiktionary* <br>
+Format des Sektion-Titels: "&#61;LANGUAGE&#61;". Z.B. "&#61;Português&#61;" und "&#61;Italiano&#61;" in [[http://pt.wiktionary.org/wiki/casa][casa]]<br>
+*Chinese Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61;{{LANGUAGE_ABBREVIATION}}&#61;&#61;". Z.B. "&#61;&#61;{{zh}}&#61;&#61;" und "&#61;&#61;{{ja}}&#61;&#61;" in [[http://zh.wiktionary.org/zh/%E6%B0%B8%E9%81%A0][&#27704;&#36960;]]
+
+---+ POS
+Alle betrachtete Witionaries haben eine Part-of-speech(POS) - Sektion. Obwohl die Struktur von verschiedenen Sprachen sich unterscheidet, die Hauptbestandteile sind oft gleich: Nomen, Verben, Adjektiven, Präpositionen etc. Dabei unterscheidet sich bei verschiedenen Sprache die Position der POS-Sektion in der Eintrag-Hierarchie. So ist in WKT_English ist POS der Etymologie-Sektion untergeordnet, bei WKT_Vietnamese steht POS auf derselben Hierarchie-Ebene und in WKT_Lithuanian ist POS der Etymologie-Sektion übergeordnet.<br>
+*English Wiktionary* <br>
+POS-Sektion ist der Etymologie-Sektion untergeordnet. Format:
+<verbatim>
+====POS====
+{{LANGUAGE_ABBREVIATION-POS|Inflection 1|Inflection 2|...}}
+</verbatim>
+Beispiele: 
+<verbatim>
+====Verb====
+{{en-verb|goes|going|went|gone}}
+</verbatim>
+<verbatim>
+====Noun====
+{{en-noun|es}}
+</verbatim>
+in [[http://en.wiktionary.org/wiki/go][go]]<br><br>
+*German Wiktionary* <br>
+POS-Sektion ist nach Language-Sektion zweithöchste in der Eintrag-Hierarchie. Bei Homonymen steht in dem Sektiontitel außerdem ein Disambiguierung-String zur Unterscheidung von verschiedenen Herkunften. Format:
+<verbatim>
+=== {{Wortart|POS|LANGUAGE}}, GRAMMATICAL_PROPERTIES, ETYMOLOGY_STRING === 
+</verbatim>
+Beispiele:
+<verbatim>
+=== {{Wortart|Substantiv|Deutsch}}, {{f}} === 
+</verbatim>
+<verbatim>
+=== {{Wortart|Verb|Deutsch}}, unregelmäßig ===
+</verbatim>
+<verbatim>
+=== {{Wortart|Substantiv|Deutsch}}, {{m}}, {{Wortart|Singularetantum|Deutsch}}, {{Wortart|Homonym|Deutsch}} === 
+</verbatim>
+<verbatim>
+=== {{Wortart|Substantiv|Deutsch}}, {{m}}/{{f}}, {{Wortart|Nachname|Deutsch}}  ===
+</verbatim>
+in [[http://de.wiktionary.org/wiki/Sonne][Sonne]], [[http://de.wiktionary.org/wiki/stehen][stehen]] und [[http://de.wiktionary.org/wiki/Atlas][Atlas]]<br><br>
+*French Wiktionary* <br>
+Bei mehreren Etymologien wird POS durch einen Klammerpräfix an eine Etymologie zugeordnet. Format:
+<verbatim>
+{{-POS-|LANGUAGE_ABBREVIATION}}
+</verbatim>
+Mehrere Etymologien:
+<verbatim>
+{{-POS-|LANGUAGE_ABBREVIATION|num=ETYMOLOGY_NUMBER}}
+</verbatim>
+Beispiele:
+<verbatim>
+{{-nom-|fr|num=1}}
+</verbatim>
+<verbatim>
+{{-adj-|fr}}
+</verbatim>
+in [[http://fr.wiktionary.org/wiki/mousse][mousse]]<br><br>
+*Russian Wiktionary* <br>
+Es gibt keine explizite POS-Sektion da Wörter in Russisch normalerweise keine verschiedene POS haben können. Für einen Eintrag werden morphologische und syntaktische Eigenschaften angegeben, wo auch die POS-Bezeichnung dabei ist. Bei polysemen Wörter wird für jede Etymologie eigene Sektion mit morphologischen und syntaktischen Eigenschaften angegeben. Format:
+<blockquote>
+&#61;&#61;&#61;&#1052;&#1086;&#1088;&#1092;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1080; &#1089;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#61;&#61;&#61;<br>
+{{POS LANGUAGE_ABBREVIATION Inflection|GRAMMATICAL_PROPERTIES...}
+</blockquote>
+Beispiele:
+<blockquote>
+&#61;&#61;&#61; &#1052;&#1086;&#1088;&#1092;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1080; &#1089;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#61;&#61;&#61;<br>
+{{&#1089;&#1091;&#1097; ru m ina 1c<br>
+|&#1086;&#1089;&#1085;&#1086;&#1074;&#1072;=&#1087;&#1086;&#769;&#1083;<br>
+|&#1086;&#1089;&#1085;&#1086;&#1074;&#1072;1=&#1087;&#1086;&#1083;<br>
+|&#1052;=&#1087;&#1086;&#1083;&#1091;&#769;<br>
+}}
+</blockquote>
+und
+<blockquote>
+&#61;&#61;&#61;&#1052;&#1086;&#1088;&#1092;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1080; &#1089;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#61;&#61;&#61;<br>
+{{&#1087;&#1088;&#1080;&#1083; ru 3aX~<br>
+|&#1086;&#1089;&#1085;&#1086;&#1074;&#1072; = &#1088;&#1091;&#769;&#1089;&#1089;&#1082;<br>
+|show-text=1<br>
+|&#1089;&#1083;&#1086;&#1075;&#1080;={{&#1087;&#1086;-&#1089;&#1083;&#1086;&#1075;&#1072;&#1084;|&#1088;&#1091;&#769;&#1089;|&#1089;&#1082;&#1080;&#1081;}}<br>
+|&#1095;&#1072;&#1089;&#1090;&#1100; &#1088;&#1077;&#1095;&#1080;=&#1055;&#1088;&#1080;&#1083;&#1072;&#1075;&#1072;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077; (&#1086;&#1090;&#1085;&#1086;&#1089;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;)<br>
+|&#1050;&#1072;&#1090;&#1077;&#1075;&#1086;&#1088;&#1080;&#1103;=&#1055;&#1088;&#1080;&#1083;&#1072;&#1075;&#1072;&#1090;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077;, &#1089;&#1082;&#1083;&#1086;&#1085;&#1077;&#1085;&#1080;&#1077; 3aX~<br>
+}}
+</blockquote>
+in [[http://ru.wiktionary.org/wiki/&#1087;&#1086;&#1083;][&#1087;&#1086;&#1083;]] und [[http://ru.wiktionary.org/wiki/&#1088;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;][&#1088;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;]]<br><br>
+*Polish Wiktionary* <br>
+In WKT_PL ist POS-Sektion der Senses-Sektion untergeordnet. Dabei hat jeder POS eine Nummer, so dass die Senses zu einem POS zugeordnet werden. Ein Sense hat dann insgesamt folgende Nummer: (POS-Nummer.Sense-Nummer). In weiteren Sektionen wie Übersetzungen, Synonyme usw. werden diese Nummer verwendet. Format:
+<blockquote>
+''POS''
+</blockquote>
+Beispiele:
+<blockquote>
+''czasownik przechodni''
+</blockquote>
+<blockquote>
+''rzeczownik, rodzaj m&#281;ski''
+</blockquote>
+in [[http://pl.wiktionary.org/wiki/przenosi&#263;][przenosi&#263;]] und [[http://pl.wiktionary.org/wiki/&#347;wiat][&#347;wiat]]<br><br>
+*Lithuanian Wiktionary* <br>
+POS-Sektion ist nach Language-Sektion zweithöchste in der Eintrag-Hierarchie. Format:
+<blockquote>
+&#61;&#61;&#61; ''POS'' &#61;&#61;&#61;<br>
+{{POS_ABBREVIATION|GRAMMATICAL_PROPERTIES...}}
+</blockquote>
+Beispiele:
+<blockquote>
+&#61;&#61;&#61; ''B&#363;dvardis'' &#61;&#61;&#61;<br>
+{{ltbdv|tipas=&#303;vard-laips|forma=f-as<br>
+|akn=ger<br>
+|pform=[[geras]]<br>
+|pformm=[[gera]]<br>
+|skiem=ge-ras}}
+</blockquote>
+<blockquote>
+&#61;&#61;&#61; ''Daiktavardis'' &#61;&#61;&#61;<br>
+{{ltdkt|forma=f-vyr-1l-as|akn=ger}}
+</blockquote>
+in [[http://lt.wiktionary.org/wiki/geras][geras]]<br><br>
+*Turkish Wiktionary* <br>
+POS-Sektion ist nach Language-Sektion zweithöchste in der Eintrag-Hierarchie. Format:
+<blockquote>
+&#61;&#61;&#61; {{Söztürü|POS|LANGUAGE}} &#61;&#61;&#61;
+</blockquote>
+Beispiele:
+<blockquote>
+&#61;&#61;&#61; {{Söztürü|Fiil|Türkçe}} &#61;&#61;&#61;
+</blockquote>
+<blockquote>
+&#61;&#61;&#61;{{Söztürü|&#304;sim|Türkçe}}&#61;&#61;&#61;
+</blockquote>
+<blockquote>
+&#61;&#61;&#61;{{Söztürü|Eylem|Türkmence}}&#61;&#61;&#61;
+</blockquote>
+in [[http://tr.wiktionary.org/wiki/gitmek][gitmek]]<br><br>
+*Vietnamese Wiktionary* <br>
+POS steht direkt vor der Sense-Liste. Im Code werden POS mit englischen Bezeichnungen kodiert, jedoch in Vietnamesisch angezeigt, z.B. "noun" wird als "Danh t&#7915;" angezeigt. Format:
+<blockquote>
+{{-POS-}}
+</blockquote>
+Beispiele:
+<blockquote>
+{{-noun-}}
+</blockquote>
+<blockquote>
+{{-intr-verb-}}
+</blockquote>
+in [[http://vi.wiktionary.org/wiki/nhà][nhà]] und [[http://vi.wiktionary.org/wiki/go][go]]<br><br>
+*Ido Wiktionary* <br>
+Es gibt keine POS-Sektion in Ido Wiktionary<br><br>
+*Portuguese Wiktionary* <br>
+POS steht direkt vor der Sense-Liste. Format:
+<verbatim>
+==POS==
+</verbatim>
+Beispiele:
+<verbatim>
+==Substantivo==
+</verbatim>
+<verbatim>
+==Verbo==
+</verbatim>
+in [[http://pt.wiktionary.org/wiki/casa][casa]] und [[http://pt.wiktionary.org/wiki/ir][ir]]<br><br>
+*Chinese Wiktionary* <br>
+   POS ist nicht in allen Einträgen vorhanden(wie z.B. in [[http://zh.wiktionary.org/zh/&#39135;][&#39135;]] und [[http://zh.wiktionary.org/zh/&#27704;&#36960;][&#27704;&#36960;]] . Falls vorhanden,steht POS direkt vor der Sense-Liste. Dabei wird für POS eine englische Abbreviatur verwendet.  Format:
+<verbatim>
+{{-POS_ABBREVIATION-}}
+</verbatim>
+Beispiele:
+<verbatim>
+{{-adv-}}
+</verbatim>
+<verbatim>
+{{-v-}}
+</verbatim>
+in [[http://zh.wiktionary.org/zh/&#29694;&#22312;][&#29694;&#22312;]] und [[http://zh.wiktionary.org/zh/&#27979;&#35797;][&#27979;&#35797;]]<br><br>
+---+ Etymology
+  Etymologie stellt die Herkunft eines Wortes dar. Dabei dient oft die Etymologie zur Unterscheidung von Homonymen, da sie meistens verschiedene Herkunft haben. In einigen Sprachen steht die Etymologie hoch in dem hierarchischen Aufbau des Artikels, in anderen spielt eher eine Rolle von Zusatzinformation über das Wort.<br>
+*English Wiktionary* <br>   
+In WKT_EN ist die Etymologie-Sektion nach Language-Sektion zweithöchste in der Eintrag-Hierarchie und stellt einen wichtigen Instrument zur Unterscheidung von verschiedenen Wort-Herkunften.. Format:
+<verbatim>
+===Etymology ETYMOLOGY_NUMBER===
+</verbatim>
+Beispiele:
+<verbatim>
+===Etymology 1===
+===Etymology 2===
+</verbatim>
+in [[http://en.wiktionary.org/wiki/go][go]]<br><br>
+*German Wiktionary* <br>
+In WKT_DE werden die Wörter mit vielen Herkunften in verschiedene Sektionen  für jeden Herkunft unterteilt. Die Sektionen werden mit POS und einem weiterem Disambiguierungs-String beschriftet. Die Herkunftsbeschreibung erfolgt dann später innerhalb dieser Sektion (z.B. [[http://de.wiktionary.org/wiki/Atlas][Atlas]])
+Format:
+<verbatim>
+{{Herkunft}}
+: ETYMOLOGY_TEXT
+</verbatim>
+Beispiel:
+<verbatim>
+{{Herkunft}}
+:von Atlas, dem mythologischen Himmelsträger 
+</verbatim>
+<verbatim>
+{{Herkunft}}
+:aus dem Arabischen
+</verbatim>
+in [[http://de.wiktionary.org/wiki/Atlas][Atlas]]<br><br>
+*French Wiktionary* <br>
+Die Etymologie wird nach Language-Titel angegeben. Dabei steht bei Worten mit mehreren Herkunften vor jedem Etymologie-Eintrag ein Verweis auf die entsprechnde POS-Sektion, die in dem Artikel später auftritt. Falls ein POS mehrere Etymolgien hat, wird er mit einem Nummer an eine bestimmte Etymologie zugewiesen. Format:
+<verbatim>
+{{-étym-}}
+: (''[[#LANGUAGE_ABBREVIATION-POS-1|POS 1]]'') ETYMOLOGY_TEXT
+: (''[[#LANGUAGE_ABBREVIATION-POS-2|POS 2]]'') ETYMOLOGY_TEXT
+usw...
+</verbatim>
+Bei Wörtern mit nur einer Etymologie:
+<verbatim>
+{{-étym-}}
+: ETYMOLOGY_TEXT
+</verbatim>
+Beispiele:
+<verbatim>
+{{-étym-}}
+: (''[[#fr-nom-1|Nom 1]]'') Provient probablement à la fois du francique {{recons}}''mosa'' (< néerlandais : [[mos]]) (« '''mousse''' », la plante, sens 1.1) latinisé en ''[[mossa]]'', et du latin ''[[mulsa]]'' (« [[hydromel]] »), qui aurait été utilisé pour désigner la plante métaphoriquement.
+: (''[[#fr-nom-2|Nom 2]]'') Emprunté soit à lespagnol ''[[mozo]]'' (« [[garçonnet]] », « [[jeune]] [[homme]] » puis « [[apprenti]] [[marin]] ») soit au catalan ''[[mosso]]'' (« jeune homme » puis « apprenti marin »), lui-même emprunté à l{{es}} ''[[mozo]]''. Le mot ''mozo'' vient du latin 
+</verbatim>
+<verbatim>
+{{-étym-}}
+: Du latin ''[[bene]]'' (« '''bien''', [[à propos]], [[favorablement]] »).
+</verbatim>
+in [[http://fr.wiktionary.org/wiki/mousse][mousse]] und [[http://fr.wiktionary.org/wiki/bien][bien]]<br><br>
+*Russian wiktionary* <br>
+Die Wörter mit mehreren Etymologien werden in mehrere Sektion direkt nach dem Language-Titel unterteilt. Die Sektion-Titeln haben Format:
+<blockquote>
+LEMMA-ETYMOLOGY_NUMBER(ROME_NUMERALS)
+</blockquote>
+Z.B. 
+<blockquote>
+&#1087;&#1086;&#1083; I<br>
+&#1087;&#1086;&#1083; II
+</blockquote>
+Die Etymologie selbst steht weiter im Artikel. Dabei wird im Quellcode anstatt eines Textes ein Template mit einem Verweis auf andere Quelle angegeben. Es wird z.B. für Etymologie ein Wörterbuch von Fasmer verwendet, was auch dann im Artikel angegeben wird. Durch den Template wird der Text aus diesem Wörterbuch direkt in den Artikel geladen und angezeigt.  Man findet die in WKT_RU verwendete Literatur [[http://ru.wiktionary.org/wiki/&#1055;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1077;:&#1057;&#1087;&#1080;&#1089;&#1086;&#1082;_&#1083;&#1080;&#1090;&#1077;&#1088;&#1072;&#1090;&#1091;&#1088;&#1099;][hier]]
+
+<blockquote>
+=== &#1069;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103; ===<br>
+&#1055;&#1088;&#1086;&#1080;&#1089;&#1093;&#1086;&#1076;&#1080;&#1090; &#1086;&#1090; ETYMOLOGY_TEMPLATE
+</blockquote>
+Beispiel
+<blockquote>
+=== &#1069;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103; ===<br>
+&#1055;&#1088;&#1086;&#1080;&#1089;&#1093;&#1086;&#1076;&#1080;&#1090; &#1086;&#1090; {{&#1101;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103;:&#1087;&#1086;&#1083;}}
+</blockquote>
+<blockquote>
+=== &#1069;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103; ===<br>
+&#1055;&#1088;&#1086;&#1080;&#1089;&#1093;&#1086;&#1076;&#1080;&#1090; &#1086;&#1090; {{&#1101;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103;:&#1089;&#1083;&#1086;&#1085;|&#1076;&#1072;}}
+</blockquote>
+in [[http://ru.wiktionary.org/wiki/&#1087;&#1086;&#1083;][&#1087;&#1086;&#1083;]] und [[http://ru.wiktionary.org/wiki/&#1089;&#1083;&#1086;&#1085;][&#1089;&#1083;&#1086;&#1085;]].<br><br>
+*Polish Wiktionary* <br>
+In WKT_PL ist die Etymologie-Sektion nicht so gut entwickelt wie bei anderen Wiktionaries, sie ist oft leer oder nur mit wenigen Informationen gefüllt. Bei einigen Einträgen wird Etymologie durch die Angabe von dem Sense-Nummer(z.B. (1.3) ) zu einem bestimmtem Sense zugeordnet. Format:
+<blockquote>
+{{etymologia}} (SENSE_NUMBER) ETYMOLOGY_TEXT
+</blockquote>
+Beispiele:
+<blockquote>
+{{etymologia}} [[prze-]] + [[nosi&#263;]]
+</blockquote>
+<blockquote>
+{{etymologia}} (1.1) powi&#261;zane z ''[[droga]]''
+</blockquote>
+in [[http://pl.wiktionary.org/wiki/przenosi&#263;][przenosi&#263;]] und [[http://pl.wiktionary.org/wiki/podró&#380;][podró&#380;]]<br><br>
+*Lithuanian Wiktionary* <br>   
+Die Etymologie-Sektion ist der POS-Sektion untergeordnet. Format:
+<verbatim>
+==== Etimologija ====
+ETYMOLOGY_TEXT
+</verbatim>
+z.B. in [[http://lt.wiktionary.org/wiki/mogus][mogus]]<br><br>
+*Turkish Wiktionary* <br>
+Die Etymologie-Sektion ist der POS-Sektion untergeordnet. Etymologie-Eintrag wird mithilfe von einem Sense-Nummer an ein bestimmter Sense zugeordnet.Format:
+<blockquote>
+{{Köken}} <br>
+:[1] ETYMOLOGY_TEXT 1 <br>
+:[2] ETYMOLOGY_TEXT 2 <br>
+usw...
+</blockquote>
+Beispiel:
+<blockquote>
+{{Köken}}<br>
+:[1] {{köken|Eski Türkçe}} [[eb]] ( "b" sessizi, O&#287;uz Türkçesinde "v" sessizine dönü&#351;mü&#351; )
+</blockquote>
+in [[http://tr.wiktionary.org/wiki/ev][ev]]<br><br>
+*Vietnamese Wiktionary* <br>
+Bei vietnamesischen Wiktionary ist die Etymologie im größten Teil der Artikeln nicht angegeben. Bei fremdsprachlichen Einträgen, z.B. Englisch, kann man dagegen oft eine Etymologie-Sektion finden. Format:
+<blockquote>
+{{-etymology-}}<br>
+ETYMOLOGY_TEXT
+</blockquote>
+Beispiel:
+<blockquote>
+{{-etymology-}}<br>
+{{etym-from<br>
+| lang = ang | term = gan | lterm = g&#257;n | from = {{etym-from<br>
+ | lang = goh | term = gen | from = {{etym-from<br>
+  | lang = ine-proto | attested = 0 | term = ghê<br>
+ }}<br>
+}} Tuy nhiên, t&#7915; th&#7871; k&#7927; 15, các hình thái quá kh&#7913; c&#7911;a ''go'' &#273;&#432;&#7907;c thay b&#7857;ng các hình thái b&#7855;t ngu&#7891;n {{lcfirst:{{etym-from<br>
+| term = wend | from = {{etym-from<br>
+ | lang = ang | term = windan | from = {{etym-from<br>
+  | term = wendan<br>
+  }}<br>
+ }}<br>
+}}}}
+</blockquote>
+in [[http://vi.wiktionary.org/wiki/go][go]]<br><br>
+*Ido Wiktionary* <br>
+In WKT_IDO wird die Herkunft eines Wortes durch die Angabe von Originalwörter der sechs Herkunftssprachen(Fonto-lingui) bestimmt. Z.B. in [[http://io.wiktionary.org/wiki/havar][havar]]<br><br>
+*Portuguese Wiktionary* <br>
+In WKT_PT wird in der Etymologie-Sektion meistens nur eine Angabe der Herkunftssprache und des Herkunftswortes gemacht(größtenteils Latein) und keine weitere Informationen angegeben. Format:
+<blockquote>
+=={{etimologia}}==<br>
+ETYMOLOGY_TEXT
+</blockquote>
+Beispiele:
+<blockquote>
+=={{etimologia}}==<br>
+: Do latim ''ire''.
+</blockquote>
+<blockquote>
+=={{etimologia}}==<br>
+: Do latim ''construct&#301;o, -&#333;nis''.
+</blockquote>
+in [[http://pt.wiktionary.org/wiki/ir][ir]] und [[http://pt.wiktionary.org/wiki/construção][construção]]<br><br>
+*Chinese Wiktionary* <br>
+Es ist interessant, dass bei WKT_ZH für einzelne Zeichen oft als Etymologie die grafische Herkunft des Zeichens und nicht des Wortes angegeben wird (z.B. [[http://zh.wiktionary.org/zh/&#39135;][&#39135;]] ). Format:
+<blockquote>
+==={{-etym-}}===<br>
+ETYMOLOGY_TEXT
+</blockquote>
+Beispiel:
+<blockquote>
+==={{-etym-}}===<br>
+#[[&#20754;&#26519;&#22806;&#21490;]] &#31532;&#19977;&#21313;&#20061;&#22238;&#65306;"&#25105;&#38614;&#24180;&#32769;&#65292;'''&#29694;&#22312;'''&#20006;&#28961;&#30149;&#30171;&#12290;"
+</blockquote>
+in [[http://zh.wiktionary.org/zh/&#29694;&#22312;][&#29694;&#22312;]]
+---+ Word Senses
+Die Sektion der Wortbedeutungen ist das Herzstück jedes Wiktionary-Artikels, da hier die eigentlichen semantischen Informationen und Erklärungen des Wortes angegeben werden. Dabei ist interessant die Position der Sektion innerhalb des Artikels, die Nummerierung der Senses und spätere Zuweisungen in anderen Sektionen (Translations, 
+Synonyme usw.) sowie Angabe von Context-Labels, Beispielen und Zitaten innerhalb des Glosses.<br>
+*English Wiktionary* <br>
+In WKT_EN steht die Sense-Sektion unmittelbar nach dem POS-Titel. Die Senses werden durch eine Auflistung dargestellt. Vor vielen Senses stehen Context-Labels oder Grammar-Labels. Nach vielen Senses stehen Beispiele und Zitaten. Die Zuweisung in anderen Sektionen erfolgt durch Angabe von vollem oder abgekürztem Gloss. Außerdem sind bei einigen Artikeln diese Sektionen und Senses querverlinkt. D.h. bei Senses die z.B. einen Synonym, Antonym und Translation haben steht am Ende ein Link  "{{jump|SHORT_DESCRIPTION|s|a|t}}" (s-Synonym, a-Antonym, t-Translation). Z.B.  {{jump|move|s|a|t}} in [[http://en.wiktionary.org/wiki/go][go]]. In der Sektion "Synonyms" steht dann z.B. vor einem passendem Synonym "{{jump|s|SHORT_DESCRIPTION|a|t}" (s steht vor SHORT_DESCRIPTION und weist darauf hin, dass es ein Synonym ist, außerdem werden a-Antonyme, t-Translations und standrtmäßig noch Definition durch SHORT_DESCRIPTION, die auch in der Sense-Liste gleich war, verknüpft). Z.B. "{{jump|s|move|a|t}"
+in [[http://en.wiktionary.org/wiki/go][go]]. Dasselbe geschieht bei Antonymen("{{jump|a|move|s|t}}") und Translations("{{jump|t|move|s|a}}", hier wird jedoch zusätzlich noch ein abgekürzter Gloss angegeben). Diese Links werden dann als hochgestellte Hinweise gerendert(syn.-Synonyme, ant.-Antonyme, def.-Definition, transl.-Translation). Somit kann man eindeutige Zuweisungen durchführen. Format:
+<verbatim>
+====POS====
+{{LANGUAGE_ABBREVIATION-POS|Inflection 1|Inflection 2|...}}
+# {{CONTEXT_LABEL 1|CONTEXT_LABEL 2|...}} GLOSS {{jump|SHORT_DESCRIPTION|s|a|t|...}}
+#* QUOTATION 1
+#* QUOTATION 2
+...
+#: ''EXAMPLE 1''
+#: ''EXAMPLE 2'' 
+...
+</verbatim>
+Beispiel:
+<verbatim>
+====Verb====
+{{en-verb|goes|going|went|gone}}
+
+# {{obsolete|intransitive}} To [[walk]]; to travel on one's feet. {{defdate|11th-19th c.}}
+#*'''1624''', John Smith, ''Generall Historie'', in Kupperman 1988, p. 129:
+#*:Master Piercie our new President, was so sicke hee could neither '''goe''' nor stand.
+# {{intransitive}} To [[move]] from one place to another. {{jump|move|s|a|t}}
+#: ''Why dont you '''go''' with us?''
+#: ''This train '''goes''' to Chicago.''
+# {{intransitive}} To [[leave]]; to move away. {{jump|depart|s|a}}
+#: ''Please don't '''go'''!''
+...
+</verbatim>
+in [[http://en.wiktionary.org/wiki/go][go]]<br><br>
+*German Wiktionary* <br>
+In WKT_DE werden die Senses mit Nummern versehen, die später in anderen Sektionen verwendet werden. Die Beispiele werden in einer eigener Sektion angegeben und durch Nummer mit den Senses verknüpft. Format:
+<verbatim>
+{{Bedeutungen}}
+:[1] ''CONTEXT_LABEL'' GLOSS 1
+:[2] ''CONTEXT_LABEL'' GLOSS 2
+...
+{{Beispiele}}
+:[1] EXAMPLE FOR GLOSS 1
+:[2] EXAMPLE FOR GLOSS 2
+...
+</verbatim>
+Beispiel:
+<verbatim>
+{{Bedeutungen}}
+:[1] ''intransitiv'': eine Bewegung nach einer bestimmten Seite hin machen oder veranlassen
+::[a] ''intransitiv, mit Adverbiale der Richtung'': die ''(durch die Adverbiale angegebene)'' Richtung im Raum einschlagen
+::[b] ''(bildhaft zu [1a], die Adverbiale gibt ein allgemeines Ziel an)'': ein Ziel anstreben, ansteuern
+:[2] ''transitiv, mit Adverbiale der Richtung'': etwas ''oder'' jemanden in eine ''(durch die Adverbiale angegebene)'' Richtung im Raum steuern ''oder'' führen, ''insbesondere'':
+::[a] ''mit Fahrzeugen als direktem Objekt'': etwas ''mit dem Fahrzeug'' ansteuern, ''mit dem Fahrzeug'' zufahren auf etwas
+::[b] ''mit Personen als direktem Objekt'': jemanden ''ans Ziel'' bringen, führen
+...
+{{Beispiele}}
+:[1a] Der verunglückte Fahrer ''lenkte'' daraufhin fatalerweise auf den Baum zu.
+:[1b] Leichtsinn ''lenkt'' ins Unglück.
+:[2a] Einen Wagen ''lenkt'' man mit dem Lenkrad, ein Fahrrad mit der Lenkstange.
+:[2b] Sie wissen nicht, wo es zum Rathaus geht? &mdash; Keine Angst, ich gehe mit, ich ''lenke'' Sie da schon hin!
+</verbatim>
+in [[http://de.wiktionary.org/wiki/lenken][lenken]]<br><br>
+*French Wiktionary* <br>
+Die Senses-Sektion befindet sich direkt nach dem POS-Titel. Die Senses werden als eine Auflistung dargestellt. Die Zuweisung in anderen Sektion erfolgt durch Sense-Nummer und optional abgekürzten Sense. Vor vielen Senses stehen Context-Labels (Grammar-Labels findet man [[http://fr.wiktionary.org/wiki/Annexe:Glossaire_grammatical][hier]]) Nach den Senses stehen Beispiele oder Zitaten(einziger Unterschied in der Kodierung ist die Angabe von Quellen bei den Zitaten) Format:
+<verbatim>
+POS-TITLE
+# {{LABEL 1}} {{LABEL 2}} GLOSS 1
+#* ''QUOTATION'' {{source|{{w|WIKIPEDIA_TITLE}}, SOURCE_TITLE...}}
+#* ''EXAMPLE''
+# GLOSS 2...
+</verbatim>
+Beispiel:
+<verbatim>
+{{-nom-|fr}}
+{{fr-rég|bjE}}
+'''bien''' {{m}}
+# {{sing}} {{term|{{invar}}}} Opposé du [[mal]].
+#* ''Lorsquau bout de quelques semaines Elhamy la remercia, avec une cordialité souriante, du '''bien''' quelle avait fait à son fils, une émotion sourde étreignit sa gorge.'' {{source|{{w|Out-el-Kouloub}}, ''Zaheira'', dans « Trois contes de lAmour et de la Mort », 1940}}
+# {{sing}} {{term|{{invar}}}} [[probité|Probité]], [[vertu]].
+</verbatim>
+in [[http://fr.wiktionary.org/wiki/bien][bien]]<br><br>
+*Russian wiktionary* <br>
+Die Senses sind als eine Auflistung dargestellt, dabei bestimmt die Reihenfolge der Definitionen auch Zuweisungen in anderen Sektionen. Z.B. bei Relationen wenn kein Eintrag für eine Definition vorhanden ist, dann wird ein Listenpunkt für diese Definition trotzdem erstellt und leer gelassen(z.B. in [[http://ru.wiktionary.org/wiki/&#1090;&#1103;&#1085;&#1091;&#1090;&#1100;][&#1090;&#1103;&#1085;&#1091;&#1090;&#1100;]]). Vor vielen Senses stehen Context-Labels, deren Liste man [[http://ru.wiktionary.org/wiki/&#1042;&#1080;&#1082;&#1080;&#1089;&#1083;&#1086;&#1074;&#1072;&#1088;&#1100;:&#1059;&#1089;&#1083;&#1086;&#1074;&#1085;&#1099;&#1077;_&#1089;&#1086;&#1082;&#1088;&#1072;&#1097;&#1077;&#1085;&#1080;&#1103;][hier]] findet. Die Beispiel und Zitaten sind innerhalb des Glosses mit speziellem Syntax angegeben, bei Zitaten findet man zusätzlich Quellen. Format:
+<blockquote>
+&#61; &#61; &#61; &#61;  &#1047;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1077; &#61; &#61; &#61; &#61; <br>
+# {{CONTEXT-LABEL}} GLOSS 1 {{&#1087;&#1088;&#1080;&#1084;&#1077;&#1088;|QUOTATION|SOURCE_AUTHOR|SOURCE_TITLE|SOURCE_YEAR}} {{&#1087;&#1088;&#1080;&#1084;&#1077;&#1088;|EXAMPLE}}<br>
+# GLOSS 2
+</blockquote>
+Beispiel:
+<blockquote>
+&#61; &#61; &#61; &#61;  &#1047;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1077; &#61; &#61; &#61; &#61; <br>
+# &#1089; &#1091;&#1089;&#1080;&#1083;&#1080;&#1077;&#1084; &#1087;&#1077;&#1088;&#1077;&#1084;&#1077;&#1097;&#1072;&#1090;&#1100;, &#1087;&#1088;&#1080;&#1073;&#1083;&#1080;&#1078;&#1072;&#1103; &#1082; &#1089;&#1077;&#1073;&#1077; {{&#1087;&#1088;&#1080;&#1084;&#1077;&#1088;|&#1042;&#1086;&#1079;&#1085;&#1080;&#1094;&#1072;, &#1089;&#1090;&#1086;&#1103; &#1087;&#1086; &#1082;&#1086;&#1083;&#1077;&#1085;&#1080; &#1074; &#1075;&#1088;&#1103;&#1079;&#1080;, &#1080;&#1079;&#1086; &#1074;&#1089;&#1077;&#1093; &#1089;&#1080;&#1083; {{&#1074;&#1099;&#1076;&#1077;&#1083;|&#1090;&#1103;&#1085;&#1091;&#1083;}} &#1083;&#1086;&#1096;&#1072;&#1076;&#1100; &#1079;&#1072; &#1091;&#1079;&#1076;&#1091; &#1080; &#1073;&#1088;&#1072;&#1085;&#1080;&#1083;&#1089;&#1103;.|&#1063;&#1077;&#1093;&#1086;&#1074;|[[:s:&#1057;&#1072;&#1084;&#1099;&#1081; &#1073;&#1086;&#1083;&#1100;&#1096;&#1086;&#1081; &#1075;&#1086;&#1088;&#1086;&#1076; (&#1063;&#1077;&#1093;&#1086;&#1074;)|&#1057;&#1072;&#1084;&#1099;&#1081; &#1073;&#1086;&#1083;&#1100;&#1096;&#1086;&#1081; &#1075;&#1086;&#1088;&#1086;&#1076;]]|1886}} {{&#1087;&#1088;&#1080;&#1084;&#1077;&#1088;|&#1054;&#1085; &#1086;&#1089;&#1090;&#1086;&#1088;&#1086;&#1078;&#1085;&#1086; &#1089;&#1090;&#1072;&#1083; {{&#1074;&#1099;&#1076;&#1077;&#1083;|&#1090;&#1103;&#1085;&#1091;&#1090;&#1100;}} &#1085;&#1072; &#1089;&#1077;&#1073;&#1103; &#1101;&#1090;&#1086;&#1090; &#1083;&#1080;&#1089;&#1090;&#1080;&#1082; &#1090;&#1072;&#1082;, &#1095;&#1090;&#1086;&#1073;&#1099; &#1087;&#1088;&#1080;&#1075;&#1085;&#1091;&#1090;&#1100; &#1074;&#1084;&#1077;&#1089;&#1090;&#1077; &#1089; &#1085;&#1080;&#1084; &#1074;&#1077;&#1090;&#1082;&#1091;, &#1085;&#1086; &#1080; &#1085;&#1077; &#1088;&#1072;&#1079;&#1086;&#1088;&#1074;&#1072;&#1090;&#1100; &#1083;&#1080;&#1089;&#1090;&#1080;&#1082; &#1080; &#1091;&#1089;&#1087;&#1077;&#1090;&#1100; &#1094;&#1072;&#1087;&#1085;&#1091;&#1090;&#1100; &#1074;&#1077;&#1090;&#1082;&#1091; &#1083;&#1077;&#1074;&#1086;&#1081; &#1088;&#1091;&#1082;&#1086;&#1081;.|&#1060;&#1072;&#1079;&#1080;&#1083;&#1100; &#1048;&#1089;&#1082;&#1072;&#1085;&#1076;&#1077;&#1088;|&#1055;&#1072;&#1089;&#1090;&#1091;&#1093; &#1080; &#1082;&#1086;&#1089;&#1091;&#1083;&#1103;}}<br>
+# {{&#1087;.}}, {{&#1088;&#1072;&#1079;&#1075;.}} &#91;&#91;&#1084;&#1077;&#1096;&#1082;&#1072;&#1090;&#1100;]], &#91;&#91;&#1084;&#1077;&#1076;&#1083;&#1080;&#1090;&#1100;]], &#1085;&#1077; &#91;&#91;&#1090;&#1086;&#1088;&#1086;&#1087;&#1080;&#1090;&#1100;&#1089;&#1103;]] &#1089; &#1086;&#1089;&#1091;&#1097;&#1077;&#1089;&#1090;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077;&#1084; &#1095;&#1077;&#1075;&#1086;-&#1083;&#1080;&#1073;&#1086;; &#91;&#91;&#1079;&#1072;&#1084;&#1077;&#1076;&#1083;&#1103;&#1090;&#1100;]], &#1076;&#1086;&#1083;&#1075;&#1086; &#1085;&#1077; &#1082;&#1086;&#1085;&#1095;&#1072;&#1090;&#1100;, &#1084;&#1077;&#1076;&#1083;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086; &#1076;&#1077;&#1083;&#1072;&#1090;&#1100; &#1095;&#1090;&#1086;-&#1083;&#1080;&#1073;&#1086; {{&#1087;&#1088;&#1080;&#1084;&#1077;&#1088;|&#1054;&#1085; {{&#1074;&#1099;&#1076;&#1077;&#1083;|&#1090;&#1103;&#1085;&#1091;&#1083;}} &#1076;&#1077;&#1083;&#1086; &#1076;&#1086; &#1087;&#1086;&#1089;&#1083;&#1077;&#1076;&#1085;&#1077;&#1081; &#1085;&#1077;&#1074;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086;&#1089;&#1090;&#1080; &#1080; &#1086;&#1090;&#1082;&#1072;&#1079;&#1072;&#1083;&#1089;&#1103; &#1091;&#1078;&#1077; &#1090;&#1086;&#1075;&#1076;&#1072;, &#1082;&#1086;&#1075;&#1076;&#1072; &#1085;&#1077;&#1074;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1086; &#1073;&#1099;&#1083;&#1086; &#1085;&#1077; &#1086;&#1090;&#1082;&#1072;&#1079;&#1072;&#1090;&#1100;&#1089;&#1103;.|&#1044;&#1086;&#1089;&#1090;&#1086;&#1077;&#1074;&#1089;&#1082;&#1080;&#1081;|&#91;&#91;:s:&#1057;&#1077;&#1083;&#1086; &#1057;&#1090;&#1077;&#1087;&#1072;&#1085;&#1095;&#1080;&#1082;&#1086;&#1074;&#1086; &#1080; &#1077;&#1075;&#1086; &#1086;&#1073;&#1080;&#1090;&#1072;&#1090;&#1077;&#1083;&#1080; (&#1044;&#1086;&#1089;&#1090;&#1086;&#1077;&#1074;&#1089;&#1082;&#1080;&#1081;)/&#1063;&#1072;&#1089;&#1090;&#1100; 2|&#1057;&#1077;&#1083;&#1086; &#1057;&#1090;&#1077;&#1087;&#1072;&#1085;&#1095;&#1080;&#1082;&#1086;&#1074;&#1086; &#1080; &#1077;&#1075;&#1086; &#1086;&#1073;&#1080;&#1090;&#1072;&#1090;&#1077;&#1083;&#1080;]]|1845}} {{&#1087;&#1088;&#1080;&#1084;&#1077;&#1088;|&#1069;&#1083;&#1077;&#1082;&#1090;&#1088;&#1080;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086; &#1085;&#1080;&#1082;&#1072;&#1082; &#1085;&#1077; &#1084;&#1086;&#1078;&#1077;&#1084; &#1087;&#1086;&#1076;&#1082;&#1083;&#1102;&#1095;&#1080;&#1090;&#1100;&nbsp; &#1076;&#1086;&#1075;&#1086;&#1074;&#1086;&#1088; &#1079;&#1072;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085; &#1080;&#1084;&#1077;&#1085;&#1085;&#1086; &#1089; &#1048;&#1074;&#1072;&#1085;&#1086;&#1074;&#1099;&#1084;, &#1072; &#1086;&#1085; {{&#1074;&#1099;&#1076;&#1077;&#1083;|&#1090;&#1103;&#1085;&#1077;&#1090;}} &#1089; &#1087;&#1088;&#1086;&#1087;&#1083;&#1072;&#1090;&#1086;&#1081;.}} {{&#1087;&#1088;&#1080;&#1084;&#1077;&#1088;|&#1054;&#1085;&#1072; &#1087;&#1086;&#1085;&#1080;&#1084;&#1072;&#1083;&#1072;, &#1095;&#1090;&#1086; &#1074; &#1090;&#1072;&#1082;&#1080;&#1093; &#1089;&#1083;&#1091;&#1095;&#1072;&#1103;&#1093; &#1085;&#1077;&#1083;&#1100;&#1079;&#1103; {{&#1074;&#1099;&#1076;&#1077;&#1083;|&#1090;&#1103;&#1085;&#1091;&#1090;&#1100;}} &#1080; &#1085;&#1072;&#1076;&#1086; &#1095;&#1090;&#1086;-&#1090;&#1086; &#1089;&#1088;&#1086;&#1095;&#1085;&#1086; &#1087;&#1088;&#1077;&#1076;&#1087;&#1088;&#1080;&#1085;&#1103;&#1090;&#1100;.}}
+</blockquote>
+in [[http://ru.wiktionary.org/wiki/&#1090;&#1103;&#1085;&#1091;&#1090;&#1100;][&#1090;&#1103;&#1085;&#1091;&#1090;&#1100;]]<br><br>
+*Polish Wiktionary* <br>
+Im Unterschied zu anderen Wiktionaries ist die POS-Sektion der Sense-Sektion untergeordnet. Die Senses sind unterteilt in verschiedene POS. Jeder POS besitzt eine Nummer, und die Senses innerhalb dieses POS haben auch eine Nummer. Somit ist jeder Sense durch ein Paar (POS_NUMBER.SENSE_NUMBER) in anderen Sektionen identifizierbar. Vor vielen Senses stehen Context-Labels, die Liste findet man [[http://pl.wiktionary.org/wiki/Aneks:Skróty_u&#380;ywane_w_Wikis&#322;owniku][hier]]. Die meisten Artikeln bieten keine Beispiele oder Zitaten an. Format:
+<blockquote>
+{{znaczenia}}<br>
+''POS 1''<br>
+: (1.1) {{CONTEXT_LABEL 1}} {{CONTEXT_LABEL 2}} GLOSS 1.1<br>
+: (1.2) GLOSS 1.2<br>
+...<br>
+''POS 2''<br>
+: (2.1) GLOSS 2.1<br>
+: (2.2) GLOSS 2.2<br>
+...
+</blockquote>
+Beispiel:
+<blockquote>
+{{znaczenia}}<br>
+''czasownik przechodni''<br>
+: (1.1) [[przemieszcza&#263;]] [[co&#347;]] [[nie&#347;&#263;|nios&#261;c]]<br>
+: (1.2) [[umieszcza&#263;]] [[co&#347;]] [[lub]] [[kto&#347;|kogo&#347;]] [[w]] [[inny]]m [[miejsce|miejscu]] [[lub]] [[warunek|warunkach]]<br>
+...<br>
+''czasownik nieprzechodni''<br>
+: (2.1) {{wojsk}} {{my&#347;l}} ''o pocisku:'' [[przelatywa&#263;]] [[dalej]] [[ni&#380;]] [[wyznaczy&#263;|wyznaczony]] [[cel]]<br>
+: (2.2) {{wojsk}} {{my&#347;l}} ''o broni lub strzelcu:'' [[strzela&#263;]] [[dalej]] [[ni&#380;]] [[wyznaczy&#263;|wyznaczony]] [[cel]]<br>
+...
+</blockquote>
+in [[http://pl.wiktionary.org/wiki/przenosi&#263;][przenosi&#263;]] <br><br>
+*Lithuanian Wiktionary* <br>
+Bei meisten Einträgen (z.B. [[http://lt.wiktionary.org/wiki/mogus][mogus]] werden die Senses als eine nummerische Auflistung dargestellt. Format:
+<verbatim>
+'''[[LEMMA]]'''<br>
+# GLOSS 1: ''EXAMPLE''
+# GLOSS 2...
+</verbatim>
+Es gibt jedoch Ausnahmen. Z.B. in [[http://lt.wiktionary.org/wiki/&#303;staiga][&#303;staiga]]:
+<verbatim>
+=== ''POS'' ===
+{{GRAMMATICAL_PROPERTIES}}
+* GLOSS
+</verbatim>
+oder [[http://lt.wiktionary.org/wiki/kredito_ir_finans&#371;_&#303;staigos][kredito ir finans&#371; &#303;staigos]]:
+<verbatim>
+=== ''POS'' ===
+{{GRAMMATICAL_PROPERTIES}}
+'''[[LEMMA]]''' GLOSS
+</verbatim>
+ Die Zuweisung in anderen Sektionen erfolgt durch die Angabe von einem verkürztem Gloss. Wenn kein Hinweis auf ein bestimmtes Sense erforderlich ist, wird einfach "bendrai" angegeben (übersetzt "allgemein"). Beispiele und Zitaten werden eher selten angegeben. <br><br>
+ *Turkish Wiktionary* <br>
+ Die Senses werden ähnlich wie in WKT_DE mit Nummern versehen, die später in anderen Sektionen verwendet werden. Es werden keine Beispiele oder Zitate innerhalb der Sense-Sektion angegeben. Es gibt jedoch Sektionen für Idiomen und Sprüche. Vor einigen Senses stehen Context-Labels, die gleichzeitig Kategorienamen sind(jedoch klein geschrieben) und mit entsprechenden Kategorien verknüpft sind. Format:
+<verbatim>
+{{Anlamlar}}
+:[1] {{t|CONTEXT_LABEL}} GLOSS 1
+:[2] GLOSS 2...
+...
+</verbatim> 
+Beispiel:
+<blockquote>
+{{Anlamlar}}
+:[1] [[ku&#351;|Ku&#351;larda]] ve [[böcek]]lerde [[uçmak|uçmay&#305;]] sa&#287;layan [[organ]].<br>
+:[2] [[bal&#305;k|Bal&#305;klarda]] [[yüzgeç]].<br>
+...<br>
+:[9] {{t|askerlik }} Sava&#351; düzenindeki ordunun iki yan&#305;ndan her biri.<br>
+:[10] {{t|spor}} [[futbol|Futbol]], [[hentbol]] vb. [[tak&#305;m]] oyunlar&#305;nda [[hücum]] [[hat]]t&#305;n&#305;n [[sa&#287;]] ve [[sol]] [[uç]]lar&#305;nda yer alan [[oyuncu]]lar.
+</blockquote>
+in [[http://tr.wiktionary.org/wiki/kanat][kanat]]<br><br>
+*Vietnamese Wiktionary* <br>
+Die Sense-Sektion steht direkt nach dem POS-Titel. Die Definitionen werden in einer nummerischen Auflistung angegeben. Die Zuweisung in anderen Sektionen erfolgt durch die Angabe von einem verkürztem Gloss. Nach vielen Senses stehen Beispiele und Zitaten, es gibt jedoch keine Context-Labels. Format:
+<verbatim>
+{{-POS-}}
+'''LEMMA'''
+# GLOSS 1
+#: EXAMPLE 1
+# GLOSS 2...
+</verbatim>
+Beispiele:
+<blockquote>
+{{-noun-}}<br>
+'''xiên''' <br>
+# [[v&#7853;t|V&#7853;t]] [[dài]], [[nh&#7887;]], [[có m&#7897;t]] hay [[vài ba]] [[m&#361;i nh&#7885;n]].<br>
+#: ''M&#7897;t '''xiên''' th&#7883;t.''<br>
+#: ''C&#7847;m '''xiên''' '''xiên''' cá.''<br>
+</blockquote>
+<blockquote>
+{{-noun-}}<br>
+'''nhà'''<br>
+#Ki&#7871;n trúc &#273;&#432;&#7907;c xây d&#7921;ng v&#7899;i công n&#259;ng chính là &#273;&#7875; &#7903; và sinh ho&#7841;t; v&#7899;i các thành ph&#7847;n nh&#432; n&#7873;n, nóc (mái), t&#432;&#7901;ng bao quanh, c&#7917;a... Thí d&#7909;:<br>
+#::"'''Nhà''' nàng &#7903; c&#7841;nh '''nhà''' tôi,<br>
+#::Cách nhau cái gi&#7853;u m&#7891;ng t&#417;i xanh r&#7901;n.<br>
+#::Hai ng&#432;&#7901;i s&#7889;ng gi&#7919;a cô &#273;&#417;n.<br>
+#::Nàng nh&#432; c&#361;ng có n&#7895;i bu&#7891;n gi&#7889;ng tôi.<br>
+#::Giá &#273;&#7915;ng có gi&#7853;u m&#7891;ng t&#417;i,<br>
+#::Th&#7871; nào tôi c&#361;ng sang ch&#417;i th&#259;m nàng."<br>
+#:::(Ng&#432;&#7901;i hàng xóm - Nguy&#7877;n Bính)
+</blockquote>
+in [[http://vi.wiktionary.org/wiki/xiên][xiên]] und [[http://vi.wiktionary.org/wiki/nhà][nhà]]<br><br>
+*Ido Wiktionary* <br>
+Die Senses sind meistens mit ** markiert, z.B. in [[http://io.wiktionary.org/wiki/qua][qua]] oder [[http://io.wiktionary.org/wiki/domo][domo]], dabei kommt der erste Sense direkt nach dem Titel "Semantiko" . Bei einigen Enträgen sind Senses mit Zahlen markiert, z.B. [[http://io.wiktionary.org/wiki/.ar][.ar]] . Die Zuweisung in anderen Sektionen erfolgt bei einigen Artikeln mithilfe von abgekürztem Gloss (z.B. [[http://io.wiktionary.org/wiki/irar][irar]], bei anderen mit dem Nummer des Senses (z.B. [[http://io.wiktionary.org/wiki/qua][qua]]) Vor vielen Senses stehen Context-Labels, die Liste befindet sich hier: [[http://io.wiktionary.org/wiki/Kategorio:Abreviuri][Abreviuri]]. Die Beispiele werden in einer eigener Sektion "Exemplaro" angegeben. Format:
+<verbatim>
+*Semantiko: GLOSS 1
+** GLOSS 2
+</verbatim>
+Beispiel:
+<verbatim>
+*Semantiko: [[konstrukturo]] [[destinar|destinita]] ad uzesor kom [[habiteyo]].
+** konstrukturo destinita ad uzo specala, publika o privata.
+</verbatim>
+oder 
+<verbatim>
+*Semantiko: [[la]] [[sufixo]] '''ar''' [[esar|esas]] [[Kategorio:Idala sufixi|ar]]
+#[[en]] [[verbo|verbi]]: [[la]] [[signo]] [[dil]] [[infinitivo]] [[prezenta]].
+#[[en]] [[substantivo|substantivi]]: [[la]] [[signifikilo]] [[di]] ([[maxim]] [[extensar|extensita]]) [[kolektajo]], [[ensemblo]] [[di]] [[la]] [[kozo|kozi]] [[o]] [[persono|personi]] [[nomar|nomata]] [[da]] [[la]] [[radiko]].
+*Exemplaro:
+#[[apertar]], [[dormar]], [[drinkar]], [[facar]], [[finar]], [[kantar]], [[kontar]], [[lektar]], [[pensar]], [[sidar]], [[studiar]], [[surprizar]], 
+#[[abatajaro]], [[acendentaro]], [[delegitaro]], [[dentaro]], [[deputataro]], [[hararo]], [[homaro]], [[vazaro]], [[hararo]], [[Idistaro]], [[puntaro]], [[vejetantaro]], [[vortaro]], 
+</verbatim>
+in [[http://io.wiktionary.org/wiki/domo][domo]] und [[http://io.wiktionary.org/wiki/.ar][.ar]]<br><br>
+*Portuguese Wiktionary* <br>
+Die Senses sind allgemein als eine nummerierte Auflistung dargestellt. Dabei stehen oft vor einem Sense Context Labels, wie z.B. in [[http://pt.wiktionary.org/wiki/ir][ir]] . Doch es gibt auch Artikeln mit anderer Struktur. In [[http://pt.wiktionary.org/wiki/passar][passar]] z.B. werden Senses als Unterpunkte von Context Labels genommen. Die Zuweisung in anderen Sektionen erfolgt durch den Sense-Nummer. (Z.B. in Übersetzung-Sektion mit "De SENSE_NUMBER"). Nach eineigen Senses werden Beispiele und Zitate angegeben. Format:
+<blockquote>
+&#61;&#61;POS&#61;&#61;<br>
+{{GRAMMATICAL_PROPERTIES}}<br>
+LEMMA_SYLLABLES<br>
+#  {{escopo|CONTEXT_LABELS}} GLOSS 1<br>
+#* ''EXAMPLE''<br>
+#* ''QUOTATION'' (''QUOTATION_SOURCE'')<br>
+# GLOSS 2...
+</blockquote>
+Beispiele:
+<blockquote>
+&#61;&#61;Verbo&#61;&#61;<br>
+{{oxítona|ir}} {{+info|data=944}}<br>
+# {{escopo|transitivo indireto}} [[mover]]-se de um lugar para outro<br>
+#* ''[[Eu]] '''irei''' [[à]] [[seu|sua]] [[casa]] [[amanhã]].''<br>
+# {{escopo|auxiliar}} forma o futuro (breve) de um verbo no infinitivo<br>
+#* '''''Vou''' [[caminhar]] [[por|pela]] [[praia]].'' (''Caminharei pela praia'')
+</blockquote>
+<blockquote>
+&#61;&#61;Substantivo&#61;&#61;<br>
+{{flex.pt.feminino|s=<u>ca</u>.sa|p=<u>ca</u>.sas}}<br>
+{{paroxítona|ca|sa}} ''feminino'' {{+info|data=1221}}<br>
+# [[construção]] que [[servir|serve]] de [[moradia]].<br>
+#* ''Sua <u>casa</u> é muito bonita!''<br>
+# [[domicílio]], [[residência]].<br>
+#* ''Minha <u>casa</u> é este apartamento aqui.''
+</blockquote>
+in [[http://pt.wiktionary.org/wiki/ir][ir]] und [[http://pt.wiktionary.org/wiki/casa][casa]].<br><br>
+*Chinese Wiktionary* <br>
+      Die Senses in einigen Artikeln stehen nach dem POS(in [[http://zh.wiktionary.org/zh/&#29694;&#22312;][&#29694;&#22312;]]) , in anderen in eigener Sektion "Bedeutung" (&#37323;&#32681; in [[http://zh.wiktionary.org/zh/&#27704;&#36960;][&#27704;&#36960;]]) oder Zeichen-Bedeutung für Einzelnzeichen-Einträge( &#23383;&#32681; in [[http://zh.wiktionary.org/zh/&#39135;][&#39135;]]). Die Beispiele und Zitate werden direkt in dem Gloss angegeben und nicht getrennt. Die Senses werden entweder als eine nummerierte oder einfache Auflistung dargestellt. Format:
+<blockquote>
+{{-POS-}}<br>
+# GLOSS 1<br>
+# GLOSS 2...
+</blockquote>
+oder
+<blockquote>
+&#61;&#61;&#61;{{&#37323;&#32681;}}&#61;&#61;&#61;<br>
+* GLOSS 1<br>
+* GLOSS 2...
+</blockquote>
+oder 
+<blockquote>
+&#61;&#61; &#23383;&#32681; &#61;&#61;<br>
+* GLOSS 1<br>
+* GLOSS 2...
+</blockquote>
+Beispiele:
+<blockquote>
+{{-adv-}}<br>
+#&#29694;&#20170;&#12289;&#30446;&#21069;&#12290;
+</blockquote>
+<blockquote>
+&#61;&#61;&#61;{{&#37323;&#32681;}}&#61;&#61;&#61;<br>
+* &#38271;&#36828;&#65307;&#27704;&#20037;&#12290;&#12298;&#20070;·&#21531;&#22893;&#12299;&#65306;&#25105;&#20134;&#19981;&#25954;&#23527;&#20110;&#19978;&#24093;&#21629;&#65292;&#24343;&#27704;&#36828;&#24565;&#22825;&#23041;&#12290; &#23435; &#33487;&#36732; &#12298;&#20062;&#22686;&#20462;&#24339;&#31661;&#31038;&#26465;&#32422;&#29366;&#12299;&#65306;&#27704;&#36828;&#21482;&#20197;&#20170;&#26469;&#25152;&#31649;&#20116;&#30334;&#20843;&#21313;&#20843;&#26449;&#20026;&#23450;&#65292;&#25152;&#36149;&#20107;&#20107;&#24490;&#26087;&#65292;&#19981;&#33267;&#24352;&#30343;&#12290;&#12298;&#20754;&#26519;&#22806;&#21490;&#12299;&#31532;&#20108;&#20116;&#22238;&#65306;&#20170;&#27442;&#26377;&#20973;&#65292;&#31435;&#27492;&#36807;&#32487;&#25991;&#20070;&#65292;&#27704;&#36828;&#23384;&#29031;&#12290; &#40654;&#28872;&#25991; &#12298;&#33311;&#20013;&#12299;&#65306;&#25105;&#23558;&#22240;&#27492;&#22549;&#33853;&#21040;&#26080;&#36793;&#30340;&#23421;&#28023;&#65292;&#27704;&#36828;&#19981;&#24471;&#36229;&#33073;&#12290; &#26472;&#26388; &#12298;&#33521;&#38596;&#30340;&#26102;&#20195;&#12299;&#65306;&#20182;&#20204;&#21191;&#25954;&#12289;&#22362;&#38887;&#65292;&#27704;&#36828;&#19981;&#21521;&#22256;&#38590;&#20302;&#22836;&#12290;<br>
+* &#19968;&#30452;&#65307;&#20174;&#26469;&#12290;&#12298;&#20108;&#21313;&#24180;&#30446;&#30585;&#20043;&#24618;&#29616;&#29366;&#12299;&#31532;&#20843;&#21313;&#22238;&#65306;&#36825;&#20960;&#24180;&#27704;&#36828;&#19981;&#26366;&#25509;&#36807;&#25105;&#20271;&#29238;&#19968;&#23553;&#20449;&#65292;&#20174;&#21069;&#21548;&#35500;&#22312;&#23452;&#26124; &#65292;&#27492;&#26102;&#19981;&#30693;&#36824;&#22312;&#37027;&#36793;&#19981;&#22312;&#12290; &#32769;&#33293; &#12298;&#22235;&#19990;&#21516;&#22530;&#12299;&#19977;&#20843;&#65306;&#20182;&#33258;&#24049;&#34429;&#28982;&#25945;&#33521;&#25991;&#65292;&#32780;&#27704;&#36828;&#19981;&#22312;&#24179;&#24120;&#35848;&#35805;&#30340;&#26102;&#20505;&#22841;&#19978; &#33521;&#22269; &#23383;&#65292;&#20182;&#20063;&#27704;&#36828;&#19981;&#31359;&#35199;&#35013;&#12290;<br>
+* &#26187;&#20195;&#38544;&#23621;&#20110;&#24208;&#23665;&#30340;&#20004;&#20010;&#39640;&#20711;&#24800;&#27704;&#19982;&#24800;&#36828;&#30340;&#24182;&#31216;&#12290;&#21776;&#30333;&#23621;&#26131;&#12298;&#37089;&#25995;&#26247;&#26085;&#24518;&#24208;&#23665;&#33609;&#22530;&#12299;&#35799;&#65306;&#26377;&#26399;&#36861;&#27704;&#36828;&#65292;&#26080;&#25919;&#32487;&#40858;&#40644;&#12290;
+</blockquote>
+<blockquote>
+&#61;&#61; &#23383;&#32681; &#61;&#61;<br>
+*&#21507;&#65292;&#32102;&#21029;&#20154;&#21507;&#65306;&#39135;&#29992;&#65292;&#39135;&#20043;&#19981;&#20197;&#20854;&#36947;<br>
+*&#21507;&#30340;&#26481;&#35199;&#65306;&#39135;&#21697;
+</blockquote>
+   in [[http://zh.wiktionary.org/zh/&#29694;&#22312;][&#29694;&#22312;]], [[http://zh.wiktionary.org/zh/&#27704;&#36960;][&#27704;&#36960;]]], [[http://zh.wiktionary.org/zh/&#39135;][&#39135;]]<br><br>
+---+Relations
+In Relation-Sektion finden wir Synonyme, Antonyme, Hypernyme, Hyponyme, Meronyme etc. Unter Verwendung von dieser Sektion können semantische Verbindungen zwischen verschiedenen Einträgen hergestellt werden. Mithilfe von Synonymie können Synsets ähnlich wie in WordNet gebildet werden, mitfhilfe von Hypernymen und Hyponymen kann eine Hierarchie der Einträge (Graph bzw. Baum) erstellt werden. Dabei ist es interessant welche Relation-Typen und in welcher Anzahl bei verschiedenen Wiktionary-Editions angegeben werden, und wie sie mit den Senses verbunden werden.
+*English Wiktionary* <br>
+Die Relationen werden mit Senses durch ein verkürzter Gloss, und zusätzlich bei einigen Artikeln durch bestimmte Links (siehe oben in "Word Senses"), verknüpft. Insgesamt gibt es relativ zu WKT_EN-Gesamtgröße nur sehr wenige Relationen. Am häufigsten findet man Synonyme und Antonyme. Es gibte einige Hyponyme und Hypernyme. Meronyme, Holonyme und andere Beziehungen trifft man sehr selten. Format:<br>
+With jump links:
+<verbatim>
+=====RELATION_NAME=====
+* {{jump|RELATION_ABBREVIATION|SHORT_DESCRIPTION_1|FURTHER_RELATIONS...}} [[LINK 1]], [[LINK 2]]...
+* {{jump|RELATION_ABBREVIATION|SHORT_DESCRIPTION_2|FURTHER_RELATIONS...}} [[LINK 1]], [[LINK 2]]...
+</verbatim>
+No jump links:
+<verbatim>
+====Hyponyms====
+* {{sense|SHORT_DESCRIPTION_1}} [[LINK 1]], [[LINK 2]]...
+* {{sense|SHORT_DESCRIPTION_2}} [[LINK 1]], [[LINK 2]]...
+</verbatim>
+Beispiele:
+<verbatim>
+=====Synonyms=====
+* {{jump|s|move|a|t}} [[move]], [[travel]], [[wend]], [[cross]]
+* {{jump|s|depart|a}} [[depart]], [[leave]], [[exit]], [[go away]], [[go out]]
+</verbatim>
+<verbatim>
+====Synonyms====
+* {{sense|A craft on or in water}} [[craft]], [[ship]], [[vessel]]
+</verbatim>
+in [[http://en.wiktionary.org/wiki/go][go]] und [[http://en.wiktionary.org/wiki/boat][boat]]<br><br>
+*German Wiktionary* <br>
+WKT_DE hat eine sehr gute Relation-Struktur. Es gibt viele Synonyme, Antonyme(Gegenwörter), Hypernyme(Oberbegriffe) und Hyponyme(Unterbegriffe). Meronyme und Holonyme werden nicht angegeben. Die Relationene sind mithilfe von der Sense-Nummer mit einzelnen Senses verknüpft. Format:
+<verbatim>
+{{RELATION_NAME}}
+:[SENSE_NUMBER]  [[LINK 1]], [[LINK 2]]
+</verbatim>
+Beispiel:
+<verbatim>
+{{Synonyme}}
+:[1] ''kleiner Berg:'' [[Hügel]]
+{{Gegenworte}} 
+:[1, 2] [[Schlucht]], [[Tal]], [[Ebene]]
+{{Unterbegriffe}} 
+:[1] [[Hügel]], [[Festungsberg]], [[Galgenberg]], [[Götterberg]], [[Seeberg]], [[Tempelberg]], [[Tafelberg]], [[Unterwasserberg]], [[Weinberg]], [[Vulkanberg]], 
+:[2] [[Abraumberg]], [[Schneeberg]], [[Wellenberg]],
+</verbatim>
+in [[http://de.wiktionary.org/wiki/Berg][Berg]]<br><br>
+*French Wiktionary* <br>
+In WKT_FR findet man alle Arten von Relationen(Synon., Anton., Hypo., Hyper., Mero., Holo.) . Sie werden mithilfe von dem Sense-Nummer und abgekürzetem Gloss mit Senses verknüpft. Das Format unterscheidet sich bei einigen Artikeln. Bei einigen Artikeln kommt die Relation-Sektion vor der Translation-Sektion, bei anderen nach dieser Sektion.<br>
+Format 1 (in [[http://fr.wiktionary.org/wiki/famille][famille]]):
+<verbatim>
+{{-RELATION_NAME-}}
+;SHORT_GLOSS_1(SENSE_NUMBER_1) :
+{{(}}
+* [[LINK 1]]
+* [[LINK 2]]...
+{{-}}
+* [[LINK 6]]
+* [[LINK 7]]...
+{{)}}
+;SHORT_GLOSS_2(SENSE_NUMBER_2) :
+{{(}}
+</verbatim>
+Format 2 (in [[http://fr.wiktionary.org/wiki/bateau][bateau]]):
+<verbatim>
+{{-RELATION_NAME-}}
+'''SHORT_GLOSS''' (SENSE_NUMBER) :
+* [[LINK 1]]
+* [[LINK 2]]...
+</verbatim>
+Format 3 (in [[http://fr.wiktionary.org/wiki/bâtiment][bâtiment]]): 
+<verbatim>
+{{-RELATION_NAME-}}
+* [[LINK 1]] (SENSE_NUMBER_1)
+* [[LINK 2]] (SENSE_NUMBER_1)
+* [[LINK 1]] (SENSE_NUMBER_2)
+* [[LINK 2]] (SENSE_NUMBER_2)...
+</verbatim>
+<br><br>
+*Russian Wiktionary* <br>
+In WKT_RU gibt es standardmäßig vier Relation-Sektionen für Synonyme(&#1057;&#1080;&#1085;&#1086;&#1085;&#1080;&#1084;&#1099;), Antonyme(&#1040;&#1085;&#1090;&#1086;&#1085;&#1080;&#1084;&#1099;), Hypernyme(&#1043;&#1080;&#1087;&#1077;&#1088;&#1086;&#1085;&#1080;&#1084;&#1099;) und Hyponyme(&#1043;&#1080;&#1087;&#1086;&#1085;&#1080;&#1084;&#1099;), obwohl sie auch leer sein können. Die Relationen werden mithilfe von der Reihenfolge mit den Senses verknüpft. Format:
+<verbatim>
+====RELATION_NAME====
+# [[SENSE_1_LINK_1]], [[SENSE_1_LINK_2]]...
+# [[SENSE_2_LINK_1]], [[SENSE_2_LINK_2]]...
+</verbatim>
+Beispiel:
+<blockquote>
+&#61;&#61;&#61;&#61;&#1057;&#1080;&#1085;&#1086;&#1085;&#1080;&#1084;&#1099;&#61;&#61;&#61;&#61;<br>
+# &#91;&#91;&#1087;&#1086;&#1078;&#1080;&#1083;&#1086;&#1081;]]<br>
+# &#91;&#91;&#1080;&#1079;&#1085;&#1086;&#1096;&#1077;&#1085;&#1085;&#1099;&#1081;]]<br>
+# &#91;&#91;&#1079;&#1085;&#1072;&#1082;&#1086;&#1084;&#1099;&#1081;]],&#91;&#91;&#1091;&#1089;&#1090;&#1072;&#1088;&#1077;&#1074;&#1096;&#1080;&#1081;]]<br>
+# &#91;&#91;&#1076;&#1088;&#1077;&#1074;&#1085;&#1080;&#1081;]]<br>
+</blockquote>
+in [[http://ru.wiktionary.org/wiki/&#1089;&#1090;&#1072;&#1088;&#1099;&#1081;][&#1089;&#1090;&#1072;&#1088;&#1099;&#1081;]].<br><br>
+*Polish Wiktionary* <br>
+In WKT_PL gibt es standardmäßig zwei Relation-Sektionen für Synonyme(synonimy) und Antonyme(antonimy), die auch leer sein können. Es werden keine andere Relationen angegeben. Relationen werden mithilfe von Sense-Nummer mit den Senses verknüpft. Format:
+<verbatim>
+{{RELATION_NAME}} 
+: (POS_NUMBER.SENSE_NUMBER) [[LINK 1]], [[LINK 2]]...
+</verbatim>
+Beispiel:
+<blockquote>
+{{synonimy}} <br>
+: (1.1) &#91;&#91;popycha&#263;]], &#91;&#91;pcha&#263;]], &#91;&#91;posuwa&#263;]], &#91;&#91;przemieszcza&#263;]], &#91;&#91;odwleka&#263;]], &#91;&#91;odracza&#263;]], &#91;&#91;zawiesza&#263;]], &#91;&#91;transferowa&#263;]]<br>
+: (1.2) &#91;&#91;przek&#322;ada&#263;]], &#91;&#91;odk&#322;ada&#263;]], &#91;&#91;opó&#378;nia&#263;]]<br>
+{{antonimy}}<br> 
+&#91;&#91;nie przesuwa&#263;]], &#91;&#91;zostawia&#263;]]<br>
+: (1.1) zostawia&#263; &#91;&#91;w]] &#91;&#91;miejsce|miejscu]], &#91;&#91;nie rusza&#263;]]<br>
+: (1.2) &#91;&#91;robi&#263;]] &#91;&#91;od razu]], &#91;&#91;nie zwleka&#263;]]
+</blockquote>
+in [[http://pl.wiktionary.org/wiki/przesuwa&#263;][przesuwa&#263;]]<br><br>
+*Lithuanian Wiktionary* <br>
+In WKT_LT werden bei einigen Artikeln Antonyme und Synonyme angegeben, andere Relation-Sektionen scheint es nicht zu geben. Die Relationen werden mithilfe von abgekürztem Gloss mit den Senses verbunden, wenn die Relation für alle Senses allgemein ist, dann wird das Wort "bendrai" geschrieben. Format:<br>
+Z.B. in [[http://lt.wiktionary.org/wiki/indas][indas]] und [[http://lt.wiktionary.org/wiki/mogus][mogus]]
+<verbatim>
+==== Sinonimai====
+{{sin-top|GLOSS 1}}
+*SYNONYM 1
+{{sin-mid}}
+*SYNONYM 2
+{{sin-bottom}}
+
+{{sin-top|GLOSS 2}}...
+
+==== Antonimai ====
+{{ant-top|GLOSS 1}}
+*ANTONYM 1
+{{ant-mid}}
+*ANTONYM 2
+{{ant-bottom}}
+
+{{ant-top|GLOSS 2}}...
+</verbatim>
+Mit "bendrai" (in [[http://lt.wiktionary.org/wiki/tikrina][tikrina]] und [[http://lt.wiktionary.org/wiki/geras][geras]]
+<verbatim>
+==== Sinonimai ====
+{{sin-top|kalba=LANGUAGE_ABBREVIATION|vardas=LEMMA|tipas=bendrai}}
+* SYNONYM 1
+{{sin-mid}}
+* SYNONYM 2
+{{sin-bottom}}
+
+==== Antonimai ====
+{{ant-top|kalba=LANGUAGE_ABBREVIATION|vardas=LEMMA|tipas=bendrai}}
+* ANTONYM 1
+{{ant-mid}}
+* ANTONYM 1
+{{ant-bottom}}
+</verbatim><br><br>
+*Turkish Wiktionary* <br>
+In WKT_TR findet man oft Synonyme und Antonyme, Hypernyme und Hyponyme sind eher selten. Die Relationen werden mihilfe von Sense-Nummer mit den Senses verbunden. Format:
+<verbatim>
+{{RELATION_NAME}}
+:[SENSE_NUMBER] LINK_1, LINK_2...
+</verbatim>
+Beispiele:
+<blockquote>
+{{E&#351; Anlaml&#305;lar}}<br>
+:[1] &#91;&#91;konut]], &#91;&#91;mesken]], &#91;&#91;ikametgâh]], &#91;&#91;dar]]<br>
+:[2] &#91;&#91;yuva]], &#91;&#91;hane]]<br>
+:[4] &#91;&#91;hanedan]], &#91;&#91;sülale]]<br>
+</blockquote>
+<blockquote>
+{{Kar&#351;&#305;t Anlaml&#305;lar}}
+:[1] &#91;&#91;küçük]]
+</blockquote>
+in [[http://tr.wiktionary.org/wiki/ev][ev]] und [[http://tr.wiktionary.org/wiki/büyük][büyük]]<br><br>
+*Vietnamese Wiktionary* <br>
+Man findet nur wenig Relationen in WKT_VI, bei vietnamesischen Einträgen sogar weniger als bei Fremdwörtern. Die Relationen werden mithilfe von abgekürztem Sense mit der Definition verbunden. 
+<br>Format 1:
+
+<blockquote>
+{{-RELATION_NAME-}}<br>
+{{&#273;&#7847;u}}<br>
+; GLOSS 1<br>
+* LINK 1<br>
+* LINK 2...<br>
+; GLOSS 2<br>
+* LINK 1<br>
+* LINK 2...<br>
+; GLOSS 3<br>
+* LINK 1<br>
+* LINK 2...<br>
+{{gi&#7919;a}}<br>
+; GLOSS 4<br>
+* LINK 1<br>
+* LINK 2...<br>
+...<br>
+{{cu&#7889;i}}
+</blockquote>
+Format 2:
+<blockquote>
+{{-RELATION_NAME-}}
+; GLOSS 1<br>
+* LINK 1<br>
+* LINK 2...<br>
+; GLOSS 2<br>
+* LINK 1<br>
+* LINK 2...<br>
+</blockquote>
+Beispiel: 
+<blockquote>
+{{-syn-}}<br>
+{{&#273;&#7847;u}}<br>
+; &#273;i<br>
+* &#91;&#91;move]]<br>
+* &#91;&#91;travel]]<br>
+* &#91;&#91;wend]]<br>
+; trôi qua<br>
+* &#91;&#91;disappear]]<br>
+* &#91;&#91;vanish]]<br>
+...<br>
+{{-ant-}}<br>
+; &#273;i<br>
+* &#91;&#91;freeze]]<br>
+* &#91;&#91;halt]]<br>
+; trôi qua<br>
+* &#91;&#91;remain]]<br>
+* &#91;&#91;stay]]
+</blockquote>
+in [[http://vi.wiktionary.org/wiki/go][go]]<br><br>
+*Ido Wiktionary* <br>
+Standartmäßig gibt es in WKT_IO Sektionen für Synonyme und Antonyme, die auch leer sein können. Bei manchen Einträgen werden die Relationen mit einem abgekürztem Gloss an die Definition zugewiesen, doch die meisten Einträgen sind nicht polysem, deswegen werden die Relationen in diesen Fällen allgemein für den ganzen Artikel angegeben. Format:
+<verbatim>
+*Sinonimo: SYNONYM_1, SYNONYM_2...
+*Antonimo: ANTONYM_1, ANTONYM_2...
+</verbatim>
+Beispiel:
+<verbatim>
+*Sinonimo: [[hemo]]
+*Antonimo: [[mondo]]
+</verbatim>
+in [[http://io.wiktionary.org/wiki/domo][domo]]<br><br>
+*Portuguese Wiktionary* <br>
+Nur bei wenigen Artikeln werden Antonyme und Synonyme angegeben. Andere Relation-Typen sind noch viel seltener. Die Relationen werden mithilfe von Sense-Nummern mit den Definitionen verbunden. Format:
+
+<verbatim>
+===RELATION_NAME===
+De '''SENSE_NUMBER_1''':
+* LINK_1
+* LINK_2...
+De '''SENSE_NUMBER_2''':
+* LINK_1
+* LINK_2...
+</verbatim>
+Beispiel:
+
+<blockquote>
+&#61;&#61;&#61;Sinônimos&#61;&#61;&#61;<br>
+De '''6''':<br>
+* &#91;&#91;desenhar|Desenhar]]<br>
+* &#91;&#91;Edificar]]<br>
+<br>
+&#61;&#61;&#61;Antônimos&#61;&#61;&#61;<br>
+de '''2''':<br>
+* &#91;&#91;desconstruir|Desconstruir]]
+</blockquote>
+in [[http://pt.wiktionary.org/wiki/construir][construir]]<br><br>
+*Chinese Wiktionary* <br>
+Die Relationen werden sehr selten angegeben und in meisten Fällen nicht an ein bestimmtes Sense zugewiesen. Format:
+<verbatim>
+==={{RELATION_NAME}}===
+{{lang|LANGUAGE|
+*LINK_1, LINK_2...}}
+</verbatim>
+Beispiel:
+<blockquote>
+&#61;&#61;&#61;{{syn}}&#61;&#61;&#61;<br>
+{{lang|ja|<br>
+*&#91;&#91;&#27704;&#20037;]]&#12289;&#91;&#91;&#27704;&#21163;]]&#12289;&#91;&#91;&#28961;&#31406;]]&#12289;&#91;&#91;&#12392;&#12371;&#12375;&#12360;]]&#12289;&#91;&#91;&#12392;&#12431;]]}}
+</blockquote>
+in [[http://zh.wiktionary.org/zh/&#27704;&#36960;][&#27704;&#36960;]]
+---+ Translations
+Mitfhilfe von der Translation-Sektion bietet Wiktionary Funktionalität eines Fremdsprachenwörterbuches. In dieser  Sektion werden Übersetzungen als Verknüpfungen angegeben, die zu eigenen Artikeln von Übersetzung-Wörtern verlinken, wo man dann mehrere Informationen über das Übersetzung-Wort erfahren kann.  Dabei muss man die Links zu derselben Wiktionary von den Links zu den externen Wiktionaries unterscheiden. Bei verschiedenen Artikeln finden wir verschiedene Anzahl von Übersetzungen. Interessant ist auch die Verknüpfung von Definitionen und ihren Übersetzungen innerhalb der Einträge.<br>
+*English Wiktionary* <br>
+Die Übersetzungen werden durch abgekürzten Gloss mit Senses verbunden. Bei einigen werden sie zusätzlich noch mit Definitionen und Relationen querverlinkt. Format:
+Ohne externe Links:
+
+<verbatim>
+====Translations====
+{{trans-top|SHORT_GLOSS_1}}
+* [[LANGUAGE_1]]: [[TRANSLATION_1]]
+* [[LANGUAGE_2]]: [[TRANSLATION_2]]...
+{{trans-top|SHORT_GLOSS_2}}...
+</verbatim>
+Mit externen Links. Bezeichnungen:<br>
+ "t-": Kein Externes Link, ein Internes Link<br>
+ "t+": Externex Link + Internes Link<br>
+ "tø": Kein Internes Link, Kein Externes Link
+<verbatim>
+====Translations====
+{{trans-top|SHORT_GLOSS_1}}
+* [[LANGUAGE_1]]: {{t+|LANGUAGE_ABBREVIATION|TRANSLATION_1|xs=LANGUAGE}}, {{t-|LANGUAGE_ABBREVIATION|TRANSLATION_2|xs=LANGUAGE}}
+* [[LANGUAGE_2]]: {{t+|LANGUAGE_ABBREVIATION|TRANSLATION_1|xs=LANGUAGE}}, {{t-|LANGUAGE_ABBREVIATION|TRANSLATION_2|xs=LANGUAGE}}...
+{{trans-top|SHORT_GLOSS_2}}...
+</verbatim>
+Beispiel:
+<blockquote>
+&#61;&#61;&#61;&#61;Translations&#61;&#61;&#61;&#61;
+{{trans-top|anything intended to supply energy or nourishment of other forms}}<br>
+* Croatian: {{t-|hr|hrana|f|alt=hrána}}<br>
+* Greek: {{t+|el|&#964;&#961;&#959;&#966;&#942;|f|tr=trofí}}<br>
+* Italian: {{t+|it|cibo|m}}, {{t+|it|alimento|m}},  {{t-|it|nutrimento|m}}<br>
+{{trans-mid}}<br>
+* [[Macedonian]]: {{t-|mk|&#1093;&#1088;&#1072;&#1085;&#1072;|f|tr=hrána}}<br>
+* [[Meru]]: {{tø|mer|irio}}<br>
+* Russian: {{t+|ru|&#1087;&#1080;&#1097;&#1072;|f|tr=pí'a}}<br>
+{{trans-bottom}}
+</blockquote><br><br>
+*German Wiktionary* <br>
+Die Übersetzungen werden durch den Sense-Nummer mit den Definitionen verlinkt. Format:
+<verbatim>
+==== Übersetzungen ====
+{{Ü-links}}
+</verbatim>
+Mit Transliteration in lateinische Buchstaben, mit externem Link:
+<verbatim>
+*{{LANGUAGE_1}}: [SENSE_NUMBER_1, SENSE_NUMBER_2...] {{Üxx|LANGUAGE|LATIN_TRANSLITERATION|TRANSLATION}}
+</verbatim>
+Ohne Transliteration, mit externem Link:
+<verbatim>
+*{{LANGUAGE_2}}: [SENSE_NUMBER_1, SENSE_NUMBER_2...] {{Ü|LANGUAGE|TRANSLATION}}
+</verbatim>
+Ohne externen Link:
+<verbatim>
+*{{LANGUAGE_3}}: [SENSE_NUMBER_1, SENSE_NUMBER_2...]  [[TRANSLATION]]
+{{Ü-Abstand}}
+...
+{{Ü-rechts}}
+</verbatim>
+Beispiel:
+<blockquote>
+&#61;&#61;&#61;&#61; Übersetzungen &#61;&#61;&#61;&#61;<br>
+{{Ü-links}}<br>
+*{{zh-cn}}: [1] {{Üxx|zh|tàiyáng|&#22826;&#38451;}}<br>
+*{{en}}: [1, 3] {{Ü|en|sun}}, [2] {{Ü|en|sunshine}}, {{Ü|en|shine}}<br>
+*{{eo}}: [1] {{Ü|eo|suno}}<br>
+*{{fo}}: [1] {{Ü|fo|sól}} {{f}}<br>
+*{{fi}}: [13] {{Ü|fi|aurinko}}, [2] {{Ü|fi|auringonpaiste}}<br>
+*{{fr}}: [1, 2] {{Ü|fr|soleil}} {{m}}<br>
+...<br>
+{{Ü-Abstand}}<br>
+*{{ku}}: [1] {{Ü|ku|tav}}<br>
+*{{la}}: [1, 2] {{Ü|la|sol#sol (Lateinisch)|sol}} {{m}}<br>
+*{{lt}}: [1] {{Ü|lt|Saul&#279;}}, [] {{Ü|lt|saul&#279;}}<br>
+*{{mt}}: [1] {{Ü|mt|xemx}} {{f}}<br>
+*{{nah}}: [1] {{Ü|nah|tonatiuh}}<br>
+*{{na}}: [1] {{Ü|na|ekwan}}<br>
+...<br>
+{{Ü-rechts}}
+</blockquote>
+in [[http://de.wiktionary.org/wiki/Sonne][Sonne]]<br><br>
+*French Wiktionary* <br>
+Die Übersetzungen werden durch den abgekürzten Gloss mit Definitionen verknüpft. Format:
+<verbatim>
+{{-trad-}}
+{{boîte début|GLOSS_1}}
+</verbatim>
+Mit Transliteration in lateinische Buchstaben, mit externem Link:
+<verbatim>
+* {{T|LANGUAGE}} : {{trad+|LANGUAGE|TRANSLATION|R=LATIN_TRANSLITERATION}}
+</verbatim>
+Ohne Transliteration, mit externem Link:
+<verbatim>
+* {{T|LANGUAGE}} : {{trad+|LANGUAGE|TRANSLATION}}
+</verbatim>
+Ohne externen Link:
+<verbatim>
+* {{T|LANGUAGE}} : {{trad-|LANGUAGE|TRANSLATION}}
+{{boîte milieu}}
+{{boîte fin}}
+{{boîte début|GLOSS_2}}
+</verbatim>
+Beispiel:
+<blockquote>
+{{-trad-}}<br>
+{{boîte début|GLOSS_1}}<br>
+* {{T|af}} : {{trad+|af|water}}<br>
+* {{T|sq}} : {{trad-|sq|uji}}<br>
+* {{T|gsw}} : {{trad-|gsw|wasser}}<br>
+* {{T|de}} : {{trad+|de|Wasser}} {{n}}<br>
+* {{T|ar}} : {{trad+|ar|&#1605;&#1575;&#1569;|R=m&#257;&#702;}}<br>
+...<br>
+{{boîte milieu}}<br>
+* {{T|gu}} : {{trad+|gu|&#2730;&#2750;&#2723;&#2752;|R=p&#257;&#7751;&#299;}}<br>
+* {{T|el}} : {{trad+|el|&#957;&#949;&#961;&#972;|R=neró}} {{n}}<br>
+* {{T|grc}} : {{trad-|grc|&#8021;&#948;&#969;&#961;|R=hýdôr}} {{n}}<br>
+---<br>
+{{boîte fin}}<br>
+{{boîte début|Liquide amniotique}}<br>
+* {{en}} : {{trad+|en|water}}<br>
+{{boîte fin}}
+</blockquote>
+in [[http://fr.wiktionary.org/wiki/eau][eau]]<br><br>
+*Russian Wiktionary* <br>
+Die Übersetzungen werden durch den abgekürzten Gloss mit Senses verlinkt. In WKT_RU werden keine Verweise auf externe Wiktionaries in Übersetzung-Sektion angegeben. Format:
+<blockquote>
+&#61;&#61;&#61;&#1055;&#1077;&#1088;&#1077;&#1074;&#1086;&#1076;&#61;&#61;&#61;<br>
+{{&#1087;&#1077;&#1088;&#1077;&#1074;-&#1073;&#1083;&#1086;&#1082;|GLOSS_1|<br>
+|LANGUAGE_1= TRANSLATION_1, TRANSLATION_2<br>
+|LANGUAGE_2= TRANSLATION_1, TRANSLATION_2...<br>
+}}<br>
+<br>
+{{&#1087;&#1077;&#1088;&#1077;&#1074;-&#1073;&#1083;&#1086;&#1082;|GLOSS_2|<br>
+|LANGUAGE_1=TRANSLATION_1...<br>
+}}<br>
+...
+</blockquote>
+Beispiel:
+<blockquote>
+&#61;&#61;&#61;&#1055;&#1077;&#1088;&#1077;&#1074;&#1086;&#1076;&#61;&#61;&#61;<br>
+{{&#1087;&#1077;&#1088;&#1077;&#1074;-&#1073;&#1083;&#1086;&#1082;|&#1074;&#1085;&#1091;&#1090;&#1088;&#1077;&#1085;&#1085;&#1103;&#1103; &#1089;&#1090;&#1088;&#1091;&#1082;&#1090;&#1091;&#1088;&#1072;|<br>
+|en=&#91;&#91;structure]], &#91;&#91;design]]; &#91;&#91;layout]]; &#91;&#91;inner life]]<br>
+|de=&#91;&#91;Aufbau]] <i>m</i> -s, -, &#91;&#91;Struktur]] <i>f</i> =, -en; &#91;&#91;Innenleben]] <i>n</i> -s, -; <i>&#1089;&#1090;&#1088;&#1086;&#1081;</i> &#91;&#91;Ordnung]] <i>f</i> =, -<br>
+|eo=&#91;&#91;aran&#285;a&#309;o]]<br>
+}}<br>
+<br>
+{{&#1087;&#1077;&#1088;&#1077;&#1074;-&#1073;&#1083;&#1086;&#1082;|&#1087;&#1088;&#1080;&#1089;&#1087;&#1086;&#1089;&#1086;&#1073;&#1083;&#1077;&#1085;&#1080;&#1077;, &#1084;&#1077;&#1093;&#1072;&#1085;&#1080;&#1079;&#1084;; &#1086;&#1073;&#1086;&#1088;&#1091;&#1076;&#1086;&#1074;&#1072;&#1085;&#1080;&#1077;|<br>
+|en=&#91;&#91;tool]], &#91;&#91;gadget]], &#91;&#91;device]]; &#91;&#91;equipment]]<br>
+|de=&#91;&#91;Vorrichtung]] <i>f</i> =, -en, &#91;&#91;Anlage]] <i>f</i> =, -n, &#91;&#91;Gerät]] <i>n</i> -s, -e; &#91;&#91;Ausstattung]] <i>f</i> =, -, &#91;&#91;Equipment]] <i>n</i> -s, -<br>
+|fr=&#91;&#91;dispositif]] <i>m</i>; &#91;&#91;équipement]] <i>m</i>
+}}
+</blockquote>
+in [[http://ru.wiktionary.org/wiki/&#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1086;][&#1091;&#1089;&#1090;&#1088;&#1086;&#1081;&#1089;&#1090;&#1074;&#1086;]]<br><br>
+*Polish Wiktionary* <br>
+Die Übersetzungen werden durch den Sense-Nummer mit den Definitionen verlinkt. Es werden keine Hinweise auf externe Wiktionaries angegeben. Format:
+<blockquote>
+{{t&#322;umaczenia}}<br>
+* LANGUAGE_1: (POS_NUMBER_1.SENSE_NUMBER_1) &#91;&#91;TRANSLATION_1]], (POS_NUMBER_2.SENSE_NUMBER_2) &#91;&#91;TRANSLATION_1]]<br>
+* LANGUAGE_2: (POS_NUMBER_1.SENSE_NUMBER_1) &#91;&#91;TRANSLATION_1]], (POS_NUMBER_2.SENSE_NUMBER_2) &#91;&#91;TRANSLATION_1]]
+</blockquote>
+Beispiel:
+<blockquote>
+{{t&#322;umaczenia}}<br>
+* angielski: (1.1) &#91;&#91;add]]<br>
+* esperanto: (1.1,2) &#91;&#91;aldoni]]; (1.3) &#91;&#91;adicii]]<br>
+* interlingua: (1.1) &#91;&#91;adder]], &#91;&#91;additionar]]<br>
+* islandzki: (1.1) &#91;&#91;leggja]] &#91;&#91;saman]]<br>
+* niemiecki: (1.1) &#91;&#91;hinzugeben]]; (1.2) &#91;&#91;hinzufügen]]; (1.3) &#91;&#91;addieren]], &#91;&#91;zusammenrechnen]], &#91;&#91;aufsummieren]]<br>
+* rosyjski: (1.1) &#91;&#91;&#1076;&#1086;&#1073;&#1072;&#1074;&#1083;&#1103;&#1090;&#1100;]]
+</blockquote>
+in [[http://pl.wiktionary.org/wiki/dodawa&#263;l][dodawa&#263;]].<br><br>
+*Lithuanian Wiktionary* <br>
+Die Übersetzungen werden mit den Senses durch abgekürzten Gloss verknüpft, bei einigen Artikel wird zur Disambiguierung eine Kategorie angegeben. Bei Übersetzungen, die keine Zuweisung erfordern, steht "bendrai". Format:
+<verbatim>
+==== Vertimai ====
+{{trans-top|kt=CATEGORY_NAME}}
+</verbatim>
+oder 
+<verbatim>
+{{trans-top|GLOSS_1}}
+</verbatim>
+Mit externen Links:
+<verbatim>
+{{LANGUAGE_GRAMMATICAL_PROPERTIES}} {{t+|LANGUAGE|TRANSLATION}}
+</verbatim>
+Ohne externen Links:
+<verbatim>
+{{versk|LANGUAGE|TRANSLATION}}
+</verbatim>
+Beispiel:
+<blockquote>
+&#61;&#61;&#61;&#61; Vertimai &#61;&#61;&#61;&#61;<br>
+{{trans-top|kt=ltmas}}<br>
+{{env1}} {{t+|en|beneficial}}<br>
+{{versk|et|naudingas}}<br>
+{{versk|es|naudingas}}<br>
+{{itv1}} {{t+|it|utile}}<br>
+{{trans-mid}}<br>
+{{versk|pl|naudingas}}<br>
+{{trans-bottom}}<br>
+<br>
+{{trans-top|duodantis naud&#261;, turintis vert&#281;}}<br>
+{{env1}} {{t+|en|useful}}<br>
+{{versk|et|naudingas}}<br>
+{{itv1}} {{t+|it|utile}}<br>
+{{lvv1}} {{t+|lv|der&#299;gs|m}}, {{t+|lv|lietder&#299;gs|m}}<br>
+{{trans-mid}}<br>
+{{versk|pl|naudingas}}<br>
+{{trans-bottom}}
+</blockquote>
+in [[http://lt.wiktionary.org/wiki/naudingas][naudingas]]<br><br>
+*Turkish Wiktionary* <br>
+Besonderheit der WKT_TR ist, dass es zusätzlich zu allgemeiner Übersetzung-Sektion noch eine spezielle Übersetzung-Sektion für türkisch-stämmige Sprachen gibt. Die Übersetzungen werden mithilfe von den Sense-Nummern zu den Definitionen zugewiesen. Format:<br>
+Allgemeine Übersetzung-Sektion. Mit externen Links:
+<blockquote>
+{{Çeviriler}}<br>
+{{Üst}}<br>
+*{{LANGUAGE_1}}: [SENSE_NUMBER_1] {{çeviri|LANGUAGE_1|TRANSLATION_1}}, [SENSE_NUMBER_2] {{çeviri|LANGUAGE_1|TRANSLATION_2}}<br>
+*{{LANGUAGE_2}}: [SENSE_NUMBER_1] {{çeviri|LANGUAGE_2|TRANSLATION_1}}, [SENSE_NUMBER_2] {{çeviri|LANGUAGE_2|TRANSLATION_2}}...<br>
+...<br>
+{{Orta}}<br>
+...<br>
+{{Alt}}
+</blockquote>
+Übersetzung-Sektion für türkisch-stämmige Sprachen:
+Als Tabelle mit externen Links:
+<blockquote>
+{{Türk Dilleri}}<br>
+{{Üst}}<br>
+*{{LANGUAGE_1}}: {{çeviri|LANGUAGE_1|TRANSLATION_1}}<br>
+*{{LANGUAGE_2}}: {{çeviri|LANGUAGE_1|TRANSLATION_2}}<br>
+...<br>
+{{Orta}}<br>
+...<br>
+{{Alt}}
+</blockquote>
+Als Liste mit externen Links:
+<blockquote>
+{{Türk Dilleri}}<br>
+*{{LANGUAGE_1}}: {{çeviri|LANGUAGE_1|TRANSLATION_1}}<br>
+*{{LANGUAGE_2}}: {{çeviri|LANGUAGE_1|TRANSLATION_2}}
+</blockquote>
+oder 
+<blockquote>
+{{Türk Dilleri}}<br>
+*&#91;&#91;LANGUAGE_1]]: &#91;&#91;:LANGUAGE_1:ENTRY_NAME|TRANSLATION_1]]...<br>
+*&#91;&#91;LANGUAGE_2]]: &#91;&#91;:LANGUAGE_2:ENTRY_NAME|TRANSLATION_2]]...
+</blockquote>
+Beispiel:
+
+<blockquote>
+{{Çeviriler}}<br>
+{{Üst}}<br>
+*{{af}}: [1] {{çeviri|af|huis}}<br>
+*{{de}}: [1] {{çeviri|de|Haus}}, {{çeviri|de|Wohnung}}<br>
+*{{ar}}: [1] {{çeviri|ar|&#1576;&#1614;&#1610;&#1618;&#1578;}}, {{çeviri|ar|&#1605;&#1606;&#1586;&#1604;}}, {{çeviri|ar|&#1583;&#1575;&#1585;}}, {{çeviri|ar|&#1587;&#1603;&#1606;}}, {{çeviri|ar|&#1605;&#1571;&#1608;&#1609;}}, {{çeviri|ar|&#1605;&#1587;&#1603;&#1606;}}<br>
+{{Orta}}<br>
+*{{ca}}: [1] {{çeviri|ca|casa}}<br>
+*{{qu}}: [1] {{çeviri|qu|wasi}}, {{çeviri|qu|huasi}}<br>
+*{{ko}}: [1] {{çeviri|ko|&#51665;}}<br>
+{{Alt}}<br>
+<br>
+{{Türk Dilleri}}<br>
+*{{tk}}: {{çeviri|tk|öý}}<br>
+*&#91;&#91;Kazakça]]: &#91;&#91;:kk:&#1199;&#1081;|&#1199;&#1081;]] <br>
+*&#91;&#91;Özbekçe]]: &#91;&#91;:uz:uy|uy]] <br>
+*{{ug}}: &#629;y<br>
+*&#91;&#91;Çuva&#351;ça]]: &#1195;&#1091;&#1088;&#1090; / ç&#1091;&#1088;&#1090; (çurt) sg, &#1195;&#1091;&#1088;&#1090;&#1089;&#1077;&#1084; / ç&#1091;&#1088;&#1090;&#1089;&#1077;&#1084; (çurtsem) pl 
+</blockquote>
+in [[http://tr.wiktionary.org/wiki/ev][ev]]<br><br>
+*Vietnamese Wiktionary* <br>
+Die Übersetzungen werden mithilfe von abgekürztem Gloss zu den Definitionen zugewiesen. Format:
+<blockquote>
+{{-trans-}}<br>
+'''GLOSS_1'''<br>
+{{&#273;&#7847;u}}<br>
+:*{{LANGUAGE_1}}: &#91;&#91;TRANSLATION_1]], &#91;&#91;TRANSLATION_2]]<br>
+:*{{LANGUAGE_2}}: &#91;&#91;TRANSLATION_1]], &#91;&#91;TRANSLATION_2]]...<br>
+{{gi&#7919;a}}<br>
+:*{{LANGUAGE_5}}: &#91;&#91;TRANSLATION_1]], &#91;&#91;TRANSLATION_2]]<br>
+:*{{LANGUAGE_6}}: &#91;&#91;TRANSLATION_1]], &#91;&#91;TRANSLATION_2]]...<br>
+{{cu&#7889;i}}<br>
+'''GLOSS_2'''<br>
+...
+</blockquote>
+Beispiel:
+<blockquote>
+{{-trans-}}<br>
+'''n&#417;i &#273;&#7875; s&#7889;ng'''<br>
+{{&#273;&#7847;u}}<br>
+:*{{ko}}: &#91;&#91;&#51665;]]<br>
+:*{{en}}: &#91;&#91;house]], &#91;&#91;home]]<br>
+{{gi&#7919;a}}<br>
+:*{{ru}}: &#91;&#91;&#1076;&#1086;&#1084;]] {{m}} (dom)<br>
+{{cu&#7889;i}}<br>
+'''ch&#7891;ng ho&#7863;c v&#7907;'''<br>
+{{&#273;&#7847;u}}<br>
+:*{{en}}: &#91;&#91;husband]] (ch&#7891;ng), &#91;&#91;wife]] (v&#7907;)<br>
+:*{{nl}}: &#91;&#91;man]] {{m}} (ch&#7891;ng), &#91;&#91;vrouw]] {{f}} (v&#7907;), &#91;&#91;eega]] {{m}} và {{f}}<br>
+{{gi&#7919;a}}<br>
+:*{{ru}}: &#91;&#91;&#1084;&#1091;&#1078;]] {{m}} (mu) (ch&#7891;ng), &#91;&#91;&#1078;&#1077;&#1085;&#1097;&#1080;&#1085;&#1072;]] {{f}} (én&#269;ina) (v&#7907;)<br>
+{{cu&#7889;i}}<br>
+...
+</blockquote>
+in [[http://vi.wiktionary.org/wiki/nhà][nhà]]<br><br>
+*Ido Wiktionary* <br>
+In WKT_IO werden die Übersetzungen nach der Anfangsbuchstabe des Sprachnamens sortiert. Außerdem gibt es eine spezielle Sektion für die Übersetzungen in Herkunftssprachen. Format:
+<verbatim>
+==={{Fonto}}===
+{TABLE_OPTIONS
+{|
+*{{LANGUAGE_1}}: [[TRANSLATION_1]], [[TRANSLATION_2]]...
+*{{LANGUAGE_2}}: [[TRANSLATION_1]], [[TRANSLATION_2]]...
+|}
+TABLE_OPTIONS
+{|
+*{{LANGUAGE_1}}: [[TRANSLATION_1]], [[TRANSLATION_2]]...
+*{{LANGUAGE_2}}: [[TRANSLATION_1]], [[TRANSLATION_2]]...
+|}
+|}
+==={{A-lingui}}===
+...
+==={{B-lingui}}===
+...
+</verbatim>
+Beispiel:
+<blockquote>
+&#61;&#61;&#61;{{Fonto}}&#61;&#61;&#61;<br>
+{| border=0 width=100%<br>
+|-<br>
+|bgcolor="#f9f9f9" valign=top width=48%|<br>
+{|<br>
+*{{en}}: &#91;&#91;person]]<br>
+*{{fr}}: &#91;&#91;personne]], &#91;&#91;personnage]], &#91;&#91;personnalité]], &#91;&#91;individu]]<br>
+*{{de}}: &#91;&#91;Person]]<br>
+|}<br>
+| width=1% |<br>
+|bgcolor="#f9f9f9" valign=top width=48%|<br>
+{|<br>
+*{{es}}: &#91;&#91;persona]], &#91;&#91;personaje]], &#91;&#91;personalidad]], &#91;&#91;individuo]]<br>
+*{{it}}: &#91;&#91;persona]]<br>
+*{{ru}}: &#91;&#91;&#1095;&#1077;&#1083;&#1086;&#1074;&#1077;&#1082;]]<br>
+|}<br>
+|}<br>
+...<br>
+&#61;&#61;&#61;{{F-lingui}}&#61;&#61;&#61;<br>
+{| border=0 width=100%<br>
+|-<br>
+|bgcolor="#f9f9f9" valign=top width=48%|<br>
+{|<br>
+*{{fi}}: &#91;&#91;persoona]], &#91;&#91;henkilö]], &#91;&#91;tyyppi]], &#91;&#91;ihminen]]<br>
+|}<br>
+| width=1% |<br>
+|bgcolor="#f9f9f9" valign=top width=48%|<br>
+{|<br>
+*<br>
+|}<br>
+|}<br>
+...
+</blockquote>
+in [[http://io.wiktionary.org/wiki/persono][persono]]<br><br>
+*Portuguese Wiktionary* <br>
+Die Übersetzungen werden mitfhilfe von  Sense-Nummern und bei einigen Artikeln noch abgekürztem Gloss an die Definitionen zugewiesen. Format:
+<blockquote>
+&#61;&#61;&#61;Tradução&#61;&#61;&#61;<br>
+{{tradini|De SENSE_NUMBER_1 (SHORT_GLOSS_1)}}<br>
+* {{trad|LANGUAGE_1|TRANSLATION_1}}<br>
+* {{trad|LANGUAGE_2|TRANSLATION_2}}...<br>
+{{tradmeio}}<br>
+* {{trad|LANGUAGE_..|TRANSLATION_..}}...<br>
+{{tradfim}}<br>
+
+{{tradini|De SENSE_NUMBER_2 (SHORT_GLOSS_2)}}<br>
+* {{trad|LANGUAGE_1|TRANSLATION_1}}<br>
+* {{trad|LANGUAGE_2|TRANSLATION_2}}...<br>
+{{tradmeio}}<br>
+* {{trad|LANGUAGE_..|TRANSLATION_..}}...<br>
+{{tradfim}}
+</blockquote>
+Format 2:
+<blockquote>
+&#61;&#61;&#61; Tradução &#61;&#61;&#61;
+:* {{LANGUAGE_1}}: [[TRANSLATION]]
+:* {{LANGUAGE_2}}: [[TRANSLATION]]...
+</blockquote>
+Beispiele:
+<blockquote>
+&#61;&#61;&#61;Tradução&#61;&#61;&#61;<br>
+{{tradini|De 1 e 2 (termo de matemática)}}<br>
+* {{trad|af|nommer}}<br>
+* {{trad|ay|wakhu}}<br>
+* {{trad|sq|numër}}<br>
+{{tradmeio}}<br>
+* {{trad|io|numero}}<br>
+* {{trad|id|angka}}<br>
+* {{trad|en|number}}<br>
+{{tradfim}}<br>
+{{tradini|De 3 (tamanho (de sapato, luva, etc)}}<br>
+* {{trad|de|Größe}} ''f''<br>
+* {{trad|cs|velikost}}<br>
+* {{trad|zh|&#23610;&#30721;}}<br>
+{{tradmeio}}<br>
+* {{trad|id|ukuran}}<br>
+* {{trad|en|size}}<br>
+* {{trad|is|stærð|númer}}<br>
+{{tradfim}}
+</blockquote>
+<blockquote>
+&#61;&#61;&#61; Tradução &#61;&#61;&#61;<br>
+:* {{de}}: &#91;&#91;Wohnsitz]] (m.)<br>
+:* {{es}}: &#91;&#91;residencia]]<br>
+:* {{fr}}: &#91;&#91;résidence]]
+</blockquote>
+in [[http://pt.wiktionary.org/wiki/número][número]] und [[http://pt.wiktionary.org/wiki/residência][residência]].<br><br>
+*Chinese Wiktionary* <br>
+Insegesamt findet man die Übersetung-Sektionen noch selten in WKT_ZH. Bei einigen Artikeln werden die Senses mit Sense-Nummer zu Definitionen zugewiesen. Format:
+
+<blockquote>
+{{-trans-}}<br>
+{{top}}<br>
+*{{LANGUAGE_1}}: &#91;&#91;TRANSLATION_1]] (SENSE_NUMBER_1), &#91;&#91;TRANSLATION_2]] (SENSE_NUMBER_2)...<br>
+*&#91;&#91;LANGUAGE_2]]: ...<br>
+{{mid}}<br>
+*LANGUAGE_6: &#91;&#91;TRANSLATION_1]] (SENSE_NUBMER_1)...<br>
+{{bottom}}
+</blockquote>
+Beispiel:
+<blockquote>
+{{-trans-}}<br>
+{{top}}<br>
+*{{Ang}}: &#91;&#91;nú]]<br>
+*&#91;&#91;Basque]]: &#91;&#91;orain]] (1)<br>
+*&#91;&#91;Breton]]: &#91;&#91;bremañ]] (1)<br>
+*&#91;&#91;Catalan]]: &#91;&#91;ara]] (1)<br>
+*{{hr}}: &#91;&#91;:hr:sad|sad]]<br>
+*{{da}}: &#91;&#91;nu]] (1)<br>
+*&#91;&#91;Guaraní]]: &#91;&#91;ko'ág&#771;a]] (1)<br>
+{{mid}}<br>
+*Irish: &#91;&#91;anois]]<br>
+*{{it}}: &#91;&#91;adesso]], &#91;&#91;ora]] (1)<br>
+*{{ja}}: &#91;&#91;&#20170;]] (&#91;&#91;&#12356;&#12414;]], ima), &#91;&#91;&#29694;&#22312;]] (&#91;&#91;&#12370;&#12435;&#12374;&#12356;]], genzai) (1)<br>
+*&#91;&#91;Tupinambá]]: &#91;&#91;ko'yr]] (1)<br>
+{{bottom}}
+</blockquote>
+in [[http://zh.wiktionary.org/zh/&#29694;&#22312;][&#29694;&#22312;]]
+---+ Derived Terms, Related Terms, See also, Phrases, Expressions, Idioms
+In verschiedene Wiktionaries findet man verschiedene Arten von Sektionen für verwandte und abgeleitete Wörter, Redewendungen, Sprüchen und festdefinierten Phrasen. 
+Es gibt manchmal eine Verwechselung zwischen den Sektionen "Derived terms", "Related terms" und "See also". Man unterscheidet:<br>
+- Derived terms: Wörter und Ausdrücke, die von dem gegebenen Wort morphologisch abgeleitet werden ([[http://en.wiktionary.org/wiki/Wiktionary:Entry_layout_explained#Derived_terms][mehr]])<br>
+- Related terms: Wörter, die mit dem gegebenen Wort eine etymologische Verbindung haben aber keine "Derived terms" sind. ([[http://en.wiktionary.org/wiki/Wiktionary:Entry_layout_explained#Related_terms][mehr]])<br>
+- See also: Das ist eigentlich ein Teil von Relations-Netzwerk, so genannte "Otherwise related" - Relation, wenn der Author keine genaue Relation angeben kann ([[http://en.wiktionary.org/wiki/Wiktionary:Semantic_relations#Otherwise_related][mehr]])<br>
+*English Wiktionary* <br>
+In WKT_EN findet man Sektionen Derived Terms, Related Terms und See also. Format:
+<verbatim>
+=====SECTION_NAME=====
+{{top}}
+* [[LINK_1]]
+* [[LINK_2]]...
+{{mid}}
+* [[LINK_1]]
+* [[LINK_2]]...
+{{bottom}}
+</verbatim>
+oder:
+<verbatim>
+====SECTION_NAME====
+{{rel-top|SECTION_DESCRIPTION}}
+* [[LINK_1]]
+* [[LINK_2]]...
+{{rel-mid}}
+* [[LINK_1]]
+* [[LINK_2]]...
+{{rel-bottom}}
+</verbatim>
+Beispiel:
+<verbatim>
+=====Derived terms=====
+{{rel-top|terms derived from "cell"}}
+* [[battery cell]]
+* [[blood cell]]
+* [[brain cell]]
+{{rel-mid}}
+* [[fat cell]]
+* [[fuel cell]]
+* [[germ cell]]
+{{rel-bottom}}
+
+=====Related terms=====
+* [[cellular]]
+</verbatim>
+in [[http://en.wiktionary.org/wiki/cell][cell]]<br><br>
+*German Wiktionary* <br>
+In WKT_DE findet man die Sektionen Abgeleitete Begriffe("Derived terms"), Redewendungen, Sprichwörter, Charakteristische Wortkombinationen, die mithilfe von Sense-Nummern mit den Definitionen verbunden werden. Format:
+<verbatim>
+{{SECTION_NAME}}
+:[1] [[LINK_1]], [[LINK_2]],..
+:[2] [[LINK_1]], [[LINK_2]],...
+</verbatim>
+Beispiel:
+<verbatim>
+{{Redewendungen}}
+:[1] [[Katzen haben sieben Leben]]
+:[2] [[den Bund fürs Leben schließen]]
+{{Sprichwörter}}
+:[[Umsonst ist der Tod, und der kostet das Leben]]
+{{Charakteristische Wortkombinationen}}
+:[1] sich das Leben nehmen; etwas mit dem Leben bezahlen; ums Leben bringen; ums Leben kommen; am Leben sein; ins Leben treten; Geld oder Leben; 
+:[2, 3] das [[täglich]]e ''Leben''
+{{Abgeleitete Begriffe}}
+:[1] [[Ableben]], [[Lebensversicherung]], [[Lebzeit]], [[Wiederbelebung]]
+:[2] [[Erlebnis]], [[Lebensabend]], [[Lebensabschnitt]], [[Lebenskünstler]], [[Lebenslauf]]
+</verbatim>
+in [[http://de.wiktionary.org/wiki/Leben][Leben]]<br><br>
+*French Wiktionary* <br>
+In WKT_FR findet man Derived terms, Related terms(Dérivés, Apparentés étymologiques, Vocabulaire apparenté) und Ausdrücke(Expressions). Format:<br>
+Expressions als Liste:
+<verbatim>
+{{-exp-}}
+* EXPRESSION_1
+* EXPRESSION_2
+</verbatim>
+Dérivés als Liste:
+<verbatim>
+{{-drv-}}
+* [[LINK_1]]
+* [[LINK_2]]
+</verbatim>
+Apparentés étymologiques als Liste:
+<verbatim>
+{{-apr-}}
+* [[LINK_1]]
+* [[LINK_2]]...
+</verbatim>
+Vocabulaire apparenté als Tabelle:
+<verbatim>
+{{-voc-}}
+{{(}}
+* [[LINK_1]]
+* [[LINK_2]]...
+{{-}}
+* [[LINK_3]]
+* [[LINK_4]]...
+{{)}}
+</verbatim>
+Beispiel:
+<verbatim>
+{{-exp-}}
+* {{botan|fr}} [[horloge de Flore]], table des heures du jour auxquelles sépanouissent certaines fleurs.
+* [[réglé comme une horloge]], régulier dans ses habitudes.
+{{-drv-}}
+* [[horloge atomique]]
+* [[horloge parlante]]
+{{-apr-}}
+* [[horloger]]
+* [[horlogerie]]
+* [[horlogique]]
+{{-voc-}}
+{{(}}
+* [[avancer]]
+* [[clepsydre]] ou [[horloge deau]]
+* [[sablier]] ou [[horloge de sable]]
+{{-}}
+* [[montre]]
+* [[retarder]]
+{{)}}
+</verbatim>
+in [[http://fr.wiktionary.org/wiki/horloge][horloge]]<br><br>
+*Russian Wiktionary* <br>
+In WKT_RU gibt es eine Sektion für verwandte Wörter ("&#1056;&#1086;&#1076;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1077; &#1089;&#1083;&#1086;&#1074;&#1072;"), die normalerweise nach POS sortiert werden. Es gibt auch eine Sektion für Phrasen und Redewendugen("&#1060;&#1088;&#1072;&#1079;&#1077;&#1086;&#1083;&#1086;&#1075;&#1080;&#1079;&#1084;&#1099; &#1080; &#1091;&#1089;&#1090;&#1086;&#1081;&#1095;&#1080;&#1074;&#1099;&#1077; &#1089;&#1086;&#1095;&#1077;&#1090;&#1072;&#1085;&#1080;&#1103;"). Format:<br>
+Verwandte Wörter als Tabelle:
+<blockquote>
+&#61;&#61;&#61; &#1056;&#1086;&#1076;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1077; &#1089;&#1083;&#1086;&#1074;&#1072; &#61;&#61;&#61;<br>
+{{&#1088;&#1086;&#1076;&#1089;&#1090;&#1074;-&#1073;&#1083;&#1086;&#1082;<br>
+|POS_1=&#91;&#91;LINK_1]], &#91;&#91;LINK_2]], ...<br>
+|POS_2=&#91;&#91;LINK_1]], &#91;&#91;2]], ...<br>
+}}
+</blockquote>
+Phrasen und Redewendugen als Liste
+<blockquote>
+&#61;&#61;&#61; &#1060;&#1088;&#1072;&#1079;&#1077;&#1086;&#1083;&#1086;&#1075;&#1080;&#1079;&#1084;&#1099; &#1080; &#1091;&#1089;&#1090;&#1086;&#1081;&#1095;&#1080;&#1074;&#1099;&#1077; &#1089;&#1086;&#1095;&#1077;&#1090;&#1072;&#1085;&#1080;&#1103; &#61;&#61;&#61;<br>
+* &#91;&#91;LINK_1]]<br>
+* &#91;&#91;LINK_2]]...
+</blockquote>
+Beispiel:
+<blockquote>
+&#61;&#61;&#61; &#1056;&#1086;&#1076;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1077; &#1089;&#1083;&#1086;&#1074;&#1072; &#61;&#61;&#61;<br>
+{{&#1088;&#1086;&#1076;&#1089;&#1090;&#1074;-&#1073;&#1083;&#1086;&#1082;<br>
+|&#1080;&#1084;&#1077;&#1085;&#1072;-&#1089;&#1086;&#1073;&#1089;&#1090;&#1074;&#1077;&#1085;&#1085;&#1099;&#1077;=<br>
+|&#1089;&#1091;&#1097;&#1077;&#1089;&#1090;&#1074;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077;=&#91;&#91;&#1079;&#1077;&#1084;&#1083;&#1103;&#1082;]], &#91;&#91;&#1079;&#1077;&#1084;&#1083;&#1103;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086;]], &#91;&#91;&#1079;&#1077;&#1084;&#1083;&#1080;&#1094;&#1072;]], &#91;&#91;&#1079;&#1072;&#1079;&#1077;&#1084;&#1083;&#1077;&#1085;&#1080;&#1077;]]<br>
+|&#1087;&#1088;&#1080;&#1083;&#1072;&#1075;&#1072;&#1090;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077;=&#91;&#91;&#1079;&#1077;&#1084;&#1083;&#1103;&#1085;&#1086;&#1081;]], &#91;&#91;&#1079;&#1077;&#1084;&#1077;&#1083;&#1100;&#1085;&#1099;&#1081;]], &#91;&#91;&#1073;&#1077;&#1079;&#1079;&#1077;&#1084;&#1077;&#1083;&#1100;&#1085;&#1099;&#1081;]], &#91;&#91;&#1087;&#1088;&#1080;&#1079;&#1077;&#1084;&#1083;&#1105;&#1085;&#1085;&#1099;&#1081;]]<br>
+|&#1075;&#1083;&#1072;&#1075;&#1086;&#1083;&#1099;=&#91;&#91;&#1079;&#1072;&#1079;&#1077;&#1084;&#1083;&#1103;&#1090;&#1100;]]<br>
+|&#1085;&#1072;&#1088;&#1077;&#1095;&#1080;&#1103;=<br>
+}}<br>
+&#61;&#61;&#61; &#1060;&#1088;&#1072;&#1079;&#1077;&#1086;&#1083;&#1086;&#1075;&#1080;&#1079;&#1084;&#1099; &#1080; &#1091;&#1089;&#1090;&#1086;&#1081;&#1095;&#1080;&#1074;&#1099;&#1077; &#1089;&#1086;&#1095;&#1077;&#1090;&#1072;&#1085;&#1080;&#1103; &#61;&#61;&#61;<br>
+* &#91;&#91;&#1079;&#1072;&#1083;&#1077;&#1078;&#1085;&#1072;&#1103; &#1079;&#1077;&#1084;&#1083;&#1103;]]<br>
+* &#91;&#91;&#1087;&#1072;&#1093;&#1086;&#1090;&#1085;&#1072;&#1103; &#1079;&#1077;&#1084;&#1083;&#1103;]]
+</blockquote>
+in [[http://ru.wiktionary.org/wiki/&#1079;&#1077;&#1084;&#1083;&#1103;][&#1079;&#1077;&#1084;&#1083;&#1103;]]<br><br>
+*Polish Wiktionary* <br>
+In WKT_PL findet man Related words (wyrazy pokrewne), die wie auch in WKT_RU in POS aufgeteilt sind. Man findet auch Phrasen(zwi&#261;zki frazeologiczne): Format:
+<blockquote>
+{{pokrewne}}<br>
+: {{POS_1}} &#91;&#91;LINK_1]], &#91;&#91;LINK_2]]...<br>
+: {{POS_2}} &#91;&#91;LINK_1]], &#91;&#91;LINK_2]]...
+{{frazeologia}}<br> 
+: PHRASE_1<br>
+: PHRASE_2
+</blockquote>
+Beispiel:
+<blockquote>
+{{pokrewne}}<br>
+: {{rzecz}} &#91;&#91;staranie]], &#91;&#91;staraj&#261;cy si&#281;]]<br>
+: {{czas}} &#91;&#91;wystara&#263; si&#281;]], &#91;&#91;postara&#263; si&#281;]]<br>
+: {{przym}} &#91;&#91;staranny]]<br>
+: {{przys&#322;}} &#91;&#91;starannie]]<br>
+{{frazeologia}} &#91;&#91;stara&#263; si&#281; o czyj&#261;&#347; r&#281;k&#281;]], &#91;&#91;staram si&#281; jak mog&#281;]]
+</blockquote>
+in [[http://pl.wiktionary.org/wiki/stara&#263;_si&#281;][stara&#263;_si&#281;]]<br><br>
+*Lithuanian Wiktionary* <br>
+In WKT_LT gibt es eine gemeinsame Sektion für verwandte Wörter und Phrasen(Iraikos arba posakiai). Format:
+<blockquote>
+&#61;&#61;&#61;&#61; Iraikos arba posakiai &#61;&#61;&#61;&#61;
+{{rel-top|kalba=LANGUAGE|vardas=LEMMA|kt=CATEGORY}}
+* {{t+|LANGUAGE|LINK_1}}
+* {{t+|LANGUAGE|LINK_2}}...
+{{rel-mid}}
+* {{t+|LANGUAGE|LINK_3}}
+* {{t+|LANGUAGE|LINK_4}}...
+{{rel-bottom}}
+</blockquote>
+Beispiel:
+<blockquote>
+&#61;&#61;&#61;&#61; Iraikos arba posakiai &#61;&#61;&#61;&#61;
+{{rel-top|kalba=lt|vardas=mokslas|kt=Mokslas}}
+* {{t+|lt|biomedicinos mokslas}}
+* {{t+|lt|fizinis mokslas}}
+{{rel-mid}}
+* {{t+|lt|humanitarinis mokslas}}
+* {{t+|lt|socialinis mokslas}}
+* {{t+|lt|technologijos mokslas}}
+{{rel-bottom}}
+</blockquote>
+in [[http://lt.wiktionary.org/wiki/mokslas][mokslas]]<br><br>
+*Turkish Wiktionary* <br>
+In WKT_TR findet man Derived words und Related phrases ( Türetilmi&#351; Kavramlar und Sözcük Birliktelikleri), die noch zusätzlich mit Sense-Nummer an die Definitionen zugewiesen werden. Man findet auch eine Sektion für Sprüche(Atasözleri) Format:
+<blockquote>
+{{SECTION_NAME}}<br>
+:[GLOSS_NUMBER_1] &#91;&#91;LINK_1]], &#91;&#91;LINK_2]],...<br>
+:[GLOSS_NUMBER_2] &#91;&#91;LINK_1]], &#91;&#91;LINK_2]],...
+</blockquote>
+Beispiele:
+<blockquote>
+{{Türetilmi&#351; Kavramlar}}<br>
+:[1] &#91;&#91;soyk&#305;r&#305;m]]
+</blockquote>
+<blockquote>
+{{Sözcük Birliktelikleri}}<br>
+:[1] &#91;&#91;gide gele]], &#91;&#91;gide gide]], &#91;&#91;gitgide]]
+</blockquote>
+<blockquote>
+{{Atasözler}}<br>
+:&#91;&#91;Cins horoz yumurtada öter]]<br>
+:&#91;&#91;Cins kedi ölüsünü göstermez]]
+</blockquote>
+in [[http://tr.wiktionary.org/wiki/soy][soy]], [[http://tr.wiktionary.org/wiki/gitmek][gitmek]] und [[http://tr.wiktionary.org/wiki/cins][cins]]<br><br>
+*Vietnamese Wiktionary* <br>
+In WKT_VI findet man Derived terms und Idioms/Expressions, jedoch sehr selten. Format:<br>
+Derived terms als Tabelle
+<blockquote>
+{{-drv-}}<br>
+{{&#273;&#7847;u}}<br>
+* &#91;&#91;LINK_1]]<br>
+* &#91;&#91;LINK_2]]...<br>
+{{gi&#7919;a}}<br>
+* &#91;&#91;LINK_3]]<br>
+* &#91;&#91;LINK_4]]...<br>
+{{cu&#7889;i}}
+</blockquote>
+Expressions als Liste:
+<blockquote>
+{{-expr-}}<br>
+* '''to be going to''':<br>
+*# [[s&#7855;p s&#7917;a|S&#7855;p s&#7917;a]]; có [[ý &#273;&#7883;nh]].<br>
+*#: ''it's going to rain''  tr&#7901;i s&#7855;p m&#432;a<br>
+*#: ''I'm not going to sell it''  tôi không có ý &#273;&#7883;nh bán cái &#273;ó
+</blockquote>
+Beispiel:
+<blockquote>
+{{-expr-}}<br>
+* '''to be going to''':<br>
+*# [[s&#7855;p s&#7917;a|S&#7855;p s&#7917;a]]; có [[ý &#273;&#7883;nh]].<br>
+*#: ''it's going to rain''  tr&#7901;i s&#7855;p m&#432;a<br>
+*#: ''I'm not going to sell it''  tôi không có ý &#273;&#7883;nh bán cái &#273;ó<br>
+{{-drv-}}<br>
+{{&#273;&#7847;u}}<br>
+* &#91;&#91;churchgoer]]<br>
+* &#91;&#91;go about]]<br>
+* &#91;&#91;go along]]...<br>
+{{gi&#7919;a}}<br>
+* &#91;&#91;go like the clappers]]<br>
+* &#91;&#91;gone]]<br>
+* &#91;&#91;goner]]...<br>
+{{cu&#7889;i}}
+</blockquote>
+in [[http://vi.wiktionary.org/wiki/go][go]]<br><br>
+*Ido Wiktionary* <br>
+In WKT_IO gibt es eine Sektion für die Wort-Kompositionen (Kompundi), die jedoch sehr oft leer bleibt. Format:
+<verbatim>
+*Kompundi: [[LINK_1]], [[LINK_2]]
+</verbatim>
+Beispiel:
+<verbatim>
+*Kompundi: [[adube]]
+</verbatim>
+in [[http://io.wiktionary.org/wiki/ube][ube]]<br><br>
+*Portuguese Wiktionary* <br>
+In WKT_PT findet man besonders oft See also-Sektion, die in POS und Themen-Abschnitte aufgeteilt ist, und ist viel mehr ausgearbeitet als bei anderen Wiktionaries. Man findet auch in einigen Artikeln Derived terms-Sektion und Phrasen-Sektion. Format <br> 
+Ver também als Tabelle:
+<blockquote>
+&#61;&#61;Ver também&#61;&#61;<br>
+&#61;&#61;&#61;No Wikcionário&#61;&#61;&#61;<br>
+&#61;&#61;&#61;&#61;POS_1&#61;&#61;&#61;&#61;<br>
+TITLE_1: <br>
+{{verTambém.Ini}}<br>
+* &#91;LINK_1]]<br>
+* &#91;LINK_2]]...<br>
+{{verTambém.NovaColuna}}<br>
+* &#91;LINK_3]]...<br>
+{{verTambém.NovaColuna}}...<br>
+{{verTambém.Fim}}<br>
+TITLE_2: <br>
+{{verTambém.Ini}}...<br>
+&#61;&#61;&#61;&#61;POS_2&#61;&#61;&#61;&#61;<br>
+{{verTambém.Ini}}...
+</blockquote>
+Phrasen als List:
+<blockquote>
+&#61;&#61;Fraseologia&#61;&#61;<br>
+* '''&#91;&#91;LINK_1]]:'''<br>
+* '''&#91;&#91;LINK_2]]:'''
+</blockquote>
+Beispiele:
+<blockquote>
+&#61;&#61;Ver também&#61;&#61;<br>
+&#61;&#61;&#61;No Wikcionário&#61;&#61;&#61;<br>
+&#61;&#61;&#61;&#61;Substantivos&#61;&#61;&#61;&#61;<br>
+Partes de uma construção: <br>
+{{verTambém.Ini}}<br>
+* &#91;&#91;abóbada]]<br>
+* &#91;&#91;acabamento]]<br>
+{{verTambém.NovaColuna}}<br>
+* &#91;&#91;balcão]]<br>
+* &#91;&#91;batente]]<br>
+{{verTambém.NovaColuna}}<br>
+* &#91;&#91;galeria]]<br>
+{{verTambém.NovaColuna}}<br>
+* &#91;&#91;subsolo]]<br>
+* &#91;&#91;telha]]<br>
+{{verTambém.Fim}}<br>
+Tipos de construção: <br>
+{{verTambém.Ini}}<br>
+* &#91;&#91;acrópole]]<br>
+* &#91;&#91;açude]]<br>
+{{verTambém.NovaColuna}}<br>
+* &#91;&#91;barragem]]<br>
+* &#91;&#91;belvedere]]<br>
+{{verTambém.NovaColuna}}<br>
+* &#91;&#91;edificação]]<br>
+* &#91;&#91;edifício]]<br>
+{{verTambém.Fim}}<br>
+&#61;&#61;&#61;&#61;Verbos&#61;&#61;&#61;&#61;<br>
+...
+</blockquote>
+<blockquote>
+&#61;&#61;Fraseologia&#61;&#61;<br>
+* '''&#91;&#91;em obras]]:'''<br>
+* '''&#91;&#91;fazer obra]]:'''
+</blockquote>
+in [[http://pt.wiktionary.org/wiki/construção][construção]] und [[http://pt.wiktionary.org/wiki/obra][obra]]<br><br>
+*Chinese Wiktionary* <br>
+In Chinese Wiktionary findet man fast keine von oben genannten Sektionen.
+---+ References
+ In vielen Wiktionary-Editionen findet man die Sektion "References" mit den Verweisen auf externe Seiten. Das können entweder Wikipedia- oder auch externe Web-Seiten sein. Die Sektionen befindet sich in der Regel am Ende einer Wiktionary-Seite mach allen Sprach-Sektionen <br>
+ *English Wiktionary* <br>
+In WKT_EN findet man bei einigen Artikeln die Sektion "References" am Ende der Seite. Format:
+<verbatim>
+====References====
+* [WEB_LINK LINK_NAME]...
+</verbatim>
+Beispiel:
+<verbatim>
+====References====
+* [http://www2.azatliq.org/analysis/analysis/tb/2006/10/9A6D6E9B-3FB1-4AE5-9B1D-08CD6339AF5C.asp Azatliq.org]
+</verbatim>
+in [[http://en.wiktionary.org/wiki/Washington][Washington]]<br><br>
+*German Wiktionary* <br>
+In WKT_DE gibt es eine Sektion "Referenzen und weiterführende Informationen". Die Links werden mithilfe von Sense-Nummern mit den Definitionen verknüpft. Referenzen beinhalten oft Links auf bekannte Ressourcen und es gibt eine spezielle Liste der Referenz-Abkürzungen [[http://de.wiktionary.org/wiki/Wiktionary:Referenzen][hier]]. Format:
+<verbatim>
+{{Referenzen}}
+:[SENSE_NUMBER_1] {{REFERENCE_SOURCE|REFERENCE_PAGE_NAME}}
+:[SENSE_NUMBER_2] {{REFERENCE_SOURCE|REFERENCE_PAGE_NAME}}
+</verbatim>
+Beispiel:
+<verbatim>
+{{Referenzen}}
+:[1] {{Wikipedia|Satellit (Raumfahrt)}}
+:[2] {{Wikipedia|Satellit (Astronomie)}}
+:[12] {{Ref-DWDS|Satellit}}
+:[1] {{Ref-Canoo|Satellit}}
+</verbatim>
+in [[http://de.wiktionary.org/wiki/Satellit][Satellit]]<br><br>
+*French Wiktionary* <br>
+In WKT_FR heißt die Reference-Sektion "Voir aussi" (nicht zu verwechseln mit See also in WKT_EN). Format:
+<verbatim>
+{{-voir-}}
+[WEB_LINK LINK_NAME]
+</verbatim>
+Beispiel:
+<verbatim>
+{{-voir-}}
+[http://www.tv5.org/TV5Site/lf/merci_professeur.php?id=2650&id_cat= Explication de Bernard Cerquiglini en images]
+</verbatim>
+in [[http://fr.wiktionary.org/wiki/Paris][Paris]]<br><br>
+*Russian Wiktionary* <br>
+In WKT_RU findet man die Reference-Sektion sehr selten.<br><br>
+*Polish Wiktionary* <br>
+In WKT_PL gibt es eine Sektion, in der die Quellen-Angabe(z.B. für Zitaten) als Fußnote dargestellt werden. Die Quellen werden im <ref>-Tag im Text angegeben und am Ende in dieser Sektion dargestellt. Format:
+<blockquote>
+...<br>
+<ref>{{REFERENCE_SOURCE|has&#322;o=REFERENCE_NAME}}</ref><br>
+...<br>
+{{&#378;ród&#322;a}}<br>
+<references/>
+</blockquote>
+Beispiel:
+<blockquote>
+Imi&#281; to pochodzi od imion z&#322;o&#380;onych typu ''Warcis&#322;aw'' lub ''Wrocis&#322;aw''.<ref>{{Malmor2009|has&#322;o=Warszawa}}</ref><ref>Aleksander Janowski: Warszawa. Pozna&#324;: Wydawnictwo Polskie R. Wegnera, 1930, s. 37. Cytat: ''Jakie by&#322;o jego imi&#281;, mo&#380;na snu&#263; przypuszczenie, &#380;e brzmia&#322;o ono Warsz, a sadyba jego mia&#322;a nazw&#281; dzier&#380;awcz&#261; "Warszowa", jak np. chata kowala  to kowalowa, &#322;&#261;ka &#321;ukasza  &#322;ukaszowa itp. Wniosek taki ma powa&#380;ne potwierdzenie w tem, &#380;e wszystkie &#322;aci&#324;skie dokumenty u&#380;ywaj&#261; formy "Varsovia", nie za&#347; Varsavia, a francuskie brzmienie nazwy dzisiejszej stolicy jest do dzi&#347; Varsovie, nie za&#347; Varsavie. Imi&#281; Warsz jest to skrót od Warcis&#322;aw, jak Janusz od Janis&#322;aw, lub Bogusz od Bogus&#322;aw.''</ref><br>...
+{{&#378;ród&#322;a}}<br>
+<references/>
+</blockquote>
+in [[http://pl.wiktionary.org/wiki/Warszawa][Warszawa]]<br><br>
+*Lithuanian Wiktionary* <br>
+In WKT_LT findet man die Reference-Sektion sehr selten.<br><br>
+*Turkish Wiktionary* <br>
+In WKT_TR heißt die Reference-Sektion Kaynaklar. Es gibt eine Liste mit Ressourcen, so dass man keine explizite Web-Links angeben muss. Format:
+<blockquote>
+{{Kaynaklar}}<br>
+{{Kaynak-REFERENCE_SOURCE|{{REFERENCE_NAME}}}}
+</blockquote>
+Beispiel:
+<blockquote>
+{{Kaynaklar}}<br>
+*{{Atacanov, Ata-TYS-1922}}<br>
+{{Kaynak-Vikipedi|{{PAGENAME}}}}<br>
+{{Kaynak-TDK|{{PAGENAME}}}}<br>
+{{Kaynak-nisanyan|{{PAGENAME}}}}
+</blockquote>
+in [[http://tr.wiktionary.org/wiki/gitmek][gitmek]]<br><br>
+*Vietnamese Wiktionary* <br>
+In WKT_VI gibt es eine Reference-Sektion am Ende der Sprach-Sektion. Es gibt eine Liste mit Ressourcen, so dass man keine explizite Web-Links angeben muss. Format:
+<verbatim>
+{{-ref-}}
+{{R:REFERENCE_NAME_1}}
+{{R:REFERENCE_NAME_2}}
+</verbatim>
+Beispiel:
+<verbatim>
+{{-ref-}}
+{{R:FVDP}}
+{{R:WinVNKey:Lê S&#417;n Thanh}}
+</verbatim>
+in [[http://vi.wiktionary.org/wiki/go][go]]<br><br>
+*Ido Wiktionary* <br>
+In WKT_IO gibt es keine Reference-Sektion.<br><br>
+*Portuguese Wiktionary* <br>
+In WKT_PT findet man bei einigen Artikeln Sektion mit Verweisen auf Wikipedia. Format:
+<verbatim>
+===Na Wikipédia===
+{{vertbini}}
+* [[w:WIKIPEDIA_LINK_1|LINK_NAME_1]]...
+{{vertbmeio}}
+* [[w:WIKIPEDIA_LINK_2|LINK_NAME_2]]...
+{{vertbfim}}
+</verbatim>
+Beispiel:
+<verbatim>
+===Na Wikipédia===
+{{vertbini}}
+* [[w:Língua portuguesa|Língua portuguesa]]
+{{vertbmeio}}
+* [[w:Lusitânia|Lusitânia]]
+{{vertbfim}}
+</verbatim>
+in [[http://pt.wiktionary.org/wiki/Portugal][Portugal]]<br><br>
+*Chinese Wiktionary* <br>
+In findet man eine Reference-Sektion, jedoch sehr selten. Format:
+<blockquote>
+&#61;&#61;  &#21443;&#35211; &#61;&#61; <br>
+*&#91;&#91;w:WIKIPEDIA_LINK_1|LINK_NAME_1]]&#65306;&#91;WEB_LINK_1 WEB_LINK_NAME_1]<br>
+*&#91;&#91;w:WIKIPEDIA_LINK_2|LINK_NAME_2]]&#65306;&#91;WEB_LINK_2 WEB_LINK_NAME_2]<br>
+</blockquote>
+Beispiel:
+<blockquote>
+&#61;&#61; &#21443;&#35211; &#61;&#61;<br>
+*&#91;&#91;w:&#24247;&#29081;&#23383;&#20856;|&#24247;&#29081;&#23383;&#20856;]]&#65306;&#91;http://www.kangxizidian.com/kangxi/1415.gif &#31532;1415&#38913;]<br>
+*&#91;&#91;w:&#32113;&#28450;&#23383;|&#32113;&#28450;&#23383;]]&#65306;&#91;http://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=98DF U+98DF]
+</blockquote>
+in [[http://zh.wiktionary.org/zh/&#39135;][&#39135;]]

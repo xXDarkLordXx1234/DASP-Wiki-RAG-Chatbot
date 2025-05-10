@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="aelmi" comment="reprev" date="1478600621" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="HamidZafar"}%
+---++ [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafar][Back]] 
+
+---+!! Papper summeries
+
+---++ Hidden Topic Markov Models (Amit Gruber)
+   * They consider documents as bag-of-sentence which means all words of a sentence has one topic and there is no order between words in a sentence
+   * As a result, multiple occurrences of a word in a sentence have the same topic
+   * Still Number of the topic(HMM state) is required a priori
+   * results show that the Words in topic are mostly consecutive in comparison to LDA
+
+---++ The Hidden Markov Topic Model: A Probabilistic Model of Semantic Representation (Mark Andrews, Gabriella Vigliocco)
+   * They propose a model called "Hidden Markov Topics model". 
+   * This model consists of a Markov chain for each document in the corps. 
+   * The states of MCs are shared.
+   * Still Number of the topic(HMM state) is required a priori
+
+---++ ??
+for each target word, there are some short documents with the target word
+1-hdp topic model seperately on each of documents that contains instances of a target word. Hence, the result is pair of (word, probability) for each topic.
+2-Use result of last step to find out about the sense of each target word by considering what would the most probable sense for the current document
+
+
+For example:
+Target word: BLACK
+Document: contains 181 instances of black in difference sentences.
+HDP topic model:
+	input: Document
+	output: topic distribution over all the words
+	refined output: 
+		(1, ALL, 		0.009)
+		(1, ALSO, 		0.011)
+		(1, AND, 		0.097)
+		(1, AND_#-1, 	0.010)
+		(2, AND_#-1, 	0.058)
+		(2, BLACK, 		0.058)
+		(2, CAN, 		0.117)
+WSI: Use the result of last step, to assign sense to each word by computing 
+
+Notes:
+It is time consuming to learn a new HDP model for each document. (Also the intention is vague)
+
+
+---++ HMM WSD
+
+Use WordNet
+Use lemma+POS, try to find: argmax P(S|W) = argmax Mult P(s_i|s_{i-1}).P(w_i|s_i)
+States: sense s_i
+Transition probability: P(s_i|s_{i-1})
+Emisson probability: P(w_i|s_i)
+Use Viterbi alg
+
+Note:
+P(s_i|s_{i-1}) is not clear to me
+
+
+-- Main.HamidZafartavanAelmi - 2016-11-08

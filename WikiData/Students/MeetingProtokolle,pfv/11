@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="LizhenQu" date="1191854361" format="1.1" version="11"}%
+%META:TOPICPARENT{name="LizhenQu"}%
+---+ 
+
+---+ Meeting-Protokolle        
+
+---++ 15.08.2007
+* [[%ATTACHURL%/meeting_August_15.pdf][meeting_August_15.pdf]]: power point
+
+   * [[%ATTACHURL%/3562.html][3562.html]]: splog example
+---++ 29.05.2007        
+   * wenig Zeit  bis 1.6. wegen Data-Mining Contest
+   * Problem: Größe der Blog-Daten
+      * @action(LQ): Im Poolraum überprüfen: Festplattengröße v. Linuxrechnern, welche Rechner sind überhaupt benutzbar
+      * @discuss(UKP): mögliche Benutzung von Servern (Homer,PC19)
+   * Analyse der Blog-Daten
+      * Paper v. ICWSM2006: S. Hendrick: Following Conversational Traces
+   * Paper zu Ontology Evaluation
+      * J. Brank et al.: A Survey of Ontology Evaluation Techniques
+   * genaueres auch zu weiteren ICWSM Paper siehe LQs DA-Seite (ab 1.6.)
+   * @action(LQ): bis zum nächsten Meeting Blog-Daten-Analyse
+   * @action(LQ): genaue Identifizierung von benötigten Vorverarbeitungskomponenten
+
+-- Main.ChristofMueller - 29 May 2007
+---++ 04.06.2007       
+   * [[%ATTACHURL%/first_data_analysis.pdf][first_data_analysis.pdf]]: analysis of blog data in 05.01
+   * Blog corpus wurde hinsichtlich vorhandenen Metadata und Verteilung der Sources, Textläng analysiert.<br />
+---++ 11.06.2007      
+    First Status Meeting
+   * Ein allgemeiner Überblick von Ontology Learning vom Text
+   * Work von Rion Snow wurde präsentiert.
+   * Language Guessing
+Comments:
+   * Verbesserung des Vortragstil.
+   * Bessere Kontrolle der Zeit.
+
+   * [[%ATTACHURL%/status_meeting_11-06_lizhenqu.ppt][status_meeting_11-06_lizhenqu.ppt]]: power point for 1te status meeting
+---++ 18.06.2007    
+blog tag analysis
+
+   * [[%ATTACHURL%/tagAnalysis.pdf][tagAnalysis.pdf]]: tag analysis power point
+
+   * [[%ATTACHURL%/tagCountMay01.tar.gz][tagCountMay01.tar.gz]]: analysis data of May 01
+
+   * [[%ATTACHURL%/livejournal_en.tar.gz][livejournal_en.tar.gz]]: example posts of live journal containing tags
+Papers von http://www.apperceptual.com/<br />
+Vorteile von Blog Daten:<br />    HTML Layout<br />    Tags<br />    Speizielle Wörter <br />    Aus wikipedia die semantische Beziehung lernen, ungetyped.<br />    Article Categorie graph. <br />Evaluation<br />WordNet (unter Umständen auch Cyc) als test dataset<br />Spam detection
+---++ 22.06.2007 
+
+   * [[%ATTACHURL%/basic_model_22_06.pdf][basic_model_22_06.pdf]]: a basic idea
+   
+
+   * [[%ATTACHURL%/presentation_Oct_08.pdf][presentation_Oct_08.pdf]]: blog chaos
+
+%META:FILEATTACHMENT{name="first_data_analysis.pdf" attachment="first_data_analysis.pdf" attr="" comment="analysis of blog data in 05.01" date="1180967921" path="first_data_analysis.pdf" size="180958" stream="first_data_analysis.pdf" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="status_meeting_11-06_lizhenqu.ppt" attachment="status_meeting_11-06_lizhenqu.ppt" attr="" comment="power point for 1te status meeting" date="1181592685" path="status_meeting_11-06_lizhenqu.ppt" size="197120" stream="status_meeting_11-06_lizhenqu.ppt" user="Main.LizhenQu" version="2"}%
+%META:FILEATTACHMENT{name="tagAnalysis.pdf" attachment="tagAnalysis.pdf" attr="" comment="tag analysis power point" date="1182173221" path="tagAnalysis.pdf" size="36302" stream="tagAnalysis.pdf" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tagCountMay01.tar.gz" attachment="tagCountMay01.tar.gz" attr="" comment="analysis data of May 01" date="1182173260" path="tagCountMay01.tar.gz" size="108298" stream="tagCountMay01.tar.gz" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="livejournal_en.tar.gz" attachment="livejournal_en.tar.gz" attr="" comment="example posts of live journal containing tags" date="1182173309" path="livejournal_en.tar.gz" size="93196" stream="livejournal_en.tar.gz" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="basic_model_22_06.pdf" attachment="basic_model_22_06.pdf" attr="" comment="a basic idea" date="1182478808" path="basic_model_22_06.pdf" size="52348" stream="basic_model_22_06.pdf" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="meeting_August_15.pdf" attachment="meeting_August_15.pdf" attr="" comment="power point" date="1187190038" path="meeting_August_15.pdf" size="59586" stream="meeting_August_15.pdf" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="3562.html" attachment="3562.html" attr="" comment="splog example" date="1187190071" path="3562.html" size="2707" stream="3562.html" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="presentation_Oct_08.pdf" attachment="presentation_Oct_08.pdf" attr="" comment="blog chaos" date="1191854359" path="presentation_Oct_08.pdf" size="42477" stream="presentation_Oct_08.pdf" user="Main.LizhenQu" version="1"}%

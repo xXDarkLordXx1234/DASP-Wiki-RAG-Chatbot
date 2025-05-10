@@ -1,0 +1,162 @@
+%META:TOPICINFO{author="StefanLaabs" date="1272375719" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StefanLaabs"}%
+ <noautolink>
+
+
+---++ First outlines:
+
+%TOC%
+
+---+++ 1. Introduction/Motivation
+
+   * Main question
+   * Situation at UKP
+   * Goals
+
+
+_Working-titles-of-ideas:_
+
+How can the results of NLP research assist in a usage of wikis?
+
+What algorithms and solutions exists already and where can they help?
+
+At the end some applications should be found for theses algorithms and maybe some further ideas...
+
+_Short overview over basic concepts an ideas._
+ 
+---+++ 2. State-of-the-art
+
+*First part: (in research)* _(earlier?!?)_
+   * State of the art in academic research (Papers on text similarity, summarization, information structuring, ... )
+   * Usage of NLP techniques in other areas in practice and their usability factors (Books on search interface/ recommender systems)
+_(-> What could be achieved?)_
+
+_Basic ideas:_
+
+_Show that the topic of NLP (in wikis) has a lot of research._
+
+_Lots of groups work on NLP_
+
+_Usable quality of results in different areas_
+
+_example: document similarity_
+
+---++++ 2.1 StandAlone Systems 
+
+---++++ 2.2 Wiki PlugIns 
+*Second part: (in practice)*
+   * Other existing applications (which use these ideas) _( -> What exists in other areas?)_
+   * Existing PlugIns _( -> What is missing?)_
+
+    _here i would like to use some simple statistics of Wiki plug-Ins_
+    _basic ideas: show the gap between NLP in research an in practice_
+    _Number of PlugIns shows better the gap_
+    
+like: (Columns: Area of Usage - Rows: Area of Techniques/Advantages/Support )
+
+%EDITTABLE{}%
+|  *Wiki Plug-Ins*  |||||
+| Area of underlying techiques | *Area of usage* |||
+|^| *Find* | *Edit* | *Organize* |
+| Usability | x1 | x2 | lots(z3) |
+| Structuring | y1 | some(y2) | y3 |
+| NLP | few(x1) | few(x2) | few(x3) |
+| ... | | | |
+
+... some PlugIns in Detail. (Good example, close to topic, ... )
+
+_Basic ideas:_
+
+_What do PlugIns offer? What exist? Why?_
+
+_Introducing the GAP between scientific research and average PlugIn development._
+
+_(*TODO*: search paper/statistics on PlugIn Development)_
+
+-> _Reasons_???
+
+_POV: general/researcher/developer/designer/user_
+
+leads to: motivation to reduce the gap
+
+---+++ 3. Strategy/Concept
+ 
+---++++ 3.1. Theoretische Grundlagen
+
+Something about the problem that led to the gap
+
+* Main Question: (POV:general/researcher)*
+
+   1. What additional informations can be achieved by using NLP? And how? (-> list)
+      1. Similar texts
+      2. extraction of keyphrases
+      3. finding synonyms
+      4. ....
+   2. How can they help the users of a wiki? (->list)
+       1. find duplicates, find related articles, ...
+       2. find articles, summarization, ...
+       3. ...
+
+*Introduction to wikulu*
+
+How it works. .... ... ....
+
+*Defining and selecting some examples for implementation*
+
+Selection of examples for implementation.
+
+Reasons.
+
+-> Basic tasks of thesis
+
+---++++ 3.2. Use cases
+
+*Defining user classes*
+   1. New User/Explorer: Unexperienced in the usage of wikis and comparable systems
+   2. Advanced User: Familiar with most of the features
+   3. Top User: Administrates/Moderates the Wiki, Organization
+
+*Defining use cases*
+   1. Read something about ...
+   2. Put in informations about ... 
+   3. Structure existing information ...
+_have to been broken down in quite small and basic tasks: analysis step-by-step_
+
+example: Find an article about ... ?
+
+   * Getting a term in mind for the topic
+   * Search the search interface ;-) (differnt in TWIKI and MediaWiki)
+   * Phrasing a search query 
+   * ...
+
+*Conception and development of new PlugIns*
+
+Ideas from the use cases should now be a starting point for the development of the new PlugIns.
+
+_( -> Which ideas are implementable? How much work? Existing structure)_
+
+_Conception of Design/Design Principles_
+
+---+++ 4. Design
+
+Guidlines, Heuristics, Norms and Rules to use
+
+Other Usability Techniques to apply (KSL Method, c. Walkthrough)
+
+Results of first design analysis
+
+---+++ 4. Implementation of Mock-Ups
+
+Building the mock ups....
+
+---+++ 5. First Evaluation
+---+++ 6. Implementation
+---+++ 7. Second Evaluation
+
+---+++ 8. General Discussion
+
+---+++ 9. Conclusions
+---+++ 10. References
+ </noautolink>
+
+-- Main.StefanLaabs - 26 Apr 2010

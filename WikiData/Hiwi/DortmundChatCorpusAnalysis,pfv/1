@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="starke" comment="reprev" date="1447513127" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ElisaStarke"}%
+*- Overarching question: how do both versions of the corpus relate to each other, what are the differences (check Paper!)?*
+Preprocessing and Annotations include:
+   * 	Tokenization
+   * 	Normalization: state interpretation of utterances that can be dealt with by standard grammar
+   *    Annotations: 
+		* automatically POS-tagged and lemmatized + manually corrected
+		* dependency relations
+		* named entities
+		* coreference 
+
+*- What is the size of the corpus (tokens, sentences)*
+	- tokens => 5655
+	- sentences => 786
+
+*- What kind of dependency labels were used in the paper (check Paper!)*
+	- Dependenz-Annotation wird aus TIGER-Annotatin der Normalisierung übersetzt
+	
+*- Was there a different set of dependency labels used for the original version (orig) compared to the normalized version (norm)?*
+	- NO
+	
+*- Write each verb lemma and the corresponding sentence to file*
+--> files are attached (analysisResults_norm.txt and analysisResults_orig.txt)
+
+
+-- Main.ElisaStarke - 2015-11-14
+
+%META:FILEATTACHMENT{name="analysisResults_norm.txt" attachment="analysisResults_norm.txt" attr="" comment="normalized corpus" date="1447512467" path="analysisResults_norm.txt" size="24576" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="analysisResults_orig.txt" attachment="analysisResults_orig.txt" attr="" comment="original corpus" date="1447512487" path="analysisResults_orig.txt" size="24576" user="starke" version="1"}%

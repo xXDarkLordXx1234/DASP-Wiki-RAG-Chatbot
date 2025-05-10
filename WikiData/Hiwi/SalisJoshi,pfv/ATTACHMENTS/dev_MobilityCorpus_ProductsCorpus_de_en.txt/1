@@ -1,0 +1,45 @@
+(venv) [sjoshi@lisa model]$ python eval.py results/sentargmin_Mobility_Products_Multi_en_de/topic-sent_multilingual_L-12_H-768_A-12/all_seed-0_batch-12.2019.10.07_13.31/eval_predictions12.txt MobilityCorpus,ProductsCorpus de,en
+
+
+===================== results/sentargmin_Mobility_Products_Multi_en_de/topic-sent_multilingual_L-12_H-768_A-12/all_seed-0_batch-12.2019.10.07_13.31/eval_predictions12.txt ====================
+gold - pred - Confusion Matrix
+Argument_against - Argument_against: 114
+Argument_against - Argument_for: 23
+Argument_against - NoArgument: 29
+Argument_for - Argument_against: 26
+Argument_for - Argument_for: 194
+Argument_for - NoArgument: 36
+NoArgument - Argument_against: 38
+NoArgument - Argument_for: 51
+NoArgument - NoArgument: 439
+:: BERT ::
+Acc: 78.63%
+
+:: F1 for Argument_against ::
+Prec: 64.04%
+Recall: 68.67%
+F1: 66.28%
+
+:: F1 for Argument_for ::
+Prec: 72.39%
+Recall: 75.78%
+F1: 74.05%
+
+:: F1 for NoArgument ::
+Prec: 87.10%
+Recall: 83.14%
+F1: 85.08%
+
+:: Macro Weighted for all  ::
+F1: 75.13%
+
+
+==========================================
+all
+75,13%
+
+
+
+==========================================
+Average F1 score over all topics
+eval_predictions12.txt 75,13%

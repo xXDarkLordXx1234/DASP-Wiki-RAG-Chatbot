@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="herrlich" comment="reprev" date="1429287541" format="1.1" reprev="1" version="2"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}%
+
+This web provides information on core IT services.
+
+<table>
+<tr>
+<td style="vertical-align: top"><img src="%ICONURL{"Hardware"}%" style="width:4em"/>&nbsp;&nbsp;&nbsp;</td>
+<td style="vertical-align: top">
+---### Hardware & Software
+   * [[PrivateHardwareUser][Private Hardware at Work]]
+</td>
+
+<td style="vertical-align: top">&nbsp;&nbsp;&nbsp;<img src="%ICONURL{"Mainframe"}%" style="width:4em"/>&nbsp;&nbsp;&nbsp;</td>
+<td style="vertical-align: top">
+---### IT Services
+   * [[AccountChangePassword][Change password]]
+   * [[MessagingService][Instant Messaging]]
+   * [[MailService][Mail]]
+   * [[OwnCloud][OwnCloud]] (Calendar / File sharing)
+   * [[VpnService][VPN]]
+   * [[WirelessNetworkService][Wireless]]
+   * [[TUDCertifications][Add TU-Darmstadt Server Certifications]]
+</td>
+</tr>
+
+</table>

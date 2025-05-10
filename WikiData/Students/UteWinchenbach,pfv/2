@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="schnober" comment="reprev" date="1414400481" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+++ Meeting 27/10/2014
+   * Status?
+   * Implementation mit [[https://code.google.com/p/dkpro-core-asl/][DKPro]]
+
+---+++ Meeting 20/10/2014
+
+   * Teilnahme an [[SIG_PrintMedia.WebHome][SIG NLP for Print Media]]
+      * Regelmäßige Treffen (bisher alle zwei Wochen) zum gegenseiten Austausch
+      * Rotierend: Präsentation über den aktuellen Stand der eigenen Arbeit
+      * Kooperation mit [[DeborahButh][Deborah Buth]]
+   * Formalitäten
+      * Co-Betreuung durch Erik-Lân Do Dinh (Opinion Mining)
+      * "Expectations for Students"
+      * Account (Wiki etc.)
+      * RBG Account
+      * Transponder?
+      * Vertrag Intellectual Properties
+   * Nächste Schritte:
+      * Beispiele für Opinions in "Welt der Kinder" corpus analysieren (http://wdk.ukp.informatik.tu-darmstadt.de/solr/WdK.test/browse)
+         * Was sind Sentiment/Opinion Words?
+         * Was für Einheiten werden bewertet (Personen, Länder, Ereignisse, ...)
+      * Test mit baseline approach (PMI, Turney, 2002)
+         * Experimentieren mit verschiedenen "sentiment words"
+         * Analyse der Ergebnisse
+      * Motivation, Ziele, Zeitplan
+      * Entwicklungsumgebung: DKPro, Eclipse, Subversion
+   * Nächstes Treffen
+      * Montag, 27.10., 14 Uhr, gemeinsam mit Deborah Buth und Erik-Lân Do Dinh?
+
+
+-- Main.CarstenSchnober - 2014-10-20

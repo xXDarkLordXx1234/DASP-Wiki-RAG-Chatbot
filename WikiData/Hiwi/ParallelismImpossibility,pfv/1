@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="IvanGalkin" date="1237456151" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="IvanGalkinWork"}%
+---+ *Unmöglichkeit einer parallelen Tabellenbearbeitung*
+---++ Problemstellung:
+Nach dem Einsatz des so genannten StreamConcept ist eine Notwendigkeit entstanden das Entpacken und die Bearbeitung der pages-meta-history-Datei drei Mal durzuführen. Obwohl dieses Verfahren zum Verzichten auf temporäre Dateien führt, vergrößert es stark die Arbeitszeit des Programms. Um diese Zeit zu reduzieren wurde die Möglichkeit betrachtet die Datenverarbeitung parallel zu gestalten.
+
+---++ Analyse:
+Die Dumpanalyse besteht aus 6 grundsätzliche Schritte (s. DataMachineReview)... 
+      * processRevision
+      * processPage
+      * processCategoryLinks
+      * parocessPageLinks
+      * processText
+      * writeMetedata
+
+... und ist größtenteils innerhalb der Klasse =de.tudarmstadt.ukp.wikipedia.timemachine.DumpVersion= realisiert. Aus diesem Grund ist die Möglichkeit eine oder mehrere Bearbeitungen parallel laufen zu lassen wegen den gemeinsamen Ressourcen (Felder der Klasse DumpVersion) beschränkt. Nach der Analyse solcher Ressourcen ist folgende Tabelle entstanden, die Benutzung der Klassenfelder auf jedem der Schritte zeigt.
+
+<!-- BODY,DIV,TABLE,THEAD,TBODY,TFOOT,TR,TH,TD,P { font-family:"Albany AMT"; font-size:x-small } -->
+| |  <font face="Courier New">ProcessRevision</font>  |  <font face="Courier New">processPage</font>  |  <font face="Courier New">processCategorylinks</font>  |  <font face="Courier New">processPagelinks</font>  |  <font face="Courier New">processText</font>  |  <font face="Courier New">writeMetaData</font>  |
+   | %GREEN%txtFW%ENDCOLOR%  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%pageCategories%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%categoryPages%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%categoryInlinks%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%categoryOutlinks%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%pageInlinks%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%pageOutlinks%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %GREEN%page%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %GREEN%pageMapLine%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %GREEN%pageRedirects%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %RED%timestamp%ENDCOLOR%  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  |
+   | %RED%metaData%ENDCOLOR%  | <strong><br /></strong>  | *x*  | *x*  | <strong><br /></strong>  | *x*  | *x*  |
+   | %RED%outputPath%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %RED%pageIdRevMap%ENDCOLOR%  | *x*  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %RED%disambiguations%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %RED%textIdPageIdMap%ENDCOLOR%  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | %RED%pPageIdNameMap%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | *x*  | *x*  | <strong><br /></strong>  |
+   | %RED%cPageIdNameMap%ENDCOLOR%  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %RED%pNamePageIdMap%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | *x*  | <strong><br /></strong>  |
+   | %RED%cNamePageIdMap%ENDCOLOR%  | <strong><br /></strong>  | *x*  | *x*  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  |
+   | %RED%rPageIdNameMap%ENDCOLOR%  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | <strong><br /></strong>  | *x*  | <strong><br /></strong>  |
+   | |  <font face="Monospace" color="#000000">MetaHistoryFile</font>  ||  <font face="Monospace" color="#000000">CategoryLinksFile</font>  |  <font face="Monospace" color="#000000">PageLinksFile</font>  |  <font face="Monospace" color="#000000">MetaHistoryFile</font>  | |
+
+Die mit grün markierte Klassenfelder werden nur für Output verwendet und spielen in unserem Fall keine Rolle. Restliche Klassenfelder werden auf mehreren Schritten verwendet und zwar so, dass nächster Schritt die Daten von dem vorigen Schritt als Input benutzt, deshalb ist es unmöglich die oben genannte Methoden unabhängig von einander parallel laufen zu lassen ohne starke Modifikationen im Algorithmus vorzunehmen.
+
+Die Funktionsfähigkeit der Klasse =DumpVersion= ist für großen Wikipedien nicht nachgewiesen, weil die rot markierte Strukturen während des Programmablaufs sehr große Datenmengen speichern können, was zum Arbeitsspeicher-Mangel führen kann.

@@ -1,0 +1,118 @@
+%META:TOPICINFO{author="JensHaase" date="1271839439" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="JensHaaseDoc"}%
+   ---+ From Wikipedia Action Taxonomy to Revision Categories
+
+---++ Types of Wikipedia Action Taxonomy
+
+In Paper [1] we see the Wikipedia Action Taxonomy. The leaves of the graph are possible categories for the revision classification.
+
+| *Type*                              | *Action Taxonomy*                                                         | *Definition*                                   | *Example*                                       |
+| revert due vandalism \
+  | revert \
+  | &nbsp; \
+  | &nbsp; |
+| revert due to edit war \
+  | revert \
+  | &nbsp; \
+  | &nbsp; |
+| revert due to unsourced \
+  | revert \
+  | &nbsp; \
+  | &nbsp; |
+| revert due to user test \
+  | revert \
+  | &nbsp; \
+  | &nbsp; |
+| blanking \
+  | delete \
+  | see [1] \
+  | see [1] |
+| html/css \
+  | insert -> format, change -> format \
+  | &nbsp; | &nbsp; |
+| wiki template \
+  | insert -> format, change -> format \
+  | &nbsp; | &nbsp; |
+| link external \
+  | insert -> content -> link, change -> content -> link \
+  | A link to an website (not wikiepdia) | &nbsp; |
+| link internal \
+  | insert -> content -> link, change -> content -> link \
+  | A link to another wikipedia article | &nbsp; |
+| link spam \
+  | insert -> content -> link, change -> conent -> link \
+  | see [1] |see [1] |
+| image attack \
+  | insert -> content -> image, change -> content -> image \
+  | see [1] | see [1] |
+| image add \
+  | insert -> content -> image \
+  | Adds an image to the article. | &nbsp; |
+| reference \
+  | insert -> content -> text, change -> content -> text \
+  | A note to show were the user can find more information to a statement. | &nbsp; |
+| graffiti \
+  | insert -> content -> text \
+  | see [1] \
+  | see [1] |
+| misinformation \
+  | insert -> content -> text \
+  | see [1] | see [1] |
+| spell \
+  | insert -> content -> text \
+  | Correction of a spelling error | &nbsp; |
+| grammer \
+  | insert -> content -> text \
+  | Correction of a grammatical error | &nbsp; |
+| rephrase \
+  | insert -> content -> text \
+  | Rephrase of a sentence | &nbsp; |
+| section \
+  | insert -> content -> text, change -> conent -> text \
+  | Adding a new section of reorganisation of sections. | &nbsp; |
+| summarize \
+  | insert -> content -> text \
+  | &nbsp; | &nbsp; |
+| large-scala editing \
+  | insert -> content \
+  | see [1] \
+  | see [1] |
+| irregular formatting \
+  | insert -> content -> format \
+  | see [1] | see [1] |  
+  
+---++ Categories
+
+From the action taxonomy we can identify 4 main categories: Vandalism, Revert, Text, Format. Each as a number of subclasses.
+
+---+++ Vandalism
+   * Blanking
+   * large-scala editing
+   * <strike>link spam</strike>
+   * <strike>image attack</strike>
+   * graffiti
+   * <strike>misinformation</strike>
+   * irregular formatting
+
+---+++ Revert
+   * Revert due vandalism
+   * Revert due edit war
+   * <strike>Revert due unsourced</strike>
+   * <strike>Revert due to user test</strike>
+
+---+++ Text
+   * link internal
+   * link external
+   * image add
+   * reference
+   * spell
+   * grammer
+   * rephrase
+   * section
+   * relocate section
+   * add/change information
+   * <strike>summarize</strike>
+
+---+++ Format
+   * html/css
+   * wiki template

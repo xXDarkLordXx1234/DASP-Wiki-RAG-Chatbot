@@ -1,0 +1,71 @@
+%META:TOPICINFO{author="abhinav" comment="save topic" date="1509470546" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Masters Thesis* : Distributed Annotation Tool with Heterogeneous Presentation Modes 
+
+*Supervisor*: Dr Richard Eckart de Castilho
+
+
+*Start Date* : 21-SEP-2017 
+
+*Mid-Term Presentation Date* : 05-DEC-2017 
+
+*Final Presentation Date* : 06-MAR-2018   
+
+*End Date*: 26-MAR-2018 
+
+---++++ *02.NOV.2017 - 08.NOV.2017*
+
+ *Status of Last Week:*
+
+   * <del>Prepare an outline of the report.</del> *Status:* Created and checked in with the pdfedit1 branch of the code. I will be writing the report in this file only. This will make retrieval of the updated draft for the review easier.  
+
+   * Write Start writing Introduction chapter and complete at least Motivation section. *Status:* I will start it now and hope to finish it tomorrow. I will update the status once done.
+         
+   * <del>Find out how functionalities provided by Webpack and babel can be implemented in INCEpTION Environment.</del> *Status:* Read about frontend-maven-plugin and working on integrating it with the code 
+     
+   * Create a separate branch of INCEpTION and Implement basic selection action. *Status:* Tried to configure the frontend-maven-plugin. There are issues which will be explained in the email.    
+      
+
+*To-Dos For Current Week:*
+
+   * Fix the frontend-maven-plugin configuration issue
+   * Finish the Introduction Chapter of the Report
+   * Work on Rendering the existing annotations 
+
+---++++ *24.OCT.2017 - 01.NOV.2017*
+
+ *Status of Last Week:*
+   * The basic concept of rendering and creation of annotations in the PDF has been understood. To Understand it properly I had to refer to the followings as well:
+   * ECMAScript 6 
+   * JQuery
+   * SVG
+   * WebPack
+   * AXIOS
+   * NodeJS
+
+*To-Dos For Current Week:*
+   * <del>Prepare an outline of the report</del>
+   * Write Start writing Introduction chapter and complete at least Motivation section
+   * <del>Find out how functionalities provided by Webpack and babel can be implemented in INCEpTION Environment</del>
+      * REC: maybe this can help? https://github.com/eirslett/frontend-maven-plugin    
+   * Create a separate branch of INCEpTION and Implement basic selection action
+
+---++++ *19.OCT.2017 - 23.OCT.2017*
+
+*To-Dos For Current Week:*
+   * <del>Understand the code flow of PDFAnno and find out how annotations are rendered and created</del>
+  
+---++++ *Tasks completed until 19.OCT.2017*
+   * Read and understood about the following topics:
+   * Basics of Annotations
+   * BRAT
+   * WebAnno
+   * INCEpTION
+   * Overview of the code of INCEpTION and WebAnno
+   * PDFJS
+   * Read about W3C Web Annotation Model
+   * Adobe JavaScript API for PDFs
+   * Started writing draft of the Report
+
+
+   

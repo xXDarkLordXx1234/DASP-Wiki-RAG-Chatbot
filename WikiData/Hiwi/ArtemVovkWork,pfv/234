@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="ArtemVovk" date="1289294909" format="1.1" reprev="234" version="234"}%
+%META:TOPICPARENT{name="WebHome"}%
+   ---+ Artem Vovk Work
+
+---++ Documents
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+ImportingWikipedia
+
+SuggestSectionProblems
+
+---++ Work
+
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Configuration manager | 100 |
+| NL Watermarking | 3 |
+| Wikulu Bugs | 80 |
+| Wikify! | 50 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Korrektur von Bugs | 13.10.10 | 1.5 | <ul><li>Studie von Daniel</li><li>Reihenfolge der Plugins im Menü ordnen</li></ul> |
+| Korrektur von Bugs | 14.10.10 | 2.5 | <ul><li>Neue Property wurde hinzugefuegt(editable-Moeglichkeit ein Item aus dem Menu entfernen)</li><li>Beratung mit Oliver</li></ul> |
+| Korrektur von Bugs | 15.10.10 | 1 | <ul><li>Conf-Dateien problem</li><li>Erstellung von DIPF Index</li></ul> |
+| Lesen von Paper | 17.10.10 | 1 | <ul><li>Linguistic Steganography Using Automatically Generated Paraphrases</li></ul> |
+| Lesen von Paper | 18.10.10 | 2 | <ul><li>Paper: Natural Language Watermarking</li><li>Beratung mit Nico</li><li>Bugs Korrektur</li></ul> |
+| WIkulu | 23.10.10 | 5.5 | <ul><li>All bugs from feedback page were corrected</li><li>Tests</li><li>New bugs were found, one of them corrected(https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Projects/Wikulu/WikuluDirectProxyFeedback)</li><li>Java docs for ConfigManager</li></ul> |
+| Wikulu | 24.10.10 | 5.5 | <ul><li>Bugs korrektur</li><li>Implementierung von Wikify!</li><li>Lesen von Wikify! Paper</li><li>Doc ConnectToVPNUsingWindows7</li></ul> |
+| Wikulu | 25.10.10 | 3 | <ul><li>Beratung mit Nico</li><li>Bugs korrektur</li></ul> |
+| Wikulu | 26.10.10 | 3 | <ul><li>Bugs korrektur</li><li>Dipf wiki wurde auf mrburns:8089 installiert</li></ul> |
+| Wikulu Bugs | 29.10.10 | 5 | <ul><li>Add content bug wurde korrigiert</li><li>Bug mit IndexErstellung  wurde behoben</li><li>Keyphrase extraction bug wurde behoben</li><li>Wikify! wurde recreated</li><li>dipf wurde auf mrburns installiert</li></ul> |
+| Wikulu Bugs | 1.11.10 | 3 | <ul><li>Implementierung von Authorization</li><li>Bugs Korrektur in WikiAPI</li><li>Aenderungen in WikiProxy</li></ul> |
+| NL Watermarking | 2.11.10 | 1 | <ul><li>Beratung mit Oliver</li><li>Kopieren und entpacken von n-gramms</li></ul> |
+| NL Watermarking</br> Wikulu Bugs | 3.11.10 | 4 | <ul><li>Umstellung auf neue semantics.keyphrases</li><li>Einrichtung von jWeb1T</li><li>Kennenlernen von jWeb1T API</li></ul> |
+| Wikulu Bugs | 7.11.10 | 3 | <ul><li>Fehlerkorrekutur in wikulu</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 132.5 (12.5 Übertrag von September) | bis Ende Dezember |
+
+
+
+
+
+
+
+
+
+-------------------
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+   * [[%ATTACHURL%/build.xml][build.xml]]: Script for importing wikipedia
+---------------------
+
+ReleasePackageErrors
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"
+
+
+---++ Previous Work
+
+   * ArtemVovkPreviousWork
+
+   
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="MiniManual.pdf" attachment="MiniManual.pdf" attr="" comment="Manual to %22Preloaded descriptor selection%22" date="1234806618" path="MiniManual.pdf" size="40665" stream="MiniManual.pdf" tmpFilename="/var/tmp/CGItemp37940" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="build.xml" attachment="build.xml" attr="" comment="Script for importing wikipedia" date="1248857901" path="build.xml" size="2013" stream="build.xml" tmpFilename="/var/tmp/CGItemp61365" user="ArtemVovk" version="1"}%

@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1371403998" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="IrExperiments"}%
+This is a short tutorial (for me) for using the stand-alone Terrier package, using the !TaggedFormat and the !SingleLineQuery.
+   * Info: [[http://terrier.org/docs/v3.5/quickstart.html][Installing and running Terrier]]
+
+---++ Preparation
+
+In order to run a retrieval with Terrier, the documents have to be prepared in a certain format.
+
+---+++ Configuration
+   * Info: [[http://terrier.org/docs/v3.5/properties.html][Description of Configurable properties of Terrier]]
+
+---+++ Index documents
+
+   * outout the documents by your UIMA pipeline in the tagged format
+
+---+++ Topics
+
+   * output your queries as single line queries with your UIMA annotator (_systemqueries_)
+
+---++ Retrieval
+
+---+++ Indexing
+
+   * 1. Go to the Terrier folder. (e.g. on frink: _cd ~/tr_)
+   * 2. Setup Terrier for using a TREC test collection by calling: _./bin/trec_setup.sh /home/steuer/out/terrierTagged_TokenLemmaStem/_
+   * 3. copy the properties file since the previous step overrides it
+   * 4. Begin the indexing of the collection: _./bin/trec_terrier.sh -i -j_
+   * the fast indexing without a direct index (e.g. used for query expansion) took me 5 minutes on frink
+
+---++++ Fields indexing
+
+   * to use multiple fields, put the following into the properties file: _FieldTags.process=LEMMA,EXPANSION_
+   * set the weights for each field, namely w.0, w.1, etc.
+   * To run with a field-based model: _bin/trec_terrier.sh -r -Dtrec.model=BM25F -Dw.0=1.0 -Dw.1=0.1_
+   * For improved efficiency of field-based weighting models, it is recommended that you manually alter the *data.properties* file of your index, to change the !DocumentIndex implementation in use, by updating it to read index.document.class=org.terrier.structures.FSAFieldDocumentIndex. 
+
+---+++ Querying
+
+   * _./bin/trec_terrier.sh -r -Dtrec.topics=/home/steuer/systemqueries.out_
+
+---+++ Evaluation
+
+   * _./bin/trec_terrier.sh -e -Dtrec.qrels=/home/steuer/ah-robust-english-train-clef2008.txt_
+   * [[http://terrier.org/docs/v3.5/evaluation.html][(online doc)]]

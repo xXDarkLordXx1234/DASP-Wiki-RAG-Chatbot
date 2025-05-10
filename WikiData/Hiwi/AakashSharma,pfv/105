@@ -1,0 +1,298 @@
+%META:TOPICINFO{author="sharma" comment="save topic" date="1470951997" format="1.1" reprev="102" version="105"}%
+%META:TOPICPARENT{name="WebHome"}%
+%TOC%
+
+---+ Meetings
+---++ 30-03-2015: Initial Meeting
+   * Administration
+      * Hand out copy of signed contract
+      * Sign Intelectual Property Statement
+      * Questions about work mode etc.?
+      * Access to work, communication, development resources (Mail, Jabber, SVN, Chiliproject, room D017)
+         * Mail (IMAP/Exchange): mx.ukp.informatik.tu-darmstadt.de
+         * Jabber: ukp.informatik.tu-darmstadt.de
+         * Chiliproject: https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/
+         * SVN: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro/experiments/webanno-constraints
+   * Introduce initial tasks
+      * Check out Java CC (parser generator) and possibly JJTree (generate abstract syntax tree / Java object model)
+   
+---+ Tasks
+   * WebAnno (https://code.google.com/p/webanno/)
+      * Parser / evaluator for WebAnno constraint language
+      * potential new tasks resulting from WebAnno AP A1.2 (template-based annotation) and A1.3 (constraints)
+   * CoreNLP
+      * Integrate new statistical dependency parser from CoreNLP in DKPro Core
+      * Integrate quoted speech annotator from CoreNLP in DKPro Core
+   * Integrate quoted speech annotator from Nils Reimers (DARIAH)
+   
+---+ Apr 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 30-03-2015 | initial meeting | 1 | |
+| 30-03-2015 | Learning javacc, JJTree & JTB | 2 | Researched on tool and technologies to develop Parser. |
+| 31-03-2015 | Development and other setup. Reading javacc documentation. | 2 | |
+| 04-04-2015 | Constraints Parser | 1.5 | Wrote skeleton for grammar and basic objects |
+| 07-04-2015 | Constraints Parser | 1.5 | Tweaking code for grammar, Researching on how to build AST |
+| 07-04-2015 | Meeting with Richard | 1 | |
+| 12-04-2015 | Constraints Parser | 1 | Maven/Javacc setup and test cases |
+| 13-04-2015 | Constraints Parser | 2.5 | Grammar into Javacc |
+| 14-04-2015 | Constraints Parser | 1 | Basic Test-cases setup |
+| 16-04-2015 | Meeting with Richard, grammar tweaking | 1 | |
+| 20-04-2015 | Constraints Parser | .5 | Incorporating changes to grammar |
+| 22-04-2015 | Constraints Parser | 2 | Changes to grammar and basic JTB tree. |
+| 25-04-2015 | Constraints Parser | 2.5 | Recursive problem in grammar and test-cases |
+| 27-04-2015 | Constraints Parser | 1 | Few modifications to grammar |
+| 28-04-2015 | Meeting with Richard | 1.5 | Discussion on further proceedings, timeline |
+| 30-04-2015 | Constraints Parser | 2 | Debugging grammar on testcases |
+| 01-05-2015 | Constraints Parser | 1.5 | Further debugging to understand fail cases |
+| 02-05-2015 | Constraints Parser | 5 | Wrote grammar again from scratch, modified testcases. |
+| 05-05-2015 | Meeting with Richard | 1.5 | Next steps, rules evaluator |
+| 07-05-2015 | Constraints Evaluator | 1 | Reading about Visitor and implementation of evaluator. |
+| 11-05-2015 | Constraints Evaluator | 1 | |
+| 12-05-2015 | Meeting with Richard | 1.5 | Next steps and blocking issues. |
+| 12-05-2015 | Constraints Evaluator | 2 | |
+| 13-05-2015 | Constraints Evaluator | 2 | |
+| 18-05-2015 | Constraints Evaluator | 2 | |
+| 19-05-2015 | Constraints Evaluator | 3 | |
+| 25-05-2015 | Constraints Evaluator | 1.5 | |
+| 26-05-2015 | Meeting with Richard | 1 | |
+| 26-05-2015 | Constraints Evaluator | 1 | Working on ValuesGenerator for complex rules |
+| 27-05-2015 | Constraints Evaluator | 2 | Working on ValuesGenerator for complex rules |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 50
+
+
+---+ Jun 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 01-06-2015 | Constraints Evaluator | 2 | |
+| 02-06-2015 | Meeting with Richard, migration to Github | 2 | Integration with WebAnno UI as next task, Complex rule processing, migration to Github |
+| 07-06-2015 | Constraints Evaluator | 2 | Added support for complex rules using '@' symbols. |
+| 08-06-2015 | Integrating with UI | 2 | Integrating Constraints to UI |
+| 09-06-2015 | Meeting with Richard | 1.5 | Integration issues, approach etc. |
+| 16-06-2015 | Integrating with UI | 1 | No success |
+| 19-06-2015 | Integrating with UI | 2 | No success |
+| 20-06-2015 | Integrating with UI | 2 | No success |
+| 21-06-2015 | Integrating with UI | 2 | Fixing minor issues |
+| 22-06-2015 | Integrating with UI | 1 | Some minor tweaks and discoveries |
+| 23-06-2015 | Integrating with UI | 3 | Meeting, move to github, code change |
+| 24-06-2015 | Integrating with UI | 1 | |
+| 27-06-2015 | Integrating with UI | 1 | |
+| 29-06-2015 | Integrating with UI | 1 | |
+| 30-06-2015 | Integrating with UI | 1.5 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 25
+
+---+ Jul 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 02-07-2015 | Meeting with Richard | 1 | Next tasks, changes to UI |
+| 02-07-2015 | Integration with UI | 1 | Code formatting, minimizing changes |
+| 03-07-2015 | Integration with UI | 2 | Refactoring, minor tweaks to 'auto-add' |
+| 07-07-2015 | Meeting with Richard | 1 | Next tasks, changes to UI |
+| 09-07-2015 | Integration with UI | 4 | |
+| 10-07-2015 | Clarin Meeting | 1.5 | |
+| 31-07-2015 | Clarin Meeting | 1.5 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 25
+
+---+ Aug / Sep 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| | Carry over | -12 | |
+| 02-08-2015 | Import/Export of Constraint in Project | 2 | |
+| 04-08-2015 | Import/Export of Constraint in Project | 4 | |
+| 05-08-2015 | Allow export of constraint file | 2 | |
+| 13-08-2015 | Bug fixing | 2 | Understanding kendo and code |
+| 14-08-2015 | Bug fixing | 3 | Debugging |
+| 15-08-2015 | Bug fixing | 4.5 | |
+| 16-08-2015 | Debugging | 0.5 | |
+| 18-08-2015 | Debugging | 1 | |
+| 20-08-2015 | Debugging | 2.5 | marking reordered tags |
+| 21-08-2015 | Debugging | 2.5 | marking reordered tags |
+| 23-08-2015 | Debugging | 3.5 | marking reordered tags |
+| 25-08-2015 | Bug fixing | 1 | |
+| 27-08-2015 | Bug fixing | 5 | making slots changeable |
+| 30-08-2015 | Bug fixing | 2.5 | C#1713 |
+| 31-08-2015 | Bug fixing | 7 | #71, #72 |
+| 01-09-2015 | Bug fixing | 2.5 | C#1713, C#1764 |
+| 02-09-2015 | Bug fixing | 2.5 | C#1713 |
+| 03-09-2015 | Bug fixing | 4 | #94, C#1713 |
+| 04-09-2015 | Meeting, Bug fixing | 3 | #95 |
+| 05-09-2015 | bug fixing | 2 | #98, #99 |
+| 06-09-2015 | bug fixing | 2 | #102 |
+| 08-09-2015 | bug fixing | 2 | #109 |
+| 12-09-2015 | | 1 | Improving response time |
+| 15-09-2015 | bug fixing | 2 | #113 |
+| 16-09-2015 | bug fixing | 6 | #115, #43 |
+| 17-09-2015 | debugging, bug reporting | 3 | #46 |
+| 18-09-2015 | Clarin Meeting | 1.5 | |
+| 21-09-2015 | Debugging | 1 | #123 |
+| 22-09-2015 | bug fixing | 3 | #46, #129, C#1796 |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 80
+
+
+---+ Oct / Nov 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| | Carry over | -13.5 | |
+| 01-10-2015 | C#1807 Fixing, #133 | .5 | |
+| 04-10-2015 | #134 Fixing and #132 Analysis | 1 | |
+| 15-10-2015 | Trying to fix #72 | 2 | Searched n evaluated options |
+| 17-10-2015 | Fixing #72 | 2 | |
+| 18-10-2015 | Fixing #133, #130 | 1.5 | |
+| 19-10-2015 | Trying to fix #82 | 1.5 | |
+| 20-10-2015 | Searching on #82, #132 | 1 | |
+| 23-10-2015 | Tried different ways on #132 | 2 | |
+| 25-10-2015 | Some work on #100, #83 | 2.5 | |
+| 27-10-2015 | Debugging on #83, #148 | 5 | |
+| 28-10-2015 | Debugging #82 and trying methods | 2.5 | Not fixed yet |
+| 29-10-2015 | Fixing #100 | 2 | |
+| 30-10-2015 | Meeting, Bugs #152, #151 | 2.5 | |
+| 02-11-2015 | Constraint documentation | 1.5 | |
+| 03-11-2015 | Constraint documentation, #152 | 3 | |
+| 05-11-2015 | Some work on #130 | 1 | |
+| 12-11-2015 | Debugging #130, #132, #82 | 4 | |
+| 13-11-2015 | #108, #100 | 4 | |
+| 14-11-2015 | #132 | 2 | |
+| 15-11-2015 | #130, #132 | 5 | |
+| 16-11-2015 | #130 | 2 | |
+| 17-11-2015 | #132 | 2 | |
+| 21-11-2015 | #130 | 2 | |
+| 22-11-2015 | #132, #130 | 2 | |
+| 23-11-2015 | #130 | 1 | |
+| 25-11-2015 | #148, #161 | 3 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 80
+
+
+
+
+---+ Dec 15 - Jan 2016
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| | Carry over | -35 | |
+| 21-12-2015 | #100 | 2 | |
+| 22-12-2015 | #100 | 3 | |
+| 23-12-2015 | #161, #100 | 3 | |
+| 24-12-2015 | #100 | 1 | |
+| 25-12-2015 | #130, #88 | 8 | |
+| 27-12-2015 | #88 | 2 | |
+| 28-12-2015 | #88, #132 | 3 | |
+| 29-12-2015 | #82 | 1 | |
+| 31-12-2015 | #132 | 2 | |
+| 02-01-2016 | #100 | 2 | |
+| 03-01-2016 | #100, #132 | 4 | |
+| 04-01-2016 | #100 | 2 | |
+| 05-01-2016 | #132 | 2 | |
+| 07-01-2016 | #132 | 2 | |
+| 08-01-2016 | #82, | 6 | |
+| 14-01-2016 | #100 | 5 | |
+| 18-01-2016 | #100 | 2 | Tried minimizing code changes |
+| 25-01-2016 | #82 fix, #170 | 3 | |
+| 26-01-2016 | #139, #143, #170 | 4 | |
+| 27-01-2016 | #170, #76 | 2 | |
+| 28-01-2016 | #168, #151, #150 | 2 | |
+| 30-01-2016 | #170, #76 | 2 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+
+
+---+ Feb - May 2016
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| | Carry over | -12 | |
+| 1-2-2016 | #150, #151 | 4 | |
+| 2-2-2016 | #76, #168 | 3 | |
+| 3-2-2016 | #168 | 1 | |
+| 5-2-2016 | #150, #168 | 2 | |
+| 7-2-2016 | #150 | 1 | |
+| 8-2-2016 | Hector, #132 | 2 | |
+| 9-2-2016 | #168, #150 | 2 | |
+| 10-2-2016 | Hector, #76 | 2.5 | |
+| 14-2-2016 | #76 | 4 | |
+| 15-2-2016 | #76, #168 | 6 | |
+| 12-3-2016 | #182, #183, #184, #185 | 5.5 | |
+| 13-3-2016 | #187, #184 | 1 | |
+| 14-3-2016 | #197, #168, 189 | 3 | |
+| 15-3-2016 | #194, #187, Meeting | 3 | |
+| 16-3-2016 | #168, #187, #204, #206 | 6.5 | |
+| 17-3-2016 | #207, #206, #198 | 3 | |
+| 18-3-2016 | #207, #200 | 2 | |
+| 20-3-2016 | #186, 194# | 2 | |
+| 21-3-2016 | #200, #210 | 3 | |
+| 23-3-2016 | #200 | 3 | |
+| 24-3-2016 | #189 | 1 | |
+| 28-3-2016 | #186 | 3 | |
+| 29-3-2016 | #186 | 4 | |
+| 31-3-2016 | #186, #189 | 5 | |
+| 1-4-2016 | #186, #150 | 3 | |
+| 3-4-2016 | #186 | 2 | |
+| 4-4-2016 | #186, #150 | 1.5 | |
+| 6-4-2016 | #226, #215, #227 | 3 | |
+| 7-4-2016 | #215 | 4 | |
+| 8-4-2016 | #80, #62 | 6 | |
+| 09-4-2016 | #207, | 1 | |
+| 13-04-2016 | #166, #203 | 2 | |
+| 15-04-2016 | Testing | 2 | |
+| 17-04-2016 | #243 | 2 | |
+| 18-04-2016 | #243 | 1 | |
+| 19-04-2016 | #203, #250 | 4 | |
+| 20-04-2016 | #252 | 1 | |
+| 22-04-2016 | #252, #253 | 2 | |
+| 24-04-2016 | #255 | 4 | |
+| 29-04-2016 | #252, #261, #244 | 3 | |
+| 03-05-2016 | Slides | 2 | |
+| 06-05-2016 | Slides | 2 | |
+| 08-05-2016 | #256 | 2 | |
+| 10-05-2016 | #256 | 1 | |
+| 11-05-2016 | #256, #243 | 6 | |
+| 12-05-2016 | #267, #243, #244 | 2 | |
+| 15-05-2016 | #243, Testing server | 2 | |
+| 16-05-2016 | #244, #272 | 1 | |
+| 17-05-2016 | #272, #243 | 2 | |
+| 18-05-2016 | #243 | 2 | |
+| 19-05-2016 | #243 | 2 | |
+| 20-05-2016 | #243 | 2 | |
+| 21-05-2016 | #243 | 3 | |
+| 23-05-2016 | #243 | 4 | |
+| 25-05-2016 | #243 | 4 | |
+| 27-05-2016 | #257, #243 | 2 | |
+| 29-05-2016 | #257, #243 | 2 | |
+| 30-05-2016 | #285, #272, #243, #286 | 5 | |
+| 31-05-2016 | #243 | 2 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 120
+
+
+
+
+---+ Jun - Jul 2016
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| | Carry over | 30 | |
+| 01-06-2016 | #250 | 1 | |
+| 02-06-2016 | #272, #250, | 4 | |
+| 03-06-2016 | #295 | 1 | |
+| 05-06-2016 | #243 | 4 | |
+| 06-06-2016 | #243 | 2 | |
+| 08-06-2016 | #243 | 2 | |
+| 09-06-2016 | #243 | 2 | |
+| 12-06-2016 | #243 | 2.5 | |
+| 22-06-2016 | #305 | 1 | |
+| 28-06-2016 | #305, #243, #306, , #250 | 5 | |
+| 06-07-2016 | #306 | 3 | |
+| 09-07-2016 | #306 | 2 | |
+| 17-07-2016 | #242 | 1 | |
+| 20-07-2016 | #244 | 2.5 | |
+| 21-07-2016 | #244 | 3 | |
+| 23-07-2016 | #315 | .5 | |
+| 27-07-2016 | #317 | 2 | |
+| 30-07-2016 | #269 | 2 | |
+| 11-08-2016 | #242, #240 | 1 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 80
+
+-- Main.CarstenSchnober - 2015-03-16

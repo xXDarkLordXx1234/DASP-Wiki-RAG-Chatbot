@@ -1,0 +1,91 @@
+%META:TOPICINFO{author="NicoErbs" date="1271168652" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="SemEval"}%
+---+++ SemEvalResults
+
+%TOC%
+
+Found bug in class SemEval2KeyphraseRersultsWriter::189<br>
+//        if (removeFullyContained) {<br>
+//            filteredKeyphrases = removeFullyContained(filteredKeyphrases);<br>
+//        }<br>
+The method removeFullyContained(List<Keyphrase>) degenerates the previous sorting. This leads to worse results, since only by chance high ranked candidates appear within the first 15 keyphrases.<br>
+<br>
+This has not been detected before, because this piece of code has been deleted in the evaluation used in the UIMA chain. It would have been detected, if the Perl-script delivered by SemEval organizators had been used to evaluate training data again.
+
+Complete results are shown at [[%ATTACHURL%/results.pdf]].
+
+All results below are created with the UIMA component used for internal Evaluation. In the first row of the first table are the Baseline results, in the second row the official result for UKP.
+
+
+---++++ Official Results (Test dataset Stem Matching)
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* | *Evaluation* |
+| Baseline TF.IDF | Combined | .2200 | .0750 | .1119 | .1770 | .1207 | .1435 | .1493 | .1528 | .1510 | SemEval script |
+| Combination | Combined | .0940 | .0321 | .0479 | .0590 | .0402 | .0478 | .0527 | .0539 | .0533 | SemEval script |
+| Combination | Combined | .260 | .090 | .134 | .191 | .132 | .156 | .149 | .155 | .152 | UIMA implementation |
+| KEA | Combined | .266 | .092 | .137 | .199 | .135 | .161 | .172 | .157 | .164 | UIMA implementation |
+| LSG | Combined | .168 | .058 | .086 | .139 | .096 | .114 | .124 | .129 | .126 | UIMA implementation |
+| TF.IDF | Combined | .260 | .090 | .134 | .188 | .130 | .154 | .140 | .146 | .143 | UIMA implementation |
+| CG segmented | Combined | .252 | .087 | .130 | .182 | .126 | .149 | .144 | .150 | .147 | UIMA implementation |
+<!--edittable1-->
+
+---++++ Reduced test dataset (mainly abstracts only) Stem Matching
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+| Combination 4 | Combined | .238 | .082 | .122 | .179 | .124 | .147 | .147 | .152 | .150 |
+| Combination 3 (-kea) | Combined | .192 | .067 | .099 | .162 | .112 | .133 | .144 | .149 | .147 |
+| KEA | Combined | .199 | .064 | .097 | .183 | .092 | .123 | .174 | .098 | .126 |
+| LSG | Combined | .160 | .055 | .082 | .156 | .108 | .128 | .143 | .148 | .145 |
+| TF.IDF | Combined | .216 | .075 | .111 | .177 | .123 | .145 | .158 | .164 | .161 |
+| CG segmented | Combined | .160 | .055 | .082 | .139 | .096 | .114 | .132 | .136 | .134 |
+<!--edittable1-->
+
+---++++ Reduced test dataset (mainly abstracts and first chapter) Stem Matching
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+| Combination 4 | Combined | .228 | .079 | .117 | .169 | .117 | .138 | .139 | .144 | .141 |
+| Combination 3 (-kea) | Combined | .186 | .064 | .096 | .153 | .106 | .125 | .136 | .141 | .138 |
+| KEA | Combined | .188 | .060 | .091 | .175 | .088 | .117 | .167 | .094 | .121 |
+| LSG | Combined | .150 | .052 | .077 | .143 | .099 | .117 | .131 | .135 | .133 |
+| TF.IDF | Combined | .210 | .073 | .108 | .167 | .116 | .137 | .149 | .154 | .151 |
+| CG segmented | Combined | .152 | .053 | .078 | .131 | .091 | .107 | .124 | .128 | .126 |
+<!--edittable1-->
+
+---++++ Test dataset Token Matching
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+| Combination | Combined | .116 | .039 | .059 | .105 | 0.71 | .085 | .089 | .091 | .090 |
+| TF.IDF | Combined | .060 | .020 | .030 | .059 | .040 | .048 | .070 | .071 | .071 |
+| CG segmented | Combined | .196 | .067 | .100 | .145 | .099 | .117 | .125 | .128 | .127 |
+| KEA | Combined | .158 | .054 | .080 | .115 | .077 | .092 | .101 | .091 | .096 |
+| LSG | Combined | .008 | .003 | .004 | .010 | .007 | .008 | .009 | .010 | .009 |
+<!--edittable1-->
+
+---++++ Train dataset Stem Matching (UIMA implementation)
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+| Combination | Combined | .254 | .084 | .127 | .187 | .124 | .149 | .149 | .148 | .149 |
+| CG | Combined | .208 | .069 | .104 | .166 | .110 | .132 | .134 | .134 | .134 |
+| CG segmented | Combined | .218 | .072 | .109 | .167 | .111 | .133 | .136 | .135 | .135 |
+| KEA | Combined | .239 | .079 | .119 | .185 | .120 | .146 | .163 | .137 | .149 |
+| LSG | Combined | .157 | .052 | .078 | .134 | .089 | .102 | .118 | .117 | .118 |
+| TF.IDF | Combined | .217 | .072 | .108 | .136 | .090 | .109 | .131 | .130 | .131 |
+<!--edittable1-->
+
+---++++ Train dataset Token Matching
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+| Combination | Combined | .176 | .057 | .087 | .126 | .082 | .099 | .112 | .109 | .111 |
+| CG | Combined | .112 | .037 | .055 | .098 | .064 | .077 | .094 | .091 | .092 |
+| CG segmented | Combined | .179 | .058 | .088 | .140 | .091 | .111 | .199 | .116 | .117 |
+| KEA | Combined | .160 | .052 | .078 | .115 | .074 | .090 | .099 | .082 | .089 |
+| LSG | Combined | .024 | .008 | .012 | .021 | .014 | .016 | .017 | .016 | .016 |
+| TF.IDF | Combined | .072 | .023 | .035 | .086 | .056 | .068 | .112 | .109 | .110 |
+<!--edittable1-->
+
+-- Main.NicoErbs - 29 Mar 2010
+
+%META:FILEATTACHMENT{name="results.pdf" attachment="results.pdf" attr="" comment="Complete results of SemEval Task 5 competition" date="1269883602" path="results.pdf" size="42632" stream="results.pdf" tmpFilename="/var/tmp/CGItemp62343" user="NicoErbs" version="1"}%

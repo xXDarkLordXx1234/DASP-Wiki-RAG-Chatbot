@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="NicoErbs" date="1249980526" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+---+ Problems and solutions
+
+%TOC%
+
+---++++ Problems with UIMA datapath
+Create a file .datapath and set datapath in the program
+   
+---++++ AE leads to undeterministic behaviour
+Use type priorities like first lemma and then sentence (Descriptor --&gt; Indexes)
+   
+---++++ When creating a aggregate analysis engine it returns an error if ae from other projects should be applied
+Use CPE instead of aggreagte AE
+   
+---++++ xml cannot be opened with Component Descriptor Editor in eclipse
+Right click on project --&gt; Properties --&gt; UIMA --&gt; and paste path of project.
+
+-- Main.NicoErbs - 03 Aug 2009

@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1287055647" format="1.1" reprev="49" version="49"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Sense Mapping
+
+   * Similarity Statistics (goal: learn threshold)
+      * String-based methods       
+         * Source code: 
+            * de.tudarmstadt.ukp.sensemapping.test: TestSenseMappingMain.makeTestStringBased() 
+            * de.tudarmstadt.ukp.sensemapping.printer:  SenseMappingPrinterStringBased
+         * [[%ATTACHURL%/SameSense0HypoHyper_Average.xls][SameSense0HypoHyper_Average.xls]]: Table with SameSense=0 and WordNet Gloss,Hypo and Hypernyms. Similartiy Average Statistics.
+         * [[%ATTACHURL%/SameSense1HypoHyper_Average.xls][SameSense1HypoHyper_Average.xls]]: Table with SameSense=1 and WordNet Gloss,Hypo and Hypernyms. Similartiy Average Statistics.   
+         * [[%ATTACHURL%/SimilarityStatisticsSummary.ods][SimilarityStatisticsSummary.ods]]: Summary of similarity statistics
+      * ESA methods   
+         * Source code:
+            * de.tudarmstadt.ukp.sensemapping.test: TestSenseMappingMain.makeTestESA() 
+            * de.tudarmstadt.ukp.sensemapping.printer:  SenseMappingPrinterESA
+         * [[%ATTACHURL%/SameSense0ESA_Average.xls][SameSense0ESA_Average.xls]]: Table with SameSense=0 ESA-Methods. Similarity Average Statistics.
+         * [[%ATTACHURL%/SameSense1ESA_Average.xls][SameSense1ESA_Average.xls]]: Table with SameSense=1 ESA-Methods. Similarity Average Statistics.
+   * Alignment Statistics (goal: test threshold)
+      * String-based methods (Cosine, OverlapCoefficient) and ESA methods 
+         * Source code:
+            * de.tudarmstadt.ukp.sensemapping.test: TestThresholdMain.makeTestThresholdStringBased(), makeTestThresholdESA(), makeTestFindBestThreshold()
+            * de.tudarmstadt.ukp.sensemapping.printer:  SenseMappingPrinterThreshold
+         * [[%ATTACHURL%/ThresholdAccuracyTest.xls][ThresholdAccuracyTest.xls]]: Test of accuracy of different Thresholds and methods incl. ESA
+         * [[%ATTACHURL%/ThresholdAccuracySB.xls][ThresholdAccuracySB.xls]]: ThresholdAccuracySB.xls. Threshold Test with new improvements
+   * Analysis
+      * [[%ATTACHURL%/SenseMappingAnalysis.pdf][SenseMappingAnalysis.pdf]]: SenseMapping Analysis
+      * [[%ATTACHURL%/FalseExamples.ods][FalseExamples.ods]]: Examples of extreme low SameSense1 or high SameSense0 value
+
+
+   * [[%ATTACHURL%/Crossvalidation.csv][Crossvalidation.csv]]: Crossvalidation, StringBased Cosine. GoldStandardGross
+
+   * [[%ATTACHURL%/WnWikiMapping.csv.zip][WnWikiMapping.csv.zip]]: WordNet-Wikipedia Mapping. Format: "wnID;wikiID;wikiTitle;SameSense"
+
+   * [[%ATTACHURL%/SynsetCandidateCount.ods][SynsetCandidateCount.ods]]: Extracted Wiki-Articles per Synset
+
+   * [[%ATTACHURL%/AlignmentSynsetStats.csv][AlignmentSynsetStats.csv]]: Statistic for Synset Alignments
+
+%META:FILEATTACHMENT{name="SenseMappingAnalysis.pdf" attachment="SenseMappingAnalysis.pdf" attr="" comment="SenseMapping Analysis" date="1268045917" path="SenseMappingAnalysis.pdf" size="458179" stream="SenseMappingAnalysis.pdf" tmpFilename="/var/tmp/CGItemp44950" user="YevgenChebotar" version="5"}%
+%META:FILEATTACHMENT{name="SameSense0HypoHyper_Average.xls" attachment="SameSense0HypoHyper_Average.xls" attr="" comment="Table with SameSense=0 and WordNet Gloss,Hypo and Hypernyms. Average Statistics. <br> Source code: sensemapping.test: TestSenseMappingMain.makeTestStringBased() + sensemapping.printer : SenseMappingPrinterStringBased()" date="1267359706" path="SameSense0HypoHyper_Average.xls" size="18944" stream="SameSense0HypoHyper_Average.xls" tmpFilename="/var/tmp/CGItemp45558" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="SameSense1HypoHyper_Average.xls" attachment="SameSense1HypoHyper_Average.xls" attr="" comment="Table with SameSense=1 and WordNet Gloss,Hypo and Hypernyms. Average Statistics." date="1267359720" path="SameSense1HypoHyper_Average.xls" size="18944" stream="SameSense1HypoHyper_Average.xls" tmpFilename="/var/tmp/CGItemp45504" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="SameSense0ESA_Average.xls" attachment="SameSense0ESA_Average.xls" attr="" comment="Table with SameSense=0 ESA-Methods. Average Statistics." date="1267359795" path="SameSense0ESA_Average.xls" size="14336" stream="SameSense0ESA_Average.xls" tmpFilename="/var/tmp/CGItemp40700" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SameSense1ESA_Average.xls" attachment="SameSense1ESA_Average.xls" attr="" comment="Table with SameSense=1 ESA-Methods. Average Statistics." date="1267359820" path="SameSense1ESA_Average.xls" size="14848" stream="SameSense1ESA_Average.xls" tmpFilename="/var/tmp/CGItemp40648" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="ThresholdAccuracyTest.xls" attachment="ThresholdAccuracyTest.xls" attr="" comment="Test of accuracy of different Thresholds and methods incl. ESA" date="1267460329" path="ThresholdAccuracyTest.xls" size="26112" stream="ThresholdAccuracyTest.xls" tmpFilename="/var/tmp/CGItemp40724" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SimilarityStatisticsSummary.ods" attachment="SimilarityStatisticsSummary.ods" attr="" comment="Summary of similarity statistics" date="1267609761" path="SimilarityStatisticsSummary.ods" size="21246" stream="SimilarityStatisticsSummary.ods" tmpFilename="/var/tmp/CGItemp53591" user="ElisabethWolf" version="1"}%
+%META:FILEATTACHMENT{name="FalseExamples.ods" attachment="FalseExamples.ods" attr="" comment="Examples of extreme low SameSense1 or high SameSense0 values" date="1267872148" path="FalseExamples.ods" size="45816" stream="FalseExamples.ods" tmpFilename="/var/tmp/CGItemp40747" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="ThresholdAccuracySB.xls" attachment="ThresholdAccuracySB.xls" attr="" comment="" date="1268046165" path="ThresholdAccuracySB.xls" size="19456" stream="ThresholdAccuracySB.xls" tmpFilename="/var/tmp/CGItemp45010" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="AlignmentSynsetStats.csv" attachment="AlignmentSynsetStats.csv" attr="" comment="Statistic for Synset Alignments" date="1277973097" moveby="YevgenChebotar" movedto="Hiwi.SenseMapping.AlignmentSynsetStats.csv" movedwhen="1287055081" movefrom="Hiwi.WorkMaiJuli2010.AlignmentSynsetStats.csv" path="AlignmentSynsetStats.csv" size="730" stream="AlignmentSynsetStats.csv" tmpFilename="/var/tmp/CGItemp41095" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="Crossvalidation.csv" attachment="Crossvalidation.csv" attr="" comment="Crossvalidation, StringBased Cosine. GoldStandardGross" date="1276070472" moveby="YevgenChebotar" movedto="Hiwi.SenseMapping.Crossvalidation.csv" movedwhen="1287055097" movefrom="Hiwi.WorkMaiJuli2010.Crossvalidation.csv" path="Crossvalidation.csv" size="5984" stream="Crossvalidation.csv" tmpFilename="/var/tmp/CGItemp50942" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SynsetCandidateCount.ods" attachment="SynsetCandidateCount.ods" attr="" comment="Extracted Wiki-Articles per Synset" date="1277284048" moveby="YevgenChebotar" movedto="Hiwi.SenseMapping.SynsetCandidateCount.ods" movedwhen="1287055146" movefrom="Hiwi.WorkMaiJuli2010.SynsetCandidateCount.ods" path="SynsetCandidateCount.ods" size="34009" stream="SynsetCandidateCount.ods" tmpFilename="/var/tmp/CGItemp35503" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="WnWikiMapping.csv.zip" attachment="WnWikiMapping.csv.zip" attr="" comment="WordNet-Wikipedia Mapping. Format: %22wnID;wikiID;wikiTitle;SameSense%22" date="1277222020" moveby="YevgenChebotar" movedto="Hiwi.SenseMapping.WnWikiMapping.csv.zip" movedwhen="1287055193" movefrom="Hiwi.WorkMaiJuli2010.WnWikiMapping.csv.zip" path="WnWikiMapping.csv.zip" size="6770129" stream="WnWikiMapping.csv.zip" tmpFilename="/var/tmp/CGItemp35788" user="YevgenChebotar" version="1"}%

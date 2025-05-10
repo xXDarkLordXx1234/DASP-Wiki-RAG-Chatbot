@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="MarkoMartin" date="1305487629" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++Vertrag
+Laufzeit: 01.03.2011-31.05.2011
+
+---+++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Priorität* | *ID* | *Beschreibung* | *Status* |
+| 1 | 1 | Integration von Segmentierungskomponenten | 80 % |
+| 1 | 2 | Wrapper für Segementierung | 0 % |
+| 2 | 3 | Ideen für verbesserte Segmentierung erarbeiten | 0 % |
+| 2 | 4 | Experimente zur Evaluation neuer Ideen | 0 % |
+| 3 | 5 | Veröffentlichung planen | 0 % |
+| 4 | 6 | Graphenerstellung optimieren (externalisieren) | 0 % |
+
+---+++ Arbeitszeit
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2" footerrows = "1" }%
+| *Datum* | *Stunden* | *Aufgabe-ID* | *Beschreibung* |
+| 08.03.2011 | 1 | 1 | <ul><li>Auflistung relevanter Komponenten für Integration in DKPro</li><li>Versuch SVN-Verbindung</li></ul> |
+| 10.03.2011 | 1.5 | 1 | <ul><li>Vorbereitung (u.a. m2eclipse installiert)</li></ul> |
+| 14.03.2011 | 1 | 1 | <ul><li>Einrichtung Maven-Account</li></ul> |
+| 13.04.2011 | 2.5 | 1 | <ul><li>Einarbeitung in Projektstruktur</li><li>Migration von Komponenten in DKPro-Projekt: ChoiDataSetReader, AnnotationRemover, CohesionIndicatorAnnotator</li></ul> |
+| 14.04.2011 | 3 | 1 | <ul><li>Besprechung mit NE</li><li>Anpassung der Maven-Dependencies auf korrekte Versionen</li><li>Migration von Komponenten: SemanticRelatednessSparsificator, SegmentQuantityAnnotator, DegeneratedSegmenter, AnnotationOffsetWriter</li></ul> |
+| 23.04.2011 | 4.5 | 1 | <ul><li>Dependencies im Segmentation-Projekt aufgeräumt (nicht benötigte entfernt)</li><li>migrierte Komponenten: ChoiFormatWriter, CorpusStatisticsEvaluator, DefaultSegmentationEvaluator</li><li>dazu auch Evaluationsklassen im Package de.tudarmstadt.ukp.dkpro.semantics.segmentation.evaluation migriert</li><li>Segmentierer und Pk/WindowDiff-Evaluationskomponente von Malioutov in eigenes Projekt edu.mit.nlp.mincutsegmenter migriert</li><li>Fehlersuche bei fehlschlagenden Testcases --> Ursache sind unterschiedliche Packages der Typen</li></ul> |
+| 24.04.2011 | 1 | 1 | <ul><li>Typen aus Package dkpro.core.type ersetzt durch Typen im Package de.tudarmstadt.ukp.dkpro.core.api.segmentation.type</li></ul> |
+| 01.05.2011 | 4 | 1 | <ul><li>StopWordTagger in bisher migrierten Komponenten ersetzt durch StopwordRemover</li><li>de.tudarmstadt.ukp.dkpro.semantics.annotator.PosFilter ersetzt durch ...dkpro.core.posfilter.PosFilter</li><li>Pipeline SemanticGraphXmiWriting integriert</li><li>DegeneratedSegmenterTest verbessert</li><li>SemanticRelatednessSparsificatorTest auf Fehlerursache untersucht --> CooccurrenceGraphAnnotator verwendet intern falschen Sentence-Typ</li></ul> |
+| 10.05.2011 | 6.5 | 1 | <ul><li>Verbesserung, Erweiterung von Tests (u.a. SemanticRelatednessSparsificatorTest)</li><li>SemanticRelatednessSparsificator erweitert (dynamische Threshold-Berechnung)</li><li>Einrichtung der Lexical Semantic Resources Umgebung (--&gt; ResourceFactory)</li><li>Integration der Malioutov-Segmentierungskomponenten ins Segmentierungsprojekt</li><li>migrierte Komponenten: PkWindowDiffEvaluator, PlainTextWriter, SegmentQuantityAnnotator</li><li>SVN-Commit (aktueller Stand)</li></ul> |
+| 15.05.2011 | 4 | 1 | <ul><li>Auslagerung MinCutSegmenter (Malioutov) in eigenes Projekt, Anpassung des Dateizugriffs (Konfiguration, Stoppwörter) auf Java-Ressourcen-API</li><li>migrierte Komponenten: ClusterBlockSegmenter, MaximumCompactnessSegmenter</li></ul> |
+| *Summe* | %CALC{"$SUM( $ABOVE() )"}% | | |
+| *Soll* | 45 | | bis 31.5. |
+<nop>

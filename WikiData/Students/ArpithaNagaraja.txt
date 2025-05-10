@@ -1,0 +1,119 @@
+%META:TOPICINFO{author="hanselowski" comment="reprev" date="1492537354" format="1.1" reprev="10" version="12"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Status 2017-4-18
+   * Discussed issues:
+      * The original python code must be changed in order to be able to import data from the snopes corpus
+      * A method must be implemented which aligns documents and evidence according to a defined method using computed scores such as tf-idf
+      * A small corpus must be created in order to be able to evaluate the performance of the defined method for the alignment of the evidence and documents
+---++ Status 2017-4-4
+   * First Corpus: 
+      * Retaining "p" tags for all the evidences. 
+      * Removing all the font tags.
+      * Replaced special encoded symbols like &amp, &gt,... with their equivalent mathematical symbols.
+      * Added unique ID to each entry in the corpus.
+      * Normalization of texts using normalize method in dkpro.
+   * Second Corpus:
+      * Solved text redirecting issue.
+      * Extracted the original documents using dkpro-boilerplateremoval.
+      * Normalization of texts using normalize method in dkpro.
+      * Added the snopes evidence block that matches the original document (used nGram).
+      * Added title of the original document.
+   * TODO:
+      * Second Corpus: 
+         * Add more fine grained search to match the original document with the evidence present in snopes webpage.
+
+---++ Status 2017-3-7
+   * TODO:
+      * First Corpus: Add all the details for claim with truthfulness 'mixture'
+
+      * Second Corpus: 
+         * Text redirecting issue
+         * Extract only required text from original document - DKPro
+
+---++ Status 2017-3-1
+
+   * TODO:
+      * First corpus: text normalization, text encoding to be checked
+
+      * Second corpus: 
+         * Text bodies extracted to be extracted for the cases: ok, forbidden, tmp moved, permanently moved, tmp redirected 
+         * If article body contains tag article than one is able to fetch the text 
+         * Statistics how many pages have articles 
+
+      * Prepare mid term presentation
+       
+
+---++ Status 2017-2-27
+   * Modified the code to generate 2 different corpus from snopes website.
+   * First Corpus: 
+      * Generated the corpus with Category, Sub-Category, Snopes URL, Headline, Description, Claim, Truthfulness and Evidence.
+      * Collected some statistics related to corpus 1
+      * TODO: 
+         * Add True and False details for claims with truthfulness value "Mixture".
+   * Second Corpus:
+      * Generated the corpus with Category, Sub-Category, Snopes URL, Headline, Description, Claim, Truthfulness, Original Document Link (External pages link), Status Code, Status Description and Body of the external page.
+      * TODO:
+         * Extract only the required information from the external pages.
+         * Link the evidence present in the snopes pages to the evidence extracted from the external pages
+
+---++ Status 2017-2-10
+   * The UI of snopes website is changed on 2017-2-8. Thus modifying the code to fetch the required details.
+   * Worked on second corpus creation
+   * collected approximate size details required to download the pages
+   * TODO: Modify the code to adapt to the recent changes
+
+---++ Status 2017-2-3
+   * First Corpus:
+      * Origin is included in the corpus. Some issues like different page structure in old pages still persists.
+      * Handled evidence duplication problem
+      * Handled blank truthfulness and claim fields
+      * Uploaded the program in git
+   * TODO:
+      * First Corpus:
+         * Collect all the required statistics 
+         * Handle the issue related to Origin
+         * Add Example field to the corpus
+      * Second Corpus: 
+         * Construct the corpus 
+         * Collect all the required statistics
+      * Calculate the time and memory required to download a single page
+
+---++ Meeting 2017-1-26
+   * TODO:
+   * First corpus:
+      * Origin to be included in the corpus
+      * Compute statistics for:
+         * Claims with labels: true, false, mostly false, mostly true, mixed, unproven, ...
+         * How many claims are there with evidence
+      * Share program with Andreas once the corpus is constructed
+   * Second corpus:
+      * Statistics:
+         * For how many claims the original documents (following the links) cannot be recovered 
+      * Collect information from crawling experiments to request a server
+         * Time to dowload a webpage
+         * How many webpages need to be downloaded 
+         * CPU power, number of cores, memory required
+         * ...
+      * Document all errors which are encountered while crawling snopes.com for the discussion later on with Chris
+
+---++ Meeting 2016-12-14
+   * Corpus statistics so far
+      * Number claims: 9250
+      * Categories: 41
+      * Claim per category approx.: 225
+      * ...
+   * Two 3 credits lectures to be completed --> 2 exams in February
+   * TODO:
+      * Additional file with statistics: Time, number webpages, number of false, true, mixture, ...
+      * Information to be extracted: CSV file: category, claim, url, headline, thruthiness, origin, evidence, links to original documents
+      * Setup meeting with Chris 
+      * Clarify program storage
+      * Discuss problems with Chris
+   * Software libraries: crawler4j, parsing jsoup
+   * Emergent webpage: https://www.aclweb.org/anthology/N/N16/N16-1138.pdf
+
+
+
+
+
+-- Main.AndreasHanselowski - 2016-12-06

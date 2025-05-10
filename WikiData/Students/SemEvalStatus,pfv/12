@@ -1,0 +1,52 @@
+%META:TOPICINFO{author="NicoErbs" date="1267117702" format="1.1" version="12"}%
+%META:TOPICPARENT{name="SemEvalTechnical"}%
+---+++ SemEvalStatus
+
+%TOC%
+
+---++++ Comparison of SemEval dataset to known dataset
+The dataset is the training dataset  (SemEval provides three different GoldStandards).
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Attribute* | *Hulth (Inspec)* | *NUS* | *DUC* | *SemEval: Author* | *SemEval: Reader* | *SemEval:Combined* |
+| *# Documents* | 1000 | 89 | 301 | 144 | 144 | 144 |
+| *Tokens / Document* | 142.5 | 8610.1 | 902.8 | 9950.6 | 9950.6 | 9950.6 |
+| *Keyphrases* | 9788 | 739 | 2432 | 559 | 1824 | 2223 |
+| *Keyphrases / Document* | 9.788 | 8.30 | 8.08 | 3.88 | 12.67 | 15.44 |
+| *Characters / Keyphrase* | 19.96 | 17.57 | 15.97 | 15.99 | 19.33 | 18.7 |
+| *Tokens / Keyphrase* | 2.33 (+/- 0.91) | 2.12 (+/- 0.96) | 2.09 (+/- 0.74) | 1.96 (+/- 0.85) | 2.24 (+/- 1.0) | 2.18 (+/- 0.98) |
+| *Keyphrases with 1 Token* | 1345 | 186 | 421 | 166 | 323 | 449 |
+| *Keyphrases with 2 Tokens* | 5065 | 367 | 1494 | 287 | 971 | 1165 |
+| *Keyphrases with 3 Tokens* | 2488 | 122 | 430 | 82 | 398 | 459 |
+| *Keyphrases with 4 Tokens* | 673 | 42 | 60 | 17 | 92 | 104 |
+| *Keyphrases with 5 Tokens* | 157 | 19 | 23 | 4 | 11 | 15 |
+| *Keyphrases with 6+ Tokens* | 60 | 3 | 4 | 3 | 29 | 31 |
+<!--edittable1-->
+
+---+++++ Results for known dataset (Hulth/Inspec)
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Candidates* | *Configuration* | *R-Prec* | *P Top5* | *P Top10* | *P Top15* | *R Top5* | *R Top10* | *R Top15* | *F Top5* | *F Top10* | *F Top15* |
+| KEA | N-grams | 1_4 | .17 | .25 | .20 | .18 | .17 | .22 | .24 | .19 | .20 | .19 |
+| KEA | N-grams | 2_4 | .08 | .30 | .28 | .28 | .16 | .19 | .20 | .20 | .21 | .21 |
+| tf.idf | Tokens(N,A) | 2_4 | .35 | .39 | .35 | .34 | .29 | .45 | .53 | .31 | .37 | .40 |
+| tf.idf | NC | 2_4 | .30 | .38 | .34 | .33 | .28 | .41 | .47 | .30 | .35 | .36 |
+| tf.idf | Lemmas(N,A) | 2_4 | *.39* | *.41* | *.38* | *.37* | *.33* | *.50* | *.59* | *.34* | *.41* | *.43* |
+| co-occ | Tokens(N,A) | PR, 2_4 | .36 | .39 | .37 | .36 | .30 | .48 | .56 | .31 | .40 | .42 |
+| co-occ | NC | ND, 2_4 | .32 | .40 | .36 | .33 | .29 | .42 | .47 | .32 | .36 | .37 |
+| co-occ | NC | PR, 2_4 | .31 | .39 | .36 | .33 | .28 | .42 | .47 | .31 | .36 | .37 |
+| co-occ | Lemmas(N,A) | PR, 2_4 | .35 | .39 | .37 | .36 | .31 | *.50* | .57 | .32 | .40 | .42 |
+
+---+++++ Results for SemEval dataset (train - combined) without segmentation
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Candidates* | *Configuration* | *R-Prec* | *P Top5* | *P Top10* | *P Top15* | *R Top5* | *R Top10* | *R Top15* | *F Top5* | *F Top10* | *F Top15* |
+| KEA | N-grams | 1_4 | *.11* | .13 | *.11* | .10 | .05 | .08 | .11 | .07 | .09 | .10 |
+| KEA | N-grams | 2_4 | .10 | *.16* | *.11* | .10 | *.06* | *.09* | .10 | *.09* | *.10* | .09 |
+| tf.idf | Tokens(N,A) | 2_4 | .07 | .06 | .06 | .07 | .03 | .05 | .08 | .04 | .05 | .08 |
+| tf.idf | NC | 2_4 | .09 | .06 | .08 | .08 | .03 | .06 | .09 | .04 | .07 | .09 |
+| tf.idf | Lemmas(N,A) | 2_4 | .10 | .06 | .08 | *.11* | .02 | .06 | *.12* | .03 | .07 | *.11* |
+| co-occ | Tokens(N,A) | PR, 2_4 | .05 | .07 | .06 | .05 | .02 | .04 | .06 | .03 | .05 | .05 |
+| co-occ | NC | PR, 2_4 | .01 | .00 | .01 | .01 | .00 | .01 | .02 | .00 | .01 | .01 |
+| co-occ | Lemmas(N,A) | PR, 2_4 | .07 | .12 | .08 | .06 | .04 | .05 | .07 | .06 | .07 | .07 |
+| LexSem | Lemma(N,A) | Wkt, PR, 2_4 | .33 | .38 | .36 | .36 | .28 | .38 | .41 | .30 | .35 | .36 |
+
+
+-- Main.NicoErbs - 16 Feb 2010

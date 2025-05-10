@@ -1,0 +1,197 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1299763154" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="OtherDocuments"}%
+---+ XML Formatting mit XSL und JavaScript
+---++ XSL und XPath
+Für das Auswählen von bestimmten XML-Knoten wird im XSL-Format XPath benutzt. Kurzer Tutorial dazu findet man hier: http://www.w3schools.com/xpath/default.asp. Dabei sieht ein typischer Pfad zu einem Knoten vom Wurzel ausgehend so aus, alle Lexicalization-Knoten eines XMLs:
+<verbatim>
+/OntoWiktionary/Concept/Lexicalization
+</verbatim>
+Wir können beim Auswählen bestimmte Parameter spezifizieren um unsere Suche zu verfeinern. Mit @AttributeName werden die Attribute ausgewählt:
+<verbatim>
+/OntoWiktionary/Concept[@id=5]/Lexicalization
+</verbatim>
+Es werden die Konzepte ausgewählt bei denen der Ausdruck in den eckigen Klammern zu TRUE evaluiert. Somit werden durch diesen XPath-Ausdruck alle Lexicalizations von Concept mit id=5 ausgewählt.
+Da man die Ausdrücke in den eckigen Klammern mit "or", "and" usw. verknüpfen kann, sind mit XPath sehr komplizierte Anfragen möglich. Außerdem stehen mehrere Funktionen zur Verfügung. Z.B.
+<verbatim>
+/OntoWiktionary/Concept[Lexicalization[@lemma='botany' or (contains(@lemma, 'biology') and contains(text(), 'plant'))]]
+</verbatim>
+Hier wählen wir alle Concepts, bei denen das Lemma von einer der Lexicalizations gleich "botany" ist oder das Lemma beinhaltet den String 'biology' und der Gloss (text() gibt den Text zurück, der  zwischen "&lt;Lexicalization>" und "&lt;/Lexicalization>" steht) den String "plant" beinhaltet.
+
+---++ XSL-Operatoren
+Einen kurzen Tutorial zu XSL findet man hier: http://www.w3schools.com/xsl/. <br>
+Die wichtigsten Operatoren in XSL sind:<br>
+Mit *xsl-value-of* kann man die bestimmte Komponente eines XMLs in die Ausgabe schreiben:
+<verbatim>
+<xsl:value-of select="XML_PATH" />
+</verbatim>
+
+*if* 
+<verbatim>
+ <xsl:if test="CONDITION"></xsl:if>
+</verbatim>
+Bei XSL-If gibt es kein ELSE. Dafür gibt es zu Java-switch-case ähnliche Struktur:
+
+<verbatim>
+<xsl:choose>
+   <xsl:when test="CONDITION1"></xsl:when>
+   <xsl:when test="CONDITION2"></xsl:when>
+   <xsl:otherwise></xsl:otherwise>
+ </xsl:choose>
+</verbatim>
+
+Mit *for-each* -Operator kann über die ausgewählte Menge iterieren. Z.B:
+<verbatim>
+<xsl:for-each select="/OntoWiktionary/Concept">
+	<xsl:value-of select="@id" />
+	<xsl:for-each select="Lexicalization">
+		<xsl:value-of select="@id" />
+	</xsl:for-each>
+</xsl:for-each>
+</verbatim>
+Wir iterieren zuerst über alle Concepts und geben ID von jedem Concept aus (Die Pfade ohne "/" sind immer relativ zum in for-each aktuell ausgewähltem Teilpfad). Weiter iterieren wir über die Lexicalizations des jeweiligen Concepts und geben jetzt die ID von jeder Lexicalization aus.
+Wenn man direkt nach &lt;xsl:for-each ...> einen *&lt;xsl:sort>* -Operator einfügen können wir die Iterierungsreihenfolge beeinflussen. Z.B.
+<verbatim>
+<xsl:for-each select="/OntoWiktionary/Concept"> 
+   <xsl:sort select="@id" data-type="number" order="ascending"/>
+   <xsl:value-of select="@id" />
+</xsl:for-each>
+</verbatim>
+Hier geben wir alle Concept-IDs aufsteigend sortiert aus. &lt;xsl:sort>-Tag kann nur direkt nach &lt;xsl:for-each>-Tag vorkommen.<br><br>
+*Variablen* <br>
+In XSL können wir eigene Variablen definieren, um die später zu verwenden. Die Variablen-Deklaration sieht folgend aus:
+<verbatim>
+<xsl:variable name="VARIABLE_NAME" select="VARIABLE_VALUE" />
+</verbatim>
+In VARIABLE_VALUE können wir mit XPath einen Wert aus der XML-Datei auswählen oder z.B. einen String oder Zahl angeben. Die Variablen können dann später mit $VARIABLE_NAME referenziert werden.<br><br>
+*Upper-Case und Lower-Case* <br>
+Obwohl in XSL 2.0 Funktionen upper-case() und lower-case() gibt sind die noch bei meisten Browsern nicht zugänglich. Um das Verhalten dieser Funktionen zu simulieren können wir so vorgehen:
+<verbatim>
+<xsl:variable name="lowercase" select="'abcdefghijklmnopqrstuvwxyzäüö'" />
+<xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÜÖ'" />
+...
+<xsl:for-each select="/OntoWiktionary/Concept">
+	<xsl:value-of select="@id" />
+	<xsl:for-each select="Lexicalization">
+		<xsl:value-of select="translate(@lemma, $uppercase, $lowercase)" />
+	</xsl:for-each>
+</xsl:for-each>
+...
+</verbatim>
+Mit translate-Funktion werden alle in @lemma aus $lowercase vorkommende Zeichen in entsprechende Zeichen aus $uppercase überführt.
+---++ HTML-Ausgabe
+Man kann in einer XSL-Datei direkt die HTML-Tags  verwenden um die Ausgabe zu formatieren. Die HTML-Tags kann man innerhalb von XSL-If, for-each, when einschließen und somit Listen, Tabellen usw. dynamisch erstellen. Weiterhin kann man Attribute der HTML-Tags während der Laufzeit mit Hilfe von dem Operator *&lt;xsl:attribute>* ändern oder hinzufügen. Z.B:
+<verbatim>
+<table>
+   <xsl:for-each select="/OntoWiktionary/Concept"> 
+      <tr>
+         <xsl:choose>
+            <xsl:when test="position() mod 2 = 1">
+               <xsl:attribute name="class">unevenRow</xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:attribute name="class">evenRow</xsl:attribute>
+            </xsl:otherwise>
+         </xsl:choose>
+         <td><xsl:value-of select="@id" /></td>
+      </tr>
+   </for-each>
+</table>
+</verbatim>
+Mit position() können wir die Position des aktuellen Elementes in dem ausgewählten XML-Subset abfragen. Mit &lt;xsl:attribute> fügen wir zu dem HTML-Tag &lt;tr> (Table-Row) den Attribut "class=evenRow", wenn die Position gerade ist, oder den Attribut "class=unevenRow" wenn die Position ungerade ist. Somit können wir z.B. mit Hilfe von CSS dann zu dem jeweiligen class einen eigenen Stil zuweisen (z.B. mit verschiedenen Hintergrundfarben).
+---++ Übergabe von XSL-Parameter
+Es besteht die Möglichkeit Parameter an XSL von außen zu übergeben. Dabei kann man es Server-Seitig mit Server-Scripts oder Client-Seitig mit JavaScript machen. <br>
+Bei der Benutzung von JavaScript müssen wir die Besonderheiten verschiedener Browser beachten. Zuerst müssen wir XML und XSL-Objekte initialisieren:
+
+<verbatim>
+var XMLFile = "PATHTOXML.xml";
+var XSLFile  = "PATHTOXSL.xsl";
+var objectXML;
+var objectXSL;
+var objectXSLCache;
+var objectXSLTProcessor;
+
+// For Internet Explorer
+if (window.ActiveXObject) {	
+	// load XML
+	objectXML = new ActiveXObject("MSXML2.DOMDocument");
+	objectXML.async = false;
+	objectXML.load(XMLFile);
+	
+	// load XSL
+	objectXSL = new ActiveXObject("MSXML2.FreeThreadedDOMDocument.4.0");
+	objectXSL.async = false;
+	objectXSL.load(XSLFile);
+
+	// XSL Cache for better performance
+	objectXSLCache = new ActiveXObject("Msxml2.XSLTemplate.4.0");
+	objectXSLCache.stylesheet = objectXSL;
+}
+//For Mozilla
+else if (window.ChromeWindow) {
+	// In Mozilla load XSL first
+	objectXSLTProcessor = new XSLTProcessor();
+	objectXSL = new XMLHttpRequest();
+	objectXSL.open("GET", XSLFile, false);
+	objectXSL.send(null);
+	objectXSL = objectXSL.responseXML; 
+	objectXSLTProcessor.importStylesheet(objectXSL);
+
+	//load XML
+	objectXML = new XMLHttpRequest();
+	objectXML.open("GET", XMLFile, false);
+	objectXML.send(null);
+	objectXML = objectXML.responseXML;
+}
+else{
+	alert("Your browser doesn't supprot XML-XSL-Transformation with JavaScript");
+}
+</verbatim>
+
+Weiter können wir die Parameter an XSL übergeben und XML transformieren:
+<verbatim>
+// For Internet Explorer
+if (window.ActiveXObject) {
+	objectXSLTProcessor = objectXSLCache.createProcessor();
+	objectXSLTProcessor.input = objectXML;
+
+	// Add XSL-parameter
+	objectXSLTProcessor.addParameter("PARAMETER_1_NAME", PARAMETER_1_VALUE, "");
+	objectXSLTProcessor.addParameter("PARAMETER_2_NAME", PARAMETER_2_VALUE, "");
+
+	// Transform and show result in HTML-Element with id="results"
+	objectXSLTProcessor.transform();
+	document.getElementById("results").innerHTML = objectXSLTProcessor.output; 
+}
+//For Mozilla
+else if (window.ChromeWindow) {
+
+	// Add XSL-parameter
+	objectXSLTProcessor.setParameter(null, "PARAMETER_1_NAME", PARAMETER_1_VALUE);
+	objectXSLTProcessor.setParameter(null, "PARAMETER_2_NAME",  PARAMETER_2_VALUE);		
+
+	// Transform and show result in HTML-Element with id="results"
+	HTMLAusgabe = objectXSLTProcessor.transformToFragment(objectXML, document);
+	document.getElementById("results").innerHTML = "";
+	document.getElementById("results").appendChild(HTMLAusgabe);
+}
+</verbatim>
+
+In der XSL-Datei müssen wir die Parameter deklarieren:
+<verbatim>
+<xsl:param name="PARAMETER_NAME_1">DEFAULT_VALUE_1</xsl:param>
+<xsl:param name="PARAMETER_NAME_2">DEFAULT_VALUE_2</xsl:param>
+</verbatim>
+Später können wir die Parameter genauso wie Variablen mit $PARAMETER_NAME referenzieren. Z.B.
+
+<verbatim>
+...
+<xsl:param name="searchTxt"></xsl:param>
+...
+<xsl:for-each select="/OntoWiktionary/Concept[string-length($searchTxt)=0 or Lexicalization[@lemma=$searchTxt]]">
+   <xsl:for-each select="Lexicalization">
+		<xsl:value-of select="@lemma" />
+   </xsl:for-each>
+</xsl:for-each>
+...
+</verbatim>
+Zuerst prüfen wir mit string-length() ob irgendwas in $searchTxt übergeben wurde. Wenn ja, dann beschränken wir die angezeigte Concepts nur auf die, bei denen mindestens ein Lemma gleich $searchTxt ist.

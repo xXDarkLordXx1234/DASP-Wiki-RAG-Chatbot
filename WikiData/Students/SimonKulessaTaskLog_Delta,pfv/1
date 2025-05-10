@@ -1,0 +1,25 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212844997" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="SimonKulessaTaskLog"}%
+*Komponente:*
+<br>Delta Tool
+
+*Beschreibung:*
+<br>Speicherformat für die Unterschiede zwischen zwei Revisionen.
+
+*Operationen:*
+<br>
+_Add (Text)_
+<br>
+_Copy (!StartIndex, Anzahl der zu kopierenden Zeichen)_
+<br>
+<br>Diese Operationen werden ausgehend von der alten Version genutzt.<br>
+ _Copy_ beschreibt einen Block in der alten Revision der in die neue Revision übernommen wird.<br>
+ _Add_ fügt neue nicht in der alten Revision vorhandene Teile ein.
+
+*Ablauf:*
+<br>1. Aufteilen aller Zeichen der alten Revision in eine Index-HashMap (Key: Zeichen, Value: Liste der Positionen des Zeichens)
+<br>2. Laufen über die neue Version und suchen nach dem !LongestCommonSubstring.
+<br>3. Sollte der gefunde Substring länger als seine Repräsentation im !DeltaFormat sein wird eine _Copy_ Anweisung erzeugt.
+<br>4. Andernfalls wird eine _Add_ Operation erzeugt. Mehrere aufeinanderfolgende _Add_ Operationen werden zu einer zusammengefasst.
+
+-- Main.SimonKulessa - 07 Jun 2008

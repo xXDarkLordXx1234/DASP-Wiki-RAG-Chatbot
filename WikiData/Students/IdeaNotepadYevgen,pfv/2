@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="OliverFerschke" date="1303924202" format="1.1" version="2"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Quotes in Diskussionen
+   * *OF:* Wir sollten eine UIMA-Komponente zur Erkennung von Zitaten in Diskussionen entwickeln. Der Annotator soll alle Bereiche einer Diskussion markieren, die ein Zitat darstellen. Am Besten unterscheidet man auch zwischen "Zitat aus dem Artikel" und "Externes Zitat".
+      * Dies verlässlich hinzukriegen kann schwer sein. Allzu viel Zeit solltest du nicht darauf verbrauchen. Fürs Erste reicht eine vorläufige Version. Wenn wir sehen, dass diese Informationen für die spätere Klassifizierung besonders wichtig sind, können wir die Komponente verbessern
+      * Vielleicht hilft dieses Paper - es kann sein, dass es nichts bringt, da das Paper sich mit eMails beschäftigt: [[http://www.cs.cmu.edu/%7Evitor/papers/sigFilePaper_finalversion.pdf][Learning to Extract Signature and Reply Lines from Email]]
+
+---+ MediaWiki Parser in JWPL
+   * Wir können den Parser so umschreiben, dass er bei Bedarf die Doppelpunkte bei den Indents stehen lässt.
+   * Im Standardverhalten sollten die Doppelpunkte jedoch zunächst weiterhin entfernt werden.
+
+-- Main.OliverFerschke - 2011-04-27

@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1303140200" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="WikipediaAnalysis"}%
+---+ JWPL Information Coverage
+%TABLE{ sort="off" tableborder="1" cellborder="1"}%
+%EDITTABLE{  sort="off" tableborder="1" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Feature* | *Representation Class* | *Extraction Points* | *LMF Class* | *LMF Attribute* | *Comment* |
+| __Wikipedia__ | Wikipedia | | - | - | |
+| - Language | Language | Wikipedia: getLanguage() | - | - | |
+| __Page__ | Page | Wikipedia: getPage(), <br>getPages(), <br>getArticles()<br>Category: getArticles() | | | |
+| - Title | Title | Page: getTitle()<br>Wikipedia: getTitles() | | | |
+| - Page ID | int | Page: getPageId() | | | |
+| - Text (Wiki Markup) | String | Page: getText() | | | |
+| - Plain Text | String | Page: getPlainText() | | | |
+| - Page Categories | Set&lt;Category> | Page: getCategories() | | | |
+| - Redirects | Set&lt;String> | Page: getRedirects() | | | |
+| - Inlinks | Set&lt;Page> | Page: getInlinks() | | | |
+| - Inlink Anchors | Set&lt;String> | Page: getInlinkAnchors() | | | |
+| - Outlinks | Set&lt;Page> | Page: getOutlinks() | | | |
+| - Outlink Anchors | Map&lt;String, Set&lt;String>> | Page: getOutlinkAnchors() | | | |
+| - Is Disambiguation | boolean | Page: isDisambiguation() | | | |
+| - Is Redirect | boolean | Page: isRedirect() | | | |
+| __- Parsed Page__ | ParsedPage | Page: getParsedPage() | | | |
+| --- Name | String | ParsedPage: getName() | | | |
+| --- Page ID | int | ParsedPages: getPageId() | | | |
+| --- Sections | List&lt;Section> | ParsedPage: getSections() | | | |
+| --- Categories | List&lt;Link> | ParsedPage: getCategories() | | | |
+| --- Paragraphs | List&lt;Paragraph> | ParsedPage: getParagraphs() | | | |
+| --- First Paragraph | Paragraph | ParsedPage: getFirstParagraph() | | | |
+| --- Tables | List&lt;Table> | ParsedPage: getTables() | | | |
+| --- NestedLists | List&lt;NestedLisContainer> | ParsedPage: getNestedLists() | | | |
+| --- DefinitionLists | List&lt;DefinitionList> | ParsedPage: getDefinitionLists() | | | |
+| --- Formats | List&lt;Format> | ParsedPage: getFormats() | | | |
+| --- FormatSpans | List&lt;Span> | ParsedPage: getFormatSpans() | | | |
+| --- Links | List&lt;Link> | ParsedPage: getLinks() | | | |
+| --- Templates | List&lt;Template> | ParsedPage: getTemplates() | | | |
+| --- Languages | List&lt;Link> | ParsedPages: getLanguages() | | | |
+| __Category__ | Category | Wikipedia: getCategory(), <br>getCategory()<br>Page: getCategories() | | | |
+| - Title | Title | Category: getTitle() | | | |
+| - Articles | Set&lt;Page> | Category: getArticles() | | | |
+| - Parent Categories | Set&lt;Category> | Category: getParents() | | | |
+| - Children Categories | Set&lt;Category> | Category: getChildren() | | | |
+| - Sibling Categories | Set&lt;Category> | Category: getSiblings() | | | |
+| - Descendants | Iterable&lt;Category> | Category: getDescendants() | | | |
+<nop>
+
+%META:TOPICMOVED{by="YevgenChebotar" date="1303139382" from="Hiwi.JwplLmfMapping" to="Hiwi.JwplInfoCoverage"}%

@@ -1,0 +1,102 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="2"}%
+%META:TOPICPARENT{name="Resources"}%
+---+ Deutscher Bildungsserver
+
+---++ Datenbank, 27840 Einträge
+   * Title: German (100% set), English (5% set) and &ldquo;Biblio&rdquo; (3% set)
+   * Url: &ldquo;Url German&rdquo; (100% set), &ldquo;Url English&rdquo; (4% set) and front page of the website which hosts the document (64% set, 7098 distinct pages).
+   * Bildungsbereich: 100% set; 507 distinct labels; includes many combinations of labels. most frequent:
+      * 12% &ldquo;Hochschule&rdquo;
+      * 9% &ldquo;Sekundarstufe I; Sekundarstufe II&rdquo;
+   * Category: 100% set; 6676 distinct paths; example: &ldquo;Hochschule -&gt; Hochschulwesen allgemein -&gt; Hochschulpolitik, -verwaltung&rdquo; 
+      * 1. level: 20 categories; 9% of entries are stored in min. one of the 20 categories.
+      * 2. level: 68 categories; 28%
+      * 3. level: 297 categories; 80%
+      * 4. level: 325 categories; 29%
+      * 5. level: 129 categories; 8%
+      * 6. level: 10 categories; &lt;1%
+      * 7. level: 21 categories; &lt;1%
+      * Total of 733 category names (some like &ldquo;school&rdquo; appear on multiple paths/levels); median: 16.5 entries per category name; 831 documents in &ldquo;Medienerziehung&rdquo;.
+   * Keywords: 99% set; median: 6 words; 26763 distinct words 
+      * 0.8%: schule, deutschland, weiterbildung
+      * 0.6%: hochschule, unterricht, projekt, erwachsenenbildung, kind
+   * Entered by: 100% set; 3601 distinct; 61% with Dipf mail address
+   * Description: 99% set; median: 42 words.
+   * Technical requirements: 20% set; almost all are related to PDFs (&ldquo;Acrobat Reader&rdquo;), some are nonsense like &ldquo;browser&rdquo; or &ldquo;internet access&rdquo;.
+   * Language: 98% set; 215 distinct; 85% Germany, 7% English, many pairs (German+French).
+   * State: 60% set; 143 distinct; 85% Germany
+   * Official Document: 10% set; 79 distinct; 20% &ldquo;Bundesministerium für Bildung und Forschung (BMBF)&rdquo;
+   * Url Description: 6% set; 1543 distinct; all are urls; example: http://etext.lib.virginia.edu/modeng/modengD.browse.html
+   * Target audience: 1% set; 21% &ldquo;for all&rdquo;, 12% children; includes combinations
+   * Resource category: 74% set; 40 distinct. 
+      * Artikel/Aufsatz/Bericht/Thesenpapier: 27%
+      * Index/Katalog/Datenbank/Bibliographie: 22%
+      * Lehr-Lernmittel/Aufgabensammlung: 14%
+      * Projekt: 7%
+      * Monographie/Buch/Dissertation: 4%
+   * Media category: 97% Internet, 0.5% Print, Video, Audio; 1% combinations.
+   * Terms of use: 9% set; most of them &ldquo;free&rdquo;, &lt;1% are &ldquo;commercial&rdquo; or &ldquo;registration&rdquo;.
+   * Taken from: 20% set; 24% &ldquo;Lehrer-Online - Netzwerk und Informationsplattform für Lehrerinnen und Lehrer von Schulen ans Netz e.V.&rdquo;; 3369 distinct (probably institution/website name).
+   * Schulwebnummer: 2% set; long numbers; almost no duplicates.
+   * Valid to: 2% set; almost all expire on 2026-10-31 (no immediate pattern visible)
+   * Author: 95% set; 19378 distinct; includes names, emails and institutions.
+   * &ldquo;Bezugsquelle&rdquo;: 11% set; 2574 distinct; 2% &ldquo;Dahlmannstraße 26, 53113 Bonn&rdquo;
+   * Url copyright: 7% set; example: &ldquo;http://etext.lib.virginia.edu/conditions.html&rdquo;
+   * Checked by: 100% set; 2701 distinct; 6% &ldquo;eli&rdquo;, 5% &ldquo;hi&rdquo;; most are multiple persons
+   * Internal notes: 16% set; 1356 distinct; 14% &ldquo;LID_FREIGABE&rdquo;, 11% &ldquo;FIS:MO&rdquo;
+   * &ldquo;FIS Spezial&rdquo;: 2% set; 508 distinct; 7% &ldquo;Innsbruck : bidok Digitale Volltextbibliothek&rdquo;
+
+---++ Finding Descriptions in the Content
+   * Test: How much of a link&rsquo;s description can be found on the file (just the linked url for websites, all pages for PDFs).
+   * Metric: Description is split into sentences. For each sentence, the length of the largest n-gram in it, which is also in the file, is considered. The length is divided by the total number of words within the sentence. When summing all sentence scores, each sentence&rsquo;s weight corresponds to it&rsquo;s relative length within the description.
+   * Mean correspondence: 0.26, so at least one forth is copied from the source.
+   * 10% are almost entirely taken from the source.
+   * 0.1763 Spearman correlation between metric and entry id -&gt; copied description may be removed from the source over time.
+
+---++ Internal Notes
+   * Many resources are listed in multiple categories, e.g., [[http://www.bildungsserver.de/db/mlesen.html?Id=24992]]
+   * Entries are either validated through DIPF and appear in &ldquo;Themen&rdquo;, or they aren&rsquo;t validated (yet) and appear in &ldquo;Onlineressourcen&rdquo;. Apparently no documents are in both sections and column &ldquo;valid to&rdquo; has to be set to a future date to appear in &ldquo;Themen&rdquo; (only 2% of all entries!).
+   * It seems like even having similar names, the directory tree of the main &ldquo;Themen&rdquo; is separated from the tree of the &ldquo;Onlineressourcen&rdquo; database. There seem to be no category which hosts entries from &ldquo;Themen&rdquo; and &ldquo;Onlineressourcen&rdquo;.
+   * Applications of Reinforcement Learning: 
+      * Web Crawler: Probably a hierarchical approach including: 
+         * a controller,
+         * a module for constructing queries from some sort of topic characterization (keywords) and what was already found,
+         * a module for processing single websites, including which on-page links to follow, which outgoing links to store and when to stop because we have enough information to either extract all data we want or to reject the website entirely (using probabilistic state features).
+      * Clustering (maybe): Sequential approach to build a tree of document clusters as nodes. Actions: add/remove child node/cluster; move document from one node to another; drop document for good
+      * Summary/keywords extraction/generation: merging multiple sentences into a summary should be difficult, but searching keywords in a sequential fashion could work very well.
+      * Quality Assessment: Possibility of growing decision trees using RL, otherwise we can use classic supervised learning approaches.
+   * Some of the labels of minor importance for the Bildungsserver (target audience, terms of use, and maybe others they don&rsquo;t have yet but would like to have) could be learned pretty easily by considering a generic set of features per entry and use standard supervised learning algorithms. 
+      * We will probably have to do this anyhow to enrich the state features for reinforcement learning.
+   * Some labels are difficult to extract, like &ldquo;Bezugsquelle&rdquo; or &ldquo;FIS Spezial&rdquo;. We&rsquo;ll have to ask them about the importance of those.
+
+---++ Questions
+   * Is the distinction between &ldquo;Themen&rdquo; and &ldquo;Onlineressourcen&rdquo; desired or would the Bildungsserver rather have the manpower to validate all entries in &ldquo;Onlineressourcen&rdquo; and either include them in &ldquo;Themen&rdquo; or remove them entirely from the website?
+   * Are any of the categories actively involved in the construction of the database (e.g., focus on &ldquo;Hochschule&rdquo; and &ldquo;Artikel/Aufsatz/Bericht/Thesenpapier&rdquo;) or are entries just selected by content and quality and then labeled for information?
+   * What is the strategy regarding language, considering only 85% German entries? Could this become a multi-language directory or are there only special non-German pages, like for semesters abroad, considered?
+   * Are some of the labels which are not set for all entries required to have if they are available or are there types of content which have to have such information before they can be published? If not, should they even be mined, if possible? Examples: Url Description, Url Copyright.
+
+---+++ Minimum Requirement
+   * How do you evaluate content quality? What are the minimum requirements for size, content, presentation, credibility of the source?
+   * Are there any restrictions on the content other than German law and the obvious like extremism, historical revisionism, etc.?
+   * Are there any other laws which have to considered, e.g., copyright-related?
+
+---+++ Data
+   * Are there examples of rejected entries to learn the policy from? 
+      * If not, what are their comments about not having documents enlisted because they haven&rsquo;t found them yet vs. they rejected it? How frequent are rejections etc.
+
+---++ Protocol Meeting at the DIPF
+   * Die Datengrundlage besteht neben den von uns bisher betrachteten "Onlineressourcen" (Webseiten und PDFs) auch aus Institutionen, Veranstalungen und den anderen auf bildungsserver.de gelisteten Datenbanken.
+   * Die einzelnen Datenbanken beinhalten möglichst viele, inhaltlich breit gefächerte Einträge, die von den Redakteuren auf ausreichende Qualität und Relevanz geprüft wurden.
+   * Die Themenseiten werden als Teilmengen *aller* Datenbanken gebildet und sind von den Hierarchien der einzelnen Datenbanken unabhängig.
+   * Die Struktur der Onlineressourcen-Datenbank ist im Wesentlichen beständig, während sich die Ordnung der Themenseiten häufig ändern können, z.B. um aktuelle Unterthemen hervorzuheben.
+
+   * Die einzelnen Themenseiten sollen als aufbearbeitete Zustammenstellung der wichtigsten Ressourcen auf jedem Gebiet dienen.
+   * Die Redakteure sind in der Gestaltung der Themenseiten, das heißt Inhalt und Struktur, größtenteils frei, es gibt also keine strikten formalen Vorgaben z.B. über Umfang und Art der Kategorisierung.
+   * Generell wird Wert darauf gelegt, kostenfreie Inhalte anzubieten, die möglichst aus öffentlichen Quellen, wie den diversen Ministerien, stammen.
+   * Kommerzielle Inhalte sind insbesondere dort relevant, wo es wenige kostenfreie Inhalte gibt, wie z.B. in der Erwachsenenbildung. Sie sollen aber nicht qualitative kostenlose Angebote verdrängen.
+   * Wesentlich ist stets der Informationsgehalt, es ist also zum Beispiel möglich, Informationsseiten zur Wohnungsfindung für Studenten zu beinhalten, Dienste wie Immobilienseiten gehen jedoch zu weit.
+
+   * Links können sowohl auf ganze Domains, auf Unterbereiche, sowie einzelne Seiten bzw. PDF-Dokumente, verweisen.
+   * Für Redakteure gibt es ein eingeschränktes Vokalubar für Keywords, welches uns bei der Evaluation der Keyword-Extraction helfen sollte.
+   * Ebenfalls gibt es interne Listen bzgl. favorisierter Quellen/Domains, mit welchen wir das Bewertungsverhalten des Crawlers evaluieren können.
+   * Weiter werde ich Zugang zu einem System erhalten, welches u.A. einen "Papierkorb" für abgelehnte Linkvorschläge enthält. Damit können wir noch expliziter lernen, welche Inhalte gecrawled werden sollten und welche nicht. 

@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="BastianChristoph" date="1286896109" format="1.1" version="4"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+---++ Sentence Selection
+
+%TOC%
+
+---++++ Graph based
+   * Sentence centrality: LexPageRank
+   * Directed Graphs: Hidden Markov Models (HMM)
+   * Undirected Graphs: Conditional Random Fields (CRF)
+
+---++++ Query-related
+   * Maximal Marginal Relevance (MMR)
+
+---++++ Others
+   * Randomized local search
+   * Relevance measure and latent semantic analysis

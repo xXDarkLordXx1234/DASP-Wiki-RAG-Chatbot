@@ -1,0 +1,271 @@
+%META:TOPICINFO{author="bora" comment="reprev" date="1451451143" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="RaktimBora"}%
+---++ Intro
+
+This web-page contains a comprehensive guideline to replicate the experiments described in paper 'Large-scale Semantic Parsing without Question-Answer Pairs' by Siva Reddy et.al. and as it appeared In Transactions of the Association for Computational Linguistics (2014). In case of any issues, please write me an email at rbora.tudarmstadt@gmail.com
+
+---++ Installing Virtuoso RDF Query Store
+
+Virtuoso is a RDF query store and can act as a SPARQL end-point. We will load (parts of) Freebase, more specifically the domains People, Business and Film (which are also the three largest subsets of Freebase) into Virtuoso. The SPARQL end-point is then used to query Freebase during unsupervised learning and testing. The process is described in the following steps:
+   * Clone the virtuoso repository from Github to your local machine
+   * git clone https://github.com/openlink/virtuoso-opensource
+   * cd virtuoso-opensource
+   * Setting C-Flags:Some builds require additional C compiler and other environment flags to be set before running the configure command, especially when building 64-bit versions of the server. Please select you appropriate OS flavor and set flags accordingly.
+      * Generic build environment
+      -------------------------
+          * CC=cc
+          * CFLAGS="-O"
+          * export CFLAGS CC
+      * AIX 4.x 32-bit
+      --------------
+          * CC=cc_r7
+          * CFLAGS="-O -q32"
+          * LDFLAGS="-brtl"
+          * OBJECT_MODE=32
+          * export CC CFLAGS  LDFLAGS OBJECT_MODE
+           
+
+      * AIX 4.x 64-bit
+      --------------
+          * CC=cc_r7
+          * CFLAGS="-O -q64"
+          * LDFLAGS="-brtl"
+          * OBJECT_MODE=64
+          * export CC CFLAGS  LDFLAGS OBJECT_MODE
+           
+
+      * AIX 5.x 32-bit
+      --------------
+          * CC=cc_r
+          * CFLAGS="-O -q32"
+          * LDFLAGS="-brtl"
+          * OBJECT_MODE=32
+          * export CC CFLAGS  LDFLAGS OBJECT_MODE
+           
+
+      * AIX 5.x 32-bit
+      --------------
+          * CC=cc_r
+          * CFLAGS="-O -q64"
+          * LDFLAGS="-brtl"
+          * OBJECT_MODE=64
+          * export CC CFLAGS  LDFLAGS OBJECT_MODE
+           
+
+      * Digital Unix/OSF1 V5.0 64-bit
+      -----------------------------
+          * CFLAGS="-O"
+          * export CFLAGS
+           
+
+      * HP/UX 11.00 32-bit
+      ------------------
+          * CFLAGS="-O -Ae +DA1.1"
+          * export CFLAGS
+           
+
+      * HP/UX 11.00 64-bit
+      ------------------
+          * CFLAGS="-O -Ae +DA2.0W"
+          * export CFLAGS
+           
+
+      * HP/UX 11.23 Itanium 32-bit
+      --------------------------
+          * CFLAGS="-O -Ae +DD32"
+          * export CFLAGS
+           
+
+      * HP/UX 11.23 Itanium 64-bit
+      --------------------------
+          * CFLAGS="-O -Ae +DD64"
+          * export CFLAGS
+           
+
+      * Linux 32-bit
+      ------------
+          * CFLAGS="-O2"
+          * export CFLAGS
+           
+
+      * Linux 64-bit
+      ------------
+          * CFLAGS="-O2 -m64"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.2 and 10.3 PPC 32-bit
+      ---------------------------------
+          * CFLAGS="-O -m32 -mmacosx-version-min=10.4"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.4 PPC 32-bit
+      ------------------------
+          * CFLAGS="-O -m32 -mmacosx-version-min=10.4"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.4 PPC 64-bit
+      ------------------------
+          * CFLAGS="-O -m64 -mmacosx-version-min=10.4"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.4 Universal 32-bit
+      ------------------------------
+          * CFLAGS="-O -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch ppc -arch i386 -mmacosx-version-min=10.4"
+          * export CFLAGS
+          ./configure --disable-dependency-tracking ...
+
+      * Mac OS X 10.5 32-bit
+      --------------------
+          * CFLAGS="-O -m32 -mmacosx-version-min=10.5"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.5 64-bit
+      --------------------
+          * CFLAGS="-O -m64 -mmacosx-version-min=10.5"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.5 Universal 
+      -----------------------
+          * CFLAGS="-O -isysroot /Developer/SDKs/MacOSX10.5.sdk -arch ppc -arch i386 -arch ppc64 -arch x86_64 -mmacosx-version-min=10.5"
+          * export CFLAGS
+          ./configure --disable-dependency-tracking ...
+
+      * Mac OS X 10.6 32-bit
+      --------------------
+          * CFLAGS="-O -m32 -mmacosx-version-min=10.6"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.6 64-bit
+      --------------------
+          * CFLAGS="-O -m64 -mmacosx-version-min=10.6"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.6 Universal 
+      -----------------------
+          * CFLAGS="-O -isysroot /Developer/SDKs/MacOSX10.6.sdk -arch i386 -arch x86_64 -mmacosx-version-min=10.6"
+          * export CFLAGS
+          ./configure --disable-dependency-tracking ...
+
+      * Mac OS X 10.7 32-bit
+      --------------------
+          * CFLAGS="-O -m32 -mmacosx-version-min=10.7"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.7 64-bit
+      --------------------
+          * CFLAGS="-O -m64 -mmacosx-version-min=10.7"
+          * export CFLAGS
+           
+
+      * Mac OS X 10.7 Universal 
+      -----------------------
+          * CFLAGS="-O -arch i386 -arch x86_64 -mmacosx-version-min=10.7"
+          * export CFLAGS
+          ./configure --disable-dependency-tracking ...
+
+      * Solaris 2.x i386 32-bit
+      -----------------------
+          * CC=cc
+          * CFLAGS="-O"
+          PATH=/opt/SUNWspro/bin:/usr/ccs/bin:$PATH
+          * export CFLAGS CC PATH
+           
+
+      * Solaris 2.10 Opteron 32-bit
+      ---------------------------
+          * CC=cc
+          * CFLAGS="-O -xtarget=opteron"
+          PATH=/opt/SUNWspro/bin:/usr/ccs/bin:$PATH
+          * export CFLAGS CC PATH
+           
+
+      * Solaris 2.10 Opteron 64-bit
+      ---------------------------
+          * CC=cc
+          * CFLAGS="-O -xtarget=opteron -xarch=amd64"
+          PATH=/opt/SUNWspro/bin:/usr/ccs/bin:$PATH
+          * export CFLAGS CC PATH
+           
+
+      * Solaris 2.8 and above SPARC 32-bit
+      ----------------------------------
+          * CC=cc
+          * CFLAGS="-O"
+          PATH=/opt/SUNWspro/bin:/usr/ccs/bin:$PATH
+          * export CFLAGS CC PATH
+           
+
+      * Solaris 2.8 and above SPARC 32-bit
+      ----------------------------------
+          * CC=cc
+          * CFLAGS="-O -xtarget=ultra -xarch=v9"
+          PATH=/opt/SUNWspro/bin:/usr/ccs/bin:$PATH
+          * export CFLAGS CC PATH
+
+   * Once on local check out a branch as follows:
+      * git checkout tags/v7.0.0
+      * Virtuoso stable/7 has bug which makes it incompatible with Ubuntu Trusty (14.04 LTS)
+      * Fetch from develop/7 branch instead if using Ubuntu 14.04 LTS. 
+   * Configure installation
+      * ./autogen.sh
+      * ./configure --prefix=$PWD/install
+      * sudo chmod +755 -R [path/to/directory] (Make the path executable)
+   * Make and install
+      * make
+      * make check
+      * make install
+
+---++Starting up and running virtuoso
+   * The virtuoso configuration lie in the virtuoso.ini file which resides in var/lib/virtuoso/db/ typically after installation. You can also have you own virtuoso.ini file located elsewhere. But always fire up virtuoso from within the same directory as your virtuoso.ini file
+   * virtuoso-t -f (will start virtuoso)
+   * SPARQL endpoint should be available at http://localhost:8890/sparql
+
+---++ Loading a copy of Freebase into Virtuoso
+   * Shutdown virtuoso if already running
+      * open an isql terminal ($isql) and perform shutdown();
+   * Download a Virtuos database dump containing Freebase from
+      * https://drive.google.com/file/d/0B70MZpgZIn7oNnB5dXBTU1pybnc/view?usp=sharing
+      * Download size is 14GB. When you untar it, it would be around 60GB. 
+      * This contains the Virtual database file containing parts of freebase specific to the experiment
+   * Untar Freebase vda directory. Open the virtuoso.ini inside this directory and replace /disk/scratch/users/s1051585/tools/var/lib/virtuoso/vdb/ with the current directory. Virtuoso now points to this database copy rather than the one that was created after installation.
+   * Change NumberOfBuffers and MaxDirtyBuffers in virtuoso.ini to your desired values depending upon your memory constraints. (Please un-comment the line for the desired RAM setting to activate the setting)
+   * At-least 32GB RAM recommended. Best runs at 64GB RAM. You can still run at lower configurations but performance will be very poor.
+   * Restart Virtuoso 
+      *   virtuoso-t -f
+
+---++ Unsupervised learning and model creation
+   * Download the code base from 
+      * https://drive.google.com/file/d/0B70MZpgZIn7oY1pyRGlOUlltdW8/view?usp=sharing
+      * Around 500MB. Uncompressed is around 800MB.
+   * Download the webquestions dataset
+      * wget https://bitbucket.org/sivareddyg/public/downloads/graphparser_tacl_2014_webquestions_replication_data.tgz
+      * tar -xvzf graphparser_tacl_2014_webquestions_replication_data.tgz
+      * rm graphparser_tacl_2014_webquestions_replication_data.tgz
+   * To run the baseline task as described in the paper (no learning)
+      * make -f Makefile tacl_mwg 
+   * To run unsupervised learning
+      * make -f Makefile tacl_unsupervised
+      * This will take a long time to finish. But one can get an idea looking into the log files of each iteration.
+
+---++ Performance evaluation
+   * To evaluate the Baseline model
+      * python <scripts/sempre_styled_evaluation.py> <../working/tacl_mwg/business_film_people.log.txt.eval.test.bestIteration.1best.answers.txt>
+   * To evaluate the unsupervised learning model
+      * python <scripts/sempre_styled_evaluation.py> <../working/tacl_unsupervised/business_film_people.log.txt.eval.test.bestIteration.1best.answers.txt>
+   * If you want to look into training logs, these are in *.train.iteration*.  
+   * If you are interested in grounding output after training, look into the log files *.dev.iteration*. 
+   * To see the results of each iteration look into *.eval.iteration*. 
+   * To get an idea of the model parameters, look into *model.iteration*.readable.txt. 
+   * If you want to evaluate output after an iteration, use the files *.1best.answers.txt and the evaluation script in scripts/sempre_styled_evaluation.py.
+
+
+ 

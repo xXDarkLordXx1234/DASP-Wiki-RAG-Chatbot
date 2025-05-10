@@ -1,0 +1,76 @@
+%META:TOPICINFO{author="NicoErbs" date="1265369215" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="NicoErbsHiWiWork"}%
+---+++ SemEval-2
+
+%TOC%
+
+A link to the official webpage is [[http://semeval2.fbk.eu/semeval2.php?location=tasks-short][here]].
+
+---++++ Task description
+In this work a system for solving task #5 (Automatic Keyphrase Extraction from Scientific Articles) is the goal. To do so the existing experiments have to be adapted to the format of the training and test data.
+Additionally the following steps can be done:
+   * Use segmentation
+   * Try supervised approaches
+
+---++++ Registration and Dates
+Login:
+   * user: n_erbs@tk.informatik.tu-darmstadt.de
+   * pw: 2u3yzu4
+Dates:
+   * Feb. 15th: Test and training data release
+   * March 19th: Closing submission
+   * March 31st: Results
+   * April 17th: Submission of description papers
+   * May 6th: Notification of acceptance
+   * July 15th-16th: Workshop Uppsala
+
+---++++ Data
+Until now only trial data is available. It has the following characteristics:
+   * One document in each file
+   * A file containing a document ends with ".txt.final"
+   * GoldStandard for all files are stored in one file only
+   * Different GoldStandards (author, reader, combined) and (normal, stem)
+   * GoldStandard is one document each line
+   * Keywords seperated by comma
+
+Statistics for trial data:
+%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| | *Author* | *Reader* | *Combined* |
+| *# Documents* | 40 | 40 | 40 |
+| *Tokens / Document* | 10305.975 | 10305.975 | 10305.975 |
+| *Keyphrases* | 149 | 526 | 621 |
+| *Keyphrases / Document* | 3.725 | 13.15 | 15.525 |
+| *Characters / Keyphrase* | 15.72 | 19.96 | 19.30 |
+| *Tokens / Keyphrase* | 2.02(+/- 0.84) | 2.32(+/- 0.95) | 2.27(+/- 0.95) |
+
+
+---++++ Evaluation
+Evaluation can be done by a perl script (performance.pl). The script requires keywords in the same format as the GoldStandard.
+Different options how to do that:
+   * Create a reader which outputs keyphrase candidates in the corresponding format
+   * Create perl script, which is transforming data to the correct format
+
+---+++++ Trial data evaluation
+
+---++++++ Author
+%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+|  | *Match* | *Precision* | *Recall* | *FScore* |
+| Top 05: |  | 0.20% | 0.67% | 0.31% |
+| Top 10: |  | 0.10% | 0.67% | 0.17% |
+| Top 15: |  | 0.07% | 0.67% | 0.13% |
+
+---++++++ Reader
+%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+|  | *Match* | *Precision* | *Recall* | *FScore* |
+| Top 05: |  | 0.40% | 0.38% | 0.39% |
+| Top 10: |  | 0.30% | 0.57% | 0.39% |
+| Top 15: |  | 0.33% | 0.95% | 0.49% |
+
+---++++++ Combined
+%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+|  | *Match* | *Precision* | *Recall* | *FScore* |
+| Top 05: |  | 0.40% | 0.32% | 0.36% |
+| Top 10: |  | 0.30% | 0.48% | 0.37% |
+| Top 15: |  | 0.33% | 0.81% | 0.47% |
+
+-- Main.NicoErbs - 02 Feb 2010

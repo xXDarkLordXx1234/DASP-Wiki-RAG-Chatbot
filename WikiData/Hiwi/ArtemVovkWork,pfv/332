@@ -1,0 +1,115 @@
+%META:TOPICINFO{author="ArtemVovk" date="1314789452" format="1.1" version="332"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Artem Vovk Work
+
+---++ Documents
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+ImportingWikipedia
+
+SuggestSectionProblems
+
+---++ Work
+
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Installation von Wikulu | 90 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| RevisionMachine | 25.07.2011 | 5 | <ul><li>ArticleFilter was modified(now works correctly and can filter all combinations of namespaces) and the configuration of Articlefilter was implemented</li></ul> |
+| RevisionMachine | 25.07.2011 | 3 | <ul><li>Editing of config GUI Tool</li></ul> |
+| RevisionMachine | 26.07.2011 | 1 | <ul><li>Config GUI Tool was extended with filtering functionality</li></ul> |
+| Wikulu | 15.08.2011 | 4 | <ul><li>Beratung mit Nico</li><li>Behebung von Bug 953</li></ul> |
+| Wikulu | 24.08.2011 | 2 | <ul><li>Technische Probleme(ssh+sftp)</li><li>Analyse von Bugs 952, 954</li></ul> |
+| Wikulu | 25.08.2011 | 2 | <ul><li>Analyse von Bugs 952, 954</li></ul> |
+| Wikulu | 26.08.2011 | 5 | <ul><li>Bug 952 - WebContent folder in proxy module does not belong in SVN - *fixed* </li><li>Bug 953 - "java_class" propery in plugin.js should use full class name - *fixed* </li><li>Bug 954 - proxy module has hard dependency on plugins - *fixed* </li></ul> |
+| Wikulu | 28.08.2011 | 1 | <ul><li>Reinigung von Wikulu Projekt</li></ul> |
+| Wikulu | 29.08.2011 | 3.5 | <ul><li>Besprechung mit Oliver</li><li>Besprechung mit Nico und Silvana</li><li>QADemo Einstellung, Anpassung von Parametrn</li></ul> |
+| Wikulu | 30.08.2011 | 3 | <ul><li>Besprechung mit Silvana</li><li>Anpassung von QADemoPlugin</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 91.5 | bis Ende September |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+   * [[%ATTACHURL%/build.xml][build.xml]]: Script for importing wikipedia
+---------------------
+
+ReleasePackageErrors
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"
+
+
+---++ Previous Work
+
+   * ArtemVovkPreviousWork
+
+   
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="MiniManual.pdf" attachment="MiniManual.pdf" attr="" comment="Manual to %22Preloaded descriptor selection%22" date="1234806618" path="MiniManual.pdf" size="40665" stream="MiniManual.pdf" tmpFilename="/var/tmp/CGItemp37940" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="build.xml" attachment="build.xml" attr="" comment="Script for importing wikipedia" date="1248857901" path="build.xml" size="2013" stream="build.xml" tmpFilename="/var/tmp/CGItemp61365" user="ArtemVovk" version="1"}%

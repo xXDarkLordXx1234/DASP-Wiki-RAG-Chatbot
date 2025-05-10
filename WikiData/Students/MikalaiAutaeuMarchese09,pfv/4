@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="NicoErbs" date="1272639699" format="1.1" version="4"}%
+%META:TOPICPARENT{name="Hiwi.NicoErbsHiwi"}%
+---+++ Large Dataset for Keyphrases Extraction
+
+by Krapivin, Mikalai andAutaeu, Aliaksandr and Marchese, Maurizio (2009) Large Dataset for Keyphrases Extraction. Technical Report DISI-09-055, Informatica e Studi Aziendali, University of Trento.
+
+see [[http://eprints.biblio.unitn.it/archive/00001671/][here]]
+
+---++++ Abstract
+
+We propose a large dataset for machine learning-based automatic keyphrase extraction. The dataset has a high quality and consist of 2,000 of scientific papers from computer science domain published by ACM. Each paper has its keyphrases assigned by the authors and verified by the reviewers. Different parts of papers, such as title and abstract, are separated, enabling extraction based on a part of an article's text. The content of each paper is converted from PDF to plain text. The pieces of formulae, tables, figures and LaTeX mark up were removed automatically. For removal we have used Maximum Entropy Model-based machine learning and achieved 97.04% precision. Preliminary investigation with help of the state of the art keyphrase extraction system KEA shows keyphrases recognition accuracy improvement for refined texts
+
+---++++ Dataset
+You can find the dataset [[http://disi.unitn.it/~krapivin/keyphrases/data-to-learn-keyphrases/all_docs_abstacts_refined.zip][here]]. It consist of 2304 papers. For each paper there is one file with the suffix "key" and one file with the suffix "txt". The "key-file" contains the extracted keywords (assigned by the author, controlled by the publishers) and the "txt-file" contains the complete article.
+
+Each article contains marks showing from which part the following text is (title, abstract, ...) and contains marks showing the position of figures or tables which have been deleted previously.
+
+-- Main.NicoErbs - 20 Jan 2010
+
+
+[JC] I've written a small, specified reader for this corpus. it looks at the text part and saves the abstract and main text as two views per cas. other text parts and the keywords file are not included, so it is a specified reader for my purposes. anyway, if you want to reuse the code to write a more generic reader or a specified reader for your purposes on this corpus, just ask me for the java file. by the way, Krapivin et al's statement "the dataset has a high quality" is a bit too positive. the files still contain lots of garbage from tables, single characters on single lines, and so on. -- Main.JoachimCaspar - 08 Feb 2010

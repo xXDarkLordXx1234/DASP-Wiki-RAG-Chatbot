@@ -1,0 +1,141 @@
+%META:TOPICINFO{author="ShuoYang" date="1286005055" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Arbeitsprotokoll-1H 2010 / Shuo Yang
+
+%TOC%
+
+---++ Juni 2010
+
+---+++ (Quasi- ) Abgeschlossene Aufgaben
+| *Aufgabe* | *% done* |
+| 1. =FastTranslationAnnotator= | 100 |
+| 2. =XMLFileReader= mit =XPath= | 80 |
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| BM25, Meeting | 29.06.2010 | 1 | Einarbeiten in BM25 <br> Meeting mit Benjamin | * |
+| !XmlFileReader | 28.06.2010 | 3 | Optimierung: ein Mal Evaluierung von XPath-Ausdrücke <ul><li>Weitere Implementierung</li><li>Testen und Aktualisierung vom Bericht XPathPerformanceAnalysis</li></ul> |  |
+| !XmlFileReader | 26.06.2010 | 4 | Optimierung von !XmlFileReader <ul><li> Idee 1: Lesen mehrerer Dateien auf ein mal. </li><li>Performanzbewertung: langsam immer noch</li> <li> Idee 2: Statt 2 Mal Evaluierung von XPath-Ausdrücke, nur 1 Mal mit zusätzlichem Parameter =ID_TAG= </li></ul> |  |
+| !XmlFileReader, Meeting | 24.06.2010 | 2 | XPathPerformanceAnalysis fertig geschrieben <br> Meeting mit Benjamin über Vertragsverlängerung |  |
+| !XmlFileReader | 20.06.2010 | 5.5 | Benchmark durchführen und Bericht schreiben |  |
+| !XmlFileReader | 17.06.2010 | 2 | Für Girt-optimierte !XmlFileReader fertig <br> Testen und Aufräumen |  |
+| !XmlFileReader | 16.06.2010 | 2.5 | Implementierung von !XmlFileReader |  |
+| !XmlFileReader | 08.06.2010 | 2 | Treffen mit Benjamin und Implementierung von !XmlFileReader |  |
+| !XmlFileReader | 05.06.2010 | 3 | Einarbeiten in BM25, XPath <br> Implementierung von !XmlFileReader mit XPath |  |
+| BM25 | 04.06.2010 | 1 | Einarbeiten in BM25 |  |
+| FTA | 03.06.2010 | 0.5 | Aufräumen von =GoogleTranslator= |  |
+| FTA | 02.06.2010 | 1 | Einsetzen von =CasUtils= in =TrecTranslationXmlWriter= |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 39.5)$EXEC($GET(total_hour))"}% | bis Ende Juni noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (inkl. 0.5 Untertrag von Mai) |  |
+<nop>
+
+
+---++ Mai 2010
+
+---+++ Abgeschlossene Aufgaben
+| *Aufgabe* | *% done* |
+| 1. Gegebene Pipelines laufen zu lassen | 100  |
+| 2. =TikaReader= v1.3 | 100 |
+| 3. =TrecTranslationXmlWriter= | 100 |
+
+---+++ Detaillierte Auslistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Writer | 30.05.2010 | 2.5 | Fertigstellen von =TrecTranslationXmlWriter= <br> Testen und Saubermachen | * |
+| FTA | 29.05.2010 | 3 | Vorbereitung von Girt EN Dokumente <ul><li>Gespeichert unter =Dropbox/GIRT/English topics= </li></ul> Zum =FastTranslationAnnotator= <ul><li>Umbenennung zu (vorausgehend) =GoogleTranslator=</li><li>Kleine Änderung der Struktur von Annotation =Translation= </li></ul> und Anfang mit =TrecTranslationXmlWriter= | * |
+| FTA und Meeting | 28.05.2010 | 3 | Erweiterung von =FastTranslationAnnotator= um <ul><li>Filter mit !FeaturePath</li></ul> Einarbeiten in =XPath= <br> und Meeting mit Benjamin über u.ä. =TrecTranslationXmlWriter= | * |
+| FTA | 26.05.2010 | 2 | Diskussion online mit Benjamin über XPath und Annotationen <br /> Weitere Entwicklung von =FastTranslationAnnotator= |  |
+| FTA | 23.05.2010 | 4 | Refactoring von =FastTranslationAnnotator= in <ul><li>Abstrakte Oberklasse =TranslationAnnotatorBase= , was Übersetzungsdienst bietet</li><li>Daraus vererbte =XmlTranslationAnnotator= für die Übersetzung von den durch =XmlFileReader= aus xml-Dateien erzeugenden Annotationen</li><li>und =GeneralTranslationAnnotator= für Übersetzungen allgemeiner Annotationen</li><li>Unterklassen sollen spezifizieren: 1) was zu übersetzen sind  2) wie und mit welcher Annotationen sie indexiert werden sollen</li><li> =GeneralTranslationAnnotator= nutzt !FeaturePath: Wählen von Typen schon unterstützt, Filterung kommt noch</li></ul> Darüber hinaus Testen und Clean-ups. |  |
+| FTA | 22.05.2010 | 6 | Weitere Entwicklung von =FastTranslationAnnotator= <ul><li>Beschränkte Textsegmente um Übersetzungsfehler zu vermeiden</li><li>Endlich Lösen von Hängen-Problem: Ein Bug von Sun, =getInputStream()= von =URLConnection= hängt unbegrenzt (eigentlich einige Minuten aber doch zu lang), falls es kein vollständiges Antwort bekommt.</li><li>Dafür Erweiterung von =google-api-translate-java= um Time-out von 5 Sekunde. Schreitet die Übersetzung diese Timeout über, wird eine Exception geworfen und die Übersetzung vom Aufrufenden erneut versucht</li><li>Dafür Ticket in =google-api-translate-java= geschrieben http://tinyurl.com/35lpq4k </li><li>Anfang mit der Implementierung von !FeaturePath Teil 2 - Filterung</li><li>Refactoring des Projektes als eine abstrakte =TranslationAnnotatorBase= und daraus herleitende =XmlTranslationAnnotator= und =GeneralTranslationAnnotator= </li><li>Weil mit Filterung XML-Tags zu spezifizieren bisschen inflexibel ist, denke ich</li><li>Werde noch darüber mit Benjamin diskutieren</li></ul> |  |
+| !TikaReader, FTA | 21.05.2010 | 6 | Nach der Aufräumarbeiten ist !TikaReader v1.3 fertig <br /> !FeaturePath Teil 1 von FTA <ul><li>Testen von mehrerer Typen</li><li> Entdeckung vom Fehler "Too many text segments or language pairs", wenn zu viele Sätze gleichzeitig übersetzt werden. Muss die Anzahl beschränken</li><li>Zum Debug wurde auch =XmlFileReader= als Maven-Projekt erstellt</li></ul> |  |
+| FTA | 20.05.2010 | 4 | !FeaturePath Teil 1: Typ fertig. <br /> Lernen von Exception Handling <br /> Versuche, ein Problem zu lösen: Annotator hängt von Zeit zu Zeit |  |
+| FTA | 19.05.2010 | 2 | Erweiterung von =FastTranslationAnnotator= um =FeaturePath= |  |
+| FTA und Meeting | 18.05.2010 | 5 | Erweiterung von =FastTranslationAnnotator= <ul><li>Nun ein Maven-Projekt</li><li>Einbauen von !FeaturePath</li><li>Dafür Einarbeiten in =IndexTermAnnotator= </li></ul> Meeting mit Benjamin über <ul><li>Probleme bei Projekte</li><li>Priorität von Projekten</li></ul> |  |
+| !TikaReader | 16.05.2010 | 3 | !TikaReader v1.3 (fast) fertig: <ul><li> =EmlParser= als eigner Tika Parser</li><li>Verwendung des  =CompositeDetector= von =NameDetector= und =MimeTypes= als Detector</li><li>Erhöhung von Stablität</li><li>Weitere TODO: Behandlung von =WriteLimitReachedException= </li></ul> |  |
+| !TikaReader | 15.05.2010 | 1 | Teilweise gelöst: mit =NameDetector= als Detektor von Parser |  |
+| !TikaReader | 14.05.2010 | 1.5 | Lösen vom Problem mit Content Type |  |
+| !TikaReader | 13.05.2010 | 2 | Weitere Modularisierung von =EmlParser= <ul><li>Ab Tika 0.7 kann man in META-INF\services\org.apache.tika.parser.Parser den Klassenname eignes Parsers eintragen, um AutoDetectParser ihn erkennen und verwenden zu können<li> Problem mit Content Type: .eml Dateien mit mancher Encoding lassen sich nicht korrekt dekodieren</li></ul> |  |
+| !TikaReader | 12.05.2010 | 1.5 | Weitere Modularisierung von =EmlParser= als eigenes Parser von Tika |  |
+| !TikaReader | 10.05.2010 | 1 | Weitere Modularisierung von =EmlParser= als eigenes Parser von Tika |  |
+| !TikaReader | 09.05.2010 | 2.5 | Erhöhen von Stabilität von =TikaReader= <br /> Ausziehen von =EmlParser= aus =TikaReader= <br /> (Beide noch nicht fertig) | |
+| Meeting | 07.05.2010 | 0.5 | Meeting mit Benjamin über <ul><li> =TikaReader= und</li><li> !FeaturePath (für =FastTranslationAnnotator= )</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 50)$EXEC($GET(total_hour))"}% | bis Ende Mai noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (inkl. 10 Übertrag von April) |  |
+<nop>
+
+---++ Mitte März ~ Ende April 2010
+
+---+++ Abgeschlossene Aufgaben
+| *Aufgabe* | *% done* |
+| 1. !TikaReader | 100 |
+| 2. Google Translate Analysis - Machbarkeit der Konkatenation | 100 |
+| 3. Girt Topics '06~'08 RU-EN, RU-DE | 100 |
+| 4. Konfiguration von Maven | 100 |
+
+---+++ Detaillierte Auslistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Pipelines | 26.04.2010 | 3.5 | Einarbeiten in =GermanExperiment= und =ParameterOptimizationReport= | * |
+| Pipelines | 25.04.2010 | 2.5 | Weiteres Einarbeit in =GermanExperiment= und <br> Lernen von IR Theorien (nlp4web lecture10) |  | 
+| Pipelines | 24.04.2010 | 2.5 | Einarbeiten in =GermanExperiment= |  |
+| Pipelines | 23.04.2010 | 1.5 | Besprechung mit Benjamin über <ul><li>Checkout von Maven Projekte</li><li>Neue Aufgabe TWiki Markups</li></ul> |  |
+| Maven | 22.04.2010 | 1 | Erfolgreiche Erstellung und Testen von Pipeline Test Projekt mit Maven | |
+| Maven | 21.04.2010 | 1.5 | Mit Betreuung von Benjamin <ul><li>Maven mit UKP Artifactory verbunden</li><li>Konfiguration von Einstellungen mit Eclipse</li></ul> |  |
+| !TikaReader, FTA | 19.04.2010 | 2.5 | Aktualisierung von =TikaReader= <ul><li>Verwendung neuer Bibliothek =Tika 0.7= </li><li>Unterstützung der Dateien von Office XML Format ( =DOCX, XLSX, PPTX= )</li></ul> Ermittlung maximaler Länge einer Anfrage in =FastTranslationAnnotator= : 5000 Zeichen |  |
+| FTA | 18.04.2010 | 3.5 | Erweiterung und Testen von =FastTranslationAnnotator= um <ul><li>Fallbehandlung für Texte, deren Länge die maximale Länge einer Query überschreitet</li><li>Indem sie durch =BreakIterator= geteilt werden, daraus resultierende einzelne Teile übersetzt und dann zusammengefasst.</li><li>Sätze, die an sich die Länge einer Query schon überschreitet, werden jedoch ignoriert mit einer Warnung</li><li> =new line= aufbehoben</li></ul> |  |
+| Maven | 16.04.2010 | 1.5 | Einarbeitung in Maven |  |
+| Maven | 14.04.2010 | 1.5 | Einarbeitung in Maven und <br> Erweiterung von =FastTranslationAnnotator= um <ul><li>Parameter =reset cache= </li></ul> |  |
+| Maven | 13.04.2010 | 1 | Einarbeitung in Apache Maven |  |
+| Pipelines | 12.04.2010 | 0.5 | Versuchen, Pipelines laufen zu lassen |  |
+| Pipelines | 08.04.2010 | 1 | Über Pipelines <ul><li>Besprechung mit Benjamin</li><li>Versuchen dies laufen zu lassen</li></ul> | |
+| FTA | 07.04.2010 | 4 | Über Pipelines <ul><li>Versuchen dies laufen zu lassen</li></ul> Erweiterung und Testen von =FastTranslationAnnotator= um <ul><li>Die Fähigkeit, (nur) ausgewählte XML Tags (nicht) zu übersetzen</li><li>Caching nach Sprachpaare</li></ul> | |
+| !TikaReader | 05.04.2010 | 3.5 | Erweiterung von =TikaReader= um <ul><li>Erneutes Schreiben von =.eml= -Lesen Teil, nun HTML-Teil bevorzugt über reine Text, falls vorhanden</li><li>Höhere Zuverlässigkeit beim Einlesen von =.eml= Dateien</li><li>Unterstützung aller Arten von =.eml= Dateien</li><li>Zum Testen Installation und Einstellung von =Thunderbird=, um zusächliche Beispiel von =.eml= Dateien zu bekommen</li>  |  |
+| Girt RU | 03.04.2010 | 4.5 | Übersetzung von russischer Girt-Topics '06~'08 <ul><li>Bereinigung und Zusammenstellen der XML Dateien</li><li>Übersetzung mit =FastTranslationAnnotator= </li><li>Dabei Erstellung von Pipelines (im Projekt =FastTranslationAnnotator=, siehe =README=)</li><li>Die Ergebnisse befinden sich nun im =UKPExchange= von Dropbox</li></ul>   |  |
+| GTA-K | 02.04.2010 | 3.5 | Anlegen von neuem Projekt =FastTranslationAnnotator= <ul><li>für schnellere Übersetzung mit Konkatenation</li><li>Rückwechsel zur Bibliothek =Translate= , da es Übersetzung mehrerer Sätze auch unterstützt und effizientere Encoding bietet</li><li> befindet sich zusammen mit =README= in SVN</li></ul> Abschluss der Verfassung von GoogleTranslateConcatenationFeasibility <ul><li>Dafür Vergleich der Ergebnisse von Übersetzungen, beide mit und ohne Konkatenation</li></ul> |  |
+| GTA-K | 01.04.2010 | 2 | Beschleunigung von =TranslationAnnotator= mithilfe von Konkatenation <ul><li>Verwendung von neuer Bibliothek =Translator= , was Übersetzung mehrerer Sätze in dieselbe Anfrage unterstützt.</li><li>Neue Klasse =QueryLengthChecker= , um Anzahl gleichzeitig erlaubter Strings zu ermitteln</li><ul>  |  |
+| GTA-K | 21.03.2010 | 4.5 | Weitere Testen und Verfassung von GoogleTranslateConcatenationFeasibility |  |
+| GTA-K | 19.03.2010 | 2 | Entwurf und Durchführen von Testcases für GoogleTranslateConcatenationFeasibility |  |
+| GTA-P | 16.03.2010 | 2 | Verfassung von GoogleTranslatePerformanceAnalysis |  |
+| Übersetzung <br /> Girt Topics | 13.03.2010 | 1 | Mit GoogleTranslatePerformanceAnalysis <ul><li>Testcases von längerer Sätze erstellt</li><li>Dürchführen von Testcases daheim und in UKP-Pool</li><li>Dabei maximale Stringlänge von jeder Anfrage bestimmt, durch Encoding entstehende zusätzliche Länge muss man mit einbeziehen</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 61)$EXEC($GET(total_hour))"}% | bis Ende April noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |  |
+
+
+---++ Mitte Februar ~ Mitte März 2010
+
+---+++ (Quasi-) Abgeschlossene Aufgaben
+| *Aufgabe* | *% done* |
+| 1. !TikaReader | 90 |
+| 2. Girt Topics '06~'08 DE-EN, EN-DE | 100 |
+| 3. Google Translate Analysis - Performanz | 100 |
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Übersetzung <br /> Girt Topics | 13.03.2010 | 1 | Mit GoogleTranslatePerformanceAnalysis <ul><li>Testcases von längerer Sätze erstellt</li><li>Dürchführen von Testcases daheim und in UKP-Pool</li><li>Dabei maximale Stringlänge von jeder Anfrage <br /> bestimmt, durch Encoding entstehende zusätzliche <br /> Länge muss man mit einbeziehen</li></ul> |  |
+| Übersetzung <br /> Girt Topics, <br /> Betreuung | 11.03.2010 | 2 | Mit GoogleTranslatePerformanceAnalysis <ul><li>Durchführen von Testcases mit kürzeren Sätzen</li><li>Dabei mehrfach Fehler von Google bekommen, <br /> wegen zu häufiger Zugriffe</li><li>Dafür versucht, optimale Pauseintervall für <br /> Google Translate zu bestimmen</li><li>Und danach Verarbeitung von Testergebnisse <br /> mit Google Spreadsheets</li></ul> und Betreuung von Benjamin, inklusive <ul><li>Ziele von Google Translate Konkatenation Test</li></ul> | |
+| Übersetzung <br /> Girt Topics | 10.03.2010 | 2 | Vervollständigen und Testen von <ul><li> =XmlTagRenamer= </li></ul> und mit GoogleTranslatePerformanceAnalysis angefangen, <br /> inklusive <ul><li>Entwurf Klassen von Testcases</li><li>Erstellen Testcases von kürzer Sätze </li><li>Dabei Zufallsatzgenerator für Übersetzungsmateriale <br /> verwendet (aus dem Internet)</li></ul> | |
+| Übersetzung <br /> Girt Topics | 07.03.2010 | 3 | Übersetzung von Girt Topics '03-'08: English -> Deutsch <ul><li>Die sind von unterschiedlicher XML-Strukturen,<br /> wurden erst analysiert und eingeordnet</li><li>Zur einheitlichen Struktur umgewandelt</li><li>Dabei angefangen,  =XmlTagRename=  Annotator zu <br /> schreiben (nicht weit gekommen)</li><li>Mit  =TranslationAnnotator=  übersetzt und  <br /> =XmlFileWriter=  eingespeichert. </li></ul> |  |
+| Übersetzung <br /> Girt Topics | 04.03.2010 | 3 | Übersetzung von Girt Topics '06 ~ '08: Deutsch -> English <ul><li>Daten aus XML Datei auslesen</li><li>Mit  =TranslationAnnotator=  übersetzen.</li><li>In XML DOM-Modell zusammenfügen</li><li>Auf neue XML-Datei speichern</li><li>Dabei wurde Consumer  =XmlFileWriter=  für Girt- <br /> Dateiformat geschrieben, was XML DOM aus Features<br /> erstellt und es in neue Datei einschreibt</li></ul> |  |
+| TikaReader | 03.03.2010 | 2 | Erweiterung und Testen von =TikaReader= um <ul><li>Rekursives Dateilesen</li><li>Datentyp Filterung mit  =FileSet= </li></ul> und Ergänzung von !JavaDoc |  |
+| TikaReader | 24.02.2010 | 0.5 | Weitere Implementierung vom Parsen des =eml= Formats |  |
+| TikaReader | 19.02.2010 | 3.5 | Einarbeiten von <ul><li> =Tika= toolkit</li><li>dafür benötigte weiteren Bibliotheken</li></ul>   Implementierung und Testen von <ul><li> =TikaReader= , ein Component Reader, der Dateien <br /> mit verschiedener Formate (u.ä. =pdf= , =doc= , =eml= , =xml=) <br /> im Klartext parst, hauptsächlich mit =Tika= toolkit </li><li> auch inklusive Unterstützung von =eml= E-mail Format <br /> mit =javax.mail= (diese Format wurde noch nicht <br /> vom =Tika= unterstützt) </li></ul> |  |
+| CrGIRT,<br />Betreuung,<br />TikaReader | 18.02.2010 | 3 | Einarbeiten von <ul><li>Lucene Index Speicher und Zugriff mit Festplatt</li></ul> weitere Implementierung von <ul><li> =TranslationAnnotator= mit Caching (Timestamping <br /> und reguläre Aktualisierung des Caches auch möglich)</li><li> =TikaReader=, UIMA Component Reader, der mit Tika <br /> Framework Dateien wie PDF, doc zu reinem Text <br /> parst und in CAS speichert.</li></ul> und Betreuung über <ul><li> =TranslationAnnotator= </li><li>Neue Task: =TikaReader= </li></ul> |  |
+| CrGIRT | 17.02.2010 | 5 | Nachvollziehen der Ideen hinter <ul><li>Pipeline, uutuc, uutucs Java-Annotationen</li></ul> und Implementierung von <ul><li> =TokenAnnotator= mit Regex</li><li> =TranslationAnnotator= (umgebaut uutuc-Stil, <br /> Parameter als Java-Annotationen)</li><li>dazu über Typen von DKPro gearbeitet. Eigenen <br /> Type wusste ich noch nicht zu !DKProTypeSystem <br /> hinzuzufügen. Dafür habe ich =Stem= daraus genutzt </li></ul> |  |
+| CrGIRT und <br /> Betreuung | 16.02.2010 | 4.5 | Implementierung von  <ul><li> =TranslationAnnotator= mit Google Translate</li><li> =XMLReader= mit SAX-Modell, weil herausgefunden, <br /> DOM-Modell hat Dateigrößebeschrankungen und <br /> ist ineffizient für GIRT</li></ul> und Betreuung von Main.BenjaminHerbert über <ul><li>Frageerklärungen</li><li>Credentials bei UKP (Jabber, SVN, diese Wiki)</li><li>XML-los uutuc-basierte UIMA-Pipeline</li><li>uutuc-style AEs</li><li>DKPro Java-Library</li><li>Einrichung Arbeitsumgebung im UKP-Pool</li></ul> |  |
+| CrGIRT | 15.02.2010 | 5 | Einarbeiten von <ul><li>Apache Lucene: Indexieren, Suche, Ausgabe TOP10</li><li>Google Translate AJAX APIs (in Javascript) <br /> und deren Java Frameworks</li></ul> Implementierung von <ul><li>Component reader =XMLReader= fürs Einlesen <br /> von GIRT-Daten (mit DOM-Modell)</li><li>Bauen von Index aus GIRT gelesener Texte in Lucene, <br /> Suche und Ausgabe nach absteigender Scores</li></ul> |  |
+| Anfang UIMA | 14.02.2010 | 2.5 | Einrichtung Arbeitsumgebung<ul><li>Installation von UIMA, dessen Eclipse Plug-in</li></ul> und weiteres Einarbeiten von UIMA <ul><li>Implementierung =RoomNumberAnnotator= </li><li>dafür Lernen des Syntax von Regex</li><ul> |  |
+| Betreuung | 12.02.2010 | 2 | Von Main.BenjaminHerbert, diskutiert wurden <ul><li>Information Retrieval, Topic(Query), Document</li><li>Monolingual, Crosslingual IR - durch Übersetzung</li><li>Lucene Index, Suche</li><li>Wettbewerb Clef, GIRT Format, Evaluation</li></ul> und erste Aufgaben beauftragt |  |
+| Anfang UIMA | 08.02.2010 | 2 | Einarbeiten von UIMA, inkl. Konzepte <ul><li>CAS, Annotation</li><li>Reader, Analysis Engine, Consumer</li><li>Multi-View, Aggregate AEs</li></ul>und im Praxis <ul><li>Java Bindings</li><li>CPE GUI</li><li>Erzeugen von Annotations</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 40)$EXEC($GET(total_hour))"}% | bis 15. März noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |  |
+<nop>
+
+-- Main.ShuoYang - 02 Oct 2010
+
+%META:TOPICMOVED{by="ShuoYang" date="1286005054" from="Hiwi.ShuoYangPreviousWork" to="Hiwi.ShuoYangWork1H2010"}%

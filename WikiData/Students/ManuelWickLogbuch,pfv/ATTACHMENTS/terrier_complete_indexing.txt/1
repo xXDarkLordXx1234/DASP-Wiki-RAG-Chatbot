@@ -1,0 +1,47 @@
+Exception:
+
+java.lang.OutOfMemoryError: Java heap space
+	at gnu.trove.TIntArrayList.<init>(TIntArrayList.java:70)
+	at org.terrier.structures.indexing.InvertedIndexBuilder.createPointerForTerm(InvertedIndexBuilder.java:414)
+	at org.terrier.structures.indexing.InvertedIndexBuilder.scanLexiconForPointers(InvertedIndexBuilder.java:445)
+	at org.terrier.structures.indexing.InvertedIndexBuilder.createInvertedIndex(InvertedIndexBuilder.java:270)
+	at org.terrier.indexing.BasicIndexer.createInvertedIndex(BasicIndexer.java:410)
+	at de.tudarmstadt.ukp.dkpro.ir.terrier3.uima.TerrierIndexWriter.collectionProcessComplete(TerrierIndexWriter.java:128)
+	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.collectionProcessComplete(PrimitiveAnalysisEngine_impl.java:320)
+	at org.uutuc.util.SimplePipeline.runPipeline(SimplePipeline.java:66)
+	at org.uutuc.util.SimplePipeline.runPipeline(SimplePipeline.java:57)
+	at de.tudarmstadt.ukp.manuelwick.dkpro.pipeline.TerrierPipeline.indexDocuments(TerrierPipeline.java:38)
+	at de.tudarmstadt.ukp.manuelwick.dkpro.experiments.Experiments.testsector_terrier_indexing(Experiments.java:471)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:73)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:46)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:180)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:41)
+	at org.junit.runners.ParentRunner$1.evaluate(ParentRunner.java:173)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:220)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:46)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+
+
+Last console output:
+
+INFO - 20 lexicons to merge
+INFO - Optimising structure lexicon
+Optimsing lexicon with 841601 entries
+INFO - Started building the inverted index...
+INFO - Started building the inverted index...
+INFO - Iteration 1 of 1 iterations
+27.05.2010 13:45:18 de.tudarmstadt.ukp.manuelwick.dkpro.pipeline.Pipeline_ImplBase logTime(150)
+INFO: Time neeed for Indexing: 53:24 

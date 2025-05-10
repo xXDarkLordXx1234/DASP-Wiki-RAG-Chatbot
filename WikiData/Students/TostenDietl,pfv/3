@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="dietl" comment="save topic" date="1479739152" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.TorstenDietl - 2016-11-21 - Telefonkonferenz
+
+   * POM auf 1.8 stellen durch:
+      * DKPro ParentPOM als Parent im Projekt eintragen. (um Java Encoding, und Version etc. voreinstellen zu lassen) (Version 15 ist die neuste)
+   * Anstelle von Main Methoden lieber Test Methoden und JUnit nutzen.
+   * In POM DependencyManagement die OpenNLP POM als Import POM eintragen. 
+   * Nächster Termin: 29.11.2016 10:00
+
+
+-- Main.TorstenDietl - 2016-11-14 - Telefonkonferenz
+
+   *  Es wurden die Zugangsdaten zu dem UKP Git und Wiki durchgegeben. Es wurde abgesprochen das Projekt auf das UKP Git zu ziehen und die Besprechungen, Fragen, o.ä. in Form von Notizen in der studentenspezifischen Seite im Wiki festzuhalten.
+
+   *  Die Verwirrung um UIMA Komponenten und den CasSampleStream wurde aufgelöst:
+      * Es soll in einem ersten Ansatz auf UIMA oder den CasSampleStream komplett verzichtet werden. Insbesondere ist ein inkrementelles "Befüllen" des CasSampleStreams nicht trivial und unnötig komplex.
+      * Stattdessen soll die OpenNLP API direkt genutzt und die EvalUtil Klasse genutzt werden um Samples aus dem GoldStandard als Liste zu laden, die dann inkrementell als TrainingSet genutzt werden kann.
+
+   * Des Weiteren wurden nochmal folgende Projektspezifizierungen festgehalten:
+      * Es soll in Batchgrößen trainiert werden (z.B. n=10)
+      * Die kleinste Einheit für ein (randomisiertes) Laden, sollte ein Satz sein. Achtung die EvalUtil Klasse liefert vermutlich noch keine Gruppierung von POSTag in ihre Sätze, allerdings sind vermutlich Meta Informationen,   wie z.B. die Id o.ä. vorhanden, um eine Gruppierung relativ einfach erstellen zu können. 
+      * Nach jedem Batch-Training sollen zwei Auswertungen geführt werden, zum einen eine Auswertung auf alle bisher gelernten Daten und zum anderen eine Auswertung auf die nächsten n Daten.
+      * Es sollen mehrere Ansätze getestet werden:
+         * Beginnend mit OpenNLP und lernen auf einem anwachsenden Trainingsdatenset
+         * Über Miralium für einen echten inkrementellen Ansatz
+         * Hin zu einem inkrementellen DeepLearning-Ansatz
+      * Es ist die Idee, später aus den verschiedenen Ansätzen einen mehrstufigen Klassifizierer zu erstellen, der bei wenig Trainingsdaten einen Ansatz wählt, der eine hohe Precision hat und bei einer größeren Trainingsdatenmenge dann zu Ansätzen wechselt, die einen höheren Recall haben. Damit soll der User am Anfang nicht mit vielen unsinnigen Vorschlägen überschüttet werden. Des Weiteren ist die Annahme, dass man den "Verlust" der Precision bei einem "komplexeren" Ansatz damit kompensieren kann, dass man zum Zeitpunkt des Wechsels auf den höheren Ansatz bereits genug Trainingsdaten hat.

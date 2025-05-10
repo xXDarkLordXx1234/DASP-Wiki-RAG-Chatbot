@@ -1,0 +1,187 @@
+%META:TOPICINFO{author="DelphineBernhard" date="1221036126" format="1.1" version="40"}%
+%META:TOPICPARENT{name="ZhiShen"}%
+---+ Meetings
+
+---++ 10.09.2008 (ZS, DB)
+   * @discuss(DB,ZS): Termin für Abschlussvortrag + Abgabe der Ausarbeitung (*mind. 70 Seiten*)
+
+---++ 03.09.2008 (ZS, DB)
+   * @action(ZS):
+      * !DictionaryAnnotator: Nutzungsbeispiel, Use cases: Swear words, emoticons, ims
+      * !SpellingCorrector: Implementation + Unit tests + Documentation + Evaluation auch für *Bigramme*
+         * Evaluations Java Code in SVN einchecken
+      * Grammar checking basierend auf POS Ngrams, Unit tests + Documentation + Evaluation (mit *Fehler Korpus* cf. http://papyr.com/hypertextbooks/grammar/gramchek.htm)
+      * *Wichtig:* Corpus Statistiken und Vergleich
+      * Bis den *1. September 2008*: Überarbeitete Version der Ausarbeitung bis Kapitel 4.2 an DB schicken. *Wichtig:* State of the Art schreiben + Englisch korrigieren lassen
+      * Bis den *3. September 2008"*: Vortrag für den nächsten Diplomanden Status-Meeting
+
+---++ 28.08.2008 (ZS, DB)
+   * @action(ZS):
+      * !DictionaryAnnotator: Nutzungsbeispiel, Use cases: Swear words, emoticons, ims
+      * !SpellingCorrector: Implementation + Unit tests + Documentation + Evaluation auch für *Bigramme*
+         * Evaluations Java Code in SVN einchecken
+      * Grammar checking basierend auf POS Ngrams, Unit tests + Documentation + Evaluation (mit *Fehler Korpus* )
+      * Corpus Statistiken
+      * Bis den *27. August 2008*: Ausarbeitung bis Kapitel 4.2 (mit Latex Vorlage, komplett mit Literaturhinweise in bibtex!) an DB schicken
+      * Bis den *3. September 2008"*: Vortrag für den nächsten Diplomanden Status-Meeting
+
+---++ 12.08.2008 (ZS, DB)
+   * @action(ZS):
+      * !DictionaryAnnotator: Nutzungsbeispiel, Use cases: Swear words, emoticons, ims
+      * !SpellingCorrector: Implementation + Unit tests + Documentation + Evaluation auch für *Bigramme*
+         * Evaluations Java Code in SVN einchecken
+      * Grammar checking !LanguageTool (genaue Annotationen mit Begin und End) + basierend auf POS Ngrams, Unit tests + Documentation + Evaluation (mit *Fehler Korpus* )
+      * Corpus Statistiken
+      * Bis den *27. August 2008*: Ausarbeitung bis Kapitel 4.2 (mit Latex Vorlage, komplett mit Literaturhinweise in bibtex!) an DB schicken
+      * Bis den *3. September 2008"*: Vortrag für den nächsten Diplomanden Status-Meeting
+ 
+*Done*
+   * Bigramme-Beispiele an DB zeigen
+
+---++ 06.08.2008 (ZS, DB)
+   * @action(ZS):
+      * !FileEncoding detection: Implementation + Unit tests + Documentation + Evaluation
+      * !DictionaryAnnotator: Nutzungsbeispiel, Use cases: Swear words, emoticons, ims
+      * !SpellingCorrector: Implementation + Unit tests + Documentation + Evaluation
+      * Grammar checking !LanguageTool + basierend auf POS Ngrams, Unit tests + Documentation + Evaluation
+      * Corpus Statistiken
+      * Ausarbeitungsplan
+   * @discuss(ZS,DB):
+      * View für !SpellingCorrector
+   * @info(DB): Links
+      * Fehler Corpus: http://www.chss.montclair.edu/linguistics/MELD/
+      * Referenz Corpus (Leipzig Corpora Collection): http://corpora.uni-leipzig.de/
+      * Google Ngrams: nicht frei verfügbar, muss ich noch klären
+         * Wir haben die Daten, Bigramme gibt es genug: 1.6 GB gepackt
+         * Andere Möglichkeit: Kookurrenz Daten vom Leipzig Corpus
+      * Incorporating Bigram Statistics to Spelling Correction Tools: http://www.d.umn.edu/~tpederse/Pubs/medinfo-2004.pdf
+      * Text Correction Using Domain Dependent Bigram Models from Web Crawls: http://research.ihost.com/and2007/cd/Proceedings_files/p47.pdf
+
+---++ 28.07.2008 (ZS, DB)
+
+   * @discuss(DB,ZS): 
+      * !FileEncoding detection: Implementation + Unit tests + Documentation + Evaluation (mit verschiedene text files, mit verschiedene encodings)
+         * Evaluierungsdaten kann man hier finden: http://crl.nmsu.edu/Events/FWOI/SecondWorkshop/text.html
+         * Ergebnisse ins Wiki schreiben
+      * !DictionaryAnnotator: Nutzungsbeispiel, Use cases: Swear words, emoticons, ims
+      * !SpellingCorrector: Implementation + Unit tests + Documentation Evaluation (Vergleich der Performanz der verschiedenen Spelling correctors basiered of die Wortliste von P. Norvig http://norvig.com/spell.py)
+         * Ergebnisse ins Wiki schreiben und auch als Graphik darstellen (bar chart)
+         * Um die Ergebnisse der SpellingCorrection zu verbessern, ist es nötig, den Context miteinzubeziehen (Context-Sensitive/Dependent Correction: http://alias-i.com/lingpipe/demos/tutorial/querySpellChecker/read-me.html)
+         * Für die Evaluierung von Context-dependent spelling correction, muss man ganze Sätze verwenden.
+         * Evaluierung mit verschiedene Trainingsdaten? Trainingsdaten für Context-dependent spelling correction: Google Ngrams
+      * Corpus Statistiken: wear words ratio, emoticons ratio, spelling errors ratio, ... (als Tabelle im Wiki)
+      * Grammar checking:
+         * Zusätzlich zum Rule-based Grammar checker (LanguageTool), einen Statistiken-basierten Grammar checker implementieren, basierend auf POS Ngrams
+      * Ausarbeitung: Plan
+      * Infomationssfluss:
+         * Jeden Abend:
+            * Code in SVN einchecken
+            * Arbeit des Tages im Wiki (Log) dokumentieren
+         * Termin jede Woche
+         * Vortrag für das nächste Diplomanden Status Meeting bis den 4. August an DB
+     
+---++ 24.07.2008 (ZS, DB)
+   * @info(DB): [[http://dr-hato.se/projects/dirtywords/][A multilingual dictionary of dirty words]], [[http://dr-hato.se/research/dirtywords.pdf][LREC 2008 paper in pdf format]]
+   * @question(DB): 
+      * Status der Arbeit
+      * Status von !DictionaryAnnotator
+      * Warum spelling correction als Annotation? Dann kann man die andere Vorverarbeitungskomponente nicht benutzen, denn diese basieren meistens auf die Tokens Annotation. Es wäre besser, eine VIew mit dem korrekten Text zu herstellen
+   * @action(ZS):
+      * Datensätze an KI geben
+
+---++ 24.06.2008 (ZS, DB)
+   * @action(ZS): Eine andere Annotation für jeden Typ (Smiley, ShortForm, etc.) erzeugen
+   * @action(ZS): nur eine Java Klasse für DictionaryAnnotator mit Parameter für AnnotationTyp und Dictionary Dateien
+   * @action(ZS): Statistiken erstellen
+   * @action(ZS): nächste Schritte = File-Encoding
+      * done
+
+---++ 10.06.2008 (ZS, DB)
+   * @action(ZS): Eine andere Annotation für jeden Typ (Smiley, ShortForm, etc.) erzeugen
+      * Damit gibt es noch Probleme
+   * @action(ZS): nur eine Java Klasse für DictionaryAnnotator mit Parameter für AnnotationTyp und Dictionary Dateien
+   * @action(ZS): Statistiken erstellen
+   * @action(ZS): Genauigkeit der Tokenisierung für Smileys verbessern:
+      * kann man nicht einfach verbessern (benutzt WhitespaceTokeniser)
+   * @action(ZS): nächste Schritte = File-Encoding + Language-Detection
+      * Language-detection funktioniert
+
+---++ 28.05.2008 (ZS, DB, KI)
+   * @info(ZS): Dictionary annotator implemented (code in SVN)
+
+---++ 20.05.2008 (ZS, DB, KI)
+   * @action(DB): get access to Wikipedia server (TK account)
+   * @action(ZS): Look at Technorati API and extract Blogs
+   * @action(ZS): Implement !ListLookup annotator
+      * @info(DB): the Apache-UIMA Team has released a new annotator which might do just what the !ListLookup Annotator is supposed to do and even more: !DictionaryAnnotator. You can download it here: http://mirror.moooo.org/apache/incubator/uima/source/uimaj-annotator-addons-2.2.2-incubating/uimaj-annotator-addons-2.2.2-incubating-src.zip . Please test it and tell us what you think about it
+   * @action(ZS): Tabelle mit Korpus Beschreibung
+   * @action(ZS): New classification for user-generated discourse  + thesis structure
+   * @action(ZS): Begin writing the 3 first chapters
+
+---++ 08.05.2008 (ZS, DB, KI)
+   * @decision: save corpora as XML
+   * @action(DB): get access to Wikipedia server (TK account)
+   * @action(ZS): Look at Technorati API and extract Blogs
+   * @action(ZS): read references and write reviews while reading
+   * @action(ZS): propose a classification for user-generated discourse 
+      * *DB* : I have seen your proposal, thank you. A few questions though: 
+         * Why do you define social media as "formal"? It it because it is structured or because it is better written?
+            * Using NLP to extract information from UGC has difficultywith unidentified words/symbols, which is not in list of their rules/dictionaries. I think that NLP works well with "formal text, which are correctly written and without or with few unidentified words/symbols. "Informal" is then for NLP difficult to analyze correctly. Similar is dialogue in general "informal". 
+         * Why do you classify Amazon Reviews as dialogue-like? (Have you examples to support this?)
+            * Amazon products are written with authorized persons. Reviews of products are written freely by users, most not business customers. They are in general written "informal", with short forms and smiley. No example yet, it is just my thoughts, and above the brief classification.
+   * @action(ZS): Introduction slide about the project, to use for status meetings
+   * @action(ZS): Implement !ListLookup annotator
+
+*Done*
+   * @action(ZS): Start a log-book cf. Teaching.ArneLogbuch 
+      * ZhiShenProgress ZhiShenBlogs
+      * *DB* : Thank you! This is very well done and makes it a lot easier for us to understand what you do
+   * @action(ZS): propose a structure (table of contents) for the thesis
+
+---++ 30.04.2008 (ZS, DB, KI)
+   * @action(DB): ask NJ about Amazon API 
+      * Er hat es leider nie benutzt und kann dabei nicht helfen
+   * @action(ZS): Extraction of 1,000 questions with their answers for all top-categories in !YahooAnswers, 1,000 review for each top-level product category in Amazon and 1,000 articles for each top-level category in Wikipedia 
+      * !YahooAnswers corpus complete
+      * Wikipedia: pbs with the db size
+      * Amazon: problems to get review
+   * @action(ZS): Define concepts: dialogue-like discourse, social media, user-generated discourse, swear words, slang words, emoticons, IMS 
+      * DB: see http://www.languageatinternet.de/articles/2007/761/Faceted_Classification_Scheme_for_CMD.pdf
+   * @action(ZS): Introduction slide about the project, to use for status meetings
+   * @action(ZS): Implement !ListLookup annotator
+   * @action(DB): References for lookup algorithms 
+      * Aho-Corasick algorithm: http://en.wikipedia.org/wiki/Aho-Corasick_algorithm
+      * Alfred V. Aho & Margaret J. Corasick, Efficient string matching: an aid to bibliographic search, Commun. ACM, ACM Press, 1975, 18, 333--340
+
+*Done*
+   * @action(DB): Send !SwearWordTagger
+
+---++ 22.04.2008 (ZS, DB)
+   * @action(ZS): How many words in !UrbanDictionary?
+   * @action(ZS): Assess the utility of !UrbanDictionary
+   * @info(DB): Swear word list: https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Teaching/ZhiShenMaterials/swearwords.txt
+   * @info(DB): other resource for slang: http://en.wiktionary.org/wiki/Category:en:Slang
+   * @action(DB): ask NJ about Amazon API
+   * @action(ZS): Extraction of 1,000 questions with their answers for all top-categories in YahooAnswers, 1,000 review for each top-level product category in Amazon and 1,000 articles for each top-level category in Wikipedia
+
+*Done*
+   * @action(DB): Meeting in Google Agenda
+
+---++ 16.04.2008 (ZS, KI, DB)
+
+   * @action(ZS): detaillierte Beschreibung von relevante Daten die man aus Urban Dictionary und netlingo extrahieren kann 
+      * ZS: es gibt eine API for !UrbanDictionary, just for lookup, not to extract words
+   * @question(ZS): Format fuer die Liste (Swear words, slang words, emoticons, IM short forms) 
+      * CSV Text ist besser, aber eine Datenbank ist OK wenn man leicht die Listen in andere Formate exportieren kann
+   * @action(ZS): Ueber related Work lesen
+   * @info(KI): zur Frage ueber Kategorie-Extraction: Yahoo API bietet das als getByCategory an ([[http://developer.yahoo.com/answers/V1/getByCategory.html][Link]])
+
+*Done*
+   * @action(ZS): Diploma beim Pruefungssekretariat anmelden
+   * @action(ZS): Liste von Material im Wiki erstellen (Papers, Tools, etc) siehe Teaching.ArneMaterial fÃ¼r ein Beispiel
+
+---++ 10.04.2008 (ZS, KI, DB)
+
+   * @info(ZS): hat angefangen, mit Amazon API, Yahoo! Answers API zu arbeiten
+   * @info(ZS): hat angefangen aus Urban Dictionary and netlingo Daten zu extrahieren
+   * @info(ZS,DB,KI): wir haben beschlosssen, ein ListLookup Komponent zu implementieren fuer Swear words detection, Slang words detection, Emoticons identification, Instant Messaging short forms identification (4 verschiedene Deskriptoren?)

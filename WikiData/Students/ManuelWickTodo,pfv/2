@@ -1,0 +1,9 @@
+%META:TOPICINFO{author="ManuelWick" date="1264521524" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ Todo/Workflow
+   * Designstruktur für pluginfähigen CollectionReader
+      * <strike>Erste Idee: mehrere CRs, die im selben Verzeichnis arbeiten und von der CPE eingebunden werden</strike> <span class="red">gescheitert, da CPE aktuell nur eine Instanz eines CR zulässt</span>
+      * Zweite Idee: ein CollectionReader, der als PluginFramework dient und via Interface verschiedenartige Reader nutzen kann
+   * Erste selbstgeschriebene Collection Processing Engine implementieren
+
+-- Main.ManuelWick - 26 Jan 2010

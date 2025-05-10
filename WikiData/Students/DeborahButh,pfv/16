@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="schnober" comment="save topic" date="1415889474" format="1.1" reprev="15" version="16"}%
+%META:TOPICPARENT{name="StudentsList"}%
+%TOC%
+
+---+++ Meeting 13.11.2014
+   * Transponder: ist freigeschaltet
+   * Status
+      * Modell-Erstellung
+      * Unit-Tests
+      * Mögliche Korpora:
+         * [[http://www.deutschestextarchiv.de/download][DTA-Korpora]] (Gesamtkorpus oder für bestimmten Zeitraum 1600-1699, 1700-1799, 1800-1899)
+         * [[http://korpora.zim.uni-due.de/Fnhd/][Das Bonner Frühneuhochdeutschkorpus]] (1350-1400, 1450-1500, 1550-1600 und 1650-1700)
+         * Gutenberg-Korpus
+         * COSMAS (Onlinekorpus)
+      * Evaluation der Fehlerklassen - %ATTACHURL%/Fehlerevaluation.ods
+      * Anmeldung (Vorschläge für Titel)
+         * Corpus-based OCR Error Correction
+         * Normalization of Historical OCR-Texts
+         * Adaptive Text Normalization
+   * Nächste Schritte
+      * Implementation: Model nutzen, um neue Sequenzen zu bewerten
+      * Model auf Referenz-Korpora bauen
+      * Erste Evaluierung
+         * Automatisch
+      * (Anmeldung) Welche Richtung weiter?
+         * Error Model
+         * Language Model (n-grams etc.)
+
+---+++ Meeting 05.11.2014
+   * SVN repository?
+   * TUDA-DH Meeting am 1.12. 14 bis 17 Uhr
+   * Welt der Kinder Projekttreffen am 7.11.
+     
+   * Abtretungserklärung
+   * Grober Zeitplan für Masterarbeit
+   * Fehlerklassen (Beispielsätze) - %ATTACHURL%/Fehlerklassen.txt
+   * Implementierung - Char Trie (siehe Masterarbeit v. Lenz Furrer)
+   * Code
+      * See comments in code
+      * Use Code Style template: https://code.google.com/p/dkpro-core-asl/wiki/DeveloperSetup
+   * Nächste Schritte
+      * Frage: Kann man im Type eigene Methoden deklarieren?
+      * Model aus allen Dokument-CharTries generieren
+         * Welches Corpus?
+      * Model verwenden, um Korrekturen vorzuschlagen
+      * Model evaluieren in Bezug auf Fehlerklassen
+   * Nächstes Treffen: Donnerstag, 13.11., 15 Uhr
+
+---+++ Meeting 27.10.2014
+   * Nächste Schritte:
+      * Character-based normalization: erste Implementierungsschritte
+   * Status?
+   * Implementation -> [[https://code.google.com/p/dkpro-core-asl/][DKPro]]
+      * DKPro Normalization
+   * Furrer (2013): "Unsupervised Text Segmentation for Correcting OCR Errors" (http://www.cl.uzh.ch/studies/theses/lic-master-theses/Masters_Thesis_Lenz_Furrer.pdf)
+   * (Kooperation mit [[UteWinchenbach][Ute Winchenbach]])
+   * Teilnahme an SIG PrintMedia
+
+---+++ Meeting 06.10.2014
+
+   * Konkretisierung des Themas: Automatische Normalisierung und Korrektur von Texten
+   * N&auml;chste Schritte: 
+      * Titel ausformulieren
+      * Grundstruktur ausarbeiten (Ziele, Literatur)
+      * Erster Blick auf OCR-Texte
+      * Zugang zur Infrastruktur (Wiki, Transponder, SVN) (-> !CaS)
+
+---+++ Relevant Resources (Software, Papers)
+---++ Software
+   * [[http://ucrel.lancs.ac.uk/vard/][VARD2]]
+---++ Literature
+   * MSc Lenz Furrer
+
+-- Main.CarstenSchnober - 2014-10-06
+
+%META:FILEATTACHMENT{name="Fehlerklassen.txt" attachment="Fehlerklassen.txt" attr="" comment="Fehlerklassen inkl. Beispielsätze" date="1415347640" path="Fehlerklassen.txt" size="1783" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Gliederung.txt" attachment="Gliederung.txt" attr="" comment="Gliederung der Arbeit" date="1415832194" path="Gliederung.txt" size="1989" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Zeitplan.ods" attachment="Zeitplan.ods" attr="" comment="Grober Zeitplan der Arbeit" date="1415833564" path="Zeitplan.ods" size="12013" user="buth" version="1"}%
+%META:FILEATTACHMENT{name="Fehlerevaluation.ods" attachment="Fehlerevaluation.ods" attr="" comment="Evaluation der definierten Fehlerklassen" date="1415885655" path="Fehlerevaluation.ods" size="15161" user="buth" version="1"}%

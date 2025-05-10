@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="StefanHenss" date="1349947316" format="1.1" version="2"}%
+%META:TOPICPARENT{name="StefanHenss"}%
+---+ Keyword Assignment
+
+---++ Current Design
+   * State: Currently selected keywords.
+   * Actions: Add keyword (either from the document or from a given vocabulary), remove keyword, stop
+   * Rewards: 0.001 for correct assignment, 0.001 for wrong assignment, 0.005 for removing wrong keywords, -0.02 for removing correct keywords and the selection's f-score for the terminal state. 
+   * Future Rewards: Discount factor of 0.25. Will be increased when crawler performance improves.
+   * Predictions: The observed reward from past actions is stored and future reward predicted through supervised learning.
+
+---++ Current Features
+| *Feature* | *Description* |
+| addAction | Is this action adding a keyword? |
+| removeAction | Is this action removing a keyword? |
+| stopAction | Is this action stopping keyword assignment? |
+| keywordLength | The length of the keyword that is either added or removed. |
+| textContains | Is this keyword used in the text itself? |
+| keywords | How many keywords are currently assigned? |
+
+---++ Evaluation
+As with other scenarios like summarization, we can use a cross-validation setup. First, a policy is learned on training data, using rewards as above. Second, the policy is used to extract keywords for validation texts and the outcome is evaluated using IR metrics. Also, rewards from the training phase can be sampled and used to analyze and optimize the predictive performance.

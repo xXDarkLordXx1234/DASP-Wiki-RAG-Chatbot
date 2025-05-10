@@ -1,0 +1,137 @@
+%META:TOPICINFO{author="belouadi" comment="" date="1559847020" format="1.1" reprev="13" version="14"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Generelles
+   * Zeitliche Vorgaben:
+      * 13. Mai: Release Hausübung 5
+         * Studenten sollen Baseline für Shared Task entwickeln. Dafür muss !CodaLab mit simplem Scorer funktionieren, plus die Hausübung.
+      * ca. 08. Juli: Submission Deadline für Shared Task
+         * Bis dahin kann der Scorer noch erweitert werden.
+
+   * Google Doc von Steffen: https://docs.google.com/document/d/1g25ZrPRPo0O37FPyPqF5o5r7xe2kUqQYiRc5hh1JOac/edit#
+      * Poems, die generiert werden sollen
+      * Was der Scorer können soll
+
+---++ Progress
+
+---+++ 2019-04-25
+   * format von poems vorerst übernommen:
+      * pro zeile ein Vers
+      * Strophen sind durch newlines getrennt
+      * Tokenisiert auf Wortebene
+   * Readability scorer implementiert
+   * alliteration scorer implementiert
+   * rhyme scorer implementiert
+   * code jetzt im [[https://git.ukp.informatik.tu-darmstadt.de/belouadi/dl4nlp19_codalab][UKP Git]]
+
+---+++ 2019-04-26
+   * potentielle clustering algorithms
+      * DBSCAN
+      * HDBSCAN
+      * !AffinityPropagation
+      * !MeanShift
+   * HDBSCAN scheint am besten zu funktionieren
+
+---+++ 2019-04-27
+   * duplication checking:
+      * Gedichte werden als TF-IDF Vektoren repräsentiert
+      * clustering aller Gedichte mit HDBSCAN
+      * Mittel der soft clustering Wahrscheinlichkeiten als Indikator für duplication
+   * überprüfen der Gedichtsformate bei Upload
+
+---+++ 2019-04-30
+   * perplexity score:
+      * character level language model funktioniert wahrscheinlich besser (viele Rechtschreibfehler und ähnliches in Gedichten)
+      * [[https://github.com/salesforce/awd-lstm-lm][this]] seems to be a good choice
+
+---+++ 2019-05-05
+   * flesh-reading-ease scores zwischen 0 und 100 normalisiert
+   * perplexity model trainiert und dem Scorer hinzugefügt
+   * das scoring dauert sehr lange, ein Worker Node braucht ca 20 Minuten um 4000 Gedichte zu verarbeiten
+   * verschiedene Dinge probiert um den Scorer auszutricksen:
+      * 1000 mal dasselbe Gedicht abgegeben (*replicated*)
+      * 3000 Gedichte mit zufälligen Wörtern aus Wörterbuch generiert (*random_words*)
+      * 3000 Gedichte mit häufigen Wörtern aus Wörterbuch (Stopwords) generiert (*random_stopwords*)
+   | *Abgabetyp* | *Readability Score* | *Alliteration Score* | *Rhyme Score* | *Originality Score* | *Perplexity* |
+   | *gold_poems* | 58.30448331205799 | 25.652912996445682 | 67.07532073736749 | 99.2948407483404 | 3.4086782978022194 |
+   | *replicated* | 64.69914085207614 | 0.0 | 52.22222222222235 | 0.09066183136899886 | 6.6215923515200785 |
+   | *random_words* | 0.2581197798682197 | 28.533368855734647 | 100.0 | 0.6078989494819664 | 11.067080482267503 |
+   | *random_stopwords* | 58.71873038695129 | 0.0 | 99.98841788278898 | 17.247630915005917 | 8.373718951607612 |
+   * in allen "Fake" Abgaben ist Originality Score sehr niedrig und Perplexity hoch, was sehr gut ist
+
+---+++ 2019-05-10
+   * implemented a blacklist mechanism to prevent submission of training poems
+      * compute tf-idf vectors for train_data and predictions
+      * compute cosine distances
+      * every poem where the distance to a poem from the training data
+        is lower than 0.1 is treated as a copy
+      * the scores if a poem is a copy (=1) or not (=0) are averaged
+      * if more than 30% of the predicted poems are potential copies, fail with error
+   * almost completed hex05
+      * hex inspired by [[https://pdfs.semanticscholar.org/3a6c/c9f6de19976bffb2db9989822c947c2c605e.pdf][this]] model
+      * theoretically everything is finished, however the mlp model doesn't work very good
+
+---+++ 2019-05-11
+   * Hausübung 5 fertiggestellt
+      * da ich leider nicht die Rechte habe auf den master branch zu pushen, liegt die Übung jetzt im hex05 branch vom Übungsrepo
+      * die implementierte baseline findet sich in diesem [[https://git.ukp.informatik.tu-darmstadt.de/belouadi/hex05_baseline.git][repository]]
+         * da ist auch die hex05_data.zip drin für die Hausübung
+   * für jeden score wird jetzt eine [[https://www.desmos.com/calculator/nomjl8gszn][similarity]] zu den gold scores zwischen 0 und 100 berechnet 
+   * scores werden jetzt arithmetisch gemittelt und mit dem originality score harmonisch gemittelt
+   * finale dl4nlp shared task ist jetzt [[https://competitions.codalab.org/competitions/22850?secret_key=3f6256dc-611f-439d-8c8e-cee07e13e758][online]] 
+
+
+
+---++ Meeting Minutes
+---+++ 2019-04-04 Erste Aufträge von MB  ✅
+   * Generieren von Poems: erstmal überspringen.
+   * Wir brauchen zunächst eine prototypische Umsetzung für den gesamten Shared Task. Der Weg dahin:
+      * mit Codalab vertraut machen: https://github.com/codalab/codalab-competitions/wiki und [[%ATTACHURL%/dl4nlp2018_shared_task_codalab.7z][Competition vom letzten Jahr]] mal hochladen/ausprobieren ✅
+      * Datenformat für die Poem-Predictions grob festlegen
+      * simplen Scorer schreiben, der z.B. nur readability prüft
+      * das ganze auf Codalab mit Dummy-Predictions testen
+
+---+++ 2019-04-15 Meeting ✅
+   * Gold Poems müssen noch aufgetrieben werden 
+   * bis Ende der Woche versuchen ein paar Dinge zu tun um Aufwand abzuschätzen:
+      * Format für dataset überlegen
+      * protoypisch eine metric mit dem scorer umsetzen
+
+---+++ 2019-04-25 Meeting ✅
+   * baseline für hausübung 5 soll von JB implementiert werden
+   * die Länge der Submissions wird durch die performance der baseline bestimmt
+   * rhyme score bestimmen mithilfe Grapheme to Phoneme Conversion
+   * Gedanken machen über deduplication of poems
+
+---+++ 2019-05-02 Meeting ✅
+   * Durchführung von Stresstests mit dem Codalab Scorer:
+      * test mit unsinnigem Datensatz mit identischen letzten Wörtern per Zeile
+      * inwiefern wirkt sich casing auf die Scores aus
+   * bis 8./9. Mai grobe Vorabgabe der 5. Hausübung vorbereiten
+      * Aufgabenstellung
+      * Baseline
+
+---+++ 2019-05-06 Meeting
+   * normalisieren auf scores von Trainingsdaten ✅
+   * vergleiche generierte Gedichte mit trainingsgedichten ✅
+      * wie viele Verse, etc  
+   * blacklist trainingsgedichte ✅
+   * maximal 1000 Gedichte abgeben ✅
+   * dokumentieren wie scorer funktioniert
+
+---+++ 2019-05-09 Meeting ✅
+   * glove embeddigs lowercase?
+   * perplixeity normalisieren
+   * fenster über gold scores normalisieren
+   * shared task bis montag aufsetzen
+
+---+++ 2019-06-06 Meeting
+   * SE braucht gedichte vom language model
+   * Dependency Parsing umsetzen
+   * crowdGPPL scorer für Poems "ausleihen", falls möglich
+
+
+<!--
+   * Set ALLOWTOPICVIEW = Main.ukp-tuda-researcher, Main.aiphes-student-helper, Main.ukp-tuda-student-helper, Main.SteffenEger
+//-->
+
+%META:FILEATTACHMENT{name="dl4nlp2018_shared_task_codalab.7z" attachment="dl4nlp2018_shared_task_codalab.7z" attr="" comment="" date="1554371476" path="dl4nlp2018_shared_task_codalab.7z" size="2438062" user="bugert" version="1"}%

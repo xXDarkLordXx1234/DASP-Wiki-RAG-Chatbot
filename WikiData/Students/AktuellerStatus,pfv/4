@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1180021079" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Diese Seite zeigt den aktuellen Arbeitsstatus. Sie gibt eine Übersicht darüber, was bereits bearbeitet wurde und was noch zur Bearbeitung aussteht.
+
+%TOC%
+
+---++bereits bearbeitet
+   * Literaturrecherche
+      * Inhaltliche Zusammenfassung der relevanten Literatur (muss aber natürlich noch überarbeitet werden)
+      * Hervorheben von Features, die für die Arbeit interessant sind
+   * Implementierung der Amazon-DB
+      * Erstellung der Datenbankstruktur
+      * Erstellung von Methoden, mit deren Hilfe Rezensionen einer gegebenen Produktgruppe und weitere Meta-Informationen in eine lokale Datenbank geschrieben werden können
+      * Erstellung von Methoden zur Abfrage der lokalen Datenbank
+   * Einarbeitung in UIMA
+   * Implementierung des Verfahren von Kim et al. 2006
+      * Schreiben eines !CollectionReaders zum Auslesen der Rezensionsdaten
+      * Extraktion der 3 wichtigsten Features bei Kim über UIMA
+         * LEN: Länge der Token
+         * UGR: tf-idf Statistik jedes Wortes
+         * Stars: Benotung des Rezensenten
+      * Erstellung der arff-Files per GUI
+      * Performanzmessung mittels des Pearson'schen Korrelationskoeffizienten und des Spearman'schen Rankkorrelationskoeffizienten
+   * Implementierung weiterer Features
+      * Annotaroren geschrieben zur Bestimmung der
+         * Anzahl der erwähnten Hersteller
+         * Anzahl der erwähnten Konkurrenten (Die Idee dahinter ist, dass es für Kunden interessant sein kann, wenn ein Rezensent das Produkt mit Konkurrenzprodukten vergleicht)
+         * Anzahl der erwähnten technischen Begriffe für Digitalkameras (dazu wurden die Häufigkeitsklassen von Substantiven bestimmt und alle <8 gewählt)
+         * Listenelemente
+         * Gesamtanzahl an geschriebenen Rezensionen
+         * durchschnittl. Produktbewertung des Rezensenten
+   * Ausschließen möglicher kalkulierbarer Gründe, die zu Abweichungen in den Ergebnissen von Kim et al. führen
+
+
+---++ to do
+   * Implementierung weiterer Features, wie z.B.
+      * Erkennung eines strukturellen Aufbaus (pros, cons, ...)
+      * Listen
+      * Absatz-Tagger
+      * ...
+   * Anwendung anderer Verfahren zur Performanzmessung
+      * z.B. Jarvelin 2002 (nDCG)
+   * Durchführung weiterer Tests mit verschiedenen Feature-Kombinationen (Was sind die besten Features? Wie gut sind die Ergebnisse mit Featuren, die nicht auf Metadaten basieren?)
+   * Untersuchen warum nicht 100% erreicht werden. Was sind die Gründe? Was muss man besser machen?
+   * (Sichtung weiterer Maschineller Lernverfahren zum Lernen der Nützlichkeit einer Rezension)
+   * Zusammenschreiben der Diplomarbeit
+   * Vortrag
+
+
+
+-- Main.KaiMichaelHoever - 11 May 2007

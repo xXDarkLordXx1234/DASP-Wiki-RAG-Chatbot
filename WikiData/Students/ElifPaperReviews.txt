@@ -1,0 +1,81 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="4" version="5"}%
+%META:TOPICPARENT{name="ElifTekes"}%
+---++ Papers
+
+   * Paper: *Semantic Tag Extraction from !WordNet Glosses*
+      * Authors: *Alina Andreevskaia, Sabine Bergler*
+      * *Goal / Purpose / Topic*: 
+         * assign semantic tags to individual word meanings rather than entire words
+         * this paper addresses both a method of automated semantic tagging, and the evaluation of its results
+         * also it evaluates the generalizability of the proposed approach
+      * *Methods* : 
+         * Semantic Tag Extraction Program (STEP)
+         * Two human-annotated lists A and B
+         * A and B first compared to each other and then used to assess the accuracy of the proposed system
+         * STEP is a two-pass system. It starts with a small seed list composed of adjectives, nouns and verbs (38 in this paper) that are comon markers of positive or negative sentiment in all their meanings. At first pass, synnyms and antonyms of all the meanings of these seed words are retrieved from WordNet. In the second pass, retrieve from WordNet all the words that contain these seed words in their glosses.
+         * Results and Evaluation: Two manually annotated lists. GI and HM
+         * First compare GI and HM with each other. Relatively low interannotator agreement (78,7%)
+      * *Notes* : Semantic Tagging, STEP
+      * *Problems* : 
+         * Strikingly low interannotator (or, rather inter-list) agreement (78,7%)
+            * this suggests that the high rates of inter-annotator agreement often reported for a given list may be the result of annotator training [...] rather than a reflection of convergence of different annotators' linguistic convergence
+         * small size of overlap between the two manual lists (only 52% of adj. from HM were found in GI)
+      * *Comments*: Needs better lists (larger overlap of words, preferably same lists annotated by different annotators) 
+  
+   * Paper: *Determining the Semantic Orientation of Terms through Gloss Classification*
+      * Authors: *Andrea Esuli, Fabrizio Sebastiani*
+      * Year: 2005
+      * *Notes* : 
+         * Claims to outperform all known methods when tested 
+         * Text Classification (TC) 
+            * topic-relatedness (aka thematic affinity, or aboutness) - main dimension throughout history
+            * genre-classification: e.g. is it a Review or Advertisement?
+            * author classification (aka authorship attribution) : who wrote it? 
+            * sentiment classification: does it express a positive or negative opinion about its subject matter? 
+               * aka opinion mining, sentiment analysis, sentiment extraction, affective rating
+               * Sentiment Classification: 
+                  1 Determining subjectivity
+                  1 Determining orientation (or polarity)
+                  1 Determining the strength of orientation
+         * This learning method is semi-supervised (rather than supervised), since some of the "training" data used have been labelled by our algorithm, rather than by human experts
+         * This method enables the classification of any term, as long as there is a gloss for it in the lexical resource
+            * In contrast, see (Hatzivassiloglou and !McKeown, 1997) (only adjectives) and (Kamps et al., 2004) (only terms directly or indirectly connected to the terms _good_ or _bad_ through the !WordNet synonymy relation)
+      * *Goal*:
+         * Determine the orientation of a term based on the classification of its glosses
+      * *Method*:
+         1 Seet Set (S_p, S_n) representative of the two categories Positive and Negative is provided as input
+         1 Lexical relations (e.g. synonyy) from a thesaurus or online dictionary are used to find new terms. Two new, richer sets S_p' and S_n' are formed.
+         1 Generate textual representation for each t_i (element of) S_p' U S_n' U test set, by collating all glosses of t_i
+         1 A binary text classifier is trained on the terms in S_p' U S_n' and then applied to the terms in the test set
+      * *Problems*:
+         * Referring to Step 3: The resulting textual representations will also contain "noise", in the form of the glosses related to word senses different from the ones intended
+            * Proposed solution: Filter out unintended senses and their glosses by means of part-of-speech analysi
+
+   * Paper: *Using !WordNet to Measure Semantic Orientations of Adjectives*
+      * Authors: *Kamps et al. (Marx, Mokken, Rijke)*
+      * Year: 2004
+      * Notable terms: 
+         * geodesic distance: (also simply called distance)  - d(w_i, w_j) between two words w_i and w_j is the length of a shortest path between w_i and w_j
+      * *Goal*: Develop !WordNet-based measures for the semantic orientation of adjectives
+      
+   * Paper: *Measuring Praise and Criticism: Inference of semantic orientation from association*
+      * Authors: *P.D. Turney and M.L. Littman*
+      * *Method* : 
+         * Two seed sets, one positive, one negative. Bootstrap
+         * Compute the pointwise mutual information (PMI) of the target term t with each seed term t_i
+         * O(t) = &#8721; _ [t_i (element of) S_p]   PMI(t, t_i) - &#8721; _ [t_i (element of) S_n] PMI(t, t_i)
+
+   * Paper: *Automatically Determining Attitude Type and Force for Sentiment Analysis*
+      * Authors: *Argamon et al. (Bloom, Esuli, Sebastiani)*
+      * Year: 2007
+      * *Goal / Purpose*: 
+         * Describe a method for the automatic determination of complex sentiment-related attributes such as _attitude type_ and _force_, by applying supervised learning to !WordNet glosses
+         * explore the use of (semi-)supervised learning techniques to "bootstrap" semantically complex lexicons of terns with sentimental valence
+      * *Notes*: 
+         * _Appraisal Theory_ is a systemic-functional appraoch to analyzing how subjective language is used to express an atitude of some kind towards some target
+         * Appraisal comprises three main linguistic systems:
+            1 Attitude: distinguishes different kinds of attitudes that can be expresed (including Attitude Type and Orientation)
+            1 Amplification: enables strengthening or weakening such expression (including Force and Focus)
+            1 Engagement: conveys different possible degrees of commitment to the opinion expressed (including identification and relation of the speaker/writer to the source of an attributed evaluation)
+
+-- Main.ElifTekes - 18 Jun 2009

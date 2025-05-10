@@ -1,0 +1,75 @@
+package de.tudarmstadt.ukp.lexsemresource.test;
+
+import java.io.FileInputStream;
+import de.tudarmstadt.ukp.lexsemresource.Entity;
+import de.tudarmstadt.ukp.lexsemresource.LexicalSemanticResource;
+import de.tudarmstadt.ukp.lexsemresource.graph.EntityGraph;
+import de.tudarmstadt.ukp.lexsemresource.graph.EntityGraphManager;
+import de.tudarmstadt.ukp.lexsemresource.graph.GraphAnalyzer;
+import de.tudarmstadt.ukp.lexsemresource.graph.EntityGraphManager.EntityGraphType;
+import de.tudarmstadt.ukp.lexsemresource.resource.WordNetResource;
+import de.tudarmstadt.ukp.lexsemresource.resource.util.wordnet.WordNetUtils;
+import net.didion.jwnl.JWNL;
+import net.didion.jwnl.data.IndexWord;
+import net.didion.jwnl.data.POS;
+import net.didion.jwnl.data.Synset;
+import net.didion.jwnl.dictionary.Dictionary;
+
+public class testMain {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		try {
+			JWNL.initialize(new FileInputStream("/home/chebotar/Desktop/UKPWork/EclipseWorkspace/JWNLWordNet/config/file_properties.xml"));		
+			Dictionary wn = Dictionary.getInstance();
+			
+			IndexWord indexWord = wn.getIndexWord(POS.NOUN, "vehicle");		
+			Synset[] synsets = indexWord.getSenses();
+			
+			LexicalSemanticResource resource = new WordNetResource("/home/chebotar/Desktop/UKPWork/EclipseWorkspace/JWNLWordNet/config/file_properties.xml");
+			
+			for(Synset synset : synsets){							
+				System.out.println(getShortestPathToRoot(synset, resource)+" "+synset.getGloss());			
+			}
+			
+		} catch (Exception e) {		
+			e.printStackTrace();
+		}		
+		
+		
+	}
+	/**
+	 * Shortest path to root
+	 * @param synset
+	 * @param resource LexicalSemanticResource with WordNet
+	 * @return
+	 * @throws Exception
+	 */
+	public static double getShortestPathToRoot(Synset synset, LexicalSemanticResource resource) throws Exception{
+		IndexWord indexWord = Dictionary.getInstance().getIndexWord(POS.NOUN, "entity");
+		Synset[] senses = indexWord.getSenses();
+		return getShortestPath(synset, senses[0], resource);		
+	}
+	
+	/**
+	 * Shortest path from synset1 to synset2
+	 * @param synset1
+	 * @param synset2
+	 * @param resource LexicalSemanticResource with WordNet
+	 * @return
+	 * @throws Exception 
+	 */
+	public static double getShortestPath(Synset synset1, Synset synset2, LexicalSemanticResource resource) throws Exception{
+		
+		EntityGraph jGraphTGraph = EntityGraphManager.getEntityGraph(resource, resource.getEntities(), "", EntityGraphType.JGraphT);
+          
+        GraphAnalyzer graphAnalyzer = new GraphAnalyzer(jGraphTGraph);        
+	
+		Entity entity1 = WordNetUtils.synsetToEntity(synset1);
+		Entity entity2 = WordNetUtils.synsetToEntity(synset2);
+		
+		return graphAnalyzer.getShortestPathLengthUndirected(entity1, entity2);	
+	}
+}

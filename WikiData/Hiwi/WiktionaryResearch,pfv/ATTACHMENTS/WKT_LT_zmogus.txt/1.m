@@ -1,0 +1,2 @@
+YevgenChebotar
+Wiktionary LT "mogus"

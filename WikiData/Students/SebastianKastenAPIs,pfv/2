@@ -1,0 +1,7 @@
+%META:TOPICINFO{author="SebastianKasten" date="1252102355" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="SebastianKasten"}%
+---++ JWPL
+   * New method for =DatabaseConfiguration= to load configuration from (XML) file
+---++ JWKTL
+   * Bugfix: Namespace in lemma
+   * Bug: Parsed data contains language tags (e.g. "british" or "american")

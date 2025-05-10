@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="sharma" comment="save topic" date="1428401334" format="1.1" reprev="4" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+%TOC%
+
+---+ Meetings
+---++ 30-03-2015: Initial Meeting
+   * Administration
+      * Hand out copy of signed contract
+      * Sign Intelectual Property Statement
+      * Questions about work mode etc.?
+      * Access to work, communication, development resources (Mail, Jabber, SVN, Chiliproject, room D017)
+         * Mail (IMAP/Exchange): mx.ukp.informatik.tu-darmstadt.de
+         * Jabber: ukp.informatik.tu-darmstadt.de
+         * Chiliproject: https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/
+         * SVN: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro/experiments/webanno-constraints
+   * Introduce initial tasks
+      * Check out Java CC (parser generator) and possibly JJTree (generate abstract syntax tree / Java object model)
+   
+---+ Tasks
+   * WebAnno (https://code.google.com/p/webanno/)
+      * Parser / evaluator for WebAnno constraint language
+      * potential new tasks resulting from WebAnno AP A1.2 (template-based annotation) and A1.3 (constraints)
+   * CoreNLP
+      * Integrate new statistical dependency parser from CoreNLP in DKPro Core
+      * Integrate quoted speech annotator from CoreNLP in DKPro Core
+   * Integrate quoted speech annotator from Nils Reimers (DARIAH)
+   
+---+ Apr 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 30-03-2015 | initial meeting | 1 | |
+| 30-03-2015 | Learning javacc, JJTree & JTB | 2 | Researched on tool and technologies to develop Parser. |
+| 31-03-2015 | Development and other setup. Reading javacc documentation. | 2 | |
+| 04-04-2015 | Wrote skeleton for grammar and basic objects | 1.5 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 50
+
+-- Main.CarstenSchnober - 2015-03-16

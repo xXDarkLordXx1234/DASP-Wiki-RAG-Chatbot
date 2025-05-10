@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="klie" comment="" date="1560343439" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ComputeCluster"}%
+<!--
+   * ALLOWTOPICCHANGE = System-Admin
+-->
+
+---+!! %TOPIC%
+
+<div style="background: red; color: #F8F8F8; border: solid 2px darkred; padding: 5px">
+<p align="center">
+<u>*DON'T USE /home to store data!*</u></br>
+<u>The cluster storage and headnode homes are not backed up, so do not store sensitive data in there that you cannot risk to loose!</u>
+</p>
+</div>
+
+The headnode  and all compute nodes share one network file system. It is mounted under */ukp-storage-1* . This means that you just need to copy the data once to the network share, not to every single node. Jobs can then see the data no matter on which compute server the job runs.
+
+---++ Initial setup
+
+Ín order to use it, first create a folder with your name, e.g. */ukp-storage-1/new_hire*. If desired, change the permissions of this folder that only you can access it with =chown -R 700 $YOUR_FOLDER= . 
+
+---++ Copying data to the cluster
+
+You can now copy data to the network share from your workstation by e.g. =rsync= or =scp= . 
+
+From your workstation using =scp=:
+
+<verbatim>
+scp -r data_folder slurm:/ukp-storage-1/$YOUR_NAME
+</verbatim>
+
+From your workstation using =rsync=:
+
+<verbatim>
+rsync data_folder slurm:/ukp-storage-1/$YOUR_NAME
+</verbatim>
+
+---++ Accessing the data in compute jobs
+
+The data can be accessed by all compute nodes under the same path as on the headnode. That means, in your slurm batch files, you can reference the network share like you see it on the head node, no matter where the job will run, e.g. 
+
+<verbatim>
+#!/bin/bash
+#
+#SBATCH --job-name=test_job
+#SBATCH --output=/ukp-storage-1/new_hire/test/res.txt
+#SBATCH --mail-type=ALL
+#SBATCH --partition=ukp
+#SBATCH --ntasks=1
+
+source /ukp-storage-1/new_hire/test/venv/bin/activate
+python /ukp-storage-1/new_hire/test/test.py
+</verbatim>
+
+---++ You home folder on the headnode
+
+You can use your home folder on the head node to set up your environment, e.g. bash profile and other configuration files, but not to save large files. 

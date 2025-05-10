@@ -1,0 +1,78 @@
+%META:TOPICINFO{author="TorstenZesch" date="1179145210" format="1.1" version="13"}%
+%META:TOPICPARENT{name="LarsLipecki"}%
+---+Meeting-Protokolle
+
+---++ Meeting 14.05.2007 14 Uhr
+
+Agenda:
+   1 TAZ Corpus: ich habe die 3,3 GB große Datei in 34 Einzelteile zerlegt und die HTML-Codierungen entfernt. Jede einzelne Textdatei ist jetzt um die 40 MB groß
+   2 Dextract: ich bekomme es einfach nicht zum Laufen. Wenn ich eine der 40MB Textdateien verarbeiten will, bekomme ich folgenden Fehler im DextractCasConsumer-Teil der Abarbeitung:
+
+java.lang.OutOfMemoryError (Thread Name: [Procesing Pipeline#1 Thread]::) 
+java.lang.OutOfMemoryError: Java heap space
+
+*TZ:* -Xmx512m Java option zum Erhöhen des Heap Spaces
+
+Ich habe das am Wochenende einem guten Freund gezeigt, der sich mit Programmieren sehr gut auskennt. Um ein Debugging machen zu können, wo sich der Fehler genau versteckt, müsste man das Ganze in Eclipse laufen lassen, so wie es auf Eurer Doku-Seite im Web steht. Diese Standalone-Variante scheint irgendwie nicht sauber zu funktionieren.
+
+Könnte ich diese PEAR-Datei zugeschickt bekommen, über die wir schon mal geredet haben? Dann kann ich es genau so wie beschrieben ins Eclipse einladen und dort viel besser bearbeiten und zum Laufen bringen?
+
+   3 Wort-Quiz Experiment: ich habe angefangen, die 1027 Fragen nach den besprochenen Kategorien durch zu arbeiten, um eine Auswahl für das zweite Experiment treffen zu können. Parallel werde ich auch schon diese Woche das PHP-System für das zweite Experiment anpassen. 
+
+   4 Zeitplan: Aktuell ist er durch die Probleme mit der Wortpaarbildung etwas durcheinander geraten, aber ich denke, das ich dann die ersten beiden Experimente ziemlich schnell nacheinander durchführen kann, wenn beide vorbereitet sind.
+
+---++ Meeting 03.05.2007 10 Uhr
+
+Agenda:
+
+   1 Verteilung POS-Kombinationen anhand Tiger-Corpus Auswertung
+      * Auswertung anhand von Wortformen nicht Lemmas gemacht => kann Ergebnisse beeinflussen, sollte in Diskussion berücksichtigt werden
+   1 Geplante Auswertungen zum ersten Experiment
+      * Vergleich der Gruppen
+      * Average / Std-Dev für jede Gruppe
+      * Schwerpunkt des Experimentes liegt auf Analyse der Konfidenzbereiche (wo sind die Menschen sich einig/uneinig)
+   1 Kurze Fragen zum Dextract Programm/TAZ Corpus
+      * Dextract => siehe Doku im WWW
+      * TAZ Corpus => programmatisch splitten
+      * Subcorpus bilden wegen Laufzeit (Tagging)
+   1 Readers Digest-Fragen: wie lässt sich daraus ein sinnvolles Experiment machen?
+      * zwei Level Kategorisierung
+         * Distraktoren für Mensch & Mensch/Computer
+         * allgemeinsprachlich / domänenspezifisch & leicht / schwierig
+      * Baseline System mit Wikipedia-Redirects zum Test, ob SR falsche Relationen beachtet
+
+---++ Next Meeting (when?)
+
+   * neuer Datensatz mit Readers Digest Wortschatz Fragen
+      * interessanter anderer Blickwinkel
+      * evtl. höhere Motivation bei Test-Subjects, da Quizcharacter
+
+   * [[%ATTACHURL%/Diplomarbeit_Präsentation_15.01.2007.ppt][Diplomarbeit_Präsentation_15.01.2007.ppt]]: Präsentation 15.01.2007
+
+   * [[%ATTACHURL%/Diplomarbeit_Präsentation_12.02.2007.ppt][Diplomarbeit_Präsentation_12.02.2007.ppt]]: Diplomarbeit Präsentation Meeting 12.2.2007
+
+---++ Next Meeting am 5.3. (wieviel Uhr?)
+
+Hier nur ein kurzer  Überblick über meine Aktivitäten:
+
+ 
+- ich habe mir entsprechend Deiner Empfehlung das Statistikbuch angeschaut und  gekauft. Hauptfrage vor dem ersten Experiment ist noch immer nicht wirklich  geklärt: welche Anzahl an Probanden/Wortpaaren ist notwendig, um ein  Ergebnis zu bekommen, das Gesichtspunkten der Validität und Reliabilität  genügt  
+zweites statistisches Problem der Auswertung der  Ergebnisse (welche Korrelation verwenden, Du hattest Pearson genannt) Da  sind im Buch viele Korrelationen besprochen, die muss ich noch verstehen. Im  Web habe ich was zu Pearson gefunden, da im Buch dazu nichts steht.  
+ 
+-Problem: woher soll der Korpus stammen für das erste  Experiment. Ich dachte eigentlich an einen möglichst allgemeinen Text, der  nicht domänenspezifisch ist, aber irgendwie sind doch alle Texte (da sie  sich mit irgendeinem Thema beschäftigen) mindestens einer Domäne zugehörig.  Also bekommt die Fragestellung an die Probanden nach dem eigentlichen Test  eine stärkere Bedeutung, um den Domänenbezug der Leute besser einschätzen zu  können.  
+
+- nach dem Lesen der neuen Paper ist mir aufgefallen,  das die Einleitungen dort sich ziemlich ähneln. Dadurch bin ich auf die  Struktur meiner schriftlichen Ausarbeitung gekommen, da sollten wir am  Montag auch kurz drüber reden, ob das so in Ordnung ist, wie ich mir das  denke mit Einleitung, Motivation des Gesamtthemas, Motivation der einzelnen  Experimente, Beschreibung der Wortpaargenerators,  ...
+
+To Do?s:
+
+ 
+Installation Wortpaargenerator, Programm testen und  verstehen  
+Experimentsystem fertig zweisprachig machen und  überlegen, wie zwei Experimente parallel gehen könnten  
+Experimentanleitung für Probanden  verfassen
+
+   * [[%ATTACHURL%/Diplomarbeit_Praesentation_12.03.2007.ppt][Diplomarbeit_Praesentation_12.03.2007.ppt]]: Meeting 12.3.2007
+
+%META:FILEATTACHMENT{name="Diplomarbeit_Präsentation_15.01.2007.ppt" attachment="Diplomarbeit_Präsentation_15.01.2007.ppt" attr="" comment="Präsentation 15.01.2007" date="1168773851" path="Diplomarbeit Präsentation 15.01.2007.ppt" size="244736" stream="Diplomarbeit Präsentation 15.01.2007.ppt" user="Main.LarsLipecki" version="1"}%
+%META:FILEATTACHMENT{name="Diplomarbeit_Präsentation_12.02.2007.ppt" attachment="Diplomarbeit_Präsentation_12.02.2007.ppt" attr="" comment="Diplomarbeit Präsentation Meeting 12.2.2007" date="1171192353" path="Diplomarbeit Präsentation 12.02.2007.ppt" size="266240" stream="Diplomarbeit Präsentation 12.02.2007.ppt" user="Main.LarsLipecki" version="1"}%
+%META:FILEATTACHMENT{name="Diplomarbeit_Praesentation_12.03.2007.ppt" attachment="Diplomarbeit_Praesentation_12.03.2007.ppt" attr="" comment="Meeting 12.3.2007" date="1173633138" path="Diplomarbeit Präsentation 12.03.2007.ppt" size="244736" stream="Diplomarbeit Präsentation 12.03.2007.ppt" user="Main.LarsLipecki" version="1"}%
+%META:FILEATTACHMENT{name="Diplomarbeit_Praesentation_16.04.2007.ppt" attachment="Diplomarbeit_Praesentation_16.04.2007.ppt" attr="" comment="Diplomarbeit Präsentation 16.04.2007" date="1176716266" path="D:\Lars\Diplomarbeit\Diplomarbeit Präsentation 16.04.2007.ppt" size="153600" stream="D:\Lars\Diplomarbeit\Diplomarbeit Präsentation 16.04.2007.ppt" user="Main.LarsLipecki" version="1"}%

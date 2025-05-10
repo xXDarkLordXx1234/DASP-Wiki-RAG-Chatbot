@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="habernal" comment="reprev" date="1467268280" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+
+Project name: Argotario Game Development and Maintenance
+
+Main goals: The project will focus on current needs in the planned lifecycle of Argotario.
+
+   * Although Argotario has been proven to work smoothly and scale up to dozens of users, we plan to announce it to more general public. This requires support and administration on the server side for unexpected behavior and fixing encountered bugs.
+   * Argotario has multi-language support, which has not yet been fully exploited. It is thus foreseen to enable and test German localization (incorporate translations, prepare initial set of fallacies to prevent cold start problems) and include it to the next release of the game.
+   * A simple website that would show some basics of Argotario and would announce winner of the week or other campaigns will be developed. For that, using existing simple frameworks (bootstrap for CSS and similar) is planned.
+   * Reasonable campaign in social media (UKP Twitter, Google AdWords, Facebook) is planned to attract more users.
+   * For the development and testing, an internal UKP ticket tracking system will be used. Also, the game will be deployed to run in two versions  as a development and production server and database.
+
+Bug tracking system: https://cubert.ukp.informatik.tu-darmstadt.de/projects/argotario
+
+---++ Time tracking
+
+(Note: the official contract starts from 1.7.2016)
+
+---+++ 2016-07
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| XX.XX.2016 | Meeting | 0.5 | XXX |
+| XX.XX.2016 | Dev | 1 | XXX |
+
+---+++ 2016-06
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| XX.XX.2016 | Meeting | 0.5 | XXX |
+| XX.XX.2016 | Dev | 1 | XXX |
+
+
+-- Main.IvanHabernal1 - 2016-06-30

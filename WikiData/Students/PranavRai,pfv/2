@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="stab" comment="save topic" date="1508417527" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+---++ 2017-10-19
+   * filter no arguments and apply clustering only to "supporting arguments" and "opposing arguments"
+   * Setup evaluation scenario accordingly...
+   * determine internal evaluation scores on gold data (with different similarity measures)
+   * investigate actual results (are the clusters meaningful or just garbage)
+   * automatic estimation of #clusters
+
+-- Main.PranavRai - 2017-10-19
+
+%META:PREFERENCE{name="ALLOWTOPICVIEW" title="ALLOWTOPICVIEW" type="Set" value="Pranav"}%
+%META:PREFERENCE{name="PERMSET_VIEW" title="PERMSET_VIEW" type="Local" value="details"}%
+%META:PREFERENCE{name="PERMSET_VIEW_DETAILS" title="PERMSET_VIEW_DETAILS" type="Local" value="Pranav"}%

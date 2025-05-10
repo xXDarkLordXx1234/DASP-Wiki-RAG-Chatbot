@@ -1,0 +1,75 @@
+%META:TOPICINFO{author="reinemuth" comment="save topic" date="1458643755" format="1.1" reprev="13" version="15"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! BSc Thesis "Noisy Text Normalization with Character-based Recurrent Neural Networks"
+
+---++ 2016-03-14 10:00 Uhr Meeting
+   * OCR-error types
+   * Preprocessing
+   * Use of dictionary
+   * Evaluation
+
+---++ 2016-01-07 10:00 Uhr Meeting
+   * Midterm-talk
+   * Compute server
+   * Writing progress
+   
+---++ 2016-01
+   * First executable protptype (executable jar)
+   
+---++ 2015-12
+   * Summary of related work (RNN text generation)   
+   
+---++ 2015-12-10 10:00 Uhr Meeting
+   * Scheduling
+   * Hardware requirements
+   * Midterm-talk
+   * Focus on literature review
+
+---++ 2015-11-19 10:00 Uhr Meeting
+   * Hand out UKP account
+   * Student talks: 26.01.2016 (mid-term) and 26.04.2016 (final)
+   * SVN repository: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/hr
+
+---+!! Research/Related Work/Resources
+   * Deeplearning4J Framework
+      * http://deeplearning4j.org/        *    
+      * Documentation 
+         * http://deeplearning4j.org/doc/
+         * http://nd4j.org/doc/overview-summary.html
+      * Support https://gitter.im/deeplearning4j/deeplearning4j
+      * BidirectionalLSTM 
+         *  http://deeplearning4j.org/doc/org/deeplearning4j/nn/layers/recurrent/GravesBidirectionalLSTM.html
+         * https://github.com/deeplearning4j/deeplearning4j/blob/master/deeplearning4j-core/src/main/java/org/deeplearning4j/nn/layers/recurrent/GravesBidirectionalLSTM.java
+      * Setup
+         * DL4J & Eclipse https://depiesml.wordpress.com/2015/08/26/dl4j-gettingstarted/      
+   * RNNs and LSTMs
+      * A Beginners Guide to Recurrent Networks and LSTMs http://deeplearning4j.org/lstm.html
+      * Tutorial: Recurrent Networks and LSTMs http://deeplearning4j.org/recurrentnetwork.html     
+      * Recurrent Neural Networks https://en.wikipedia.org/wiki/Recurrent_neural_network
+      * Recurrent Neural Networks Tutorial, Part 1  Introduction to RNNs http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/
+      * Recurrent Neural Networks http://people.idsia.ch/~juergen/rnn.html
+      * Recurrent Neural networks http://www.scholarpedia.org/article/Recurrent_neural_networks     
+      * Neural Networks for Machine Learning Lecture 7a Modeling sequences http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec7.pdf
+      * LSTM Tutorial http://people.idsia.ch/~juergen/lstm/sld001.htm
+      * Papers       
+         * Long Short-Term Memory http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6795963&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6795963
+         * LSTM: A Search Space Odyssey http://arxiv.org/abs/1503.04069
+         * Supervised Sequence Labelling with Recurrent Neural Networks http://www.cs.toronto.edu/~graves/preprint.pdf
+         * Training recurrent neural networks http://www.cs.utoronto.ca/~ilya/pubs/ilya_sutskever_phd_thesis.pdf
+         * A tutorial on training recurrent neural networks http://minds.jacobs-university.de/sites/default/files/uploads/papers/ESNTutorialRev.pdf
+   * Related Work
+      * The Unreasonable Effectiveness of Recurrent Neural Networks http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+         * Demo http://cs.stanford.edu/people/karpathy/recurrentjs/         
+         * Deeplearning4J Code example https://github.com/deeplearning4j/dl4j-0.4-examples/tree/master/src/main/java/org/deeplearning4j/examples/rnn     
+      * Papers
+         * Generating Text with Recurrent Neural Networks http://machinelearning.wustl.edu/mlpapers/paper_files/ICML2011Sutskever_524.pdf
+         * Generating Sequences With Recurrent Neural Networks http://arxiv.org/pdf/1308.0850v5.pdf
+         * NCSU_SAS_WOOKHEE: A Deep Contextual Long-Short Term Memory Model for Text Normalization http://www.aclweb.org/anthology/W/W15/W15-43.pdf#page=123
+         * Normalizing tweets with edit scripts and recurrent neural embeddings http://www.aclweb.org/website/old_anthology/P/P14/P14-2111.pdf
+         * Using Recurrent Neural Networks for Slot Filling in Spoken Language Understanding http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6998838&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6998838 
+   * Evaluation
+      * The ocrevalUAtion tool https://sites.google.com/site/textdigitisation/ocrevaluation
+   * Text Resources
+      * https://www.gutenberg.org/
+      * http://www.deutschestextarchiv.de/
+-- Main.CarstenSchnober - 2015-11-19

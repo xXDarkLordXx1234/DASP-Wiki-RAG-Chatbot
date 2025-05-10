@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="NicoErbs" date="1340370322" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++ Verteilung von Gold Keyphrases
+
+Gruppierte Verteilung:
+| *Anteil aller Dokumente* | *Anzahl solcher Keyphrases* | *Anteil aller Keyphrases* | *Beispiel* |
+| 0% | 5446 | 92,7% | Abbildung, Abbruch, ... |
+| 1% | 331 | 5,6% | Aggression, Allgemein bildende Schule, ... |
+| 2% | 55 | 0,9% | Autonomie, Beratung, ... |
+| 3% | 18 | 0,3% | Befragung, Berufsausbildung, ... |
+| 4% | 13 | 0,2% | Berufsbildung, Bildungsforschung, ... |
+| 5% | 4 | < 0,1% | Ganztagsschule, Hochschule, ... |
+| 6% | 1 | < 0,1% | Bildung |
+| 7% | 2 | < 0,1% | Grundschule, Lehrer |
+| 8% | 2 | < 0,1% | Bildungspolitik, Empirische Untersuchung |
+| 9% | 1 | < 0,1% | Kind |
+| 10% | 1 | < 0,1% | Schüler |
+| 12% | 1 | < 0,1% | Schule |
+| 19% | 1 | < 0,1% | Rezension |
+| 36% | 1 | < 0,1% | Deutschland |
+
+Dies bedeutet z.B., 
+   * 1. Zeile: 92,7% der Keyphrases erscheinen nur in < 1% der Dokumente. 
+   * Letzte Zeile: 1 Keyphrase erscheint in 36% der Dokumente.
+
+
+Siehe auch    
+   * [[%ATTACHURL%/../ShuoYangKeyphrases/word_distribution.csv][word_distribution.csv]]: word_distribution.csv
+   * [[%ATTACHURL%/../ShuoYangKeyphrases/frequency_distribution.csv][frequency_distribution.csv]]: frequency_distribution.csv
+   * [[%ATTACHURL%/../ShuoYangKeyphrases/grouped_frequency_distribution.csv][grouped_frequency_distribution.csv]]: grouped_frequency_distribution.csv
+
+
+
+-- Main.NicoErbs - 2012-06-22

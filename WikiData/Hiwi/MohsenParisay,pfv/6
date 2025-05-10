@@ -1,0 +1,29 @@
+%META:TOPICINFO{author="MohsenParisay" date="1309876225" format="1.1" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ Mohsen Parisay
+---+++ Aufgaben
+
+Phase 1:
+   * Declare regular expressions for MediaWiki Markups
+   * Extract tokens and save them as a list (according to their markup annotations)
+   * Develop a Java program to test regular expressions based on UIMA functionalities (not directly iterating through the whole Wikipedia)
+
+Phase 2:
+   * Extract all candidates from Wikipedia and save them according to their types via UIMA pipeline
+   * Develop a specific UIMA type for this phase
+   
+Phase 3:
+   * Store information about candidates to a Lucene index or database
+
+---+++ Zeiterfassung
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Installation | 01.June.2011 | 2 | ... |
+| Tutorial | 08.June.2011 | 4 | | |
+| Regex | 17.June.2011 | 4 | | |
+| UIMA investigation | 29.June.2011 | 4 | | |
+| UIMA investigation 2 | 05.July.2011 | 5 | | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 40)$EXEC($GET(total_hour))"}% | bis Ende Juli noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden | |
+
+-- Main.SilvanaHartmann - 2011-06-01

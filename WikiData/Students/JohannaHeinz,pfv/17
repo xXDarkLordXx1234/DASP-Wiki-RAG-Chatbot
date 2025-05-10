@@ -1,0 +1,178 @@
+%META:TOPICINFO{author="stab" comment="" date="1545308186" format="1.1" reprev="15" version="17"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Talks
+   * 2019-01-08 mid term talk
+   * 2019-03-19 final talk
+
+---+++ 2018-12-20
+   * Feedback on Related Work Section
+      * Task definition: Describe our task in more detail and compare it to existing approaches in Sentiment Analysis.
+      * Assessment of existing methods for our task: It is necessary to explain/discuss the difference of existing models/tasks compared to our goals. 
+      * Sentiment aspects vs. argumentative aspects: What's the difference?
+      * Reasons for not using the existing models for our task, e.g. those from task 1.2.
+   * TODOs:
+      * Slides for Mid-term talk (DL: 20.12.)
+      * Elaborate related work part and write introduction (DL: 17.01.2019)
+      * Prepare data for learning to rank model
+         * Get candidate scores
+         * Learn ranking model, e.g. regression
+         * Train model on train, get scores on dev and test
+
+---+++ 2018-12-13
+   * Structure of Talk
+      * 1 Motivation
+         * Task / Examples
+         * Research Questions
+      * 2 Related Work
+      * 3 Approach
+         * Data
+         * Methods / Ideas
+      * 4 Evaluation / Results
+         * Evaluations-Setup
+         * Sequence Labeling
+         * Candidate Extraction / Ranking
+      * 5 Conclusions (so far)
+      * 6 Next Steps
+   * TODOs
+      * Slides for Mid-term talk (DL: 20.12.)
+      * Prepare data for learning to rank model
+         * Get candidate scores
+         * Learn ranking model, e.g. regression
+         * Train model on train, get scores on dev and test
+      * (DONE) Review papers and continue writing related work section. (Deadline: 13.12.)
+      * (DONE) Eperiments with LSTM / LSTM-CRF using word2vec/glove embeddings
+
+---++ 2018-12-06
+   * Experiument with syntactic information in LSTM mnodels
+      * Try to change learning rate of the optimizer 
+      * Try different batch_sizes
+      * Try different activation function (tanh, relu, sigmoid)
+   * Prepare data for learning to rank model
+      * Get candidate scores
+      * Learn ranking model, e.g. regression
+      * Train model on train, get scores on dev and test
+   * Search for other learning to rank methods
+   * TODO / next steps
+      * (DONE) Determine class distribution over IOB-labels in train, dev, and test sets
+      * (DONE) Baselines: Majority baseline, random baseline
+      * (ONGOING) Review papers and continue writing related work section. (Deadline: 13.12.)
+      * (ONGOING) Eperiments with LSTM / LSTM-CRF using word2vec/glove embeddings
+      * (DONE) Start implementing candidate extraction
+
+---++ 2018-11-22
+   * structure for thesis:
+      * 3 Approaches for Extracting Argumenative Aspects
+         * (introduction to the task including examples)
+         * 3.1 Sequence Labeling Approaches
+            * (3.2.1 Feature-Rich Conditional Random Field) 
+            * (3.2.2 Neural Network Approaches using Word Embeddings)
+            * (3.2.3 Neural Network Approaches with xyz)
+         * 3.2 Ranking Approaches
+            * (introduction: WHY ranking models? how?)
+            * 3.2.1 Candidate extraction
+            * 3.2.2 Scoring Candidates        
+            * 3.2.3 Learning to Rank (different models)
+         * 3.3 Chapter Summary
+   * 4 Evaluation
+      * 4.1 Data (maybe move to 3)
+         * 4.1.1  Preprocessing
+         * 4.1.2  Statistics (Class distribution)
+      * 4.2 Evaluation Setup
+         * 4.2.1  Data Splitting
+         * 4.2.2  Evaluation Metrics (why are we using these measures? Do they allow us to compare ranking and sequence labeling models? If so how?)
+      * 4.3 Model Selection (Results on DEV-Set; maybe move to 3)
+         * (4.3.1 Evaluation of Candidate Selection)
+      * 4.4 Results
+         * (4.4.1 per topic)
+         * (4.4.2 overall)
+      * 4.5 Error Analysis
+      * 4.6 Chapter Summary
+   * TODO / next steps
+      * Determine class distribution over IOB-labels in train, dev, and test sets
+      * Baselines: Majority baseline, random baseline
+      * (ONGOING) Review papers and continue writing related work section.  (*Deadline: 13.12.*)
+      * (ONGOING) Eperiments with LSTM / LSTM-CRF using word2vec/glove embeddings
+      * (ONGOING) Start implementing candidate extraction
+   
+---++ 2018-11-16
+   * Problems with tagging -> indices don't match aspects
+   * Differntiate between "model selection" and "model assessment" to prevent overfitted results.
+      * model selection: Tuning parameters / features / etc on the dev set
+      * model assessment: test generalizability of best model on the test set
+   * TODO / next steps
+      * Prepare structure for "approach/method" and "evaluation" section of thesis
+      * (ONGOING) Review papers and continue writing related work section.  (*Deadline: 13.12.*)
+      * (ONGOING) Eperiments with LSTM / LSTM-CRF using word2vec/glove embeddings
+      * (ONGOING) Start implementing candidate extraction
+      * (DONE) Use cross-topic setup for all experiments
+      * (DONE) Features (prefex, relative position in sentence, contextual information, first half second half, num words preceding the current word)
+
+
+      
+---++ 2018-11-08
+   * template for thesis
+   * prepared data
+   * Simple implementation of crf without cross topic setup -> pretty bad results (F1 score 0,207, recall 0,137)
+   * @discussed data splitting: cross-topic: 4x train, 4x dev, 4x test (do feature selection / model selection on dev set only and report final scores on test)
+   * @discussed candidate extraction method and its evaluation
+   * repo: https://git.ukp.informatik.tu-darmstadt.de/stab/aspect-extraction 
+   * thesis-template: https://wiki.ukp.informatik.tu-darmstadt.de/Students/InformationenFuerDiplomanden 
+   * TODO / next steps
+      * Review papers and continue writing related work section. 
+      * Use cross-topic setup for all experiments
+      * Features (prefex, relative position in sentence, contextual information, first half second half, num words preceding the current word)
+      * Eperiments with LSTM / LSTM-CRF using word2vec/glove embeddings
+      * Start implementing candidate extraction
+   
+   
+---++ 2018-10-25
+   * Structure for related work section
+      * Argument Mining / Aspect-based Sentiment Analysis
+      * Sequence Tagging/Labeling
+         * CRF?
+         * LSTM?
+         * ...
+      * Ranking Methods 
+         * Regression?
+         * Learning to Rank?
+         * Levy?
+      * Chapter Summary
+   * *Evaluation Setup*: Cross-topic -> train in n-1 and test on n (n = topic)
+   * Keyword: Active Learning
+   * TODO / next steps
+      * Review papers and continue writing related work section. 
+      * Start implementing 
+         * Implement a crf (or other sequence taggers) example 
+         * Preapre data and data splitting 
+         * Implement evaltuation measures
+
+---++ 2018-10-19
+   * paperwork
+   * discuss task description 
+   * discussed ranking approaches for aspect extraction 
+   * evaluation metrics (How can e compare ranking and sequence modeling approaches?)
+      * Solution 1: consider only best ranked candidate as actual "hit" and evaluate using token-level IOB/BIO tagging scheme
+      * Solution 2: use approach described in http://www.aclweb.org/anthology/S14-2004
+   * *TODOS / next steps*
+      * (DONE) *Formulate a good argument why we use ranking methods instead of common sequence labeling methods.* in the current version of the task description 
+      * (DONE) Get familiar with keras / tensorflow -> LSTM-CRF
+      * (DONE) Evaluation Setup: How to split the data? Cross-topic vs. In-topic vs. "we don't care about the topic"
+      * Review papers and start writing related work section. 
+
+---++ 2018-10-11 
+   * Forms for account, IP, etc. 
+   * Discuss data to use for this project
+   * Task description
+   * Evaluation setup
+   * @discussed: (1) selquence labeling vs. (2) ranking approaches
+   * *Participate in the advanced seminar*: Dienstag 11:30 Raum B002+
+   * *Todos / next steps*
+      * Prepare forms and contract / etc.
+      * Get familiar with the following methods CRF, LSTM-CRF and sequence-tagging (these models are for instance used for named-entity recognition,)
+      * Get familiar with keras / tensorflow -> LSTM-CRF
+      * Think about evaluation strategies w.r.t. to compare tagging and ranking approaches
+      * Evaluation Setup: How to split the data? Cross-topic vs. In-topic vs. "we don't care about the topic"
+
+
+
+-- Main.ChristianStab - 2018-10-11

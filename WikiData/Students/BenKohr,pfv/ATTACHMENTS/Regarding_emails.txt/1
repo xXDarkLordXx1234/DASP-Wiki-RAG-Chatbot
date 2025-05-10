@@ -1,0 +1,74 @@
+Ideas for Table of Contents:
+	- I changed the TOC, taking your ideas into account.
+	
+POS grouping:
+	- Might be a good idea, given the grouping I can work on that.
+	- I would implement this as a switch during CoNLL reading, so that the POS entries in the constructed Arguments are directly aggregated to group level.
+
+KMeans:
+	- Yes, the similarity is 3 because path and frame match. It is 16 - (12 + 1) = 3; 12 for the path, 1 for the frame match.
+
+Sim/dist:
+	- The basic similarity (and distance) function is the same for all algorithms and depends only on the switch "mode" in WordAspects.
+	  Then, only additions (like -Inf) are applied on top of that.
+	- One could change the basic funtion when changing the "mode" switch between algorithms, but this is currently not the case.
+
+Path and POS:
+	- I can try this out. I would use "Path and POS" first for a high similarity and afterwards only "Path" for a smaller similarity.
+
+Embedddings crash:
+	- I switched logging off (via the log switch in main). It was switched on, so it logged every algorithm execution, which was too much for the
+	   Java heap space. After I switched it off, both CWs run on the test.wjs data set and DBSCAN runs on the train.closed set without any problems.
+	   So I guess, the logging was the problem.
+
+Last function instead of path:
+	- When I let SyntacticBaseline, CW and DBSCAN run on the test.wjs data set, I get the following results for tell:
+	SB:
+	>>> PURITY: 0.7384615384615385
+	>>> COLLOCATION: 0.8769230769230769
+	>>> FSCORE: 0.8017582417582417
+
+	CW(B):
+	>>> PURITY: 0.8615384615384616
+	>>> COLLOCATION: 0.8
+	>>> FSCORE: 0.8296296296296297
+
+	DBSCAN:
+	>>> PURITY: 0.7692307692307693
+	>>> COLLOCATION: 0.8615384615384616
+	>>> FSCORE: 0.8127721335268506
+	
+	So, in that case, DBSCAN and CW are better. But when using all verbs, CW is much worse and DBSCAN 'only' comparable:
+	
+	SB:
+	>>> PURITY: 0.8516033338042096
+	>>> COLLOCATION: 0.8462353439751378
+	>>> FSCORE: 0.848910853008423
+
+	CW(B):
+	>>> PURITY: 0.729128407967227
+	>>> COLLOCATION: 0.8103545698544993
+	>>> FSCORE: 0.7675986625626716
+	
+	DBSCAN:
+	>>> PURITY: 0.8778075999434949
+	>>> COLLOCATION: 0.8237039129820596
+	>>> FSCORE: 0.8498955774629336
+	
+	But still, I could create another similarity function which only differs from the original ARGUMENT_SIMILARITY by this aspect and we could also tun parameters for this function!
+	And yes, I also guess that a purity/collocation match is a coincidence, because tell has not that much arguments (compared to e.g. "say"). But in my case,
+	this was only the case with PU CWLL and CO DBSCAN ... did CO CWLL and PU DBSCAN match exactly when you ran it?
+
+Result table:
+	- I could implement this, but this information is also stored in the report files and logs generated. I would have to rearrange paramter assignment 
+	  and logging and I thought that we would not focus so much on programming anymore (except for error correcting, of course) and more on writing. 
+	  But still, I could implement this, of course.
+
+DBSCAN and KMeans with(out) Brown:
+	- DBSCAN on tell: The correct Functions are used from WordAspects and there are even Brown matches. I guess, this is due to a 
+	  small number of Brown matches on the one and to the current configuration of DBSCAN on the other side. For DBSCAN, there is 
+	  currently "no difference" between a distance of 0 (sim: 8) and of 2 (sim: 6), for example, as eps is 4.6.
+	- KMeans on tell: Because of a small number of Brown matches, the Function behaves "nearly" similar to the normal sim function. KMeans always takes
+	  a look at the nearest centroid, and as the similarities increase only a bit (they are a bit streched from "0 to 6" to "0 to 8"), there are no differences
+	  in the output.
+	- Both DBSCAN and KMeans yield different results with and without Brown when used on a bigger dataset (all verbs).

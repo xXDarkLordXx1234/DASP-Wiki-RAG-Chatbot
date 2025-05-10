@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="ChristianMeyer" date="1227799936" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ChristianMeyer"}%
+---++ Data sources 
+
+ *Yahoo!Answers*
+   * http://answers.yahoo.com/
+   * 52,148,802 questions/search results [11/2008]
+   * Question with multiple answers, one chosen best answer
+
+ *Wikipedia*
+   * http://en.wikipedia.org/
+   * 1,660,067 article pages [06/2007]
+   * Encyclopedic articles
+
+ *FAQs*
+   * Extraction from http://www.google.com/search?q=inurl:faq
+   * 2,824,179 question with single answer
+   * Jijkoun/Rijke: Retrieving answers from frequently asked questions pages on the web, 2005.
+
+---++ Test data
+http://trec.nist.gov/
+
+---++ Supporting data
+*Wortschatz Corpus*
+   * http://corpora.informatik.uni-leipzig.de/download.html
+   * Leipzig University
+   * 1M sentences
+   * Sources: newspapers, random web documents
+   * Quasthoff, U.; M. Richter; C. Biemann: Corpus Portal for Search in Monolingual Corpora, Proceedings of the fifth international conference on Language Resources and Evaluation, LREC 2006, Genoa, pp. 1799-1802
+
+*WordNet*
+   * http://wordnet.princeton.edu/
+   * Developed by George A. Miller et al.
+   * 155287 words, 117659 senses, http://wordnet.princeton.edu/man/wnstats.7WN, Version 3.0
+   * Fellbaum, Christiane (ed.): WordNet, An Electronic Lexical Database, The MIT-Press, 1998, 0-262-06197-X.
+
+
+-- Main.ChristianMeyer - 27 Nov 2008

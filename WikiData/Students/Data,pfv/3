@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="LizhenQu" date="1188309876" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="LizhenQu"}%
+
+WordNet 2.0 coverage test:<br />All phrases occur in TAGs are seperated into single word and try to find a corresponding match in WordNet 2.0. 20430 words are found in WordNet 2.0 among all 41631 words (uncovered is stemmed by SnowBall). So the coverage ratio is  0.4907400735029185.
+   * [[%ATTACHURL%/tag_phrase_count_16_08.txt][tag_phrase_count_16_08.txt]]: words and phrases in tags. All words and phrase are converted into lower case.
+
+   * [[%ATTACHURL%/tag_word_count_16_08.txt][tag_word_count_16_08.txt]]: Single word ranking, any phrase will be splitted into single word. all words are in lower case.
+
+   * [[%ATTACHURL%/tag_stemmed_word_count_16_08.txt][tag_stemmed_word_count_16_08.txt]]: single words ranking. All words are stemmed by snowball
+
+   * [[%ATTACHURL%/wordNet_uncovered_phrase][wordNet_uncovered_phrase]]: all phrases with at most 3 words. not covered by wordnet 2.0. Phrases are stemmed by Snowball.
+
+   * [[%ATTACHURL%/wordNet_uncovered_phrase_g3.rank][wordNet_uncovered_phrase_g3.rank]]: Phrases with more than 3 words, they are assumed not by covered by WordNet 2.0. Because the look up of multiwords phrase is quite slow in JWNL.
+
+   * [[%ATTACHURL%/wordNet_uncovered_words.rank][wordNet_uncovered_words.rank]]: all words not covered by WordNet 2.0. Multi-words phrase are splitted into single words.
+Tag coocurrence analysis:<br />
+
+   * [[%ATTACHURL%/tag_tfidf_train_nodup_idf.txt][tag_tfidf_train_nodup_idf.txt]]: IDF ranking of all the terms in posts, stemmed by SnowBall.
+
+   * [[%ATTACHURL%/tag_tfidf_train_nodup_ridf.txt][tag_tfidf_train_nodup_ridf.txt]]: residual inverse document frequency ranking of all post terms.
+
+   * [[%ATTACHURL%/tag_train_ov_clusters.txt][tag_train_ov_clusters.txt]]: clusters from overlapping analysis. 0.8 is threshold of overlap rate. Format: [union of terms] [intersection of terms] [document id list]<br />
+
+   * [[%ATTACHURL%/tag_train_ov_df.txt][tag_train_ov_df.txt]]: document frequency of tags.
+
+   * [[%ATTACHURL%/tag_cooc_cluster.txt][tag_cooc_cluster.txt]]: tags clustered by context terms which are selected by idf. But the file is only the result of 2000 post and phrases are seperated into words.<br />
+
+   * <span style="text-decoration: underline;"></span>Place holder for Tag and idf terms coocurrence . The format is [tag] [tag DF] ([term] [term tag coocurrence])(Experiment running)
+   * Place holder for tags clustered by context terms. 3/4 posts containing posts will be processed.(Experiment running)<br />
+
+   * [[%ATTACHURL%/tag_cooc_analysis.pdf][tag_cooc_analysis.pdf]]: a short report about tags coocurrence analysis. Additional comment: stop words in tag phrase are removed. (nearly forgotten to mention)
+    Small amount data analysis
+
+   * [[%ATTACHURL%/debug_non_en_stems.txt][debug_non_en_stems.txt]]: sentences list containing some non-english words
+
+   * [[%ATTACHURL%/tag_tfidf_train_nodup_idf.txt][tag_tfidf_train_nodup_idf.txt]]: no duplicate idf
+
+   * [[%ATTACHURL%/tag_tfidf_train_nodup_ridf.txt][tag_tfidf_train_nodup_ridf.txt]]: no duplicate ridf
+
+   * [[%ATTACHURL%/tag_corr_words_clusters.txt][tag_corr_words_clusters.txt]]: coocurrence matrix
+
+   * [[%ATTACHURL%/tag_train_ov_clusters.txt][tag_train_ov_clusters.txt]]: overlapping document clusters
+
+   * [[%ATTACHURL%/tag_train_ov_df.txt][tag_train_ov_df.txt]]: overlapping document frequency ranking
+
+   * [[%ATTACHURL%/tag_cooc_train_0.2_0.9_clusters.txt][tag_cooc_train_0.2_0.9_clusters.txt]]: coocurrence clustering
+
+%META:FILEATTACHMENT{name="tag_phrase_count_16_08.txt" attachment="tag_phrase_count_16_08.txt" attr="" comment="words and phrases in tags. All words and phrase are converted into lower case." date="1187279294" path="tag_phrase_count_16_08.txt" size="898073" stream="tag_phrase_count_16_08.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tag_word_count_16_08.txt" attachment="tag_word_count_16_08.txt" attr="" comment="Single word ranking, any phrase will be splitted into single word. all words are in lower case." date="1187279367" path="tag_word_count_16_08.txt" size="401408" stream="tag_word_count_16_08.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tag_stemmed_word_count_16_08.txt" attachment="tag_stemmed_word_count_16_08.txt" attr="" comment="single words ranking. All words are stemmed by snowball" date="1187279437" path="tag_stemmed_word_count_16_08.txt" size="319488" stream="tag_stemmed_word_count_16_08.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="wordNet_uncovered_phrase" attachment="wordNet_uncovered_phrase" attr="" comment="all phrases not covered by wordnet 2.0. Phrases are stemmed by Snowball." date="1187279509" path="wordNet_uncovered_phrase" size="187547" stream="wordNet_uncovered_phrase" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="wordNet_uncovered_phrase_g3.rank" attachment="wordNet_uncovered_phrase_g3.rank" attr="" comment="all words not covered by WordNet 2.0. Multi-words phrase are splitted into single words." date="1187279590" path="wordNet_uncovered_phrase_g3.rank" size="122923" stream="wordNet_uncovered_phrase_g3.rank" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="wordNet_uncovered_words.rank" attachment="wordNet_uncovered_words.rank" attr="" comment="Phrases not covered by WordNet 2.0 with more than 3 words." date="1187279645" path="wordNet_uncovered_words.rank" size="203199" stream="wordNet_uncovered_words.rank" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tag_tfidf_train_nodup_idf.txt" attachment="tag_tfidf_train_nodup_idf.txt" attr="" comment="no duplicate idf" date="1188309326" path="tag_tfidf_train_nodup_idf.txt" size="460990" stream="tag_tfidf_train_nodup_idf.txt" user="Main.LizhenQu" version="2"}%
+%META:FILEATTACHMENT{name="tag_tfidf_train_nodup_ridf.txt" attachment="tag_tfidf_train_nodup_ridf.txt" attr="" comment="no duplicate ridf" date="1188309348" path="tag_tfidf_train_nodup_ridf.txt" size="745062" stream="tag_tfidf_train_nodup_ridf.txt" user="Main.LizhenQu" version="2"}%
+%META:FILEATTACHMENT{name="tag_train_ov_clusters.txt" attachment="tag_train_ov_clusters.txt" attr="" comment="overlapping document clusters" date="1188309574" path="tag_train_ov_clusters.txt" size="232621" stream="tag_train_ov_clusters.txt" user="Main.LizhenQu" version="2"}%
+%META:FILEATTACHMENT{name="tag_train_ov_df.txt" attachment="tag_train_ov_df.txt" attr="" comment="overlapping document frequency ranking" date="1188309625" path="tag_train_ov_df.txt" size="74378" stream="tag_train_ov_df.txt" user="Main.LizhenQu" version="2"}%
+%META:FILEATTACHMENT{name="tag_cooc_cluster.txt" attachment="tag_cooc_cluster.txt" attr="" comment="tags clustered by context terms which are selected by idf. But the file is only the result of 2000 posts" date="1188227873" path="tag_cooc_cluster.txt" size="39803" stream="tag_cooc_cluster.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tag_corr_rank_0.8.txt" attachment="tag_corr_rank_0.8.txt" attr="" comment="tag and idf lexicon terms coocurrence, thresholded by 0.5 after processing 2000 posts" date="1188228209" path="tag_corr_rank_0.8.txt" size="2821073" stream="tag_corr_rank_0.8.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tag_cooc_analysis.pdf" attachment="tag_cooc_analysis.pdf" attr="" comment="a short report about tags coocurrence analysis" date="1188228764" path="tag_cooc_analysis.pdf" size="48388" stream="tag_cooc_analysis.pdf" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="debug_non_en_stems.txt" attachment="debug_non_en_stems.txt" attr="" comment="sentences list containing some non-english words" date="1188309205" path="debug_non_en_stems.txt" size="102897" stream="debug_non_en_stems.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tag_corr_words_clusters.txt" attachment="tag_corr_words_clusters.txt" attr="" comment="coocurrence matrix" date="1188309511" path="tag_corr_words_clusters.txt" size="5008173" stream="tag_corr_words_clusters.txt" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="tag_cooc_train_0.2_0.9_clusters.txt" attachment="tag_cooc_train_0.2_0.9_clusters.txt" attr="" comment="coocurrence clustering" date="1188309876" path="tag_cooc_train_0.2_0.9_clusters.txt" size="39946" stream="tag_cooc_train_0.2_0.9_clusters.txt" user="Main.LizhenQu" version="1"}%

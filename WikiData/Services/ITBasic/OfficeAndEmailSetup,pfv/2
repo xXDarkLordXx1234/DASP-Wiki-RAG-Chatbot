@@ -1,0 +1,37 @@
+%META:TOPICINFO{author="TristanMiller" date="1329391066" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="Resources"}%
+---+ !! UKP Mail Service
+
+---++ Microsoft Outlook 2007
+
+Microsoft Outlook 2007 is the only officially supported client, and is available in the Windows VM on your workstation. When you start it, enter your details into the dialogs presented to you and leave it to Outlook to detect all settings automatically. If any problem occurs, please contact the system administrators by opening an issue the issue tracker.
+
+---++ Webmail (OWA)
+
+You can also read and send mail in your web browser through [[https://mx.ukp.informatik.tu-darmstadt.de/owa/][Outlook Web Access (OWA)]] at https://mx.ukp.informatik.tu-darmstadt.de/owa/
+
+---++ IMAP
+
+Our Exchange server provides the standard IMAP access for checking mail with other mail clients. Use the following settings, substituting your user name for mine.  (The exact names of the fields may vary from client to client; these are the ones used by Thunderbird.)
+   * Server type: IMAP
+   * Server name: =mx.ukp.informatik.tu-darmstadt.de=
+   * Port: =143=
+   * User Name: =miller=
+   * Authentication type: NTLM
+   * Connection security: STARTTLS
+
+<img src="%ATTACHURLPATH%/UKP_IMAP_settings.png" />
+
+---++ SMTP
+
+Our Exchange server provides the standard SMTP access for sending mail with other mail clients. Use the following settings, substituting your user name for mine.  (The exact names of the fields may vary from client to client; these are the ones used by Thunderbird.)
+   * Server name: =mx.ukp.informatik.tu-darmstadt.de=
+   * Port: =587=
+   * Connection security: STARTTLS
+   * Authentication method: NTLM
+   * User Name: =miller=
+
+<img src="%ATTACHURLPATH%/UKP_SMTP_settings.png" />
+
+%META:FILEATTACHMENT{name="UKP_IMAP_settings.png" attachment="UKP_IMAP_settings.png" attr="" comment="UKP IMAP server settings (Thunderbird)" date="1329391040" path="UKP_IMAP_settings.png" size="6324" user="TristanMiller" version="2"}%
+%META:FILEATTACHMENT{name="UKP_SMTP_settings.png" attachment="UKP_SMTP_settings.png" attr="" comment="UKP SMTP server settings (Thunderbird)" date="1329391065" path="UKP_SMTP_settings.png" size="7088" user="TristanMiller" version="2"}%

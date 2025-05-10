@@ -1,0 +1,133 @@
+%META:TOPICINFO{author="NataliyaSinkevych" date="1211181509" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="NataliyaSinkevych"}%
+-- Main.NataliyaSinkevych - 09 May 2008
+
+---++++ 5. Implementierung von Terrier Index Writer, Terrier Query Generator und Terrier Searcher / (in process)
+(d.h. Nachimplementierung der Suchfunktionalität von programmableweb.com, Implementierung von anderen String-basierten Suchmethoden)  
+
+---++++ 4. Durchführung von Query Elicitation und Änderungen in WSDL-Reader, Einarbeitung in Terrier / 23.04 - 18.04
+
+---++++++ 23.04-28.04:
+   * Bearbeitung von Szenarien:
+      * die Testperson hat die Szenarien durchgelesen. Nachdem ich Feedback bekommen habe, habe ich einige Änderungen vorgenommen.
+         * ich habe 3 Versionen von Dateien mit Szenarien erstellt: Anfang, Mitte und Ende durchgemischt. Es wurde dafür gemacht, damit die Ergebnisse nicht zu sehr von der Müdigkeit der Testpersonen beeinflusst werden. 
+         * [[%ATTACHURL%/Fragebogen_a_b_c.zip][Fragebogen_a_b_c.zip]]: 3 Versionen von Fragebögen 
+
+---++++++ 28.04-04.05:    
+      * Die Excel-Datei (mit 39 Szenarien) habe ich an die ersten 4 Testpersonen (nicht IT-ler) geschickt und 3 davon schon zurückbekommen. Wie befürchtet wurden einige Situationen nicht richtig (anders) verstanden, was dazu geführt hat, dass die Antworten nicht genau dem entsprechen, was ich erwartet habe. Im Allgemeinen sieht Freitext "gut"-"sehr gut" aus und viel besser, als Input- und Outputfelder, da haben meine Bekannten am meisten gekämpft und zum größten Teil falsch ausgefüllt. Ich glaube, dass der Grund dafür ist, dass die Testpersonen als Finanzanalysten bzw. Projektkoordinatoren tätig sind. Ich denke, dass die Leute, die mehr mit der Informatik zu tun haben, die Felder "Input" und "Output" korrekter ausfüllen werden. Die Testpersonen haben etwa *3-4* Stunden zum Ausfüllen von Fragebögen gebraucht. 
+      * [[%ATTACHURL%/scenarios_questionnaire_a_AM.xls][scenarios_questionnaire_a_AM.xls]]: scenarios_questionnaire_a_AM.xls
+      * [[%ATTACHURL%/scenarios_questionnaire_a_KH.xls][scenarios_questionnaire_a_KH.xls]]: scenarios_questionnaire_a_KH.xls
+      * [[%ATTACHURL%/scenarios_questionnaire_a_SH.xls][scenarios_questionnaire_a_SH.xls]]: scenarios_questionnaire_a_SH.xls
+
+   * Einige Änderungen wurden an WSDL-Reader vorgenommen, um die Ergebnisse übersichtlicher zu gestalten und mehr Informationen aus dem Schema zu extrahieren
+      * [[%ATTACHURL%/WsdlFilesDir.zip][WsdlFilesDir.zip]]: input Directory für Collection Reader; aus den Dateien extrahiert WSDL-Reader die erforderlichen Daten
+      * [[%ATTACHURL%/out_rekursionstiefe_5.zip][out_rekursionstiefe_5.zip]]: Ausgabedatei von WSDL-Reader; wobei die Rekursionstiefe auf 5 beschränkt ist
+      * [[%ATTACHURL%/out_rekursionstiefe_10.zip][out_rekursionstiefe_10.zip]]: Ausgabedatei von WSDL-Reader; wobei die Rekursionstiefe auf 10 beschränkt ist
+      * Ausschnitt aus der Ausgabe von WSDL-Reader auf der Konsole
+         * Total services: 99 (documented: 31 = 31.31313131313131%)
+         * Total operations: 2492 (documented: 1591 = 63.84430176565008%)
+         * Total services with at least one documented operation: 43
+         * Total documented services with at least one documented operation: 24
+
+---++++++ 05.05-14.05 :   
+   * Nach dem kleinen Überblick über Ergebnisse, habe ich die Fragebögen an 5 weitere Leute geschickt
+   * Auffrischen von Wissen zu UIMA; teilweises Durcharbeiten des Kapitels 3 in "UIMA Tutorial and Developers' Guides", da Interesse an der Funktionsweise vom "Semantic Search Query Tool" besteht   (http://incubator.apache.org/uima/documentation.html)
+   * Einarbeitung in Terrier - Terabyte Retriever version 2.1
+      http://ir.dcs.gla.ac.uk/terrier/
+
+   *11.05*      
+
+   * 3 ausgefüllte Fragebögen sind heute angekommen
+      * [[%ATTACHURL%/scenarios_questionnaire_b_KaF.xls][scenarios_questionnaire_b_KaF.xls]]: ausgefüllt von einer Architekturstudentin; gute, passende Antworten, *leider* auf Deutsch
+         * der Studentin fiel es am Anfang schwer die Suchanfrage in Form von "Free text" (natural language) zu formulieren, sie meinte, dass sie keine Suchmaschinen kennt, die dies berücksichtigen; das bedeutet, dass es für einige schwer fehlt an eine andere Suchmaschine als "Google" zu denken;  
+      * [[%ATTACHURL%/scenarios_questionnaire_b_KoF.xls][scenarios_questionnaire_b_KoF.xls]]: ausgefüllt von einem Informatikstudent; allgemein - gute Antworten, output-Feld - unterschiedliche Qualität
+         * in diesem Fragebogen wurden manchmal im output-Feld die Links zu den Webseiten eingegeben, mit deren Hilfe man das beschriebene Problem lösen könnte; der Proband meinte, dass er die Seiten kennt bzw. benutzt und somit wollte er seine Erfahrung weiter geben. (insgesamt  ~ 8 Links)
+      * [[%ATTACHURL%/scenarios_questionnaire_b_AN.xls][scenarios_questionnaire_b_AN.xls]]: ausgefüllt von einem Softwareentwickler; unterschiedliche Qualität
+   * Nachdem ich alle ausgefüllten Fragebögen grob angeschaut habe, habe ich festgestellt, dass die Probanden am meisten Probleme mit der Definition von passenden Anfragen für das Ausgabefeld haben. Vielleicht macht es mehr Sinn nur den Freitext und Eingabefeld (ohne Ausgabefeld) bei der späteren Entwicklung von den verbesserten Suchverfahren zu berücksichtigen. ??       
+
+   *13.05* 
+
+   * ich habe 2 ausgefüllte Fragebögen bekommen, es werden noch die letzten 1-2 diese Woche eintreffen
+      * [[%ATTACHURL%/scenarios_questionnaire_a_JP.xls][scenarios_questionnaire_a_JP.xls]]: ausgefüllt von einem Finanzanalysten; einige Lücken sind vorhanden, sonst sind die Ergebnisse ganz gut
+      * [[%ATTACHURL%/scenarios_questionnaire_c_IS.xls][scenarios_questionnaire_c_IS.xls]]: ausgefüllt von einer Informatikstudentin; beim Output wurde an einigen Stellen "site", "tool" eingegeben, sonst ok
+
+---++++++ 18.05 : 
+   * der letzte (9.) Fragebogen ist angekommen, damit ist Query Elicitation abgeschlossen
+      * [[%ATTACHURL%/scenarios_questionnaire_c_LG.xls][scenarios_questionnaire_c_LG.xls]]: ausgefüllt von Dipl. Media System Designerin; sehr gute Ergebnisse, da richtig und sorgfältig ausgefüllt  
+
+---++++  3. Auswahl der Datensätze und Planung von Szenarien für die Sammlung von Suchanfragen / 03.03 - 21.04
+   * a) Vorauswahl der Datensätze 
+      * 112 Services (Services mit dem wsdl-Link) wurden analysiert.  Ich habe zu jedem Service Notizen gemacht und die Punkte 1 bis 5 vergeben; die Services mit "5" fand ich am besten geeignet für die Definition von Szenarien;
+         * Kriterien für Rating:
+            *  wenn etwas zu spezifisch oder unverständlich war, wo ich mir gar nicht vorstellen konnte, wofür man so ein Service brauchen könnte  niedrige Punktzahl (Finanzbeispiele)
+            * wenn allgemein verständlich oder etwas, was ich oder Bekannte sogar nutzen  höhere Punktzahl
+            * wenn ähnliche Services kamen, haben sie auch höhere Punktzahl bekommen, damit ich diese Ähnlichkeit bei der Suche später berücksichtigen kann.
+
+   * b) Einarbeitung in UIMA und Erweiterung der UIMA-Komponente WSDL-Reader 
+      * UIMA-Komponente WSDL-Reader kann nur einfache Typen (HTTP-typisch)) extrahieren;
+      * Parsen vom Schema-Element (Teil der WSDL-Datei) bzw. Extraktion und Auflösung der komplexen Typen (SOAP-typisch) ist nicht möglich
+      * Lösung:         
+         * als erstes: ein eigenständiges Programm, das mit Hilfe von Bibliotheken von Xerces das Schema-Element parst und die komplexe Typen auflöst
+         * danach: Erweiterung der UIMA-Komponente WSDL-Reader
+
+   * c) Vorverarbeitung der Datensätze und Extraktion der Daten aus WSDL-Dateien
+      
+   * d) Endgültige Auswahl und Definition der Szenarien
+      * [[%ATTACHURL%/WSDL-Reader_Ausgabe__Szenarien.zip][WSDL-Reader_Ausgabe__Szenarien.zip]]: 2 Dateien: 1) html-Datei (Ausgabe von WSDL-Reader); 2) Excel-Datei (Ergebnisse, formatierte Ausgabe von WSDL-Reader, Szenarien)
+      * [[%ATTACHURL%/Fragebogen_mit_definierten_Szenarien.zip][Fragebogen_mit_definierten_Szenarien.zip]]: 2 Dateien: Word-Datei, Excel-Datei
+
+---++++  2. Primärdatensammlung (www.programmableweb.com) / 25.02 - 05.03
+         
+   * Entwicklung von Crawler (Perl-Script): 
+      * a) Sammeln und Speichern von relevanten Links von http://www.programmableweb.com/apis/directory; 
+      * b) Für jeden gespeicherten Link: Sammeln und Speichern von wichtigsten Daten
+
+       # [[%ATTACHURL%/1a._Primaerdatensammlung_crawler.zip][Primärdatensammlung_crawler.zip]]: Crawler (Perl-Script, Dateien mit gesammelten Informationen)
+     
+   * Schreiben vom Perl-Script, mit dessen Hilfe die WSDL-Dateien automatisch runtergeladen werden
+      * Auslesen von Links aus der Datei (jeder Link ist der Ort von WSDL-Datei) und Runterladen von Dateien in den vordefinierten Ordner
+         (automatisches Vorgehen, da mehrere Dateien vorhanden) 
+         
+    # [[%ATTACHURL%/1b._Primaerdatensammlung_downloadofxmlfiles.zip][Primärdatensammlung_downloadofxmlfiles.zip]]: Script zum Runterladen von wsdl-Dateien, Ordner mit Dateien
+
+---++++  1. Einarbeitung / Februar
+   
+
+  
+
+  
+
+   
+
+  
+
+   
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+%META:FILEATTACHMENT{name="1a._Primaerdatensammlung_crawler.zip" attachment="1a._Primaerdatensammlung_crawler.zip" attr="" comment="Crawler (Perl-Script, Dateien mit gesammelten Infformationen)" date="1210335039" path="1a. Primaerdatensammlung_crawler.zip" size="378000" stream="1a. Primaerdatensammlung_crawler.zip" tmpFilename="/var/tmp/CGItemp39421" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="1b._Primaerdatensammlung_downloadofxmlfiles.zip" attachment="1b._Primaerdatensammlung_downloadofxmlfiles.zip" attr="" comment="Script zum Runterladen von wsdl-Dateien, Ordner mit Dateien" date="1210749730" path="1b. Primaerdatensammlung_downloadofxmlfiles.zip" size="867430" stream="1b. Primaerdatensammlung_downloadofxmlfiles.zip" tmpFilename="/var/tmp/CGItemp46147" user="NataliyaSinkevych" version="2"}%
+%META:FILEATTACHMENT{name="WSDL-Reader_Ausgabe__Szenarien.zip" attachment="WSDL-Reader_Ausgabe__Szenarien.zip" attr="" comment="2 Dateien: 1) html-Datei (Ausgabe von WSDL-Reader); 2) Excel-Datei (Ergebnisse, formattierte Ausgabe von WSDL-Reader, Szenarien)" date="1210339851" path="WSDL-Reader Ausgabe + Szenarien.zip" size="551533" stream="WSDL-Reader Ausgabe + Szenarien.zip" tmpFilename="/var/tmp/CGItemp39406" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="Fragebogen_mit_definierten_Szenarien.zip" attachment="Fragebogen_mit_definierten_Szenarien.zip" attr="" comment="2 Dateien: Word-Datei, Excel-Datei" date="1210339911" path="Fragebogen mit definierten Szenarien.zip" size="45924" stream="Fragebogen mit definierten Szenarien.zip" tmpFilename="/var/tmp/CGItemp39369" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="Fragebogen_a_b_c.zip" attachment="Fragebogen_a_b_c.zip" attr="" comment="3 Versionen von Fragebogen" date="1210342142" path="Fragebogen_a_b_c.zip" size="38030" stream="Fragebogen_a_b_c.zip" tmpFilename="/var/tmp/CGItemp39336" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="scenarios_questionnaire_a_AM.xls" attachment="scenarios_questionnaire_a_AM.xls" attr="" comment="" date="1210342170" path="scenarios_questionnaire_a_AM.xls" size="51200" stream="scenarios_questionnaire_a_AM.xls" tmpFilename="/var/tmp/CGItemp39334" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="scenarios_questionnaire_a_KH.xls" attachment="scenarios_questionnaire_a_KH.xls" attr="" comment="" date="1210342185" path="scenarios_questionnaire_a_KH.xls" size="52224" stream="scenarios_questionnaire_a_KH.xls" tmpFilename="/var/tmp/CGItemp39356" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="scenarios_questionnaire_a_SH.xls" attachment="scenarios_questionnaire_a_SH.xls" attr="" comment="" date="1210342200" path="scenarios_questionnaire_a_SH.xls" size="59392" stream="scenarios_questionnaire_a_SH.xls" tmpFilename="/var/tmp/CGItemp39393" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="scenarios_questionnaire_b_KaF.xls" attachment="scenarios_questionnaire_b_KaF.xls" attr="" comment="ausgefüllt von Architekturstudentin; gute, passende Antworten, *leider* auf Deutsch" date="1210497662" path="scenarios_questionnaire_b_KaF.xls" size="54272" stream="scenarios_questionnaire_b_KaF.xls" tmpFilename="/var/tmp/CGItemp39104" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="scenarios_questionnaire_b_KoF.xls" attachment="scenarios_questionnaire_b_KoF.xls" attr="" comment="ausgefüllt von einem Informatikstudent; allgemein - gute Antworten, output-Feld - unterschiedliche Qualität" date="1210497811" path="scenarios_questionnaire_b_KoF.xls" size="52224" stream="scenarios_questionnaire_b_KoF.xls" tmpFilename="/var/tmp/CGItemp39105" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="scenarios_questionnaire_b_AN.xls" attachment="scenarios_questionnaire_b_AN.xls" attr="" comment="ausgefüllt von einem Softwareentwickler, ehemaligem Informatikstudenten; unterschiedliche Qualität" date="1210530258" path="scenarios_questionnaire_b_AN.xls" size="49152" stream="scenarios_questionnaire_b_AN.xls" tmpFilename="/var/tmp/CGItemp39012" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="scenarios_questionnaire_a_JP.xls" attachment="scenarios_questionnaire_a_JP.xls" attr="" comment="ausgefüllt von einem Finanzanalysten" date="1210749305" path="scenarios_questionnaire_a_JP.xls" size="50176" stream="scenarios_questionnaire_a_JP.xls" tmpFilename="/var/tmp/CGItemp39310" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="scenarios_questionnaire_c_IS.xls" attachment="scenarios_questionnaire_c_IS.xls" attr="" comment="ausgefüllt von einer Informatikstudentin;" date="1210749368" path="scenarios_questionnaire_c_IS.xls" size="54784" stream="scenarios_questionnaire_c_IS.xls" tmpFilename="/var/tmp/CGItemp39355" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="WsdlFilesDir.zip" attachment="WsdlFilesDir.zip" attr="" comment="input Directory für Collection Reader; aus den Dateien extrahiert WSDL-Reader die erforderlichen Daten" date="1210750077" path="WsdlFilesDir.zip" size="844427" stream="WsdlFilesDir.zip" tmpFilename="/var/tmp/CGItemp39478" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="out_rekursionstiefe_5.zip" attachment="out_rekursionstiefe_5.zip" attr="" comment="Ausgabedatei von WSDL-Reader; wobei die Rekursionstiefe auf 5 beschränkt ist" date="1210750192" path="out_rekursionstiefe 5.zip" size="330399" stream="out_rekursionstiefe 5.zip" tmpFilename="/var/tmp/CGItemp39451" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="out_rekursionstiefe_10.zip" attachment="out_rekursionstiefe_10.zip" attr="" comment="Ausgabedatei von WSDL-Reader; wobei die Rekursionstiefe auf 10 beschränkt ist" date="1210750656" path="out_rekursionstiefe 10.zip" size="842629" stream="out_rekursionstiefe 10.zip" tmpFilename="/var/tmp/CGItemp39477" user="NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="scenarios_questionnaire_c_LG.xls" attachment="scenarios_questionnaire_c_LG.xls" attr="" comment="ausgefüllt von Dipl. Media System Designerin;" date="1211180320" path="scenarios_questionnaire_c_LG.xls" size="57856" stream="scenarios_questionnaire_c_LG.xls" tmpFilename="/var/tmp/CGItemp39166" user="NataliyaSinkevych" version="1"}%

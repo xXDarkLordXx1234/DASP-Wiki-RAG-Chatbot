@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1173439912" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="AmazonDatenbank"}%
+Hier stehen Informationen zu Apache Derby.
+
+%TOC%
+
+---++ Derby als Server
+Derby starten mal [[http://db.apache.org/derby/papers/DerbyTut/ns_intro.html Network Server]] mit dem Befehl "java org.apache.derby.drda.NetworkServerControl start".
+
+---++ Macken und Probleme
+Derby hat schon so seine Macken. Einige, auf die man achten sollte sind:
+   * Vergleiche gegenüber LONG VARCHAR sind nicht erlaubt. Man muss stattdessen VARCHAR verwenden.
+   * Zeichenketten müssen zwischen 2 Apostrophen (z.B. 'Zeichenkette') stehen. Anführungszeichen sind nicht erlaubt (z.B. "Zeichenkette"). Hier erhält man eine merkwürdige Fehlermeldung. Enthält die Zeichenkette selbst ein Apostroph muss ein weiteres davor gesetzt werden.
+   * Derby scheint Probleme mit größeren Datenmengen zu haben. Wenn die Rezensionen der Digitalkameras eingelesen werden, kommt es nach ca. 3 Stunden zu einem Speicherproblem:
+<verbatim>
+java.sql.SQLException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.OutOfMemoryErrorJava heap space
+</verbatim>
+Ich hoffe, dass eine Erhöhung des Heap-Speichers mittels _java -Xmx512m org.apache.derby.drda.NetworkServerControl start_ das Problem beseitigt. Ansonsten muss das Einlesen der Rezensionen aufgeteilt werden.
+
+
+-- Main.KaiMichaelHoever - 05 Mar 2007

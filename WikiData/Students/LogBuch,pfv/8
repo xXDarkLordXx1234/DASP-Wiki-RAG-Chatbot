@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="HakanEroglu" date="1230587932" format="1.1" version="8"}%
+%META:TOPICPARENT{name="HakanEroglu"}%
+---+ Logbuch
+
+%TOC%
+
+---++ Dezember 2008
+---+++ 16.12.2008
+
+- Implementierung folgender Komponenten:
+   1 *BlogReader* : Erstellung eines CAS-Objects mit Nodes und Edges
+   2 *TransformJUNG.java* : Transformation zu einem JUNG-based Graphen
+   3 *Results*: Komponente zur Berechnung des PageRanks
+   4 *Printer*: Klasse zur Ausgabe der Rankings
+
+Desweiteren Berechnung von "Characteristic Path Length", "Clustering Coefficient"
+
+- ToDo:
+   * Berechnung von "Connectedness"
+   * Berechnung von "Characteristic Path Length for Tags"
+   * Berechnung von "Cumulative probability distribution of node strength"
+
+---+++ 17.12.2008
+   * Erstellung einer Kopie von JUNG's PageRank zu FolkRank, um eigene Justierungen vorzunehmen.
+   * Weitere Effizienzverbesserungen der Komponenten durch streichen unnötiger Zuweisungen und Berechnungen
+
+---+++ 18.12.2008
+   * Effizientere Berechnung von "Characteristic Path Length", "Clustering Coefficient"
+   * Überlegungen über einen Mechanismus zur Erstellung einer effizienten Messung einer Trend Analyse
+   * Des weiteren habe ich noch Überlegungen angestellt, noch weitere Charakteristika eines Folksonomy-Graphen einzubeziehen (z.B. Zentralität)
+
+---+++ 19.12.2008
+   * Analyse ADTree, context-Vector Berechnung
+   * Semantic Network
+
+---+++ 23.12.2008
+   * ERLEDIGT: Berechnung von "Connectedness"
+   * ERLEDIGT: Berechnung von "Characteristic Path Length for Tags"
+   * TODO: Einbinden aller Charakterisika-Werte des Folksonomy-Graphen ins result-sheet für die spätere TrendAnalyse
+
+---+++ 26.12.2008
+   * Ausarbeitung TextRank, Adaptiver PageRank und FolkRank
+
+---+++ 28.12.2008
+   * ERLEDIGT: Berechnung von "Cumulative probability distribution of node strength"
+   * Ausgabe der Analyse-Result-XML files mit allen Charakteristika des Folksonomy-Graphen

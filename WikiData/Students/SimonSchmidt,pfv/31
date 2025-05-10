@@ -1,0 +1,277 @@
+%META:TOPICINFO{author="schmidt" comment="" date="1631192901" format="1.1" reprev="28" version="31"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.TilmanBeck - 2021-04-22
+
+*Supervisor*: M.Sc. Tilman Beck 
+
+*Start Date*: 12.04.2021
+
+*Mid-Term Presentation Date*: 20.07.2021
+
+*Final Presentation Date*: 21.09.2021 
+
+*End Date*: 12.10.2021 [To be finalised by Informatik Prüfungskommission]
+---
+[[https://docs.google.com/spreadsheets/d/1v__rXewmhWnTJVlg0Kwja4vhNs3RMNtj-zjliEkp78Q/edit#gid=2006468104][Scores]]
+
+---++++ *26.08.2021-09.09.2021*
+---++ Progress
+   * User study demo is now running at [[http://130.83.167.180:1234/][Link]] (Currently offline for some updates)
+
+---++ Encountered Problems
+   * Found a bug that sometimes causes the answered counter to increase when changing previous answers
+---++++ *19.08.2021-26.08.2021*
+---++ Progress
+   * Ran different tests for models with and without pretraining on the SciFact dataset using different thresholds for the classification
+   * Tested thresholds for the SciFact pretraining
+   * Tested another split of the S2ORC medical data
+   * User Study
+      * Added support for different schemes (e.g. alternating between different models)
+      * Added baseline support (BM25)
+
+---++ Encountered Problems
+   * Ran into some problems regarding the PDF highlighting for the user study
+      * Some characters cause the search to fail
+      * The text was changed between the PDF and the citances from the CL-SciSumm corpus (one example would be removing the "." from "et al.")
+      * Tried fixing this for quite some time but it's still not working
+      * Might have to change the approach and display the content of the XML files (e.g. sections and their sentences, which should be easier to search or if necessary can be marked by hand)
+---++++ *12.08.2021-19.08.2021*
+---++ Progress
+   * Further DeCLUTR tests on the SciFact and the ARC datasets
+   * User study backend model integration finished
+      * A variable amount of models can be supplied
+      * Reference sentence embeddings are pre-encoded (for bi-encoders) in order to ensure a more responsive system
+      * Currently the most similar sentence for each model will be returned by the API
+      * Some API calls still have to be added to the frontend part
+---++++ *29.07.2021-12.08.2021*
+---++ Progress
+   * Modified the SciFact rationale selection evaluation to support the sentence-transformers format and re-ran some tests
+      * Results are in the scores sheet under the SciFact tab
+      * Results are still below the values of the SciFact paper, which could be explained by the paper using a cross-encoder approach (vs a bi-encoder)
+   * Also tried the DeCLUTR model (on the CL-SciSumm data for now)
+
+---++ Encountered Problems
+   * Maybe found problem in the paper selection for the user study
+      * We have 20 reference papers with ~10 citing papers each
+      * We want to take a citance and get the corresponding reference, but most most citations in the citing papers are not to a reference paper, leaving a lot less citations to work with for each selected paper
+
+---++++ *22.07.2021-29.07.2021*
+---++ Progress
+   * Extracted articles from the medical domain from the S2ORC
+      * Only took articles with parsed abstracts and body
+   * Created dataset similar to the ACL ARC based pretraining dataset
+      * For each abstract sentence, two sentences were selected by SPECTER and two by TF-IDF (one similar and one dissimilar each)
+         * Only used the first split (out of 99) so far, due to some errors with the TF-IDF calculation in other splits and time (it took around 12 hours to select the sentences for a single split)
+         * This first split contains around 60.000 articles (for comparison: the ARC based dataset had ~20.000 abstracts/articles)
+      * Abstracts in the SciFact corpus were excluded
+   * Trained a model based on SciBERT on the generated data and then on the SciFact data
+      * Wrote a finetuning script based on sbert; finetuning was done for 20 epochs, just like the SciFact script
+      * Performance was measured by the rationale-selection-evaluation script given in the SciFact repository and is much worse than the results in the paper so something may have gone wrong
+      * Will try only finetuning a SciBERT model with the same parameters to test if the setup is flawed
+   * Fixed the css for the highlights in the user study frontend
+
+---++ Encountered Problems
+   * Two S2ORC splits raised an error when opened (CRC mismatch) and were not used
+   * Used the previous filtering script that deleted files after processing and lost splits 0-21
+      * Will most likely request access and re-download the missing splits (and the broken ones)
+   * Tried to use the SciFact training script for rationale selection but encountered an error (described by someone else [[https://github.com/allenai/scifact/issues/22][here]])
+   * Not really a problem but pretraining on the new data takes much longer (~15 hours)
+---++++ *15.07.2021-22.07.2021*
+---++ Progress
+   * Tested thresholds on data with sectionless pairs
+      * Results are worse than without thresholds by a small amount
+   *  Tried selecting negative examples for finetuning based on proximity to the real reference (i.e. the previous/following sentences)
+      * Results are worse than selecting sentences randomly
+---++++ *29.06.2021-13.07.2021*
+---++ Progress
+   * Divided the finetuning data into 6 folds and measured the performance of the pretrained TSDAE model when finetuning
+      * Folds showed performances of ~0.85 to ~0.89
+   * Changed the finetuning split so the test data consists of papers that are not present in the training data
+      * Performance on the gold test data decreased
+      * Tried both 0 negative examples and 3 negative examples for the test data
+   * Paired sentences without regard for section boundaries
+      * Obtained slightly better performance in everything but ROUGE F1 when compared to the same model trained on the dataset limited by sections
+   * Tested some ways to add multi-line highlights in PDF
+      * Managed to highlight sentences across multiple lines, ignoring hyphens in split words and adding spaces at the end of each line; some errors still remain though
+   * Had a quick look at the [[https://arxiv.org/pdf/2004.15011.pdf][paper suggested after last weeks presentation]]
+      * Rather small dataset (3229 articles with 5411 summaries)
+      * Summaries are extremely short (mostly one sentence) and the training data seems to include which sentences influenced the summary, which may be useful to us
+---++ Encountered Problems
+   * Mostly regarding highlighting PDFs
+      * Annotations do not contain any text, only their position
+      * Text is rendered line-by-line (or sometimes even split inside a line), without spaces or linebreaks at the end
+      * Words are also sometimes split by hyphens at the end of a line
+      * Tried concatenating all text by either joining every line with a space or removing the hyphen (and thus restoring the split word). This did not work
+      * Found an example doing roughly the same thing; this works with some errors
+         * The highlights are slightly displaced
+         * Some words are separated by more than one whitespace character, which has to be accounted for in the search
+         * Only works for a single match (this probably is not a huge problem, since citations usually aren't repeated)
+         * Does not account for split words or spaces at the end of a line
+            * Both of those introduce an offset to our search text based on its position
+      * May be able to get this to work reliably
+      * If it does not work, we could try to convert the PDF to something else (like HTML) and serve that as a backup
+---++++ *23.06.2021-29.06.2021*
+---++ Progress
+   * Started with the user study frontend to check the feasibility of using PDFs
+   * Created a simple application for loading a PDF, changing pages and searching
+      * Searching highlights the text and clicking on the highlighted text displays it on the right side of the screen (this is a placeholder to test if selecting a citance is easily possible)
+
+---++ Encountered Problems
+   * Searching does not work across lines currently
+      * This problem can possibly be circumvented by appending all lines, searching the text and then splitting where necessary
+   * When serving the PDF, we can either have the citations as annotations or search for them in the text (or possibly some other solution I missed?)
+      * Annotations are handled in their own layer and documentation seems to be scarce
+      * While we don't intend for the study participants to search for the citations, we could serve a list of citations and use the search in the background to highlight them (if using annotations does not work)
+---++++ *15.06.2021-22.06.2021*
+---++ Progress
+   * Trained the best models so far (TSDAE and ParaSCI-SciBERT) for different numbers of epochs
+      * 20 epochs for both pretraining and finetuning
+      * the previous amount of epochs (1 for TSDAE, 5 for ParaSCI-ACL) for pretraining and 10 for finetuning
+      * all resulting models showed worse performance when compared to the shorter training times
+   * Extracted all computer science titles from the S2ORC_Paraphrase dataset and trained a model on them for 1 epoch
+      * Performance decreased compared to the model pretrained on the full dataset
+---++++ *08.06.2021-15.06.2021*
+---++ Progress
+   * Added some dataset statistics to scores doc
+   * Tested the performance of both "paraphrase-mpnet-base-v2" and "paraphrase-TinyBERT-L6-v2" from the sbert website due to high SciDocs scores
+      * Each model was tested without any training, with only finetuning and with pretraining and finetuning
+      * For both models the performance either stayed the same or decreased with training
+      * paraphrase-mpnet-base-v2 achieves good performance without any further training
+      * Also pretrained paraphrase-mpnet-base-v2 with ParaSCI-ACL data, but the results were worse than on the ARC pretraining data
+      * More detailed scores are added to the scores doc
+   * Downloaded S2ORC
+      * Computer Science data contains 11877612 titles
+      * Citation pair dataset from the sbert website contains 52603982 lines (and thus two times as many titles), of which 51469307 are unique (only counting the first column of the tsv)
+   * Trained a CrossEncoder using the same thresholds for the pretraining data as the best non-cross-encoder run (0.9 for sbert and 0.25 for tf-idf)
+      * Performance decreased compared to the bi-encoder using the same data
+      * Finetuning was done the same as on the previous cross-encoders
+      * Despite worse task 1A performance, the results for task 1B are actually significantly better than other pretrained models (though not as good as the cross-encoders that were only finetuned)
+   * Trained another model on ParaSCI to test mean pooling instead of using the CLS token
+      * Performance increased from ~0.10 to ~0.108
+
+---++ Encountered Problems
+   * Downloading S2ORC took some time
+---++++ *01.06.2021-08.06.2021*
+---++ Progress
+   * Tested various modifications to the ARC based pretraining setup
+      * Used ContrastiveLoss instead of MultipleNegativesRankingLoss in a run without thresholds; Performance (Cosine F1): 0.814 
+      * Increased negatives by applying a high threshold for positive labels but no threshold for negative labels; Performance (Cosine F1): 0.756
+      * Used 3 examples of SPECTER training data with 1 TF-IDF example (75% SPECTER, 25% TF-IDF) for each abstract sentence; Performance (Cosine F1): 0.798
+      * Used all of the SPECTER training data and half of the TF-IDF data (two thirds SPECTER, one third TF-IDF) with ContrastiveLoss; Performance (Cosine F1): 0.807
+      * Used MultipleNegativesRankingLoss in the previous setup; Performance (Cosine F1): 0.77
+      * Using BatchAllTripletLoss with the previous setup results in 0.80 Cosine F1 performance
+   * Trained a model on the S2ORC paraphrase data
+   * Trained a model on the ParaSCI-ACL data
+      * Trained this model for 5 epochs instead of 1 due to the lower amount of examples
+   * Finetuned the two best performing models from above and the S2ORC paraphrase and ParaSCI-ACL models; Evaluated on the CL-SciSumm data as usual
+      * ParaSCI-ACL reaches ~0.1 Task 1A F1
+      * The model pretrained without thresholds (which had the best pretraining performance) reaches ~0.06 Task 1A F1 (0.058 micro, 0.065 macro)
+      * The S2ORC paraphrase model reaches a performance of ~0.075 (both micro and macro)
+      * The 2/3 SPECTER, 1/3 TF-IDF model reaches a performance of 0.081 (micro)/0.090 (macro)
+   * Better performance in the ARC pretraining task does not necessarily seem to translate to the CL-SciSumm task (when comparing the run without thresholds with the rest)
+   * Got access to the full S2ORC data
+
+---++++ *25.05.2021-01.06.2021*
+---++ Progress
+   * Adjusted section mapping (all sections before results that are not in any other category are now methods)
+   * Created a new training dataset with 8 entries per abstract sentence
+      * Two positives and negatives for the default specter and tfidf respectively
+      * The two most similar sentences of the section were chosen as positives, the two most dissimilar sentences as negatives
+   * Split the data into train and test set and determined metrics (mean, median and variance for all/positive/negative labelled sentences)
+   * Pretrained on the new training data with evaluation on the test set
+      * One run with no thresholds
+      * One with thresholds based on the lower value of mean and median of the positive instances
+      * One with thresholds based on the lower value of mean and median on all instances
+      * One with slightly higher values than the higher value of mean and median of the positive instances
+      * One with thresholds based on the higher value of mean and median of the negative instances
+   * Thresholds based on the positive instances show good performance on the test set (~0.8 cosine F1)
+   * Finetuned and evaluated the two runs with the best performance on the pretraining testset and compared against the run with no thresholds:
+      * The two best runs have a cosine F1 of ~0.8, while the run without thresholds has a cosine F1 of ~0.76 (all on the pretraining testset)
+      * The two runs show a slightly higher performance on the CL-SciSumm task (~0.085 vs ~0.08), indicating a correlation between pretraining performance and downstream task performance
+      * The results are still below our baselines
+
+---++ Encountered Problems
+   * Made a mistake when creating the data and had to throw away the first run
+
+---++++ *11.05.2021-25.05.2021*
+---++ Progress
+   * Extracted and labeled ARC abstracts
+   * Created dataset from ARC abstracts and the corresponding text
+      * Construction: for each abstract sentence label take sentences of the corresponding section of the same paper and add the resulting pair to the training data. Sentences were chosen based on different metrics (SPECTER, tf-idf, bm25 or random)
+      * Version 1: 2 sentences chosen based on (default) SPECTER cosine similarity, 2 based on tf-idf and one random
+      * Version 2: 2 sentences chosen based on (default) SPECTER cosine similarity, 2 based on bm25 and one random
+      * Contains roughly 190.000 sentence pairs
+   * Pretrained both SPECTER and SciBERT for five and one epoch and then finetuned on the CL-SciSumm data like the previous models
+      *  one epoch pretraining outperforms five epochs, all further tests were done with one epoch
+      * SPECTER performance was worse than SciBERT performance
+      * Pretraining was done with MultipleNegativeRankingLoss
+   * All finetuned models showed worse performance than the current best model (SciBERT trained only on CL-SciSumm data)
+   * Models were finetuned with:
+      * The previous sequence pair approach
+      * sbert ContrastiveLoss
+      * sbert SoftmaxLoss
+      * Other parameters were the same as in the previous experiments (though I did also try some slight variations)
+      * Best Task 1A performance was an F1 score of ~0.09 (vs. ~0.12 previously) using ContrastiveLoss
+   * Tried TSDAE based on SciBERT
+      * Pretrained on the abstract sentences for 1 epoch
+      * finetuned with ContrastiveLoss for 3 epochs
+      * Reaches an F1 score of ~0.10 for Task 1A
+   * The second version of the dataset resulted in worse performance (same SciBERT as above with F1 of ~0.065 instead of ~0.10)
+   * SimCSE reaches an F1 score of ~0.06
+
+---++ Encountered Problems
+   * Not all abstract sentences have a section corresponding to their assigned label
+   * Furthermore some sections are too short to pick even two sentences; these were skipped (and the corresponding abstract sentence too)
+
+---++ Next Steps
+   * Finish SimCSE tests
+   * Potentially have a look at the S2ORC data on [[https://www.sbert.net/examples/training/paraphrases/README.html][the sbert site]](titles only unfortunately)
+---++++ *04.05.2021-11.05.2021*
+---++ Progress
+   * Extracted text from vertical ARC and split the data into documents
+   * Created section title statistics; I've used only articles with at least 4 sections for this, leaving us with 20761 abstracts (and thus articles) out of 25504 articles
+   * Downloaded and extracted overlap between pubmed-rct and the PubMedCentral Open Access Subset
+   * Tested some filtering techniques for PubMed Data (removing images, tables, etc.)
+
+---++ Encountered Problems
+   * Downloading from PubMedCentral takes some time
+   * Some minor formatting issues after extracting text from the vertical ARC
+
+---++++ *27.04.2021-04.05.2021*
+---++ Progress
+   * Able to get most section headers in cleaned ACL ARC using regex
+   * Can remove page numbers from cleaned ACL ARC
+   * Found a way to distinguish (most) numbered lists from section headers
+   * Structured cleaned ACL ARC into pairs of section header and text for each section
+   * Trained CSAbstruct
+   * The Open Access subset of PubMedCentral contains 13978 articles from the PubMed-RCT dataset
+
+---++ Encountered Problems
+   * Section names are not standardized except for "Abstract" and "Introduction". As a result, separating methods from results and previous works can be difficult.
+     Especially since "Methods" doesn't seem to appear as a header in most papers.
+   * Regex can't reliably distinguish between section headers and numbered lists or beginning with specific numbers in general
+   * Section headers are sometimes split into two or more lines; solution can result in errors in specific lines
+   * CSAbstruct training did not work out of the box
+   * PubMedCentral [[https://www.ncbi.nlm.nih.gov/pmc/about/copyright/][does not allow bulk downloads of articles except for a specific subset]]
+
+---++ Next Steps
+   * Create structure from parsed file content
+
+---++++ *20.04.2021-27.04.2021*
+---++ Progress
+   * Tested different thresholds for deciding whether multiple references should be selected
+      * Threshold slightly improves task 1A sentence overlap, but reduces Rouge score (from 0.139 to 0.045)
+      * Threshold greatly improves task 1B performance from 0.170 to 0.375 (both F1 micro)
+   * Took a look at downloading ACL ARC and Pubmed RCT full texts
+
+---++ Encountered Problems
+   * Had to restructure training/validation data for task 1A and retrain model for threshold tests
+   * Retrained model performance is slightly worse than previous (likely due to small changes in the data splits)
+   * Predicted probabilities vary and are extremely close on the validation data, hard thresholds had bad results
+   * Decided to use a portion of the highest probability reference as threshold, e.g. if the probability of a reference is within 0.1% of the highest probability it is selected too
+   * The [[https://acl-arc.comp.nus.edu.sg/][ACL ARC page]] appears to be offline
+
+---++ Next Steps
+   * Determine how many articles in Pubmed RCT are freely available
+   * Write tool to automatically crawl those articles
+   * Possibly get ACL ARC papers via Github if the site stays offline

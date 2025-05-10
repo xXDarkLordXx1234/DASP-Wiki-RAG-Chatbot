@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="eckart" date="1405673374" format="1.1" version="4"}%
+%META:TOPICPARENT{name="Resources"}%
+---+ Change password
+
+---++ UKP domain
+
+   * Go to [[https://wiki.ukp.informatik.tu-darmstadt.de/pwchange/index.pl][UKP password change webpage]]
+   * If you workstation is in the UKP domain, simply use the =passwd= command on the command line
+   * Otherwise log in via ssh with your UKP identity to any compute server and use =passwd= on the command line there
+
+<!--
+---++ TK domain
+
+   * Go to [[https://isman.tk.informatik.tu-darmstadt.de][ISMAN]]
+   * Click on *Change Password*
+   * Enter your account name, the old pasword and twice your new password
+-->

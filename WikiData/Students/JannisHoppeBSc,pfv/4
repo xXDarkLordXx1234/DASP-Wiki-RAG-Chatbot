@@ -1,0 +1,29 @@
+%META:TOPICINFO{author="jhoppe" comment="reprev" date="1467746464" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+2.5-9.5 
+Einlesen in die relevante Literatur. 
+Hauptsächlich herausgestochen sind 
+   * Xie et. al. "Neural Language Correction with Character-Based Attention"
+   * Bahdanau, Cho, Bengio "Neural Machine Translation by jointly learning to align and translate"
+   * Cho et al "Learning Phrase Representations using RNN EncoderDecoder for Statistical Machine Translation"
+9.5-23.5
+Implementieren einer einfachen encoder decoder Struktur mit Keras. Ergebnisse mit Autoencodern zeigen selbst Reproduktion von Sätzen mit mehr als 20 Zeichen sind problematisch, insofern ist an eine Korrektur von längeren Sätzen kaum zu denken.
+
+23.5-30.5
+Fertigstellung einer Theano Implementierung des Encoder Decoder Ansatzes von Cho. Auch hier treten ähnliche Probleme auf wie in den Keras Experimenten, jedoch lernt das Modell schneller. Ebenso hat sich als beste Methode zum Evaluieren der späteren Ergebnisse der M2scorer https://github.com/nusnlp/m2scorer herausgestellt, dieser wurde unter anderem auch von Xie in dem oben erwähnten Paper benutzt.
+
+30.5-6.6
+Beginn und eventuelle Fertigstellung des Attention Ansatzes mit Hilfe von Theano und wenn möglich produzieren erster Ergebnisse (Precision, Recall, F1) auf den CoNLL2014 Daten. Außerdem Erweiterung des Trainings/Evaluations Datensatzes durch den Nucle Corpus und "Ten Sets of Multiply Annotated Essays for Grammatical Error Correction" auf http://www.comp.nus.edu.sg/~nlp/corpora.html .
+Zur Evaluation wird [[https://github.com/nusnlp/m2scorer][M2Scorers]] verwendet wie auch in dem Paper von XIE und in der CoNLL2014 Auswertung. Ergebnisse sind jedoch fragwürdig, da für zufällige Buchstaben bereits F1 werte von 30% erreicht wurden.
+
+6.6-22.6
+Hinzufügen einer Speicher und Lade Funktionalität für das Netzwerk zur besseren Auswertbarkeit. Überprüfung der Evaluationsergebnisse des [[https://github.com/nusnlp/m2scorer][M2Scorers]]. Die Ergebnisse des CoNLL2014 Tasks konnten reproduziert werden was darauf schließen lässt, dass das Verhalten an dem Scorer liegt.
+
+22.6-30.6
+Erste Evaluierungsergebnisse haben gezeigt das im Training die Ausgaben des Netzwerks deutlich genauer waren als unter Testbedingungen in denen die Ausgaben praktisch noch nicht zu gebrauchen waren, da hier anders als beim Training nur das geschätzte Signal des letzten Buchstaben vorliegt. Außerdem wurde ein erster Entwurf der Abschlussarbeit diskutiert. Das Netzwerk trainiert ebenso deutlich zu langsam um in vertretbarer Zeit den gesamten AESW Trainingssatz zu nutzen, weshalb an einer Batch Nutzung gearbeitet wurde.
+
+30.6-6.6
+Der Batch Modus konnte soweit vollendet werden. Der Speedup ist signifikant jedoch liegt die Gesamtgeschwindigkeit noch weiterhin hinter der der Vergleichspaper unter anderem der Arbeit aus Harvard. Zur Zeit noch in Arbeit ist das entfernen unnötiger Scan loops in theano. Als nächstes wird versucht den code mittels von theano zur Verfügung gestellter tools auf eventuelle bottlenecks oder nicht verwendete GPU Nutzung zu überprüfen.
+Eventuell lässt sich auch ein Speedup durch Nutzung von Convolutional layer wie in 'Sentence-Level Grammatical Error Identification as Sequence-to-Sequence Correction' oder das Pyramidenweise encoding aus "https://arxiv.org/pdf/1508.01211v2.pdf" was ebenfalls die encoder states verringert.
+
+-- Main.JannisHoppe - 2016-05-30

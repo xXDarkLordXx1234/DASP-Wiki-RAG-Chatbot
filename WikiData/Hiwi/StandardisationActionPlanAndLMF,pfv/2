@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="JudithEckleKohler" date="1288729570" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="LexiconProjects"}%
+---++Standardisation Action Plan for CLARIN: the role of LMF and related standards
+
+   * LMF is listed among ongoing standardisation projects (section 3)
+   * more specifically, "LMF is fairly new and yet not enough realistic tests have been carried out to speak about a well-proven standard"
+   * but: "LMF has been widely standardized and first tools are supporting this standard"
+
+---+++++Standard related to LMF: ISO 12620 Data Category Registry (DCR) 
+   * According to ISO-LMF (ISO FDIS 24613:2008), designers of an LMF-compliant lexicon should use data categories from the ISO 12620 Data Category Registry (DCR) located at http://www.isocat.org
+   * The Standardisation Action Plan for CLARIN states:
+      * Currently the work on the ISO data category registry are at the core of all standardization efforts in ISO
+      * Currently, categories resulting from decades of linguistic discussion (EAGLES, ISLE/MILE, IMDI) are entered into the implementation of ISO DCR called ISOcat
+
+---+++++Standard related to the respresenation of knowledge, e.g. Wordnets: W3C Semantic Web Standards RDF (Resource Description Framework) and OWL (Web ontology language)
+   * The CLARIN document recommends to use RDF and OWL (section2 Recommended standards) and states:
+      * "The semantic web community has widely agreed to use the W3C recommendations, i.e. interoperability requires their usage"
+
+---+++++Standard related to LMF, but not mentioned in the CLARIN document: ISO 1087-1, ISO 1087-2
+Terms and definitions used in ISO-LMF (ISO FDIS 24613:2008) are mainly specified according to ISO 1087-1 (Terminology work -- Vocabulary -- Part 1: Theory and application) and ISO 1087-2 (Terminology work -- Vocabulary -- Part 2: Computer applications)
+
+
+
+-- Main.JudithEckleKohler - 2010-11-02

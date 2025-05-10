@@ -1,0 +1,451 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="autosave" date="1395823180" format="1.1" version="13"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+
+---+ Distributional Thesaurus
+
+A thesaurus is a resource that lists words grouped together according to their
+*similarity of meaning*. Usually, these thesauri are put together manually by
+human knowledge. Since this is costly and time-consuming there are efforts to
+do this automatically (Lin, 1998). It is called  _distributional_ due to the
+fact that different (distributional) texts and contexts are considered.
+
+This document describes the DT built in my Hiwi-job.
+
+-- Main.RichardSteuer - 2012-01-14
+
+%TOC%
+
+---++ Software and resources
+The DT was built using the Apache Hadoop framework running on the UKP
+cluster.
+
+---+++UKP Cluster
+   * 1 master node, 7 slave nodes
+   * Total: 128 cores, 192 GB RAM
+   * nodes: 16 cores, each 2.66 GHZ, 24 GB RAM
+   * 1 TB HDD
+   * Each 2 x 1 Gbit bandwidth
+
+You can access the Cluster by ssh: *ssh !username@headnode.ukp.informatik.tu-darmstadt.de*
+You can get a username and password from the UKP admin.
+
+---+++Apache Hadoop
+   * framework implementing the !MapReduce algorithm by Google Inc. for large-scale text processing
+   * !MapReduce paradigm exclusively operates on <key,value> pairs, separating the input and combining the output
+   * input and output are stored in plain text files
+
+---+++Executing the steps
+For a basic instruction to Hadoop, see the links and the end of this
+document. To execute a Hadoop Job (from Java source code) a Jar archive has to
+be created and then be executed via the Hadoop command. Because this can be
+pretty time-consuming I wrote a Perl shellscript performing all the required
+steps. It's called _he_ and is attached to this document. The argument
+structure is always the following (the dollar sign is a symbol for the shell):
+
+<verbatim>
+$ he <Java class name> <input dir on hdfs> <output dir on hdfs>
+</verbatim>
+
+See the following chapters for examples. You can also send Hadoop Jobs from
+within Eclipse. See the links at the end of this document on how to do so.
+
+---++Basic concept and steps
+The distributional hypothesis states that two words are similar if they appear
+in similar contexts (Harris, 1954). This allows computing a distributional
+thesaurus automatically. There were several !MapReduce steps involved in
+creating the DT. Each step is based on the output of the preceding one. The
+following picture give a first overview of the step chain:
+
+   * Hadoop Distributional Thesaurus (DT) steps: <br />
+     <img src="%ATTACHURLPATH%/steps.png" alt="steps.png" width="505" height="386" />
+
+You'll see that there are multiple parameters for each step. As long as they
+fulfill the input and output format (see below), all the steps are independant
+from each other.
+If you don't understand one of the following steps, please return to this
+illustration.
+
+---++ Context extraction
+The first important stage is to extract a context (in which words co-occur) out
+the raw text. Weve implemented different versions of this step. Remember that
+we try to apply the distributional hypothesis by this step.
+
+As input texts 10 million sentences of news corpora were processed. They are
+available from the [[http://corpora.uni-leipzig.de/][Uni Leipzig]].
+
+---+++Dependency Parser
+The most successful one is done by using the
+[[http://nlp.stanford.edu/software/lex-parser.shtml][Stanford Parser]] to regard the grammatical
+relations of the words within the sentence. The dependency parser from the Stanford
+NLP group can look into all relations of the words within the sentence and
+indicate the relation name, the governor and the dependent. For example in the
+string The cat, the is the governor, cat the dependent and det (for
+determiner) is the relation name. We output the dependant as the word and the
+governor, together with the relation, as the _feature_ of the word.
+
+To execute this step via command line, type in the following:
+
+<verbatim>
+he ContextDP.java news1M news1M-out
+</verbatim>
+
+Supposed, your input corpus is a directory called _news1M_ and you want your
+output in a folder called _news1M-out_. The input is one sentence per line. The
+output looks like this:
+
+| politics | the#det | 1276 |
+| politics | american#amod | 379 |
+| politics | playing#-dobj | 144 |
+| politics | national#amod | 143 |
+| politics | local#amod | 141 |
+| politics | party#nn | 135 |
+| politics | his#poss | 124 |
+
+There is also a variant of this step incorporating the part-of-speech (POS):
+
+<verbatim>
+he ContextDP_POS.java news1M news1M-out
+</verbatim>
+
+The output may look like this:
+
+| to#TO |	   help#VB#-aux |	 38728 |
+| game#NN |	   a#DT#det |	 33560 |
+| new#NNP |	   york#NNP#-nn |	 22567 |
+| a#DT |	   number#NN#-det |	21169 |
+| start#VB |   to#TO#aux |		17995 |
+| the#DT |	   nation#NN#-det |	17164 |
+| road#NN |	   the#DT#det |		17094 |
+| buy#VB |	   to#TO#aux |		15975 |
+| a#DT |	   problem#NN#-det |	15486 |
+| i#PRP |	   think#VB#-nsubj |	14515 |
+| to#TO |	   move#VB#-aux |		14441 |
+| are#VBP |	   they#PRP#nsubj |	13986 |
+| did#VBD |	   have#VB#-aux |		11820 |
+| sure#JJ |	   make#VB#-acomp |	11703 |
+| will#MD |	   get#VB#-aux |		10246 |
+| improve#VB | to#TO#aux |		9767 |
+| are#VBP |	   that#IN#complm |	9726 |
+| wanted#VBD | i#PRP#nsubj |		9552 |
+| the#DT |	   result#NN#-det |	8978 |
+
+There is also a variant of this DP step that incorporates the part-of-speech (POS) for each word:
+
+<verbatim>
+$ he ContextDP_POS.java news1M news1M-out
+</verbatim>
+
+---+++Left and Right Neighor
+Our first context was the left and right neighbor of the word. The _feature_ of
+the word is just its left or right neighbor. Call this class like this:
+
+<verbatim>
+$ he ContextRL.java news1M news1M-out
+</verbatim>
+
+The output looks similar:
+
+| the | adapt#LF | 1 |
+| the |     after#LF |        15 |
+| the |     afternoon#LF |    1 |
+| the |     again#LF |        1 |
+| the |     against#LF |      7 |
+| the |     age#RF |  3 |
+| the |     agency#LF |       1 |
+| the |     air#RF |  2 |
+| the |     all#LF |  6 |
+| the |     amendment#RF |    2 |
+| the |     american#RF |     3 |
+| the |     among#LF |        5 |
+
+To be read this way: "the" appeared 15 times as left neighbor (left feature)
+for the word "after".
+
+---+++Full parses
+
+There's also a context extractor that takes the same plain text input and
+outputs full parses of each sentence. The output for each sentence is the
+sentence itself, followed by all the dependency parses of the sentence. As you
+may have guessed, the reducer of this step does nothing. Each sentence is
+unique, nothing is counted or aggregated. The step is called *ContextParses*
+and can be executed this way:
+
+<verbatim>
+$ he ContextParses.java news1k parses-out
+</verbatim>
+
+The output for one sentence looks like this:
+
+| My dog also likes eating sausage. | My/PRP$ dog/NN also/RB likes/VBZ eating/VBG sausage/NN ./. | dog#NN my#PRP$#poss;;;;;likes#VBZ dog#NN#nsubj;;;;;likes#VBZ also#RB#advmod;;;;;likes#VBZ eating#VBG#xcomp;;;;;eating#VBG sausage#NN#dobj;;;;; | poss(dog-2, My-1);nsubj(likes-4, dog-2);advmod(likes-4, also-3);xcomp(likes-4, eating-5);dobj(eating-5, sausage-6); | (ROOT (S (NP (PRP$ My) (NN dog)) (ADVP (RB also)) (VP (VBZ likes) (S (VP (VBG eating) (NP (NN sausage))))) (. .))) |
+
+The whole string is written in one line. The breaks you might see is due to the wiki formatting. The tab separated contents are the plain text sentence, the POS-tagged sentence, the POS-tagged typed dependencies for easy programming access, the typed dependencies in the format of the Website and at last the full parse tree.
+
+The step after this is the the *ContextReadParses* class. It reads the parses
+format and emits the word, the feature and its count. Together, these two
+steps do the same as *ContextDP* does at once.
+
+This step was implemented because one may want to do further processing with
+the parses. Furthermore, you could assemble different texts this way and split
+the distributed computing into several phases.
+Further research with this step is done within the ContextualThesaurus.
+
+---+++Co-occurrences: Sentences
+We'd like to test word co-occurrences within one sentence. Example: "This is a sentence where this is simple."<br/>
+<br/>The output looks like (excerpt):<br/>
+
+| this#DT | simple#JJ | 2 | 
+| sentence#NN | .#. | 1 | 
+| sentence#NN | a#DT | 1 | 
+| .#. | where#WRB | 1 | 
+| is#VBZ | this#DT | 4 | 
+
+The word segmentation is done using the Stanford PTBTokenizer.
+
+---+++Co-occurrences: Position
+Let's take the position into account. Example: "This is a sentence."<br/>
+Output:<br/>
+| is#VBZ#-1 | a#DT#1 | 1 |
+| a#DT#-2 | .#.#2 | 1 |
+| this#DT#-4 | .#.#4 | 1 |
+| sentence#NN#1 | a#DT#-1 | 1 |
+| .#.#1 | sentence#NN#-1 | 1 |
+| a#DT#2 | this#DT#-2 | 1 |
+| this#DT#-2 | a#DT#2 | 1 |
+| this#DT#-3 | sentence#NN#3 | 1 |
+| sentence#NN#3 | this#DT#-3 | 1 |
+| a#DT#1 | is#VBZ#-1 | 1 |
+| this#DT#-1 | is#VBZ#1 | 1 |
+| is#VBZ#-2 | sentence#NN#2 | 1 |
+| a#DT#-1 | sentence#NN#1 | 1 |
+| is#VBZ#-3 | .#.#3 | 1 |
+| .#.#4 | this#DT#-4 | 1 |
+| sentence#NN#2 | is#VBZ#-2 | 1 |
+| .#.#2 | a#DT#-2 | 1 |
+| sentence#NN#-1 | .#.#1 | 1 |
+| is#VBZ#1 | this#DT#-1 | 1 |
+| .#.#3 | is#VBZ#-3 | 1 |
+
+You can set the context window. In this example, it is set to 5 (i.e., [-5, ..., 5]).
+
+---++WordCount and FeatureCount
+Two small but important steps are the context extraction are the counting of
+the words and the features. They just create a list of the word (or feature
+resp.) and its count.
+
+<verbatim>
+$ he WordCount.java context-out wordcount-out
+</verbatim>
+
+<verbatim>
+$ he FeatureCount.java context-out featurecount-out
+</verbatim>
+
+---++ FreqSig (Frequency and significance)
+By virtue of optimizing and pruning the data, we like to indicate a
+significance to each of those word feature pairs. Therefore, in preparation to
+this step the words and the features by itself are counted. We then continue to
+assign a significance value to each word-feature pair. This is accomplished
+by different significance computations.
+
+The output of this step (irrespective of the measure) looks like this (excerpt):
+
+| politics |  american#amod |		1556.9131 |
+| politics |  involved#-prep_in |	655.3890 |
+| politics |  national#amod |			440.7464 |
+| politics |  british#amod |				398.1417 |
+| politics |  local#amod |					374.0130 |
+| politics |  interested#-prep_in |				294.8649 |
+| politics |  business#conj_and |				204.2767 |
+
+---+++FreqSig (LMI)
+
+First, according to the Lexicographers Mutual Information (LMI) measure as in
+(Bordag, 2007, p. 77). For each pair, the frequency of the word, the feature
+and the pair itself is included. This is why these steps are implemented in the
+Apache Pig programming language. I execute this as follows:
+
+<verbatim>
+pig -param t=1 -param s=10 -param contextout='contextreadparses-out' pig/FreqSig.pig
+</verbatim>
+
+---+++FreqSig (LL)
+
+As a second measure we implemented Log-Likelihood:
+
+<verbatim>
+$ pig -param t=10 -param s=10 src/FreqSigLL.pig
+</verbatim>
+
+The input and out directory names are hard-coded in the pig script.
+
+---++PruneGraph
+
+This is followed by a pruning step with experimentally obtained parameters. The
+format doesent change in comparison to the previous step, the data is just
+reduced. This step is implemented in Pig as well.
+
+<verbatim>
+$ pig -param p=300 src/PruneGraph.pig
+</verbatim>
+
+---++ AggrPerFt: Aggregate per feature
+To come closer to the similarity of two words, we first want to cumulate all the
+words that share the same feature(s). To do so, this !MapReduce step aggregates
+all the words that have a certain feature.
+This step is called as follows:
+
+<verbatim>
+$ he AggrPerFt.java prunegraph-out aggr-out
+</verbatim>
+
+At the output may look like this (excerpt):
+
+| caring#amod |   volunteers everyone person ... |
+| caring#appos |  superdome |
+| caring#ccomp |  feels |
+| caring#conj_and |	feeding trustworthiness ... |
+| caring#dep |	person |
+| caring#dobj |	stopped |
+| caring#pcomp |	between |
+
+Read it this way: "caring" occurs as an adjectival modifier for "volunteers",
+"person" etc. (Note that the list of shared features will become pretty
+long. Thats why some very simple examples are chosen here.) They all share a
+feature (in this case  "caring#amod"). This is a first clue for similarity: If
+two words share a feature, they have something in common.
+
+---++Similarity
+Finally, the last step of the !MapReduce chain is calculating the
+similarity. For every pair of two words we want to assign a weighting
+(representing their similarity). The first simple approach is to ask: How many
+features do two words have in common? The more they do, the more similar are
+they. To answer this question, each list is processed quadratically whereby a
+one (for one sighting) is emitted. We implemented and tested multiple
+possibilities, including the word list length and logarithmic
+normalization. But emitting the simple one (in combination with parameters from
+other steps) turned out to achieve the best results. (Additionally, the list
+had to be cut to avoid data explosion to a point beyond what even parallel
+architectures can handle.)
+
+As mentioned, there are three "weightings" for similarity counting. The first
+one compare all words pair-wise and outputs 1/n, with _n_ being the number of
+words.
+
+<verbatim>
+$ he SimCounts.java aggr-out simcounts-out
+</verbatim>
+
+The second one just outputs 1 (one) for each word pair occurence (instead of
+1/(listsize)).
+
+<verbatim>
+$ he SimCounts1.java aggr-out simcounts-out
+</verbatim>
+
+The third class outputs 1/log(n) with _n_ being the number of words.
+
+<verbatim>
+$ he SimCountsLog.java aggr-out simcounts-out
+</verbatim>
+
+All three variants have similar output, i.e. two words and a similarity
+measurement besides them. An example for the second alternative is given here
+(excerpt):
+
+| politics |	politics |	590.0 |
+| politics |	government |	36.0 |
+| politics |	journalism |	36.0 |
+| politics |	affairs |			35.0 |
+| politics |	economics |		33.0 |
+| politics |	politicians |		32.0 |
+| politics |	philosophy |		31.0 |
+
+The output is just sorted alphabetically (this excerpt is from the next step).
+
+We decided to put another option on top of these variants. For research
+purposes it is useful to know _why_ words are similar, i.e. what are the
+features they share? This is why the following class carries along all the
+features the two compared words share.
+
+<verbatim>
+$ he SimCounts1WithFeatures.java aggr-out simcounts-out
+</verbatim>
+
+The following manually selected excerpt gives you an impression:
+
+| her#PRP$ |	his#PRP$ |	197.0 |	decision#NN#-poss day#NN#-poss debut#NN#-poss .. |
+| 12#CD |	13#CD |	188.0 |	members#NNS#-num men#NNS#-num miles#NNS#-num ... |
+| september#NNP |	january#NNP |	170.0 |	said#VBD#-prep_in met#VBD#-prep_in middle#NN#-prep_of ... |
+| we#PRP |	you#PRP |	170.0 |	trust#VB#-nsubj try#VB#-nsubj trying#VBG#-nsubj try#VBP#-nsubj expect#VBP#-nsubj expect#VB#-nsubj forget#VB#-nsubj find#VBP#-nsubj find#VB#-nsubj need#VBP#-nsubj ... |
+| 2001#CD |	1999#CD |	165.0 |	season#NN#-prep_in season#NN#-num february#NNP#-num ... |
+| before#IN |	until#IN |	156.0 |	came#VBD#-mark called#VBN#-mark ... |
+| substantial#JJ |	significant#JJ |	153.0 |	presence#NN#-amod pretty#RB#advmod pressure#NN#-amod power#NN#-amod ... |
+| 1994#CD |	2002#CD |	136.0 |	team#NN#-num team#NN#-prep_in came#VBD#-prep_in tournament#NN#-num race#NN#-num ran#VBD#-prep_in reached#VBD#-prep_in ... |
+| actually#RB |	apparently#RB |	136.0 |	buying#VBG#-advmod came#VBD#-advmod called#VBD#-advmod called#VBN#-advmod needs#VBZ#-advmod ... |
+| iraq#NNP |	afghanistan#NNP |	136.0 |	leaving#VBG#-dobj leave#VB#-dobj ground#NN#-prep_in military#NN#-prep_in iran#NNP#-conj_and ... |
+
+As in the 1 (one) measure the similarity score denotes the number of shared
+features, this list only displays a tiny excerpt.
+
+---++SimSort (Sorting and Limiting)
+
+Finally, I implemented a small last step to sort the output by similarity score
+(within each term list) and reduce its data by 100 lines per term. It is
+implemented in Pig as well (because of two-dimensional sorting).
+
+<verbatim>
+$ pig src/SimSort.pig
+</verbatim>
+
+The output is the same as above (the one without the features), just sorted and
+limited. The top 100 similar terms in most cases is enough.
+
+---++All together
+
+If you want to put all steps together, you first have to decide for one kind of
+context, one of the significances (LMI, LL) and one of the similarity
+measures. Of course, all steps are independent of each other and steps doing
+the same thing can be exchanged. I use a shell script to execute all the steps
+in a row. Here are some lines using the news 1M corpus, the dependecy parser
+with POS-tags, LMI and the 1 (one) measure:
+
+<verbatim>
+he ContextDP_POS.java news1M context-out
+he WordCount.java context-out wordcount-out
+he FeatureCount.java context-out featurecount-out
+
+hadoop dfs -rmr freqsig-out
+pig -param t=10 -param s=10 src/FreqSig.pig
+hadoop dfs -rmr prunegraph-out
+pig -param p=300 src/PruneGraph.pig
+
+he AggrPerFt.java prunegraph-out aggr-out
+he SimCounts1.java aggr-out simcounts-out
+
+hadoop dfs -rmr simsort-out
+pig src/SimSort.pig
+</verbatim>
+
+You can see that the output of one step is the input of the following.
+You can also see that possibly existing dfs directories have to be removed as
+otherwise Hadoop complains. For the Java steps, this in incorporated into the
+_he_ script.
+
+The final result is in the _simsort-out_ directory (if you chose that name).
+
+---++See also
+See this document for general instructions on Apache Hadoop:
+
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/HowToHadoop][How To Hadoop]]
+
+Contextual Thesaurus:
+
+   * ContextualThesaurus
+
+Some note on programming with Hadoop (feel free to edit):
+
+   * NotesOnProgrammingHadoop
+
+%META:FILEATTACHMENT{name="steps.png" attachment="steps.png" attr="" comment="Hadoop Distributional Thesaurus (DT) steps" date="1326713954" path="steps.png" size="144637" user="RichardSteuer" version="1"}%
+%META:FILEATTACHMENT{name="he" attachment="he" attr="" comment="Hadoop execution shortup script" date="1326714120" path="he" size="2010" user="RichardSteuer" version="1"}%
+%META:FILEATTACHMENT{name="sources.zip" attachment="sources.zip" attr="" comment="Source code for Java and Pig MapReduce steps" date="1326716773" path="sources.zip" size="37816" user="RichardSteuer" version="1"}%

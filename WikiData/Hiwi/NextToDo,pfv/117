@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1379178708" format="1.1" reprev="116" version="117"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * Du sagst nicht, *warum* du das machst. Da braucht es eine *Einführung* in das Thema mit Motivation und Forschungsfrage
+   * Du *interpretierst* nicht. Zumindest muss klar gesagt werden, dass es mit den hier eingesetzten Methoden keine Verbesserung bringt (zumindest bisher auf Datensatz 1). Du erklärst auch nicht, was das nun heisst mit der Spearman-Korrelation von 0.5: das heisst doch, dass sich viel ändert, und laut scores nicht negativ. Nun schauen wie der Anteil der non-judged bei Baseline und bei Expansion ist, und schon kann man argumentieren, dass dies evtl. daran liegt, oder eben auch nicht.
+   * Du ziehst am Ende keine *Schlüsse*. Auch wenn es hat ist, aber ein möglicher Schluss kann durchaus sein: "bringt nix", oder "Effekt kaum messbar", oder "Datenlage macht dies unmöglich, das hat schon damals bei der challenge nichts gebracht"
+   * Du *lobst* manchmal Dinge zu sehr, weil du sie magst  z.B. den DT. Wissenschaftlicher Stil ist das neutrale Berichten, auch wenn man sein eigenes Zeug (oder das Zeug des Betreuers) in vermeindlich negativem Licht erscheinen lässt. Keine Sorge vor Biemann-bashing :) bins gewohnt.
+   * *Illustrative Beispiele* aus dem Datensatz, bei denen es klappt und bei denen es schieflaeuft, würden das Verständnis beim Leser deutlich erhöhen.
+
+   * <s>write about and</s> *apply new data set*
+      * <s>transforming Tipster docs into !RobustWSD format ...</s>
+         * after: transform to Terrier tagged format
+            * for baseline
+            * for first DT experiments
+
+   * run *delex query side on frink*
+      * the sense substituter contains an old version of asv toolbox, dt lemmatizer has new one
+         * re-pack the sensesubstituter jar and remove the asv package
+      * implement second term selecting method and (just by annotations overlap) count how many terms would be expanded by each of the two methods

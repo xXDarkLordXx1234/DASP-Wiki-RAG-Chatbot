@@ -1,0 +1,90 @@
+%META:TOPICINFO{author="ShuoYang" date="1269187197" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Influence of Concatenation on Google Translate (Draft)
+_not done yet_
+
+---++ Motivation
+As shown in [[GoogleTranslatePerformanceAnalysis#AverageSpeed]], it takes only 1.61 times to translate a long query of 4485 characters, than that of a short query of 26 characters. In addition Google doesn't allow too frequent queries, so we must have (long) breaks after each certain amount of queries which is the main speed limiting factor. For the same queries, if we can concatenate them together within Google's query length limit, we can have a much smaller number of query thus avoid breaks and improve translation performance considerably. 
+
+We must make sure though, that the translation of a concatenation of several queries is the same as separate translations of each query, because separate queries are not related to each other and thus must not be considered related by Google Translate.
+
+---++ Approach of Google Translate
+According to [[http://en.wikipedia.org/wiki/Google_Translate#Approach Wikipedia]], 
+
+_Google translate is based on an approach called statistical machine translation, ..._
+_Statistical models from this data (large parallel text collections) are then used to translate between those languages. ..._ 
+_It does not apply grammatical rules, since its algorithms are based on statistical analysis rather than traditional rule-based analysis._ 
+
+Which means although a structural analysis of sentence may not be performed, the translation result is still strongly context aware. We must let Google treat our concatenated query as concatenated standalone queries.
+
+---++ Different Translation APIs
+In its [[http://code.google.com/apis/ajaxlanguage/documentation/#fonje Developer's Guide]] on Language APIs, Google provides a set of !JavaScript APIs and a RESTful interface for non-JavaScript environments. Through inspecting HTTP traffic, i've found the !JavaScript APIs calls internally not the URL given by the RESTful interface, instead it calls a undocumented API. The result of the both are also different, including, but maybe not limited to, that the RESTful interface always return results without =newline= character. In other words, =newline= are replaced by a =space= character after translation.
+
+Google Translate is also directly accessible through its website http://translate.google.com. With the inspector, i've found the site calls internally _yet another_ undocumented API, although until now the two undocumented APIs return the same result. It should be noted that unlike documented APIs, which Google promise to continue to serve for at least 3 years after deprecation ([[http://code.google.com/apis/ajaxlanguage/terms.html terms]]), undocumented APIs can be changed or disappear altogether at any time. So using undocumented APIs in one's own programs poses a higher risk of it working incorrectly.
+
+---+++ 1. With the documented RESTful interface for non-JavaScript environments:
+*Translate "Hallo du. Wie geht es dir?":*
+
+Requst: 
+<verbatim>http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=Hallo+du.+Wie+geht+es+dir%3F&langpair=de|en</verbatim>
+Response: =Hey pal, How are you?=
+<verbatim>{"responseData": {"translatedText":"Hey pal, How are you?"}, "responseDetails": null, "responseStatus": 200}</verbatim>
+---
+
+*Translate "Hallo du.\nWie geht es dir?":*
+
+Request: 
+<verbatim>http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=Hallo+du.%0AWie+geht+es+dir%3F&langpair=de|en</verbatim>
+Response: =Hey pal, How are you?= (_the same_ as without =newline= )
+<verbatim>{"responseData": {"translatedText":"Hey pal, How are you?"}, "responseDetails": null, "responseStatus": 200}</verbatim>
+
+*Another encoding:* with %3Cbr%3E for \n instead of %0A
+
+Request:
+<verbatim>http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=Hallo+du.%3Cbr%3EWie+geht+es+dir%3F&langpair=de|en</verbatim>
+Response: =Hey pal\nHow are you?=
+<verbatim>{"responseData": {"translatedText":"Hey pal \u003cbr\u003e How are you?"}, "responseDetails": null, "responseStatus": 200}</verbatim>
+
+---+++ 2. With the undocumented API used internally in the _documented_ !JavaScript API:
+*Translate "Hallo du. Wie geht es dir?":*
+
+Request caught by the inspector:
+<verbatim>http://www.google.com/uds/Gtranslate?callback=google.language.callbacks.id101&context=22&q=
+hallo%20du.%20Wie%20geht%20es%20dir%3F&langpair=de%7Cen&key=notsupplied&v=1.0</verbatim>
+Result: =hi pal, what are you doing?=
+<verbatim>google.language.callbacks.id101('22',{"translatedText":"hi pal, what are you doing?"}, 200, null, 200)</verbatim>
+
+---
+
+*Translate "Hallo du.\nWie geht es dir?":*
+
+Request:
+<verbatim>http://www.google.com/uds/Gtranslate?callback=google.language.callbacks.id101&context=22&q=
+hallo%20du.%3Cbr%3EWie%20geht%20es%20dir%3F&langpair=de%7Cen&key=notsupplied&v=1.0</verbatim>
+Response: =hallo du\nHow are you?=
+<verbatim>google.language.callbacks.id101('22',{"translatedText":"hallo du \u003cbr\u003e How are you?"}, 200, null, 200)</verbatim>
+
+_hmm mit %3Cbr%3E statt %0A ist doch diesselbe!_
+
+---+++ 3. With the undocumented API used internally by http://translate.google.com
+*Translate "Hallo du. Wie geht es dir?":*
+
+Request:
+<verbatim>http://translate.google.com/translate_a/t?client=t&text=Hallo%20du.%20Wie%20geht%20es%20dir%3F&
+hl=en&sl=de&tl=en&prev=conf&otf=1&pc=0</verbatim>
+Response: =Hey pal, How are you?=
+<verbatim>{"sentences":[{"trans":"Hey pal, How are you?","orig":"Hallo du. Wie geht es dir?","translit":""}],"src":"de"}</verbatim>
+
+---
+
+*Translate "Hallo du.\nWie geht es dir?":*
+
+Request:
+<verbatim>http://translate.google.com/translate_a/t?client=t&text=Hallo%20du.%0AWie%20geht%20es%20dir%3F&
+hl=en&sl=de&tl=en&prev=enter&pc=0</verbatim>
+Response: =Hey pal\nHow are you?=
+<verbatim>{"sentences":[{"trans":"Hey pal\n","orig":"Hallo du.","translit":""},{"trans":"How are you?","orig":
+"Wie geht es dir?","translit":""}],"src":"de"}</verbatim>
+
+
+-- Main.ShuoYang - 21 Mar 2010

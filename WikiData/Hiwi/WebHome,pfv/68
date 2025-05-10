@@ -1,0 +1,62 @@
+%META:TOPICINFO{author="ChristianMeyer" date="1335342177" format="1.1" version="68"}%
+%INCLUDE{%SYSTEMWEB%.WebChangesRightBox}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}% 
+
+---++ Information
+   * [[DkproRepositoryForHiwis][Subversion]]
+
+---++ !HowTo
+   * [[ConnectToVPNUsingUbuntu][Connect to VPN using Ubuntu]]
+   * [[ConnectToVPNUsingWindows7][Connect to VPN using Windows 7]]
+
+---++ !Projects
+   * [[PANChallenge][PAN Challenge (OF, Artem Michael Kutschke)]]
+
+---++ Current
+   * ArtemVovkWork (NE, OF)
+   * AndreasKellner (TZ)
+   * AndriyNadolskyy (SH)
+   * CarolinDeeg (!DaB)
+   * ChristianHollubetz (!ChM)
+   * EliDuenisch (NE/TZ)
+   * [[ErikLanDoDinh][Erik-Lân Do Dinh]] (REC)
+   * MarcelAckermann (GS)
+   * MichaelKutschke (OF)
+   * RichardSteuer (CB)
+   * [[ShuoYangDariahArbeit][Shuo Yang]] (REC)
+   * TobiasHorsmann (SH)
+   * YevgenChebotar (EW, !ChM)
+   * ZijadMaksutiWork (!MiM,SH)
+
+---++ Past
+   * AnouarWork
+   * ArtemUspenskiyWork (BH)
+   * AtifWork
+   * [[BenjaminPetry][Benjamin Petry]] (REC)
+   * ChristianKirschner (!ChM)
+   * DimitriWork
+   * DongWork
+   * EliaWork
+   * HosseinWork
+   * HristoLulev (BH, MS)
+   * IvanGalkinWork (TZ)
+   * [[JensHaase][Jens Haase]] (REC)
+   * LizhenWork
+   * MarkoMartin (TZ/NE)
+   * MateuszParzonka (TZ/NE)
+   * MohsenParisay (SH)
+   * [[NicoErbsHiwi][Nicolai Erbs]] (TZ)
+   * ShuoYangSigmundArbeit (BH)
+   * UrsGlaubitt
+   * VladimirSchmidt (JEK/MiM)
+
+---++ <nop>%WEB% Web Utilities 
+<form action='%SCRIPTURLPATH{"search"}%/%WEB%/'>
+   * <input name="search" type="text" size="22"></input> <INPUT type="submit" }="" search="" value="%MAKETEXT{" class="twikiSubmit" /> - [[WebSearchAdvanced][%MAKETEXT{"advanced search"}%]]
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes
+   * WebStatistics - listing popular topics and top contributors
+   * WebPreferences - preferences of this web
+</form>

@@ -1,0 +1,169 @@
+%META:TOPICINFO{author="ArtemVovk" date="1259235816" format="1.1" reprev="127" version="127"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Artem Vovk Work
+
+---++ Work
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| SSL Proxy | 100 |
+| UI Modification | 100 |
+| Correction of Suggest Section | 100 |
+| Redirect Service (instead of proxy) | 80 |
+| !OpenSUSE mediawiki dump | 100 |
+| Automatic Lucene index generation | 100 |
+| Wiki syntax to plain text | 0 |
+
+Subtasks for lucene index generation:
+   * make configurable using a probperties file (with platform/url/...)
+   * create abstract class to unify code
+   * shell script to execute index generation
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| SSL Proxy | 08.09.2009 | 1 | <ul><li>Versuche SSL einzurichten</li></ul> |
+| SSL Proxy | 09.09.2009 | 3 | <ul><li>Neur Weg SSL zu implementieren, Implemetierung</li></ul> |
+| SSL Proxy | 10.09.2009 | 1 | <ul><li>Testen</li></ul> |
+| SSL Proxy+UI Modification | 14.09.2009 | 3 | <ul><li>Kommit(SSL Proxy)</li><li>UI Modifications- Problem Analyse, Implemetierung</li></ul> |
+| UI Modification | 15.09.2009 | 3 | <ul><li>Implemetierung</li></ul> |
+| UI Modification+ Correction of Suggest Section | 16.09.2009 | 3 | <ul><li>UI wurde implementiert</li><li>Correction of Suggest Section </li></ul> |
+| Correction of Suggest Section | 17.09.2009 | 3 | <ul><li>Correction of Suggest Section</li></ul> |
+| Correction of Suggest Section | 18.09.2009 | 3 | <ul><li>Correction of Suggest Section</li></ul> |
+| Correction of Suggest Section | 19.09.2009 | 1.5 | <ul><li>Lesen von Maven Dokumentation</li></ul> |
+| Correction of Suggest Section+SSL Proxy | 20.09.2009 | 2.5 | <ul><li>Suggest Section wurde korrigiert</li><li>Aenderungen in SSL Proxy</li></ul> |
+| Correction of Suggest Section | 21.09.2009 | 1 | adaptation to new XMLTextExtractor |
+| Correction of Suggest Section | 2.10.2009 | 5 | <ul><li>InnerHtml xml convertation(img tag, br tag)</li><li>Corrections in css selector(decrements each xpath "number" by 1)</li></ul> |
+| Correction of Suggest Section | 4.10.2009 | 3 | <ul><li>Correction of Suggest Section(changes in regex patterns)</li></ul> |
+| Correction of Suggest Section | 15.10.2009 | 4 | <ul><li>Correction of Suggest Section</li></ul> |
+| Correction of Suggest Section | 16.10.2009 | 4.5 | <ul><li>Correction of Suggest Section</li><li>OpenSUSE mediawiki dump</li></ul> |
+| Automatic Lucene index generation | 20.10.2009 | 2 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 21.10.2009 | 3 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 22.10.2009 | 3 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 23.10.2009 | 5.5 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 24.10.2009 | 3.5 | <ul><li>Implementation of general Index Creation Class</li></ul> |
+| Automatic Lucene index generation | 28.10.2009 | 1 | <ul><li>Aenderungen in WikiAPI :getRelevantContent, getRelevantPlainPageContent</li></ul> |
+| -- | 29.10.2009 | 1.5 | Einrichten das DKPro mit Fabian |
+| Automatic Lucene index generation | 03.11.2009 | 3 | <li><ul>Implementation von IndexCreator</ul><ul>Testen von MediaWiki Index</ul><ul>Testen von TWiki Index</ul><ul>Erstellung als runnable Jar</ul></li> |
+| Automatic Lucene index generation | 08.11.2009 | 1 | <ul><li>Erstellung als runnable Jar</li><ul> |
+| Automatic Lucene index generation | 09.11.2009 | 4 | <ul><li>Erstellung als runnable Jar</li><li>als shell script</li><ul> |
+| Automatic Lucene index generation | 10.11.2009 | 1 | <ul><li>Dokumentation</li><li>Kode Aenderungen</li><ul> |
+| Automatic Lucene index generation | 15.11.2009 | 6 | <ul><li>Aenderungen im CLI</li><li>Multiply Webspaces fuer TWiki</li><li>OOP Model Aenderungen</li></ul> |
+| Automatic Lucene index generation | 19.11.2009 | 3 | <ul><li>Aenderungen in TWiki(login und pass sind jetzt Variablen, die kann man konfigurieren)</li><li>Lesen von Maven Dokumentation</li></ul> |
+| Automatic Lucene index generation | 24.11.2009 | 5 | <ul><li>Versuch das Problem mit https Seiten zu loesen</li></ul> |
+| Automatic Lucene index generation | 25.11.2009 | 5 | <ul><li>Das Problem des Zugriffs(durch https) zur maggie Seite wurde geloest</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 115 (34 Übertrag von August) | bis Ende November |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+ImportingWikipedia
+
+
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+   * [[%ATTACHURL%/build.xml][build.xml]]: Script for importing wikipedia
+
+---------------------
+
+ReleasePackageErrors
+
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"
+
+
+---++ Previous Work
+
+   * ArtemVovkPreviousWork
+
+   
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="MiniManual.pdf" attachment="MiniManual.pdf" attr="" comment="Manual to %22Preloaded descriptor selection%22" date="1234806618" path="MiniManual.pdf" size="40665" stream="MiniManual.pdf" tmpFilename="/var/tmp/CGItemp37940" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="build.xml" attachment="build.xml" attr="" comment="Script for importing wikipedia" date="1248857901" path="build.xml" size="2013" stream="build.xml" tmpFilename="/var/tmp/CGItemp61365" user="ArtemVovk" version="1"}%

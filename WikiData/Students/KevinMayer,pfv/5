@@ -1,0 +1,68 @@
+%META:TOPICINFO{author="falke" comment="reprev" date="1504536664" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2017-09-04
+   * Status / Fortschritt
+      * ...
+   * Protokoll Treffen
+      * Warnings weniger schlimm
+      * Preprocessing speziell für Papers wäre vermutlich gut, um Qualität zu steigern
+         * Kopf-, Fußzeilen, Caption, Inhalte von Tabellen
+         * Leerzeilen mitten im Wort
+         * ggf. noch andere Probleme
+         * gibt es hier Tools, die das fixen könnten?
+         * Zitierungen, z.b. [5]
+         * Formeln - erkennen und entfernen?
+         * Überschriften - vllt. Satzzeichen hinter eindeutige Überschriften (INTRODUCTION)
+      * Weitere Options um Qualität zu verbessern:
+         * auch Summarization steps nutzen -> schlechtes fällt weg
+         * post-processing: Konzepte und Relation herausfiltern 
+   * Nächste Schritte
+      * Einzeldokument-Graphen für alle Dokumente erstellen
+      * Statistiken
+         * Konzepte, Relation
+         * Verteilung
+      * Recherche zu Preprocessing
+      * Verbesserung der Skalierung bei Clustern
+         * Word2Vec herausnehmen?
+         * gar nicht alles mit einander vergleichen
+            * zB erst pro Dokument, dann mergen -> vermutlich immer noch quadratisch
+         * weitere Ideen?
+
+---++ 2017-08-24
+   * Status / Fortschritt
+      * Pipeline läuft auf Server
+      * Laufzeit der aktuellen Implementierung lokal/auf Server getestet
+      * Statistiken erstellt zu Anzahl/Länge der Dokumente
+   * Protokoll Treffen
+      * Bedeutung der Logs
+      * Zählen der Konzepte -> Log oder Lesen der .cmap-Dateien
+   * Nächste Schritte
+      * siehe letzte Woche
+      * 1) Prepocessing für alle
+      * 2) ganze Pipeline für verschiedenen Cluster
+         * 10
+         * 50
+         * 100   
+
+---++ 2017-08-17
+   * Status / Fortschritt
+      * ...
+   * Protokoll Treffen
+      * Pipeline läuft mit GloVe 300d lokal, Zugriff für Server auch vorhanden
+      * Sowohl für 1 also auch 10 Paper
+      * Zum Anschauen der Graphen auch Textformat möglich (extraction.AllPropsMap)
+   * Nächste Schritte
+      * Pipeline auf Server
+      * Bis zu wie vielen Dokumenten skaliert die aktuelle Implementierung
+         * lokal
+         * Server
+      * Statistiken
+         * Wie viele Dokumente
+         * Wie lang die sind Dokumente (avg, min, max)
+         * Wie viele Konzepte im Schnitt pro Dokument
+         * Wie viele Relationen ...
+         * Laufzeit
+         * Speicher
+
+
+   

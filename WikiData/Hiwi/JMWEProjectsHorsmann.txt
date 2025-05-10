@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="HorsmannProjectSummary"}%
+*SemcorReader*
+Reads a semcor corpus (developed for semcor 1.6 other version untested) and annotates
+   * Sentence 
+   * Lemma
+   * POS
+   * Multi-Word-Expressions
+   
+---  
+*MWEDetection*
+   * Contains a jMWE UIMA wrapper and evaluation annotator in the package: de.tudarmstadt.ukp.TH.newEvaluator
+   * In the package de.tudarmstadt.ukp.TH.experiment the original experiment classes can be found, which were published by the jMWE authors and which reproduce the results mentioned in the jMWE paper
+   * The entire jMWE source code is locally imported in order to change the MWEPOS.java; the used part of speech tags are unfortunately hard coded and the class is an enum class, hence importing everything and changing the class is the easiest way to add new or other part of speech tags.
+   * jMWE is not as reusable as it should be, detection results and gold data where loaded in a way what enabled the developer of jMWE to work on object-reference basis. Therefore, it was assumed that detection results (if correct) have the same object-reference as their corresponding gold data. If the gold data has to be provided by an external file and the detection results are generated in a pipeline working on object-references does no longer work. That makes a large part of jMWE non re-usable.
+---
+*GoldWriter*
+
+Uses the content of a UIMA-Pipeline and writes a XML file which is used as gold standard for evaluating the results of the previously mentioned MWE detection.
+---
+*SemcorGoldDetectionDemo*
+
+A demo project which uses the SemcorReader, MweDetection and GoldWriter project.

@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+| *Dataset name* | *WordNet* | *Algorithm* | *BackOff* | *Sense Type* | *Gloss Type* | *Stopwords* | *Attempted* | *Precision* | *F1-Measure* | *Paper name* | *Paper results* | *Comment* |
+| SemCor 3.0 brown1 | 3.0 | MFS | no | Synset Extended | Lemmas | no | 0.98 | 0.746 | 0.738 | Navigli, Lapata 2010 | 0.742 | In test: only brown1-Dataset, in paper: all datasets |
+| SemCor 3.0 brown1 | 3.0| Lesk | no | Synset Extended | Lemmas | no | 0.76 | 0.59 | 0.514 | Navigli, Lapata 2010 | 0.479 | In test: only brown1-Dataset, in paper: all datasets |
+| Senseval-3 | 1.7.1| MFS | no | Synset Extended | Lemmas | no | 1.0 | 0.629 | 0.629 | Navigli, Lapata 2010 | 0.624 ||
+| Senseval-3 | 1.7.1| Lesk | no | Synset Extended | Lemmas | no | 0.74 | 0.521 | 0.443 | Navigli, Lapata 2010 | 0.431 ||
+| Senseval-3 | 1.7.1| Lesk | no | Synset Extended | Lemmas | yes | 0.51 | 0.493 | 0.331 | Navigli, Lapata 2010 | 0.431 ||
+| Senseval-3 | 1.7.1| Lesk | no | Synset Extended | Tokens | no | 0.61 | 0.492 | 0.372 | Navigli, Lapata 2010 | 0.431 ||
+| Senseval-3 | 1.7.1| Lesk | no | Synset Extended | Tokens | yes | 0.45 | 0.494 | 0.306 | Navigli, Lapata 2010 | 0.431 ||
+| Senseval-3 | 3.0 | MFS | no | Synset Extended | Lemmas | no | 1.0 | 0.60 | 0.60 | Navigli, Lapata 2010 | 0.624 ||
+| Senseval-3 | 3.0| Lesk | no | Synset Extended | Lemmas | no | 0.77 | 0.481 | 0.420 | Navigli, Lapata 2010 | 0.431 ||
+| Domain Finance Clean | 1.7.1 | MFS | no | Synset Extended | Lemmas | yes | 1.0 | 0.336 | 0.336 | Ponzetto, Navigli 2010 | 0.371 ||
+| Domain Finance Clean | 1.7.1 | Lesk | no | Synset Extended | Lemmas | yes | 0.99 | 0.427 | 0.425 | Ponzetto, Navigli 2010 | 0.456 ||
+| Domain Finance Clean | 1.7.1 | Lesk | no | Synset Extended | Lemmas | no | 1.0 | 0.361 | 0.361 | Ponzetto, Navigli 2010 | 0.456 ||
+| Domain Finance Clean | 1.7.1 | Lesk | no | Synset Extended | Tokens | yes | 0.97 | 0.427 | 0.421 | Ponzetto, Navigli 2010 | 0.456 ||
+| Domain Finance Clean | 1.7.1 | Lesk | no | Synset Extended | Tokens | no | 1.0 | 0.353 | 0.353 | Ponzetto, Navigli 2010 | 0.456 ||
+| Domain Finance Clean | 3.0 - 1.7.1 | MFS | no | Synset Extended | Lemmas | yes | 1.0 | 0.336 | 0.336 | Ponzetto, Navigli 2010 | 0.371 ||
+| Domain Finance Clean | 3.0 - 1.7.1 | Lesk | no | Synset Extended | Lemmas | yes | 0.99 | 0.429 | 0.427 | Ponzetto, Navigli 2010 | 0.456 ||
+| Domain Sports Clean | 1.7.1 | MFS | no | Synset Extended | Lemmas | yes | 1.0 | 0.19 | 0.19 | Ponzetto, Navigli 2010 | 0.196 ||
+| Domain Sports Clean | 1.7.1 | Lesk | no | Synset Extended | Lemmas | yes | 0.99 | 0.378 | 0.376 | Ponzetto, Navigli 2010 | 0.401 ||
+| Domain Sports Clean | 1.7.1 | Lesk | no | Synset Extended | Lemmas | no | 1.0 | 0.322 | 0.322 | Ponzetto, Navigli 2010 | 0.401 ||
+| Domain Sports Clean | 1.7.1 | Lesk | no | Synset Extended | Tokens | yes | 0.98 | 0.365 | 0.363 | Ponzetto, Navigli 2010 | 0.401 ||
+| Domain Sports Clean | 1.7.1 | Lesk | no | Synset Extended | Tokens | no | 0.98 | 0.313 | 0.313 | Ponzetto, Navigli 2010 | 0.401 ||
+| Domain Sports Clean | 3.0 - 1.7.1  | MFS | no | Synset Extended | Lemmas | yes | 1.0 | 0.19 | 0.19 | Ponzetto, Navigli 2010 | 0.196 ||
+| Domain Sports Clean | 3.0 - 1.7.1 | Lesk | no | Synset Extended | Lemmas | yes | 0.99 | 0.384 | 0.382 | Ponzetto, Navigli 2010 | 0.401 ||

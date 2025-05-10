@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="GeorgiValkanov" date="1358775357" format="1.1" version="1"}%
+%META:TOPICPARENT{name="GeorgiValkanov"}%
+-- Main.GeorgiValkanov - 2013-01-21
+---++ Random Solver Algorithm
+---+++ Purpose
+
+The random solver will be the bottom baseline for the real Wordnet algorithm. 
+---+++ Implementation
+
+1. Read the .csv file and create an array of OOO-Question objects
+
+2. For each OOO-Question in the array run the solve() method 
+
+2.1 The solve() method picks an answer at random and checks if the selected answer equals the correct answer
+
+3. Count the matches with the correct answer
+
+4. Check what percentage of the 104 questions has the algorithm solved correctly
+
+5. For statistically better results run steps 1-4 100 times to get an aggregate percentage
+---+++ Result
+
+As expected the algorithm is correct in only 20% of the cases. This can be selected as a lower baseline.

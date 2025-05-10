@@ -1,0 +1,55 @@
+%META:TOPICINFO{author="lee" comment="" date="1587388925" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+   * [[NilsBeckTime][Time tracking]]
+
+
+---+!! Tasks
+
+---++ Summary and Results
+
+
+
+*Paper*:
+
+
+
+---++ Past
+| *Date* | *Description* | *Status* |
+
+
+---++ Meetings
+   * 01.04.20
+      * Orga:
+         * Weekly meetings: Mondays, 11 o'clock
+      * Resources:
+         * [[https://pytorch.org/tutorials/][Pytorch]]
+         * [[https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270][Bert Blog]]
+         * [[https://github.com/huggingface][Huggingface]]
+         * Multilingual:
+            * [[https://github.com/UKPLab/sentence-transformers][Sentence Bert]] 
+            * [[https://huggingface.co/transformers/model_doc/xlmroberta.html][XLMR]]
+   * 06.04.20 (weekly meeting)
+      * working hours to be turned in digitally on a monthly basis, physically tba
+      * things done in past week
+         * read evidence project materials
+         * set up conda, PyCharm, PyTorch
+         * got familiar with PyTorch
+         * some further reading on e.g. BERT
+      * TODOs for upcoming week
+         * get familiar with slurm compute cluster and run some test scripts
+         * get familiar with Sentence BERT and XLMR and try at least one on sample data
+         * also: continue self-study on Transformer, Huggingface, BERT and possibly general deep learning
+
+   * 14.04.2020 (weekly meeting)
+      * things done in past week
+         * familiarized with Transformer, BERT and Sentence-BERT
+      * TODOs for upcoming week
+         * test Sentence-BERT on small datasets in oder to get used to it
+         * run Sentence-BERT on Evidence datasets, (a) finetune measuring accuracy and (b) generate words embeddings, then finetune on smaller model. Refer to distribution of classes when working to improve accuracy
+
+   * 20.04.2020 (weekly meeting)
+      * TODOs for upcoming week
+         * Train simple multi-layer perceptron (512 !ReLu -> 128 !ReLu -> 5 softmax)
+         * Train SVM (tune c : [0.0001, 0.001, 0.01, 0.1, 1, 2, 8, 32, 64]
+         * Train Logistic Regression
+         * Metrik: macro-averaged F1 score, accuracy

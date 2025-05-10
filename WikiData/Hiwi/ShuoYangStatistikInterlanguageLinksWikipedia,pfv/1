@@ -1,0 +1,75 @@
+%META:TOPICINFO{author="ShuoYang" date="1284907446" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Statistik von Interlanguage-Links der Wikipedia
+
+---++ Struktur von Mediawiki-XML
+<verbatim>
+/* Structure
+	 * <mediawiki>
+	 *     <siteinfo>
+	 *     </siteinfo>
+	 *     <page>
+	 *         <title>xxx</title>
+	 *         ...
+	 *         <revision>
+	 *             <text>xxxxx</text>
+	 *         </revison>
+	 *     </page>
+	 *     <page>
+	 *         ...
+	 *     </page>
+	 *     ...
+	 *     <page>
+	 *         ...
+	 *     </page>
+	 * </mediawiki>
+	 * 
+	 * 
+	 * 
+	 */
+</verbatim>
+
+---++ Englische Wikipedia -> Deutsche Wikipedia
+
+Gesucht ist wie groß ein Anteil der Artikel von englischer Wikipedia hat ein entsprechendes Artikel in deutscher Wikipedia.
+
+
+---+++ enwiki-20100904-pages-articles.xml
+Diese Archiv wurde zur 11 Teile getrennt und einzeln gespeichert.
+
+| *Artikel#* | *Anzahl Pages* | *Anzahl gültiger* Pages* | *Prozent gültiger Pages (%)* |
+| 1 | 1138635 | 260392 | 22.87 |
+| 2 | 895785 | 89098 | 9.95 |
+| 3 | 753287 | 52859 | 7.02 |
+| 4 | 643232 | 39644 | 6.16 |
+| 5 | 600758 | 26733 | 4.45 |
+| 6 | 569918 | 26446 | 4.64 | 
+| 7 | 680997 | 27495 | 4.04 |
+| 8 | 682438 | 24482 | 3.59 |
+| 9 | 662481 | 17013 | 2.57 |
+| 10 | 685334 | 17532 | 2.56 |
+| 11 | 3042360 | 59447 | 1.95 |
+| *Total* | *10355225* | *641141* | *6.19* |
+
+* Gültig: Es gibt mindestens ein Interlanguage-Link auf Zielsprache in Text-Bereich der Artikel (Page).
+
+
+---+++ enwiki-latest-pages-articles.xml (20100905)
+
+| *Anzahl Pages* | *Anzahl gültiger Pages* | *Prozent gültiger Pages (%)* |
+| 10355225 | 641149 | 6.19 |
+
+---+++ enwiki-20100130-pages-articles.xml
+
+| *Anzahl Pages* | *Anzahl gültiger Pages* | *Prozent gültiger Pages (%)* |
+| 9541307 | 588132 | 6.16 |
+
+
+---++ Deutsche Wikipedia -> Englische Wikipedia
+---+++ dewiki-20100903-pages-articles.xml
+
+| *Anzahl Pages* | *Anzahl gültiger Pages* | *Prozent gültiger Pages (%)* |
+| 2288998 | 636400 | 27.80 |
+
+
+-- Main.ShuoYang - 19 Sep 2010

@@ -1,0 +1,73 @@
+%META:TOPICINFO{author="stangier" comment="" date="1612285507" format="1.1" reprev="1" version="3"}%
+%META:TOPICPARENT{name="LorenzStranie"}%
+---++ 18.01.2021
+I created a small script that anonymizes every participant in a conversation by assigning everyone a UUID. Each UUID is assigned to one person per conversation, the same person will have different UUIDs in different conversations. An Example for an anonymized JSON file could look like this:
+
+<verbatim class="js">
+{
+    "question": {
+        "datetime": "2020-11-02 09:08:16",
+        "author": "ad55d962-38ec-4435-af99-99439e0ef38b",
+        "contents": "Hallo, ich habe Problem xyz. Kann mir jemand helfen?"
+
+    },
+    "responses": [
+        {
+            "datetime": "2020-11-03 06:23:54",
+            "author": "61ed0d15-3ff9-414d-8f3f-61d7fcf55874",
+            "contents": "Hast du schon probiert es aus und wieder einzuschalten?"
+        },
+        {
+            "datetime": "2020-11-03 07:05:00",
+            "author": "ad55d962-38ec-4435-af99-99439e0ef38b",
+            "contents": "Danke, jetzt läufts!"
+        }
+    ]
+}
+</verbatim>
+
+---++ 17.01.2021
+Extracted question threads from the given data and stored them in JSON files (one file per question). Each file contains exactly one problem (the question) and a list of responses . This list of responses can also include more detailed questions or questions about the proposed solutions. To preserve meta-information, the author, the date and the time of the message are saved additionally to its contents. An example question JSON file could look like this:
+
+<verbatim class="js">
+{
+    "question": {
+        "datetime": "2020-11-02 09:08:16",
+        "author": "@questioner:texprax-messenger.ukp.informatik.tu-darmstadt.de",
+        "contents": "Hallo, ich habe Problem xyz. Kann mir jemand helfen?"
+
+    },
+    "responses": [
+        {
+            "datetime": "2020-11-03 06:23:54",
+            "author": "@respondent:texprax-messenger.ukp.informatik.tu-darmstadt.de",
+            "contents": "Hast du schon probiert es aus und wieder einzuschalten?"
+        },
+        {
+            "datetime": "2020-11-03 07:05:00",
+            "author": "@questioner:texprax-messenger.ukp.informatik.tu-darmstadt.de",
+            "contents": "Danke, jetzt läufts!"
+        }
+    ]
+}
+</verbatim>
+
+Any formatting of the messages in the chat was discarded during the process of storing the message in the JSON format. Citations of messages have been kept, they can look like the following example:
+
+<verbatim class="js">
+{
+    [...]
+    "responses": [
+        {
+            "datetime": "2020-11-03 06:23:54",
+            "author": "@respondent:texprax-messenger.ukp.informatik.tu-darmstadt.de",
+            "contents": "Hast du schon probiert es aus und wieder einzuschalten?"
+        },
+        {
+            "datetime": "2020-11-03 07:05:00",
+            "author": "@questioner:texprax-messenger.ukp.informatik.tu-darmstadt.de",
+            "contents": "<@respondent:texprax-messenger.ukp.informatik.tu-darmstadt.de> Hast du schon probiert es aus und wieder einzuschalten? Danke, jetzt läufts!"
+        }
+    ]
+}
+</verbatim>

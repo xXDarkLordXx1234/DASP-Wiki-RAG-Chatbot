@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="alles" comment="" date="1727867557" format="1.1" reprev="8" version="9"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Bachelor Thesis* : 
+
+*Supervisor*: JL
+
+
+*Start Date* : 1.7.2020
+
+*Mid-Term Presentation Date* : 24.9.2020
+
+*Final Presentation Date* : 
+
+*End Date*: 31.12.2020
+
+
+---++++ *xx.xx.xxxx - xx.xx.xxxx*
+
+---++++ Meeting *03.09.2020*
+   * TODO
+      * Multi-task learning with entities
+      * Pre-training on entities
+
+---++++ Meeting *25.08.2020*
+   * TODO: Regression/LSTM-Glove (300d/6B) baseline
+   * SpanBert (SequenceBert?)
+   * Proposed thesis structure looks good
+
+
+---++++ Meeting *06.08.2020*
+   * mid-term presentation: 24.9. (15 o'clock)
+
+---++++ Meeting *06.08.2020*
+   * Finetune whole BERT Model 
+   * Add results in readme/the repo
+   * Further parameter tuning
+
+---++++ Meeting *16.07.2020*
+   * Setup is working and first experiments with BERT have been run
+   * Regression conversion is done
+   * Next steps:
+      * Run regression setup (MAE/MSE/RMSE loss, linear output layer)
+      * Check evaluation metrics
+      * Future work - self-supervised objective for regression similar to masked language modeling? 
+
+
+---++++ Meeting *25.06.2020*
+   * Working environment on slurm
+   * Currently working on [[https://github.com/mandarjoshi90/coref][SpanBERT]] code -> setting up evaluation
+
+---++++ Meeting *09.06.2020*
+   * Read into [[https://wiki.ukp.informatik.tu-darmstadt.de/Services/ITBasic/ComputeCluster][Slurm]]
+   * Try to run [[https://github.com/mandarjoshi90/coref][SpanBERT]] code
+
+
+*[[https://docs.google.com/spreadsheets/d/1nxlQ2bi2CxXFtSs9GSeq17GU5rkKtfKz6c84uU_6Xj0/edit#gid=0][Literatur research]]* 
+
+
+*To-Dos For xx.xx. - xx.xx.:*
+
+
+
+-- Main.JiUngLee - 2020-04-30

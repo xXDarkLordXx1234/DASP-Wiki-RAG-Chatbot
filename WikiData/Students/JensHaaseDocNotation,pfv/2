@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="JensHaaseDoc"}%
+---+ Notations
+
+---++ Revision
+
+An Article has Revisions r<literal><sub>i</sub></literal>, for 0 &le; i &le; n
+
+Revision r<literal><sub>0</sub></literal> is empty and Revision r<literal><sub>n</sub></literal> is the actual version of the article.
+
+---++ Diffs
+
+We define a Difference d<literal><sub>i,j</sub></literal>, for 0 &le; i &lt; j &le; n, as difference between Revision r<literal><sub>i</sub></literal> and Revision r<literal><sub>j</sub></literal> computed by a _diff_ tool.
+
+---++ Edit
+
+We define an edit e<literal><sub>i</sub></literal> as a special case of a Difference, so that e<literal><sub>i</sub></literal> = d<literal><sub>i-1,i</sub></literal>, for 1 &le; i &le; n

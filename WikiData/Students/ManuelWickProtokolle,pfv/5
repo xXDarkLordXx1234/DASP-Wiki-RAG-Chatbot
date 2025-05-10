@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="BenjaminHerbert" date="1271761046" format="1.1" version="5"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ Meeting-Protokolle
+
+%TOC%
+
+
+---++ 20th April 2010
+   * Discussed ESA
+   * Solved problem to precompute ESA vectors
+   * @info(BH): Terrier + ESA:
+      * also see provided file: ESA-terrier.txt
+      * =weightingModel=ESA.class.getName();= 
+      * =ComponentFactory.getSearcher(indexingEngine, aContext.getStorageLocation(DOCUMENT_INDEX_KEY,
+						AccessMode.READONLY), weightingModel, weightingModelParameter,
+						matchingModel, esaIndexPath)=
+   * provide slides of upcoming presentation by next Friday
+   * next steps: 
+      * finalize Lucene and Terrier Retrieval
+      * output results for manual inspection (relevant, not relevant)
+      * store results in Trec format
+      * integrate in ESA retrieval model
+      * work on structure for thesis
+---++!! 30th March 2010
+   * Current status?
+   * Next steps:
+      * Perform retrieval with Lucene, Terrier
+      * Use provided keywords lists
+---++ 25.01.2010
+Teilnehmer: Manuel Wick, BH <br>
+Discussed Topics:
+   * Student pool access
+   * UKP Eclipse
+   * SVN Access
+   * Jabber Access
+   * Pointing to Apache Tika + UIMA Sandbox Tika Annotator
+
+---++ 23.03.2010
+Teilnehmer: MW, BH <br>
+Discussed Topics:
+   * Pipeline uutuc style
+      * @action(BH): provide IR components and Examples for uutuc-style components *done*
+   * Speed problems in PDF parsing
+      * not to be considered (now)
+   * File formats
+      * sufficient for now are: pdf, doc, xls, eml, ppt. txt
+      * optional: docx,xlsx, pptx
+
+
+-- Main.BenjaminHerbert - 25 Jan 2010

@@ -1,0 +1,80 @@
+%META:TOPICINFO{author="CigdemToprak" date="1226674081" format="1.1" version="6"}%
+%META:TOPICPARENT{name="GregLogan"}%
+---+ Meetings
+
+%TOC%
+---++ 17.11.2008
+   * @info(): Manual annotation completed. 
+   * @action(GL): Link the lexicons used in opinion classification. 
+   * @action(GL): Do an evaluation for the look-up approach.
+   * @action(GL): Manual gold standards for list, and sentiment summaries (50 for each.)
+   * @action(CT): Maybe we'll do the ques.tion classification with ML, based on GL's evaluation. Prepare environment for GL to experiment.
+   * @action(DB): Clustering component to GL
+   * @action(GL): Base noun phrase annotator instead of chunker.
+
+---++ 12.11.2008
+   * *Implementation:*
+      * Mapping annotator btw. spell checked and default view for question and answer types
+      * Dictionary annotator
+      * Cue annotator
+      * Opinion question annotator
+
+
+---++ 05.11.2008
+   * *Architecture idea:*
+      * Tokenizer
+      * Spell checker
+      * Dictionary annotator
+      * Cue annotator
+      * Opinion question annotator
+   * @action(CT): Update the manual and send to DB. 
+   * @discuss(): Third judge in case of disagreement:
+      * In http://acl.ldc.upenn.edu/N/N07/N07-1025.pdf (Using Wikipedia for Automatic Word Sense Disambiguation)
+      
+<blockquote>
+   To ensure the correctness of this last step, for
+the experiments reported in this paper we used two
+human annotators who independently mapped the
+Wikipedia labels to their corresponding WordNet
+sense. In case of disagreement, a consensus was
+reached through adjudication by a third annotator.
+In a mapping agreement experiment performed on
+the dataset from Section 5, an inter-annotator agree-
+ment of 91.1% was observed with a kappa statistics
+of &#954;=87.1, indicating a high level of agreement.
+</blockquote>
+
+      * In http://www.aclweb.org/anthology-new/N/N07/N07-1071.pdf  (ISP: Learning Inferential Selectional Preferences)
+<blockquote>
+To that end, the 1000 instances &#12296;x, pj, y&#12297; were split into DEV and TEST sets, 500 in each. The
+two judges trained themselves by annotating DEV  together. The TEST set was then annotated separately to verify the inter-annotator agreement and
+to verify whether the task is well-defined. The  kappa statistic (Siegel and Castellan Jr. 1988) was &#954; = 0.72. For the 70 disagreements between the judges, a third judge acted as an adjudicator.
+</blockquote>
+
+
+
+---++ 29.10.2008
+   * @action(CT): calculate inter-annotator agreement and generate statistics for 120 questions
+      * Still working on it, [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Projects/AQUA2/ExperimenteErgebnisse][here]] is what I have sofar. 
+   * @action(GL): complete MMAX reader
+   * @action(GL): propose architecture for the system
+
+*Done*
+      * @action(CT): finish the annotation
+
+---++ 23.10.2008 
+   * @discuss(CT):  the Zhi Shen's components which can be used by GL  
+      * Dictionary look-up annotator
+      * User generated content dictionaries, smileys, etc. 
+   * @info(CT): 200 annotated questions, 120 annotated by both
+      * Base data from Agichtein
+      * 400 extracted questions from 4 categories, randomly chosen (more than 4 answers)
+   * @info(GL):
+      * Read text-based MMAX format
+      * Reader for Q&A data (default View) + MMAX annotations in other view
+      * Tokenisation + POS tagging
+      * Consumer to write text
+   * @info(DB): participation to the eNLP meetings (Monday, 10:45 - 11:00)
+      * @action(GL): write a short summary on work done in the project
+
+-- Main.CigdemToprak - 21 Oct 2008

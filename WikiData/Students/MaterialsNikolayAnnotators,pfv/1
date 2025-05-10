@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="NikolayGeorgiev" date="1247104433" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NikolayMaterials"}%
+   * TranslationAnnotator Parameters
+      * translatorName - the name of the translator to be used (e.g. "Google", "Microsoft")
+      * targetLanguage - the target language for the translation in the ISO 639-3 code (should be exactly 2 characters, e.g. "en", "de")
+   * RTTranslationAnnotator Parameters
+      * translatorName - the name of the translator to be used (e.g. "Google", "Microsoft")
+      * intermediateLanguages - a list of the intermediate languages for the round-trip translation in ISO 639-3 codes (every code should have exactly 2 characters, e.g. "en", "de")
+   * Results:
+      * TranslatedDocument - an output sofa containing the translated document
+
+-- Main.NikolayGeorgiev - 09 Jul 2009

@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="NicoErbs" date="1266405923" format="1.1" version="3"}%
+%META:TOPICPARENT{name="NicoErbsHiWiWork"}%
+---+++ FrameworkAdaptionResults
+
+To ensure that changes to the experimental framework did not result in any changes of the experimental results, a comparison of both results for a known dataset is done. Hulth dataset is used.
+
+%TOC%
+
+---++++ Results obtained by old (see Zesch09) and new framework
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Candidates* | *old R-Prec. (exact)* | *old R-Prec. (appr.)* | *new R-Prec. (exact)* | *new R-Prec. (appr.)* |
+| KEA | N-grams | .16 | .19 | .17 | .19 |
+| | | | | | |
+| tf.idf | Tokens | .11 | .22 | .11 | .24 |
+| tf.idf | Tokens (N,A) | .27 | *.32* | 0 | 0 |
+| tf.idf | Lemmas | .15 | .27 | .09 | .19 |
+| tf.idf | Lemmas (N,A) | *.28* | *.32* | 0 | 0 |
+| tf.idf | N-grams | .10 | .16 | .15 | .20 |
+| tf.idf | Noun Phrases | .27 | .32 | 0 | 0 |
+| tf.idf | Named Entities | .01 | .01 | .00 | .00 |
+| | | | | | |
+| co-occ | Tokens | .06 | .22 | .11 | .23 |
+| co-occ | Tokens (N,A) | *.31* | *.36* | | |
+| co-occ | Lemmas | .07 | .22 | .08 | .15 |
+| co-occ | Lemmas (N,A) | .29 | .35 | | |
+| co-occ | N-grams | .07 | .22 | .14 | .24 |
+| co-occ | Noun Phrases | .28 | .34 | .32 | .40 |
+| co-occ | Named Entities | .01 | .01 | .00 | .01 |
+
+Results are provisional and have to be cross-checked.
+
+-- Main.NicoErbs - 16 Feb 2010

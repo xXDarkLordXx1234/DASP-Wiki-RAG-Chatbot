@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="NicoErbs" date="1264785854" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NicoErbsHiWiWork"}%
+---++ TfidfConsumer
+
+%TOC%
+
+---+++ Summary
+A TfidfConsumer processes all documents and counts the number of occurrences of each word (may be a special annotation as well).
+
+   * tf stands for text frequency
+   * df stands for document frequency
+
+---+++ Requriements
+
+-- Main.NicoErbs - 29 Jan 2010

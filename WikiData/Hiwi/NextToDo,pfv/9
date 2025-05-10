@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1365521903" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * Lemma index: try to retrieve on it (frink)
+   * break point is set, run retrieval with all topics (local) [orig line: ./bin/run -Dmainclass=pipelines.SearchTopic -Dargline="--inputdir /home/steuer/out/docIndexNUS_TokenLemma --outputdir /home/steuer/out/ --nrOfExpPerTerm 3 --nrOfExpPerDoc 1 --selectDtTerm byweight"]
+
+   * Fix multi-field index problem. (The Dragon!)
+
+Before the meeting, please<br/>
+ 1) see if you can create a field with a custom name, put all index terms in it, and retrieve<br/>
+ 2) find in which part of DKPro IR or Terrier code merging of scores for each field are taking place,<br/>
+ 3) find a way to debug (printing to screen is fine) scoring of each field<br/>

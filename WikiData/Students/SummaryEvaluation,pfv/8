@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="8"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+---++ Summary Evaluation
+
+%TOC%
+
+---++++ ROUGE: Setup using Dragon Toolkit
+   * [[SummaryEvalRougeSimple][Setup for Simple Example]]
+
+---++++ ROUGE Package: Implementations
+   * Dragon Toolkit: http://dragon.ischool.drexel.edu/features.asp (Java)
+   * Chin-Yew Lin: http://research.microsoft.com/~cyl/download/ROUGE-1.5.5.tgz (Perl)
+
+---++++ Evaluation methods
+   * ROUGE Package
+   * BE: Basic Elements
+   * Pyramid evaluation method
+      * -> Handling of semantic equivalence at varying levels of granularity
+      * -> Paper: http://www.cis.upenn.edu/~nenkova/papers/p1-nenkova.pdf
+      * -> Java Tool: http://www1.cs.columbia.edu/~ani/DUC2005/Tool.html
+   * Kappa Statistics
+    
+---++++ Correlation coefficient
+   * Spearman rank-correlation coefficient
+   * Kendall rank correlation coefficient 
+   * Pearson product-moment correlation coefficient

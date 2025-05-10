@@ -1,0 +1,74 @@
+%META:TOPICINFO{author="geisler" date="1476731377" format="1.1" version="3"}%
+%META:TOPICPARENT{name="NadjaGeisler"}%
+---+++ Weekly Report 11.07. - 31.07.
+   * Initial meeting
+   * Identification of general topic
+   * Discussion of ideas
+ 
+---+++ Weekly Report 01.08. - 07.08.
+   * Familiarization with theoretical background (CNN etc.)
+   * Example setup for experimentation
+   * Setup of work environment (git, tex, python etc.)
+
+---+++ Weekly Report 08.08. - 14.08.
+   * Introductory work with keras and theano
+
+---+++ Weekly Report 15.08. - 21.08.
+   * Literary research of context: DL, CNN, DL for answer ranking, rules, proposition matching
+
+---+++ Weekly Report 22.08. - 28.08.
+   * Familiarization with preexisting code and data
+   * First rough outline for report
+   * First rough drafts for introduction and related work
+
+---+++ Weekly Report 29.08. - 04.09.
+   * create overview over literary research
+   * create and test script to run experiments while logged of and maintaining output
+
+---+++ Weekly Report 05.09. - 11.09.
+   * creating scripts to analyze questions and ground truths: 
+      * to how many questions do proposed rules apply?
+      * how many answers actually match rules?
+      * are proposed rules relevant in many cases?
+   * further literature for rules in ML approaches
+
+---+++ Weekly Report 12.09. - 18.09.
+   * Experiment: reduce number of ground truths in training 
+      * keep number of questions
+      * keep number of training samples
+   * as discussed: modified data set used for testing while still in development
+
+
+---+++ Weekly Report 19.09. - 25.09.
+   * Statistische Auswertung von fragetypen im Trainingsdatensatz
+   * Literary research
+---+++ Weekly Report 26.09. - 02.10.
+   * Erstellen eines Python Frameworks zur Implementierung potentieller Regeln
+   * Matchen potentieller Regeln auf Fragen
+   * Matchen potentieller Antwortregeln zu gematchten Fragenregeln
+   * Skript zur statistischen Auswertung gematchter Regelpaare
+---+++ Weekly Report 03.10. - 09.10.
+   * weitere Experimente: Auswertung potentieller Regeln ausschließlich unter Eineziehung der ersten 1, 2, 3 einer Antwort 
+---+++ Weekly Report 10.10. - 16.10.
+   * Ophase, kaum Aktion
+---+++ Weekly Report 17.10. - 23.10.
+   * Code Aufbereitung und Dokumentation
+   * Experimente: inkl. matchen des restlichen Satzes
+---+++ Weekly Report 24.10. - 30.10.
+---+++ Weekly Report 31.10. - 06.11.
+---+++ Weekly Report 07.11. - 13.11.
+---+++ Weekly Report 14.11. - 20.11.
+---+++ Weekly Report 21.11. - 27.11.
+---+++ Weekly Report 28.11. - 04.12.
+---+++ Weekly Report 05.12. - 11.12.
+---+++ Weekly Report 12.12. - 18.12.
+---+++ Weekly Report 19.12. - 25.12.
+
+
+
+
+
+
+
+
+-- Main.NadjaGeisler - 2016-09-06

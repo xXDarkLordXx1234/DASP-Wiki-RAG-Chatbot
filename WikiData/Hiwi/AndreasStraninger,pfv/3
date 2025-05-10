@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="AndreasStraninger" date="1357762370" format="1.1" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+---+!! Arbeitsprotokoll von DARIAH-DE, Shuo Yang
+
+---++ Aktuelle Arbeit: Dezember 2012 - Januar 2012
+
+---+++ Protokoll
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 08.11.2012 | Create dummy image | 1.5 | |
+| 08.11.2012 | Meeting | 0.5 | |
+| 27.11.2012 | Improve dummy image | 0.5 | |
+| 27.11.2012 | Installation | 2 | |
+| 28.11.2012 | Improve dummy image | 0.5 | |
+| 05.12.2012 | familiarization with CLARIN | 1 | |
+| 06.12.2012 | Meeting | 2 | |
+| 12.12.2012 | First contents to curation page | 1 | |
+| 13.12.2012 | | 1 | |
+| 06.01.2013 | component for brat embedding, usage of listview, getting familiar with ajax in apache widget | 4 | |
+| 09.01.2013 | json serialization, finished component for brat embedding | 3 | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 80)$EXEC($GET(total_hour))"}% | bis Ende Januar noch %CALC{"$EVAL( $GET( total_hour ) - ($GET( done_hour )) )"}% Stunden |
+<nop>

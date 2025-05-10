@@ -1,0 +1,103 @@
+%META:TOPICINFO{author="woeckener" comment="" date="1544633758" format="1.1" reprev="4" version="9"}%
+%META:TOPICPARENT{name="StudentsList"}%
+   Start date: 26.10.2018
+
+End date: 26.03.2019
+
+---++ Summary 06.12. - 12.12.
+   * I tried Mallett for topic modelling. The code works but results are mediocre. Maybe it's a problem with hyperparamter tuning (filtering 'most common words' vs. 'most important words')
+   * Most of the time I worked on Nils' baseline model. Current results are on Slack.
+
+
+
+---++  Minutes 06.12.2018
+
+   * turingtest.netzerei.at: keep in mind for evaluation in January or so
+   * Put data on apu, plus the reader
+   * Try out other data for DeepSpeare; play around with model architecture, parameters, etc.
+   * Try to limericks (online?) or be general
+   * double-dactyl: form on a particular poem
+   * feed in (sentence) embedding as initial state of a RNN language model
+      *  RNN
+   * Mallet for topic modelling
+
+
+---++ Summary 19.11. - 05.12.
+   * Today(05.12.) I got the bug fixed and I can finally create environments or install things on the ukp-servers (they renamed my account to woeckener instead of wöckener)
+      * SE: ok
+   * So I tried to run Deepspeare but it does not run on GPU because of a CUDA version error (deepspeare is built with archaic tf 0.12 which only works with cuda 8 but cuda 9 is installed). I tried to run newer code which didn't work as well because it requires cudnn > 7. Also Marek Rei's Sequence Labeler Code doesn't work on GPU (libcublas.so.8.9 error). So I filed another bug.
+      *  SE: ok. Make sure the language model works and make sure the bidirectional part doesn't interfere. 
+   * Instead I ran deep speare on my cpu. Results are in slack.
+      * SE: find out why temperature means at some point
+      * SE: find out what annotations means
+   * I updated the 'data', and 'related work' section in the thesis.
+      * SE: will give you feedback next week
+   * I also spent some hours installing Gramophone which just didn't work in the end. Documentation is sketchy or wrong. And the whole code gets revised soon (Kay didn't provide a date but he' working on it).   
+      * SE: send me the data.  
+   * For the experiments I looked into some other codebases and thought about how to apply it to poem generation. Well. I'd like to discuss this tomorrow. :)
+
+
+---++ Meeting Minutes 29.11.2018
+   * Besides the outstanding issues from last week (see below), you can start a bit looking at language generation softwares and try to make them run on UKP machines
+      * E.g., try out DeepSpeare on GPU and see how fast it goes
+      * Ideally, you also try out at least one more architecture, e.g., look at the Marek Rei ACL-2017 paper 
+         * or classical language model
+         * or GAN
+
+---++ Summary 22.11. - 28.11.
+   * I updated the related work section in the thesis and read a few papers again and more detailed. That was quite enlightning and I have a clearer idea of what we can do in the experiments . The summarization is more or less in the related work section + I updated the spreadsheet on google drive
+      * SE: Great. Did it give you concrete new ideas?
+      * JW: Yes, we can discuss this later on Slack.
+      * SE: Btw. In the overleaf you write (roughly) "I'll not discuss non-neural approaches to poetry analysis/generation". I would indeed include a few relevant ones. Btw. sometimes it's sufficient to skim over a related work paper rather than read it entirely.
+      * JW: Ok, I can add some non-neural approaches. Some are named in papers I read so this is fine. 
+   * I trained a rhyme classifier and built an inference mode for it, so we can use it "easily"
+      * SE: Great, nice to hear
+   * I used wordlists for sentiment analysis. It's just an easy lookup + count pos/neg matches. Came to mind it's maybe too simplistic… Currently working on making bar plots to visualize the results/distribution
+      * SE: Why do you think it's too simplisitic? Is there some related work that is doing this? Yea, Would be really nice to see some results.
+      * JW: Well, many results are exactly zero. These are maybe short poems with unusual wording or just very neutral sentiment. Also the english poems tend to be negative with some poems having a very strong negative rating (-800 or sometimes more) but there is no outlier in positive direction. The german poems seem to be more balanced. I'm sure there are more sophistiacted approches. But on the other hand it actually is sufficient to divide positives from negatives. 
+   * added a field "author" to the data and added a filter method
+      * SE: nice, also year?
+      * JW: Release date was already included (... if available, sometimes it's not included in metadata)
+   * added a filter to get sonnets for all poems
+   * Talking of bar plots… I created bar plots of time period distribution. Find an example attached to this mail.
+      * SE: nice, where can I find them?
+      * JW: I attached it to my post... but I'll send it to you on Slack  
+   * I'm in contact with Kay Würzner, the creator of Gramophone. The tool is not very easy to use. I installed the requirements (one needed gcc compiling) but it turned out that the code on github is actually made for a web app and currently not working. Though it should be possible to run it on the console or even within python but I couldn't get it done. ALSO I'm not sure how important it is in the end. If we use it for rhyme detection we have another strong tool (~95% accuracy) working. For english we can still use the CMU dict if its about grapheme translation, which is quite often used in other works. If we want to use it for meter detection it may not be overly important as the guys from deepspeare claim that even their vanilla language model recognized meter implicitly.
+      * SE: would still be nice if we have G2P for German (CMUdict doesn't do that) as well as stress for both English and German. What does K.Würzner say? Does he have a clue why it does not work?
+      * JW: I'll give it another try :) 
+   * I also contacted Arthur Jacobs for a word list more suitable for poems. He doesn't
+      * SE: doesn't?
+      * JW: ... have a list at hand. But we'll work something out maybe. . 
+   * To do (maybe tomorrow): - make sentiment plots / probably implement another more sophisticated option for sentiment analysis - push code and files to TU servers
+      * SE: Yes, I would like to see the data and apu and run your reader on it, that's doing G2P, syllabification, etc.
+
+---+!! Meeting Minutes 22.11.2018
+
+   * Please try to finish the item points in this week by next week, so we can move on to generation.
+   * Also please send me a gitlab link to your PoetryReader and put all the data on apu
+
+
+   1 - Assign poems a date in corpora
+   2-  limericks, .... ; *sentiment* analysis of poems
+      * sentiment wortlisten (Arthur Jacobs, see email, other sources for sentiment classification are also possible)
+         * https://docs.aylien.com/textapi/sdks/#python-sdk
+         * There are many sentiment labeled datasets out there, but not for poetry domain and not for our epochs, presumeably
+      * or: sentiment annotated datasets
+      * sentiments: humor, negativ, positiv
+   3 - filter by author
+   4- do we know authors as meta-data?
+   5 - G2P: http://kaskade.dwds.de/gramophone/
+   6 - Put code on gitlab, put data on apu
+   7 - Related work (finish ASAP)
+      * Poetry Analysis
+      * Poetry Generation
+      * (Language Generation)
+   8 Language Model
+   9 TU Design
+   10 Tabelle fehlen
+   11 Related work
+   12 - Use supervised rhyme detector of Thomas Haider to assign rhymes for poems not rhyme labelled
+
+
+
+-- Main.SteffenEger

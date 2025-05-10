@@ -1,0 +1,74 @@
+%META:TOPICINFO{author="bates" comment="" date="1643642606" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Multimodal Classification of Claims about Images
+
+*Start date*: 21.01.2022
+
+*End date*: 22.07.2022
+
+*Supervisor*: Luke Bates
+
+---++ Current Status
+
+#StatusTwo
+---++++ 28.01 - 04.01.2022
+-
+
+#PriorOne
+---++++ prior 28.01.2022
+   * implemented the model from *[[https://aclanthology.org/D19-1216/][Fact-Checking Meets Fauxtography: Verifying Claims About Images]]*
+   * tested an approach using yolov5
+      * idea: 
+         * use yolo to detect object 
+         * crop images and use the cropped images as input
+         * create/combine features as in Fact-Checking Meets Fauxtography: Verifying Claims About Images
+      * *result worsens*
+      * need to check for errors
+
+|10-fold cross-validation |*train accuracy *| *test accuracy *| *train precision* | *test precision* |
+|*paper*|-|80.1|-|90.3|
+|*my results*| 96.91|80.93|100|89.89|
+|*YOLOv5*|86.93|70.39|96.69|81.86|
+
+---++ Meetings
+
+---++++ 28.01.2022
+
+   * presented [[#PriorOne][results prior 28.01.2022]]
+   * talked about problems i faced
+      * old computer
+   * *[[#StatusTwo][TODO]]*
+      * dataset analysis
+         * split into train/test/dev
+         * check if model learned to classify reuters or snopes
+         * what have the wrong predicted image claim pairs in common
+      * tryout sentences transformer
+         * https://www.sbert.net/
+         * https://github.com/UKPLab/sentence-transformers
+         * [[https://towardsdatascience.com/sentence-transformer-fine-tuning-setfit-outperforms-gpt-3-on-few-shot-text-classification-while-d9a3788f0b4e][towardsdatascience sentence transformer]]
+      * tryout other models
+         * transformer based models
+            * visual BERT
+      * check if bad yolo results caused by mistake
+      * clean up code 
+      * setup ukp gitlab
+      * take a look at *[[https://arxiv.org/pdf/2112.08594.pdf][Twitter-COMMs: Detecting Climate, COVID, and Military Multimodal Misinformation]]*
+      * learn to work with SLURM
+
+---++ Research
+|*Papers*|*Additonal*|
+|[[https://arxiv.org/abs/2105.09284][SemEval-2021 Task 6: Detection of Persuasion Techniques in Texts and Images]]|-|
+|[[https://arxiv.org/abs/2103.00242][A Survey on Stance Detection for Mis- and Disinformation ]]|-|
+|[[https://arxiv.org/abs/2107.00941][Misinformation Detection on YouTube Using Video Captions]]|-|
+|[[https://arxiv.org/abs/1908.03557][VisualBERT: A Simple and Performant Baseline for Vision and Language]]|-|
+|[[https://openreview.net/pdf?id=M4wgkxaPcyj][NLP-based Feature Extraction for the Detection of COVID-19 Misinformation Videos on YouTube]]|-|
+|[[https://arxiv.org/abs/1911.03854][r/Fakeddit: A New Multimodal Benchmark Dataset for Fine-grained Fake News Detection]]|-|
+|[[https://arxiv.org/abs/2106.03794][COVID-Fact: Fact Extraction and Verification of Real-World Claims on COVID-19 Pandemic]]|-|
+|[[https://aclanthology.org/W14-2508/][Fact Checking: Task definition and dataset construction]]|-|
+|[[https://ojs.aaai.org//index.php/ICWSM/article/view/3266][Explaining Multimodal Deceptive News Prediction Models]]|-|
+|[[https://arxiv.org/abs/1905.12616][Defending Against Neural Fake News]]|-|
+|[[https://aclanthology.org/D19-1216/][Fact-Checking Meets Fauxtography: Verifying Claims About Images]]|-|
+|[[][]]|-|
+|[[][]]|-|
+|[[][]]|-|
+|[[][]]|-|

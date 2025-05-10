@@ -1,0 +1,359 @@
+%META:TOPICINFO{author="ShuoYang" date="1282913742" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Changing Lucene Scoring
+
+%TOC%
+
+---++ Abstract
+
+This document describes how to implement a customized scoring module for Apache Lucene to let it score the way you want. Firstly it explains why we would create our own scoring and the two different levels of customization. Then it describes shortly the first level _Changing Similarity_. Finally we will explore the more complicated second level _Query - Weight - Scorer Model_. An example is given to help understanding this level.
+
+---++ Introduction
+
+Apache Lucene is a high-performance, full-featured text search engine library. Ranking function is at the core of every search engine, since it determines directly how relevant a document is to a given query. Lucene provides a great formula with a good implementation, described in its [[http://lucene.apache.org/java/3_0_2/api/all/org/apache/lucene/search/Similarity.html][Similarity document]]. In most cases, it serves its purpose well.
+
+Lucene also supports customized scoring in addition to its own. Which means we can write own own scoring module, for the sake of optimization of the search result, or experimenting with different ranking models. This document explains two ways to create our own scoring, depending on our customization level.
+
+---+++ So which level?
+
+To customize the scoring, we can either
+   1. Change Similarity, or
+   1. Change Query - Weight - Scorer
+
+Lucene has its _Lucene Practical Scoring Function_
+
+<table cellpadding="2" cellspacing="2" border="0" align="center">
+   <tr>
+     <td valign="middle" align="right" rowspan="1">
+       score(q,d) &nbsp; = &nbsp;
+       <A HREF="#formula_coord">coord(q,d)</font></A> &nbsp;&middot;&nbsp;
+       <A HREF="#formula_queryNorm">queryNorm(q)</font></A> &nbsp;&middot;&nbsp;
+     </td>
+     <td valign="bottom" align="center" rowspan="1">
+       <big><big><big>&sum;</big></big></big>
+     </td>
+     <td valign="middle" align="right" rowspan="1">
+       <big><big>(</big></big>
+       <A HREF="#formula_tf">tf(t in d)</font></A> &nbsp;&middot;&nbsp;
+       <A HREF="#formula_idf">idf(t)</font></A><sup>2</sup> &nbsp;&middot;&nbsp;
+       <A HREF="#formula_termBoost">t.getBoost()</font></A>&nbsp;&middot;&nbsp;
+       <A HREF="#formula_norm">norm(t,d)</font></A>
+       <big><big>)</big></big>
+     </td>
+   </tr>
+   <tr valigh="top">
+    <td></td>
+    <td align="center"><small>t in q</small></td>
+    <td></td>
+   </tr>
+   </table>
+
+in determining the score, described in greater detail [[http://lucene.apache.org/java/3_0_2/api/all/org/apache/lucene/search/Similarity.html][here]]. If it works for you, but you want to implement your own calculation of each component, like the implementation of =tf()=, =idf()= or =queryNorm()=, go with the first level. 
+
+If you would like to experience more, go with the second level.
+
+---++ Level 1: Changing Similarity
+---+++ When Appropriate
+Similarity defines the components of Lucene scoring. Overriding computation of these components is a convenient way to alter Lucene scoring. For instance, in the case of some applications which do not need to distinguish between shorter and longer documents. Similarity is also to be consulted when scoring component value, such as idf, tf, is needed.
+
+---+++ Implementation
+---++++ Subclassing =Similarity=
+=Similarity= is an abstract class. After subclassing, following methods must be implemented, which are further used to calculate the score according to the formula above:
+
+<verbatim>
+	public float coord(int overlap, int maxOverlap)
+	public float idf(int docFreq, int numDocs) 
+	public float lengthNorm(String fieldName, int numTokens)
+	public float queryNorm(float sumOfSquaredWeights)
+	public float sloppyFreq(int distance)
+	public float tf(float freq)
+</verbatim>
+
+You can also simply subclass =DefaultSimilarity= and override only the changed methods.
+
+---++++ Usage
+To change =Similarity=, one must do so for both indexing and searching, and the changes must happen before either of these actions take place. Although in theory there is nothing stopping you from changing mid-stream, it just isn't well-defined what is going to happen.
+
+To make this change, instantiate your own Similarity and then use the new class by calling =IndexWriter.setSimilarity= before indexing and =Searcher.setSimilarity= before searching.
+
+-- [[http://lucene.apache.org/java/3_0_2/api/all/org/apache/lucene/search/package-summary.html#query][Source]]
+
+---++ Level 2: Creating Your Own Scoring
+---+++ When Appropriate
+If you want to experiment with the default scoring formula of Lucene itself or more, it's better to create your own scoring. In this way a lot more than solely Similarity can be changed.
+
+---+++ Implementation
+---++++ Structure: the Query - Weight - Scorer Model of Lucene
+
+Lucene's scoring is about interaction between three main classes:
+   1. =Query=: represents the query of the user, creates =Weight= instance
+   1. =Weight=: processed query, creates =Scorer= instance
+   1. =Scorer=: delegate for Searcher, navigate through Documents, and provides score for each Document.
+ 
+As all of them are abstract classes, we have to subclass all of them. So from here on reference to instance of these three classes means reference to instance of our _subclasses_ of these three classes. E.g. the Query instance means, instance of our subclass of Query.
+
+Roughly speaking, the algorithm is:
+   1. From a user's query an instance of our subclassed Query is created. 
+   1. The data in Query is processed.
+   1. The Query instance creates an instance of our subclassed Weight with the obtained data. 
+   1. The data in Weight is processed.
+   1. The Weight instance creates an instance of our subclassed Scorer with the data.
+   1. The data in Scorer is processed.
+   1. Searcher navigates through Document and collect scores from our Scorer instance.
+   
+There are more than one way of how the three interacts with each other. It is not strictly specified how much data each should be processed in step 2, 4 and 6, as long as in step 7 the subclassed Scorer instance can return the correct score for each Document. It is even possible not to process at all in some steps, and to process all in one step.
+
+In addition, [[http://lucene.apache.org/java/3_0_2/api/all/org/apache/lucene/search/package-summary.html#scoring][this article]] from Lucene team is also worth a read.
+
+---++++ Example: Naïve Scoring
+To facilitate understanding, we will construct a small example. Along the way we will see how each subclass works.
+
+The scoring function of our example is, for each occurrence of the query in document, the document gains one point. Occurrence is determined using strict and pure string comparison. For example, for the query "Lucene", Document "Lucene Lucene Lucene" should get 3 points; Document "Lucene in Action" should get 1 point; Document "apache lucene" and "Thinking in Java" are not relevant and should get no point.
+
+---++++ The =Query= Class
+
+A search begins with a Query. It collects the user's information need and process it into a Weight object for further usage. Any =Searcher dependent state should not be stored here, but in Weight object.
+
+*Important methods* for derived classes:
+
+   * =public Weight createWeight(Searcher searcher)=: Constructs an appropriate Weight implementation for this query. Only implemented by primitive queries, which re-write to themselves. See the subsection The =Weight= Class below for details on defining a Weight subclass.
+   * =public Query rewrite(!IndexReader reader)=: Re-writes queries into primitive queries. 
+
+*Calling order:* Constructor -> =rewrite(!IndexReader)= -> =createWeight(Searcher)=. 
+
+So basically we construct a query from user's query, do rewrite if needed and create a weight object using the obtained information.
+
+In our example we don't need to rewrite. And since it bases on pure string comparison, the string query is directly passed to Weight object. This is how it is implemented:
+
+<verbatim>
+public class MyQuery extends Query {
+	...
+	private String query;
+	
+	public MyQuery(String query) {
+		this.query = query;
+	}
+
+	@Override
+	public Weight createWeight(Searcher searcher) throws IOException {
+		// Documents are stored in searcher
+		return new MyWeight(searcher, this, query);
+	}
+	
+	@Override
+	public Query rewrite(IndexReader reader) throws IOException {
+		return super.rewrite(reader);
+	}
+	...
+}
+</verbatim>
+
+---++++ The =Weight= Class
+
+The Weight object is created by Query object and serves as an internal representation of the Query so that it can be reused. Query norm is calculated here. Documents can be scored here. It also provides Explanation on each score. Any Searcher dependent state should be stored here, not in Query class.
+
+*Important methods* for derived classes:
+
+   * =public Query getQuery()=: Pointer to the Query that this Weight represents.
+   * =public float getValue()=: The weight for this Query.
+   * =public float sumOfSquaredWeights()=: The sum of squared weights of each Document in this Query, used to calculate the norm of the Query.
+   * =public void normalize(float norm)=: Determine the query normalization factor. The query normalization may allow for comparing scores between queries.
+   * =public Scorer scorer(IndexReader reader, boolean scoreDocsInOrder, boolean topScorer)=: Construct a new Scorer for this Weight. See The Scorer Class below for help defining a Scorer. As the name implies, the Scorer is responsible for doing the actual scoring of documents given the Query.
+   * =public Explanation explain(IndexReader reader, int doc)=: Provide a means for explaining why a given document was scored the way it was.
+
+*Calling order:* Constructor -> =sumOfSquaredWeights()= -> =normalize(float)= -> =scorer(IndexReader, boolean, boolean)=. 
+
+After instantiation, the sum of squared weights is calculated. It is then used to calculate the norm which is passed to =normalize(float)=. In =normalize(float)= we should normalize the weights with the given norm. After that Documents from =IndexReader= can be scored. Finally we should create a Scorer instance with the obtained data.
+
+In our example the query isn't weighted so we don't calculate the weight, and we skipped normalization and explanation. In =scorer(!IndexReader, boolean, boolean)= each Document from =IndexReader= is scored according to our simple rule:
+
+<blockquote>For each occurrence of the query in document, the document gains one point. Occurrence is determined using strict and pure string comparison.</blockquote>
+
+All relevant document is stored in a map with its document ID being the key, its score the value. This map is then used to create a Scorer instance. This is how it is implemented: 
+
+<verbatim>
+public class MyWeight extends Weight {
+	...
+	private Searcher searcher;
+	private Query query;
+	private String queryText;
+		
+	public MyWeight(Searcher searcher, MyQuery query, String queryText) {
+		this.searcher = searcher;
+		this.query = query;
+		this.queryText = queryText;
+	}
+	
+	@Override
+	public Explanation explain(IndexReader reader, int doc) throws IOException {
+		// Provide a means for explaining why a given document was scored the way it was.
+		return null;
+	}
+
+	@Override
+	public Query getQuery() {
+		// Pointer to the Query that this Weight represents.
+		return query;
+	}
+
+	@Override
+	public float getValue() {
+		return 0f;
+	}
+
+	@Override
+	public void normalize(float norm) {
+		// Normalize the weights with the given norm
+	}
+
+	@Override
+	public Scorer scorer(IndexReader reader, boolean scoreDocsInOrder,
+			boolean topScorer) throws IOException {		
+		// Score each Document
+		LinkedHashMap<Integer, Float> result = new LinkedHashMap<Integer, Float>();
+		
+		for (int i = 0; i < reader.numDocs(); i++) {
+			String text = reader.document(i).get("title");  // Document text
+			float score = 0;
+			int startingIndex = text.indexOf(queryText);  // Starting index of the first occurrence of query
+			while (startingIndex != -1) {
+				// Found
+				score++;
+				// Search for next occurrence
+				startingIndex = text.indexOf(queryText, startingIndex + queryText.length());
+			}
+			if (score != 0) {
+				// Collect the document ID if it is relevant
+				result.put(i, score);
+			}
+		}
+		
+		return new MyScorer(searcher.getSimilarity(), result);
+	}
+
+	@Override
+	public float sumOfSquaredWeights() throws IOException {
+		return 0f;
+	}
+	...
+}
+</verbatim>
+
+Note since Weight need a reference to its Query object, it is also possible and often practiced to implement Weight as an inner class of Query (e.g. =TermQuery=).
+
+---++++ The =Scorer= Class
+
+Scorer object is created by Weight. It provides scoring functionality and is the heart of the Lucene scoring process. It is used to navigate through relevant Documents and provide final score for each of them. 
+
+*Important methods* for derived classes:
+
+Navigation (derived from =DocIdSetIterator=):
+   * =public int nextDoc()=: Advances to the next document in the set and returns the doc it is currently on, or =NO_MORE_DOCS= if there are no more docs in the set.
+   * =public int docID()=: Returns the id of the Document it is currently on, or =NO_MORE_DOCS= if it is not in a legal state.
+   * =public int advance(int target)=: Advances to the first beyond the current whose document number is greater than or equal to target. Returns the current document number or NO_MORE_DOCS if there are no more docs in the set. In many instances, advance can be implemented more efficiently than simply looping through all the matching documents until the target document is identified.
+
+Scoring:
+   * =public void score(Collector collector)=: Scores and collects all matching documents using the given Collector.
+   * =public float score()=: Returns the score of the current document matching the query. This value can be determined in any appropriate way for an application.
+
+*Calling order:* Constructor -> =score(Collector)=. <br>
+If we keep the default implementation of score(Collector), subsequent calling order: =nextDoc()= -> =score()= -> =nextDoc()= -> =score()= -> =nextDoc()= ... until =nextDoc()= returns =NO_MORE_DOCS=. 
+
+After instantiating, =score(Collector)= is called to further direct the Scorer. The default implementation of =score(Collector)= (in =Scorer= class) enumerates through all Documents using =nextDoc()= and collects the score of each Document using =score()=. Both =nextDoc()= and =score()= are abstract and we have to provide our own implementation of them.
+
+In our example, the default =score(Collector)= implementation is used. In constructor the scoring calculated in Weight is passed in as a map of relevant Document ID and its score (=<Integer, Float>=). =nextDoc()= is implemented to iterate the key set of document IDs while =score()= returns the value - score - to each document ID.
+
+This is how it is implemented:
+<verbatim>
+public class MyScorer extends Scorer {
+	...
+	private int key = -1;
+	private LinkedHashMap<Integer, Float> result;
+	private Iterator<Integer> iterator;
+	
+	public MyScorer(Similarity similarity, LinkedHashMap<Integer, Float> result) {
+		super(similarity);
+		
+		this.result = result;
+		this.iterator = result.keySet().iterator();
+	}
+	
+	@Override
+	public float score() throws IOException {
+		// Here returns the score to the current document
+		return key != -1 ? result.get(key) : 0f;
+	}
+
+	@Override
+	public void score(Collector collector) throws IOException {
+		super.score(collector);
+	}
+
+	@Override
+	public int advance(int target) throws IOException {
+		...
+	}
+
+	@Override
+	public int docID() {
+		...
+	}
+
+	@Override
+	public int nextDoc() throws IOException {
+		// Here returns the next relevant document
+		if (iterator.hasNext()) {
+			key = iterator.next();
+			return key;
+		} else {
+			return NO_MORE_DOCS;
+		}
+	}
+	...
+}
+</verbatim>
+
+---++++ Usage
+Here is an example on how to use this customized Query:
+
+Initialize:
+<verbatim>
+		FSDirectory directory = FSDirectory.open(new File("target/index"));
+		Analyzer analyzer = new WhitespaceAnalyzer();
+</verbatim>
+
+Index:
+<verbatim>
+		IndexWriter w = new IndexWriter(directory, analyzer, true,
+				IndexWriter.MaxFieldLength.UNLIMITED);
+		addDoc(w, "Lucene in Action");
+		addDoc(w, "Lucene for Dummies");
+		addDoc(w, "Managing Gigabytes");
+		addDoc(w, "The Art of Computer Science");
+		addDoc(w, "Lucene Lucene Lucene");
+		w.optimize();
+		w.close();
+</verbatim>
+
+*Search with the customized Query and print result:*
+<verbatim>
+		MyQuery query = new MyQuery("Lucene");
+
+		IndexSearcher searcher = new IndexSearcher(directory);
+		TopDocs top = searcher.search(query, null, 10);
+
+		ScoreDoc[] docs = top.scoreDocs;
+
+		System.out.println("length: " + docs.length);
+
+		// Print results
+		for (int i = 0; i < top.scoreDocs.length; i++) {
+			System.out.println("doc #" + docs[i].doc + ": " + docs[i].score + ", "
+					+ searcher.doc(docs[i].doc).get("title"));
+		}
+</verbatim>
+
+---++ Summary
+This document introduced two ways to change the default Lucene scoring: either customizing Similarity or create own version of Score. Thus making Lucene fit your purposes. It provides a simple overview on how to do it. As Lucene is implemented with great flexibility, little is fixed and there are a great number of different implementations. The two levels can also be mixed together, calling customized Similarity in customized scoring. Feel free to experiment on your own and have fun with it!
+
+-- Main.ShuoYang - 27 Aug 2010

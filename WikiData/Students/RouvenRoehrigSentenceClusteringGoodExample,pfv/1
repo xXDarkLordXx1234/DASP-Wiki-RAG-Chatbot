@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="roehrig" comment="save topic" date="1367356066" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="RouvenRoehrigDataAnalyses"}%
+---+!! Minutes
+---++++ Master Thesis of Rouven Roehrig
+
+During the '[[RouvenRoehrigSentenceClustering][Sentence Clustering]]' the following good example has been found along with similar sentences that have anomalies.
+
+*The preferred sentence occurred 23 times:*
+<verbatim>
+If the problem persists, contact CentraSite administrator.
+</verbatim>
+
+*Changed word anomaly (Capitalization anomaly) (4 times):*
+<verbatim>
+If the problem persists, contact CentraSite Administrator.
+</verbatim>
+
+*Changed word anomaly (Spelling error anomaly):*
+<verbatim>
+If the problem persists, contact CentraSite adminsitrator.
+</verbatim>
+
+*Removed word(s) anomaly:*
+<verbatim>
+If problem persists, contact CentraSite administrator .
+</verbatim>
+
+*Added word(s) anomaly:*
+<verbatim>
+If the problem persists, please contact the CentraSite Administrator.
+If the problem persists, contact the CentraSite administrator.
+</verbatim>
+
+-- Main.RouvenRoehrig - 30 Apr 2013

@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="BenjaminHerbert" date="1272476525" format="1.1" version="16"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ Open Questions
+
+   * <strike>How do I get Apache-Maven work? mvn install just throws BuildErrors: "Cannot execute mojo: clean. It requires a project with an existing pom.xml, but the build is not using one."
+      * http://docs.codehaus.org/display/MAVENUSER/FAQs-1</strike>
+   * <strike>Better work with Maven? Further dependencies would be solved better? (e.g. Lucene)
+      * HowTo? Eclipse Plugin? Introduction?</strike>
+         * *BH* Which eclipse plugin?
+         * *BH* You could use Maven, but for the time being, you should stick to plain Java/Eclipse projects. I will give you further information on next weekly meeting.
+   * PDF parsing is too slow for large docs - how to improve it?
+      * *BH* Creation of an Index is more or less a one time process, therefore it is ok if it takes a little longer
+
+[23.03.2010]
+   * How to find out, what a "createPrimitiveDescription", e.g. LuceneIndexWriter or AnnotationWriter, expects as parameters?
+   * LuceneWriter is working with an old version of Lucene
+   * java.lang.NoSuchMethodError: de.tudarmstadt.ukp.dkpro.core.util.CasUtils.getSingleRequired(Lorg/apache/uima/jcas/JCas;Ljava/lang/Class;)Lorg/apache/uima/cas/FeatureStructure;
+	at de.tudarmstadt.ukp.dkpro.ir.consumer.LuceneIndexWriter.process(LuceneIndexWriter.java:66)
+
+---++ 25.03.10
+   * How does Querying works with UIMA/Ukp-Pipeline?
+      *    XmlFileReader.PARAM_INPUT_DIRECTORY, "src/main/resources/topics" - queries in xml-files? format?
+
+---++ 26.03.10
+   * How is score computed in Lucene? Also in comparison with IR-Book page 112 "Weighted zone scoring"
+      * *BH* You should really take a look into the documentation... or just Google for an answer
+         * http://lucene.apache.org/java/3_0_0/scoring.html#Scoring
+         * http://lucene.apache.org/java/3_0_0/api/core/org/apache/lucene/search/Similarity.html
+
+---++06.03.10
+   * Documentations about TreeTaggerPosLemmaTT4j / LuceneQueryGenerator components, what features exist?
+
+---++ 08.03.10
+   * How to monitor progressing with DKPro-Pipeline? (UIMA got interfaces for that) 
+      * *BH* by e.g. writing some log entries?
+
+---++ 27.04.10
+While indexing with Terrier test "testsector_terrier_indexing_108()" throws an error - but same folder with lucene works:
+
+26.04.2010 22:37:51 main.java.de.tudarmstadt.ukp.manuelwick.dkpro.pipeline.PipelineFactory logTime(224)
+INFO: Time needed for indexing documents: 11:46:123
+
+
+Just check out the project from SVN (if sth. is missing, tell me, but normally all used libs should be up to date)<br />
+Then go into JUnit Test "testsector_terrier_indexing_108()" in test.java.de.tudarmstadt.ukp.manuelwick.dkpro.experiments.Experiments<br />
+Change the properties as it is shown in the test. IMPORTANT: The problem occurs only indexing folder 108 from the CRM data with Terrier, the other folders work.<br />
+Run the test. Error should be thrown around 2670/11146 document.
+
+Stack trace can be found in SVN wick/bachelorthesis/stack_traces
+
+   * *BH* Could not compile it, due to wrong package names
+      * if src/main/java is a src folder, package names should start with de.tudarmstadt
+         * *MW* yeah .. should be fixed
+      * wrong @Override annotations are used
+         * *MW* Where? Cant find any...
+            * *BH* then do a search or check in the most recent version
+      * I moved and resolved quite some errors, it still does not compile
+         * Please check it out yourself and check how we can run this project easily

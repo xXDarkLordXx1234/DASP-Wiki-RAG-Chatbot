@@ -1,0 +1,175 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="17" version="18"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+%TOC%
+
+---++++++ 30 Nov 2010 (TZ)
+   * Discussed thesis structure:
+      * Hypothesis based approach needed when discussing evaluation
+   * Next steps:
+      * Short introduction with thesis objective before domain introduction
+      * Get corrected version on wednesday
+      * write on
+
+
+---++++++ 23 Nov 2010 ()
+   * No meeting, normal slot was blocked, and it was negotiated not to meet this week
+
+---++++++ 16 Nov 2010 (TZ via Phone)
+   * Discussed aggregation
+      * try simple mixing aggregation
+      * ask Nico about aggregation used in semEval
+   * Discussed segmentation / ranking
+      * try tf(idf) that uses term frequency from segments
+      * focus on segmentation, then ranking solutions
+   * Next steps:
+      * develop local Tfidf
+  
+---++++++ 9 Nov 2010 (TZ)
+   * Little time today
+      * short look on phrase distribution plots
+      * short (and hectic) overview of implemented experiment structure
+   * Next steps:
+      * Implement annotators for index entry extraction
+      * Initiate experiments
+
+---++++++ 2 Nov 2010 (TZ)
+   * Discussed structure of final experiment pipelines
+      * keep it as simple as possible
+      * no combinations of different candidate and ranking branches, better merge CASes afterwards if necessary
+      * personalized configuration of experiments allowed, their purpose is to produce results
+   * Next steps:
+      * Configure all pipelines and create XMIs
+
+---++++++ 26 Oct 2010 (TZ)
+   * Discussed baseline results for unsegmented TextRank and for Token based candidates.
+   * Discussed web1t corpus installation and related
+   * Discussed segmentation related topics
+      * presented dispersion plots
+      * discussed hypotheses
+      * discussed UIMA implementation details
+   * Discussed rankings
+      * Use TextRank and log-likelihood (Rayson, Garside)
+      * Don't use LexSemRank
+   * Next steps:
+      * Create systematic plan for experiments
+      * Declare "feature freeze", run experiments
+
+---++++++ 19 Oct 2010 (TZ)
+   * Discussed thesis structure
+      * discussed writing style, level of detail etc.
+   * Discussed experiment combining multiple features:
+      * segmentation
+         * with multiple segmenters / segment-sizes
+      * log likelihood based on web1t
+      * keyphrase rank (TextRank)
+         * with different window sizes, pos-filters
+   * Discussed implementation details of experiments
+      * store subCases separately to allow different combination methods of candidates
+      * Use multiple pipeline-configurations, store result data separately, recombine data differently, trying to maximise f-measure
+   * Next steps:
+      * Install web1t, get it running; implement log-likelihood
+      * think about different possibilities to use segmentation together with candidate extraction and rankings
+
+---++++++ 12 Oct 2010 (TZ)
+   * Discussed the different indexes provides by C&M in the scope of the new baselines
+      * Concentrate on the coarse index
+      * Discuss the method of building a full index based on a raw book index, evaluate possible use / applications
+   * Discussed related work
+      * Avoid "historic" structuring of related work
+      * Prefer method based structuring
+   * Discussed implementation and evaluation of our pipeline
+      * two uses of web1t
+         * as a ranker: log-likelihood / chisquare
+         * as a filter: remove all phrases with a frequency less n
+      * focus on exact evaluator, approximate evaluator is _nice to have_
+      * focus on quality of evaluation results, not on quantity
+   * Next steps:
+      * Raw structure of thesis
+
+---++++++ 5 Oct 2010 (TZ)
+   * Discussed tfidf-baseline
+      * Results are "good"
+   * Discussed refactorings
+   * Discussed testing of annotators
+      * Better base to show correctness of experiment results
+   * Next steps:
+      * Commit working version with all experiments, so that experiments can be conducted by supervisor.
+---++++++ 28, 29 Sep 2010 (TZ)
+   * Discussed baseline results:
+      * Ngrams: Ok, even though recall is slightly worse then C&Ms.
+      * Other:  Our recall is better. Upper limit for the maximum recall of  the index-entry-annotation pipeline
+   * Discussed main pipeline layout:
+      * General concept is "good"
+      * Focus on extraction pipeline without segmentation, apply segmentation later in the work to compare effects
+      * Discussed possible positions of ranking- and filtering-modules.
+      * Book-index like formatting of Index Entries at the pipeline end declared as "nice to have" when time allows
+   * Reviewed code:
+      * Recommended Refactorings:
+         * No separation of experiment and pipeline for experiment. Received code example.
+         * Substitute old UIMA idioms with new ones. Received code examples.
+         * Use workspace variable to allow accessing of datasets on multiple machines
+      * jUnit-Tests needed for own annotators.
+   * Discussed Web 1T wrapper for DKPro
+      * Focus on java-only solution _jWeb1T_, when too slow try _get1t_ (C)
+   * Discussed "Related work"-part in thesis
+      * Related topics are:
+         * Back-of-the-book indexing (follow references in C&M)
+         * Keyphrase Extraction
+         * Terminology Extraction
+         * Named Entity Recognition
+         * SIPs (Statistically Improbable Phrases used by Amazon.com)
+   * Next steps:
+      * Refactorings
+      * Try to build wrapper for Web 1T
+      * Begin work on thesis with related work
+
+
+---++++++ 21 Sep 2010 (TZ/NE)
+   * Discussed UIMA-specific topics:
+      * Testing of Pipelines and testing of Annotators. 
+      * Introduced implementation of automatic pipeline testing. 
+      * Received demo code for Annotator testing.
+   * Discussed filtering of common words and common phrases:
+      * Discussed using TF-IDF for common word filtering.
+      * Discussed using a web search count for common word filtering and a common phrase metric.
+      * UKP has the Web 1T 5-gram Version 1 (1-5-grams and frequency counts from Google) which could be used too.
+         * *TZ:* access to Web 1T is the best choice (although using tf.idf should also be tested)
+            * http://get1t.sourceforge.net/
+               * *MP:* _get1t_ (C): No queries on-the-fly (i.e. querying a phrase) - A query must be a pre-saved list of a (" tens of millions") phrases for which the counts will be extracted when calling the tool. Allows queries with wild cards. Outputs to a textfile.
+            * http://groups.google.com/group/digitalpebble/browse_thread/thread/60205a72a66570a6
+               * *MP:* _(unnamed) Java API for Web-1T_: "Contact us for more details and the terms of use." Received reply: "Not free for academic research." *Update 5.10.*: "We've decided to revert our policy on this component. The API is available freely for academic research and only ask in return that DigitalPebble Ltd is mentioned in any report or publication related to the use of the API." 
+            * http://hlt.fbk.eu/en/node/81
+               * *MP:* _jWeb1T_ (Java): Allows simple on-the-fly queries that result in counts. Good documentation. Installation, integration and API seems very easy.
+            * http://webascorpus.sourceforge.net/PHITE.php?sitesig=FILES&page=FILES_10_Software&subpage=FILES_50_Google_N-Grams
+               * *MP:* _Web1T5-Easy_ (Perl querying SQLite): "Requires considerable amounts of disk space (approx. 220 GiB) as well as patience (indexing may take up to 2 weeks on a state-of-the-art server)."
+            * V2 is already announced http://www.lrec-conf.org/proceedings/lrec2010/slides/233.pdf
+               * *MP:* Now with POS tags. "roughly 500 GB total", holy moly! There is a link in the slides to ngramtools, a toolkit for advanced searching in ngrams (C).
+            * Please have a look at the different choices and decide which is the best and whether it can be used for our purposes
+               * Java is preferred, but if some other program is much faster (and better), everything would be ok (even Perl :) )
+               * *MP:* For the moment _jWeb1T_ looks promising, since its easy to integrate into our java workflow. Because no statements about performance are made I _hope_ its fast enough. The second choice would be _get1t_, we would have to save a list of phrases, call the programm, and read the result into our java application. Not that bad... And since C implementations enjoy the reputation to be  blazing fast... The perl / SQlite solution does not look that promising to me, lets see if we get the tool from digitalpebbles.com. 
+   * Discussed segmentation:
+      * Discussed possibility of a rule-based segmenter exploiting the syntactic structure of a book for topical segmentation.
+      * Segmenters for experiments could be: 
+         * jTextTile 
+         * C99
+         * SentenceSegmenter (as baseline) 
+         * Rule-based book segmenter (optional)
+   * Discussed Keyphrase Extraction:
+      * Keyphrase extraction should be limited to TextRank (OccurenceGraph & PageRank) for now. 
+      * LSG is too expensive in this phase. 
+      * Other extractors exist but will be discussed later.
+         * *TZ:* tf.idf ranking based on the baseline candidates should also be used
+            * *MP:* Building the index with the current implementation of TfidfConsumer is not possible with reasonable memory consumption, see logbook.
+   * Next step: 
+      * Implement baseline system following Csomai & Mihalceas approach using n-grams, NP-chunks and (heuristic) Named Entity Recognition their original data set.
+
+---++++++ 14 Sep 2010 (TZ)
+   * Discussed pipeline layout: 
+      * Pipeline should consist of Keyphrase Extraction on subCASes followed by a postprocessing step that filters suitable index entry candidates.
+      * Rather focus on Keyphrase Extraction than Named Entity Recognition.
+      * Discussed possibility of using "global" information to enhance postprocessing step.
+   * Discussed technical details: 
+      * Looked at (de)multiplication for subcas-processing. Awaiting demo code for proper UIMA-Settings when (de)multiplying.
+   * Next steps:
+      * Attapt _KeyphraseEvaluatorApproximate_ to evaluate BOTBI-Pipeline with recall, precision, f-measure
+      * Write simple pipeline that processes a whole book and evaluate index entries with gold standard

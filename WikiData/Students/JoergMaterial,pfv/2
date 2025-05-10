@@ -1,0 +1,68 @@
+%META:TOPICINFO{author="JoergHellms" date="1216136808" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="JoergHellms"}%
+---+ Literatur
+ 
+%TOC%
+
+---++ F. Schwager: Automatic analysis of lexical cohesion. Diploma Thesis. Computer Science Department. Technische Universität Darmstadt. 2008.
+Darstellung des lexikalischen Zusammenhangs mittels Graphen statt wie bisher mit Ketten.
+Es wird erklärt was ein lexikalischer Zusammenhang ist und welche Arten es gibt.
+
+---+++ Lexikalische Ketten
+   * Zusammenhängende Wörter verketten
+   * Wort gehört nur zu einer Kette
+
+---+++ Erzeugen von Ketten mittels Graphen
+Galley and McKeown (Galley, et al., 2003)
+
+---+++ *Lexikalische Graphen*
+Größerer Aufwand (Zeit und Speicherplatz) beim Erzeugen von Graphen als von Ketten.
+Aufgrund der im Graph enthaltenen Informationen aber besser bei Anwendungen, bei denen der lexikalischen Zusammenhang hilfreich ist.
+Bildung von Clustern zur Bestimmung von Wortbedeutungen.
+
+*Erzeugen von lexikalischen Graphen:*
+   * Identifizieren aller Wörter, die in den Graph aufgenommen werden sollen
+   * Verbinden der Wörter, aufgrund ihrer Beziehungen untereinander mit Gewichtung der Kanten z.B. mit Explicit Semantic Analysis (ESA) (Gabrilovich, et al., 2007).
+
+Zur Optimierung kann am erstellten Baum die Gewichtung der Kanten nochmals angepasst werden und es können auch Kanten ganz entfernt werden.
+
+---+++ UIMA
+   1 Preprocessing
+      2 Paragraph splitter
+      2 Sentence splitter
+      2 Tokenizer
+      2 TreeTagger
+   1 *Lexical graph computation*
+      2 Part-of-speech Filter (Nicht alle POS werden benötigt, z.B. nur Nomen, etc.)
+      2 Word Pair Annotator (Erstellen aller möglichen Wortpaare mit speziellen Attributen)
+      2 Semantic relatedness analysis
+         * Simple string matching (Gleiches Wort -> 1, sonst 0)
+         * Path length (Länge des Pfades zwischen den Wörtern in einem semantischen Hilfsgraph)
+         * *ESA* Beziehung (mehrdimensionaler Vektor für jedes Wort basierend auf tf-idf) Formel auf Seite 22
+   1 *Graph Augmentaiton* (Optimierung der Performanz und Präzision)
+      2 Link Weight Adjustment 
+         3 Berechnen der minDistance und maxDistance
+         3 maxDistance = maxDistance +1
+         3 Neue Kantengewichtung wird berechnet, Formel Seite 23
+      2 Link Prunning
+      
+---+++ Darstellung von lexikalischen Graphen
+   * Prefuse (http://prefuse.org)
+   * MMAX 2 
+
+---+++ Text segmentation
+Markov clustering algorithm of van Dongen (van Dongen, 2000) which is based on stochastic flow simulation.
+
+---+++ Keyword extraction
+   1 KEA key-phrase extraction algorithm (Witten, et al., 1999) - als Baseline System
+      * tf-idf
+      * first occurrence in the text
+   1 Keyword extraction based on lexical chains
+      2 Starke lexikalische Ketten identifizieren
+      2 Diese Ketten sortieren
+      2 Die ersten n Wörter sind die gesuchten Schlüsselwörter
+   1 Keyword extraction based on lexical graphs
+      2 Dominante Knoten identifizieren (PageRank)
+
+
+   -- Main.JoergHellms - 15 Jul 2008

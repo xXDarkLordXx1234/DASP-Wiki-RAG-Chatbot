@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="BastianChristoph" date="1294319419" format="1.1" version="9"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+   * 05. - 06.01.2011
+      * Expanded structure
+         * Refined "Used datasets"
+         * Distiguished "Experiments"
+         * Added "Conclusions"
+      * Added rewrites
+      * Related work: Evaluation
+      * Refined "General Setup"
+      * Refined "Evaluation Setup"
+      * Some more changes ...
+
+   * 04.01.2011
+      * Related work:
+         * Keyphrase extraction
+
+   * 30.12. - 03.01.2011
+      * Motivation: Adaption of multi-document summarization to single-document summarization
+      * Related work: 
+         * Summary definition viewpoints
+         * Keyphrase extraction
+      * Experiments:
+         * Baselines as naive viewpoints to the task of summarizing
+
+   * 23. - 29.12.2010
+      * Changed thesis structure
+      * Added parts: Motivation
+      * Added parts: Related work: Summarization
+
+   * 22.12.2010
+      * Extended: Motivation
+
+   * 21.12.2010
+      * Extended thesis structure of part: Motivation
+      * Extended: Motivation
+
+   * 20.12.2010
+      * General Setup of UIMA-Component for Keyphrase-Extraction
+      * Added libs to repository
+ 
+   * 19.12.2010
+      * Structure for Related work changed
+      * Peer Baseline-Coverage recalculated
+         * Analyzed conference-runScript
+         * Analyzed rouge-perl implementation
+         * Enabled Lemmatizing in Java Code (Flag "-m" in conference-runScript means "use PorterStemmer")
+         * Changed Rouge-Value-Selection to "Average Model" (Flag "-B" for best model in runScript not used, default is "-A")
+         * |                        | *ROUGE-1* | *ROUGE-2* | *ROUGE-3* | *ROUGE-4* |
+           | peer-baseline | 0.22136       | 0.06370      | 0.02118       | 0.00707      |
+           | my baseline    | 0.18867       | 0.05263      | 0.01763       | 0.00547     |

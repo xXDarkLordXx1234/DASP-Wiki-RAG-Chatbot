@@ -1,0 +1,8 @@
+%META:TOPICINFO{author="LizhenQu" date="1181663095" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="LizhenQu"}%
+
+   1 <!-- /patternTopic-->To the paper  "Semantic taxonomy induction from heterogenous evidence" and "Learning syntactic patterns for automatic hypernym discovery"<br />
+      1 The  lexico-syntactic pattern is defined to  be the shortest dependency path between  the  noun pairs.  If  "Such  NP as NP"  pattern occurs,  they  add  a  satelite  link ,  How do they determine which link to add if "such" is outside the 2 nouns of interest. Or do  they just simple add the such kind of links for the function words or some "important" words?Just <br />
+      1 <span id="attachmentslistshow"></span> Just to make sure. Do they calculate P(Rij) as the number of positive instances / number of all occurences of the noun pairs?<br />
+
+-- Main.LizhenQu - 12 Jun 2007

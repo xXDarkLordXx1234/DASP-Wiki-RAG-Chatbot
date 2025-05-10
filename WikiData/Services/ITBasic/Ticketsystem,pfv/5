@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="bugert" comment="" date="1564755858" format="1.1" version="5"}%
+---++++  Ticket system for system administration
+
+If you encounter any technical problems during your work  (e.g. hardware failures, strange software behaviour), please open a trouble ticket in our
+
+<center style="font-size:20pt">[[https://bugzilla.ukp.informatik.tu-darmstadt.de/enter_bug.cgi][Issue tracker]]</center>
+
+Open an issue in the tracker ensures that your issue is not forgotten and that your get notified whenever your issue is being worked on.
+
+It is also possible, but *not recommended*, to send an email to system-admin@ukp.informatik.tu-darmstadt.de
+
+This is, from now on, the single way to report this kind of problems. Please refrain from jabbering, mailing to other addresses or telling us personally, unless the matter is extremely urgent or there is no other way (e.g. because your network connection is down). This helps us to organize our workflow more efficently, which in turn leads to faster problem solving.
+
+---++++  How to use the UKP ticket system
+
+Also, please follow these simple guidelines when reporting a bug:
+
+   1 Please choose a _clear and concise subject line_ , so we can immediately get an idea what is wrong
+   1 _Describe your problem_ precisely to the best of your knowledge, _so we can reproduce it_ . "X doesn't work" is usually *not* enough.
+   1 If you already tried something to solve it yourself, or you have an idea what could be wrong (e.g. because you changed something), it helps saving time if you tell us.
+   1 If it seems appropriate, _provide additional information_ like error messages etc., but *DON'T* just copy and paste them without further explanation. 
+   1 Also, *DON'T* just forward mails that might or might not relate to the problem. Take the time to formulate the problem and include only what is necessary into the email. The more precisely you formulate the problem, the quicker we will be able to solve it.
+
+After the bug is reported, rest assured that we will take care of it as soon as we can. Sometimes other problems have a higher priority, but no ticket will be lost. So please don't report the same bug twice or ask about the status of your problem over and over again since this slows everything down; we will notify you once your problem is solved or, most often, you will know anyway. 

@@ -1,0 +1,103 @@
+%META:TOPICINFO{author="alles" comment="rename" date="1727877437" format="1.1" reprev="4" version="5"}%
+%META:TOPICPARENT{name="ComputeCluster"}%
+<div style="border: solid 4px blue; font-weight:800; padding: 5px">
+<p align="center">
+ℹ️ This page hosts additional information for "ATHENE only" people (which are <u>not</u> member / student of UKP Lab) <br />
+Most of the [[ComputeClusterFAQ][Compute Cluster FAQ]] still applys and should still be studied. ℹ️ <br />
+</p>
+</div>
+
+<div style="float:right;background-color:white; z-index:999; border: solid 2px lightblue; padding: 5px">
+---++++ !!Content
+%TOC%
+</div>
+
+---++ *%BLACK%Slurm Compute Cluster FAQ - other labs special%ENDCOLOR%*
+
+---++ First steps
+---+++ How do I know if i'm "ATHENE only"?
+   * You can check which accounts you have been assigned with =sshare -U= executed on the login node, your username should be only present at lines starting with =athene-= 
+   * If you are also part uf a =ukp-= group, consider going back to [[/Services/ITBasic/ComputeCluster][the computer cluster faq]].
+
+---++ ATHENE only special setup
+---+++ Storage
+   * *LOCATION*: Your storage path to use / specify is =/storage/athene/work/$USERNAME=
+   * *QUOTA*: There is a soft quota of 10TB / hard quota of 15TB diskspace per user. The grace period is one week. If usage is not reduced to a level below the soft limit during that time, the quota system interprets the soft limit as the hard limit and no further allocation is allowed. 
+
+---+++ Compute-nodes
+%INCLUDE{ "Services/ITBasic.ComputeClusterGPUs" pattern="---\+\+\+ Detailed Node Information(.*?)---\+\+\+" }%
+
+The following compute-nodes are ATHENE exclusive:
+
+%INCLUDE{ "Services/ITBasic.ComputeClusterGPUs" pattern="---\+\+\+\+ ATHENE compute-nodes(.*?)---\+\+\+" }%
+
+---+++ Running Jobs
+---++++ Example 1
+   * <u>If you are researcher and associated ONLY with ATHENE and not UKP</u>, you would want to specify the partition "gpu-athene" (selecting the compute-nodes) and the account "athene-researcher" (your "piggy bank") e.g. like 
+   * <verbatim>sbatch -p gpu-athene -a athene-researcher your_script.sh</verbatim> 
+   * to submit your jobs. You can also put these values to your sbatch script (see below for an exmaple for your_script.sh)
+   * *Explanation:* 
+      * There is no need to specify the qos, as "gpu" is the default qos for account athene-researcher
+
+---+++ Example Sbatch File
+   * This is an example file to fun a basic GPU job as athene researcher
+   * Values need / can be adapted based on [[/Services/ITBasic/ComputeCluster#Quota_44_Accounts_44_Partitions_and_Resources][account, partition, qos and resource limits]] / resurce requirements.
+   * This script can be run like =sbatch your_script.sh= after personalisation.
+   * *Remember*: You "pay" with your [[/Services/ITBasic/ComputeCluster#FairShare][fairshare]] in your account ("piggybank") for every resource you request and use!
+   * <verbatim>#!/bin/bash
+#
+# The "#" before the "SBATCH" parameters do not comment it out! Use triple "###" to comment something out.
+# Check our wiki for valid QOS / PARTITION / ACCOUNT combinations and resource limits!
+# https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/ITBasic/ComputeCluster
+# You can shorten this example script and adapt to create your own one.
+#
+# Give your job a proper name
+#SBATCH --job-name=USERNAME-testscript
+#
+# Where to send job start / end messages to - comment in to use!
+###SBATCH --mail-user=USERNAME@tu-darmstadt.de
+#SBATCH --mail-type=ALL
+#
+# How many cpus to request
+#SBATCH --cpus-per-task=10
+#
+# How much memory to request
+#SBATCH --mem=4GB
+#
+# How many gpus to request
+#SBATCH --gres=gpu:1
+#
+# Limit runtime d-hh:mm:ss - here limited to 1min
+#SBATCH --time=0-00:01:00
+#
+# PARTITION to run in (athene-only people need to specify partition "gpu-athene" - otherwise the default "gpu" partition, which can only be used by UKP members, is selected leading to errors during job submission!)
+#SBATCH --partition=gpu-athene
+#
+# ACCOUNT to use (default account for athene-only people is "athene-researcher" and therefore does not need to be specified - check your accounts with command: "sshare -U")
+###SBATCH --account=athene-researcher
+#
+# QOS to use (default QOS for everyone is "gpu" and therefore does not need to be specified)
+###SBATCH --qos=gpu
+#
+# Define standard output files - make sure those files exist
+#SBATCH --output=/storage/athene/work/USERNAME/testscript.output
+#SBATCH --error=/storage/athene/work/USERNAME/testscript.error
+
+#
+# Computation area begins here
+#
+
+# Load standard version of cuda
+module load cuda
+
+# Replace this with your computation stuff
+echo "$(date) - output of nvidia-smi"
+nvidia-smi
+echo "$(date) - end - sleeping"
+sleep 50
+
+# Finish the script
+exit 0</verbatim>
+
+-- Main.SebastianAlles - 2024-01-24
+%META:TOPICMOVED{by="alles" date="1727867499" from="Services/Campus.ComputeClusterOtherLabsFAQ" to="Services/ITBasic.ComputeClusterOtherLabsFAQ"}%

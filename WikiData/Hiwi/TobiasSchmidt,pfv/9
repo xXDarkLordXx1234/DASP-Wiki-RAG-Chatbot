@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="tschmidt" comment="" date="1630491650" format="1.1" reprev="8" version="9"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.TobiasSchmidt - 2021-07-24
+
+---++ Open Issues
+   * Hebräisches ASR Modell 
+
+---++ 16.08 - 29.08 (currently, goal:)
+   * finishing features from last task (checking whether there are better eye blink detection systems)
+   * continue working on the AMT Website
+   * Implementing the qualification test via boto3
+   * Testing annotation time via MTurk Sandbox
+   * Writing up a handout about our current features
+   * Checking licenses of used packages for the feature package
+---++ 09.08 - 15.08
+   * FAU, eye gaze, head position. How much is pre-implemented?
+   * Eye closed, eye open, closing speed, gaze spatial distribution over time
+   * Search for body gestures out of the box models 
+   * Feature list in NextCloud
+   * Test Surfboard
+
+---++ 01.08 - 09.08
+   * new ASR model for annotation and speech rate
+   * document slides (Prosody)
+   * Continue making list for related work
+   * finish implementing the features from last week
+
+---++ 01.08 - 09.08 
+   * Implementing the following features: Pause rate / pause total / pause variability / utterance duration  (split and not split) / speech rate / time talking (with different silence detections)
+   * test some transcript models
+   * Start making list for related work
+
+---++ 26.07 - 01.08 
+   * Implementing the following features: Pause rate / pause total / pause variability / utterance duration  (split and not split) / speech rate / time talking (with different silence detections)
+   * test some transcript models
+   * Start making list for relted work
+
+---++ 19.07 - 25.07
+   * Finished reading last related work papers from the AVEC 2019 challenge; finalised the found feature list and put it into a table.
+   * Tried implementing basic functions to extract standard key features from the raw input data via openSMILE while only using python packages. 
+
+---++ 12.07 - 18.07
+   * Read more papers, especially related to the AVEC 2019 challenge and the DAIC Corpus. 
+
+---++ 05.07 - 11.07
+   * Started researching about multi modal features and searched related work, starting from a reference paper about Deep Spectral Features
+   * Began making a list about these features
+
+---++ 01.07 - 04.07
+   * Started researching about multi modal features and searched related work, starting from a reference paper about Deep Spectral Features
+   * Began making a list about these features

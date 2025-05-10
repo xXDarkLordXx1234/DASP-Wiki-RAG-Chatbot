@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="huber" comment="" date="1545411752" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "2" }%
+| *Date* |
+| xx.xx.xxxx | xx:x-xx:xx | x | x |
+| 11.12 | Sprechstunde |  | 1 |
+| 13.12 | Besprechung |  | 0.75 |
+| 15.12 | Korrektur |  | 2.75 |
+| 16.12 | Korrektur |  | 0.75 | 
+| 20.12 | Besprechung |  | 0.55 | 
+| 21.12 | Korrektur |  | 0.75 | 
+| insgesamt | / | Stundenzettel und Wiki | x |
+| *Total* | | | %CALC{"$SUM( $ABOVE() )"}% |
+
+-- Main.ChristopherKlamm - 2018-12-11

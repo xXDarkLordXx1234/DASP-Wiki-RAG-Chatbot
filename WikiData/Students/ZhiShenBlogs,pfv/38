@@ -1,0 +1,308 @@
+%META:TOPICINFO{author="ZhiShen" date="1218191475" format="1.1" reprev="38" version="38"}%
+%META:TOPICPARENT{name="ZhiShen"}%
+<table width="800" style="font-size: 90%" border="0"> <thead> <tr> <th width="100" style="background: #000099 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: #ffffff">Date</th> <th style="background: #000099 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: #ffffff"><div align="center">Description</div></th> <th width="300" style="background: #000099 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: #ffffff">Note</th> </tr> </thead> <tbody> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008<br /> August 07</div></th> <td>
+
+Bigrams from Leipzig Corpus 100k
+
+[[%ATTACHURL%/english-bigrams.zip][english-bigrams.zip]]: english bigrams (from Leipzig Corpus 100k)
+
+Extended Dev Test Set
+</td> <td>
+
+DB: Danke, wie hast du diese extrahiert? Aus der Datenbank Tabelle Co-occurrences (sentence)? Ich denke das viele Bigramme fehlen.
+
+Die sind aus Plaintext Co-occurrences neighbours (co_n_w.txt) .
+</td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008<br /> August 06</div></th> <td>
+
+Additional to result of FileEncodingDetector evaluation on July 29<br /> 22 correct / 27 total = 81.5% correctly detected
+
+For non-ISO-8859-1 texts:<br /> 11 correct / 16 total = 68.75%
+
+Texts with known encoding for ICU:<br /> 22 correct / 24 total = 91.7% correctly detected
+
+For non-ISO-8859-1 texts with known encoding for ICU:<br /> 11 correct / 13 total = 84.6%
+
+GrammarCheckerAnnotation changed
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008<br /> August 05</div></th> <td>
+
+QuerySpellCheck from lingpipe<br /> with training data from Leipzig 100k sentences<br /> N-Gram=2
+
+Dev Test Set <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>QuerySpellCheck</td> <td>270</td> <td>42</td> <td>15.56%</td> <td>6875</td> </tr> </tbody></table>
+
+Final Test Set <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>QuerySpellCheck</td> <td>400</td> <td>69</td> <td>17.25%</td> <td>11250</td> </tr> </tbody></table>
+
+GrammarCheckerAE comment, example, document<br /> <img width="235" alt="GrammarCheckerAE.png" src="%ATTACHURLPATH%/GrammarCheckerAE.png" height="226" />
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008<br /> August 04</div></th> <td>
+
+Escape string with StringEscapeUtils.escapeXML from org.apache.commons.lang.StringEscapeUtils, to make XMLReader read correctly, without InvalidChar exception
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008<br /> August 03</div></th> <td> </td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008<br /> August 02</div></th> <td> </td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">
+
+2008<br />August 01
+</div></th> <td>
+
+EncodingDetector comment, example, document<br /> <img width="235" alt="EncodingDetectorAE.png" src="%ATTACHURLPATH%/EncodingDetectorAE.png" height="223" />
+
+LanguageIDAE comment, example, document<br /> <img width="209" alt="LanguageIDAE.png" src="%ATTACHURLPATH%/LanguageIDAE.png" height="228" />
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 31</div></th> <td>
+
+Bulid BigGram data from Leipzig Corpora
+
+Testing with JaSpell
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 30</div></th> <td>
+
+Thesis version 0.0 in progress site.
+
+Spell Checker Accuracy (%): <br /> <img width="476" alt="Accuracy.jpg" src="%ATTACHURLPATH%/Accuracy.jpg" height="284" /> Spell Checker Time Elapsed (ms): <br /> <img width="477" alt="Time_Elapsed_ms.jpg" src="%ATTACHURLPATH%/Time_Elapsed_ms.jpg" height="284" />
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 29</div></th> <td> Detected Encodings with ICU <table bordercolor="#ffffff" cellspacing="0" cellpadding="0" border="1"> <tbody><tr bgcolor="#99ccff"> <th>Character Set</th> <th>Languages</th> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+UTF-8
+</td> <td bgcolor="#eeeeee"> </td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+UTF-16BE
+</td> <td bgcolor="#eeeeee"> </td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+UTF-16LE
+</td> <td bgcolor="#eeeeee"> </td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+UTF-32BE
+</td> <td bgcolor="#eeeeee"> </td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+UTF-32LE
+</td> <td bgcolor="#eeeeee"> </td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+Shift_JIS
+</td> <td bgcolor="#eeeeee">
+
+Japanese
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-2022-JP
+</td> <td bgcolor="#eeeeee">
+
+Japanese
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-2022-CN
+</td> <td bgcolor="#eeeeee">
+
+Simplified Chinese
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-2022-KR
+</td> <td bgcolor="#eeeeee">
+
+Korean
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+GB18030
+</td> <td bgcolor="#eeeeee"> </td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+Big5
+</td> <td bgcolor="#eeeeee">
+
+Traditional Chinese
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+EUC-JP
+</td> <td bgcolor="#eeeeee">
+
+Japanese
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+EUC-KR
+</td> <td bgcolor="#eeeeee">
+
+Korean
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-8859-1
+</td> <td bgcolor="#eeeeee">
+
+Danish, Dutch, English, French, German, Italian, Norwegian, Portuguese, Swedish
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-8859-2
+</td> <td bgcolor="#eeeeee">
+
+Czech, Hungarian, Polish, Romanian
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-8859-5
+</td> <td bgcolor="#eeeeee">
+
+Russian
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-8859-6
+</td> <td bgcolor="#eeeeee">
+
+Arabic
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-8859-7
+</td> <td bgcolor="#eeeeee">
+
+Greek
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-8859-8
+</td> <td bgcolor="#eeeeee">
+
+Hebrew
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+windows-1251
+</td> <td bgcolor="#eeeeee">
+
+Russian
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+windows-1256
+</td> <td bgcolor="#eeeeee">
+
+Arabic
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+KOI8-R
+</td> <td bgcolor="#eeeeee">
+
+Russian
+</td> </tr> <tr bgcolor="#99ccff"> <td bgcolor="#eeeeee">
+
+ISO-8859-9
+</td> <td bgcolor="#eeeeee">
+
+Turkish
+</td> </tr> </tbody></table>
+
+Collection of articles in different encoding [[%ATTACHURL%/EncodingTestSet.rar][Collection]]
+
+Result of DetectEncoding: <table width="431" border="1"> <tbody><tr> <td width="182">Article Name</td> <td width="76">Ist</td> <td width="87">Detected</td> <td width="58">Status</td> </tr> <tr> <td>article.arabic.8859-6</td> <td>8859-6</td> <td>ISO-8859-6</td> <td>correct</td> </tr> <tr> <td>article.arabic.utf8</td> <td>UTF-8</td> <td>UTF-8</td> <td>correct</td> </tr> <tr> <td>article.catalan</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>article.chinese.utf8</td> <td>UTF-8</td> <td>UTF-8</td> <td>correct</td> </tr> <tr> <td>article.french</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>article.greek</td> <td>ISO-8859-7</td> <td>ISO-8859-7</td> <td>correct</td> </tr> <tr> <td>article.malay</td> <td>ISO-8859-9</td> <td>ISO-8859-9</td> <td>correct</td> </tr> <tr> <td>article.russian.koi8</td> <td>koi8</td> <td>KOI8-R</td> <td>correct</td> </tr> <tr> <td>article.vietnamese.cp1258</td> <td>cp1258</td> <td>ISO-8859-1</td> <td>wrong</td> </tr> <tr> <td>article.vietnamese.utf8</td> <td>UTF-8</td> <td>UTF-8</td> <td>correct</td> </tr> <tr> <td>article.vietnamese.viscii</td> <td>viscii</td> <td>ISO-8859-1</td> <td>wrong</td> </tr> <tr> <td>french.gloss</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>portuguese.gloss</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>spanish.gloss</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>russian.gloss</td> <td>koi8</td> <td>ISO-8859-1</td> <td>wrong</td> </tr> <tr> <td>german.gloss</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>chinese.gloss.gb2312</td> <td>gb2312</td> <td>GB18030</td> <td>correct</td> </tr> <tr> <td>article.vietnamese.viqri</td> <td>viqri</td> <td>ISO-8859-1</td> <td>wrong</td> </tr> <tr> <td>article.vietnamese.tcvn5712-1</td> <td>tcvn5712-1</td> <td>ISO-8859-1</td> <td>wrong</td> </tr> <tr> <td>article.spanish</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>article.portuguese</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>article.italian</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>article.german</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>article.english</td> <td>ISO-8859-1</td> <td>ISO-8859-1</td> <td>correct</td> </tr> <tr> <td>article.chinese.gb2312</td> <td>gb2312</td> <td>GB18030</td> <td>correct</td> </tr> <tr> <td>article.bulgarian.koi8</td> <td>koi8</td> <td>KOI8-R</td> <td>correct</td> </tr> <tr> <td>article.arabic.cp1256</td> <td>cp1256</td> <td>windows-1256</td> <td>correct</td> </tr> <tr> <td colspan="4">
+
+22 correct / 27 total = 81.5% correctly detected
+
+But viscii, viqri and tcvn5712 are not detected by ICU. That means for unknown encoding the default encoding is ISO-8859-1. In this case:<br /> 22 correct / 24 total = 91.7% correctly detected
+</td> </tr> </tbody></table>
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 28</div></th> <td>
+
+SpellingCorrector Comparision continued, corrected the table, separate two test sets, Bigrams and FrequencyMethod needs training data first.
+
+Test machine: Pentium D 3.2G, 2Gram, WinXP Pro SP2
+
+Dev Test Set <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>Rael</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>10687</td> </tr> <tr> <td>jSpellCorrect</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>16594</td> </tr> <tr> <td>JMySpell<br /> Suggestion list</td> <td>270</td> <td>228</td> <td>84.4%</td> <td>5109</td> </tr> <tr> <td>JMySpell<br /> One suggestion</td> <td>270</td> <td>180</td> <td>66.7%</td> <td>5031</td> </tr> <tr> <td>JaSpell</td> <td>270</td> <td>110</td> <td>40.7%</td> <td>516</td> </tr> <tr> <td>Jazzy<br /> One suggestion</td> <td>270</td> <td>144</td> <td>53.3%</td> <td>1125</td> </tr> </tbody></table>
+
+Final Test Set <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>Rael</td> <td>400</td> <td>270</td> <td>67.5%</td> <td>16704</td> </tr> <tr> <td>jSpellCorrect</td> <td>400</td> <td>270</td> <td>67.5%</td> <td>25266</td> </tr> <tr> <td>JMySpell<br /> Suggestion list</td> <td>400</td> <td>335</td> <td>83.75%</td> <td>8782</td> </tr> <tr> <td>JMySpell<br /> One suggestion</td> <td>400</td> <td>276</td> <td>69%</td> <td>8140</td> </tr> <tr> <td>JaSpell</td> <td>400</td> <td>142</td> <td>35.5%</td> <td>968</td> </tr> <tr> <td>Jazzy<br /> One suggestion</td> <td>400</td> <td>210</td> <td>52.5%</td> <td>1515</td> </tr> </tbody></table>
+
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 27</div></th> <td>
+
+SpellingCorrector Comparision continued
+
+Test machine: Pentium D 3.2G, 2Gram, WinXP Pro SP2 <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>Rael<br /> Dev Test Set</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>10687</td> </tr> <tr> <td>Rael<br /> Final Test Set</td> <td>400</td> <td>270</td> <td>67.5%</td> <td>16704</td> </tr> <tr> <td>jSpellCorrect<br /> Dev Test Set</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>16594</td> </tr> <tr> <td>jSpellCorrect<br /> Final Test Set</td> <td>400</td> <td>270</td> <td>67.5%</td> <td>25266</td> </tr> <tr> <td>JMySpell<br /> Suggestion list<br /> Dev Test Set</td> <td>270</td> <td>228</td> <td>84.4%</td> <td>5109</td> </tr> <tr> <td>JMySpell<br /> Suggestion list<br /> Final Test Set</td> <td>400</td> <td>335</td> <td>83.75%</td> <td>8782</td> </tr> <tr> <td>JMySpell<br /> One suggestion<br /> Dev Test Set</td> <td>270</td> <td>180</td> <td>66.7%</td> <td>5031</td> </tr> <tr> <td>JMySpell<br /> One suggestion<br /> Final Test Set</td> <td>400</td> <td>276</td> <td>69%</td> <td>8140</td> </tr> <tr> <td>JaSpell<br /> useBigrams<br /> Dev Test Set</td> <td>270</td> <td>110</td> <td>40.7%</td> <td>6594</td> </tr> <tr> <td>JaSpell<br /> useBigrams<br /> Final Test Set</td> <td>400</td> <td>142</td> <td>35.5%</td> <td>10203</td> </tr> <tr> <td>JaSpell<br /> useFrequencyMethod<br /> Dev Test Set</td> <td>270</td> <td>118</td> <td>43.7%</td> <td>547</td> </tr> <tr> <td>JaSpell<br /> useFrequencyMethod<br /> Final Test Set</td> <td>400</td> <td>163</td> <td>40.75%</td> <td>1047</td> </tr> <tr> <td>JaSpell<br /> Dev Test Set</td> <td>270</td> <td>110</td> <td>40.7%</td> <td>516</td> </tr> <tr> <td>JaSpell<br /> Final Test Set</td> <td>400</td> <td>142</td> <td>35.5%</td> <td>968</td> </tr> <tr> <td>JaSpell<br /> useBigrams<br /> useFrequencyMethod<br /> Dev Test Set</td> <td>270</td> <td>118</td> <td>43.7%</td> <td>6485</td> </tr> <tr> <td>JaSpell<br /> useBigrams<br /> useFrequencyMethod<br /> Final Test Set</td> <td>400</td> <td>163</td> <td>40.75%</td> <td>9937</td> </tr> </tbody></table>
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 26</div></th> <td> </td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 25</div></th> <td>
+
+[[http://icu-project.org/charts/comparison/][ICU Feature Comparisons]]<br /> ICU4J 3.8 has more features
+
+SpellingCorrector Comparision <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>Rael<br /> Dev Test Set</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>10687</td> </tr> <tr> <td>Rael<br /> Final Test Set</td> <td>270</td> <td>400</td> <td>67.5%</td> <td>16704</td> </tr> <tr> <td>jSpellCorrect<br /> Dev Test Set</td> <td>202</td> <td>270</td> <td>74.8%</td> <td>16594</td> </tr> <tr> <td>jSpellCorrect<br /> Final Test Set</td> <td>270</td> <td>400</td> <td>67.5%</td> <td>25266</td> </tr> <tr> <td>JMySpell<br /> Dev Test Set</td> <td>228</td> <td>270</td> <td>84.4%</td> <td>5109</td> </tr> <tr> <td>JMySpell<br /> Final Test Set</td> <td>335</td> <td>400</td> <td>83.75%</td> <td>8782ms</td> </tr> </tbody></table>
+
+.
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 24</div></th> <td>
+
+Status Meeting<br /> Start with SpellingCorrector Comparison
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 21</div></th> <td>SVN updated</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 08</div></th> <td>
+
+Start implementation with language checker from <a target="_blank" href="http://www.languagetool.org/">LanguageTool</a> , rule based
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 07</div></th> <td>
+
+Start wikipedia corpus collection
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 05</div></th> <td>
+
+Spell checker and corrector, Java version from <a target="_blank" href="http://raelcunha.com/spell-correct.php">Rael Cunha</a> using big.txt
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 June 28</div></th> <td>
+
+ICU Character Set Detection used to detect file encoding
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 June 20</div></th> <td>
+
+LanguageIDAE from dong<br /> Changed depth of reading, start from root level, so that all contents are avaible.
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 June 16</div></th> <td>
+
+start with Encoding detector
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 June 12</div></th> <td>
+
+LookUpTokenAnnotation type system descriptor added, with dictionary source information
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 June 09</div></th> <td>
+
+Add SourceDocumentInformation to Type.<br /> By creating list with splitting more entries in a line.<br /> Add new type with more information, e.g. category, source, count
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 June 04</div></th> <td>
+
+Symbol direct after a work without seperator is not possible to be detected.
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 June 02</div></th> <td>
+
+XCasWriterCasConsumer writes also source document information, which can not be parsed by XCASDeserializer.
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 June 01</div></th> <td>
+
+Corrected some entries in shorthand_list.xml, which were two or more than two entries in a line. Now each entry in one line.
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 28</div></th> <td>
+
+Match type needs to be customized for my defined token type.
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 25</div></th> <td>
+
+Single valued match works fine.<br /> Multivalued not tested yet.
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 23</div></th> <td>
+
+Using DictionaryAnnotator to look up slang words, emotions, short forms<br /> Command line not working<br /> Wrote a short class to make dictoinary file [[%ATTACHURL%/Swearword_List.xml][dictionary example]]<br /> Input file needs also a certain format
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 20</div></th> <td>
+
+Status Meeting, presentation ZhiShenPresentations
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 18</div></th> <td>
+
+Pre-version of user generated content discourse updated [[%ATTACHURL%/UGC.ppt][preview]]
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 16</div></th> <td>
+
+Blogs corpus collected, 21 tags (categories), each has 1000 blogs [[%ATTACHURL%/53.xml][Example]]
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 14</div></th> <td valign="top">
+
+correct one Exception in jTechnorati, now it works.<br /> add a new function in class Technorati, tagSearch, in order to search topic related blogs
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 12</div></th> <td>
+
+Strucutre proposal [[%ATTACHURL%/structure.doc][Strucutre proposal ]] updated
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 08</div></th> <td valign="top">
+
+Start with Blogs corpus from Technorati
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 06</div></th> <td>
+
+Strucutre proposal [[%ATTACHURL%/structure.doc][Strucutre proposal ]]
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 05</div></th> <td>
+
+Pre-version of user generated content discourse [[%ATTACHURL%/UGC.ppt][preview]]
+
+"Weblogs as a Bridging Genre"<br /> classify Blogs compared with newspapers [[%ATTACHURL%/Note_-_Weblogs_as_a_Bridging_Genre.txt][Note]]
+
+"Newspapers vs. Blogs - Who Gets the Scoop"<br /> classify Blogs compared with newspapers [[%ATTACHURL%/Note_-_Newspapers_vs._Blogs_-_Who_Gets_the_Scoop.txt][Note]]
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 04</div></th> <td>
+
+Amazon Product Reviews Corpus created, 36 search indexes, each has over 1000 items with reviews (5 max) [[%ATTACHURL%/B000A2BJ76.xml][Example]]
+
+Yahoo! Answer Corpus collected in XML, 26 categories, each has over 1000 questions [[%ATTACHURL%/20080505085750AA1xUCC_396545320_-_Credit.xml][Example]]
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 02</div></th> <td>
+
+"A Faceted Classification Scheme for Computer-Mediated Discourse"<br />classify CMC with medium and situation factors [[%ATTACHURL%/Note_-_A_Faceted_Classification_Scheme_for_Computer-Mediated_Discourse.txt][Note]]
+
+Yahoo! Answer Corpus collected in XML, 11k questions now
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 Apri 30</div></th> <td>Blogs created, for finished "to Do"s and others</td> <td> </td> </tr> </tbody> </table>
+
+%META:FILEATTACHMENT{name="Note_-_A_Faceted_Classification_Scheme_for_Computer-Mediated_Discourse.txt" attachment="Note_-_A_Faceted_Classification_Scheme_for_Computer-Mediated_Discourse.txt" attr="" comment="Note - A Faceted Classification Scheme for Computer-Mediated Discours" date="1209726573" path="Note - A Faceted Classification Scheme for Computer-Mediated Discourse.txt" size="1825" stream="Note - A Faceted Classification Scheme for Computer-Mediated Discourse.txt" tmpFilename="/var/tmp/CGItemp21290" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="B000A2BJ76.xml" attachment="B000A2BJ76.xml" attr="" comment="B000A2BJ76 (Amazon Product Review Corpus Example)" date="1209972085" path="B000A2BJ76.xml" size="2777" stream="B000A2BJ76.xml" tmpFilename="/var/tmp/CGItemp27685" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="Note_-_Weblogs_as_a_Bridging_Genre.txt" attachment="Note_-_Weblogs_as_a_Bridging_Genre.txt" attr="" comment="Note - Weblogs as a Bridging Genre" date="1210106818" path="Note - Weblogs as a Bridging Genre.txt" size="2068" stream="Note - Weblogs as a Bridging Genre.txt" tmpFilename="/var/tmp/CGItemp33357" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="Note_-_Newspapers_vs._Blogs_-_Who_Gets_the_Scoop.txt" attachment="Note_-_Newspapers_vs._Blogs_-_Who_Gets_the_Scoop.txt" attr="" comment="Note - Newspapers vs. Blogs - Who Gets the Scoop" date="1210105421" path="Note - Newspapers vs. Blogs - Who Gets the Scoop.txt" size="2220" stream="Note - Newspapers vs. Blogs - Who Gets the Scoop.txt" tmpFilename="/var/tmp/CGItemp34618" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="20080505085750AA1xUCC_396545320_-_Credit.xml" attachment="20080505085750AA1xUCC_396545320_-_Credit.xml" attr="" comment="20080505085750AA1xUCC (396545320 - Credit)" date="1210026091" path="20080505085750AA1xUCC (396545320 - Credit).xml" size="8296" stream="20080505085750AA1xUCC (396545320 - Credit).xml" tmpFilename="/var/tmp/CGItemp27257" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="UGC.ppt" attachment="UGC.ppt" attr="" comment="UGC Discourse" date="1211216636" path="UGC.ppt" size="80896" stream="UGC.ppt" tmpFilename="/var/tmp/CGItemp29029" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="structure.doc" attachment="structure.doc" attr="" comment="Structure proposal" date="1210721249" path="structure.doc" size="43008" stream="structure.doc" tmpFilename="/var/tmp/CGItemp30941" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="53.xml" attachment="53.xml" attr="" comment="Blogs Corpus Example" date="1211034383" path="53.xml" size="2021" stream="53.xml" tmpFilename="/var/tmp/CGItemp27613" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="Swearword_List.xml" attachment="Swearword_List.xml" attr="" comment="Swearword_List.xml" date="1212363690" path="Swearword_List.xml" size="4416" stream="Swearword_List.xml" tmpFilename="/var/tmp/CGItemp27659" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="EncodingTestSet.rar" attachment="EncodingTestSet.rar" attr="" comment="EncodingTestSet" date="1217381870" path="EncodingTestSet.rar" size="96270" stream="EncodingTestSet.rar" tmpFilename="/var/tmp/CGItemp24782" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="Accuracy.jpg" attachment="Accuracy.jpg" attr="" comment="Spell Checker Accuracy" date="1217460799" path="Accuracy.jpg" size="37416" stream="Accuracy.jpg" tmpFilename="/var/tmp/CGItemp24725" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="Time_Elapsed_ms.jpg" attachment="Time_Elapsed_ms.jpg" attr="" comment="Spell Checker Time Elapsed (ms)" date="1217460922" path="Time Elapsed (ms).jpg" size="32909" stream="Time Elapsed (ms).jpg" tmpFilename="/var/tmp/CGItemp31826" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="EncodingDetectorAE.png" attachment="EncodingDetectorAE.png" attr="" comment="EncodingDetectorAE.png" date="1218068214" path="EncodingDetectorAE.png" size="8369" stream="EncodingDetectorAE.png" tmpFilename="/var/tmp/CGItemp31935" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="LanguageIDAE.png" attachment="LanguageIDAE.png" attr="" comment="LanguageIDAE.png" date="1217974810" path="LanguageIDAE.png" size="7580" stream="LanguageIDAE.png" tmpFilename="/var/tmp/CGItemp28091" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="GrammarCheckerAE.png" attachment="GrammarCheckerAE.png" attr="" comment="GrammarCheckerAE.png" date="1218068227" path="GrammarCheckerAE.png" size="8736" stream="GrammarCheckerAE.png" tmpFilename="/var/tmp/CGItemp31635" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="english-bigrams.zip" attachment="english-bigrams.zip" attr="" comment="english bigrams (from Leipzig Corpus 100k)" date="1218152461" path="english-bigrams.zip" size="1189744" stream="english-bigrams.zip" tmpFilename="/var/tmp/CGItemp27813" user="ZhiShen" version="1"}%

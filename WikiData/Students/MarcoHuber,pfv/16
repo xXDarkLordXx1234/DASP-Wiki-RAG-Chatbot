@@ -1,0 +1,96 @@
+%META:TOPICINFO{author="huber" comment="save topic" date="1515970471" format="1.1" reprev="16" version="16"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Context-Aware Relation Extraction for Scientific Data
+Mid-Term Presentation: 23.01.2018
+
+End Presentation: 20.03.2018
+
+---++ Next Meeting: 16.01.2018, 14:00 - 15:00
+   * Namespace issues with "embeddings" after fork, temporary work-around fix in my repo
+
+---++ Meeting: 08.01.2018
+   * DS: It seems I don't have access to your fork of the relation-extraction repo. 
+
+   * BiLSTM-Merge-Mode (Concat, Ave, Sum, Mul) -> Concat, change the shapes of the following layers &#10004;
+   * Every model with LSTM or BiLSTM &#10004;
+   * Max_Sentence_Length -> maybe take average or take a length which cover 80% of the text (evaluate this...)
+   * Max_Edges_per-Grap -> take 11 (max, other value on noisy data set)
+   * Do not combine clean and noisy data set &#10004;
+   * Most deprecated methods had been updated to Keras API 2, just .Merge(Lambda...) is missing
+   * Do not care about CNN theano/tensorflow "bug"
+   * Validate Model after every Epoch (already done) &#10004;
+   * Evaluation Phase of the shared task has changed (see CodaLab), now on 22.01 instead of 08.01
+   * Change Dev and Test Set: Test on 100 (not 70), Dev on 50 (not 70) abstracts &#10004;
+   * Krusty
+
+ToDo's:
+   * Give access to the fork (not guest...) &#10004;
+   * add preprocessing script to model (need to clean it up a bit) &#10004;
+
+   * Prepare mid-term presentation
+   * 20min presentation, 10min questions
+   * Motivation, Task, Related Work, Goals, Timeline/Outline, Data Analysis, Model
+   * prepare this until next week
+   
+---++ Meeting: 18.12.2017
+   
+   * I need access to more computing power, my machine is overwhelmed -> try krusty
+   * Tensorflow as Keras Backend can be used without any change
+   * Unique IDs per Abstract may be useful
+   * Order in edgeSet is important
+   * Blacklist: filtered relations
+   * Focus on abstractwise (abstractwise edge-sets)
+   * Improvements: implement biLSTM
+ 
+---++ Meeting: 07.12.2017, 15:00
+
+   * Some Question about Word Embeddings solved
+   * Held-out data -> may be important for me too, need to be checked
+   * Relparser in parser.py is Relation Encoder
+   * Attention is "Selective Attention" from Lin et al
+
+Todos: 
+   * Try the current model on local machine
+   * Change Keras Backend from Theano to Tenserflow
+
+
+---++ Meeting: 30.11.2017, 15:00
+
+   * Attached Anmeldeformular, Datum der Themenvergabe? May need to be checked...
+   * Changed Declaration: (just to keep in mind and may update the template) [[https://www.informatik.tu-darmstadt.de/fileadmin/user_upload/Group_Studbuero/Erklaerung_zur_Abschlussarbeit_Vorlage.pdf][New Declaration]]
+
+Questions: 
+   * include Approach of data analysis in text? -> no need to, too obvious
+      *  include Code of the data analysis approach somewhere?  -> just store it for myself
+
+   * Which strategy for REVERSE? --> separated classes or "pipelined"
+   * try a machine learning approach (maybe at the end...)
+   * start with a simple local model
+   * familiarize with model &#10004;
+   
+
+   
+
+---++ Meeting: 21.11.2017, 15:00
+
+Questions: 
+   * there may not be enough relations in single sentences -> "abstract-wise"
+   * focus on words and sentences in data analysis (e.g. average Word Length not that useful)
+
+Todos:
+   * Examples of training data &#10004;
+   * data analysis &#10004;
+      * with graphs/plots and some bulletpoints &#10004;
+
+   * setup repo for thesis &#10004;
+   * fork project &#10004;
+   * VPN &#10004;
+   * Anmeldeformular &#10004;
+
+Literature:
+   * Augenstein et al (see Task Description...)
+   * Eger et al (see Task Description...)
+
+-- Main.MarcoHuber - 2017-11-26
+
+%META:FILEATTACHMENT{name="HuberM_Anmeldung_Bachelorthesis.pdf" attachment="HuberM_Anmeldung_Bachelorthesis.pdf" attr="" comment="Anmeldeformular" date="1511995773" path="HuberM_Anmeldung_Bachelorthesis.pdf" size="285320" user="huber" version="1"}%

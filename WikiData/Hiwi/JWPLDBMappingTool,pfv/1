@@ -1,0 +1,25 @@
+%META:TOPICINFO{author="AnouarHaha" date="1202740406" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="AnouarWork"}%
+
+<center><b>
+---+ JWPL DBMapping Tool
+</b></center>
+---++ Functionalities:
+
+- The DBMapping Tool performs the mapping of Wikipedia dumps to dumps for the JWPL.
+
+- The DBMapping Tool is able to extract multiple dump versions (as JWPL dumps) from the input dumps starting from a given 'from' timestamp and ending with a given 'to' timestamp using regular intervals (in days) between them.
+
+- The DBMapping Tool performs the transformation of xml-files to sql-files using the mwdumper.
+
+- The DBMapping Tool is also able to extract txt-dumps (for mysql) from sql-dumps. However only the functions RAND() and&nbsp; <font color="#000000"><font face="Times New Roman, serif"><font size="3">DATE_ADD('1970-01-01', INTERVAL UNIX_TIMESTAMP() SECOND)+0</font></font></font> are supported.
+
+&nbsp;&nbsp; The DBMapping&nbsp;Tool is the unique java programm (plattform independent) that performs this task.
+
+- The DBMapping Tool performs the extraction of 'gz' and 'bz2' files.
+
+&nbsp;
+
+&nbsp;
+
+-- Main.AnouarHaha - 11 Feb 2008

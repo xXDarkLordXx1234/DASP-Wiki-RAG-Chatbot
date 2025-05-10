@@ -1,0 +1,56 @@
+%META:TOPICINFO{author="ShuoYang" date="1285225188" format="1.1" reprev="94" version="94"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Sept 2010
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. =XMLFileReader= mit =XPath= | 95 |  |
+| 2. !WikiWörterbuch | 80 | * | 
+| 3. Umbauen von !TrecTranslationXmlWriter | 95 | * |
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !WikiWörterbuch, !TrecTranslationXmlWriter | 22.09.2010 | 7 | Testen, Saubermachen und Verfeinerung der Kommentare von !TrecTranslationXmlWriter (fertig) <p> !WikiWörterbuch: <ul><li>Nun wird Key in Kleinbuchstaben gespeichert, und Value in originale.</li><li>Für Keys mit mehrerer Interlanguage-Links, werden diese einzelne Übersetzungen aneinandergehangen</li><li> =HashMapDictionary#getTranslation(String)= nun liefert die Übersetzung vom Wörterbuch.</li><li>Zur Veranschaulichung ein Tool geschrieben, was gespeicherte Wörterbuch im Form von Hashmap ins Plaintext konvertiert.</li><li>Erstellung von Listen der Artikeln, deren Titel Klammern beinhaltet, und Listen der Artikeln mit mehrerer Übersetzungen</li></ul> | * |
+| !WikiWörterbuch, !TrecTranslationXmlWriter, Meeting | 21.09.2010 | 7.5 | Meeting mit Benjamin über Ergebnisse und Fortsetzung von Projekete <p> !TrecTranslationXmlWriter: <ul><li>Ausgegebene Dateien spiegelt nun die originale Struktur und Hierarchie vor Einlesen wieder.</li><li>Möglichkeit zur Ausgabe aller Dateien auf dieselben Ordner (PARAM_WRITE_FLATLY)</li></ul> !WikiWörterbuch: <ul><li>Statistik von Redirect</li><li>Ursache Abweichung Anzahl geparster Pages mit ihr in Statistik auf Wikipedia: Wiki nutzt [[http://meta.wikimedia.org/wiki/Article_count_reform][diese Methode zum Zählen]]</li></ul> |  |
+| !WikiWörterbuch, !TrecTranslationXmlWriter | 20.09.2010 | 10 | !WikiWörterbuch: <ul><li>Extraktion der Wortpaare aus Wiki Dump (EN-DE)</li><li>Nun gespeichert auf dem Festplatt in HashMap</li><li>Ein interaktives Konsoleprogramm, womit man die Wortpaare abfragen kann.</li></ul> !TrecTranslationXmlWriter: <ul><li>Ausgabe der Dateien in originaler Struktur von Dateien (Falls 3 ein dann 3 aus in originale Dateiname)</li><li>Rekursive Struktur noch nicht testiert (Dateien unter Unterordnern)</li><li>Getrennt in zwei Klassen, eine für aneinandergehangene Ausgabe (!TrecTranslationXmlConcatenatedWriter), eine für separate Dateien (!TrecTranslationXmlWriter)</li></ul> |  |
+| !WikiWörterbuch | 19.09.2010 | 9.5 | Erstellung von Statistik über Anteil der Seiten in Wikipedia, die mit Interlanguage-Link in Zielsprache sind. <br> Probiert mit SAX Parser und rein BufferedReader, Performanzvergleich <br> Allerdings unterscheiden sich die Resultate voneinander. Versuchen, die Ursache herauszufinden <br> Untersuchung der Möglichkeiten zur effizienten Speicherung von großer Menge Daten |  |
+| !WikiWörterbuch | 18.09.2010 | 1.5 | Einarbeiten in Struktur von XML Dateien von MediaWiki <br> Untersuchung der Möglichkeiten von XML-Parsen mit Java |  |
+| !WikiWörterbuch, Meeting | 17.09.2010 | 3 | Einarbeiten in JWPL <br> Meeting mit Benjamin über erneute Aufgaben und Zeitplanung |  |
+| !NewXmlFileReader,<br> Wörterbuch aus Wikipedia | 16.09.2010 | 3 | =NewXmlFileReader= fast fertig. Test <br> Herunterladen von WikiDump, Einarbeiten in JWPL |  |
+| !NewXmlFileReader | 15.09.2010 | 1 | Weitere Implementierung von =NewXmlFileReader= |  |
+| !NewXmlFileReader | 02.09.2010 | 2.5 | Weitere Implementierung von =NewXmlFileReader= |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 57.5)$EXEC($GET(total_hour))"}% | bis Ende September noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (inkl. 17,5 Übertrag von August) | |
+<nop>
+
+---+++ Dokumente
+*WikiWörterbuch:* <br>
+StatistikInterlanguageLinksWikipedia <br>
+[[http://www.ishuo.de/storage/wikipediaTitlesWithBrackets.txt][List of wikipedia articles, whose title entails brackets]] <br>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ShuoYang/titleWithMultipleTranslations.txt][List of wikipedia articles with multiple interlanguage links]]
+
+*Lucene Scoring:* <br>
+ChangingLuceneScoring <br>
+BM25Guide
+
+*XMLReader:* <br>
+XPathPerformanceAnalysis
+
+*Google Translate:* <br>
+GoogleTranslatePerformanceAnalysis <br>
+GoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangPreviousWork
+
+-- Main.ShuoYang - 23 Sep 2010
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%
+%META:FILEATTACHMENT{name="titleWithMultipleTranslations.txt" attachment="titleWithMultipleTranslations.txt" attr="" comment="List of wikipedia articles with multiple interlanguage links" date="1285170011" path="titleWithMultipleTranslations.txt" size="22805" stream="titleWithMultipleTranslations.txt" tmpFilename="/var/tmp/CGItemp3071" user="ShuoYang" version="1"}%

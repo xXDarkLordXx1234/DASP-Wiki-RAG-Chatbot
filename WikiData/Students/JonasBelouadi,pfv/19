@@ -1,0 +1,153 @@
+%META:TOPICINFO{author="belouadi" comment="" date="1543427086" format="1.1" reprev="17" version="19"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ General Information
+
+*Supervisors*: 
+   * Yevgeniy Puzikov, M.Sc.
+
+
+*Start Date* : 22-OCT-2018 
+
+*Mid-Term Presentation Date* : 29-JAN-2019
+
+*Final Presentation Date* : XX-APR-2019   
+
+*End Date*: 22-APRIL-2019
+
+
+-- Main.YevgeniyPuzikov - 2018-10-22
+
+
+---++ %RED% TODOs %ENDCOLOR% from @YP
+   * Please check availability for bi-weekly telco/skype meetings with the !Merck people
+      * possible slots are on Wed, Thu and Fri  
+
+---
+---++ Week 26.11 - 2.12
+   * upladed the [[https://git.ukp.informatik.tu-darmstadt.de/belouadi/thesis][thesis]] to gitlab
+   * read [[https://arxiv.org/pdf/1707.08052.pdf][Challenges in Data-to-Document Generation]]
+      * introduce a new dataset about basketball summaries
+      * introduce  new evalutaation metrics
+   * the following three papers seem to address the problem of putting incorrect data in the texts in pointer networks mentioned in the paper above:
+   * read [[https://arxiv.org/pdf/1809.00582.pdf][Data-to-Text Generation with Content Selection and Planning]]
+      * introduce a pointer network with a content selection module
+   * read [[https://arxiv.org/pdf/1809.01797.pdf#cite.hybridp17][Describing a Knowledge Base]]
+      * introduce table position attention
+         * used to capture dependencies between records
+      * introduces a new dataset about wikipedia infoboxes
+   * read [[https://pdfs.semanticscholar.org/0a05/227df694c93b072eb9d041a7252aead410ce.pdf][Point Precisely: Towards Ensuring the Precision of Data in Generated Texts Using Delayed Copy Mechanism]]
+      * they introduce a neural model that generates templates
+         * like a pointer network that doesn't copy things over
+      * a second model is used two select relevant records and fill in the 
+
+---
+---++ Week 19.11 - 25.11
+   * older (smaller) datasets:
+      * [[http://aclweb.org/anthology/D15-1199][SF Hotels/Restaurants]]
+         * similar to the E2E dataset, but contains an additional "style guide" attribute
+         * but smaller (~10.000 utterances)
+      * [[http://aclweb.org/anthology/P10-1157][BAGEL]]
+         * essentially the same as SF Hotels/Restaurants but a lot smaller (404 utterances)
+      * [[https://dl.acm.org/citation.cfm?id=1390173][RoboCup]]
+         * maps events from robot soccer games to the corresponding commments of commentators
+         * contains roughly 2000 comments and 10000 events
+   * did read [[https://pdfs.semanticscholar.org/2bae/560131a2c2019a8af18d56284c349dfbce5a.pdf][Information Retrieval and Text Mining Technologies for Chemistry]]
+      * provides detailed desciptions on how to extract data from released papers, reports, etc
+      * also contains a section for chemistry domain knowledge bases
+   * did read [[https://pdfs.semanticscholar.org/ec13/adebe90a879a3d4e4c9c029042ade5653640.pdf][User-Controlled, Robust Natural Language Generation from an Evolving Knowledge Base]]
+      * a rule baes approach to generate sentences from a knowledge base from a bioogy domain
+      * related to [[https://pdfs.semanticscholar.org/7262/c2fa40e6563b414d76a0708453d98426ccdc.pdf][English Generation from a Knowledge Base and Overly General Classes]]
+   * did read [[https://dl.acm.org/citation.cfm?id=3227656][Automatic Generation of Multiple Choice Questions from Slide Content using Linked Data]]
+      * they extract named entities from slides and query a knowledge base to generate template-based questions
+
+---
+---++ Week 12.11 - 18.11
+   * fixed a bug in the web scraper, some articles have errors in the HTML-data, which resulted in no retrieved properties for them
+   * wrote a little script that calculates some information from the dataset retrieved by the scraper:
+
+| *Total Articles* | *Total Properties* | *Most Frequent Properties* | *Articles That Have All Frequent Properties* |
+| 186 | 46 | assay (103), InChI Key (113), mp (147), solubility (152), Related Categories (186) | 69 |
+
+   * noticed that the database is inconsistent (e.g. property "assay")
+   * datasets used in recent papers:
+      * [[https://arxiv.org/pdf/1810.01170.pdf][E2E NLG challenge dataset]]
+         * dataset about restaurant domain
+         * input is semantic frame containing specific slots
+         * 3-8 attributes
+         * similar to our problem
+         * 50k references, 6k MRs  
+      * [[https://pdfs.semanticscholar.org/a4c4/0532e68728fbeab5d9415f6ad8e9530db360.pdf][WebNLG challenge dataset]]
+         * sentences from 15 categories
+         * input consists of 1-7 triples
+         * 25298 (data/text) pairs
+      * *TODO*: review some of the older datasets (e.g. BAGEL, RoboCup,SF Hotels/Restaurants)
+   * did read [[https://arxiv.org/pdf/1610.03807.pdf][Question Generation from a Knowledge Base with Web Exploration]]
+      * they generate questions from a knowledge base with templates and then use the web for question expansion
+   * did read [[https://arxiv.org/pdf/1711.00155.pdf][Neural Wikipedian: Generating Textual Summaries from Knowledge Base Triples]]
+      * instead of using a standard Seq2Seq architecture they use a MLP as the encoder for each data triplet and concatenate the vectors, the decoder is a RNN though
+         * looks like an alternative to attentional neural networks (but they work probably better)
+
+
+---
+---++ Week 5.11 - 11.11
+
+   * did read [[https://arxiv.org/pdf/1810.04864.pdf][Sequence-to-Sequence Models for Data-to-Text Natural Language Generation: Word- vs. Character-based Processing and Output Diversity]]
+      * as the name sugggests it compares different embedding techniques
+         * word embeddings
+         * character embeddings
+            * seem to have the highest output diversity in comparison
+         * subword-based embeddings
+            * don't work so well
+      * the evaluation techniques from this paper are also relevant for the thesis
+         * BLEU and ROGUE-L
+            * [[https://aclweb.org/anthology/Q/Q16/Q16-1029.pdf][Xu et al. (2016)]] report that BLEU strongly correlates with grammaticality and meaning preservation.
+            * The [[https://github.com/tuetschek/e2e-metrics][E2E challenge evaluation script]] uses BLEU, ROGUE-L and a bunch of similar metrics. Could be useful
+         * diversity measured by the number of unique sentences and words
+         * Shannon text entropy for diversity
+            * [[http://aclweb.org/anthology/W18-5019][Oraby et al. (2018b)]] introduce it as a mesaure for the amount of variations in the output
+   * did read [[https://arxiv.org/pdf/1810.06640.pdf][Adversarial Text Generation Without Reinforcement Learning]]
+      * they use an additional encoder-decoder model which produces sentence embeddings, which lie in a continuous space and can be used to train a GAN because of that. In our case we could use phrase embeddings to genrate descriptions but the results would most probably be inferior to seq2seq models.
+         * [[https://arxiv.org/pdf/1811.02549.pdf][Caccia et al. (2018)]] confirm that assumption (though only for reinforcement learning GANs)
+
+
+---
+---++ Week 29.10 - 4.11
+   * pushed the web scraper code to [[https://git.ukp.informatik.tu-darmstadt.de/UKP-Students/sigmaaldrich_scraper.git][gitlab]]
+   * did a keras NLG tutorial to understand how that stuff actually works
+   * started writing the thesis
+   * did read [[https://www.aaai.org/ocs/index.php/AIIDE/AIIDE11/paper/viewFile/4066/4431][DEXTOR: Reduced Effort Authoring for Template-Based Natural Language Generation]]
+      * the paper only describes methods to speed manual authoring up
+      * template-based approaches really are as simple as they sound, there was no need to search for the "state-of-the-art" of template-based methods
+   * did read [[http://aclweb.org/anthology/W17-2629][Adversarial Generation of Natural Language]]
+   * did read [[https://arxiv.org/pdf/1702.07983.pdf][Maximum-Likelihood Augmented Discrete Generative Adversarial Networks]]
+      * GANs seem to generate data only from noise from a continuous space
+         * text is discrete, to circumwent this reinforcement learning is used
+            * hard to train
+            * *TODO*: look for other methods ✅
+
+---
+---++ Week 22.10 - 28.10
+   * did read [[https://arxiv.org/pdf/1409.0473.pdf][Neural Machine Translation by Learning to jointly Align And Translate]] properly
+   * did read [[http://aclweb.org/anthology/N18-2010][Natural Language Generation by Hierarchical Decoding with Linguistic Patterns]] properly
+      thee hierarchical approach seems to be an improvement on standard seq2seq approaches, but also requires an additional POS-tagger
+   * *TODO*: read the remaining papers ✅
+
+---
+---++ Week 15.10 - 21.10
+   * wrote a web scraper for some artclies on [[https://www.sigmaaldrich.com/life-science/biochemicals/biochemical-products.html?TablePage=16181993][www.sigmaaldrich.com]]
+      * right now it only scrapes articles from one page
+      * *TODO*: maybe extend the scraper to scrape more articles
+      * *TODO*: strangely  the headless html query doesn't fetch all articles, look into that
+      * *TODO*: push the code to gitlab ✅
+   * searched for potential baselines and skipped through the papers
+      * potential baselines
+         * [[https://www.aaai.org/ocs/index.php/AIIDE/AIIDE11/paper/viewFile/4066/4431][DEXTOR: Reduced Effort Authoring for Template-Based Natural Language Generation]]
+         * [[https://arxiv.org/pdf/1409.0473.pdf][Neural Machine Translation by Learning to jointly Align And Translate]]
+      * *TODO*: read through them properly ✅
+   * searched for the state of the art and skipped through the papers
+      * potential papers
+         * [[http://aclweb.org/anthology/W17-2629][Adversarial Generation of Natural Language]]
+         * [[https://arxiv.org/pdf/1702.07983.pdf][Maximum-Likelihood Augmented Discrete Generative Adversarial Networks]]
+         * [[http://aclweb.org/anthology/N18-2010][Natural Language Generation by Hierarchical Decoding with Linguistic Patterns]] 
+      * *TODO*: read through them properly ✅
+   * signed all that bureaucratic stuff

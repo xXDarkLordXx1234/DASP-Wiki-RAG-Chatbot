@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1297620001" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Mateusz Parzonka
+  
+---++++  Aufgabenbereich (01.02.2011 - 31.06.2011)
+   * Integration von dkpro_students/parzonka/back-of-the-book-indexing in DKPro (de.tudarmstadt.ukp.dkpro.semantics.bookindexing)
+   * jar-Wrapper für bookindexing
+
+---++++ Aufgaben
+ 
+%EDITTABLE{  sort="on" tableborder="1" cellpadding="1" cellspacing="3" footerrows = "1" headerrows = "1" }%
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="15%, 5% 80%" }%
+| *Aufgabe* | *Done* | * *Bemerkungen* * |
+| Planung |  10%  | Sichtung der Komponenten, Planung der Migration unter Berücksichtigung der Dependencies |
+| Setup |  100%  | Einarbeitung in Maven, Kennenlernen der Arbeitsabläufe, Installation |
+
+---++++ Stunden
+
+---+++++ Februar 2011
+
+%EDITTABLE{  sort="on" tableborder="1" cellpadding="1" cellspacing="3" footerrows = "1" headerrows = "1" }%
+%TABLE{tablewidth="100%" cellborder="1" columnwidths="20%, 5%, 5%, 70%" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Setup  | 01.02.2010 |  3  | Einarbeitung in Maven, Kennenlernen der Arbeitsabläufe, Installation |
+| Setup  | 13.02.2010 |  2  | Einarbeitung in Maven |
+| Planung  | 13.02.2010 |  1  |  |
+|  * * | *Summe:* |  %CALC{"$SUM( $ABOVE() )"}%  | *Soll: 25*|
+<nop>

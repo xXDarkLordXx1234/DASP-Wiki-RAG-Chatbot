@@ -1,0 +1,5 @@
+%META:TOPICINFO{author="steuer" date="1365692413" format="1.1" version="2"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * run (without fields) just DN to see if wrong POS annotations make a difference (baseline <-> DT expansions)
+   * run just N (narrative) and see, if expansions on this improve performance
+   * add another term selecting method: by least key count (in the DT)

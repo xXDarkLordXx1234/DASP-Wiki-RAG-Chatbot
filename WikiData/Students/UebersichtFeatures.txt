@@ -1,0 +1,71 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="6" version="7"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Hier steht eine Liste der bisher als Annotatoren implementierten Features zur besseren Übersicht:
+
+%TOC%
+
+---++Features aus sekundären Quellen (Meta-Daten)
+Zu dieser Gruppe gehören Features, die sich nicht aus dem Text heraus ergeben, sondern von sekundären Quellen stammen. Diese sind:
+
+---+++Stars
+ Die vom Autor der Rezension vergebene Anzahl an Sternen
+
+---+++ !CustomerTotalReviews
+Anzahl der vom Autor der Rezension insgesamt geschriebenen Rezensionen.
+
+---+++ !CustomerAverageRating
+Die durchschnittliche Bewertung, die der Autor einer Rezension insgesamt bei seinen Rezeszionen vergeben hat.
+
+---+++Manufacturers
+Die Anzahl an erwähnten Herstellern aus der Produktgruppe.
+
+---+++Competitors
+Die Anzahl an erwähnten Konkurrenz-Herstellern aus der Produktgruppe.
+
+
+---++Strukturelle und synktaktische Features
+Diese Features ergeben sich aus der Struktur und Syntax einer Rezension. Dazu gehören:
+
+---+++LEN
+Die Anzahl der Token der Rezension
+
+---+++Avg. no. of words
+Die durchschnittliche Anzahl an Wörtern pro Satz.
+
+---+++No. of list items
+Anzahl von Listenelementen.
+
+---+++Portion of lists
+Anteil an Listenelementen in Bezug auf die Gesamtlänge der Rezension.
+
+---+++Portion of paragraphs
+Anteil an Absätzen in Bezug auf die Gesamtlänge der Rezension.
+
+---+++No. of headings
+Anzahl an Überschriften in der Rezension.
+
+---+++Rootwds
+4. Wurzel aus der Anzahl der Wörter
+
+
+---++Linguistische Features
+Bei dieser Gruppe von Feautures werden linguistische Maßstäbe zu ihrer Bestimmung herangezogen. Dazu gehören:
+
+---+++UGR (+/- Stopwörter)
+TF/IDF-Statistik für jedes Unigram.
+
+---+++Technical terms
+Anzahl der Wörter in der Rezension, die Wortformen bestimmter Häufigkeitsklassen entsprechen.
+
+---+++Semantic Orientation nach [Kamps2004] sowie nach [Turney2002]
+Hier wird der Anteil an positiv sowie negativ ausgerichteten Adjektiven bestimmt, um die semantische Grundrichtung (pro/contra Produkt) einer Rezension zu bestimmen.
+
+---+++Type-Token-Ratio
+Maß zur Lesbarkeit eines Textes.
+
+---+++Portion of adjectives
+Dieses Feature gibt den Anteil an Adjektiven im Vergleich zu aller Worten an. Die Idee dahinter ist, Rezensionen zu unterscheiden, zwischen solchen, die nur Fakten aufzählen (niedriger Adjektivanteil) und solchen, die Bewertungen oder Meinungen abgeben (hoher Adjektivanteil). Des Weiteren werden der Anteil an vergleichenden Adjektiven bestimmt und solchen im Superlativ. Dies kann darauf hindeuten, dass der Rezensent das Produkt mit einem anderen Produkt oder Hersteller vergleicht.
+
+
+
+-- Main.KaiMichaelHoever - 02 Jun 2007

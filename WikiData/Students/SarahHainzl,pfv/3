@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="stab" comment="reprev" date="1523444488" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2018-04-11
+   * Wir prüfen nicht ob es sich um ein Argument handelt und auch nicht ob der Stance korrekt ist, damit wir uns auf den eigentlichen Task (Aspekt Annotation konzentrieren können)
+   * Zu jedem annotierten Aspekt *A* sollten wir mit annotieren, ob A sich direkt auf das Thema *T* bezieht 
+   * Nächste Schritte:
+      * *Korpus filtern*: (1) prüfe stance, (2) prüfe ob Argument, (3) filtere Sätze mit nicht eindeutigen Stance
+         * Hintergrund: da unsere Daten mit crowdsourcing erzeugt wurden, ist der Stance manchmal falsch und manchmal sind die Sätze nur Meinungen ohne Grund (=kein Argument)
+         * Das resultierende Korpus sollte mindestens 200 Sätze für mindestens vier Themen enthalten
+      * Guidelines überarbeiten
+      * Annotiere Beispiele für 10 pro un 10 contra für mehrere Themen
+         *  notiere Schwierigkeiten 
+         * und verfeinere Guideline entsprechend
+
+---++ 2018-04-04
+   * Completion of forms
+   * Discuss results of the first preliminary study
+      * Annotation seems to be more complicated for some topics. For instance, "Marijuana legalization" seems to be complicated; most likely because texts stem from online discussions. In contrast, "nuclear energy" is simpler to annotate.
+      * "*Target*" seems to be important and should be considered
+   * Nächste Schritte
+      * Berücksichtige target in der annotation. Wird es dadurch leichter? Wieviele Argumente enthalten das Target / wie viele nicht?
+      * Guideline überarbeiten.
+
+---++ 2018-03-28
+   * Thesis Workflow and forms
+   * Discuss topic in more detail
+   * Erste Studie:
+      * Annotiere 20 Argumente (10 pro + 10 con) für jeweils vier Themen (insgesamt 80 Sätze)
+      * Erstelle erste Guideline: (1) spezifiziere "Aspekt", (2) Suche gute Beispiele für die Guideline, (3) definiere Regeln für die Annotation
+      * Notiere Schwierigkeiten 
+
+
+
+-- Main.ChristianStab - 2018-04-04

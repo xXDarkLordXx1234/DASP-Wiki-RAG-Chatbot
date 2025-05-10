@@ -1,0 +1,60 @@
+%META:TOPICINFO{author="vschindler" comment="reprev" date="1513059595" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master's Thesis: Combining Crowdsourced Annotations Using HeatmapBCC For NLP Tasks
+
+---++ Meetings
+
+---+++ 12.12.17
+   * Set up end-to-end experiment with weather dataset, varying numbers of labels (by timestamp) and ibcc -> need to fix some errors
+   * TODO:
+      * construct gold labels for compatibility (label items with mean rating <1,6 as incompatible, mean >3,7 as compatible, ommit rest)
+      * construct function which chooses items randomly (but so that each document gets one annotation before any document receives a second)
+      * (after Christmas): run logresp (by P.Felt) 
+
+---+++ 28.11.17
+
+   * Weather dataset obtained
+   * Word embeddings:
+      * Skipthoughts -- not found, check out on Barney, there is a version under /data/skipthoughts
+      * Gensim word2vec -- available but trained on Google news data rather than Wikipedia
+      * Infersent -- available following the instructions on readme at top level in Infersent Github
+      * Siamese CBOW trained on Wikipedia 2015
+      * Glove trained on Wikipedia 2014
+   * PyIBCC error -- needs ES to fix
+   * TODO: 
+      * Completing the end-to-end experiment set up with baselines
+      * Run the algorithm with the Weather and Compatibility datasets with varying number of labels
+      * Run evaluation metrics accuracy, f1score and logloss from scikit learn
+      * Plot results using matplotlib or a nice wrapper library  
+
+---+++ 14.11.17
+
+   * Sentence embeddings: download the models and Python interfaces to a home directory, e.g. on Barney or other server
+      * Skipthoughts
+      * Siamese-CBOW 
+      * Infersent
+      * Glove (word embeddings, need to take mean vectors for sentences)
+      * Gensim (word embeddings, need to take mean vectors for sentences)
+   * Now have access to the repo for Paul Felt's work
+      * Need to try running the script including the experiment with the weather dataset
+      * Weather dataset appears to be missing -- see whether running the script produces an error
+      * If there is missing data, notify Paul and ask if he is able to upload it elsewhere 
+   * Continue asking Crowdflower for weather data -- can ask Christopher for contact if no luck
+   * Paralllel for loops in Python: https://pythonhosted.org/joblib/parallel.html
+   * Dask: Pandas in parallel
+   * Bug in IBCC code -- send link to code to ES so he can reproduce the error
+   * MACE: convert the data from 3 column format to a table format
+   * discussion of the impact of different word embeddings is here: https://arxiv.org/abs/1707.06799
+
+---+++ 07.11.17
+
+   * Progress on implementing MACE, IBCC, and majority vote baselines
+   * Data imported for weather dataset into local format
+   * Emails sent to author of comparison paper asking for access to data/code
+   * Todos: 
+      * set IBCC parameters in constructor according to example sent by email
+      * set MACE to provide probabilities using --distribution
+      * Produce plots using the baselines with increasing numbers of annotations per document
+      * Contact Paul Felt if no luck from Kevin Seppi; if this is unsuccessful look at how code from ES can be adapted to implement their baseline
+
+-- Main.EdwinSimpson - 2017-11-08

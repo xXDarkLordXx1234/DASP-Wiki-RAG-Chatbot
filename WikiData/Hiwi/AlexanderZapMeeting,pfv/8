@@ -1,0 +1,135 @@
+%META:TOPICINFO{author="zap" comment="save topic" date="1530096474" format="1.1" reprev="2" version="8"}%
+%META:TOPICPARENT{name="AlexanderZap"}%
+---+!! Meeting Minutes
+
+---++ Meeting 21.06
+   * 12:00 - 13:00
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+      * Discussion about current plans (to bring everyone up-to-date)
+   * *Homework:*
+      * Alexander: Make preference learning executable on server and optimize preference learning code by only loading preference documents
+
+---++ Meeting 07.06
+   * 12:00 - 13:00
+   * Participants: Edwin, Alexander
+   * *Content:*
+      * Discussion about ideas for preference learning optimization (for future use on server) 
+   * *Homework:*
+      * Alexander: Optimization of preference learning code by only loading preference documents
+
+---++ Meeting 25.05
+   * 12:00 - 13:00
+   * Participants: Edwin, Alexander
+   * *Content:*
+      * Demonstration of recommendation import and recommendation display
+   * *Homework:*
+      * Alexander: Implementation of recommendation generation pipeline for preference learning
+
+---++ Meeting 03.05
+   * 12:00 - 13:00
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+      * Discussion about score order bug fix and ideas for external recommendation processing
+   * *Homework:*
+      * Alexander: Implementation of  "import and display of external recommendations" functionality
+      
+---++ Meeting 19.04
+   * 12:00 - 13:00
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+      * Discussion of current progression state
+   * *Homework:*
+      * Alexander: Run Edwins Code with 300d word embeddings and search for cause of recommendation order bug
+
+---++ Meeting 06.03
+   * 14:00 - 15:00
+   * Participants: Richard, Alexander
+   * *Content:*
+      * Discussion about optimization of document feature extraction - task transfered to Alexander
+
+---++ Meeting 15.02
+   * 14:00 - 15:00
+   * Participants: Edwin, Alexander
+   * *Content:*
+      * Review of documentation and discussion about further details of preference extraction
+   * *Homework:*
+      * Alexander: Extend wiki page with detailed code documentation of preference extraction
+
+---++ Meeting 08.02
+   * 14:00 - 16:00
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+      * Discussion about current progress and the creation of a reader documentation
+   * *Homework:*
+      * Alexander: Create wiki pages for reader setup and preference extraction details
+
+---++ Meeting 01.02
+   * 12:00 - 13:30
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+      * Investigation of recommendation pipeline
+   * *Homework:*
+      * Voting
+      * Alexander: meeting minutes and time table + describe how the preference extraction currently works / should work
+      * Work on code:
+         * Richard: spring bean fix in the datatable provider
+         * Alexander: recommendation table does not have any content despite recommendations being in database
+
+
+---++ Meeting 23.01
+   * 11:30 - 12:30
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+      * Problem: Duplicates across multiple query results
+      * Solution: Compute preferences globally, not over single pages
+   * Alexander: analysis of recommendation pipeline
+
+
+---++ Meeting 08.01
+   * 12:00 - 13:30 
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+      * Problem: Abstract prevents users from clicking
+      * Solution: Remove abstract from query results (to require click)
+
+
+---++ Meeting 20.12
+   * 13:30 - 16:00
+   * Participants: Masoud, Alexander
+   * *Content:*
+      * Fast code walkthrough with rough explanation of every module
+      * Noted short description for every module
+
+
+---++ Meeting 19.12
+   * 12:15 - 13:15
+   * Participants: Richard, Edwin, Masoud, Alexander  
+   * *Content:*
+      * Discussion about next steps
+   * * *Homework:*
+      * Query Collection for new tasks
+      * Query Execution of "supervised vs. unsupervised ML" task
+
+
+---++ Meeting 12.12
+   * 12:15 - 13:15
+   * Participants: Richard, Edwin, Masoud, Alexander  
+   * *Content:*
+      * Evalution of query voting and new tasks
+      * Experiment Discussion 
+   * * *Homework:*
+      * Voting on previously collected queries
+      * Alexander: Build reader at home machine and run webapplication locally
+
+
+---++ Meeting 04.12
+   * 12:00 - 13:30
+   * Participants: Richard, Edwin, Masoud, Alexander
+   * *Content:*
+      * Finished contract   
+      * Introduction to system by Masoud
+   * *Homework:*
+      * Query Collection for task "supervised vs. unsupervised ML"
+      * Task Definition for another user experiment
+      * Alexander: look into Reader paper

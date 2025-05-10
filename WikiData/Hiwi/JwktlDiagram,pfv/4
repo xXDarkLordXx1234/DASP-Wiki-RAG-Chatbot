@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1296140952" format="1.1" version="4"}%
+%META:TOPICPARENT{name="WiktionaryAnalysis"}%
+---+ JWKTL Diagram
+---++ Diagram
+---+++ Legend 
+   * Extends:     <br>
+   <img src="%ATTACHURLPATH%/extends.jpg" alt="extends.jpg" width="59" height="28" />
+   * Implements: <br>
+ <img src="%ATTACHURLPATH%/implements.jpg" alt="implements.jpg" width="59" height="28" />
+   * Aggregation:  <br>
+   <img src="%ATTACHURLPATH%/aggregation.jpg" alt="aggregation.jpg" width="59" height="28" />
+   * Composition:  <br>
+   <img src="%ATTACHURLPATH%/composition.jpg" alt="composition.jpg" width="59" height="28" />
+   * Otherwise related: <br>
+ <img src="%ATTACHURLPATH%/uses.jpg" alt="uses.jpg" width="59" height="28" />
+   * __Closable__ : Abstract class
+   
+---+++ Detailed JWKTL Diagram: <br />
+     <img src="%ATTACHURLPATH%/JWKTLDiagram2.jpg" alt="JWKTLDiagram2.jpg" width="3144" height="2084" />
+
+%META:FILEATTACHMENT{name="JWKTLDiagram.jpg" attachment="JWKTLDiagram.jpg" attr="" comment="Detailed JWKTL Diagram" date="1295866314" path="JWKTLDiagram.jpg" size="1669410" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="extends.jpg" attachment="extends.jpg" attr="" comment="" date="1295952585" path="extends.jpg" size="854" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="implements.jpg" attachment="implements.jpg" attr="" comment="" date="1295952585" path="implements.jpg" size="1087" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="uses.jpg" attachment="uses.jpg" attr="" comment="" date="1295952585" path="uses.jpg" size="694" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="JWKTLDiagram2.jpg" attachment="JWKTLDiagram2.jpg" attr="" comment="Detailed JWKTL Diagram" date="1296140951" path="JWKTLDiagram2.jpg" size="1681146" user="YevgenChebotar" version="5"}%
+%META:FILEATTACHMENT{name="aggregation.jpg" attachment="aggregation.jpg" attr="" comment="" date="1296130017" path="aggregation.jpg" size="755" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="composition.jpg" attachment="composition.jpg" attr="" comment="" date="1296130017" path="composition.jpg" size="553" user="YevgenChebotar" version="1"}%
+%META:TOPICMOVED{by="YevgenChebotar" date="1296131068" from="Hiwi.JwktlAnalysis" to="Hiwi.JwktlDiagram"}%

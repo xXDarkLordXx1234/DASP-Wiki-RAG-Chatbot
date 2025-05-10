@@ -1,0 +1,299 @@
+%META:TOPICINFO{author="StefanLaabs" date="1278188875" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="StefanLaabs"}%
+ <noautolink>
+
+
+---++ First outlines:
+
+%TOC%
+
+---+++ 1. Introduction/Motivation
+ 
+   * [[%ATTACHURL%/Motivation.pdf][Motivation.pdf]]: Chapter 1
+
+---+++ 2. State-of-the-art
+
+*First part: (in research)* _(earlier?!?)_
+   * State of the art in academic research (Papers on text similarity, summarization, information structuring, ... )
+   * Usage of NLP techniques in other areas in practice and their usability factors (Books on search interface/ recommender systems)
+_(-> What could be achieved?)_
+
+_Basic ideas:_
+
+_Show that the topic of NLP (in wikis) has a lot of research._
+
+_Lots of groups work on NLP_
+
+_Usable quality of results in different areas_
+
+_example: document similarity_
+
+---++++ 2.1 StandAlone Systems 
+
+---++++ 2.2 Wiki PlugIns 
+*Second part: (in practice)*
+   * Other existing applications (which use these ideas) _( -> What exists in other areas?)_
+   * Existing PlugIns _( -> What is missing?)_
+
+    _here i would like to use some simple statistics of Wiki plug-Ins_
+    _basic ideas: show the gap between NLP in research an in practice_
+    _Number of PlugIns shows better the gap_
+    
+like: (Columns: Area of Usage - Rows: Area of Techniques/Advantages/Support )
+
+%EDITTABLE{}%
+|  *Wiki Plug-Ins*  |||||
+| Area of underlying techiques | *Area of usage* |||
+|^| *Find* | *Edit* | *Organize* |
+| Usability | x1 | x2 | lots(z3) |
+| Structuring | y1 | some(y2) | y3 |
+| NLP | few(x1) | few(x2) | few(x3) |
+| ... | | | |
+
+... some PlugIns in Detail. (Good example, close to topic, ... )
+
+* Conception of the Matrix
+   * 3 Basic Columns, where the working area of the PlugIn is listed (see Paper: Find, Edit, Organize)
+      * Dividing of the columns in how far they are aiming to the topic of this work
+      * 0: Idea is already part of the wiki system 
+      * A: Aims at an area where NLP could be applied (but not implemented)
+      * B: Aims at an area where NLP could be applied, but another technique is implemented
+      * C: Aims at an area where NLP could be applied and is somehow implemented
+      * D: Feature is implemented and also has some improvements in the usability 
+   * Rows: What is the plugin doing? Adding? ....
+
+Example:
+There are quite a lot of PlugIns that are aiming on an improved Suggestion for further readings and for adding Links.
+The PlugIn MW:SeeAlso is just adding in internationalization to the adding of links for further readings, so it is settled in the area, but not using any NLP technique: A
+The PlugIn MW:DidYouMean also adds some NLP features to find links with little differences in the spelling
+The PlugIN MW:LinkSuggest is using similar techniques but is also already integrating the search in the editing process 
+
+%EDITTABLE{}%
+| *Wiki Plug-Ins* |
+| Techiques | *Area of usage* |
+| ^ | *Find* | | | | | *Edit* | | | | | *Organize* |
+| ^ | 0 | A | B | C | D | 0 | A | B | C | D | 0 | A | B | C | D |
+| Link Suggestion | 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+| Tags/Keywords | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 0 |
+| Templates/PageLayout | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+
+%EDITTABLE{}%
+| * Detailed List of Plugins* |
+| Name | *Description* | *Area (similar to other table)* |
+| ^ | *Find* | | | | | *Edit* | | | | | *Organize* |
+| ^ | 0 | A | B | C | D | 0 | A | B | C | D | 0 | A | B | C | D |
+| _Link Suggestion_ || 1 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+| Seealso || 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| SeeAlsoSimilarArticles || 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| DidYouMean || 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| QuickLink || 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Link_Suggest || 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+| Search_Suggest || 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+| MetaKeywords (*) 
+
+| PagesfromTemplate 
+
+
+
+
+
+
+---+++++ Mediawiki:
+
+*PlugIns:*
+[[http://www.mediawiki.org/wiki/Extension:DidYouMean]]
+
+[[http://www.mediawiki.org/wiki/Extension:Link_Suggest]]
+
+[[http://www.mediawiki.org/wiki/Extension:MetaKeywords]]                   (*)
+
+[[http://www.mediawiki.org/wiki/Extension:PagesfromTemplate]]
+
+[[http://www.mediawiki.org/wiki/Extension:QuickLink]]
+
+[[http://www.mediawiki.org/wiki/Extension:Search_Suggest]]
+
+[[http://www.mediawiki.org/wiki/Extension:Seealso]]
+
+[[http://www.mediawiki.org/wiki/Extension:SeeAlsoSimilarArticles]]
+
+[[http://www.mediawiki.org/wiki/Extension:SemanticMediaWiki]]          (*)
+
+[[http://www.mediawiki.org/wiki/Extension:UsabilityInitiative]]
+
+*Concepts:*
+Categories
+
+
+---+++++ TWiki
+
+*PlugIns:*
+[[http://twiki.org/cgi-bin/view/Plugins/DirectedGraphWebMapPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/DpSyntaxHighlighterPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/EditChapterPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/FindElsewherePluginDevArchive]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/ForUserLanguagesPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/SearchSummaryPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/SelectTagPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/SingletonWikiWordPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/SpellerPagesPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/SuggestLinksPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/SynonymPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/SyntaxHighlightingPlugin]]
+
+[[http://twiki.org/cgi-bin/view/Plugins/TagCloudPlugin]]               (*)
+
+[[http://twiki.org/cgi-bin/view/Plugins/TopicCreatePlugin]]             (*)
+
+[[http://twiki.org/cgi-bin/view/Plugins/TreePlugin]]
+
+*Concepts:*
+Tags
+
+_Basic ideas:_
+
+_What do PlugIns offer? What exist? Why?_
+
+_Introducing the GAP between scientific research and average PlugIn development._
+
+_(*TODO*: search paper/statistics on PlugIn Development)_
+
+-> _Reasons_???
+
+_POV: general/researcher/developer/designer/user_
+
+leads to: motivation to reduce the gap
+
+---+++ 3. Strategy/Concept
+ 
+---++++ 3.1. Theoretische Grundlagen
+
+Something about the problem that led to the gap
+
+* Main Question: (POV:general/researcher)*
+
+   1. What additional informations can be achieved by using NLP? And how? (-> list)
+      1. Similar texts
+      2. extraction of keyphrases
+      3. finding synonyms
+      4. ....
+   2. How can they help the users of a wiki? (->list)
+       1. find duplicates, find related articles, ...
+       2. find articles, summarization, ...
+       3. ...
+
+*Introduction to wikulu*
+
+How it works. .... ... ....
+
+*Defining and selecting some examples for implementation*
+
+Selection of examples for implementation.
+
+Reasons.
+
+-> Basic tasks of thesis
+
+---++++ 3.2. Use cases
+
+*Defining user classes*
+   1. New User/Explorer: Unexperienced in the usage of wikis and comparable systems
+   2. Advanced User: Familiar with most of the features
+   3. Top User: Administrates/Moderates the Wiki, Organization
+
+*Defining use cases*
+   1. Read something about ...
+   2. Put in informations about ... 
+   3. Structure existing information ...
+_have to been broken down in quite small and basic tasks: analysis step-by-step_
+
+---+++++ Starting Defining the Use Cases:
+
+*Setting:*
+Small company with a new wiki system, that already contains some articles.
+Willing to put all relevant informations quickly to the wiki for further uses.
+
+*First Level Use Cases:*
+
+Level 1 User: Experienced employee know a lot about the company, but is new in the use of a wiki.
+Is told to add some informations related to his work into the wiki.
+So the first step is to find the relevant artice or be sure that there is none.
+
+Finding the artice:
+   * Getting a term in mind for the topic
+   * Search the search interface ;-) (differnt in TWIKI and MediaWiki)
+   * Phrasing a search query 
+   * Checking the results
+   * A: He things none fits his topic
+   * B: He finds an article and wants to add/change some parts
+
+Where can NLP help?
+
+- Query, Search Interface, Results
+  
+A: Creating an artice:
+   * He sets a topic/name for his artice
+   * He starts writing (text, headlines, links)
+   * _Works on layout (tables)_
+   * _Structuring the content_
+
+Further questions: How is the process in mind? What is the order of the steps? Fixed or individual?
+
+Where can NLP help?
+
+- Finding good Topic, Organization, Structuring, Linking
+
+When can these techniques applied and when are they needed?
+
+How should they be deigned?
+
+B: Changing an existing article
+   * _quite similar to A_
+
+*Conception and development of new PlugIns*
+
+Ideas from the use cases should now be a starting point for the development of the new PlugIns.
+
+_( -> Which ideas are implementable? How much work? Existing structure)_
+
+_Conception of Design/Design Principles_
+
+---+++ 4. Design
+
+Guidlines, Heuristics, Norms and Rules to use
+
+Other Usability Techniques to apply (KSL Method, c. Walkthrough)
+
+Results of first design analysis
+
+---+++ 4. Implementation of Mock-Ups
+
+Building the mock ups....
+
+---+++ 5. First Evaluation
+---+++ 6. Implementation
+---+++ 7. Second Evaluation
+
+---+++ 8. General Discussion
+
+---+++ 9. Conclusions
+---+++ 10. References
+ </noautolink>
+
+-- Main.StefanLaabs - 26 Apr 2010
+   * [[%ATTACHURL%/Motivation.pdf][Motivation.pdf]]: Chapter 1
+
+%META:FILEATTACHMENT{name="Motivation.pdf" attachment="Motivation.pdf" attr="" comment="Chapter 1" date="1278188765" path="Motivation.pdf" size="1778507" stream="Motivation.pdf" tmpFilename="/var/tmp/CGItemp6537" user="StefanLaabs" version="1"}%

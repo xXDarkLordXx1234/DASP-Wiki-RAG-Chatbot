@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="GeorgiValkanov" date="1355217781" format="1.1" version="2"}%
+%META:TOPICPARENT{name="WeeklyProgressUpdate"}%
+-- Main.GeorgiValkanov - 2012-12-11
+---++ AKA Semantic Relatedness.
+
+So far I've found several ways to measure this
+
+   * Based on WordNet - (A. Budanitsky) - Calculates paths between words in WordNet. 
+   * Pair scaling with vectors - (R. Bayardo) - Similarity on search terms based on similarity of result vectors
+   * Extended gloss overlap - (S.Banerjee) - WordNet - based approach. Shared words and glosses (definitions)
+   * Clustering of Similar Words - (D.Lin) - Builds new thesauri based on large corpuses 
+   * Word senses - (P.Panrel) - Word clustering

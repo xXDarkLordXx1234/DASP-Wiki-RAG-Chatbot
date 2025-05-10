@@ -1,0 +1,29 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1303135098" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WikipediaAnalysis"}%
+---+ JWPL LMF Mapping
+%TABLE{ sort="off" tableborder="1" cellborder="1"}%
+%EDITTABLE{  sort="off" tableborder="1" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Feature* | *Representation Class* | *Extraction Points* | *LMF Class* | *LMF Attribute* | *Comment* |
+| __Wikipedia__ | Wikipedia | | - | - | |
+| - Language | Language | Wikipedia: getLanguage() | - | - | |
+| __Page__ | Page | Wikipedia: getPage(), <br>getPages(), <br>getArticles()<br>Category: getArticles() | | | |
+| - Title | Title | Page: getTitle()<br>Wikipedia: getTitles() | | | |
+| - Text (Wiki Markup) | String | Page: getText() | | | |
+| - Plain Text | String | Page: getPlainText() | | | |
+| - Page Categories | Set&lt;Category> | Page: getCategories() | | | |
+| - Redirects | Set&lt;String> | Page: getRedirects() | | | |
+| - Inlinks | Set&lt;Page> | Page: getInlinks() | | | |
+| - Inlink Anchors | Set&lt;String> | Page: getInlinkAnchors() | | | |
+| - Outlinks | Set&lt;Page> | Page: getOutlinks() | | | |
+| - Outlink Anchors | Map&lt;String, Set&lt;String>> | Page: getOutlinkAnchors() | | | |
+| - Is Disambiguation | boolean | Page: isDisambiguation() | | | |
+| - Is Redirect | boolean | Page: isRedirect() | | | |
+| - ParsedPage | ParsedPage | Page: getParsedPage() | | | |
+| __Category__ | Category | Wikipedia: getCategory(), <br>getCategory()<br>Page: getCategories() | | | |
+| - Title | Title | Category: getTitle() | | | |
+| - Articles | Set&lt;Page> | Category: getArticles() | | | |
+| - Parent Categories | Set&lt;Category> | Category: getParents() | | | |
+| - Children Categories | Set&lt;Category> | Category: getChildren() | | | |
+| - Sibling Categories | Set&lt;Category> | Category: getSiblings() | | | |
+| - Descendants | Iterable&lt;Category> | Category: getDescendants() | | | |
+<nop>

@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="ShuoYang" date="1315423276" format="1.1" version="13"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll von DARIAH-DE, Shuo Yang
+
+---++ Aktuelle Arbeit: Jul-Sep 2011
+
+---+++ Aufgabenübersicht
+
+Siehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/buglist.cgi?product=DARIAH-DE][Bugzilla]].
+
+
+---+++ Protokoll
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* | *Neu* |
+| 14.07.2011 | Organisatorisches, Einarbeiten | 1.5 | Kickoff-Meeting mit Richard über DARIAH-DE Projekte, Einarbeiten in DARIAH-DE sowie eSciDoc Projekt | |
+| 15.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]: Get familiar with eSciDoc | 1.5 | eSciDoc sowie PostgreSQL Datenbank installiert und konfiguriert. Danach gleiches Problem wie Richards gehabt | |
+| 17.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]: Get familiar with eSciDoc | 2.5 | Aktualisierung dieser Wiki-Seite. <br> Debuggen von eSciDoc Infrastructure: mit alterer Version 1.2.2 funktioniert die "Ingest examples"-Test. | |
+| 18.07.2011 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]</del> erledigt | 2 | Kommunikation mit Mailing-Liste <p> In release package wurde falsche Version von AdminTool aufgenommen. Gelöst mit neuer Version von AdminTool | |
+| 21.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1065][ID1065]] Short summary of Fedora and eSciDoc | 2 | [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DARIAH_DE/FirstLookAtFedoraAndESciDoc][First look at Fedora and eSciDoc]] | |
+| 28.07.2011 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1065][ID1065]]</del> erledigt | 1 | Hinzugefügt: Übersicht vergleichbarer Anwendungen von eSciDoc | |
+| 15.08.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]] Short summary of MOPSEAS | 0.5 | Angefangen, https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DARIAH_DE/Mopseus |  |
+| 18.08.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]] Short summary of MOPSEAS | 1.5 | Fortsetzung der Evaluation |  |
+| 19.08.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]] Short summary of MOPSEAS | 2 | Fortsetzung der Evaluation, Beratung durch Mailing-List <p> Erstellung von dem Handbuch über Installation von eSciDoc |  |
+| 20.08.2011 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]]</del> erledigt | 0.5 | Zusammenfassung erstellt |  |
+| 02.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi][ID1123]] Synthesize requirements | 1.5 | Angefangen, sehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi][Bugzilla]] für die Entwicklung des Dokuments |  |
+| 05.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi][ID1123]] Synthesize requirements | 1.5 | Fortsetzung | * |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 60)$EXEC($GET(total_hour))"}% | bis Ende September noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden | |
+<nop>
+
+
+-- Main.ShuoYang - 2011-09-07

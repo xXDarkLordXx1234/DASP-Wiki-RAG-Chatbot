@@ -1,0 +1,126 @@
+%META:TOPICINFO{author="eckle" comment="save topic" date="1407241747" format="1.1" reprev="24" version="24"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Anukiran Solur Master Thesis
+
+   * related bachelor thesis: IsabelleMaschik
+      * *PLEASE DISCUSS ISSUES WITH Spring, Wicket, Hibernate ...*
+
+
+---+++ Background material
+   * WebApplicationWithSpringWicketHibernate
+   * EmbeddedUbyDatabase
+   * students SVN  https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/solur
+   * Uby UI Web App https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_ng/uby/webui/trunk/de.tudarmstadt.ukp.uby.webui-nonfree
+   * current UbyVis implementation: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/solur/de.tudarmstadt.ukp.webapp.ubyvis
+   * IMPORTANT: use uby_open_0_3_0 with Uby version 0.4.0, use embedded Uby DB with Uby version 0.5.0
+
+---### Task specification
+   * [[%ATTACHURL%/TaskDescription_26.2.14.pdf][TaskDescription]]
+   * Analysis Questions of interest: 
+      * Which resources have most senses for the given lemma?
+         * this Q. is independent of sense links
+         * why interesting: tells us something about the individual resources
+            * e.g. is the number of senses in a resource related to the sense coverage / granularity of the sense inventory
+      * How many sense clusters exist? How large are they?
+         * why interesting: ...
+      * How "balanced" are the clusters? Is one resource dominating?
+      * Which resources are clustered together - and which not?
+         * why interesting: indicates complementary vs. similar sense inventories (mind that sense enrichment can only be performed within sense clusters)
+      * Comparison between the alignments produced by various similarity measures  
+         *  comparison with respect to their impact on the previous 2 questions
+
+---+++ Meetings
+
+*vacation and absence times*
+   * JEK: 11.-17. August, 25.-29. August
+
+
+---++++ 05-08-2014
+AS, JEK, DO
+   * discussion of current visualization implementation by AS
+
+
+---++++ 29-07-2014
+AS, JEK, DO
+   * discussion of current visualization options implemented by AS
+   
+
+---++++ 22-07-2014
+AS, JEK, DO
+   * discussion of current visualization options implemented by AS
+
+
+---++++ 15-07-2014
+AS, JEK, DO
+   * discussion of different visualization options implemented by AS
+
+
+---++++ 08-07-2014
+AS, JEK, DO
+   * FIXME the computation of sense clusters in the current Web UI is buggy
+      * sometimes, the same sense appears in more than one cluster
+   * DO introduces her new vis. design
+   * related work on the Semantic Web http://www.semantic-web-journal.net/content/approaches-visualising-linked-data-survey
+
+
+---++++ 01-07-2014
+AS, JEK, DO
+
+   * DONE JEK: revised the task description, focus on analysis questions, provided clusters for example verbs
+
+---++++ 24-06-2014
+AS, JEK, DO
+
+   * discussed status of sense cluster visualization
+      * sense clusters with senses that all have the same lemma vs sense clusters with senses that have different lemmas
+         * for each sense, also the lemma form could be printed: sense.getLexicalEntry.getLemmaForm()
+
+
+---++++ 17-06-2014
+AS, JEK, DO, IM
+
+   * integrated the web template with d3 visualization and able to query the data from the uby database.
+   * currently working on the following tasks:
+      * 1. Implementation of the textual view (similar to existing tryUby)
+      * 2. Integration of real data ( ajax call to retrieve data and convert to json format) and user interaction( onchange events and transitions) with the mockup visualization.
+
+---++++ 10-06-2014
+AS, JEK
+
+   * discussed/fixed problem with accessing the Uby database in an integrated version of the Web application
+
+---++++ 03-06-2014
+AS, JEK, DO
+
+   * discuss: integration of the Uby Web UI, the SenseLinker Web App (-> D3 component) and the Uby Vis template
+
+
+---++++ 27-05-2014
+AS, JEK
+
+   * DONE JEK scheduled mid-term and final presentations
+      * mid-term 2.9.2014 UKP talks
+      * final 9.12. 2014 UKP meeting
+   * DONE JEK smaller embedded DB and example project (similar to examples from Uby tutorial)
+      * download the embedded DB here: https://drive.google.com/file/d/0B5GlzQMPC1tPYWR2TFZtU3hHNHc/edit?usp=sharing
+      * example project (JAR) sent by email
+      * alternative: check out the project here: (checkout as Maven project!): https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_ng/uby/examples
+         * @AS I don't know if you have access
+   * DONE AS: setup eclipse with Maven if not already done, try example queries (in the package "queries")
+      * for infos on Maven integration see also: https://code.google.com/p/dkpro-tutorials/wiki/EclipseInstallationAndSetup
+   * TODO AS think about how to merge the Uby Web UI and generic template for Web application and how to integrate the D3 visualization, try to actually merge and integrate it; we will discuss issues in the next meeting
+   * DONE JEK check out problem with embedded H2 DB
+   * DONE JEK check in Web Application template into students SVN repo.
+
+---++++ 20-05-2014
+AS, DO, JEK
+
+   * discussing implementation of current mockup
+   * discussed next steps
+
+   * Smaller Embedded DB - 26th May
+   * Framework for Web App - 26th May
+
+-- Main.JudithEckleKohler - 2014-05-05
+
+%META:FILEATTACHMENT{name="TaskDescription_26.2.14.pdf" attachment="TaskDescription_26.2.14.pdf" attr="" comment="" date="1400590007" path="TaskDescription_26.2.14.pdf" size="301475" user="oelke" version="1"}%

@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="eckle" comment="save topic" date="1401904974" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="IsabelleMaschik"}%
+---++ Annotation Scheme for Sense Link Curation
+
+   * 2 Modes: 
+      * validate existing sense links, i.e. annotating existing links as correct/delete
+         * retrieve existing links by querying the SenseAxis; display pairs of original sense IDs (not Uby Sense IDs)
+         * consequence (not part of the thesis): deletion of sense links in the alignment files (that lists pairs of original sense IDs)
+      * validate non-existing links, i.e. annotating pairs of senses that are not linked as correct (when their meaning is not equivalent) or add (there should be a sense link)
+         * where pairs of senses are *senses from different lexicons with the same lemma and POS*; calculate all possible candidate sense pairs that are not linked based on their lexical entries in different lexicons and based on the SenseAxis
+         * consequence (not part of the thesis): adding the pair of sense links (original sense IDs) to the alignment file
+   * Database table !SenseLinkAnnotation
+      * ID
+      * source: original sense ID (to be found in MonolingualExternalRef)
+      * sourceContext: sense definition; alternative context, if a sense definition is missing
+      * targetContext: sense definition; alternative context, if a sense definition is missing
+      * target: original sense ID (to be found in MonolingualExternalRef)
+      * link: yes|no
+      * annotation: correct|delete|add
+      * user
+      * date
+      * annotationProject
+
+-- Main.JudithEckleKohler - 2014-06-04

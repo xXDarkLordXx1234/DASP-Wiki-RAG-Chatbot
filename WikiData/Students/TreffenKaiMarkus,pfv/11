@@ -1,0 +1,83 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1174406630" format="1.1" version="11"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+---+ Treffen zw. Kai und Markus
+
+---+++ 16.03.2007
+_Agenda_:
+
+   * Besprechung der bisher gesammelten Amazon-Daten
+   * Besprechung der API
+      * Interfaces statt Klassen als Rückgaberwerte (Vector --> List, Collection, Iterable)
+         * **KMH:** erledigt.
+      * Read-Only Objekte (kein set())
+         * **KMH:** erledigt. Für die entsprechenden Methoden wurde das Zugriffsattribut _protected_ (_package-private_) gesetzt.
+      * Framework als enum
+         * **KMH:** erledigt. Framework wurde generell entfernt, da es sich nur auf Derby bezog. Andere DBs sollen ja aber auch funktionieren. Daher wurde der Constructor neu definiert.
+      * Query-Klassen für Reviews (, Produkte, Kunden): Min/Max Bewertung, Bewertungen, Kategorie
+      * Tool zum Kopieren Amazon -> Amazon DB dokumentieren (Lesen der Konfig aus Properties file)
+         * **KMH:** erledigt. (s. DatenbankEntwurf#Dokumentation)
+   * Statistische Auswertung der Daten. Was? Wie? (Task Definition) (jeweils pro Kategorie)
+         * **KMH:** erledigt. (s. StatusTreffen)
+      * Wie verteilen sich die Reviews auf die Produkte. Histogram über die Anzahl der Reviews
+      * Verteilung der Bewertungen über die Reviews
+      * Verteilung der Bewertungen (gut/schlecht) über die Reviews
+      * Wie oft sind Reviews bewertet, die in ein bestimmtes bin fallen?
+   * Anmeldung Diplomarbeit
+      * Ja, beim nächsten Mal (-->Statusmeeting)
+
+---+++ 02.03.2007
+   * Pflichtenheft
+     * Markus:  Die besten Ergebnisse von Kim, nicht das gesamte System
+   * TODOs:
+      * Datenbankschema anpassen
+      * Tool zum auslesen
+      * API-Struktur
+   * Nächstes Treffen: in 2 Wochen
+
+---++ 31.1.2007
+Todos:
+   * Kai: Wiki lernen
+   * Kai: Liste von related Work + Minizusammenfassungen in !LaTeX (23.2.)
+   * Kai: Liste mit Features + eine Meinung dazu (23.2.)
+   * Kai (heute oder morgen): Ausformulierter Zeitplan im Wiki oder Word / !OpenOffice
+   * Markus (heute oder morgen): Termin für Statusmeeting machen und mailen
+   * Kai: Markus erklären, wie man eine Diplomarbeit anmeldet
+   * Markus+Kai: Titel?
+   * Markus: Anmelden zum 15.3. OK?
+   * Kai: Enthällt der RSS Feed von Livejournal die geheimen EInträge?
+
+Nächstes Treffen: Statustreffen
+
+Todos vom letzten Mal:
+
+   * Kai:
+      * Zeitplan
+      * Aufgabenbeschreibung
+      * Datenmodell (evtl.)
+   * Markus:
+      * UIMA Tutorial schicken  -- done
+      * Account Beantragungen machen -- done
+      * Kopie der Verträge an Kai
+      * Schnell: Geht das mit den 2 Wochen Urlaub? -- done
+      * Blog / Wiki? : Siehe KaisBlog
+
+
+---++ 25.1.2007
+
+Todos:
+
+   * Kai:
+      * Zeitplan
+      * Aufgabenbeschreibung
+      * Datenmodell (evtl.)
+   * Markus:
+      * UIMA Tutorial schicken
+      * Account Beantragungen machen
+      * Kopie der Verträge an Kai
+      * Schnell: Geht das mit den 2 Wochen Urlaub?
+      * Blog / Wiki?
+
+
+
+
+-- Main.MarkusWeimer - 31 Jan 2007

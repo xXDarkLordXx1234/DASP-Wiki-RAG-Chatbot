@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="AnnotatorBaselines"}%
+---++ Introduce Type: SummarySentence, ExtendedSummary
+
+To introduce new Types to the TypeSystem additionally to DkPro-TypeSystem, we can
+add the Xml-Descriptors to /desc/type, where Types are read from.
+
+SummarySentence with Feature "sentenceScore" (desc/type/summarySentence.xml):
+<blockquote>
++ typeDescription
+<br>- - name: de.thesis.summaryExtraction.type.summarySentence
+<br>- - description: Summary Sentence
+<br>- - supertypeName: de.tudarmstadt.ukp.dkpro.core.type.Sentence
+<br>- - features:
+<br>- - - featureDesciption:
+<br>- - - - name: sentenceScore
+<br>- - - - description: Sentence Score for Summary
+<br>- - - - rangeTypeName: uima.cas.Double
+</blockquote>
+
+ExtendedSummary with Feature "sentenceArray" (desc/type/extendedSummary.xml):
+<blockquote>
++ typeDescription
+<br>- - name: de.thesis.summaryExtraction.type.extendedSummary
+<br>- - description: Extended Summary
+<br>- - supertypeName: uima.tcas.Annotation
+<br>- - features:
+<br>- - - featureDesciption:
+<br>- - - - name: sentenceArray
+<br>- - - - description: Array of Sentences in Summary
+<br>- - - - rangeTypeName: uima.cas.FSArray
+<br>- - - - elementType: de.thesis.summaryExtraction.type.summarySentence
+</blockquote>

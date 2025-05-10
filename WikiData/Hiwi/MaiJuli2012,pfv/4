@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1339976097" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Mai-Juli 2012
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| SeerSuite | 14.05.2012 | 3.0 | Einarbeitung in CiteSeer |
+| SeerSuite | 24.05.2012 | 6.0 | Installation von JDK, Tomcat, Solr, Ant etc. am Server |
+| SeerSuite | 26.05.2012 | 6.0 | CiteseerX-Webapp läuft auf localhost:8080/citeseerx |
+| SeerSuite | 05.06.2012 | 2 | Seersuite installation guide:[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/SeerSuite/InstallingSeersuite.pdf][InstallingSeersuite.pdf]] |
+| SeerSuite | 17.06.2012 | 6 | Test Data ist importiert. Man kann über die Suche darauf zugreifen. z.B.<br>[[http://seersuite.ukp.informatik.tu-darmstadt.de:8080/citeseerx/search?q=nlp&submit=Search&sort=rel][http://seersuite.ukp.informatik.tu-darmstadt.de:8080/citeseerx/search?q=nlp&submit=Search&sort=rel]] |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60 | bis Ende Juli 2012 |
+<nop>

@@ -1,0 +1,52 @@
+%META:TOPICINFO{author="schmidt" comment="" date="1620076078" format="1.1" reprev="3" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.TilmanBeck - 2021-04-22
+
+*Supervisor*: M.Sc. Tilman Beck 
+
+*Start Date*: 12.04.2021
+
+*Mid-Term Presentation Date*: 12.07.2021
+
+*Final Presentation Date*: 21.09.2021 
+
+*End Date*: 12.10.2021 [To be finalised by Informatik Prüfungskommission]
+
+---++++ *27.04.2021-04.05.2021*
+---++ Progress
+   * Able to get most section headers in cleaned ACL ARC using regex
+   * Can remove page numbers from cleaned ACL ARC
+   * Found a way to distinguish (most) numbered lists from section headers
+   * Structured cleaned ACL ARC into pairs of section header and text for each section
+   * Trained CSAbstruct
+   * The Open Access subset of PubMedCentral contains 13978 articles from the PubMed-RCT dataset
+
+---++ Encountered Problems
+   * Section names are not standardized except for "Abstract" and "Introduction". As a result, separating methods from results and previous works can be difficult.
+     Especially since "Methods" doesn't seem to appear as a header in most papers.
+   * Regex can't reliably distinguish between section headers and numbered lists or beginning with specific numbers in general
+   * Section headers are sometimes split into two or more lines; solution can result in errors in specific lines
+   * CSAbstruct training did not work out of the box
+   * PubMedCentral [[https://www.ncbi.nlm.nih.gov/pmc/about/copyright/][does not allow bulk downloads of articles except for a specific subset]]
+
+---++ Next Steps
+   * Create structure from parsed file content
+
+---++++ *20.04.2021-27.04.2021*
+---++ Progress
+   * Tested different thresholds for deciding whether multiple references should be selected
+      * Threshold slightly improves task 1A sentence overlap, but reduces Rouge score (from 0.139 to 0.045)
+      * Threshold greatly improves task 1B performance from 0.170 to 0.375 (both F1 micro)
+   * Took a look at downloading ACL ARC and Pubmed RCT full texts
+
+---++ Encountered Problems
+   * Had to restructure training/validation data for task 1A and retrain model for threshold tests
+   * Retrained model performance is slightly worse than previous (likely due to small changes in the data splits)
+   * Predicted probabilities vary and are extremely close on the validation data, hard thresholds had bad results
+   * Decided to use a portion of the highest probability reference as threshold, e.g. if the probability of a reference is within 0.1% of the highest probability it is selected too
+   * The [[https://acl-arc.comp.nus.edu.sg/][ACL ARC page]] appears to be offline
+
+---++ Next Steps
+   * Determine how many articles in Pubmed RCT are freely available
+   * Write tool to automatically crawl those articles
+   * Possibly get ACL ARC papers via Github if the site stays offline

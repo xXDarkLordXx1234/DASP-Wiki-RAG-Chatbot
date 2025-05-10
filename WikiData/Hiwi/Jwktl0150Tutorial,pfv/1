@@ -1,0 +1,84 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1294155108" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WiktionaryAnalysis"}%
+---+ JWKTL 0.15.0
+
+---++ Parsing
+   1 Download Wiktionary dump (pages-articles.xml) from http://dumps.wikimedia.org/
+   2 Extract dump file
+   3 Parse dump file:
+
+<verbatim>
+      File dumpFile = new File(PATH_TO_DUMP_FILE);
+      File outputDirectory = new File(PATH_TO_PARSED_WIKTIONARY);
+      boolean overwriteExisting = OVERWRITE_EXISTING_FILES;
+		
+      Wiktionary.parseWiktionaryDump(dumpFile, outputDirectory, overwriteExisting);
+</verbatim>
+
+   __PATH_TO_DUMP_FILE__ : path to extracted Wiktionary dump file<br>
+   __PATH_TO_PARSED_WIKTIONARY__ : output folder, where the parsed Wiktionary should be placed<br>
+   __OVERWRITE_EXISTING_FILES__ : set TRUE if you want to overwrite existing files<br>
+   
+---++ Extracting Glosses
+If you want to extract all glosses for a given word use following code snippet:
+
+<verbatim>
+   IWiktionaryEdition wkt = Wiktionary.open(WIKTIONARY_DIRECTORY); // Opening Wiktionary
+
+   List<IWiktionaryEntry> entries = wkt.getEntriesForWord(WORD); // Extracting all Wiktionary entries for a given word
+		
+   for(IWiktionaryEntry entry : entries){ // Iterating over the entries
+      for(WikiString gloss : entry.getGlosses()){ // Iterating over the glosses of each entry
+          System.out.println(gloss.getPlainText());  
+      }
+   }
+   
+   wkt.close(); // Closing the Wiktionary
+</verbatim>
+Gloss text will be extracted without any wiki markup. If you want glosses with wiki markup use following code instead:
+<verbatim>
+gloss.getTextIncludingWikiMarkup();
+</verbatim>
+
+---++ Extracting translations
+
+<verbatim>
+   IWiktionaryEdition wkt = Wiktionary.open(WIKTIONARY_DIRECTORY); // Opening Wiktionary
+
+   List<IWiktionaryEntry> entries = wkt.getEntriesForWord(WORD); // Extracting all Wiktionary entries for a given word
+		
+   for(IWiktionaryEntry entry : entries){ // Iterating over the entries
+      Map<Language, List<String>> langTranslations = entry.getAllTranslations(); // Extracting all translations with corresponding languages
+      for(Language language : langTranslations.keySet()){ // Iterating over languages
+         List<String> translations = langTranslations.get(language); // Extract translation for each language
+         for(String translation : translations){  // Iterating over translations
+            System.out.println(translation);
+         }				
+      }
+
+   }
+   
+   wkt.close(); // Closing the Wiktionary
+</verbatim>
+Alternatively you can extract translations only for a specific language:
+<verbatim>
+List<String> translations = entry.getAllTranslations(Language.ENGLISH);
+</verbatim>
+If translation is assigned to a specific sense in Wiktionary you can extract translations only for this sense:
+
+<verbatim>
+Map<Language, List<String>> langTranslations  = entry.getAssignedTranslations(SENSE_NR);
+</verbatim>
+or
+<verbatim>
+List<String> translations = entry.getAssignedTranslations(LANGUAGE, SENSE_NR);
+</verbatim>
+If translation is not assigned to any sense use functions
+<verbatim>
+entry.getUnassignedTranslations();
+</verbatim>
+or
+<verbatim>
+getUnassignedTranslations(LANGUAGE);
+</verbatim>
+instead.

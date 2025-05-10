@@ -1,0 +1,100 @@
+%META:TOPICINFO{author="RichardSteuer" date="1358863691" format="1.1" version="109"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+This topic describes how to perform the experiments with the IR framework that I use in [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/RichardSteuerMasterthesis][my thesis]].
+
+<div style="float:right; background: solid white; border: solid grey 1px; padding: 0.5em">
+<b>Quick links</b><br/>
+BaselineIR<br/>
+QueryAnalysis<br/>
+</div>
+
+%TOC%
+
+---++ Experiments
+
+---+++ 1. Obtain the code
+
+   * SVN directory: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/steuer/de.tudarmstadt.ukp.ir.masterthesis.steuer.first/
+   * the main methods are in the  current working package called *pipelines*
+
+---+++ 2. Indexing the documents
+
+---++++ 2.1 The document collection
+
+   * as documents, we use the CLEF-WSD dataset (Robust WSD task), see _"CLEF 2009 Ad Hoc Track Overview: Robust-WSD Task", 2009_ and http://ixa2.si.ehu.es/clirwsd/ ([[http://ixa2.si.ehu.es/clirwsd/index.php?option=com_content&task=view&id=19&Itemid=35][just the data]]) . The full dataset is comprised of:
+      * GH95_NUS: 56.472 files (5,1G in total)
+      * LAT94_NUS: 110.245 files (13G in total)
+      * GH95_UBC: 56.472 files (5,4G in total)
+      * LAT94_UBC: 110.245 files (14G in total)
+
+   * HINT: to quickly get the number of files in a large directory: _find dirname -maxdepth 1 -type f | wc -l_
+   * See example here: XmlFileExample
+
+---++++ 2.2 Indexing
+
+   * navigate to the class *IndexDocument* and put the files as command line parameters to eclipse, e.g. by "-inputdir1  ${inputdir1} -inputdir2 ${inputdir2} -outputfile ${outputfile}"
+   * run the program, the index will be created at the given location name ([[http://ir.dcs.gla.ac.uk/wiki/Terrier/IndexStructures Index Structure]])
+   * HINT: indexing the whole document collection took two hours on frink (1G index) (or just 40min for one document collection)
+   * %RED% WARNING: %ENDCOLOR% the XML reader (in the version I took from the paper) expects all the file names in directory 1 to be found in directory 2 as well. That is, dir1 <= dir2, or dir2 >= dir1, respectively.
+
+---++++ 2.3 Maven export indexing to compute server
+   * go to local workspace project and do: _mvn -DskipTests=true -Djava.memory.max=8000m -Ppackage-deploy_
+   * scp the directory  to the compute server
+   * on the compute server deploy directory: _bin/run -Dmainclass=pipelines.IndexDocument -Dargline="--inputdir1 /home/steuer/RobustWSD/allNUSdocs --outputfile /home/steuer/IrExperimentsOutput/docIndexNUS_all --lang en"_
+
+---+++ 3. Read the topics and perform the search
+
+---++++ 3.1 Overview
+
+   * the topic and judgement files can be obtained via http://ixa2.si.ehu.es/clirwsd/index.php?option=com_content&view=article&id=19&Itemid=35
+   * navigate to the class *SearchTopic* and put the !IdxDir and the output dir as command line parameters to eclipse, e.g. by "-inputdir  ${IdxDir} -outputfile ${outputfile} -lang ${lang}"
+   * the link to the topic files directories can be set within the source code (e.g. "src/main/resources/train_topics/...")
+   * the given file will contain the output in the *TREC output format*, e.g.: 207    1    GH950102-000036    0.0    7.625813961029053    null
+   * The columns are as follows (source: http://old-site.clsp.jhu.edu/ws2002/preworkshop/labs/resnik/lab.html):
+      * 1. qid (integer query ID)
+      * 2. iter
+      * 3. docno (document number, a string)
+      * 4. rank (integer starting from 0)
+      * 5. sim
+      * 6. run_id (identifying the system name, optional)
+
+   * See topic file example here: TopicFileExample
+
+---++++ 3.1 Maven export searching to compute server
+   * go to local workspace project and do: _mvn -DskipTests=true -Djava.memory.max=8000m -Ppackage-deploy_ (takes me 4 minutes)
+   * scp the directory  to the compute server
+   * go to the directory on the server and do: _ln -s ~/src src_ (for resource files: train/test queries, stopword file)
+   * on the compute server deploy directory: _bin/run -Dmainclass=pipelines.SearchTopic -Dargline="--inputdir /home/steuer/IrExperimentsOutput/docIndexNUS_TokenLemmaStem --outputfile /home/steuer/IrExperimentsOutput/SearchTopic.output --lang en"_
+   
+---+++ 4. Evaluation
+
+   * Having this output file, you now can evaluate your system: There, we use the tool *[[http://trec.nist.gov/trec_eval/][trec_eval]]* ([[http://old-site.clsp.jhu.edu/ws02/preworkshop/labs/resnik/lab.html][Info]]), e.g.:
+   * _"trec_eval ah-robust-english-train-clef2008.txt smallCorpus-result"_ , whereby
+      * _ah-robust-english-train-clef2008.txt_ is a judgement file, you may obtain it by the link above
+      * _smallCorpus-result_ is the output file given to the *SearchTopic* class
+   *  the resulting output has many variables, some are:
+      * num_q (number of queries)
+      * num_ret (Total number of documents retrieved over all queries)
+      * num_rel (Total number of relevant documents over all queries)
+      * num_rel_ret (Total number of relevant documents retrieved over all queries)
+      * map (Mean Average Precision)
+      * gm_ap (Average Precision. Geometric Mean, q_score=log(MAX(map,.00001)))
+      * R-prec (R-Precision (Precision after R (= num-rel for topic) documents retrieved))
+      * bpref (Binary Preference, top R judged nonrel)
+      * recip_rank (Reciprical rank of top relevant document)
+      * ircl_prn.X.XX (Interpolated Recall - Precision Averages at X.XX recall)
+      * P5, P10, ...
+   * *-q* option: In addition to summary evaluation, give *evaluation for each query* 
+
+---++++ 4.1 Evaluation browsing
+
+   * I wrote a tool to display the evaluation and search results on HTML pages to browse them.
+   * E.g. execute it on frink like this:
+   * _./bin/run -Dmainclass=utils.GenerateHTMLDocs -Dargline="/home/steuer/IrExperimentsOutput/SearchTopic.TokenLemma.Test.output /home/steuer/ah-robust-english-test-clef2008.doi.txt /home/steuer/IrExperimentsOutput/treceval.full /home/steuer/src/main/resources/test_topics/topics.en.NUS/"_
+   * In the search results, only the first 1000 results are displayed, otherwise the files would get too big and usage would be inconvenient.
+---++See also
+
+ * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/HowToRunExperimentsOnComputeServer HowToRunExperimentsOnComputeServer]]<br/>
+ * WebBasedTerrier (own topic)<br/>
+ * QueryAnalysis (own topic)<br/>
+ * BaselineIR (own topic)<br/>

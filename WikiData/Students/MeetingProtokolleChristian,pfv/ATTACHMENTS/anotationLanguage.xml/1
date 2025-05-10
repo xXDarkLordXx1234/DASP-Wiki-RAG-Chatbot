@@ -1,0 +1,59 @@
+<!--
+	Comments: positionen
+	alle positionen werden angegeben wie sie der courser 
+	bei eclipse angibt. Also [ZEILE]:[SPALTE/ZEICHEN]
+
+<page id="" name="" date="2006">
+</page>
+
+<section level="" start="" title="">
+	<sectiontitle start="" end=""></sectiontitle>
+</section>
+
+	Comments: section
+	start ist die position vor dem ersten gleichheitszeichen
+	level ist die anzahl der gleichheitszeichen
+	title ist der name der section wie section.getTitle()
+	
+	Comments: sectiontitle
+	zum überprüfen der informationen in section.getTitleElement()
+	start ist die position vom ersten nicht leerzeichen,
+	end ist die position nach dem letzen nicht leerzeichen
+	
+<paragraph start="" end="" type="">
+</paragraph>
+
+	Comments: paragraph
+	start ist die position ?
+	end ist die position nach dem letzen nicht leerzeichen
+	type: normal|boxed|indented weglassen -> normal
+	
+<bold start="" end=""/>
+<italic start="" end=""/>
+
+	Comments:
+	start position after the tag
+	end position before the tag
+
+
+<link type="internal" start="" end="" target=""/>
+<link type="external" start="" end="" target=""/>
+<link type="image" start="" end="" target=""/>
+
+	Comments:
+	start before tag
+	end after tag
+
+<nestedList start="" numbered="true|false"></nestedList>
+<nestedListElement start="" end=""></nestedListElement>
+
+<definitionlist start=""></definitionlist>
+<definedterm start="" end=""></definedterm>
+<definition start="" end=""></definiton>
+
+<table start="" end=""></table>
+<te start=""></te>
+
+<cathegory></cathegory>
+<languages></languages>
+-->

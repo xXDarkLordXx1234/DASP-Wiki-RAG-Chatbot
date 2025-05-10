@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1295363620" format="1.1" reprev="15" version="15"}%
+%META:TOPICPARENT{name="FrameNetResourcebeschreibung"}%
+---++++ !AnnotationLayers im !FrameNet
+   * Mithilfe der !AnnotationLayers werden im !FrameNet Teile der Annotationssätzen, in Abhängigkeit vom Typ des Layers, nach bestimmten Kriterien markiert/gelabelt.
+   * Layers bestehen aus Labels
+      * Jedes Label ist an ein Teil des Satzes gebunden und beinhaltet einen Namen.
+   * Vier Layertypen werden im !FrameNet als "grundlegend"  bezeichnet:
+      1 Target - Markiert nur das Zielwort (die LU selbst als Target) im Annotationssatz
+         * Beinhaltet in der Regel nur ein Label.
+      2 FE - Markiert Frameelemente im Annotationssatz
+      3 GF - Markiert die Teile des Satzes nach der grammatischen Funktion.
+      4 PT - Markiert die Teile des Satzes nach Phrasentypen
+   * Restliche Layers:
+      * Other - Definition aus dem Buch: _The Other layer holds labels relating to certain special constructional contexts in which the target may occur, such as relative clauses, existential constructions, and extraposition constructions._
+      * part-of-speech Layer - Dieses Layer kann, in Abhängigkeit des POS der LU, folgende Namen besitzen:
+         1 Noun
+         2 Verb
+         3 Adj
+         4 Adv
+         5 Prep
+      * Sent - Sentencelayer besitzt keine Labels und markiert, implizit, den gesamten Satz
+      * NER - Labels in diesen Layers markieren _Named Entities_ und POS der Satzteilen. Dieses Layer wird automatisch generiert.
+   * Layers nicht erwähnt im Buch:
+      * BNC -  Labels dieses Layers sind  Tags aus dem British National Corpus. Deren Bedeutung findet man [[http://www.natcorp.ox.ac.uk/docs/bnc2guide.htm][hier]]
+      * PENN - Labels dieses Layers sind Tags aus der [[http://www.cis.upenn.edu/~treebank/][Penn Tree Bank]]. Die Bedeutung dieser Tags/Labels findet man [[ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz][hier]].
+      * WSL - Definition aus Framenets XML Release Notes for r1.5: _The Word Status Layer
+ was created mainly for internal use by annotators, to keep track of
+ which words are potentially annotatable._
+         * [[FrameNetLUsWithWSLLayer][Liste aller LUs mit WSL-Layer]]
+ 
+%ICON{info}% _Eine detalliertere Beschreibung der Layers ist im Kapitel 3 des Buches zu finden._
+ 
+---++++ _AnnotationSetStatus <-> Layer_ Mappings - Analyse
+| *AnnotationSet-Status* | *Layers* |
+|UNANN|Target, FE, GF, PT, Other, _Noun_, _Verb_, _Adj_, Sent, NER, *BNC*, *PENN*, WSL|
+|MANUAL|Target, FE, GF, PT, Other, _Noun_, _Verb_, _Adj_, _Adv_, _Prep_, Sent|
+|AUTO_EDITED|Target, FE, GF, PT, Other, _Noun_, _Verb_, _Adj_, _Prep_, Sent|
+|AUTO_APP|Target, FE, GF, PT, Other, _Noun_, _Verb_, _Adj_, _Prep_, Sent|
+
+   * Wie erwartet, befinden sich Layers _BNC_ und _PENN_ nur in den !AnnotationSets mit dem Status UNANN.
+   * Jeder Annotationssatz enthält einen !AnnotationSet der entweder _BNC_ oder _PENN_ Layer enthält.
+   * Es existiert kein !AnnotationSet der _BNC_ und _PENN_ Layer gleichzeitig enthält.
+
+---+++ TODO
+   * [Done] Stichprobenartig haben wir gezeigt dass Annotationssätzen mit dem Layer _PENN_, obwohl diese aus der PENN-Treebank stammen, auch in British National Corpus zu finden sind. Es soll untersucht werden ob dies für alle PENN-Sätze im !FrameNet gilt.
+      * SH: Laut Fillmore, 2003 stammen Beispielsätze aus BNC und  ANC (American Newswire Corpus). ANC ist mit dem Penn Tagset getaggt.
+         * Wie groß ist die Stichprobe? Könnten Überlappungen auch zufall sein? (Warum werden verschiedene Tagsets genutzt, wenn alle Sätze im BNC-Format genutzt werden könnten?)
+            * ZM: Die Stichprobe war klein, 3 oder 4 Sätze, weil BNC-Web nur ein Query pro Minute zulässt. Im letzten Meeting war auch der zufällig gewählte Satz mit dem PENN-Layer im BNC gefunden worden, was mich noch mehr daran glauben ließ dass dies für alle Sätze gilt. Ich habe jetzt Sätze gefunden für die BNC-Query keine Hits liefert.
+         * Systematische überlappung von BNC und Penn/ANC ist unwahrscheinlich, da BNC (neben anderen Medien) _britische_ Zeitungstexte enthält und ANC _amerikanische_ (laut BNC und ANC-Dokumentation)
+            * ZM: Ich stimme zu, die Paar überlappenden Sätze sind Zufall gewesen. Wie Du es gesagt hast, wahrscheinlich stammen die Artikel, in denen sich die Sätze befinden, von der gleichen Quelle, was ihr Vorkommen in beiden Corpora erklären würde.
+   * [Done] Stichprobenartig haben wir gezeigt dass Layers _PENN_ und _BNC_ sich gegenseitig ausschließen- das Vorkommen eines Layers schließt das Vorkommen des anderen aus. Es soll untersucht werden ob dies generell gilt.
+   * Untersuchen welche Informationen konkret sich in WSL-Layer befinden.
+
+%META:TOPICMOVED{by="ZijadMaksuti" date="1294095540" from="Hiwi.FrameNetAnnotationSet" to="Hiwi.FrameNetAnnotationLayers"}%

@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="RolandKluge" date="1343288892" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+---+++ Open Questions
+
+   * Can I force PDFReader to accept PDF files not starting with "[+]" or "[-]"?
+   * Convert SeerSuite to Maven project?
+   * Possible to use Git repository?
+
+Technical
+
+   * Problem with nested JSPs?
+      * "account cannot be resolved" in _citeseerx/web/citeseerx_webapp/WEB-INF/jsp/shared_
+      * "account cannot be resolved to a variable"
+      * "mscConfig cannot be resolved"
+   * Missing artifacts, but could be resolved?
+
+-- Main.RolandKluge - 2012-07-23

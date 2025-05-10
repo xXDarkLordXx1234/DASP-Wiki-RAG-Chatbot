@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="belouadi" comment="" date="1556221709" format="1.1" reprev="1" version="4"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+
+---++ Generelles
+   * Zeitliche Vorgaben:
+      * 13. Mai: Release Hausübung 5
+         * Studenten sollen Baseline für Shared Task entwickeln. Dafür muss CodaLab mit simplem Scorer funktionieren, plus die Hausübung.
+      * ca. 08. Juli: Submission Deadline für Shared Task
+         * Bis dahin kann der Scorer noch erweitert werden.
+
+   * Google Doc von Steffen: https://docs.google.com/document/d/1g25ZrPRPo0O37FPyPqF5o5r7xe2kUqQYiRc5hh1JOac/edit#
+      * Poems, die generiert werden sollen
+      * Was der Scorer können soll
+
+---++ Progress
+
+---+++ 2019-04-25
+   * format von poems vorerst übernommen:
+      * pro zeile ein Vers
+      * Strophen sind durch newlines getrennt
+      * Tokenisiert auf Wortebene
+   * Readability scorer implementiert
+   * alliteration scorer implementiert
+   * rhyme scorer implementiert
+   * code jetzt im [[https://git.ukp.informatik.tu-darmstadt.de/belouadi/dl4nlp19_codalab][UKP Git]]
+
+---++ Meeting Minutes
+---+++ 2019-04-04 Erste Aufträge von MB
+   * Generieren von Poems: erstmal überspringen.
+   * Wir brauchen zunächst eine prototypische Umsetzung für den gesamten Shared Task. Der Weg dahin:
+      * mit Codalab vertraut machen: https://github.com/codalab/codalab-competitions/wiki und [[%ATTACHURL%/dl4nlp2018_shared_task_codalab.7z][Competition vom letzten Jahr]] mal hochladen/ausprobieren ✅
+      * Datenformat für die Poem-Predictions grob festlegen ✅
+      * simplen Scorer schreiben, der z.B. nur readability prüft ✅
+      * das ganze auf Codalab mit Dummy-Predictions testen ✅
+
+---+++ 2019-04-15 Meeting
+   * Gold Poems müssen noch aufgetrieben werden ✅
+   * bis Ende der Woche versuchen ein paar Dinge zu tun um Aufwand abzuschätzen:
+      * Format für dataset überlegen ✅
+      * protoypisch eine metric mit dem scorer umsetzen ✅
+
+---+++ 2019-04-25 Meeting
+   * baseline für hausübung 5 soll von JB implementiert werden
+   * die Länge der Submissions wird durch die performance der baseline bestimmt
+   * rhyme score bestimmen mithilfe Grapheme to Phoneme Conversion ✅
+   * Gedanken machen über deduplication of poems
+
+%META:FILEATTACHMENT{name="dl4nlp2018_shared_task_codalab.7z" attachment="dl4nlp2018_shared_task_codalab.7z" attr="" comment="" date="1554371476" path="dl4nlp2018_shared_task_codalab.7z" size="2438062" user="bugert" version="1"}%

@@ -1,0 +1,81 @@
+%META:TOPICINFO{author="TorstenZesch" date="1202206257" format="1.1" version="36"}%
+%META:TOPICPARENT{name="AnouarWork"}%
+---++ Task Overview Anouar
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+
+| *Anouar Aufgaben* ||
+| *Aufgabe*  | *% done*  |
+| Einarbeitung Wikipedia API | 100 |
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="4"}%
+
+| *Anouar Stunden* ||||
+| *Aufgabe*  | *Tag*  | *Stunden*  | *Bemerkungen*  |
+| Einarbeitung Wikipedia API | 12.12.2006 | 10 | | 
+| Implementierung Demo Server | 20.12.2006 | 20 | +Servlet api(Einstieg),Tomcat(doku+installation),JSP(Einstieg)+WebSeiten(Einstieg)|
+| Reimplementierung | 13.01.2007 | 10 | + neuer Klassendesign + neue JSP's + neue Funktionalitaeten|
+| 3.Version              | 25.01.2007 | 15 | new requirements | 
+|  4.Version + Navigation Design| 15.02.2007| 20| + neue JSP's (Usage of javascript)     |
+| Neue Wikipedia Api  |04.04.2007| 10  |installation MySQl  + installation frensh wikipedia + Konfiguration der API |
+| Implementierung der neuen demo Klassen |04.04.2007| 25  |+Konfiguration einstellbar und Erweiterbarkeit moeglich  |
+| Web Design |04.04.2007| 15  |navigation, skripte .. |
+| Dokumentation zur  Demo|04.04.2007| 10  |Konfiguration, Architektur, Effizienz, Vergleich mit den aelteren Versionen |
+| Datenbank-Konfiguration(frwiki)|20.04.2007| 15  |Erstellen einer Tabelle aus MediaWiki und ihrer Einbindung an der Tabelle der API|
+| Tests für die API(Korrektheit,Performanz)|24.04.2007| 10  |Erstellen eines Pakets für die Tests|
+| MediaWikiMarkup2html|27.04.2007|15 | Erstellen eines Konverters zum formattierten Presentieren von Seiteninhalt|
+| Erstellen eines Tutorials fuer fr_api|29.04.2007| 5| |
+| Debugging+ DB neu|30.04.2007| 15|Kodierung in Windows Vs Unix(UTF8) + API-Bug |
+|Italienische+Spanische Versionen|04.05.2007|10 | |
+|Polnische Wiki |05.2007 |5 | | 
+|TestKlasse |05.2007 |5 | |
+|WikipediaAPI(neue Version)|05.2007 |15 |Debugging(czech,ukrainian): testen und Fehler suchen |
+|TestWikipedia |05.2007 |20 |Entwicklung einer Test Datenbank fuer die WikipediaAPI + test |
+|Test Cases |05.2007 |5 | |
+|PageIterator+CategoryIterator|05.2007 |15 |Buffering von Seinten + Tests |
+|Windows2Unix |06.2007 |5 |Anpassung der Datenbanken |
+|neue Test cases |06.2007 |2 | |
+|neue polnische version |06.2007 |15 |+Manuelle Behebung von Fehlern in Revision.txt |
+|itwiki | 06.2007| 5| |
+|demo fuer neue API |06.2007 |5 | |
+|Database Settings von UI|06.2007|5| |
+|Demo Refactoring|06.2007|10|+Möglichkeit der Style-Konfiguration von der UI|
+|Germanet|06.2007|5|Einarbeitung in die API|
+|Germanet|07.2007|15|Debugging:Fehlersuche in den neuen Daten|
+|Germanet|07.2007|5|API Refactoring|
+|Neues Transformationsprogramm für die Wikipedia API|07.2007|15|läuft mit dumps statt Verbindung mit db|
+|Tschechische Version |08.2007|5| |
+|Spanische Version|08.2007|5| |
+|Portuguiesische Version|08.2007|5| |
+|Arabische Version|08.2007|5| |
+|Dänische Version|08.2007|5| |
+|Schwedische Version|08.2007|5| |
+|Arabische Version mit SQL Erstellen statt Java|30.08.2007|5||
+|neues Tranformationsprogramm (MediaWiki2JWPL)|07.09.2007|10||
+|Holländische Wikipedia|10.09.2007|5||
+|Erstellen aller dumps mit MediaWiki2JWPL|18.09|15 |ar,da,pt,nl,zh,pl,es,fr,it|
+|Speichern des Katgoriengraphen mit JAVA Serialization|01.10.2007 |5 |+Unit Tests |
+|Germanet:Anpassung der API an die neuen Daten| 10.10.2007|7 | |
+|Germanet:Refactoring| 21.10.2007|10 |Neue Relation wird 2 mal vorhanden |
+|Krankheit| bis 30.10.2007| |jetzt mache ich mich wieder auf die Arbeit und hole nach |
+|Wikipedia| 06.11.2007|20 |Revision Tabelle analysieren: Wie kann man ältere Dumps von einer bestimmten Version herleiten? |
+|Wikipedia|08.11.2007|10|Konzipierung einer Strategie zur Wiederherstellung bestimmter Dumps-Versionen aus einer aktuellen Version|
+|Wikipedia|18.11.2007|17|Implementierung des Programmes DumpVersionExtractor + ausführliche Tests an 3 Versionen der simplewiki Wikipedia|
+|Wikipedia|28.11.2007|5|Parser (Wiki Markup)Einarbeitung| 
+|Wikipedia|10.12.2007|15|Implementierung des Programmes DumpMultipleVersionsExtractor: kann mehrere Dumps erzeugen bei der Angabe von Startdatum, Enddatum und Zeitabstand: Es wird ein Verzeichnis mit den Tabellen fuer jede Version automatisch angelegt|
+|Lexical Semantic Resource Interface|16.12.2007|12|OpenCyc-Resource + GermaNet-Resource + UnitTest|
+|JWPL Page Parser|03.01.2008|15|Detaillierte Analyse: Entdeckung von Bugs und Entwicklung von Lösungen|
+|Tutorial für DKPro|15.01.2008|10|Tutorial für dk_pro_students erstellen|
+|next|26.01.2008|10|Integrierung von LexicalHeadParser und NamedEntityRecognizer (inkl. Unit tests) |
+|Tutorial für DKPro|28.01.2008|4|in Wiki schreiben (80%)|
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 660 | einschliesslich März |
+
+%META:FILEATTACHMENT{name="wiki-history.pdf" attachment="wiki-history.pdf" attr="" comment="Strategie zur Wiederherstellung älterer Dumps von einem Aktuellen" date="1194526082" path="wiki-history.pdf" size="74283" stream="wiki-history.pdf" user="Main.AnouarHaha" version="1"}%
+%META:FILEATTACHMENT{name="DumpVersionExtractor.zip" attachment="DumpVersionExtractor.zip" attr="" comment="Programm zur Extrahierung bestimmter Dumpversionen" date="1195414859" path="DumpVersionExtractor.zip" size="38784" stream="DumpVersionExtractor.zip" user="Main.AnouarHaha" version="1"}%
+%META:FILEATTACHMENT{name="Tests.pdf" attachment="Tests.pdf" attr="" comment="Ergebnisse der Tests auf 3 Versionen von simplewiki" date="1195414916" path="Tests.pdf" size="79495" stream="Tests.pdf" user="Main.AnouarHaha" version="1"}%
+%META:FILEATTACHMENT{name="README.txt" attachment="README.txt" attr="" comment="Details zur Ausführung des Programmes+Performanz+Korrektheit" date="1195415025" path="README.txt" size="1736" stream="README.txt" user="Main.AnouarHaha" version="1"}%
+%META:FILEATTACHMENT{name="DumpMultipleVersionsExtractor.zip" attachment="DumpMultipleVersionsExtractor.zip" attr="" comment="Erzeugt mehrere Dumps (Versionen) je in einem Verzeichnis" date="1197249521" path="C:\Users\Anouar\Desktop\DumpMultipleVersionsExtractor.zip" size="44830" stream="C:\Users\Anouar\Desktop\DumpMultipleVersionsExtractor.zip" user="Main.AnouarHaha" version="1"}%
+%META:FILEATTACHMENT{name="lsr.zip" attachment="lsr.zip" attr="" comment="OpenCyc-Resource,GermaNet-Resource,Unit tests,jars" date="1197834589" path="D:\wikipedia\lsr.zip" size="11552963" stream="D:\wikipedia\lsr.zip" user="Main.AnouarHaha" version="1"}%
+%META:FILEATTACHMENT{name="page_parser_bug_report.pdf" attachment="page_parser_bug_report.pdf" attr="" comment="jwpl page parser: Bugs+Loesungen" date="1199669759" path="D:\wikipedia\markup parser\page_parser_bug_report.pdf" size="456475" stream="D:\wikipedia\markup parser\page_parser_bug_report.pdf" user="Main.AnouarHaha" version="1"}%
+%META:FILEATTACHMENT{name="dkpro_tutorial.doc" attachment="dkpro_tutorial.doc" attr="" comment="dkpro tutorial als doc (noch in Bearbeitung)" date="1200495090" path="D:\wikipedia\dk_pro\dkpro_tutorial.doc" size="278016" stream="D:\wikipedia\dk_pro\dkpro_tutorial.doc" user="Main.AnouarHaha" version="1"}%

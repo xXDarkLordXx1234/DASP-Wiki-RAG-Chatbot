@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="BenjaminHerbert" date="1259745848" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" format=" | text,10 | date | text,4 | textarea,3x30" }%
+| *Artems Stunden* | | | |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Erster Arbeitstag | 1 December 2009 | | Briefing mit BH <br /> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60 | bis Ende Dezember |
+
+-- Main.BenjaminHerbert - 02 Dec 2009

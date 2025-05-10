@@ -1,0 +1,55 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1285892579" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WordNetResourcebeschreibung"}%
+---++ String-Darstellung aller im !WordNet verwendeten Pointertypen 
+
+---++++ Pointersymbole der Nomen
+| !  |     Antonym |
+| @ |   Hypernym |
+| @i |   Instance Hypernym |
+| ~ |   Hyponym |
+| ~i |   Instance Hyponym |
+| #m |   Member holonym |
+| #s |   Substance holonym |
+| #p |   Part holonym |
+| %m |   Member meronym |
+| %s |   Substance meronym |
+| %p |   Part meronym |
+| =  |  Attribute |
+| + |   Derivationally related form |
+| ;c |   Domain of synset - TOPIC |
+| -c |   Member of this domain - TOPIC |
+| ;r |   Domain of synset - REGION |
+| -r |   Member of this domain - REGION |
+| ;u |   Domain of synset - USAGE |
+| -u |   Member of this domain - USAGE |
+
+---++++ Pointersymbole der Verben
+| !  |    Antonym |
+| @ |    Hypernym |
+| ~  |  Hyponym |
+| *  |  Entailment |
+| >  |  Cause |
+| ^    Also see |
+| $ |   Verb Group |
+| + |   Derivationally related form        |
+| ;c |   Domain of synset - TOPIC |
+| ;r |   Domain of synset - REGION |
+| ;u |   Domain of synset - USAGE |
+
+---++++ Pointersymbole für Adjektiven
+| ! |    Antonym |
+| &   | Similar to |
+| <    | Participle of verb |
+| \ |   Pertainym (pertains to noun) |
+| = |   Attribute |
+| ^  Also see |
+| ;c |   Domain of synset - TOPIC |
+| ;r |   Domain of synset - REGION |
+| ;u |   Domain of synset - USAGE |
+
+---++++ Pointersymbole für Adverben
+| ! |    Antonym |
+| \ |   Derived from adjective |
+| ;c |   Domain of synset - TOPIC |
+| ;r |   Domain of synset - REGION |
+| ;u |   Domain of synset - USAGE |

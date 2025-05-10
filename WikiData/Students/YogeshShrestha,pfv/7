@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="petrak" comment="" date="1672413328" format="1.1" reprev="6" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+   * Talks/Deadline
+      * ????-??-?? final talk
+      * 2023-03-03 mid-term presentation
+      * 2023-06-12 planned submission deadline
+      * 2023-06-12 thesis submission deadline
+
+   * *2022-12-30 (Week 3)*
+      * Things we discussed:
+         * ideas on potential baselines for identifying knowledge gaps
+            * We decided to probe the models using prompts that are generated from the dialogue context but target the current user utterance, e.g., Abraham Lincoln was the president of [MASK].
+      * ToDo for next week:
+         * We have to find answers for the following questions:
+            * How to check whether to ask a clarification question or not?
+               * A naive approach would be to check the models confidence (probability in the last FFN) for the word filled in the prompt.
+            * We have to find a way to identify whether the utterance is (or contains) a knowledge question.
+            * How to generate the prompt?
+               * You could use predefined relations, but then you need to decide which relation to use
+               * You could use templates
+               * ...
+
+   * *2022-12-23 (Week 2)*
+      * Things we discussed:
+         * Prompting might be an interesting approach
+      * ToDo for next week:
+         * Next week we will discuss three approaches that are potentially usable as starting points for us (focus on prompting and/or the Geva et al. paper)
+         * We also need to discuss how the models we want to use work and how they are trained. I think this is important as a first step (before thinking about how to access their internal knowledge). Please prepare something on that.
+
+   * *2022-12-16 (Week 1)*
+      * Things we discussed:
+         * What are clarification questions? You found that the definition from literature is not generally applicable to open-domain dialogues. For this reason, we agreed on calling them "knowledge-seeking questions" for now. However, for the final write-up, we have to find a unified term.
+         * FITS dataset
+         * The task description
+      * ToDo for next week:
+         * Read the model papers
+         * Start to research towards how to identify gaps in model internal knowledge (use section 3, 5, 7 from the survey paper as starting point).
+         * We have to identify overlapping dialogues between v1 and v2 of the FITS dataset as ground truth. I will provide you with a proper task description to that by the beginning of next week.
+
+   * 2022-12-12
+      * Dataset
+      * Baselines
+      * Slurm
+      * Papers

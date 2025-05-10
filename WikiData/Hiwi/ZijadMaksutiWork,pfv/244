@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1308915387" format="1.1" reprev="244" version="244"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ZijadMaksuti - 29 Oct 2009
+
+   * LSR.ResearchTaskDictionaryIntegration
+   * MyNotes
+
+---+++ Zeiterfassung
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" format=" | text,10 | date | text,4 | textarea,3x30" }%
+| *Zijad's Stunden* | | | |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+      | *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 180 | bis Ende August |
+   * [[Archiv][Archiv]]<br />
+
+                        <nop>

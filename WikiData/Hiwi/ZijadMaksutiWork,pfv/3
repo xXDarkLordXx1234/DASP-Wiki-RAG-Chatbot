@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1256810839" format="1.1" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ZijadMaksuti - 29 Oct 2009
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Zijad's Aufgaben* |
+| *Aufgabe* | *% done* |
+| 123 123 | 120 |
+| UI Modification | 100 |
+| Correction of Suggest Section | 100 |
+| Redirect Service (instead of proxy) | 80 |
+| !OpenSUSE mediawiki dump | 100 |
+| Automatic Lucene index generation | 0 |
+| Wiki syntax to plain text | 0 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" format="text,10 | date | text,3 | textarea,4x40" }%
+| *Zijad's Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 115 (34 Übertrag von August) | bis Ende November |

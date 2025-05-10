@@ -1,0 +1,111 @@
+%META:TOPICINFO{author="alles" comment="" date="1722252594" format="1.1" reprev="22" version="22"}%
+%META:TOPICPARENT{name="Services/Campus.ComputeCluster"}%
+---+!! %TOPIC%
+
+%TOC%
+
+---++ Principle
+User data in the cluster is stored via network file systems which are mounted on the login-node (=slurm= or =slurm-login=) and each compute node at the same path. This means, you only need to copy code and data once to the network share, not to every single node. Jobs can then see your files no matter on which compute node a job runs.
+
+---+++ Key facts
+   * We do not create user homes (e.g. =/home/username/=) on compute nodes. Code and data has to be put on any of the network file systems. See also [[/Services/Campus/ComputeClusterFAQ#Permission_denied_on_47home_folder_63][this FAQ question]].
+      * Exception: user homes exist on the login node (=slurm= or =slurm-login=). Space is limited there (quota: 15GB per user), so please avoid storing large files in =/home=. Custom =bash_profile= and other small configuration files are okay.
+   * %RED%There is *no backup* system in place for any of the cluster storage systems.%ENDCOLOR%
+
+---++ Available network file systems / shared folders
+
+%TABLE{columnwidths="10%,20%,20%,20%,10%,30%"}%
+| *Storage Server*          | *User affiliation*            | *What*                        | *Mount point*                       | *Quota* | *Description* |
+| =slurm-login=             | everyone                      | private folder                | =/home/$USER=                       | 15GB    | Your home folder. This is not mounted on compute notes, so it cannot be used in compute jobs   | 
+| =compute node / temp=     | everyone                      | temporary files               | =/temp=                             | n/a     | %RED%Files get deleted automatically after *3 days*, use the work or shared folders to store files %ENDCOLOR% |
+| =ukp storage / beegfs=    | everyone                      | temporary data transfer       | =/storage/ukp/temporary=            | n/a     | %RED%Files get deleted automatically after *7 days*, use the work or shared folders to store files %ENDCOLOR% |
+| =ukp storage / beegfs=    | ukp-* and tk-* groups         | private folder on every node  | =/storage/ukp/work/$USER=           | 25TB    | Your work folder that is shared among every computation node and slurm-login nodes in the cluster |
+| =ukp storage / beegfs=    | ukp-* and tk-* groups         | shared folder (collaborative) | =/storage/ukp/shared/$PROJECT=      | n/a     | For collaborative work, request [[https://service.ukp.informatik.tu-darmstadt.de/shared-slurm-folder][here]] |
+| =ukp storage / beegfs=    | nllg-* groups                 | user folder                   | =/storage/nllg/compute-share/$USER= | n/a     | For NLLG group  |
+| =athene storage / gpfs=   | athene-* groups               | private folder on every node  | =/storage/athene/work/$USER=        | 25TB    | Your work folder that is shared among every computation node and slurm-login nodes in the cluster |
+| =athene storage / gpfs=   | athene-* groups               | shared folder (collaborative) | =/storage/athene/shared/$PROJECT=   | n/a     | For collaborative work, request [[https://service.ukp.informatik.tu-darmstadt.de/shared-slurm-folder][here]] |
+
+User folders are created automatically for new users at these locations. 
+
+If you want to quickly share files with other users, you can use one of the temporary locations. *Files older than two weeks are deleted automatically from time to time in these locations.*
+
+---++ Storage Environment Variables
+   * the following variables are set automatically based on your affilation when a computation job starts.
+
+| *variable / user group* | *athene-**                            | *ukp-* and tk-**                   | *description* |
+| SLURM_STORAGE_HOME      | /storage/athene/work/$USER            | /storage/ukp/work/$USER            | data |
+| GLOBAL_SCRATCH_DIR      | /scratch/$SLURM_JOBID                 | /scratch/$SLURM_JOBID              | fast local storage on the compute node during job execution |
+| TMPDIR                  | /scratch/$SLURM_JOBID                 | /scratch/$SLURM_JOBID              | usually tempdir is on this location - sometimes this does not work for single applications - check the faq for examples on how to workaround this |
+| APPTAINER_WORKDIR       | /scratch/$SLURM_JOBID/.apptainer      | /scratch/$SLURM_JOBID/.apptainer   | where apptainer stores temporary data |
+| APPTAINER_CACHEDIR      | /storage/athene/work/$USER/.apptainer | /storage/ukp/work/$USER/.apptainer | where apptainer mages are cached |
+| APPTAINER_HOME          | /storage/athene/work/$USER            | /storage/ukp/work/$USER            | where apptainer looks for data / mounted in apptainer images |
+
+   * *if you are affilated with both ukp-* and athene-* group, you will get the ukp-* assignments.*
+   * but - you can ofc set those environment variables in your script with command =export APPTAINER_HOME=/storage/athene/work/$USER= yourself if you want to use the athene storage instead of the ukp one. you might need to change all the environemntvariables to do so. this was not tested before - if you do, let us know so we can document it more. 
+
+---+++ More information on shared folders
+---++++ Request
+You can request shared folders for project work collaborations [[https://service.ukp.informatik.tu-darmstadt.de/shared-slurm-folder][here]]. 
+---++++ Maintain the shared folder
+You are responsible for maintaining your shared folder, this includes the permissions. We do not want to give a full tutorial on how permissions work with linux, but consider the following:
+   * if you move data from your personal folders to the shared folder, make sure the permissions are set to the group
+   * every share has a matching user group that includes the users requested while asking for the shared folder at system admin
+      * you can check if a users is in the group by the command "id $USERNAME" to list the groups the user is assigned to
+      * you can check the permissions of files by issueing the "ls -lsa" command while beeing in the folder - e.g.
+         * <verbatim>[nobody@slurm-login meme_lords]# ls -lsa
+total 25
+  PERMISSIONS     OWNER         GROUP
+1 drwxrwx---    5 root          share_meme_lords    8 May  5 14:09 .
+</verbatim>
+         * the folder is setup by system-admin, so the permissions for the root folder are root:$SHARED_FOLDER_GROUPNAME, in this case root:share_meme_lords
+         * if your transferred files have another group name and user set, they are only accessible by those users and members of the group!
+         * more information on linux file and folder permissions can be found e.g. [[https://www.pluralsight.com/blog/it-ops/linux-file-permissions][here]]
+      * if you want to change the group or permissions, the following commands might help you:
+         * <verbatim> chgrp $SHARED_FOLDER_GROUPNAME somefile.txt 
+#sets the group to the name of the group the folder should belong to
+
+chmod 770 somefile.txt 
+#adds read,write,execute permissions for the group of the file (and read,write,execute for the owner)
+
+chmod 750 somefile.txt 
+#adds read and execute permissions for the group of the file (and read,write,execute for the owner)
+
+chmod 777 somefile.txt 
+#adds read,write,execute permissions for literally everyone
+</verbatim>
+         *  There is also the -R paramater for these commands to make the changes recursive, do this at your own risk.
+
+---++ Example Usage for the UKP storage
+
+Here are some usage examples for /storage/ukp/work=.
+
+---+++ Copying data and code to the cluster
+
+You can copy data to this folder from your workstation via =rsync= or =scp=:
+
+From your workstation using =rsync=:
+<verbatim>
+rsync -aP data_folder wormulon:/storage/ukp/work/$USER
+</verbatim>
+
+From your workstation using =scp=:
+<verbatim>
+scp -r data_folder wormulon:/storage/ukp/work/$USER
+</verbatim>
+
+---+++ Accessing data and code in compute jobs
+
+When submitting compute jobs, you can now refer to your files on the storage. For example:
+<verbatim>
+#!/bin/bash
+#
+#SBATCH --job-name=test_job
+#SBATCH --output=/storage/ukp/work/klie/test/res.txt
+#SBATCH --mail-type=ALL
+#SBATCH --partition=ukp
+
+source /storage/ukp/work/klie/test/venv/bin/activate
+python /storage/ukp/work/klie/test/test.py
+</verbatim>
+
+%META:TOPICMOVED{by="bugert" date="1570804962" from="Services.ComputeClusterStorage" to="Services/Campus.ComputeClusterStorage"}%

@@ -1,0 +1,80 @@
+%META:TOPICINFO{author="kuznetsov" comment="save topic" date="1493890847" format="1.1" reprev="19" version="20"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Ben Kohr (Bachelor thesis)
+
+---++ Links
+   * Repo: https://git.ukp.informatik.tu-darmstadt.de/kuznetsov/BenKohr_BA_SRI
+   * Overleaf: https://www.overleaf.com/9080638sxrmhsvkghzv
+
+
+---++ Things done (this week, 27.04 - 4.5.)
+   * Implemented and integrated dependency finding between two given nodes
+   * Implemented and integrated voice detection from the recipe
+   * CoNLL-Reader timing test on the corpus
+   * Improved CoNLL reading speed (I got rid of some readers, the tests are still working, the output file ([[%ATTACHURL%/newoutput.txt][newoutput.txt]]) seems to have the identical arguments (String representation), but now the reading for "say" takes only 0.7 minutes instead of 172 minutes).
+   * Implemented the confidence aspect of Lang and Lapata to the Chinese Whispers Algortihm. Now, confidence usage can be added or not via a boolean.
+   * Added support for all verbs: All verbs contained and marked in the corpus are searched and arguments are detected per verb.
+   * small enrichements of the Pipeline class (mode for CoNLL: one verb, list of verbs, all verbs; evaluation)
+   * Speed improvement for finding all verbs and constructing arguments for each verb: From (probably much) more than 105 minutes (I aborted it...) to now only 2.3 minutes (I degugged it and it seems to be working, please feel free to take a look at it, I certainly will add more tests, but it seems to be correctly working). This is the attached output for the reading of all verbs: [[%ATTACHURL%/output_allverbs.txt][output_allverbs.txt]]
+   * Added tests for evaluation metrics and the reading of all verbs
+   * Now, the Reader only retrieves verbs (POS: V...)
+   * Improved reader code
+   * Implemented the similarity function by Lang and Lapata (based on sentences numbers)
+      * IK: what if there are several Arg0 in the sentence, but they belong to different predicates?
+
+---++ Questions (this week, 27.04 - 4.5.)
+   * [ANSWERED] If I remember right, you said that we focus on verbs only, not on predicates for clustering. Does this mean I have to mention that explicitely in the Latex paper (when there is time for that, later)? And also, in the CoNLL file often nouns (predicates) get a frame association, too. Shall we exclude them, because they are not verbs? 
+   * [ANSWERED] Lang and Lapata used a function with range [-1, 1] union -inf. How should I adapt this, when given arguments with 5 oder six discrete features? I currently implemented a dummy function which only produces the result of the "normal" argument similarity and I would have to change some constructors and functions (which currently expect integer values) to double value usage. 
+   * My distance/similarity function produce integer values, but the class Integer does not offer a -Inf. The class Double does (Double.NEGATIVE_INFINITY). I instead chose Integer.MIN_VALUE (to not have to change alle constructor signatures and methods affected by the distance/similarity functions). Is this also okay or does it have to be the negative infinity by class Double?
+      * IK: hm, that should be fine (given the distance function, you will never come anywhere close to Integer.MIN_VALUE), but those minimum values should be treated differently anyway, because _you don't want them to vote at all_. I would suggest, let it be Integer.MIN_VALUE, but store it separately as a constant. It's basically just a way to store the NO-LINK value. Let's talk about this.
+
+---++ Meetings
+
+---+++ 20.04.2017
+   * TODO(IK): <del>hand in the CoNLL-2008 data</del>
+   * TODO(IK): schedule talks
+
+---+++ 13.04.2017
+   * Infrastructure setup
+   * Questions regarding implementation
+
+---+++ 6.04.2017
+   * _Cancelled: EACL_
+
+---+++ 1-30.03.2017
+
+   * Topic introduction
+   * Task description
+   * Administration
+
+---++ Things done and questions per week
+
+---+++ 20. - 27.04.2017
+Things done:
+   * Downloaded CoNLL (link can be removed!)
+   * Implemented a first version of the CoNLL Reader
+   * First version of evaluation metrics, integration into the pipeline
+   * First try of dependency graphs, necessary data structures implemented
+   * Tests for CoNLL and the evaluation
+   * Fixed the FIXMEs
+Questions:
+
+   * There are some warning when I don't silence System.err in the Pipeline by DKPro. Maybe they aren't important, I'm not sure. What is your opinion? ([[%ATTACHURL%/warnings.txt][warnings.txt]])
+      * IK: ignore
+   * I don't have Outlook or something similar. In case the UKP meetings are each Tuesday, could you tell me the time and the place?
+      * IK: see email
+   * How to distinugish between agentive and non-agentive verbs?
+      * IK: They have a hint in the paper, agentive are the ones that take Arg0 as subject I guess. You will need dependency trees for that.
+   * How to distinguish between active and passive voice? I thought about using the POS tags, but I guess they don't give this information.
+      * IK: Yes, that's one of the underspecified parts of the paper, POS tags are not enough. The same POS can mark passive ("The movie was banned") and active ("The government has banned the movie") voice. You will need dependency tree for that, so focus on that first.
+   * Please feel free to look over the current version (I guess this is better than informing you on Mondays, even if the version slightly changes afterwards), especially over the CoNLL Reader. I stepped through it (with the Debugging Tool) and tested it on the CONLL data and it seems working for me (except the todos, of course, see the two list items above), but maybe I understood something wrong or made a mistake...
+      * I'll have a look
+   * Does the syntactic path always lead from a node to the sentence's root?
+      * No, a syntactic path leads from node A to node B, sometimes (rarely!) passing through the root. I think I understand what confused you here. I will explain on our meeting. In short, linguistically speaking the main predicate is a root. However, the dependency parsing algorithms require each node in the sentence to have a parent (it's just easier to formulate this way), so they add an abstract node "ROOT" which is the parent of the actual root. So: informally speaking, if you're dealing with the main predicate, your paths would be from the root to the arguments. However, _strictly_ speaking - no, you're not going through the root node, just through the main predicate whos parent is the abstract root. If it's still unclear, I'll give an example on Thursday.
+   * Is it possible to move the weekly meetings on Thursday from 13:00 to 12:00?
+      * Yes, let's move to 12:00. We won't get the nice room anymore though, but it should be fine.
+
+%META:FILEATTACHMENT{name="warnings.txt" attachment="warnings.txt" attr="h" comment="" date="1492890276" path="warnings.txt" size="667" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="newoutput.txt" attachment="newoutput.txt" attr="" comment="" date="1493466071" path="newoutput.txt" size="40623" user="kohr" version="1"}%
+%META:FILEATTACHMENT{name="output_allverbs.txt" attachment="output_allverbs.txt" attr="" comment="" date="1493553829" path="output_allverbs.txt" size="1965805" user="kohr" version="1"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="Ben Kohr"}%

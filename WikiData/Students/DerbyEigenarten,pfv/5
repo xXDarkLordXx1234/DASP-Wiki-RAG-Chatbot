@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="5"}%
+%META:TOPICPARENT{name="AmazonDatenbank"}%
+Hier stehen Informationen zu Apache Derby.
+
+%TOC%
+
+---++ Derby als Server
+Derby starten mal [[http://db.apache.org/derby/papers/DerbyTut/ns_intro.html Network Server]] mit dem Befehl "java org.apache.derby.drda.NetworkServerControl start".
+
+---++ Macken und Probleme
+Derby hat schon so seine Macken. Einige, auf die man achten sollte sind:
+   * Vergleiche gegenüber LONG VARCHAR sind nicht erlaubt. Man muss stattdessen VARCHAR verwenden.
+   * Zeichenketten müssen zwischen 2 Apostrophen (z.B. 'Zeichenkette') stehen. Anführungszeichen sind nicht erlaubt (z.B. "Zeichenkette"). Hier erhält man eine merkwürdige Fehlermeldung. Enthält die Zeichenkette selbst ein Apostroph muss ein weiteres davor gesetzt werden.
+   * Derby scheint Probleme mit größeren Datenmengen zu haben. Wenn die Rezensionen der Digitalkameras eingelesen werden, kommt es nach ca. 3 Stunden zu einem Speicherproblem:
+<verbatim>
+java.sql.SQLException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.OutOfMemoryErrorJava heap space
+</verbatim>
+Ich hoffe, dass eine Erhöhung des Heap-Speichers mittels _java -Xmx512m org.apache.derby.drda.NetworkServerControl start_ das Problem beseitigt. Ansonsten muss das Einlesen der Rezensionen aufgeteilt werden.
+   * Derby ist leider nicht ganz bugfrei. Bei vielen Datenbankoperationen kommt es im Servermode sporadisch zu folgender Fehlermeldung.
+<verbatim>
+java.lang.ArrayIndexOutOfBoundsException: 524272
+        at org.apache.derby.impl.drda.DDMWriter.startDdm(DDMWriter.java)
+        at org.apache.derby.impl.drda.DRDAConnThread.writeSQLCARD(DRDAConnThread.java)
+        at org.apache.derby.impl.drda.DRDAConnThread.writeSQLCARDs(DRDAConnThread.java)
+        at org.apache.derby.impl.drda.DRDAConnThread.writeSQLCARDs(DRDAConnThread.java)
+        at org.apache.derby.impl.drda.DRDAConnThread.processCommands(DRDAConnThread.java)
+        at org.apache.derby.impl.drda.DRDAConnThread.run(DRDAConnThread.java)
+agentThread[DRDAConnThread_2,5,main]
+</verbatim>
+Im Embedded Mode ist dies allerdings noch nicht aufgetreten, weswegen es scheinbar besser ist, die DB in diesem Modus anzusprechen.
+
+
+-- Main.KaiMichaelHoever - 05 Mar 2007

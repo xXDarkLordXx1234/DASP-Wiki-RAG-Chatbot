@@ -1,0 +1,97 @@
+%META:TOPICINFO{author="stab" comment="reprev" date="1513341295" format="1.1" reprev="14" version="14"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Master Thesis: Optimizing Stance Recognition across Domains
+   * mid-term talk: 13.2.2018
+   * final talk: 24.4.2018
+
+---+++ Minutes 2017-12-15
+   * Determine baselines results for all experiments (Random_baseline, Majority_baseline, Logistic regression mit n-gram features)
+      * in-domain (ukp / sem both two-label and three-label)
+      * cross-domain (ukp / sem both two-label and three-label)
+   * Same experiments for standard models (see below) (remember to repeat training for >10 runs and average scores + standard deviation)
+   * Create clear table with results
+   * Fix F1 issue -> use scikit macro f1
+   * Fix loading model issue
+   * Add code to git: https://git.ukp.informatik.tu-darmstadt.de/
+
+
+---+++ Minutes 2017-12-08
+   * Refactor code
+   * Store results (predictions, confmatrix, scores(all), sentences_ids, hyperparameter, etc.) for dev AND test set
+   * "Überbau" for parameter tweaking
+   * Cross-domain experiments 
+   * Make a table with all the scores
+   * Remember:
+      * All neural approaches need to be ran several times (iterations >= 10)
+      * Select best model among all epochs using Keras callbacks (Modelcheckpoint): https://keras.io/callbacks/
+         * Use only this model for evaluating on the dev and test set
+   * Please think about which state-of-the-art systems to implement...
+
+
+---+++ Minutes 2017-12-01
+   * WordEmbeddings:
+      * Word2vec: https://github.com/mmihaltz/word2vec-GoogleNews-vectors
+      * Glove: https://nlp.stanford.edu/projects/glove/ 
+      * python code: 
+         * *read_wordvecs*: word_vecs = KeyedVectors.load_word2vec_format(emb_file, binary=emb_binary)
+         * *get_word_emb*: word_vecs['word']
+   * Evaluation metrics
+      * Macro_F1, Accuracy, F1 scores of individual classes, Precision and recall for each class
+      * Confusion Matrix
+   * Baselines:
+      * Random_baseline
+      * Majority_baseline
+      * Logistic regression mit n-gram features
+   * Naive Model: 
+      * Convolutional Neural Network (CNN)
+      * Long short-term neural network (LSTM)
+      * Bidirectional LSTM
+
+
+---+++ Minutes 2017-11-24
+   * @discuss: (DONE) actual-nominal status
+   * @discuss: (DONE) official registration
+   * @check: (DONE) workflow items
+   * todo:
+      * Evaluation setup for in-domain and cross-domain experiments 
+      * Restructure related work section and finish writing; and include remaining structure of the thesis in TOC
+      * Sample development set from SemEval-data, i.e. 10% of training data
+
+---+++ Minutes 2017-11-17
+   * @discuss: draft of related work
+   * @review: current code
+
+---+++ Minutes 2017-11-10
+   * @discuss: draft of related work
+   * Planing experiments
+
+
+---+++ Minutes 2017-11-03
+   * @discuss: First draft of related work: [[%ATTACHURL%/UKPThesisTemplate.pdf][UKPThesisTemplate.pdf]]
+   * Aktualisierte Erklärung zu Abschlussarbeiten: https://www.informatik.tu-darmstadt.de/de/studierende/studienbuero/abschlussarbeiten/ (bitte in der aktuellen Version aktualisieren.)
+
+
+---+++ Minutes 2017-10-26
+   * Discuss existing data sets
+      * UKP sentential data set
+      * SemEval data set
+   * Task until next week
+      * Introduction for related work section explaining different conceptualizations of stance recognition (use examples from corpora to explain the differences) (2-3 Seiten)
+      * Clarify terminology... Glossar
+      * Structure for related work section (existing data sets (with statistics), approaches, different directions / conceptualizations)
+
+
+-- Main.ChristianStab - 2017-10-27
+
+   * [[%ATTACHURL%/UKPThesisTemplate.pdf][UKPThesisTemplate.pdf]]: Zweiter Entwurf
+
+   * [[%ATTACHURL%/MA_Andreas_16_11_2017.pdf][MA_Andreas_16_11_2017.pdf]]: MA_Andreas_16_11_2017.pdf
+
+   * [[%ATTACHURL%/MA_AndressZimpfer_24_11_17.pdf][MA_AndressZimpfer_24_11_17.pdf]]: MA_AndressZimpfer_24_11_17.pdf
+
+   * [[%ATTACHURL%/MA_Andreas_01122017.pdf][MA_Andreas_01122017.pdf]]: MA_Andreas_01122017.pdf
+
+%META:FILEATTACHMENT{name="UKPThesisTemplate.pdf" attachment="UKPThesisTemplate.pdf" attr="" comment="Zweiter Entwurf" date="1510263931" path="UKPThesisTemplate.pdf" size="177118" user="zimpfer" version="2"}%
+%META:FILEATTACHMENT{name="MA_Andreas_16_11_2017.pdf" attachment="MA_Andreas_16_11_2017.pdf" attr="" comment="" date="1510866020" path="MA_Andreas_16_11_2017.pdf" size="269408" user="zimpfer" version="1"}%
+%META:FILEATTACHMENT{name="MA_AndressZimpfer_24_11_17.pdf" attachment="MA_AndressZimpfer_24_11_17.pdf" attr="" comment="" date="1511489030" path="MA_AndressZimpfer_24_11_17.pdf" size="311138" user="zimpfer" version="1"}%
+%META:FILEATTACHMENT{name="MA_Andreas_01122017.pdf" attachment="MA_Andreas_01122017.pdf" attr="" comment="" date="1512085443" path="MA_Andreas_01122017.pdf" size="445912" user="zimpfer" version="2"}%

@@ -1,0 +1,96 @@
+%META:TOPICINFO{author="starke" comment="reprev" date="1431936177" format="1.1" reprev="34" version="35"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ Tasks
+   * *NEW*: Obligatorische wöchentliche Dokumentation der Arbeitszeiten (für die Verwaltung): [[%ATTACHURL%/SHK_-_Hiring_Process_-_Form_10_-_Dokumentation_der_SHK_Arbeitszeit.docx][.docx]]
+   * Getting Started [Done, 3 March]
+      * eclipse settings, connect to maven, connect to svn
+      * run first steps pipeline
+      * import uby database
+      * check out uby example project from tutorial and run with database 
+   * Getting Familiar with UBY [Done, 3 April]
+      * Understand UBY tutorial example 
+      * Analysing SALSA conversion
+   * Analyse/Korrektur des !GermaNet-IMSLexSubcat Alignment [Done, 3 Mai, file attached below:ims_gn_sorted2_erweitert.xlsx]
+   * Analyse des !GermaNet-SALSA alignment [50% done]
+      * Establish SALSA-FN alignment
+         * match !SemanticPredicates via label [done]
+         * identify matching Senses (and their lemma, pos) via matched !SemanticPredicates (=> sense mapping candidates) [done]
+            * FN.senseId,FN.semanticPredicateId,FN.semanticPredicate.label, FN.lemma, FN.pos (same for SALSA)
+            * take into account label-renamings (list)
+         * determine German translations for FN lemmata, English translations for SALSA lemmata [done]
+            * !SenseAxis GN-WN (in current db)
+            * Wiktionary-EN, Wiktionary-DE translations (new db), Equivalent class
+            * !OmegaWiki sense axis (!SenseAxis OWen-OWde, new db)
+         * filter sense mapping candidates by matching lemma-translation and pos => FN-SA sense alignment [done]
+         * Collect statistics on mapped senses, lemma-pos, etc.
+      * Infer SA-GN sense alignment via transitive sense alignments: GN->ImsLex->VN->FN->SA, collect statistics [done]
+      * Manually evaluate subset
+   * Update UBY overview diagram according to dtd [done 95%]
+      * [[https://code.google.com/p/uby/source/browse/de.tudarmstadt.ukp.uby/trunk/de.tudarmstadt.ukp.uby.lmf.model-asl/src/main/resources/dtd/UBY_LMF.dtd][UBY LMF dtd]]
+      * diagram (argoUML format): [[%ATTACHURL%/Uby-LMF_15_2.zargo][Uby-LMF_15_2.zargo]], derived [[%ATTACHURL%/Uby-LMF_15_2_public_release4.png][.png]]
+      * Suggestion: 
+         * first extend the current version by the new classes (store intermediate version!)
+         * then remove attributes as discussed (keep IDREFs, certain important attributes) 
+
+       
+---+++ Fragen
+---+++ Aktueller Vertrag (01.03.2015-31.05.2015)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Meeting | 02.03.2015 | 3.5 | <ul><li> weekly meeting: Thursdays 2:15-3:15,B120 (until term starts) </li><li> setting up workspace; |
+| Getting Started | 03.03.2015 | 3.5 | <ul><li> setting up workspace </li><li> checking out uby example project from tutorial |
+       | Meeting | 04.03.2015 | 1 | <ul><li> discussing next task (analysing SALSA conversion) |
+| Getting Familiar with UBY | 10.03.2015 | 2 | <ul><li> Analysing SALSA conversion |
+| Getting Familiar with UBY | 11.03.2015 | 2 | <ul><li> Analysing SALSA conversion |
+| Analyse des !GermanNet-IMSLexSubcat Alignments | 15.03.2015 | 1.5 | <ul><li> Extraktion relevanter Informationen zur Korrektur |
+| Meeting | 18.03.2015 | 0.75 | <ul><li> discussing results/problems of tasks (Salsa conversion + IMS-GN-Alignment) |
+| Analyse des !GermanNet-IMSLexSubcat Alignments | 20.03.2015 | 2 | <ul><li> Extraktion weiterer Informationen aus der Datenbank </li><li> Import neuer Datenbank, da fehlerhaft |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 22.03.2015 | 2 | <ul><li> manuelle Überprüfung der Paare |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 23.03.2015 | 2 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 24.03.2015 | 1 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 25.03.2015 | 1.75 | |
+| Meeting | 25.03.2015 | 0.75 | <ul><li> discussing problems (database error) </li><li> discussing next task (analyzing !GermaNet-SALSA alignment) |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 26.03.2015 | 1.5 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments / Analysing SALSA conversion | 29.03.2015 | 4.25 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments / Analysing SALSA conversion | 30.03.2015 | 1.25 | |
+| Finishing off !UbySalsa Analysis | 03.04.2015 | 1.5 | |
+| Analyse des !GermaNet-SALSA alignment | 04.04.2015 | 1.25 | Establishing SALSA-FN alignment |
+| Analyse des !GermaNet-SALSA alignment | 07.04.2015 | 1.75 | Establishing SALSA-FN alignment |
+| Meeting | 08.04.2015 | 1 | |
+| Updating UBY overview diagram according to dtd | 08.04.2015 | 1.75 | extending the current version by the new classes |
+| Updating UBY overview diagram according to dtd | 09.04.2015 | 1 | |
+| Analyse des !GermaNet-SALSA alignment | 10.04.2015 | 1 | <ul><li> importing new db/fixing problems </li><li> establishing alignment with UBY API |
+| Analyse des !GermaNet-SALSA alignment | 12.04.2015 | 3.75 | <ul><li> identifying sense mapping candidates </li><li> determining translations |
+| Analyse des !GermaNet-SALSA alignment | 13.04.2015 | 3.5 | determining translations |
+| Analyse des !GermaNet-SALSA alignment | 14.04.2015 | 4.25 | <ul><li> determining translations  </li><li> filtering sense mapping candidates </li><li> collecting statistics |
+| Analyse des !GermaNet-SALSA alignment | 16.04.2015 | 5 | <ul><li> Infering SA-GN sense alignment </li><li> extending !GermaNet-IMSLexSubcat Alignment |
+| Meeting | 16.04.2015 | 0.5 | |
+| Meeting | 20.04.2015 | 0.75 | |
+| Korrektur !IMS-GN Alignment + Analyse des GN-Salsa Alignments | 20.04.2015 | 4.5 | Optimierung des Codes |
+| Analyse des GN-Salsa Alignments | 26.04.2015 | 2.5 | Umstrukturierung des Codes |
+| Analyse des GN-Salsa Alignments | 27.04.2015 | 3.5 | |
+| Analyse des GN-Salsa Alignments | 28.04.2015 | 4 | Code optimieren + SVN Projekt aufräumen |
+| Analyse des GN-Salsa Alignments + Überarbeitung UBY Diagramm | 04.05.2015 | 7.5 | |
+| Meeting | 04.05.2015 | 0.5 | |
+| Analyse des GN-Salsa Alignments | 05.05.2015 | 2 | Überarbeitung createAlignment.java |
+| Analyse des GN-Salsa Alignments | 14.05.2015 | 7 | Überarbeitung !TranslationsProvider.java + Anpassung createAlignment.java |
+| Überarbeitung UBY Diagramm + Evaluierung des Alignments | 16.05.2015 | 2 | Extraktion von hilfreichen Informationen zu Alignmentpaaren |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | until the end of May 2015 |
+
+-- Main.SilvanaHartmann - 2015-03-02
+
+
+
+%META:FILEATTACHMENT{name="Uby-LMF_15_2_public_release4.png" attachment="Uby-LMF_15_2_public_release4.png" attr="" comment="uby overview diagram png" date="1428483093" path="Uby-LMF_15_2_public_release4.png" size="65147" user="hartmann" version="2"}%
+%META:FILEATTACHMENT{name="ims_gn_checked_sorted.csv" attachment="ims_gn_checked_sorted.csv" attr="" comment="Checked and corrected version of GN-IMSLex alignment" date="1427710912" path="ims_gn_checked_sorted.csv" size="123872" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="salsaAnalysis.txt" attachment="salsaAnalysis.txt" attr="" comment="ubySALSA Analysis" date="1428084408" path="salsaAnalysis.txt" size="1227" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="Uby-LMF_15_2.zargo" attachment="Uby-LMF_15_2.zargo" attr="" comment="uby overview diagram argouml" date="1428483073" path="Uby-LMF_15_2.zargo" size="30128" user="hartmann" version="1"}%
+%META:FILEATTACHMENT{name="ims_gn_checked_sorted2.xlsx" attachment="ims_gn_checked_sorted2.xlsx" attr="" comment="wip" date="1428500890" path="ims_gn_checked_sorted2.xlsx" size="57948" user="hartmann" version="1"}%
+%META:FILEATTACHMENT{name="SHK_-_Hiring_Process_-_Form_10_-_Dokumentation_der_SHK_Arbeitszeit.docx" attachment="SHK_-_Hiring_Process_-_Form_10_-_Dokumentation_der_SHK_Arbeitszeit.docx" attr="" comment="stundenzettel" date="1428500971" path="SHK_-_Hiring_Process_-_Form_10_-_Dokumentation_der_SHK_Arbeitszeit.docx" size="118736" user="hartmann" version="1"}%
+%META:FILEATTACHMENT{name="UBY-LMF_15_2_extended_cleaned.png" attachment="UBY-LMF_15_2_extended_cleaned.png" attr="" comment="erweiterte Version" date="1428659207" path="UBY-LMF_15_2_extended_cleaned.png" size="50363" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="Uby-LMF_15_2_extended_cleaned.zargo" attachment="Uby-LMF_15_2_extended_cleaned.zargo" attr="" comment="erweitere Version" date="1428659240" path="Uby-LMF_15_2_extended_cleaned.zargo" size="31717" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="ims_gn_checked_sorted2b.xlsx" attachment="ims_gn_checked_sorted2b.xlsx" attr="" comment="updated version of alignments" date="1430293532" path="ims_gn_checked_sorted2b.xlsx" size="44232" user="hartmann" version="2"}%
+%META:FILEATTACHMENT{name="ims_gn_sorted2_erweitert.xlsx" attachment="ims_gn_sorted2_erweitert.xlsx" attr="" comment="final version of alignment check" date="1430740797" path="ims_gn_sorted2_erweitert.xlsx" size="59370" user="starke" version="1"}%
+%META:FILEATTACHMENT{name="UBY-LMF_15_2_extended_cleaned_coloured.png" attachment="UBY-LMF_15_2_extended_cleaned_coloured.png" attr="" comment="uby overview diagram cleaned + colored" date="1431802981" path="UBY-LMF_15_2_extended_cleaned_coloured.png" size="42863" user="starke" version="1"}%

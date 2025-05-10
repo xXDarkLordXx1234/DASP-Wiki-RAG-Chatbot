@@ -1,0 +1,595 @@
+%META:TOPICINFO{author="senge" comment="" date="1633008977" format="1.1" reprev="37" version="38"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Bachelor Thesis* : A Survey on the Effectiveness of Differential Privacy in the NLP Domain  
+
+*Supervisor*: Timour Igamberdiev
+
+*Start Date* : 05.04.2021 
+
+*Mid-Term Presentation Date* :  24.06.2021 
+
+*Final Presentation Date* : 28.09.2021  
+
+*End Date*: 04.10.2021
+
+---++++ *Weekly overview*
+---+ *05.04.2021 - 09.04.2021*
+
+*Status after the Last Week:*
+Currently Working on the Sentiment Analysis Task
+   * LSTM and Bert models are both implemented
+   * The ability to switch between DP and no DP was included
+   * Fintuning (explicitly state which layer of the Bert model should be trained) was included
+
+*To-Dos For Current Week:*
+Currently Working on the Sentiment Analysis Task
+   * implement early stopping class for epochs
+   * check accuracy for model improvements instead of loss
+   * use 5 different seeds for training
+   * run on the cluster and get accurate results for different model architectures 
+
+---+ *12.04.2021 - 16.04.2021*
+
+*Status after the Last Week:*
+Currently Working on the Sentiment Analysis Task
+   * implemented early stopping with accuracy and 5 Seeds.
+   * started to run the following models on the cluster:
+      * LSTM with no differential privacy and small spacy English model
+      * LSTM with no differential privacy and large spacy English model
+      * Transformer with no differential privacy where all layers of the Bert model are frozen
+      * Transformer with no differential privacy where all but the last two layers are frozen
+      * Transformer with no differential privacy and no Bert layers frozen 
+
+*To-Dos For Current Week:*
+Currently Working on the Sentiment Analysis Task
+   * Run the following models:
+      * LSTM with differential privacy
+      * Transformer with no DP and large Bert model
+      * All Transformer models with differential Privacy
+   * Start explaining the task and structure in the Thesis
+
+---+ *19.04.2021 - 23.04.2021*
+
+*Status after the Last Week:*
+Currently Working on the Sentiment Analysis Task
+   * ran DP on LSTM
+   * started DP with Transformer
+
+*To-Dos For Current Week:*
+Currently Working on the Sentiment Analysis Task
+   * try different learning rate for Transformers to achieve better results
+   * Fix division by zero error
+   * fix precision, recall F1 score function
+   * bert-base with DP
+   * separate trained part from frozen part of the model to only attach the trainable part to the PrivacyEngine
+
+---+ *26.04.2021 - 30.04.2021*
+
+*Status after the Last Week:*
+Currently Working on the Sentiment Analysis Task
+   * Fixed division by zero
+   * precision recall returns positive value (but still sometimes 0)
+   * created nn.Modules list for trainable parameters of the model to feed it into the PrivacyEngine
+   * Results for all no DP networks with different learning rates
+   * DP networks are running/scheduled
+   * Started to explain the task and structure in the Thesis
+
+*To-Dos For Current Week:*
+
+For Sentiment Analysis Task
+   * Find out how to get the right epsilon
+      *  1. Try setting epsilon and delta and see how good they are
+      *  2. Try setting the epsilon minimal under the target epsilon --> if it overshoots then step 3 else stop
+      *  3. Try to estimate epsilon by setting the noise multiplier and delta
+         * first try manually to get a feeling of how the noise multiplier and delta affect epsilon then try automatically a range
+         * no early stopping for that (depends on batch size)
+   * For the DP try larger step sizes (0.001, 0.1, 1, 5, 10)
+   * Look into test set (why is p/r/f1) set to 0 and valid not?
+
+For Named Entity Recognition Task
+   * Start task
+
+---+ *03.05.2021 - 07.05.2021*
+
+*Status after the Last Week:*
+
+For Sentiment Analysis Task
+   * Received first valid privacy results for LSTM with epsilon 1 and 2, currently trying out larger learning rates (0.1, 1) to achieve higher scores
+   * For LSTM with epsilon 5 and 10 received a larger epsilon (5.17, 10.41), currently trying out to reach a better epsilon by setting the target epsilon to 4,82 and 9,58
+   * Fixed precision and recall and updated the results with no DP
+
+For Named Entity Recognition Task
+   * Implemented Transformer with the privacy option, optional LSTM as well as fine-tuning using tunig_structs
+   * Some open questions about the architecture left
+*To-Dos For Current Week:*
+
+For the Sentiment Analysis Task
+   * Try larger learning rates for the LSTM (5 and 10) in the DP setting
+   * use tensorflow_privacy to calculate the amount of noise needed to be added to reach a certain alpha
+   * print additionally to alpha the noise multiplier
+   * Queue Transformer no Finetuning LSTM and Transformer last two no LSTM with DP
+   * use a learning rate of 0.00001 on Bert all layers finetuned and no DP
+
+For the Named Entity Recognition Task
+   * inspect all output layers of the forward step if they make sense in terms of what they represent.
+   * What is the difference between Bert Sequence Classification and BertModel
+
+---+ *10.05.2021 - 14.05.2021*
+
+*Status after the Last Week:*
+
+For the Sentiment Analysis Task
+   * finished all results for the LSTM with DP (only one Seed)
+   * retrieved 2 results for DP Transformer with LSTM no fine-tuning for epsilon 1,2 and learning rate 0.001
+   * retrieved NAN for all higher learning rates. This might be because of vanishing of gradients
+
+For the Named Entity Recognition Task
+   * Compared Bert Model with Bert Sequence Classification and Bert for Token classification
+   * started LSTM but still working on dimensionality problems
+
+*To-Dos For Current Week:*
+
+For both tasks
+   * Find the default value of gradient clipping of Opacus and add it to the privacy logging
+
+For the Sentiment Analysis Task
+   * Ignore NAN error for now and try out lr of 0.01
+   * Create one table for results and make it available for "public"
+   * Continue testing other models with DP
+
+For the Named Entity Recognition Task
+   * Transformer: remove the Padded Labels from the predictions when evaluating the model
+   * Transformer: use attention mask for the padding
+   * LSTM: continue working on dimensionality problem
+
+---+ *17.05.2021 - 21.05.2021*
+
+*Status after the Last Week:*
+
+For the Sentiment Analysis Task
+   * lr of 0.1 did not work, again vanishing of gradients
+   * published SA results
+   * received Transformer no fine-tuning with LSTM and DP results
+
+For the Named Entity Recognition Task
+   * Added attention mask and deleted padded labels for evaluation
+   * still problems with preprocessing in both tasks
+
+*To-Dos For Current Week:*
+
+For the Sentiment Analysis Task
+   * get results for DP setting and Bert fine-tuning 2 and all layers
+   * Create a table with fewer results for better comparison; change cols of the table to be less confusing; choose the best learning rate based on the validation set
+
+For the Named Entity Recognition Task
+   * LSTM: Use glove embedding with UNK token, work on preprocessing
+   * Transformer: change num_labels to 10 (default is 2), and work on preprocessing
+
+---+ *24.05.2021 - 28.05.2021*
+
+*Status after the Last Week:*
+
+For the Sentiment Analysis Task
+   * retrieved results for DP setting with Bert fine-tuning 2 layers that work well
+   * tried three lrs for the Bert DP setting with all layers finetuned. None have a good performance, need to try smaller as well as larger lrs
+   * Updated Table
+
+For the Named Entity Recognition Task
+   * LSTM works and received first results with no DP
+   * Started new Table for NER
+   * Still a model problem with the Transformer setting
+
+*To-Dos For Current Week:*
+
+For the Sentiment Analysis Task
+   * try out different lr for the DP/Bert/all layers finetuned setting
+   * start with different random seeds for the rest of the DP settings
+
+For the Named Entity Recognition Task
+   * run the LSTM with DP setting for epsilon 1,2,5
+   * fix transformers setting
+   * Transformer with LSTM: change back to Bert Model to save computation
+   * For the preprocessing in LSTM make it lowercase so the glove tokens are found
+
+For the Natural Language Inference Task
+   * Start the task
+
+---+ *31.05.2021 - 04.06.2021*
+
+*Status after the Last Week:*
+
+For the Sentiment Analysis Task
+
+   * tried out different learning rates for Bert/no_LSTM/all layers with DP but no good results
+
+For the Named Entity Recognition Task
+
+   * tried Bert/LSTM with the Bert Base Model but received the same result
+   * changed tokenization to lower case
+   * received all NER results without DP except LSTM
+
+For the Natural Language Inference Task
+
+   * Implemented Transformer and LSTM but still missing DP, F1, EP
+
+*To-Dos For Current Week:*
+
+For the Sentiment Analysis Task
+
+   * try out Bert/no_LSTM with DP and frozen embedding layers 
+
+For the Named Entity Recognition Task
+
+   * Check out intermediate layers if value and shape is correct for the LSTM setting
+   * Try out very low epsilon for the LSTM to see if privacy is correct (0,1, 0,01)
+
+For the Natural Language Inference Task
+
+   * Finish implementation of Task and start running experiments
+   * for Transformer check train, val, test set and predictions and outcome -> are predictions correct?
+
+---+ *07.06.2021 - 11.06.2021*
+
+*Status after the Last Week:*
+
+For the Sentiment Analysis Task
+
+   * tried out Bert/no_LSTM with DP and frozen embedding layers but received no good results
+
+For the Named Entity Recognition Task
+
+   * LSTM with DP are done
+   * Transformer no fine-tuning as well as last two layers done with one seed
+
+For the Natural Language Inference Task
+
+   * Finished implementation of Task
+   * received results for all none DP settings except Transformer with LSTM
+
+*To-Dos For Current Week:*
+
+For the Sentiment Analysis Task
+
+   * run different seeds
+
+For the Named Entity Recognition Task
+
+   * do different seeds and lrs
+
+For the Natural Language Inference Task
+
+   * do no DP with whole train val test set
+
+Start Presentation
+
+---+ *14.06.2021 - 18.06.2021*
+
+*Status after the Last Week:*
+
+For the Sentiment Analysis Task
+
+   * Transformer/no LSTM/all layers with DP with all 5 Seeds are running or pending. They each need 1d 6h
+
+For the Named Entity Recognition Task
+
+   * done
+
+For the Natural Language Inference Task
+
+   * no DP setting done with the whole dataset
+
+For the midterm presentation
+
+   * started presentation
+
+*To-Dos For Current Week:*
+
+For the Sentiment Analysis Task
+
+   * Transformer/no LSTM/last two with 5 Seeds
+   * Transformer/none/LSTM with 5 Seeds
+
+For the Natural Language Inference Task
+
+   * start DP setting
+
+For the midterm presentation
+
+   * continue presentation
+
+---+ *21.06.2021 - 25.06.2021*
+
+*Status after the Last Week:*
+
+For the Sentiment Analysis Task
+
+   * Transformer/none/LSTM with 5 Seeds are all running or pending
+
+For the Natural Language Inference Task
+
+   * started DP setting but have problems with runtime/memory
+
+For the midterm presentation
+
+   * created smaller Table
+   * overview of Tasks slide before results
+
+For the Question Answering Task
+
+   * started Task with the Transformer setting
+
+*To-Dos For Current Week:*
+
+For the Sentiment Analysis Task
+
+   * Transformer/no LSTM/last two with 5 Seeds
+
+For the Natural Language Inference Task
+
+   * continue DP setting, find good learning rate
+
+For the midterm presentation
+
+   * finish presentation (add motivation)
+   * add standard derevation
+
+For the Question Answering Task
+
+   * continue task with Transformer
+
+---+ *28.06.2021 - 02.07.2021*
+
+*Status after the Last Week:*
+
+For the Sentiment Analysis Task
+
+   * All Transformer settings with DP are done with 5 Seeds
+
+For the Natural Language Inference Task
+
+   * tried multiple learning rates on UKP, did not have good accuracy even though the seeds were the same
+
+For the midterm presentation
+
+   * finished presentation
+
+For the Question Answering Task
+   * QA works for the train all layers Bert with the standard validation and train set (75 F1-score)
+
+*To-Dos For Current Week:*
+
+For the Sentiment Analysis Task
+
+   * Do Transformer/no LSTM/no DP settings with 5 seeds
+
+For the Natural Language Inference Task
+
+   * find out why they are different
+   * do DP settings
+
+For the Question Answering Task
+   * Change code so that only a part of the training set can be used as training and the rest as validation
+   * Try out different learning rates for the transformer no LSTM setting 
+
+---+ *05.07.2021 - 09.07.2021*
+
+*Status after the Last Week:*
+
+For the Sentiment Analysis Task
+
+   * Done
+
+For the Natural Language Inference Task
+
+   * DP/LSTM setting: problems with dimension and PrivacyEngine
+   * DP/Tr work, take about 3 days; implemented checkpoints to restart model
+
+For the Question Answering Task
+
+   * Fixed bugs with a different train set
+   * Fixed bug where programs simultaneously wrote into the same file, now each program has a unique file so multiple runs can be scheduled at the same time
+
+*To-Dos For Current Week:*
+
+For the Natural Language Inference Task
+
+   * LSTM setting: check what others do in the LSTM NLI task (do we need the translate linear layer?)
+   * run loop with empty privacy budget
+   * implement checkpoint
+
+For the Question Answering Task
+
+   * run no dp and dp settings
+
+---+ *12.07.2021 - 16.07.2021*
+
+*Status after the Last Week:*
+
+For the Natural Language Inference Task
+   * LSTM: tried no DP setting without the translation layer, works as good as with the layer --> no extra linear layer needed
+   * LSTM: do setting is currently running (needs a little more than 2 days) with 2 learning rates (no 5 Seeds)
+   * LSTM: try out even more learning rates
+   * Transformer: implemented checkpoints; each job runs for more than 3 days
+   * Transformer: no LSTM/none is currently running, continue to schedule jobs till QA is done and then schedule more than two on the Lichtenberg
+   * Ran empty loop with privacy, need to confirm if parameters are correct
+
+For the Question Answering Task
+   * Transformer without an LSTM and no DP setting is done with 5 Seeds
+   * Currently running multiple learning rates for the Transformer/noLSTM with different fine-tuning setting
+   * Added checkpoint since they take longer than a day
+   * currently trying to create a virtual batch size of 32 by calling optimizer.step() less often.
+
+*To-Dos For Current Week:*
+
+   For the Natural Language Inference Task
+      * continue the DP setting
+      * run empty DP loop with a range of 2-32
+
+   For the Question Answering Task
+      * continue the DP setting
+      * check how to schedule on the test set
+
+---+ *19.07.2021 - 23.07.2021*
+
+*Status after the Last Week:*
+
+For the Natural Language Inference Task
+   * tried out different learning rates for all Transformer and the LSTM setting with DP for epsilon 1
+   * ran empty DP loop for a range
+
+For the Question Answering Task
+   * did Transformer no finetuning/no LSTM setting with DP with 5 seeds for epsilon 1; also tried out different learning rates
+   * tried out different learning rates for the Transformer/ last two layers/no LSTM setting
+   * tried out different learning rates for the Transformer/ all layers / no LSTM setting but it takes 11h per epoch
+
+*To-Dos For Current Week:*
+
+For the Natural Language Inference Task
+   * schedule the rest of the DP setting
+   * try out different batch sizes 16/64 and see if it results in a better result
+
+For the Question Answering Task
+   * schedule the rest of the DP setting
+   * try out different batch sizes 16/64 and see if it results in a better result
+   * continue with the official test bench
+
+For the POS Tagging Task
+   * Start the task
+
+---+ *26.07.2021 - 30.07.2021*
+
+*Status after the Last Week:*
+
+For the Natural Language Inference Task
+   * Tried out batch sizes 16 and 64 and found the optimal batch size for the transformer settings
+
+For the Question Answering Task
+   * Tried out batch sizes 16 and 64 and found the optimal batch size for the transformer settings
+   * Scheduled the different DP settings with seeds
+
+For the POS Tagging Task
+   * Implemented the task in all settings and architectures -> works on the torch text dataset
+   * Implemented the LSTM architecture with a custom dataset -> results in bad performance
+
+*To-Dos For Current Week:*
+
+For the Natural Language Inference Task
+   * Schedule all seeds and settings with optimal learning rate and batch size on the cluster
+
+For the Question Answering Task
+   * schedule the rest of the failed seeds
+   * add the TR/LSTM setting
+   * continue with the official test bench
+
+For the POS Tagging Task
+   * fix the bad performance of LSTM architecture
+   * add the custom dataset to Transformer architecture
+   * prepare different languages and parse them to get the dataset
+   * start the no do jobs
+
+---+ *02.08.2021 - 06.08.2021*
+
+*Status after the Last Week:*
+
+For the Natural Language Inference Task
+   * Scheduled all seeds and settings with optimal learning rate and batch size on the cluster
+
+For the Question Answering Task
+   * scheduled the rest of the failed seeds
+   * added the TR/LSTM setting, did hyperparameter tuning, and scheduled different seeds and DP epsilons
+   * executed dev testing on Codalab, encountered strange Cuda error
+
+For the POS Tagging Task
+   * fixed the bad performance of LSTM architecture
+   * added the custom dataset to Transformer architecture
+   * done with the EWT dataset
+
+*To-Dos For Current Week:*
+
+For the POS Tagging Task
+   * parse dataset for GUM
+   * create privacy budget counting
+   * Schedule GUM with hyperparameter
+
+---+ *09.08.2021 - 13.08.2021*
+
+*Status after the Last Week:*
+For the POS Tagging Task
+   * parsed the GUM dataset and scheduled hyperparameter
+   * created privacy budget calculator
+
+*To-Dos For Current Week:* 
+For the POS Tagging Task
+   * schedule all seeds for best hyperparameter as well as other epsilons
+
+---+ *16.08.2021 - 20.08.2021*
+
+*Status after the Last Week:*
+   For the POS Tagging Task
+      *GUM task is done
+
+*To-Dos For Current Week:*
+   * Check all tasks for missing jobs
+
+The writing part
+   * rewrite the motivation
+
+---+ *23.08.2021 - 27.08.2021*
+
+*Status after the Last Week:*
+   * scheduled some jobs for QA
+
+The writing part
+   * rewrote motivation, added privacy attacks to exemplify the danger
+
+*To-Dos For Current Week:*
+For the QA task
+   * take a look at CodaLab
+   * schedule the long all finetuned parts
+For the NLI task
+   * schedule the long all finetuned parts
+For the writing part
+   * introduce differential privacy in general and specifically in machine learning
+
+---+ *30.08.2021 - 17.09.2021*
+
+*Status after the Last Week:*
+
+For the QA task
+   * BERT last two-layer finetuned running, and all finetuned running
+
+For NLI 
+   * BERT last two-layer finetuned running on UKP
+   * BERT all layers finetuned running on Yolo
+
+For the writing part
+   * writing a lot, but not a lot of correction. I want to get all the text first.
+
+*To-Dos For Current Week:* 
+   * keep the experiments running, restarting them if needed
+   * keep writing on the thesis
+
+---+ *20.09.2021 - 01.10.2021*
+
+*Status after the Last Week:*
+
+For the QA task
+   * no update since I'm not being scheduled at the Lichtenberg
+
+For NLI 
+   * All jobs are running on YOLO and are almost done
+
+For the writing part
+   * no update
+
+Final Presentation
+   * Created and presented
+
+*To-Dos For Current Week:* 
+
+For NLI
+   * do confusion matrix of no DP and DP setting
+
+Writing part
+   * Keep working on the Theses
+ 

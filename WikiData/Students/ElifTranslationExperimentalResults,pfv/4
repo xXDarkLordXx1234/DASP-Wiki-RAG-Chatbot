@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="ElifExperimentalResults"}%
+%TOC%
+
+---+ Translation Experimental Results
+---++ Goals
+   * Creating resources for resource-poor languages (in our case, German) by translating subjectivity lexicons from other languages such as English
+---++ Related Work
+---++ Methods
+---++ Results with Universal Dictionary
+   * Translation with Universal Dictionary yields low results
+      * Only ~500 words from !OpinionFinder were translated (out of ~8200 entries) by using the "full" UD dictionary
+      * Only ~1000 words were translated by using both the "full" and the "light" UD dictionary
+         * See ElifLexicalResources for further information
+
+---++ Results with Wiktionary and Self-written Parser
+   * Translation of !OpinionFinder lexicon with self-written parser for Wiktionary yields following results: 
+      * Number of translated words 2052 out of 8221 total. Not translated: 6169
+      * Of those not translated
+         * 1273 because lack of Part-of-Speech
+         * Many more because lack of Translations entries (see .ods document)
+      * *Questions:*
+         1 Do all the OpinionFinder entries exist in the English Wiktionary? you should look for the lemma form of the ones with stemmed=y.
+
+---++ Results with Wiktionary and JWKTL
+---++ Results with MOSES
+   * Low quality results for some words
+   * MOSES seems better suited for translating sentences, not single words
+---++ Results with OPUS
+   * http://urd.let.rug.nl/tiedeman/OPUS/
+   * http://urd.let.rug.nl/tiedeman/OPUS/lex.php
+   * Uses GIZA++ like MOSES, is better suited for single-word translations
+   * Results when translating !OpinionFinder Lexicon: 
+         * 4158 of 8221 words translated 
+         * 4063 not translated
+---++ Error Analysis
+
+-- Main.ElifTekes - 10 Oct 2009
+   * [[%ATTACHURL%/opus_translated.txt][opus_translated.txt]]: The list of OpinionFinder words that were translated with OPUS
+
+   * [[%ATTACHURL%/opus_notTranslated.txt][opus_notTranslated.txt]]: Words OPUS was unable to translate
+
+   * [[%ATTACHURL%/moses_in_first.txt][moses_in_first.txt]]: MOSES input
+
+   * [[%ATTACHURL%/moses_out.txt][moses_out.txt]]: MOSES output
+
+%META:FILEATTACHMENT{name="opus_translated.txt" attachment="opus_translated.txt" attr="" comment="The list of OpinionFinder words that were translated with OPUS" date="1258632022" path="opus_translated.txt" size="1755416" stream="opus_translated.txt" tmpFilename="/var/tmp/CGItemp450" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="opus_notTranslated.txt" attachment="opus_notTranslated.txt" attr="" comment="Words OPUS was unable to translate" date="1258633098" path="opus_notTranslated.txt" size="42990" stream="opus_notTranslated.txt" tmpFilename="/var/tmp/CGItemp408" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="moses_in_first.txt" attachment="moses_in_first.txt" attr="" comment="MOSES input" date="1258633131" path="moses_in_first.txt" size="76836" stream="moses_in_first.txt" tmpFilename="/var/tmp/CGItemp343" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="moses_out.txt" attachment="moses_out.txt" attr="" comment="MOSES output" date="1258633151" path="moses_out.txt" size="83662" stream="moses_out.txt" tmpFilename="/var/tmp/CGItemp244" user="ElifTekes" version="1"}%

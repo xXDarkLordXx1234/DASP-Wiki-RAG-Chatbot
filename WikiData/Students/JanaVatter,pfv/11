@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="vatter" comment="" date="1547831982" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Thesis: Exploring Training Strategies for cQA Retrieval Tasks
+
+   * *Prüfungsordnung*: PO 2015
+   * *Start date*: 01.11.2018
+   * *End date*: 02.05.2019
+   * *Talks*: Final Presentation 09.04.19; Mid Term Talk 14.02.19 (in SIG CONTEXT)
+
+*Goals*:
+   * Setting up and performing a number of experiments on multiple datasets to compare the different training strategies on the example of the question retrieval task and the RCNN model
+   * Implementation of training methods in existing experimental software
+   * Simulating low-resource scenarios for a more realistic comparison of the different training methods in practical scenarios
+   * Performing an error analysis
+
+---+!! Tasks
+   * [TODO] Run Pre-Training, Encoder/Decoder and RCNN for AskUbuntu and Javapython datasets
+   * [TODO] find out why title/body-similarity doesn't perform good with the Javapython dataset
+
+---+!! Reports
+
+---++ 17.01.2019
+   * Implemented title/body-similarity for Domain Transfer project
+   * Ran experiments with title/body-similarity+LSTM and datasets from DT project
+   * Results of TBS better than best results of Adversarial Transfer
+   * Used JavaPython dataset for experiments with pre-training+RCNN and title/body-similarity+RCNN
+
+Details ([[%ATTACHURLPATH%/Report03.pdf][pdf]])
+
+---++ 17.12.2018
+   * Ran RCNN with new converted datasets, this didn't improve the results
+   * Experiments with hyperparameters
+   * Found out that AUC(t) not suitable for AskUbuntu dataset from RCNN Paper
+
+Details ([[%ATTACHURLPATH%/Report04.pdf][pdf]])
+
+---++ 06.12.2018
+   * Ran Pre-Training+RCNN with hyperparameters from RCNN Paper
+   * Used AskUbuntu dataset from RCNN Paper and several datasets from Domain Transfer Paper
+   * Results are better than BM25 from DT Paper, but worse than direct transfer
+   * Values from sprint dataset aren't really good
+
+Details ([[%ATTACHURLPATH%/Report02.pdf][pdf]])
+
+---++ 28.11.2018
+   * Preprocessed data from Domain Transfer Paper (https://arxiv.org/pdf/1809.02255.pdf)
+   * Ran RCNN Model on the AskUbuntu dataset (https://github.com/taolei87/askubuntu) and datasets from the Domain Transfer Paper
+   * Implemented AUC
+
+Details ([[%ATTACHURLPATH%/Report01.pdf][pdf]]) 
+
+
+-- Main.AndreasRueckle - 2018-11-19
+
+%META:FILEATTACHMENT{name="Report01.pdf" attachment="Report01.pdf" attr="" comment="Detailed report for 28.11.2018" date="1543413178" size="139087" user="vatter" version="1"}%
+%META:FILEATTACHMENT{name="Report02.pdf" attachment="Report02.pdf" attr="" comment="Detailed report for 06.12.2018" date="1544172822" size="213795" user="vatter" version="1"}%
+%META:FILEATTACHMENT{name="Report03.pdf" attachment="Report03.pdf" attr="" comment="Detailed report for 17.12.2018" date="1545067361" size="219218" user="vatter" version="1"}%
+%META:FILEATTACHMENT{name="Report04.pdf" attachment="Report04.pdf" attr="" comment="Detailed report for 17.01.2019" date="1547831731" size="175414" user="vatter" version="1"}%

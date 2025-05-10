@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="MichaelMatuschek" date="1271842279" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="JensHaase"}%
+---++++  Meeting 21.04.2010
+
+   * Projekt-Setup, benötigte Ressourcen und Beispielpipeline wurden besprochen
+   * Besprochene Referenzen: Diplomarbeit S. Kulessa, Paper von Potthast et.al., Paper von Smets et. al.
+   * Mögliche Klassen wurden diskutiert
+      * Beschlüsse:
+      * Konzentration auf Nicht-Vandalismus-Änderungen, da diese durch die Literatur noch nicht abgedeckt sind
+      * Klassifikation von Vandalismus kann im Wesentlichen auf den Verfahren aus der Literatur basieren
+      * Inhaltliche Merkmale (z.B. um sinnverändernde Edits zu erkennen) werden zunächst nicht behandelt, da dies evtl. zu aufwändig ist
+      * Konzentration vorerst auf oberflächliche Features, z.B. Textlängen
+   * Weiteres Vorgehen
+      * Einrichtung von eclipse-Projekt, Lösung evtl. technischer Probleme
+      * Einarbeiten in die besprochene Literatur und Herausarbeiten nützlicher Ansätze (z.B. Diff-Berechnung)
+      * Zu erkennende Klassen festlegen und beginnen, Merkmale einer Revision auszuarbeiten, die für die Erkennung interessant sein können
+      * Überlegen, welche Trainingsdaten es gibt (Potthast?), wie sie annotiert sind und ob bzw. wie das für unsere Aufgabe passt
+
+
+-- Main.MichaelMatuschek - 21 Apr 2010

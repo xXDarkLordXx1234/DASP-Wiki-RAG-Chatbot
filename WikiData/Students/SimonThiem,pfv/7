@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="thiem" comment="" date="1576152851" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis: Normalizing Flows for Style Transfer in Natural Language Text
+
+*Start date:* 2019-10-10
+
+*Supervisor:* Dr. Gözde Gül Şahin
+
+
+
+
+
+-- Main.GoezdeGuelSahin - 2019-10-17
+
+
+*Week 24.10.19 - 31.10.19:*
+
+Setting up my Computer(s) to make Stanley Simoes code of the reimplementation of the style transformer by lample work.
+
+*Week 31.10.19 - 07.11.19:*
+
+Setting up VPN to UKP. 
+
+Fixed issue where KENLM did not compile/predict.
+
+Study code to understand where and how the VAE are implemented.
+
+Read Lample 19 Paper in more detail.
+
+*Weeks 07.11.19 - 21.11.19:*
+
+Ran some normalizing flow code I found on the internet. 
+
+Implemented Normalizing Flows into Stanleys Code. 
+
+Restarted after I noticed that my first implementation (-idea) did not fit Stanleys more classed based model. 
+
+Does not run yet. I need to understand the meaning of each paramenter and how to set them while implementing it in various situations. 
+
+*Weeks 21.11.19 - 12.12.19:*
+
+Fixed the code to run with a single layer Normalizing Flow 
+
+Implemented a multi layer version of Planar Flows. Still some problems with input dimensions. 
+
+Started reading into some Normalizing Flow architectures that are capable to work with conditions. 

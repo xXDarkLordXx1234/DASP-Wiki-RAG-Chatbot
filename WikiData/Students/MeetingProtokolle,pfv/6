@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="LizhenQu" date="1181596842" format="1.1" version="6"}%
+%META:TOPICPARENT{name="LizhenQu"}%
+
+---+ Meeting-Protokolle   
+
+---++ 29.05.2007   
+   * wenig Zeit  bis 1.6. wegen Data-Mining Contest
+   * Problem: Größe der Blog-Daten
+      * @action(LQ): Im Poolraum überprüfen: Festplattengröße v. Linuxrechnern, welche Rechner sind überhaupt benutzbar
+      * @discuss(UKP): mögliche Benutzung von Servern (Homer,PC19)
+   * Analyse der Blog-Daten
+      * Paper v. ICWSM2006: S. Hendrick: Following Conversational Traces
+   * Paper zu Ontology Evaluation
+      * J. Brank et al.: A Survey of Ontology Evaluation Techniques
+   * genaueres auch zu weiteren ICWSM Paper siehe LQs DA-Seite (ab 1.6.)
+   * @action(LQ): bis zum nächsten Meeting Blog-Daten-Analyse
+   * @action(LQ): genaue Identifizierung von benötigten Vorverarbeitungskomponenten
+
+-- Main.ChristofMueller - 29 May 2007
+---++ 04.06.2007  
+   * [[%ATTACHURL%/first_data_analysis.pdf][first_data_analysis.pdf]]: analysis of blog data in 05.01
+   * Blog corpus wurde hinsichtlich vorhandenen Metadata und Verteilung der Sources, Textläng analysiert.<br />
+---++ 11.06.2007 
+    First Status Meeting
+   * Ein allgemeiner Überblick von Ontology Learning vom Text
+   * Work von Rion Snow wurde präsentiert.
+   * Language Guessing
+Comments(Danke für die hilfsreiche Angabe von Torsten :) ):
+   * Verbesserung des Vortragstil.
+   * Bessere Kontrolle der Zeit.
+
+    
+
+   * [[%ATTACHURL%/status_meeting_11-06_lizhenqu.ppt][status_meeting_11-06_lizhenqu.ppt]]: power point for 1te status meeting
+%META:FILEATTACHMENT{name="first_data_analysis.pdf" attachment="first_data_analysis.pdf" attr="" comment="analysis of blog data in 05.01" date="1180967921" path="first_data_analysis.pdf" size="180958" stream="first_data_analysis.pdf" user="Main.LizhenQu" version="1"}%
+%META:FILEATTACHMENT{name="status_meeting_11-06_lizhenqu.ppt" attachment="status_meeting_11-06_lizhenqu.ppt" attr="" comment="power point for 1te status meeting" date="1181592685" path="status_meeting_11-06_lizhenqu.ppt" size="197120" stream="status_meeting_11-06_lizhenqu.ppt" user="Main.LizhenQu" version="2"}%

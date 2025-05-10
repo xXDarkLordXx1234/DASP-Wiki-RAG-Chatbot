@@ -1,0 +1,226 @@
+%META:TOPICINFO{author="hannemann" comment="save topic" date="1418223669" format="1.1" reprev="15" version="19"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ 2014-12-09
+
+   * Status Report (RH): What have I done?
+      * , due to medical absence
+   * Status Report(RH): What will I do?
+      * prepare Midterm presentation
+      * register thesis at student office
+   * Status Report(RH): What's in your way?
+      * 
+
+---+++ 2014-12-02
+
+   * Status Report (RH): What have I done?
+      * Continuing reading/writing (Related Work)
+   * Status Report(RH): What will I do?
+      * will be offline for medical reasons
+      * Continuing writing
+      * will take care of thesis registration in office
+   * Status Report(RH): What's in your way?
+      * &#8212;&#8212;
+
+---+++ 2014-11-25
+
+   * Status Report (RH): What have I done?
+      * Continuing reading/writing (Related Work)
+   * Status Report(RH): What will I do?
+      * Continuing writing
+   * Status Report(RH): What's in your way?
+      * Profoundly present the basics of Argumentation Theory and Mining need far more time than expected
+   * @discuss(CS,IH): Study of fallacies: Currently, fallacies are not part of the product. How much of the fallacy topic is expected in Related Work? There are other topics such as Informal Logic and Pragma-Dialectics, which I only explain in one sentence currently + adding a literature reference. I'd mention fallacies here as well, unless you'd like to see more here? 
+
+---+++ 2014-11-18
+
+   * Status Report (RH): What have I done?
+      * Improved font sizes on smaller smartphones on http://thesis.raffael.me/ArgCollect (might require re-adding the app onto the homescreen)
+      * Continuing writing
+   * Status Report(RH): What will I do?
+      * Continuing writing
+   * Status Report(RH): What's in your way?
+      * Still waiting for a meeting with Serious Games group (Prof. Gurevych is in contact with Dr. Goebel)
+   * @discuss(): Anmeldung - in progress, waiting for Prüfungsplan
+
+---+++ 2014-11-11
+
+   * Status Report (RH): What have I done?
+      * Further improved the 'ArgCollect' tool with new functions as discussed: Visit http://thesis.raffael.me/ArgCollect and start composing arguments!
+      * (added argument listing, bug fixes, choosing the stance in the input form)
+      * Proposing a structure for the thesis
+   * Status Report(RH): What will I do?
+      * @discuss(CS,IH): Proposed thesis structure
+   * Status Report(RH): What's in your way?
+      * &#8212;
+
+---+++ 2014-11-04
+   
+   * Status Report (RH): What have I done?
+      * Developed a formal model for the arguments which will be used in the thesis
+      * Developed a quick Argument Composing tool: http://thesis.raffael.me/ArgCollect
+        which allows visitors to compose arguments for various categories, that can be used for the bootstrapping
+        of the final thesis product. The app works best on mobile devices (add it to your homescreen on smartphones and tables), but on Desktop
+        as well. Built using Angular.js and the Ionic Framework
+   * Status Report(RH): What will I do?
+      * Start writing the Related Work section
+   * Status Report(RH): What's in your way?
+      * &#8212;
+
+
+---+++ 2014-10-29
+   * Idea (emerged in the group meeting): Quickly build a tool to let group participants compose arguments (template based) from the very beginning
+
+---+++ 2014-10-28 Meeting (IH)
+
+   * @info(IH) deadline for related work and introduction - end of November
+   * @info(RH) SVN repo and latex template set-up
+
+---+++ 2014-10-23 Meeting (IH)
+
+   * @info(RH) back-end technology
+      * baasbox - http://www.baasbox.com/
+         * now runs locally, JSON based database
+         * maybe won't be enough - can't query the database; they use more abstract layer for their API
+         * but in general it should work well
+   * current prototype application
+      * basic functionality, UI concepts (screens, etc.)
+      * looks good
+   * UI and the game logic - in JavaScript MVC framework AngularJS http://angularjs.org
+   * @info(IH) thesis writing
+      * recommended writing the related work section right from the beginning (putting notes, literature overview)
+   * @action(RH) start using our SVN repository for both latex + code
+   * @action(RH) Prüfungssekretaraiat - should do ASAP
+   * @action(RH) game concept
+      * needs to develop precisely, as a graph or some other abstract representation
+      * we can then play the game on paper and see how it works
+   * @discuss(RH) Concerns - meetings
+      * should be weekly, can be another weekday if Tuesday not possible
+   * @info(IH) Questions in the game - take from the slides (Google doc.)
+   * @discuss(RH) We need a graphic designer for comics, etc.
+      * IH: not the main focus on the beginning, but at the later stages we can try to find resources for that
+   * @action(IH) send RH link to the serious games from Roberto Navigli
+      * http://www.knowledgeforge.org/game/infection/
+   * @info(IH) Informed about midterm talk on 2014-12-16 (9:50, S2|02, C110)
+   * @discuss() Another game idea might be to really let the experienced users to annotate parts of the text (challenging game)
+      * @action(RH) formulate the concept and put into the context of other game scenarios
+
+---+++ 2014-10-21
+   * Status Report (RH): What have I done?
+      * Further dived into the frameworks
+      * Working on a first prototype ("Durchstich")
+   * Status Report(RH): What will I do?
+      * Continuing working on the prototype
+      * Continuing reading papers
+   * Status Report(RH): What's in your way?
+      * Currently everything is fine.
+   * @todo(Raffael):
+      * sign task description
+      * Prüfungssekretariat
+
+---+++ 2014-10-14
+   * Status Report (RH): What have I done?
+      * continuing reading the papers
+      * selected the set of frameworks / technologies to be used in the system:
+         * Client:
+            * The apps will be built with HTML5 to have a cross-platform compatible solution
+            * Therefore, AngularJS (http://angularjs.org, by Google) will be used
+         * Server
+            * A Backend-as-a-service (baas) will be used, which already provides all sorts of user management, Facebook / Twitter APIs, asset management, etc.
+            * parse.com is a great baas, and would *highly* accelerate the development. But it's free only up to a threshold
+            * baasbox.com could be used instead (open-source)
+         * Admin Area
+            * The server will provide an interface to control the app
+            * e.g., the current 'Hot Topics', blocking users, reading statistics, im/exporting the current corpus
+   * Status Report(RH): What will I do?
+      * Start implementing a prototype for the different game modes
+      * Experimenting / refining the game-modes to improve the game mechanics and the validation
+   * Status Report(RH): What's in your way?
+      * Although I used to be a fan of HTML5 a few years ago, switching back to JavaScript is kind of difficult
+      * @discuss(CS): Does the university provide servers I could install a Java based server process ('baasbox' backend-as-a-service) on?
+         * >> Probably yes.
+      * @discuss(CS): Would the university be able to pay for the parse.com bills (Pricing: https://www.parse.com/plans)?
+         * >> No, use open-source projects whenever possible.
+
+---+++ 2014-10-07
+   * Status Report (RH):
+      * offline for vacation.
+   
+---+++ 2014-09-30
+   * Status Report (RH):
+      * continuing reading the papers
+
+
+---+++ 2014-09-23
+   * Status Report (RH):
+      * continuing reading the papers
+      * continuing adding papers of Serious Games and Argument Mining / Theory
+
+
+---+++ 2014-09-16
+   * Status Report (RH):
+      * Started consuming papers
+      * Had to prepare for a job interview
+
+---+++ 2014-09-09
+   * Status Report(RH): What have you done?
+      * Tried to get in contact with Sandra Hardy (KOM, Serious Games), no response yet
+      * Assembled some papers in the Gamification domain (with CS and IH, it will be easy to a valuable list of papers in the NLP domain)
+      * Analyzed the visual design of duolingo: Fresh, green, vital, comic, flat, custom font, mascot, utterly beautiful animations! Generally a childish visual language, even tough it's being used by adults as well. They don't mention that the users are actually 'working' in any point in the app description. "Learn a language, for free!". 
+      * Thought about what to do with the points in the game:
+         * Making use of the smartphone space and let users unlock _wallpapers_, _ringtones_, other resources.
+         * Feeding a _tamagotchi like animal_.
+         * Providing _local high-scores_.
+         * Unlocking _simple games_.
+         * Providing _ridiculous / funny awards_, such as "Besserwisser"-Award.
+         * Unlocking _privileges_, e.g., submitting articles + debate questions.
+      * Thought about applying time constraints to the game concept to make it more fun:
+         * varying the time-consuming process of argument production with small, lightweight, fast mini-games similar to "Dumb ways to die"?
+         * you only have 60s seconds to compose a new argument (quality may suffer)? Or: Other took just ~32s to compose a new argument on this topic, what about you?
+      * Found Readability, a class to extract an article content from a web page
+      * Analyzed the Cappuccino framework ("ObjectiveJ": translates Objective C like code into JavaScript): Seems like a gorgeous technology, but is currently Desktop only
+      * Checked out phonegap's plugin functionality: vivid community
+      * Checked out ember.js, AngularJS (by Google, seems promising), backbone.js (Binding!). All used my major companies. Decision will probably depend on the IDE comfort.
+   * Status Report(RH): What will you do?
+      * Find more adequate "external rewards for reaching specified point thresholds": what to do with the collected points in the game?
+      * How to apply gamification, the wrong way
+      * Get the Serious Games appointment
+   * Status Report(RH): What's in your way?
+      * externally: my upcoming job interview
+   * @discuss(CS): Thesis Structure and Related Work
+   * @discuss(CS): Elaboration of Task Description
+   * @info(CS): Thesis Workflow open items 
+      * Contract (IVAN?)
+         * Signed version was handed over to secretariat already on 2.9. --IH
+      * Appointments for student talks (midterm and final)
+      * Serious Games questions
+      * List of grades
+      * Task description
+   * @todo(supervisors):
+   * @todo(student):
+
+---+++ 2014-09-02
+   * Status Report(RH): What have you done?
+      * captured the three ideas, that emerged from the discussions between of IH, CS, RH, in short presentations:
+         * the 'Article Debate' approach: let users select text in articles of publishers and add their arguments pro or contra, with enhanced Gamification aspects
+         * the 'How well do you know your friends' approach: guess who of your friends this argument originates from
+         * the 'Based on a premise, can you guess the direction?' approach: guess if the author is pro or contra a certain topic, based on one provided premise only
+      * initially tested existing, well known 'gamified' apps, such as Duolingo, Runstastic, Zombierun
+      * searched for potential show-stoppers in the three game concepts
+         * Bootstrapping: present in all approaches: we need an initial pool of debating questions, corresponding arguments, and existing users to make the game gun from the very first day of the launch _(Thoughts: As long as there won't come up a brilliant idea during the thesis how to let the users themselves create data before they start playing it, we probably will have to produce initial data on our own, manually. Idea: every user will have to produce ONE+ argument during a short intro tutorial before (s)he can start playing the game)_
+         * Typing on Smartphones: Although there is a dictation feature in current smartphones OSs, it may be arduous to produce contents on a small, virtual keyboard _(Thoughts: a) the template will simplify the creation process. b) a Desktop browser version may help for those who really suffer. c) the OS dictation feature works quite well with simple texts (no numbers contained, etc.).)_
+         * lack of engaging friends: the 'How well do you know your friends' idea highly depends on the fact that enough of your Social Media friends are also using the app _(Thoughts: Do not only guess your friends, but also guess properties of unknown authors, such as gender, age, home country. This will reduce the fun factor, but makes the concept robust against lack of user data)_
+       * Idea (IH, CS) to merge the two 'guessing' game ideas into one single app: since both approaches share the same data models, combining the two will reduce the impact of the individual problems of the ideas. RH: Great idea to combine them, which is similar to the idea to also guess unknown author's properties. Combining all the concepts will introduce more variation in the game and, thus, entertain the user even more.
+   * Status Report(RH): What will you do?
+      * further elaborate risks of the current concept
+      * check which and how educational apps have been promoted by Apple in their AppStore(s) recently
+      * look up existing apps in this domain
+      * elaborate research questions in all technical views of the whole concept to enhance the research value of the thesis
+      * search for Backend-as-a-service services
+      * search for cross-platform application frameworks
+   * Status Report(RH): What's in your way?
+   * @todo(student):
+      * finally get a signed overview of my grades in the Prüfungsamt
+
+
+
+-- Main.ChristianStab - 2014-09-08

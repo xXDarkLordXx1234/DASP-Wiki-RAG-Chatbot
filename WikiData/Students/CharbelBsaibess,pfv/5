@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="zyska" comment="" date="1673532600" format="1.1" reprev="2" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ *Bachelor Thesis*: NLP-Supported Pragmatic Tagging for Inline Commentary
+
+*Official Start Date*: 12.12.2022
+
+*Mid-Term Presentation Date*: ??
+
+*Final Presentation Date*: ??
+
+*End Date*: 12.06.2023
+
+---++ Meeting Minutes
+
+---+++ Meeting 2022-01-12
+   * first mockup version mostly implemented, begin to implement second version (modal)
+   * fixed some minor bugs with emit to parent components and modal teleport to body
+   * introduction sequelize to add new database columns
+   * Use pgadmin to access the database logs
+   * TODO:
+      * saving of models results in vue store
+      * preparing for user study to discuss it next time
+
+---+++ Meeting 2022-01-05
+   * Tried: connect scibert model with pipeline (problems with docker container)
+   * Working on mockup for first version, currently returning string as prediction 
+   * TODO: 
+      * object with commend id and implementing model - due parallel requests
+      * use batch and select for displaying predictions
+      * Prediction are saved in vuex store at the beginning, later implementing into db
+      * we provide the model with the nlp api pipeline
+
+---+++ Meeting 2022-12-22
+   * Clarify open questions in PEER (websockets subscribe)
+   * Clarify general architecture and linking models
+   * TODO
+      * To read:
+      * https://hendrikschuff.de/files/How_to_Do_Human_Evaluation_Schuff_et_al.pdf
+      * https://quod.lib.umich.edu/w/weave/12535642.0001.101?view=text;rgn=main
+      * Next steps: connect scibert model, further implementation, showing results of scibert model and saving
+   * OPEN
+      * Latex Template Thesis
+      * Scope (Minimum number of pages)
+   * Next Meeting: 5.01.2023
+
+---+++ Meeting 2022-12-13
+   * Introduction into PEER 
+      * Frontend: Vuex Store, Vue Browser Plugin, Relevant Components
+      * Backend: Websockets (Socket.IO, DB: Sequelize)
+   * Questions can be asked at any time in Elements
+   * Timely deal with user study, not only programming
+   * Open Connections can be closed during restart of the Linux Machine (shutdown -r now)
+   * Prepare current state for each meeting and questions we should discuss
+   * *TODO*
+      * Basic implementation of static feedback 
+      * Install PyCharm Professional (also have a look into the database, tab on right side)
+   * Regular Meetings: Regular weekly meetings at Thursday, 2 PM weekly

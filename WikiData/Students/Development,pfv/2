@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="JohannesHoffart" date="1246545814" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---++ Extracting Structure from Wikis
+   * http://wiki.eclipse.org/Mylyn/Incubator/WikiText
+      * http://help.eclipse.org/ganymede/topic/org.eclipse.mylyn.wikitext.help.ui/help/devguide/WikiText%20Developer%20Guide.html (API)
+
+---++ DKPro
+
+   * [[%ATTACHURL%/DKPro_fabian.tar.gz][DKPro_fabian.tar.gz]]: DKPro_fabian.tar.gz
+      * Hier sind TextRank (CooccurrenceLemmaFilteredPageRankAggregate) und LexRank (LexRankNodeDegreeSummarizer) als UIMA Komponenten.
+
+%META:FILEATTACHMENT{name="DKPro_fabian.tar.gz" attachment="DKPro_fabian.tar.gz" attr="" comment="" date="1246545760" path="DKPro_fabian.tar.gz" size="848206" stream="DKPro_fabian.tar.gz" tmpFilename="/var/tmp/CGItemp59824" user="JohannesHoffart" version="1"}%

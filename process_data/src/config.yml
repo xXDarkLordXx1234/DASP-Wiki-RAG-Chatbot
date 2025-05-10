@@ -1,0 +1,30 @@
+system_config_collection_name: system_config
+index:
+  source_dir: ./WikiData
+  index_path: index.parquet
+  reload_seconds: 60
+  ignored_files:
+  - WebPreferences.txt
+  - .DS_Store
+  min_file_size: 32
+chromadb:
+  host: localhost
+  port: 8000
+  collection_name: WikiData
+embedding:
+  model: sentence-transformers/paraphrase-MiniLM-L6-v2
+  chunk_size: 256
+  chunk_overlap: 64
+  include_headers_in_chunks: false
+  include_headers_in_embedding: true
+  include_path_in_embedding: true
+  ignored_line_starts: 
+  - "%META"
+  remove_stopwords: true
+  lemmatize: true
+  remove_numbers: true
+  remove_accents: true
+  hard_header_split: false
+  header_match: "^---\\++\\s+\\*?(?:%[A-Z]+%)?(.*?)(?:%[A-Z]+%)?\\*?$"
+
+

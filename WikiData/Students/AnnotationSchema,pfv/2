@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1306414192" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Annotation Schema Bemerkungen
+1. Die User-Turns, die keine Inhaltlich Information enthalten werden nicht mit einer InformationContent-Label versehen. Z.B. Template "Done", Template "Fixed", die ohne weitere Information vorkommen <br>
+2. Es kann passieren, dass die Diskussion über mehrere Topics dauert. Somit können Auch Interpersonal-Labels zwischen verschiedenen Topics vergeben werden, sogar wenn der UserTurn am Anfang des Topics steht. <br>
+3. Die Turns, die aus mehreren Teilen bestehen (mit Turns von anderen User dazwischen) müssen die Labels CO für Article Criticism bzw. IO für InformationContent erhalten, wenn die Teile verschiedene Aspekte von Article Criticism bzw. Information Content betrachten und man für jeden Teil verschiedene Labels vergeben hätte.
+
+<br><br>
+   * [[%ATTACHURL%/5ArticlesAnnotationAgreement.csv][5ArticlesAnnotationAgreement.csv]]: Annotation comparison of 5 Articles: "Computer", "Italy","Alanis Morissette", "Barack Obama", "Atom"
+
+%META:FILEATTACHMENT{name="5ArticlesAnnotationAgreement.csv" attachment="5ArticlesAnnotationAgreement.csv" attr="" comment="Annotation comparison of 5 Articles: %22Computer%22, %22Italy%22,%22Alanis Morissette%22, %22Barack Obama%22, %22Atom%22" date="1306414170" path="5ArticlesAnnotationAgreement.csv" size="3964" user="YevgenChebotar" version="1"}%

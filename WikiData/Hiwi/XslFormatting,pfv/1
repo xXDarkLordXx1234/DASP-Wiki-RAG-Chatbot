@@ -1,0 +1,35 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1299753505" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="OtherDocuments"}%
+---+ XML Formatting mit XML und JavaScript
+---++ XSL und XPath
+Für das Auswählen von bestimmten XML-Knoten wird im XSL-Format XPath benutzt. Kurzer Tutorial dazu findet man hier: http://www.w3schools.com/xpath/default.asp. Dabei sieht ein typischer Pfad zu einem Knoten vom Wurzel ausgehend so aus, alle Lexicalization-Knoten eines XMLs:
+<verbatim>
+/OntoWiktionary/Concept/Lexicalization
+</verbatim>
+Wir können beim Auswählen bestimmte Parameter spezifizieren um unsere Suche zu verfeinern. Mit @AttributeName werden die Attribute ausgewählt:
+<verbatim>
+/OntoWiktionary/Concept[@id=5]/Lexicalization
+</verbatim>
+Es werden die Konzepte ausgewählt bei denen der Ausdruck in den eckigen Klammern zu TRUE evaluiert. Somit werden durch diesen XPath-Ausdruck alle Lexicalizations von Concept mit id=5 ausgewählt.
+Da man die Ausdrücke in den eckigen Klammern mit "or", "and" usw. verknüpfen kann, sind mit XPath sehr komplizierte Anfragen möglich. Außerdem stehen mehrere Funktionen zur Verfügung. Z.B.
+<verbatim>
+/OntoWiktionary/Concept[Lexicalization[@lemma='botany' or (contains(@lemma, 'biology') and contains(text(), 'plant'))]]
+</verbatim>
+Hier wählen wir alle Concepts, bei denen das Lemma von einer der Lexicalizations gleich "botany" ist oder das Lemma beinhaltet den String 'biology' und der Gloss (text() gibt den Text zurück, der  zwischen "&lt;Lexicalization>" und "&lt;/Lexicalization>" steht) den String "plant" beinhaltet.
+
+---++ XSL-Operatoren
+Einen kurzen Tutorial zu XSL findet man hier: http://www.w3schools.com/xsl/. <br>
+Die wichtigsten Operatoren in XSL sind:<br>
+*if* 
+<verbatim>
+ <xsl:if test="CONDITION"></xsl:if>
+</verbatim>
+Bei XSL-If gibt es kein ELSE. Dafür gibt es zu Java-switch-case ähnliche Struktur:
+
+<verbatim>
+<xsl:choose>
+   <xsl:when test="CONDITION1"></xsl:when>
+   <xsl:when test="CONDITION2"></xsl:when>
+   <xsl:otherwise></xsl:otherwise>
+ </xsl:choose>
+</verbatim>

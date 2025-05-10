@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1382912101" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="RichardSteuerWS2013"}%
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *ID* | *FORM* | *LEMMA* | *PLEMMA* | *POS* | *PPOS* | *FEAT* | *HEAD* | *PHEAD* | *DEPREL* | *PDEPREL* | *FILLPRED* | *PRED* |
+| 1 | Die  | _	 | _ | ART | ART | _ | 2 | 2 | NK | NK | _ | _ | 
+| 2 | Strafverfolger | _ | _ | NN | NN | _ | 5 | 5 | SB | SB | _ | _ | 
+| 3 | in | _ | _ | APPR | APPR | _ | 2 | 2 | MNR | MNR | _ | _ | 
+| 4 | Hannover | _ | _ | NE | NE | _ | 3 | 3 | NK | NK | _ | _ | 
+| 5 | sehen | _ | _ | VVFIN | VVFIN | _ | 0 | 0 | ROOT | ROOT | _ | _ | 
+| 6 | das | _ | _ | PDS | PDS | _ | 5 | 5 | OA | OA | _ | _ | 
+| 7 | anders | _ | _ | ADV | ADV | _ | 5 | 5 | MO | MO | _ | _ | 
+| 8 | . | _ | _ | $. | $. | _ | 5 | 5 | PUNC | PUNC | _ | _ | 
+
+   * *FORM* = token form
+   * *FEAT* = set of morphological features (separated by |)
+   * *P* columns (PLEMMA, PPOS, PFEAT, PHEAD and PDEPREL) are the autoamtically predicted variants of the gold-standard
+   
+   * POS: [[http://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/TagSets/stts-table.html][Tagset table]]
+   * Parser: ?

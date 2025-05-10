@@ -1,0 +1,66 @@
+%META:TOPICINFO{author="BenjaminPetry" date="1316092299" format="1.1" version="12"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Resources
+
+   * Subversion: https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/b_petry
+   * DKPro Core ASL: http://code.google.com/p/dkpro-core-asl/
+   * DKPro Core GPL: http://code.google.com/p/dkpro-core-gpl/
+   * [[Projects/Wikulu/WikuluSetup][Wikulu Setup]]
+   * [[Projects/Wikulu/WikuluPluginsHowTo][Wikulu Plugins]]
+   * [[DKPro/HowToMaven]]
+   
+---+ Tasks
+
+   1 DONE JavaDoc auf Englisch
+   1 DONE DKPro Core Style
+   1 DONE File encoding UTF-8
+   1 OPEN Package-level JavaDoc
+   1 DONE @override annotations
+   1 DONE Kommentare auch von private fields als JavaDoc (nicht mit // einleiten)
+   1 OPEN Apache Commons IO closeQuietly um Stream zu schliessen
+   1 DONE IOExceptions nicht noch mal in IOExceptions wrappen (e.g. InternetHandler:67)
+   1 DONE String Konstanten benutzen (z.B. Cache:63, 84, 114...)
+   1 PARTIALLY DONE Umstellung auf DKPro Core Komponenten (Segmenter, StanfordNER Komponente, ...) - Paragraph- und SentenceAnnotator sind noch von mir
+   1 PARTIALLY DONE Einbindung alternativer Komponenten statt StanfordNER (DictionaryAnnotator, OpenCalais, AlchemyAPI, OpenNLP NER) - siehe oben drüber
+   1 DONE Einbindung in Wikulu
+   1 DONE Aufteilung in verschiedene Module: 
+      * de.tudarmstadt.ukp.dkpro.geocoding - UIMA Komponenten für Geocoding
+      * de.tudarmstadt.ukp.travelogue.wikulu - Wikulu Plugin
+      * de.tudarmstadt.ukp.travelouge.core - Algorithmen
+
+*Tips/Kommentare*
+   * path.getPath()+"/"+String.valueOf(currentIndexNumber)+ <= String.valueOf unnötig hier
+   * der Sprachstil des Handbuchs wäre in einem geschäftlichen oder wissenschaftlichen Umfeld zu locker. Für ein professionelleres Auftreten sollte am Stil gearbeitet werden.
+
+---+ Aktueller Vertrag (Mai 2011 - Jun 2011)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 0.0 | |
+| 06.05.11 | 0 | 0.5 | Erste Besprechung |
+| 10.05.11 | 0 | 1.0 | Einrichten von Eclipse, Repository anlegen, etc. |
+| 12.05.11 | 1, 2, 5, 6 | 3.0 | Angefangen JavaDoc in English zu schreiben |
+| 13.05.11 | 12 | 1.5 | Einführung in Wikulu bekommen |
+| 18.05.11 | 12 | 0.5 | Wikulu so weit es geht eingerichtet |
+| 19.05.11 | 12 | 1.25 | Wikulu fertig eingerichtet |
+| 23.05.11 | 12 | 2 | Angefangen das Projekt in Wikulu zu integrieren |
+| 24.05.11 | 12 | 2 | Versucht Wikulu korrekt zum Laufen zu bringen |
+| 25.05.11 | 1, 2, 5, 6 | 1 | Weiter in English übersetzt etc. |
+| 27.05.11 | 12 | 1.5 | Wikulu läuft jetzt endlich |
+| 31.05.11 | 11 | 3.25 | DKPro NER integriert, allerdings müssen die Tests noch angepasst werden, da deutsch nicht funktioniert |
+| 07.06.11 | 11 | 0.5 | Tests umgeschrieben |
+| 08.06.11 | 11 | 2 | Test umgeschrieben |
+| 12.06.11 | 12 | 1.5 | Plugin weitergeschrieben und ausprobiert |
+| 14.06.11 | 12 | 2.75 | Am Plugin gearbeitet |
+| 15.06.11 | 12 | 1.75 | Am Plugin gearbeitet |
+| 16.06.11 | 12 | 2.75 | Gespräch und Plugin weiterentwickelt |
+| 22.06.11 | 1, 2, 5, 6 | 1.25 | Weiter in Englisch übersetzt etc. |
+| 22.06.11 | 12 | 4 | Route wird nun gezeichnet |
+| 28.06.11 | 1, 2, 5, 6 | 1 | Weiter übersetzt etc. |
+| 06.07.11 | 1, 2, 5, 6 | 2.25 | Weiter übersetzt etc. |
+| 09.07.11 | 1, 2, 5, 6 | 2 | Weiter übersetzt etc. |
+| 12.07.11 | 12 | 3 | Route wird jetzt rechts gezeichnet |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+-- Main.RichardEckart - 2010-12-21

@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="2"}%
+%META:TOPICPARENT{name="UrsGlaubitt"}%
+
+Hier halte ich alle meine Ideen und Ganken fest, wie man zwischen relevanten und irrelevanten Artikeln unterscheiden kann.
+(Noch ändert sich hier sehr viel, also bitte noch nicht allzu kritisch sein.)
+
+*Ansätze:*
+
+   * Anhand der Kategorien
+      * ...
+   * Anhand des Titels
+      * Black- and Whitelist
+      * reguläre Ausdrücke
+   * Anhand des Textes
+   * andere
+
+---++ Anhand der Kategorien
+Hier muss man zwischen zwei verschiedenen Herangehensweisen unterscheiden. Einmal kann man Kategorien schon zu Beginn der Suche ausschließen und die darin enthaltenen Artikel ebenfalls ausschließen (zumindest solange sie nur dieser Kategorie angehören). Die Zugehörigkeit eines Artikels zu einer Kategorie, die in der Blacklist steht, bedeutet also nicht zwingend, dass alle darin enthaltenen Artikel als irrelevant eingestuft werden. Andererseits kann man die Zugehörigkeit zu einer in der Blacklist geführten Kategorie als absolutes Ausschlusskriterium für einen Artikel sehen.
+Beides sollte zum Einsatz kommen. Ersteres eignet sich sehr gut, um den Suchraum einzugrenzen und somit auch die Laufzeit zu verringern. Allerdings werden noch zu viele irrelevante Artikel nicht herausgefiltert (vorallem Personen-Artikel). Die zweite Methode eignet sich für eine Art Post-Processing. Man kann beispielsweise alle Artikel herausfiltern, die der Kategorie "Mann", "Frau", "Geboren ...", etc angehören, um Personen-Artikel auszuschließen.
+
+---++ Anhand des Titels
+
+---++ Anhand des Textes
+
+
+---++ Andere
+
+-- Main.UrsGlaubitt - 02 May 2008

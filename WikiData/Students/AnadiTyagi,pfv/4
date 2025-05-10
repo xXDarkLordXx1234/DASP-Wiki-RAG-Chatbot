@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="tyagi" comment="save topic" date="1501752003" format="1.1" reprev="4" version="4"}%
+---+!! Anadi Tyagi(Masters Thesis)
+
+---++ Meeting (03/08/2017)
+   * Documenting crawler(for thesis document)
+   * Category based analysis of Images based on wikidata instanceOf
+   * Develop a model to split freebase triples dataset based on categories..
+   * Upload final crawler to gitLab and guidelines in readme.txt
+   * Start working on Web Application for integrating KBC approaches.
+
+---++ Meeting (27/07/2017)
+   * Use Type in image query formulation
+   * Investigate ambiguity of entities by WordNet
+   * Clean folder structure and create mapping b/w fbIDs and folders
+   * crawl wikidata images from wikipedia if available and use in search
+   * Studying the available solution for canonical image representation and think about own approach. 
+   
+---++ Meeting (20/07/2017)
+   * Obtaining meta data for freebase ids (the transE dataset) by using Wikidata sparql as a bridge to obtain the data
+   * Develop a mechanism to formulate queries for images out of the meta data e.g. should we use labels and all aliases or part of the aliases? Does it help to use the type of the entity (e.g. human, city,...) in the query.
+   * Crawl images based on the approach developed in the previous point and investigate them manually.
+   * Studying the available solution for canonical image representation and think about own approach.
+
+---++ Meeting (14/07/2017)
+   * Setting up access to UKP
+   * Preparing FB data for image crawling
+   * study approaches for canonical image representation approaches
+
+
+
+-- Main.AnadiTyagi - 2017-07-14

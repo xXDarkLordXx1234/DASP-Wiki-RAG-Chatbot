@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="FabianTamin" date="1256126937" format="1.1" reprev="23" version="23"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ Meeting Agenda
+---++ 2009_1021
+   * short about user study 2. (how many participants, how long should it take)
+   * writing style for thesis. (which person view; present, past, or perfect)
+   * project setting in eclipse for wikiproxy
+
+---++ 2009_1015
+   * about user study 2 (evaluation)
+      * User study 2: Pick articles from different categories -> "validated" difference
+   * about the contents for the thesis
+   * How to activate Sniffer
+
+---++ 2009_0827
+   * text to summarize
+   * idea about reducing information to show (iterate details)
+
+---++ 2009_0820
+   * Contents for next presentation
+   * Organizational questions (about the last presentation & submitting)
+
+---++ 2009_0813
+   * Configuration in eclipse for web server for testing front-end & back-end.
+   * Putting html & javascript files together.
+
+---++ 2009_0805
+   * Recommendation is to begin with user interface
+   * Which editor is recommended should be use
+   * http://www.mrburns.com/twiki/bin/rest/WikuluPlugin/wikicontent?username=WiKulu&password=wikulu&topic=Wikulu.WolframAlpha VS http://mrburns.tk.informatik.tu-darmstadt.de/twiki/bin/view/Wikulu/WolframAlpha?raw=on
+
+---++ 2009_0730
+   * Wieso haben die Link-Typen ein "Text" feature? Der text ist doch eigentlich die annotierte Spanne, oder?
+   * Using !WikiAPI for TWiki
+   * Little discussion about TWiki backlinks
+
+---++ 2009_0723
+   * Roadmap
+      * When do you expect to be done with programming?
+   * Evaluation and User Study
+      * Performance when deciding document relevance. Possible: related articles in Wikipedia, manually added (https://addons.mozilla.org/en-US/firefox/addon/9825 also displays related pages, this can be taken as a initial idea)
+      * Data set - already decided on featured articles?
+
+---++ 2009_0716
+   * Discussion about programming design.
+      * global parameter (Wiki Markup Language Type) and UIMA
+
+---++ 2009_0709
+   * Help for using UIMA
+      * Pipelining
+      * Using reader, annotators, and consumers
+   * TODO
+      * create and send type sytem (use de.tudarmstadt.ukp.dkpro.semantics.type. as prefix for each type)
+
+---++ 2009_0702
+   * Short discussion about some results of 1st user study.
+      * Next step
+         * *JH* incoming links
+      * Or whether there are still some studies necessary
+   * Discussion about creating components for Wiki
+      * The Form of extracted text from any article
+      * Creating summarization and keyphrases
+      * Probably about UIMA
+      * Other discussion about !MediaWiki and !WikiText
+
+---++ 2009_0604
+   * Discussion about user study 1
+      * Tasks
+      * Participants
+      * Questions
+      * Form filling, paperwork
+      * Instruction (what to say and not to say)
+      * Prototype in paper
+      * Use of wiki-article
+      * Pilot test
+
+   * Discussion about text extraction and text summarization
+
+-- Main.FabianTamin - 04 Jun 2009

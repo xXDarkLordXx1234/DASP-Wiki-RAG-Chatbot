@@ -1,0 +1,113 @@
+%META:TOPICINFO{author="semmelmann" comment="" date="1620031632" format="1.1" reprev="16" version="20"}%
+%META:TOPICPARENT{name="StudentsList"}%
+*Important Dates:*
+   * 01.12.2020 (Thesis start)
+   * 25.05.2021 (Final talk)
+   * 04.06.2021 (Submission deadline) 
+
+---++ Week 01.12. - 07.12:
+   * Set up conda envs for the baseline models on SLURM (plms-graph2text and emnlp-dualgraph)
+   * Run T5-small baseline model without modification. 
+   * Learn about AMR graph preprocessing.
+   * Install transformer library as editable and add simple linear adapter layer into every T5-Block.
+
+---++ Week 8.12. - 15.12.:
+   * Run t5-small with various bottleneck adapter variations
+   * look into transformers modeling_t5.py source code.
+   * Trying to understand the t5 embeddings in combination with the relative position representations
+   * check emnlp-dualgraph AMR preprocessing node traversal. 
+
+---++ Week 16.12. - 22.12.:
+   * Run t5-small with more bottleneck adapter variations
+   * Try to implement a graph neural network in the adapter layer
+   * worked on getting the edge_index information needed by PyTorch geometric to the adapter layer
+   * worked on connecting the node parts after they got split up by the word piece tokenization (currently in progress) 
+
+---++ Week 23.12. - 29.12.:
+   * connected node parts after t5 tokenization 
+   * debug node piece connection 
+   * run different variations of the model with a graph convolution adapter
+---++ Week 30.12. - 05.01.:
+   * run more variations with graph convolutional adapter (RGCN, Graph attention layers, experiment with adapter position)
+   * think about thesis structure
+   * start writing about approach set up
+---++ Week 06.01. - 12.01.:
+   * research why graph structure adapters do not reach baseline or bottleneck adapter performance
+   * try running a different edge shifting approach (currently fails for reasons I do not understand)
+   * read GCN book and started writing Background chapter about graph neural networks
+---++ Week 13.01. - 19.01.:
+   * fixed edge shifting 
+   * reran bottleneck adapter approaches with linearized input without parenthesis
+   * ran GraphConv adapter experiment only changing 1 layer in contrast to the bottleneck approaches
+   * ran graph attention layer adapter experiment
+   * continued writing Background on GNNs
+---++ Week 20.01. - 26.01.:
+   * run experiments of graph adapter in parallel to T5 block stack
+   * adapt preprocessing to construct a fully connected graph from AMR graph 
+   * run experiments with fully connected graph + graph attention adapter to emulate global attention
+   * run experiment where start + end of block adapter gets replaced with standard graph convolution.
+---++ Week 27.01. - 02.02.:  
+   * write thesis preprocessing section
+   * rerun some GAT adapter experiments with fixed problems
+   * write thesis Approach/Methodology
+   * rerun parallel encoder experiments fixed
+   * try to get the line graph preprocessing with scope markers to work
+   * run graph adapter approaches with line graph + scope marker input
+---++ Week 03.02. - 09.02.:
+   * work on midterm presentation
+   * start running experiments with dual encoder 
+---++ Week 10.02. - 16.02.:
+   * further experiments with dual encoder
+   * work on midterm presentation
+   * write on the Methodology chapter of the thesis
+---++ Week 17.02. - 23.02.:
+   * write Methodology chapter parts
+   * write about Experiments
+   * run adapter experiment with different dimension size
+   * midterm presentation
+---++ Week 24.02. - 02.03.:
+   * midterm presentation
+   * working on linearized input with scope markers and edge information
+   * compare model performance when removing different adapters
+---++ Week 03.03 - 09.03.:
+   * working on injecting structural information into T5Attention layer
+   * "ablation" experiments, running graph adapter setups with different adapters removed in the encoder and decoder
+   * running graph, bottleneck, and baseline experiments on LDC2020T02 dataset
+   * calculating graph statistics and writing thesis section
+---++ Week 08.03. - 14.03.:
+   * running bottleneck and graph adapter experiments with limited training data
+   * working to speed up construction of structural attention mask for faster injection into T5Attention layer
+   * writing Experiments and Approach section of the thesis
+---++ Week 15.03. - 21.03.:
+   * writing Background chapter AMR graph, Graph neural networks
+   * rework Experiment section thesis, incorporating feedback
+   * protocol structural attention mask experiment, run experiments where tokens of the same node label are unmask
+   * write Experiments Attention mask section
+---++ Week 22.03. - 28.03.:
+   * writing Background chapter Graph neural networks
+   * writing Background: Pretrained language models
+   * run experiment, where the 2 reconnection approaches for the split up node labels are combined
+---++ Week 29.03. - 04.04.:
+   * run graph experiment where the task-specific prefix is treated as a global node.
+   * write Related Work chapter
+   * start rerunning experiments that involve an RGC layer
+---++ Week 05.04. - 12.04.:
+   * rerun experiments involving RGC layer
+   * calculate BertScore on the test sets
+   * search and compare examples where the graph adapter works better than the bottleneck adapter
+   * start to code the prefix approach
+   * work in thesis feedback: rewrite background; move parts of the experiment section into the Approach section
+---++ Week 13.04. - 19.04.:
+   * rewrite Background and Approach
+   * rerun experiments involving RGC layer
+   * finetune BERT for NLI
+---++ Week 20.04. - 26.04.:
+   * write Conclusion and Abstract
+   * use NLI BERT as an evaluation method for generated text and write about it
+   * select and analyze example generation from the test set
+   * write more about non-pre-trained transformer-based AMR-to-text generation approaches in the "Related work" chapter
+---++ Week 27.04. - 03.05.:
+   * analyze Bio AMR and TLP AMR dataset
+   * evaluate main approaches on Bio AMR and TLP AMR dataset
+   * work on Approach and Experiment chapters of the Thesis
+-- Main.TobiasAndreasSemmelmann - 2020-12-07

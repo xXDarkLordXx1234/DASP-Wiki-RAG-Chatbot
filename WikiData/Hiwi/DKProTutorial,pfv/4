@@ -1,0 +1,209 @@
+%META:TOPICINFO{author="AnouarHaha" date="1202780011" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="AnouarWork"}%
+
+---+ DKPro Tutorial 
+
+%TOC% In _DKPro_ können Applikationen gebildet werden, die Dokumente analysieren und Informationen daraus erzeugen. 
+
+---++ Verzeichnisstruktur 
+Dkpro baut auf das Framework UIMA ( _Unstructured Information Management Architecture_) von IBM auf. Die Verzeichnisstruktur ist so angelegt, dass Metadaten wie XML-Dateien von Implementierungen (Java-Klassen) getrennt werden. Weiter sind Ressourcen wie Listen (in Form von Text- oder XML-Dateien) in einem getrennten Verzeichnis zu halten. Eine optimale Verzeichnisstruktur folgt das Muster der Abbildung 1. 
+
+<img width="117" alt="Verzeichnis1.JPG" src="%ATTACHURLPATH%/Verzeichnis1.JPG" height="108"></img> 
+
+Abbildung 1 
+
+In _desc_ werden XML-Dateien gespeichert. In _desc_test_ werden ebenso XML-Dateien gespeichert, die aber noch in einer experimentalen Phasen liegen. In _lib_ werden benötigte Jars für die Applikation unterbracht. In _resource_ stehen meistens Inputquellen wie Listen. In _src_ stehten Java-Klassen und in _src_test_ Unit-Tests für die Java-Klassen. 
+
+Im Verzeichnis _desc_ ist die Struktur auch vordefiniert. Es sollen Unterverzeichnisse für die unterschiedlichen Arten von Metadaten definiert werden. (was die Metadaten sind, und was sie bedeuten wird 
+
+&nbsp; 
+
+<img width="134" alt="Verzeichnis_desc.JPG" src="%ATTACHURL%/Verzeichnis_desc.JPG" height="111"></img> 
+
+Abbildung 2 
+
+in den nächsten Abschnitten verdeutlicht). Die Struktur von _desc_ ist in der Abbildung 2 zu veranschaulichen. Das Verzeichnis _src_ (siehe Abbildung 3) enthält Java-Klassen, die sich an die Paketenstruktur der UKP hält: 
+<verbatim>
+de/tudarmstadt/ukp/dkpro/core
+</verbatim>
+
+<img width="239" alt="Verzeichnis_src.JPG" src="%ATTACHURLPATH%/Verzeichnis_src.JPG" height="164"></img> 
+
+Abbildung 3 
+
+In _src_test_ sollen Unit-Tests für die Funktionalitäten aus _src_ geschrieben werden. Dabei soll die gleiche Verzeichnisstruktur von _src_ verwendet werden. 
+
+---++ Die Analysis Phase 
+Das Motor der Analysis Phase ist das __Analysis Engine (AE)__. Ein Analysis Engine ist ein Programm, das Dokumente analysiert und daraus Informationen inferiert. Die AE's bestehen aus __Annotatoren__. Annotatoren sind Programme, die Dokumente logisch analysieren, d.h. ohne Bezug darauf, wofür und in welcher Reihenfolge sie eingesetzt werden. Annotatoren erzeugen Metadaten zu den Dokumenten. Die Ergebnisse von Annotatoren sind typisierte __Feature Structures__. Diese sind Datenstrukturen, die mit einem Typ versehen werden und (key,value)-Paare enthalten. __Annotationen__ sind ein Beispiel von Freature Structures. Eine Annotation bezeichnet eine Region im Dokument, die mit einem Bezeichner assoziiert wird. Als Beispiel würde ein Annotator das Bezeichner &#8220;Schauspieler&#8221; zum Fragment &#8220;Tom Hanks&#8221; aus dem Satzes &#8220;Tom Hanks spielte in Forrest Guamp&#8221; assoziieren und diese Assoziation als Annotation speichern. Man sagt, dass das &#8220;Tom Hanks&#8221; mit &#8220;Schauspieler&#8221; _annotiert_ wurde. Beispiele von Annotatoren sind Tokenizer, Summarizer und Satzerkenner. Alle Feature Structures (inkl. Annotationen) werden in einer standardisierten Struktur dargestellt: __die Common Analysis Structure(CAS)__. Die korrespondierende Java-Schnittstelle ist __JCas__. 
+
+Nach dem Kurzen Überblick über die Analysis Phase wird nun eingeführt, wie Typen definiert werden, und in Anschluss die Annotatoren, die sie verwenden. 
+
+---+++ Definition von Typen 
+Die Definition eines Typen von CAS Feature Structures, die von Annotatoren erzeugt werden, wird anhand einer XML-Datei realisiert, die __Type System Descriptor__ als Ursprungsknoten besitzt. Die XML-Datei kann beliebig benannt werden, aber es wäre übersichtlich, wenn sie den Namen des Typen tragen würde (also _Schauspieler.xml_ für das obige Beispiel). 
+<verbatim>
+<?xml version="1.0" encoding="UTF-8"?>
+ <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>Schauspieler</name>
+  <description>Hier irgendwelche Beschreibungen</description>
+  <version>1.0</version>
+  <vendor>UKP</vendor>
+  <types>
+   <typeDescription>
+    <name>de.tudarmstadt.ukp.dkpro.core.type.Schauspieler</name>
+    <description></description>
+    <supertypeName>uima.tcas.Annotation</supertypeName>
+    <features>
+     <featureDescription>
+      <name>Schauspieler</name>
+      <description/>
+      <rangeTypeName>uima.cas.String</rangeTypeName>
+     </featureDescription>
+    </features>
+   </typeDescription>
+  </types>
+ </typeSystemDescription>
+    
+</verbatim>
+
+Es gibt drei wichtige Tags in der Type System Description: 
+   * *name* (unter typeDescription): Hier soll der vollständige Name der Klasse eingetragen werden, die zum vorliegenden Typ gehören wird.
+   * *supertypeName*: Die zu erzeugende Klasse wird von der hier erwähnten Klasse erben
+   * *name* (unter featureDescription): Wird als Bezeichner für das Typ verwendet
+
+Die XML Datei muss nun im Verzeichnis _desc/type_ gespeichert werden. Nun nachdem das Typ in XML definiert wurde, werden die dazugehörigen Klassen (samt Quellcode) authomatisch erzeugt. Dafür wäre eine Möglichkeit den *JCasGen Tool* zu starten. Dies geschieht durch die Ausführung der main Methode der Klasse =com.ibm.uima.jcas.jcasgen_gen.Jg= , die sich in dem Jar-File mit dem Namen uima-tools.jar befindet. Die Abbildung 2 stellt das Fenster, das erscheint nachdem Starten des Tools. Das Feld _input File_ muss den Pfad zur XML-Datei enthalten. Die erzeugten Klassen werden in dem eingegebenen Pfad im Feld _Output Directory_ erweitert um &#8220;de/tudarmstadt/ukp/dkpro/core/type&#8221; gespeichert. 
+
+Es werden zwei Klassen erzeugt: 
+   1 Schauspieler.java
+   1 Schauspieler_Type.java
+
+<img width="520" alt="Jg.JPG" src="%ATTACHURLPATH%/Jg.JPG" height="400"> 
+
+Dieses Verfahren muss für jedes neues Typ wiederholt werden. Nach der Definition des Typen wird nun der Annotator definiert, der Fragmente in Texten mit dem Typ annotiert. 
+
+---+++ Definition von Annotatoren 
+
+Der Annotator muss die Schnittstelle __AnalysisComponent__ implementieren. Die wichtigsten Methoden dort sind __initialize__, __process__, und __destroy__. Eine konkrete Implementierung dieser Schnittstelle ist __JCasAnnotator_ImplBase__. Diese kümmert sich authomatisch um die restlichen Funktionalitäten. Die __initialize__ Methode wird dazu benötigt, Hilfsobjekte zu initialisieren: zum Beispiel eine Verbindung mit einem Cyc-Server aufbauen. Die process Methode enthält die logische Analyse des Dokumentes also die Hauptfunktionalität des Annotators. Schliesslich werden in der __destroy__ Methode eventuell nötige Operationen zum Abschliessen des Vorgangs durchgeführt, wie etwa das Trennen einer Verbindung mit einem Cyc-Server. In der __process__ Methode kann man den Inhalt des Dokumentes durch den Aufruf der Methode __getDocument__ des JCas Objektes als String erhalten. Je nachdem, wie das Dokument betrachtet wird, und wie es geparst werden muss, können Hilfswerkzeuge verwendet werden, die das String des Dokumentes interpretieren (Reguläre Ausdrücke, Tokenizer etc...) Diese Hilfswerkzeuge werden meistens in der __initialize__ Methode instanziiert, um Effizienz und Trennung der Funktionalitäten zu erzielen. Ein Einsatz zum Erhalten der Worter aus einem Dokument wäre der folgende Anweisungsblock, der jedoch sehr primitiv ist:
+
+&nbsp; =//get the document text=
+
+=String documentText = jcas.getDocumentText();=
+
+=//get all the tokens=
+
+=String[] tokens = documentText.split("[ ]+");=
+
+*Beispiel:* Ein Annotator soll in einem Text Vornamen mit der Annotation &#8220;Vorname&#8221; annotieren. Das Typ Vorname wird definiert, wie im vorigen Abschnitt erklärt wurde. Als Ergebnisse entstehen die Klasse Vorname.java und Vorname_Type.java Im Paket de/tudarmstadt/ukp/dkpro/core/annotator wird nun die Klasse VornameAnnotator implementiert. In der initialize Methode liest die Klasse eine List von Vornamen aus einer externen Datei und speichert diese in einem List Objekt. In der process Methode wird der oben erwähnte Anweisungsblock verwendet, um die Wörter eines Dokumentes in einem Array zu erhalten. Für jedes Wort wird überprüft, ob es in der Liste enthalten ist. Bei einem Treffer wird ein Vorname Objekt mit dem JCas instanziiert. Die erzeugte Annotation merkt sich den Beginnindex und dem Endindex des Wortes im Dokument und registriert diese Indizien. Die konkrete Implemetierung der process Methode sieht dann wie folgt aus: 
+
+public void process(JCas jcas, ResultSpecification arg1) throws AnnotatorProcessException { //get the document text String documentText = jcas.getDocumentText(); //get all the tokens String[] tokens = documentText.split("[ ]+"); //check for each token if it is a name for(String token : tokens){ if(nameList.contains(token)){ int begin = documentText.indexOf(token); int end = begin + token.length(); Vorname vorname = new Vorname(jcas); vorname.setBegin(begin); vorname.setEnd(end); vorname.addToIndexes(); } } } 
+
+Nachdem der Annotator implementiert wurde, muss er in einer XML-Datei beschrieben werden: der Analysis Engine Descriptor. Zusätzlich wird eine Style Map -Datei geschrieben, die die Darstellung des Types (Vorname) als Bezeichner im Dokument beschreibt. Insegesamt sind dann die folgenden Dateien zu schreiben: 
+   1 VornameAnnotator.xml
+   1 VornameAnnotatorStyleMap.xml
+
+Wenn man beim Beispiel des VornameAnnotators bleibt dann ergibt sich die folgende Datei: 
+<verbatim>
+<?xml version="1.0" encoding="UTF-8"?>
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>de.tudarmstadt.ukp.dkpro.core.annotator.VornameAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>VornameAnnotator</name>
+    <description>Irgendwelche Beschreibungen</description>
+    <version/>
+    <vendor>Ubiquitous Knowledge Processing Lab. Technische Universität Darmstadt</vendor>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+       <import name="desc.type.Vorname"/>
+      </imports>
+    </typeSystemDescription>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs>
+          <type allAnnotatorFeatures="true">de.tudarmstadt.ukp.core.type.Vorname</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+</taeDescription>
+
+</verbatim>
+
+Die wichtigsten Angaben in der Beschreibung des AE sind: 
+| *Angabe * | *Bedeutung * |
+|  imports  | die Pfade der xml-Dateien der verwendeten Typen im Annotator  |
+| inputs | verwendet im Falle dieser Annotator als Glied in einer Kette von Annotatoren eingesetzt wird. Es sollen dann hier die Typen aufgelistet, die dieses Annotator als Eingaben einnimmt |
+| outputs |  die Typen, die vom Annotator annotiert (vergeben) werden |
+
+---++ Testen von Annotatoren 
+
+Um die Korrektheit des Annotators zu verifizieren, sollen Testfälle definiert werden. Am Besten geschieht dies mit Unit-Tests, die in der gleichen Paketstruktur wie der Annotator gebracht werden aber im Paket _src_test_. Im Test soll die Beschreibung des AE manuell importiert werden, und ein AE soll für diese Beschreibung erzeugt werden. Das folgende Codefragment soll dabei helfen: 
+<verbatim>
+  String testDocument = "max arbeitet in der Metzgerei";
+  
+  
+  //load manually the descriptor of the annotator
+  File descriptorFile = new File("desc/annotator/Vorname.xml");
+  XMLInputSource in;
+  ResourceSpecifier specifier;
+  AnalysisEngine ae;
+  JCas testCas;
+ 
+  
+  try {
+   ////////////////////////////////
+   //Get an analysis engine
+   //////////////////////////////
+   in = new XMLInputSource(descriptorFile);
+   specifier = UIMAFramework.getXMLParser().parseResourceSpecifier(in);
+   
+   ae = UIMAFramework.produceAnalysisEngine(specifier);
+   
+  
+   ///////////////////////////////
+   //Get a test JCas
+   //////////////////////////////
+   testCas = ae.newJCas();
+   testCas.setDocumentText(testDocument);
+   
+   ///////////////////////////////
+   //Process the test JCas
+   //////////////////////////////
+   
+   ae.process(testCas);
+
+                                      ........
+ 
+</verbatim>
+Hier wird ein Beispielsdokument als Text eingegeben, wo der Name 'max' steht. Dieser soll als Cas dem AE zur Verarbeitung gegeben werden. Des Weiteren soll überprüft werden, dass das verarbeitet Cas eine Annotation vom Typ Vorname bekommen hat, wo das Begin-Index 0 und das End-Index 3 sind. 
+<verbatim>
+                                     ............
+                                     FSIterator iter = testCas.getAnnotationIndex(Vorname.type).iterator();
+                                     if(!iter.hasNext())
+                                           fail("There must be an annotation!");
+                                     Vorname vorname = (Vorname)iter.next();
+                                     assertEquals("The begin index must be 0",0,vorname.getBegin());
+                                     assertEquals("The end index must be 3",3,vorname.getEnd());
+                                     .............
+</verbatim>
+---++ Die .datapath Datei 
+
+Damit die definierten Typen von anderen Projekten aufgerufen werden können (und vice versa), muss eine Datei .datapath im root-Verzeichnis des Projekts angelegt werden. Diese Datei enthält die Pfade der vorhandenen Projekte, die mit ; oder , je nach Betriebssystem getrennt werden.&nbsp;Die Typen werden nämlich nur&nbsp;mit der Angabe&nbsp;ihrer Namen importiert.&nbsp;Das System versucht sie im&nbsp;vorliegenden Projekt zu finden. Wie diese nicht gefunden werden, dann werden die&nbsp;in .datapath gelisteten Projekte durchgelaufen, bis die Typen&nbsp;gefunden werden. Zur Erinnerung, das Importieren vom Typ&nbsp;Vorname aus dem obigen Beispiel war im Tag &lt;import name="desc.type.Vorname"/&gt; realisiert. Würde es die&nbsp;.datapath&nbsp;-Datei nicht geben, dann müsste so etwas wie usr/local/workspace/myprojekt/desc/type/Vorname angegeben werden!&nbsp;&nbsp;&nbsp; 
+
+-- Main.AnouarHaha - 20 Jan 2008 
+
+&nbsp;</img> 
+
+%META:FILEATTACHMENT{name="Verzeichnis1.JPG" attachment="Verzeichnis1.JPG" attr="" comment="Überblick über die Verzeichnisstruktur in DKPro" date="1201476078" path="D:\wikipedia\dk_pro\Verzeichnis1.JPG" size="10697" stream="D:\wikipedia\dk_pro\Verzeichnis1.JPG" user="Main.AnouarHaha" version="2"}%
+%META:FILEATTACHMENT{name="Verzeichnis_desc.JPG" attachment="Verzeichnis_desc.JPG" attr="" comment="Struktur des Verzeichnis desc" date="1201476873" path="D:\wikipedia\dk_pro\Verzeichnis_desc.JPG" size="11142" stream="D:\wikipedia\dk_pro\Verzeichnis_desc.JPG" user="Main.AnouarHaha" version="1"}%
+%META:FILEATTACHMENT{name="Verzeichnis_src.JPG" attachment="Verzeichnis_src.JPG" attr="" comment="Verzeichnis src" date="1201477906" path="D:\wikipedia\dk_pro\Verzeichnis_src.JPG" size="12291" stream="D:\wikipedia\dk_pro\Verzeichnis_src.JPG" user="Main.AnouarHaha" version="1"}%
+%META:FILEATTACHMENT{name="Jg.JPG" attachment="Jg.JPG" attr="" comment="JGasGenTool" date="1201483307" path="D:\wikipedia\dk_pro\Jg.JPG" size="46134" stream="D:\wikipedia\dk_pro\Jg.JPG" user="Main.AnouarHaha" version="1"}%

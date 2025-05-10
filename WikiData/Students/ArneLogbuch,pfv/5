@@ -1,0 +1,52 @@
+%META:TOPICINFO{author="ArnePottharst" date="1202392592" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Logbuch 
+%TOC%
+
+---++ 07.02.2008
+Beim Stanford-NER sind 4 verschiedene Demosets dabei. Eines davon wird im Paper zu CoNLL 2003 erwähnt:
+   * Entities: Person (PER), Ort (LOC), Organisation (ORG), Sonstiges (MISC)
+   * Trainingset: 945 Dokumente, 203.000 Token
+   * Testset: 231 Dokumente, 46.000 Token
+
+Im Wissensnetz gibt es folgende Klassen: Person (PER), Ort (LOC), Firma/Hersteller (COMP), Produkt (PROD), Produkttyp (PRODTYPE). Sinnvoll wäre auch noch MISC für alles andere, was auch einen Namen darstellt aber in keine Kategorie fällt.
+
+---++ 06.02.2008 
+Erschließen eines Textkorpus "Redaktionelle Texte":
+   * Crawlen verschiedener Newssites mittels Curl und Wget, Texte ca. seit Anfang 2007 bis heute
+   * Extrahieren des Textes mittels Perl
+   * Einspeisen in MySQL -Datenbank für schnellen Zugriff
+   * Statistik:
+      * heise.de: 3259 Texte
+      * hartware.de: 2973 Texte
+      * de.internet.com: 471 Texte
+      * golem.de: 7757 Texte
+   * Insgesamt also: 14460 Texte
+
+Jetzt muß ich schauen, welche Texte geeignet sind, also nach Stichwörtern sinnvolle Texte herausfinden und markieren. Von diesen Texte einige manuell klassifizieren für Stanford-NER-Training. Ausprobieren, ob ich das mit Hilfe von Wikipedia-Artikeln machen kann.
+
+*IG:* hier musst du dich schlau machen, welche Trainingsmengen das Stanford-NER-Programm voraussetzt, damit es sinnvoll funktioniert.
+
+Ein weiterer Textkorpus soll "User generated Content", also Blogeinträge, enthalten, hier muß ich schauen, die Technokrati funktioniert.
+
+*IG:* dafür gibt es bereits einen UIMA-Reader in UKP. Niklas kann den Zuständigen (CT) kontaktieren.
+
+---++ 05.02.2008 
+Trainieren des Stanford-NER mit ein paar Textdateien, die ich von Hand klassifiziert habe. Erste Ergebnisse sehen ganz gut aus, es werden auch Dinge richtig klassifiziert, die in den Trainingsdaten nicht vorhanden sind, aber ein paar Fehler treten noch auf, ich brauche mehr Trainingsdaten.
+
+---++ 01.02.2008 
+Checkin ins SVN:
+   * Der *WikiParser*, der zum Erstellen von SVN-Dateien dient, die dann eingelesen werden können von K-Infinity
+   * Grundversion des *Stanford-NER*. In der Datei <nop>TeXHyphenator#loadDefault() habe ich einen String eingefügt, der gefehlt hat, Decompiler sei Dank ;-)
+
+---++ 25.01.2008 
+Erstellen des Wissensnetzes:
+   1 Einlesen von Wikipedia-Kategorien (=Typen)
+   1 Einlesen von Artikeln mit Zuordnung zu den Kategorien (=Instanzen)
+   1 Einlesen der Links in den Artikeln, um die Artikel untereinander zu verlinken.
+
+Dies alles kann ich in K-Infinity importieren und so ein Wissensnetz daraus aufbauen.
+Es fehlen allerdings noch wichtige Metainformationen bei den Links zwischen den einzelnen Artikeln wie "A stellt her B" oder "A ist Konkurrent von B", ebenso könnten noch Metainformationen zu den einzelnen Instanzen gespeichert werden. Hier überlege ich grade, welche Informationen ich noch aus Wikipedia ziehen kann, und ob bzw. welche weiteren Quellen ich noch verwenden kann -&gt; Ideen sind willkommen :-) 
+
+---++ 09.01.2008 
+Einarbeitung in UIMA und K-Infinity: ich habe ein Testprogramm (Proofe of Concept) für UIMA erstellt, das einen gegebenen Text zerlegt und großgeschriebene Wörter in einem Text findet (seeehr simples NER) und diese im Wissensnetz von K-Infinity sucht und gefundene entsprechend in UIMA markiert.

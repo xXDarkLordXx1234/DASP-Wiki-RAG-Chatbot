@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="StefanLaabs" date="1281402761" format="1.1" reprev="14" version="14"}%
+%META:TOPICPARENT{name="StefanLaabs"}%
+ <noautolink>
+
+---++ First outlines:
+
+%TOC%
+
+---+++ 1. Introduction/Motivation
+ 
+   * [[%ATTACHURL%/Motivation.pdf][Motivation.pdf]]: Chapter 1
+
+---+++ 2. State-of-the-art
+
+   * [[%ATTACHURL%/StateOfTheArt05de.pdf][StateOfTheArt05de.pdf]]: Entwurf von Kapitel 2 - Version 0.5
+
+---+++ 3. Use Cases
+ 
+   * [[%ATTACHURL%/UseCases.pdf][UseCases.pdf]]: Entwurf von Kapitel 3 - Version 0.3
+
+---+++ 4. Strategy/Concept
+
+   * [[%ATTACHURL%/Conception.pdf][Conception.pdf]]: Entwurf von Kapitel 4 -  Version 0.1
+
+---+++ 5. Design/Implementation of Mock-Ups
+
+
+   * Erweiterte Anzeige der Suchergebnisse mit zusätzlicher Verknüpfung zu alternativen Linkstrukturen: <br />
+     <img src="%ATTACHURLPATH%/Diagramm2.png" alt="Diagramm2.png" width='700' height='420' />
+
+   * Zusätzliche Linkstruktur auch direkt bei den Artikeln erreichbar: <br />
+     <img src="%ATTACHURLPATH%/Diagramm3.jpeg" alt="Diagramm3.jpeg" width='700' height='280' />
+
+   * Neue separierte Eingabeumgebung des Editierbereiches: <br />
+     <img src="%ATTACHURLPATH%/Edit.png" alt="Edit.png" width='668' height='533' />
+
+Guidlines, Heuristics, Norms and Rules to use
+
+Other Usability Techniques to apply (KSL Method, c. Walkthrough)
+
+Results of first design analysis
+     
+---+++ 5. First Evaluation
+---+++ 6. Implementation
+---+++ 7. Second Evaluation
+
+---+++ 8. General Discussion
+
+---+++ 9. Conclusions
+---+++ 10. References
+ </noautolink>
+
+-- Main.StefanLaabs - 26 Apr 2010
+
+
+
+%META:FILEATTACHMENT{name="Motivation.pdf" attachment="Motivation.pdf" attr="" comment="Chapter 1" date="1278188765" path="Motivation.pdf" size="1778507" stream="Motivation.pdf" tmpFilename="/var/tmp/CGItemp6537" user="StefanLaabs" version="1"}%
+%META:FILEATTACHMENT{name="StateOfTheArt05de.pdf" attachment="StateOfTheArt05de.pdf" attr="" comment="Entwurf von Kapitel 2 - Version 0.5" date="1279022780" path="StateOfTheArt05de.pdf" size="567903" stream="StateOfTheArt05de.pdf" tmpFilename="/var/tmp/CGItemp6450" user="StefanLaabs" version="1"}%
+%META:FILEATTACHMENT{name="UseCases.pdf" attachment="UseCases.pdf" attr="" comment="Entwurf von Kapitel 3 - Version 0.3" date="1279628559" path="UseCases.pdf" size="187126" stream="UseCases.pdf" tmpFilename="/var/tmp/CGItemp6463" user="StefanLaabs" version="1"}%
+%META:FILEATTACHMENT{name="Conception.pdf" attachment="Conception.pdf" attr="h" comment="Entwurf von Kapitel 3 Version 0.1" date="1280232627" path="Conception.pdf" size="174119" stream="Conception.pdf" tmpFilename="/var/tmp/CGItemp6228" user="StefanLaabs" version="1"}%
+%META:FILEATTACHMENT{name="Edit.png" attachment="Edit.png" attr="" comment="" date="1281401825" path="Edit.png" size="63690" stream="Edit.png" tmpFilename="/var/tmp/CGItemp52719" user="StefanLaabs" version="1"}%
+%META:FILEATTACHMENT{name="Diagramm2.png" attachment="Diagramm2.png" attr="h" comment="" date="1281402143" path="Diagramm2.png" size="23887" stream="Diagramm2.png" tmpFilename="/var/tmp/CGItemp52759" user="StefanLaabs" version="1"}%
+%META:FILEATTACHMENT{name="Diagramm3.jpeg" attachment="Diagramm3.jpeg" attr="h" comment="" date="1281402671" path="Diagramm3.jpeg" size="137381" stream="Diagramm3.jpeg" tmpFilename="/var/tmp/CGItemp52799" user="StefanLaabs" version="1"}%

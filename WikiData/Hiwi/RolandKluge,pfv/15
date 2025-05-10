@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="RolandKluge" date="1340622386" format="1.1" reprev="15" version="15"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Stundenzettel
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Task* | *Date (start-finished)* | *Time* | *Notes* |
+| Initial Meeting: Roadmap, 1st work package,... | 04.06.2012 | 1 | DONE |
+| Initial Reading: <nop>SeerSuite, Algorithm Search, <nop>TableSeer, etc. | 05.06.2012-06.06.2012 | 3 | DONE |
+| DKPro: Setup | 06.06.2012- 19.06.2012 | 6 | DONE |
+| Meeting | 19.06.2012 | 1 | DONE |
+| SeerSuite: Setup (general) | 19.06.2012-25.06.2012 | 2,0 | DONE |
+| SeerSuite: Setup (Importing Documents) | 25.06.2012- | 1,5 | in progress... |
+| *Total* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *To be fulfilled:* | | 60 | until 1 Sep 2012 |
+<nop>
+
+---++ Setting up DKPro
+
+   * DKPro.DKProDeveloperResources
+
+---+++ TODO
+
+   * Setting up the access to existing DKPRO projects
+   * Tutorial [[http://code.google.com/p/dkpro-core-asl/wiki/MyFirstDKProProject]]
+
+---++ Setting up <nop>SeerSuite (local)
+   * SeerSuite 
+ 
+---+++ Troubleshooting:
+
+   1 Link inside the webapps directory has to have correct permissions (otherwise tomcat will silently ignore it)
+      * perhaps its better to use an ant deploy task and simply copy the contents
+
+build.properties
+<verbatim>
+deploy.path=/var/lib/tomcat6/webapps
+</verbatim>
+
+build.xml
+<verbatim>
+<target name="deploy" depends="build" description="Deploy application">
+	<copy todir="${deploy.path}/${name}" preservelastmodified="true">
+		<fileset dir="${web.dir}">
+   			<include name="**/*.*" />
+		</fileset>
+	</copy>
+</target>
+</verbatim>
+
+   2 Not all paths have been set correctly (error message during webapp start)
+<verbatim>
+./WEB-INF/csx.config.properties:foul.word.list=/usr/local/tomcat-csx/webapps/ROOT/WEB-INF/FoulWordsList.txt
+./WEB-INF/csx.config.properties:name.model=/usr/local/tomcat-csx/webapps/ROOT/WEB-INF/resources/metric-distance/names.model
+./WEB-INF/csx.config.properties:stats.folder=/usr/local/tomcat-csx/webapps/ROOT/WEB-INF/stats
+</verbatim>
+
+---+++ Links
+
+   * [[http://citeseerx.ist.psu.edu/index][CiteSeerx@PSU]]
+
+---++ Links (internal)
+
+   * YevgenChebotar 

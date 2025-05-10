@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="StefanHenss" date="1350826961" format="1.1" version="7"}%
+%META:TOPICPARENT{name="StefanHenss"}%
+---+ Journal
+
+Start Date: 15.10.2012<br />
+End Date: 15.04.2013
+
+---++ Current and Past Entries
+
+| *Week* | *Original Plan / Milestone Log* |
+| 2 | Formalization of decision processes; collection of benchmarks and baselines; design of additional evaluation functions; design of an evaluation and reporting framework; notes on all web crawling papers. |
+| 1 | Migration of current notes into Wiki; thesis outline; patent search and collection of related work; software and code repository setup. |
+| | 18.10.: Frameworks for dossier extraction and single-/multi-document summarization completed; no features yet. |
+| | 11.10.: First working version of keyword assignment and its evaluation. Again, proper features will be required for good results. |
+| | 8.10.: Working version of crawler incl. multiple reinforcement learning algorithms and experimentation/evaluation framework. Now requires sophisticated features. |
+
+---++ Future Plan
+
+| *Week* | *Plan* |
+| 3 | Implementation of evaluation functions and benchmarks; implementation of reporting framework, using a web system. |
+| 4-5 | Prototypes for all components; implementation of competitive state-of-the-art technology. |
+| 6 | 1st milestone: beating reasonable baselines for each component; design of major features, changes to algorithms and new machine learning techniques. |
+| 7-12 | Implementation of major software components, including the development of features and tuning existent software. |
+| 13 | 2nd milestone: beating the majority of competitors for all components; mid-term presentation; further planning and design of changes and additions; preparation for thesis. |
+| 14-21 | Further software refinements; writing thesis; optional: implementation of clustering approach; if required: migration to DKPro. |
+| 22 | 3rd milestone: First complete version of thesis and software; further planning. |
+| 23-25 | Final refinements and design of the presentation; backup slots for delays and unforeseen requirements. |
+| 26 | Delivery of thesis and presentation. |

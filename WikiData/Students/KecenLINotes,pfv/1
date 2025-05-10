@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="kiaeeha" comment="reprev" date="1499337652" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="KecenLI"}%
+---+!! Implementation
+---++ Harvester module
+   * While I am working with both omtd harvester and !ResourceSync, I have following findings and please point out if I understand something wrong about the facts and possibly clarify some of the doubts. In addition, I wasn't able to fully test the !ResourceSync because it's consuming my disk space and I have to stop it before knowing whether it will download pdf or not.
+      * Facts: 
+         1 Elsevier Harvester + processor + retriever will download xml format of the paper
+         2 C!rossrefRetriever is referred by other module to get DOI metadata from crossref 
+         3 Frontier harvester + generic retriever works fine and pdfs are directly downloaded
+         4 After stopping frontier harvester generic retriever still work
+         5 Frontier harvester is queueing all the items crawled from !CrossRef
+         6 Running !ResourceSync does generates tons of metadata, but not sure why no pdfs werent downloaded, maybe it only triggers when crawling metadata finishes. But since it eats up disk storage pretty fast, I stopped it halfway.
+      * Doubts:
+         1  How does springer harvester actually work? Seems it doesnt use elsevier module nor generic retriever, what should be the expected outcome?
+         2 According to logs, !SpringerHarvester is not even run, the Reharvester is run once and !MySQLGenericArticleFileDAO module is not able to get anything from generic_files table in mysql db? Not sure the correlation here.
+         3 Metadata fro frontier lacks information for categorisation. How could we determine if a paper is computer science related. !CrossRef could help with its category name or subject info, but no guarantee on all papers to have this.
+         4 Once !RabbitMQ is started, elsevier metadata is automatically populated, even if theres no elsevier related module running.
+
+
+-- Main.MasoudKiaeeha - 2017-07-06

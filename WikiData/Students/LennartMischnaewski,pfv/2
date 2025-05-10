@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="mischnaewski" comment="" date="1630481636" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelors Thesis: Reasoning over Knowledge Graphs for Generative Question Answering
+
+*Supervisor: Leonardo Ribeiro*
+
+---++++ Supervisor Meeting 01.09.2021
+
+* Completed setting up Slurm, Wiki, including environments
+* Computed perplexity
+- Metrics in ELI5:
+   - F1 for ROUGE-{1,2,L}
+   - Human Judges
+   - ROUGE-20%
+   - FILL-1
+
+
+TODO: 
+- Look at what BidAF ist

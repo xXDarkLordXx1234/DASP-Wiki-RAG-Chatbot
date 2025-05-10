@@ -1,0 +1,35 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1251396198" format="1.1" reprev="16" version="16"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ElisabethWolf - 28 Jul 2009
+
+---++ Work
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Yevgen Aufgaben* |
+| *Aufgabe* | *% done* |
+| Analysiere Domain Labels in Wikipedia | 70 |
+| Analysiere die Qualität der Domainlabels, die Überlappung <br />und Unterschiede zu Wordnet Domainlabels | 20 |
+
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Wikipedia Domainlabels | 05.08.2009 | 4.5 | Bericht in PDF-Datei |
+| Wikipedia Domainlabels | 08.08.2009 | 3 | Einarbeitung in JWPL Framework |
+| Wikipedia Domainlabels | 09.08.2009 | 2.5 | Experiment: Extrahieren der Domainlabels aus Wikipedia-Dump. <br />Bericht in PDF. |
+| Büroarbeit | 12.08.2009 | 2 | Befüllung von Werbemappen |
+| Wikipedia Domainlabels | 12.08.2009 | 2.5 | Einfügung von DomainLabel-Funktionen in JWPL |
+| Wikipedia Domainlabels | 13.08.2009 | 1 | Einarbeitung in WordNet und JWNL-Framework |
+| WordNet Domains | 17.08.2009 | 3.5 | Analyse von WordNet Domains<br>Erstellung eines Frameworks für WordNet-Domains<br>Mehr im PDF |
+| WordNet Domains | 19.08.2009 | 2.5 | Mapping von WordNet 2.0 zu 3.0 |
+| WordNet Domains | 20.08.2009 | 2 | Mapping von WordNet 2.0 zu 3.0. Mehr im PDF |
+| Wikipedia Domainlabels | 23.08.2009 | 2.5 | Zuweisung von Domainlabels an Outlinks in Wikipedia Disambig.seiten<br>Mehr im PDF |
+| Wikipedia, WordNet Senses | 25.08.2009 | 2.5 | Erstellung von Funktionen für Berechnung der Statistiken<br>Zählen von Bullet Points in Disambig.seiten |
+| Wikipedia Domainlabels | 27.08.2009 | 5.5 | Vorbereitung von Tests<br>Erstellung der aktuellen Wikipedia-Datenbank |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende Oktober |
+<nop>
+   * [[%ATTACHURL%/WikipediaDomainlabelsBericht.pdf][WikipediaDomainlabelsBericht.pdf]]: Bericht zu Task 1 und Task 2, Analyse von Domainlabels in Wikipedia
+
+%META:FILEATTACHMENT{name="WikipediaDomainlabelsBericht.pdf" attachment="WikipediaDomainlabelsBericht.pdf" attr="" comment="Bericht zu Task 1 und Task 2, Analyse von Domainlabels in Wikipedia" date="1251046005" path="WikipediaDomainlabelsBericht.pdf" size="147091" stream="WikipediaDomainlabelsBericht.pdf" tmpFilename="/var/tmp/CGItemp54358" user="YevgenChebotar" version="8"}%

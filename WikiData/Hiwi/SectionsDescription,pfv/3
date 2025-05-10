@@ -1,0 +1,369 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1280138066" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="WiktionaryResearch"}%
+-- Main.YevgenChebotar - 24 Jul 2010
+
+---+ Language 
+Bei allen betrachteten Wiktionaries steht Sprache am höchsten in dem hieararchischen Aufbau der Einträge. Diese Sektion ist vor allem für die Einträge wichtig, bei denen das Lemma in verschiedenen Sprachen vorkommt. Z.B. [[http://en.wiktionary.org/wiki/sensible][sensible]] hat Bedeutungen in Englisch, Französisch und Spanisch, wobei die Bedeutung in Englisch sich von den Bedeutungen in Französisch und Spanisch unterscheidet. Man muss zwischen den für die gegebene Wiktionary-Edition native Sprache und anderen Sprachen unterscheiden. Die Einträge in der nativen Sprache sind meistens mehr ausgearbeitet und haben auch manchmal eine andere Struktur als die Einträge in anderen Sprachen, die oft nur die Übersetzungen in die native Sprache darstellen. Betrachten wir die Einzelheiten der Kodierung der Sprach-Sektionen in verschiedenen Wiktionary-Editionen.<br>
+*English Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61;LANGUAGE&#61;&#61;"<br>
+Zwischen verschiedenen Sprach-Sektion steht normalerweise  "----" , was als eine horizontale Linie dargestellt wird.<br>
+*German Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; LEMMA ({{Sprache|LANGUAGE}}) &#61;&#61;"<br>
+Zwischen den Sprachsektionen steht normalerweise "{{2x----}}", was als eine doppelte horizontale Linie dargestellt wird. Beispiele: [[http://de.wiktionary.org/wiki/am][am]], [[http://de.wiktionary.org/wiki/klein][klein]]<br>
+*French Wiktionary* <br> 
+Format des Sektion-Titels: "&#61;&#61; {{&#61;LANGUAGE_ABBREVIATION&#61;}} &#61;&#61;". Z.B. "&#61;&#61; {{&#61;fr&#61;}} &#61;&#61;" für Französisch und "&#61;&#61; {{&#61;en&#61;}} &#61;&#61;" für Englisch in [[http://fr.wiktionary.org/wiki/mousse][mousse]]<br>
+*Russian Wiktionary* <br>
+Format des Sektion-Titels: "&#61; {{-LANGUAGE_ABBREVIATION-}} &#61;". Z.B. "&#61; {{-ru-}} &#61;" für Russisch und  "&#61; {{-bg-}} &#61;" für Bulgarisch [[http://ru.wiktionary.org/wiki/&#1089;&#1083;&#1086;&#1085;][&#1089;&#1083;&#1086;&#1085;]]<br>
+*Polish Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; LEMMA ({{LANGUAGE}}) &#61;&#61;". Z.B. "&#61;&#61; mama ({{j&#281;zyk polski}}) &#61;&#61;" und "&#61;&#61; mama ({{j&#281;zyk hiszpa&#324;ski}}) &#61;&#61;" in [[http://pl.wiktionary.org/wiki/mama][mama]]<br>
+*Lithuanian Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; {{LANGUAGE_ABBREVIATION}} &#61;&#61;". Z.B. "&#61;&#61; {{ltv}} &#61;&#61;" und "&#61;&#61; {{skv}} &#61;&#61;" in [[http://lt.wiktionary.org/wiki/Informatika][Informatika]]<br>
+*Turkish Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; {{Dil|LANGUAGE}} &#61;&#61;". Z.B. "&#61;&#61; {{Dil|Türkçe}} &#61;&#61;" und "&#61;&#61;{{Dil|Türkmence}}&#61;&#61;" in [[http://tr.wiktionary.org/wiki/gitmek][gitmek]]<br>
+*Vietnamese Wiktionary* <br>
+Format des Sektion-Titels: "{{-LANGUAGE_ABBREVIATION-}}". Z.B. "{{-vie-}}" und "{{-eng-}}" in [[http://vi.wiktionary.org/wiki/go][go]]<br>
+*Ido Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61;LANGUAGE&#61;&#61;" oder "&#61;&#61;{{LANGUAGE_ABBREVIATION}}&#61;&#61;". Z.B. "&#61;&#61;Ido&#61;&#61;" und "&#61;&#61;{{en}}&#61;&#61;" in [[http://io.wiktionary.org/wiki/per][per]]<br>
+*Portuguese Wiktionary* <br>
+Format des Sektion-Titels: "&#61;LANGUAGE&#61;". Z.B. "&#61;Português&#61;" und "&#61;Italiano&#61;" in [[http://pt.wiktionary.org/wiki/casa][casa]]<br>
+*Chinese Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61;{{LANGUAGE_ABBREVIATION}}&#61;&#61;". Z.B. "&#61;&#61;{{zh}}&#61;&#61;" und "&#61;&#61;{{ja}}&#61;&#61;" in [[http://zh.wiktionary.org/zh/%E6%B0%B8%E9%81%A0][&#27704;&#36960;]]
+
+---+ POS
+Alle betrachtete Witionaries haben eine Part-of-speech(POS) - Sektion. Obwohl die Struktur von verschiedenen Sprachen sich unterscheidet, die Hauptbestandteile sind oft gleich: Nomen, Verben, Adjektiven, Präpositionen etc. Dabei unterscheidet sich bei verschiedenen Sprache die Position der POS-Sektion in der Eintrag-Hierarchie. So ist in WKT_English ist POS der Etymologie-Sektion untergeordnet, bei WKT_Vietnamese steht POS auf derselben Hierarchie-Ebene und in WKT_Lithuanian ist POS der Etymologie-Sektion übergeordnet.<br>
+*English Wiktionary* <br>
+POS-Sektion ist der Etymologie-Sektion untergeordnet. Format:
+<verbatim>
+====POS====
+{{LANGUAGE_ABBREVIATION-POS|Inflection 1|Inflection 2|...}}
+</verbatim>
+Beispiele: 
+<verbatim>
+====Verb====
+{{en-verb|goes|going|went|gone}}
+</verbatim>
+<verbatim>
+====Noun====
+{{en-noun|es}}
+</verbatim>
+in [[http://en.wiktionary.org/wiki/go][go]]<br><br>
+*German Wiktionary* <br>
+POS-Sektion ist nach Language-Sektion zweithöchste in der Eintrag-Hierarchie. Bei Homonymen steht in dem Sektiontitel außerdem ein Disambiguierung-String zur Unterscheidung von verschiedenen Herkunften. Format:
+<verbatim>
+=== {{Wortart|POS|LANGUAGE}}, GRAMMATICAL_PROPERTIES, ETYMOLOGY_STRING === 
+</verbatim>
+Beispiele:
+<verbatim>
+=== {{Wortart|Substantiv|Deutsch}}, {{f}} === 
+</verbatim>
+<verbatim>
+=== {{Wortart|Verb|Deutsch}}, unregelmäßig ===
+</verbatim>
+<verbatim>
+=== {{Wortart|Substantiv|Deutsch}}, {{m}}, {{Wortart|Singularetantum|Deutsch}}, {{Wortart|Homonym|Deutsch}} === 
+</verbatim>
+<verbatim>
+=== {{Wortart|Substantiv|Deutsch}}, {{m}}/{{f}}, {{Wortart|Nachname|Deutsch}}  ===
+</verbatim>
+in [[http://de.wiktionary.org/wiki/Sonne][Sonne]], [[http://de.wiktionary.org/wiki/stehen][stehen]] und [[http://de.wiktionary.org/wiki/Atlas][Atlas]]<br><br>
+*French Wiktionary* <br>
+Bei mehreren Etymologien wird POS durch einen Klammerpräfix an eine Etymologie zugeordnet. Format:
+<verbatim>
+{{-POS-|LANGUAGE_ABBREVIATION}}
+</verbatim>
+Mehrere Etymologien:
+<verbatim>
+{{-POS-|LANGUAGE_ABBREVIATION|num=ETYMOLOGY_NUMBER}}
+</verbatim>
+Beispiele:
+<verbatim>
+{{-nom-|fr|num=1}}
+</verbatim>
+<verbatim>
+{{-adj-|fr}}
+</verbatim>
+in [[http://fr.wiktionary.org/wiki/mousse][mousse]]<br><br>
+*Russian Wiktionary* <br>
+Es gibt keine explizite POS-Sektion da Wörter in Russisch normalerweise keine verschiedene POS haben können. Für einen Eintrag werden morphologische und syntaktische Eigenschaften angegeben, wo auch die POS-Bezeichnung dabei ist. Bei polysemen Wörter wird für jede Etymologie eigene Sektion mit morphologischen und syntaktischen Eigenschaften angegeben. Format:
+<blockquote>
+&#61;&#61;&#61;&#1052;&#1086;&#1088;&#1092;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1080; &#1089;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#61;&#61;&#61;<br>
+{{POS LANGUAGE_ABBREVIATION Inflection|GRAMMATICAL_PROPERTIES...}
+</blockquote>
+Beispiele:
+<blockquote>
+&#61;&#61;&#61; &#1052;&#1086;&#1088;&#1092;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1080; &#1089;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072; &#61;&#61;&#61;<br>
+{{&#1089;&#1091;&#1097; ru m ina 1c<br>
+|&#1086;&#1089;&#1085;&#1086;&#1074;&#1072;=&#1087;&#1086;&#769;&#1083;<br>
+|&#1086;&#1089;&#1085;&#1086;&#1074;&#1072;1=&#1087;&#1086;&#1083;<br>
+|&#1052;=&#1087;&#1086;&#1083;&#1091;&#769;<br>
+}}
+</blockquote>
+und
+<blockquote>
+&#61;&#61;&#61;&#1052;&#1086;&#1088;&#1092;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1080; &#1089;&#1080;&#1085;&#1090;&#1072;&#1082;&#1089;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1089;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;&#61;&#61;&#61;<br>
+{{&#1087;&#1088;&#1080;&#1083; ru 3aX~<br>
+|&#1086;&#1089;&#1085;&#1086;&#1074;&#1072; = &#1088;&#1091;&#769;&#1089;&#1089;&#1082;<br>
+|show-text=1<br>
+|&#1089;&#1083;&#1086;&#1075;&#1080;={{&#1087;&#1086;-&#1089;&#1083;&#1086;&#1075;&#1072;&#1084;|&#1088;&#1091;&#769;&#1089;|&#1089;&#1082;&#1080;&#1081;}}<br>
+|&#1095;&#1072;&#1089;&#1090;&#1100; &#1088;&#1077;&#1095;&#1080;=&#1055;&#1088;&#1080;&#1083;&#1072;&#1075;&#1072;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077; (&#1086;&#1090;&#1085;&#1086;&#1089;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1077;)<br>
+|&#1050;&#1072;&#1090;&#1077;&#1075;&#1086;&#1088;&#1080;&#1103;=&#1055;&#1088;&#1080;&#1083;&#1072;&#1075;&#1072;&#1090;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077;, &#1089;&#1082;&#1083;&#1086;&#1085;&#1077;&#1085;&#1080;&#1077; 3aX~<br>
+}}
+</blockquote>
+in [[http://ru.wiktionary.org/wiki/&#1087;&#1086;&#1083;][&#1087;&#1086;&#1083;]] und [[http://ru.wiktionary.org/wiki/&#1088;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;][&#1088;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;]]<br><br>
+*Polish Wiktionary* <br>
+In WKT_PL ist POS-Sektion der Senses-Sektion untergeordnet. Dabei hat jeder POS eine Nummer, so dass die Senses zu einem POS zugeordnet werden. Ein Sense hat dann insgesamt folgende Nummer: (POS-Nummer.Sense-Nummer). In weiteren Sektionen wie Übersetzungen, Synonyme usw. werden diese Nummer verwendet. Format:
+<blockquote>
+''POS''
+</blockquote>
+Beispiele:
+<blockquote>
+''czasownik przechodni''
+</blockquote>
+<blockquote>
+''rzeczownik, rodzaj m&#281;ski''
+</blockquote>
+in [[http://pl.wiktionary.org/wiki/przenosi&#263;][przenosi&#263;]] und [[http://pl.wiktionary.org/wiki/&#347;wiat][&#347;wiat]]<br><br>
+*Lithuanian Wiktionary* <br>
+POS-Sektion ist nach Language-Sektion zweithöchste in der Eintrag-Hierarchie. Format:
+<blockquote>
+&#61;&#61;&#61; ''POS'' &#61;&#61;&#61;<br>
+{{POS_ABBREVIATION|GRAMMATICAL_PROPERTIES...}}
+</blockquote>
+Beispiele:
+<blockquote>
+&#61;&#61;&#61; ''B&#363;dvardis'' &#61;&#61;&#61;<br>
+{{ltbdv|tipas=&#303;vard-laips|forma=f-as<br>
+|akn=ger<br>
+|pform=[[geras]]<br>
+|pformm=[[gera]]<br>
+|skiem=ge-ras}}
+</blockquote>
+<blockquote>
+&#61;&#61;&#61; ''Daiktavardis'' &#61;&#61;&#61;<br>
+{{ltdkt|forma=f-vyr-1l-as|akn=ger}}
+</blockquote>
+in [[http://lt.wiktionary.org/wiki/geras][geras]]<br><br>
+*Turkish Wiktionary* <br>
+POS-Sektion ist nach Language-Sektion zweithöchste in der Eintrag-Hierarchie. Format:
+<blockquote>
+&#61;&#61;&#61; {{Söztürü|POS|LANGUAGE}} &#61;&#61;&#61;
+</blockquote>
+Beispiele:
+<blockquote>
+&#61;&#61;&#61; {{Söztürü|Fiil|Türkçe}} &#61;&#61;&#61;
+</blockquote>
+<blockquote>
+&#61;&#61;&#61;{{Söztürü|&#304;sim|Türkçe}}&#61;&#61;&#61;
+</blockquote>
+<blockquote>
+&#61;&#61;&#61;{{Söztürü|Eylem|Türkmence}}&#61;&#61;&#61;
+</blockquote>
+in [[http://tr.wiktionary.org/wiki/gitmek][gitmek]]<br><br>
+*Vietnamese Wiktionary* <br>
+POS steht direkt vor der Sense-Liste. Im Code werden POS mit englischen Bezeichnungen kodiert, jedoch in Vietnamesisch angezeigt, z.B. "noun" wird als "Danh t&#7915;" angezeigt. Format:
+<blockquote>
+{{-POS-}}
+</blockquote>
+Beispiele:
+<blockquote>
+{{-noun-}}
+</blockquote>
+<blockquote>
+{{-intr-verb-}}
+</blockquote>
+in [[http://vi.wiktionary.org/wiki/nhà][nhà]] und [[http://vi.wiktionary.org/wiki/go][go]]<br><br>
+*Ido Wiktionary* <br>
+Es gibt keine POS-Sektion in Ido Wiktionary<br><br>
+*Portuguese Wiktionary* <br>
+POS steht direkt vor der Sense-Liste. Format:
+<verbatim>
+==POS==
+</verbatim>
+Beispiele:
+<verbatim>
+==Substantivo==
+</verbatim>
+<verbatim>
+==Verbo==
+</verbatim>
+in [[http://pt.wiktionary.org/wiki/casa][casa]] und [[http://pt.wiktionary.org/wiki/ir][ir]]<br><br>
+*Chinese Wiktionary* <br>
+   POS ist nicht in allen Einträgen vorhanden(wie z.B. in [[http://zh.wiktionary.org/zh/&#39135;][&#39135;]] und [[http://zh.wiktionary.org/zh/&#27704;&#36960;][&#27704;&#36960;]] . Falls vorhanden,steht POS direkt vor der Sense-Liste. Dabei wird für POS eine englische Abbreviatur verwendet.  Format:
+<verbatim>
+{{-POS_ABBREVIATION-}}
+</verbatim>
+Beispiele:
+<verbatim>
+{{-adv-}}
+</verbatim>
+<verbatim>
+{{-v-}}
+</verbatim>
+in [[http://zh.wiktionary.org/zh/&#29694;&#22312;][&#29694;&#22312;]] und [[http://zh.wiktionary.org/zh/&#27979;&#35797;][&#27979;&#35797;]]<br><br>
+---+ Etymology
+  Etymologie stellt die Herkunft eines Wortes dar. Dabei dient oft die Etymologie zur Unterscheidung von Homonymen, da sie meistens verschiedene Herkunft haben. In einigen Sprachen steht die Etymologie hoch in dem hierarchischen Aufbau des Artikels, in anderen spielt eher eine Rolle von Zusatzinformation über das Wort.<br>
+*English Wiktionary* <br>   
+In WKT_EN ist die Etymologie-Sektion nach Language-Sektion zweithöchste in der Eintrag-Hierarchie und stellt einen wichtigen Instrument zur Unterscheidung von verschiedenen Wort-Herkunften.. Format:
+<verbatim>
+===Etymology ETYMOLOGY_NUMBER===
+</verbatim>
+Beispiele:
+<verbatim>
+===Etymology 1===
+===Etymology 2===
+</verbatim>
+in [[http://en.wiktionary.org/wiki/go][go]]<br><br>
+*German Wiktionary* <br>
+In WKT_DE werden die Wörter mit vielen Herkunften in verschiedene Sektionen  für jeden Herkunft unterteilt. Die Sektionen werden mit POS und einem weiterem Disambiguierungs-String beschriftet. Die Herkunftsbeschreibung erfolgt dann später innerhalb dieser Sektion (z.B. [[http://de.wiktionary.org/wiki/Atlas][Atlas]])
+Format:
+<verbatim>
+{{Herkunft}}
+: ETYMOLOGY_TEXT
+</verbatim>
+Beispiel:
+<verbatim>
+{{Herkunft}}
+:von Atlas, dem mythologischen Himmelsträger 
+</verbatim>
+<verbatim>
+{{Herkunft}}
+:aus dem Arabischen
+</verbatim>
+in [[http://de.wiktionary.org/wiki/Atlas][Atlas]]<br><br>
+*French Wiktionary* <br>
+Die Etymologie wird nach Language-Titel angegeben. Dabei steht bei Worten mit mehreren Herkunften vor jedem Etymologie-Eintrag ein Verweis auf die entsprechnde POS-Sektion, die in dem Artikel später auftritt. Falls ein POS mehrere Etymolgien hat, wird er mit einem Nummer an eine bestimmte Etymologie zugewiesen. Format:
+<verbatim>
+{{-étym-}}
+: (''[[#LANGUAGE_ABBREVIATION-POS-1|POS 1]]'') ETYMOLOGY_TEXT
+: (''[[#LANGUAGE_ABBREVIATION-POS-2|POS 2]]'') ETYMOLOGY_TEXT
+usw...
+</verbatim>
+Bei Wörtern mit nur einer Etymologie:
+<verbatim>
+{{-étym-}}
+: ETYMOLOGY_TEXT
+</verbatim>
+Beispiele:
+<verbatim>
+{{-étym-}}
+: (''[[#fr-nom-1|Nom 1]]'') Provient probablement à la fois du francique {{recons}}''mosa'' (< néerlandais : [[mos]]) (« '''mousse''' », la plante, sens 1.1) latinisé en ''[[mossa]]'', et du latin ''[[mulsa]]'' (« [[hydromel]] »), qui aurait été utilisé pour désigner la plante métaphoriquement.
+: (''[[#fr-nom-2|Nom 2]]'') Emprunté soit à lespagnol ''[[mozo]]'' (« [[garçonnet]] », « [[jeune]] [[homme]] » puis « [[apprenti]] [[marin]] ») soit au catalan ''[[mosso]]'' (« jeune homme » puis « apprenti marin »), lui-même emprunté à l{{es}} ''[[mozo]]''. Le mot ''mozo'' vient du latin 
+</verbatim>
+<verbatim>
+{{-étym-}}
+: Du latin ''[[bene]]'' (« '''bien''', [[à propos]], [[favorablement]] »).
+</verbatim>
+in [[http://fr.wiktionary.org/wiki/mousse][mousse]] und [[http://fr.wiktionary.org/wiki/bien][bien]]<br><br>
+*Russian wiktionary* <br>
+Die Wörter mit mehreren Etymologien werden in mehrere Sektion direkt nach dem Language-Titel unterteilt. Die Sektion-Titeln haben Format:
+<blockquote>
+LEMMA-ETYMOLOGY_NUMBER(ROME_NUMERALS)
+</blockquote>
+Z.B. 
+<blockquote>
+&#1087;&#1086;&#1083; I<br>
+&#1087;&#1086;&#1083; II
+</blockquote>
+Die Etymologie selbst steht weiter im Artikel. Dabei wird im Quellcode anstatt eines Textes ein Template mit einem Verweis auf andere Quelle angegeben. Es wird z.B. für Etymologie ein Wörterbuch von Fasmer verwendet, was auch dann im Artikel angegeben wird. Durch den Template wird der Text aus diesem Wörterbuch direkt in den Artikel geladen und angezeigt.  Man findet die in WKT_RU verwendete Literatur [[http://ru.wiktionary.org/wiki/&#1055;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1077;:&#1057;&#1087;&#1080;&#1089;&#1086;&#1082;_&#1083;&#1080;&#1090;&#1077;&#1088;&#1072;&#1090;&#1091;&#1088;&#1099;][hier]]
+
+<blockquote>
+=== &#1069;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103; ===<br>
+&#1055;&#1088;&#1086;&#1080;&#1089;&#1093;&#1086;&#1076;&#1080;&#1090; &#1086;&#1090; ETYMOLOGY_TEMPLATE
+</blockquote>
+Beispiel
+<blockquote>
+=== &#1069;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103; ===<br>
+&#1055;&#1088;&#1086;&#1080;&#1089;&#1093;&#1086;&#1076;&#1080;&#1090; &#1086;&#1090; {{&#1101;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103;:&#1087;&#1086;&#1083;}}
+</blockquote>
+<blockquote>
+=== &#1069;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103; ===<br>
+&#1055;&#1088;&#1086;&#1080;&#1089;&#1093;&#1086;&#1076;&#1080;&#1090; &#1086;&#1090; {{&#1101;&#1090;&#1080;&#1084;&#1086;&#1083;&#1086;&#1075;&#1080;&#1103;:&#1089;&#1083;&#1086;&#1085;|&#1076;&#1072;}}
+</blockquote>
+in [[http://ru.wiktionary.org/wiki/&#1087;&#1086;&#1083;][&#1087;&#1086;&#1083;]] und [[http://ru.wiktionary.org/wiki/&#1089;&#1083;&#1086;&#1085;][&#1089;&#1083;&#1086;&#1085;]].<br><br>
+*Polish Wiktionary* <br>
+In WKT_PL ist die Etymologie-Sektion nicht so gut entwickelt wie bei anderen Wiktionaries, sie ist oft leer oder nur mit wenigen Informationen gefüllt. Bei einigen Einträgen wird Etymologie durch die Angabe von dem Sense-Nummer(z.B. (1.3) ) zu einem bestimmtem Sense zugeordnet. Format:
+<blockquote>
+{{etymologia}} (SENSE_NUMBER) ETYMOLOGY_TEXT
+</blockquote>
+Beispiele:
+<blockquote>
+{{etymologia}} [[prze-]] + [[nosi&#263;]]
+</blockquote>
+<blockquote>
+{{etymologia}} (1.1) powi&#261;zane z ''[[droga]]''
+</blockquote>
+in [[http://pl.wiktionary.org/wiki/przenosi&#263;][przenosi&#263;]] und [[http://pl.wiktionary.org/wiki/podró&#380;][podró&#380;]]<br><br>
+*Lithuanian Wiktionary* <br>   
+Die Etymologie-Sektion ist der POS-Sektion untergeordnet. Format:
+<verbatim>
+==== Etimologija ====<br>
+ETYMOLOGY_TEXT
+</verbatim>
+z.B. in [[http://lt.wiktionary.org/wiki/mogus][mogus]]<br><br>
+*Turkish Wiktionary* <br>
+Die Etymologie-Sektion ist der POS-Sektion untergeordnet. Etymologie-Eintrag wird mithilfe von einem Sense-Nummer an ein bestimmter Sense zugeordnet.Format:
+<blockquote>
+{{Köken}}
+:[1] ETYMOLOGY_TEXT 1
+:[2] ETYMOLOGY_TEXT 2
+usw...
+</blockquote>
+Beispiel:
+<blockquote>
+{{Köken}}
+:[1] {{köken|Eski Türkçe}} [[eb]] ( "b" sessizi, O&#287;uz Türkçesinde "v" sessizine dönü&#351;mü&#351; )
+</blockquote>
+in [[http://tr.wiktionary.org/wiki/ev][ev]]<br><br>
+*Vietnamese Wiktionary* <br>
+Bei vietnamesischen Wiktionary ist die Etymologie im größten Teil der Artikeln nicht angegeben. Bei fremdsprachlichen Einträgen, z.B. Englisch, kann man dagegen oft eine Etymologie-Sektion finden. Format:
+<blockquote>
+{{-etymology-}}
+<br>ETYMOLOGY_TEXT
+</blockquote>
+Beispiel:
+<blockquote>
+{{-etymology-}}<br>
+{{etym-from<br>
+| lang = ang | term = gan | lterm = g&#257;n | from = {{etym-from<br>
+ | lang = goh | term = gen | from = {{etym-from<br>
+  | lang = ine-proto | attested = 0 | term = ghê<br>
+ }}<br>
+}} Tuy nhiên, t&#7915; th&#7871; k&#7927; 15, các hình thái quá kh&#7913; c&#7911;a ''go'' &#273;&#432;&#7907;c thay b&#7857;ng các hình thái b&#7855;t ngu&#7891;n {{lcfirst:{{etym-from<br>
+| term = wend | from = {{etym-from<br>
+ | lang = ang | term = windan | from = {{etym-from<br>
+  | term = wendan<br>
+  }}<br>
+ }}<br>
+}}}}
+</blockquote>
+in [[http://vi.wiktionary.org/wiki/go][go]]<br><br>
+*Ido Wiktionary* <br>
+In WKT_IDO wird die Herkunft eines Wortes durch die Angabe von Originalwörter der sechs Herkunftssprachen(Fonto-lingui) bestimmt. Z.B. in [[http://io.wiktionary.org/wiki/havar][havar]]<br><br>
+*Portuguese Wiktionary* <br>
+In WKT_PT wird in der Etymologie-Sektion meistens nur eine Angabe der Herkunftssprache und des Herkunftswortes gemacht(größtenteils Latein) und keine weitere Informationen angegeben. Format:
+<blockquote>
+=={{etimologia}}==<br>
+ETYMOLOGY_TEXT
+</blockquote>
+Beispiele:
+<blockquote>
+=={{etimologia}}==<br>
+: Do latim ''ire''.
+</blockquote>
+<blockquote>
+=={{etimologia}}==<br>
+: Do latim ''construct&#301;o, -&#333;nis''.
+</blockquote>
+in [[http://pt.wiktionary.org/wiki/ir][ir]] und [[http://pt.wiktionary.org/wiki/construção][construção]]<br><br>
+*Chinese Wiktionary* <br>
+Es ist interessant, dass bei WKT_ZH für einzelne Zeichen oft als Etymologie die grafische Herkunft des Zeichens und nicht des Wortes angegeben wird (z.B. [[http://zh.wiktionary.org/zh/&#39135;][&#39135;]] ). Format:
+<blockquote>
+==={{-etym-}}===<br>
+ETYMOLOGY_TEXT
+</blockquote>
+Beispiel:
+<blockquote>
+==={{-etym-}}===<br>
+#[[&#20754;&#26519;&#22806;&#21490;]] &#31532;&#19977;&#21313;&#20061;&#22238;&#65306;"&#25105;&#38614;&#24180;&#32769;&#65292;'''&#29694;&#22312;'''&#20006;&#28961;&#30149;&#30171;&#12290;"
+</blockquote>
+in [[http://zh.wiktionary.org/zh/&#29694;&#22312;][&#29694;&#22312;]]

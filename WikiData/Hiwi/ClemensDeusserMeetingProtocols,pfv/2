@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1338911826" format="1.1" version="2"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+---++++ May 31
+
+Meeting with Wolfgang
+   * Determine intersection of keywords between Fachsystematik and pedocs database and enter into database.
+   * Document clustering with CW.
+Interlude with Chris Biemann:
+   * Use tf*idf to weigh relevance of keywords.
+   * Cut edges below a certain weight threshold.
+   * Use CW multiple times with differing seeds to exclude anomalies.
+
+---++++ May 18
+
+Informal meeting with Wolfgang.
+   * Discussed the role of DKPro in the thesis and the graph representation.
+   * Co-occurence of keywords/phrases currently the best bet for classification, but may need a way to detect synonyms.
+Tasks:
+   * Think about things other than authors and generic keyphrases that could be relevant for classification.
+   * Normalise distances.
+   * Read Shuo's code to gain understanding of the DKPro pipeline so experimentation with various methods provided by the framework can begin.

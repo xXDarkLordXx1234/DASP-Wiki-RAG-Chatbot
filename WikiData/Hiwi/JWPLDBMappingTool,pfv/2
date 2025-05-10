@@ -1,0 +1,76 @@
+%META:TOPICINFO{author="AnouarHaha" date="1202771111" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="AnouarWork"}%
+<center><b>
+---+ JWPL DBMapping Tool 
+</b></center>
+---++ Functionalities: 
+   * The DBMapping Tool performs the mapping of Wikipedia dumps to dumps for the JWPL.
+   * The DBMapping Tool is able to extract multiple dump versions (as JWPL dumps) from the input dumps starting from a given 'from' timestamp and ending with a given 'to' timestamp using regular intervals (in days) between them.
+   * The DBMapping Tool performs the transformation of xml-files to sql-files using the mwdumper.
+   * The DBMapping Tool is also able to extract txt-dumps (for mysql) from sql-dumps. However only the functions RAND() and&nbsp; <font color="#000000"><font face="Times New Roman, serif"><font size="3">DATE_ADD('1970-01-01', INTERVAL UNIX_TIMESTAMP() SECOND)+0</font></font></font> are supported.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The DBMapping&nbsp;Tool is the unique java program (plattform independent) that performs this task!!!! 
+   * The DBMapping Tool performs the extraction of 'gz' and 'bz2' files.
+---++ Usage:&nbsp; 
+
+- Download the Wikipedia dumps: go to http://dumps.wikimedia.org/{wiki_language}/{yyyymmdd} 
+
+&nbsp;&nbsp; Example:&nbsp;to download the dumps of the simplewiki&nbsp;version 17.01.2008 =&gt; http://dumps.wikimedia.org/simplewiki/20080117 
+
+-Download the files: 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {wiki_language}-yyyymmdd-pages-meta-history.xml.bz2 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {wiki_language}-yyyymmdd-pagelinks.sql.gz 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {wiki_language}-yyyymmdd-categorylinks.sql.gz 
+
+-&nbsp; Create a properties file for the configuration of the _DBMapping Tool_ : _configuration.xml_ 
+
+<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span style="FONT-STYLE: normal">You can use the </span><font face="Courier New, monospace"><font style="FONT-SIZE: 10pt" size="2"><span style="FONT-STYLE: normal">org.tud.ukp.wikipedia.dbmapping.ConfigFormularGenerator</span></font></font><span style="FONT-STYLE: normal"> class to get an template for the config file. In this case you must pass the name of the file to be created to&nbsp; the&nbsp;main method of that class. The following table describes the content of the config file: _configuration.xml_
+
+| *key* | *value* | *comments* |
+| &nbsp;id | an integer that corresponds to the id of the used language in the MetaData &nbsp;table&nbsp; | &nbsp; |
+| &nbsp;language | the used language&nbsp; | the language string must correspond to&nbsp;one of the&nbsp;values enumerated in WikiConstants.Language in the JWPL. Examples: english, german, frensh, arabic&nbsp; | 
+| &nbsp;mainCategory | the title of the main category of the used wikipedia | &nbsp; |
+| &nbsp;disambiguationCategory | the title of the disambiguation category of the used wikipedia&nbsp; | &nbsp; |
+| &nbsp;fromTimestamp | yyyymmddhhmmss&nbsp; | the timestamp of the first version to be extracted |
+| &nbsp;toTimestamp | yyyymmddhhmmss&nbsp; | the timestamp of the&nbsp;last version to be extracted&nbsp; |
+| &nbsp;each | the number of days to be used as regular interval for extracting versions&nbsp; | &nbsp; |
+| &nbsp;metaHistoryFile | the path of the pages-meta-history file &nbsp; | only .xml and .xml.bz2 extensions are supported&nbsp; |
+| &nbsp;pageLinksFile | the path of the pagelinks file&nbsp; | only .sql and .sql.gz extensions are supported&nbsp; |
+| &nbsp;categoryLinksFile | the path of the categorylinks file&nbsp; | only .sql and .sql.gz extensions are supported&nbsp; |
+| &nbsp;outputDirectory | the path of the directory to which the versions&nbsp;will be extracted&nbsp; | the outputDirectory will be created if it does not exist.&nbsp;However its parent directory must exist.&nbsp; |
+| &nbsp;removeInputFilesAfterProcessing | a boolean that specifies whether the meta history file, the pagelinks file and the category links file&nbsp;should be removed after the processing&nbsp; |
+
+
+- Start the DBMapping Tool: 
+
+&nbsp;&nbsp; -&nbsp; pass the path of the config file as argument to the main method of <font face="Courier New, monospace"><font style="FONT-SIZE: 10pt" size="2">de.tud.ukp.wikipedia.dbmapping.StartDBMapping</font></font> 
+
+<font face="Courier New" size="2">&nbsp; - allocate enough heap size to speed up the execution. Note that the DBMapping Tool perfomrs all its task with linear complexity</font>
+
+-&nbsp; If no exception has been thrown, the extracted dumps are now available in the output directory each in a directory with the belonging timestamp as name. The exacted list of the tables of each version is the following:
+   * Category.txt
+   * category_pages.txt
+   * category_inlinks.txt
+   * category_outlinks.txt
+   * Page.txt
+   * page_inlinks.txt
+   * page_outlinks.txt
+   * page_redirects.txt
+   * page_categories.txt
+   * PageMapLine.txt
+   * MetaData.txt
+---++ Impoting the dumps in a MySQL database:
+
+- Create a database and name it {language_code}wiki (for example enwiki for the english Wikipedia and dewiki for the german Wikipedia):
+
+<font face="Courier New, monospace"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp; &gt;mysql &#8211;user=**** --password=**** {language_code}wiki &lt; jwpl_tables.sql</font></font>
+
+The file jwpl_tables.sql is available in the root directory of the _DBMapping Tool_.
+
+- Insert the tables into the database:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;mysqlimport &#8211;user=**** --password=**** --default-character-set=utf8 {database_name} {txt_file1} {txt_file2} ... {txt_file11}
+
+&nbsp; Main.AnouarHaha - 11 Feb 2008

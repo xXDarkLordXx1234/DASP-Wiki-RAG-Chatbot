@@ -1,0 +1,125 @@
+%META:TOPICINFO{author="ArtemVovk" date="1299837454" format="1.1" version="286"}%
+%META:TOPICPARENT{name="WebHome"}%
+   ---+ Artem Vovk Work
+
+---++ Documents
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+ImportingWikipedia
+
+SuggestSectionProblems
+
+---++ Work
+
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Installation von Wikulu | 50 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Installation von Wikulu | 14.01.2011 | 1 | <ul><li>Versuche TWiki zu installieren</li><li>Beratung mit Nico</li></ul> |
+| LinkSuggestionScreenshots | 17.01.2011 | 0.5 | <ul><li>Beratung mit Nico</li></ul> |
+| LinkSuggestionScreenshots | 19.01.2011 | 1.5 | <ul><li>Versuche Wikulu zum Laufen zu bringen</li></ul> |
+| Wikulu | 21.01.2011 | 1.5 | <ul><li>Versuche wikulu-plugins zum Laufen zu bringen</li></ul> |
+| Wikulu | 23.01.2011 | 4 | <ul><li>Versuche wikulu-plugins zum Laufen zu bringen</li><li>GoogleTeokenizer und PerlCaller wurden aufgeraeumt und commited</li></ul> |
+| Wikulu | 24.01.2011 | 4 | <ul><li>Beratung mit Nico und Richard</li><li>Bug fixing</li></ul> |
+| Wikulu | 25.01.2011 | 4.5 | <ul><li>Bug fixing</li></ul> |
+| Wikulu | 26.01.2011 | 3 | <ul><li>Bug fixing</li></ul> |
+| Wikulu | 31.01.2011 | 1 | <ul><li>Beratung mit Nico und Richard</li></ul> |
+| Wikulu | 1.02.2011 | 4.5 | <ul><li>Bug fixing(semantics.keyphrases, wikulu.plugin.keyphraseextraction)</li></ul> |
+| Wikulu | 3.02.2011 | 7 | <ul><li>Bug fixing in WikiSniffer(WikiAbstraktionController)</li></ul> |
+| Wikulu | 4.02.2011 | 2.5 | <ul><li>WikiSniffer wurde zum laufen gebracht</li></ul> |
+| Wikulu | 7.02.2011 | 0.5 | <ul><li>Beratung mit Nico</li></ul> |
+| Wikulu | 8.02.2011 | 0.5 | <ul><li>Dipf Instanz wurde zum laufen gebracht</li></ul> |
+| Wikulu | 14.02.2011 | 6 | <ul><li>Wikulu reinigung</li><li>Aenderungen in WikiApi(getPageForURL)</li><li>Versuche passende Screenshots zu erstellen</li></ul> |
+| Wikulu | 25.02.2011 | 2 | <ul><li>Bug korrektur</li></ul> |
+| Wikulu | 28.02.2011 | 0.5 | <ul><li>Treffen mit Nico</li></ul> |
+| Wikulu | 6.03.2011 | 3 | <ul><li>Versuche wikulu Instanz auf wikulu.twiki501 installieren</li></ul> |
+| Wikulu | 7.03.2011 | 3 | <ul><li>Wikulu wurde zum laufen gebracht</li><li>Indexerstellung fuer twiki501 war nicht erfolgreich(HTTP error code 500)</li></ul> |
+| Wikulu | 8.03.2011 | 3 | <ul><li>jQuery incopatibility Problem  wurde behoben($ wurde nicht als jQuery Object erkannt)</li></ul> |
+| Wikulu | 8.03.2011 | 1 | <ul><li>Treffen mit Timo</li><li>Analyse von apache logs um die Verbindungsfehlern zu beheben </li></ul> |
+| Wikulu | 9.03.2011 | 2 | <ul><li>TWiki blockiert alle Zugriffe von Java trotz richtige user-agent, Versuche dieses Problem zu loesen</li></ul> |
+| Wikulu | 10.03.2011 | 2 | <ul><li>TWiki blockiert alle Zugriffe von Java trotz richtige user-agent, Versuche dieses Problem zu loesen</li></ul> |
+| Wikulu | 11.03.2011 | 1.5 | <ul><li>Bugfixing TopicSegmentation</li><li>Analyse von javascipt struktur in wikulu.proxy</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende März |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+   * [[%ATTACHURL%/build.xml][build.xml]]: Script for importing wikipedia
+---------------------
+
+ReleasePackageErrors
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"
+
+
+---++ Previous Work
+
+   * ArtemVovkPreviousWork
+
+   
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="MiniManual.pdf" attachment="MiniManual.pdf" attr="" comment="Manual to %22Preloaded descriptor selection%22" date="1234806618" path="MiniManual.pdf" size="40665" stream="MiniManual.pdf" tmpFilename="/var/tmp/CGItemp37940" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="build.xml" attachment="build.xml" attr="" comment="Script for importing wikipedia" date="1248857901" path="build.xml" size="2013" stream="build.xml" tmpFilename="/var/tmp/CGItemp61365" user="ArtemVovk" version="1"}%

@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="NiklasJakob" date="1211301079" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Schriftliche Ausarbeitung
+Erste Ideen zur Gliederung der schriftlichen Ausarbeitung.
+
+   * Abstract
+
+   * Einleitung
+      * Überblick/Motivation
+      * Verwandte Arbeiten
+      * Verwendete Daten
+         * Nachrichtentexte
+         * Aufbau des Wissensnetzes
+
+
+   * Ontology Learning
+      * Ontologie
+      * Relationen
+
+   * Implementierung
+      * UIMA Einleitung (Kommentar NJ)
+      * K-Infinity
+      * Preprocessing
+      * Analyse
+         * Named Entities
+         * Part of Speech
+         * Lemmatisierung/Synonymisierung
+         * Relationen finden
+      * Postprocessing
+
+   * Evaluation
+      * R.Snow Baseline
+      * Goldstandard
+
+   * Zusammenfassung
+      * Fazit
+      * Ausblick
+      * Danksagungen

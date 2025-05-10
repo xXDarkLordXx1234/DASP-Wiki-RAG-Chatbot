@@ -1,0 +1,112 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="5" version="6"}%
+%META:TOPICPARENT{name="AnouarWork"}%
+---+ JWPL !TimeMachine Tool 
+
+
+---++ Functionality: 
+   * The !TimeMachine Tool performs the mapping of Wikipedia dumps to JWPL dumps.
+   * The !TimeMachine Tool is able to extract multiple dump versions (as JWPL dumps) from the input dumps starting from a given 'from' timestamp and ending with a given 'to' timestamp using regular intervals (in days) between them.
+   * The !TimeMachineTool performs the transformation of xml-files to sql-files using =mwdumper=.
+   * The !TimeMachine Tool is also able to extract txt-dumps (for mysql) from sql-dumps. However only the functions RAND() and&nbsp; <font color="#000000"><font face="Times New Roman, serif"><font size="3">DATE_ADD('1970-01-01', INTERVAL UNIX_TIMESTAMP() SECOND)+0</font></font></font> are supported.
+   * The !TimeMachine Tool is the first Java application (plattform independent) that performs this task. 
+   * The !TimeMachine Tool transparently performs the extraction of 'gz' and 'bz2' files.
+
+---++ Usage:
+
+   1 Download the Wikipedia dumps from http://dumps.wikimedia.org/backup-index.html
+      * Select the language of your choice. The link should be LANGUAGE-CODE + "wiki".
+         * Example: "enwiki" links to the English Wikipedia dumps, "dewiki" links to the German dumps.
+      * The final download URL should look like =http://dumps.wikimedia.org/{LANGUAGE-CODE}wiki/{YYYYMMDD}=
+         * Example:&nbsp;to download the dumps of the English Wikipedia dump from 17.01.2008 =&gt; http://dumps.wikimedia.org/enwiki/20080117=
+
+   1 Download the files:
+      * {LANGUAGE-CODE}-yyyymmdd-pages-meta-history.xml.bz2
+      * {LANGUAGE-CODE}-yyyymmdd-pagelinks.sql.gz
+      * {LANGUAGE-CODE}-yyyymmdd-categorylinks.sql.gz
+
+   1 Create a configuration file for the JWPL !TimeMachine. 
+      * You can edit one of the sample configuration files in folder =configuration= 
+      * Running =org.tud.ukp.wikipedia.dbmapping.ConfigFormularGenerator {FILENAME}= gives an empty template configuration file. Table 1 describes the elements of the configuration file.
+   1 Start the JWPL !TimeMachine
+      * pass the path of the config file as argument to the main method of =de.tud.ukp.wikipedia.dbmapping.StartDBMapping=
+      * allocate enough heap size to speed up the execution (use "-Xmx" JVM parameter to increase heap space; e.g. =-Xmx512m= gives you 512MB heap space). Note that the DBMapping Tool performs all its task with linear complexity=
+      * If no exception has been thrown, the extracted dumps are now available in the output directory each in a directory with the belonging timestamp as name. The exact list of the tables of each version is the following:
+         * Category.txt
+         * category_pages.txt
+         * category_inlinks.txt
+         * category_outlinks.txt
+         * Page.txt
+         * page_inlinks.txt
+         * page_outlinks.txt
+         * page_redirects.txt
+         * page_categories.txt
+         * !PageMapLine.txt
+         * !MetaData.txt
+
+   1 Importing the dumps in a MySQL database:
+      * Make sure the database encoding is set to UTF8.
+      * Create a database: =mysqladmin -uUSER -p create DB_NAME=
+      * Create the necessary tables.
+         * =mysql -uUSER -p DBNAME &lt; jwpl_tables.sql=
+         * The file =jwpl_tables.sql= comes with the JWPL !TimeMachine package.
+      * Insert the data into the database.
+         * If there are only the output files in that directory you can use:
+            * =mysqlimport -uUSER -p --default-character-set=utf8 {database_name} `pwd`/*.txt=
+            * Otherwise, you need to do it the long way =mysqlimport -uUSER -p --default-character-set=utf8 {database_name} {txt_file1} {txt_file2} ... {txt_file_n}=
+         * If you encounter a &#8220;broken pipe&#8221; error in this step, try adding the --max_allowed_packet parameter to the above query. Set it to something reasonable high, e.g., --max_allowed_packet=128M.
+          * Setting the --max_allowed_packet parameter on the console only changes it for the client, but the problem can also be on the server side. Thus, if adding max_allowed_packet=128M doesn&#8217;t work on the command line, try entering it into the my.cnf file in the MySql directory under the [mysqld] section.
+   * For a large Wikipedia, this may take a while &#8230;
+   * If you are using MySQL 4.x or previous:
+      * MySQL 4.x supports only 4GB MyISAM tables with the default settings.
+      * Unfortunately, the English Wikipedia is already much larger than this. Given the growth rates, many Wikipedias will reach that size sooner than later.
+      * The solutions here where provided by Christian Pietsch.
+         * Solution 1:
+            * You may need to have root access, depending on you server&#8217;s configuration.
+            * If you are using a MySQL version before 5.0.6 and at least 4.1.2, do prior to import on the mysql command line:
+               * SET GLOBAL max_allowed_packet=1000000000;
+               * SET GLOBAL myisam_data_pointer_size=5;
+         * Solution 2:
+            * Adapted from http://jeremy.zawodny.com/blog/archives/000796.html and untested.
+            * <verbatim>
+gunzip < DUMPFILE.sql.gz | \
+sed 's/^) ENGINE=MyISAM DEFA/) ENGINE=MyISAM MAX_ROWS=200000000000 AVG_ROW_LENGTH=50 DEFA/g' | \
+mysql -uUSER -p --default-character-set=utf8 --max_allowed_packet=1000000000 DB_NAME
+</verbatim>
+
+---++ Configuration File
+   * The configuration file must be UTF8 encoded.
+
+---+++ Explanation of field
+
+| *Key* | *Value* | *Comments* |
+| language | the used language | the language string must correspond to one of the values enumerated in WikiConstants.Language in the JWPL. Examples: english, german, frensh, arabic | 
+| mainCategory | The title of the main category of the Wikipedia language version used. | For example, "Categories" for the English Wikipedia or "!Hauptkategorie" for the German Wikipedia. |
+| disambiguationCategory | The title of the disambiguation category of the Wikipedia language version used. | For example, "Disambiguation" for the English Wikipedia or "Begriffsklärung" for the German Wikipedia.|
+| fromTimestamp | yyyymmddhhmmss | The timestamp of the first version to be extracted. |
+| toTimestamp | yyyymmddhhmmss | The timestamp of the last version to be extracted. |
+| each | The number of days to be used as regular interval for extracting versions. |  |
+| metaHistoryFile | The absolute path to the pages-meta-history file. | Only .xml and .xml.bz2 extensions are supported |
+| pageLinksFile | The absolute path to the pagelinks file | only .sql and .sql.gz extensions are supported |
+| categoryLinksFile | The absolute path to the categorylinks file | only .sql and .sql.gz extensions are supported |
+| outputDirectory | The absolute path to the directory to which the transformed files will be written. | The outputDirectory will be created if it does not exist. However its parent directory must exist. |
+| removeInputFilesAfterProcessing | A boolean that specifies whether the meta-history file, the pagelinks file and the categorylinks file should be removed after the processing | |
+
+---+++ Example file
+<verbatim>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <comment>This a configuration formular for the JWPL TimeMachine</comment>
+  <entry key="language">greek</entry>
+  <entry key="mainCategory"></entry>
+  <entry key="disambiguationCategory"></entry>
+  <entry key="fromTimestamp">20060101000000</entry>
+  <entry key="toTimestamp">20060102000000</entry>
+  <entry key="each">1</entry>
+  <entry key="metaHistoryFile">/home/zesch/wiki_data/elwiki/elwiki-20080205-pages-meta-history.xml.bz2</entry>
+  <entry key="categoryLinksFile">/home/zesch/wiki_data/elwiki/elwiki-20080205-categorylinks.sql.gz</entry>
+  <entry key="pageLinksFile">/home/zesch/wiki_data/elwiki/elwiki-20080205-pagelinks.sql.gz</entry>
+  <entry key="outputDirectory">/home/zesch/wiki_data/elwiki_test</entry>
+  <entry key="removeInputFilesAfterProcessing">false</entry>
+</properties>
+</verbatim>

@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="8"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ Christian M. Meyer
+
+Since November 2008 I'm writing my master thesis <br />
+*"Combining Answers from heterogeneous Web Documents for Question Answering"*.
+
+<blockquote>
+*Abstract:* Currently, the information of the World Wide Web is mainly accessed with
+    search engines. Recent studies showed that the usual keyword-in-context
+    lists are not always the best choice for presenting the results.
+    Additionally, an increasing amount of people uses search engines,
+    without knowing how to formulate good queries. This master thesis
+    therefore describes the design and implementation of a question
+    answering system that generates a summarized answer for open-domain
+    natural language queries. The system aims to increase the quality of
+    existing systems by using heterogeneous documents from Wikipedia, Yahoo!
+    Answers and Frequently Asked Questions.
+
+    Three main tasks have been identified: The first is passage extraction,
+    which relies on semantic similarity and Hidden Markov Models for
+    identifying irrelevant passages. Passage extraction obtains an average
+    precision of 98% and recall of 81%. The second task calculates
+    different clusterings for assigning a topic to each document. The best
+    results have been found by combining k-means and Newman's community
+    clustering, which results in an average clustering purity of 88%. The
+    final step combines three different rankings and selects the top ranked
+    sentences for composing the summary. Besides the textual summary that is
+    particularly useful for answering definition questions, a list of
+    frequent n-grams and URLs is created to support also factoid and list
+    questions. While working with heterogeneous data, combining different
+    approaches has been observed to be crucial for benefiting from the
+    individual advantages and alleviate differences in format, length,
+    style, focus, relevance as well as problems of ambiguity and redundancy
+    within the documents.
+
+    An evaluation of the resulting summaries has been done by comparing the
+    system's ROUGE scores with the two systems MEAD and START.
+    User-generated answers from ask.com and Answerbag are used as a
+    reference corpus. The evaluation shows that the system obtains the
+    highest F-measure scores and leads to overall useful summaries. A
+    t-test showed that the system's ROUGE score improvements are
+    significant.
+</blockquote>
+
+Here's some stuff, including the results of my UIMA components and the corresponding documentation:
+
+   * [[ChristianMeyerDiscussion][Discussion]]
+   * [[ChristianMeyerPresentations][Presentations]]
+   * [[ChristianMeyerPapers][Papers]]
+   * [[ChristianMeyerUIMA][UIMA]]
+   * [[ChristianMeyerInput][Input]]
+   * [[ChristianMeyerResults][Results]]
+
+Something missing? Contact me: christian.meyer at stud.tu-darmstadt.de
+
+-- Main.ChristianMeyer - 05 Nov 2008
+
+%META:FILEATTACHMENT{name="ids.txt" attachment="ids.txt" attr="" comment="corresponding yahoo ids" date="1225980526" path="ids.txt" size="13253232" stream="ids.txt" tmpFilename="/var/tmp/CGItemp34033" user="KaterynaIgnatova" version="1"}%

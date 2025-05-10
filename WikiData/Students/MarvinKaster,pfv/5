@@ -1,0 +1,76 @@
+%META:TOPICINFO{author="kaster" comment="" date="1568658825" format="1.1" reprev="4" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Multilingual Contextual Probing
+   * Deadline: 27 December 2019
+   * Begin: 26 June 2019
+
+---++ 09-16 September 2019
+   * Added CharacterBin and TagCount to the probing tasks
+   * Improved the probing datasets (removed long sentences and fixed word splitting)
+   * A z-score of 2 seems to be good for the sentence lengths.
+   * The sigmorphon19 tasks 2 dataset does not contain information about the word splitting. These information are in the original ud dataset.
+   * Checked pytorch-transformers framework. Bert should work with our intrinsic probing tasks. It should be possible to use the multilingual bert model directly in allennlp (useful for downstream tasks).
+   * Some restructuring of the repo
+   * Started the new probing tasks
+   * Read "How multilingual is Multilingual BERT?" (2019)
+   * Read "Cross-lingual Language Model Pretraining" (2019)
+   * Read "Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT" (2019)
+   * Read "Informing Unsupervised Pretraining with External Linguistic Knowledge" (2019)
+
+---++ 09 September 2019 Meeting
+   * Talked about the downstream results. The contextualized elmo performs only better on NER. No improvement on XNLI, DEP and POS
+   * For the next meeting:
+   * Check sentence length distribution of the treebank
+   * Remove long sentences from the probing dataset
+   * Fix that some words in Turkish (and probably Spanish, Russian) were separated in the probing task datasets
+   * Prepare the repository for moving into the UKPLab repository (more comments and restructuring)
+   * Add TagCount and CharacterBin to the probing tasks
+   * Support bert
+   * Read more literature about probing on bert and cross-lingual transfer
+   * Update this wiki page
+
+---++ 12 August - 08 September 2019
+   * Finished the experiments on the downstream tasks for elmo
+   * The contextualized elmo performs only better on NER. No improvement on XNLI, DEP and POS
+   * Setup thesis template
+   * Read "SentEval: An Evaluation Toolkit for Universal Sentence Representations"
+   * Read "Probing Biomedical Embeddings from Language Models"
+   * Read "GLUE: A MULTI-TASK BENCHMARK AND ANALYSIS PLATFORM FOR NATURAL LANGUAGE UNDERSTANDING"
+   * Read "What’s in an Embedding? Analyzing Word Embeddings through Multilingual Evaluation"
+   * Read "A Survey of Word Embeddings Evaluation Methods"
+   * Read "Linguistic Knowledge and Transferability of Contextual Representations"
+   * Read "Evaluation of sentence embeddings in downstream and linguistic probing tasks"
+   * Read "WHAT DO YOU LEARN FROM CONTEXT? PROBING FOR SENTENCE STRUCTURE IN CONTEXTUALIZED WORD REPRESENTATIONS"
+   
+
+---++ 18-26 July 2019
+   * Trained classifier for Downstream tasks (dep, xnli, ner, pos) for german, spanish, turkish and russian
+
+---++ 17 July 2019: Meeting with Max and Gözde
+   * Knowledgetransfer
+
+---++ 10-17 July 2019
+
+   * Trained classifier for fasttext, bpe, muse and elmo embeddings on Finnish, German, Spanish, Turkish and Russian
+   * Collected results in a spreadsheet
+
+---++ 10 July 2019 Meeting
+   
+---++ 27 June - 10 July 2019
+   * Trained classsifiers for intrinsic probing tasks on german, finnish, spanish, russian and turkish
+
+---++ 26 June 2019 Meeting
+   
+
+---++ 20-26 June 2019
+   * Statistics about the sigmorphon19 dataset
+
+---++ 19 June 2019 Meeting
+
+---++ 13-19 June 2019
+   * Wrote reader for the sigmorphon19 task 2 dataset and created probing dataset
+
+
+---++ 12 June 2019 Meeting
+   * First meeting
+   * Introduction to the topic

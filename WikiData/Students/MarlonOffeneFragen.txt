@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="3"}%
+%META:TOPICPARENT{name="MarlonHorn"}%
+-- Main.MarlonHorn - 03 Feb 2009
+
+Macht es Sinn, die Datenbank nocheinmal in eine Text-Datei zu schreiben um die Ergebnisse zu überprüfen oder gibt es eine effektivere Methode? 
+_Eine Text-Datei ist aussreichend --  ERLEDIGT._
+
+Findet GetAllTranslations wirklich alle Übersetzungen für eine Wiktionary-Eintrag?
+_wird überprüft_
+
+-- Main.MarlonHorn - 22 Feb 2009
+
+Neues Problem mit der Wikipedia API: Manche Übersetzungen werden fälschlicher Weise aufgeteilt.
+Beispiel: Raketenschnellboot: missile, bearing, Fast Attack Boat. Statt: missile bearing Fast Attack Boat
+
+Wie kann man "..." bei manchen Einträgen rausfiltern?

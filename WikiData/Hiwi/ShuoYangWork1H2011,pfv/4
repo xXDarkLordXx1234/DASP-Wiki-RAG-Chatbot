@@ -1,0 +1,73 @@
+%META:TOPICINFO{author="ShuoYang" date="1301900990" format="1.1" version="4"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Arbeitsprotokoll-1H 2011 / Shuo Yang
+
+%TOC%
+
+
+---++ März 2011
+
+---+++ Abgeschlossene Aufgaben
+keine
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Organisatorisches | 01.04.2011 | 1 | Programme für Erstellung von UML-Diagramme gefunden: BOUML <p> Erstellung Arbeitsplan Sigmund | * |
+| Organisatorisches | 30.03.2011 | 0.5 | Auswahl Programme für Erstellung von UML-Diagramme | * |
+| Architektur Result Integrator | 26.03.2011 | 1 | Erstellung 1. Version des Komponentendiagramms |  |
+| Treffen | 21.03.2011 | 0.5 | Treffen mit Benjamin über Vertragsverlängerung und Arbeitsprioritäten |  | 
+| Vorbereitung Test Search Module | 20.03.2011 | 2.5 | <ul><li>Versuchte CAS Echo-Anfrage mit Spring WS durchzuführen</li><li>Nach Hinzufügen von SOAPAction reagiert CAS auch zu Echo-Anfrage von Spring WS! Dies soll allerdings irgendwie automatisch hinzugefügt werden können</li><li>Zur Login-Anfrage hat es noch Problem: "Fehler beim Deserialisieren des Textkörpers der Anforderungsnachricht für Vorgang "executeUnauthenticated"."</li><li>Nun habe ich Verständnis von CAS auf SOAP-Niveau</li></ul> |  |
+| Vorbereitung Test Search Module | 19.03.2011 | 4.5 | Untersuchung der Kommunikation mit CAS auf SOAP-Nachrichten-Ebene, um die bisherige Service besser zu verstehen. Nun zeigt beide JAX-WS und Spring WS die zu schickende und empfangene SOAP-Nachrichten. Dieses Verständnis brauche ich, um relevante Umsetzungsmöglichkeiten zu finden und vergleichen.<br> Dabei =SpringWsUtils= erweitert und Unit Tests dazu geschrieben |  |
+| Vorbereitung Test Search Module | 16.03.2011 | 3 | <ul><li>Probieren, mit Spring WS Dokument-Stil SOAP-Nachrichten mit CAS zu kommunizieren.</li><li>Herausfinden, wie die von CAS erwartete SOAP Nachrichten für ihr Suchmodul aussieht</li><li>Einige bequeme Utilities geschrieben (=JaxbUtils=, =SpringWsUtils=) </li></ul> |  |
+| Einarbeiten SIGMUND | 11.03.2011 | 2.5 | Testen und Bug-Berichten von SIGMUND-APIs |  |
+| Treffen | 07.03.2011 | 1.5 | Treffen mit Benjamin über u.ä. Bugs von CAS-Web Service |  |
+| Vorbereitung Test Search Module | 06.03.2011 | 1 | Auschecken von Existierende Projekte, Lösen von Dependency-Probleme |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 32)$EXEC($GET(total_hour))"}% | bis Ende März noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 12 Stunde Übertrag von Februar) | |
+<nop>
+
+
+---++ Feb 2011
+
+---+++ Abgeschlossene Aufgaben
+keine
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Einarbeiten SIGMUND, Treffen | 15.02.2011 | 4 | Maven-ize =CasSearchModule= Projekt <br> Weitere Einarbeiten in SIGMUND <br> Einlesen vorhandener Codes von UKP in SIGMUND <br> Treffen mit Benjamin<ul><li>Probleme bei SIGMUND (=SSSearchString=) </li><li> Erklärung von Spring WS</li><li>Besprechung nächster Schritte</li></ul> | * |
+| Einarbeiten SIGMUND | 14.02.2011 | 2.5 | Einlesen von SIGMUND Interfaces <br> =GSStartSearchRequest= zum Laufen gebracht |  | 
+| Spring WS | 09.02.2011 | 1.5 | Einarbeiten in Spring WS |  |
+| Spring WS | 08.02.2011 | 2.5 | Einlesen Document-basiert vs RPC-basiert SOAP-Stile. <br> Anschauen von CAS Klassen <p> Vorbereitung einer Folie zur Präsentierung von Spring WS | |
+| Spring WS | 07.02.2011 | 4.5 | Ein Spring-Stil Document-basierte Web Service Beispiel wurde geschrieben und funktionsfähig gebracht. | |
+| Spring WS | 06.02.2011 | 3 | Einarbeiten in Spring WS | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 30)$EXEC($GET(total_hour))"}% | bis Ende Februar noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 10 Stunde Übertrag von Januar) | |
+<nop>
+
+---++ Jan 2011
+
+---+++ Abgeschlossene Aufgaben
+keine
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Spring WS, Treffen | 31.01.2011 | 4 | Einarbeiten in Spring Web Services. <p> Treffen mit Benjamin | * |
+| Spring WS | 29.01.2011 | 1.5 | Einarbeiten in Spring WS | * |
+| Fehlerreport CAS | 27.01.2011 | 1.5 | Sigmund-Server von CAS hat mehrfach wegen =SearchString= -Abfrage abgestürzt. <br> Detailliert protokollierte Test durchgeführt und an CAS weitergeleitet, um die Ursache herauszufinden <br> Dafür Einarbeiten in Log4j | * |
+| Spring WS, Treffen | 24.01.2011 | 3 | Einarbeiten in Spring Web Services. Sigmund Projekt kann das vielleicht nützen <br> Treffen mit Benjamin | * |
+| Sigmund | 23.01.2011 | 1.5 | Einarbeiten in Sigmund Web Services Klassen <br> Testprogramm =FetchDocument= erfolgreich <br> Testprogramm =SearchString= fehlgeschlagen wegen serverseitigem Fehler | * |
+| Sigmund-Einarbeiten, Treffen | 18.01.2011 | 2.5 | Einarbeiten in SOAP und kurz JSP <p> Treffen mit Benjamin |  |
+| Sigmund-Einarbeiten | 07.01.2011 | 1 | Einarbeiten in SOAP |  |
+| Sigmund-Einarbeiten | 06.01.2011 | 2 | Einarbeiten in SOAP Web Services <br> Erstellung eines Testprogramms für RPC über SOAP |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 27)$EXEC($GET(total_hour))"}% | bis Ende Januar noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 7 Stunde Übertrag von November)  | |
+<nop>
+
+
+-- Main.ShuoYang - 2011-04-04

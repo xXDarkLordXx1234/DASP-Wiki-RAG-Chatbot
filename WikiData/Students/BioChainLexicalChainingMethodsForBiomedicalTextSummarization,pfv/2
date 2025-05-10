@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="NiklasPaperSummaries"}%
+---++ Summary of: "BioChain: Lexical Chaining Methods for Biomedical Text Summarization"
+
+   * The goal of this work is summarize publications from the medical domain in a few sentences in order to speed up the review process. This summary is supposed to give the reader an idea of what the clinical study has found out.
+   * They introduce the use of the "Unified Medical Language System (UMLS) Metathesaurus and Semantic Network" as a resource for semantic relations. This MetaMap application was usually used for hierarchical index query expansion, user query categorization and data mining in the medical domain.
+   * Their method does not link terms but concepts instead. This can be achieved with UMLS tools which map biomedical texts to concepts and semantic types. This semantic mapping allows chaining together related concepts based on each concept's semantic type. The UMLS semantic networl types are used as the head of chains and the chains are composed of concept instances generated from noun phrases in the biomedical text. There are three primary UMLS resources used in the chaining process:
+   * 1 ) The Metathesaurus which contains conecpts, names and relationships and links alternate names and views of the same concept together. It also identifies relationships between different concepts using relationship types as concept, co-occurence, synonymy and hierarchical relations.
+   * 2) The Semantic Network which provides a categorization of almost all concepts in the Metathesaurus
+   * 3) The MetaMap Transfer application which handles the text-to-concept mapping using the Metathesaurus and the semantic types in the Semantic Network.
+   * The MetaMap Transfer app has the following functions: Text tokenization, sentence splitting, section splitting, entity detection, pos-tagging, concept retrieval and concept scoring
+   * The identified concepts are then chained by their semantic type. The formular for a chain's score is: (Frequency of most frequent concept) * (Number of distinct concepts)
+   * Chains are considered strong chains if their score is greater than the average score of all chains plus twice the standard deviation of all scores
+   * BioChain uses a sentence extraction method to summarize a text. The top-n sentences (later defined by the compression rate) are identified by sorting strong chains in ascending order based on their score and then identifying the most frequent concepts within each chain. Then sentences that include the most freuquent concepts are extracted and create the summary. Multiple concepts having the same frequency are considered equal and sentences from each concept are extracted.
+   * In their evaluation the authors compared their results with the results of three different summarization systems and with text summaries created by humans, calculating precision and recall of the extracted sentences. Additionaly they used the feedback of a domain expert who reviewed their generated summaries.
+   * The authors' method reaches a precision value of 0.90 and a recall of 0.92. They are very pleased with those results and conclude that the proposed concept chaining is an excellent methodology for biomedical text summarization. Future plans include concept disambiguation and improve their sentence extraction.
+
+
+
+-- Main.NiklasJakob - 31 Mar 2007

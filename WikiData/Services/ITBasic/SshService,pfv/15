@@ -1,0 +1,102 @@
+%META:TOPICINFO{author="eckart" comment="save topic" date="1426603025" format="1.1" reprev="13" version="15"}%
+%META:TOPICPARENT{name="Resources"}%
+---+ !!SSH Service
+
+%TOC%
+
+---+ Terms of Use
+
+   * Hop hosts are meant to be used *only* as an intermediate connection to the UKP network. That means you log in via SSH to the hop host and then immediately open another SSH connection to your final destination. In particular you are *not meant to store data* on the hop host.
+
+---+ Connecting to SSH
+
+Sometimes it is not possible to set up a VPN connection to UKP. In such cases it is possible to connect to the UKP network using only SSH (no VPN) via a hop host.
+
+Currently available hop hosts are:
+
+   * headnode.ukp.informatik.tu-darmstadt.de
+
+These hosts run additional tools to ensure the SSH service is not used by hackers. For example, if you repeatedly fail to log in, your IP will be banned for some time.
+
+---+ Tips
+
+---++ Forwarding connections
+
+   * If you need to copy data from outside UKP to e.g. a compute server via SSH, you should do so via a SSH port forwarding:
+      * Set up forwarding connection in one terminal. This example will create forwarding from port 2222 on your machine to port 22 on selma:
+         * =ssh -L 2222:selma.ukp.informatik.tu-darmstadt.de:22 headnode.ukp.informatik.tu-darmstadt=
+      * Copy data in another terminal. This will use the port forwarding set up above to copy =myfile.txt= to your home directory on selma.
+         * =scp -P 2222 myfile.txt myukpusername@localhost:~/=
+   * Such forwardings only work for your machine, so you do not have to be afraid that somebody else in your network might hijack your port forwarding.
+   * As it is likely that your UKP username is different from your username on whatever machine your are on outside UKP, make sure you always use the "username@host" notation as in the example above.
+   * This also works with rsync: =rsync -e 'ssh -p 2222' myfile.txt myukpusername@localhost:~/=
+
+---+++ Automatically forwarding connections (transparent multi-hop ssh)
+   * To transparently construct connects through multiple ssh tunnel, you can specify the following in =.ssh/config=
+<verbatim>
+Host DestinationHostName
+	ProxyCommand ssh username@GatewayHostName nc %h %p
+</verbatim>
+   * This allows transparent connection to the DestinationHostName through the gateway computer
+   * Setup example
+<verbatim>
+Host desktop-152.ukp.informatik.tu-darmstadt.de
+	ProxyCommand ssh kim@headnode.ukp.informatik.tu-darmstadt.de nc %h %p
+</verbatim>
+   * Connection example
+<verbatim>
+ssh kim@desktop-152.ukp.infomatik.tu-darmstadt.de
+</verbatim>
+   * If you have the normal pass phrase login, then the above connection asks for two passwords: first one to login to the gateway and another one to login to the destination computer.
+   * The advantage of this is that the tunneling is transparent to user and system (i.e. you may forget about the intermediate hops altogether), and use other services as usual.
+      * ssh
+      * scp
+      * X forwarding: ssh -X
+      * rsync
+      * sftp
+      * etc.
+
+---+++ Web proxy over ssh
+   * Sometimes you may want to create a web proxy to a remote network
+      * i.e. from home, you want to have access to journals that TU has subscription to, which needs connection from one of the university IP addresses
+   * 1) Create a SOCKS proxy using the ssh's dynamic port forwarding capability
+<verbatim>
+ssh -C2qTnN -D 8080 headnode.ukp.informatik.tu-darmstadt.de
+</verbatim>
+   * 2) Configure your web browser to use a manually configured proxy 
+      * In firefox,
+         *  Edit -> Preferences -> Advanced -> Network -> Connection/settings -> Manual proxy configuration:
+            * SOCKS host: localhost
+            * Port: 8080
+            * SOCKS v5
+         * or you can use a proxy plugin such as http://getfoxyproxy.org/ for easy management of proxies
+   * 3) Check whether that you get the remote server's ip from http://www.whatismyip.com/
+
+---++ Passwordless login
+
+If you want to login on a compute server, you always have to type your password. This prevents from using scripts, e.g. to copy a updated version of your source tree to your compute server's home directory.
+
+Fortunately, there is a workaround.
+
+Just copy the public key file (should be in ~/.ssh, otherwise ) to your computer server's home directory (directory =.ssh= has to exist in your home).
+<verbatim>
+scp id_rsa.pub zesch@homer.tk.informatik.tu-darmstadt.de:.ssh/authorized_keys
+</verbatim>
+(Note, that authorized_keys2 will be overwritten by this command. If you have already installed other keys, you have to add the new key to the file. )
+
+Afterwards you can login without the need for typing in your password.
+
+If there is no public key file, generate a new keypair with =ssh-keygen -t rsa= answer all questions by typing the RETURN key. Don't enter a passphrase.
+
+---++ Forwarding X connections
+
+Remote X Window System connections can be somewhat slow.  If you want to run graphical programs on your desktop machine over SSH, consider using [[https://en.wikipedia.org/wiki/NX_technology][NX]]:
+   1 Install an NX server (such as [[http://wiki.x2go.org/doku.php/start][X2Go]] or [[http://www.nomachine.com/select-package.php?os=linux&id=1][NoMachine NX Free Edition]]) on your desktop machine.
+   1 Install an NX client (such as [[http://wiki.x2go.org/doku.php/start][X2Go]] or [[http://www.nomachine.com/download.php][NoMachine NX client]]) on your remote machine.  (Clients are available for many different operating systems.)
+   1 Configure the NX client to your liking.  You can have it launch an entirely new desktop session in a dedicated window (sort of like running a virtual machine) or you can have it just launch a single command, such as an xterm, in "headless" mode.  In this mode the program windows will appear just like those for programs running locally.
+   1 Initiate a [[Services.VpnService][VPN connection]] from the client machine to the UKP network (or alternatively, set up a tunnel through the headnode as instructed above).
+   1 Run the NX client and have it initiate a connection to your desktop machine.
+
+Another alternative is [[https://en.wikipedia.org/wiki/VNC][VNC]], though it isn't as fast and flexible as NX.
+
+Note that there's a bug in Eclipse Juno which causes it to crash when used over NX.  Fortunately there is [[DKPro/DevelopmentKnownIssues#Eclipse_crashes_when_you_open_a][a simple workaround]].

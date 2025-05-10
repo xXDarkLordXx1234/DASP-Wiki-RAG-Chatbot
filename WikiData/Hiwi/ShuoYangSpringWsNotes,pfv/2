@@ -1,0 +1,72 @@
+%META:TOPICINFO{author="ShuoYang" date="1296478595" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Spring Web Services learning note
+
+---++ Style
+   * Contract-First: Try and think in XML. Java is _implementation detail_.
+
+---++ Features
+   * Facilitates contract-first SOAP service development
+   * Easier to have loose coupling between contract and implementation
+   * Flexible XML Marshalling, also usable in non-Web service code
+   * Architecture similar to Spring-MVC
+   * Security: WS-Security, Acegi, Spring Security...
+   * Built by Maven, Apache license
+
+
+
+---++ Building contract
+---+++ Generating XSD from XML
+   * With trang, downloadable from http://www.thaiopensource.com/download/
+   * Tutorial http://www.dotkam.com/2008/05/28/generate-xsd-from-xml/
+
+---++ Creating Endpoint
+   * Two flavors:
+      * Message endpoint: SOAP header + SOAP body
+      * Payload endpoint: only SOAP body
+
+
+---++ XML Marshalling / Unmarshalling
+Convert XML document from and to object
+
+---+++ With JAXB
+http://www.oracle.com/technetwork/articles/javase/index-140168.html
+
+---+++ Advantages
+   * Simplifies access to XML doc
+   * No need to know XML processing. Less code.
+   * Access data in non-sequential order without navigating through a tree.
+   * More efficient memory usage than DOM
+   * Flexible input, output, validate and binding behavior options
+
+---+++ Unmarshalling: XML -> obj
+   * Access XML resource (=InputStream=, URL, DOM, transformed XML data - like =SAXResult= ...) via Java object, implicit parsing.
+   * Steps:
+      1. Generate .jaxb from .xsd ("Bind the schema")
+      1. Use JAXB newInstance(.jaxb) (context created), unmarshal(.xml)
+      1. Access resulting java object, obtained from .xml
+   * Can also validate a XML file
+   * Spec-wise does not have to stop when faces invalid doc:
+      * It is possible for a JAXB implementation to successfully unmarshal an invalid XML document, and build a Java content tree. However, the result won't be valid.
+   
+---+++ Marshalling: obj -> XML
+   * Create XML resource like creating java objects, and store to XML file, OutputStream, DOM, transformed XML data - like =SAXResult= ... .
+   * Marshall to transformed XML data in order to, for example, process the data as SAX events.
+   * Steps:
+      1. Bind the schema
+      1. Create content tree with generated =ObjectFactory= which has =createXXX()= according to the XML tree structure
+      1. Set properties to the created objects
+      1. Use JAXB newInstance(.jaxb) (context created), marshall(rootObj, FileOutputStream(.xml))
+   * Validation is a separate operation. To validate, get =Validator= from jaxb context, and validate(rootObj)
+
+---+++ Customizing binding
+   * Binding can also be customized
+   * In order to achieve this, annotate the schema file with binding declarations. It will override or extend the default binding behavior. JAXB allows these declarations to be made inline, or in a separate document.
+   * More refer to URL above
+
+
+---+++ Further reading
+   * Spring in Action book
+
+
+-- Main.ShuoYang - 2011-01-24

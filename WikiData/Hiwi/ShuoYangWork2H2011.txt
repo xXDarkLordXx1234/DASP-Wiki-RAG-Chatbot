@@ -1,0 +1,106 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="4"}%
+%META:TOPICPARENT{name="ShuoYangDariahArbeit"}%
+---+ Arbeitsprotokoll-2H 2011 / Shuo Yang
+
+%TOC%
+
+---+++ November 2011 - Januar 2012 (DARIAH-DE)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | -13 | Übertrag von letztem Vertrag |
+| 02.11.11 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]] | 0.5 | |
+| 08.11.11 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]] | 0.5 | |
+| 13.11.11 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]] | 1.5 | |
+| 16.11.11 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]] | 2 | |
+| 19.11.11 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1212][Moving Old Projects]]</del> | 3.5 | Erledigt. Besprochene Projekte wurden in DKPro-Repository geschoben und nach DKPro Codestil refactored |
+| 20.11.11 | TREC vs GIRT, Auto-Lookup External Resource | 1.5 | Einlesen der Beziehung von TREC und GIRT. Einarbeiten in ExternalResource |
+| 21.11.11 | Auto-Lookup External Resource | 5 | Kapselung von Auto-Lookup, Wrapper-Methode von UIMAfit um ExternalResource automatisch zu binden. [[https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/yang/ExternalResource/de.tudarmstadt.ukp.experiments.sy.externalresource][Link zum Java-Projekt]] |
+| 22.11.11 | ESciDoc Auto-Triggering, Meeting | 1.5 | Meeting: Diskussion bisheriger Ergebnisse und nächste Schritte |
+| 23.11.11 | Moving Old Projects | 0.5 | |
+| 28.11.11 | Moving Old Projects | 3 | Refactors, Erstellung nicht-copyrighted Testcases | 
+| 29.11.11 | Meeting, Auto-Lookup External Resource | 3 | Meeting: Fusion von XmlReaderXPath in DKPro-ASL. <p> Weiterentwicklung Auto-Lookup External Resource |
+| 04.12.11 | =AutoResourceResolver= | 3.5 | Weiterentwicklung |
+| 05.12.11 | =AutoResourceResolver=, Meeting | 3.5 | Erste Version von =AutoResourceResolver= in TreeTagger und StanfordTagger eingesetzt.<p>Meeting: Codereview von =AutoResourceResolver=, Richard gab Verbesserungsvorschläge bei Nebenläufigkeit u.ä. |
+| 07.12.11 | =AutoResourceResolver= | 1 | Verwendung von Java Properties sowie Spring PropertyPlaceholderHelper, weil die Komponenten bereits existieren und getestet  |
+| 13.12.11 | =AutoResourceResolver=, Meeting | 3.5 | Weitere Implementierung sowie Meeting mit Richard |
+| 17.12.11 | =AutoResourceResolver= | 2 | Java Properties erlaubt zu jedem Schlüssel nur ein String statt Liste als Wert, aber wir brauchen mehrere Strings als Alternativen. Daher Rückkehr zu eigenem PatternResolver und Erweiterung um Liste als Werte speichern zu können |
+| 19.12.11 | =AutoResourceResolver= | 0.5 | |
+| 21.12.11 | =AutoResourceResolver=, =AutoBinding=, Meeting | 5 | Anpassung von TreeTagger und StanfordParser an AutoResourceResolver, Testcases für AutoResourceResolver, Cleanups <p> Konzeption und Implementierung von UIMAFit Auto-Binding von ExternalResource <p> Meeting mit Richard über u.ä. Installation von ESciDoc  auf Virtual Machine sowie eine Anleitung dazu |
+| 02.01.12 | =AutoResourceResolver=, Organisatorisches | 1.5 | StanfordParser und TreeTagger funktionieren mit AutoResourceResolver. <p> Anlegen von Bugs/Issues in Projekte |
+| 03.01.12 | =AutoBinding=, Setup VM | 3 | UIMAfit Auto Binding fertig. !AutoResourceResolver Resolving-Teil fertig. Angefangen mit der Einrichtung von VM für ESciDoc |
+| 04.01.12 | Setup VM | 3.5 | Weitergehende Einrichtungen von VM für ESciDoc |
+| 07.01.12 | Setup VM | 0.5 | |
+| 08.01.12 | Setup VM | 2.5 | Einarbeiten in Linux Permissions, Hilfsemail an Mailingliste |
+| 09.01.12 | Setup VM, Meeting | 1 | |
+| 12.01.12 | Setup VM, Guide | 3 | ESciDoc startet in VM. [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DARIAH_DE/InstallingESciDocInVM][Erster Entwurf]] der Anleitung fertig. | 
+| 16.01.12 | Setup VM, Guide | 4 | Vereinfachung der Installation dank Hinweis von Richard. Testen und Fertigstellung der Installationsanleitung. |
+| 17.01.12 | Load mapping with !AutoResourceResolver, Meeting | 2.5 | |
+| 23.01.12 | Setup VM, Guide | 1.5 | Sicherheitsverbesserung der Installation wie in Meeting besprochen. Überarbeitung der Anleitung. |
+| 24.01.12 | Setup VM, Guide | 2 | Version 2 der Anleitung fertig |
+| 30.01.12 | JOAI Guides | 3.5 | Verfassung von [[DARIAH_DE/InstallingBrowserApplicationForESciDocInVM][Installing ESciDoc Browser]] und [[DARIAH_DE/InstallingJOAIInVM][Install JOAI in VM]] fertig. <br> Verfassung von [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DARIAH_DE/UsingJOAIDataProvider][Configuring and Using JOAI]] im Laufe |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 60)$EXEC($GET(total_hour))"}% | bis Ende Januar noch %CALC{"$EVAL( $GET( total_hour ) - ($GET( done_hour )) )"}% Stunden |
+<nop>
+
+---+++ Juli - Oktober 2011 (DARIAH-DE)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 14.07.2011 | Organisatorisches, Einarbeiten | 1.5 | Kickoff-Meeting mit Richard über DARIAH-DE Projekte, Einarbeiten in DARIAH-DE sowie eSciDoc Projekt |
+| 15.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]: Get familiar with eSciDoc | 1.5 | eSciDoc sowie PostgreSQL Datenbank installiert und konfiguriert. Danach gleiches Problem wie Richards gehabt |
+| 17.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]: Get familiar with eSciDoc | 2.5 | Aktualisierung dieser Wiki-Seite. <br> Debuggen von eSciDoc Infrastructure: mit alterer Version 1.2.2 funktioniert die "Ingest examples"-Test. |
+| 18.07.2011 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]</del> erledigt | 2 | Kommunikation mit Mailing-Liste <p> In release package wurde falsche Version von AdminTool aufgenommen. Gelöst mit neuer Version von AdminTool |
+| 21.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1065][ID1065]] Short summary of Fedora and eSciDoc | 2 | [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DARIAH_DE/FirstLookAtFedoraAndESciDoc][First look at Fedora and eSciDoc]] |
+| 28.07.2011 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1065][ID1065]]</del> erledigt | 1 | Hinzugefügt: Übersicht vergleichbarer Anwendungen von eSciDoc |
+| 15.08.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]] Short summary of MOPSEAS | 0.5 | Angefangen, https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DARIAH_DE/Mopseus |
+| 18.08.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]] Short summary of MOPSEAS | 1.5 | Fortsetzung der Evaluation |
+| 19.08.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]] Short summary of MOPSEAS | 2 | Fortsetzung der Evaluation, Beratung durch Mailing-List <p> Erstellung von dem Handbuch über Installation von eSciDoc |
+| 20.08.2011 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]]</del> erledigt | 0.5 | Zusammenfassung erstellt |
+| 02.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1.5 | Angefangen, sehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][Bugzilla]] für die Entwicklung des Dokuments |
+| 05.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1.5 | Fortsetzung |
+| 08.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1.5 | Fortsetzung, Analyse der Fedora fast fertig |
+| 09.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1 | Analyse vom Fedora fertig |
+| | Lernen für Klausuren | 0 |  |
+| 20.09.2011 | Email wegen Arbeitsplan | 0.5 | Email-Kommunikation von Arbeitsplan mit Richard  |
+| 23.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1 | Analyse von Mopseus |
+| 25.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 4 | Analyze von Requirements bis Ende geschrieben, Version 1.0.1 <p> Emailverkehr mit Richard über Arbeitszeit sowie Termin vom Treffen |
+| 26.09.2011 | Treffen, neue Aufgaben ausformulieren | 2.5 | Treffen über Analyze von Requirements, Besprechung von neuer Aufgaben <p> Ausformulierung der Aufgaben in Bugzilla. (ID1164-1169) |
+| 29.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1164][ID1164]] Tika Annotator vs Tika Reader, ESciDoc Reader | 3.5 | Organisation von Aufgaben, Fertig mit dem Vergleich von Tika Annotator und Tika Reader, Anfangen mit ESciDoc Reader-Prototyp |
+| 30.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Reader | 3 | Test Reader fertig. Braucht noch Umwandlung in UIMA Reader. |
+| 02.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Writer | 5 | Standalone ESciDoc Writer entworfen, gebaut und getestet |
+| 03.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Collection Reader | 1.5 | UIMA ESciDoc Collection Reader entworfen, wird implementiert |
+| 06.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Collection Reader | 3 | Reader fertig gebaut; Pipeline wird zur Zeit gebaut; Um den Reader effektiver zu testen, UIMAFit CASDumpWriter um SofaData erweitert und getestet |
+| 08.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Reader Pipeline | 4 | Reader Pipeline nun funktioniert: sie liest Digital Object aus eSciDoc und schreibt die binäre Datei in Dateisystem. Fehlt noch Cleanups.<p> Dazu SofaDataWriter gebaut um binäre Dateien auf dem Dateisystem zu schreiben |
+| 12.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Writer Pipeline | 3.5 | Cleanup und Dokumentieren von Reader & -Pipeline. ESciDoc Writer geschrieben, fehlt noch Reader für binären Dateien. |
+| 15.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Pipelines | 5.5 | Pipelines bis Ende gebaut. Refactor, Klasse "DigitalObject" durch UIMA Annotationen ersetzt. Saubermachen und Dokumentieren. |
+| 18.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1164][ID1164]] Comparison TikaAnnotator vs TikaReader | 2 | Aktualisierung des Vergleichsdokumentes; TikaReader erbt nun von ResourceCollectionReaderBase, testen |
+| 22.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1166][Automatic triggering]], [[http://code.google.com/p/dkpro-core-asl/issues/detail?id=40][Auto-Lookup External Resource]] | 1.5 | Angefangen mit der beiden Aufgabe. Frage zur 1. Aufgabe in ihre Mailingliste gestellt. |
+| 23.10.2011 | Auto-lookup External Resource | 1 | Einarbeiten in DKPro TreeTagger |
+| 24.10.2011 | Meeting | 2 | Meeting mit Richard über Coding Konventionen und neue Aufgabe Auto-lookup External Resource |
+| 25.10.2011 | Move projects to DKPro non-free | 2 | Dabei auch Modernisierung veralteter Projekte | 
+| 30.10.2011 | Move projects to DKPro non-free | 1 | Fortsetzung |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 80)$EXEC($GET(total_hour))"}% | bis Ende Oktober noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |
+<nop>
+
+
+---+++ Juli - September 2011 (SIGMUND)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Zusammenfassung* | *Stunden* | *Bemerkungen* | *Neu* |
+| - | Übertrag | 2.5 | Übertrag der Stunden von Juni |  |
+| 01.07.2011 | Monitor, Wiki | 4.5 | Überarbeitung von Search Controller Monitor <ul><li>Sessions werden in Monitor mit robustem Verhältnis angezeigt</li><li>Man kann sessionId auswählen um das Sessions Ergebnis zu sehen</li><li>Runlabel von Search Module werden in Monitor gezeigt</li><li>Benachrichtigung von Status des Services (erreichbar, unerreichbar)</li></ul> Umstellung dieser Wiki-Seite zum Anfang der Monat |  |
+| 07.07.2011 | CLL-Translation | 0.5 | Besprechung über Saubermachen von CLL-Translation Projekt |  |
+| 08.07.2011 | CLL-Translation, Meeting | 5.5 | Einarbeiten in Codebase, Zeichnen von UML Klassendiagramm des Projekts <p> Überlegung und Diskussion mit Benjamin über Vorgehensweise des Saubermachens <p> Erstellung von Tools um Daten in neuen Formate zu migrieren. <p> Debug von POM Dependency-Konflikte mit SLF4J |  | 
+| 10.07.2011 | CLL-Translation | 2 | Überlegung und Forschen von neuer Vorgehensweise um Daten persistent zu halten |  |
+| 11.07.2011 | CLL-Translation | 2 | Experimentieren und Evaluation von unterschiedlichen Persistenz-Frameworks inkl. XStream für XML-Serialisierung, EHCache und Berkeley DB |  | 
+| 12.07.2011 | CLL-Translation | 7 | Erstellung des UML-Klassendiagramms, was die neue Architektur widerspiegelt <p> Umsetzung und Testen der neuen Architektur <p> Implementierung und Testen des Daten-Migrators |  |
+| 14.07.2011 | SIGMUND | 1 | Debuggen von dem Konflikt von JUnit und Groovy, was das Laufen von Unittest verhindert |  |
+| 19.07.2011 | CLL-Translation | 1.5 | Unterstützung von GZIP-Kompression. Als Default werden nun Daten in GZIP komprimiert. Dadurch sind die Datengröße von 100% (28MB -> 14MB) bis 300% (18MB -> 5.xxMB) reduziert <p> Anpassung und Testen von Data Migrator und relevante Klassen.<p> Dokumentation: Aktualisierung von Javadoc, Erstellung von readme |  |
+| 23.07.2011 | Übersetzung mit Google Translate | 3 | Refactor der Google Translate UIMA Annotator in standalone Translator<p> Übersetzung und Überprüfung der Dateien "4lang+anonymized+batch" |  |
+| 14.09.2011 | Meeting mit Benjamin | 0.5 | Meeting über Beendigung des SIGMUND-Projektes und zukünftige Arbeit bei UKP | * |
+| 22.09.2011 | Beschreibung aller Projekte | 6 | Zusammenfassung-Datei liegt in Drop Box. <p> Aktualisierung und Testen von POMs der veralteten Projekte<p> Beheben vom Problem mit SLF4J-Binding:<ul><li>in POM soll <code>logback-classic</code> enthalten sein</li><li>In GMaven Dependency soll <code>slf4j-api</code> und <code>gossip</code> exkludiert werden, wegen Version-Konflikte mit SLF4J 1.6 - was Logback benötigt </li></ul> Neue Strukturierung von SVN-Repository, Löschen der unnötiger Projekten<p>Treffen mit Benjamin | * |
+| 23.09.2011 | Testen und Aktualisierung | 4 | Wartung aller Projekten, Aktualisierung von veralteter Dependencies <p> Bug fixes und Testen <p> Testen von BM25 mit verschiedener Lucene Versionen, Erstellung vom Demoprogramm für BM25F. <p> Aktualisierung von TikaReader auf Tika 0.9, Testen. Bug in Artifactory entdeckt | * |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 40)$EXEC($GET(total_hour))"}% | bis Ende September noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden | |
+<nop>
+
+-- Main.ShuoYang - 2012-02-26

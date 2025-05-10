@@ -1,0 +1,35 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212657869" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="SimonKulessaTaskLog"}%
+---++ Satz Erkennung
+
+*Komponente:*
+<br>Paraphrasen Kandidaten Extraktion
+
+*Beschreibung:*
+<br>Kandidaten Paraphrasen sind in der Regel Paare von Sätzen. Dabei wird ein Satz aus
+der alten Version mit einem Satz aus der neuen Version verglichen. Mein Programm versucht
+hier an Hand der Position einer Änderung, den betreffenden Satz zu extrahieren.
+
+*Bisherige Lösung:*
+<br>Ausgehend von der Position der Änderung wird in beide Richtungen nach folgenden Zeichenketten
+gesucht die das Ende eines Satzes beschreiben (Java Style - ohne Andührungszeichen):
+
+". ", ".\"", "\".", "! ", "!\"", "\"!","? ", "?\"", "\"?", "\n", "''.", "]].", ".\t", "!\t", "?\t", ".<"
+
+Sollte die erste Zeichenfolge (". ") gefunden werden wird zusätzlich geprüft
+ob es sich um eine Abkürzung handelt ...
+
+Dabei ist Abkürzung derzeit wie folgt definiert:
+Eine Folge von Zeichen die genau einen Punkt enhält und kürzer als 4 Zeichen ist.
+
+*Anmerkungen:*
+   * Wikipedia-Markup wird derzeit nicht entfernt.
+   * Dieser Teil sollte gegebenfalls durch euer vorhandens Satz Erkennungs-Tool ersetzt werden, falls eine entsprechende Schnittstelle vorhanden ist. Grundsätzlich würde ich es vorziehen nicht erst den kompletten Artikel in Satzform zu bringen sondern eben nur die Stellen die sich geändert haben.
+   * Gegebenenfalls bietet es sich an einen Abkürzungskorpus zu verwenden.
+
+
+
+
+
+
+-- Main.SimonKulessa - 05 Jun 2008

@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="ManuelWick" date="1270535553" format="1.1" version="11"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ OffeneFragen
+   * <strike>How do I get Apache-Maven work? mvn install just throws BuildErrors: "Cannot execute mojo: clean. It requires a project with an existing pom.xml, but the build is not using one."
+      * http://docs.codehaus.org/display/MAVENUSER/FAQs-1</strike>
+   * <strike>Better work with Maven? Further dependencies would be solved better? (e.g. Lucene)
+      * HowTo? Eclipse Plugin? Introduction?</strike>
+         * *BH* Which eclipse plugin?
+         * *BH* You could use Maven, but for the time being, you should stick to plain Java/Eclipse projects. I will give you further information on next weekly meeting.
+   * PDF parsing is too slow for large docs - how to improve it?
+      * *BH* Creation of an Index is more or less a one time process, therefore it is ok if it takes a little longer
+
+[23.03.2010]
+   * How to find out, what a "createPrimitiveDescription", e.g. LuceneIndexWriter or AnnotationWriter, expects as parameters?
+   * LuceneWriter is working with an old version of Lucene
+   * java.lang.NoSuchMethodError: de.tudarmstadt.ukp.dkpro.core.util.CasUtils.getSingleRequired(Lorg/apache/uima/jcas/JCas;Ljava/lang/Class;)Lorg/apache/uima/cas/FeatureStructure;
+	at de.tudarmstadt.ukp.dkpro.ir.consumer.LuceneIndexWriter.process(LuceneIndexWriter.java:66)
+
+---++ 25.03.10
+   * How does Querying works with UIMA/Ukp-Pipeline?
+      *    XmlFileReader.PARAM_INPUT_DIRECTORY, "src/main/resources/topics" - queries in xml-files? format?
+
+---++ 26.03.10
+   * How is score computed in Lucene? Also in comparison with IR-Book page 112 "Weighted zone scoring"
+
+---++06.03.10
+   * Documentations about TreeTaggerPosLemmaTT4j / LuceneQueryGenerator components, what features exist?

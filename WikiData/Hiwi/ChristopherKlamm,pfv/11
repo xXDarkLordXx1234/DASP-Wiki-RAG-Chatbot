@@ -1,0 +1,111 @@
+%META:TOPICINFO{author="klamm" comment="reprev" date="1481890268" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+
+Project name: Argotario Game Development and Maintenance
+
+Main goals: The project will focus on current needs in the planned lifecycle of Argotario.
+
+   * Although Argotario has been proven to work smoothly and scale up to dozens of users, we plan to announce it to more general public. This requires support and administration on the server side for unexpected behavior and fixing encountered bugs.
+   * Argotario has multi-language support, which has not yet been fully exploited. It is thus foreseen to enable and test German localization (incorporate translations, prepare initial set of fallacies to prevent cold start problems) and include it to the next release of the game.
+   * A simple website that would show some basics of Argotario and would announce winner of the week or other campaigns will be developed. For that, using existing simple frameworks (bootstrap for CSS and similar) is planned.
+   * Reasonable campaign in social media (UKP Twitter, Google AdWords, Facebook) is planned to attract more users.
+   * For the development and testing, an internal UKP ticket tracking system will be used. Also, the game will be deployed to run in two versions  as a development and production server and database.
+
+Bug tracking system: https://cubert.ukp.informatik.tu-darmstadt.de/projects/argotario
+
+---++ Time tracking
+
+(Note: the official contract starts from 1.7.2016)
+
+---+++ 2016-12
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 09.12.16 | Dev | 2 | Session Time |
+| 09.12.16 | Dev | 1,5 | Class Description |
+| 10.12.16 | Dev | 2 | View Second World |
+| 11.12.16 | Docu | 2 | Development Notes |
+
+---+++ 2016-11
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 08.11.16 | Docu | 2 | Framework + Development Notes |
+| 10.11.16 | Meeting | 2 | |
+| 13.11.16 | Docu | 1 | Development Notes |
+| 21.11.16 | Framework | 4 | |
+| 21.11.16 | Docu | 0,5 | Development Notes |
+| 23.11.16 | Framework | 3 | |
+| 30.11.16 | Orga | 1 | |
+
+---+++ 2016-10
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 04.10.2016 | Test | 1 | try to reproduce an error |
+| 04.10.2016 | Orga | 2 | |
+| 06.10.2016 | Meeting | 0,5 | |
+| 10.10.2016 | Git | 0,5 | Update |
+| 13.10.2016 | Meeting | 1 | |
+| 14.10.2016 | Orga | 0,5 | Send files to patrick + wiki documentation |
+| 19.10.2016 | Orga | 0,5 | update time |
+| 19.10.2016 | Dev | 2 | |
+| 22.10.2016 | Dev | 2 | evaluate some installation problems |
+| 27.10.2016 | Dev | 8 | get familiar with the code to set up a function to hide the second world |
+| 28.10.2016 | Meeting | 1 | meeting with Patrick to set up argutario |
+| 29.10.2016 | Dev | 3 | implement new function "requiresLevelsInGreenWorld" |
+
+---+++ 2016-09
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 04.09.2016 | Dev | 3 | |
+| 05.09.2016 | Meeting | 1 | |
+| 16.09.2016 | Orga | 1,5 | |
+| 17.09.2016 | Dev | 3 | Missing Files |
+| 18.09.2016 | Dev | 2 | Missing Plugins |
+| 19.09.2016 | Dev | 6 | Gameconfig Fehler |
+| 20.09.2016 | Dev | 5 | Gameconfig Fehler |
+| 27.09.2016 | Meeting | 0,5 | |
+
+
+
+---+++ 2016-08
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 03.08.2016 | Meeting | 0,5 | |
+| 05.08.2016 | Dev | 3 | Git + Cordova |
+| 07.08.2016 | Dev | 3 | Server + Organisation |
+| 08.08.2016 | Dev | 6 | Fehlersuche |
+| 09.08.2016 | Dev | 5 | Fehlersuche |
+| 10.08.2016 | Dev | 4 | Fehlersuche + Einrichtung |
+| 11.08.2016 | Dev | 2 | Test |
+
+---+++ 2016-07
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 01.07.2016 | Dev | 6 | Mongodb Authentifaktion + Server aufsetzen |
+| 18.07.2016 | Dev | 3 | Umgebungsfehler + Backupideen |
+| 18.07.2016 | Meeting | 0,5 | |
+| 21.07.2016 | Dev | 7 | Installationsanleitung |
+| 22.07.2016 | Meeting | 0,5 | |
+| 24.7.2016 | Orga | 0,5 | |
+
+---+++ 2016-06
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 24.06.2016 | Meeting | 0.5 | |
+| 23.06.2016 | Dev | 5 | Einarbeitung + Umgebung aufsetzen |
+| 17.06.2016 | Meeting | 0.5 | |
+| 16.06.2016 | Dev | 5 | Einarbeitung + Umgebung aufsetzen |
+| 10.06.2016 | Meeting | 1 | |
+| 03.06.2016 | Dev | 5 | Einarbeitung (Thesis lesen usw.) |
+| 30.06.2016 | Dev | 5 | Einarbeitung (Thesis lesen usw.) |
+| 01.06.2016 | Meeting | 0.5 | |
+
+
+-- Main.IvanHabernal1 - 2016-06-30

@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1289344093" format="1.1" version="3"}%
+%META:TOPICPARENT{name="FrameNetResourcebeschreibung"}%
+---+++ !FrameNet LU-Status
+   * Definition des LU-Status aus dem Buch _THE STRUCTURE OF THE FRAMENET DATABASE_ Abschnitt 2.3: <br /> _One or more statuses can be associated with each LU. Some of these are temporary, used for keeping track of the state of work on each lexical unit, e.g. whether subcorpora have been prepared for it, whether it is in the process of annotation, whether there is an unresolved problem regarding the frame and whether the LU belongs in it, etc. Others will be of interest to the end users of the !FrameNet data, as they indicate the final disposition of the lexical unit._
+---+++++ Tabelle gefunden im oben genannten Buch
+| *Lexical Unit Status* | *Definition* |
+| Finished | Enough examples were found and annotated during !FrameNet II |
+| FN1 Sent | Annotated during !FrameNet I |
+| Insufficient attestations |The LU has been defined in a frame, but we have not found enough good examples to annotate |
+| By analogy | This LU is one of a group of LUs that behave identically (such as the days of the week), and so only one or two of the group will be annotated; the others simply marked as similar |
+---+++++ Tabelle erstellt bei der Analyse der Files
+| *Lexical Unit Status - as entered in the _frameName.xml_ File* | *Definition* |
+| Finished_Initial | |
+| Created | |
+| Insufficient_Attestations | |
+| Rules_Defined | |
+| Needs_SCs | |
+| New | |
+| Problem | |
+| FN1_Sent | |
+| Add_Annotation | |
+| Finished_X-Gov | |
+| BTDT | |
+| In_Use | |
+| Pre-Marked | |
+---++++++ Conclusions
+   * Ein der Statusnamen aufgelistet im Buch: _By analogy_, taucht in den Files nicht auf
+   * Die Bedeutung der restlichen Statusnamen gefunden in den Files ist nirgendwo erklärt, bzw. ich habe in den mir bekannten Papers keine Erklärung für sie gefunden.
+
+
+
+
+
+-- Main.ZijadMaksuti - 2010-11-07

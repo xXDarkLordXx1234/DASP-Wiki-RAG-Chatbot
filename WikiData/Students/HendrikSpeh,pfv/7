@@ -1,0 +1,118 @@
+%META:TOPICINFO{author="speh" comment="" date="1629840798" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Controlled Language Generation for Framed Issues
+
+*Start date:* 21.04.2021
+
+*Supervisor:* Tobias Mayer
+
+---++ Meeting 11.08.2021
+
+   * "Test drive" of generation pipeline on CC-NEWS corpus
+   * Discussion of how corpus can be filtered/refined further
+      * Minimum length for samples?   
+
+---++ Meeting 04.08.2021
+
+   * Further refinement of frame classifier (RoBERTa and adapter-based)
+   * Selection of topic keywords
+   * Definition of generation pipeline
+
+---++ Meeting 28.07.2021
+
+   * Evaluation of Media Frames Corpus-based classifiers for frame classification
+   * Evaluation of keyword-based topic identification approach
+
+---++ Meeting 21.07.2021
+
+   * Analysis of rcv1 and CC-News corpora for suitability for silver corpus generation
+   * How do we decide on frames and topics?
+
+---++ Meeting 14.07.2021
+
+   * Identification and classification of frames with adapters
+   * Topic modeling?
+   * FUDGE development paused
+      * results far from satisfactory
+      * problem with predictor architecture?    
+
+---++ Meeting 07.07.2021
+
+   * Discussion of Midterm
+   * Idea: Train model for automatic evaluation of frames + topics
+   * Further Plan:
+      * Silver corpus based on Reuters Corpus (rcv1)
+      * Topic selection?
+      * Roberta-based frame identification and classification    
+
+---++ Meeting 30.06.2021
+
+   * Midterm preparation
+   * Discussion of results so far
+
+---++ Meeting 23.06.2021
+
+   * Discussion of results so far
+   * Experimentation with data selection (wrt. capitalization)
+   * Midterm preparation
+   * FUDGE continuation
+
+---++ Meeting 16.06.2021
+
+   * Data analysis, specifically with regards to sentence
+   * Troubleshooting of generation logic
+   * Comparison of evaluation approaches
+   * Start FUDGE experiments
+
+---++ Meeting 09.06.2021
+
+   * Finish first experiments
+   * Start with training and evaluation of BART
+   * Experimentation regarding generation strategies
+
+---++ Meeting 02.06.2021
+
+   * Setting up evaluation pipeline
+   * Decided on various metrics: ROUGE-L, METEOR, BERTScore
+   * Considered setup of model and whole pipeline with HuggingFace Transformers
+
+---++ Meeting 26.05.2021
+
+   * Training of model on own datasets
+   * Experimentation with hyperparameters
+   * First language generation experiments
+
+---++ Meeting 19.05.2021
+
+   * Adaptation of CTRL model for framing datasets
+   * Analysis of framing datasets
+   * Preparation of framing data for own model
+
+---++ Meeting 06.05.2021
+   * Replication of Aspect-Controlled Neural Argument Generation model
+      * First time running a full scale CTRL-based model
+      * Adaptation of existing code to own requirements    
+      * First longer-term training on Slurm Compute Cluster
+
+---++ Meeting 29.04.2021
+   * Evaluation of potential Language Model candidates & reading of further promising papers 
+      * MEGATRON-CNTRL: Controllable Story Generation with External Knowledge Using Large-Scale Language Models
+      * PAIR: Planning and Iterative Refinement in Pre-trained Transformers for Long Text Generation    
+      * How to Make Neural Natural Language Generation as Reliable as Templates in Task-Oriented Dialogue
+      * Plug and Play Autoencoders for Conditional Text Generation
+      * Diverse, Controllable, and Keyphrase-Aware: A Corpus and Method for News Multi-Headline Generation
+
+---++ Meeting 21.04.2021
+   * First own implementation of smaller CTRL version on small test data set
+   * Evaluation of potential Language Model candidates
+      * PALM: Pre-training an Autoencoding&Autoregressive Language Model for Context-conditioned Generation
+      * FUDGE: Controlled Text Generation With Future Discriminators    
+
+---++ Meeting 14.04.2021
+   * Getting familiar with Slurm and compute cluster environment
+   * Reading of similar UKP papers
+      * Aspect-Controlled Neural Argument Generation
+      * Metaphor Generation with Conceptual Mappings
+   * Familiarization with Controllable Text Generation
+   * Familiarization with Language Models CTRL & BART 
+   

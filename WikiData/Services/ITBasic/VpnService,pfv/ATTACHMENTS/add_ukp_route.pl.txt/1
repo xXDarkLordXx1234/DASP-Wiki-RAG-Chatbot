@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $ADAPTER_NAME = 'UKP';
+
+my $route = `route print`;
+
+my $adapter = $1 if ($route =~ /^\s*(\d*)\.\.+\s*$ADAPTER_NAME\s*^/m);
+my $gateway = $1 if ($route =~ /^\s*10\.0\.0\.0\s*255\.0\.0\.0\s*(\d+\.\d+\.\d+\.\d+)/m);
+
+#print $route;
+#print $adapter . ' ' . $gateway;
+
+my $routeCmd = 'route ADD 130.83.0.0 MASK 255.255.0.0 ' . $gateway 
+    . ' METRIC 3 IF ' . $adapter;
+
+print $routeCmd . "\n";
+system $routeCmd;

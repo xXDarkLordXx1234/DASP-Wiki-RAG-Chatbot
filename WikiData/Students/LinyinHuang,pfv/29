@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="huang" comment="" date="1722500653" format="1.1" reprev="26" version="29"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+++ Week 29.04.-03.05
+
+| *date* | *task* | *hours* |
+| 25.04.2024 | attended on-boarding meeting | 1 |
+| 30.04.2024 | completed project prerequisites | 2 |
+| 07.05.2024 | Kick-Off meeting | 0.5 |
+| 08.05.2024 | 1.got the project running locally/2.created a feature branch/3.updated gitlab issue | 2 |
+| 10.05.2024 | 1.read Sequelize tutorial/2.attempted to set up local postgres db | 5 |
+| 14.05.2024 | 1.created management tables/2.weekly meeting | 5 |
+| 15.05.2024 | transferred sysrole data to new tables | 4 |
+| 16.05.2024 | pair programming session | 3 |
+| 17.05.2024 | 1.adapted database/2.adapted model files | 5 |
+| 20.05.2024 | fixed database synchronization problem  | 4 |
+| 21.05.2024 | 1.fixed primary key error/2.added right checking method | 4 |
+| 22.05.2024 | weekly meeting | 0.5 |
+| 25.05.2024 | 1.modified sysrole table/2.populated user role table | 2.5 |
+| 30.05.2024 | 1.modified user_role_matching migration/2.modified isAdmin method | 3 |
+| 31.05.2024 | 1.added getUsers method/2.inserted entries into relevant tables | 3 |
+| *Overtime* |  | 44.5 |
+
+| 04.06.2024 | created users view in the dashboard | 7.5 |
+| 06.06.2024 | 1.weekly meeting/2.group meeting | 2.5 |
+| 07.06.2024 | 1.refactored the codes according to todo/2.Right Management documentation | 6 |
+| 11.06.2024 | 1.created right_management.rst file/2.refactored right checking methods | 8 |
+| 13.06.2024 | 1.weekly meeting/2.individual meeting | 1.5 |
+| 14.06.2024 | displayed all users on the User component | 4.5 |
+| 19.06.2024 | 1.read CARE documentation on frontend development/2.read Vue documentation | 2.5 |
+| 20.06.2024 | group coding session | 3 |
+| 21.06.2024 | 1.added an edit button/2.attempted to create an details modal | 6.5 |
+| 24.06.2024 | 1.checked the implementation details of BasicForm /2.adapted Checkbox.vue to make it compatible with an array of checkboxes | 4 |
+| 25.06.2024 | 1.created DetailsModal /2.fixed isAdmin method on the front end | 7 |
+| 27.06.2024 | 1.weekly meeting /2.created model file for multi-table database view issue | 2 |
+| 28.06.2024 | 1.created migration/2. troubleshooted migration errors | 3 |
+| *Total hours worked* |  | 58 |
+| *Contracted hours* |  | 65 |
+
+| 02.07.2024 | 1.created password resetting modal/2.created basic password component | 7 |
+| 04.07.2024 | 1.weekly meeting/2.attempted to load user details on the front end | 4.5 |
+| 05.07.2024 | 1.implemented getUserDetails function on the backend/2.consulted Sequelize documentation about update queries | 3 |
+| 10.07.2024 | 1.implemented updateUserDetails function on the backend | 1 |
+| 11.07.2024 | weekly meeting | 1 |
+| 12.07.2024 | implemented user password resetting and user details updating procedures | 3.5 |
+| 23.07.2024 | 1.implemented viewing user right procedure 2.checked Juliane's review document 3.fixed login password issue | 6 |
+| 24.07.2024 | 1.reset form data when closing modal 2.fixed validation-related issues | 5 |
+| 25.07.2024 | 1.weekly meeting 2.code review 3. bug fixes | 6 |
+| 26.07.2024 | 1.added validation to DetailsModal 2. reset form field state on closing modal | 2.5 |
+| 27.07.2024 | worked on code review issues | 3 |
+| 28.07.2024 | worked on code review issues | 3.5 |
+| 29.07.2024 | 1.fixed bugs 2.raised a merge request 3.familiarized with issue#259  | 6 |
+| 31.07.2024 | 1.brainstormed modal presentation 2.table expansion  | 3.5 |
+| *Total hours worked* |  | 55.5 |
+| *Contracted hours* |  | 65 |
+
+
+   * Put a summary of what you did this week here (just a few bullet points)
+   * For now, until your contract officially starts, please put your times into the table. You should also track your times invested into an issue within gitlab via the /spent command
+
+-- Main.NilsDycke - 2024-05-02
+
+%META:PREFERENCE{name="ALLOWTOPICVIEW" title="ALLOWTOPICVIEW" type="Set" value="*"}%
+%META:PREFERENCE{name="DENYTOPICVIEW" title="DENYTOPICVIEW" type="Set" value="WikiGuest"}%
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="LinYinHuang"}%
+%META:PREFERENCE{name="PERMSET_VIEW" title="PERMSET_VIEW" type="Local" value="registeredusers"}%
+%META:PREFERENCE{name="PERMSET_CHANGE" title="PERMSET_CHANGE" type="Local" value="details"}%
+%META:PREFERENCE{name="PERMSET_CHANGE_DETAILS" title="PERMSET_CHANGE_DETAILS" type="Local" value="LinYinHuang"}%

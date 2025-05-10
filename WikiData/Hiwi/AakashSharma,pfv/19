@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="sharma" comment="reprev" date="1433101464" format="1.1" reprev="19" version="19"}%
+%META:TOPICPARENT{name="WebHome"}%
+%TOC%
+
+---+ Meetings
+---++ 30-03-2015: Initial Meeting
+   * Administration
+      * Hand out copy of signed contract
+      * Sign Intelectual Property Statement
+      * Questions about work mode etc.?
+      * Access to work, communication, development resources (Mail, Jabber, SVN, Chiliproject, room D017)
+         * Mail (IMAP/Exchange): mx.ukp.informatik.tu-darmstadt.de
+         * Jabber: ukp.informatik.tu-darmstadt.de
+         * Chiliproject: https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/
+         * SVN: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro/experiments/webanno-constraints
+   * Introduce initial tasks
+      * Check out Java CC (parser generator) and possibly JJTree (generate abstract syntax tree / Java object model)
+   
+---+ Tasks
+   * WebAnno (https://code.google.com/p/webanno/)
+      * Parser / evaluator for WebAnno constraint language
+      * potential new tasks resulting from WebAnno AP A1.2 (template-based annotation) and A1.3 (constraints)
+   * CoreNLP
+      * Integrate new statistical dependency parser from CoreNLP in DKPro Core
+      * Integrate quoted speech annotator from CoreNLP in DKPro Core
+   * Integrate quoted speech annotator from Nils Reimers (DARIAH)
+   
+---+ Apr 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 30-03-2015 | initial meeting | 1 | |
+| 30-03-2015 | Learning javacc, JJTree & JTB | 2 | Researched on tool and technologies to develop Parser. |
+| 31-03-2015 | Development and other setup. Reading javacc documentation. | 2 | |
+| 04-04-2015 | Constraints Parser | 1.5 | Wrote skeleton for grammar and basic objects |
+| 07-04-2015 | Constraints Parser | 1.5 | Tweaking code for grammar, Researching on how to build AST |
+| 07-04-2015 | Meeting with Richard | 1 | |
+| 12-04-2015 | Constraints Parser | 1 | Maven/Javacc setup and test cases |
+| 13-04-2015 | Constraints Parser | 2.5 | Grammar into Javacc |
+| 14-04-2015 | Constraints Parser | 1 | Basic Test-cases setup |
+| 16-04-2015 | Meeting with Richard, grammar tweaking | 1 | |
+| 20-04-2015 | Constraints Parser | .5 | Incorporating changes to grammar |
+| 22-04-2015 | Constraints Parser | 2 | Changes to grammar and basic JTB tree. |
+| 25-04-2015 | Constraints Parser | 2.5 | Recursive problem in grammar and test-cases |
+| 27-04-2015 | Constraints Parser | 1 | Few modifications to grammar |
+| 28-04-2015 | Meeting with Richard | 1.5 | Discussion on further proceedings, timeline |
+| 30-04-2015 | Constraints Parser | 2 | Debugging grammar on testcases |
+| 01-05-2015 | Constraints Parser | 1.5 | Further debugging to understand fail cases |
+| 02-05-2015 | Constraints Parser | 5 | Wrote grammar again from scratch, modified testcases. |
+| 05-05-2015 | Meeting with Richard | 1.5 | Next steps, rules evaluator |
+| 07-05-2015 | Constraints Evaluator | 1 | Reading about Visitor and implementation of evaluator. |
+| 11-05-2015 | Constraints Evaluator | 1 | |
+| 12-05-2015 | Meeting with Richard | 1.5 | Next steps and blocking issues. |
+| 12-05-2015 | Constraints Evaluator | 2 | |
+| 13-05-2015 | Constraints Evaluator | 2 | |
+| 18-05-2015 | Constraints Evaluator | 2 | |
+| 19-05-2015 | Constraints Evaluator | 3 | |
+| 25-05-2015 | Constraints Evaluator | 1.5 | |
+| 26-05-2015 | Meeting with Richard | 1 | |
+| 26-05-2015 | Constraints Evaluator | 1 | Working on ValuesGenerator for complex rules |
+| 27-05-2015 | Constraints Evaluator | 2 | Working on ValuesGenerator for complex rules |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 50
+
+
+---+ Jun 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 01-06-2015 |  |  | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 25
+
+---+ Jul 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 01-07-2015 |  |  | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 25
+
+-- Main.CarstenSchnober - 2015-03-16

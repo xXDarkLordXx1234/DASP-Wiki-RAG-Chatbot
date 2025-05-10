@@ -1,0 +1,94 @@
+%META:TOPICINFO{author="usta" comment="" date="1587818201" format="1.1" reprev="3" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Masters Thesis* : Visualizing Argument Aspects in Cluster Networks 
+
+*Supervisor*: Dr.-Ing. Johannes Daxenberger     
+*Co-Supervisor*: M.Sc. Tilman Beck
+
+
+*Start Date*: 16-MAR-2020 
+
+*Mid-Term Presentation Date*: 23-JUNE-2020
+
+*Final Presentation Date*: 01-SEP-2020  
+
+*End Date*: 14-SEP-2020 
+
+---++++ *07.APR.2020 - 21.APR.2020*
+*Decisions:*
+
+   *  We don’t need a vote from the ethics committee.
+
+*Status:*
+   * Setup: Python Flask and Vue.js integrated (a primary example website implemented)
+   * Setup: Implemented a basic API caller script that can access to search, cluster, aspect, and classify API and saves the output as a result. Also, after a search, it adds the arguments to cluster and aspect API as parameters.
+   * Setup: The outputs JSON are saved to my local for testing the functionality.
+   * Setup: ArgumenText UI codes checked and planned to integrate basic dashboard to my working place
+   * Working on: Create a basic ArgumenText dashboard UI for adding a section for graph
+   * Literature Review: 1st draft sent and got the feedback. Working on feedback.
+   * Literature Review: Still reading the new suggestions  
+
+*TO-DO List:*
+   
+   * Literature Review: Submit 2nd draft
+   * Implementation: Create a basic playground with the data. (Basic visualization of the network)
+
+---++++ *14.APR.2020*
+*Status:*
+   * Setup: API - got results from API calls
+   * Setup: Flask and Vue.js
+   * Literature Review: Still working on
+
+*TO-DO List:*
+
+   * Integrate Flask and Vue.js
+   * Create a JSON parser for API results
+
+---++++ *31.MAR.2020 - 07.APR.2020*
+*Decisions:*
+
+   * Submit Literature Review as soon as possible
+   * Use S-BERT technique for clustering on ArgumenText
+
+*Status:*
+   * Setup: Registered to ArgumenText
+   * Setup: Gitlab cloned to local and committed the folder structure (codes + thesis)
+   * Setup: Successfully connected to lisa and slurm (VPN setup success)
+   * Report: Main writing plan created
+   * Literature Review: Still working on
+   * Literature Review: Created a separate environment for the thesis on Mendeley and added the reference information.   
+
+*TO-DO List:*
+   
+   * Literature Review: Finish
+   * Setup APIs
+
+
+---++++ *16.MAR.2020 - 31.MAR.2020*
+*Status:*
+   
+   * The meeting delayed to 7.APR.
+   * Registration form of ArgumenText could not found.
+   * Not noteworthy progress
+   * Registered Tu-CAN
+
+
+---++++ *3.MAR.2020 - 16.MAR.2020*
+*Decisions:*
+
+   * Start implementing with ArgumenText Dashboard
+   * Setup the APIs and be sure they are working then implement functionality on local input.
+
+*Status after the Two Last Week:*
+   
+   * Report: Setup Latex template and filled elementary information
+   * Literature Review: Finished reading and summarizing papers 
+   * Setup Mendeley and added references
+   * Learned basics of vue.js
+   * Got credentials for UKP and API's
+
+*To-Dos For Current Two Week:*
+
+   * Setup: Register ArgumenText Dashboard
+   * Literature Review: Finish literature review and send for feedback
+   * Registration: Fill the form for registration

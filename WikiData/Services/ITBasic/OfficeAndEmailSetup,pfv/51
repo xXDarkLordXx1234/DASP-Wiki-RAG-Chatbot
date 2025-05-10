@@ -1,0 +1,113 @@
+%META:TOPICINFO{author="alles" comment="" date="1730392806" format="1.1" reprev="51" version="51"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ !! UKP Mail Service
+
+<div style="float:right; background-color:white; z-index:999; border: solid 2px lightblue; padding: 5px">
+---++++ !! Content of this page
+%TOC%
+</div>
+
+---++ How to use Office 365 and access mail
+   * *PLEASE NOTE*
+      * Two different formats of your TU-ID are needed to activate office and setup your mail account in outlook!
+      * You can get more instructions on how to install and activate office from [[https://www.hrz.tu-darmstadt.de/services/it_services/campus_software/microsoft/microsoft_ees/informationen_beschaeftigte_ohne_gemanagten_pc/index.en.jsp][the hrz webpage]]
+      * Office 365 is licensed for employees and students of TU Darmstadt
+      * The setup instructions for outlook mailaccounts don't apply to students and SHKs; they do not have a regular mailbox at TU Darmstadt like employees have. 
+
+---+++ Cloud ID vs TU ID
+   * *%RED%Cloud ID%ENDCOLOR%*
+      * *Short: use Cloud-ID in the form "sa12egal@tu-darmstadt.de" where =sa12egal= is your TU-ID to activate office*
+      * A window in e.g. outlook that needs this form looks like this:
+      * %IMAGE{"cloud_id_login.png" size="200"}% 
+   * *%RED%TU ID%ENDCOLOR%*
+      * *Short: use TU-ID in the form "ads\sa12egal" to login to your mailbox in outlook where =sa12egal= is your TU-ID*
+      * A window in e.g. outlook that needs this form looks like this:
+      * %IMAGE{"tu_id_outlook_login.png" size="200"}%
+
+---+++ *%RED%Download and Activate Office 365%ENDCOLOR%*
+   * Follow the instructions below or check [[https://www.hrz.tu-darmstadt.de/services/it_services/campus_software/microsoft/microsoft_ees/informationen_beschaeftigte_ohne_gemanagten_pc/index.en.jsp][the official instructions from HRZ]].
+      1 Go to the following website: [[https://www.office.com][https://www.office.com]] (opens in new tab).
+      1 Click on “Sign in”.
+      1 Enter your *cloud ID* (TU-ID@tu-darmstadt.de like sa12egal@tu-darmstadt.de) as the username.
+      1 Use your *TU-ID password* as password.
+      1 Now you find yourself in the overview of your personal O365 area. On the top right, there is an orange button “Install Office”.
+      1 Click on the orange button and follow the instructions of the installation manager.
+      1 After about 30 minutes, the installation will be complete.
+      1 When using one of the O365 applications for the first time, you will be prompted to enter your credentials: you will need your Cloud-ID and TU ID password. 
+
+---+++ *%RED%Setup your Mailbox%ENDCOLOR%*
+   * Follow the instructions below or check [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_3200.en.jsp][the official instructions from HRZ]].
+      1 Press the“Windows” key and “R” to open the “Ausführen” (“Run”) window. Type the following command in the line and execute it by pressing the Enter key: 
+      1 <verbatim>reg.exe add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Outlook\AutoDiscover /v ExcludeExplicitO365Endpoint /t REG_DWORD /d 1 /f</verbatim>
+         * There is no output for this command. Just do it and continue :) 
+      1 Start Outlook (for the first time) - now the account setup should start automatically. 
+      1 In the first window enter your email address and mark the checkbox “Konto manuell einrichten” (“Set up account manually”).
+      1 “Exchange” must be selected in the advanced setup.
+      1 A login window will appear. 
+         * Click on “weitere Optionen” (“more options”) -> “Anderes Konto verwenden” (“Use other account”).
+         * Now enter the domain shorthands of groupware service =ads= followed by a backslash and your TU-ID, like *ads\TU-ID*, for TU ID sa12egal e.g. *ads\sa12egal*
+         * Enter your *TU-ID password* and Click on “OK”.
+      1 In the following window Outlook searches online for the server settings. This may take a few minutes.
+         * After the search is finished, you will get to the final dialog. Here you can add more mailboxes if required.
+         * Remove the checkmark for “Outlook Mobile auch auf meinem Telefon einrichten” (Also set up Outlook Mobile on my phone").
+         * Click on process completed. You can now use your groupware account in Outlook. 
+
+---+++ *Add a shared mailbox*
+---++++ OWA - just open mailbox
+   * In the top right corner, click on your profile picture
+   * Click on "add shared folder"
+   * Type in the mailaddress from the shared mailbox (e.g. ethics@ukp.tu-darmstadt.de)
+   * Click on "open"
+   * If you are authorized the shared mailbox will pop up in the same way as your personal mailbox - this is permanenet until you remove the shared folder again
+---++++ OWA - add mailbox in the same tab
+   * On the left side after login, right click on your personal mailbox name
+   * Click on "open another mailbox"
+   * type in the mailaddress from the shared mailbox (e.g. ethics@ukp.tu-darmstadt.de)
+   * Click on "open"
+   * If you are authorized the shared mailbox will open in another tab
+---++++ Outlook
+   * First UKP system-admin has to authorize you for the mailbox (via groupware forms) - request access via ticketsystem
+   * Stick to [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_9280.de.jsp][the guide of HRZ groupware]] - the steps in english:
+      1 In outlook click on "Datei" ("Data") -> "Konto hinzufügen" ("add mailbox")
+      1 In the window enter the shared mailbox (e.g. ethics@ukp.tu-darmstadt.de) and mark the checkbox “Konto manuell einrichten” (“Set up account manually”).
+      1 “Exchange” must be selected in the advanced setup.
+      1 A login window will appear. 
+         * Click on “weitere Optionen” (“more options”) -> “Anderes Konto verwenden” (“Use other account”).
+         * Now enter the domain shorthands of groupware service =ads= followed by a backslash and your TU-ID, like *ads\TU-ID*, for TU ID sa12egal e.g. *ads\sa12egal*
+         * Enter your *TU-ID password* and Click on “OK”.
+      1 In the following window Outlook searches online for the server settings. This may take a few minutes.
+         * After the search is finished, you will get to the final dialog. Here you can add more mailboxes if required.
+         * Remove the checkmark for “Outlook Mobile auch auf meinem Telefon einrichten” (Also set up Outlook Mobile on my phone").
+         * Click on process completed. You can now use your groupware account in Outlook. 
+
+---++ Mail FAQ
+---+++ Does UKP Lab host mail services themselves?
+   * No, UKP Lab is a customer of [[https://www.hrz.tu-darmstadt.de/services/it_services/groupware/index.en.jsp][HRZ Groupware]]. 
+   * UKP system-admin are the "Groupware Beauftragte" that are in charge of every request or change to mailboxes or distribution lists
+
+---+++ What is my email address? 
+   * When you first activate your TU ID you might have the choice to select your mail
+   * Usually you might select *firstname.lastname@tu-darmstadt.de* - *this is your primary mail to send and receive mails from*. 
+
+---+++ Are there any restrictions or limitations?
+   * Yes, you have 2.5GB of mail space if not communicated otherwise.
+   * A mailbox is not a document archiving tool, you should have important conversation or data on different storage
+
+---+++ I'm leaving UKP, will my mailaccount be deleted?
+   * Yes, your mailaccount is still active for 30 days after your contract ends, after that it will be deleted. During that time you can only receive mails, but not send them anymore.
+   * Usually UKP system-admin sets up the "extended reachability" what forwards mails to your mailbox / former TU-Darmstadt address to the one you specified on the Exit-Workflow for 12 months. This period can't be extended and ends automatically. 
+   * *%RED%You are responsible for your e-mail backup if you leave UKP - this has to be done within the 30days after contract end.%ENDCOLOR%* Using outlook, you can export your whole mailbox and calendar to an .ost file which can be used offline. 
+
+---+++ Accessing mail on other OS / other how to's
+there are multiple ways - OWA is the easiest possibility to use your mailbox. you can also use outlook and many other clients, below you can find the how-tos from hrz. ukp system-admin only supports outlook and owa.
+   * [[https://mail.tu-darmstadt.de/owa][OWA - just login with TU-ID]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_3200.en.jsp][Outlook - German Version]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_5697.en.jsp][iOS]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/linux_mailbox/e_mail_einrichten/thunderbird_einrichten/index.en.jsp][Thunderbird]]
+
+---+++ Something that I want to know is not explained here
+   * There are also guides for other configurations if you search on the TU Darmstadt Groupware page. If you cant find it, let system-admin know by raising a ticket in our system.
+
+%META:FILEATTACHMENT{name="cloud_id_login.png" attachment="cloud_id_login.png" attr="" comment="" date="1715002839" size="66813" user="alles" version="1"}%
+%META:FILEATTACHMENT{name="tu_id_outlook_login.png" attachment="tu_id_outlook_login.png" attr="" comment="" date="1715003144" size="66493" user="alles" version="1"}%
+%META:TOPICMOVED{by="alles" date="1728466685" from="Services/IT.MailService" to="Services/ITBasic.OfficeAndEmailSetup"}%

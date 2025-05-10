@@ -1,0 +1,80 @@
+%META:TOPICINFO{author="kluge" comment="reprev" date="1380639529" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+---++ Notes
+   *  Krippendorfs scale to judge Kappa scores (K. Krippendorff. 2004. Content analysis: an intro-
+duction to its methodology. Sage.)
+   * agr measure for measuring annotation overlap (Theresa Wilson and Janyce Wiebe. 2003. Annotat-
+ing opinions in the world press. In SIGdial, pages 1322.)
+   
+
+---++ Argumentation and discourse schemata
+   * *Toulmin* (according to Judith's lexicon)
+      * <img src="%ATTACHURLPATH%/toulmin_scheme.png" height="250px"/>
+      * Conventional transitions that connect _data_(reasons, facts) with _claims_(conclusions) are formed by a _warrant_. 
+        A warrant certifies that the presented data are really suitable to support the claim.
+      * These conventions are supported by the _backing_
+         * Typical sources of the backing 'Gesetze, Normen, Regeln, Prinzipien, Allgemeine Tatsachen, Anerkannte Bestimmungen, Anerkannte Erfahrungen, Bedürfnisse, Taxonomische Klassifikationen'
+         * "In der Alltagsargumentation dagegen bleibt einem [...] häufig nichts anderes übrig, als den Übergang von Argument (Daten) zur Schlussfolgerung (Konklusion) [...] durch Appelle an den mehr oder weniger gesunden Menschenverstand" zu stützen.
+      * Exceptional conditions under which the claim will not hold are called _rebuttal_ ([[https://en.wikipedia.org/wiki/Counterargument][Wikipedia]]
+      * (Modal) _qualifiers_ may reduce the degree of certainty that the author puts in his arguments.
+      * [[https://en.wikipedia.org/wiki/Toulmin_method][Wiki: Toulmin Method]]
+      * [[http://www.teachsam.de/deutsch/d_rhetorik/argu/arg_mod_toul_4.htm][Example: Stephan ist ein guter Schüler]]
+   * *argumentum* (Latin rethoric, according to Judith's lexicon)
+      * Principles of proving/procedures: _a. exclusionis_, _a. e contrario_: prove that the counterclaim is false, _a. fortiori_: proof by concluding from already proven claims, _a. ex concesso_: (similar to previous), proof by concluding from already acknowledged claim, _a. negativum_
+      * Categorization based on sentence structure: _a. priori_ vs. _a. posteri_
+      * Categorization based on refered instance: _a. ad hominem_, _a. ad rem_, _a. ad iudicium_, ...
+   * *Swale's CARS* model (territory->find niche->occupy niche; Swales: Genre Analysis, Cambridge Uni. Press, 1990)
+   * *Teufel's CARS* (sentence classification into background, own, aim, textual, contrast, basis, other; Teufel,Carletta,Moens: An Annotation Scheme for Discourse-Level Argumentation in Research, EACL 1999, 110-117)
+   * Hyland's metadiscourse schema (Persuasion and Context: The Pragmatics of Academic Metadiscourse, Journal of Pragmatics 30, 1990, 437-455)
+   * *ScholOnto/ClaiMaker*
+      * [[http://projects.kmi.open.ac.uk/scholonto/docs/VizNetArg2002.pdf]]
+
+
+---++ Paper summaries
+
+---+++ Recognizing Arguing Subjectivity and Argument Tags
+
+   * Field: "arguing subjectivity"
+   * Dataset: blog posts and open editorial entries dealing with "ObamaCare"
+   * Annotation unit: Argument="... spans of 1 sentence or less in which a writer 'conveys a controversial private state concerning what she believes to be true or what action she believes should be taken'
+   * In political science, there seems to be some kind of "arguing dimension"
+   * Features: "investigate the utility of a sentiment lexicon, discourse parser, and semantic similarity measures with respect to recognizing arguments."
+       * Discourse? Discourse parser by Lin, using Penn Discourse TreeBank (PDTB) tagset. (Lin et al., Automatically evaluating text coherence using discourse relations.),
+       * Sentiment score? Lexicon with lemmas being marked as strong/weak. Mark sentence if num. of words with strong(weak) sent. score is two(three) or more (Theresa Wilson. 2005. Recognizing contextual polarity in phrase-level sentiment analysis. In EMNLP, pages 347354.)
+
+---+++ Automatic extraction of knowledge from student essays
+   * survey of annotation schemes
+   * presents a lot of argumentation schemes
+
+
+   
+   
+
+---++ High-school material
+   * [[http://lehrerfortbildung-bw.de/faecher/deutsch/gym/fb1/02_komp_unterricht/04_diagnose/4_argument/][Einfaches Argumentieren]] ([[http://lehrerfortbildung-bw.de/faecher/deutsch/gym/fb1/02_komp_unterricht/04_diagnose/4_argument/017_eingdiagn_argument7.pdf][pdf]])
+      * Terminology: These,Argument,Folgerung
+      * Argumentation cues: denn,weil,nämlich,auch,zum Beispiel/beispielsweise
+      * Sentence structure: Wenn ... , dann...
+      * Classification for argumentation level: A,B,C
+   *  [[http://do.nw.schule.de/jgrdo-medien/li_leiste/faecher/de/7/argumentieren/argumentieren_schulbeginn.htm][Argumentieren in der Klasse 7c 2006/07]]
+      * Ask the 6 "W" questions: Who,What,When,Where,Why,How
+      * [[http://do.nw.schule.de/jgrdo-medien/li_leiste/faecher/de/7/argumentieren/sanduhr.pdf][Sanduhr]]: gutes Argument = Behauptung+Begründung+Beweis
+      * Subjectivity cues: "Ich finde", "Meiner Meinung nach", "Ich will"
+      * Conclusion/cause cues: "So [VV.*]", "Jedoch", "Durch NP-action VP NP-result", "Falls/Wenn ... , dann"
+   * [[http://www.digitale-schule-bayern.de/ds.py?sid=a042f94e44516405bf&_controller=DSController2&schreibformen_78_sparte_hmid=20&faecherid=30&themaid=585][Example Discussions]]
+      * Sequences: erstens,zweitens,(nicht) zuletzt, schließlich
+   * [[http://www.unterrichtsmaterial-schule.de/deutschvorschau67.shtml][So schreibt man eine Argumentation]]
+      * General argumentation scheme:
+         * One topic/thesis is supported by several arguments
+         * Each argument may be supported by additional facts/examples/observations ("Beleg")
+      * Idiomatic expressions (Blatt 3):
+         * Introduction: "Immer wieder", "Es ist wichtig, dass", "Nur wenige"
+         * Argumentation: "Dafür spricht", "Dagegen spricht", "Gegen ... spricht", "Hinzu kommt", "Darüber hinaus", "Zusätzlich (ist festzustellen, dass)", "Allerdings (muss man auch sehen, dass)", "Man darf auch nicht übersehen/vergessen", "Entscheidend ist", "Beleg dafür ist", "spielt eine wichtige Rolle", "hauptsächlich"
+         * Conclusion: "abschließend" ("schließlich",...), "(vertritt den) Standpunkt(, dass)"
+   * [[http://www.lehrerfreund.de/schule/1s/ueberleitung-argumente/2662][Überleitung zwischen Argumenten]]
+      * long list of connectives (support, contradiction, emphasis)
+
+
+-- Main.RolandKluge - 2013-10-01
+
+%META:FILEATTACHMENT{name="toulmin_scheme.png" attachment="toulmin_scheme.png" attr="" comment="Argumentation scheme by Toulmin" date="1380620081" path="toulmin_scheme.png" size="20458" user="kluge" version="1"}%

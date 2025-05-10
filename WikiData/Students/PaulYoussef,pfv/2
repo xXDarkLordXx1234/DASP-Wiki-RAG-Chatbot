@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="eger" comment="reprev" date="1510242439" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor thesis: Impact of activation functions on deep learning in NLP
+
+*Start date*: 01.11.2017
+
+*Supervisor*: Dr. Steffen Eger
+
+---++ Current Status
+   * *08.11.2017*:
+      * Filled out application form [...]
+
+---++ Meeting Minutes
+
+---+++ 09.11.2017
+
+   * For CNN: play around with different filter sizes, potentially other hyperparameters
+      * can also play around with more optimizers if time permits: AdaGrad, AdaDelta, RMSprop
+   * For CNN: adaptation of code is completely ok, if you have good reasons for doing so
+   * Can also prepare RNN for Sequence Tagging Task: which implementation do you want to use?
+      * TK in Tensorflow
+      * NR in Keras
+   * I gave you a potential structure of the thesis (>40 pages including everything)
+      * For analysis: std is bad, mean is good
+   * I also gave you feedback on the related work section
+   * Maxout: k=4 (Optional k=2)
+
+
+
+-- Main.SteffenEger - 2017-11-09

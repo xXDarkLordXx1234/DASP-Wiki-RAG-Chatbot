@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="NikolayGeorgiev" date="1247411895" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="NikolayMaterials"}%
+---+ Running DK-Pro on Windows
+
+   * *With Eclipse* (not working):
+      * Duplicate the "UIMA CPE GUI" run configuration into for e.g. "UIMA CPE GUI - DKPro" (see image below).
+      * In the Classpath add the DKPro folders - the home directory, \bin and the libraries in the \lib dir.
+      * RUN the CPE
+      * Choose the DKPro Reader, Annotator and Consumer 
+      * An Exception occurs (see image below): CASRuntimeException: JCas type "de.tudarmstadt.ukp.dkpro.core.type.DocumentMetaData" used in Java code, but was not declared in the XML type descriptor.
+
+   * *With a BAT file* (not working):
+      * A *.bat Windows file version of the .sh Linux file.
+      * The file is attached below.
+      * Disadvantage - no GUI to configure the CPE, because I'm running the "org.apache.uima.examples.cpe.SimpleRunCPE" class.
+      * If I run the "org.apache.uima.tools.cpm.CpmFrame", then the GUI is started, but I get the same error when trying the run the CPE.
+
+   * *TreeTager for Windows*:
+      * [[ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-windows-3.1.zip][tree-tagger-windows-3.1.zip]]
+      * [[ftp://ftp.ims.uni-stuttgart.de/pub/corpora/english-par-linux-3.1.bin.gz][english-par-linux-3.1.bin.gz]]
+
+
+-- Main.NikolayGeorgiev - 12 Jul 2009
+   * The DocumentMetaData Exception: <br />
+     <img src="%ATTACHURLPATH%/dkpro_win_exception.PNG" alt="dkpro_win_exception.PNG" width='1280' height='1024' />
+
+   * The Eclipse Run Configuration: <br />
+     <img src="%ATTACHURLPATH%/dkpro_win_eclipse_run_config.PNG" alt="dkpro_win_eclipse_run_config.PNG" width='800' height='640' />
+
+   * [[%ATTACHURL%/dkpro_core_run.bat][dkpro_core_run.bat]]: Working DKPro CPE *.bat file for Windows (uses the dkpro_core_sampleCPE_lemma.xml):
+
+%META:FILEATTACHMENT{name="dkpro_win_exception.PNG" attachment="dkpro_win_exception.PNG" attr="" comment="The DocumentMetaData Exception" date="1247366655" path="dkpro_win_exception.PNG" size="72042" stream="dkpro_win_exception.PNG" tmpFilename="/var/tmp/CGItemp40852" user="NikolayGeorgiev" version="1"}%
+%META:FILEATTACHMENT{name="dkpro_win_eclipse_run_config.PNG" attachment="dkpro_win_eclipse_run_config.PNG" attr="" comment="The Eclipse Run Configuration" date="1247366680" path="dkpro_win_eclipse_run_config.PNG" size="56159" stream="dkpro_win_eclipse_run_config.PNG" tmpFilename="/var/tmp/CGItemp40762" user="NikolayGeorgiev" version="1"}%
+%META:FILEATTACHMENT{name="dkpro_core_run.bat" attachment="dkpro_core_run.bat" attr="" comment="Working DKPro CPE *.bat file for Windows (uses the dkpro_core_sampleCPE_lemma.xml):" date="1247367014" path="dkpro_core_run.bat" size="1148" stream="dkpro_core_run.bat" tmpFilename="/var/tmp/CGItemp40662" user="NikolayGeorgiev" version="1"}%

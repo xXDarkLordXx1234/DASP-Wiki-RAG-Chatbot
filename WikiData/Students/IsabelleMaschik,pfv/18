@@ -1,0 +1,84 @@
+%META:TOPICINFO{author="maschik" comment="save topic" date="1405691443" format="1.1" reprev="16" version="18"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Isabelle Maschik Bachelor Thesis
+
+   * [[%ATTACHURL%/TaskDescription_senseLinkCuration.pdf][TaskDescription_senseLinkCuration.pdf]]
+   * students SVN https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/maschik
+   * Uby UI Web App https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_ng/uby/webui/trunk/de.tudarmstadt.ukp.uby.webui-nonfree
+   * related master thesis: AnukiranSolur
+      * *PLEASE DISCUSS ISSUES WITH Spring, Wicket, Hibernate ...*
+
+---+++ Weekly Meetings Thursdays, 15 - 15.30
+
+---++++
+---++++ 17-07-2014, 12:00 
+JEK, IM
+
+   * IM on vacation July 29 - August 7
+   * IM is learning Wicket
+   * we tried to set up the SenseLinker web app, but currently eclipse doe not recognize the project as a web app and therefore it cannot be added to the tomcat server
+      * this should be resolved by tomorrow
+      * eclipse and tomcat recognize the project as a web app now and are added to the tomcat server
+
+---++++ 03-07-2014, 12:00 
+JEK, REC, IM
+
+   * literature research https://wiki.ukp.informatik.tu-darmstadt.de/pub/Students/InformationenFuerDiplomanden/literature-research.pdf
+   * https://uby.ukp.informatik.tu-darmstadt.de/webui/tryuby
+
+
+---++++ 17-06-2014, 12:00 
+JEK, REC, IM
+
+   * discussion of mockup
+
+---++++ 12-06-2014, 15:00 
+no meeting (apologies IM)
+
+---++++ 05-06-2014, 15:00 pm
+   * intro: Web Application template: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_ng/uby/senselinker
+   * TODO IM
+      * set up simple page that displays information from Uby (look at the Uby Web UI for an example how the DB is queried)
+      * create a mock-up for the annotation interface
+   * notes JEK:
+      * 2 data sources
+         * the lexical database where the sense links are retrieved from
+         * an embedded database where the user annotations are stored
+      * AnnotationSchemeSenseLinkCuration
+
+---++++ 22-05-2014, 10.40 am
+meeting JEK, IM
+
+   * discuss() weekly 30 min meetings preferably on Thursdays, time slots: before 11.30 or after 15:00
+      * REC: I have meetings on Thursday mornings before 11:30. 15:00 then?
+   * decision: use this Wiki page rather than Chili issue tracker for tracking tasks and issues (TODO, InProgress, DONE)
+   * DONE IM reading UKP papers
+   * in progress IM: setting up Uby database
+   * TODO JEK: send Web Interface skeleton by 26.5.
+      * REC: is there already a SVN location for this project where I could check in the skeleton? 
+   * TODO IM for next meeting
+      * install Uby DB (uby_medium or if possible uby_open)
+      * try http://code.google.com/p/dkpro-tutorials/wiki/UbyTutorial2013
+      * re-think the annotation database table in the context of the paper by Sarusa et al; check, if all information is covered by the database table
+   * DONE JEK scheduled mid-term and final presentations
+      * mid-term 2.9.2014 UKP talks
+      * final 9.12. 2014 UKP meeting
+
+---++++ 12-05-2014 no meeting
+
+---++++ 05-05-2014, 2.30 pm
+meeting JEK, IM
+
+   * she will register the thesis on June 1st
+   * we filled out forms (account, contract etc)
+   * IM will be busy the next week to set up her laptop
+   * IM will also read literature, do further literature research
+   * meetings will be documented here
+   * weekly meetings on Monday, ca 30 min
+      * at 2.30 pm or alternatively
+      * at 10:40
+
+
+-- Main.JudithEckleKohler - 2014-05-05
+
+%META:FILEATTACHMENT{name="TaskDescription_senseLinkCuration.pdf" attachment="TaskDescription_senseLinkCuration.pdf" attr="" comment="" date="1401266170" path="TaskDescription_senseLinkCuration.pdf" size="179719" user="eckle" version="1"}%

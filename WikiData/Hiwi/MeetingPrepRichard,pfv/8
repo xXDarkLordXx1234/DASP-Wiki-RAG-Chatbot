@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="RichardSteuer" date="1331398491" format="1.1" version="8"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+---+++HPZ
+   * Memory here, memory there
+   * Capacity scheduler, optimal distribution of slots?
+   * how to optimize speed?
+   * how to increase cluster load?
+
+---+++Chris
+   * created https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/NotesOnProgrammingHadoop
+   * added parse tree to ContextParses and extended [[DistributionalThesaurus#Full_parses][https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/DistributionalThesaurus#Full_parses]]
+   * started parses:
+      * he ContextParses.java news100M/news100M-afp_2004-2006 parses-100M/parses-afp_2004-2006
+      * he ContextParses.java news100M/news100M-apw_1999-2000 parses-100M/parses-apw_1999-2000
+      * he ContextParses.java news100M/news100M-apw_2004-2006 parses-100M/parses-apw_2004-2006
+      * he ContextParses.java news100M/news100M-eng_news_2005_10M-sentences/ parses-100M/parses-eng_news_2005_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2006_10M-sentences/ parses-100M/parses-eng_news_2006_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2007_10M-sentences/ parses-100M/parses-eng_news_2007_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2008_10M-sentences/ parses-100M/parses-eng_news_2008_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2009_10M-sentences/ parses-100M/parses-eng_news_2009_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2010_10M-sentences/ parses-100M/parses-eng_news_2010_10M-sentences/
+      
+-- Main.RichardSteuer - 2012-03-05

@@ -1,0 +1,122 @@
+%META:TOPICINFO{author="winchenbach" comment="" date="1562673513" format="1.1" reprev="33" version="34"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+%TOC%
+
+----+ July 2019
+
+*Workload: 20h*
+
+| *Date* | *Task* | *Hours* | *Notes* |
+|02.07.2019 |Sprint   |1 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+----+ June 2019
+
+*Workload: 40h*
+
+| *Date* | *Task* | *Hours* | *Notes* |
+|01.06.2019 |Issue 1222|4 | |
+|04.06.2019 |Issue 1222|5 | |
+|15.06.2019 |Issue 1103|8 | |
+|16.06.2019 |Issue 1222|7 | |
+|17.06.2019 |Issue 1222|7 | |
+|28.06.2019 |Issue 1222|3 | |
+|30.06.2019 |Issue 1222|6 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+----+ May 2019
+
+| *Date* | *Task* | *Hours* | *Notes* |
+|30.04.2019 |Fixing bug created by merging master(List -> Optional)|4 | |
+|07.05.2019 |Issue 1103|9 | |
+|12.05.2019 |Issue 1103|8 | |
+|20.05.2019 |Issue 1103|5 | |
+|21.05.2019 |Issue 1222|8 | |
+|29.05.2019 |Issue 1222|6 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+----+ April 2019
+
+*Workload: 40h*
+
+| *Date* | *Task* | *Hours* | *Notes* |
+|07.03.2019 |Issue 808 |1 | |
+|07.04.2019 |Issue 808 |5 | |
+|14.04.2019 |Documentaion |6 | |
+|18.04.2019 |Issue #1103 |9 | |
+|20.04.2019 |Issue #1103 |9 | |
+|27.04.2019 |Issue #808 |4 | |
+|28.04.2019 |Using Loadable Model for chart panel|3 | |
+|29.04.2019 |Using Loadable Model for chart panel|2 | |
+|30.04.2019 |Fixing bug created by merging master(List -> Optional)|1 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+----+ March 2019
+
+*Workload: 40h*
+
+| *Date* | *Task* | *Hours* | *Notes* |
+|07.03.2019 |chart made wicket component |6 | |
+|08.03.2019 |chart made wicket component |6 | |
+|10.03.2019 |Issue 808 |7 | |
+|11.03.2019 |Issue 808 |6 | |
+|16.03.2019 |Issue 808 |6 | |
+|22.03.2019 |Issue 808 |6 | |
+|29.03.2019 |Issue 808 |5 | |
+
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+----+ February 2019
+
+*Workload: 40h*
+
+| *Date* | *Task* | *Hours* | *Notes* |
+|01.02.2019 |evaluation simulation panel implementation |3 | |
+|02.02.2019 |evaluation simulation panel implementation |3 | |
+|03.02.2019 |requested changes and meeting |5 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+----+ January 2019
+
+*Workload: 40h*
+
+| *Date* | *Task* | *Hours* | *Notes* |
+|01.01.2019 |from december. (Issue #770 and corresponding changes in #649. Some fixes. Unit test for RecommendationServiceImpl, review i#799, plot 50 points for each Recommender) |18.0 | |
+|02.01.2019 |from december ( meetings) |2.0 | |
+|10.01.2019 |evaluation simulation panel implementation |5 | |
+|11.01.2019 |evaluation simulation panel implementation |6 | |
+|10.01.2019 |evaluation simulation panel implementation |9 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+----+ December 2018
+
+*Workload: 40h*
+
+| *Date* | *Task* | *Hours* | *Notes* |
+|3.12.2018 |css rendering issue |3.0 | |
+|5.12.2018 |graph for multiple recommenders |8.0 | |
+|10.12.2018 |from november |3.0 | |
+|11.12.2018 |PR comments |7.0 | |
+|17.12.2018 |Work Changes requested  |5.0 | |
+|19.12.2018 |Work Changes requested  |6.0 | |
+|20.12.2018 |Work Changes requested |8.0 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+----+ November 2018
+
+*Workload: 40h*
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20|"}%
+| *Date* | *Task* | *Hours* | *Notes* |
+|07.11.2018 |setting up environment |4.0 | |
+|09.11.2018 |reading publication and manuals. Experimenting with the website |5.0 | |
+|14.11.2018 |understanding the code, learning wicket framework,  |6.0 | |
+| | | | |
+|15.11.2018 |logged event from the server to UI, understanding ajax (confusions), tried HighCharts javascript library |6.0 | |
+|22.11.2018 |include javascript to wicket, learning/working with ajax, creating chart on the recommendationSidebarPanel |9.0 | |
+|24.11.2018 |code refactoring, Changed Highchart to c3 finished with AJAX. fixing chart CSS (In progress). code push |4.0 | |
+|27.11.2018 |changes after code review. |6.0 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+-- Main.JanChristophKlie - 2018-11-01

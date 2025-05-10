@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="ShuoYang" date="1294329305" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ All things Sigmund related
+
+---++ Kapitel 19 Verteilte Programmierung / Java ist auch eine Insel (8. Auflage)
+Zugriff entfernter Ressourcen / Aufruf entfernter Methoden:<br>
+über HTTP:<br>
+   * + Verbreitet
+   * + idR keine Beschränkungen von Firewalls
+
+SOAP - Simple Object Access Protocol<br>
+bietet einfachen Zugriff auf Server-Ressourcen mit HTTP und XML
+   * + Entfernter Methodenaufruf, dessen Parameter und Ergebnisse in XML kodiert
+   * + Programmiersprache-neutral
+   * - XML-Overhead (Dateigröße, Benötigen von Parsen)
+   * - Potentielle Sicherheitsprobleme (Berechtigung, Übertragung in Klartext - SSL to the rescue)
+
+Implementierung:<br>
+Mit Java 6 kommt JAX-WS 2.0 - Java API für XML-Based Web Services
+
+
+
+-- Main.ShuoYang - 2011-01-06

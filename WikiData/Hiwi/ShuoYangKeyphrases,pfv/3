@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="ShuoYang" date="1333544763" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="ShuoYangDariahArbeit"}%
+Application of existing keyphrase extraction infrastructure to new data sets
+
+---++ URLs
+   * Components usable for the pipeline: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_ng/dkpro/semantics</verbatim>
+   * Experimental projects should be stored in: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases</verbatim>
+
+---++ Results
+---+++ Table 1
+| *Name* | *Domain* | *Indexing* | *# Docs* | *&#8709; # Tokens* | *&#8709; # Keyphrases* | *r* |
+| Pedocs | | | 3424 | 14531.570969626167 | 11.57 | 0.0946 |
+
+Note: 
+   * Gold keyphrases of 113 PDF documents could not be found. Currently they are counted with zero gold keyphrases. 
+   * As the first page of most documents is a cover page containing metadata of the document, the first pages are ignored in the current pipeline. The files are read in starting on the second page. 
+
+
+---+++ Raw
+Pedocs:
+<verbatim>
+INFO: 
+# Documents:               3424
+Tokens / Document:         14531.570969626167
+# Keyphrases:              39604
+Keyphrases / Document:     11.56658878504673
+Characters / Keyphrase:    13.851681648318351
+Tokens / Keyphrase:        1.1994748005251994(+/- 0.5539783003629482)
+
+Pearson Correlation between document size and the number of gold keyphrases:
+0.09458063313948406
+
+1:33018
+2:5945
+3:376
+4:101
+5:26
+6:91
+7:32
+8:2
+9:2
+10:2
+11:3
+12:1
+13:5
+</verbatim>
+
+
+
+-- Main.ShuoYang - 2012-04-04

@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1294693211" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="FrameNetResourcebeschreibung"}%
+---++++ !AnnotationLayers im !FrameNet
+   * Mithilfe der !AnnotationLayers werden im !FrameNet Teile der Annotationssätzen, in Abhängigkeit vom Typ des Layers, nach bestimmten Kriterien markiert/gelabelt.
+   * Layers bestehen aus Labels
+      * Jedes Label ist an ein Teil des Satzes gebunden und beinhaltet einen Namen.
+   * Vier Layertypen werden im !FrameNet als "grundlegend"  bezeichnet:
+      1 Target - Markiert nur das Zielwort (die LU selbst als Target) im Annotationssatz
+         * Beinhaltet in der Regel nur ein Label.
+      2 FE - Markiert Frameelemente im Annotationssatz
+      3 GF - Markiert die Teile des Satzes nach der grammatischen Funktion.
+      4 PT - Markiert die Teile des Satzes nach Phrasentypen
+   * Restliche Layers:
+      * Other - Definition aus dem Buch: _The Other layer holds labels relating to certain special constructional contexts in which the target may occur, such as relative clauses, existential constructions, and extraposition constructions._
+      * part-of-speech Layer - Dieses Layer kann, in Abhängigkeit des POS der LU, folgende Namen besitzen:
+         1 Noun
+         2 Verb
+         3 Adj
+         4 Adv
+         5 Prep
+      * Sent - Sentencelayer besitzt keine Labels und markiert, implizit, den gesamten Satz
+      * NER - Labels in diesen Layers markieren _Named Entities_ und POS der Satzteilen. Dieses Layer wird automatisch generiert.
+   * Layers nicht erwähnt im Buch:
+      * BNC -  Labels dieses Layers sind  Tags aus dem British National Corpus. Deren Bedeutung findet man [[http://www.natcorp.ox.ac.uk/docs/bnc2guide.htm][hier]]
+      * PENN - Labels dieses Layers sind Tags aus der [[http://www.cis.upenn.edu/~treebank/][Penn Tree Bank]]. Die Bedeutung dieser Tags/Labels findet man [[ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz][hier]].
+      * WSL - Definition aus Framenets XML Release Notes for r1.5: _The Word Status Layer
+ was created mainly for internal use by annotators, to keep track of
+ which words are potentially annotatable._
+
+%ICON{info}% _Eine detalliertere Beschreibung der Layers ist im Kapitel 3 des Buches zu finden._
+
+%META:TOPICMOVED{by="ZijadMaksuti" date="1294095540" from="Hiwi.FrameNetAnnotationSet" to="Hiwi.FrameNetAnnotationLayers"}%

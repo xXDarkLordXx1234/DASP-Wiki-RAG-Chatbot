@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="ManuelWick" date="1271232713" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+--++ Workflow
+
+---++14.04.10
+*Tika version change from 0.5 to 0.7*
+   * XML-File for parsers deprecated. New methodology is to declare MediaTypes, that a parser supports. Adjusted EML-Parser and DocCollectionReader to work fine with 0.7.
+   * Version conflict with POI provided by DKPro.poi-3.2-FINAL.jar -> Using the version 3.5 Beta provided by tika-app-0.7.jar
+   * <span class="green">Tika parser work, even with encrypted PDFs</span>
+
+-- Main.ManuelWick - 14 Apr 2010

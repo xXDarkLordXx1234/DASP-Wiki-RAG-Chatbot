@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="khammari" comment="" date="1659444426" format="1.1" reprev="3" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Weekly Activity Reports
+
+---+++ Week 21 from 23.05.2022 to 27.05.2022
+   * Read the background research inclusive papers related to the topic
+   * Got access to Slurm 
+      * Set up the virtual environment with the needed libraries
+   * Learned transformers
+      * Followed tutorials that may be helpful for the thesis
+      * Read about possible methods that will/can be used
+---+++ Week 22 from 28.05.2022 to 03.06.2022
+   * Got a closer look at the methodologies and the models that will be used (T5, Bert)
+   * Cloned the first model that will be used:
+      * made some changes to make it work 
+      * trained the model 
+---+++ Week 23 from 06.06.2022 to 10.06.2022
+   * Ran the model on some random datasets and analyzed the results
+   * Created another cuda environment because I installed the wrong pytorch 
+---+++ Week 24 from 13.06.2022 to 17.06.2022
+   * Pre-processed the data of MetaQA1.0 to fit into the input of the Question-Converter model
+   * Ran the model on some of the agents with their respective datasets 
+---+++ Week 25 from 20.06.2022 to 24.06.2022
+   * Created a fine-tuned Bert Model which will be responsible for the main task: NLI
+---+++ Week 26 from 27.06.2022 to 01.07.2022
+   * Tested the model with one agent and 7 datasets
+   * Analysed the results
+---+++ Week 27 from 05.07.2022 to 08.07.2022
+   * Written the introduction and started with the related work.  
+---+++ Week 28 from 11.07.2022 to 15.07.2022
+   * Code refactoring
+   * Wrote ideas about related work 
+
+   

@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1288564855" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="FrameNetResourcebeschreibung"}%
+---++FrameNet Relations
+   * In !FrameNet, eight different relations between frames are defined
+   * Every relation is directed, which means that there are different names for the two ends of relations.
+   * The following table provides an overview on the different frame relations and how the elements of the relations are called
+| ||__FrameNet Relations__|| |
+|*Relations name*|*Name of super element*|*FrameNet-Option for accessing super elements*|*Name of sub element*|*FrameNet-Option for accessing sub elements*|
+|Inheritance|Parent|Inherits from|Child|Is Inherited by|
+|Perspective_on|Neutral|Perspective on|Perspectivized|Is Perspectivized in|
+|Using|Parent|Uses|Child|Used by|
+|Subframe|Complex|Subframe of|Component|Has subframe(s)|
+|Precedes|Earlier|Precedes|Later|Is Preceded by|
+|Inchoative_of|Inchoative|Is Inhoactive of|State|--|
+|Causative_of|Causative|Is Causative of|State|--|
+|See_also|Main entry|See also|Reffering entry|--|
+---++++++ Explanation
+   * *Inheritance* : An IS-A relation. The child frame is a subtype of the parent frame, and each FE in the parent is bound to a corresponding FE in the child. An example is the _Revenge_ frame which inherits from the _Rewards and punishments_ frame.
+      * The bound between FEs of two Frames connected by Inheritance Relation is not marked.
+      * Quantization:
+         * A frame can have from 0 up to 2 parents
+         * A frame can have from 0 up to 41 children
+   * *Perspective on*: The child frame provides a particular perspective on an un-perspectivized parent frame. A pair of examples consists of the _Hiring_ and _Get a job_ frames, which perspectivize the _Employment_ start frame from the Employers and the Employees point of view, respectively.
+      * Quantization:
+         * A frame can have a perspective on no more than one frame.
+         * A frame can be perspectivized in up to 4 frames
+   * *Using*: The child frame presupposes the parent frame as background, e.g the _Accuracy_ frame uses (or presupposes) the frames _Measurable attributes_ and _Success or failure_; however, not all parent FEs need to be bound to child FEs.
+      *  Quantization:
+         * A frame can use up to 3 parents
+         * A frame can be used in up to 30 children
+   * *Subframe*: The child frame is a subevent of a complex event represented by the parent, e.g. the _Criminal process_ frame has subframes of _Arrest_, _Arraignment_, _Trial_, and _Sentencing_.
+      * Quantization:
+         * A frame can have up to 11 subframes
+         * A frame can be a subframe of up to 2 frames
+   * *Precedes*: This relation occurs only between two Component frames of a single Complex frame, i.e. as extra information associated with a set of Subframe relations. It specifies the sequence of states and events that are definitional for a certain state-of-affairs. E.g. the frame _Departing_ precedes the frame _Arriving_ both frames are Components of the frame Traversing.
+      * A frame can precede up to 3 frames
+      * A frame can be preceded by up to 2 frames
+   * *Inchoative_of*: Is a Relation between a Stative parent frame which is "caused" by an Inchoative child frame. For example the frame _Coming to belive_ is an Inchoative of the frame _Awareness_.
+      * Inchoative frames inherit from Frames: _Event_, _State_ or _Gradable attributes_
+      * Quantization:
+         * A frame can be Inchoative or Stative of one frame
+   * *Causative_of*: Is a Relation between a Stative parent frame which is "caused" by a Frame that inherits from _Transitive action_ frame. For example the frame _Silencing_ is the Causative of the frame _Become silent_.
+      * Quantization:
+         * A frame can be Causative or Stative of one frame
+   * *See_also*: In cases where there are groups of frames which are similar and should be carefully differentiated, compared,and contrasted, each of the frames in question has a !SeeAlso relation with a representative member of the group.
+      * This relationship does not imply any particular relationship between the Frame Elements or subframesof the frames involved.
+      * Quantization:
+         * A frame can refer to only one Main Entry
+         * A Main Entry can be referred to from up to 4 frames
+
+
+
+
+-- Main.ZijadMaksuti - 2010-10-28

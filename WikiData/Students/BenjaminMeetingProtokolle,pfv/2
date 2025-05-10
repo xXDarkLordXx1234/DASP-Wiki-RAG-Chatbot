@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="BenjaminHerbert" date="1251965597" format="1.1" version="2"}%
+%META:TOPICPARENT{name="UKP/Personal.BenjaminHerbert"}%
+---+ Meeting-Protokolle
+
+%TOC%
+
+---++ 10.12.2008
+Teilnehmer: Mark-Christoph Müller , Benjamin Herbert
+
+Besprochene Themen: 
+Vorstellung der am 08.12.2008 besprochenen Änderungen
+   * Webservice Operation Objekte die in der Zerlegung erstellt werden
+   * Serialisierung/Deserialisierung
+   * Gliederung der Arbeit
+
+Nächste Schritte
+   * Christof Müller nach tf/idf Komponente fragen
+   * Operation Retrieval komplettieren
+   * GUI für Experimente bauen
+   * Gliederung ausarbeiten und mit Stichpunkten füllen
+   * Komplexe Typen von WSDL Parameter untersuchen, wie werden diese behandelt?
+   * Tiefste Parameter für Itemset-erstellung benutzen
+
+
+---++ 08.12.2008
+Teilnehmer: Mark-Christoph Müller , Benjamin Herbert
+
+Besprochene Themen: 
+Vorstellung der aktuellen Arbeit
+   * Drei UIMA Pipelines
+      1. Parsen der WSDL Dateien mit WSDL Reader, !ItemsetCreator als !CasConsumer , Persistierung als XML
+      1. Einlesen XML mit !ItemsetReader, [!ItemsetExpander erweitert Itemsets], !AssociationRuleLearner als !CasConsumer generiert Assoziationsregeln, Persistierung als XML
+      1. Einlesen XML mit !AssociationRuleReader, !ClusterCreator erstellt Cluster der inhärenten Terme, Persistierung als XML
+   * Anwendung
+      * Operation Retrieval verarbeitet WSDL Repository, Auswahl eines Service, [Integration der Cluster], Berechnung der ähnlichsten WS Operationen mit Hilfe von tf/idf
+      * Rückgabe der ähnlichsten WS Operationen
+
+Vorgehen beim Parsen der WSDL Dateien
+   * Beim Einlesen der WSDL Operationen werden bereits Operations Objekte erstellt und in Cachedatei persistiert. Diese Objekte enthalten bereits die textuelle Repräsentation folgender Komponenten
+      * Operationsname
+      * Input-Parameter
+      * Output-Parameter
+      * Operationsbeschreibung
+       
+Implementierung Operation Retrieval
+   * Einlesen der Cachedatei im Operation Retrieval
+   * Wieviele Services werden zurückgeliefert? (Schwellwert)
+   * Ähnlichkeitsmaß auf Operationen komponentenweise über tf/idf
+
+
+Nächste Schritte
+   * Implementierung Caching
+   * Genaue Zerlegung der Operationen (subiterator)
+   * Gliederung der Arbeit überlegen
+
+
+
+-- Main.BenjaminHerbert - 12 Dec 2008

@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="diehl" comment="save topic" date="1459889317" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2016-04-05 (open) Questions & Answers
+   * What are arguments in the context of this thesis?
+   * What are potential data sources?
+      * Question in that context: How does the ideal data look like?
+      1 Query Web search engine (e.g. faroo) per API or manually (potential violation of ToS) and save top n results
+         * Maybe use more than 1 query to get results on a subject (e.g. 1 for pro, one for con)
+      2 <del>Existing corpora with debate data (Probably difficult to find a fitting German corpus)</del>
+   * What are possible methods for evaluating?
+      * User Study:
+         * Users evaluate result on subjects according to relevance and correct side (pro/con) via web interface
+            * Potential problem -> completeness of the collected information not guaranteed, how could this be evaluated?
+   * Could document type/name and metadata help improve the Pro/Con Detection?
+      * Most documents state in their title, if they argue for or against the subject or both
+      * This could potentially be exploited in combination with html-metadata to easier identify Pro/Con statements
+   * How to detect indirect references to the subject?
+      * Research State of the Art, good solutions should be available
+
+---++ 2016-04-06 Next Meeting 
+   
+
+---++ 2016-03-30
+   * Discussed Workflow of the thesis and signed contract(s)
+   * Clarified expectations and requirements
+   * Started elaborating the topic
+      * Aggregation of arguments (what are arguments in the context of this thesis?)
+      * Potential data sources (English or German or both)
+      * "Search engine" that summarizes/aggregates argumentation relevant propositions structured as pro and con.
+      * Evaluation?
+
+
+-- Main.ChristianStab - 2016-03-30

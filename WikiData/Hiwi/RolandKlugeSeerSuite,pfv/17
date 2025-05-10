@@ -1,0 +1,242 @@
+%META:TOPICINFO{author="RolandKluge" date="1360329311" format="1.1" version="17"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+%TOC%
+
+---+++ Seersuite Showcase
+
+*Seersuite with all features is running [[http://seersuite.ukp.informatik.tu-darmstadt.de:9080/seersuite/index][here]]*
+
+---+++ Eclipse Tools
+
+   * Eclipse version: 3.7.2 (Indigo, 64 bit for Linux)
+      * JDK 1.6v21
+      * standard components as described in DKPro setup (DKPro.HowToMaven)
+      * site: http://download.eclipse.org/releases/indigo
+         * Web, XML, Java EE and OSGi Enterprise Development	
+            *  Eclipse Java EE Developer Tools 3.3.2.v201111030500-7b7II1YFSK2WIuPRDEnExPV-RvTn
+            *  Eclipse Java Web Developer Tools 3.3.2.v201112072049-7F7AFO7C25ToiIbpoiuW12GT78Mciy6W7iwuxaco
+            *  Eclipse Web Developer Tools 3.3.2.v201111030500-7O7IFj6EMjB7yO1Xs_G1kMtQeOye6HTXFWve95_R
+            *  JST Server Adapters 3.2.100.v20110303-208Z7w31211419
+            *  JST Server Adapters Extensions	3.3.2.v20111010_1242-777HFHzCcNBDjCbIUfEEE3
+
+Sanity Check: You need to be able to:
+   * create a *Dynamic Web Project* (File -> New -> Project -> Web -> Dynamic Web Project)
+   * create a *Tomcat 7.0* or *Tomcat 6.0* server instance
+      * Open *Servers* View: _Window -> Show View -> Other... -> Server -> Servers_
+      * Inside the view select *new server wizard*
+      * Select either *Apache -> Tomcat v6.0 Server* or *Apache -> Tomcat v7.0 Server* depending on your version
+      * Proceed with *Next*
+      * Configure *Name* and *Tomcat installation directory* , i.e., the folder containing Tomcat's _conf_, _log_, etc. directories
+      * You may add your sample web application in the next step.
+
+---+++ Troubleshooting SeerSuite (Installation Guide):
+
+   1 Link inside the webapps directory has to have correct permissions (otherwise tomcat will silently ignore it)
+      * perhaps its better to use an ant deploy task and simply copy the contents
+      * build.properties<br/><verbatim>
+deploy.path=/var/lib/tomcat6/webapps
+web.dir=...
+</verbatim>
+      * build.xml<br/><verbatim>
+<properties file="build.properties"/>
+<target name="deploy" depends="build" description="Deploy application">
+	<copy todir="${deploy.path}/${name}" preservelastmodified="true">
+		<fileset dir="${web.dir}">
+   			<include name="**/*.*" />
+		</fileset>
+	</copy>
+</target>
+</verbatim>
+   1 Not all paths have been set correctly (error message during webapp start)<br/><verbatim>
+./WEB-INF/csx.config.properties:foul.word.list=/usr/local/tomcat-csx/webapps/ROOT/WEB-INF/FoulWordsList.txt
+./WEB-INF/csx.config.properties:name.model=/usr/local/tomcat-csx/webapps/ROOT/WEB-INF/resources/metric-distance/names.model
+./WEB-INF/csx.config.properties:stats.folder=/usr/local/tomcat-csx/webapps/ROOT/WEB-INF/stats
+</verbatim>
+
+---+++ Troubleshooting Solr
+
+Instructions for alternate setup of Solr: http://wiki.apache.org/solr/SolrTomcat
+
+   * SOLAR_HOME=/var/lib/solr/{solr,solrAlgorithm,...,solrTable}
+   * create subfolders conf and data below SOLAR_HOME
+   * copy apache-solr... .war as solr.war into SOLAR_HOME
+   * create context fragment solr-context.xml in SOLAR_HOME with content (e.g. for 'solr' webapp)
+<verbatim>
+<?xml version="1.0" encoding="utf-8"?>
+<Context docBase="/var/lib/solr/solr/solr.war" debug="0" crossContext="true">
+  <Environment name="solr/home" type="java.lang.String" value="/var/lib/solr/solr" override="true"/>
+</Context>
+</verbatim>
+   * symlink /var/lib/tomcat6/conf/Catalina/localhost/solr.xml to /var/lib/solr/solr/solr-context.xml
+   * copy content of SEERSUITE_REPO/trunk/resources/{solr,solrAlgorithm,...,solrPeople} into appropriate SOLAR_HOME/conf 
+      * (ATTENTION: in case of  solrTable you need to copy the contents of SEERSUITE_REPO/trunk/resources/solrTable/conf (inconsistency!)
+   * Mind to set the data directory correctly: E.g. for solrAuth <dataDir>${solr.data.dir:/var/lib/solr/solrAuth/data}</dataDir> in each conf/solrconfig.xml file.
+
+---+++ Troubleshooting Axis2
+
+   * *Problem*: 'Name jdbc is not bound in this Context' and Cannot create JDBC driver of class '' for connect URL 'null'
+      *  *Solution*: Seems to be better to place resource declarations in /var/lib/tomcat6/conf/Catalina/localhost/axis2.xml because using conf/server.xml requires a restart of Tomcat after every change! (see [http://tomcat.apache.org/tomcat-6.0-doc/config/context.html])
+      *  Solved by adding a resource-ref to web.xml, see [[http://tomcat.apache.org/tomcat-6.0-doc/jndi-datasource-examples-howto.html][Tomcat JNDI Example]] and<br/><verbatim>
+<resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/DOIDB</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+</resource-ref>
+</verbatim>
+      * Don't get desparate: Always perform 'sudo service tomcat6 restart' in case of doubt
+
+---+++ Troubleshooting Ingestion
+
+<nop>FileConverter
+   * *Problem* Can't locate Digest/SHA1.pm (Ubuntu: [[https://bugs.launchpad.net/ubuntu/+source/libdigest-sha1-perl/+bug/993648]])
+      * *Solution*: rename Digest::SHA1 to Digest::SHA at lines 20 and 64 in citeseerx/dist/services/FileConversionService/lib/FileConverter/CheckSum.pm
+      * *Solution* (quick and dirty): install required package manually [[http://launchpadlibrarian.net/85191944/libdigest-sha1-perl_2.13-2build2_amd64.deb]]
+   * *Problem* java.lang.NoClassDefFoundError: org/pdfbox/ExtractText
+      * *Solution*: you must use exactly the given libs (citeseerx/trunk/lib/PDFBox...) as the newer versions of PDFBox have moved to Apache and are sorted into a different package structure
+  * *Problem* Exception in thread "main" java.lang.NoClassDefFoundError: org/fontbox/afm/AFMParser _when calling Webservice_
+      * *Solution*: TODO (not so important currently)
+
+<nop>ParsCit
+
+   * *Problem* Starting ParsCit Webservice: =perl parscit-service.pl=  yields =Too late for "-CSD" option at parscit-service.pl line 1.=
+      * *Solution*: Call script with -CSD option: =perl -CSD citeExtract.pl <textfile>=
+   
+
+---+++ Troubleshooting CiteseerX workspace
+   
+   * *Problem*: org.apache.jasper.JasperException: /WEB-INF/jsp/csx/searchDocs.jsp (line: 87, column: 22) "${ ! empty hit.abstract }" contains invalid expression(s): javax.el.ELException: Failed to parse the expression [${ ! empty hit.abstract }]
+      * *Solution 1* (easy): Add JVM parameter in Launch Configuration of Tomcat 7.0: '-Dorg.apache.el.parser.SKIP_IDENTIFIER_CHECK=true' (confirmed to work for me)
+      * *Solution 2* (tedious): Change all occurrences of 'hit.abstract' to 'hit[abstract]' (not tried yet)
+      * _Source_ : http://thinkinginsoftware.blogspot.de/2011/10/tomcat-7-jstl-failed-to-parse.html
+   * *Problem*: java.io.FileNotFoundException: /s21/studium/ukp/download/apache-tomcat-7.0.27/webapps/citeseerx/WEB-INF/stats/articles (No such file or directory) _when calling_ http://localhost:8080/citeseerx/stats/articles
+      * *Solution* statistics may be generated by calling 'bin/genStats', afterwards copy the new directory 'bin/stat' to the WEB-INF directory of the citeseerx webapp
+   * *Problem*: java.lang.OutOfMemoryError: PermGen space _when_ redeploying
+      *  *Solution* -XX:+CMSClassUnloadingEnabled -XX:+CMSPermGenSweepingEnabled or -XX:MaxPermSize=128M 
+      *  *Source* http://stackoverflow.com/questions/88235/dealing-with-java-lang-outofmemoryerror-permgen-space-error
+   * *Problem* with nested JSPs?
+   * "account cannot be resolved" in _citeseerx/web/citeseerx_webapp/WEB-INF/jsp/shared_
+      * "account cannot be resolved to a variable"
+      * "mscConfig cannot be resolved"
+      * *Solution* (quick and dirty): Disable Validation (*Project Properties -> Validation -> Disable All*)
+   * *Problem*: Access restriction: The method createJPEGEncoder(OutputStream) from the type JPEGCodec is not accessible due to restriction on required library /usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/rt.jar
+      * Make Eclipse more lenient: Preferences -> Errors/Warnings -> Deprecated and restricted API -> change to "Warning" for "Forbidden reference(access rules)"
+      * [[http://notepad2.blogspot.de/2011/05/eclipse-access-restriction-method.html][Source]]
+
+---+++ Importing a new repository
+
+If we intend to replace our repository with a foreign one, the following steps need to be taken:
+
+   1 *Export the database* on the *source host*<br> <verbatim>mysqldump --opt --user=csx-devel --password=csx-devel --databases citeseerx csx_citegraph csx_external_metadata csxdoi myciteseerx | gzip -c >citeseerx_database_dump.sql.gz</verbatim>
+      * This function is provided by the script =<svn_root>/seersuite/src/scripts/dump_databases.sh=
+   1 *Import the database* on the *target host*
+   <br><verbatim>mysql --user=root --password=<root-password> -e "source citeseerx_database_dump.sql.gz"</verbatim>
+   1 TODO create user csx-devel
+   1 *Export the PDF documents* on the *source host*, e.g. in order to export repository _rep1_: <verbatim>tar -czf /tmp/rep1.tar.gz rep1/</verbatim>
+   1 *Import the PDF documents* on the *target host* ( *Mind to make a backup of the original rep1, if exists!!!*)
+   <br> <verbatim>tar -xzf /tmp/rep1.tar.gz</verbatim>
+   1 *Update Solr indices*
+      * You may either update the Solr indices automatically using the scripts provided by Seersuite
+      <br> <verbatim>seersuite/bin/updateIndex</verbatim>
+      * (Problem: this also overwrites or you may export the directory containing the solr instances on the *source host*
+      <br> <verbatim> tar -czf /tmp/solr_instances.tar.gz</verbatim>
+      <br> and unpack them on the *target host* (*Mind to make a backup of the original solr directory, if exists!!!*)
+      <br> <verbatim> tar -xzf /tmp/solr_instances.tar.gz</verbatim>
+      * *Note:* If you encounter the following stack trace, you have also copied the write locks (*write.lock*) of the Solr repositories which are located inside the *data/index* folder of each Solr instance. *You may remove the lock* (for the sake of security, shut down the Tomcat server hosting the Solr instances before doing so)<verbatim>
+SEVERE: java.lang.RuntimeException: org.apache.lucene.store.LockObtainFailedException: Index locked for write for core 
+        at org.apache.solr.core.SolrCore.initIndex(SolrCore.java:403)
+        at org.apache.solr.core.SolrCore.<init>(SolrCore.java:552)
+        [...]
+SEVERE: Could not start Solr. Check solr/home property and the logs
+org.apache.solr.common.SolrException: No cores were created, please check the logs for errors
+        at org.apache.solr.core.CoreContainer$Initializer.initialize(CoreContainer.java:172)
+        at org.apache.solr.servlet.SolrDispatchFilter.init(SolrDispatchFilter.java:96)
+        [...]
+SEVERE: org.apache.solr.common.SolrException: No cores were created, please check the logs for errors
+        at org.apache.solr.core.CoreContainer$Initializer.initialize(CoreContainer.java:172)
+        at org.apache.solr.servlet.SolrDispatchFilter.init(SolrDispatchFilter.java:96)
+        [...]</verbatim>
+
+---+++ Additiinonal DIPF Berlin
+
+   1 remove jcaptcha and kaptcha 2.0
+   1 TODO adapt host-manager.xml and manager.xml -> no /usr/...
+
+[[RolandKluge]]
+
+---++ Installing/Deploying citeseerx.jar via Ant
+
+We need the Maven Ant Tasks (installation: [[http://maven.apache.org/ant-tasks/installation.html]]) which allow us to add maven goals to the build.xml file:
+
+   1 Download _maven-ant-tasks-2.1.3.jar_ into the _lib_ directory of the seersuite workspace: =cd ./lib; wget <nop>http://www.apache.org/dyn/closer.cgi/maven/binaries/maven-ant-tasks-2.1.3.jar=
+   1 Modify build.xml
+   <br><verbatim>
+<project name="CiteSeerX" default="dist" basedir="."
+    xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+[other targets ....]
+<path id="maven-ant-tasks.classpath" path="lib/maven-ant-tasks-2.1.3.jar" />
+<typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+    uri="antlib:org.apache.maven.artifact.ant"
+    classpathref="maven-ant-tasks.classpath" />
+<target name="to-maven-repo" depends="dist">
+    <artifact:pom id="citeseerx-pom" file="pom.xml"/>
+        <artifact:install file="dist/lib/citeseerx.jar">
+    <pom refid="citeseerx-pom"/>
+    </artifact:install>
+</target>
+    </verbatim>
+   1 Create minimal _pom.xml_
+   <br><verbatim>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>citeseerx</groupId>
+    <artifactId>citeseerx</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</project>
+</verbatim>
+   1 Calling =ant to-maven-repo= will install the up-to-date jar file into your local maven repository.
+
+---+++ How to communicate information between JSP and Java
+(By example: text input for abstract query in Advanced Search)
+<verbatim>
+<spring:bind path="advancedSearch.abstractQuery">
+    <tr>
+    <td>
+        <label 
+            for="<c:out value="${ status.expression }"/>" 
+            class="prefield">Abstract:&nbsp;
+        </label>
+    </td>
+    <td>
+        <input 
+            name="<c:out value="${ status.expression }"/>" 
+            id="<c:out value="${ status.expression }"/>" 
+            value="<c:out value="${status.value}"/>" 
+            type="text" 
+            size="43"/>
+     </td>
+     </tr>
+</spring:bind>
+</verbatim>
+
+   * The =spring:bind= tag declares that we intend to access the property =abstractQuery= of the =advancedSearch= bean.
+   * Inside the =spring:bind= tag we may 
+      * retrieve the current value of the proptery by calling =status.value=
+      * get the name of the property by calling =status.expression=
+      * get potential errors by calling =status.errorMessages=
+   * For more information: [[http://static.springsource.org/spring/docs/1.1.5/taglib/tag/BindTag.html][Spring 1.1.5 Taglib Reference]]
+
+When introducing a new property =fooProp= into =AdvancedSearch=, we need to
+
+   * create a new instance variable: =private String fooProp;=
+   * provide getter and setter: 
+      * =public String getFooProp(){return this.fooProp;}=
+      * =public void setFooProp(final String fooProp) {this.fooProp = fooProp;}=
+
+
+
+---+++ Links
+
+   * [[http://citeseerx.ist.psu.edu/index][CiteSeerx@PSU]]

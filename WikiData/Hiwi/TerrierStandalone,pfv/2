@@ -1,0 +1,37 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1370212699" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="IrExperiments"}%
+This is a short tutorial (for me) for using the stand-alone Terrier package, using the !TaggedFormat and the !SingleLineQuery.
+   * Info: [[http://terrier.org/docs/v3.5/quickstart.html][Installing and running Terrier]]
+
+---++ Preparation
+
+In order to run a retrieval with Terrier, the documents have to be prepared in a certain format.
+
+---+++ Index documents
+
+   * outout the documents by your UIMA pipeline in the tagged format
+
+---+++ Topics
+
+   * output your queries as single line queries with your UIMA annotator (_systemqueries_)
+
+---++ Retrieval
+
+---+++ Indexing
+
+   * 1. Go to the Terrier folder.
+   * 2. Setup Terrier for using a TREC test collection by calling: _./bin/trec_setup.sh /home/steuer/out/terrierTagged_TokenLemma/_
+   * 3. Begin the indexing of the collection: _./bin/trec_terrier.sh -i -j_
+   * the fast indexing without a direct index (e.g. used for query expansion) took me 5 minutes on frink
+
+---++++ Fields
+
+   * to use multiple fields, put the following into the properties file: _FieldTags.process=TITLE,H1_
+
+---+++ Querying
+
+   * _./bin/trec_terrier.sh -r -Dtrec.topics=/home/steuer/systemqueries.out_
+
+---+++ Evaluation
+
+   * _./bin/trec_terrier.sh -e -Dtrec.qrels=/home/steuer/ah-robust-english-train-clef2008.txt_

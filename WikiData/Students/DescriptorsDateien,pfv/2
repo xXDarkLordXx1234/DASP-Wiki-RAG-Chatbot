@@ -1,0 +1,203 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1176308366" format="1.1" version="2"}%
+%META:TOPICPARENT{name="UnstructuredInformationManagementArchitecture"}%
+UIMA Descritors
+
+%TOC%
+
+---++ !AmazonCollectionReaderDescriptor
+Dieser !CollectionReader definiert die Filter zum Auslesen der Datenbankinformationen der Amazon-Daten:
+<verbatim>
+<?xml version="1.0" encoding="UTF-8"?>
+<collectionReaderDescription xmlns="http://uima.watson.ibm.com/resourceSpecifier">
+<frameworkImplementation>com.ibm.uima.java</frameworkImplementation>
+<implementationName>de.tudarmstadt.ukp.uima.Collection.AmazonCollectionReader</implementationName>
+<processingResourceMetaData>
+<name>AmazoncollectionReaderDescriptor</name>
+<description></description>
+<version>1.0</version>
+<vendor></vendor>
+<configurationParameters>
+<configurationParameter>
+<name>minTotalVotes</name>
+<description>sets the minimum number of total votes for a review</description>
+<type>Integer</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>maxTotalVotes</name>
+<description>sets the maximum number of total votes for a review</description>
+<type>Integer</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>minHelpness</name>
+<description>sets the minimum helpness value</description>
+<type>Float</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>maxHelpness</name>
+<description>sets the maximum value of helpness</description>
+<type>Float</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>minRating</name>
+<type>Integer</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>maxRating</name>
+<type>Integer</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>minLength</name>
+<description>sets the minimum number of chars</description>
+<type>Integer</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>maxLength</name>
+<description>sets the maximum number of chars</description>
+<type>Integer</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>minDate</name>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>maxDate</name>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>false</mandatory>
+</configurationParameter>
+<configurationParameter>
+<name>DatabasePropertyFile</name>
+<description>Path to the database property file</description>
+<type>String</type>
+<multiValued>false</multiValued>
+<mandatory>true</mandatory>
+</configurationParameter>
+</configurationParameters>
+<configurationParameterSettings/>
+<typeSystemDescription>
+<imports>
+<import name="de.tudarmstadt.ukp.uima.descriptors.type.ReviewInformation"/>
+</imports>
+</typeSystemDescription>
+<typePriorities/>
+<fsIndexCollection/>
+<capabilities>
+<capability>
+<inputs/>
+<outputs/>
+<languagesSupported/>
+</capability>
+</capabilities>
+<operationalProperties>
+<modifiesCas>true</modifiesCas>
+<multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+<outputsNewCASes>true</outputsNewCASes>
+</operationalProperties>
+</processingResourceMetaData>
+<resourceManagerConfiguration/>
+</collectionReaderDescription>
+</verbatim>
+
+---++ !ReviewInformation
+Dieser Descriptor definiert die Metadaten, die neben des Review-Textes in einer CAS gespeichert werden:
+<verbatim>
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.watson.ibm.com/resourceSpecifier">
+<name>ReviewInformation</name>
+<description>stores information about a review</description>
+<version>1.0</version>
+<vendor></vendor>
+<types>
+<typeDescription>
+<name>de.tudarmstadt.ukp.uima.descriptors.type.ReviewInformation</name>
+<description>Stores detailed information about a review.</description>
+<supertypeName>uima.tcas.Annotation</supertypeName>
+<features>
+<featureDescription>
+<name>ID</name>
+<description>Stores a identification number for this review.</description>
+<rangeTypeName>uima.cas.Integer</rangeTypeName>
+</featureDescription>
+<featureDescription>
+<name>length</name>
+<description>Stores the length of a review without html-tags.</description>
+<rangeTypeName>uima.cas.Integer</rangeTypeName>
+</featureDescription>
+<featureDescription>
+<name>rating</name>
+<description>Stores the product rating stated by the review's author.</description>
+<rangeTypeName>uima.cas.Integer</rangeTypeName>
+</featureDescription>
+<featureDescription>
+<name>helpness</name>
+<description>Stores the helpness value of the review.</description>
+<rangeTypeName>uima.cas.Float</rangeTypeName>
+</featureDescription>
+</features>
+</typeDescription>
+</types>
+</typeSystemDescription>
+</verbatim>
+
+
+---++ !HtmlTagAnnotator
+Ein Annotator für HTML-tags:
+<verbatim>
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.watson.ibm.com/resourceSpecifier">
+<frameworkImplementation>com.ibm.uima.java</frameworkImplementation>
+<primitive>true</primitive>
+<annotatorImplementationName>de.tudarmstadt.ukp.uima.annotator.HtmlTagAnnotator</annotatorImplementationName>
+<analysisEngineMetaData>
+<name>HtmlTagAnnotator</name>
+<description></description>
+<version>1.0</version>
+<vendor></vendor>
+<configurationParameters/>
+<configurationParameterSettings/>
+<typeSystemDescription>
+<imports>
+<import name="de.tudarmstadt.ukp.uima.type.HtmlTag"/>
+</imports>
+</typeSystemDescription>
+<typePriorities/>
+<fsIndexCollection/>
+<capabilities>
+<capability>
+<inputs/>
+<outputs>
+<type allAnnotatorFeatures="true">de.tudarmstadt.ukp.uima.type.HtmlTag</type>
+</outputs>
+<languagesSupported/>
+</capability>
+</capabilities>
+<operationalProperties>
+<modifiesCas>true</modifiesCas>
+<multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+<outputsNewCASes>false</outputsNewCASes>
+</operationalProperties>
+</analysisEngineMetaData>
+<resourceManagerConfiguration/>
+</analysisEngineDescription>
+</verbatim>
+
+
+-- Main.KaiMichaelHoever - 11 Apr 2007

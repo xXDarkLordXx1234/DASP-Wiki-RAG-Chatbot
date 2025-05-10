@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="ShuoYang" date="1326727168" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ShuoYangDariahArbeit"}%
+---+ Useful Linux Commands
+
+---++ Installing/Deinstalling programs
+
+   * Install: <verbatim>sudo apt-get ${package_name}</verbatim>
+   * Deinstall: <verbatim>sudo apt-get remove ${package_name}</verbatim>
+   * Deinstall (including settings): <verbatim>sudo apt-get --purge remove ${package_name}</verbatim>
+   * Clean: <verbatim>sudo apt-get clean</verbatim>
+   * See all installed packages: <verbatim>dpkg --get-selections</verbatim>
+   
+   * Add JDK6 to sources: <br>
+   http://www.debian.org/doc/manuals/debian-java-faq/ch4.html <br> 
+   Don't forget to run afterwards:<verbatim>sudo apt-get update</verbatim>
+ 
+---++ Locale
+   * Check whether locales configured properly: <verbatim>perl -v</verbatim>
+   If erroneous, the output should start with something like:<verbatim>perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_CTYPE = "UTF-8",
+	LANG = "de_DE.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").</verbatim>
+   If correct, the output should start with something like:<verbatim>This is perl 5, version 12, subversion 4 (v5.12.4) built for x86_64-linux-gnu-thread-multi
+(with 40 registered patches, see perl -V for more detail)</verbatim>
+   * Get installed locales:<verbatim>locale -a</verbatim>
+   * Install / deinstall locales:<verbatim>sudo dpkg-reconfigure locales</verbatim>
+   * Set locale environment variables:<verbatim>sudo pico /etc/environment</verbatim>
+   Add following lines, save and login again:<verbatim>LANG=de_DE
+LANGUAGE=de_DE.UTF-8
+LC_ALL=de_DE.UTF-8</verbatim>
+   
+
+---++ Users
+   * Add user to sudoer:
+      1. Edit sudoer file:<verbatim>sudo pico /etc/sudoers</verbatim>
+      1. Follow this link: http://www.pendrivelinux.com/how-to-add-a-user-to-the-sudoers-list/
+
+
+-- Main.ShuoYang - 2012-01-16

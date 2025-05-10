@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="rao" comment="" date="1539033744" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+++ ASR toolkits 
+
+   * Kaldi
+   * CMU Sphinx
+   * DeepSpeech
+
+Need to decide on which one we will be using for our work (preferebly 2)
+
+---+++ Tasks for this week
+
+   * Installation steps for all the above three
+   * Read the papers thoroughly
+   * Check if the words can be added dynamically
+   * Check if its useful for both command and control / Conversation
+
+---++ Summary: 
+---++ Predicting Causes of Reformulation in Intelligent Assistants
+
+IA users tend to reformulate their request when they do not get expected results. This paper proposes a method to automatically detect the causes for reformulation.
+ 
+Dataset: User logs of a commercial IA was used to create the dataset. 
+(U1,U2): pair of utterance where U2 is reformulation of U1.
+Character based edit distance to identify reformulation pairs such as 'what's up' and 'whatsup'
+List of annotation lables on the dataset are No Error, ASR Error, NLU Error and LG Error
+
+Analysis on correction types:
+
+   * ADD: Sequence of word is added to U1
+   * OMIT: Sequence of words in U1 are omitted in U2
+   * PAR: A sequence of words in U1 changes into another sequence of words in U2
+   * OTHER: Matches none of preceding correction types
+ASR Error had higher percentage of PAR than other correction types. No Error had large percentage of PAR and ADD. NLU Error and LG Error has similar distribution of correction type.
+
+Analysis of input types:
+
+Users tend to switch input type when they don't get the expected result. Voice to text switch is more frequent in ASR Error. Voice to text and text to voice switch is observed in case of NLU Error. Small number of voice to text switch is observed in No Error.
+
+Features
+
+   * Session features
+   * Reformulation features
+   * ASR features
+   * NLU features
+   * LG features
+  
+Experimental Settings:
+
+   * 928 samples from the dataset mentioned above
+   * 10-fold cross validation to evaluate the performance
+   * Linear SVM classifier to train the model with features mentioned abaove.
+
+Baseline model was trained with the same experimenatal settings except for the features. They considered on Session and Reformational features. They did not consider the features related to the components on IA.
+
+Results: The proposed model out performs the baseline model. It distinguishs No Error from other lables more accurately.
+
+
+
+ 
+
+
+
+-- Main.MohsenMesgar - 2018-09-26
+   * [[MondayTTACHURL/W17-5536.pdf][W17-5536.pdf]]: W17-5536.pdf</verbatim>
+
+   * [[MondayTTACHURL/p9-bohus.pdf][p9-bohus.pdf]]: p9-bohus.pdf</verbatim>
+
+   * [[MondayTTACHURL/asru11-kaldi.pdf][asru11-kaldi.pdf]]: asru11-kaldi.pdf</verbatim>
+
+   * [[MondayTTACHURL/comparision.pdf][comparision.pdf]]: comparision.pdf</verbatim>
+
+   * [[MondayTTACHURL/The_CMU_SPHINX-4_speech_recognition_syst.pdf][The_CMU_SPHINX-4_speech_recognition_syst.pdf]]: The_CMU_SPHINX-4_speech_recognition_syst.pdf</verbatim>
+
+%META:FILEATTACHMENT{name="p9-bohus.pdf" attachment="p9-bohus.pdf" attr="" comment="" date="1539001524" path="p9-bohus.pdf" size="93157" user="rao" version="2"}%
+%META:FILEATTACHMENT{name="W17-5536.pdf" attachment="W17-5536.pdf" attr="" comment="" date="1539001490" path="W17-5536.pdf" size="434186" user="rao" version="1"}%
+%META:FILEATTACHMENT{name="asru11-kaldi.pdf" attachment="asru11-kaldi.pdf" attr="" comment="" date="1539001568" path="asru11-kaldi.pdf" size="136134" user="rao" version="1"}%
+%META:FILEATTACHMENT{name="comparision.pdf" attachment="comparision.pdf" attr="" comment="" date="1539001593" path="comparision.pdf" size="117109" user="rao" version="1"}%
+%META:FILEATTACHMENT{name="The_CMU_SPHINX-4_speech_recognition_syst.pdf" attachment="The_CMU_SPHINX-4_speech_recognition_syst.pdf" attr="" comment="" date="1539001613" path="The_CMU_SPHINX-4_speech_recognition_syst.pdf" size="70790" user="rao" version="1"}%

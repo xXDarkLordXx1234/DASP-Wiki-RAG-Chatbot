@@ -1,0 +1,60 @@
+%META:TOPICINFO{author="ShuoYang" date="1307009984" format="1.1" reprev="173" version="173"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Juni 2011
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Asynchrone Result Collector | 10 | * |
+
+---+++ Subtasks
+
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| SIGMUND, AyncResultCollector | 01.06.2011 | 3.5 | Search Service nun lässt sich ausschalten mit Enter-Taste in Konsole. <p> Synchrone Result Collector als ein Tag in SVN gesichert so dass Asynchron Result Collector in Branch sicher weiter entwickelt werden kann. <p> Weitere Implementierung von Asynchrone Result Collector | * |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 64)$EXEC($GET(total_hour))"}% | bis Ende Mai noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 19 Stunde Übertrag von April) | |
+<nop>
+
+---+++ Projekte
+---++++ Sigmund
+ShuoYangSigmundProjekt <br>
+ShuoYangSpringWsNotes <br>
+ShuoYangJaxWsNotes
+
+---+++ Dokumente
+ShuoYangMemo
+
+
+*WikiWörterbuch:* <br>
+ShuoYangStatistikInterlanguageLinksWikipedia <br>
+[[http://www.ishuo.de/storage/wikipediaTitlesWithBrackets.txt][List of wikipedia articles, whose title entails brackets]] <br>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ShuoYang/titleWithMultipleTranslations.txt][List of wikipedia articles with multiple interlanguage links]] <br>
+ShuoYangMysqlimportErrorReport
+
+*Lucene Scoring:* <br>
+ShuoYangChangingLuceneScoring <br>
+ShuoYangBM25Guide
+
+*XMLReader:* <br>
+ShuoYangXPathPerformanceAnalysis
+
+*Google Translate:* <br>
+ShuoYangGoogleTranslatePerformanceAnalysis <br>
+ShuoYangGoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangWork1H2011
+
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+-- Main.ShuoYang - 2011-06-02
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%
+%META:FILEATTACHMENT{name="titleWithMultipleTranslations.txt" attachment="titleWithMultipleTranslations.txt" attr="" comment="List of wikipedia articles with multiple interlanguage links" date="1285170011" path="titleWithMultipleTranslations.txt" size="22805" stream="titleWithMultipleTranslations.txt" tmpFilename="/var/tmp/CGItemp3071" user="ShuoYang" version="1"}%

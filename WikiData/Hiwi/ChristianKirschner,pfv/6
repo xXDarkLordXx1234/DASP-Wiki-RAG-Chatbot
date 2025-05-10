@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="ChristianKirschner" date="1303664660" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+<!--
+   * Set ALLOWTOPICVIEW = Main.ChristianKirschner,Main.UkpGroup
+   * Set ALLOWTOPICCHANGE = Main.ChristianKirschner,Main.UkpGroup
+//-->
+
+---+ Christian Kirschner's Work
+
+---++ Project Plan (tentative)
+
+   * *Month 0.0 - 1.5 DATA*
+      * Part 1
+         * Read task description (CICLing sec. 4; IGI sec. rel. anchoring)
+         * Read annotation guidebook
+         * Familiarize with task
+      * Part 2
+         * Look into Wiktionary; structure and API access
+         * Which dimensions are necessary/important to consider for a dataset?
+            * This will be a core question to be discussed
+         * Include Wikisaurus?
+         * Develop a well-balanced reference dataset for the English relation anchoring task (maybe also for the German?) [with !ChM]
+         * Update the annotation guidebook
+      * Part 3
+         * Annotate the data [@ChM find additional annotator(s)]
+         * Evaluate the dataset [with !ChM]
+
+   * *Month 1.5  3.0 METHOD*
+      * Part 4
+         * @ChM Update the anchoring framework
+         * Get the framework to work, familiarize with code
+         * Run the existing methods with old and new data
+         * Analyze errors
+            * What do we need to solve?
+            * What can be improved?
+            * This will be a core question to be discussed
+      * Part 5
+         * Try and develop heuristics
+         * Try and develop new methods, ideas:
+            * PPR?
+            * Graph-based method (Navid?)
+            * PROX?
+            * Milne/Witten?
+
+---++ Current Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Task* | *Date* | *Hours* | *Remarks* |
+| - | 28.03.2011 | 0 | Project Plan (!ChM) |
+| Part 1 + Meeting | 11.04.2011 | 1 | |
+| Datenbank aufsetzen + Workspace anlegen | 11.04.2011 | 0.75 | |
+| In Code einlesen | 12.04.2011 | 0.75 | |
+| Software testen, Abläufe bei Datenerzeugung nachvollziehen, Wiktionary genauer ansehen | 15.04.2011 | 2.5 | |
+| Daten in Datenbank analysieren, Gedanken über Erstellung eines GoldStandards machen | 24.04.2011 | 2.5 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 30 | bis Ende Juni 2011 |
+<nop>
+
+-- Main.ChristianMeyer - 2011-03-28

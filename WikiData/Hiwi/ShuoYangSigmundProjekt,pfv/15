@@ -1,0 +1,235 @@
+%META:TOPICINFO{author="ShuoYang" date="1316728168" format="1.1" version="15"}%
+%META:TOPICPARENT{name="ShuoYangSigmundArbeit"}%
+---+ Notes on Sigmund Project
+
+
+---++ Sigmund Interfaces
+
+---+++ { Vocal Coach, Frontend } to Search Controller
+Search controller is handed search requests
+
+   * Start search: =ExtendSearch= method (defined?)
+   * Extend search: =ExtendSearch= method (defined?)
+   * End search: =StopSearch= method
+
+---+++ Search Controller to Frontend
+Search controller returns search result documents descriptions, including how to obtain the document. If Frontend is interested, it can then progress to obtain the document.
+
+   * Result is sent in < resultList > . Contains "the results for the most confident variant"
+   * Where and how to send alternative results?
+ 
+---+++ Search Controller to Search Modules
+Search controller searches through Search modules
+
+---++++ To CRM Search Module
+
+| *Request* | *Input* | *Output* | *Works?* |
+| =StartSearch= | inputXml: < =InputValues= >, resultCount: int | XML < =ResultSet= > | Yep! |
+| =StartAddressSearch= | inputXml: < =InputValues= > | unknown | No. DataLayerFault: Schwerwiegender Fehler (Ausnahme von HRESULT: 0x8000FFFF (E_UNEXPECTED)) |
+| =GiveFeedback= | inputXml: < =InputValues= > | unknown | No. DataLayerFault: Schwerwiegender Fehler (Ausnahme von HRESULT: 0x8000FFFF (E_UNEXPECTED)) |
+
+
+   * Conflict? "WordA, WordB -> A OR B.", "Currently the web service can't handle input like A OR B ..."
+   * =startSearch=, =startAddressSearch=, =giveFeedback=. (tablename is the document type: Word, PDF, email, contact, ...)
+
+---++++ To Semantic Search Module
+   * Takes requests to perform the desired action. Requests are mostly handled by =execute(ExecuteRequest)=
+   * Only =LoginRequest= is handled by =executeUnauthenticated(ExecuteUnauthenticatedRequest)=
+   * Availability of the web service can be tested using =echo(EchoRequest)=
+   * =LoginRequest=, =LogoutRequest=, =SearchStringRequest=
+
+---+++ Search Modules to Search Controller
+Search module returns search result back to Search controller
+   * From CRM Search Module: =<= =resultList= =>= or =<= =ResultSet= =>= ? (startSearch =ResultSet= =>=)
+   * From Semantic Search Module: =<= =ResultSet= =>=
+
+
+---++ Projekt Zustand
+
+---+++ Existierende Projekte
+
+=de.tudarmstadt.ukp.sigmund.searcher=
+   * Searches a given string in the index with Lucene
+   * Convert the result hitlist to xml
+
+
+---++ Misc
+
+CAS generates its Java client codes with JAXB. And they currently runs WCF based web service (got it from their error messages).
+
+Their web service is *possibly* document based, instead of RPC-based. It can be seen from the generated request types,
+and the way a request is sent. 
+
+
+----++ Anhang
+
+----+++ Felder in der CSV-Datei für Lucene-SearchModule
+
+   * GGUID
+   * InsertTimestamp
+   * InsertUser
+   * UpdateTimestamp
+   * UpdateUser
+   * OwnerName
+   * OwnerGUID
+   * GrpGUID
+   * DelGUID
+   * RecordProperty
+   * ForeignEditPermission
+   * Keyword
+   * DocNumber
+   * DocDate
+   * Costs
+   * CostsEuro
+   * TurnoverEuro
+   * Turnover
+   * Category
+   * Notes
+   * Notes2
+   * Type
+   * ArchiveFile
+   * ExternalLink
+   * CheckOutUserDescription
+   * CheckOutUserGUID
+   * EMailFrom
+   * EMailID
+   * ExternalArchive
+   * CostsReal
+   * CostsIntend
+   * TurnoverReal
+   * TurnoverIntend
+   * Ablageort
+   * gwDocVersion
+   * gwComment
+   * gwAutoVersion
+   * TNCS_DocRef
+   * TNCS_OCR
+   * TNCS_Barcode
+   * gwsType
+   * gwsStatus
+   * OLBelID
+   * OLBelArt
+   * OLEKVK
+   * OLMandantID
+   * gwSigGuid
+   * gwValidateStartDate
+   * gwValidateEndDate
+   * gwDocumentSize
+   * gwDocumentType
+   * GWNotesFormat
+   * gwWorkflowStatus
+   * ExchEntryID
+   * gwCreateBackupVersion
+   * gwReportObject
+   * ITDWORKFLOWDOCUMENT
+   * ITDPROBLEM
+   * ITDSOLUTION
+   * cc_Kreditinstitut
+   * cc_Verwendungszweck
+   * cc_Betragbrutto
+   * cc_Betragnetto
+   * cc_Ausgangskonto
+   * cc_EmpfaengerAbsender
+   * cc_Mwstbetrag
+   * cc_Rechnungsdatum
+   * cc_EinAusAm
+   * cc_Kostenkonto
+   * cc_bezahltam
+   * cc_BICBLZ
+   * cc_Kostenstelle
+   * cc_Erloeskonto
+   * cc_Rechnungsnummer
+   * cc_Kostentraeger
+   * cc_KontoIBAN
+   * cc_BetragOffen
+   * cc_Endkunde
+   * cc_Kontierungsinfo
+   * cc_BetragBezahlt
+   * gwFileType
+   * ITDSECTION
+   * PRODUCTGUID
+   * SECTIONGUID
+   * VERSIONFROM
+   * VERSIONTO
+   * VERSIONFROMGUID
+   * VERSIONTOGUID
+   * GWSPRODUCT
+   * gwMailMergeProfile
+   * gwMailMergeSender
+   * gwMailMergeSubject
+   * gwMailMergeStatus
+   * gwDocumentLanguage
+   * CC_REFERENZ
+   * CC_GATTUNG
+   * CC_VERWEIS
+   * KEYWORDADDITION
+   * CC_RECHDATUMLIEFENDK
+   * CC_RECHNRLIEFENDK
+   * CC_BEZHLTAM
+   * CC_EINAUS
+   * GWMAILMERGEUSERGUID
+   * GWMAILMERGEEXECTIME
+   * GWMAILMERGEOPTIONS
+   * GWMAILMERGEAPPSERVID
+   * DATEIPFAD
+
+----+++ XML-Strukturen
+
+----++++ =ResultSet=
+CheckArchiveFilesResponse.ResultXML vom Typ String enthält die übliche XML-Struktur mit den Metadaten:
+<verbatim>
+<ResultSet>
+    <Data>
+        <GUID>[GUID des Datensatzes]</GUID>
+        <FILENAME>[Dateiname, wie er als Parameter im Request angegeben wird]</FILENAME>
+        <KEYWORD>[Stichwort]</KEYWORD>
+        <NUMBER>[Nummer]</NUMBER>
+        <TYPE>["DOCUMENT" für Dokumente und -versionen, "EMAIL" für E-Mails]</TYPE>
+        <NOTES2>[Notizen des Dokuments als unformatierter Text, bei E-Mails nicht verwendet]</NOTES2>
+        <NOTES2>[Notizen der E-Mail als unformatierter Text, bei Dokumenten nicht verwendet]</NOTES2>
+    </Data>
+    <Data>
+        ...
+    </Data>
+</ResultSet>
+</verbatim>
+
+
+----++++ =InputValues=
+Ein Beispiel:
+<verbatim>
+<sticky>
+%CODE{lang="xml" [num="10"]}% 
+
+<?xml version="1.0"?>
+<InputValues>
+	<Searchwords>uk</Searchwords>
+	<UserID>1</UserID>
+	<SessionID>1</SessionID>
+	<Notes2>
+		<WithNotes2>true</WithNotes2>
+	</Notes2>
+	<LinkCount>
+		<WithLinkCount>true</WithLinkCount>
+	</LinkCount>
+	<IndexingService>
+		<WithIndexingService>true</WithIndexingService>
+	</IndexingService>
+	<StandardRestrictions>
+		<WithStandardRestrictions>true</WithStandardRestrictions>
+	</StandardRestrictions>
+	<!-- <TablePreferences>
+		<table tablename=...>
+			<percent>INTEGER</percent>
+		</table>
+		<table tablename=...>
+			<percent>INTEGER</percent>
+		</table>
+	</TablePreferences>  -->
+</InputValues>
+
+%ENDCODE%
+</sticky>
+</verbatim>
+
+-- Main.ShuoYang - 2011-05-25

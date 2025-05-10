@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="NicoErbs" date="1265129445" format="1.1" version="3"}%
+%META:TOPICPARENT{name="NicoErbsHiWiWork"}%
+---++ TfidfConsumer and TfidfAnnotator
+
+%TOC%
+
+---+++ Summary
+A TfidfConsumer processes all documents and counts the number of occurrences of each word (may be a special annotation as well).
+
+   * tf stands for text frequency
+   * idf stands for inverse document frequency
+   * measure to calculate the importance of a term
+
+---+++ Requirements
+   * implements Serializable to store it in file on disk
+   * has method for retrieving tf (number of times in documents divided by number of all words) (parameters: docID, word)
+   * has method for retrieving idf (logarithm of number of documents divided by number of documents containing the word)  (parameters: word)
+   * has method for retrieving tfidf (tf * idf) (parameters: docID, word)
+
+---+++ Implementation of consumer
+   * HashMap with word as key and number of documents containing word as value
+   * HashMap with docId as key and another HashMap as value. The other HashMap has the word as key and the number of words in the document as value
+   
+---+++ Implementation of annotator
+   * Methods for accessing store and retrieving tf, idf, and tfidf
+
+---+++ Implementation of store
+   *    HashMap<Pair of docId and Word, double> values for text frequency
+   *    HashMap<Word,double> values for inverse document frequency
+
+
+-- Main.NicoErbs - 29 Jan 2010

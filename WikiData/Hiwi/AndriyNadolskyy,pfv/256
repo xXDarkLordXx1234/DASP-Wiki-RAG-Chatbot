@@ -1,0 +1,70 @@
+%META:TOPICINFO{author="nadolskyy" comment="save topic" date="1436302391" format="1.1" reprev="248" version="256"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ Tasks
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Aufgaben, Andriy* |
+| *Aufgabe* | *% done* |
+| Einführung für GIS Tutorium erstellen | 100 |
+| Erstellung von Musterlösung für NLP and the Web | 100 |
+| Annotationsstudie von Daniel | 100 |
+| Annotationsstudie von Silvana | 100 |
+| Wrapper für Mate-Tools; dazugehörige Annotatoren | 100 |
+| Anpassungen und Deployment von SIDIM | 100 |
+| Anpassungen für WSD | 100 |
+| DKPRO-TC: setup a demo and tests for unit classification (Issues 60, 77) | 100 |
+| DKPRO-TC: adding a Wiki page with a tutorial for customized readers | 100 |
+| DKPRO-TC: setup a demo with a complex configuration (Issue 62) | 100 |
+| DKPRO-TC: re-writing the evaluation module | 100 |
+| DKPRO-TC: binding the evaluation module to the ML module via Reports | 100 |
+| | |
+
+
+---+++ Protocol
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Andriy, Stunden 2015* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| hours left from the year 2014 | 01.01.2014 | 20.0 | <ul><li> 200 (worked) - 180 (from the contract of year 2014) = 20 </li></ul> |
+| DKPRO-TC | 15.01.2015 | 1.5 | <ul><li> checkout all projects new; </li><li> update all projects; </li><li> look to changes; </li><li> meeting with Johannes; </li></ul> |
+| DKPRO-TC | 21.01.2015 | 1.75 | <ul><li> look to issue 228 and fix it; </li></ul> |
+| DKPRO-TC | 22.01.2015 | 2.5 | <ul><li> compare old evaluation results with new; </li><li> compare the changed data format of id2outcome; </li><li> look if evaluation module is passing own tests; </li><li> commit the code; </li><li> meeting with Johannes; </li></ul> |
+| DKPRO-TC | 25.01.2015 | 4.75 | <ul><li> write ReutersUsingTCEvaluationDemo; </li><li> debugging the running demo: look to label values due to threshold and calculation of measure values; </li><li> commit as multilabel example using tc evaluation (document mode); </li></ul> |
+| DKPRO-TC | 31.01.2015 | 3.25 | <ul><li> meeting mit Johannes </li><li> check the constructing of set of label combinations for confusion matrix: gold labels + predictions regarding to threshold; </li><li> create a reduced training dataset from reuters: http://disi.unitn.it/moschitti/corpora/Reuters21578-Apte-90Cat.tar.gz ; </li></ul> |
+| DKPRO-TC | 01.02.2015 | 10.25 | <ul><li> create a reduced test dataset from reuters: http://disi.unitn.it/moschitti/corpora/Reuters21578-Apte-90Cat.tar.gz ; </li><li> fix a bug at "getSetOfLabelCombinations" and "buildLargeContingencyTable" of MultiEvaluator: inconsistently label combinations of gold and prediction labels; </li><li> rewrite MultiLargeContingencyTable due to simpler understanding (can be optmated regarding run time); </li><li> hand-calculate measures for multilabel evaluator: soft and strict evaluation; </li><li> commit the changes; </li></ul> |
+| DKPRO-TC | 02.02.2015 | 3 | <ul><li> begin with extension of ReutersUsingTCEvaluationDemo with CV; </li><li> debug the old implementation of CV-report; </li><li> email traffic; </li></ul> |
+| DKPRO-TC | 05.02.2015 | 0.75 | <ul><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 19.03.2015 | 0.75 | <ul><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 02.04.2015 | 1 | <ul><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 09.04.2015 | 5.25 | <ul><li> checkout all projects, update all projects; </li><li> look to changes; </li><li> find causes for differences in my and Johannes results for different hand-calculated meausures; </li><li> look to calculation of accuracy; </li><li> read some parts of paper "Macro- and micro-averaged evaluation measures" of Vincent Van Asch; </li><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 23.04.2015 | 1.5 | <ul><li> begin with rewriting of creating small contingency tables without large (directly from id2outcome) </li><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 29.04.2015 | 1.75 | <ul><li> read paper "An empirical study of empty prediction of multi-label classification" and look to: "Classifier Chains for Multi-label Classification", "Efficient Voting Prediction for Pairwise Multilabel Classification", "Multi-Label Classification: An Overview" and "A Literature Survey on Algorithms for Multi-label Learning" </li></ul> |
+| DKPRO-TC | 30.04.2015 | 1.5 | <ul><li> function for creating small contingency tables; </li><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 11.05.2015 | 2.25 | <ul><li> test function for creating small contingency tables; </li><li> compare results with hand calculated results from Johannes; </li><li> look to test cases; </li></ul> |
+| DKPRO-TC | 12.05.2015 | 1.75 | <ul><li> begin with hand calculated test cases (make a table with gold and predictions from id2outcome file); </li><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 14.05.2015 | 1.25 | <ul><li> finished with hand calculations (also of precision, recall and F1-score); </li><li> adjust tests for MultiEvaluatorTest; </li></ul> |
+| DKPRO-TC | 15.05.2015 | 2.25 | <ul><li> got tests for MultiEvaluatorTest running; </li><li> look for bib-tex of used papers and reference it for the measures implementation of evaluation module; </li><li> look for possibilities for references of accuracy measure calculation; </li><li> commit the changes </li></ul> |
+| DKPRO-TC | 16.05.2015 | 2.25 | <ul><li> implement an example based measure: subset accuracy; </li><li> check calculation formula of subset accuracy from other sources (e.g. http://arxiv.org/ftp/arxiv/papers/1307/1307.1769.pdf); </li><li> calculate per hand subset accuracy value and add test for that; </li><li> commit changes; </li></ul> |
+| DKPRO-TC | 19.05.2015 | 1 | <ul><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 28.05.2015 | 1.75 | <ul><li> look to calculation possibilities for tf-idf value; </li><li> look to corresponding code and write down questions; </li><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 9.06.2015 | 3 | <ul><li> getting into the existing code and understanding of dependencies; </li><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 11.06.2015 | 1.5 | <ul><li> use SimpleDkproTCReaderDemo to debug the behavior of LuceneNgramDFE; </li><li> create and use another data set (with repeating words); </li></ul> |
+| DKPRO-TC | 15.06.2015 | 2 | <ul><li> begin with the implementation; </li><li> add for the base of feature extractor for n-grams test values to make it possible to test the calculation of tf-idf; </li><li> think about efficient data structures which should be used for that; </li></ul> |
+| DKPRO-TC | 16.06.2015 | 4.25 | <ul><li> debug / test the implementation; </li><li> improve the implementation; </li><li> write down questions and "interfaces" (with concrete data structures) which are needed for calculations and should be somehow provided; </li><li> meeting with Johannes </li><li> integrate discussed decisions due to the tf-value calculation; </li></ul> |
+| DKPRO-TC | 25.06.2015 | 2.75 | <ul><li> install source tree; </li><li> install git plugin for eclipse and clone the dkpro-tc; </li><li> take a look to de.tudarmstadt.ukp.dkpro.core.frequency-asl; </li><li> meeting with Johannes </li></ul> |
+| DKPRO-TC | 29.06.2015 | 3.25 | <ul><li> trying to use DfStore; </li><li> looked some tutorials due to properly cloning of git-projects and using it in the workspace; </li><li> begin with implementing using DfStore; </li></ul> |
+| DKPRO-TC | 01.07.2015 | 1.75 | <ul><li> continue with implementing; </li></ul> |
+| DKPRO-TC | 02.07.2015 | 4.75 | <ul><li> finished the implementing; </li><li> run / debug some the implementation and look to the output values; </li><li> meeting with Johannes; </li></ul> |
+| DKPRO-TC | 05.07.2015 | 6.5 | <ul><li> add tf-idf parameter; </li><li> debug output with different tf-idf parameter values; </li><li> look how NGramFeatureExtractorTest works; </li><li> write FrequencyDistributionNGramDFETest similar to NGramFeatureExtractorTest and debug it for better understanding; </li><li> create a test file; </li><li> email traffic; </li><li> manual calculation of tf-idf values for the created test file; </li></ul> |
+| DKPRO-TC | 06.07.2015 | 5.5 | <ul><li> add file for df store at FrequencyDistributionNGramDFETest and get it running; </li><li> write a proper Reader for FrequencyDistributionNGramDFETest; </li><li> change log10 to ln for the calculation of tf-idf; </li><li> test the reader and get the tests passing; </li><li> push all changes; </li><li> close the issue #83; </li></ul> |
+| DKPRO-TC | 07.07.2015 | 2.25 | <ul><li> look which of "ngram" tests don't pass </li><li> add missing settings to tests </li><li> change the location of my created test file to get lucene ngram based tests running </li><li> check if all tests are passed </li><li> push changes </li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+       | *Soll* | | 120 | until the end of august 2015|
+
+
+
+---++ Previous work
+AndriyStunden2011 <br>
+AndriyStunden2012 <br>
+AndriyStunden2013 <br>
+AndriyStunden2014 <br>
+
+                        

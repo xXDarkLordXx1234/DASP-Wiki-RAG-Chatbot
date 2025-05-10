@@ -1,0 +1,7 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="14"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+---+++ Terrier Web Interface
+   * *main* website: http://terrier.org/docs/v3.5/terrier_http.html
+   * NOTE: Normal indices cannot be used with the Web-based interface as by default Terrier does not store document snippets/abstracts/meta-data. Hence, the collections need to be indexed from scratch.
+   * trec *examples* : http://terrier.org/docs/v3.5/trec_examples.html (general, not for the web interface)
+   * Terrier wiki: http://ir.dcs.gla.ac.uk/wiki/Terrier

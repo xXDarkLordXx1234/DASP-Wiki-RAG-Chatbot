@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="JudithEckleKohler" date="1294241821" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="MeetingsDictionaryIntegration"}%
+---++++Design options for UKP-LSR
+ 
+   1 Avoid information loss
+      * mapping of all resources to LMF; results in a Meta Resource (MR)
+      * resources are aligned on linguistic annotation level (so-called semantic interoperability), i.e., the meaning/word sense of linguistic categories, such as lexeme,"lemma", "syntactic argument"  is consistent across all resources
+      * alignment on word sense level only partially available
+   2 Intersection of resources regarding linguistic annotation types
+      * Wikipedia, Wiktionary, !WordNet (!GermaNet), !FrameNet (SALSA Lexicon), !OmegaWiki: common linguistic annotation types seem to be lemma, (resource-specific) definition of Word Sense, semantic relations
+      * focus on semantic relations, loss of syntactic, morpho-syntactic annotations and some semantic annotations (e.g., semantic arguments of verbs)
+      * fully integrated and aligned subset can be generated; this subset can easily be provided both in LMF and RDF/OWL (and possibly additional formats)
+   3 Combination of 1 and 2: Generate a fully integrated LSR from MR (my favorite option)
+
+---+++++Representation issues:
+
+   * *Representation of word sense alignment*
+      * word sense alignment between resources in the same language 
+      * bilingual lexicon representation: alignment of corresponding word senses in different languages
+
+   * Options for representation of word sense alignment 
+      * direct link from one word sense to corresponding word sense in another resource
+      * indirect connection of word senses via abstract concept/interlingual entity
+
+   * *Representation of added linguistic annotations*
+      * automatically induced linguistic annotations (for instance, additional semantic relations)
+      * manually added annotations, for instance corrections of errors
+
+   * Options for representation of added linguistic annotations
+      * automatically induced information could be represented in LMF; source information should be included
+
+---+++ ChM's comments
+
+   * When using LMF as a representation for our MR, we should consider already existing mappings of resources into LMF (!WordNet, !FrameNet)
+      * cf. http://lirics.loria.fr/doc_pub/ExtendedExamplesOfLexiconsUsingLMF29August05.pdf
+   * An interesting point is here to (a) transform each resource into LMF individually and combine multiple LMF representations into our MR, or (b) transform each resource into one single LMF, which is directly our MR
+   * Regarding the representations of the word sense alignment:
+      * if we define abstract concepts - how could these be determined; automatically? manually? reference resource? this seems to be a challenging point to me
+      * direct links usually means binary links but also n-ary would by possible (we began discussing on that on Monday)
+
+---+++ Meeting of 5 January, 2011: JEK´s summary of comments
+   * SH: design of the resource depends on application requirements; for instance, number of example sentences to be included
+   * !MiM: prefers MR solution; an MR could initiate word sense alignment efforts in other research groups
+   * !ChW:
+      * linguistic annotation in collaboratively built resources (CKBs) is rare or completely missing (Wikipedia); how will this affect the LMF representation?
+      * mining of linguistic annotations from CKBs requires linguistic knowledge, typically taken from lexical resources such as WordNet; therefore, mining algorithms should profit from word sense aligned resources. An interesting point is, whether word sense alignment should be performed first (in order to get better mining results).   
+
+
+---+++ Additional comments and ideas are welcome. Comment collections of future DictionaryMeetings on the design issue will be posted here.  
+
+  -- Main.JudithEckleKohler - 2011-01-04

@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="JoachimCaspar" date="1228126035" format="1.1" version="2"}%
+%META:TOPICPARENT{name="JoachimCaspar"}%
+---+ Treffen mit Niklas, 27. November 08, 12-13.15 Uhr
+
+   * Folien für 2. Vortrag
+   * tk-Account? Ja habe ich
+   * AnnotationViewer geht nicht? Lsg: Projektname in Eclipse-Startkonfigurtation ändern
+   * TypeSystem für annotationViewer? baue einen all-inclusive-type
+   * Treetagger broken-pipe/write-error: Übergangslsg: Split der infiles in kleinere Dokumente
+   * Wie auf mehrere Annotationen gleichzeitig zugreifen? Sub-Iteratoren.
+   * falsches PoS-mapping? wahrscheinlich ein fehlender Startparameter "document language" in den CPEs
+   * Sclano 07 (Termextractor, Paper aus Aufgabenstellung): domain relevance ist term-frequency (und wird so nicht genannt), domain consensus ist Formel sehr unüblich geschrieben (mit Bindestrichen die wie Subtraktionszeichen aussehen), kurz: paper vielleicht Schrott. Alternativ: tf*idf benutzen wie in Witschel 05 beschrieben: Terminology extraction and automatic indexing - comparison and qualitative evaluation of methods, Proceedings of Terminology and Knowledge Engineering 2005
+   * Architektur: mehrere CPEs notwendig die nacheinander/hintereinander Laufen; Zwischenergebnisse auf korpusebene in filesystem abspeichern und dann eine/mehrere CPEs, die alle Inputs nehmen und End-Annotation erzeugen (oder auch Zwischenannotationen "Terminologiekandidat" usw.)
+
+---+ Treffen mit Niklas, 20. Oktober 08, 18-19 Uhr
+
+   * Folien: Kritik & Feedback
+
+   * svn-Account aktiviert
+
+   * Wie DkPro in UIMA einbinden? done
+
+   * Welchen Vergleichskorpus nehmen? BNC? besser: UkWak
+
+   * Wie kann man eine Schranke bei Ranking-Maßen (loglikelihood, chisquare usw) festlegen? Mittels outlier detection.
+
+   * Homogenität bzw. Abstand zweier Korpora messen mit spearman rank correlation co-efficient? Nur wenn Zeit.
+
+   * Einzelevaluierung single-words, dann multi-words auf Kollokationsbasis, dann Adja-NN-artige Terminologie, dann Gesamtterminologie evaluieren? Nicht notwendig, nur wenn Zeit.
+
+   * Eval ähnlich zu IR-Methode mit prec-rec-Kurve, da rankingbasierte Maße verwendet werden? Nein, eher outlier detection und verbleibende Gesamtmenge an Terminologien unabhängig von Ranks betrachten.
+
+-- Main.JoachimCaspar - 21 Oct 2008

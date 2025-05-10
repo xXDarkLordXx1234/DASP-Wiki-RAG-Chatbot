@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1288540603" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="FrameNetResourcebeschreibung"}%
+---++FrameNet Relations
+   * In !FrameNet, eight different relations between frames are defined
+   * Every relation is directed, which means that there are different names for the two ends of relations.
+   * The following table provides an overview on the different frame relations and how the elements of the relations are called
+| ||__FrameNet Relations__|| |
+|*Relations name*|*Name of super element*|*FrameNet-Option for accessing super elements*|*Name of sub element*|*FrameNet-Option for accessing sub elements*|
+|Inheritance|Parent|Inherits from|Child|Is Inherited by|
+|Perspective_on|Neutral|Neutral|Perspectivized|Perspectivized|
+|Using|Parent|Uses|Child|Used by|
+|Subframe|Complex|Subframe of|Component|Has subframe(s)|
+|Precedes|Earlier|Precedes|Later|Is Preceded by|
+|Inchoative_of|Inchoative|Is Inhoactive of|State|--|
+|Causative_of|Causative|Is Causative of|State|--|
+|See_also|Main entry|See also|Reffering entry|--|
+---++++++ Explanation
+   * *Inheritance* : An IS-A relation. The child frame is a subtype of the parent frame, and each FE in the parent is bound to a corresponding FE in the child. An example is the Revenge frame which inherits from the Rewards and punishments frame.
+      * The bound between FEs of two Frames connected by Inheritance Relation is not marked.
+      * Quantization:
+         * A frame can have from 0 up to 2 parents
+         * A frame can have from 0 up to 41 children
+   * 
+   * *Using* : The child frame presupposes the parent frame as background, e.g the Speed frame uses
+(or presupposes) the Motion frame; however, not all parent FEs need to be bound to child FEs.
+   * 
+
+-- Main.ZijadMaksuti - 2010-10-28

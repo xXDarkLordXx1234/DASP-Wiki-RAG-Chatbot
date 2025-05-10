@@ -1,0 +1,10 @@
+Issue: Java Heap Space Exception running the JUnit-Test src.test.java.de.tudarmstadt.ukp.manuelwick.dkpro.experiments.terrier_indexing()
+
+To reconstruct the error do following:
+ - Checkout the project from SVN
+ - Reference needed libraries (in fact use all libs in directories dkpro, miscellaneous, tika)
+ - Go into source folder src/test/java class de.tudarmstadt.ukp.manuelwick.dkpro.experiments
+ - Change "rootDir" to the folder that contains "documents" where the CRM-Data is in
+ ( e.g. /home/manuel/myfiles/testfolder, that contains CRM in /home/manuel/myfiles/testfolder/documents/[99-109])
+ - Run terrier_indexing()
+ - Go get some coffee

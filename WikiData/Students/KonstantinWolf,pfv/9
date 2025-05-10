@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="kwolf" comment="save topic" date="1479829294" format="1.1" reprev="6" version="9"}%
+21.11.2016:
+   * Vorstellung funktionierende Verlinkung zu EGO
+   * Da die Linkbasis klein ist, Es soll nun fuzzy search verwendet werden um mehr Entitäten zu finden.
+   * Es soll auch ermöglicht werden sowohl zu Wikipedia als auch EGO gleichzeitig zu verlinken
+   * Erläuterung von Fehlern im Dump, tote Links etc.
+
+16.11.2016:
+   * Erläuterung Probleme beim Import der generierten Tabellen
+   * Besprechung Inhalt Mid-Term Presentation
+   * Besprechung Evaluationsmöglichkeiten für das entwickelte System    
+
+9.11.2016
+   * Vorstellung dictionary-Tabelle
+   * Besprechung weitere Ausrichtung 
+
+2.11.2016
+   * Vorstellung der Entitäten -Tabelle
+   * Die Wörterbuch Tabellen sind jedoch noch zu erstellen
+   * Es wurde ein Termin für die Mid-Term Präsentation festgelegt.
+
+26.10.2016:
+   * Bachelor-Anmeldung unterschrieben
+   * System zeigt nun alle Kandidaten an, dafür musste der verwendete Algorithmus gewechselt werden.
+   * Planung Erstellung EGO-Knowledgebase
+   
+19.10.2016:
+   * Wikipedia Knowledgebase wurde importiert
+   * Das Entity-Linking System funktioniert nun wieder mit AIDA, jedoch wird nur der beste Kandidat angezeigt
+
+12.10.2016:
+   * Vorstellung Umstellung auf AIDA und Umzug auf UKP-Server
+   * Wikipedia-KB lässt sich nicht ohne weiteres in PostgreSQL umwandeln, deswegen soll ein PostgreSQL-Server zur Verfügung gestellt werden   *
+
+5.10.2016: 
+   * Organisatorisches wie Zugang zu VPN und Computation Server
+   * Notwendigkeit einer EGO-Knowledgebase und bestehende Arbeiten vorheriger Studenten
+   * Diskussion über die zu verwendene Engine, AIDA scheint ein guter Ausgangspunkt zu sein.
+   * Bis zum nächsten Mal das bestehende System auf UKP-Server umziehen und auf AIDA umstellen.
+
+29.09.2016:
+   * Treffen aufgrund von Krankheit auf den 5.10. verschoben.
+
+22.09.2016:
+   * Besprechung Änderungswünsche an Task Description
+   * Besprechung struktureller Aufbau der Arbeit
+   * Tipps für Literaturrecherche(Welche Themen interessant sind)
+   * Vorstellung Änderungen am Entity Linking System
+
+16.08.2016: 
+   * Vorstellung Web-Front-End
+   * Besprechung gewünschter Änderungen
+
+-- Main.KonstantinWolf - 2016-08-16

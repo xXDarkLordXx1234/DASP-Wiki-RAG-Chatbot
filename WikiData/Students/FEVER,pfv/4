@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="hanselowski" comment="reprev" date="1524757042" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Meeting: 26.04.2018:
+
+   * Evaluation: [[http://fever.ai/task.html][FEVER webpage]]
+
+   * TODOs: 
+      * Clarify if we can use documents for classification or only the selected evidence
+      * Information retrieval: talk to Andreas, Richard, Chris, ... how this can be done?
+      * Hao: 
+         * Prepare dataset for sentence selection (a set of documents with annotated evidence and without)
+         * Apply the implemented classifiers for stance detection for the task and compare to baseline performance
+      * Zile: 
+         * Prepare dataset for claim validation (a set evidence for each claim containing )
+         * Implement the pipeline the baseline pipeline and reproduce the results (once access to the server granted)
+         * Apply the implemented classifiers for stance detection for the task and compare to baseline performance
+   * Modules:
+      * Information retrieval: We need to create an index for search using [[https://lucene.apache.org/][Lucene]]; [[https://github.com/lemire/IndexWikipedia][Creating Lucene index for Wikipedia dump]]
+      * Evidence aggregation (consider as classification problem on sentence level): universal encoders (Facebook, Google), try to train our own sentence encoder, claim validation models, conditional encoders, SNLI multiNLI models ....
+         * Can be later considered as content extraction or contextual ranking problem in order to facilitate the collection of linked evidence
+      * Claim validation (classification problem): basically the same classifier as for the evidence aggregation
+
+
+   
+
+
+
+
+
+
+
+
+---++ Important information about the task
+
+   * Documents: The document collection is whole Wikipedia (5.4M pages)
+   * Evidence: "in 31.75% of the claims more than one sentence was considered appropriate evidence. Claims require composition of evidence from multiple sentences in 16.82% of cases. Furthermore, in 12.15% of the claims, this evidence was taken from multiple pages."
+      
+
+
+
+
+-- Main.AndreasHanselowski - 2018-04-24

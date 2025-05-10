@@ -1,0 +1,37 @@
+%META:TOPICINFO{author="simpson" comment="reprev" date="1510655263" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master's Thesis: Combining Crowdsourced Annotations Using HeatmapBCC For NLP Tasks
+
+---++ Meetings
+
+---+++ 14.11.17
+
+   * Sentence embeddings: download the models and Python interfaces to a home directory, e.g. on Barney or other server
+      * Skipthoughts
+      * Siamese-CBOW 
+      * Infersent
+      * Glove (word embeddings, need to take mean vectors for sentences)
+      * Gensim (word embeddings, need to take mean vectors for sentences)
+   * Now have access to the repo for Paul Felt's work
+      * Need to try running the script including the experiment with the weather dataset
+      * Weather dataset appears to be missing -- see whether running the script produces an error
+      * If there is missing data, notify Paul and ask if he is able to upload it elsewhere 
+   * Continue asking Crowdflower for weather data -- can ask Christopher for contact if no luck
+   * Paralllel for loops in Python: https://pythonhosted.org/joblib/parallel.html
+   * Dask: Pandas in parallel
+   * Bug in IBCC code -- send link to code to ES so he can reproduce the error
+   * MACE: convert the data from 3 column format to a table format
+   * discussion of the impact of different word embeddings is here: https://arxiv.org/abs/1707.06799
+
+---+++ 07.11.17
+
+   * Progress on implementing MACE, IBCC, and majority vote baselines
+   * Data imported for weather dataset into local format
+   * Emails sent to author of comparison paper asking for access to data/code
+   * Todos: 
+      * set IBCC parameters in constructor according to example sent by email
+      * set MACE to provide probabilities using --distribution
+      * Produce plots using the baselines with increasing numbers of annotations per document
+      * Contact Paul Felt if no luck from Kevin Seppi; if this is unsuccessful look at how code from ES can be adapted to implement their baseline
+
+-- Main.EdwinSimpson - 2017-11-08

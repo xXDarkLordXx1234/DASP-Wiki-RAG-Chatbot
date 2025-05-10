@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1381927575" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="RichardSteuerWS2013"}%
+The ...
+
+---++++ Nodes
+
+   * represent single content words (plus POS tags, plus their dependency-relation to the word they modify)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *word* | *POS/relation* | *total count* | *year counts* |
+| lakubovskii | lakubovskii/NNP/pobj/0 | 30 | 1970,3  1979,1  1981,9 ...  | 
+| lakubovskii | lakubovskii/RB/advmod/0 | 56 | 1967,1  1969,2  1974,10 ... | 
+| lakubovskii | lakubovskii/RB/dep/0 | 77 | 1967,2  1973,2  1974,3 ... | 
+| lakuca | lakuca/NNP/conj/0 | 12 | 1970,1  1985,3  1993,1  ... | 
+| lakuca | lakuca/NNP/nn/0 | 18 | 1950,1  1962,1  1970,5  ... | 

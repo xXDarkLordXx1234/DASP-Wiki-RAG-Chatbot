@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="RichardEckart" date="1323211885" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="Resources"}%
+---+ !! UKP Mail Service
+
+---++ Microsoft Outlook 2007
+
+*Note:* this is the only officially supported client
+
+Microsoft Outlook 2007 is available in the Windows VM on your workstation. When you start it, enter your details into the dialogs presented to you and leave it to Outlook to detect all settings automatically. If any problem occurs, please contact system-admin by opening an issue the issue tracker.
+
+---++ Thunderbird
+
+Our Exchange servers provide IMAP and SMTP access for other mail clients. Here are the settings that work with Thunderbird and should also work with alternative IMAP and SMTP clients:
+
+*UKP IMAP server settings (Thunderbird)*
+
+<img src="%ATTACHURLPATH%/UKP_IMAP_settings.png" alt="UKP_IMAP_settings.png" width="569" height="193" />
+
+*UKP SMTP server settings (Thunderbird):*
+
+<img src="%ATTACHURLPATH%/UKP_SMTP_settings.png" alt="UKP_SMTP_settings.png" width="406" height="313" />
+
+%META:FILEATTACHMENT{name="UKP_IMAP_settings.png" attachment="UKP_IMAP_settings.png" attr="" comment="UKP IMAP server settings (Thunderbird)" date="1323211595" path="UKP_IMAP_settings.png" size="33880" user="RichardEckart" version="1"}%
+%META:FILEATTACHMENT{name="UKP_SMTP_settings.png" attachment="UKP_SMTP_settings.png" attr="" comment="UKP SMTP server settings (Thunderbird)" date="1323211622" path="UKP_SMTP_settings.png" size="39687" user="RichardEckart" version="1"}%

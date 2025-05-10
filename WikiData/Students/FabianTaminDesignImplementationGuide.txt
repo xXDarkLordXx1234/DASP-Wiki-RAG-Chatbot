@@ -1,0 +1,82 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="4"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ Design Implementation Guide
+---++ Table of Contents
+%TOC%
+
+---++ GRASP Principle
+*GRASP* (General Responsibility Assignment Software Principles)
+   * Controller
+   * Information Expert
+   * Creator
+
+
+
+*Controller* <br />
+What first object beyond the UI layer receives and coordinates a system operation?
+A controller is the first object beyond the UI layer that is responsible for receiving or handling a system operation message.
+
+
+*Information Expert* <br />
+What is a general principle of assigning responsibilities to objects.
+Assign a responsibility to the information expert - the class that has the information necessary to fulfill the responsibility.
+
+
+*Creator* <br />
+Who should be responsible for creating a new instance of some class.
+
+
+---++ The Dependency Inversion Principle
+High-level modules should not depend on low-level modules. Both should depend on abstractions. 
+
+Abstractions should not depend on details. Details should depend on abstractions.
+
+
+---++ Do not depend on a concrete class
+All relationships in a program should terminate on an abstract class or an interface.
+   * No variable should hold a pointer or reference to a concrete class.
+   * No class should derive from a concrete class.
+   * No method should override an implemented method of any of its base classes.
+
+
+---++ Façade Pattern
+*Intent* <br />
+Provide a unified interface to a set of interfaces in a subsystem. Façade defines a higher-level interface that makes the subsystem easier to use.
+
+*Motivation* <br />
+Structuring a system into subsystems helps reduce complexity. To reduce complexity, it is necessary to minimize the communication and 
+dependencies between subsystems. A façade object provides a single, simplified interface to the more general facilities of a subsystem. 
+
+Façade Pattern Diagram: <br />
+     <img src="%ATTACHURLPATH%/facade_pattern.png" alt="facade_pattern.png" width='767' height='344' />
+
+
+---++ Package Design Principles
+*The Common-Reuse Principle (CRP)* <br />
+_The classes in a package are reused together. If you reuse one of the classes in a package, you reuse them all._
+
+   * If the user is only interested in a part of a package:
+      * the user&#8217;s code still depends on the whole package;
+      * the user&#8217;s code has to be revalidated on any new release of the used package. (Even if the change affects a class that is actually not used.) 
+   * Classes that tend to be reused together belong in the same package. (&#8220;Single-Responsibility Principle (SRP)&#8221; for packages.) 
+   * Classes that are not tightly bound to each other with class relationships should  not be in the same package. 
+   * We want to make sure that the classes in a single package are inseparable, i.e., it is impossible to depend on some and not the others. (High cohesion)
+
+*The Common-Closure Principle (CCP)* <br />
+_The classes in a package should be closed together against the same kinds of changes. A change that affects a package affects all the classes in that package and no other packages._
+
+*Acyclic-Dependency Principle (ADP)* <br />
+_Allow no cycles in the package-dependency graph._
+
+Cyclic Package Dependency: <br />
+     <img src="%ATTACHURLPATH%/Cyclic_Package_Dependency.png" alt="Cyclic_Package_Dependency.png" width='606' height='341' />
+
+Break cyclic package dependency by introducing new package: <br />
+     <img src="%ATTACHURLPATH%/Break_Cyclic_Package_Dependency_by_Introducing_New_Package.png" alt="Break_Cyclic_Package_Dependency_by_Introducing_New_Package.png" width='680' height='375' />
+
+-- Main.FabianTamin - 31 Jul 2009
+
+%META:FILEATTACHMENT{name="facade_pattern.png" attachment="facade_pattern.png" attr="" comment="Façade Pattern Diagram" date="1249037452" path="facade pattern.png" size="30814" stream="facade pattern.png" tmpFilename="/var/tmp/CGItemp60381" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="Cyclic_Package_Dependency.png" attachment="Cyclic_Package_Dependency.png" attr="" comment="Cyclic Package Dependency" date="1249038984" path="Cyclic Package Dependency.png" size="24964" stream="Cyclic Package Dependency.png" tmpFilename="/var/tmp/CGItemp64757" user="FabianTamin" version="1"}%
+%META:FILEATTACHMENT{name="Break_Cyclic_Package_Dependency_by_Introducing_New_Package.png" attachment="Break_Cyclic_Package_Dependency_by_Introducing_New_Package.png" attr="" comment="Break cyclic package dependency by introducing new package" date="1249039040" path="Break Cyclic Package Dependency by Introducing New Package.png" size="30103" stream="Break Cyclic Package Dependency by Introducing New Package.png" tmpFilename="/var/tmp/CGItemp63771" user="FabianTamin" version="1"}%
+%META:TOPICMOVED{by="FabianTamin" date="1249036854" from="Teaching.FabianTaminDesignImplementation" to="Teaching.FabianTaminDesignImplementationGuide"}%

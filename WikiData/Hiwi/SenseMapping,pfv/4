@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1265552988" format="1.1" version="4"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---++ Sense Mapping
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Sense Mapping between Wikipedia and WordNet | |
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Nachtrag vom Januar | 02.02.2010 | -11 | Wikipedia Mining |
+| Sense Mapping | 03.02.2010 | 3 | Einarbeitung in Relatedness, Excel-Extrahierung |
+| Sense Mapping | 05.02.2010 | 3 | Parsing von Excel-Datei.<br> Tabelle mit LinkLabels/Redirects wurde vollständig importiert. |
+| Sense Mapping | 06.02.2010 | 2.5 | Tokenizierung, Einarbeitung in Relatedness |
+| Sense Mapping | 07.02.2010 | 2.5 | Erstellung von Tests/Statistiken. |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende April 2010 |
+<nop>

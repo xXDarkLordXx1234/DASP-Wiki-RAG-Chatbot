@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="ChristianHollubetz" date="1331242802" format="1.1" version="2"}%
+%META:TOPICPARENT{name="ChristianHollubetz"}%
+---+ Game Setups and Implementations
+---++ Existing Games
+
+   * *Quizlet* http://quizlet.com/
+      * Originally a platform for learning flashcards
+      * They have two games: scatter and spacerace
+      * Scatter: Q and A of some flashcards (8 cards = 16 words/phrases) are scattered randomly around
+         * The user has to match Q and A by dragging one over the other
+      * Spacerace: Q of the flashcard moves from left to right
+         * The user has to type in the correct answer before the Q reaches the right border of the browser
+
+---++ Our Game Setups
+
+   * *SCATTER*
+      * Similar to Quizlet's scatter but with sense definitions
+      * The user has to match definitions refering to the same meaning
+      * Open question: How to encode non-alignments, i.e. senses that have no correspondence in the other resource
+         * Maybe add two regions; user has to additionally decide if the pair has the same definition or not
+         * Or some of the definitions can be left w/o alignment
+
+-- Main.ChristianMeyer - 2012-03-05
+
+---++ Aspekte unseres Spiels
+
+   * Der Benutzer kann sich anmelden. Dadurch wird gewährleistet, dass er bereits erspielte Punkte behält. Die Motivation weitere Punkte zu erspielen ist somit höher.
+   * Es gibt unterschiedliche Highscore-Listen. Eine Allgemeine und eine über einen kürzeren Zeitraum. Dadurch soll auch Neueinsteigern ermöglicht werden den ersten Platz zu erreichen.
+   * Aus der Literatur ist bekannt, dass Probleme nicht zu leicht lösbar sein sollten, sonst verliert der Spieler die Lust am Spielen.
+   * Es sind mehrere Level vorgesehen. Ist der Benutzer über einen längeren Zeitraum sehr gut, so erarbeitet er sich Sonder-Level mit einem höheren Schwerpunkt. In diesem Fall ist davon auszugehen, dass der Benutzer die schwereren Probleme eher meistern wird, als das bei schlechteren Spielern der Fall ist.
+   * Der Benutzer kann seine Punkte, die er bekommt, mit einem Faktor größer eins erhalten, sofern er mehrere korrekte Antworten hintereinander liefert (ähnlich dem Goldenen Ton bei Singstar).
+   * Es ist denkbar grundlegend andere Spiele als kleine "Erholungspause" anzubieten, sofern der Spieler schon eine längere Zeit an dem Spiel spielt.
+   * Es wird Skill Level geben, die der Spieler ab einer jeweiligen Punktzahl erreichen kann.

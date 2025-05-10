@@ -1,0 +1,8 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1365513774" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * Fix multi-field index problem. (The Dragon!)
+
+Before the meeting, please<br/>
+ 1) see if you can create a field with a custom name, put all index terms in it, and retrieve<br/>
+ 2) find in which part of DKPro IR or Terrier code merging of scores for each field are taking place,<br/>
+ 3) find a way to debug (printing to screen is fine) scoring of each field<br/>

@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="wichert" comment="" date="1676469218" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Utterance-level analysis of Psychotherapy Dialogues using Hierarchical Dialogue Modeling Approaches
+*Start date:* 02.01.2023
+
+*Supervisor:* Neha Warikoo, Tobias Mayer
+
+---++ Meeting 15.02.2023
+   * Explanation of the structure the BIU Dataset
+
+---++ Meeting 08.02.2023
+   * Setup of overleaf workspace for thesis. Start writing as early as possible
+   * Repeating all the models and their tests on the SLURM cluster. The next step would be to adjust these for the BIU
+
+---++ Meeting 01.02.2023
+   * Questions about SLURM Cluster, basic setup of SLURM Cluster workplace
+
+---++ Meeting 25.01.2023
+   * UKP arrived that day. Talked about things to look into first from the wiki.
+
+---++ Meeting 19.01.2023
+   * Moved from originally Wednesday to Thursday.
+   * Discussion about selected models for the thesis
+      * TodBERT
+      * ConvBERT
+      * ConvBERT (DialoGLUE)
+      * HRCLE
+      * BERT
+
+---++ Meeting 11.01.2023
+   * Talked about the progress of the thesis. I started the outline of the thesis
+
+-- Main.TobiasMayer - 2023-01-11

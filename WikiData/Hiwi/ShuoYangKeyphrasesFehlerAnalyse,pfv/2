@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="ShuoYang" date="1336952116" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ShuoYangKeyphrases"}%
+---++ Tfidf
+---+++ Versuch2
+
+<div id="_mcePaste">Dokument *1020*, *Hybride Identitäten? Selbstverortungen jugendlicher TransmigrantInnen* </div>
+
+<div id="_mcePaste">
+   * *Gold*: Deutschland, Erziehungswissenschaft, Identität, Jugend, Jugendlicher, Migration
+   * *Extracted*: Alexandra, Selbstverortungen, TransmigrantInnen, Transmigrantinnen, Claudia, Portugiesin, Ghana, Fürstenau, Selbstverortung, Hybride, hybrid
+</div> <div id="_mcePaste">Warum Gold nicht extrahiert?</div> <div id="_mcePaste">
+   * Deutschland -&gt; häufig in alle Dokumente, groß Df
+   * Erziehungswissenschaft -&gt; kommt 3 mal vor, nicht häufig
+   * Identität -&gt; große Tf, große Df (55,4%, 1724/3111)
+   * Jugend -&gt; große Tf, große Df (71,7%)
+   * ? Jugendlicher -&gt; normal Tf, normal Df (17,6%)
+   * ? Migration -&gt; große Tf, normal Df (18,1%)
+</div> <div id="_mcePaste">Warum falsch positiv?</div> <div id="_mcePaste">
+   * Alexandra -&gt; Personname, große Tf, kleine Df (2,6%)
+   * Selbstverortungen -&gt; winzige Df (0,13%)
+   * TransmigrantInnen -&gt; winzige Df (0,13%)
+   * TransmigrantInnen -&gt; Fehler, muss ignore case mergen, nicht lemmatized?
+   * Claudia -&gt; Personname, große Tf, normale Df (14,4%)
+   * Portugiesin -&gt; winzige Df (nur dieses Dokument), nicht lemmatized
+   * Ghana -&gt; kleine Df (1,1%)
+   * Fürstenau -&gt; Personname (1,4%)
+   * Selbstverortung -&gt; nicht lemmatized!
+   * Hybride -&gt; große Tf, kleine Df (1,86%)
+   * hybrid -&gt; nicht lemmatized
+</div> <div id="_mcePaste">Einblick:</div> <div id="_mcePaste">
+   * Personname ignoieren
+   * Df?
+   * Lemmatize!
+   * Ignore case
+
+-------------
+Dokument *3472*, *Die Bedeutung der Ganztagsschule für den Wirtschaftsstandort Deutschland*
+
+   * *Gold*: Bedeutung, Beruf, Berufsorientierung, Deutschland, Förderung, Ganztagsbetreuung, Ganztagserziehung, Ganztagsschule, Qualifikation, Schlüsselqualifikation, Schulabgänger, Schule, Schulsystem, Schüler, Wirtschaft, Wirtschaftsstandort
+   * *Extracted*: Ganztagsschule, Lastenausgleich, Leistungserziehung, Hansel, Toni, BDA, Herbolzheim, Wirtschaftsstandort, Küpper, Investitionsprogramm, Ganztagsbetreuung
+Warum richtig extrahiert?
+   * Ganztagsschule -&gt; große Tf, normale Df (12%)
+   * Wirtschaftsstandort -&gt; kleine Tf (3), kleine Df (1,5%)
+   * Ganztagsbetreuung -&gt; kleine Tf (4), kleine Df (2,6%)
+Warum Gold nicht extrahiert?
+
+   * Große Df: Bedeutung (76,3%), Beruf (70,4%), Förderung (69,3%), Qualifikation (28,2%), Schule (92,6%), Schulsystem (26,2%), Schüler (71,3%), Wirtschaft (41,5%)
+   * Normale Df: Berufsorientierung (3, 4,5%), Schlüsselqualifikation (2, 6,9%), Schulabgänger (3, 4,6%), 
+   * Kleine Tf: Ganztagserziehung (1, 1,25%)
+
+Warum falsch positiv?
+
+   * ?: Lastenausgleich (2, 0,51%), Leistungserziehung (3, 0,58%), , Herbolzheim - Verlagsort (3, 1,9%), 
+   * Personname: Hansel (5, 5,3%), Toni (5, 2,5%)
+   * Normal Tf, Normal Df: BDA (4, 2,1%), Investitionsprogramm (4, 3,1%), Küpper - Personname (3, 9,8%)
+
+</div>
+
+-- Main.ShuoYang - 2012-05-13

@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="autosave" date="1380893605" format="1.1" version="4"}%
+%META:TOPICPARENT{name="DependencyParser"}%
+
+-- Main.IrinaAlles - 2012-06-21
+---+ Mate Tools
+
+The tools provide a pipeline of modules that carry out lemmatization, part-of-speech tagging, dependency parsing, and semantic role labeling of a sentence. The systems two main components draw on improved versions of a state-of-the-art dependency parser (Bohnet, 2010) and semantic role labeler (Björkelund et al.,2009) developed independently by the authors. The tools are language independent, provide a very high accuracy and are fast. The dependency parser had the top score for German and English dependency parsing in the CoNLL shared task 2009.
+<SMALL>(taken from https://code.google.com/p/mate-tools/)</SMALL>
+
+---++Usage of the Dependency Parser
+---+++++Installation
+The get the parser download anna-1.jar from https://code.google.com/p/mate-tools/downloads/list
+---+++++Training
+To train your proper model using the mate parser you need a Treebank in [[http://ufal.mff.cuni.cz/conll2009-st/task-description.html][CoNLL09]] format. 
+Your data should look like this:
+<verbatim>1	Die	_	_	ART	ART		_	2	2	NK	NK	_	_
+2	Strafverfolger	_	_	NN	NN		_	5	5	SB	SB	_	_
+3	in	_	_	APPR	APPR		_	2	2	MNR	MNR	_	_
+4	Hannover	_	_	NE	NE		_	3	3	NK	NK	_	_
+5	sehen	_	_	VVFIN	VVFIN		_	0	0	ROOT	ROOT	_	_
+6	das	_	_	PDS	PDS		_	5	5	OA	OA	_	_
+7	anders	_	_	ADV	ADV		_	5	5	MO	MO	_	_
+8	.	_	_	$.	$.		_	5	5	PUNC	PUNC	_	_
+</verbatim>
+
+Use the following command:
+<verbatim>prompt> -Xms1G -Xmx4G -classpath anna-2.jar is2.parser.Parser -model yourModel -train yourTreebank.conll</verbatim>
+---+++++Parsing
+To use your model for parsing, type the following command:
+<verbatim>prompt> java -Xmx3G -classpath anna.jar is2.parser.Parser -model yourModel -test dataToParse.conll -out parsedOutput.conll</verbatim>
+Notice that only [[http://ufal.mff.cuni.cz/conll2009-st/task-description.html][CoNLL09]] format is supported for input and for output.
+%META:FILEATTACHMENT{name="nodup_mate100TigerModel" attachment="nodup_mate100TigerModel" attr="" comment="MateTools Parser model for German based on the TiGER treebank" date="1344241575" path="nodup_mate100TigerModel" size="69077066" user="IrinaAlles" version="1"}%

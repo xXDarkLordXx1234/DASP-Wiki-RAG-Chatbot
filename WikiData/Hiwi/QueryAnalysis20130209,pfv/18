@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="RichardSteuer" date="1360405698" format="1.1" version="18"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+---+++ comparison 0 to 1 expansion terms on query side
+
+   * query ID: "expansion term" (df) for "original term" (df)
+
+---++ helped
+   * 041: "meat" (1.884) for "food" (10.261)
+   * 201: "blaze" (1.478) for "fire" (14.261)
+   * 210, 219: "nominee" (827) for "candidate" (6.499)
+   * 216: "child" (23.658) [as lemma of "children"] for "youngster" (2.268)
+   * 108: "egypt" (639) for "yemen" (85)  
+   * 105: "bronchitis" (81) for "bronchial" (30)
+   * 090: "potato" (1.453) for "vegetable" (1.669)
+   * 088: "cattle" (941) for "cow" (985)
+   * 116: "ski" (1.060) for "snowboard" (30)
+   * 078: "movie" (7.770) for "film" (8.984)
+   * 077: "murder" (7.325) for "suicide" (1.817)
+   * 113: "championship" (9.067) for "cup" (8.887)
+   * 083: "beatles" (412) for "lennon" (243)
+   * 080: "walkout" (272) for "strike" (10.922)
+   * 246: "fidel" (305) for "castro" (566)
+   * 066, 047: "soviet" (2.043) for "russian" (3.189)
+   * 128: "ad" (2.809) for "advertisement" (891)
+   * 133: "troop" (3.364) for "force" (23.765)
+   * 062: "quake" (3.848) for "earthquake" (6.760)
+   * 061: "disaster" (4.107) for "catastrophe" (469)
+   * 046: "sanction" (1.746)  for "embargo" (752)
+   * 053: "dna" (453) for "gene" (1.639)
+   * 140: "telephone" (5.925) for "phone" (7.512)
+   * 050: "uprising" (463) for "revolt" (470)
+
+---++ did not help
+   * 213: "transportation" (3.620) for "travel" (9.665)
+   * 109, 111: "pc" (711) for "computer" (7.641)
+      * in 059 it helped
+   * 106: "vehicle" (5.642) for "car (15.896)
+   * 103: "war" (12.129) for "conflict" (3.902)
+   * 249: "five" (0) for "ten" (3.262)
+   * 067: "vessel" (1.227) for "ship" (3.762)
+   * 125: "american" (25.662) for "european" (8.880)
+   * 058: "abortion" (998) for "euthanasia" (97)
+   * 051: "basketball" (5.332) for "soccer" (3.041)
+
+---+++ Oddities in the data
+
+   * train query 233: "Greenhouse" is a JJ in the title
+   * train query 214: the lemma of "multi-billionaires" still is "multi-billionaires"
+   * train query 235: "Seal-hunting" is a JJ

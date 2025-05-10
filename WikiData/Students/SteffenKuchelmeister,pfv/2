@@ -1,0 +1,41 @@
+%META:TOPICINFO{author="eger" comment="reprev" date="1510654361" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Dependency Parsing as a Sequence Tagging Problem
+
+*Start Date*: 
+
+*Supervisor*: Dr. Steffen Eger
+
+---++ Current Status
+
+---+++ 14.11.2017
+   * Ich habe mich ein wenig mit graph based dependency Parsern auseinander gesetzt. Ich habe mich für den Parser von Dat Quoc Nguyen, Mark Dras and Mark Johnson entschieden. Hier ist das Paper dazu: http://www.aclweb.org/anthology/K17-3014
+      * SE: Problem might be: it's a joint POS tagger and parser. To make a fair comparison overall, you would need to disable POS tagging.
+   * Ich habe das Framework bereits installiert und zum laufen bekommen.
+   * Ich habe noch nicht mit der related work section begonnen.
+   * Ich habe versucht mich schon auf den einen Server mit ssh zu verbinden, das hat aber bisher noch nicht geklappt. Ich denke das irgentwas mit dem vpn nicht stimmt, aber ich bin mir nicht sicher.
+
+   *    Du hattest gesagt, dass du noch Doku zu dem arc standard oracle parser für das lstm-parser (https://github.com/clab/lstm-parser, ParserOracleArcStdWithSwap.jar).
+      * SE: See here for a sample input file to this parser: https://github.com/UKPLab/acl2017-neural_end2end_am/tree/master/progs/LSTM-Parser/sample_data
+
+---++ Meeting Minutes
+
+---++ General
+
+   
+   * Server names: desktop-titanx@ukp.informatik.tu-darmstadt.de, etc.
+
+   * Useful linux commands/programs:
+      * ssh, scp, filezilla, nohup (to run a job without being logged in!), ...
+
+   * Information about the servers: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/ServerJobs
+      * Every job has to be scheduled in the server before being run
+      * If you need access to other servers, just let us know and we can see what we can do.
+      * Information on how to install the libraries in the GPU server: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/DKPro/GpuServer
+      * Policies and some hints on how to use the GPU server, e.g. important details to pay attention when using tensorflow/keras: https://wiki.ukp.informatik.tu-darmstadt.de/bin/viewauth/UKP/GpuUsagePolicy
+
+   * VPN: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/VpnService
+
+
+
+-- Main.SteffenEger - 2017-11-10

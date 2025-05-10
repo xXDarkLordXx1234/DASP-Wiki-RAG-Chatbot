@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="pollak" comment="save topic" date="1440064447" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Work done until 08.05.2015:
+   * Read up on the subject with ATTACKING FAULTY REASONING, A Practical Guide to Fallacy-Free Arguments, SIXTH EDITION, from T. Edward Damer
+   * Initial reading of Raffael Hannemann's Master thesis
+---++ Work done until 24.05.2015:
+   * Programming of a pre-game to facilitate the exchange of fallacious arguments. With the results of the game, a few fallacy-types shall be identified, which qualified for classification and creation the most.
+---++ Work done until 29.06.2015:
+   * With the help of the pre-game, several fallacies were exchanged in three rounds, between Dr. Ivan Habernal, Dicle Öztürk and Christian Pollak.
+---+++ Results from "playing":
+   * False-cause problems: mixed with false reasoning (or giving bad reasons), not obvious causality
+      * Discard the false cause fallacy for now
+   * Appeal to emotions: easy, should start with that
+   * Confusion appeal to emotions vs. red herring:
+      * Appeal to emotions: you draw attention to kids, which also shifts the focus of the argument -> therefoer its strawman/redherring
+      * but it happend only in one set of data
+
+---++ Work on the Program Agitario (from Raffael Hannemann) done until 30.06.2015:
+   1 Backend/Baasbox was setup on a local PC and a Server.
+   2 Arguegame was run on a local PC.
+   3 FallacyRecognitionController was newly created
+   4 ComposeArgumentController was extended, so that it can now also create fallicious arguments
+   5 EntityLinker was extended, so that it can now link arguments to its fallacies
+---+++    So far  diverse Problems occurred:
+   1 The Backend/Baasbox did not allow login, despite correct username/password/appcode. Instead an error occured, that the session timed out. This Problem was solved by setting up Baasbox from scratch and using the foreleast backup to restore the data, since the same problem occurred with the last backup.
+   2 The arguegame is not able to load gamedata. Instead it logs several errors. The Backend is receiving the requests for data, but is also logging different errors.
+
+---++ Update 31.06.2015:
+   * The game works well with the Database from https://argue.ukp.informatik.tu-darmstadt.de
+   * The Backend-System stores the request-handlers as pieces of code, only accessible via the web-interface, that requires administrator-credentials. This code has to be modified in the next step, but the login-data is known only to the author of argitario. The software allows no password reset, so the work has to be stopped until the login-data becomes know.
+-- Main.ChristianPollak - 2015-07-06 - 11:13
+
+---++ Update 31.07.2015:
+   * The fallacy game-part runs successfully in its own game-world, called DarkLands. 
+   * TODO: 
+      * User score for fallacy-gameplaying to create an internal ranking
+      * Insert written fallacious arguments into the game
+      * Define a format to to facilitate the import of new fallacy-data
+      * Setup game on the official ukp-server
+      * Write technical report
+-- Main.ChristianPollak - 2015-07-30 - 15:12
+
+---++ Update 07.08.2015:
+   * The game has been uploaded to the UKP-Server.
+   * Started writing of the technical report.
+   * TODO: 
+      * The existing fallacious arguments can so far not be inserted into the game, because the ArgueAdmin-password is still unknown.
+      * Add explanation-field to fallacy-arguments in the database to explain the user the result of a fallacy-recognition-round.
+-- Main.ChristianPollak - 2015-08-07 - 18:40
+
+---++ Update after Meeting 17.08.2015:
+   * TODO
+      * Update critical bug where fallacious arguments are shown in the pick-a-component game-round.
+      * Update email-address for support-queries.
+   * DONE UNTIL 20.08.2017
+      * Fixed the critical bug locally. But because new ISP restricts OpenVPN-Connections, Update can be put to the UKP-Server only till this weekend(22./23. 08.).
+-- Main.ChristianPollak - 2015-08-20 - 11:34

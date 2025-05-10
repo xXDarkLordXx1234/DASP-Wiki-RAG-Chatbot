@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="tak" date="1459423368" format="1.1" version="2"}%
+%META:TOPICPARENT{name="AnshulTak"}%
+---+ FROM_MONTH - TO_MONTH 2016
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 24-3-2016 | meeting | .5 | |
+| 28-2-2016 | Understand project and project setup | 1.5 | |
+| 29-2-2016 | Groovy | 1 | Did sample groovy tutorial |
+| 29-2-2016 | Project | 2 | Script for issue #3 |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 120

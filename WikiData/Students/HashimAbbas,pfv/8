@@ -1,0 +1,238 @@
+%META:TOPICINFO{author="abbas" comment="reprev" date="1517493838" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! %TOPIC%
+
+---++ 2018-02-01
+
+Following is the update: 
+---+!! Reactive Machine Learning Architecture
+
+what you are currently working on,
+   * Implementation of Reactive API base architecture 
+how far you have gotten,
+   * I have made a base architecture by which we can send a class object from one machine to another
+   * Both machines have reactive communication
+how you are implementing it,
+   * I implemented a Mono and Flux to send and receive class object having objects inside it
+what you plan on working on next,
+   * I will work on the existing machine learning module to merge my code in the existing one
+what issues have come up,
+   * New technology. Spring 5 does not have many scenario examples
+   * Removed old react methodologies from spring
+what you did to get around them,
+   * Learn more about spring 5 framework, event based microservices. 
+what is blocking you if you are stuck.
+   * --
+
+---+!! Mid Term Presentation
+what you are currently working on,
+   * Updating Mid term presentation
+how far you have gotten,
+   * Made new flow chart diagram to review and updated the existing mid term presentation slides  
+how you are implementing it,
+   * Researching and updating the presentation slides 
+what you plan on working on next,
+   * I have my midterm presentation on Tuesday
+what issues have come up,
+   * Not much information regarding architectures of microservices
+what you did to get around them,
+   * Learn more about spring 5 framework, event based microservices
+what is blocking you if you are stuck.
+   * --
+-- Main.HashimAbbas 2018-02-01
+
+---++ 2017-11-20
+
+Before my travel I wanted to update my status regarding the work which I did in the last days. 
+
+---+!! Status Update: 
+As discussed in our last meeting, I had to implement following two architectures:
+
+   * Pulling the data(information) from the database and sending it to another machine/server
+   * Server pulls the data by itself and sends the data(information) in the message arguments to another machine/server
+
+---+!! Pulling the data(information) from the database and sending it to another machine/server:
+
+---+!! Implementation:
+
+   * Created a spring 5 reactive server which has a data model of a person (not a MongoDB)
+   * Created Mono and Flux reactive functions to fetch the data of the person
+      * Fetch single person record by sending a unique id 
+      * Fetch all person records
+      * Insert single person record 
+   * Created a client side which can fetch the person data on another machine
+
+---+!! Working:
+
+   * When the server starts, it automatically inserts 100000 records of person
+   * Once the records are inserted in the person repository, the client side can fetch/insert person data
+   * When the client starts it performs the below operations by requesting the server using REST API:
+      * Fetches all person data
+      * Fetch single person record
+      * Inserts more person record
+   * On the same time we can use curl command on different terminals to fetch all/single person data and also we can insert more person records.
+   
+---+!! Testing:
+
+   * Started the server and inserted the person data
+   * Started the clients side and fetched/inserted person data
+   * Opened three terminals and ran fetch command on two terminals and insert command on one terminal.
+
+---+!! Result:
+
+The server inserted 100000 records in less time
+   * The client side fetched/inserted the records in less time
+   * In the terminal, one person record was inserted while data was fetched in the two terminals
+   * While fetching the person records in two/three different terminals, the server did not waited for one request to completely fetch the whole person data. It kept on sending the data to the terminals as it was getting it from the person repository
+
+
+---+!! Server pulls the data by itself and sends the data(information) in the message arguments to another machine/server:
+
+---+!! Implementation:
+
+   * Added a small function to work on client side to work on JSON objects while fetching the person
+   * Rest of the implementation was same as previous architecture
+
+---+!! Working:
+
+   * As the records were fetched on client side the function was applied on the JSON object
+
+---+!! Testing:
+
+   * Fetched the records on the client side and applied function on the data
+
+---+!! Result:
+
+   * As per my understanding the communication between the server and client was asynchronous and the client was getting the data asynchronously.
+
+-- Main.HashimAbbas 2017-11-20
+
+---++ 2017-11-17
+
+   Try to find benefits and drawbacks for the following scenarios:
+   * Pulling the data(information) from the database and sending it to another machine/server
+   * Server pulls the data by itself and sends the data(information) in the message arguments to another machine/server
+   
+-- Main.HashimAbbas 2017-11-17
+
+---++ 2017-11-15
+
+Following is the update: 
+
+what you are currently working on,
+   * Understand more spring 5 reactive system e.g Mono and Flux
+   * Understand how reactive systems can help in our recommendation service
+how far you have gotten,
+   * I have now some understanding of what Mono and Flux are and how to implement them using router functions introduced in spring 5.  
+how you are implementing it,
+   * I implemented a sample example with Mono and Flux and also saw router functions as well which are introduced in spring 5 framework. 
+what you plan on working on next,
+   * I am currently trying to understand how a monolithical web application could be broken down in event based microservervice. 
+what issues have come up,
+   * Trying to figure out a scenario that how we can implement event based structure in our recommendation service. 
+what you did to get around them,
+   * Learn more about spring 5 framework, event based microservices. 
+what is blocking you if you are stuck.
+   * --
+   
+-- Main.HashimAbbas 2017-11-15
+
+---++ 2017-11-10
+   
+   *    Understand more spring 5 reactive system e.g Mono and Flux
+   *    Understand how reactive systems can help in our recommendation service   
+
+   
+-- Main.HashimAbbas 2017-11-10
+
+---++ 2017-11-31
+
+Following is the update on my status:
+
+* what you are currently working on,*
+I was currently researching:
+   1 How to break our service in an efficient way so we can make it a micro-service
+   2 Finding the best reactive framework for our application
+   2 Now I will try to build a test akka actor model using akka documentation
+
+* how far you have gotten,*
+
+As we discussed in our last meeting I had to go through different reactive frameworks for our application, I found below article which has a really nice explanation and comparison for different reactive frameworks.
+
+https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape 
+
+I read about some of the reactive frameworks which we can implement. Following are some useful links which I read and wanted to share them with you. 
+
+1 Implementing Microservices using Java:
+
+I read this book. The book is nice and basically builds up an architecture how we want to build our application but in the end it is based on Lagom framework which they said is open source but the main services we have to buy from them. So it is no use for us.
+
+https://www.lightbend.com/blog/developing-reactive-microservices-free-oreilly-mini-book-by-java-champion-markus-eisele  
+
+2 Microservice architecture pattern:
+
+Its a small useful article about the microservice architecture pattern which tell how a microservice should be designed.  
+
+http://microservices.io/patterns/microservices.html
+
+3 Building Reactive Systems Using Akkas Actor Model and Domain-Driven Design:
+
+Really nice article that explains how akka actor models fulfils 4 main principles of reactive programming 
+
+https://www.infoq.com/articles/Reactive-Systems-Akka-Actors-DomainDrivenDesign?utm_campaign=infoq_content&utm_source=twitter&utm_medium=feed&utm_term=java 
+
+4 Building Reactive Applications with Akka Actors and Java 8
+
+Another nice article which explains the use of akka actor model with reactive programming
+
+https://www.infoq.com/articles/Building-Reactive-Applications-with-Akka?utm_source=infoq&utm_medium=related_content_link&utm_campaign=relatedContent_articles_clk
+
+* how you are implementing it,*
+
+I think with the above what I have read, I should try to implement a simple test akka actor model and play with it. 
+
+* what you plan on working on next,*
+
+Implementing a test akka model. 
+
+https://doc.akka.io/docs/akka/current/java/actors.html#become-unbecome
+
+* what issues have come up,*
+
+Issues that I came up in many articles were that, some of them were using tools which were not open source
+
+* what you did to get around them,*
+--
+* what is blocking you if you are stuck.*
+
+I will let you know when I test run the test akka actor model. 
+
+*My question:* 
+Do you think I should try to run a test akka actor model now?
+
+-- Main.HashimAbbas 2017-10-31
+
+---++ 2017-10-25
+
+   Thesis Dates:
+   * Begin of period : Th, 26. Oct. 2017 
+   * End of period : Mon, 30. Apr. 2018 
+       
+-- Main.HashimAbbas 2017-10-25
+
+---++ 2017-10-24 11:30 B120
+
+   * Find out reactive programming frameworks  
+
+-- Main.HashimAbbas 2017-10-24
+
+---++ 2017-10-19
+
+   * REC will be on parental leave mid-March 2018 to mid-April 2018 (exact dates not yet defined)
+   * Final presentation: 2018-04-24 (tentative)
+   * Mid-term presentation: 2018-02-06 Room S2|02 A126
+   * Need to prepare paperwork for registering the thesis
+   * [[http://dkpro.github.io/files/DKProCoreStyle_20170725.xml][Eclipse style file]]
+   * Checkstyle setup for [[https://webanno.github.io/webanno/documentation/][WebAnno/INCEpTION]] (see Checkstyle section in Dev Guide for WebAnno 3.3.0-SNAPSHOT)
+
+-- Main.RichardEckartDeCastilho - 2017-10-19

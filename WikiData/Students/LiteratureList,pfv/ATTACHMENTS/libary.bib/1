@@ -1,0 +1,242 @@
+
+
+@book{Gonzalez:02,
+	author = {Gonzalez, Rafael  C.  and Woods, Richard  E. },
+	citeulike-article-id = {131501},
+	howpublished = {Hardcover},
+	isbn = {0201180758},
+	keywords = {image-processing vision},
+	month = {January},
+	priority = {0},
+	publisher = {{Prentice Hall}},
+	title = {Digital Image Processing (2nd Edition)},
+	year = {2002}
+}
+
+
+
+@inproceedings{ojala:00, 
+author = {Timo Ojala and Matti Pietikaeinen and Topi Maeenpaeae}, 
+title = {Gray Scale and Rotation Invariant Texture Classification with Local Binary Patterns}, 
+booktitle = {ECCV '00: Proceedings of the 6th European Conference on Computer Vision-Part I}, 
+year = {2000}, 
+isbn = {3-540-67685-6}, 
+pages = {404--420}, 
+publisher = {Springer-Verlag}, 
+address = {London, UK}
+}
+
+@article{maedche:01,
+	author = {A. Maedche and S. Staab },
+	title = {Ontology Learning for the Semantic Web},
+ journal = { IEEE Intelligent Systems,Special Issue on the Semantic Web},
+ volume = {16},
+ year = {2001},
+ issn = {2},
+ pages = {72- 79}
+
+}
+@misc{ reinberger-mining,
+  author = "Marie-Laure Reinberger and Peter Spyns and Walter Daelemans and Robert
+    Meersman",
+  title = "Mining for Lexons: Applying Unsupervised Learning Methods to Create Ontology
+    Bases"
+}
+@inproceedings{snow:05,
+	author = {Snow, Rion   and Jurafsky, Daniel   and Ng, Andrew  Y. },
+	booktitle = {NIPS},
+	keywords = {patterns},
+	title = {Learning Syntactic Patterns for Automatic Hypernym Discovery.},
+	year = {2005}
+}
+@inproceedings{cederberg:03,
+	author = {S. Cerderberg and D. Widdows},
+	booktitle = {CoNLL},	
+	title = {Using LSA and Noun Coordination Information to Improve the Precision and Recall of Automatic Hyponymy Extraction},
+	page = {111-118},
+	year = {2003}
+}
+
+@inproceedings{chklovski:04,
+	author = {T. Chklovski and P. Pantel},
+	booktitle = {EMNLP},	
+	title = {VerbOcean:Mining the Web for Fine-Grained Semantic Verb Relations},	
+	year = {2004}
+}
+@inproceedings{ciaramita:03,
+	author = {M. Ciaramita and M. Johnson},
+	booktitle = {EMNLP},	
+	title = {Supersense Tagging of Unknown Nouns in WordNet},
+	year = {2003}
+}
+@inproceedings{etzioni:05,
+	author = {O. Etzioni and M. Cafarella and D. Downey and A. Popescu and T. Shaked and S. Soderland and D. Weld and A. Yates},
+	booktitle = {Artificial Intelligence},	
+	title = {Unsupervised Named-Entity Extraction from the Web: An Experimental Study},
+	page ={91-134},
+	volume={165},
+	year = {2005}
+}
+
+@inproceedings{hearst:92,
+	author = {M. Hearst},
+	booktitle = {COLING},	
+	title = {Automatic Acquisition of Hyponyms from Large Text Corpora},
+	year = {1992}
+}
+@inproceedings{pasca:05,
+	author = {M. Pasca},
+	booktitle = {CICLing},	
+	title = {Finding Instance Names and Alternative Glosses on the Web: WordNet Reloaded},
+	page={280-292},
+	year = {2005}
+}
+@inproceedings{lin:03,
+	author = {D. Lin and S. Zhao and L. Qin and M. Zhou},
+	booktitle = {IJCAI},	
+	title = {Identifying Synonyms among Distributionally Similar Words},
+	year = {2003}
+}
+@inproceedings{snow:06,
+	author = {Rion Snow and Daniel Jurafsky and Andrew Y. Ng.},
+	booktitle = {COLING/ACL},	
+	title = {Semantic Taxonomy Induction from Heterogenous Evidence},
+	year = {2006}
+}
+@phdthesis{caraballo:01,
+	author = {S. Caraballo},
+	title = {Automatic Acquisition of a Hypernym-Labeled Noun Hierarchy from Text},
+	school={Brown University},
+	year={2001}
+}
+@misc{dorow:04,
+  author = {Beate Dorow and Dominic Widdows and Katarina Ling and Jean-Pierre Eckmann and Danilo Sergi and Elisha Moses},
+  title = {Using Curvature and Markov Clustering in Graphs for Lexical Acquisition  and Word Sense Discrimination},
+  institution={2nd Workshop organized by the MEANING Project},
+  year = {2005}
+}
+@inproceedings{snow:07,
+	author = {Rion Snow and Sushant Prakash and Daniel Jurafsky and Andrew Y. Ng.},
+	booktitle = {EMNLP},	
+	title = {Learning to merge word senses},
+	year = {2007}
+}
+@inproceedings{widdows:03,
+	author = {Dominic Widdows},
+	booktitle = {HLT-NAACL},	
+	title = {Unsupervised Methods for Developing Taxonomies by Combining Syntactic and Statistical Information},
+	page = {197-204},
+	year = {2003}
+	
+}
+@InProceedings{ponzetto:07b,
+  author =	{Ponzetto, {Simone~Paolo} and Strube, Michael},
+  title =	{Deriving a Large Scale Taxonomy from Wikipedia},
+  booktitle = 	{Proceedings of the 22nd National Conference on Artificial
+		 Intelligence (AAAI-07)},
+  month =	{July},
+  year =	{2007},
+  address =	{Vancouver, B.C.}
+}
+@InProceedings{ponzetto:07c,
+  author =	{Ponzetto, {Simone~Paolo} and Strube, Michael},
+  title =	{An API for Measuring the Relatedness of Words in Wikipedia},
+  booktitle = 	{Companion Volume to the Proceedings of the
+                 45th Annual Meeting of the Association for
+                 Computational Linguistics},
+  month =	{June},
+  year =	{2007},
+  address =	{Prague, Czech Republic}
+}
+@InProceedings{ponzetto:07a,
+  author =    {Ponzetto, {Simone~Paolo}},
+  title  =    {Creating a Knowledge Base from a Collaboratively
+               Generated Encyclopedia},
+  booktitle = {Proceedings of the Human Language Technology Conference of
+               the North American Chapter of the Association for
+               Computational Linguistics Doctoral Consortium},
+  month =     {April},
+  year =      {2007},
+  address =   {Rochester, N.Y.},
+  pages =     {9-12}
+}
+@InProceedings{strube:06,
+  author =	{Strube, Michael and Ponzetto, {Simone~Paolo}},
+  title =	{Wiki{R}elate! {C}omputing Semantic Relatedness Using 
+		{W}ikipedia},
+  booktitle = 	{Proceedings of the 21st National Conference on Artificial
+		Intelligence (AAAI-06)},
+  month =	{July},
+  year =	{2006},
+  address =	{Boston, Mass.},
+  pages =	{1419-1424}
+}
+@InProceedings{ponzetto:06b,
+  author =    {Ponzetto, {Simone~Paolo} and  Strube, Michael},
+  title  =    {Exploiting semantic role labeling, {W}ord{N}et and
+               {W}ikipedia for coreference resolution},
+  booktitle = {Proceedings of the Human Language Technology Conference of
+               the North American Chapter of the Association for
+               Computational Linguistics},
+  month =     {June},
+  year =      {2006},
+  address =   {New York City, N.Y.},
+  pages =     {192-199}
+}
+@InProceedings{ponzetto:06a,
+  author =    {Ponzetto, {Simone~Paolo} and Strube, Michael},
+  title  =    {Semantic Role Labeling for Coreference Resolution},
+  booktitle = {Companion Volume of the Proceedings of the 11th Meeting of
+               the European Chapter of the Association for Computational
+               Linguistics},
+  month =     {April},
+  year =      {2005},
+  address =   {Trento, Italy},
+  pages =     {143-146},
+}
+@InProceedings{girju:03,
+ author = {Roxana Girju and Adriana Badulescu and Dan Moldovan},
+ title = {Learning semantic constraints for the automatic discovery of part-whole relations},
+ booktitle = {NAACL '03: Proceedings of the 2003 Conference of the North American Chapter of the Association for Computational Linguistics on Human Language Technology},
+ year = {2003},
+ pages = {1--8},
+ location = {Edmonton, Canada},
+ publisher = {Association for Computational Linguistics},
+ address = {Morristown, NJ, USA},
+ }
+@inproceedings{turney:06,
+ author = {Peter D. Turney},
+ title = {Expressing implicit semantic relations without supervision},
+ booktitle = {ACL '06: Proceedings of the 21st International Conference on Computational Linguistics and the 44th annual meeting of the ACL},
+ year = {2006},
+ pages = {313--320},
+ location = {Sydney, Australia},
+ doi = {http://dx.doi.org/10.3115/1220175.1220215},
+ publisher = {Association for Computational Linguistics},
+ address = {Morristown, NJ, USA},
+ }
+
+@inproceedings{ravichandran:05,
+ author = {Deepak Ravichandran and Patrick Pantel and Eduard Hovy},
+ title = {Randomized algorithms and NLP: using locality sensitive hash function for high speed noun clustering},
+ booktitle = {ACL '05: Proceedings of the 43rd Annual Meeting on Association for Computational Linguistics},
+ year = {2005},
+ pages = {622--629},
+ location = {Ann Arbor, Michigan},
+ doi = {http://dx.doi.org/10.3115/1219840.1219917},
+ publisher = {Association for Computational Linguistics},
+ address = {Morristown, NJ, USA},
+ }
+
+@inproceedings{kolcz:04,
+ author = {Aleksander Kolcz and Abdur Chowdhury and Joshua Alspector},
+ title = {Improved robustness of signature-based near-replica detection via lexicon randomization},
+ booktitle = {KDD '04: Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining},
+ year = {2004},
+ isbn = {1-58113-888-1},
+ pages = {605--610},
+ location = {Seattle, WA, USA},
+ doi = {http://doi.acm.org/10.1145/1014052.1014127},
+ publisher = {ACM Press},
+ address = {New York, NY, USA},
+ }

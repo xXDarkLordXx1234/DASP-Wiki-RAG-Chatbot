@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1284067894" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+---++ Problems and Questions
+
+%TOC%
+
+---+++ Open
+ nothing.
+---+++ Quickfixed
+
+   * *Problem*: english_keyphrase_stopwords.txt and english_stopwords.txt is missing in dkpro_semantics-0.0.1-SNAPSHOT.jar. There is no "stopwords"-directory in the "resource"-directory.
+      * *Quickfix*: decompiled de.tudarmstadt.ukp.dkpro.semantics.keyphrases.stopwordfilter-0.0.1-SNAPSHOT.jar from Schnupperphase and extracted stopword-texts. Saved them local for now.
+---+++ Solved
+
+nothing. 
+
+-- Main.MateuszParzonka - 09 Sep 2010

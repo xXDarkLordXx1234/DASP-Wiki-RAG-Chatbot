@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1294097517" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="FrameNetResourcebeschreibung"}%
+---++++ !AnnotationLayers im !FrameNet
+   * Mithilfe der !AnnotationLayers werden im !FrameNet Teile der Annotationssätzen, in Abhängigkeit vom Typ des Layers, nach bestimmten Kriterien markiert/gelabelt.
+   * Layers bestehen aus Labels
+      * Jedes Label ist an ein Teil des Satzes gebunden und beinhaltet einen Namen.
+   * Vier Layertypen werden im !FrameNet als "grundlegend"  bezeichnet:
+      1 Target - Markiert nur das Zielwort (die LU selbst als Target) im Annotationssatz
+         * Beinhaltet in der Regel nur ein Label.
+      2 FE - Markiert Frameelemente im Annotationssatz
+      3 GF - Markiert die Teile des Satzes nach der grammatischen Funktion.
+      4 PT - Markiert die Teile des Satzes nach Phrasentypen
+   * Die Auflistung sowie Beschreibung anderer Layers findet man im Buch, Kapitel 3
+
+%META:TOPICMOVED{by="ZijadMaksuti" date="1294095540" from="Hiwi.FrameNetAnnotationSet" to="Hiwi.FrameNetAnnotationLayers"}%

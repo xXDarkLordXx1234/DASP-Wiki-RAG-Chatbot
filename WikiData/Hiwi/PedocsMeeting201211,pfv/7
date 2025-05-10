@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="NicoErbs" date="1352373649" format="1.1" version="7"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++Pedocs meeting @ DIPF 2012-11-08
+
+%TOC%
+
+---+++To present
+   * Unsupervised results
+      * Error analysis of results with tf.idf and tf did not 
+   * Controlled vocabulary
+%INCLUDE{"SIG_KDSL.PedocsControlledVocabularies"}%
+
+---+++To discuss
+   * Advanced mapping to controlled vocabulary
+      * Strict matching
+      * lemmatization
+      * Decompounding
+      * Ontology
+      * Similarity measures
+   * Coreference resolution
+<img src="%ATTACHURLPATH%/../PedocsMeeting201210/coreference.png" alt="NED Coreference" />
+
+
+
+
+-- Main.NicoErbs - 2012-11-08
+
+%META:FILEATTACHMENT{name="Fehleranalyse.xlsx" attachment="Fehleranalyse.xlsx" attr="" comment="Error analysis tf.idf vs. tf" date="1352373584" path="Fehleranalyse.xlsx" size="4665" user="NicoErbs" version="1"}%

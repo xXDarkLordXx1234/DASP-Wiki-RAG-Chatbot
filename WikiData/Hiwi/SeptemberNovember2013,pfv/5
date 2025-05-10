@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="chebotar" comment="reprev" date="1385822745" format="1.1" reprev="1" version="5"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ September 2013 - November 2013
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Uby | 08.10.2013 | 8 | Release Uby 0.4.0 |
+| Uby | 23.10.2013 | 5 | Uby MetaData |
+| Uby | 31.10.2013 | 6 | Uby EYesNo, Refactoring, DB update |
+| Uby | 16.11.2013 | 5 | MetaData in SenseAlignment |
+| Uby | 30.11.2013 | 5 | Index in many-to-one mappings. <br>PredicateArgumentAxis, MetaData |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60 | bis Ende November 2013 |

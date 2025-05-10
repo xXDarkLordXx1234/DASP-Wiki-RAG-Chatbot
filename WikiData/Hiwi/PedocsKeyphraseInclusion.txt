@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++ Gold Keyphrase Inclusion Ratio
+"What's the percentage of gold keyphrases that are present in the text?"
+
+| *Corpus* | *# of Included Gold Keyphrases* | *Total # of Gold Keyphrases* | *% of Included Keyphrases* |
+| Pedocs (German - with lemmatization) | 25581 | 35161 | 0.72753906 |
+| Pedocs (German - without lemmatization) | 24310 | 35163 | 0.6913517 |
+
+*Charts for ratio with lemmatization:* (for raw data, reference the attachment "inclusion_ratio.xlsx")<p>
+   * *Inclusion Ratio Distribution:* <br />
+     <img src="%ATTACHURLPATH%/../ShuoYangKeyphrases/distribution.png" alt="distribution.png" width="500" height="300" /><p>
+     This chart splits the inclusion ratio into intervals ([0%, 5%], (5%, 10%], ..., (95%, 100%]), and shows how many documents of the German corpus are in each ratio interval. <p>
+     *Example:* <ul><li>The rightmost column shows, that there are over 400 documents whose keyphrase inclusion ratios are between 95% (exclusive) and 100% (inclusive).</li><li>The column above "50" shows, that there are almost 200 documents whose keyphrase inclusion ratios are between 45% (exclusive) and 50% (inclusive).</li></ul>
+
+   * *Document Minimal Inclusion Ratio:* <p>
+     <img src="%ATTACHURLPATH%/../ShuoYangKeyphrases/min_ratio.png" alt="min_ratio.png" width="500" height="300" /><p>
+     This chart shows for each inclusion ratio interval, what percentage of documents have _at least_ such an inclusion ratio.<p>
+     *Example:* <ul><li>The leftmost point shows, that 100% of the documents - all documents - have at least 0% (inclusive) inclusion ratio</li>
+      <li>The point above "55" shows, that more than 80% of the documents have at least 55% (inclusive) inclusion ratio</li></ul>
+      
+
+   * [[%ATTACHURL%/../ShuoYangKeyphrases/inclusion_ratio.xlsx][inclusion_ratio.xlsx]]
+
+
+
+-- Main.NicolaiErbs - 2012-06-22

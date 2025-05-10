@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="semmelmann" comment="" date="1611135965" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+*Important Dates:*
+   * 01.12.2020 (Thesis start)
+   * 04.06.2021 (Submission deadline) 
+
+---++ Week 01.12. - 07.12:
+   * Set up conda envs for the baseline models on SLURM (plms-graph2text and emnlp-dualgraph)
+   * Run T5-small baseline model without modification. 
+   * Learn about AMR graph preprocessing.
+   * Install transformer library as editable and add simple linear adapter layer into every T5-Block.
+
+---++ Week 8.12. - 15.12.:
+   * Run t5-small with various bottelneck adapter variations
+   * look into transformers modeling_t5.py source code.
+   * Trying to understand the t5 embeddings in combination with the relative position representations
+   * check emnlp-dualgraph AMR preprocessing node traversal. 
+
+---++ Week 16.12. - 22.12.:
+   * Run t5-small with more bottelneck adapter variations
+   * Try to implement a graph neural network in the adapter layer
+   * worked on getting the edge_index information needed by pytorch geometric to the adapter layer
+   * worked on connecting the node parts after they got split up by the word piece tokenization (currently in progress) 
+ 
+---++ Week 23.12. - 29.12.:
+   * connected node parts after t5 tokenization 
+   * debug node piece connection 
+   * run different variations of the model with a graph convolution adapter
+---++ Week 30.12. - 05.01.:
+   * run more variations with graph convolutional adapter (RGCN, Graph attention layers, experiment with adapter position)
+   * think about thesis structure
+   * start writting about appraoch set up
+---++ Week 06.01. - 12.01.:
+   * research why graph structure adapters do not reach baseline or bottelneck adapter performacne
+   * try running different edge shifting approach (currently fails for reasons I do not understand)
+   * read GCN book and started writing Background chapter about graph neural networks
+---++ Week 13.01. - 19.01.:
+   * fixed edge shifting 
+   * reran bottleneck adapter approaches with linearized input without parenthesis
+   * ran GraphConv adapter experiment only changing 1 layer in contrast to the bottleneck approaches
+   * ran graph attention layer adapter experiment
+   * continued writing Background on GNNs
+-- Main.TobiasAndreasSemmelmann - 2020-12-07

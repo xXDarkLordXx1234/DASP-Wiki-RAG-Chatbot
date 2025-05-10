@@ -1,0 +1,41 @@
+%META:TOPICINFO{author="CarolinDeeg" date="1267013309" format="1.1" reprev="17" version="17"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Carolin Deeg
+
+---++++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" }%
+| *Aufgabe* | *% done* |
+| Extraktion der parallelen Wikiquotes | 100 |
+| Refactoring der WikiAPI | 95 |
+| Modularisieren von Wikulu | 5 |
+
+---++++ Stunden
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Parallele Wikiquotes | 05.01.2010 | 2 | Eclipse eingerichtet und Projekt aufgesetzt |
+| | 06.01.2010 | 1 | Kennenlernen der Wiki-API |
+| | 06.01.2010 | 4 | Zerlegung der Aufgabe in einzelne Teilaufgaben und deren Implementierung |
+| | 08.01.2010 | 2 | Optimierung des Codes und Bugfixes |
+| | 13.01.2010 | 1 | Besprechung |
+| | 13.01.2010 | 2 | Implementierung von zusätzlichen Hilfsmethoden |
+| | 16.01.2010 | 2 | Ergänzen/Hinzufügen der Dokumentation |
+| | 18.01.2010 | 3 | Einfügen des Projekts ins SVN (und benötigte Methoden in bereits vorhandenen Klassen hinzufügen) |
+| | 20.01.2010 | 1 | Ausgabe von Statistiken, Umsortieren des Codes |
+| | 26.01.2010 | 1 | Besprechung |
+| | 19.01.2010 | 2 | Debugging (zu wenig gespeicherte Zitate) |
+| Refactoring der WikiAPI | 03.02.2010 | 1 | Analyse des vorhandenen Codes |
+| | 04.02.2010 | 2 | Implementierung der Klasse Page und Unterklassen |
+| | 05.02.2010 | 3 | Umstellen der verschiedenen WikiAPIs und Tests |
+| | 06.02.2010 | 3 | Debugging und Korrekturen nach der Umstellung |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 30 | 01.01.2010 bis 31.01.2010 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Refactoring der WikiAPI | 08.02.2010 | 1 | Dokumentation |
+| | 08.02.2010 | 4 | Umstellen von anderen Klassen auf neue Funktionen |
+| | 09.02.2010 | 3 | Entfernen von veralteten WikiApi-Methoden und Fehlerbehebungen |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | 01.02.2010 bis 30.04.2010 |
+<nop>

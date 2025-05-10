@@ -1,0 +1,102 @@
+%META:TOPICINFO{author="santos" comment="save topic" date="1510910697" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="AndreasSchaeffler"}%
+
+%TOC%
+ 
+The k40-GPU was donated to UKP through NVidia's *Hardware Grant Program*. Thus, all publications or works that use it should acknowledge NVidia Corporation. Use this template to that:
+
+*We gratefully acknowledge the support of NVIDIA Corporation with the donation of the Tesla K40 GPU used for this research.*
+
+---++ Using the GPU
+Before using the GPU for the first time, you might have to install some additional software (see next section).
+
+---+++ Problemshooting
+
+   * It's frozen...
+      * If you try e.g. <code>$ nvidia-smi -q -g 0 -d UTILIZATION</code> and get no results, something is wrong
+      * Before running <code>$ sudo reboot</code>, make sure no-one is running experiments. Use <code>$ w</code> to display logged users, <code>$ top</code> (or <code>$ ps axf</code>) for running processes, and if there is some activity ask the users first
+
+---++ Installing software
+---+++ CUDA drivers
+The CUDA and cuDNN drivers are already globally installed in the system. If they need to be updated, inform sysadmin.
+
+
+---+++ Environment Variables
+   * Before you can use the GPU, you need to set the environment variable to the CUDA library. You can store this command in your .bashrc file, so that it run each time you log in:
+   * <code>export LD_LIBRARY_PATH=/usr/local/cuda/lib64/</code>
+
+
+---+++ Install Tensorflow
+On the GPU servers you don't have sudo rights. Hence, you must install Tensorflow / Theano / Keras with user permissions.
+
+---++++ Installation in home dir
+   * Install tensorflow in your home dir: 
+      * Python 2: <code>pip install --user tensorflow-gpu</code>    
+      * Python 3: <code>pip3 install --user tensorflow-gpu</code> 
+
+---++++ Installation using virtual environment
+   * Create the virtual environment
+      * Python 2: <code>virtualenv --system-site-packages targetDir</code>
+      * Python 3: <code>virtualenv --system-site-packages -p python3 targetDir</code>
+   * Activate the virtual environment:
+      * <code>source ~/targetDir/bin/activate</code>   
+   * Install Tensorflow:
+      * Check that your console starts with (targetDir)$ - Then the virtual environment is activated    
+      * Python 2: <code>pip install tensorflow-gpu</code>
+      * Python 3: <code>pip3 install tensorflow-gpu</code>
+       
+
+---++ Running !Tensorflow
+   * By default tensorflow will allocate a lot of GPU memory. This usually causes other programs that use the same GPU to crash (OOM). Please, *always* use the following tensorflow configuration so that other people can run code on the GPU as well:
+
+For pure tensorflow code, add the following code to your script
+<verbatim>
+sess_config = tf.ConfigProto()
+sess_config.gpu_options.allow_growth = True
+with tf.Session(config=sess_config) as sess:
+   #... (code) ...
+</verbatim>
+
+For Keras with tensorflow as backend, add the following code at the beginning of your script:
+<verbatim>
+import keras
+import tensorflow as tf
+
+sess_config = tf.ConfigProto()
+sess_config.gpu_options.allow_growth = True
+from keras.backend.tensorflow_backend import set_session
+set_session(tf.Session(config=sess_config))
+
+# Keras code....
+</verbatim>
+
+
+---+++ Limiting number of used GPUs
+   * In most cases, it does not make sense to compute with more than one GPU. However, if you do not explicitly tell tensorflow etc. to use only one GPU, your program might block others users by automatically using all GPUs available. To avoid this: 
+      * Option 1) Start your script with an environment variable =CUDA_VISIBLE_DEVICES="0" python script.py=
+      * Option 2) Export the variable: <code>export CUDA_VISIBLE_DEVICES="0"</code>
+      * Option 3) Add this python code to the start of your code: <code>import os; os.environ["CUDA_VISIBLE_DEVICES"] = "0"</code>
+   * The value "0" is the ID of the GPU. Use <code>nvidia-smi</code> to check for available GPUs. 
+
+---+++ Installation of further Python packages (Keras, Theano....)
+   * You can install python packages with pip either in the home folder (pip install --user | pip3 install --user) or, when you have a virtual environment, in that environment. 
+
+
+
+
+---++ Running Jupiter Notebook
+
+   * You can run Jupiter Notebook on the server (after all the previous steps to ensure Theano and GPU is working)
+      * activate your environment (is called "env-python3-theano" in my case)
+      * <code>(env-python34-theano) habernal@desktop-142:~$ THEANO_FLAGS=mode=FAST_RUN,device=gpu,floatX=float32 jupyter notebook --port=11111</code>
+         * will start Jupyter Notebook on port 11111 (use any inactive port you want)
+   * Open a SSH tunnel for port-forwarding to your local machine in order to connect to the Jupyter Notebook
+      * <code>user-ukp@DIPF-UKP-IH-NB1:~$ ssh -L 8888:localhost:11111 habernal@desktop-142.ukp.informatik.tu-darmstadt.de</code>
+      * Jupyter Notebook will be accessible on my localhost:8888
+   * Shut-down Jupyter after you finish your experiments
+
+
+-
+
+
+-- Main.PedroSantos - 2017-11-17

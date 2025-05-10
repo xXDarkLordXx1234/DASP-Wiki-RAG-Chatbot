@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="PeterThoeny" date="1018175460" format="1.1" version="3"}%
+Welcome to the home of <b>%WIKITOOLNAME%.%WEB%</b>. This is a web-based collaboration area for ...
+
+   * MeetingMinutes
+   * 
+
+---++ Maintenance of the %WEB% web
+<form action="%SCRIPTURLPATH%/search%SCRIPTSUFFIX%/%WEB%/SearchResult">
+   * <input type="text" name="search" size="32" /> <input type="submit" value="Search" /> &nbsp;&nbsp; (More options in WebSearch)
+   * WebChanges: Find out recent modifications to the %WIKITOOLNAME%.%WEB% web.
+   * WebIndex: Display all %WIKITOOLNAME%.%WEB% topics in alphabetical order. See also the faster WebTopicList 
+   * %NOTIFYTOPIC%: Subscribe to be automatically notified when something changes in the %WIKITOOLNAME%.%WEB% web.
+   * %STATISTICSTOPIC%: View access statistics of the %WIKITOOLNAME%.%WEB% web.
+   * %WEBPREFSTOPIC%: Preferences of the %WIKITOOLNAME%.%WEB% web.
+</form>
+
+*Notes:*
+   * You are currently in the %WIKITOOLNAME%.%WEB% web. The color code for this web is a (SPECIFY COLOR) background, so you know where you are.
+   * If you are not familiar with the %WIKITOOLNAME% collaboration tool, please visit %TWIKIWEB%.WelcomeGuest in the %WIKITOOLNAME%.%TWIKIWEB% web first.
+
+%INCLUDE{"%TWIKIWEB%.SiteMap"}%

@@ -1,0 +1,162 @@
+%META:TOPICINFO{author="FabianTamin" date="1244106769" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ User study 1: process data
+---++ Guidelines
+   * Target:
+      * Knowing the how well the proposed design works and knowing the best user interface design
+
+   * Usability test data type: process data
+      * Informal, qualitative observation of what people thinking and doing
+      * An overall feeling of what works and what doesn&#8217;t
+      * Finding critical incident: points during testing at which participants are confused, frustrated or even swear but also points people are pleasantly surprised or say something positive about the site.
+
+   * Setting up the task:
+      * Level of task
+      * Should be about what people want to do
+         * Not to tell participants how to do the task
+      * Task should be realistic
+
+   * Participants
+      * Number: 5-6 (max 12)
+      * Who:
+         * Avoiding friends and family as participants unless you&#8217;re sure they&#8217;ll give honest feedback
+         * Don&#8217;t recruit coworker from down the hall.
+      * Gifts and prizes
+      * Type of experimental design: within-groups experiment
+
+   * Running the test
+      * Location: for prototype it can be practically done anywhere
+      * Ethical consideration
+         * Avoid pressuring people to participate
+         * Make clear that the test is voluntary and that participants can stop the test at any time for any reason
+         * Make clear that you test the user interface design not the participants themselves
+         * If they have problems, it&#8217;s the UI-design fault, not theirs
+      * Pilot Test
+         * Test with two or three people
+         * Coworkers and friends are acceptable
+         * Find and work out any bugs in the procedure
+         * Find out how long the test takes
+            * cut or add more task
+      * Testing Paper Prototypes
+         * Explaining the concept of paper prototypes
+         * Pointing at things using finger as a mouse
+      * Starting & carrying out the test
+         * Greet participants
+            * 3 phases:
+               * Instruction & paperwork
+               * Performing the  task
+               * Debriefing
+            * Steps:
+               * Introduce yourself
+               * Describe the purpose of the test at a high level
+               * Emphasize:
+                  * We are asking you to help us improve the web site by helping us find problems with it. We&#8217;re testing the web site and not you.
+                  * Make clear that you won&#8217;t provide help as participants tackle the task because you want to see how they go through the web site normally.
+         * Fill out paperwork
+            * Basic demographic information:
+               * Name, address
+            * Explain how the data will be collected and will be used
+         * Ask participants to think aloud
+            * If they stop talking asking things like:
+               * So, what are you looking for now?
+               * What are you trying to do now?
+         * Instruct participants on how to start
+            * Ask participant if they have any questions before starting
+         * Take good notes during each task
+            * Take note what each participant says and does
+            * If certain task takes far too long, tell the participant that it&#8217;s okay to move on the next task
+         * Watch closely
+            * Answer any general question that participants may have, but don&#8217;t help them with the tasks
+         * Follow up with a quick survey
+            * After all the tasks have been completed, follow up with short survey
+            * Get the participants&#8217; overall impression and comments about the web site, asking what they liked and disliked about that.
+         * Debrief participants after test
+            * Discussing interesting behavior on the participant&#8217;s part
+               * Go through the web site again to help prompt their memory
+
+   * Analyzing the data
+      * What you saw and what participants said
+      * Improving prototype:
+         * Reduce confusion:
+            * Rename things using familiar language
+            * Explain them in greater detail
+         * Reduce errors and error recovery:
+            * Descriptive, longer link names, which provide more information-scent to help participants find a particular page.
+            * Clear form that helps prevent errors
+            * Meaningful error message
+         * Navigation
+            * Multiple ways to navigate
+            * Browsable content
+      * Important things to analyze:
+         * Why the error occurred
+         * Was the navigation to confusing
+         * Was the information disorganized
+         * Was the page to cluttered
+
+   * Presenting the result
+      * Reporting the result in the form of a written report or an oral presentation
+      * Sections of the report to include:
+         * Executive summary
+            * Quick overview, what you did in the test, summary of the result, run down of the recommendation for improvements
+         * Tasks
+            * What task you carried out
+            * Why these tasks were chosen
+         * Participants
+            * Number of participants
+            * General demographics
+            * Any defining characteristics
+         * Problem found
+            * List the problem encountered, prioritized by severity
+            * Graphs of success rate of participants at completing tasks
+         * Participant feedback
+            * Positive and negative feedback from participants
+         * Suggested improvements
+            * What needs to be changed to improve the website
+            * Categorize it to:
+               * Must do
+                  * Serious problems if it&#8217;s not recovered
+               * Should do
+                  * Problems are annoying but tolerable
+               * Could do
+                  * Benefit at recovery (keep this for next iteration)
+         * Appendixes
+            * Any test materials used during the experiment (demo scripts, instructions, forms)
+
+   * Sorting the list of features according to importance
+   * Rating the importance of each feature
+      * 1 (not important) to 7 (very important)
+
+---++ Question
+   * Start point
+      * Opening snippet
+      * Hovering with delay
+      * Using small icon
+         * Icon position
+         * Icon size
+      * Idea: &#8230;
+   * Multiple or single Snippet
+   * Standard window size
+   * History feature
+      * ?: Meaningful
+      * ?: Confusing
+   * Snippet simplicity
+   * Distracting component (if it exists)
+   * Whether grouping to used and using articles is necessary or it is better if it is better to group them together to related articles
+   * Wished components to be there
+   * Standard sorting in visited articles
+      * Alphabetical
+      * Last visited on top
+      * First visited on top
+   * Font
+      * Size
+      * Type
+
+---++ Card sorting
+   * Labeling for used articles, using article, related article
+   * Labeling for compact view and visited article
+
+---++ Links 
+-- Main.FabianTamin - 04 Jun 2009
+   * [[%ATTACHURL%/User_Study_1.htm][User_Study_1.htm]]: 2009_0604 10:49 -- User Study 1: Process Data
+
+%META:FILEATTACHMENT{name="User_Study_1.htm" attachment="User_Study_1.htm" attr="" comment="2009_0604 10:49 -- User Study 1: Process Data" date="1244105122" path="User Study 1.htm" size="40327" stream="User Study 1.htm" tmpFilename="/var/tmp/CGItemp35569" user="FabianTamin" version="1"}%

@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1250101886" format="1.1" version="8"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ElisabethWolf - 28 Jul 2009
+
+---++ Work
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Yevgen Aufgaben* |
+| *Aufgabe* | *% done* |
+| Analysiere Domain Labels in Wikipedia | 70 |
+| Analysiere die Qualität der Domainlabels, die Überlappung <br />und Unterschiede zu Wordnet Domainlabels | 20 |
+
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Wikipedia Domainlabels | 05.08.2009 | 4.5 | Bericht in PDF-Datei |
+| Wikipedia Domainlabels | 08.08.2009 | 3 | Einarbeitung in JWPL Framework |
+| Wikipedia Domainlabels | 09.08.2009 | 2.5 | Experiment: Extrahieren der Domainlabels aus Wikipedia-Dump. <br />Bericht in PDF. |
+| Büroarbeit | 12.08.2009 | 2 | Befüllung von Werbemappen |
+| Wikipedia Domainlabels | 12.08.2009 | 2 | Einfügung von DomainLabel-Funktionen in JWPL |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende Oktober |
+<nop>
+   * [[%ATTACHURL%/WikipediaDomainlabelsBericht.pdf][WikipediaDomainlabelsBericht.pdf]]: Bericht zu Task 1 und Task 2, Analyse von Domainlabels in Wikipedia
+
+%META:FILEATTACHMENT{name="WikipediaDomainlabelsBericht.pdf" attachment="WikipediaDomainlabelsBericht.pdf" attr="" comment="Bericht zu Task 1 und Task 2, Analyse von Domainlabels in Wikipedia" date="1249845462" path="WikipediaDomainlabelsBericht.pdf" size="97584" stream="WikipediaDomainlabelsBericht.pdf" tmpFilename="/var/tmp/CGItemp54406" user="YevgenChebotar" version="3"}%

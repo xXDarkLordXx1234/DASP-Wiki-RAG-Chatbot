@@ -1,0 +1,119 @@
+%META:TOPICINFO{author="schnober" comment="save topic" date="1417516696" format="1.1" reprev="14" version="15"}%
+%META:TOPICPARENT{name="StudentsList"}%
+%TOC%
+
+---+++ Meeting 02/12/2014
+   * Status
+   * People's Daily paper: initialization step
+      * [[http://commons.apache.org/proper/commons-math/javadocs/api-3.3/index.html][Poisson Distribution in Java]]
+   * Motivationsschreiben, Zeitplan
+   * Nächste Schritte
+   * Nächstes Treffen
+      * !CaS: 15.-17.12.
+      
+---+++ Meeting 25/11/2014
+   * Status
+      * Pipeline für Daily-Paper Ansatz erstellt ([[https://www.dropbox.com/s/vkwpn9lbf5zu4vg/PipelineDesign.pdf?dl=0][Pipeline Design]]), 
+        teilweise implementiert, teilweise getestet.
+      * Vollständig ist die Auswahl von geeigneten Sätzen, möglichen Ausdrücken und Zielen in vereinfachter Form.
+      * Der Bootstrapping Algorithmus ist bis auf den MCMC-Schritt implementiert, aber noch nicht getestet.
+      * Das Einlesen der Texte zusammen mit Information über Land und Zeit muss noch fertig implementiert werden.
+   * Fragen/Probleme
+      * Ist eine Vorsortierung der Texte (nach Zeit) nötig? Wie integriert man so etwas in die Pipeline?
+      * MCMC- Algorithmus/ Bedingte Wahrscheinlichkeiten aus Paper
+   * Protokoll 
+      * Targets erstmal nur Ländernamen (manuelle Liste) als Baseline, dann Vergleich mit NE-basierten Targets
+      * t für WdK nicht sinnvoll, da Bücher voneinander unabhängig sind
+      * Ein Buch als G_{i} -> m_{i,t} bleibt gleich innerhalb eines Buches -> nur ein m_i
+         * Initialisierung von m_{i,t} als Random oder "Neutral" (4) -> ausprobieren
+         * Dokumente sind Seiten (später alternativ Kapitel)
+      * WdkCorpusReader existiert falls nötig 
+   * Nächste Schritte:
+      * MCMC-Schritt implementieren
+      * Motivationsschreiben, Zeitplan 
+   * Nächstes Treffen:
+      * 02/12/2014
+
+---+++ Meeting 11/11/2014
+   * Status
+      * PMIR-Berechnung implementiert, noch nicht an Testdaten ausgewertet
+      * "People's Daily"- Paper und Literatur bzgl. semi-CRFs und MCMC gelesen
+   * "People's Daily"- Paper
+      * Eignung Welt der Kinder- Corpus bzgl. im Paper getroffener Annahmen (1)ok (Error prevention),
+        (2)unklar: ausprobieren, sonst einzelne Verlage statt ganzer Sammlung oder Zeitkomponente streichen?
+      * Grundsätzliches Verständnis, Umsetzung häufig unklar
+   * Code:
+      * gemeinsam durchgehen
+      * [[http://code.google.com/p/dkpro-core-asl/downloads/detail?name=DKProCoreStyle_20120326.xml][Eclipse format style]]
+      * [[http://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/TagSets/stts-table.html][STTS POS Tagset]]
+      * [[http://crf.sourceforge.net/][(semi-)CRF implementation in Java]]
+   * Nächste Schritte:
+      * Vereinfachte Methode mit NERs und ADJ statt semi-CRF
+      * Expressions nur Sentiment Lexikon
+   * Nächstes Treffen:
+      * 18/11/2014, 14:00 Uhr
+   
+---+++ Meeting 05/11/2014
+   * Status:
+      * Manuelle Annotationen: CSniper- Erster Eindruck, [[http://demo-search.thepund.it/][Pundit]] noch nicht angeschaut
+      * Pipeline: Text Reader-> Tokenizer-> POS Tagger-> (Eventuelle) Subjektive Terme nach POS Tags-> PMIR Berechnung (noch nicht fertig)-> Konsolen Ausgabe
+   * Fragen:
+      * Wiki-Benutzung: Kommentare zu CSniper?
+      * PMIR Implementation, noch beenden?
+      * Zugriff Workshop-Paper
+   * SVN repository?
+   * TUDA-DH Meeting am 1.12. 14 bis 17 Uhr
+   * Welt der Kinder Projekttreffen am 7.11.
+   * Nächste Schritte:
+      * Zeitplan, Motivation schreiben
+      * Syntaktisches Verfahren ausbauen (vgl. Workshop-Paper, Term-Ziel) oder anderer Ansatz (mehr Literatur Recherche)?
+      * Sentiment Analysis on the Peoples Daily. (Literatur)
+   * Nächstes Treffen:
+      * Nächsten Dienstag 14:00 Uhr
+
+---+++ Meeting 27/10/2014
+   * Status?
+   * Implementation mit [[https://code.google.com/p/dkpro-core-asl/][DKPro]]
+      * Pipeline: WdkReader -> Segmenter -> IMSCWBWriter -> CSniper
+      * CWB -> CSniper-Pfad
+   * Gold Standard / Evaluation
+      * Manuelle Annotation mit CSNiper
+      * Annotationen +/0/-/check
+      * Gegencheck durch Historiker
+
+---+++ Meeting 20/10/2014
+
+   * Teilnahme an [[SIG_PrintMedia.WebHome][SIG NLP for Print Media]]
+      * Regelmäßige Treffen (bisher alle zwei Wochen) zum gegenseiten Austausch
+      * Rotierend: Präsentation über den aktuellen Stand der eigenen Arbeit
+      * Kooperation mit [[DeborahButh][Deborah Buth]]
+   * Formalitäten
+      * Co-Betreuung durch Erik-Lân Do Dinh (Opinion Mining)
+      * "Expectations for Students"
+      * Account (Wiki etc.)
+      * RBG Account
+      * Transponder?
+      * Vertrag Intellectual Properties
+   * Nächste Schritte:
+      * Beispiele für Opinions in "Welt der Kinder" corpus analysieren (http://wdk.ukp.informatik.tu-darmstadt.de/solr/WdK.test/browse)
+         * Was sind Sentiment/Opinion Words?
+         * Was für Einheiten werden bewertet (Personen, Länder, Ereignisse, ...)
+      * Test mit baseline approach (PMI, Turney, 2002)
+         * Experimentieren mit verschiedenen "sentiment words"
+         * Analyse der Ergebnisse
+      * Motivation, Ziele, Zeitplan
+      * Entwicklungsumgebung: DKPro, Eclipse, Subversion
+   * Nächstes Treffen
+      * Montag, 27.10., 14 Uhr, gemeinsam mit Deborah Buth und Erik-Lân Do Dinh?
+
+---+++ Resources (Papers, Software)
+
+---++ Papers
+   * Li and Hovy, Sentiment Analysis on the Peoples Daily., 2014
+   * Yang and Cardie "Extracting Opinion Expressions with semi-Markov Conditional Random Fields", 2012
+   * Sarawagi and Cohen "Semi-Markov Conditional Random Fields for Information Extraction", 2004
+
+
+
+
+-- Main.CarstenSchnober - 2014-10-20

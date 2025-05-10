@@ -1,0 +1,69 @@
+%META:TOPICINFO{author="BaseUserMapping_999" comment="autosave" date="1370536368" format="1.1" version="2"}%
+%META:TOPICPARENT{name="DkproRepositoryForHiwis"}%
+
+---+ This guide explains how to connect to VPN of TK using Ubuntu
+
+---+++ _info_ 
+
+_In order to reach some servers of UKP it is necessary to connect to VPN first._
+
+_This guide applies for Ubuntu's version 10.04_ 
+
+---+++ The Guide 
+
+   * Click on the network-manager symbol, usually located on the  upper panel.
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/1.png">
+
+   * Go to _"VPN-Verbingungen"_ -> _"VPN konfigurieren"_
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/2.png"> 
+
+   * A new Window appears. On the tab _"VPN"_ choose _"Hinzufügen"_
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/4.png"> 
+
+   * In the fall-down menu choose PPTP protocol, as shown on the screenshot, and click on _"Erzeugen"_
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/5.png"> 
+
+   * A new Window appears. Give the connection a name e.g. _"UKP-VPN"_. The gateway's IP is =130.83.163.135= Don't forget to type in your login-name and password. After that click on _"Advanced"_.
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/6.png">
+
+   * Set the advanced options as shown on the screenshot. After that click on _"OK"_.
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/7.png">
+
+   * Close the previous window by clicking on _"Anwenden"_
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/8.png">
+
+   * Close the _"Netzwerkverbindungen"_  window with a click on _"Schließen"_
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/9.png">
+
+   * Once again, click on network-manager symbol and go to _"VPN-Verbindungen"_ -> _"UKP-VPN"_. This connects your computer with the VPN of TK.
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/10.png">
+
+   * After few seconds a small lock appears on the network-manager symbol, indicating that the VPN-Connection has been successfully established.
+
+<img width="1280" alt="foto1.jpg" src="/wiki/pub/Hiwi/ConnectToVPNUsingUbuntu/11.png">
+
+   * Done.
+
+
+-- Main.ZijadMaksuti - 30 Jul 2010
+
+%META:FILEATTACHMENT{name="1.png" attachment="1.png" attr="" comment="" date="1280502698" path="1.png" size="1135300" stream="1.png" tmpFilename="/var/tmp/CGItemp53011" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="2.png" attachment="2.png" attr="" comment="" date="1280502706" path="2.png" size="1134686" stream="2.png" tmpFilename="/var/tmp/CGItemp52933" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="3.png" attachment="3.png" attr="" comment="" date="1280502719" path="3.png" size="1017187" stream="3.png" tmpFilename="/var/tmp/CGItemp53102" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="4.png" attachment="4.png" attr="" comment="" date="1280502727" path="4.png" size="1021436" stream="4.png" tmpFilename="/var/tmp/CGItemp52882" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="5.png" attachment="5.png" attr="" comment="" date="1280502735" path="5.png" size="1050843" stream="5.png" tmpFilename="/var/tmp/CGItemp52818" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="6.png" attachment="6.png" attr="" comment="" date="1280502749" path="6.png" size="1000134" stream="6.png" tmpFilename="/var/tmp/CGItemp53103" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="7.png" attachment="7.png" attr="" comment="" date="1280502757" path="7.png" size="1029868" stream="7.png" tmpFilename="/var/tmp/CGItemp53078" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="8.png" attachment="8.png" attr="" comment="" date="1280502766" path="8.png" size="1003020" stream="8.png" tmpFilename="/var/tmp/CGItemp52919" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="9.png" attachment="9.png" attr="" comment="" date="1280502774" path="9.png" size="1038045" stream="9.png" tmpFilename="/var/tmp/CGItemp53030" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="10.png" attachment="10.png" attr="" comment="" date="1280502787" path="10.png" size="1150609" stream="10.png" tmpFilename="/var/tmp/CGItemp52943" user="ZijadMaksuti" version="1"}%
+%META:FILEATTACHMENT{name="11.png" attachment="11.png" attr="" comment="" date="1280502797" path="11.png" size="1150847" stream="11.png" tmpFilename="/var/tmp/CGItemp52822" user="ZijadMaksuti" version="1"}%

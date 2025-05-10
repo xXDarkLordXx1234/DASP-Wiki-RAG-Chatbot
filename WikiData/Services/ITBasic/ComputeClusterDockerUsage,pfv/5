@@ -1,0 +1,174 @@
+%META:TOPICINFO{author="alles" comment="" date="1706529847" format="1.1" reprev="4" version="5"}%
+%META:TOPICPARENT{name="ComputeCluster"}%
+---++++ Why Apptainer instead of docker?
+
+   * There are some important differences between Docker and Apptainer:
+      * Docker and Apptainer have their own container formats.
+      * Docker containers may be imported to run via Apptainer.
+      * Docker containers need root privileges for full functionality which is not suitable for a shared HPC environment.
+      * Apptainer allows working with containers as a regular user.
+
+---++++ Apptainer on the Cluster
+
+   * *As we have only recently implemented this feature, there may be issues or situations that have not been tested or are uncomfortable to use. If you notice anything that needs to be changed or adapted, please let us know via ticket@ukp...*
+   * Apptainer is available only on the compute nodes on the cluster. Therefore, to use it you need to either start an interactive job or submit a batch-job to the available SLURM queues.
+   * In the below examples we illustrate the interactive use of Apptainer in an interactive bash shell.
+   * grab a bash shell, e.g.
+      * <verbatim>srun --gres gpu:1 --pty bash -i</verbatim>
+   * check apptainer version
+      * <verbatim>bash-4.4$ apptainer --version
+apptainer version 1.1.9-1.el8 </verbatim>
+   * the most up-to-date help comes from apptainer itself
+      * <verbatim>bash-4.4$ apptainer --help
+
+Linux container platform optimized for High Performance Computing (HPC) and
+Enterprise Performance Computing (EPC)
+
+Usage:
+  apptainer [global options...]
+
+Description:
+  Apptainer containers provide an application virtualization layer enabling
+[...] shortened
+</verbatim>
+
+---++++ Getting existing images onto the cluster
+
+   * Apptainer uses container images which you can scp or rsync to the cluster as you would do with any other file. See Copying Data to & from the cluster for more information.
+   * Note: your folder on the central storage of UKP will be used. You should see a folder /ukp-storage-1/$USERNAME/.apptainer/ that contains all your Apptainer data. 
+   * Apptainer is a fork of Singularity, so must of Singularitys commands and images should work, too.
+   * You can also use the pull or build commands to download pre-built images from external resources, such as Singularity Hub (as of April 26th 2021, Singularity Hub is a read-only archive), the Sylabs Container Library or Docker Hub. For instance, you can download a native Singularity image with its default name from Singularity Hub with:
+      * <verbatim>bash-4.4$ apptainer pull shub://vsoch/hello-world
+INFO:    Downloading shub image
+59.8MiB / 59.8MiB [====================================================================================================================================================================================================================================] 100 % 23.3 MiB/s 0s
+bash-4.4$ </verbatim>
+   * The downloaded image file is hello-world_latest.sif. You can also pull the image with a customized name; e.g., hello.sif:
+      * <verbatim>apptainer pull --name hello.sif shub://vsoch/hello-world</verbatim>
+      * <verbatim>bash-4.4$ apptainer pull --name hello.sif shub://vsoch/hello-world
+INFO:    Use cached image
+bash-4.4$ </verbatim>
+      * Note: the image was already downloaded by me sometime ago, so it is still there and the cached one will be used.
+   * Similarly, you can pull images from Docker Hub:
+      * <verbatim>apptainer pull docker://ghcr.io/apptainer/lolcow</verbatim> 
+
+---++++ Working with images
+
+   * When working with images you could either start an interactive session, or submit a Apptainer job to the available queues. For these examples, we will use a lolcow image from Docker Hub in an interactive bash shell.
+      * <verbatim>srun -p yolo --qos yolo --gres gpu:1 --pty bash -i</verbatim>
+      * <verbatim>bash-4.4$ apptainer pull docker://ghcr.io/apptainer/lolcow
+INFO:    Converting OCI blobs to SIF format
+INFO:    Starting build...
+Getting image source signatures
+Copying blob 5ca731fc36c2 done
+Copying blob 16ec32c2132b done
+Copying config fd0daa4d89 done
+Writing manifest to image destination
+Storing signatures
+2023/07/18 14:49:51  info unpack layer: sha256:16ec32c2132b43494832a05f2b02f7a822479f8250c173d0ab27b3de78b2f058
+2023/07/18 14:49:52  info unpack layer: sha256:5ca731fc36c28789c5ddc3216563e8bfca2ab3ea10347e07554ebba1c953242e
+INFO:    Creating SIF file...
+bash-4.4$</verbatim>
+   * check on the conatiner files
+      * <verbatim>bash-4.4$ ls
+hello.sif lolcow_latest.sif</verbatim>
+   * run a shell
+      * <verbatim>bash-4.4$ apptainer shell lolcow_latest.sif
+INFO:    underlay of /etc/localtime required more than 50 (77) bind mounts
+Apptainer> </verbatim>
+   * run a command
+      * <verbatim>Apptainer> cowsay moo
+ _____
+< moo >
+ -----
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+Apptainer> </verbatim>
+   * you can also pass arguments to the containers
+      * <verbatim>bash-4.4$ apptainer exec lolcow_latest.sif cowsay moo
+INFO:    underlay of /etc/localtime required more than 50 (77) bind mounts
+ _____
+< moo >
+ -----
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+bash-4.4$ </verbatim> 
+
+---++++ GPU example
+
+   * To access Nvidia GPU card driver installed inside of Apptainer container you need to use =--nv= option while executing the container. To verify that you have access to the requested GPUs, run =nvidia-smi= inside the container:
+   * <verbatim>bash-4.4$ singularity exec --nv lolcow_latest.sif /bin/bash
+INFO:    underlay of /etc/localtime required more than 50 (77) bind mounts
+INFO:    underlay of /usr/bin/nvidia-smi required more than 50 (329) bind mounts
+Apptainer> nvidia-smi
+Tue Jul 18 14:56:51 2023
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 530.30.02              Driver Version: 530.30.02    CUDA Version: 12.1     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                  Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf            Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  Tesla P100-PCIE-16GB            On | 00000000:86:00.0 Off |                    0 |
+| N/A   51C    P0               31W / 250W|      0MiB / 16384MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+Apptainer> </verbatim>
+   * you can see that the requested GPU is available in Apptainer
+
+---++++ Accessing files from container
+
+   * Files and directories on the cluster are accessible from within the container. By default, directories under =/scratch=, =/mnt/beegfs/work/$USERNAME/= (central storage), =/mnt/beegfs/shared/= (central storage) and =/tmp= are available at runtime inside the container:
+      * <verbatim>Apptainer> df -h
+Filesystem             Size  Used Avail Use% Mounted on
+tmpfs                   16M   12K   16M   1% /
+squashfuse_ll           72M   72M     0 100% /opt
+/dev/sda2               69G  6.4G   59G  10% /etc/hosts
+devtmpfs               189G     0  189G   0% /dev
+tmpfs                  189G  8.0K  189G   1% /dev/shm
+slurm-nfs:/nfs-mounts  503G   75G  403G  16% /nfs
+beegfs_nodev           466T  202T  265T  44% /mnt/beegfs
+/dev/sda3              809G   36K  768G   1% /scratch
+tmpfs                  189G     0  189G   0% /sys/fs/cgroup
+tmpfs                  189G   50M  188G   1% /run/nvidia-persistenced/socket
+Apptainer></verbatim>
+
+---++++ Singularity containers as SLURM jobs
+
+   * once you have build and moved the container to your storage location, you can also submit Apptainer jobs with sbatch
+      * =srun apptainer_test.sh=
+      * with hello_world.sif container at =/ukp-storage-1/$USERNAME/hello_world.sif=
+      * apptainer_test.sh:
+         * <verbatim>#!/bin/bash
+#
+#SBATCH --job-name=apptainer_test
+#SBATCH --output=/ukp-storage-1/$USERNAME/result.txt
+#SBATCH --error=/ukp-storage-1/$USERNAME/error.txt
+[...]
+
+# Apptainer command line options
+apptainer exec hello_world.sif cat /etc/os-release</verbatim>
+   * result.txt:
+      * <verbatim>
+NAME="Ubuntu"
+VERSION="14.04.6 LTS, Trusty Tahr"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 14.04.6 LTS"
+VERSION_ID="14.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"</verbatim> 

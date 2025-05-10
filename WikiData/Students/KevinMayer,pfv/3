@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="falke" comment="reprev" date="1503561847" format="1.1" reprev="1" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+
+---++ 2017-08-24
+   * Status / Fortschritt
+      * Pipeline läuft auf Server
+      * Laufzeit der aktuellen Implementierung lokal/auf Server getestet
+      * Statistiken erstellt zu Anzahl/Länge der Dokumente
+
+---++ 2017-08-17
+   * Status / Fortschritt
+      * ...
+   * Protokoll Treffen
+      * Pipeline läuft mit GloVe 300d lokal, Zugriff für Server auch vorhanden
+      * Sowohl für 1 also auch 10 Paper
+      * Zum Anschauen der Graphen auch Textformat möglich (extraction.AllPropsMap)
+   * Nächste Schritte
+      * Pipeline auf Server
+      * Bis zu wie vielen Dokumenten skaliert die aktuelle Implementierung
+         * lokal
+         * Server
+      * Statistiken
+         * Wie viele Dokumente
+         * Wie lang die sind Dokumente (avg, min, max)
+         * Wie viele Konzepte im Schnitt pro Dokument
+         * Wie viele Relationen ...
+         * Laufzeit
+         * Speicher
+
+
+   

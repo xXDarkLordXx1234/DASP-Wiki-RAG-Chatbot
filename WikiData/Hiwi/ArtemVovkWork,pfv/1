@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="TorstenZesch" date="1232013223" format="1.1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* ||
+| *Aufgabe*  | *% done*  |
+| Einarbeitung in UIMA | 0 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+<nop>

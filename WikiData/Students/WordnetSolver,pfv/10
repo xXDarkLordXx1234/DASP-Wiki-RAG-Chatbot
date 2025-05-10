@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="GeorgiValkanov" date="1360602815" format="1.1" version="10"}%
+%META:TOPICPARENT{name="GeorgiValkanov"}%
+-- Main.GeorgiValkanov - 2013-01-27
+---+++ Implementation
+
+Wordnet Solver &ndash; Solves an OOO question using a given entity comparator.
+   1 Get answers from OOO question
+   1 Build Wordnet entities
+   1 Compute similarities of all possible pairs of answers 
+      1 If a similarity is equal to -1 (measure is not defined) then set similarity to 0 in order to minimize side-effects of the wrongly used measure
+      1 If a similarity is equal to 0 then leave this unchanged (similarities with value zero will influence confidence)
+   1 For each answer compute sum of similarities to all other answers (i.e. for A1 &ndash; a1a2,a1a3,a1a4)
+   1 Compute the minimal sum of similarities
+   1 Compute the confidence 
+      1 6.1. Confidence = mean value of the difference of all sums of similarities to the minimum
+      1 6.2. Confidence interval
+      1 0 - 0,2 -&gt;LOW
+      1 0,2 - 0,4 -&gt;NORM
+      1 0,4 - inf. -&gt; HIGH
+      1 NORM-&gt;LOW &ndash; unreliable normal confidence influenced by zeros in similarity measures
+      1 HIGH-&gt;LOW &ndash; unreliable high confidence influenced by zeros in similarity measures
+   1 7. To check if an answer is influenced by zero values, we check each of the similarities building the sum. If there are any zeros and this answer is chosen as the OOO and the chosen answer is correct then we set the confidence text accordingly.
+   1 8. The answer with the minimal sum of similarities is the OOO
+---+++ Technical
+
+Used the JiangConrathComparator
+
+Information based relatedness based on lowest common consumer
+---+++ Result
+
+38% correct guesses.

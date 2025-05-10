@@ -1,0 +1,141 @@
+%META:TOPICINFO{author="StefanLaabs" date="1279628622" format="1.1" reprev="12" version="12"}%
+%META:TOPICPARENT{name="StefanLaabs"}%
+ <noautolink>
+
+
+---++ First outlines:
+
+%TOC%
+
+---+++ 1. Introduction/Motivation
+ 
+   * [[%ATTACHURL%/Motivation.pdf][Motivation.pdf]]: Chapter 1
+
+---+++ 2. State-of-the-art
+
+   * [[%ATTACHURL%/StateOfTheArt05de.pdf][StateOfTheArt05de.pdf]]: Entwurf von Kapitel 2 - Version 0.5
+
+---+++ 3. Strategy/Concept
+ 
+   * [[%ATTACHURL%/UseCases.pdf][UseCases.pdf]]: Entwurf von Kapitel 3 - Version 0.3
+
+Offene Frage: Zitieren einer anderen Masterarbeit (Fabian Tamin), bzgl. umfangreicher Beschreibung des Suchvorganges?
+Braucht man das so detailliert? Oder "besser" selbst schreiben?
+Vokabular: Artikel oder allgemeiner Informationen?
+
+---++++ 3.1. Theoretische Grundlagen
+
+Something about the problem that led to the gap
+
+* Main Question: (POV:general/researcher)*
+
+   1. What additional informations can be achieved by using NLP? And how? (-> list)
+      1. Similar texts
+      2. extraction of keyphrases
+      3. finding synonyms
+      4. ....
+   2. How can they help the users of a wiki? (->list)
+       1. find duplicates, find related articles, ...
+       2. find articles, summarization, ...
+       3. ...
+
+*Introduction to wikulu*
+
+How it works. .... ... ....
+
+*Defining and selecting some examples for implementation*
+
+Selection of examples for implementation.
+
+Reasons.
+
+-> Basic tasks of thesis
+
+---++++ 3.2. Use cases
+
+*Defining user classes*
+   1. New User/Explorer: Unexperienced in the usage of wikis and comparable systems
+   2. Advanced User: Familiar with most of the features
+   3. Top User: Administrates/Moderates the Wiki, Organization
+
+*Defining use cases*
+   1. Read something about ...
+   2. Put in informations about ... 
+   3. Structure existing information ...
+_have to been broken down in quite small and basic tasks: analysis step-by-step_
+
+---+++++ Starting Defining the Use Cases:
+
+*Setting:*
+Small company with a new wiki system, that already contains some articles.
+Willing to put all relevant informations quickly to the wiki for further uses.
+
+*First Level Use Cases:*
+
+Level 1 User: Experienced employee know a lot about the company, but is new in the use of a wiki.
+Is told to add some informations related to his work into the wiki.
+So the first step is to find the relevant artice or be sure that there is none.
+
+Finding the artice:
+   * Getting a term in mind for the topic
+   * Search the search interface ;-) (differnt in TWIKI and MediaWiki)
+   * Phrasing a search query 
+   * Checking the results
+   * A: He things none fits his topic
+   * B: He finds an article and wants to add/change some parts
+
+Where can NLP help?
+
+- Query, Search Interface, Results
+  
+A: Creating an artice:
+   * He sets a topic/name for his artice
+   * He starts writing (text, headlines, links)
+   * _Works on layout (tables)_
+   * _Structuring the content_
+
+Further questions: How is the process in mind? What is the order of the steps? Fixed or individual?
+
+Where can NLP help?
+
+- Finding good Topic, Organization, Structuring, Linking
+
+When can these techniques applied and when are they needed?
+
+How should they be deigned?
+
+B: Changing an existing article
+   * _quite similar to A_
+
+*Conception and development of new PlugIns*
+
+Ideas from the use cases should now be a starting point for the development of the new PlugIns.
+
+_( -> Which ideas are implementable? How much work? Existing structure)_
+
+_Conception of Design/Design Principles_
+
+---+++ 4. Design
+
+Guidlines, Heuristics, Norms and Rules to use
+
+Other Usability Techniques to apply (KSL Method, c. Walkthrough)
+
+Results of first design analysis
+
+---+++ 4. Implementation of Mock-Ups
+---+++ 5. First Evaluation
+---+++ 6. Implementation
+---+++ 7. Second Evaluation
+
+---+++ 8. General Discussion
+
+---+++ 9. Conclusions
+---+++ 10. References
+ </noautolink>
+
+-- Main.StefanLaabs - 26 Apr 2010
+
+%META:FILEATTACHMENT{name="Motivation.pdf" attachment="Motivation.pdf" attr="" comment="Chapter 1" date="1278188765" path="Motivation.pdf" size="1778507" stream="Motivation.pdf" tmpFilename="/var/tmp/CGItemp6537" user="StefanLaabs" version="1"}%
+%META:FILEATTACHMENT{name="StateOfTheArt05de.pdf" attachment="StateOfTheArt05de.pdf" attr="" comment="Entwurf von Kapitel 2 - Version 0.5" date="1279022780" path="StateOfTheArt05de.pdf" size="567903" stream="StateOfTheArt05de.pdf" tmpFilename="/var/tmp/CGItemp6450" user="StefanLaabs" version="1"}%
+%META:FILEATTACHMENT{name="UseCases.pdf" attachment="UseCases.pdf" attr="" comment="Entwurf von Kapitel 3 - Version 0.3" date="1279628559" path="UseCases.pdf" size="187126" stream="UseCases.pdf" tmpFilename="/var/tmp/CGItemp6463" user="StefanLaabs" version="1"}%

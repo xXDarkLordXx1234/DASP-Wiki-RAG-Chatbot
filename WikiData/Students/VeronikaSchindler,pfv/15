@@ -1,0 +1,145 @@
+%META:TOPICINFO{author="simpson" comment="reprev" date="1526981150" format="1.1" reprev="15" version="15"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master's Thesis: Combining Crowdsourced Annotations Using !HeatmapBCC For NLP Tasks
+
+---++ Meetings
+
+---+++ 22.05.2018
+
+   * Word embeddings experiments:
+      * Implementing the infersent embeddings and debugging with LogResp
+      * Some words do not have matches -- suggest trying the common crawl embeddings from Stanford or using nltk WordNetLemmatizer if this is a problem
+      * https://nlp.stanford.edu/projects/glove/
+      * Debug embeddings stuff with heatmapBCC instead of LogResp -- avoid writing files for Java
+      * Compare results with heatmapBCC + glove embeddings against word vectors
+   * Active learning experiments:
+      * Written script for reading in argumentation data
+   * Thesis write-up to do: 
+      * Add description of current experiments
+
+---+++ 15.05.2018
+
+   * Discuss the thesis bullet points
+
+---+++ 08.05.2018
+
+   * LogResp -- now running some experiments and have fixed some minor bugs
+   * For next week
+      * Run with different sets of embeddings -- *infersent*, skip-thoughts, siamese-cbow, *p-mean* (with p=3) -- select sentence embedding methods that were shown to be promising in other work, such as Steffen's paper
+      * Rerun experiments to produce plots with all methods present
+      * Produce the input file for AMT
+   * Next priority -- active learning simulation
+
+---+++ 02.05.2018
+   
+   * discussed AMT pipeline
+   * continue working on LogResp
+   * send thesis with bulletpoints to edwin
+   * plan to set up pipeline: 
+      * generate input file for pipeline
+      * read result file (to csv format?)
+      * run pipeline on input file (use -s for sandbox)
+      * implement active learning to choose next batch
+      * implement script which runs these steps repeatedly
+
+---+++ 24.04.2018
+
+   * LogResp loading embedding vectors
+   * AMT dataset -- how to read in the worker labels
+
+---+++ 17.04.2018
+
+   * Review !HeatmapBCC results
+   * Review section headings in Latex thesis template
+   * Planning the active learning expts
+
+---+++ 10.04.2018
+
+   * !HeatmapBCC debugging: 
+      * Bug with feature IDs is fixed
+      * Rerun and check that lower bound values are converging
+      * Produce results for !HeatmapBCC
+   * Thesis: add section headings for next week
+   
+
+---+++ 20.02.2018
+
+   TODOs:
+   * add java code to output softlabels (from LogResp) to CSV file
+   * do sanity check
+   * check right number of softlabels if document has zero annotations
+   * include to current experiment script
+
+   * bulletpoints for midterm talk
+
+---+++ 16.01.2018
+
+   * TODO: set up experiments with Compatibility dataset
+   * TODO: integrate the LogResp and LogResp+W2vec implementations from Paul Felt
+   * TODO (may require more time): integrate HeatmapBCC with W2vec embeddings. May require help from ES to see how to change the code to support vectors with >2 features!
+
+---+++ 02.01.2018
+
+   * fixed errors in roundtrip, can run majority_vore, mace and pyibcc now. Plots for accuracy look ok
+      * main bug was that methodes(ibcc, mace) seemed to return fewer items than the input was (minus one as soon as more than 6000 lines were used) 
+      * -> this is beacuse in one step, a list of tweets (by tweet-text) was created. It turns out that there is one tweet (Is it hot outside?) occures twice with 20 annotations each and different feature_ids'. If list is created by using data.feature_id.unique() instead of data.featurestring.unique(), it works
+   * sklearn.metrics.f1_score(..., average='minor') equals accuracy, is this ok, should I use something differentinstead?
+     [[http://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score][sklearn.metrics.f1_score¶]]
+   *TODO: last two points from last meeting
+
+---+++ 12.12.17
+   * Set up end-to-end experiment with weather dataset, varying numbers of labels (by timestamp) and ibcc -> need to fix some errors
+      * Run the tests with majority voting first to test the set up as there may be an IBCC bug
+      * Run also with MACE 
+   * TODO:
+      * construct gold labels for compatibility (label items with mean rating <1,6 as incompatible, mean >3,7 as compatible, ommit rest)
+      * construct function which chooses items randomly (but so that each document gets one annotation before any document receives a second)
+      * (after Christmas): run logresp (by P.Felt) 
+
+---+++ 28.11.17
+
+   * Weather dataset obtained
+   * Word embeddings:
+      * Skipthoughts -- not found, check out on Barney, there is a version under /data/skipthoughts
+      * Gensim word2vec -- available but trained on Google news data rather than Wikipedia
+      * Infersent -- available following the instructions on readme at top level in Infersent Github
+      * Siamese CBOW trained on Wikipedia 2015
+      * Glove trained on Wikipedia 2014
+   * PyIBCC error -- needs ES to fix
+   * TODO: 
+      * Completing the end-to-end experiment set up with baselines
+      * Run the algorithm with the Weather and Compatibility datasets with varying number of labels
+      * Run evaluation metrics accuracy, f1score and logloss from scikit learn
+      * Plot results using matplotlib or a nice wrapper library  
+
+---+++ 14.11.17
+
+   * Sentence embeddings: download the models and Python interfaces to a home directory, e.g. on Barney or other server
+      * Skipthoughts
+      * Siamese-CBOW 
+      * Infersent
+      * Glove (word embeddings, need to take mean vectors for sentences)
+      * Gensim (word embeddings, need to take mean vectors for sentences)
+   * Now have access to the repo for Paul Felt's work
+      * Need to try running the script including the experiment with the weather dataset
+      * Weather dataset appears to be missing -- see whether running the script produces an error
+      * If there is missing data, notify Paul and ask if he is able to upload it elsewhere 
+   * Continue asking Crowdflower for weather data -- can ask Christopher for contact if no luck
+   * Paralllel for loops in Python: https://pythonhosted.org/joblib/parallel.html
+   * Dask: Pandas in parallel
+   * Bug in IBCC code -- send link to code to ES so he can reproduce the error
+   * MACE: convert the data from 3 column format to a table format
+   * discussion of the impact of different word embeddings is here: https://arxiv.org/abs/1707.06799
+
+---+++ 07.11.17
+
+   * Progress on implementing MACE, IBCC, and majority vote baselines
+   * Data imported for weather dataset into local format
+   * Emails sent to author of comparison paper asking for access to data/code
+   * Todos: 
+      * set IBCC parameters in constructor according to example sent by email
+      * set MACE to provide probabilities using --distribution
+      * Produce plots using the baselines with increasing numbers of annotations per document
+      * Contact Paul Felt if no luck from Kevin Seppi; if this is unsuccessful look at how code from ES can be adapted to implement their baseline
+
+-- Main.EdwinSimpson - 2017-11-08

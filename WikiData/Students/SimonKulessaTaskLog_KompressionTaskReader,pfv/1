@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212844330" format="1.1" version="1"}%
+%META:TOPICPARENT{name="SimonKulessaTaskLog"}%
+*Komponente:*
+<br>Delta Tool
+
+*Beschreibung:*
+<br>Dekomprimieren der XML-Datei des Wikipedia-Dumps zur Programm-Laufzeit.
+
+*Bisherige Lösung:*
+<br>Externe Quelle für Input und Output Streams für das BZ2 Format gefunden.
+
+*Alternative:*
+<br>Gesucht wird eine externe Quelle für Input und Output Streams für das schnellere und bessere 7Zip Format.
+
+-- Main.SimonKulessa - 07 Jun 2008

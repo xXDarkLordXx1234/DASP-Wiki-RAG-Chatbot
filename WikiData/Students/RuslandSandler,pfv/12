@@ -1,0 +1,118 @@
+%META:TOPICINFO{author="sandler" comment="" date="1596612076" format="1.1" reprev="9" version="12"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.KevinStowe - 2020-02-06
+
+31.07.2020:
+   * worked on this week:
+      * mainly refactoring
+      * enabling CUDA for computations
+      * scraping jokes from multiple listings (top/hot) in Reddit to increase data amount
+   * plans for next week:
+      * finetune model based on changes from last 2 weeks (punchline filter, dropping 2% of longest jokes)
+      * choose promising decoding strategies for finetuned model (beamsearch, top_k/p, repetition_penalty, etc.)
+
+
+24.07.2020:
+   * worked on this week:
+      * fixed bug in HumorTrainer (mask padding token in labels) which affected the fine-tuned model (caused a very high repetition rate in generated text)
+      * worked on enabling CUDA for computations
+      * filtered data to include only punchline jokes (positive side-effect: decreases maximum tensor length from 1024 to ~380)
+      * implemented functionality to analyse data in order to filter samples based on their length used during training (dropping 98th percentile decreases length by further 84% to ~60)  
+   * plans for next week:
+      * continue work on analysing the data
+      * fine-tune model on pre-processed data and inspect results
+
+
+17.07.2020:
+   * worked on this week:
+      * worked on fine-tuning the model
+      * finished and held mid-term presentation
+   * plans for next week:
+      * inspect code for fine-tuned model for potential issues 
+      * work on final model
+
+
+10.07.2020:
+   * worked on this week:
+      * organised personal notes and the compiled information
+      * got familiar with a citation tool
+      * refactored codebase, updated documentation and added a README
+      * prepared mid-term presentation
+      * worked on fine-tuning the model
+   *  plans for next week:
+      * continue working on fine-tuning the model
+      * improve mid-term presentation
+
+
+03.07.2020:
+   * worked on this week:
+      * got familiar with UKP cluster (testing different predictions is heavy on computational resources)
+      * tried out several more configurations for the baseline model
+   *  plans for next week:
+      * work on finetuning the baseline model
+      * prepare mid-term presentation
+
+
+26.06.2020:
+   * worked on this week:
+      * researched correct citing methods for thesis
+   *  plans for next week:
+      * maybe try out some more configurations for the baseline model, but work on it is mainly finished
+      * work on finetuning the baseline model
+      * write the thesis
+      * get familiar with ukp cluster (if necessary --- so far I was able to do computations on my notebook)
+
+
+19.06.2020:
+   * worked on this week:
+      * implemented reddit scraper to acquire data for fine-tuning model
+      * wrote code to predict joke continuations for acquired data from reddit
+         * the predictions are performed for different configurations for the generate() function of the transformers library from HuggingFace
+         * the configurations are stored in a csv file
+         * the predicted joke continuations are saved in a file alongside the prompt which was used to predict them and the "original" joke
+   *  plans for next week:
+      * maybe try out some more configurations for the baseline model, but work on it is mainly finished
+      * work on finetuning the baseline model
+      * write the thesis
+      * get familiar with ukp cluster (if necessary --- so far I was able to do computations on my notebook)
+
+
+12.06.2020:
+   * worked on this week:
+      * mainly reading documentation about the transformers library from HuggingFace and general theory about decoding
+      * trying out different decoding strategies (beam search, top_k, top_p) and methods that improve the output (repetition_penalty, n_gram penalty, temperature)
+   *  plans for next week:
+      * continue working on baseline model
+      * work on data procurement according to procedure explained on 29.05.2020
+      * get familiar with ukp cluster (if necessary --- so far I was able to do computations on my notebook)
+
+
+05.06.2020:
+   * finished this week:
+      * getting familiar with the ukp site
+      * introduction of further functionality to baseline model
+         * prediction of multiple sentences (amount can be chosen)
+         * generation of general sequences (without being limited to a fixed sentence amount)
+         * making use of "past" attribute to improve computation time (with help of new function: predict_sequence_past)
+         * additition of top-k parameter to prediction functions (to choose randomly out of top-k predictions) to reduce repetition
+   * plans for next week:
+      * continue working on baseline model
+      * work on data procurement according to procedure explained on 29.05.2020
+      * get familiar with ukp cluster (if necessary --- so far I was able to do computations on my notebook)
+
+
+29.05.2020:
+   * finished this week:
+      * finished reading all relevant resources
+      * research in regards to data procurement
+            * current idea is to scrap data from https://www.reddit.com/r/Jokes/ similar to the data procurement in the paper "Language Models are Unsupervised Multitask Learners"
+            * difference is that we won't follow links, but take data directly from reddit (from the post's headline and content. comments may also include humor, but require too much filtering)
+      * read PyTorch documentation and HuggingFace documentation
+      * first commit in repository. includes
+            * model class that will be extended by baseline model and the finetuned model later on.
+            * class includes a predict method which can generate n candidates for the next word of a given text
+      * set up riot client for communication
+   * plans for next week:
+      * continue working on baseline model
+      * work on data procurement according to procedure explained above
+      * get familiar with the ukp site and cluster

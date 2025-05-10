@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="GeorgiValkanov" date="1359389686" format="1.1" version="9"}%
+%META:TOPICPARENT{name="GeorgiValkanov"}%
+-- Main.GeorgiValkanov - 2012-12-03
+---+++ Meeting on 08.02.2013
+
+---+++ Meeting on 18.12.2012
+   * Anmeldung
+   * Mendeley Tags
+   * Annotationsstudie
+   * Experimentprojekt ins SVN 
+      * Projekt angelegt unter: 
+         * https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/gvalkanov/trunk/de.tudarmstadt.ukp.students.oddoneout/
+   * DKPro Core 
+      * Maven Setup - http://code.google.com/p/dkpro-core-asl/wiki/UserSetup
+      * bei allen weiteren Fragen zum Setup 
+         * https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/DKProDeveloperResources
+   * DKPro Similarity 
+      * http://code.google.com/p/dkpro-similarity-asl/
+   * !LexicalSemanticResource (WordNet Zugriff) 
+      * https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/LexSemResProduct
+
+---+++ Meeting on 11.12.2012
+   * Question quality? - Some questions are way too easy for humans. Should we consider those as well?
+   * SemanticSimilarity ?
+
+---+++ Meeting on 04.12.2012
+   * How many questions needed in the corpus?
+   * Question solver 
+      * wia semantic relatedness (WordNet, Roget's Thesaurus)
+      * other way?
+   * Question generator 
+      * Wiki-based?
+      * or similar to solver - get N similar concepts, chose N+1th with a bigger distance to the rest?
+<span style="color: #630000; font-size: 17px; font-weight: bold; line-height: 1em;">Meeting on 29.01.2013</span>
+
+Open Questions:
+
+   * How to determine the PoS of the answers? Is this needed for the similarity check?
+   * Why are some of the comparators very slow and Java runs out of memory?
+   * How do I use the serialized graphs? Can a LSR be created from them?
+   * Is similarity reflexive?
+Discuss:
+
+   * Questionare results
+   * First solver results
+   * Algorithms and implementation

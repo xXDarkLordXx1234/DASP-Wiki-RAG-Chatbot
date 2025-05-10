@@ -1,0 +1,2 @@
+YevgenChebotar
+Comparison of different classifiers and feature selection methods

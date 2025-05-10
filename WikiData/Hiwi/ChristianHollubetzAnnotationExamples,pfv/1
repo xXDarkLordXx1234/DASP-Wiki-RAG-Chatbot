@@ -1,0 +1,62 @@
+%META:TOPICINFO{author="ChristianMeyer" date="1330335049" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ChristianHollubetz"}%
+---+ Annotation Examples
+
+---++ Sense alignments
+
+| *Lemma* | *WordNet30* | *Same Sense* | *WiktionaryEN* | *Comment* |
+| alertness | the process of paying close and continuous attention "wakefulness, watchfulness, and bellicosity make a good hunter; vigilance is especially susceptible to fatigue" |  | The quality of being [[alert]] or on the alert; briskness; nimbleness; activity. | |	
+| alertness | a state of readiness to respond "alerting was indicated by the desynchronization of the EEG" | | The quality of being [[alert]] or on the alert; briskness; nimbleness; activity. | |
+| alertness | lively attentiveness | | The quality of being [[alert]] or on the alert; briskness; nimbleness; activity. | |
+
+---++ Word sense disambiguation
+
+<pre>
+&lt;?xml version="1.0" encoding="iso-8859-1" ?&gt;
+&lt;!DOCTYPE corpus SYSTEM "coarse-all-words.dtd"&gt;
+&lt;corpus lang="en"&gt;
+&lt;text id="d001"&gt;
+&lt;sentence id="d001.s001"&gt;
+Your
+Oct
+.
+6
+&lt;instance id="d001.s001.t001" lemma="editorial" pos="n"&gt;editorial&lt;/instance&gt;
+``
+The
+&lt;instance id="d001.s001.t002" lemma="Ill" pos="a"&gt;Ill&lt;/instance&gt;
+&lt;instance id="d001.s001.t003" lemma="Homeless" pos="n"&gt;Homeless&lt;/instance&gt;
+''
+&lt;instance id="d001.s001.t004" lemma="refer" pos="v"&gt;referred&lt;/instance&gt;
+to
+&lt;instance id="d001.s001.t005" lemma="research" pos="n"&gt;research&lt;/instance&gt;
+by
+us
+and
+&lt;instance id="d001.s001.t006" lemma="six" pos="a"&gt;six&lt;/instance&gt;
+of
+our
+&lt;instance id="d001.s001.t007" lemma="colleague" pos="n"&gt;colleagues&lt;/instance&gt;
+that
+was
+&lt;instance id="d001.s001.t008" lemma="report" pos="v"&gt;reported&lt;/instance&gt;
+in
+the
+Sept
+.
+8
+&lt;instance id="d001.s001.t009" lemma="issue" pos="n"&gt;issue&lt;/instance&gt;
+of
+the
+Journal
+of
+the
+American
+Medical
+Association
+.
+&lt;/sentence&gt;
+
+</pre>
+
+-- Main.ChristianMeyer - 2012-02-27

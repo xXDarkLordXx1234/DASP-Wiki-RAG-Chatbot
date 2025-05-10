@@ -1,0 +1,67 @@
+%META:TOPICINFO{author="lwolf" comment="save topic" date="1512397639" format="1.1" reprev="6" version="6"}%
+---+!! Bachelor Thesis: Neural Sequence to Sequence Approaches for Mapping Natural Questions to SPARQL Queries
+
+%TOC%
+
+
+
+---+ Useful Links
+   * [[https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql_thesis][Thesis Repo]]
+   * [[https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql_thesis/issues][ToDos]]
+   * [[https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql/issues][Code]]
+
+---+ Schedule
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20|"}%
+| *Week* | *Start Date* | *Task*                                                                                           | *Comment*                                                             |
+|        | 23.11.17     | Initial meeting; discussion of the project definition                                            |                                                                       |
+|        | 27.11.17     | Familiarization with the project, literature review, setup of the environment and the datasets   | Start writing the thesis (or take notes for it) as early as possible! |
+|        | 04.12.17     | Requirements and data analysis                                                                   | WP1                                                                   |
+|        | 18.12.17     | Model development                                                                                | WP2                                                                   |
+|        | 08.01.17     | Preliminary evaluation                                                                           |                                                                       |
+|        | 15.01.17     | Evaluation on QA Datasets                                                                        |                                                                       |
+|        | 23.01.18     | Mid-term presentation                                                                            |                                                                       |
+|        | 29.01.18     | Error analysis                                                                                   | WP3                                                                   |
+|        | 12.02.18     | Final thesis redaction                                                                           |                                                                       |
+|        | 06.03.18     | Final presentation                                                                               |                                                                       |
+|        | ???          | Submit the thesis                                                                                |                                                                       |
+
+---+ Meetings (monday 14:00)
+
+---++ 04 December 2017
+---++++ Done
+   * Wrote first draft of related work (see [[https://git.ukp.informatik.tu-darmstadt.de/lwolf/seq2seq4sparql_thesis/blob/master/thesis-lars-wolf.pdf][git]])
+   * tested code of Leipzig on my local machine ([[https://github.com/AKSW/NSpM][their git]]
+   * tried [[https://github.com/osh/KerasGAN][Keras GAN]]
+---++++ Quesions
+   * how can I access krusty? (Currently: permission denied)
+     * Daniil is organizing Server permissions
+   * are GANs promising in that area? How to deal with evaluating ambiguous SPARQL queries? (didn't find method for multiple output options yet)
+     * Leave them for no, not to much work on using them for text generation
+   * shall I put GANs in related work, even though I might not use them?
+---++++ Plans
+   * Finish first iteration of related work
+   * decide on data type (question -> sparql, leipzig format?)
+   * create dataset out of wikipedia entries
+   * try method of Leipzig to create more data
+   * read further into model ideas
+   * read into evaluation methods for QA-problems (Bleu? F1 on correct answers? ...?)
+   * set up bibtex &#10004;
+
+---++ 27 November 2017
+   * sign bachelorthesis description &#10004;
+   * set up VPN &#10004;
+   * get Latex up and running &#10004;
+   * read through related work
+   * look at webqsp &#10004;
+ 
+---++ 23 November 2017
+   * create Wiki page &#10004;
+   * change password &#10004;
+   * Read through bachelor thesis description, forward possible changes untill sunday &#10004;
+   * set up VPN &#10004;
+   * create git repositories  &#10004;
+      * thesis &#10004;
+      * code &#10004;
+
+-- Main.LarsWolf - 2017-11-24

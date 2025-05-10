@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Auf dieser Seite stehen Fehlermeldungen und entsprechende Lösungen, damit nicht immer wieder nach den gleichen Lösungen gesucht werden muss.
+
+*Fehlerbeschreibung*:
+<verbatim>com.ibm.uima.util.InvalidXMLException: Invalid descriptor at file:/opt/IBM/uima/docs/examples/descriptors/collection_reader/FileSystemCollectionReader.xml.
+	at com.ibm.uima.reference_impl.util.XMLParser_impl.parse(Unknown Source)
+	at com.ibm.uima.reference_impl.util.XMLParser_impl.parseCollectionReaderDescription(Unknown Source)
+	at com.ibm.uima.reference_impl.util.XMLParser_impl.parseCollectionReaderDescription(Unknown Source)
+	at au.com.nicta.sml.uimadapter.Helper.getReader(Helper.java:80)
+	at au.com.nicta.sml.uimadapter.CollectionFeatureExtractor.setReader(CollectionFeatureExtractor.java:57)
+	at ArffReviewSetter.main(ArffReviewSetter.java:39)
+Caused by: com.ibm.uima.util.InvalidXMLException: The XML parser encountered an unknown element type: collectionReaderDescription.
+	at com.ibm.uima.reference_impl.util.XMLParser_impl.buildObject(Unknown Source)
+	at com.ibm.uima.reference_impl.util.SaxDeserializer_impl.getObject(Unknown Source)
+	... 6 more</verbatim>
+
+*Lösung* :
+
+uima_cpe.jar einbinden
+
+Eine weitere Fehlerquelle kann die Verwendung von JRE 1.6 sein. UIMA hat damit Probleme. Also besser Version 1.5 verwenden.
+
+
+*Fehlerbeschreibung*
+
+"Error in Descriptor" when opening Component Descriptor Editor
+
+*Lösung*
+
+Java 5 statt Java 6 benutzen
+
+
+-- Main.KaiMichaelHoever - 19 Apr 2007

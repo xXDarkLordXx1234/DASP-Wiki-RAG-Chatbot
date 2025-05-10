@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1349816369" format="1.1" version="5"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+---++++ October 9
+
+Meeting with Wolfgang, talked about Wolfgang presenting PDF clustering results to peers. 
+   * Implement similarity measures between clusters (either interpreting as new graph or using edges between clusters, needs to be analysed).
+   * Show actual significance of words with TF*IDF, not just number of occurrences.
+Similarity measures came up and we discovered some inconsistencies in the one I use and decided to implement some more as well, to be used as an additional parameter. So far we have jaccard (somewhat like the old one) and cosinus, but more could follow.
+
+---++++ June 25
+
+Meeting with Frau Gurevych and sebsequent talk with Nicolai concerning Fachsystematik and how to use it for our problem at hand
+   * Contact Frau Paulokat at DIPF and ask for an opportunity to discuss how the PEDOCS keyphrases were chosen and their correlation to the FS
+   * Parse the FS with respect to main categories and subcategories and create statistics for both
+   * Contact Nikolai once data is available to schedule a meeting with Oliver and Jinseok concerning already existing multi labelling approaches and implementations
+
+---++++ June 14
+
+Meeting with Wolfgang
+   * Need to do more elaborate and more regular documentation (this wiki).
+   * Talked about detailing (designing, implementing?) evaluation methods such as Cross-validation using keywords or extracted keyphrases (Nouns, verbs or more specific such as methods).
+   * As a more distant goal, filter for synonyms and hypernyms. Using synonyms can help to properly classify keywords that pertain to a similar subject and can be used to weigh keywords more appropriately (currently only exact matches are weighed).
+
+---++++ May 31
+
+Meeting with Wolfgang
+   * Determine intersection of keywords between Fachsystematik and pedocs database and enter into database.
+   * Document clustering with CW.
+Interlude with Chris Biemann:
+   * Use tf*idf to weigh relevance of keywords.
+   * Cut edges below a certain weight threshold.
+   * Use CW multiple times with differing seeds to exclude anomalies.
+
+---++++ May 18
+
+Informal meeting with Wolfgang.
+   * Discussed the role of DKPro in the thesis and the graph representation.
+   * Co-occurence of keywords/phrases currently the best bet for classification, but may need a way to detect synonyms.
+Tasks:
+   * Think about things other than authors and generic keyphrases that could be relevant for classification.
+   * Normalise distances.
+   * Read Shuo's code to gain understanding of the DKPro pipeline so experimentation with various methods provided by the framework can begin.

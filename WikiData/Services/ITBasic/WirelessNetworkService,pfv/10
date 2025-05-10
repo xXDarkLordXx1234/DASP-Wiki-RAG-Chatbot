@@ -1,0 +1,9 @@
+%META:TOPICINFO{author="eckart" comment="reprev" date="1426604565" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ !!Wireless Network Service
+
+UKP does not offer a wireless network. Wireless network access is possible via the the HRZ, either with a TU-ID or with an external eduroam account. For more information please refer to the [[http://www.hrz.tu-darmstadt.de/netz/vpn_wlan/wlan_2/eduroam.de.jsp][HRZ documentation]]. To access UKP-internal services after connecting to the HRZ wireless network, you have to open a [[Services.VpnService][VPN connection]] to the UKP network.
+
+(Note that the instructions provided by HRZ say that you need to point your network configuration to a Deutsche Telekom certificate in PEM format.  This didn't work for me; I had to use the CRT version of the certificate. --TM)
+
+%META:TOPICMOVED{by="eckart" date="1426604565" from="UKP.WirelessNetworkService" to="Services.WirelessNetworkService"}%

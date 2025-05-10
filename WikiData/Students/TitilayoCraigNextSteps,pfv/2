@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="TitilayoCraig"}%
+%EDITTABLE{}%
+| *Task* | *Subtask* | *Done* | *Date* |
+| Eclipse | svn, commit, synchronize | | |
+| SenseLearner | analyze input/output format  | x| 19th June | 
+| | understand execution commands |x | 19th June | 
+| understand DKPro/UIMA structure | | | |
+| experimental framework | understand structure  | | |
+|  | understand the example  | | |
+| integration of SenseLearner into DKPro | understand the overall goal | |     
+|  | sketch pipeline | | |     
+|  | analyze the integration of the TreeTagger into DKPro, related java classes: <br> - annotator.util.tagger.TreeTaggerWrapper.java <br> - annotator.util.tagger.TreeTaggerWrapperAlive.java <br> - annotator.TreeTaggerPosLemma.java | | |
+|  | implement java classes for SenseLearner accordingly| | |  
+
+   * Pipeline
+      1 input: some text file
+      1 tokenization
+      1 lemmatization
+      1 stop word removal
+      1 POS tagging
+      1 ...
+         
+
+         
+
+  
+   
+
+-- Main.ElisabethWolf - 22 Jun 2009

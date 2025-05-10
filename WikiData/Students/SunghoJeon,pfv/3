@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="hanselowski" comment="save topic" date="1525702687" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+
+---++ Meeting 2018-5-7
+
+---++ New Project idea:
+   * goal: Improving concept based documentation sumarization on the basis of the information from knowledge base
+   * advantage: entity linking provide additional information to the user, concept map is better connected by additional links from the knowledge base, information from identified named entities helps determining their          importance and their similarity to other concepts, knowledge base can be used as incidental source supervision to determine importance  
+   * approach: joint entity and relation extraction, using KB as incidental source supervision to determine importance  
+   * dataset: DIP, knowledge base with good coverage of DIP corpus
+   * evaluation: Gold data available for evaluation
+
+   **TODOs:*
+   * Write task description with more elaborated ideas
+      * Current limitation of previous work on concept maps and other MDS
+      * Ideas for addressing the limitations 
+      * More precise description of the methods and the data
+
+
+---++ Meeting 2018-5-2
+
+---++ Project idea:
+   **Multi-hop inference combining information from raw text and a knowledge base*
+   * Combine raw text and knowledge base: Semantic parsing, join entity linking relation matching
+   * Data sets: FEVER, WikiHop, MultiHop: Constructing Datasets for Multi-hop Reading Comprehension Across Documents https://arxiv.org/pdf/1710.06481.pdf
+   * Relevant related work: Work by Seb Riedel and Röckteschel
+
+---++ Project constraints:
+
+   **Prof Gurevych's ideas for the project*
+   * Enhancing information present in raw text with information from a knowledge base and apply reasoning techniques to solve a task
+   * For this purpose the following problems must be solved:
+      * Transforming a text into a logical forms (possibly represented by embeddings)
+      * Grounding of the derived logical forms in a knowledge base: entity linking, relation matching
+      * Joint inference: Reasoning over the information from the knowledge base and the text
+
+
+-- Main.AndreasHanselowski - 2018-05-03

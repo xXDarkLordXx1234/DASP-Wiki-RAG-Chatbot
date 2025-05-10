@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="netzer" comment="reprev" date="1508401792" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++++ *Bachelor Thesis* : Deep Learning for Citation Count Prediction
+
+
+*Start date* :  05.10.2017
+
+*Supervisor*: Dr Steffen Eger
+
+
+
+---++++ *Current Status*
+   * 18.10.2017
+      * Began evaluating different models. So far no interesting results. Models need to be optimized.
+         * SE: Better than baseline? Do you tokenize your data? On which level do you work: abstract, intro, conclusion, full text?
+            * yogatama(with author and venue info) on tokenized abstract   works ok for modelling task. about 6.5% better accuracy than baseline . baseline level for prediction. 
+            * yogatama on full text better(modelling task), almost 10% improvement over baseline.
+            * simple cnn at baseline
+            * fasttext slightly over baseline
+            * vdcnn not running yet :(
+
+   * 17.10.2017:
+      * program to create dataset on apu /home/netzer/semanticScholarDBcomplete:
+         * run.sh: runs every step to create the full dataset. category can be changed in script(see comments). I did not test how long a full run takes.
+         * finished CL dataset: semanticScholar_csCL_FULL.jsonl . Every line is a paper + metdata encoded as json
+         * sample paper : example.txt
+      * all arxiv papers: /home/netzer/arxiv
+   * 11.10.2017:
+      * Datensatz mit papern aus  high-energy physics ist fertig.
+      * Ich habe angefangen das Modell von Yogatama zu implementieren. Bisher habe ich nur Ridge Regression verwendet. Im paper wir diese mit einem  Generalized Linear Model mit Time Series Regularization verglichen. Für letzteres gibt es keine fertigen Implementierungen. Ich bin mir nicht sicher wie viel Aufwand das wäre.
+      * Sonst bin ich dabei ein Framework zu bauen, mit dem ich die Experimente mit verschieden Evaluierungsszenarios,Datensätzen und Modellen strukturiert durchführen kann. 
+   
+
+---++ Meeting Minutes
+
+---++++ *Meeting 12.10.2017*
+
+   * Please provide SE with the following:
+      * Sample full texts on apu (ideally already pre-processed) with meta data
+      * Program to download meta data from SemanticScholar
+      * All full texts stored on apu
+   * Very important:
+      * *Structure* and *document* your coding
+         * Can document by placing everything in simple bash scripts, for example, that could always be re-run
+   * When forecasting, you can play around with the forcecast gap, e.g., 1 year, 2 years, etc.
+   * For n-gram vectors you can play around with their sizes (e.g. same number of 1-grams than 2-grams?)
+   * TODOs for next week: evaluate Yogatama et al. baseline as well as deep learning models on apu (FastText, Very Deep Conv Nets, Standard Conv Nets)
+   
+
+
+
+
+
+-- Main.SteffenEger - 2017-10-09

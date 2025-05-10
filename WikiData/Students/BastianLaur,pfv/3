@@ -1,0 +1,110 @@
+%META:TOPICINFO{author="BastianLaur" date="1305802325" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.BastianLaur - 2011-04-29
+
+---++Über mich
+Mein Name ist Bastian Laur und ich studiere jetzt im 6. Semester Informatik. Im Fachbereich UKP schreibe ich meine Bachelor Thesis. 
+
+---++Meetings
+   * 14.04.2011
+   * 21.04.2011
+      * [[https://rapidshare.com/files/459739304/Thesis_Besprechung_21.04.2011.zip][Aufzeichnung]]
+   * 28.04.2011
+      * [[https://rapidshare.com/files/459738971/Thesis_Besprechung_28.04.2011.zip][Aufzeichnung]]
+   * 16.05.2011
+      * Wie schreibt man eine Anleitung für einen Evaluationsbogen
+      * Wie erstellt man eine repräsentative Stichprobe
+      * Wie verteilt man den Evaluationsbogen an die Zielpersonen
+      * Wie digitalisiert man die Ergebnisse
+      * Welche Möglichkeiten gibt es einen Evaluationsbogen zu erstellen (Papier, Programm, Webformular, Excel-Tabelle)
+
+---++Gerade in Bearbeitung
+   * Gedanken darüber machen, welche Features für eine repräsentative Stichprobe berücksichtigt werden müssen und wie groß der Corpus werden soll
+   * Schema für einen Evaluationsbogen erstellen
+   * Ein Benutzerhandbuch (Anleitung) für den Evaluationsbogen schreiben
+
+---++ToDo
+   * Schema für einen Evaluationsbogen erstellen
+   * Ein Benutzerhandbuch (Anleitung) für den Evaluationsbogen schreiben
+   * Einen Evaluationsbogen mit leidlich 10 Fragen erstellen und 1-2 auswerten lassen
+   * Gedanken darüber machen, welche Features für eine repräsentative Stichprobe berücksichtigt werden müssen und wie groß der Corpus werden soll
+   * Ein Programm implementieren, dass den Corpus unter Berücksichtigung der Features erstellt
+   * Den fertigen Evaluationsbogen erstellen
+   * Den Evaluationsbogen von 3-4 Personen ausfüllen lassen
+   * Die Ergebnisse der ausgefüllten Evaluationsbögen in einer MySQL-DB speichern
+
+---++Erledigt
+   * Apache Server incl. MySQL Server lokal installiert
+   * Mit Hilfe von vorgefertigten Klassen eine Verbindung zu http://translate.google.de/ aufgebaut und damit einzelne Wörter und Sätze übersetzten lassen
+   * Das Projekt "combilsr" ausgeführt. Das Projekt transferiert die Wiktionary Einträge, die momentan lediglich in einer Berkeley Datenbank vorliegen in eine MySQL Datenbank. So kann effizienter auf die einzelnen Attribute zugegriffen werden.
+   * Mit JWKTL ein Programm implementiert, das die Anzahl der verlinkten Übersetzungen von Wiktionary Einträgen zählt und in eine Datei speichert
+   * Ein Tabellen-Schema überlegt, welches benötigte Daten speichert
+
+---++Paper gelesen
+   * Worth Its Weight in Gold or Yet Another Resource - A Comparative Study of Wiktionary, OpenThesaurus and Germa Net - Christian M. Meyer, Iryna Gurevych
+   * Extracting Lexical Semantic Knowledge from Wikipedia and Wiktionary - Torsten Zesch, Christof Müller, Iryna Gurevych
+   * An Approach for Extracting Bilingual Terminology from Wikipedia - Maike Erdmann, Kotaro Nakayama, Takahiro Hara, Shojiro Nishio
+   * Explicit Versus Latent Concept Models for Cross-Language Information Retrieval - Philipp Cimiano, Antje Schultz, Sergej Sizov, Philipp Sorg, Steffen Staab
+   * Using Wikipedia and Wiktionary in Domain-Specific Information Retrieval - Christof Müller, Iryna Gurevych
+
+---+Forschungsergebnisse
+Datum des deutschen Wiktionary-Dumps: 06.04.2011<br />
+Datum des englischen Wiktionary-Dumps: 02.04.2011<br />
+Datum des russischen Wiktionary-Dumps: 04.04.2011<br />
+
+---+++Anzahl der Einträge
+Datum: 19.05.2011<br />
+
+| *Deutsches Wiktionary* ||
+| Einträge | 191.962 |
+| Davon nativ | 85.574 |
+
+| *Englisches Wiktionary* ||
+| Einträge | 2.653.203|
+| Davon nativ | 379.696|
+
+| *Russisches Wiktionary* ||
+| Einträge | 425.040 |
+| Davon nativ | 134.994 |
+
+---+++Länge der Beschreibungen der Bedeutungen
+Datum: 19.05.2011<br />
+Gemessen wurden nur die nativen Wörter. Also die deutschen Wörter im deutschen Wiktionary, die englischen Wörter im englischen Wiktionary und die russischen Wörter im russischen Wiktionary.
+
+| *Deutsches Wiktionary* ||
+| Beschreibungen mit 01 bis 05 Worten | 29198 |
+| Beschreibungen mit 06 bis 10 Worten | 24242 |
+| Beschreibungen mit 11 bis 15 Worten | 11055 |
+| Beschreibungen mit 16 bis 20 Worten | 4397 |
+| Beschreibungen mit 21 bis 25 Worten | 1896 |
+| Beschreibungen mit 26 bis 30 Worten | 833 |
+| Beschreibungen mit mehr als 30 Worten | 1131 |
+
+| *Englisches Wiktionary*  ||
+| Beschreibungen mit 01 bis 05 Worten | 255846 |
+| Beschreibungen mit 06 bis 10 Worten | 106483 |
+| Beschreibungen mit 11 bis 15 Worten | 54636 |
+| Beschreibungen mit 16 bis 20 Worten | 28459 |
+| Beschreibungen mit 21 bis 25 Worten | 13878 |
+| Beschreibungen mit 26 bis 30 Worten | 6791 |
+| Beschreibungen mit mehr als 30 Worten | 8037 |
+
+| *Russisches Wiktionary* ||
+| Beschreibungen mit 01 bis 05 Worten | 40030 |
+| Beschreibungen mit 06 bis 10 Worten | 24718 |
+| Beschreibungen mit 11 bis 15 Worten | 9852 |
+| Beschreibungen mit 16 bis 20 Worten | 3541 |
+| Beschreibungen mit 21 bis 25 Worten | 1342 |
+| Beschreibungen mit 26 bis 30 Worten | 559 |
+| Beschreibungen mit mehr als 30 Worten | 576 |
+
+---+++Anzahl der Übersetzungen
+Datum: 19.05.2011<br />
+Gemessen wurden nur die nativen Wörter.
+
+| | *Deutsch* | *Englisch* | *Russisch* |
+| *Deutsch* | - | 49.533 | 15.325 |
+| *Englisch* | 47.537 | - | 48.966 |
+| *Russisch* | 19.474 | 39.906 | - |
+
+Die Anzahl der Übersetzungen in andere Sprachen sind ebenfalls verfügbar. Die Liste kann [[https://rapidshare.com/files/2786437956/output.txt][hier]] heruntergeladen werden.

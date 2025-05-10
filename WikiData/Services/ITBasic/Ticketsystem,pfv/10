@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="alles" comment="" date="1695133359" format="1.1" reprev="10" version="10"}%
+<div style="border: solid 4px red; font-weight:800; padding: 5px">
+<p align="center">
+🔥🔥🔥 %RED%Always use [[https://ticket.ukp.informatik.tu-darmstadt.de][our ticket system]] or send mail to [[mailto:ticket@ukp.tu-darmstadt.de][the ticket system mail]] to contact system-admin!%ENDCOLOR% 🔥🔥🔥
+</p>
+</div>
+
+<div style="float:right; background-color:white; z-index:999; border: solid 2px lightblue; padding: 5px">
+---++++ !! Content of this page
+%TOC%
+</div>
+
+---++ First things first
+   * First check [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/UkpItProcesses][this page]] for !HowTos, Guides and Forms!
+
+---++  *%RED%The only way to report issues%RED%*
+   * If you encounter any technical problems during your work  (e.g. hardware failures, strange software behaviour), please open a trouble ticket in our [[https://ticket.ukp.informatik.tu-darmstadt.de][Ticketsystem]]
+   * Opening an issue in the ticket system ensures that your issue is not forgotten and that your get notified whenever your issue is being worked on.
+   * It is also possible to send an email to ticket@ukp.informatik.tu-darmstadt.de
+
+*This is the only way to report any kind of problems. Please refrain from chatting, mailing to other addresses, or telling us personally, unless the matter is extremely urgent or there is no other way (e.g. because your network connection is down). This helps us to organize our workflow more efficently, which in turn leads to faster problem solving.*
+
+---++ *%RED%How to use the UKP ticket system and open tickets%RED%*
+
+%RED%Please follow these simple guidelines when reporting a ticket - otherwise we might reject your ticket without further notice.%ENDCOLOR%
+
+   1 Please choose a _clear and concise subject line_ , so we can immediately get an idea what is wrong
+   1 _Describe your problem_ precisely to the best of your knowledge, _so we can reproduce it_ . "X doesn't work" is usually *not* enough.
+   1 If you already tried something to solve it yourself, or you have an idea what could be wrong (e.g. because you changed something), it helps saving time if you tell us.
+   1 If it seems appropriate, _provide additional information_ like error messages etc., but *DON'T* just copy and paste them without further explanation. Often programs and commands have the -v, -vvv or -verbose parameter integrated. We would also be very happy if this is tried and the output sent to us if possible.
+   1 Best would be the _exact steps / commands to trigger the problem including the subsequent error message(s)_.
+   1 Include which user caused the error, if different from the ticket creator and the time of the error report
+   1 Also, *DON'T* just forward mails that might or might not relate to the problem. Take the time to formulate the problem and include only what is necessary into the email. The more precisely you formulate the problem, the quicker we will be able to solve it.
+   1 %RED%Don't message us directly via chat, phone, mail or carrier pidgeon or come to our offices outside the opening hours. The only way to get help is the ticketsystem / with a valid ticket number. %ENDCOLOR%
+
+After the ticket is reported, rest assured that we will take care of it as soon as we can. Sometimes other problems have a higher priority, but no ticket will be lost. So please don't report the same issue twice or ask about the status of your problem over and over again since this slows everything down; we will notify you once your problem is solved or, most often, you will know anyway. 

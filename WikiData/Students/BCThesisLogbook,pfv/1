@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="BastianChristoph" date="1292792428" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+   * 19.12.2010
+      * Structure for Related work changed
+      * Peer Baseline-Coverage recalculated
+         * Analyzed conference-runScript
+         * Analyzed rouge-perl implementation
+         * Enabled Lemmatizing in Java Code (Flag "-m" in conference-runScript means "use PorterStemmer")
+         * Changed Rouge-Value-Selection to "Average Model" (Flag "-B" for best model in runScript not used, default is "-A")
+         * |                        | *ROUGE-1* | *ROUGE-2* | *ROUGE-3* | *ROUGE-4* |
+           | peer-baseline | 0.22136       | 0.06370      | 0.02118       | 0.00707      |
+           | my baseline    | 0.18867       | 0.05263      | 0.01763       | 0.00547     |

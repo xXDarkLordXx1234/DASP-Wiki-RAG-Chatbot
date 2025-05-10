@@ -1,0 +1,102 @@
+%META:TOPICINFO{author="RolandKluge" date="1349438871" format="1.1" version="36"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+   [[RolandKluge]]
+
+---+++ Questions
+
+   * UKP-specific header for source code?
+
+---+++ Temporary Todos
+
+   * Generate citechart (e.g. as requested by /seersuite/src/main/java/edu/psu/citeseerx/web/ViewDocController.java)
+   * Links to RSS/Bulletin do not work (labels: 'csx.blog.rss' and 'app.bulletin')
+   * Write HowTo
+      * Implementing a DAO method
+      * Creating a DAO
+   * Check that all scripts in ./bin folder work properly (e.g. genStats)
+   * Missing in artifactory:
+      * spring-security-taglibs-3.1.0.RELEASE.jar
+      * spring-security-config-3.1.0.RELEASE.jar
+      * ehcache-1.6.2.jar (?)
+      * org.quartz-scheduler:quartz:1.8.5 (Quartz 2 does not work with Spring 3.1)
+
+---+++ 2012-08-31 Notes
+
+---++++ Open
+
+   * Read annotated_bibliography
+   * "Clustered Documents": purpose?
+   * Keywords Showcase
+      * Tool generates keywords for all documents
+      * Keywords are show inside a box next to the document (just like BibTeX refs)
+      * How to integrate into MyCiteseerX?
+   *  Make MyCiteseerX run
+      * locally
+      * What about Captcha problems? Deactivation possible?
+   * Make Statistics run
+   * Scripts for starting/stopping tomcat from shell
+
+---++++ Done
+
+   * Test jars (located at public-ext-releases-local):
+      * com.nexus.kaptcha:kaptcha:2.0
+      * org.archive.crawler:heritrix:1.14.2
+      * de.nava.informa:informa:0.6.5
+      * com.advsofteng:ChartDirector.jar:5.0.x
+      * uk.ltd.getahead:dwr:1.1.4
+   * Does there exist a admin interface? *Seemingly not*
+
+---+++ 2012-08-10 Notes
+
+---++++ Mid-term goals (Use Cases)
+   *  As a researcher, I want to semiautomatically tag documents which have not been tagged manually, yet.
+      * The application provides a set of proposed tags, derived by determining a suitable cluster for the given document.
+      * I may add custom tags.
+   * As a researcher, I want to see proposed documents when I select a specific document.
+      * Proposed documents a somewhat similar to the current document, i.e., they belong to the same cluster and/or have a small distance to it.
+   * As a researcher, I want to see a visualization of the cluster of the current document
+      * The visualization may be integrated in a similar fashion like the Citegraph.
+
+---++++ Outstanding Tasks
+   1 Examine how Algorithm/Table search may be replaced with domain-specific search (-> HowTo)
+   1 Preparations for adding categories to documents
+      * Find appropriate integration into DB (represent hierarchy of categories)
+      * Which new DAOs are required? 
+      * Write HowTo on how to add new SQL queries to the system
+      * explore how cluster visualization may be integrated (like Citegraph)
+      * design database/table (Foreign keys?) -> SQL script
+      * create sample data or wait for Clemens
+   1 _low priority_ Get MyCiteseer to run (locally)
+      * contact Yevgen for information on that 
+   1 SVN repository
+      * check in current version
+      * test checked-in version on another PC
+      * write HowTo for local customization (e.g. scripts...) 
+      * script for localizing repository locations (applicationContext-csx-jdbc.xml)
+   1 Seersuite<->DKPro
+      * How to integrate DKPro functionality into Seersuite (design)
+   1 Reverse engineer database
+      * landscape view of tables and relationships (Wolfgang?)
+
+---++++ Done Tasks
+
+---+++ 2012-07-26 Notes
+
+   * Done Tasks:
+      1 *Cancelled* Convert SeerSuite project to Maven project -> jar file can easily be installed/deployed 
+      1 Preparations for SVN publishing
+         * Create SVN repository at https://scruffy.ukp.informatik.tu-darmstadt.de/svn/third_party/seersuite (Wolfgang?)
+         * Locate all absolute paths
+         * Build a script for adapting seersuite check-out to local setup
+      1 Document Eclipse tooling (Tomcat integration etc.)
+      1 Examine further pipeline steps
+         * *not possible* Configure de.tudarmstadt.ukp.dkpro.core.io.pdf.PdfReader to accept any type of PDF file (not only those prefixed with "[+]" or "[-]" - maybe contact project lead)
+         * "CollectionReader": String to CAS
+         * Extract CAS object at end of the pipeline
+
+---+++ Open Questions
+
+
+-- Main.RolandKluge - 2012-07-23
+
+%META:TOPICMOVED{by="RolandKluge" date="1343381335" from="Hiwi.RolandKlugeOpenQuestions" to="Hiwi.RolandKlugeMeetingsAndNotes"}%

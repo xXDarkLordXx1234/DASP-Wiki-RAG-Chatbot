@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="JoergHellms" date="1235269879" format="1.1" reprev="14" version="14"}%
+%META:TOPICPARENT{name="JoergHellms"}%
+---++ Offene Fragen
+
+   * <strike>Code der Diplomarbeit von Florian Schwager</strike>
+   * Art und Aussehen der Evaluierungsdatensätze
+      * <strike>Elektronische Berufsberatung</strike>
+      * GIRT Korpus (Bereich Sozialwissenschaften) 
+      * <strike>Patentdatenbank</strike>
+   * <strike>BerkleyDB schliesst noch nicht vernünftig</strike>
+      * Abfrage ob DB geschlossen eingefügt bei "collectionProcessComplete()" und "destroy()"
+   * <strike>Java mag '/home/joerg/.java/.userPrefs/org/apache/uima/tools...' für das CPE Fenster nicht schreiben (falscher Dateiname)</strike>
+      * Console wird nicht mehr vollgeschrieben durch Hochsetzen des refresh-Intervalls: -Djava.util.prefs.syncInterval=20000 
+   * Diplomarbeit
+      * Einseitig oder zweiseitig drucken?
+      * Tinte oder Laser?
+      * Bindungsart?
+      * Latex Vorlage ukp: 
+         * <strike>Tabelle, Bild,... auf englisch umstellen</strike>
+            * userpackage{english} im root-TexDokument hinzugefügt
+         * <strike>Datum auf englisch umstellen</strike>
+            * userpackage{english} im root-TexDokument hinzugefügt
+            * Ausnahme bei Ehrenwörtlicher Erklärung
+         * Kapitelüberschrift-Formatierung geht nicht?!?
+         * <strike>"Diploma Thesis" in Ehrenwörtliche Erklärung</strike>
+            * manuell geändert
+         * Tabellen zwecks besserem Textfluss in den Anhang verschieben?
+         * Wie Komma und Punkt (2,34 und 1.000) bei Zahlen handhaben, wegen englischer Sprache?
+   * EsaChached Indizes englisch benötigt für jap.Patente... wenn noch Zeit vor Abgabe
+   * Macht das Aufführen der Standard-Abweichung in der Auswertung überhaupt Sinn?
+
+---++ TODO
+   * <strike>Struktur/Gliederung der Ausarbeitung</strike>
+   * <strike>Vergleich der Algorithmen nach Performanz, Anwendbarkeit, Ergebnis</strike>
+   * Japanischer Patente Korpus testen
+   * <strike>Speicher auf Server bei Ausführung vergrößern</strike>
+   * Jung Graphlayout verbessern
+   * Standard IR Methoden einbauen
+   * JavaDoc 
+   * Testklassen
+   * Readme
+
+---++ Deadline Prüfungssekretariat
+   * 28.02.2009 (Zwei gebundenen Ausgaben abgeben)
+
+-- Main.JoergHellms - 03 Jul 2008

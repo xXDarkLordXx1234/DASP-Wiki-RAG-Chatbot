@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="aelmi" comment="save topic" date="1478852488" format="1.1" reprev="8" version="9"}%
+%META:TOPICPARENT{name="HamidZafar"}%
+---++ [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafar][Back]] 
+
+---+!! Notes
+
+---++ Smart Move Proposal
+
+   * Find similar segment-type between processors
+   * Should compare intra-transition matrix
+      * Normalize the transition matrix for each segment-type
+      * create a distance matrix consists of similarity between all possible combination of segment-types in all processors
+      * Choose the most similar one
+      * Move stats if there is a empty slot in the destination process (Doesn't work, possible explanation: we move the segment-type based on their similarities, so by moving the stats, we actually creating a new segment-type very similar to existing one in the destination cluster.)
+      * Based on above, don't move stats.Just assign update pid (keep the load balance by moving stuff to the proc with less points)
+
+Scalable IMMC implementation
+   * According to AVParallel of Williamson, I splitted the dataset according to a Dirichlet distribution. 
+   * After each iteration, coordinator should propose a cluster to be moved. Williamson uses a proposal based on size of clusters. 
+      * I think the goal is to move data around so that each process would have all the data belong to a cluster
+      * So we can, compute similarity of each clusters in different process and choose one according to a similarity metric.
+   * Then a metropolis hasting step decides whether or not it would be moved.
+   * Move the cluster from a proc to another one
+      * Data
+      * Stats info
+         * What variable should be moved?
+         * IMMC uses L as approximate upper limit. What if there is no empty cluster in the destination proc?
+
+Further works:
+   * Evaluation: Precision/recall 
+      * Synthesized data: 
+         * we have the ground truth + each process internal structure
+         * Precision/recall/f1
+         * Use internal structure
+   * We need a metric to measure goodness of a model in regard to the dataset. So that we could compare different models. also to make sure that the scalable version keep the quality while brings speed up
+   * Visualization
+      * Goals: 
+         * It should be easy to grasp. 
+         * It should a have fixed structure so that one can compare two visualizations.
+         * It should show how data are clustered and their internal Markov chain
+   * Merge split step
+   * present final model by using each processor model
+      *  Merge similar cluster
+   * How scalable can it get in regard to the number of processing resources?
+   * What we can do to parallelize local computation?
+   * Find a NLP application!
+      * Word Sense Induction (WSI)
+      * Event Sequence Description (ESD)
+
+-- Main.HamidZafartavanAelmi - 2016-10-16

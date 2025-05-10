@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1173288766" format="1.1" version="1"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Hier wird das Thema "Preprocessing" behandelt.
+
+%TOC%
+
+---++Entfernen von doppelten Produkten
+Oft gibt es Produkte in mehreren Varianten (bei Kameras z.B. das Gehäuse, sowie das Gehäuse mit mehreren Objektiven). Diese Produkte haben unterschiedliche ASINs, jedoch dieselben Rezensionen. Diese doppelte oder sogar mehrfach vorhandenen Rezensionen müssen aus der Datenbank wieder entfernt werden, sodass nur noch ein Exemplar übrig bleibt. Zu diesem Zweck müssen alle gleichen Produkte gefunden werden. Folgende SQL-Anweisung listet alle Paare von ähnlichen Produkten auf:
+<verbatim>
+select DISTINCT A.ASIN, B.ASIN
+from Review A, Review B
+WHERE A.CustomerID = B.CustomerID
+AND A.Summary = B.Summary
+AND A.ASIN <> B.ASIN
+AND A.Date = B.Date
+AND A.TotalVotes = B.TotalVotes
+</verbatim>
+
+Alternativ können doppelte Einträge bereits beim Einfügen in die Datenbank verhindert werden. 2 Einträge sind dann gleich, wenn sie sich nur in der ASIN unterscheiden. Dieser Ansatz erscheint mir der bessere.
+
+
+
+-- Main.KaiMichaelHoever - 07 Mar 2007

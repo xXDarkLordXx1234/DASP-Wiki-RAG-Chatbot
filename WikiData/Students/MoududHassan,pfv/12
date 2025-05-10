@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="hassan" comment="reprev" date="1481469610" format="1.1" reprev="11" version="12"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Thesis Topic
+
+---++ Intro
+
+---++ Next week
+   * @todo(MH): fill out the wiki
+   * @info(DS): Mintz et al. (2009): Distant supervision for relation extraction without labeled data ([[https://web.stanford.edu/~jurafsky/mintz.pdf][.pdf]])
+      * DS: The paper explains the trick that I was referring to during the last meeting. Namely that we can assume that if two entities are related in the knowledge base, this relation is expressed whenever these two entities appear in the same sentence. It is called the _distant supervision assumption_.
+   * @todo(MH): read chapter 5 of Raktim's thesis about linking entities in Wikipedia
+   * @todo(DS, MH): what is the best way to organise the code repositories/integrate DS's and Raktim's
+      * DS: I think it would be best if you fork my repository and use it as a basis. We can later merge the important changes.
+      * MH: Your repository means "semantic-parsing-training-data-pipeline"? Sure I can fork your project and work on that. For Raktim's code I think I should create a jar and add the reference to the project. 
+   * @todo(MH): Next task:
+      1 Take the latest Wikipedia Dump
+      2 Take the first 1000 articles 
+      3 For each article extract sentences that have links
+      4 Convert links to WikiData IDs
+      5 Store sentences and mark entities in them with the extracted WikiData IDs:
+         * E.g.: This is the president <wd id = "Q76">Barack Obama</>
+
+---++ 2016-12-09
+   * @done(DS): Dr. Eichberg (he has granted his permission)
+   * @todo(MH): fill out the wiki
+   * @todo(MH): DKPro: [[https://dkpro.github.io/dkpro-core/]]
+         * MH : <del>Installed Maven and tried to setup a test project as instructed at [[https://dkpro.github.io/dkpro-core/pages/java-intro/]]. But getting the following error inside main method where I am calling runPipeline : </del>
+         * <del>The method createReaderDescription(Class<? extends CollectionReader>, TypeSystemDescription, TypePriorities, FsIndexCollection, Capability[], Object...) from the type CollectionReaderFactory refers to the missing type CollectionReaderDescription</del>
+         * <del>The method createEngineDescription(AnalysisEngineDescription...) from the type AnalysisEngineFactory refers to the missing type AnalysisEngineDescription</del>
+         * <del>I checked inside the Maven dependencies that the required dependencies already exists!</del>
+         * Please ignore comments above. I have resolved the issues. It was basically maven repository had caching issues. 
+   * @todo(MH): take a a closer look at the code 
+      * MH : Trying to understand knowledgebase KbSPARQLAccess type you implemented the type as enum instead of a class. Would like to know why you choose enum over class?
+         * To simulate  singleton class: [[http://javarevisited.blogspot.de/2012/07/why-enum-singleton-are-better-in-java.html][Why Enum Singleton are better in Java]]
+      * DS's code
+      * Raktim's code on extracting data from the Wikipedia corpus: CreateAnnotations.java
+         * I want to debug the code to understand how it works. I need wikidata dump file to do that. Where do I get wiki data dump file?
+         * DS: I think he has used the JSON dump for this task, it is available here: [[https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29][Wikidata:Database_download#JSON_dumps]]. The RDF dump that is loaded into the local installation of Virtuoso at UKP can be downloaded  [[http://tools.wmflabs.org/wikidata-exports/rdf/exports.html][here]].
+         * @info(DS): More details in Raktim's thesis: [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/Thesis-PDF/Reference-Extraction-Master-thesis.pdf][Reference-Extraction-Master-thesis.pdf]]
+   * @info(DS): [[http://www.cray.com/blog/tuning-sparql-queries-performance/][Tuning SPARQL Queries for Performance]] - just a couple of good practices, though I have found them pretty useful. 
+
+---++ 2016-11-25
+   * @info(DS): organisational issues
+   * @info(DS): relevant code repositories:
+      * [[https://github.com/sivareddyg/graph-parser]] - this is a Semantic Parser that uses a different knowledge base (Freebase), but the queries and their structure are very similar to WikiData. We can definitely learn something from his implementation. It seems like SPARQL relevant classes are located here: [[https://github.com/sivareddyg/graph-parser/tree/master/src/in/sivareddy/graphparser/util/knowledgebase]]
+      * [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/]] - This is a code of a UKP master student who had to implement some SPARQL queries last year. He has used the same WikiData endpoint. The Queries are implemented in this class: [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/java/src/main/java/de/tudarmstadt/ukp/raktim/SparqlHandler.java]]
+      * Finally here is some code that I have been working on, relevant WikiData objects are located here: [[https://git.ukp.informatik.tu-darmstadt.de/sorokin/semantic-parsing-training-data-pipeline/tree/master/src/main/java/knowledgebase]] - get acquainted with it, as we'll probably use it as the starting point. 
+
+---++ 2016-11-XX
+   * @todo(MH): test task results, link the code   
+   * Implemented a Wiki data test API that consists of 3 simple sparql query
+      * getRelation : This method gets a Set of relation/predicate between two entities. The entity id are supplied. 
+         * Performance results: 432 milli seconds 
+      * getTrippleWithCommonRelations : Given two natural language entity names w1 , w2 (e.g. Barack Obama, United States) retrieve a set of triples {he1,1, r1 , e1,2i, he2,1, r2 , e2,2i, . . . , hen,1 , rn, en,2 i} from WikiData, such that e1 is a WikiData entity id corresponding to an entity that has a name or an alias Barack Obama and e2 has the same relation to United States.
+         * Performance results : 02 seconds, 687 milli seconds
+      * getMostRecentEntity : Given a WikiData entity id e1 and a relation type r retrieve an entity id o1, such that the fact (e1, r, o1) is stored in WikiData, there is a date t attached to that fact that ((e1, r1,o1), TIME t) and for any other entity ef that is also related to e1 with the same relation r(e1,r1, ef) the attached date tf is is earlier than t. For example, the entity "United States" is related with the relation "President" to all American presidents and it is required to extract only the most recent President.
+         * Performance results : 348 milli seconds
+   * The test project link [[https://git.ukp.informatik.tu-darmstadt.de/hassan/WikiDataTestAPI.git]]
+-- Main.DaniilSorokin - 2016-11-25

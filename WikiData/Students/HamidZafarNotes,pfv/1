@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="aelmi" comment="reprev" date="1476614066" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="HamidZafar"}%
+---++ [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafar][Back]] 
+
+---+!! Notes
+
+Scalable IMMC implementation
+   * According to AVParallel of Williamson, I splitted the dataset according to a Dirichlet distribution. 
+   * After each iteration, coordinator should propose a cluster to be moved. Williamson uses a proposal based on size of clusters. 
+      * We can do better than this. For example, compute similarity of each clusters in different process and choose one according to a similarity metric.
+      * Similarity Metric:
+         * Internal structure of MC?
+   * Then a metropolis hasting step decides whether or not it would be moved.
+   * Move the cluster from a proc to another one
+      * Data
+      * Stats info
+         * What variable should be moved?
+         * IMMC uses L as approximate upper limit. What if there is no empty cluster in the destination proc?
+
+
+
+Further works:
+   * Merge split step
+   * How scalable can it get in regard to the number of processing resources?
+   * What we can do to parallelize local computation?
+   * Find a NLP application!
+      * Word Sense Induction (WSI)
+      * Event Sequence Description (ESD)
+
+-- Main.HamidZafartavanAelmi - 2016-10-16

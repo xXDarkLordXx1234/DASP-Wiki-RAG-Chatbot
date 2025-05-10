@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="pzhao" comment="" date="1578414616" format="1.1" reprev="4" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitszeiten - Pengfei Zhao
+
+|*Date*|*Topic*|*Hours*|
+|=Oktober=||||
+|4.10.2019|Recherche : DestillBert, Roberta, huggingface|5|
+|10.10.2019|Meeting|0.5|
+|14.10.2019|Vertrautmachen : Bert-API|4|
+|24.10.2019|Meeting|0.5|
+|28.10.2019|Stress Test : add scheduling, add parallel request|8|
+|29.10.2019|Stress Test : sample from wikipedia, set up in ukp server |7|
+|_Total Oktober_|||_25_|
+
+|*Date*|*Topic*|*Hours*|
+|=November=||||
+|5.11.2019|DestillBert: Basic Pipeline|8|
+|7.11.2019|Meeting|0.8|
+|12.11.2019|create dataset split script|6.5|
+|13.11.2019|Set up pipeline in Lisa, Set up remote debugging|4|
+|15.11.2019|Meeting|1|
+|19.11.2019|Transition to Pytorch|7|
+|20.11.2019|Adapt run_glue.py to usecase : input pipeline, training|5|
+|21.11.2019|Meeting|0.7|
+|26.11.2019|Remove duplicates in data, and intersection between traing and test|4|
+|26.11.2019|Check whether token or word-pieces are truncated|1|
+|26.11.2019|Research about best finetuning parameters|1|
+|26.11.2019|Write evaluation scheme|5|
+|28.11.2019|Meeting|0.8|
+|_Total November_|||_45_|
+
+|*Date*|*Topic*|*Hours*|
+|=December=||||
+|4.11.2019|Set up Environment for Albert|6|
+|5.12.2019|Meeting|0.8|
+|10.12.2019|adapt splitting script|1|
+|10.12.2019|evaluate albertv2,1; bert|3|
+|11.12.2019|try run_classifier from albert repo|4.5|
+|11.12.2019|try to reproduce previous results with bert with transformers|0.5|
+|_Total Dezember_|||_16_|
+
+|*Date*|*Topic*|*Hours*|
+|=December=||||
+|7.1.19|Trying to run albert from google repo|3.5|
+
+|_Total Januar_|||_?_|
+
+|*Total*| <p style="text-align:right">  </p> |||
+
+
+-- Main.BenjaminSchiller - 2019-10-24

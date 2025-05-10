@@ -1,0 +1,139 @@
+%META:TOPICINFO{author="TobiasHorsmann" date="1331724562" format="1.1" version="92"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Tobias Horsmann
+
+---+++ Resources
+   * MeetingPrepTobias
+---+++ Aufgabenüberblick
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| * Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung in Wikipedia-API um auf lokale MySQL DB mit Amisch-Wiki zugreifen zu können | 100 |
+| Eingelesen Wikiseiten nach MWT absuchen und diese speichern. Abgreifen von MWT vorläufig via RegEx | 100 |
+| Gefunden MWTs in einem eigenen Datentyp speichern | 100 |
+| MWT nach Wortanzahl filtern | 100 |
+| Zugriff auf die MetaDaten der Wiki*-Reader, um Page-Titel ebenfalls als MWE abzuspeichern | 100 |
+| Speichern der Terme in einem Lucene Index | 100 |
+| Zu jedem MWT die Häufigkeit innerhalb des Wiki ermitteln/abzählen und Eintrag um Frequenz aktualisieren. | 100 |
+| Datentypen via Lucene indizieren | 100 |
+| Download der aktuellen deutschen und englischen Wikipediaseiten | 100 |
+| Aus den Wikipediadownloads via datamaschine.jar für die Wiki-API verarbeitbare MySQL-Datenbanken erstellen | 50 |
+| Wikipediadaten in MySQL-Datenbank importieren | 0 |
+| Die Erstellung eines Web1TIndexes für das deutsche Wiki durchführen. | 0 |
+| Die Erstellung eines Web1TIndexes für das englische Wiki durchführen. | 0 |
+---+++ Zeiterfassung
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Zusammenfassung* | *Stunden* | *Bemerkungen* |
+| 10.09.2011 | Erstellen von Testfällen für ausgewählte Seiten des Amisch-Wiki, um MWE Extraktion zu testen. | 1 | ... |
+| 10.09.2011-13.09.2011 | Erstellen von RegEx-Commands, um möglichst präzise und vollständig bold, italic, header und links aus Wikipediaseiten zu extrahieren | 8 | |
+| 16.09.2011 | Annotator erstellt der Simple-Links extrahiert, dass Link Target speichert und die Wörter zählt, sowie einen Test zur Überprüfung hinzugefügt. | 1 | |
+| 17.09.2011 | Generischen Wiki Annotator erstellt. Testfälle für die verschiedenen Annotationsarten erstellt. | 6 | Header-Pattern/Test laufen noch nicht korrekt |
+| 19.09.2011 | Erstellen von Annotatoren zum extrahieren einzelner MarkUp-Arten, ausgehend von einem erstellten abstrakten WikiAnnotator. Testfälle aufgeteilt auf die verschiedenen Annotatorvarianten. Beispielhafte Pipeline erstellt, die die neuen Annotatoren nutzt und die Ergebnisse auf System.out ausgibt. | 4 | |
+| 21.09.2011 | Besprechung mit Silvana | 0.75 | |
+| 21.09.2011 | Hinzufügen der Index-Erstellung mit Lucene für die annotierten Terme. Änderung der abstrakten Basisklasse für die Wikiannotatoren, um 1-Buchstabe Ergebnisse nicht länger zu berücksichtigen. | 0.5 | |
+| 22.09.2011 | Erstellen einer Basisklasse für das Auslesen von Wikipediatiteln. Ableitungen von dieser Klasse erstellt, analog zum Query/Artikel-Reader für Seiteninhalte. Testen der Reader. Erstellen eines TitleAnnotator der die vom TitleReader gelesenen Title bereitstellt. Title in Lucene-Index wegschreiben. | 2 | Title-Reader noch nicht komplett getestet |
+| 22.09.2011 | Erstellen eines Testfalles, der (vermutlich) einen Bug demonstriert | 0.5 | BoldExtractionTest.java -  testBoldExtraction3() |
+| 23.09.2011 | Besprechung mit Silvana | 0.75 | |
+| 23.09.2011 | Änderung der RegEx für italic und bold Extraction von greedy auf reluctant, um Terminierungsproblem zu lösen | 0.5 | |
+| 24.09.2011 | Analyse der Wikipedia-API bzw. WikipediaReader, um Name von Redirects als Title zu extrahieren. | 1.5 | Erstellung der Redirects als eigener Title scheitert an der Nicht-Veränderbarkeit von JCas Objekten |
+| 26.09.2011 | Implementierung der Extraktion von Redirekt-Titeln. Extraktion optional an/abschaltbar | 1.0 | |
+| 26.09.2011 | Erstellen von Testfällen, um die weggeschriebenen Begriffe auf Soll/Ist Basis abzugleichen | 1.5 | |
+| 26.09.2011 | Erstellen einer Testklasse, die eine Gesamtverarbeitung durchführt, wahlweise für ein deutsches oder amisches Wiki | 0.5 | |
+| 26.09.2011 | Implementierung eines Evaluators, der die Wortanzahl der im Lucene-Index vorkommenden Terme berechnet, und die Häufigkeiten der x-Wort Terme aufaddiert | 1.5 | Nicht nachvollziehbare Abweichung zwischen Anzahl an Termen die über Luke angezeigt werden und durch das iterieren gezählt werden |
+| 27.09.2011 | Fehlersuche bei abweichender Anzahl an Termen im Vergleich zu denen, die von Luke angezeigt werden; Prototyp-Implementierung eines Tools zum Abzählen der Terme via Lucene und  der eineindeutigen Terme, um die Abweichung zu ermitteln | 1.5 | |
+| 28.09.2011 | Besprechung mit Silvana | 1.0 | |
+| 28.09.2011 | Korrektur der Wortanzahlermittlungsroutine durchgeführt. Unit-Test erstellt, um die Wortanzahlermittlung testen zu können. | 0.75 | Bug festgestellt, RegEx-Terme matchen nicht, sollten die Terme im MarkUp durch 2 oder mehr Leerzeichen voneinander getrennt sein |
+| 28.09.2011 | Programmcode clean up. Kommentare zu den vorgefertigten Pipelines hinzugefügt. | 0.25 | |
+| 29.09.2011 | Neues Projekt erstellt, in dem eine Pipeline zum ermitteln von NGrams aus WikiWebseiten durchlaufen wird. Testläufe mit dem Armisch-Wiki und dem deutschem Wiki durchgeführt | 0.75 | |
+| 30.09.2011 | Erstellen eines neuens Projekt mit Verwendung einer externen Ressource, um  den likelihood ratio für einen Testfall zu ermitteln. Verwendung der im vorherigen Schritt erstellten Daten in einem FrequencyProvider, der als externe Ressource genutzt wird. | 4 | Einlesen der Daten via Web1TFrequencyCountProvider noch nicht lauffähig. |
+| 02.10.2011 | Korrektur bei der Erstellung des Web1TIndex. Erstellung eines Testfalls zum Verifizieren der Indexerstellung auf Basis des amischen Wikipedia für 1-3 Gramme | 1 | |
+| 04.10.2011 | Hinzufügen eines Parameters, um einen zu verarbeitenden Datentyp als Parameter angeben zu können. Übernahme der Funktion aus Codebeispielen. Hinzufügen von Testfällen, um die ermittelten Liklelihood-Werte für Bi/Tri Gramme zu überprüfen, in dem diese als Parameter von Außen angegeben werden. | 4 | Tests laufen, allerdings nur, wenn diese einzeln ausgeführt werden. Ausführen des gesamten Test-Package führt zu einer OutOfMemory Exception |
+| 05.10.2011 | Test hinzugefügt, um die FeatureFilter Funktion zu testen. | 0.75 | |
+| 07.10.2011 | Refactoring der bisher erstellten Projekte. Korrektur der Verwendung von AnalysisEngine und AnalysisEngingDescription. Vereinfachung der Vererbungshierarchie der Testfälle. | 2 | |
+| 08.10.2011 | Hinzufügen eines Parameters, damit ein FeaturePath von Außen angegeben werden kann, unter dem der Likelihood-Ration gespeichert werden soll. Neuer Testfall hinzugefügt, der das Verarbeiten von mehreren Quell-Datentypen durchführt und in einem Feature von einem Zieldatentyp abgelegt wird. | 1.25 | |
+| 11.10.2011 | Überarbeitung der regulären Ausdrücke zur Extraktion von Header, Italic und Bold Annotation aus Wikipedia-Artikeln. Die RegEx extrahieren nun auch Begriffe, wenn die Wörter durch mehr als ein Leerzeichen voneinander getrennt sind. Erstellen von neuen Testfällen zur Verifikation von extrahierten MultiWhitespace separierten Begriffen. | 1.5 | |
+| 11.10.2011 | Austausch des Web1FormatWriter durch den Web1TFormatWriter zur Indexerstellung. Beheben von Abhängigkeitsproblemen zusammen mit Torsten/Richard. Korrektur von Testfällen, die auf der alten Version der Indexerstellung beruhen und durch fehlerhafte Berechnungen in der alten Version falsche Erwartungswerten in den Tests verwendet haben. | 1.0 | |
+| 12.10.2011 | Besprechung mit Silvana | 0.75 | |
+| 12.10.2011 | Änderung des MaximumLikelihood Annotator, damit dieser als Eingabequelle auch Features von Types akzeptiert, die von Außen angegeben werden. Erstellen eines grundlegenden Testfalls. | 1.5 | Tests sind noch unvollständig |
+| 12.10.2011 | Untersuchung der Verarbeitung von längeren Strinketten als Parameter für das zu verarbeitende Feature | 1.0 | Die Annahme scheint zu sein, dass es stehts "Typ/Feature" ist, das iterieren über Typ-Strukturen scheint nicht berücksichtigt zu werden. Beispielsweise "Token.class.getName() + "/lemma/value", wo der Zielwert über einen Zwischentyp nur indirekt erreichbar ist. Verarbeitung dafür nicht implementiert, überhaupt relevant? |
+| 13.10.2011 | Korrektur eines Programmfehlers im MaximumLikelihood-Annotator, damit nun auch längere FeaturePfade korrekt verarbeitet werden können. | 1 | |
+| 13.10.2011 | Ändern der Web1TFormatWriter Klasse, damit dieser nun ebenfalls die zu verarbeitenden Typen von Außen via Parameter mitgeteilt werden können. Erstellen von Testfällen, die für Typ, Typ+Feature und mehrere Typ+Feature die Indexerstellung testet. | 3.0 | Mail an Torsten ist raus, ob er das so in DKPro übernehmen will |
+| 14.10.2011 | Besprechung mit Silvana | 0.5 | |
+| 14.10.2011 | Download der Wikipediadaten für das deutsche und englische Wikipedia; Aufsetzen von Transformationsjobs, um diese in ein Wiki-API kompatibles Dateiformat umzuwandeln, dass in Datenbanken importiert werden kann. | 0.75 | |
+| 16.10.2011 | Importieren des englischen/deutschen Wikipedia in die MySQL-Datenbank. | 0.25 | |
+| 16.10.2011 | Deployen des freqExtraction Projekt, um die Web1TIndizies für das englische und deutsche Wikipedia zu erstellen. | 3 | Abhängigkeitsprobleme, die zu Laufzeitfehlern im Typsystem geführt haben, kleine Pitfalls in Tutorial, sowie eine veraltete superpom haben aus wenigen Minuten Arbeit einige Stunden gemacht. |
+| 16.10.2011 | Upload des deployten Projekts und Aufsetzen eines Jobs, um die Web1TIndex Erstellung für 1-5 Gramme zu starten. | 0.25 | |
+| 18.10.2011 | Fehlerhafte Erstellung des Web1TIndex untersucht. Scheinbar einzelne Einträge wo mutmaßlich Sonderzeichen enthalten sind, die einen Linebreak o.ä. verursachen wo ein Tabulator erwartet wird? Korrektur des Web1TFormatWriter durch Torsten. Nach Re-Deploy des freqExtraction Projekt erneute Umsetzung gestartet. Wieder fehlgeschlagen, identischer Fehler. | 2 | Ich vermute, dass beim re-deploy nicht die neuste Version des Web1TFormatWriter verwendet wurde. Daher erneuten re-deploy gestartet, wo der Web1TFormatWriter als lokale Kopie vorliegt und nicht mehr auf den aus DKPro zugegriffen wird. |
+| 20.10.2011 | Besprechung mit Silvana. Programmanalyse des WikiWeb1TFormatWriter, um diesen künftig Ressourcen freundlicher zu machen. | 0.75 | |
+| 21.10.2011 | Kommentieren der Extraktor-/Readerklassen des MWE-Projektes. Vorbereiten, Deploy und Upload auf Mow des MWE Projektes. Starten eines Jobs, um aus dem deutsche Wikipedia Annotationen zu extrahieren (1-5 Grame) und diese in einem Lucene-Index zu speichern. Rücksprache mit Torsten wegen dem Web1TFormatWriter Speicherproblem. | 1.5 | Für den Web1TFormatWriter werde ich einen Prototyp implementieren, der mit vielen Teildateien arbeitet und jeweils für den aktuellen Schritt aggregiert und sortiert, anstatt am Ende über die Gesamtdaten eine Aggregation und Sortierung durchzuführen. |
+| 21.10.2011 - 23.10.2011 | Überarbeitung des Web1TFormatWriter. Ausprobieren von Alternativen hinsichtlich Laufzeitverhalten für größere Datenmengen. Derzeit Verwendung eines external Sorts von Googlecode, damit die Index-Erstellung künftig ressourcen-freundlicher  wird (d.h. weniger RAM). Testen der Änderung. Deploy des Projektes auf Moe, N-Gram Erstellung für das deutsche Wikipedia abgeschlossen (siehe /home/horsmann/results).   Index-Erstellung für englisches Wiki fehlgeschlagen, da "Page" Tabelle in Datenbank beschädigt, neues erstellen der englischen Wikipedia-Datenbank. Aufsetzen des Jobs für die NGram-Erstellung nun auch für das englische Wiki. | 6 | Job fürs englische Wiki läuft noch (24.10 / 9.40 A.M) |
+| 25.10.2011 | Besprechung mit Silvana | 0.25 | |
+| 27.10.2011 | Grundgerüst des LinguisticInfoExtraction Projekt eingerichtet und mit Annotator für POS-Häufikeitsermittlung begonnen | 1.5 | |
+| 28.10.2011 | Überarbeitung des Web1TFormatWriter, bug hunting; Neu aufsetzen der Datenbankerstellung für das deutsche und englische Wikipedia, da die DBs mit falschem Datensatz erstellt wurden. | 1.5 | Der Web1Writer wird stark auf europäische Sprachen zugeschnitten sein. Die Allgemeingültigkeit geht wohl erst mal verloren, da derzeit nach Anfangsbuchstaben der Wörter in diverse Teildateien unterteilt wird. Das funktioniert für europäische Sprache ganz gut, für Russisch oder Japanisch wird dieses "Aufteilen" aber vermutlich dazu führen, dass alles in einer Datei landet, was dann bei sehr großen Daten wieder zu Problem führt (Anzahl offener Dateien oder RAM Ausnutzung). Sollte man daher erstmal nicht in DKPro übernehmen. |
+| 02.11.2011 | Änderung des Web1TFormatWriter, nach Absprache mit Torsten; Aufteilung in Teildateien nach Häufigkeiten der Anfangsbuchstaben; Am Ende keine Konsolidierung der Teildateien mehr durchführen, sondern die sortierten Teildaten behalten. | 1.5 | |
+| 03.11.2011 | Fehlersuche im Web1TFormatWriter, Korrektur der Fehler, Testläufe mit dem Amischen Wiki | 3 | Sieht jetzt ganz gut aus, werde das heute Abend deployen und mal auf das deutschen Wiki laufen lassen. Sprachen wie Russisch oder Arabisch sollten jetzt auch funktionieren, Japanisch oder Chinesisch vermutlich nicht-> Zu viele Dateien. |
+| 07.11.2011 | Im LinguisticInfoExtraction Projekt ist die Dateiausgabe für die Häufigkeitsverteilung von Lemma und POS Tags implementiert. Getestet mit sehr kleiner Testdatenmenge gegen das Amische Wikipedia. | 1.5 | Named Entities sind auch drin, allerdings kann ich die Begriffe wie "Location", "Organization" nicht direkt abfragen? |
+| 07.11.2011 | <-Nur zur Doku-> | 0.0 | Wegen dem Web1TIndexFormat Projekt, am Wochenende ist Moe abgeschmiert und hat den letzten Testlauf für den neusten Build mit sich gerissen. Momentan läuft ein Testlauf gegen das japanische Wikipedia, um zu sehen wie sich der Build dort verhält. Wenn das durch ist, wollte ich noch mal einen deutschen Lauf aufsetzen. |
+| 09.11.2011 | Besprechung mit Silvana | 0.5 | |
+| 09.11.2011 | LinugisticInfoExtraction - Erstellung einer neuen Ausgabe für die topMatches für eine MWE. | 1.0 | |
+| 11.11.11 | Besprechung mit Silvana | 1.0 | |
+| 11.11.11 | Neuer Testlauf mit gefixter Version des External Sort; Erstellen einer ausreichend großen Testdatei zum sortieren. Starten des Jobs. | 0.5 | |
+| 14.11.11 | Neue MWERanking Projekt angelegt. Korrektur von Kompilierungsproblemen durch Restrukturierung der DKPro Inhalte. Aufsetzen des (hoffentlich) letzten Testlaufes für den external Sort mit dem Web1TFormatWriter | 1 | Das Auftreten des Fehlers, dass die maximalen FileHandles überschritten wurde hätte auch daran liegen können, dass auf Moe vorherige Anwendungen offene Handle verursacht haben. Ein neues Ausführen zeigte aber (nach einem ungewollten Neustart von Moe von vor einiger Zeit), dass der Fehler weiterhin reproduzierbar ist. Die neue Version lief für ein 50G Testfile durch. Jetzt läuft noch mal ein normaler Wikipedia-NGram Durchlauf - dann sollte es "fertig" sein. |
+| 15.11.11 | Bearbeitung des MWERanking Projekt. Beheben von Problemen mit Richard. | 2.0 | Kompilierungsprobleme wegen falscher Abhängigkeiten; Black-Box Testing des Index-Reader |
+| 16.11.2011 | Aufsetzen eines neuen Lauf zur Fehlersuche beim Web1TFormatWriter | 0.5 | Letzter Durchlauf fehlgeschlagen. Java heap space error, impliziert das er die ganzen 16GB ausgenutzt hat. Neues deploy mit prints der aktuellen Restmenge an Arbeitspeicher, um die Speicherentwicklung nachvollziehen zu können. Ein Aufruf des nackten external sort auf eine der unsortierten Dateien lief vorher durch, daher sollte es eigentlich funktionieren. Eine Exception im Web1TFormatWriter wurde nicht richtig weiter gereicht, weswegen diese im Logfile evtl. verloren gegangen ist, da die Exception nicht am Ende des logfiles steht, wenn sie auftritt. |
+| 17.11.2011 | Fertigstellung des Ranking Annotator für die Wikipedia MWEs aus dem Lucene Index. | 3 | Schwellwerte können noch nicht angegeben werden. |
+| 21.11.2011 | Hinzufügen von Schwellwerten zum MWERanking. Testlauf unter Verwendung des neu erstellten Case Sensitiven Lucene Index | 1 | |
+| 23.11.2011 | Besprechung mit Silvana | 0.75 | |
+| 25-27.11.2011 | Änderung des Web1TFormatWriter, um die Teildateien möglichst klein zu halten | 2.5 | |
+| 28.11.2011 | Besprechung mit Silvana | 0.5 | |
+| 29.11.2011 | Erste Grobskizzierung des AssoMeasure-Projkets | 0.25 | |
+| 01.12.2011 | Besprechung mit Silvana | 0.5 | |
+| 04.12.2011 | Modellierung der Besprechungsergebnisse | 0.5 | |
+| 07.12.2011 | Besprechung mit Silvana | 0.5 | |
+| 07.12.2011 | Implementierung der ersten Grundstruktur im AssociationMeassure-Projekt | 0.75 | Konnte das nicht comitten, irgendwas scheint da noch nicht mit den Projekteinstellungen zu stimmen.. |
+| 10.12. - 13.12.2011 | Überarbeitung des Web1TFormatWriter und aufteilen in kleinere Komponente | 4.5 | |
+| 14.12.2011 | Besprechung mit Silvana | 0.75 | |
+| 15.12.2011 | Web1T: Neue Test hinzugefügt, Implementierungsdetails geändert. Testlauf auf Moe aufgesetz | 1.0 | |
+| 16.12.2011 | Übernahme der PMI, SCP und Phi2-AssoMeasures in das neue AssoMeasure-Projekt. Erstellen von Testfällen für alle bisher implementierten Klassen | 2 | Es fehlen noch Testdaten die Randbedingungen für einzelne Measures darstellen. Derzeit gibt es nur die 2 Tests je Measure, die es auch in der Vorgabe gab. |
+| 20.12.2011 | Besprechung mit Silvana | 0.5 | |
+| 22.12.2011 | Ergebnisse des letzten Web1T-Testlauf überprüft | 0.5 | Hat im Wesentlichen funktioniert. Ein kleiner Bug hat aber zu leicht verwirrenden Dateinnummerierung geführt. Die Zeilenanzahl ist aber erhalten geblieben im Vergleich zu vorherigen Testläufen. Hab den Fehler korrigiert, aber im Moment sind alle ComputeServer ausgelastet bis Ende des Jahres. Denke hier geht es vermutlich erst 2012 weiter. |
+| 25.12.2011 | AssociationMeasure schmeißen nun eine Exception, wenn diese mit negativen Werten aufgerufen werden. Die Measure-Test beinhalten jetzt Tests für die Randbedingungen und wurden generell umstrukturiert. Der SingleScorer prüft die Ergebnisse nun ob diese pos/neg-Infintity sind und setzt diese auf Double.NaN um, um einheitlich ein "unbrauchbares Ergebnis" anzuzeigen. Tests für diese Umsetzung von Infinity->NaN Werten ergänzt | 2 | |
+| 27.12.2011 | Der Multi-Scorer stellt ScoredPairs deren Ergebnis Double.NaN ist, separat von den normalen Ergebnissen in einer Fehlerliste bereit. Die Fehlerliste kann für das jeweiligen Measure über den Namen des Measures abgerufen werden. Für die Fehlerverarbeitung gibts neue Testfälle. | 1.25 | |
+| 30.12.2011 | t-score Implementierung hinzugefügt | 0.5 | |
+| 04.01 - 05.01.2012 | Implementierung von Measures: z-score, chi-squared, log-likelihood, jaccard. Erstellung von Testfällen zu den Measures. | 2 | |
+| 10.01.2012 | Besprechung mit Silvana | 0.5 | |
+| 10.01.2012 | Entfernen des nicht mehr benötigten Interfaces aus den Measureklassen und Tests. Code-Refaktoring. Hinzufügen einer neuen ContingencyTable-Klasse für die Verarbeitung von Measures basierend auf Tabellendaten. Implementierung des neuen -ContingencyTable-Interface für das 'Dice' Measure | 1 | |
+| 11.01.2012 | Implementierung der ContigencyTable-Methode für Jaccard, PhiSquare, PMI. Anpassung der Tests und hinzufügen von Testfällen für die Cont.Table-Methode | 1 | |
+| 12.01.2012 | Verbleibende Measures um ContingecyTable-Implementierung ergänzt und Testfälle für diese ergänzt | 1.5 | |
+| 10.01 - 12.01.2012 | Aufsetzen eines Web1TFormatWriter Testlaufs. Überwachung. Auswerten der Testergebnisse | 0.5 | |
+| 13.01.2012 | Besprechung mit Silvana | 0.5 | |
+| 14.01.2012 | Bearbeitung des Probeset für die Zuordnung von FN<->WK Definitionen | 0.25 | |
+| 20.01.2012 | Besprechung mit Silvana zu den Ergebnissen des Probesets | 0.75 | |
+| 31.01.2012 | Daten annotiert | 8.5 | |
+| 08.02.2012 | Besprechung mit Silvana und Einrichtung deines neuen Unithood-Modul | 0.75 | |
+| 08.02.2012 | AssociationMeasures überarbeitet. Situationen wo einen Division durch 0 durchgeführt werden würde, wird nun abgebrochen und immer Double.NaN zurückgeliefert | 0.5 | |
+| 08.02.2012 | Kommentare zu den Scorer-Klassen hinzugefügt | 0.25 | |
+| 08.02.2012 | Erstes Unithoodmeasure implementiert. Pessimistic PMI. Testklasse erstellt. | 1.5 | |
+| 08.02.2012 | Abstrakte Oberklasse erstellt, die für alle pessimistischen Unithoods gültig ist. Die jeweiligen Implementierungen setzen nun nur noch das AssociationMeasure. Alle pessimitichen Unithoods sind jetzt implementiert. | 0.75 | |
+| 14.02.2012 | Naive und Fair Implementierung von PMI hinzugefügt | 0.75 | |
+| 19.02.2012 | Übrige Unithood Measures implementiert mit Testfällen | 2 | |
+| 22.02.2012 | Besprechung mit Silvana | 0.75 | |
+| 23.02.2012 | Neuen Scorer implementiert. Testfälle für den neuen Scorer erstellt. Interfaceänderungen auf die Measureklassen übertragen. ContingencyTable-Methode vorläufig entfernt. Testfälle der Measures angepasst | 4.5 | |
+| 25.02.2012 | Änderungen an den Unithoodmeasures. Vorschläge für eine Neustrukturierung der erzeitigen Projektstruktur dokumentiert. Weiteres vorgehen geplant | 1.0 | |
+| 28.02.2012 | Besprechung mit Silvana | 0.5 | |
+| 28.02.2012 | Alte Multi-Projektstrktur in ein einzelnes Projekt überführt. Klassen angepasst. testfälle übernommen. ContingencyTable bei den AssociationeMeasures hinzugefügt. Testfälle für die ContigencyTables wieder hinzugefügt. MWERanking Projekt begonnen zu bearbeiten, zur Anpassung an die neue Measures Bibliothek | 3.5 | |
+| 01.03.2012 | Verschiedene Measurevarianten für die Pipelinenutzung in den MWERankAnnotator hinzugefügt. Alte Codeteile entfernt und begonnen die neue Scorer Implementierung hinzuzufügen. Fehlerhandling in den AssociationMeasures korrigiert, damit diese keine Exception mehr werfen, wenn eine Freq nicht vorhanden ist. Anpassung der Tests. | 1.5 | |
+| 02.03.2012 | Neuen Scorer in das MWE Ranking integriert. Für den Annotator neue Parameter hinzugefügt, um fehlerhafte Ergebnisse zu unterdrücken. Beheben kleinerer Fehler in dem Scorer. Erweitern des measures interfaces um eine neue Methode getShortName(). | 4 | |
+| 06.03.2012 | Besprechung mit Silvana | 0.25 | |
+| 07.03.2012 | Einrichtung und Erstellung der Grundstruktur für das MWEDetector-Projekt | 2.5 | |
+| 07.03.2012 | Sätze werden jetzt Tokenisiert und gegen die MWE-Erkennung von jMWE abgeglichen. Die Position der Token-Sequenz wird ermittelt und bereitgestellt. Aktuell nur eine dummy Ausgabe auf Konsole der gefundenen MWEs. | 1.5 | |
+| 08.03.2012 | Anpassung des Detectors und Fertigstellung des Annotators | 1.0 | |
+| 10.03.2012 - 13.03.2012 | Das Experiment aus dem jMWE-Paper übernommen und aus den Detectoren Externe-Ressourcen erstellt. Die ext.Resourcen wieder verworfen, stattdessen wird der Detector über einen Annotator-Parameter ausgewählt. Der Annotator bietet jetzt die vier Varianten aus dem jMWE-Paper an. Zusätlich einen Test-Harness-Annotator erstellt, der einen MWEDetector auf Daten im Semcor-Format abgleicht. | 3 | |
+| 13.03.2012 | Besprechung mit Silvana | 0.5 | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 210)$EXEC($GET(total_hour))"}% | bis Ende Mai noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |
+<nop>
+
+%META:FILEATTACHMENT{name="hiwi_task_description.pdf" attachment="hiwi_task_description.pdf" attr="" comment="Rough task overview" date="1315573417" path="hiwi_task_description.pdf" size="788067" user="SilvanaHartmann" version="1"}%
+%META:FILEATTACHMENT{name="hiwi_task_description-2011-09-15.pdf" attachment="hiwi_task_description-2011-09-15.pdf" attr="" comment="UPDATED OVERVIEW" date="1316163031" path="hiwi_task_description-2011-09-15.pdf" size="842532" user="SilvanaHartmann" version="1"}%

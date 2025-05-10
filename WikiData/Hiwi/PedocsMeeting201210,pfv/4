@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="NicoErbs" date="1348853872" format="1.1" version="4"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++Pedocs meeting 2012-10-02
+
+   * Progress
+      * Integrated and tested new ranking approaches (PageRank, Node Degree, position)
+      * Supervised approach is currently being tested
+      * Added precision and recall as additional evaluation measures (before: R-Precision)
+   * Experimental results
+   * Error analysis
+      * ==tf.idf== vs. ==tf==
+   * Further steps
+      * Full list of results with promising parameters
+
+
+-- Main.NicoErbs - 2012-09-28

@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="BastianChristoph" date="1287341369" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+---++ Sentence Selection
+
+%TOC%
+
+---++++ LexRank: Setup using Dragon Toolkit 
+   * [[SentenceSelectionLexRankSimple][Setup for Simple Example]]
+   
+---++++ Graph based
+   * Sentence centrality: LexPageRank
+   * Directed Graphs: Hidden Markov Models (HMM)
+   * Undirected Graphs: Conditional Random Fields (CRF)
+
+---++++ Query-related
+   * Maximal Marginal Relevance (MMR)
+
+---++++ Others
+   * Randomized local search
+   * Relevance measure and latent semantic analysis

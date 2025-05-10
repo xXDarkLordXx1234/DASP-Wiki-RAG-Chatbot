@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="ManuelWick" date="1264621012" format="1.1" version="6"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ Todo/Workflow
+   * Designstruktur für pluginfähigen CollectionReader
+      * <strike>Erste Idee: mehrere CRs, die im selben Verzeichnis arbeiten und von der CPE eingebunden werden</strike> <span class="red">gescheitert, da CPE aktuell nur eine Instanz eines CR zulässt</span>
+      * <strike>Zweite Idee: ein CollectionReader, der als PluginFramework dient und via Interface/XML externe Reader nutzen kann</strike> <span class="green">works, at the moment with .txt and .pdf</span>
+      * <span class="green">[Update: Work needless? Implementation of new readers in Apache-Tika?]</span>
+         * Implementation of IReaders - pdf, txt, word, eml, xls, openoffice
+   * <strike>Erste selbstgeschriebene Collection Processing Engine implementieren</strike>
+   * Become acquainted with Apache-Tika
+   * Implement Apache-Tika-Library
+      * Get Apache-Maven running
+         * http://www.sonatype.com/books/m2eclipse-book/reference/creating.html
+      * <strike>Main framework</strike>
+      * <strike>Integrate Tika-Readers in IReader</strike> [still makes sense? integrate missing readers in TIKA?]
+         * Trying to build missing parsers for Apache-Tika
+
+-- Main.ManuelWick - 26 Jan 2010

@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="goel" comment="save topic" date="1421587804" format="1.1" reprev="16" version="17"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+
+---+ Tasks
+
+   * [[DKPro/DKProDeveloperResources][Set up development environment]]
+   * [[https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/issues/1103][Read person and editor from meta.xml]]
+   * [[https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/issues/1118][Towards a simple Uby converter tool]] (subtasks!)
+      * SVN location (r/w access granted): https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_ng/uby/
+   * [[https://scruffy.ukp.informatik.tu-darmstadt.de/chiliproject/issues/1115][Configure Apache to allow Solritas access only (Task #1115) ]]
+      * http://httpd.apache.org/docs/2.2/howto/auth.html
+      * http://httpd.apache.org/docs/2.4/
+
+---+ Jan 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2015-01-06 | #1141:Help option | 2 | |
+| 2015-01-12 | Apache wicket documentation and examples | 2 | Walked through some examples of apache wicket |
+| 2015-01-17 | #1155: Omitting CatalogIDDigital if it has anchorId attribute | 3 | Detecting and Removing the value of CatalogIDDigital when it has anchorId=true |
+| 2015-01-18 | #1155: Added testcase to verify the changes | 2 | Testcase omitCatalogIDDigital has been added into the MetsReader2Test.java |
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+---+ Current contract (Dec 2014)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2014-12-01 | Set up development envoirment | 2 | setup eclipse and check out the project |
+| 2014-12-02 | Read person and editor from meta.xml | 4 | capability has been added to the parser to read editor and author data from  meta.xml |
+| 2014-12-04 | Added testcase for testing person metadata | 2 | tested the bug |
+| 2014-12-09 | #1119: Simple tool to convert Germanet to Uby DB | 6 | |
+| 2014-12-10 | #1119: Testing | 2 | tested the jar through CL |
+| 2014-12-12 | #1120: simple tool to convert framenet to DB | 4 | |
+| 2014-12-14 | #1120: testing framenet to DB | 2 | |
+| 2014-12-14 | #1121: UBYXML to DB | 4 | |
+| 2014-12-15 | #1122: Generalize into ubycreate | 4 | |
+| 2014-12-15 | #1122: Testing generalized tool | 2 | |
+| 2014-12-23 | #1115 Adding authentication to solr | 4 | Added basic athentication to the server |
+| 2014-12-24 | #1115 Authenticating only write requests | 4 | Limits authentication to post requests |
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+-- Main.RichardEckartDeCastilho - 2014-12-01

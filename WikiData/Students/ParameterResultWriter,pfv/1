@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="NicoErbs" date="1265722828" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NicoErbsHiWiWork"}%
+---+++ ParameterResultWriter
+
+A writer for experiments which outputs readable information.
+
+%TOC%
+
+---++++ Problem description
+Until now results and information abut experiments are written to a console which is saved in a log file. Extracting these results (and information about the corresponding experiments) tend to be difficult with huge log-files of some GB.
+
+Hence it should be possible to extract results in a convenient manner. Nevertheless no essential information about the experiments (descriptors and their parameters) should be neglected.
+
+---++++ Methods of resolution
+Several methods to solve this problem are discussed.
+
+---+++++ Creating a special UIMA consumer
+A new UIMA consumer can get information about descriptors and their parameters. The consumer can write information about descriptors and their parameters but it seems complicated to get results of an experiment (which is neither inside a CAS nor a parameter of a descriptor).
+
+---+++++ Creating external programm
+An external programm can process a log-file and retrieve all relevant information with regular expressions. Implementing such a program is costly because many regular expressions have to be defined and one has to look deeply into the log-file.
+
+---+++++ Modifying existing UIMA consumers for results
+Modifying the existing consumer, which calculates results seems to be the easiest way. This consumer has to have additional parameters for a list of descriptors used in the experiment and the path to a file where to store data in.
+
+---++++ Using Excel
+Excel Spreadsheets are a good way to store information in. The main problem is to keep all relevant data and keep a Spreadsheet easily readable. The following structure is used:
+   * One file for each experiment
+   * One Worksheet for each dynamically generated cpe
+
+
+-- Main.NicoErbs - 09 Feb 2010

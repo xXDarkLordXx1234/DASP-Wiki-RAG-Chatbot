@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1288273883" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="FrameNetResourcebeschreibung"}%
+---++FrameNet Relations
+   * In !FrameNet, eight different relations between frames are defined
+   * Every relation is directed, which means that there are different names for the two ends of relations.
+   * The following table provides an overview on the different frame relations and how the elements of the relations are called
+| !FrameNet Relations |
+|*Relations name*|*Name of super element*|*FrameNet-Option for accessing super elements*|*Name of sub element*|*FrameNet-Option for accessing sub elements*|
+|Inheritance|Parent|Inherits from|Child|Is Inherited by|
+|Precedes|Earlier|Later|
+|Subframe|Complex|Component|
+|Using|Parent
+
+-- Main.ZijadMaksuti - 2010-10-28

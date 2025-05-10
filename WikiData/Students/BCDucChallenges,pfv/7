@@ -1,0 +1,89 @@
+%META:TOPICINFO{author="BastianChristoph" date="1290388098" format="1.1" version="7"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+---++++ Duc Conferences
+   * 2001
+      * Intrinsic evaluation of generic summaries,
+         * of newswire/paper stories for single and multiple documents
+         * with fixed target lengths of 50, 100, 200, and 400 words
+   * 2002
+      * Abstracts of single documents and document sets
+         * fixed lengths of 10, 50, 100, and 200 words
+      * Extracts of document sets
+         * fixed target lengths of 200 and 400 words
+   * 2003
+      * Abstracts of single documents and document sets
+         * Target lengths of 10 and 100 words
+         * multi-document summaries focused by
+            * TDT event topics, Viewpoints, Question topics
+
+---++++ Duc 2001
+   * Slides: <a href="http://www-nlpir.nist.gov/projects/duc/pubs/2001slides/pauls_slides/duc2001.PPT">Introduction to duc-2001: an intrinsic evaluation of generic news text summarization systems</a>
+
+---++++ Duc 2002
+   * Slides: <a href="http://duc.nist.gov/pubs/2002slides/duc2002.ppt">Introduction to DUC-2002: An intrinsic evaluation of generic news text summarization systems</a>
+   * Slides: <a href="http://www-nlpir.nist.gov/projects/duc/pubs/2002slides/overview.02.pdf">Introduction to DUC: An Intrinsic Evaluation of Generic News Text Summarization Systems</a>
+
+---++++ Duc 2003
+   * Slides: <a href="http://duc.nist.gov/pubs/2003slides/duc2003intro.pdf">An Introduction to DUC-2003</a>
+
+   * Very short summary: ~10 words
+   * Short summary: ~100 words
+
+   * Task 1
+      * Input: TDT Docs + TREC docs
+      * Output Task1: Very short single-docs summaries
+      * Baseline1: Author's own "headline" element
+   * Task 2
+      * Input: TDT Docs + TDT topic
+      * Output Task2: Short multi-doc summary
+      * Baseline2: First 100 words in the most recent document
+      * Baseline3: First sentence in document 1,2,3,...,n until 100 words
+   * Task 3
+      * Input: TREC docs + viewpoint
+      * Output Task3: Short multi-doc summary
+      * Baseline2: First 100 words in the most recent document
+      * Baseline3: First sentence in document 1,2,3,...,n until 100 words
+   * Task 4
+      * Input: Relevant/novel sentences + TREC novelty topic (Novelty docs)
+      * Output Task4: Short multi-doc summary
+      * Baseline4: First 100 words from the first n relevant sentences in the first document in the set 
+         * -> Documents ordered by relevance ranking given with the topic
+      * Baseline5: First relevant sentence in document 1,2,3,...,n 100 words
+         * -> Documents ordered by relevance ranking given with the topic
+
+---++++ Duc 2004
+   * Slides: <a href="http://duc.nist.gov/pubs/2004slides/duc2004.intro.pdf">An Introduction to DUC 2004 Intrinsic Evaluation of Generic New Text Summarization Systems</a>
+   * System (University of Leth- bridge): <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.101.850&rep=rep1&type=pdf">Summarization techniques at DUC 2004</a>
+   * System (LAKE): <a href="http://duc.nist.gov/pubs/2004papers/itc-irst.magnini.pdf">Keyphrase Extraction for Summarization Purposes: The LAKE System at DUC-2004</a>
+   * System (LexPageRank): <a href="http://acl.ldc.upenn.edu/acl2004/emnlp/pdf/Erkan.pdf">LexPageRank: Prestige in Multi-Document Text Summarization</a>
+
+   * Very short single-doc summary: <= 75 bytes per document (no formatting, plain text)
+   * Short multi-doc summary: <= 665 bytes per cluster
+
+   * Tasks 1 and 2
+      * Input: TDT Engl. Docs
+      * Output Task 1: Very short single-doc summaries
+         * Baseline: First 75 Bytes of the document (each) in the cluster
+      * Output Task 2: Short multi-doc summary
+         * Baseline: First 665 Bytes of the most recent (newest) document in cluster
+
+   * Tasks 3 and 4
+      * Input: TDT Arabic Docs, manually tranlated into englisch
+      * Output Task 3: Very short single-doc summaries
+         * Baseline: First 75 Bytes of the best translation of the document (each) in the cluster
+      * Output Task 4: Short multi-doc summary
+         * Baseline: First 665 Bytes of the most recent (newest) document in the best translation in the cluster
+
+   * Task 5
+      * Input: TREC Engl. Docs + Question("Who is X", given X)
+      * Output Task 5: Short multi-doc summary (Summary as answer)
+         * Baseline: First 665 Bytes of the most recent (newest) document in cluster
+
+---++++ Duc 2005
+   * Slides: <a href=""></a>
+   * Overview paper: <a href="http://www.umiacs.umd.edu/~bonnie/duc2005papers/OVERVIEW05.pdf">Overview of DUC 2005 (DRAFT)</a>
+   * Paper: <a href="http://acl.ldc.upenn.edu/W/W06/W06-0707.pdf">DUC 2005: Evaluation of question-focused summarization systems</a>
+
+---++++ Parsing
+   * Input / Testdata: DucInputParser
+   * Reference / Modeldata: DucReferenceParser

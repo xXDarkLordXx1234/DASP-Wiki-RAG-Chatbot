@@ -1,0 +1,113 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1301047311" format="1.1" version="5"}%
+%META:TOPICPARENT{name="WiktionaryAnalysis"}%
+---+ Wikisaurus Analysis
+Insgesamt gibt es zurzeit ungefähr 1.070 Wikisaurus-Seiten in WKT_EN<br>
+Alle Wikisaurus-Seiten: http://en.wiktionary.org/wiki/Wiktionary:All_Wikisaurus_pages <br>
+Hauptartikel über Wikisaurus: http://en.wiktionary.org/wiki/Wiktionary:Wikisaurus
+
+---++ Format
+Source: http://en.wiktionary.org/wiki/Wiktionary:Wikisaurus/Format <br>
+Ein Wikisaurus-Eintrag sieht normalerweise wie folgt aus:
+
+<verbatim>
+{{ws header}}
+
+==LANGUAGE==
+
+===POS===
+
+===={{ws sense|SENSE_1_DEFINITION}}====
+
+=====Synonyms=====
+{{ws beginlist}}
+{{ws|SYNONYM_1|SYNONYM_1_SENSE_DEFINITION}}
+{{ws|SYNONYM_2}}
+...
+{{ws endlist}}
+=====Antonyms=====
+...
+=====Hyponyms=====
+...
+=====Hypernyms=====
+...
+=====Instances=====
+...
+=====Meronyms=====
+...
+=====Holonyms=====
+...
+=====Various=====
+...
+===See also===
+...
+===External links===
+...
+</verbatim>
+Beim Header kann noch ein Wort spezifiziert werden:
+<verbatim>
+{{ws header|WORD}}
+</verbatim>
+---+++ Sense-Definition
+Mit Hilfe von Sense-Beschreibung können wir die Relaionen einem konkretem Sense des Wiktionary-Artikels zuweisen. Z.B.: [[http://en.wiktionary.org/wiki/Wikisaurus:food][Wikisaurus:food]] _"substance eaten by living organisms"_ kann man mit Hilfe von Similarity-Analyse an den ersten Sense _"Any substance that is or can be consumed by living organisms, especially by eating, in order to sustain life. "_ von [[http://en.wiktionary.org/wiki/food][food]] zuweisen <br><br>
+*Target Sense-Definitions* <br>
+Einzelne Sektionen bestehen aus Listen von Relation-Targets. Einzelne Relation-Target kann noch zusätzlich mit einem Disambiguierung-Sensebeschreibung versehen werden:
+<verbatim>
+{{ws|SYNONYM_1|SYNONYM_1_SENSE_DEFINITION}}
+</verbatim>
+Z.B. in [[http://en.wiktionary.org/wiki/Wikisaurus:build][Wikisaurus:build]] sehen wir bei den Synonymen: _{{ws|assemble|to put together}}_ , das entspricht dem ersten Sense von [[http://en.wiktionary.org/wiki/assemble][assemble]]. Die Target-Beschreibung ist nicht immer der Sense-Beschreibung gleich oder hochähnlich. Z.B. bei [[http://en.wiktionary.org/wiki/Wikisaurus:build][Wikisaurus:build]] _{{ws|compile|turn code into machine language}}_ entspricht dem zweiten Sense von [[http://en.wiktionary.org/wiki/compile][compile]]: _"(transitive, computing) To use a compiler to process source code and produce executable code."_ <br>
+Beim Rendering werden die Wörter mit Sensebeschreibung unterstrichen. Wenn es einen Eintrag für eine Relation-Target in Wikisaurus gibt, dann wird beim Rendering noch ein Link auf den entsprechenden Wikisaurus-Artikel angezeigt. Z.B: "destroy [Ws]" bei [[http://en.wiktionary.org/wiki/Wikisaurus:build][Wikisaurus:build]], in Quellcode gibt es dafür keine besondere Markierung.
+---+++ Linking from Wiktionary
+Um die Wiktionary-Einträge auf Wikisaurus-Seiten zu verlinken gibt es zwei Möglichkeiten:<br>
+1.
+<verbatim>
+* See also [[Wikisaurus:headword]]
+</verbatim>
+Z.B. in [[http://en.wiktionary.org/wiki/greed][greed]] in der Synonym-Sektion: 
+<verbatim>
+* {{sense|selfish desire for more than is needed}} [[avarice]], [[covetousness]], [[greediness]], [[rapacity]]
+* See also [[Wikisaurus:greed]]
+</verbatim>
+2. 
+<verbatim>
+{{ws refer|WIKISAURUS_WORD|SENSE}}
+</verbatim>
+oder
+<verbatim>
+{{ws refer|WIKISAURUS_WORD}}
+</verbatim>
+Z.B. in [[http://en.wiktionary.org/wiki/impoverished][impoverished]]
+<verbatim>
+====Synonyms====
+{{ws refer|poor|impoverished}}
+</verbatim>
+in [[http://en.wiktionary.org/wiki/fatigued][fatigued]]
+<verbatim>
+====Synonyms====
+{{ws refer|fatigued}}
+</verbatim>
+---+++See also
+In der "See also"-Sektion können verschieden Informationen kodiert werden. <br>
+1. Verweise auf andere verwandte Wikisaurus-Einträge. Z.B. [[http://en.wiktionary.org/wiki/Wikisaurus:confusion][Wikisaurus:confusion]] oder [[http://en.wiktionary.org/wiki/Wikisaurus:awesome][Wikisaurus:awesome]]<br>
+2. Verweise auf verwandte Wiktionary-Artikeln. Z.B. [[http://en.wiktionary.org/wiki/Wikisaurus:lucky][Wikisaurus:lucky]]. In [[http://en.wiktionary.org/wiki/Wikisaurus:end][Wikisaurus:end]] steht unter See also ein Atonym _continue_ <br>
+3. Verweise auf verwandte Kategorien. Z.B. [[http://en.wiktionary.org/wiki/Wikisaurus:aircraft][Wikisaurus:aircraft]], [[http://en.wiktionary.org/wiki/Wikisaurus:container][Wikisaurus:container]], [[http://en.wiktionary.org/wiki/Wikisaurus:arachnid][Wikisaurus:arachnid]]
+
+---+++ External Links
+In External Links stehen normalerweise Referenzen auf andere Thesauri. Es gibt meistens nur zwei Möglichkeiten<br>
+Open Roget's:
+<verbatim>
+{{R:Roget 1911}}
+</verbatim>
+Moby II thesaurus:
+<verbatim>
+{{R:Moby II}}
+</verbatim>
+
+---++ Einbindung in JWKTL
+Da es fast immer möglich mit Hilfe von der Sense-Beschreibung den Wikisaurus-Eintrag eindeutig einem Sense aus einem Wiktionary-Eintrag zuzuweisen, kann man die Relationen direkt in dem WiktionarySense speichern. <br>
+Da die Relation-Targets oft noch eine Sense-Beschreibung enthalten, wäre es sinnvoll in der WiktionaryRelation nicht nur den Target-String zu speichern, sondern auch diese Sense-Beschreibung oder einen direkten Verweis auf den Target-WiktionarySense.<br><br>
+Die Extrahierung von Wikisaurus-Informationen muss nach dem Parsen von WiktionaryEntries erfolgen, da man für die Zuweisung der Wikisaurus-Einträge schon extrahierte Titel und Gloss-Informationen benötigt:
+   1 Wir laufen alle Seiten in dem Namespace "Wikisaurus" durch
+   2 Suchen die möglichen WiktionaryEntry-Kandidaten, zu denen Wikisaurus-Eintrag zugewiesen wird (gleiches Entry-Word)
+   3 Vergleich von den Sense-Glosses mit Wikisaurus Sense-Definition. Der Sense, der ein Gloss mit größter Ähnlichkeit zu der Wikisaurus Sense-Definition hat, wird ausgewählt
+   4 Zu den Relationen von dem ausgewählten Sense werden die Relationen aus Wikisaurus hinzugefügt
+  

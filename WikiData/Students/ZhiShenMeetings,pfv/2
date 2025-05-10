@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="KaterynaIgnatova" date="1208270037" format="1.1" version="2"}%
+%META:TOPICPARENT{name="ZhiShen"}%
+---+ Meetings
+
+---++ 16.04.2008 (ZS, KI, DB)
+
+   * @action(ZS): detaillierte Beschreibung von relevante Daten die man aus extrahieren kann
+   * @question(ZS): Format für die Liste (Swear words, slang words, emoticons, IM short forms)
+   * @action(ZS): über related Work lesen
+   * @action(ZS): Liste von Material im Wiki erstellen (Papers, Tools, etc) siehe Teaching.ArneMaterial für ein Beispiel
+   * @action(ZS): Diploma beim Prüfungssekretariat anmelden
+   * @info(KI): zur Frage über Kategorie-Extraction: Yahoo API bietet das als getByCategory an ([[http://developer.yahoo.com/answers/V1/getByCategory.html][Link]])
+   
+---++ 10.04.2008 (ZS, KI, DB)
+
+   * @info(ZS): hat angefangen, mit Amazon API, Yahoo! Answers API zu arbeiten
+   * @info(ZS): hat angefangen aus Urban Dictionary and netlingo Daten zu extrahieren
+   * @info(ZS,DB,KI): wir haben beschlosssen, ein ListLookup Komponent zu implementieren für Swear words detection, Slang words detection, Emoticons identification, Instant Messaging short forms identification (4 verschiedene Deskriptoren?)

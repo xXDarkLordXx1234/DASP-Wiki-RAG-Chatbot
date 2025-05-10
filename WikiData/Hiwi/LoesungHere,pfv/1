@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="ArtemVovk" date="1233190232" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+-- Main.ArtemVovk - 28 Jan 2009
+
+
+Man kann environment Variablen benutzen, und durch <verbatim><envVarRef></verbatim> Tag sie ersetzen. Z.b. frueher war so:
+<verbatim>
+	<nameValuePair>
+        	<name>InputDirectory</name>
+                <value>
+		    <string>/home/qu/ukp_work/apps/apache-uima/bin/testbed/data/input/brown_sample_corpus</string>
+		</value>
+        </nameValuePair>
+</verbatim>
+
+kann man ersetzen :
+<verbatim>
+	<nameValuePair>
+        	<name>InputDirectory</name>
+                <value>
+		    <string><envVarRef>CPM_HOME</envVarRef>/data/input/brown_sample_corpus</string>
+		</value>
+        </nameValuePair>
+        
+</verbatim>
+
+CPM_HOME oben defieniert. 

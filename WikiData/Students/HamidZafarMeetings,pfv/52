@@ -1,0 +1,174 @@
+%META:TOPICINFO{author="aelmi" comment="reprev" date="1486840123" format="1.1" reprev="52" version="52"}%
+%META:TOPICPARENT{name="HamidZafar"}%
+---++ [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafar][Back]] 
+
+---++ 15.02.2017
+   * Draft of [[%ATTACHURLPATH%/Final_presentation.pdf][Final presentation]]
+---++ 08.02.2017
+   * Updates on thesis report ([[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Students/HamidZafarMeetings/UKPThesisTemplate.v0.2.pdf][Link]])
+      * Section for NLP (WSD)
+      * Section for our approach
+      * Update the motivation and partially the background section according to Dr. Simpson feedback.
+      * Update experiment section: change plots and add more content about Intrinsic evaluation 
+   * Need more analysis: How the model works (eg. how much data do we need )
+   * Section 4: more detail on the related work
+---++ 01.02.2017
+
+   * Notes from Edwin on thesis draft. General points:
+      * Need some more content to link together sections, tell a story. Why are the things we are explaining important? What problems are we trying to solve and when do they occur?
+      * More detail on possible use cases, including WSD in most detail, but briefly describe activities or other applications   -- perhaps before the detailed section on probability.
+      * Distributed systems should have more emphasis throughout --
+         * think about big data problems
+         * scalability of inference
+         * details of scalability such as the tradeoff between communication overheads and parallelisation 
+         * Need to talk about scalable implementations -- what possible software frameworks are there for implementing this? How can your implementation connect to other components in a distributed software system? E,g, it may need a REST interface, interface to a database. This would give us a complete system for handling big data with this type of model. Much of this may be out of scope for this project, so you should explain how your software is the first step in creating such a distributed system.
+   * Discuss potential usage in interactive learning, eg. Facebook predicate next move *Done*
+   * Look at other UKP thesis *Done*
+
+---++ 25.01.2017
+   * Time not accurate enough, find another way to measure speed up *I use a dedicated server to measure time in a more stable environment*
+   * take max in plot, add vertical lines and show the time difference *Done*
+   * why the results are different, (one way to do it, set iteration number and ignore convergence threshold
+   * read: http://www.cs.columbia.edu/~blei/papers/Boyd-GraberBlei2009.pdf
+   * rectangle around cluster nodes in fig 3.1 *Done*
+   * Thesis report:
+      * More on WSD *on going*
+      * More on related work of WSD *on going*
+---+!! Meetings
+---++ 18.01.2017
+   * repeat the experiments with new generated synthetic data 
+   * In visualization, Do I take the max duration or average over it for multiple run? (take max of all runs and configs)  What to do with proc that finishes early? (Extend them) *Done*
+   * a table to compare the convergence time *Done: (I thought bar chart is more useful when we would see the comparison of multiple settings)*
+   * initialization based on similarity between documents
+   * Put plots in report *Ongoing*
+---++ 11.12.2016
+   * Compare different clusterings for super-clustering 
+      * affinity clustering (e.g.: http://scikit-learn.org/stable/modules/generated/sklearn.cluster.AffinityPropagation.html  http://scikit-learn.org/stable/modules/classes.html#module-sklearn.cluster) *Done*
+      * Record the intermediate results like finding super cluster by using different approaches *Not really clear what to record, instead tried to check the impact on run-time and accuracy*
+   * Use better initialization to expect better results faster: *Done: Used ground truth*
+   * Take a subset of WSD for training, finding the optimal parameter values
+      * Run IMMC on test set for final evaluation
+   * Write experiments 
+---++ 21.12.2016
+   * heuristics: expected value of transition distribution:  *Done* Refactor the implementation and it's good now 
+   * clustering for super-cluster: K-mean: *What we have is the mutual distance of pairs -> how to transform it into a measurable space*
+   * Record the intermediate results like finding super cluster by using different approaches: *depends on the previous task* 
+   * Make sure IMMC improve f1 over HDP for WSD: Still experimenting 
+   * Update thesis report in parallel: *Updated till HDP*
+   * Send portion of thesis that is done to Dr. Simpson to review *Done*
+---++ 14.12.2016
+   * Get scalable version running and evaluation
+   * Playing with hyper parameters (extreme values) *Done, for synthetic dataset* 
+   * find out the words when hdp is wrong and immc is correct
+      * Less topic, Better F1 for WSD
+   * Optimize hdp *Done* and immc individually
+   * Study reports on semeval 2007 task 2(phd thesis and papers) 
+---++ 07.12.2016
+   * Find out:
+      * Plot that shows dataset size vs number process
+      * Plot that shows number of actual clusters vs number process
+      * Repeat generating synthetic data for each run
+      * Fix time. 
+   * classifier for evaluation of IMMC for wsd *Done*
+
+---++ 30.11.2016
+   * Plot results of running IMMC on multiple processes  *Done*
+   * Apply IMMC for WSD *Done*
+
+---++ 23.11.2016
+   * Apply IMMC for WSD
+      * Use HDP for topic modeling and annotate each word with its topic *Done*
+      * Use topic model output and feed it in IMMC *Done*
+      * Analyze the result to find out if different occurrences of a ambiguous word has arisen from multiple MCs and what these MCs represent 
+   * Scalable IMMC implementation and bug fixing
+   * Experiments with synthesized datasets *Done*
+---++ 16.11.2016
+   * Presentation:
+      * Merge slides 12,13 *Done*
+      * Merge slides 14,15 *Done*
+      * 18: probability of word "left" belonging to each two topics + compare it with HDP *Done*
+      * 18: checkout the topics of other words ... colors *Done*
+      * Add more pictures of AV DPMM *Done*
+      * compare the scalable immc to immc: f1 and time *Done*
+   * evaluation of HDP-HMM and HDP on 100 papers of NIPS *Done*
+      * perplexity (but might not show the advantage of HDP-HMM) for slide 18  *Skipped*
+---++ 09.11.2016
+   * New ideas:
+      * Application of IMMC for text segmentation: http://www.mirlab.org/conference_papers/International_Conference/ICASSP%201998/pdf/author/ic982335.pdf
+      * HDM-HMM: Potential paper (Side-work)
+   * Presentation:
+      * Example: show a word in its context can have different topics in a document *Done*
+      * Add WSI and ESD as potential NLP applications *Done*
+      * Evaluating the performance of AV_DPMM. Experiment on bigger dataset, how much faster does it get
+         * also different parameters: like different cluster size
+---++ 02.11.2016
+   * Presentation:
+      * Outline: merge *Done*
+      * References for the pictures *Done*
+      * HDP: example hdp vs lda *Done*
+      * Link from HDP to HMM: order of observation (LDA bag of words) *Done*
+      * HDP-HMM: motivating Example? HDP-HMM WSI (experiment results or the idea) *Done*
+      * IMMC and motivation: swap *Done*
+      * Scalability: add more detail on dataset and experiment, Goal/motivation + requirement for the scalable model *Done*
+      * AVParallel: describe super cluster
+      * Add new slide: question, application for nlp *Done*
+      * Add new slide: about the rest of the work *Done*
+      * result of immc for wsi?
+      * try to use the idea of "Word Sense Disambiguation using HMM Tagger" as an example of immc for wsi
+   * Writing:
+      * also add experiments in here, e.g. immc for wsd
+   * Run IMMC for WSI/WSD or ESD: *priority*
+      * HDP-HMM/IMMC for WSI: for long documents.
+   * Implementation:
+      * Scalable IMMC
+---++ 28.10.2016
+   * Presentation:
+      * Eliminate some details (e.g. math stuff) *I tried keep the ones*
+      * Add overview about scalability (high level view) *Done*
+      * Motivation IMMC (FB sample) *Done*
+      * Scalability: Add AV-DP result from matlab implementation *Done*
+   * Writing:
+      * More explanation on AV IMMC *Done*
+      * Inference *Partially, DPMM is done*
+      * Visualization (for stick breaking process *done*, also graphical models *done*)
+      * Organization of sections
+      * Summerize the spliting and merging steps as well as clustering (From last week)
+   * Run IMMC for WSI/WSD or ESD: *priority*
+      * HDP-HMM/HDP for WSI: for long documents. *Experiment with HDP for WSI*
+   * Implementation:
+      * Scalable IMMC
+
+---++ 18.10.2016
+   * Prepare presentation slides *Please checkout Presentation/Mid-term presentation.pdf, Still working on it*
+   * Requirement for distributed platform
+      * A single server with multiple cores *[Currently using google cloud (free for 2 months) 1CPU 8Cores 7GB mem]*
+      * investigate existing options (hadoop, spark, tension flow)
+      * Check out free plan on amazon cloud *[Applied for it, wait for approval.]*
+   * Prepare report on model in more detail and align with implementation *Please checkout Writing/Template/UKPThesisTemplate.pdf. Not quite done yet*
+   * Summerize the spliting and merging steps as well as clustering 
+   * evaluation: 
+      * try with exterme values different in each cluster => *got better, used 30,000 data, 78%-94% correctly identified (depends on the dataset)*
+      * try prediction task
+
+---++ 12.10.2016
+
+   * Reviewing scalability papers for HDPs and adapting to IMMC
+      * Proposed method uses a Gibbs' sampler with auxiliary variables
+   * Implementing scalable distributed IMMC
+   * Tasks to do for next week:
+      * Report on the method -- put a description into the thesis template
+      * Continue with implementation of distributed IMMC
+      * Produce an outline of the mid-term presentation
+      * Update UKP Wiki page
+      * Presentation info (see [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafarPresentations][presentation page]])
+      * Computation resources!
+
+-- Main.EdwinSimpson - 2016-10-11
+
+
+-- Main.HamidZafartavanAelmi - 2016-10-14
+   * [[%ATTACHURL%/UKPThesisTemplate.v0.2.pdf][UKPThesisTemplate.v0.2.pdf]]: UKPThesisTemplate.v0.2.pdf
+
+%META:FILEATTACHMENT{name="UKPThesisTemplate.v0.2.pdf" attachment="UKPThesisTemplate.v0.2.pdf" attr="" comment="" date="1486550715" path="UKPThesisTemplate.v0.2.pdf" size="430266" user="aelmi" version="1"}%
+%META:FILEATTACHMENT{name="Final presentation.pdf" attachment="Final presentation.pdf" attr="" comment="" date="1486839959" size="173662" user="aelmi" version="1"}%
+%META:FILEATTACHMENT{name="Final_presentation.pdf" attachment="Final_presentation.pdf" attr="" comment="" date="1486840084" path="Final_presentation.pdf" size="173662" user="aelmi" version="1"}%

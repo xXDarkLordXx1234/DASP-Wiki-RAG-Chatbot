@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1171061680" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+%TOC%
+
+---++ 09.02.2007
+---+++ _Callear et al.: Bridging Gaps in Computerised Assessment of Texts_ (Callear2001)
+Die Arbeit gibt einen kurzen Überblick über drei bedeutsame Textbewertungssysteme und kritisiert, dass bei allen die Bewertung des Inhalts nicht durchgeführt wird, da die Reihenfolge der Wörter nicht betrachtet wird.
+
+Project Essay Grade (PEG)
+Über PEG wird berichtet, dass die Reihenfolge der Wörter nicht betrachtet wird. Trotzdem stimmen die Bewertungen mit den menschlichen zu ca. 80% überein. PEG bewertet vorallem oberflächliche Eigenschaften eines Essays. Dazu zählen die Anzahl der Kommas, Anzahl der Semikolons, die durchschnittliche Anzahl der Wörter usw. PEG zeigt gute Ergebnisse bei der Bewertung ist jedoch nicht brauchbar, so wird kritisiert, wenn der Inhalt des Textes sehr wichtig ist.
+
+Intelligent Essay Assessor (IEA)
+IEA benutzt die sogenannte Latent Semantic Technik. Es wird kritisiert, dass die Grammatik und Reihenfolge der Wörter nicht betrachtet werden.
+
+Electronic essay rater (e-rater)
+e-rater führt eine syntaktische Strukturanalyse durch. Dabei werden die Anzahl der Komplementsätze (complement clauses) (auch: Objektsätze), Anzahl der Nebensätze (subordinate clauses), Anzahl der erweiterten Infinitive (infinitive clauses), Anzahl der Relativsätze (relative clauses), Anzahl der konjunktivischen modalen Hilfsverben (subjunctive modal auxiliary verbs) etc.
+Die Übereinstimmung mit der menschlichen Bewertung liegt bei 87%-94%. 
+
+Zum Schluss des Textes wird ein Prototyp names Automated Text Marker (ATM) vorgestellt, mit dessen Hilfe Prüfungsantworten mit denen eines Experten verglichen und bewertet werden. Dazu werden beide in kleine Einheiten aufgeteilt, um so die Bedeutung besser zu erfassen und zu vergleichen.
+
+Anmerkung: Ich denke gerade PEG und e-rater könnten in Hinblick auf die Bewertung der Rezensionen wertvoll sein.
+
+---++ 08.02.2007
+---+++ _Valenti et al.: An Overview of Current Research on Automated Essay Grading_ (Valenti2003)
+Die Arbeit gibt einen guten Überblick den Forschungsstand im Jahr 2003. Für die Diplomarbeit ist die Arbeit ansich jedoch kaum zu gebrauchen, da sie zu oberflächlich bleibt. Interessant ist jedoch, dass sie die Techniken der jeweiligen Bewertungsansätze für Essays zeigt. Dabei gibt es hauptsächlich 2 Gruppen, nämlich "statistical" und "NLP". Die Arbeit von Kim et al. (_Kim 2006_) folgt einem statistischen Ansatz. Da stellt sich die Frage, ob wir in dieser Richtung bleiben. Dann würde sich die Literatursuche auf statistischen Analyseansätzen beschränken.
+
+---++ 07.02.2007
+---+++ _Kim et al.: Automatically Assessing Review Helpfulness_ (Kim2006)
+In den letzten Tagen habe ich die Arbeit von _Kim et al.: Automatically Assessing Review Helpfulness_ (_Kim2006_) gelesen und zusammengefasst. Einige Dinge sind mir jedoch nicht ganz klar:
+   * Ist auf S. 3 eine falsche tf-idf Formel angegeben? Jedenfalls weicht sie von der üblichen, wie z.B. bei Jurafsky ab.
+   * Die Argumentation SVM Regression vs. SVM Ranking auf S. 4 ist mir nicht ganz klar (aber für die DA vermutlich auch gar nicht so wichtig). Es werden folgende Argumente für SVM Regression gebracht:
+      * _the helpfulness function provides non-uniform differences between ranks in the training set_
+Versteh ich leider nicht :-(
+      * _many products have only one review, which can serve as training data for SVM Regression but not SVM Ranking_
+Das Argument ist verständlich aber bei der Arbeit doch gar nicht relevant, da zum einen nicht einzelne Produkte sondern Produktgruppen betrachtet werden und zum anderen Produkte mit weniger als 5 Reviews sowieso ausgefiltert werden.
+      * _in large sites such as Amazon.com, when new reviews are written it is inefficient to re-rank all previously ranked reviews_
+Ok, ein Argument für die praktische Anwendung.
+   * S. 5: _10% of products for both datasets were withheld as development corpora_
+Warum werden 10% zurückgehalten?
+
+**MW:** Wenn man mit statistischem machine learning arbeitet, hat man immer das Problem, die Qualität der Ergebnisse zu beurteilen. Naheliegend ist, dazu die verfügbaren, schon gelabelten Daten zu verwenden. Daraus ergibt sich eine Aufteilung in Training- und Testdatensatz. Man entwickelt und trainiert das System auf dem Trainingsdatensatz, um dann die Evaluation auf dem Testdatensatz durchzuführen. Allerdings ist die Aufteilung oft willkürlich, was allerlei merkwürdige Effekte produzieren kann: Wenn z.B. der Testdatensatz eine andere Verteilung der Daten enthält. Beispiel Spam Filter: Man kann z.B. auf einem Datensatz mit 90% SPAM trainieren, aber auf einem mit nur 70% testen. Das macht dann die Evaluation eher nutzlos.
+
+Oft ist es besser, auf Cross Validation zu setzen: Man teilt die Daten in k Segmente. Dann trainiert man auf allen bis auf ein Segment und testet auf dem ausgelasenen. Das macht man für alle k Segmente. Man nennt das *k-fold crossvalidation*. Sinnvollerweise wird man beim bestimmen der Segmente darauf achten wollen, dass die vorherzusagenden Label darin gleich verteilt sind (nicht gleichverteilt!). Das nennt man dann *stratified k-fold crossvalidation*. Setzt man k auf die Anzahl der Datenpunkte, nennt man das "Leave one out bound". Es lässt sich zeigen, dass dies die beste Abschätzung des sogenannten Generalisierungsrisikos ist. Details dazu findest Du (recht mathematisch) in Schölkopf / Smola: Learning with kernels in Kapitel 7.3, in meiner Ausgabe ab Seite 197 und insbesondere in Kapitel 12.2 ab Seite 367.
+
+
+
+---++ 31.1.2007
+
+---++ 30.1.2007
+
+%META:FILEATTACHMENT{name="ea3-gruen-1360x768.jpg" attachment="ea3-gruen-1360x768.jpg" attr="" comment="Mundobild" date="1170238280" path="ea3-gruen-1360x768.jpg" size="130612" stream="ea3-gruen-1360x768.jpg" user="Main.MarkusWeimer" version="1"}%

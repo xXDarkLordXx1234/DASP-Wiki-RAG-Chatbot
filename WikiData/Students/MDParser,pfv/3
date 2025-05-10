@@ -1,0 +1,127 @@
+%META:TOPICINFO{author="IrinaAlles" date="1344240780" format="1.1" version="3"}%
+%META:TOPICPARENT{name="DependencyParser"}%
+-- Main.IrinaAlles - 2012-06-26
+
+---+MDParser
+
+MDParser stands for multilingual dependency parser and is a data-driven system, which can be used to parse text of an arbitrary language for which training data is available. The parser is able to create both unlabeled and labeled dependency structures. The number of possible relation types depends on the granularity of the training data. <br /><br />The models of the system are based on various features, which are extracted from the words of the sentence, including word forms and part of speech tags. Therefore in order to process previously unannotated text MDParser additionally includes some preprocessing components: <br />&bull; a sentence splitter, since the parser constructs a dependency structure for individual sentences <br /><br />&bull; a tokenizer, in order to recognise the elements between the dependency relations will be built <br /><br />&bull; a part of speech tagger, in order to determine the part of speech tags, which are one of the most important influencing factors for constructing the dependency structure. <br /><br />MDParser is an especially fast system and therefore it is particularly suitable for processing very large amounts of data. Thus it can be used as a part of bigger applications in which dependency structures are desired. <br /><br />MDParser has already been tested for several languages, including German and English. It is currently able to achieve quite competitive results, considering that it is based on a fast linear classification approach and a deterministic parsing strategy.
+<SMALL>(taken from http://mdparser.sb.dfki.de/)</SMALL>
+
+---+++Usage
+The parser distribution contains a readme file which very briefly covers the usage of the parser. In general should be sufficient as the parser supports only the essential functionalities. But in case of difficulties it does not help much.
+
+---+++++Installation
+The parser can be downloaded [[http://mdparser.sb.dfki.de/][here]]. Unfortunately the archive is password protected.
+Once you've the right password you only need to unzip the archive.
+---+++++Training
+For training the parser requires a tab separated CoNLL alike format which looks like this:
+<verbatim>
+1	Miyazawa	Miyazawa	NE	NE	_	2	SB
+2	betonte	betonte	VVFIN	VVFIN	_	0	ROOT
+3	aber	aber	ADV	ADV	_	2	MO
+4	,	,	$,	$,	_	2	PUNC
+5	daß	daß	KOUS	KOUS	_	11	CP
+6	sich	sich	PRF	PRF	_	10	OA
+7	auch	auch	ADV	ADV	_	9	MO
+8	die	die	ART	ART	_	9	NK
+9	Europäer	Europäer	NN	NN	_	11	SB
+10	anstrengen	anstrengen	VVINF	VVINF	_	11	OC
+11	müßten	müßten	VMFIN	VMFIN	_	2	OC
+12	.	.	$.	$.	_	2	PUNC
+</verbatim>
+In order to train the MDParser you need a configuration file where you define the execution mode, the path to your training file and its format.
+A configuration file for training could look like this:
+<verbatim><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+
+  <entry key="inputType">file</entry>
+  <!-- file - 'inputFile' is only one file (required for the train mode) -->
+  <!-- dir -  'inputFile' is a whole directory with files to be parsed -->
+  
+  <entry key="inputFile">./train.conll</entry>
+  <!-- path to the input file if inputType is 'file'-->
+  <!-- path to the input dir if inputType is 'dir'-->
+
+  <entry key="language">german</entry>
+  <!-- language of the input file  -->
+  <!-- currently supported: english or german -->
+
+  <entry key="mode">train</entry>
+  <!-- tag   = only tokenize and tag with POS the input -->
+  <!-- parse = tokenize, tag with POS and parse the input --> 
+  <!-- train = train a new model -->
+
+  <entry key="inputFormat">conll</entry>
+  <!-- conll = input file is in CONLL format (required for the train mode) -->
+  <!-- text = input file is plain text  -->
+
+  <entry key="modelsFile">models/myModel.zip</entry>
+  <!-- file to which the parser models are saved (must be a zip-file) -->
+  
+</properties></verbatim>
+
+To run the parser type:
+<verbatim>java -javaagent:lib/classmexer.jar -Xms1g -Xmx2g -jar mdpfull.jar config.xml</verbatim>
+---+++++Parsing
+
+To parse your data it has to be either in the tab separated format shown above or in a one sentence per line format. 
+For parsing you need to adjust the configuration file to the following:
+<verbatim><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+
+  <entry key="inputType">file</entry>
+  <!-- file - 'inputFile' is only one file (required for the train mode) -->
+  <!-- dir -  'inputFile' is a whole directory with files to be parsed -->
+  
+  <entry key="inputFile">/srv/home/alles/DependencyParsing/data/tigerSplit_reduced/reduced_dev.conll</entry>
+  <!-- path to the input file if inputType is 'file'-->
+  <!-- path to the input dir if inputType is 'dir'-->
+
+  <entry key="language">german</entry>
+  <!-- language of the input file  -->
+  <!-- currently supported: english or german -->
+
+  <entry key="mode">parse</entry>
+  <!-- tag   = only tokenize and tag with POS the input -->
+  <!-- parse = tokenize, tag with POS and parse the input --> 
+  <!-- train = train a new model -->
+
+  <entry key="outputFile">output.conll</entry>
+  <!-- path to the output file if inputType=file and 
+       path to the output directory if inputType=dir -->
+
+  <entry key="inputFormat">conll</entry>
+  <!-- conll = input file is in CONLL format (required for the train mode) -->
+  <!-- text = input file is plain text  -->
+
+  <entry key="outputFormat">conll</entry>
+  <!-- conll = output file is in CONLL format  -->
+  <!-- conllxml = output file is an xml file in CONLL format  -->
+  <!-- triple = output file is in triple format  -->
+  <!-- stanford = two output files(taggedFile(lemma/pos)and outputFile(dependencies)) are in STANFORD format -->
+  
+  <entry key="modelsFile">models/myModel.zip</entry>
+  <!-- file to which the parser models are saved (must be a zip-file) -->
+ 
+</properties>
+</verbatim>
+To run the parser just use the command for training with the appropriate configuration file.
+
+The CoNLL output of the parser will look like this:
+<verbatim>1	Miyazawa	_	NE	NE	_	2	SB
+2	betonte	_	VVFIN	VVFIN	_	0	ROOT
+3	aber	_	ADV	ADV	_	2	MO
+4	,	_	$,	$,	_	2	PUNC
+5	daß	_	KOUS	KOUS	_	11	CP
+6	sich	_	PRF	PRF	_	10	DA
+7	auch	_	ADV	ADV	_	9	MO
+8	die	_	ART	ART	_	9	NK
+9	Europäer	_	NN	NN	_	10	OA
+10	anstrengen	_	VVINF	VVINF	_	11	OC
+11	müßten	_	VMFIN	VMFIN	_	2	OC
+12	.	_	$.	$.	_	2	PUNC</verbatim>
+
+In order to evaluate this output it is necessary to convert it to CoNLL06 by adding two further columns.
+%META:FILEATTACHMENT{name="tiger_mdp_100.zip" attachment="tiger_mdp_100.zip" attr="" comment="MDParser model for German based on the TiGER treebank" date="1344240779" path="tiger_mdp_100.zip" size="6699753" user="IrinaAlles" version="1"}%

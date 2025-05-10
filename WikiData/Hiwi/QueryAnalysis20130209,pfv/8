@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="RichardSteuer" date="1360401778" format="1.1" version="8"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+---+++ comparison 0 to 1 expansion terms on query side
+
+---++ helped
+   * query 041: "meat" (1.884) for "food" (10.261)
+   * query 201: "blaze" (1.478) for "fire" (14.261)
+   * query 210, 219: "nominee" (827) for "candidate" (6.499)
+   * query 216: "child" (23.658) [as lemma of "children"] for "youngster" (2.268)
+   * query 108: "egypt" (639) for "yemen" (85)  
+   * query 105: "bronchitis" (81) for "bronchial" (30)
+   * query 090: "potato" (1.453) for "vegetable" (1.669)
+   * query 088: "cattle" (941) for "cow" (985)
+   * query 116: "ski" (1.060) for "snowboard" (30)
+   * query 078: "movie" (7.770) for "film" (8.984)
+   * query 077: "murder" (7.325) for "suicide" (1.817)
+   * query 113: "championship" (9.067) for "cup" (8.887)
+
+---++ did not help
+   * query 213: "transportation" (3.620) for "travel" (9.665)
+   * query 109, 111: "pc" (711) for "computer" (7.641)
+   * query 106: "vehicle" (5.642) for "car (15.896)
+   * query 103: "war" (12.129) for "conflict" (3.902)

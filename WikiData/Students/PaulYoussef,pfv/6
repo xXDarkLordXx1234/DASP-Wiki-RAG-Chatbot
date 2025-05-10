@@ -1,0 +1,73 @@
+%META:TOPICINFO{author="youssef" comment="save topic" date="1511373349" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor thesis: Impact of activation functions on deep learning in NLP
+
+*Start date*: 01.11.2017
+
+*Supervisor*: Dr. Steffen Eger
+
+---++ Current Status
+
+---+++ 22.11.2017
+   * experiments on movie-reviews dataset are not done yet 
+   * Implementation of CNN for document classification is done (I added the parameter to the wiki)
+   * I implemented swish and penalized tanh and added them to the experiments 
+   * I'm still working on the theory & background section in the thesis
+
+
+---+++ 15.11.2017
+   * experiments on movie-reviews dataset are still running (maxout, leakyrelu, prelu are done)
+   * I'm working on CNN and RNN for document classification and sequence tagging
+   * I'm also working on the theory & background section in the thesis
+
+---+++ 08.11.2017
+   * Filled out application form [...]
+
+---++ Meeting Minutes
+
+---+++ 16.11.2017
+   * Can send me list about parameters including datasets, so that we can possibly reduce the amount of experiments
+      * possibly reduce one dataset
+   * Tensorflow RNN is on the webpage for DL4NLP: HEX 11
+   * Which parameters are you using for RNN? Please insert into Wiki
+   * Come to some of the UKP meetings on Tuesday
+   * We also talked about the plans for the 2nd phase (different activation functions per layer + combination of activation functions)
+
+---+++ 09.11.2017
+
+   * For CNN: play around with different filter sizes, potentially other hyperparameters
+      * can also play around with more optimizers if time permits: AdaGrad, AdaDelta, RMSprop
+   * For CNN: adaptation of code is completely ok, if you have good reasons for doing so
+   * Can also prepare RNN for Sequence Tagging Task: which implementation do you want to use?
+      * TK in Tensorflow
+      * NR in Keras
+   * I gave you a potential structure of the thesis (>40 pages including everything)
+      * For analysis: std is bad, mean is good
+   * I also gave you feedback on the related work section
+   * Maxout: k=4 (Optional k=2)
+
+-- Main.SteffenEger - 2017-11-09
+
+---+!! Hyper-Parameters & Datasets
+
+   * MLP & Sentence Classification: 
+      * Datasets: movie-reviews (sent2vec) , TREC (InferSent), Subjectivity (InferSent), student-essays (sent2vec & InferSent)
+         * Hyper-Parameters for movie-reviews: 
+            * Optimizer: Adam, SGD
+            * Functions :  'x^3', 'sin', 'sigmoid', 'tanh', 'relu', 'elu', 'selu', 'softplus', 'softsign', 'linear', 'leaky relu', 'prelu', 'maxout'
+            * Layers: 1,2,3
+            * Dropout: 0.2, 0.5, 0.8
+            * Hidden units: 50, 100, 300, 600, 1200
+   * CNN:
+      * Hyper-Parameters of CNN for document classification:
+         * Optimizers = ['sgd', 'adam', 'adadelta']&#8232;
+         * convolutional layers = [1,2,3]
+         * Filters = [50, 75, 100, 125, 150]
+         * kernel_sizes = [3, 5, 7]
+   * RNN:
+
+-- Main.PaulYoussef - 2017-11-15
+
+
+
+ 

@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="sjoshi" comment="" date="1558027069" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Time Sheet
+
+Internal timesheet complete up to *16.05.2019*
+
+---+++ 2019-04
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 02.05.2019 | Docker, Develop new endpoint in api-model-default | 7 |  |
+| 03.05.2019 | Docker, Develop new endpoint in api-model-default | 2 |  |
+| 03.05.2019 | Weekly Meeting | 1 |  |
+| 03.05.2019 | Create new project & Train new models | 4 |  |
+| 09.05.2019 | Train new models | 6 |  |
+| 10.05.2019 | Weekly Meeting | 1 |  |
+| 10.05.2019 | Incorporate BERT  | 1 |  |
+| 16.05.2019 | Fine tune BERT  | 5 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 28.03.2019 | Introductory Meeting with Johannes, Chris, Benjamin | 1 |  |
+| 03.04.2019 | Meeting with Benjamin | 1 |  |
+| 03.04.2019 | Setup Argument Mining API in Local Machine | 6 |  |
+| 04.04.2019 | Setup Argument Mining API in Lisa | 3 |  |
+| 05.04.2019 | Config environment in local machine for Lisa | 2 |  |
+| 05.04.2019 | Weekly Meeting | 1 |  |
+| 11.04.2019 | Get familiar with projet codebase | 5 |  |
+| 12.04.2019 | Get familiar with projet codebase | 2 |  |
+| 12.04.2019 | Weekly Meeting | 0.5 |  |
+| 12.04.2019 | Configure Remote Debugging in PyCharm | 3.5 |  |
+| 18.04.2019 | Docker, Develop new endpoint in api-model-default for search/classify | 6.5 |  |
+| 24.04.2019 | Docker, Develop new endpoint in api-model-default | 4.5 |  |
+| 25.04.2019 | Docker, Develop new endpoint in api-model-default | 6 |  |
+| 26.04.2019 | Weekly meeting with Benjamin | 1 |  |
+| 26.04.2019 | Docker, Develop new endpoint in api-model-default | 5 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+
+-- Main.SalisJoshi - 2019-03-28
+
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="SalisJoshi"}%
+%META:PREFERENCE{name="PERMSET_CHANGE" title="PERMSET_CHANGE" type="Local" value="justauthor"}%

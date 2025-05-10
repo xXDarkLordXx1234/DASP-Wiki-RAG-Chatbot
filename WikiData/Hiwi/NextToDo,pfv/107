@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1378303807" format="1.1" reprev="106" version="107"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * run *delex query side on frink*
+      * the sense substituter contains an old version of asv toolbox, dt lemmatizer has new one
+         * re-pack the sensesubstituter jar and remove the asv package
+      * implement second term selecting method and (just by annotations overlap) count how many terms would be expanded by each of the two methods
+
+   * write about and *apply new data set*
+      * transform into same data format by a separate pipeline
+         * finished the topics
+         * began transforming the [[http://ir.dcs.gla.ac.uk/wiki/Terrier/Disks4&5 document collection]]
+            * <s>TODO: process DOCNO</s>
+            * %RED% TODO %ENDCOLOR%: process H3 tags in fbis
+            * %RED% TODO %ENDCOLOR%: write out tagged format
+
+   * points to *extend the thesis*: new data set, intro

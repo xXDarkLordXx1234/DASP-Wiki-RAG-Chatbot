@@ -1,0 +1,98 @@
+%META:TOPICINFO{author="UrsGlaubitt" date="1236349781" format="1.1" version="3"}%
+%META:TOPICPARENT{name="UrsGlaubitt"}%
+*What is this tutorial about?*
+
+This tutorial explains how to perform a semi automatic cohesion analysis.
+
+*Basic application flow*
+A cohesion analysis consists of four parts:
+   * the preprocessing,
+   *  the seperation of relevant and non relevant documents (document selection),
+   *  the creation of a relatedness cache( _de.tudarmstadt.ukp.dkpro.ir.util.retrieval.semantics.RelatednessCacher_ )
+   *  und der eigentlichen Cohesion Analysis.
+Each of these steps is optional and can be turned on or off.
+If not explicitly changed within the source code of the class  _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.Experiment_, the structure of the folders is fixed.
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="3"}%
+| *Directory* | *fixed* | *Comment* |
+| $homeDir$ | no | The root directory of the cohesion analysis. All other directories are relative to this directory. |
+| $homeDir$/berkeley_db | yes | The folder which contains all data concerning the Berkeley data bases of the documents and queries. |
+| $homeDir$/berkeley_db/documents | yes | The Berkeley data base which contains all the documents and their annotations |
+| $homeDir$/berkeley_db/topics | yes | The Berkeley data base which contains all the queries and their annotations |
+| $homeDir$/document_selection | yes | This folder contains two files. A list with all IDs of the relevant pairs of documents and queries and one containing all non relevant pairs. |
+| $homeDir$/lucene_repository | yes | Contains the Lucene repositories which were created during the preprocessing. Those repositories are used to create relatedness caches. |
+| $homeDir$/cache_files | yes | Contains the relatedness cache files which are used by the annotator _de.tudarmstadt.ukp.dkpro.ir.annotator.RelatednessScorer_ |
+| $homeDir$/$ExperimentDir$ | no | Contains all files which are only valid for one specific run of the cohesion analysis. This folder is not fixed in order to allow several runs on the same input data but with different parameters. |
+| $homeDir$/$ExperimentDir$/cohesion_analysis | yes | Contains several result files of a cohesion analysis. |
+
+*Creating a custom experiment*
+
+In order to run a custom cohesion analysis, a new instance of the class _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.ExperimentConfig_ needs to be created. This class contains a lot of public fields (parameters for the cohesion analysis) which can be assigned to custom values. Once all necessary fields have been set, the cohesion analysis can be started by calling the method _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.Experiment.run(ExperimentConfig config)_.
+---
+<blockquote>
+
+ public class MyCohesionAnalysis {<br />   <br />   public static void main(String[] args) {<br />      <br />      String dataPath = null;<br />      try {<br />         dataPath = UimaUtils.getDataPath();<br />      } catch (IOException e1) {<br />         e1.printStackTrace();<br />      }<br />      <br />      ExperimentConfig config = new ExperimentConfig();
+
+      ...
+
+    //setting the config parameters
+
+       ...
+
+      <br />      Experiment.run(config);
+</blockquote>
+---
+
+<strong>Fields of the class ExperimentConfig</strong>
+
+The visibility of all fields is public and such these fields can be accessed directly without the use of get- or set-methods.
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="5"}%
+
+| *Field* | *Default value* | *Meaning* | *Used for* | *Optional* |
+| dataDir | - | Das $homeDir$ des Experiments | Allen | nein |
+| experimentDir | - | Das $homeDir$/$experimentDir$ | Cohesion Analysis | nur wenn doAnalysis = false ist |
+| doPreprocessing | false | Schaltet den Preprocessing-Schritt ein oder aus | Preprocessing | ja |
+| doDocumentSelection | false | Schaltet den Document Selection-Schritt ein oder aus | DocumentSelection | ja |
+| createRelatednessCache | false | Schaltet das Erstellen des RelatednessCache ein oder aus | RelatednessCache | ja |
+| doAnalysis | false | schaltet den Cohesion Analysis-Schritt ein oder aus | Cohesion Analysis | ja |
+| topics_luceneIndexId | - | blub | bla | blub |
+| documents_luceneIndexId | - | blub | bla | blub |
+| topics_readerDesc | - | blub | bla | blub |
+| topics_readerParams | - | blub | bla | blub |
+| topics_treeTaggerParamFile | - | blub | bla | blub |
+| topics_stopWordListFiles | - | blub | bla | blub |
+| documents_readerDesc | - | blub | bla | blub |
+| documents_readerParams | - | blub | bla | blub |
+| documents_treeTaggerParamFile | - | blub | bla | blub |
+| documents_stopWordListFiles | - | blub | bla | blub |
+| docs_BerkeleyDbPath | - | blub | bla | blub |
+| esaRepositoryPath | - | blub | bla | blub |
+| esaIndexId | - | blub | bla | blub |
+| topicEsaIndexId | - | blub | bla | blub |
+| documentEsaIndexId | - | blub | bla | blub |
+| srThreshold | - | blub | bla | blub |
+| outFile | - | blub | bla | blub |
+| loadEsaInRam | - | blub | bla | blub |
+| esaCacheSizeInMb | - | blub | bla | blub |
+| nThread | - | blub | bla | blub |
+| msg | - | blub | bla | blub |
+| maxRank | - | blub | bla | blub |
+| maxDifStdDev | - | blub | bla | blub |
+| maxDifMean | - | blub | bla | blub |
+| irResultFile | - | blub | bla | blub |
+| relevanceAssessmentFile | - | blub | bla | blub |
+| doAnalysis | - | blub | bla | blub |
+| setsToAnalyse | - | blub | bla | blub |
+| relatednessMeasureClassName | - | blub | bla | blub |
+| relCacheFile | - | blub | bla | blub |
+| relatednessMeasureParameters | - | blub | bla | blub |
+| relatednessScorerThreshold | - | blub | bla | blub |
+| windowSize | - | blub | bla | blub |
+| windowGeneratorThreshold | - | blub | bla | blub |
+| windowLinkerThreshold | - | blub | bla | blub |
+| windowLinkConsumerResultFile | - | blub | bla | blub |
+| windowLinkConsumerDebugFile | - | blub | bla | blub |
+
+
+-- Main.UrsGlaubitt - 16 Jan 2009

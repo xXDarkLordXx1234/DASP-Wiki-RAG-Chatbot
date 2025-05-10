@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1170877736" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+%TOC%
+
+---++ 07.02.2007
+In den letzten Tagen habe ich die Arbeit von _Kim et al.: Automatically Assessing Review Helpfulness_ gelesen und zusammengefasst. Einige Dinge sind mir jedoch nicht ganz klar:
+   * Ist auf S. 3 eine falsche tf-idf Formel angegeben? Jedenfalls weicht sie von der üblichen, wie z.B. bei Jurafsky ab.
+   * Die Argumentation SVM Regression vs. SVM Ranking auf S. 4 ist mir nicht ganz klar (aber für die DA vermutlich auch gar nicht so wichtig). Es werden folgende Argumente für SVM Regression gebracht:
+      * _the helpfulness function provides non-uniform differences between ranks in the training set_
+Versteh ich leider nicht :-(
+      * _many products have only one review, which can serve as training data for SVM Regression but not SVM Ranking_
+Das Argument ist verständlich aber bei der Arbeit doch gar nicht relevant, da zum einen nicht einzelne Produkte sondern Produktgruppen betrachtet werden und zum anderen Produkte mit weniger als 5 Reviews sowieso ausgefiltert werden.
+      * _in large sites such as Amazon.com, when new reviews are written it is inefficient to re-rank all previously ranked reviews_
+Ok, ein Argument für die praktische Anwendung.
+   * S. 5: _10% of products for both datasets were withheld as development corpora_
+Warum werden 10% zurückgehalten?
+
+---++ 31.1.2007
+
+---++ 30.1.2007
+
+%META:FILEATTACHMENT{name="ea3-gruen-1360x768.jpg" attachment="ea3-gruen-1360x768.jpg" attr="" comment="Mundobild" date="1170238280" path="ea3-gruen-1360x768.jpg" size="130612" stream="ea3-gruen-1360x768.jpg" user="Main.MarkusWeimer" version="1"}%

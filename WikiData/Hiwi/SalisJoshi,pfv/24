@@ -1,0 +1,91 @@
+%META:TOPICINFO{author="sjoshi" comment="" date="1563988279" format="1.1" reprev="23" version="24"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Time Sheet
+
+Internal timesheet complete up to *24.07.2019*
+
+---+++ 2019-07
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 05.07.2019 | Train bert model on Mobility Corpus (de) | 4 |  |
+| 06.07.2019 | Train bert model on Mobility Corpus (de) | 3 |  |
+| 09.07.2019 | Filter Topic Relevance (Issue#91) | 2 |  |
+| 09.07.2019 | Weekly Meeting | 0.5 |  |
+| 09.07.2019 | Train bert model on Mobility Corpus (de) | 2.5 |  |
+| 11.07.2019 | Train bert model on Mobility Corpus (de) | 2 |  |
+| 18.07.2019 | Filter Topic Relevance (Issue#91) | 6 |  |
+| 19.07.2019 | Weekly Meeting | 1 |  |
+| 19.07.2019 | Filter Topic Relevance (Issue#91) | 2 |  |
+| 22.07.2019 | Filter Topic Relevance (Issue#91) | 4.5 |  |
+| 23.07.2019 | Upadate API Docs (Issue#105) | 5 |  |
+| 24.07.2019 | Upadate API Docs (Issue#105) | 6 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-06
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 03.06.2019 | Weekly Meeting (Previous week meeting) | 1 |  |
+| 03.06.2019 | Prediction using BERT (Incorporate Classify requests) | 2 |  |
+| 06.06.2019 | Train model for topic relevance | 3.5 |  |
+| 07.06.2019 | Weekly Meeting | 0.5 |  |
+| 07.06.2019 | Add container names to daily mail (Issue#87) | 3.5 |  |
+| 13.06.2019 | Filter Topic Relevance (Issue#91) | 6.5 |  |
+| 14.06.2019 | Filter Topic Relevance (Issue#91) | 5.5 |  |
+| 14.06.2019 | Weekly Meeting | 1 |  |
+| 21.06.2019 | Filter Topic Relevance (Issue#91) | 3 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-05
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 02.05.2019 | Docker, Develop new endpoint in api-model-default | 7 |  |
+| 03.05.2019 | Docker, Develop new endpoint in api-model-default | 2 |  |
+| 03.05.2019 | Weekly Meeting | 1 |  |
+| 03.05.2019 | Create new project & Train new models | 4 |  |
+| 09.05.2019 | Train new models | 6 |  |
+| 10.05.2019 | Weekly Meeting | 1 |  |
+| 10.05.2019 | Incorporate BERT  | 1 |  |
+| 16.05.2019 | Fine tune BERT  | 5 |  |
+| 17.05.2019 | Weekly Meeting | 1 |  |
+| 17.05.2019 | Incorporate BERT  | 5 |  |
+| 23.05.2019 | Fine-tune BERT, Export Model, Load Saved Model  | 6 |  |
+| 24.05.2019 | Fine-tune BERT, Export Model, Load Saved Model  | 4 |  |
+| 24.05.2019 | Preprocessing input to Fine-tuned BERT  | 1.5 |  |
+| 24.05.2019 | Weekly Meeting | 1 |  |
+| 30.05.2019 | Prediction using BERT | 6 |  |
+| 31.05.2019 | Prediction using BERT | 2 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-04
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 28.03.2019 | Introductory Meeting with Johannes, Chris, Benjamin | 1 |  |
+| 03.04.2019 | Meeting with Benjamin | 1 |  |
+| 03.04.2019 | Setup Argument Mining API in Local Machine | 6 |  |
+| 04.04.2019 | Setup Argument Mining API in Lisa | 3 |  |
+| 05.04.2019 | Config environment in local machine for Lisa | 2 |  |
+| 05.04.2019 | Weekly Meeting | 1 |  |
+| 11.04.2019 | Get familiar with projet codebase | 5 |  |
+| 12.04.2019 | Get familiar with projet codebase | 2 |  |
+| 12.04.2019 | Weekly Meeting | 0.5 |  |
+| 12.04.2019 | Configure Remote Debugging in PyCharm | 3.5 |  |
+| 18.04.2019 | Docker, Develop new endpoint in api-model-default for search/classify | 6.5 |  |
+| 24.04.2019 | Docker, Develop new endpoint in api-model-default | 4.5 |  |
+| 25.04.2019 | Docker, Develop new endpoint in api-model-default | 6 |  |
+| 26.04.2019 | Weekly meeting with Benjamin | 1 |  |
+| 26.04.2019 | Docker, Develop new endpoint in api-model-default | 5 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+
+-- Main.SalisJoshi - 2019-03-28
+
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="SalisJoshi"}%
+%META:PREFERENCE{name="PERMSET_CHANGE" title="PERMSET_CHANGE" type="Local" value="justauthor"}%

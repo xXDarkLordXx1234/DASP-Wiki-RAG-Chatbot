@@ -1,0 +1,106 @@
+%META:TOPICINFO{author="BenjaminHerbert" date="1245426000" format="1.1" version="6"}%
+%META:TOPICPARENT{name="UrsGlaubitt"}%
+*What is this tutorial about?*
+
+This tutorial explains how to perform a semi automatic cohesion analysis.
+
+*Basic application flow*
+A cohesion analysis consists of four parts:
+   * the preprocessing,
+   *  the seperation of relevant and non relevant documents (document selection),
+   *  the creation of a relatedness cache( _de.tudarmstadt.ukp.dkpro.ir.util.retrieval.semantics.RelatednessCacher_ )
+   *  and the Cohesion Analysis.itself
+Each of these steps is optional and can be turned on or off.
+If not explicitly changed within the source code of the class  _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.Experiment_, the structure of the folders is fixed.
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="3"}%
+| *Directory* | *fixed* | *Comment* |
+| $homeDir$ | no | The root directory of the cohesion analysis. All other directories are relative to this directory. |
+| $homeDir$/berkeley_db | yes | The folder which contains all data concerning the Berkeley data bases of the documents and queries. |
+| $homeDir$/berkeley_db/documents | yes | The Berkeley data base which contains all the documents and their annotations |
+| $homeDir$/berkeley_db/topics | yes | The Berkeley data base which contains all the queries and their annotations |
+| $homeDir$/document_selection | yes | This folder contains two files. A list with all IDs of the relevant pairs of documents and queries and one containing all non relevant pairs. |
+| $homeDir$/lucene_repository | yes | Contains the Lucene repositories which were created during the preprocessing. Those repositories are used to create relatedness caches. |
+| $homeDir$/cache_files | yes | Contains the relatedness cache files which are used by the annotator _de.tudarmstadt.ukp.dkpro.ir.annotator.RelatednessScorer_ |
+| $homeDir$/$ExperimentDir$ | no | Contains all files which are only valid for one specific run of the cohesion analysis. This folder is not fixed in order to allow several runs on the same input data but with different parameters. |
+| $homeDir$/$ExperimentDir$/cohesion_analysis | yes | Contains several result files of a cohesion analysis. |
+
+*Creating a custom experiment*
+
+In order to run a custom cohesion analysis, a new instance of the class _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.ExperimentConfig_ needs to be created. This class contains a lot of public fields (parameters for the cohesion analysis) which can be assigned to custom values. Once all necessary fields have been set, the cohesion analysis can be started by calling the method _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.Experiment.run(ExperimentConfig config)_.
+---
+<blockquote>
+
+ public class MyCohesionAnalysis {<br />   <br />   public static void main(String[] args) {<br />      <br />      String dataPath = null;<br />      try {<br />         dataPath = UimaUtils.getDataPath();<br />      } catch (IOException e1) {<br />         e1.printStackTrace();<br />      }<br />      <br />      ExperimentConfig config = new ExperimentConfig();
+
+      ...
+
+    //setting the config parameters
+
+       ...
+
+      <br />      Experiment.run(config);
+</blockquote>
+---
+
+<strong>Fields of the class ExperimentConfig</strong>
+
+The visibility of all fields is public and thus these fields can be accessed directly without the use of get- or set-methods.
+Allthough most of the parameters in the following table are labeled mandatory, default values are defined in the used descriptor files. As a result a lot of these parameters do not need to be defined and instead the default value defined in the descriptor is used. Nevertheless, as such settings should not influence the cohesion analysis these parameters are labeled mandatory.
+An example configuration of all those parameters can be found in the SVN at de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.Experiment1.
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="5"}%
+
+| *Field* | *Default value* | *Meaning* | *Relevant in step:* | *Optional (relative to the previous column)* |
+
+| dataDir | - | the path of the homeDir | all steps | no |
+| experimentDir | - | the path of the experimentDir relative to the homeDir | final cohesion analysis | no |
+| doPreprocessing | true | if false the preprocessing will be skipped | preprocessing | yes |
+| topics_luceneIndexId | - | the lucene index id of the topics | preprocessing  + creating the relatedness cache | no |
+| documents_luceneIndexId | - | the lucene index id of the topics | preprocessing  + creating the relatedness cache | no |
+| topics_readerDesc | - | the file name of the descriptor file of the reader which can process the topics | preprocessing | no |
+| topics_readerParams | - | a HashMap that contains parameters of the chosen topic-reader | preprocessing | depends on the descriptor file of the topic-reader |
+| topics_treeTaggerParamFile | - | file name of the treeTaggerParameter file (see the descriptor file _desc/annotator/TreeTaggerPosLemma.xml_) | preprocessing | no |
+| topics_stopWordListFiles| - | an Array of file names of stop word lists (see the descriptor file _desc/annotator/StopWordTagger.xml_) | preprocessing | no |
+| topics_BerkeleyDbPath | - | The path to the Berkeley data base | preprocessing and cohesion analysis | yes |
+| documents_readerDesc | - | the euqivalent to topics_readerDesc for processing the documents | preprocessing | no |
+| documents_readerParams | - | the equivalent to topics_readerParams | preprocessing | depends on the descriptor file of the document-reader |
+| documents_treeTaggerParamFile | - | the euqivalent to topics_treeTaggerParamFile | preprocessing | no |
+| documents_stopWordListFiles | - | the equivalent to topics_stopWordListFiles | no |
+| useTokens | true | determines if tokens are used by the TreeTagger (_desc/annotator/TreeTaggerPosLemma.xml_) during the preprocessing | preprocessing | yes |
+| useStems | true | see useTokens | preprocessing | yes |
+| useLemmas | true | see useLemmas | preprocessing | yes |
+| documents_BerkeleyDbPath | - | see topics_BerkeleyDbPath | preprocessing and cohesion analysis | yes |
+| createRelatednessCache | true | if false this part of the experiment run will be skipped and no relatedness cache is created | creating the relatedness cache | yes |
+| esaRepositoryPath | - | repository which contains the ESA indexes | creating the relatedness cache | no |
+| esaIndexId | - | id of the ESA index | creating the relatedness cache | no |
+| topicEsaIndexId | - | ids of the topic indexes | creating the relatedness cache | no |
+| documentEsaIndexId | - | id of the document index | creating the relatedness cache | no |
+| srThreshold | - | If values are above this threshold then term pair and score will be stored in the relatedness cache file | creating the relatedness cache | no |
+| outFile | - | name of the relatedness cache file | creating the relatedness cache | no |
+| loadEsaInRam | false | see _de.tudarmstadt.ukp.dkpro.ir.util.retrieval.semantics.RelatednessCacher_ | creating the relatedness cache | yes |
+| esaCacheSizeInMb | - | see _de.tudarmstadt.ukp.dkpro.ir.util.retrieval.semantics.RelatednessCache_ | creating the relatedness cache | no |
+| nThread | - | see _de.tudarmstadt.ukp.dkpro.ir.util.retrieval.semantics.RelatednessCache_ | creating the relatedness cache | no |
+| msg | - | see _de.tudarmstadt.ukp.dkpro.ir.util.retrieval.semantics.RelatednessCache_ | creating the relatedness cache | no |
+| doDocumentSelection | true | if false the document selection is skipped | document selection | yes |
+| maxRank | 0 | only documents which are ranked higher (better) than maxRank are taken into account | document selection | no |
+| maxDifStdDev | 0 | the maximum difference of the standard deviation (concerning IR Scores) of the selected relevant documents and the selected non relevant documents | document selection | no |
+| maxDifMean | 0 | the maximum difference of the mean of the selected relevant documents and the non relevant documents | document selection | no |
+| irResultFile | - | the path to the file which contains the IR scores of the documents | docuement selection | no |
+| relevanceAssessmentFile | - | a file which contains an entry for each document query pair wether the document is relevant or not | document selection | no |
+| doAnalysis | true | if false the cohesion analysis is skipped | cohesion analysis | yes |
+| setsToAnalyse | rel. and non rel. | Determines which sets of the document selection or any document selection at all is used (possible values are defined as constants in _de.tudarmstadt.ukp.dkpro.ir.util.analysis.cohesion.Experiment_ | cohesion analysis | yes |
+| relatednessMeasureClassName | - | determines which relatedness measure is used by 	the RelatednessScorer and the WindowLinker | cohesion analysis | no |
+| relCacheDir | - | the directory which contains the relatedness cache file | cohesion analysis | yes |
+| relCacheFile | - | the relatedness cache file name (relative to relCacheDir) | cohesion analysis | yes |
+| relatednessMeasureParameters | - | a HashMap containing parameters of the chosen RelatednessScore | cohesion analysis | depends on the RelatednessMeasure |
+| relatednessScorerThreshold | - | if the threshold is reached or exceeded a RelatednessScore is created | cohesion analysis | no |
+| windowSize | 0 | the size of a RelatednessWindow is 2*windowSize + 1, where the CenterTerm of the window got index windowSize + 1 (see _desc/annotator/WindowGenerator.xml_)| cohesion analysis | no |
+| windowGeneratorThreshold | 0 | if a RelatednessScore exceeds the threshold a RelatednessWindow | cohesion analysis | no |
+| innerAnnotationTypeClassName | IndexTerm | The AnnotationType which is "counted" to determine the size of the window (see _desc/annotator/WindowGenerator.xml_) | cohesion analysis | yes |
+| windowLinkerThreshold | 0 | If the RelatednessScore associated with a RelatednessWindow exceeds the threshold a WindowLink annotation is created | cohesion analysis | no |
+| chosenConsumer | windowLinkConsumer | selects the consumer of the cohesion analysis. Possible values are defined as constants in CohesionAnalysis | cohesion analysis | yes |
+| cohesionAnalysisConsumerResultFile | - | the name of the result file | cohesion analysis | no |
+| cohesionAnalysisConsumerDebugFile | - | another result file which is user friendlier and can be used for debugging purposes or such | cohesion analysis | yes |	
+
+-- Main.UrsGlaubitt - 16 Jan 2009

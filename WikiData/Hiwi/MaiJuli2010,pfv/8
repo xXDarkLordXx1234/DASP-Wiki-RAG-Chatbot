@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1274435953" format="1.1" version="8"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---++ Mai 2010
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Sense Mapping between Wikipedia and WordNet | |
+| Framework for WKT_RU| |
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Russian Wiktionary | 01.05.2010 | -2 | Nachtrag vom April |
+| Russian Wiktionary | 02.05.2010 | 3 | Wikokit to JWKTL Adapter |
+| Russian Wiktionary | 03.05.2010 | 2 | Wikokit to JWKTL Adapter |
+| Russian Wiktionary | 05.05.2010 | 2 | Wikokit to JWKTL Adapter |
+| Russian Wiktionary | 06.05.2010 | 2 | Wikokit to JWKTL Adapter |
+| Russian Wiktionary | 07.05.2010 | 2 | Tutorial wie man eine WKT_RU dump erstellt in "CreationRussianJWKTL.pdf"<br>Der Source-Code ist in SVN "JWKTLWikokit" |
+| Russian Wiktionary | 08.05.2010 | 2 | Übersetzung von Begriffen aus WKT_RU in "RussischDeutschUebersetzungWKT.pdf" |
+| Russian Wiktionary | 09.05.2010 | 2 | |
+| Russian Wiktionary | 10.05.2010 | 2 | WKT_RU Statistics |
+| Russian Wiktionary | 13.05.2010 | 3 | WKT_RU Statistiken in "WKT_RU_Statistics.pdf" |
+| Sense Mapping | 19.05.2010 | 4 | Vorstudie WordNet/Wiktionary Mapping |
+| Russian Wiktionary | 20.05.2010 | 2 | WKT_DE Statistics |
+| Russian Wiktionary | 21.05.2010 | 2 | Extrahieren von ContextLabels |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende Juli 2010 |
+<nop>
+   * [[%ATTACHURL%/CreationRussianJWKTL.pdf][CreationRussianJWKTL.pdf]]: How to create JWKTL-Dump of WKT_RU
+
+   * [[%ATTACHURL%/RussischDeutschUebersetzungWKT.pdf][RussischDeutschUebersetzungWKT.pdf]]: Russisch - Deutsch Übersetzung von einigen Begriffen aus Wiktionary-Seiten
+
+   * [[%ATTACHURL%/WKT_RU_Statistics.pdf][WKT_RU_Statistics.pdf]]: WKT_RU Statistic Tables
+
+%META:FILEATTACHMENT{name="CreationRussianJWKTL.pdf" attachment="CreationRussianJWKTL.pdf" attr="" comment="How to create JWKTL-Dump of WKT_RU" date="1273334470" path="CreationRussianJWKTL.pdf" size="381580" stream="CreationRussianJWKTL.pdf" tmpFilename="/var/tmp/CGItemp50761" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="RussischDeutschUebersetzungWKT.pdf" attachment="RussischDeutschUebersetzungWKT.pdf" attr="" comment="Russisch - Deutsch Übersetzung von einigen Begriffen aus Wiktionary-Seiten" date="1273417197" path="RussischDeutschUebersetzungWKT.pdf" size="460156" stream="RussischDeutschUebersetzungWKT.pdf" tmpFilename="/var/tmp/CGItemp56276" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="WKT_RU_Statistics.pdf" attachment="WKT_RU_Statistics.pdf" attr="" comment="WKT_RU Statistic Tables" date="1273748560" path="WKT_RU_Statistics.pdf" size="118059" stream="WKT_RU_Statistics.pdf" tmpFilename="/var/tmp/CGItemp52416" user="YevgenChebotar" version="1"}%

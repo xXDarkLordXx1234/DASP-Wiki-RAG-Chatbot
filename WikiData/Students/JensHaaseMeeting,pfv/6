@@ -1,0 +1,83 @@
+%META:TOPICINFO{author="MichaelMatuschek" date="1273670795" format="1.1" version="6"}%
+%META:TOPICPARENT{name="JensHaase"}%
+---++++  Meeting 12.05.2010
+
+ 
+   * Übersicht möglicher Features ist weitgehend fertig und im Wiki
+   * Einrichtung des Annotations-Tool-Servers voraussichtlich mit Google App Engine
+      * Direkter Zugriff der Wikipedia auf UKP-Server damit nicht möglich
+      * (Wahrscheinlich) kein Problem, da Vorverarbeitung und Zwischenspeicherung aus Performancegründen ohnehin sinnvoll scheint
+      * Ausgabe dann evtl. als XML? Sinnvolle Alternativen sollten geprüft werden
+   * Arbeit an Tool schreitet voran
+   * Auswahl der zu annotierenden Revisionen sollte zufällig erfolgen, um ein aussagekräftiges Training-Set zu erhalten
+      * Evtl. sollten unbrauchbare (z.B. leere) Revisionen gefiltert werden
+   * Mögl. Problem: Weka unterstützt keine Mulitklassifizierung, nochmal prüfen!
+   * Altenativen:
+      * Klassifikation auf Abschnittsebene (ist ohnehin vorgesehen)
+      * Verwendung einer expliziten "Multi-Klasse" auf Dokumentebene, vielleicht experimentell testen
+      * Erweiterungen für Weka prüfen, die die Funktionalität bereitstellen        
+   * Verwendung einzelner DKPro-Komponenten muss  geprüft werden (LanguageToolChecker, SpellChecker,...)
+      * Könnte für Konstruktion entsprechender Features nötig sein
+      * Alternative: Naiver Ansatz z.B. mit Edit-Distanz
+      * Umgang mit Stoppwörtern muss für die jeweiligen Features gesondert betrachtet werden
+   * Berechnung von n-Grammen etc. abhängig vom Aufwand, Feature Space sollte für den Anfang nicht zu groß werden
+   * Benutzeroberfläche für das Annotieren von Revisionen liegt in erster Version vor
+      * Aufsetzen auf Webserver muss geprüft werden
+   * Weiteres Vorgehen
+      * Weitere Arbeit am Annotations-Tool
+      * Beispielhafte Extraktion der ersten Features in einem lauffähigen Annotator
+
+---++++  Meeting 05.05.2010
+
+ 
+   * Übersicht möglicher Features ist weitgehend fertig, wird ins Wiki nachgetragen
+   * Verwendung einzelner DKPro-Komponenten muss  geprüft werden (LanguageToolChecker, SpellChecker,...)
+      * Könnte für Konstruktion entsprechender Features nötig sein
+      * Alternative: Naiver Ansatz z.B. mit Edit-Distanz
+      * Umgang mit Stoppwörtern muss für die jeweiligen Features gesondert betrachtet werden
+   * Berechnung von n-Grammen etc. abhängig vom Aufwand, Feature Space sollte für den Anfang nicht zu groß werden
+   * Benutzeroberfläche für das Annotieren von Revisionen liegt in erster Version vor
+      * Aufsetzen auf Webserver muss geprüft werden
+   * Weiteres Vorgehen
+      * Weitere Arbeit am Annotations-Tool
+      * Beispielhafte Extraktion der ersten Features in einem lauffähigen Annotator
+
+---++++  Meeting 28.04.2010
+
+   * Projekt-Setup steht, Zugriff auf Datenbank über VPN ist auch möglich
+   * Diplomarbeit S. Kulessa ist durchgearbeitet 
+   * Vorhandene Trainingsdaten tw. gesichtet, aber nur für Vandalismus geeignet 
+      * Prüfung notwendig, ob sie trotzdem eingebunden werden sollen
+      * Wikipedia-Bots als weitere mögliche Quelle?
+   * Für Annotation von Artikeln: Graphische Oberfläche möglicherweise sinnvoll
+      * Nicht viel Arbeit bei der Umsetzung
+      * Ermöglicht die effizientere Annotation
+   * Falls nur wenige Trainingsdaten vorhanden: Bootstrapping (iteratives Vergrößern der Trainingsmenge)
+      * Genaue Vorgehensweise wird noch besprochen
+   * Beschluss: Änderungen sollten auf Dokument- und Abschnittebene annotiert werden
+   * Gewisse Änderungen können regelbasiert erkannt werden (z.B. Setzen von Links), Kombination mit ML erscheint sinnvoll
+   * Grundlagen ML wurden besprochen
+      * Beschluss: Weka wird verwendet, stabil, einfach einzubinden
+   * Weiteres Vorgehen
+      * Weiteres Einarbeiten in die Literatur 
+      * Features ausarbeiten
+      * Einarbeiten in ML
+
+---++++  Meeting 21.04.2010
+
+   * Projekt-Setup, benötigte Ressourcen und Beispielpipeline wurden besprochen
+   * Besprochene Referenzen: Diplomarbeit S. Kulessa, Paper von Potthast et.al., Paper von Smets et. al.
+   * Mögliche Klassen wurden diskutiert
+      * Beschlüsse:
+      * Konzentration auf Nicht-Vandalismus-Änderungen, da diese durch die Literatur noch nicht abgedeckt sind
+      * Klassifikation von Vandalismus kann im Wesentlichen auf den Verfahren aus der Literatur basieren
+      * Inhaltliche Merkmale (z.B. um sinnverändernde Edits zu erkennen) werden zunächst nicht behandelt, da dies evtl. zu aufwändig ist
+      * Konzentration vorerst auf oberflächliche Features, z.B. Textlängen
+   * Weiteres Vorgehen
+      * Einrichtung von eclipse-Projekt, Lösung evtl. technischer Probleme
+      * Einarbeiten in die besprochene Literatur und Herausarbeiten nützlicher Ansätze (z.B. Diff-Berechnung)
+      * Zu erkennende Klassen festlegen und beginnen, Merkmale einer Revision auszuarbeiten, die für die Erkennung interessant sein können
+      * Überlegen, welche Trainingsdaten es gibt (Potthast?), wie sie annotiert sind und ob bzw. wie das für unsere Aufgabe passt
+
+
+-- Main.MichaelMatuschek - 21 Apr 2010

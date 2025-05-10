@@ -1,0 +1,91 @@
+%META:TOPICINFO{author="nbeck" comment="" date="1590500906" format="1.1" reprev="11" version="12"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Time Tracker for working hours
+[[NilsBeckTime][Time tracking]]
+
+---++ Internal Evidence Project Documentation 
+[[Main.EvidenceDocs][Documentation]]
+
+---++ Meeting protocols
+---++++ 01.04.20
+      * Orga:
+         * Weekly meetings: Mondays, 11 o'clock
+      * Resources:
+         * [[https://pytorch.org/tutorials/][Pytorch]]
+         * [[https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270][Bert Blog]]
+         * [[https://github.com/huggingface][Huggingface]]
+         * Multilingual:
+            * [[https://github.com/UKPLab/sentence-transformers][Sentence Bert]] 
+            * [[https://huggingface.co/transformers/model_doc/xlmroberta.html][XLMR]]
+---+++ 06.04.20 (weekly meeting)
+      * working hours to be turned in digitally on a monthly basis, physically tba
+      * things done in past week
+         * read evidence project materials
+         * set up conda, PyCharm, PyTorch
+         * got familiar with PyTorch
+         * some further reading on e.g. BERT
+      * TODOs for upcoming week
+         * get familiar with slurm compute cluster and run some test scripts
+         * get familiar with Sentence BERT and XLMR and try at least one on sample data
+         * also: continue self-study on Transformer, Huggingface, BERT and possibly general deep learning
+
+---+++ 14.04.2020 (weekly meeting)
+      * things done in past week
+         * familiarized with Transformer, BERT and Sentence-BERT
+      * TODOs for upcoming week
+         * test Sentence-BERT on small datasets in oder to get used to it
+         * run Sentence-BERT on Evidence datasets, (a) finetune measuring accuracy and (b) generate words embeddings, then finetune on smaller model. Refer to distribution of classes when working to improve accuracy
+
+---+++ 20.04.2020 (weekly meeting)
+      * things done in past week
+         * tried fine-tuning sentence-BERT models with sentiment data sets (unsuccessful execution)
+         * generated embeddings for sentiment data sets from sentence-BERT multilingual model
+      * TODOs for upcoming week
+         * Split data sets 60 / 20 / 20
+         * Train simple multi-layer perceptron (512 !ReLu -> 128 !ReLu -> 5 softmax)
+         * Train SVM (tune c : [0.0001, 0.001, 0.01, 0.1, 1, 2, 8, 32, 64]
+         * Train Logistic Regression
+         * Evaluate with metrics: macro-averaged F1 score, accuracy
+      * on organizational matters:
+         * hand in monthly working hours on Monday, 27.04.2020
+         * decide by mid May whether to continue on the job
+
+---+++ 28.04.2020 (weekly meeting)
+      * orga
+         * about 3 hrs/40hrs can be taken off (Urlaubszeit)
+         * contract hopefully to be extended until the end of august, staying at 40h/month
+      * things done in past week
+         * trained logistic regression on restructured (60/20/20) sentiment data
+         * evaluated with F1 an accuracy
+      * TODOs for upcoming week
+         * train multilayer perceptron with sentiment (and if possible thereafter lexicographs') data
+         * if not possible, start reading up on FLASK for web applications
+---+++ 05.05.2020 (weekly meeting)
+      * orga
+         * extension of contract to be decided on by Prof. Gurevych
+      * things done in past week
+         * started reading on MLPs and preparing implementation
+      * TODOs for upcoming week
+         * create GitLab repository for Experiments (Logistic Regression and MLP)
+         * upload new LogReg based on relevant data (not the old one)
+         * continue work on MLP, define structure and hopefully have som form running soon
+---+++ 12.05.2020 (weekly meeting)
+      * things done in past week
+         * wrote MLP (needs debugging) and logistic regression script (running)
+         * adjusted both to work with evidence data
+      * TODOs for upcoming week
+         * run log reg on entire evidence data set
+         * debug MLP script
+         * (if there is some time left) adjust models to handle inputs in the form <sentence_embeddings><word_embeddings>
+---+++ 19.05. 2020 (weekly meeting)
+no meeting
+
+---+++ 26.05.2020 (weekly meeting)
+   * things done in past weeks
+      * ran MLP with 50 iterations (still poor results)
+      * worked on Flask tutorials 
+      * created entry in Wiki for documenting the GUI
+   * TODOs for upcoming week
+      * try MLP with adam or adagrad optimizer
+      * create basic html interface for flask (search bar and button, floating boxes, ...)
+      * restructure git folders, incorporating flask application

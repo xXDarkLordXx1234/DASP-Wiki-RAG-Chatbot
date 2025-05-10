@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="RolandKluge" date="1340295938" format="1.1" version="13"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Stundenzettel
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Anmerkungen* |
+| Kickoff-Treffen: Roadmap, erstes Arbeitspaket, Technisches | 04.06.2012 | 1 | |
+| Einlesen: <nop>SeerSuite, Algorithm Search, <nop>TableSeer, etc. | 05.06.2012-06.06.2012 | 3 | |
+| Einrichtung von DKPro | 06.06.2012- | 6,5 | in Arbeit |
+| Zwischentreffen | 19.06.2012 | 1 | |
+| Einarbeitung SeerSuite | 19.06.2012- | 1,5 | in Arbeit |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60 | bis 1. September 2012 |
+<nop>
+
+---++ Einrichtung DKPro
+
+---+++ TODO
+
+   * Setting up the access to existing DKPRO projects
+   * Bug Tracking: DKPro not visible...
+   * Missing access to SVN [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_ng/dkpro/core][NON-FREE]]
+   * Tutorial [[http://code.google.com/p/dkpro-core-asl/wiki/MyFirstDKProProject]]
+   * Unresolved Dependencies: 
+      * [[http://stackoverflow.com/questions/10206005/errors-with-maven-and-eclipse-integration]]
+      * Left out for now: de.tudarmstadt.ukp.dkpro.core.opennlp-asl
+
+---++ Links (intern)
+
+   * DKPro.DKProDeveloperResources
+   * YevgenChebotar 

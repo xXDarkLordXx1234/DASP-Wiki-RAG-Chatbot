@@ -1,0 +1,77 @@
+%META:TOPICINFO{author="nadolskyy" comment="save topic" date="1381863760" format="1.1" reprev="173" version="176"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ Tasks
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Aufgaben, Andriy* |
+| *Aufgabe* | *% done* |
+| Einführung für GIS Tutorium erstellen | 100 |
+| Erstellung von Musterlösung für NLP and the Web | 100 |
+| Annotationsstudie von Daniel | 100 |
+| Annotationsstudie von Silvana | 100 |
+| Wrapper für Mate-Tools; dazugehörige Annotatoren | 100 |
+| Anpassungen und Deployment von SIDIM | 100 |
+| Anpassungen für WSD |  |
+| | |
+
+
+---+++ Protocol
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Andriy, Stunden 2013* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| hours left from the year 2012 | 31.12.2012 | -23.25 | <ul><li> 320 (from the contract of year 2012) - 270.75 (worked) - 26 (holidays after consultation with Prof. Gurevych)  = -23.25 </li></ul> |
+| SIDIM | 09.01.2013 | 2 | <ul><li> had a look to mate tools; read the code of Marcel to inflection; wrote an email to Marcel, and asked because of 2 missed files; wrote an email to György to some not understandable points of tasks </li></ul> |
+| WSD | 14.01.2013 | 2.5 | <ul><li> email traffic; read tasks to WSD; read de.tudarmstadt.ukp.dkpro.wsd.examples.Senseval2EnglishAllWords.java and modified so it runs at me; read de.tudarmstadt.ukp.dkpro.wsd.examples.Senseval2EnglishLexicalSample.java, TODO from this class: "to have theWordNet 1.7 prerelease installed on your local system, and to have an appropriately configured WordNet properties file and DKPro resources.xml file" </li></ul> |
+| SIDIM, WSD | 16.01.2013 | 1.25 | <ul><li> email traffic; a look to 120912_SiDiM_Zwischenbericht_TUD.pdf; skype with György, was clarified: what is to upload; how to change then code; how should be the watemarking annotator adapted </li></ul> |
+| SIDIM | 18.01.2013 | 6.75 | <ul><li>  email and skype traffic with Marcel, György and Richard (to deployment of sidim and inflection); added inflection to the watermarking annotators, according to the code by Marcel Ackermann; couldn't test it, because I need to know with which file is the Inflecter  to initialize - asked Marcel in the last email to him (but it should work)</li></ul> |
+| SIDIM | 19.01.2013 | 2 | <ul><li>  looked with wich file is the Inflecter to initialize; Email to Marcel; backup of data; read emails of Richard and documentation proposed by him to deployment </li></ul> |
+| SIDIM | 21.01.2013 | 4 | <ul><li> read on 20. report of Tristan; some email traffic; translated a part of the report </li></ul> |
+| SIDIM | 22.01.2013 | 3 | <ul><li> translated a part of the report </li></ul> |
+| SIDIM | 23.01.2013 | 4.75 | <ul><li> translated the rest of the first part; translated the second part (3 sentences); read both parts one more time and improved, where it was needed </li></ul> |
+| SIDIM | 26.01.2013 | 2 | <ul><li> became the name of model from Marcel; there is a problem with loading of this from classpath, after some unsuccessful attempts loaded it at first from absolute path; exceptions - fixed it - Annotation slightly adjusted </li></ul> |
+| SIDIM | 28.01.2013 | 3.75 | <ul><li> tested the annotation, there was impossible to access covered text of alternaives, which don't have this, changed this to lemma; in the output were alternatives just for one head, will check next time, why only for one </li></ul> |
+| SIDIM | 29.01.2013 | 6.75 | <ul><li> done watermark annotation -> send code and output to György, became feedback from him, skype to clarify it; studied the output; checked which words are in the dictionary; if some word will be not found in the dictionary than will be null returned, this will be just dropped: compared to the previous version, which has taken lemmas instead; commit </li><li> looked for tutorials for deployment, viewed some, e.g. https://www.youtube.com/watch?v=yIY34n1HMsY; downloaded maven and updated environment pathes; executed "mvn deploy" and "mvn package", both had errors, the first was because the version "Latest" couldn't  be resolved, changet it to exact versions; installed certificate for "scruffy.ukp.informatik.tu-darmstadt.de"; current error at run "mvn deploy" is "Non-resolvable parent POM:..."  </li></ul> |
+| SIDIM | 09.02.2013 | 1.5 | <ul><li> email traffic; tried to fix the problem with maven deploy: looked to class pathes, showed some tutorials, but couldn't solve this; asked Richard per email of help with deployment </li></ul> |
+| SIDIM | 10.02.2013 | 1.75 | <ul><li> email of Richard, that artifactory was offline and I should try to deploy one more time: also errors; updated path to one resource, that caused one of errors; looked in the internet to packaging to .jars; asked for an appointment at Richard per email; wrote down questions, which interest me regarding deployment </li></ul> |
+| SIDIM | 12.02.2013 | 3.25 | <ul><li> two meetings with Richard: short description of this at email to György; email to György; couldn't log on to this wiki website -> email to Timo; wrote down ToDo list for sidim (e.g. the 1. task is to test, that it runs after changes) </li></ul> |
+| SIDIM | 13.03.2013 | 1.25 | <ul><li> skype with György due to the last email with questions to deployment process; tested projects after switch to open source resources -> errors (couldn't find some class); email to Iryna, Chris and Martin </li></ul> |
+| SIDIM | 20.03.2013 | 0.75 | <ul><li> read emails and write to contacts from fraunhofer institute and Tristan  </li></ul> |
+| SIDIM | 15.04.2013 | 2.25 | <ul><li> meeting with Tristan; fixing the error: "Caused by: java.lang.ClassNotFoundException: gnu.trove.TObjectIntHashMap" </li></ul> |
+| SIDIM | 16.04.2013 | 5 | <ul><li> skype with Richard; fixing the error: "Caused by: java.lang.ClassNotFoundException: gnu.trove.TObjectIntHashMap": tried to change pom versions of dependencies to the last working -> code accordingly adapt </li></ul> |
+| SIDIM | 17.04.2013 | 6.5 | <ul><li> meeting with Tristan; prepare sidim for deployment (according to changes of Tristan) + write documentation of changes </li></ul> |
+| SIDIM | 19.04.2013 | 5.25 | <ul><li> fixing of problem with HeadAnnotation; meeting with Tristan; explore differences between outputs of old and new version; move to higher version of wordnet; try to run without pached versions; email to Tristan with outcome </li></ul> |
+| SIDIM | 20.04.2013 | 1.5 | <ul><li> looking for a public settings.xml and running with this. It produces next errors:  "Could not read maven project" and "Non-resolvable parent POM: Failure to find de.tudarmstadt.ukp.dkpro.misc:de.tudarmstadt.ukp.dkpro.misc.superpom:pom:1.0.23 in http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-model-releases-local was cached in the local repository...."; email to Richard; crashing of this site after saving </li></ul> |
+| SIDIM | 22.04.2013 | 4 | <ul><li> meeting with Tristan; settings.xml update; read https://trac-ext.sit.fraunhofer.de/sidim/wiki/InfraStruktur/SVNRepository; go through relevant dkpro-core forum posts; discover errors at poms; update versions of dependencies </li></ul> |
+| SIDIM | 23.04.2013 | 1 | <ul><li> continue update versions of dependencies (slowly responses of zoidberg) </li></ul> |
+| SIDIM | 28.04.2013 | 0.75 | <ul><li> clear repository and continue update versions of dependencies </li></ul> |
+| SIDIM | 29.04.2013 | 4 | <ul><li> looking for the error "Failed to read artifact descriptor for ArtifactResolutionException: Could not transfer" in the internet, tried to fix it; check out matetools and look for the error, post in forum; </li></ul> |
+| SIDIM | 30.04.2013 | 6 | <ul><li> forum-posts; read http://maven.apache.org/settings.html and make new settings.xml; read https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/DKPro/CheckingInAProject; check de.sidim.ukp.lexsub and de.sidim.ukp.lexsub.watermarking into repository of fraunhofer; commited patched versions of de.tudarmstadt.ukp.dkpro.lexsemresource.api-asl and de.tudarmstadt.ukp.dkpro.lexsemresource.wordnet-asl to fraunhofer repository; type "Morpheme" is missed -> asked Richard where can be it found; </li></ul> | 
+| SIDIM, WSD | 04.05.2013 | 6.25 | <ul><li> email traffic; fix error with morpheme; maintain documentation of changes which have been done due to making lexsub and watermarking of ukp public runable (pached versions of lexsemresource.api-asl, wordnet-asl and api.lexmorph-asl)</li><li> fix missed dependency to MateMorphTagger; maintain documentation of changes; email to Tristan; </li><li> read description of WSD task; check out <https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_ng/dkpro/wsd>; can not find <https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_ng/dtexpander>; erros at projects, force updates didn't help; update value of the "value" attribute of wordnet_properties.xml files.</li></ul> |
+| SIDIM, WSD | 12.05.2013 | 3 | <ul><li> change credentials in eclipse to nadolskyy for svn of fraunhofer; update pom.xml of de.sidim.infrastructure and commit it </li><li> check out coling2012; read de.tudarmstadt.ukp.dkpro.wsd.examples.Senseval2EnglishAllWords.java and de.tudarmstadt.ukp.dkpro.wsd.examples.Senseval2EnglishLexicalSample.java; email traffic </li></ul> |
+| SIDIM, WSD | 15.05.2013 | 4.75 | <ul><li> commit document to fraunhofer which describes changes were made to do watermarking and lexsub public runable; </li><li> meeting with Tristan due the new task and compiling errors; </li><li> clean things local at me after commiting of sidim to fraunhofer and check watermarking and lexsub new from ukp repo; update pom.xml of lexsub and watermarking -> produces better output (the same as uploaded to fraunhofer) </li></ul> |
+| SIDIM, WSD | 16.06.2013 | 2 | <ul><li> email traffic; update local copies of the de.tudarmstadt.ukp.experiments.tm.coling2012 and de.tudarmstadt.ukp.dkpro.wsd projects; </li><li> read Semeval1CGAWDT.java, NewDTTokenizer.java, BDB_Skippos.java and get it running; </li></ul> |
+| SIDIM, WSD | 18.06.2013 | 3.5 | <ul><li> read classes from sidim and debug some; </li><li> install JD-Eclipse; </li><li> write simple reader (to get than running simple pipeline, which can than return expansions from sidim) </li></ul> |
+| SIDIM, WSD | 17.07.2013 | 3.75 | <ul><li> look superficial at all PrimitiveDescriptions </li><li> write down process of the pipeline, also superficial </li><li> debug the pipeline </li></ul> |
+| SIDIM, WSD | 20.07.2013 | 1.25 | <ul><li> continue to debug </li></ul> |
+| SIDIM, WSD | 21.07.2013 | 5 | <ul><li> continue to debug; numAlternatives was not set at LexSubWatermarkingAnalysisEngine -> fixed it; email to Tristan </li></ul> |
+| SIDIM, WSD | 23.07.2013 | 4.5 | <ul><li> debug pipeline from Semeval1CGAWDT.java; email traffic </li></ul> |
+| SIDIM, WSD | 24.07.2013 | 5.5 | <ul><li> debug pipeline from Semeval1CGAWDT.java; </li><li> meeting with Tristan + write down important things and note useful classes after that; </li><li> read classes from "lesk" package </li></ul> |
+| SIDIM, WSD | 27.07.2013 | 1.75 | <ul><li> study how NewDTTokenizer.java is working; </li><li> explore classes from "lesk" package </li></ul> |
+| SIDIM, WSD | 28.07.2013 | 5 | <ul><li> restructure website with work protocols of me; </li><li> make sidim pipeline running within de.tudarmstadt.ukp.experiments.tm.coling2012.sidim;  </li><li> write function, which processes all AnalysisEngines from the sidim pipeline and returns the Cas object; look to the output and compare with original output from sidim -> some differencies; </li><li> show how is working StringList and how to get results from this structure; </li></ul> |
+| SIDIM, WSD | 29.07.2013 | 6 | <ul><li> explore differencies between mapping of POS values at WSD and Sidim; </li><li> finished SidimTokenizer; </li><li> have some problems to get it running in the Semeval1CGAWDT.java: different uima versions used at WSD and Sidim on one side and on other when I want to go around this and let it run at Sidim and just pick up results than this class can not be loaded; </li></ul> |
+| SIDIM, WSD | 31.07.2013 | 8.5 | <ul><li> try different versions of SidimTokenizer out: one with running of engines inside the coling2012 and other with running inside the sidim; </li><li> search in internet how to fix java.lang.NoClassDefFoundError; </li><li> meeting with Tristan; </li><li> explore the difference between pos tags from the sidim and coling2012: sidim has token also Particles into account -> fixed it; </li><li> changed at SidimTokenizer the taking of lemma from the jCas object (as Tristan recommended) instead from the WordFrequency; </li></ul> |
+| SIDIM, WSD | 06.08.2013 | 7.5 | <ul><li> change uimafit version at lexsub and infrastructure to 1.4.0; </li><li> get watermarking pipeline to run; generate new watermarking.jar; </li><li> explore differencies between original sidim output and output from integrated SidimTokenizer -> significant differences -> exported sidim as runable jar and explored again the output -> the same for tested sentences; </li><li> adapted SidimTokenizer, that it can handle different numbers of "a" and "r"; </li><li> email traffic </li></ul> |
+| SIDIM, WSD | 14.08.2013 | 0.5 | <ul><li> meeting with Tristan; note down what is the next todo; subscribe to group DKPro WSD users </li></ul> |
+| SIDIM | 11.10.2013 | 7.25 | <ul><li> translation of the "SiDiMSchlussbericht": first 1.3 sites; email traffic </li></ul> |
+| SIDIM | 12.10.2013 | 5.75 | <ul><li> translation of the "SiDiMSchlussbericht": first 2.5 sites; </li></ul> |
+| SIDIM | 13.10.2013 | 8.5 | <ul><li> translation of the "SiDiMSchlussbericht": first 4 sites (completed); </li></ul> |
+| SIDIM | 14.10.2013 | 1 | <ul><li> converte translation from .odt to .docx, walk through it and pay attention to spelling suggestions of MS Office </li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+       | *Soll* | | 165 | until the end of october 2013|
+
+
+
+---++ Previous work
+AndriyStunden2011 <br>
+AndriyStunden2012 <br>
+
+                        

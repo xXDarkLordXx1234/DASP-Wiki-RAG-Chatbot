@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="stangier" comment="" date="1613822112" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="LorenzStranie"}%
+---++ 20.02.2021
+Since the last status update, more python utility scripts have been written. The following operations are now supported by the python scripts:
+   * Fetching all companies and their corresponding hompage URLs from https://de.wikipedia.org/wiki/Liste_der_b%C3%B6rsennotierten_deutschen_Unternehmen
+   * Searching for a given term on firmendatenbanken.de and crawling the resuling companies that also have a URL
+   * Fusing different company lists and filtering out duplicates
+   * Searching for links with specific text on pages that have been fetched from the common crawl dataset and downloading the resulting link
+
+Furhtermore, a small user interface to a search script has been developed that allows the user to search for links with specific names in the commoncrawl. A screenshot is attached below.
+
+%IMAGE{"screenshot_search.png" caption="Screenshot" size="800"}%
+---++ 02.02.2021
+The following progress was made in CDR-CAT project in the last weeks:
+   * Did research for the CDR-CAT Project (Literature, previous/similar projects, etc.) -> Progress is documented in an excel sheet in nextcloud
+   * Wrote small web-crawling script that crawls a list of companies from www.firmendatenbanken.de for a given search term and stores the results in a CSV file. This can be used to retrieve companies that are related to specific subjects or terms. However, the resulting list is incomplete and it is also possible that the list contains companies that are not directly related to the search term. Therefore, manual selection is probably needed.
+
+---+++ Script documentation
+The script consists only of one python file that needs two parameters to work properly. It can be called in the following way:
+
+<verbatim class="bash">
+python3 crawl.py [TERM] [OUT.csv]
+# Example:
+python3 crawl.py online online.csv 
+</verbatim>
+
+The script then tries to look up all companies for this search term on the website www.firmendatenbanken.de by appending the search term to the URL like so:
+<verbatim>
+https://www.firmendatenbanken.de/firmen/n1/s/[TERM].html
+https://www.firmendatenbanken.de/firmen/n1/s/online.html
+</verbatim>
+
+It then iteratates over all resulting pages until the end is reached. The name, URL, location and description of each company that appear on each page are then stored in a CSV file, using ";" as a delimiter. An example excerpt of such a CSV file can be seen below (the descriptions have been shorted for brevity):
+
+<verbatim>
+maxon motor ag;6072 Sachseln;https://www.maxongroup.ch/maxon/view/content/index;maxon ist führender Anbieter [...]
+X.CERT® GmbH;02791 Oderwitz;https://x-cert.de;Die X.CERT® GmbH ist weltweit auf dem Gebiet [..]
+Tillmann Druck GmbH;41812 Erkelenz;https://www.tillmann-druck.de;Tillmann Druck GmbH ist kompetenter [..]
+DWT GmbH;46240 Bottrop;https://www.dwt-gmbh.de;Sie interessieren sich für Druckluft, [...]
+HYGENIA-NET GMBH;83707 Bad Wiessee;https://www.hygenia-net.com;HYGENIA-NET macht Hygiene machbar [...]
+</verbatim>
+
+%META:FILEATTACHMENT{name="screenshot_search.png" attachment="screenshot_search.png" attr="" comment="" date="1613822024" size="15832" user="stangier" version="1"}%

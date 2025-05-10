@@ -1,0 +1,138 @@
+%META:TOPICINFO{author="ArtemVovk" date="1338937497" format="1.1" version="401"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Artem Vovk Work
+
+---++ Documents
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+ImportingWikipedia
+
+SuggestSectionProblems
+
+---++ Work
+
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Wikulu | x |
+| RevisionMachine | x |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| PAN Challenge | 10.04.2012 | 3.5 | <ul><li>Beratung mit Oliver</li><li>Feature engineering</li><li>Aufbau von Pipeline</li></ul> |
+| PAN Challenge | 11.04.2012 | 5 | <ul><li>Aufbau von Test Pipeline</li><li>Einarbeitung in ClearTK</li></ul> |
+| PAN Challenge | 12.04.2012 | 1 | <ul><li>Treffen mit Herr Rittberger</li></ul> |
+| PAN Challenge | 14.04.2012 | 2 | <ul><li>Reading: Automatic Quality Assessment of Content Created Collaboratively by Web Communities: A Case Study of Wikipedia</li><li>Features engineering</li></ul> |
+| PAN Challenge | 15.04.2012 | 1 | <ul><li>Feature engineering</li></ul> |
+| PAN Challenge | 16.04.2012 | 2.5 | <ul><li>Treffen mit Oliver</li><li>Besprechung mit Michael</li><li>Feature Liste und MindMap wurden erstellt: https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/ListOfDefinedFeatures</li></ul> |
+| PAN Challenge | 17.04.2012 | 3.5 | <ul><li>Extractor für RevisionFeatures</li><li>Analyse von Wikipedia Struktur</li><li>Analyse von Konfigurationsmöglichkeiten</li></ul> |
+| PAN Challenge | 18.04.2012 | 3.5 | <ul><li>Feature engineering: Revision features</li><li>Analyse von Konfigurationsmöglichkeiten</li><li>Implementierung von einzelnen Revision Feature Extractoren</li></ul> |
+| PAN Challenge | 19.04.2012 | 1 | <ul><li>Beratung mit Richard</li></ul> |
+| PAN Challenge | 23.04.2012 | 5 | <ul><li>Extraktion von Discussions</li><li>Lexicalische features</li><li>Extraktion von Featured Articles</li></ul> |
+| PAN Challenge | 25.04.2012 | 2 | <ul><li>Information über Feature Selection in ClearTK+ Beispiel code</li></ul> |
+| PAN Challenge | 26.04.2012 | 1 | <ul><li>Code cleaning</li><li>Report für Oliver</li></ul> |
+| PAN Challenge | 02.05.2012 | 5.5 | <ul><li>Beratung mit Oliver</li><li>Analyse von Cleartk "feature selection"</li><li>Cleartk direkt aus trunk</li><li>Pipeline für Orphan</li></ul> |
+| PAN Challenge | 06.05.2012 | 1.5 | <ul><li>Stopwörte</li><li>Pipeline mit Lexicalischen features</li><li>Pipeline mit Weka writer</li></ul> |
+| PAN Challenge | 08.05.2012 | 4.5 | <ul><li>Besprechung mit Oliver und Michael</li><li>Aufbau von Pipeline mit Weka Feature Selection</li><li>Aufbau von Pipeline mit Mallet feature selection</li></ul> |
+| PAN Challenge | 09.05.2012 | 4.5 | <ul><li>Integration von Mallet feature selection(InfoGain) in Pipeline</li><li>Arbeit mit Michael an Feature Selection</li></ul> |
+| PAN Challenge | 10.05.2012 | 4.5 | <ul><li>Änderungen in Feature Selection</li><li>Tests mit Feature Selection</li><li>Overfitting korrektur</li><li>Tests nach dem Overfitting behoben wurde</li></ul> |
+| PAN Challenge | 11.05.2012 | 1 | <ul><li>Generierung von feature selection results</li><li>Vorbereitung für Ausführung von Pipeline  auf Compute Server</li></ul> |
+| PAN Challenge | 12.05.2012 | 7.5 | <ul><li>Analyse von Empty Section Flaw</li><li>Analyse von JWPL Section extractor</li><li>Korrektur von EmptySectionFeatureExtractor</li><li>Einarbeitung in Sweble</li><li>Implementierung von EmptySectionSwebleExtractor</li><li>Refactoring und Vorbereitung der Ergebnissen</li></ul> |
+| PAN Challenge | 15.05.2012 | 2 | <ul><li>Besprechung mit Oliver, Michael</li><li>Report mit FalsePositiveArcticles und FalseNegativeArticles</li></ul> |
+| PAN Challenge | 20.05.2012 | 2.5 | <ul><li>Error Analyse von verschiedenen Flaw classifications</li><li>Testen von verschiedenen Pipelines</li></ul> |
+| PAN Challenge | 22.05.2012 | 2 | <ul><li>Besprechung mit Oliver und Michael</li></ul> |
+| PAN Challenge | 22.05.2012 | 2.5 | <ul><li>Pipeline parametrisierung über json</li></ul> |
+| PAN Challenge | 23.05.2012 | 1 | <ul><li>Konfiguration von folds/docs und feature sets wurde implementiert und getestet</li></ul> |
+| PAN Challenge | 26.05.2012 | 2 | <ul><li>Testen von verschiedenen Pipelines</li></ul> |
+| PAN Challenge | 28.05.2012 | 4 | <ul><li>Analyse von Memory Problems</li></ul> |
+| PAN Challenge | 29.05.2012 | 1.5 | <ul><li>Besprechung mit Oliver und Michael</li><li>Testen von Orphan Pipeline</li></ul> |
+| PAN Challenge | 30.05.2012 | 1.5 | <ul><li>Besprechung mit Torsten</li><li>Testen von Pipelines</li></ul> |
+| PAN Challenge | 31.05.2012 | 2 | <ul><li>Analyse von Memory Verbrauch</li></ul> |
+| PAN Challenge | 02.06.2012 | 1 | <ul><li>Shell script für Pipeline wurde erstellt</li><li>Verschiedene Konfigurationen für Notability wurden erstellt</li><li>Parameter sweeping für Notability wurde gestartet</li></ul> |
+| PAN Challenge | 03.06.2012 | 2 | <ul><li>Fehleranalyse(liblinear)</li><li>Ergebnisse für Notability</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 100.5 | bis Ende Juni |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+   * [[%ATTACHURL%/build.xml][build.xml]]: Script for importing wikipedia
+---------------------
+
+ReleasePackageErrors
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"
+
+
+---++ Previous Work
+
+   * ArtemVovkPreviousWork
+
+   
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="MiniManual.pdf" attachment="MiniManual.pdf" attr="" comment="Manual to %22Preloaded descriptor selection%22" date="1234806618" path="MiniManual.pdf" size="40665" stream="MiniManual.pdf" tmpFilename="/var/tmp/CGItemp37940" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="build.xml" attachment="build.xml" attr="" comment="Script for importing wikipedia" date="1248857901" path="build.xml" size="2013" stream="build.xml" tmpFilename="/var/tmp/CGItemp61365" user="ArtemVovk" version="1"}%

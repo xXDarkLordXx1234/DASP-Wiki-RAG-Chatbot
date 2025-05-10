@@ -1,0 +1,48 @@
+%META:TOPICINFO{author="beinborn" comment="save topic" date="1406023347" format="1.1" reprev="14" version="14"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Tasks
+   * To build a Language Examination Result Analyzer with Error Rates Calculation.
+   * To find lists of words that are frequently misspelled in English
+   * To find lists of academic words in German
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *SCRUM Tasks* |
+| *Month* | *Week Start* | *Week End* | *What have I done?* | *What will I do?* | *What's in my way?* |
+| July | 21.07.2014 | 25.07.2014 | Worked on Segmentor part | Browsing some online references related to English Language | |
+
+
+---+ Open Questions
+   * ? 
+---+ Aktueller Vertrag (Jun 2014 - Aug 2014)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 26.05.2014 | Meeting | 1 | |
+| 01.06.2014 | Research & Study | 2 | Studying the tutorials on DKProCore |
+| 02.06.2014 | Research & Study | 2 | some coding study with DKProCore |
+| 03.06.2014 | Meeting | 1 | |
+| 08.06.2014 | Reading & Coding Practice | 2 | |
+| 09.06.2014 | Working on Task Started | 3 | |
+| 11.06.2014 | Analyzing and Planning of the task implementation | 3 | SVN Configuration |
+| 13.06.2014 | Research on Annotators & UIMA Framework | 3 | |
+| 14.06.2014 | Coding Practice | 2 | Tutorials |
+| 15.06.2014 | Reading on UIMA | 2 | Tutorials |
+| 16.06.2014 | Troubleshooting on UIMA & Jcas | 3 | |
+| 22.06.2014 | Understanding of Jcas Configuration | 1 | |
+| 23.06.2014 | Coding on Tokenization | 2 | |
+| 27.06.2014 | Trying on Different types of Segmentor & Writers | 1 | |
+| 29.06.2014 | Working on Tokenizer & Segmentor Integration of the Task | 2 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 01.07.2014 | Worked on Segmentor part | 3 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30

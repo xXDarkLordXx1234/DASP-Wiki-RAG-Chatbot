@@ -1,0 +1,52 @@
+%META:TOPICINFO{author="kuznetsov" comment="reprev" date="1493120426" format="1.1" reprev="6" version="8"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Ben Kohr (Bachelor thesis)
+
+---++ Links
+   * Repo: https://git.ukp.informatik.tu-darmstadt.de/kuznetsov/BenKohr_BA_SRI
+   * Overleaf: https://www.overleaf.com/9080638sxrmhsvkghzv
+
+
+---++ Things done (this week)
+   * Downloaded CoNLL (link can be removed!)
+   * Implemented a first version of the CoNLL Reader
+   * First version of evaluation metrics, integration into the pipeline
+   * First try of dependency graphs, necessary data structures implemented
+
+---++ Questions (this week)
+   * There are some warning when I don't silence System.err in the Pipeline by DKPro. Maybe they aren't important, I'm not sure. What is your opinion? ([[%ATTACHURL%/warnings.txt][warnings.txt]])
+      * IK: ignore
+   * I don't have Outlook or something similar. In case the UKP meetings are each Tuesday, could you tell me the time and the place?
+      * IK: see email
+   * How to distinugish between agentive and non-agentive verbs?
+      * IK: They have a hint in the paper, agentive are the ones that take Arg0 as subject I guess. You will need dependency trees for that.
+   * How to distinguish between active and passive voice? I thought about using the POS tags, but I guess they don't give this information.
+      * IK: Yes, that's one of the underspecified parts of the paper, POS tags are not enough. The same POS can mark passive ("The movie was banned") and active ("The government has banned the movie") voice. You will need dependency tree for that, so focus on that first.
+   * Please feel free to look over the current version (I guess this is better than informing you on Mondays, even if the version slightly changes afterwards), especially over the CoNLL Reader. I stepped through it (with the Debugging Tool) and tested it on the CONLL data and it seems working for me (except the todos, of course, see the two list items above), but maybe I understood something wrong or made a mistake...
+      * I'll have a look
+   * Does the syntactic path always lead from a node to the sentence's root?
+      * No, a syntactic path leads from node A to node B, sometimes (rarely!) passing through the root.
+   * Is it possible to move the weekly meetings on Thursday from 13:00 to 12:00?
+      * Yes, let's move to 12:00. We won't get the nice room anymore though, but it should be fine.
+
+---++ Meetings
+
+---+++ 20.04.2017
+   * TODO(IK): <del>hand in the CoNLL-2008 data</del>
+   * TODO(IK): schedule talks
+
+---+++ 13.04.2017
+   * Infrastructure setup
+   * Questions regarding implementation
+
+---+++ 6.04.2017
+   * _Cancelled: EACL_
+
+---+++ 1-30.03.2017
+
+   * Topic introduction
+   * Task description
+   * Administration
+
+%META:FILEATTACHMENT{name="warnings.txt" attachment="warnings.txt" attr="h" comment="" date="1492890276" path="warnings.txt" size="667" user="kohr" version="1"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="Ben Kohr"}%

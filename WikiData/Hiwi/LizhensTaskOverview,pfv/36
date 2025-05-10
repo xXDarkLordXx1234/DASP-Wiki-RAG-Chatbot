@@ -1,0 +1,75 @@
+%META:TOPICINFO{author="LizhenQu" date="1200437421" format="1.1" version="36"}%
+%META:TOPICPARENT{name="LizhenWork"}%
+---++ Task Overview Lizhen       
+
+| *Aufgabe* | *Tag* | *Stunden* | *Bemerkungen* |
+| Erstellung eigenes Arbeitsplatz | 02-05-2007 | 5  |  |
+| Einarbeitung von UIMA | 03-05-2007 | 10 | bis 07-05-2007 |
+| Einarbeitung der Bitpar | 08-05-2007 | 4 |  |
+| Versucht, einen externen Prozess mit java richtig zu bearbeiten | 9-05-2007 | 2 |  |
+| Programmiere einen Wrapper von Bitpar | 11-05-2007 | 5 |  |
+| Lass bitpar einwandfrei funtionieren | 14-05-2007 | 4 |  |
+| Bitpar mit dem Programm einer Diplomantin zu integrieren | 16-05-2007 | 4 |  |
+| Kontak mit der Diplomantin, damit das Wrapper besser mit dem Program der Diplomantin zu integrieren | 21-05-2007 | 2 |  |
+| Kontak mit der Diplomantin und bringe das Programm zum Laufen | 23-05-2007 | 1 | danach Vorbereitung von Data Mining Cup |
+| Einarbeitung der Wiktionary, lesen der Wiktionary Materialien | 11-06-2007 | 4 |  |
+| Einarbeitung der Wiktionary, lesen der Wiktionary Materialien, einen Prototyp zu programmieren | 12-06-2007 | 10 |  |
+| Programmieren weiter den Prototyp | 13-06-2007 | 7 | die grundlegende Komponente sind fast fertig |
+| Die Veränderung von Christof anpassen und UML und Beschreibung des Prototyp zu erstellen | 15-06-2007 | 5 |  |
+| Das Buch Ontology Learning zu kopieren | 19-06-2007 | 0.5 |  |
+| Encoding Problem von bitpar für Cigdem aufzuheben | 20-06-2007 | 3 | muss das Eclipse Umgebung neu erstellen |
+| Neue Händler wie Synonym, Hypernym ... für deutsche Wiktionary schreiben und testen | 22-06-2007 | 5 |  |
+| Anpassung für englische Wiktionary | 29-06-2007 | 2 |  |
+| Anpassung für englische Wiktionary und neue Komponente für Wiktionaries in den beiden Sprachen schreiben | 30-06-2007 | 8  |  |
+| Find and implements string based similarity measures and matching synonyms to glosses | 12-07-2007 | 5 |  |
+| Implementing Examples and Evaluating current workers with en xml | 16-07-2007 | 4 |  |
+| Learning and implement part of interface to Berkley DB | 19-07-2007 | 3 |  |
+| Make language Mapping and Refactoring | 21-07-2007 | 6 |  |
+| Implementing translation  | 25-07-2007 | 5 |  |
+| Design Use Cases and new API from the user side | 26-07-2007 | 7 | waiting for further discussion of API |
+| Implementing derived Terms, Category, English antonyms... | 27-07-2007 | 3 |  |
+| Redesign the API from the user perspective | 09-08-2007 | 1 |  |
+| Run current programs on dump files, try to cover different alternatives | 11-08-2007 | 4 |  |
+| Writing geman inflection | 13-08-2007 | 2 |  |
+| Continue writing german inflection and some evaluation | 18-08-2007 | 5 |  |
+| English inflection | 24-08-2007 | 4 |  |
+| Database design and read documents about hibernate and berkeley DB | 26-08-2007 | 5 |  |
+| Database design and read documents about hibernate and berkeley DB, begin to use hibernate | 29-08-2007 | 7 |  |
+| continue DB part with mysql and hibernate | 30-08-2007 | 6 |  |
+| DB, english inflection, make unparsable pages within 200 | 31-08-2007 | 5 |  |
+| Make german wiktionary unparsable pages within 300 pages | 05-09-2007 | 10 |  |
+| import svn merge changes remove hibernate | 18-09-2007 | 1 |  |
+| Languageanpassen, automatic generate Language class,add new structure | 19-09-2007 | 6 |  |
+| Part of speech Generation,sonderfaelle behandeln,add new structure,add interwiki link  | 20-09-2007 | 6 |  |
+| Improve removing wiki marks,unit tests | 21-09-2007 | 5 |  |
+| Debug, handling sonderfaelle,more unit tests | 22-09-2007 | 4 |  |
+| Arbeitskommunikation  | 24-09-2007 | 1.5 | die Stunden kann man auch ignorieren, wenn man es nicht in Ordnung findet |
+| Move language to pos, remove Word,fix all unit tests | 26-09-2007 | 3.5 |  |
+| change svn path und einchecken | 27-09-2007 | 0.2 |  |
+| Weisen Einträge, die keine POS haben als Unspecified. Find 2 entries with large gloss | 30-09-2007 | 1.0 |  |
+| Allowed parser to recognize compound words to reduce large size of synonyms, better recognition of wikify link | 09-10-2007 | 2.5 |  |
+| fix wiki mark remover problem, normalize language, pos, semantic relations. in progress | 18-10-2007 | 5 |  |
+| continue normalizing language, pos. language normalization in translation remains | 19-10-2007 | 3 |  |
+| add hypernym, meronym... to english wiktionary | 20-10-2007 | 2 |  |
+| solve category bug, finding example pages for further work and refactoring for further requirement | 27-10-2007 | 2 |  |
+| add templatelink externallink Character wortcombination.... | 28-10-2007 | 8 |  |
+| add more pos mapping to german wiktionary, allow many-to-one mapping, run statistics | 29-10-2007 | 2 |  |
+| add descendant and related terms | 30-10-2007 | 2.5 |  |
+| add reference workers, support about 5 templates | 01-11-2007 | 4 |  |
+| testing. modify in defintion quotation add quotation worker according to words verb and avaunce | 11-11-2007 | 3 |  |
+| add javadoc to extract | 12-11-2007 | 1 |  |
+| add javadoc to util and elements | 14-11-2007 | 2.3 |  |
+| write javadoc to elements | 17-11-2007 | 5 |  |
+| write the rest javadoc except test package and a short description of how to extend wiktionary | 18-11-2007 | 6.5 |  |
+| Solve "Bank" problem and find reasons of category problem | 10-01-2008| 1.5|
+| Solve "jar" problem and add build,xml | 10-01-2008| 3.6|
+| Begin with translation. parsing language code page | 10-01-2008| 2.5|
+| Continue programming translation part. | 13-01-2008| 4.5|
+|Finish translation part, only more tests required. | 14-01-2008| 5|
+|Fix external link bugs and testing | 15-01-2008| 4.5|
+| *Summe (automatic)* |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| *Soll* |  | 280 | bis Ende November |
+
+*ACHTUNG: Die Summe wird automatisch berechnet. Bitte dieses Feld nicht ändern. Zur korrekten Berechnung müssen die Arbeitsstunden über der Summe eingetragen werden.*
+
+-- Main.ChristofMueller - 26 Apr 2007

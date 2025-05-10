@@ -1,0 +1,77 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1365341684" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+This page documents my experiments on using multiple (i.e., more than the default one) index fields in Terrier.
+
+---+++ train data set, TD, !TokenLemma, DFR_BM25
+
+---++++ result tables
+
+   * 1. the first table does not use multiple fields
+   * 2. the second table uses one field for all Tokens, one for all Lemmas
+
+<div style="float:left; margin-left:25px">
+| num_q | all | 150 | 
+| num_ret | all | 10439364 | 
+| num_rel | all | 2052 | 
+| num_rel_ret | all | 2039 | 
+| *map* | all | 0.3442 | 
+| gm_ap | all | 0.0634 | 
+| R-prec | all | 0.3225 | 
+| bpref | all | 0.4106 | 
+| recip_rank | all | 0.5698 | 
+| *P5* | all | 0.3387 | 
+| P10 | all | 0.2727 | 
+| P15 | all | 0.2338 | 
+| P20 | all | 0.2063 | 
+| P30 | all | 0.1713 | 
+| P100 | all | 0.0867 | 
+| P200 | all | 0.0513 | 
+| P500 | all | 0.0233 | 
+| P1000 | all | 0.0123 | 
+</div>
+
+<div style="float:left; margin-left:25px">
+| num_q | all | 150 | 
+| num_ret | all | 5534488 | 
+| num_rel | all | 2052 | 
+| num_rel_ret | all | 888 | 
+| *map* | all | 0.1218 | 
+| gm_ap | all | 0.0030 | 
+| R-prec | all | 0.1448 | 
+| bpref | all | 0.1665 | 
+| recip_rank | all | 0.3207 | 
+| *P5* | all | 0.1720 | 
+| P10 | all | 0.1380 | 
+| P15 | all | 0.1227 | 
+| P20 | all | 0.1097 | 
+| P30 | all | 0.0907 | 
+| P100 | all | 0.0407 | 
+| P200 | all | 0.0231 | 
+| P500 | all | 0.0101 | 
+| P1000 | all | 0.0053 |
+</div>
+
+<div style="clear:both;"></div>
+
+---++++ background
+At the index side, the fields are created with this code:
+
+<sticky>
+%CODE{lang="java" [num="10"]}% 
+TerrierIndexWriter.PARAM_USE_FIELD_NAME, true,
+// f_Token, f_Lemma, ...
+TerrierIndexWriter.PARAM_TERM_FIELD_NAME, "f",
+TerrierIndexWriter.PARAM_USE_TERM_TYPE_SUFFIX, true));
+%ENDCODE%
+</sticky>
+
+At the query side, they are accessed the following way:
+
+<sticky>
+%CODE{lang="java" [num="10"]}% 
+TerrierSearcher.PARAM_TERM_FIELD_NAME,
+new String[] { "f_Token", "f_Lemma" },
+TerrierSearcher.PARAM_FIELD_WEIGHT, new float[] {
+1f, 1f }));
+%ENDCODE%
+</sticky>

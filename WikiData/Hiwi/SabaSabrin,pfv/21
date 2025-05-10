@@ -1,0 +1,110 @@
+%META:TOPICINFO{author="sabrin" comment="reprev" date="1413754613" format="1.1" reprev="21" version="21"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Tasks
+   * To build a Language Examination Result Analyzer with Error Rates Calculation.
+   * To find lists of words that are frequently misspelled in English
+   * To find lists of academic words in English
+   * To Perform analysis on the English Word Lists
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *SCRUM Tasks* |
+| *Month* | *Week Start* | *Week End* | *What have I done?* | *What will I do?* | *What's in my way?* |
+| July | 21.07.2014 | 25.07.2014 | Worked on Segmentor part | Browsing on some online references related to English Language | Exam Analyzer Coding |
+| July | 28.07.2014 | 01.08.2014 | Completed Segmentation | Browsing on some online references of English/German Language | Exam Analyzer Error Rate Calculation |
+| August | 11.08.2014 | 17.08.2014 | Research on English Misspelled Word List | Finding more resources | To Find Difficult English Word Lists |
+| October | 01.10.2014 | 08.10.2014 | Exam Analyzer Completion | Word Analyzer Coding | Word Analysis & Coding |
+| October | 10.10.2014 | 17.10.2014 | Word Analyzer 1st Version | Word Analyzer Completion | Word Analysis & Coding |
+
+
+---+ Open Questions
+   * ? 
+---+ Aktueller Vertrag (Jun 2014 - Aug 2014)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 26.05.2014 | Meeting | 1 | |
+| 01.06.2014 | Research & Study | 2 | Studying the tutorials on DKProCore |
+| 02.06.2014 | Research & Study | 2 | some coding study with DKProCore |
+| 03.06.2014 | Meeting | 1 | |
+| 08.06.2014 | Reading & Coding Practice | 2 | |
+| 09.06.2014 | Working on Task Started | 3 | |
+| 11.06.2014 | Analyzing and Planning of the task implementation | 3 | SVN Configuration |
+| 13.06.2014 | Research on Annotators & UIMA Framework | 3 | |
+| 14.06.2014 | Coding Practice | 2 | Tutorials |
+| 15.06.2014 | Reading on UIMA | 2 | Tutorials |
+| 16.06.2014 | Troubleshooting on UIMA & Jcas | 3 | |
+| 22.06.2014 | Understanding of Jcas Configuration | 1 | |
+| 23.06.2014 | Coding on Tokenization | 2 | |
+| 27.06.2014 | Trying on Different types of Segmentor & Writers | 1 | |
+| 29.06.2014 | Working on Tokenizer & Segmentor Integration of the Task | 2 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 01.07.2014 | Worked on Segmentor part | 3 | |
+| 05.07.2014 | Reading into the details of how Segmentation works | 2 | |
+| 06.07.2014 | Reading and Trying code samples of uimaFIT | 4 | |
+| 18.07.2014 | DkPro Tutorials | 4 | Trying out the codes in Eclipse and asses the output |
+| 19.07.2014 | Coding on Token Annotation | 3 | Tokenization completed |
+| 22.07.2014 | Browsing Online References on Difficult English words | 3 | |
+| 25.07.2014 | Coding using the OpenNLPSegmentor | 4 | |
+| 27.07.2014 | Coding on ExamAnalyzer | 5 | Matched the Exam Question with their desired results and generate a unique key for each one. |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 02.08.2014 | Worked on Finding Word List | 4 | |
+| 03.08.2014 | Finding Resources on Difficult English Words Lists | 4 | |
+| 08.08.2014 | Tried for Resources on Difficult German Word Lists | 3 | Not much success |
+| 10.08.2014 | Finding of Mispelled English Word List | 4 | |
+| 11.08.2014 | Analyzing the web resources and Filtering Duplicate Word List | 3 | |
+| 16.08.2014 | Searching Academic Word List in Google Scholar | 3 | |
+| 19.08.2014 | Searching of English Learning Resources from Web | 3 | GRE, IELTS |
+| 23.08.2014 | Analysis on English Word List | 3 | Counting, Calculating Word Frequency |
+| 30.08.2014 | Searching in ACM & some other web resources and Corpora for English words | 3 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 05.09.2014 | Making Word List from the Web Links | 3 | English words |
+| 06.09.2014 | Making Word List from the Web Links | 3 | English words |
+| 09.09.2014 | Planning Solutions for analyzing the word lists | 3 | |
+| 12.09.2014 | Analysis on Words to omitt the duplicates & Edit Manually | 4 | |
+| 18.09.2014 | Meeting | 0.30 | |
+| 20.09.2014 | Error Solving on Exam Analyzer | 5 | |
+| 22.09.2014 | Finishing up the coding of Exam Analyzer | 4 | |
+| 30.09.2014 | Coding on word Analyzer | 4 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 01.10.2014 | Updating the word list & Edit | 3 | English words |
+| 06.10.2014 | Word List Editing, Email preparation | 3 | |
+| 07.10.2014 | Coding on POS tags of Word Analysis | 4 | |
+| 10.10.2014 | Meeting | 0.30 | |
+| 12.10.2014 | Updating Word List with only right & difficult words | 4 | |
+| 18.10.2014 | Coding Completion of word analysis | 6 | |
+| 19.10.2014 | Analysis representation in Excel file | 3 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30

@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="GregLogan" date="1227083875" format="1.1" version="2"}%
+%META:TOPICPARENT{name="GregLogan"}%
+---+ Experiment Results
+
+Initial experiments on environment-part-2 data looked good until I factored in the false positives:
+
+22 Questions, 11 Opinionated, 9 Detected, 8 False Positives.
+
+Questions are classed as opinionated by my code on one of three conditions:
+   * The question has more than X number of words in the dictionary list
+   * The question has more than Y sentences, and has at least Z opinion words
+   * The question has only one sentence and has more than one opinion word
+
+Other datasets are still in progress. Dictionary attached at [[%ATTACHURL%/opinionwords.txt][opinionwords.txt]]
+---++ Notes
+
+Words like: basementcondimentdementcommandmentharassmentenslavementfermentfomentcementjudgementlamentmomentattachmentparlimenttenementamazement make SpellCorrector sad. Adding an upper limit to the size of the word appears to have fixed this.
+
+Words like: 900000000000000000000000000000000000000000,000000000000000000000000000000000,00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002! make TreeTagger sad
+
+-- Main.GregLogan - 18 Nov 2008
+
+%META:FILEATTACHMENT{name="opinionwords.txt" attachment="opinionwords.txt" attr="" comment="Word List" date="1227019783" path="opinionwords.txt" size="544" stream="opinionwords.txt" tmpFilename="/var/tmp/CGItemp25330" user="GregLogan" version="1"}%

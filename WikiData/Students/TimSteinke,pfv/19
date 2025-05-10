@@ -1,0 +1,132 @@
+%META:TOPICINFO{author="steinke" comment="" date="1543845922" format="1.1" reprev="15" version="19"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ Tim Steinke (Bachelor Thesis)
+Generating Questions From Knowledge Bases
+---++ CW48 2018-10-25 - 2018-12-01
+   * Ran silvergraph generation on <nowiki>WebQSP</nowiki> with output from SMART
+   * Meeting on 2018-11-28:
+      * New slot for the mid-term talk 2018-12-13 15:30
+      * Start writing the outline for the thesis soon
+      * Instead of using an entity linker for the questions from the template based baseline, feed the entity IDs from the triples directly to the silvergraph generator
+   * Wrote the suggested linking module that reads the entity IDs from the input triples and ran the silvergraph generator on 1000 template-generated questions. Coverage looks a lot better than before, but it still took 20h
+   * Started working on the slides for the mid-term Talk
+---++ CW47 2018-10-18 - 2018-11-24
+   * Set up environment for testing the Zeroshot system
+   * Got the SMART-Linker working (for the silvergraph generation)
+---++ CW46 2018-10-11 - 2018-11-17
+   * Built a script for recursively getting triples with specified predicates from Wikidata
+   * Template based baseline can now read the input triples from a file
+---++ CW45 2018-10-04 - 2018-11-10
+   * Improved the template based baseline by adding a template rating that prefers templates that were built from questions with similar subject/object types as the target entities
+   * Continued trying to reproduce Daniil's results
+   * Todo:
+      * Build a tool for getting more triples from Wikidata
+      * Work on previous Todo's
+---++ CW44 2018-10-28 - 2018-11-03
+   * Generated silvergraphs for the template-based baseline's questions
+   * Tried reproducing Daniil's results on a GPU server, but got nowhere near
+   * Todo:
+      * See if using a better entity linker works and why it finished training so quickly with the default settings
+      * Also work on the other steps from the last entry
+---++ CW43 2018-10-21 - 2018-10-27
+   * *Meeting 2018-10-24*
+      * Next steps:
+         * Improve the template based baseline by only considering templates that were generated from questions that have the same entity types as the input entities
+         * Apply [[https://arxiv.org/abs/1802.06842][Zero-Shot QG (Elsahar et al. 2018)]] to <nowiki>SimpleQuestions</nowiki>-Wikidata
+         * Try to reproduce Daniil's results and see if questions from the template-based baseline or Zero-Shot improve the results
+---++ CW42 2018-10-14 - 2018-10-20
+   * Set up an environment on a compute server
+   * Calculated silver graphs for Webquestions-Wikidata and questions from the template based baseline for training Daniil's system
+---++ CW41 2018-10-07 - 2018-10-13
+   * Started getting Daniil's model to work with the first question generation baseline for extrinsic evaluation
+   * Finished adding the Taylor's law based metric
+---++ CW40 2018-10-30 - 2018-10-06
+   * Read “Taylor’s Law for Human Linguistic Sequences” by [[https://arxiv.org/pdf/1804.07893.pdf][Kobayashi and Tanaka-Ishii]] and started adding their Taylor-exponent based metric
+---++ CW39 2018-09-23 - 2018-09-29
+   * Implemented more metrics:
+      * Meteor
+      * Embedding Greedy
+      * Global Recall
+   * Requirements management with Pipenv and Git Submodules
+   * Read “Measuring the Diversity of Automatic Image Descriptions” by [[http://aclweb.org/anthology/C18-1147][van Miltenburg et al. 2018]]
+---++ CW38 2018-09-16 - 2018-09-22
+   * Finished implementing the “Template-Based Baseline”
+   * Started improving the baseline by implementing ranking heuristics for the generated questions
+   * Started evaluating the baseline using automatic evaluation metrics
+   * Reserved a slot for my mid-term presentation on 2018-12-11
+   * *TODO*
+      * Evaluate on more metrics
+      * Find better ranking heuristics
+      * Start using Pipenv and Git submodules to improve the requirements management
+---++ CW37 2018-09-09 - 2018-09-15
+   * Read recent paraphrasing approaches
+   * Started implementing the “Template-Based Baseline” from [[https://arxiv.org/pdf/1603.06807.pdf][Serban et al. 2016]] (Section 4.5)
+   * *Meeting 2018-09-13*
+      * Next steps:
+         * Implement baselines and test them via a user study
+         * Extrinsic evaluation on Daniil's QA system
+      * Enter a date for the mid-term talk on the spreadsheet
+
+---++ CW36 2018-09-02 - 2018-09-08
+   * Read dataset migration approaches:
+      * Azmy et al. 2018 “Farewell Freebase: Migrating the <nowiki>SimpleQuestions</nowiki> Dataset to DBpedia”
+      * Diefenbach et al. 2017 “Question Answering Benchmarks for Wikidata” (Freebase->Wikidata)
+   * Read about automatic evaluation methods:
+      * Papineni et al. 2001 “BLEU : a Method for Automatic Evaluation of Machine Translation”
+      * Lin 2004 “ROUGE : A Package for Automatic Evaluation of Summaries”
+      * Banerjee et al. 2005 “METEOR: An Automatic Metric for MT Evaluation with Improved Correlation with Human Judgments”
+      * Denkowski et al. 2014 “Meteor Universal: Language Specific Translation Evaluation for Any Target Language”
+   * Started ordering the literature and datasets in a mindmap to keep a good overview
+
+---++ CW33 2018-08-12 - 2018-08-18
+   * Read the [[https://github.com/allenai/acl2018-semantic-parsing-tutorial][ACL 2018 tutorial on neural semantic parsing]] that Jan sent me
+
+---++ CW32 2018-08-05 - 2018-08-11
+   * Started doing some [[https://github.com/Hvass-Labs/TensorFlow-Tutorials][of these]] deep learning tutorials that were interesting
+   * *Meeting 2018-08-10*
+      * Submitted my thesis application
+      * Talked about the literature I read last week and Freebase -> Wikidata mapping
+      * Daniil gave me access to the repository for UKP's local SPARQL endpoint 
+   * *TODO*
+      * Read the semantic parsing tutorial Jan sent me
+      * Read about paraphrasing methods (e.g. Backtranslating)
+      * Find a way to access the SPARQL endpoint from outside the UKP network (SSH or VPN)
+
+---++ CW31 2018-07-29 - 2018-08-04
+   * Read state-of-the-art approaches:
+      * Seyler et al. 2015 “Generating Quiz Questions from Knowledge Graphs,”
+      * Song et al. 2016 “Question Generation from a Knowledge Base with Web Exploration.”
+   * Read Bordes et al. 2015 “Large-Scale Simple Question Answering with Memory Networks.” and downloaded the SimpleQuestions Dataset
+   * Recapped some core concepts from the Stanford Deep Learning for NLP course that I have gone through in april
+   
+
+
+---++ CW30 2018-07-22 - 2018-07-28
+   * Recapped some of the introductory literature that Daniil sent me, transferring my notes to Zotero
+   * Read up on baselines from Zero-Shot QG (Elsahar et al. 2018)
+   * *Meeting 2018-07-25*
+      * We discussed my roadmap for august
+      * UKP has a Wikidata dump and a paraphrasing server that I can maybe get access to 
+      * *TODO*
+         * Fill out the application form for the thesis and bring it to the next meeting
+         * Schedule the next meeting before Jan leaves at 2018-08-13
+
+---++ CW29 2018-07-15 - 2018-07-21
+   * Set up the thesis template, Biblatex, and integrated it with Zotero
+   * Installed Keras & Theano
+   * Experimented with the Wikidata SPARQL endpoint and wrote a very simple template based question generator
+   * Downloaded a Wikidata dump
+   * Read up on some state-of-the-art approaches
+
+---++ 2018-07-04 Meeting
+   * Task description was accepted
+   * Next meeting on 2018-07-25
+   * *TODO*
+      * Set up Latex Template and Biblatex
+      * Start logging my progress and goals on this wiki page
+      * Start searching for baselines, state-of-the-art, and evaluation methods
+      * Create a roadmap of my future steps for the next meeting
+   
+
+
+-- Main.JanChristophKlie - 2018-07-06

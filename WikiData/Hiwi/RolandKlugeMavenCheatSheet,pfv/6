@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="RolandKluge" date="1360146477" format="1.1" version="6"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+   * =mvn dependency:get -DrepoUrl=https://maggie.tk.informatik.tu-darmstadt.de/artifactory/ -DgroupId=org.springframework  -DartifactId=spring-jms -Dversion=3.1.0.RELEASE=
+   * =mvn dependency:resolve -Dclassifier=javadoc;mvn dependency:resolve -Dclassifier=sources=
+   * =mvn eclipse:eclipse -DdownloadSources=true=
+   * =mvn install:install-file -DgroupId=com.wcohen.ss -DartifactId=secondstring -Dversion=20120620 -Dpackaging=jar -Dfile=secondstring-20120620.jar=
+
+---++ Export Maven Dependencies
+
+   * Description: http://maven.apache.org/plugins/maven-dependency-plugin/copy-dependencies-mojo.html
+   * Copy all dependencies to _/tmp/dependencies_ =mvn dependency:copy-dependencies -DoutputDirectory=/tmp/dependencies=
+   * Copy all dependencies to _<proj-dir>/target/dependency_ =mvn dependency:copy-dependencies=

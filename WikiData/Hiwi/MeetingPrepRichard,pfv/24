@@ -1,0 +1,64 @@
+%META:TOPICINFO{author="RichardSteuer" date="1338202852" format="1.1" version="24"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+---+++KW20 (28.05.2012 - 01.06.2012)
+   * TODO: create an "evaluateContext" script (Level 1 evaluation)
+      * started evaluation with !ContextCo_S
+         * noticed that this is very time-consuming, reducing parameter loops from p=(200,300,400)*s=(5,10,20)*t=(2,10) to (200,400)*(5,20)*(2)
+
+---+++KW20 (14.05.2012 - 16.05.2012)
+   * created two new contexts: !CO_S, !CO_S_POSITION
+   * DTExpander: created new DT (!ContextDP_SkipPos), created BDB, set up Java function
+      * he !ContextDP_SkipPOS.java news10M contextdp-skippos-out
+      * he WordCount.java  contextdp-skippos-out wordcount-out
+      * he FeatureCount.java contextdp-skippos-out featurecount-out
+      * hadoop dfs -rmr freqsig-out
+      * pig -param t=3 -param s=2 src/FreqSig.pig
+      * hadoop dfs -rmr prunegraph-out
+      * pig -param p=500 src/PruneGraph.pig
+      * he AggrPerFt.java prunegraph-out aggr-out
+      * he SimCounts1.java aggr-out simcounts1-out
+      * pig src/SimSort.pig 
+   * TODO: fix issues with DT120M
+      * pig -param t=1 -param s=-100 -param wordcountout='dt120m/wordcount-out' -param featurecountout='dt120m/featurecount-out'  -param contextout='dt120m/contextreadparses-out' -param freqsigout='dt120m/freqsig-out' pig/FreqSig.pig
+      * prodcues 0 records output, but successfully reads all input
+   * TODO: copy DT120M to frink for Chris
+
+---+++KW18 (30.04.2012 - 04.05.2012)
+   * Level 3: started run with 23k twsi parses (with and without output for each sorting)
+   * ran 120M DT:
+      * he ContextReadParses.java parses-100M_all contextreadparses-out                                                             
+      * he WordCount.java contextreadparses-out wordcount-out                                                                       
+      * he FeatureCount.java contextreadparses-out featurecount-out                                                                 
+   * ran word cooccurences 10M
+      * he ContextCooccurrence.java news10M contextcooccurrence-out
+      * he WordCount.java contextcooccurrence-out wordcount-out
+      * he FeatureCount.java contextcooccurrence-out featurecount-out
+      * hadoop dfs -rmr freqsig-out
+      * pig -param t=3 -param s=2 src/FreqSig.pig
+      * hadoop dfs -rmr prunegraph-out
+      * pig -param p=500 src/PruneGraph.pig
+   * TODO: fix col2 bug (see e-mail)      
+
+---+++16.04.2012
+   * migrated featurecount db from mysql to bdb
+   * uploaded 9gb bdb to frink
+
+---+++March 2012
+   * created https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/NotesOnProgrammingHadoop
+   * added parse tree to ContextParses and extended [[DistributionalThesaurus#Full_parses][https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/DistributionalThesaurus#Full_parses]]
+   * started parses:
+      * he ContextParses.java news100M/news100M-afp_2004-2006 parses-100M/parses-afp_2004-2006
+      * he ContextParses.java news100M/news100M-apw_1999-2000 parses-100M/parses-apw_1999-2000
+      * he ContextParses.java news100M/news100M-apw_2004-2006 parses-100M/parses-apw_2004-2006
+      * he ContextParses.java news100M/news100M-eng_news_2005_10M-sentences/ parses-100M/parses-eng_news_2005_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2006_10M-sentences/ parses-100M/parses-eng_news_2006_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2007_10M-sentences/ parses-100M/parses-eng_news_2007_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2008_10M-sentences/ parses-100M/parses-eng_news_2008_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2009_10M-sentences/ parses-100M/parses-eng_news_2009_10M-sentences/
+      * he ContextParses.java news100M/news100M-eng_news_2010_10M-sentences/ parses-100M/parses-eng_news_2010_10M-sentences/
+      * he ContextParses.java news100M/news100M-ltw_2004-2006 parses-100M/parses-ltw_2004-2006
+      * he ContextParses.java news100M/news100M-nyt_1998-2000 parses-100M/parses-nyt_1998-2000
+      * he ContextParses.java news100M/news100M-nyt_2004-2006 parses-100M/parses-nyt_2004-2006
+      * he ContextParses.java news100M/news100M-nyt_x-2007 parses-100M/parses-nyt_x-2007
+      
+-- Main.RichardSteuer - 2012-03-05 

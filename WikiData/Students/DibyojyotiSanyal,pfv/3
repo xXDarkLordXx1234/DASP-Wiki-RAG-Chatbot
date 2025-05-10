@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="eckart" comment="reprev" date="1479136081" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+*Upto now:* 
+
+   * Have a Java implementation of proof of concept of UIMA AS system runnable in local m/c.
+   * Have a Groovy implementation of the same where the whole system starts using DKpro Script DSL.
+   * Separated UIMA-AS Server and service script so that the can be run independent of UIMA-AS client.
+   * Compatibility of YARN vs Mesos: [[%ATTACHURL%/Compatibility_of_YARN_with_Docker_Dibyo_102716_V1.1_REC.pdf][Compatibility_of_YARN_with_Docker_Dibyo_102716_V1.1_REC.pdf]] 
+   * Comparison of our system with UIMA DUCC: [[%ATTACHURL%/uima_ducc_vs_Our_project.doc][uima_ducc_vs_Our_project.doc]]: uima_ducc_vs_Our_project.doc
+
+*2016-11-10 to 2016-11-17 :*
+
+   * Developing shell script to generate Docker base image containing Ubuntu, Java8 and Groovy installed.
+   * Developing shell script that uses above base image and packages UIMA-AS server script and creates new image.
+   * Developing shell script that uses above base image and packages UIMA-AS service script and creates new image.
+   * Developing shell script that uses above base image and packages UIMA-AS client implementation and creates new image.
+
+*2016-11-17 to 2016-11-24 :*
+
+   * Status of last week:
+   * Next week plan:  
+
+-- Main.SanyalDibyojyoti - 2016-11-10
+
+   
+
+%META:FILEATTACHMENT{name="Compatibility_of_YARN_with_Docker_Dibyo_102716_V1.1_REC.pdf" attachment="Compatibility_of_YARN_with_Docker_Dibyo_102716_V1.1_REC.pdf" attr="" comment="Compatibility of YARN vs Mesos" date="1478803675" path="Compatibility of YARN with Docker_Dibyo_102716_V1.1_REC.pdf" size="355609" user="dibyojyoti" version="1"}%
+%META:FILEATTACHMENT{name="uima_ducc_vs_Our_project.doc" attachment="uima_ducc_vs_Our_project.doc" attr="" comment="" date="1478803857" path="uima ducc vs Our project.doc" size="429568" user="dibyojyoti" version="1"}%

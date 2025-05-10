@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="steuer" comment="save topic" date="1371740908" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+---+++ experiments
+   * run (without fields) just DN to see if wrong POS annotations make a difference (baseline <-> DT expansions)
+   * run just N (narrative) and see, if expansions on this improve performance
+   * add another term selecting method: by least key count (in the DT)
+
+---+++ written thesis
+   * TWSI: conduct statistics for the 1016 nouns in the topics and documents
+   * explain BM25 in IR introduction (refer Gottron)

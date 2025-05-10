@@ -1,0 +1,66 @@
+%META:TOPICINFO{author="belouadi" comment="" date="1541371556" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ General Information
+
+*Supervisors*: 
+   * Yevgeniy Puzikov, M.Sc.
+
+
+*Start Date* : XX-OCT-2018 
+
+*Mid-Term Presentation Date* : XX-APR-2019
+
+*Final Presentation Date* : XX-APR-2019   
+
+*End Date*: 01-MAY-2019
+
+
+-- Main.YevgeniyPuzikov - 2018-10-22
+
+---
+---++ Week 5.11 - 11.11
+
+---+++!! scheduled for this week
+   * look for evaluation methods
+   * further look into GAN based methods
+   * do thesis stuff
+   * upload the thesis to gitlab
+
+---
+---++ Week 29.10 - 4.11
+   * pushed the web scraper code to [[https://git.ukp.informatik.tu-darmstadt.de/UKP-Students/sigmaaldrich_scraper.git][gitlab]]
+   * did a keras NLG tutorial to understand how that stuff actually works
+   * started writing the thesis
+   * read [[https://www.aaai.org/ocs/index.php/AIIDE/AIIDE11/paper/viewFile/4066/4431][DEXTOR: Reduced Effort Authoring for Template-Based Natural Language Generation]]
+      * the paper only describes methods to speed manual authoring up
+         * *TODO*: look for automated template-based approaches
+   * read [[http://aclweb.org/anthology/W17-2629][Adversarial Generation of Natural Language]]
+   * read [[https://arxiv.org/pdf/1702.07983.pdf][Maximum-Likelihood Augmented Discrete Generative Adversarial Networks]]
+      * GANs seem to geneerate data only from noise 
+         * *TODO*: research if it is possible to do that with data too (seems to be possible for image generation)
+
+---
+---++ Week 22.10 - 28.10
+   * read [[https://arxiv.org/pdf/1409.0473.pdf][Neural Machine Translation by Learning to jointly Align And Translate]] properly
+   * read [[http://aclweb.org/anthology/N18-2010][Natural Language Generation by Hierarchical Decoding with Linguistic Patterns]] properly
+   * *TODO*: read the remaining papers ✅
+
+---
+---++ Week 15.10 - 21.10
+   * wrote a web scraper for some artclies on [[https://www.sigmaaldrich.com/life-science/biochemicals/biochemical-products.html?TablePage=16181993][www.sigmaaldrich.com]]
+      * right now it only scrapes articles from one page
+      * *TODO*: maybe extend the scraper to scrape more articles
+      * *TODO*: strangely  the headless html query doesn't fetch all articles, look into that
+      * *TODO*: push the code to gitlab ✅
+   * searched for potential baselines and skipped through the papers
+      * potential baselines
+         * [[https://www.aaai.org/ocs/index.php/AIIDE/AIIDE11/paper/viewFile/4066/4431][DEXTOR: Reduced Effort Authoring for Template-Based Natural Language Generation]]
+         * [[https://arxiv.org/pdf/1409.0473.pdf][Neural Machine Translation by Learning to jointly Align And Translate]]
+      * *TODO*: read through them properly ✅
+   * searched for the state of the art and skipped through the papers
+      * potential papers
+         * [[http://aclweb.org/anthology/W17-2629][Adversarial Generation of Natural Language]]
+         * [[https://arxiv.org/pdf/1702.07983.pdf][Maximum-Likelihood Augmented Discrete Generative Adversarial Networks]]
+         * [[http://aclweb.org/anthology/N18-2010][Natural Language Generation by Hierarchical Decoding with Linguistic Patterns]] 
+      * *TODO*: read through them properly ✅
+   * signed all that bureaucratic stuff

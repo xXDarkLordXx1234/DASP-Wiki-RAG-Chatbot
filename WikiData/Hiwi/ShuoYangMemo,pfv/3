@@ -1,0 +1,56 @@
+%META:TOPICINFO{author="ShuoYang" date="1316728168" format="1.1" version="3"}%
+%META:TOPICPARENT{name="ShuoYangSigmundArbeit"}%
+---+ Miscellaneous Memo
+
+---++ Maven
+
+   * POM Parent:
+      * Group Id: de.tudarmstadt.ukp.dkpro.misc
+      * Artifact Id: de.tudarmstadt.ukp.dkpro.misc.superpom
+   * POM:
+      * Group Id: de.tudarmstadt.ukp.experiments.sy
+      * Artifact Id: de.tudarmstadt.ukp.experiments.sy.xxx
+   * To set JVM version and project encoding, add following lines within <project> to pom.xml:
+   <verbatim>
+   <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.target>1.6</java.target>
+	</properties>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.0.2</version>
+					<configuration>
+						<linkXref>false</linkXref>
+						<source>${java.target}</source>
+						<target>${java.target}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+						<showWarnings>true</showWarnings>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+   </verbatim>
+---++ Log4j
+
+   * log4j.properties:
+    <verbatim>
+    log4j.rootLogger=DEBUG,development
+
+    log4j.appender.development=org.apache.log4j.ConsoleAppender
+    log4j.appender.development.layout=org.apache.log4j.PatternLayout
+    log4j.appender.development.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %5p [%t] %C{1} - %m%n
+
+    log4j.logger.de.tudarmstadt.ukp = DEBUG
+</verbatim>
+   * Load: 
+   <verbatim>    PropertyConfigurator.configure("src/main/resources/log4j.properties");</verbatim>
+
+
+
+
+-- Main.ShuoYang - 2011-06-26

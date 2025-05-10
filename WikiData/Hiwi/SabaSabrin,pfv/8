@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="sabrin" comment="reprev" date="1402805092" format="1.1" reprev="7" version="8"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Tasks
+   * To build a Language Examination Result Analyzer with Error Rates Calculation.
+   
+---+ Open Questions
+   * What method should I follow for the Tokenization?
+   * I am a Little bit confused when I followed the DKProCore library for the sample tutorial. Need some discussion on that too.
+   * Having some confusions about the Input, Output and Calculation of Error Rate.
+---+ Aktueller Vertrag (Jun 2014 - Aug 2014)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 26.05.2014 | Meeting | 1 | |
+| 01.06.2014 | Research & Study | 2 | Studying the tutorials on DKProCore |
+| 02.06.2014 | Research & Study | 2 | some coding study with DKProCore |
+| 03.06.2014 | Meeting | 1 | |
+| 08.06.2014 | Reading & Coding Practice | 2 | |
+| 09.06.2014 | Working on Task Started | 3 | |
+| 11.06.2014 | Analyzing and Planning of the task implementation | 3 | SVN Configuration |
+| 13.06.2014 | Research on Annotators & UIMA Framework | 3 | |
+| 14.06.2014 | Coding Practice | 2 | Tutorials |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30

@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="LizhenQu" date="1186572216" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="LizhenQu"}%
+
+For each semantic relation a statistical model will be learned and used to predict the relation between unknown words. 5 types of relation will be covered. Hypernymy(Hyponymy), Meronymy(holonymy), Synonymy, Entailment, Troponymy. 
+The method introduced in paper (Snow 2006) is utilized as the basic approach to learn the models.  <br />The core learned model using this method is based on the extracted dependency paths from the corpus sentences.  The occurence frequency of each dependency paths in a word pair build the feature vector of the word pair. So the differences of the core models between different semantic relation types are the different label of the feature vector (Hypernym, Meronym) and the different set of word pairs. 
+<br />The core model is not sufficient to identify new word relation. The core model will be extended in several ways. One approach used in (Snow 2006) to learn hypernym relation is that the similarity of each noun is interpreted as occurrence of the context words. Based on the similarity measures a model is learned to identify the taxonomic cousin relation between nouns. The prediction of the cousin model is merged with that of the core model for a better classification. And some model of a certain relation need addtional information, e.g. Meronymy need the relative position of 2 concepts in a taxonomy as addtional features. Another approach is to use blog specific features to extend the core feature matrix or build a seperate model as the above solution.  The new features focus on topic related terms and tags. The coocurrence between them builds a matrix to represent the strength of the relation between 2 words. The link structure may also be used to improve the prediction accuracy. Any further approach will also be conducted after more detailed analysis.
+Additionally, the blog corpus requires additional preprocessing steps. Duplicate and near duplicate elimination are expected to build better training set. splog detection and community analysis are expected to improve the learned ontology quality.
+
+Developement cost:
+The implementation of the methods in (Snow 2006) is the most time consuming part of the whole system. Due to the need of specific design for dealing with huge volume data it will take over 60% time. The extended models are basically some addtional features based on the core model so it will only take 20% of the remaining time. The other 20% time is for splog detection and link analysis.
+
+ 
+
+-- Main.LizhenQu - 08 Aug 2007

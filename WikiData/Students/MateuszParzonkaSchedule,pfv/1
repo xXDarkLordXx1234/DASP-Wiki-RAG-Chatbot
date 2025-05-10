@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1283731699" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+---++ Schedule
+
+---+++++ Week 1 - 2
+   * Research in text segmentation (ts). Implement of prototypical segmentation targeting optimal coherence and size for keyword extraction.
+   * Research in keyword extraction (ke). Implement of prototypical keyword extraction targeting optimal for index candidates.
+   * Combine of ts and ke in pipeline, conceptual evaluation.
+   * Sketch conceptual overview of different segmentation and keyword algorithms in thesis. 
+      * What exists? What is implemented in DKPro?
+
+---+++++ Week 3 - 4
+
+   * Refactoring and explicit unit-testing of ts and ke.
+   * Implement component for "valid index entries". Research may be needed.
+   * Implement component for evaluation on csomai&michalcea corpus 2006.
+   * Implement explicit unit tests that exemplify evaluation.
+
+---+++++ Week 5 - 6
+
+   * Compare evaluation results with baseline results in csomai&michalcea 2007.
+   * Refactor code.
+   * Research in possible refinements.
+   * Implement refinements.
+   * Evaluate, visualize results.
+   * Present results in Zwischen-Presentation and discuss possible refinements.
+
+---+++++ Week 7 - 10
+
+   * Compare evaluation results with baseline results in csomai&michalcea 2007.
+   * Research in possible refinements.
+   * Implement refinements, refactor code.
+   * Evaluate, visualize results, document for / in thesis.
+   * Write thesis.
+
+---+++++ Week 11 - 12
+
+   * Write, refactor, print, present thesis.
+
+-- Main.MateuszParzonka - 05 Sep 2010

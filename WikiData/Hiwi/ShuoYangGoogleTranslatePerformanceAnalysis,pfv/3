@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="ShuoYang" date="1268615766" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Google Translate Performance Analysis
+_not done yet_
+
+%TOC%
+
+---++ Overview
+*Google Translate* is a popular translation service provided by [[http://www.google.com Google Inc.]] with relatively good accuracy.
+Google provides interfaces like a web app and AJAX APIs for accessing it. In this article we are going to evaluate its performance over AJAX APIs on large quantity of inquiries, including the caveats on query frequency, general translation speed, influence of inquiry length on translation speed and possible errors during translation.
+
+---++ Test Methodology
+Tests were conducted on a late-2008 !MacBook Pro with Core 2 Duo 2.4GHz CPU, 4GB memory running Mac OS X 10.6.2. Java was used as the programming language with [[http://code.google.com/p/google-api-translate-java/ Google-API-Translate-Java]] library which accesses Google Translate over [[http://code.google.com/apis/ajaxlanguage/documentation/ Google AJAX Language APIs]].
+
+The most tests were performed at my student dormitory connected over 802.11g WLAN to Internet at my student apartment and in the UKP pool in the university.
+
+---++ Performance Results
+
+---++ Summary
+
+-- Main.ShuoYang - 14 Mar 2010
+
+%META:TOPICMOVED{by="ShuoYang" date="1268574785" from="Hiwi.GoogleTranslateSpeedAnalysis" to="Hiwi.GoogleTranslatePerformanceAnalysis"}%

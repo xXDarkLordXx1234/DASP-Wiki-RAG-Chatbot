@@ -1,0 +1,167 @@
+%META:TOPICINFO{author="kluge" comment="save topic" date="1395243658" format="1.1" reprev="10" version="10"}%
+%META:TOPICPARENT{name="RolandKlugeMTNotes"}%
+---+++ Interesting/Various
+   * Manfred S.and Sauermann A.,&#8221;Linearization of arguments in commentary text,&#8221; in Multidisciplinary Approaches to Discourse 2008 - MAD 08,20-23 February 2008, Lysebu, Oslo, 2008
+   * [[http://www.igi-global.com/article/from-argument-diagrams-to-argumentation-mining-in-texts/87173][From Argument Diagrams to Argumentation Mining in Texts: A Survey]]
+   * Kirschner P.A.,Shum S.J.B.,and Carr C.S.,Visualizing argumentation:software tools for collaborative and educational sensemaking.:Springer-Verlag,2003.
+   * How Argumentation can Enhance Dialogues in Social Networks http://www.inf.kcl.ac.uk/staff/mcburney/downloads/pubs/2010/pm-2010-10.pdf 
+   * Identifying High-Level Organizational Elements in Argumentative Discourse http://aclweb.org/anthology/N/N12/N12-1003.pdf
+      * Detect shell phrases
+   * %X% Artem Vovk's work
+   * %X% [[http://gdac.uqam.ca/proceedingEDM2008.pdf#page=202][Argument mining using highly structured argument repertoire]]
+      * *very similar research vision* MUST READ!
+
+---+++ Corpus Creation
+   * Ranking the annotators: An agreement study on argumentation structure (Peldszus & Stede, 2013) 7th Ling. Annot. Workshop, ACL2013
+      * http://aclweb.org/anthology//W/W13/W13-2324.pdf
+      * All-annotators agreement evaluated on the scale of Landis and Koch, 1977
+      * Krippendorff 1980: category definition test (one vs. all categories); category distinction test (collapse two categories)
+      * Further Reading:
+         * Geertzen and Bund 2006:  Measuring annotator agreement in a complex hierarchical dialogue act annotation scheme. In Proceedings of the 7th SIGdial Workshop on Discourse and Dialogue, SigDIAL 06, pages 126133, Stroudsburg,PA, USA. Association for Computational Linguistics
+         * Krippendorff (1980): Content Analysis: An Introduction to its Methodology. Sage Publications, Beverly Hills, CA
+
+   * An inter-annotator measurement methodology for the Turkish Discourse Treebank (TDB) (&#350;aban &#304; Hsan Yalcinkaya, 2010)
+      * http://etd.lib.metu.edu.tr/upload/12612643/index.pdf
+      * re-read
+      * %X% presents a thorough study of IAA measures for discourse tasks
+
+   * Inter-coder agreement for computational linguistics (Artstein, R., & Poesio, M., 2008)
+      * overview paper
+      * %X% as a reference, why Krippendorff's unitized alpha is best suitable for arbitrary spans
+
+   * Annotating opinions in the world press, Wilson and Wiebe 2003
+      * http://people.cs.pitt.edu/~wiebe/pubs/papers/sigdial03FixedLater.pdf
+      * %X% source of one of the applied IAA metrics
+
+   * On the Reliability of Unitizing Continuous Data (Krippendorf, 1995)
+      * also: Measuring the Reliability of Qualitative Text Analysis Data (Krippendorff, 2004)
+      * %X% source of one of the applied IAA metrics
+
+   * Jacob Cohen. A coefficient of agreement for nominal scales. Educational and Psychological Measurement, 20(1):3746, 1960. http://www.psych.umn.edu/faculty/waller/classes/meas11/Readings/Cohen1960.pdf (NotInBib)
+
+   * J.R. Landis and G.G. Koch. The measurement of observer agreement for categorical data. Biometrics, 32(1):159174, March 1977 (NotInBib)
+      * Evaluation scale for kappa
+
+   * Users of unitized alpha
+      * Kolhatkar2013, Kolhatkar2012
+   * Prague Discourse Treebank:
+      * Polakova2013
+
+---+++ Projects/workshops/groups/corpora
+   * ACILA project @ KU Leuven (http://www.cs.kuleuven.be/groups/liir/projects.php?project=125)
+   * ARGUMENTUM (see below)
+   * Discourse Relations Reference Corpus (http://www.sfu.ca/rst/06tools/discourse_relations_corpus.html)
+   * Araucaria corpus -> also contains newspaper articles
+      * Chris Reed and Glenn Rowe. Araucaria: Software for argument analysis, diagramming and representation. International Journal of AI Tools, 14:961980, 2004.
+
+   * Debatepedia/debate.org
+   * https://sites.google.com/site/argaip2013/
+   * http://www.uncg.edu/cmp/ArgMining2014/
+
+
+---+++ Classification resources
+   * Stede, M., Umbach, C. (1998) !DiMLex: A lexicon of discourse markers for text generation and understanding
+   * From connectives to argumentative markers (Tseronis 2011) 
+      * interesting as a source of features, http://link.springer.com/article/10.1007%2Fs10503-011-9215-x
+   * [[http://arxiv.org/abs/cs/0402057][Integrating Defeasible Argumentation and Machine Learning Techniques]]
+      * -> classification
+   * see table here: [[ArgumentMining.ArgumentExtraction]]
+   * lexical features: [[ArgumentMining.HighSchoolMaterial]]
+   * [[http://www.aaai.org/ocs/index.php/FLAIRS/FLAIRS12/paper/viewFile/4366/4806][Applying Kernel Methods to Argumentation Mining.]]
+   * CharuC. Aggarwal and ChengXiang Zhai. A survey of text classification algorithms.Charu C. Aggarwal and ChengXiang Zhai, editors, Mining Text Data, pages 163222. Springer US, 2012. http://link.springer.com/chapter/10.1007/978-1-4614-3223-4_6 (NotInBib)
+   * Leo Breiman. Random forests. Mach. Learn., 45(1):532, October 2001. http://link.springer.com/content/pdf/10.1023/A:1010933404324.pdf (NotInBib)
+   * George Forman. An extensive empirical study of feature selection metrics for text classification. J. Mach. Learn. Res., 3:12891305, March 2003. http://machinelearning.wustl.edu/mlpapers/paper_files/Forman03.pdf (NotInBib)
+   * Vaishali Ganganwar. An overview of classification algorithms for imbalanced datasets. International Journal of Emerging Technology and Advanced Engineering, 2:4247, 2012. (NotInBib)
+   * Chih-Wei Hsu, Chih-Chung Chang, and Chih-Jen Lin. A practical guide to support vector classification. Technical report, Department of Computer Science, National Taiwan University, 2003.
+
+
+
+
+
+---+++ Argumentation in the Web
+   * %Y% Schneider, J., Wyner, A.: Identifying Consumers Arguments in Text. In: Semantic Web and Information Extraction. (SWAIE, 2012)
+   * %Y% Using Argument Analysis to Define a Structure for User Generated Content http://homepages.inf.ed.ac.uk/s1053147/proposalAug30.pdf
+   * %Y% Dimensions of Argumentation in Social Media http://link.springer.com/chapter/10.1007/978-3-642-33876-2_4
+   * %Y% Enacting Social Argumentative Machines in Semantic Wikipedia: http://arxiv.org/abs/1304.5554
+
+---+++ Legal Argumentation
+   * %Y% [[http://dl.acm.org/citation.cfm?id=1568246][Argumentation mining: the detection, classification and structure of arguments in text]]
+      * %X% standard citation - "inventors" of term AM
+   * %Y% Argumentation mining (2011) http://link.springer.com/article/10.1007/s10506-010-9104-x/fulltext.html
+   * Automatic Detection and Classification Argumentation in a Legal Case (Mochales, 2011) 
+   * %Y% Identifying arguments in legal texts (ACILA project) http://www.arg.dundee.ac.uk/people/chris/publications/2007/icail2007.pdf
+   * %Y% ARGUMENTUM - Towards Computer-Supported Analysis, Retrieval and Synthesis of Argumentation Structures in Humanities Using the Example of Jurisprudence http://dfki.de/KI2012/PosterDemoTrack/ki2012pd07.pdf
+   * %Y% Towards Automated Identification and Analysis of Argumentation Structures in the Decision Corpus of the German Federal Constitutionals Court (Huoy et al., 2013) 7th IEEE Int. Conf. on Digital Ecosystems and Technologies (DEST), 2013
+   * %Y% On the extraction of decisions and contributions from summaries of French legal IT contract cases http://lexitron.nectec.or.th/public/LREC-2010_Malta/workshops/W23.pdf#page=35
+   * %Y% Argumentation structures in legal dossiers http://dl.acm.org/citation.cfm?doid=1276318.1276371
+
+
+---+++ Scientific Argumentation
+   * %Y% Identifying comparative claim sentences in full-text scientific articles http://dl.acm.org/citation.cfm?id=2391173
+   * %Y% Identifying Claims in Social Science Literature https://www.ideals.illinois.edu/bitstream/handle/2142/42061/485.pdf?sequence=2
+   * %Y% Discourse-level argumentation in scientific articles: human and automatic annotation http://acl.ldc.upenn.edu/W/W99/W99-0311.pdf
+   * %Y% An annotation scheme for discourse-level argumentation in research articles (Teufel et al. 1999)  http://acl.ldc.upenn.edu/E/E99/E99-1015.pdf
+   * %Y% CARS - Creating a research space (Swales 1990) 
+   * %Y% Extension to CARS (Teufel, Carletta, Moens, at EACL 1999)
+   * %Y% Using argumentation to retrieve articles with similar citations: An inquiry into improving related articles search in the MEDLINE digital library: https://www.sciencedirect.com/science/article/pii/S1386505605000894
+
+---+++ Newspaper Argumentation
+   * Using Argumentation Schemes for Argument Extraction: A Bottom-Up Method (Walton, 2012) IGI Global
+      * focuses on Walton's argumentation schemes; tries to cluster schemes by similarity...
+      * "It was found that 37.1% of the arguments collected did not fit any of the fourteen schemes" 
+   * %X% Pushing Toulmin Too Far: Learning From an Argument Representation Scheme (Newman & Marshall, 1992) [[http://www.csdl.tamu.edu/~marshall/toulmin.pdf][Technical report]]
+   * Argument extraction for supporting public policy formulation (Florou et al, 2013) [[http://aclweb.org/anthology/W/W13/W13-2707.pdf][ACL WS 2013]]
+      * %X% as a motivator?
+   * Active participation within written argumentation: metadiscourse and editorialist's authority ([[http://ac.els-cdn.com/S0378216603000328/1-s2.0-S0378216603000328-main.pdf?_tid=e257b13a-3731-11e3-b4b3-00000aab0f6c&acdnat=1382017494_8f507e5bcaf2a22d2d1451ecee6aeb9e][Le 2002]])
+   * Appraisal and Journalistic Discourse [[[http://grammatics.com/Appraisal/MediaLit-Comment.pdf][Rick Iedema, Susan Feez and Peter White, 1994]]]
+      * rather for thesis than for paper; not very scientific, rather a survey
+   * Reported speech as an element of argumentative newspaper discourse [[[http://dcm.sagepub.com/content/3/1/79.short#aff-1][Smirnova, 2009]]] 
+   * Who speaks for whom? Towards analyzing opinions in news editorials [[[http://www.irit.fr/~Patrick.Saint-Dizier/publi_fichier/P43.pdf][Bald and Saint-Dizier, 2009]]]
+      * most recent work: Bal Krishna Bal, Patrick Saint-Dizier. Towards Building Annotated Resources for Analyzing Opinions and Argumentation in News Editorials, LREC, Malta, Nicoletta Calzolari (Eds.), ELRA, may 2010. 
+      * %X% most similar work!
+
+---+++ Teaching Argumentation
+   * Genre Analysis and the Automated Extraction of Arguments from Student Essays   http://projects.kmi.open.ac.uk/akt/publication-pdf/CAA-2003_Moreale_Vargas-Vera.pdf
+
+
+---+++ [[ArgumentMining/ArgumentationSchemes][Argumentation models]] (Wiki)
+   * Walton, Reed, Macagno, 2008
+      * also: re-read introduction
+      * %X% only as a reference -> was considered initially, but rejected due to low coverage (see below)
+   * The use of argument (Toulmin 1958) 
+      * considered as the first work on argumentative structures
+      * %X% only as a reference -> was considered initially, but rejected due to low coverage/high effort
+   * [[ArgumentMining.Terminology][Terminology]] (Claim, premise, proposition)
+   * Freeman 1991,2011
+   * [[http://www.ccsenet.org/journal/index.php/jpl/article/viewFile/29977/17760][Arguments from Fairness and Misplaced Priorities in Political Argumentation.]]
+   * [[http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6122134&tag=1][A versatile argumentation system based on the Logic of Multiple-valued Argumentation]]
+
+---+++ Discourse Processing
+   * Workshop on Discourse Connectors 
+      * -> great overview of work around discourse connectives
+   * RST: Mann, W.C., Thompson, S.A.: Rhetorical structure theory: A framework for the analysis of texts. IPRA Papers in Pragmatics 1(1) (1987) 79105
+   * Alistair Knott and Robert Dale. Using linguistic phenomena to motivate a set of rhetorical relations. Technical report, Discourse Processes, 1993.
+
+
+---+++ AM and newspapers
+   * Automatic Argumentation Extraction, Alan Sergeant 2013, http://link.springer.com/chapter/10.1007/978-3-642-38288-8_46
+   * Classifying arguments by scheme ftp://ftp.sys.utoronto.ca/cs/ftp/public_html/pub/gh/Feng-MSc-2010.pdf
+
+---+++ AM and Business
+   * [[http://ceur-ws.org/Vol-925/proceedingsswaie2012.pdf#page=37][Identifying Consumer Arguments in Text]]
+   * [[http://www.igi-global.com/chapter/artificial-intelligence-applications-improved-software/36447][An Intelligent Computational Argumentation System for Supporting Collaborative Software Development Decision Making]]
+      * application to SW development
+      * also: [[http://eprints.ulster.ac.uk/20143/][The Application of a Natural Language Argumentation Based Approach within Project Life Cycle Management]]
+
+---+++ AM and Textual Entailment (TE)
+   * Mining Economic Sentiment Using Argumentation Structures http://link.springer.com/chapter/10.1007/978-3-642-16385-2_25
+   * EXCITEMENT http://www.coli.uni-saarland.de/~rwang/pubs/AVIOS2012.pdf
+   * Combining Textual Entailment and Argumentation Theory for Supporting Online Debates interactions (Cabrio & Villata 2012) ACL 2012 short
+      * http://www.aclweb.org/anthology/P12-2041
+   * Detecting Bipolar Semantic Relations among Natural Language Arguments with Textual Entailment: a Study (Cabrio & Villata, 2013) Proceedings of the Joint Symposium on Semantic Processing. Textual Inference and Structures in Corpora
+      * http://aclweb.org/anthology/W/W13/W13-3815.pdf
+
+---+++ AM and Opinion Mining
+   * Some Facets of Argument Mining for Opinion Analysis http://www.irit.fr/~Patrick.Saint-Dizier/publi_fichier/COMMA-submission10.pdf
+
+-- Main.RolandKluge - 2014-01-28

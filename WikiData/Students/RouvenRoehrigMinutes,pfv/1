@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="roehrig" comment="reprev" date="1365765594" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="RouvenRoehrig"}%
+---+!! Minutes
+---++++ Master Thesis of Rouven Roehrig
+
+This page contains the minutes of the weekly meetings.
+
+---++ 04 Apr 2013
+*Attendees*: lb, tz, rr
+   * Transponder is set up for A326 (D017 should be activated too)
+   * New meeting date: *Mo. 11 am*
+   * DKPro: Hint: Every AnalysisComponent implements collectionProcessComplete
+   * Error message analysis:
+      * rr: Data analysis: I've used DKPro to generate statistics (word and sentence diversity) and paired sentences based on an edit distance (Levenshtein) below 10.
+      * tz: Paired sentences (that rr generated) are soft clusters
+      * Try to find better clusters using (for instance): EditDistance on words, NGramOverlap or similar measures
+      * Plagiarism detection is similar: Read papers about plagiarism detection!
+
+---++ 28 Mar 2013
+*Attendees*: lb, rr
+   * lb: There are three construction sites: DKPro (programming), literature work and data analysis
+      * You should focus on literature work and data analysis first
+   * lb: Summarize your literature work
+   * lb: Do some data analysis, e.g. lexical diversity, 'how many times occurs the same sentence?' etc.
+   * lb: Check out the similarity package (can be used without DKPro)
+
+-- Main.RouvenRoehrig - 12 Apr 2013

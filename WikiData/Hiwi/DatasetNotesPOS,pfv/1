@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1360918339" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="IrExperiments"}%
+I'll collect POS oddities in the data set here that I noticed, maybe to later post-correct them.
+
+---+++ train data set (NUS)
+
+   * C041: "Pesticides (NNS) in (IN) Baby %RED%(NNP)%ENDCOLOR% Food %RED%(NNP)%ENDCOLOR%" (title)
+   * C042: "U.N. (NNP) / (NNP) US (NNP) Invasion %RED%(NNP)%ENDCOLOR% of (IN) Haiti (NNP)" (title)
+   * C097: "Referendum %RED%(NNP)%ENDCOLOR% on (IN) the (DT) independence (NN) of (IN) moldova (NNP)" (title)
+   * C233: "Greenhouse %RED%(JJ)%ENDCOLOR% effect (NN)" (title)

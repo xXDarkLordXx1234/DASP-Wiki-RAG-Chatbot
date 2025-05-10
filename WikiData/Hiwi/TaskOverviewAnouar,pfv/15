@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="AnouarHaha" date="1189449629" format="1.1" reprev="15" version="15"}%
+%META:TOPICPARENT{name="AnouarWork"}%
+---++ Task Overview Anouar
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+
+| *Anouar Aufgaben* ||
+| *Aufgabe*  | *% done*  |
+| Einarbeitung Wikipedia API | 100 |
+
+%TABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="4"}%
+
+| *Anouar Stunden* ||||
+| *Aufgabe*  | *Tag*  | *Stunden*  | *Bemerkungen*  |
+| Einarbeitung Wikipedia API | 12.12.2006 | 10 | | 
+| Implementierung Demo Server | 20.12.2006 | 20 | +Servlet api(Einstieg),Tomcat(doku+installation),JSP(Einstieg)+WebSeiten(Einstieg)|
+| Reimplementierung | 13.01.2007 | 10 | + neuer Klassendesign + neue JSP's + neue Funktionalitaeten|
+| 3.Version              | 25.01.2007 | 15 | new requirements | 
+|  4.Version + Navigation Design| 15.02.2007| 20| + neue JSP's (Usage of javascript)     |
+| Neue Wikipedia Api  |04.04.2007| 10  |installation MySQl  + installation frensh wikipedia + Konfiguration der API |
+| Implementierung der neuen demo Klassen |04.04.2007| 25  |+Konfiguration einstellbar und Erweiterbarkeit moeglich  |
+| Web Design |04.04.2007| 15  |navigation, skripte .. |
+| Dokumentation zur  Demo|04.04.2007| 10  |Konfiguration, Architektur, Effizienz, Vergleich mit den aelteren Versionen |
+| Datenbank-Konfiguration(frwiki)|20.04.2007| 15  |Erstellen einer Tabelle aus MediaWiki und ihrer Einbindung an der Tabelle der API|
+| Tests für die API(Korrektheit,Performanz)|24.04.2007| 10  |Erstellen eines Pakets für die Tests|
+| MediaWikiMarkup2html|27.04.2007|15 | Erstellen eines Konverters zum formattierten Presentieren von Seiteninhalt|
+| Erstellen eines Tutorials fuer fr_api|29.04.2007| 5| |
+| Debugging+ DB neu|30.04.2007| 15|Kodierung in Windows Vs Unix(UTF8) + API-Bug |
+|Italienische+Spanische Versionen|04.05.2007|10 | |
+|Polnische Wiki |05.2007 |5 | | 
+|TestKlasse |05.2007 |5 | |
+|WikipediaAPI(neue Version)|05.2007 |15 |Debugging(czech,ukrainian): testen und Fehler suchen |
+|TestWikipedia |05.2007 |20 |Entwicklung einer Test Datenbank fuer die WikipediaAPI + test |
+|Test Cases |05.2007 |5 | |
+|PageIterator+CategoryIterator|05.2007 |15 |Buffering von Seinten + Tests |
+|Windows2Unix |06.2007 |5 |Anpassung der Datenbanken |
+|neue Test cases |06.2007 |2 | |
+|neue polnische version |06.2007 |15 |+Manuelle Behebung von Fehlern in Revision.txt |
+|itwiki | 06.2007| 5| |
+|demo fuer neue API |06.2007 |5 | |
+|Database Settings von UI|06.2007|5| |
+|Demo Refactoring|06.2007|10|+Möglichkeit der Style-Konfiguration von der UI|
+|Germanet|06.2007|5|Einarbeitung in die API|
+|Germanet|07.2007|15|Debugging:Fehlersuche in den neuen Daten|
+|Germanet|07.2007|5|API Refactoring|
+|Neues Transformationsprogramm für die Wikipedia API|07.2007|15|läuft mit dumps statt Verbindung mit db|
+|Tschechische Version |08.2007|5| |
+|Spanische Version|08.2007|5| |
+|Portuguiesische Version|08.2007|5| |
+|Arabische Version|08.2007|5| |
+|Dänische Version|08.2007|5| |
+|Schwedische Version|08.2007|5| |
+|Arabische Version mit SQL Erstellen statt Java|30.08.2007|5||
+|neues Tranformationsprogramm (MediaWiki2JWPL)|07.09.2007|10||
+|Holländische Wikipedia|10.09.2007|5||
+|Aktuelle Arbeit: Erstellen aller dumps mit MediaWiki2JWPL|spätestens bis 18.09| ||
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 420 | einschliesslich Juli - Sept |

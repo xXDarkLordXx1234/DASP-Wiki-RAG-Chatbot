@@ -1,0 +1,60 @@
+%META:TOPICINFO{author="StefanHenss" date="1351843455" format="1.1" version="9"}%
+%META:TOPICPARENT{name="StefanHenss"}%
+---+ Journal
+
+Start Date: 15.10.2012<br />
+End Date: 15.04.2013
+
+---++ Current and Past Entries
+
+| *Week* | *Original Plan / Milestone Log* |
+| 3 | Implementation of evaluation functions and benchmarks; implementation of further features for all tasks; preparations for implementing competitive systems; notes on all keywords-related papers. |
+| 2 | Formalization of decision processes; collection of benchmarks and baselines; design of additional evaluation functions; design and implementation of an evaluation and reporting framework; notes on all web crawling papers. |
+| 1 | Migration of current notes into Wiki; thesis outline; patent search and collection of related work; software and code repository setup. |
+| | 18.10.: Frameworks for dossier extraction and single-/multi-document summarization completed; no features yet. |
+| | 11.10.: First working version of keyword assignment and its evaluation. Again, proper features will be required for good results. |
+| | 8.10.: Working version of crawler incl. multiple reinforcement learning algorithms and experimentation/evaluation framework. Now requires sophisticated features. |
+
+---++ Future Plan
+
+| *Week* | *Plan* |
+| 4-5 | Implementation of competitive state-of-the-art technology; notes on reinforcement learning resources and summarization papers. |
+| 6 | 1st milestone: beating reasonable baselines for each component; design of major features, changes to algorithms and new machine learning techniques. |
+| 7-12 | Implementation of major software components, including the development of features and tuning existent software. |
+| 13 | 2nd milestone: beating the majority of competitors for all components; mid-term presentation; further planning and design of changes and additions; preparation for thesis. |
+| 14-21 | Further software refinements; writing thesis; optional: implementation of clustering approach; if required: migration to DKPro. |
+| 22 | 3rd milestone: First complete version of thesis and software; further planning. |
+| 23-25 | Final refinements and design of the presentation; backup slots for delays and unforeseen requirements. |
+| 26 | Delivery of thesis and presentation. |
+
+---++ Detailed Reports
+
+---+++ Week 3, 29.10.
+   * Implemented term similarity using term document matrices based on variable frequency measures.
+   * Baselines: Random Selection, First N Candidates Selection, Similarity-Based Selection, Term Frequency Selection, Optimal Selection Baseline, framework for Supervised Learning baselines.
+   * Additional evaluation functions for ranking and metrics based on term distribution / term similarity measures.
+   * Building a web graph around the Bildungsserver URLs is still in progress since crawling search engines for backlinks gets us blocked after a few dozen requests.
+   * General improvement on the current framework (mainly data preprocessing) and the state of the single approaches (e.g., term similarity features).
+   * Rest of the week:
+      * Continue to work on the web graphs.
+      * Implementation of remaining baselines and metrics for document summarization.
+      * Redesign of evaluation website to deal with the larger quantities of evaluation functions.
+      * Notes on all keywords-related papers
+
+---+++ Week 2, 22.10.
+   * There are 1000s of model updates and at least 100,000 state-action-value predictions for one simulation of keyword assignment using RL:
+      * Remodeled framework to optimize balance between reusing in-memory data and not running out of memory.
+      * Made a few 3rd-party regression algorithms use my own data objects to avoid overhead from the adapters to their original libraries.
+   * Implemented framework to be able to centrally define and combine configurations/parameters for data/features, model/approach and simulation.
+   * Almost completed website for comparing performance on each task and over time (link follows).
+   * Rest of the week:
+      * Collection and design of benchmarks/baselines/objective functions for all tasks.
+      * Add Wiki pages for all tasks and update methodology on current pages.
+      * Notes on focused crawling papers.
+
+---+++ Week 1, 15.10.
+   * Initial collection of related work.
+   * Completed framework for extraction and summarization, including process formulation for all 5 tasks.
+   * Implementation of more features for web crawling and keyword assignment.
+   * Implemented solutions for PDF parsing errors and spelling/encoding issues.
+   * Transfer of relevant past notes into Wiki.

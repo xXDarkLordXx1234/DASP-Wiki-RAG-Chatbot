@@ -1,0 +1,119 @@
+%META:TOPICINFO{author="ArtemVovk" date="1232896159" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ArtemVovkWork"}%
+-- Main.ArtemVovk - 23 Jan 2009 <br />
+---+ DKPro src_test Errors
+
+    *1 de.tudarmstadt.ukp.dkpro.core.reader*  <br />
+------------------------------------------- <br />
+	             --> PdfReaderTest.java <br />
+	    *Error:*   java.lang.NoClassDefFoundError: org/fontbox/afm/FontMetric <br />
+	    *Loesung:* Download jar: <br />
+				 http://svn.apache.org/repos/asf/incubator/pdfbox/trunk/external/FontBox-0.2.0-dev.jar <br />
+				 And add to Libraries <br />
+------------------------------------------- <br />
+          *2 de.tudarmstadt.ukp.dkpro.core.examples* <br />
+-------------------------------------------<br />
+	             -->DynamicTypeSystemReaderTest.java <br />
+	      *Failures:*
+   * 				Could not get file: desc/type/TranslatedWordPair.xml <br />
+   * 				java.lang.AssertionError: JCas type "de.tudarmstadt.ukp.dkpro.core.type.DocumentMetaData" <br />
+				used in Java code,  but was not declared in the XML type descriptor. <br />
+------------------------------------------- <br />
+*3 de.tudarmstadt.ukp.dkpro.core.annotator.util.tagger* <br />
+
+------------------------------------------- <br />
+-->RunTaggerTests.java <br />
+*Failures:* <br />
+				1)java.lang.AssertionError: 
+					TreeTagger executable <br />
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. <br />
+				2)java.lang.AssertionError: 
+					TreeTagger executable <br />
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. <br />
+				3)java.lang.AssertionError: 
+					TreeTagger executable <br />
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. <br />
+				4)java.lang.AssertionError: 
+					TreeTagger executable <br />
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. <br />
+				5)java.lang.AssertionError:  
+					TreeTagger executable <br />
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. <br />
+------------------------------------------- <br />				
+-->TreeTaggerWrapperAliveTest.java <br />
+*Failures:* <br />
+				1)java.lang.AssertionError: 
+					TreeTagger executable <br />
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. <br />
+				2)java.lang.AssertionError:  
+					TreeTagger executable <br />
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. <br />
+				3)java.lang.AssertionError: 
+					TreeTagger executable <br />
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. <br />
+-------------------------------------------	<br />	 
+ -->TreeTaggerWrapperRestartTest.java <br />
+*Failures:* <br />
+				1)java.lang.AssertionError: 
+					TreeTagger executable <br /> 
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. 
+				2)java.lang.AssertionError: 
+					TreeTagger executable <br /> 
+					D:\Darmstadt\Eclipse\dkpro_core\resource\TreeTagger\bin\tree-tagger.exe does not exist. <br />
+-------------------------------------------  <br />
+*4  de.tudarmstadt.ukp.dkpro.core.annotator.util.chunker* 
+-------------------------------------------		
+-->RunChunkerTests.java <br />
+*Failures:*
+				1)java.lang.AssertionError: 
+					Cannot run program "/bin/sh": CreateProcess error=3,
+				2)java.lang.AssertionError: 
+					Cannot run program "/bin/sh": CreateProcess error=3
+-------------------------------------------		 
+-->TreeTaggerChunkerWrapperTest.java <br />
+*Failures:*
+				1)java.lang.AssertionError: 
+					Cannot run program "/bin/sh": CreateProcess error=3
+				2)java.lang.AssertionError: 
+						Cannot run program "/bin/sh": CreateProcess error=3
+-------------------------------------------
+*5  de.tudarmstadt.ukp.dkpro.core.annotator* 
+-------------------------------------------	
+-->ControlCharactersEliminatorTest.java <br />
+*Failures:*
+				java.lang.AssertionError:Number of tokens is greater than it should be!
+-------------------------------------------		 
+-->RunAnnotatorTests.java <br />
+*Errors:* 1 <br />
+*Failures:* 16
+-------------------------------------------
+-->SpellingCorrectorTest.java <br />
+*Failures:* java.lang.Assertion <br />
+*Error:* Annotator processing failed.    
+	
+-------------------------------------------
+-->StanfordLexicalHeadFinderTest.java <br />
+*Failures:* java.lang.AssertionError: <br />
+*Errors:*  java.lang.Exception: 
+					Unexpected exception, expected
+					<org.apache.uima.analysis_engine.AnalysisEngineProcessException> 
+					but was<java.lang.AssertionError>
+-------------------------------------------		 
+--> StanfordParserTest.java <br />
+*Failures:* testGerman -> java.lang.AssertionError: 
+-------------------------------------------		 
+-->TreeTaggerChunkerTest.java <br />
+*Failures:*
+				java.lang.AssertionError: Annotator processing failed.    
+-------------------------------------------
+-->URLTaggerTest.java <br />
+*Failures:*
+				java.lang.AssertionError: 
+				D:\Darmstadt\Eclipse\dkpro_core\desc_test\annotator\URLTaggerTest.xml(File not found)
+-------------------------------------------
+*6 de.tudarmstadt.ukp.dkpro.core*   <br />
+-------------------------------------------
+-->RunDkproCoreTests.java
+*Errors:* 1 <br />
+*Failures:* 16 <br />
+-------------------------------------------

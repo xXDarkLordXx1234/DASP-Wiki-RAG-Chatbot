@@ -1,0 +1,37 @@
+%META:TOPICINFO{author="alles" comment="" date="1727879545" format="1.1" reprev="13" version="14"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}%%IF{"$WEBSUMMARY != ''" then="
+---++!! %WEBSUMMARY%"}%
+
+<div style="border: solid 4px green; font-weight:800; padding: 5px">
+<p align="center">
+[[UKP/UkpOnboarding][👋 Onboarding - Your first day at UKP Lab 👨‍🏫💡🏫]]
+</p>
+</div>
+
+<div style="border: solid 4px #FBD603; font-weight:800; padding: 5px">
+  <p align="center">
+🚧 *This web is under active development.* 👷🔨 🚧
+  </p>
+</div>
+
+<div style="float:right;background-color:white; z-index:999;">
+  <div style="border: solid grey 1px; padding: 0.25em; margin: 0.25em">
+
+---++ Permissions
+This web and it's contents are available for:
+   * Everyone that can login (just denied for guest users)
+   * *%RED%Subwikis are restricted further!%ENDCOLOR%*
+  </div>
+</div>
+
+---++ %MAKETEXT{"Please select one of the following areas"}%
+---+++ UKP Organizational
+An overview and documentation of ...
+   * *[[/Services/OrganizationBasic/][Basic Organizational Information]]* %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% available for ... %ENDTWISTY% 
+   * *[[/Services/Organization/][Advanced Organizational Information]]* %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% available for ... %ENDTWISTY% 
+---+++ UKP IT Services
+An overview and documentation of the IT services that UKP system-admin either hosts and maintains itself or services hosted externally (e.g. by the HRZ) whose use UKP system-admin supports
+   * *[[/Services/ITBasic/][Basic IT Information]]* %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% available for ... %ENDTWISTY% 
+   * *[[/Services/IT/][Advanced IT Information]]* %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% available for ... %ENDTWISTY% 
+
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value=""}%

@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1577848515" format="1.1" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+%IF{
+"istopic '%USERSWEB%.Default%STATISTICSTOPIC%'"
+then="$percentINCLUDE{$quot%USERSWEB%.Default%STATISTICSTOPIC%$quot}$percent"
+else="$percentINCLUDE{$quot%SYSTEMWEB%.Default%STATISTICSTOPIC%$quot}$percent"
+}%
+| <!--statDate--> | <!--statViews--> | <!--statSaves--> | <!--statUploads--> | <!--statTopViews--> | <!--statTopContributors--> |
+| Dec 2019 |  121 |  28 |  0 | &nbsp;62 [[ServerJobsShared]]<br />&nbsp;15 [[WebHome]]<br />&nbsp;13 [[ServerJobs]]<br />&nbsp;&nbsp;8 [[ServerJobsTermsOfUseGpu]]<br />&nbsp;&nbsp;7 [[VpnService]]<br />&nbsp;&nbsp;5 [[Printer]]<br />&nbsp;&nbsp;4 [[MessagingService]]<br />&nbsp;&nbsp;2 [[WirelessNetworkService]]<br />&nbsp;&nbsp;1 [[PrivateHardwareUser]]<br />&nbsp;&nbsp;1 [[NextCloud]]<br />&nbsp;&nbsp;1 [[GITLAB]] | &nbsp;15 Main.AlinaDallmann<br />&nbsp;&nbsp;8 Main.MichaelBugert<br />&nbsp;&nbsp;5 Main.YannikBenz |
+| Nov 2019 |  169 |  9 |  0 | &nbsp;33 [[VpnService]]<br />&nbsp;28 [[WebHome]]<br />&nbsp;28 [[ServerJobsShared]]<br />&nbsp;22 [[ServerJobs]]<br />&nbsp;13 [[WebSearch]]<br />&nbsp;10 [[MessagingService]]<br />&nbsp;&nbsp;8 [[MailService]]<br />&nbsp;&nbsp;7 [[Printer]]<br />&nbsp;&nbsp;6 [[ServerJobsTermsOfUseGpu]]<br />&nbsp;&nbsp;5 [[GITLAB]]<br />&nbsp;&nbsp;2 [[ThesisResearchData]] | &nbsp;&nbsp;4 Main.YannikBenz<br />&nbsp;&nbsp;2 Main.IliaKuznetsov<br />&nbsp;&nbsp;2 Main.MichaelBugert<br />&nbsp;&nbsp;1 Main.JanChristophKlie |
+| Oct 2019 |  295 |  29 |  0 | &nbsp;48 [[WebHome]]<br />&nbsp;42 [[ServerJobsShared]]<br />&nbsp;41 [[VpnService]]<br />&nbsp;30 [[ServerJobs]]<br />&nbsp;20 [[Printer]]<br />&nbsp;19 [[MailService]]<br />&nbsp;16 [[MessagingService]]<br />&nbsp;14 [[ServerJobsTermsOfUseGpu]]<br />&nbsp;14 [[GITLAB]]<br />&nbsp;12 [[NextCloud]]<br />&nbsp;10 [[PrivateHardwareUser]] | &nbsp;26 Main.MichaelBugert<br />&nbsp;&nbsp;2 Main.JanChristophKlie<br />&nbsp;&nbsp;1 Main.SebastianAlles |

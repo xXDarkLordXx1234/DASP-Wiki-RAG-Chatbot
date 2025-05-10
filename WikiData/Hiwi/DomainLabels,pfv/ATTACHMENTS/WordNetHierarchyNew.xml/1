@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<categories>
+<cat name="number" />
+<cat name="color" />
+<cat name="time_period" /> 
+<cat name="person" />
+<cat name="quality" />
+<cat name="metrology" />
+<cat name="food" />
+<cat name="home" />
+<cat name="factotum" />
+
+<cat name="doctrines" >
+
+	<cat name="archaeology" />
+
+	<cat name="art" >
+		<cat name="dance" />
+		<cat name="drawing" >
+			<cat name="painting" />
+			<cat name="philately" />
+		</cat>
+		<cat name="graphic_arts" />
+		<cat name="music" />
+		<cat name="photography" /> 
+		<cat name="plastic_arts" />
+		<cat name="theatre" />
+	</cat>
+	
+	
+	
+	<cat name="astrology" />
+
+	<cat name="history" > 
+		<cat name="heraldry" />
+	</cat>
+	
+	<cat name="linguistics" > 
+		<cat name="grammar" />
+	</cat>
+	
+	<cat name="literature" > 
+		<cat name="philology" />
+	</cat>
+	
+	<cat name="philosophy" />
+
+	<cat name="plastic_arts" > 
+		<cat name="jewellery" />
+		<cat name="numismatics" />
+		<cat name="sculpture" />
+	</cat>
+	
+	<cat name="psychology" > 
+		<cat name="psychoanalysis" /> 
+		<cat name="psychological_features" />
+	</cat>
+	
+	<cat name="religion" > 
+		<cat name="mythology" />
+		<cat name="occultism" />
+		<cat name="theology" />
+		<cat name="paranormal" />
+		<cat name="roman_catholic" />
+	</cat>
+	
+</cat>
+
+<cat name="free_time" > 
+
+	<cat name="play" > 
+		<cat name="betting" />
+		<cat name="card" />
+		<cat name="chess" />
+	</cat>
+	
+	<cat name="sport" > 
+		<cat name="badminton" /> 
+		<cat name="baseball" />
+		<cat name="basketball" />
+		<cat name="cricket" />
+		<cat name="football" />
+		<cat name="golf" />
+		<cat name="rugby" />
+		<cat name="soccer" />
+		<cat name="table_tennis" /> 
+		<cat name="tennis" />
+		<cat name="volleyball" /> 
+		<cat name="cycling" />
+		<cat name="skating" />
+		<cat name="skiing" />
+		<cat name="hockey" />
+		<cat name="mountaineering" /> 
+		<cat name="rowing" />
+		<cat name="swimming" />
+		<cat name="sub" />
+		<cat name="diving" />
+		<cat name="racing" />
+		<cat name="athletics" />
+		<cat name="wrestling" />
+		<cat name="boxing" />
+		<cat name="fencing" />
+		<cat name="archery" />
+		<cat name="fishing" />
+		<cat name="hunting" />
+		<cat name="bowling" />
+		<cat name="racing" />
+	</cat>
+	
+</cat>
+
+<cat name="applied_science" > 
+
+	<cat name="agriculture" />
+	<cat name="computer_science" />
+	<cat name="alimentation" > 
+		<cat name="gastronomy" /> 
+	</cat>
+	
+	<cat name="architecture" > 
+		<cat name="town_planning" />
+		<cat name="building_industry" > 
+			<cat name="buildings" />
+		</cat>
+		<cat name="furniture" />
+	</cat>
+		
+	<cat name="engineering" > 
+		<cat name="mechanics" />
+		<cat name="astronautics" />
+		<cat name="electrotechnics" >
+			<cat name="electrotechnology" />
+			<cat name="electronics" />
+		</cat>
+		<cat name="hydraulics" />
+	</cat>
+	
+	<cat name="medicine" > 
+		<cat name="dentistry" />
+		<cat name="health" />
+		<cat name="pharmacy" />
+		<cat name="psychiatry" />
+		<cat name="radiology" />
+		<cat name="surgery" />
+	</cat>
+	
+	<cat name="veterinary" > 
+		<cat name="zootechnics" /> 
+		<cat name="animal_husbandry" />
+	</cat>
+	
+</cat>
+
+<cat name="pure_science" > 
+
+	<cat name="astronomy" > 
+		<cat name="topography" />
+	</cat>
+	
+	<cat name="biology" > 
+		<cat name="biochemistry" />
+		<cat name="ecology" />
+		<cat name="botany" >
+			<cat name="plants" />
+		</cat>
+		<cat name="zoology" > 
+			<cat name="entomology" />
+			<cat name="animals" />
+		</cat>
+		<cat name="anatomy" />
+		<cat name="physiology" />
+		<cat name="genetics" />
+	</cat>
+	
+	<cat name="chemistry" /> 
+
+	<cat name="earth" > 
+		<cat name="geology" />
+		<cat name="meteorology" /> 
+		<cat name="oceanography" />
+		<cat name="paleontology" />
+		<cat name="geography" />
+		<cat name="environment"/>
+	</cat>
+	
+	<cat name="mathematics" > 
+		<cat name="geometry" />
+		<cat name="statistics" />
+	</cat>
+	
+	<cat name="physics" > 
+		<cat name="acoustics" />
+		<cat name="atomic_physic" /> 
+		<cat name="electricity" />
+		<cat name="optics" />
+	</cat>
+	
+	
+	
+	<cat name="geography" />
+
+</cat>
+
+
+<cat name="social_science" > 
+
+	<cat name="administration" /> 
+
+	<cat name="anthropology" > 
+		<cat name="ethnology" > 
+			<cat name="folklore" />
+		</cat>
+	</cat>	
+	
+	<cat name="artisanship" />
+
+	<cat name="body_care" />
+
+	<cat name="commerce" />
+
+	<cat name="economy" > 
+		<cat name="banking" />
+		<cat name="book_keeping" /> 
+		<cat name="enterprise" />
+		<cat name="exchange" />
+		<cat name="finance" />
+		<cat name="insurance" />
+		<cat name="money" />
+		<cat name="tax" />
+	</cat>
+	
+	<cat name="fashion" />
+	
+	<cat name="humanities" />	
+
+	<cat name="industry" />
+
+	<cat name="law" > 
+		<cat name="state" /> 
+	</cat>
+	
+	<cat name="military" />
+
+	<cat name="pedagogy" >
+		<cat name="school" />
+		<cat name="university" /> 
+	</cat>
+	
+	<cat name="politics" > 
+		<cat name="diplomacy" />
+	</cat>
+	
+	<cat name="publishing" />
+
+	<cat name="sexuality" />
+
+	<cat name="sociology" />
+
+	<cat name="telecommunication" > 
+		<cat name="cinema" />
+		<cat name="post" />
+		<cat name="telegraphy" /> 
+		<cat name="telephony" />
+		<cat name="radio+tv" />
+	</cat>
+	
+	<cat name="tourism" />
+
+	<cat name="transport" >
+		<cat name="vehicles" />
+		<cat name="aeronautic" > 
+			<cat name="aviation" />
+		</cat>
+		<cat name="nautical" />
+		<cat name="auto" />
+		<cat name="gas" />
+		<cat name="merchant_navy" /> 
+		<cat name="railway" />
+	</cat>
+
+</cat>
+</categories>

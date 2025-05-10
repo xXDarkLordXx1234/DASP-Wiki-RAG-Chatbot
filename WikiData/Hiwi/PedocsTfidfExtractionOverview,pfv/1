@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="NicoErbs" date="1347285302" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++TfIdf Extraction Overview
+
+%EDITTABLE{ sort="off" tableborder="0" cellpadding="3" cellspacing="3" headerrows="1"}%
+| *Corpus* | *Pedocs* | *Inspec<br>(Hulth)* | *DUC* | *Scientific<br>papers* |
+| *Tokens / Document* | 14,590.5 | 138.6 | 902.8 | 8,491.6 |
+| *R-Precision (Tokens)* | | .27 | .12 | .12 |
+| *R-Precision (Lemmas)* | | .28 | .12 | .13 |
+| *R-Precision (Noun phrases)* | | .27 | .12 | .10 |
+
+-- Main.NicoErbs - 2012-09-10

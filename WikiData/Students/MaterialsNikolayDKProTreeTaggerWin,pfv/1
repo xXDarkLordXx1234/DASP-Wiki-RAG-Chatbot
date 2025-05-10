@@ -1,0 +1,29 @@
+%META:TOPICINFO{author="NikolayGeorgiev" date="1247442788" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NikolayMaterials"}%
+---+ Running the DK-Pro TreeTagger on Windows
+
+   * *With the DKPro CPE Configurator* (image attached below):
+      * I get the following exception:
+   	<blockquote>ThreadGroup.uncaughtException()-Got Error<br/>
+   	<span class="red">java.lang.ThreadDeath</span><br/>
+   	<span class="red">at java.lang.Thread.stop(Unknown Source)<br/>
+   	at de.tudarmstadt.ukp.dkpro.core.annotator.TreeTagger.process(TreeTagger.java:201)</span><br/>
+   	at org.apache.uima.analysis_component.JCasAnnotator_ImplBase.process(JCasAnnotator_ImplBase.java:48)<br/>
+   	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.callAnalysisComponentProcess(PrimitiveAnalysisEngine_impl.java:375)<br/>
+   	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.processAndOutputNewCASes(PrimitiveAnalysisEngine_impl.java:297)<br/>
+   	at org.apache.uima.analysis_engine.impl.AnalysisEngineImplBase.process(AnalysisEngineImplBase.java:218)<br/>
+   	at org.apache.uima.collection.impl.cpm.engine.ProcessingUnit.processNext(ProcessingUnit.java:892)<br/>
+   	at org.apache.uima.collection.impl.cpm.engine.ProcessingUnit.run(ProcessingUnit.java:577)<br/>
+   </blockquote>
+      * The exception occurs also with different values of the ExternalProcessRefreshRate of the TreeTagger, e.g. 0,1,2,50,...
+      * It's happening in the TreeTagger.java, line 201: treeTaggerThread.stop(); // which is depreciated method - [[http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Thread.html#stop%28%29][Thread.stop()]]
+      * From the uima.log file:
+      <blockquote>7/13/09 12:29:42 AM - 10: org.apache.uima.collection.impl.cpm.engine.CPMThreadGroup.process: SEVERE: The CPM thread group caught the following unhandled error: java.lang.ThreadDeath (Thread Name: Thread-10)
+      </blockquote>
+      * On my system (Windows x64), the TreeTagger ist correctly installed under DKPRO DIR/resources/TreeTagger 3.1 using the Windows version. The english.par file is added.
+
+-- Main.NikolayGeorgiev - 12 Jul 2009
+   * The CPE Configuration with the TreeTagger: <br />
+     <img src="%ATTACHURLPATH%/dkpro_descr_treetagger.PNG" alt="dkpro_descr_treetagger.PNG" width='964' height='764' />
+
+%META:FILEATTACHMENT{name="dkpro_descr_treetagger.PNG" attachment="dkpro_descr_treetagger.PNG" attr="" comment="The CPE Configuration with the TreeTagger" date="1247439258" path="dkpro_descr_treetagger.PNG" size="44677" stream="dkpro_descr_treetagger.PNG" tmpFilename="/var/tmp/CGItemp42035" user="NikolayGeorgiev" version="1"}%

@@ -1,0 +1,54 @@
+%META:TOPICINFO{author="DanielBaer" date="1272284636" format="1.1" version="28"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Carolin Deeg
+[[Projects.Wikulu.WikuluSetup][Wikulu Setup]]
+---++++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" }%
+| *Aufgabe* | *% done* |
+| Extraktion der parallelen Wikiquotes | 100 |
+| Refactoring der WikiAPI | 100 |
+| Modularisieren von Wikulu | 95 |
+| Dynamische Plugins mit Spring (Richard) | todo |
+
+---++++ Stunden
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Parallele Wikiquotes | 05.01.2010 | 2 | Eclipse eingerichtet und Projekt aufgesetzt |
+| | 06.01.2010 | 1 | Kennenlernen der Wiki-API |
+| | 06.01.2010 | 4 | Zerlegung der Aufgabe in einzelne Teilaufgaben und deren Implementierung |
+| | 08.01.2010 | 2 | Optimierung des Codes und Bugfixes |
+| | 13.01.2010 | 1 | Besprechung |
+| | 13.01.2010 | 2 | Implementierung von zusätzlichen Hilfsmethoden |
+| | 16.01.2010 | 2 | Ergänzen/Hinzufügen der Dokumentation |
+| | 18.01.2010 | 3 | Einfügen des Projekts ins SVN (und benötigte Methoden in bereits vorhandenen Klassen hinzufügen) |
+| | 20.01.2010 | 1 | Ausgabe von Statistiken, Umsortieren des Codes |
+| | 26.01.2010 | 1 | Besprechung |
+| | 19.01.2010 | 2 | Debugging (zu wenig gespeicherte Zitate) |
+| Refactoring der WikiAPI | 03.02.2010 | 1 | Analyse des vorhandenen Codes |
+| | 04.02.2010 | 2 | Implementierung der Klasse Page und Unterklassen |
+| | 05.02.2010 | 3 | Umstellen der verschiedenen WikiAPIs und Tests |
+| | 06.02.2010 | 3 | Debugging und Korrekturen nach der Umstellung |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 30 | 01.01.2010 bis 31.01.2010 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Refactoring der WikiAPI | 08.02.2010 | 1 | Dokumentation |
+| | 08.02.2010 - 15.02.2010 | 6 | Umstellen von anderen Klassen auf neue Funktionen |
+| | 09.02.2010 - 16.02.2010 | 5 | Entfernen von veralteten WikiApi-Methoden und Fehlerbehebungen |
+| Modularisieren von Wikulu | 23.02.2010 | 1 | Installation des Wikulu-Plugins |
+| | 05.03.2010 | 3 | Neuinstallation von Eclipse, Einrichten der Plugins |
+| | 09.03.2010 | 3 | Update der Projektabhängigkeiten und Fehlerbehebungen |
+| | 11.03.2010 - 16.03.2010 | 7 | Funktionen von Wikulu modularisieren |
+| | 16.03.2010 - 18.03.2010 | 5 | Dynamisches Wikulu-Menü erstellen |
+| | 24.03.2010 - 26.03.2010 | 6 | Modularisieren von Wikulu.java |
+| | 25.03.2010 - 30.03.2010 | 10 | Strukturieren und Testen des Plugin-Systems |
+| | 02.04.2010 - 08.04.2010 | 11 | Implementierung der Plugins und Fehlerkorrekturen |
+| | 07.04.2010 | 1 | Besprechung mit Daniel |
+| | 10.04.2010 | 2 | Dokumentation |
+| | 13.04.2010 - 17.04.2010 | 4 | Fehlerkorrekturen und Aufräumen des Codes |
+| | 16.04.2010 | 1 | Dynamisches Wikulu-Menü für MediaWiki |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | 01.02.2010 bis 30.04.2010 |
+<nop>

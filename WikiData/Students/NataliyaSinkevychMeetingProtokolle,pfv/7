@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="NataliyaSinkevych" date="1215607225" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="NataliyaSinkevych"}%
+-- Main.NataliyaSinkevych - 09 May 2008
+
+---++ Treffen am 10. März (NS, MCM)
+   * Crawling von PW ist soweit abgeschlossen, Daten liegen vor
+   * Problem: Die meisten Services verwenden das SOAP-Protokoll, welches von der aktuellen Version des WSDL-Readers nicht vollständig gelesen werden kann. Vergleiche
+      * [[%ATTACHURL%/out_http.html][out_http.html]]: out_http.html
+      * [[%ATTACHURL%/out_soap.html][out_soap.html]]: out_soap.html
+   * Die Eingabeparameter im SOAP-Protokoll sind 'complex', können aber nicht analysiert werden. Im HTTP-Protokoll sind mehrere Eingabeparameter einzeln aufgeführt.
+   * @action(MCM): Checken, ob Reader modifiziert werden kann um auch SOAP zu lesen. (Die bisher verwendeten Datensätze hatten hauptsächlich HTTP verwendet, daher war die Einschränkung bisher kein Problem).
+
+---++ Treffen am 20. März (NS, MCM)
+   * Auslesen von XML-Schema funktioniert jetzt (bisher noch im eigenständigen Programm)
+   * Keine Arbeit investieren in die Verarbeitung nicht-wohlgeformter WSDL-Dateien!
+   * Nächste Schritte:
+      * UIMA installieren
+      * Parametrisierbare Methode zum Schema-Parsen schreiben (max. Rekursionstiefe 2)
+      * Existierenden WSDLReader um Schema-Unterstützung ergänzen
+
+---++ Treffen am 15. Mai (NS, CM, MCM)
+   * Gespräch über die vorhandenen UIMA-Komponenten (vor allem Lucene-Komponenten) und die zu implementierenden Terrier-Komponenten.
+   * Entscheidungen:
+      * Es wird *ein* Index pro Query bzw. Service erstellt. Versch. Abschnittte werden über Fields unterschieden (s.u.).
+      * Der WSDL-Reader wird abgeändert, so dass er Strukturinformationen aus den ausgelesenen WSDL-Files als Instanzen der generischen Annotation 'Field' repräsentiert. Dadurch wird die inhaltliche Unterscheidung von Eingabeparameter, Ausgabeparameter, etc. für den Index Term Generator erleichtert. 
+   * Nächste Schritte:
+      * Index Term Generator und Lucene Index Writer anschauen und die nachfolgende Komponente Terrier Index Writer entwickeln
+      * Lucene Query Generator anschauen; Terrier Query Generator und Terrier Searcher entwickeln
+         * außerhalb des Meetings geklärte bzw. weitere Anmerkungen von CM: Beim Terrier Searcher sollte es durch Parametereinstellungen möglich sein, die verschiedenen Modelle in Terrier auszuwählen und zu konfigurieren. Ebenso sollte optional Query Expansion unterstützt werden (siehe Abschnitt Query Expansion in der [[http://ir.dcs.gla.ac.uk/terrier/doc/configure_retrieval.html][Terrier Doku]]), da dies als wichtige Baseline zu den semantischen Methoden dient.
+
+---++ Treffen am 4. Juni (NS, CM, MCM)
+   * besprochen wurden die Eigenschaften und die Möglichkeiten von Terrier
+   * die eigenständige Java-Applikation mit den implementierten Terrier Indexierung und Terrier Suche wurden vorgeführt
+   * die implementierte UIMA-Komponente "TerrierIndexWriter" wurde präsentiert
+   * es wurden die noch zu implementierenden Funktionen diskutiert, wie z.B. die Unterstützung von anderen Sprachen in Terrier...
+   * besprochen wurden unter anderem auch die UIMA-Komponenten "IndexTermGenerator", "LuceneQueryGenerator", "LuceneIndexWriter" und "LuceneSearcher"
+   * Nächste Schritte:
+      * "TerrierSearcher" soll als UIMA-Komponente implementiert werden; hier soll es möglich sein Weighting Models und Expansion Models über Deskriptor zu bestimmen
+      * "TerrierIndexWriter" sollte um die besprochenen Eigenschaften, wenn diese von Terrier unterstützt werden, ergänzt werden
+      * "QueryGenerator" soll ergänzt werden, um die Queries wie feld:term zu erzeugen
+      * Properties-Datei, die von Terrier benutzt wird, soll automatisch erzeugt werden
+
+---++ Treffen am 7. Juli (NS, IG, CM, MCM)
+   * Präsentation der Zwischenergebnisse
+
+
+   * [[%ATTACHURL%/_0707_Treffen.zip][_0707_Treffen.zip]]: die präsentierten Ergebnisse
+
+%META:FILEATTACHMENT{name="out_http.html" attachment="out_http.html" attr="" comment="" date="1205250777" moveby="NataliyaSinkevych" movedto="Teaching.NataliyaSinkevychMeetingProtokolle.out_http.html" movedwhen="1210331181" movefrom="Teaching.NataliyaSinkevych.out_http.html" path="out_http.html" size="561565" stream="out_http.html" user="Main.ChristophMueller" version="1"}%
+%META:FILEATTACHMENT{name="out_soap.html" attachment="out_soap.html" attr="" comment="" date="1205250796" moveby="NataliyaSinkevych" movedto="Teaching.NataliyaSinkevychMeetingProtokolle.out_soap.html" movedwhen="1210331244" movefrom="Teaching.NataliyaSinkevych.out_soap.html" path="out_soap.html" size="988059" stream="out_soap.html" user="Main.ChristophMueller" version="1"}%
+%META:FILEATTACHMENT{name="_0707_Treffen.zip" attachment="_0707_Treffen.zip" attr="" comment="die präsentierten Ergebnisse" date="1215607224" path="F:\!!! 090708\! Wiki\!!! 0707_Treffen.zip" size="941807" stream="F:\!!! 090708\! Wiki\!!! 0707_Treffen.zip" tmpFilename="/var/tmp/CGItemp28269" user="NataliyaSinkevych" version="1"}%

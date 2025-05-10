@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <implementationName>de.tudarmstadt.ukp.dkpro.core.consumer.AnnotationWriter</implementationName>
+  <processingResourceMetaData>
+    <name>Annotation Writer</name>
+    <description>Writes annotations to a file. Specify the annotation types which should be printed in the parameter AnnotationTypes. The values of begin, end, and coveredText are always written. By default, all types and all featuures are written as well. For other features add entruies of the form typeName:featureName to the parameter AnnotationTypes. The type name has to be fully qualified.</description>
+    <version/>
+    <vendor/>
+    <configurationParameters>
+      <configurationParameter>
+        <name>OutputFile</name>
+        <description>The file path of the annotations.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>AnnotationTypes</name>
+        <description>Which features of annotation types should be included in the output file.</description>
+        <type>String</type>
+        <multiValued>true</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>WriteCasInformation</name>
+        <description>If it is true, the basic information of a CAS (document language, document text) are written into the output file.</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>WriteDocumentMetaData</name>
+        <description>If it is true, the content of a annotation type DocumentMetaData will be written into the output file.</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>WriteAllFeatures</name>
+        <description>If it is true, all features of a annotation type are written into the output file.</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>WriteAllTypes</name>
+        <description>Write all types contained in CAS, excluding built-in UIMA types and DocumentMetaData.</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>ExcludeDocumentUri</name>
+        <description>Excludes DocumentMetaData.DocumentUri if WriteDocumentMetaData is true</description>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>    
+    <configurationParameterSettings>
+
+      <nameValuePair>
+        <name>AnnotationTypes</name>
+        <value>
+          <array/>
+        </value>
+      </nameValuePair>
+
+      <nameValuePair>
+        <name>WriteCasInformation</name>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </nameValuePair>
+
+      <nameValuePair>
+        <name>WriteDocumentMetaData</name>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </nameValuePair>
+
+      <nameValuePair>
+        <name>WriteAllFeatures</name>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </nameValuePair>
+
+      <nameValuePair>
+        <name>WriteAllTypes</name>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </nameValuePair>
+
+      <nameValuePair>
+        <name>ExcludeDocumentUri</name>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </nameValuePair>
+
+
+
+    </configurationParameterSettings>
+    <typeSystemDescription>
+      <imports>
+        <import name="desc.type.DocumentMetaData"/>
+      </imports>
+    </typeSystemDescription>
+
+    <capabilities/>
+    <operationalProperties>
+      <modifiesCas>false</modifiesCas>
+      <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </processingResourceMetaData>
+</casConsumerDescription>

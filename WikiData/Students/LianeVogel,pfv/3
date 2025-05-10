@@ -1,0 +1,64 @@
+%META:TOPICINFO{author="schiller" comment="" date="1540557523" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+++ 26.10.2018
+*Current state*
+   * Virtuoso running on local machine with SPARQL endpoint and [[https://wordnet-rdf.princeton.edu/about][WordNet 3.1]]
+   * Full text search is working
+   * Multiple knowledge graphs can be imported and simultaneously queried by defining Graph IRIs for each
+   * Waiting for VMServer to be deployed
+
+*Open questions/tasks*
+   * Since Wikidata is quite large, we need to reduce its size for performant queries:
+      * Tool to filter languages and properties, etc.: https://www.mediawiki.org/wiki/Wikidata_Toolkit/Client
+      * Config-datei anlegen:
+         * Only german and english
+         * Only use properties that are not on the [[%ATTACHURLPATH%/property_blacklist.txt][blacklist]] (remove from [[https://github.com/maxlath/wikidata-cli/blob/master/docs/read_operations.md#wd-props][list of all properties]])
+   * Investigate Entity Linkers until VMServer is available:
+      * See agenda from 12.10.2018
+      * Check which KBs support Wikipedia/Wikidata QIDs (on which the Entity Linker will be trained on)
+      * Do we need separate Entity Linkers for KBs that do not support QIDs?
+
+
+---+++ 19.10.2018
+*Current state*
+   * Virtuoso running on local machine with SPARQL endpoint and WordNet 3.1
+
+*Open questions/tasks*
+   * Is it possible to use other query languages (SQL, CIPHER, etc.)?
+   * How to enable full text search? (https://github.com/dotnetrdf/dotnetrdf/wiki/UserGuide-Full-Text-Querying-With-SPARQL)
+   * How is it possible to use multiple knowledge bases in one Virtuoso endpoint?
+   * Provide detailed documentation for installation and configuration
+
+---+++ 12.10.2018
+*Organizational*
+   * Sign contract, intellectual proprty statement, task descriptions
+   * Mandatory meetings on Tuesdays at 11:30 in B002
+   * Thesis template und Presentation template: https://wiki.ukp.informatik.tu-darmstadt.de/Students/InformationenFuerDiplomanden
+
+*Proposed/Discussed next steps (Overview)*
+   1 Work into Virtuoso (document all steps)
+      2 Build a minimal working sample by  installing Virtuoso, adding e.g. WordNet (specs for virtuoso KB server: https://docs.google.com/document/d/17gru5AApGwa-F7_4gZ_adMjlmBUYviD6oynSgiz0gMM/edit)
+      3 Add a SPARQL endpoint for WordNet/Virtuoso (check functionality by comparing it to official WordNet SPAQRL endpoint)
+      4 Find out how to add multiple KBs with their own endpoints (is a combined endpoint possible?)
+   2 Entity linker
+      3 Find out which entity linkers can be used for the proposed KBs and how they work (is a SPAQRL endpoint sufficient?), e.g. from:
+         *     Unsupervised Entity Linking with Abstract Meaning Representation, ACL16 
+         *     CoType: Joint Typing of Entities and Relations with Knowledge Bases, WWW17 
+         *     Fast and Space-Efficient Entity Linking in Queries, WSDM15 
+         *     Tagme: on-the-fly annotation of short text fragments (by Wikipedia entities), CIKM10 
+         *     Local and Global Algorithms for Disambiguation to Wikipedia (Wikifier), ACL11 
+         *     DBpedia Spotlight, iSemantics13 
+      4 Test entity linkers with Virtuoso endpoint
+
+
+
+
+
+
+
+---+++ 21.09.2018
+   * discuss proposal for task description
+
+-- Main.BenjaminSchiller - 2018-10-12
+
+%META:FILEATTACHMENT{name="property_blacklist.txt" attachment="property_blacklist.txt" attr="" comment="" date="1540557214" size="6370" user="schiller" version="1"}%

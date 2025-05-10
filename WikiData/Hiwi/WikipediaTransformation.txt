@@ -1,0 +1,68 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" version="2"}%
+%META:TOPICPARENT{name="AnouarWork"}%
+---+ Transformation Tool
+
+---++ Assumption
+
+   * You are using *MySQL*.
+   * You are running *Linux*.
+
+---++ Preparation
+
+---+++ Importing Wikipedia into Mediawiki
+   1 Get the database layout
+      * Download the the correct version of !MediaWiki that Wikipedia was running at the time of dumping
+      * The database layout is in =maintenance/tables.sql=.
+   1 Delete anything except of the tables =categorylinks=, =page=, =pagelinks=, =revision=, and =text=
+   1 Change the table type from !InnoDb to !MyISAM.
+   1 Delete the indexes for the =categorylinks= and =pagelinks= tables.
+   1 Import the layout from =tables.sql= into a !MySQL database
+   1 Make sure that your database is in UTF8 mode.
+   1 Download the Wikipedia dumps from http://download.wikimedia.org/backup-index.html
+      * XXwiki-YYYYMMDD-pages-articles.xml.bz2
+      * XXwiki-YYYYMMDD-pagelinks.sql.gz
+      * XXwiki-YYYYMMDD-categorylinks.sql.gz
+   1 Download the program xml2sql from http://meta.wikimedia.org/wiki/Xml2sql
+      * Compile and install it (assuming that you are under Linux)
+   1 Convert the xml file into sql
+      * bunzip2 -c XXwiki-YYYYMMDD-pages-articles.xml.bz2 | xml2sql
+   1 Import the data into the database
+      * =mysqlimport --verbose -u USER -p DB_NAME `pwd`/{page,revision,text}.txt= for the =.txt= files.
+      * =gunzip < XXwiki-YYYYMMDD-[page|category]links.sql.gz | mysql -u USER -p --default-character-set=utf8 DB_NAME= for the =.sql.gz= files.
+      * Get a cup of coffee :) -- this takes a while.
+
+---++ Running the database transformer
+
+The database transformer uses the data that is scattered in the original representation to create Java objects representing Page (articles, redirects, disambiguation pages) and Category objects. These objects are persisted in the API database using the Hibernate object-relational mapping framework.
+
+   1 For processing the English Wikipedia you will need ~40-50GB disk space, a fast machine and >1GB RAM. (Other languages consume far less resources.)
+   1 For a JDBC connection to a !MySQL database, you need to have !MySQL Connector/J installed.
+   1 Adjust the database connection parameters in Constants.java
+      * =String JDBC_USERNAME = "WIKIUSER";=
+         * Make sure that this user can write the database.
+      * =String JDBC_PASSWORD = "WIKIPASSWORD";=
+      * =String JDBC_URL = "jdbc:mysql://SERVER/DATABASE?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8";=
+         * If you are running a local server, SERVER is =localhost=.
+         * Set that to the correct database, otherwise Hibernate will write to an existing database. You might possibly not want that.
+   1 Edit some language specific settings (example is for German). Adjust that to the language you are using.
+      * static final String DISAMB_CATEGORY = "Begriffskl\u00e4rung";
+         * Note that it is actually "Begriffsklärung" including a with diaeresis. It is written as a Unicode escape sequence here. If you do not write non-ASCII characters as unicode sequences, the transformation tool might not be portable between operating systems using different character sets.
+         * You can use the tool =native2ascii= that is shipped with Java to transform a string into a unicode escape sequece.
+      * static final String MAIN_CATEGORY = "!Hauptkategorie";
+   1 In case you added a new language, you have to create a new config file in =org.tud.sir.wiki.hibernate.config= and adjust =org.tud.sir.wiki.hibernate.util.WikiHibernateUtil= to load the new config file.
+      *Edit the "database connection settings" part in the config file.
+         * <verbatim>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://SERVER/DATABASE</property>
+        <property name="hibernate.connection.characterEncoding">UTF-8</property>
+        <property name="hibernate.connection.hibernate.connection.useUnicode">true</property>
+        <property name="connection.username">USERNAME</property>
+        <property name="connection.password">PASSWORD</property>
+        </verbatim>
+      * Create the API database.
+      * Make sure that the specified user can write this database.
+      * Make sure that this database is in UTF-8 mode.
+
+
+
+-- Main.TorstenZesch - 16 Mar 2007

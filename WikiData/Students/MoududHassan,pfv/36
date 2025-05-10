@@ -1,0 +1,158 @@
+%META:TOPICINFO{author="sorokin" comment="save topic" date="1488454362" format="1.1" reprev="35" version="36"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Thesis Topic
+
+---++ Intro
+
+---++ 07.03.17 (Next meeting)
+   * @info(DS): Task description was approved.
+      * Next order of business: register with the exam office
+
+   * @todo(MH): Generating smaller Wikidata dump with the Wikidata Toolkit
+      * We need Statements, Terms, Instances and Properties. 
+      * We do not need Site-links or References, Simple statements
+      * @info(MH): Status update:
+         * Generated rdf for Statements using RdfSerializer of the wikidata toolkit. 
+         * It is possible to not copy references, site links and labels based on language. 
+         * It is possible to filter out black listed properties by implementing EntityDocumentProcessor processItemDocument method.
+   * @info(DS): We should look at this database server: [[https://www.blazegraph.com][Blazegraph]]
+      * Might be an alternative to Virtuoso
+      * It is actually used at [[https://query.wikidata.org]]
+   * @info(DS): We should also think if we should switch to another type of the RDF dump: [[https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format]]
+      * Pros: it is official, it has nice prefixes for properties (e.g. wdt:P6 always links to the current president)
+      * Cons: Implementation overhead, the dump is supposedly bigger, as some properties are duplicated (e.g. P6 is stored both with the prefix wdt: for the current president and a prefix p: for all presidents) -> longer search times
+   * @info(DS): I have send you the list of properties to exclude
+   * @info(DS): A Wikimedia project to extract Wikidata facts form text: [[https://meta.wikimedia.org/wiki/Grants:IEG/StrepHit:_Wikidata_Statements_Validation_via_References/Final#Outcomes_and_impact]]
+      * Can we take something from it?
+   * @question(): Are you familiar with Quantification? The Wikipedia description is pretty good: [[https://en.wikipedia.org/wiki/Quantifier_(linguistics)]]
+   * @discuss(): create a list entities to exclude
+      * To do that we need a list of types of entities (e.g. Wikimedia disambiguation page:Q4167410) that we want to exclude
+         * Wikimedia disambiguation page:Q4167410
+         * Wikimedia category:Q4167836
+   * @discuss(): suggestion from colleges:
+      * Extract entities and relations of interest from the knowledge base and do a Lucene search on the corpus.
+      * This would an opposite of going through the corpus and sending requests to the knowledge base for each pair of entities.
+
+---++ 27.02.2017
+   * @discuss(MH): 
+      * I have been reading the papers of Mintz and Reddy for 3 days now but sadly could not understand them completely. The main problem is I understand some bits here and there but I can not yet get the whole picture. Similarly, in the task description I am confused where the entity information returned by the Java API will be used? Will it be used to annotate wikipedia texts? If yes will the annotated text be used as training data? 
+      * I guess I am not yet fully aware of the whole context of the pipeline that how the components (Java API, Training Data, Semantic Parser) within the pipeline interplay. I think it will be very helpful if you elaborate the work packages (especially WP3) and provide few more examples to dissect the problem and the requirements.
+
+---++ 23.02.2017
+   * @discuss(): Task description
+      * Link to the [[%ATTACHURLPATH%/2017_ACL_short_DS_WikiData_relation_extraction.pdf][ACL short paper]] for relation extraction
+
+
+---++ 29.01.2017
+   * info(MH): Research and Development on wikidata toolkit
+      *  It is possible to read wikidata json file locally and extract entity information out of it. 
+         * Json dump file can be processed using DumpProcessingController. I have implemented a DataExtractor class that implements EntityDocumentProcessor and override processItemDocument() method. This method takes a ItemDocument parameter which encapsulates all information regarding the entity.
+         * *The problem:* processDump() method of DumpProcessingController invokes processItemDocument() for every entity within the json file. It takes 36 minutes to finish the processing in my machine. 
+         * The operation involes disk I/O. 
+         * I do not know how to load the file entirely on RAM.
+
+   * Another option is to use wikibaseapi where we can invoke method like : 
+      dataFetcher.getEntityDocumentsByTitle("enwiki", "Barack Obama"). 
+However this calls a webservice https://www.wikidata.org/w/api.php/, It is possible to override this default URL but as you can see it is actually not any SPARQL end point rather http webservice (wikibase API). 
+
+
+   * @Done(MH)(see above): Is [[ https://m.mediawiki.org/wiki/Wikidata_Toolkit]] a good alternative to SPARQL endpoint? Or should we use it with SPARQL?
+      * What does Wikidata Toolkit support? Can it work with a Sparql endpoint? With a JSON dump?
+      * The latter should be very fast if JSON is loaded into memory.
+      * Re-implement the queries from the test task using the Wikidata Toolkit and compare the performance.
+
+---++ 2017-01-16
+   * @todo(MH): try to make the annotation pipeline work with a part of the index
+         * Annotation is working.                   
+         * The problem with the annotation pipeline is there are some assumptions made in the implementation that does not hold true for the dump file I am using. For example: some tags searched case sensitively. For this the parser ignores those tags even though they exists. 
+         * Found out the cause of "Out of memory" exception
+         * The parser can not remove the image tag if the end tag is missing. It falls in an infinite recursive loop. My enwiki dump file has some missing end tag. 
+         * Fixed the issue by implementing removeImageTag method with Regular Expression.
+   * @info(MH): Annotation Pipeline is Working. Following are the details : 
+      1 Downloaded 20161003.json (wikidata json) and created Index of all wikidata IDs and their corresponding English identifiers names. This is a complete list of all wikidata IDs.
+      2 Downloaded enwiki-20161201-pages-articles-multistream.xml. 
+         * Added missing properties configuration entries.         
+      3 Fixed Heap out of memory exception. 
+         * The parser can not remove the image tag if the end tag is missing. It falls in an infinite recursive loop. My enwiki dump file has some missing end tag. 
+         * Fixed the issue by implementing removeImageTag method with Regular Expression. 
+      4 Executed annotation pipeline with the following configuration:
+         * MAX_ARTCILES = 1000
+         * RADNDOM_ARTICLE = OFF
+         * START_ARTICLE_COUNT = 100
+      5 Following are Output files : 
+         * annotations-all.txt 
+         * error-sentences-all.txt
+         * sentences-all.txt
+         * sentences-index-all.txt
+         * statistics-all.txt
+        
+   * Below is an example excerpt from the annotations file produced : 
+_The domain name system (DNS) stores and associates many types of information with  *&lt;item id=Q32635&gt;domain name&lt;/item&gt;* s, but most importantly, it translates domain names (computer [[hostname]]s) to [[IP addresses]]. It also lists [[mail exchange server]]s accepting [[e-mail]] for each domain. In providing a worldwide [[Index term|keyword]]-based redirection service, DNS is an essential component of contemporary [[Internet]] use.( *&lt;item id=Q8767 ref=Domain name system|read more...&gt;read more...&lt;/item&gt;* )_
+
+
+---++ 2016-12-19
+   * @todo(MH): fill out the wiki
+   * @info(DS): Mintz et al. (2009): Distant supervision for relation extraction without labeled data ([[https://web.stanford.edu/~jurafsky/mintz.pdf][.pdf]])
+      * DS: The paper explains the trick that I was referring to during the last meeting. Namely that we can assume that if two entities are related in the knowledge base, this relation is expressed whenever these two entities appear in the same sentence. It is called the _distant supervision assumption_.
+   * @todo(MH): read chapter 5 of Raktim's thesis about linking entities in Wikipedia
+   * @todo(DS, MH): what is the best way to organise the code repositories/integrate DS's and Raktim's
+      * DS: I think it would be best if you fork my repository and use it as a basis. We can later merge the important changes.
+      * MH: Your repository means "semantic-parsing-training-data-pipeline"? Sure I can fork your project and work on that. For Raktim's code I think I should create a jar and add the reference to the project. 
+         * DS: Yes, semantic-parsing-training-data-pipeline. As for Raktim's code: yes, try with a jar.
+   * @todo(MH): Next task:
+      1 Take the latest Wikipedia Dump
+         * [[https://dumps.wikimedia.org/enwiki/20161201/]]
+         * [[https://en.wikipedia.org/wiki/Wikipedia:Database_download#Dealing_with_compressed_files]]
+      2 Take the first 1000 articles 
+      3 For each article extract sentences that have links
+      4 Convert links to WikiData IDs
+      5 Store sentences and mark entities in them with the extracted WikiData IDs:
+         * E.g.: This is the president <wd id = "Q76">Barack Obama</>
+   * info(DS): Using the multistream index: [[http://stackoverflow.com/questions/29020732/how-to-use-information-provided-in-wiki-downloads-index-file]]
+   * <del>MH: Where can I get this apache-opennlp-1.6.0/bin/en-sent.bin(SENTENCE_TOKENISER_MODEL)?</del>
+   * Got it. I had to install opennlp library and download the model file en-sent.bin
+   * Added missing WIKIDATA_DUMP property at config.resource which is used by IndexWikidata.java to create index files.
+   * Added missing WIKIDATA_INDEX_FILE property at config.resources which is used by IndexWikidata.java
+   * Encountered java.lang.OutOfMemoryError: GC overhead limit exceeded exception at serizlizeIndex method while trying to load Index files into memory.
+         * As a temporary solution only loading 50000 lines into memory.
+   * Could not find SENTENCES_METADATA (sentences-metadata-all.txt). Where can I get it?
+
+---++ 2016-12-09
+   * @done(DS): Dr. Eichberg (he has granted his permission)
+   * @todo(MH): fill out the wiki
+   * @todo(MH): DKPro: [[https://dkpro.github.io/dkpro-core/]]
+         * MH : <del>Installed Maven and tried to setup a test project as instructed at [[https://dkpro.github.io/dkpro-core/pages/java-intro/]]. But getting the following error inside main method where I am calling runPipeline : </del>
+         * <del>The method createReaderDescription(Class<? extends CollectionReader>, TypeSystemDescription, TypePriorities, FsIndexCollection, Capability[], Object...) from the type CollectionReaderFactory refers to the missing type CollectionReaderDescription</del>
+         * <del>The method createEngineDescription(AnalysisEngineDescription...) from the type AnalysisEngineFactory refers to the missing type AnalysisEngineDescription</del>
+         * <del>I checked inside the Maven dependencies that the required dependencies already exists!</del>
+         * Please ignore comments above. I have resolved the issues. It was basically maven repository had caching issues. 
+   * @todo(MH): take a a closer look at the code 
+      * MH : Trying to understand knowledgebase KbSPARQLAccess type you implemented the type as enum instead of a class. Would like to know why you choose enum over class?
+         * To simulate  singleton class: [[http://javarevisited.blogspot.de/2012/07/why-enum-singleton-are-better-in-java.html][Why Enum Singleton are better in Java]]
+      * DS's code
+      * Raktim's code on extracting data from the Wikipedia corpus: CreateAnnotations.java
+         * I want to debug the code to understand how it works. I need wikidata dump file to do that. Where do I get wiki data dump file?
+         * DS: I think he has used the JSON dump for this task, it is available here: [[https://www.wikidata.org/wiki/Wikidata:Database_download#JSON_dumps_.28recommended.29][Wikidata:Database_download#JSON_dumps]]. The RDF dump that is loaded into the local installation of Virtuoso at UKP can be downloaded  [[http://tools.wmflabs.org/wikidata-exports/rdf/exports.html][here]].
+         * @info(DS): More details in Raktim's thesis: [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/Thesis-PDF/Reference-Extraction-Master-thesis.pdf][Reference-Extraction-Master-thesis.pdf]]
+   * @info(DS): [[http://www.cray.com/blog/tuning-sparql-queries-performance/][Tuning SPARQL Queries for Performance]] - just a couple of good practices, though I have found them pretty useful. 
+
+---++ 2016-11-25
+   * @info(DS): organisational issues
+   * @info(DS): relevant code repositories:
+      * [[https://github.com/sivareddyg/graph-parser]] - this is a Semantic Parser that uses a different knowledge base (Freebase), but the queries and their structure are very similar to WikiData. We can definitely learn something from his implementation. It seems like SPARQL relevant classes are located here: [[https://github.com/sivareddyg/graph-parser/tree/master/src/in/sivareddy/graphparser/util/knowledgebase]]
+      * [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/]] - This is a code of a UKP master student who had to implement some SPARQL queries last year. He has used the same WikiData endpoint. The Queries are implemented in this class: [[https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students/bora/trunk/java/src/main/java/de/tudarmstadt/ukp/raktim/SparqlHandler.java]]
+      * Finally here is some code that I have been working on, relevant WikiData objects are located here: [[https://git.ukp.informatik.tu-darmstadt.de/sorokin/semantic-parsing-training-data-pipeline/tree/master/src/main/java/knowledgebase]] - get acquainted with it, as we'll probably use it as the starting point. 
+
+---++ 2016-11-XX
+   * @todo(MH): test task results, link the code   
+   * Implemented a Wiki data test API that consists of 3 simple sparql query
+      * getRelation : This method gets a Set of relation/predicate between two entities. The entity id are supplied. 
+         * Performance results: 432 milli seconds 
+      * getTrippleWithCommonRelations : Given two natural language entity names w1 , w2 (e.g. &#65533;Barack Obama&#65533;, &#65533;United States&#65533;) retrieve a set of triples {he1,1, r1 , e1,2i, he2,1, r2 , e2,2i, . . . , hen,1 , rn, en,2 i} from WikiData, such that e1 is a WikiData entity id corresponding to an entity that has a name or an alias &#65533;Barack Obama&#65533; and e2 has the same relation to &#65533;United States&#65533;.
+         * Performance results : 02 seconds, 687 milli seconds
+      * getMostRecentEntity : Given a WikiData entity id e1 and a relation type r retrieve an entity id o1, such that the fact (e1, r, o1) is stored in WikiData, there is a date t attached to that fact that ((e1, r1,o1), TIME t) and for any other entity ef that is also related to e1 with the same relation r(e1,r1, ef) the attached date tf is is earlier than t. For example, the entity "United States" is related with the relation "President" to all American presidents and it is required to extract only the most recent President.
+         * Performance results : 348 milli seconds
+   * The test project link [[https://git.ukp.informatik.tu-darmstadt.de/hassan/WikiDataTestAPI.git]]
+-- Main.DaniilSorokin - 2016-11-25
+
+%META:FILEATTACHMENT{name="2017_ACL_short_DS_WikiData_relation_extraction.pdf" attachment="2017_ACL_short_DS_WikiData_relation_extraction.pdf" attr="" comment="" date="1488213433" size="164554" user="sorokin" version="1"}%

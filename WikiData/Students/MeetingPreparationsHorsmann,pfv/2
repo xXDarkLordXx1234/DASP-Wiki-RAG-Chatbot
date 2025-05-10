@@ -1,0 +1,81 @@
+%META:TOPICINFO{author="horsmann" date="1380406410" format="1.1" version="2"}%
+%META:TOPICPARENT{name="TobiasHorsmann"}%
+---+++ 2013-09-30
+Schwierigkeitsbestimmung eines Wortes im Satz als Lücke durch Bestimmung der potenziellen Mehrdeutigkeit durch Ermittlung oder Abschätzung von alternativen Worten die ebenfalls syntaktische und semantische Sätze ergeben:
+
+Use-Case:
+Es wird ein Wort bestimmt, dass Blank gesetzt werden soll. Für dieses Wort werden Sätze bereitgestellt in denen dieses Wort vorkommt, wo es aber eine nur geringe Anzahl an anderen Worten gibt die an der Stellen des ursprünglichen Wortes eingesetzt werden können. 
+Das heißt die Anzahl an alternativen Möglichkeiten ist bekannt woraus Rückschlüsse über die Schwierigkeit der Lücke getroffen werden können. Beziehungsweise Wortlücken die eine große Anzahl an Alternativen haben kommen zum Beispiel für Testmethoden wie Open-Cloze nicht in Frage (zumindest nicht bei Bewertungsmethoden wo nur exakte Antworten Punkte bringen).
+Bei vielen Kandidaten kann der Kandidatenpool als Quelle für Distraktoren verwendet werden oder Methoden wie C-Test sollten verwendet werden. 
+Alternativ können Testteilnehmer aufgefordert werden für eine Wortlücke alle Worte einzusetzen die einen gültigen Satz ergeben. Durch Abgleich mit den maschinell ermittelten Worten kann dann eine Auto-Bepunktung durchgeführt werden. Zudem könnten unter Umständen bisher noch nicht bekannte, alternative Antworten auf diesen Weg gewonnen werden, wodurch der Wortpool automatisch wächst (manuelle, menschliche Beurteilung notwendig). 
+
+
+Baseline:
+Als Baseline für die Auffindung von Sätzen wo ein Wort eine geringe Mehrdeutigkeit an könnte folgender Ansatz verwendet werden:
+Anhand des Suchwortes und seiner Wortklasse werden andere Sätze ermittelt wo dieses ebenfalls drin vorkommt. Für jeden Satz wird die POS-Tag Nachbarschaft von w-2 bis w+2 um das gesuchte Wort herum ermittelt, Wortnachbarschafts-Signatur. Die Wortklasse des Suchwortes wird ignoriert, da auch Worte mit anderen Wortklassen berücksichtigt werden sollen.
+Für diese Wortnachbarschafts-Signatur wird der komplette Korpus für alle Sätze mit dem Suchwort durchsucht. Alle Worte die mit gleicher Nachbarschafts-Signatur auftreten und vom ursprünglichen Suchwort verschieden sind stellen Kandidaten für den jeweiligen Ausgangssatz dar. Als Baseline gilt hier die Annahme, dass jeder Kandidat ein syntaktisch und semantischen Satz ergibt, wenn man dieses anstelle des ursprünglichen Wortes einsetzt. 
+
+Methode für bessere Ergebnisse:
+Anhand von den Baseline-Kandidaten wird für jeden Kandidat:
+- mit verschiedenen Maßen um Semantik relatedness zu bestimmen die Ähnlichkeit von Ursprungswort uw und einem Kandidat K ermittelt. 
+	+ Wordnet Ansätze mit Hierarchie-Tiefe, lowest common 
+	+ Schnittmenge der Wortdefinitionen von uw und K
+	+ (siehe LSM Vorlesungsfolien)
+- Verwendung von Frequenz Thresholds für ähnliche Kandidaten, e.g. sehr spezielle Worte sind unwahrscheinlich, wenn das ursprüngliche Wort ein sehr häufiges war. 
+- Erzeugt ein Kandidat einen gültigen Parsebaum ?
+
+
+Evaluation:
+Aspekt 1:
+Testteilnehmer auffordern alle passenden Worte zu nennen die eine Lücke seiner Meinung nach sinnvoll ergänzen und einen syntaktisch und semantisch korrekten Satz ergeben. Reihenfolge in der Benennung durch den Testteilnehmer liefert Hinweise darüber wie naheliegend ein Wort für eine Lücke ist (ausgehend von Muttersprache X).
+- Wie viele der automatisch ermittelten Worte werden von den Testteilnehmern genannt?
+- Wie häufig nennen Testteilnehmer andere, korrekte Worte
+
+Aspekt 2:
+Sollte Kandidatenerhebung Fälle hervorbringen wo es für einen open-class Wort fast keine alternativen Kandidaten gibt, sind diese Lücken dann lösbar als Cloze-Test? 
+- Test mit solchen Lücken an non-natives und natives geben um These zu überprüfen
+- Falls solche Worte vorhanden sind lässt sich vielleicht ein Datenpool erstellen mit Worten die als Cloze geeignet sind und keine unlösbare Mehrdeutigkeit aufweisen
+
+
+---+++ 2013-09-24
+
+Was macht Schwierigkeit eines Worte aus, wenn dieses als Cloze oder C-Test Variante verwendet wird:
+
+Ich hab die Vorschläge aus der vorherigen Revision jetzt mal nach Art geordnet, hoffe das ist jetzt etwas übersichtlicher
+
+---++++ Satzlevel
+   * Wortlänge
+      * in Buchstaben
+      * in Silben
+      * Satzlänge
+   * Position der Lücke im Satz
+      * Anfang: Tendenz zu geringerer Lösbarkeit
+      * Ende: Tendenz zu höherer Lösbarkeit
+
+---++++ Statistik
+   * Frequenz des Wortes
+   * Frequenz der Phrase (Trigram oder Bigram mit vorherigen und nachfolgenden Wörtern)
+   * Anzahl Synonyme zu einem Wort
+      *wenn vorhanden -> Distraktoren/C-Test notwendig
+      *keine vorhanden -> Cloze möglich
+   * Type-Token Ratio des Textes
+
+---++++ Ressource-Basiert mit POS-Tagging
+   * Teil des Grundwortschatzes (gehen, sagen, kaufen, sehen, Auto, Fahrrad, einfach, schwer, teuer, billig,...)
+   * Bei Distraktoren: Ist Wort ein (entferntes) Synonym zu Grundwortschatz-Wörtern, höhere Vertrautheit -> guter Distraktor?
+   * Gibt es sub-/ oder superordinate-Worte zu dem Wort das Blank gesetzt werden soll
+   * Semantik relatedness des Lücken-Wort zu Synonym-Worten aus einer Ressource; e.g. wie ähnlich sind potenzielle Synonyme dem eigentlich gesuchten Wort?
+   * Named Entities in einem Satz
+   * Abstraktheit und Polysemie des Wortes
+   * ist das Wort ein Cognate in der Muttersprache
+   * ist das Wort ein Lemma oder konjugiert
+   * Wortart (POS), Frequenz der POS Sequenz ("Präposition Artikel Nomen" ist häufig, andere Sequenzen nicht unbedingt)
+   * Lücke teil eins Collocation-N-Grams? Häufigkeit dieses N-Grams?
+   * 5 Gram Nachbarschaft des Wortes das zur Lücke wird als Bag of Words Model, ist dieses Wort mit Nachbarschaft von w-2 bis w+2 in den X-häufigsten Mengen? Nein -> schwer
+   * Morphologie des Wortes: "un-ver-rück-bar" ist schwieriger als "bunt" (spielt für Englisch vermutlich keine Rolle
+
+---++++ Parsing
+   * Anzahl Noun-phrases pro Satz
+   * Anzahl Verb-phrases pro Satz
+   * Wenn die Lücke auf ein Verb gesetzt wird, ist dieses Head-Verb ? ja--> schwer? leichter?
+   * Tiefe des Parsebaum des Satzes

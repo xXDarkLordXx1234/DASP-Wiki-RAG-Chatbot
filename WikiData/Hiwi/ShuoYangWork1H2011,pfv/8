@@ -1,0 +1,176 @@
+%META:TOPICINFO{author="ShuoYang" date="1316728169" format="1.1" version="8"}%
+%META:TOPICPARENT{name="ShuoYangSigmundArbeit"}%
+---+ Arbeitsprotokoll-1H 2011 / Shuo Yang
+
+%TOC%
+
+
+---++ Juni 2011
+
+---+++ (Quasi-) Abgeschlossene Aufgaben
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Asynchrone Result Collector | 100 | |
+| 2. Webapp: Search Controller Monitor | 75 | |
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Monitor, Treffen | 30.06.2011 | 2 | Im Zug Monitor um Anzeigen von Ergebnisse verschiedener SearchIds zu erweitern <p>Dazu Datenübertragungsformat neu definiert<p> Treffen mit Benjamin bezüglich der Vertragsverlängerung |  |
+| Evaluation-Vorbereitung | 29.06.2011 | 3.5 | Refactor von Search Controller, nun lässt sich programmatisch: <ul><li>Controller starten mit spezifizierter Bean</li><li>Suchen mit id und Liste von Terme - vereinfacht, muss man nicht ganze XML erstellen um zu suchen</li><li>Ausschalten</li></ul> Es gibt Problem bei Monitor wenn mehrere Clients gleichzeitig ihn besuchen. Dieses Problem wurde erst mit Polling behoben. Nachteil: Ergebnisse kommen mit kleiner Verzögerung. Für Push braucht noch mehr Überlegungen. |  |
+| Evaluation-Vorbereitung | 28.06.2011 | 0.5 | CSV Writer bei Benjamin debuggen, zum Laufen zu bringen |  |
+| Evaluation, Meeting | 27.06.2011 | 8.5 | Monitor kann schon Suchergebnisse gut darstellen daher funktioniert er <p> Meeting mit Benjamin über nächste Schritte, Diskussion wie Evaluation der Ergebnisse vorgeht <p> Überarbeiten von SIGMUND: <ul><li>CSV Writer als Listener zu Search Controller Service implementiert</li><li>Runlabel automatisch generiert aus u.ä. Klassennamen</li><li>Dies Benjamin über Email geklärt</li><li>Lucene Search Module nun robuster, wirft keine Exception mehr falls CAS Check Archive Service nicht erreichbar ist sondern ignoriert es.</li><li>Search Controller terminiert nach so eine Minuten. Grund noch nicht herausgefunden aber erst gezwungen mit System.exit() beendet</li><li>Bugfixes</li></ul> |  |
+| Monitor | 26.06.2011 | 8 | Weitere Implementierung von Search Controller Monitor: <ul><li>Wicket finde ich bisschen kompliziert für einen einfachen Webapp wie Monitor, auch eben habe ich eine Javascript und JQuery basierte Projekt implementiert. Daher entschieden zunächst mit Javascript und JQuery vorzugehen.</li> <li>Search Controller Service zu Embedded Jetty umgestellt, somit lassen sich nicht nur SOAP, sondern auch statische Dateien und RESTful service bieten. Die letzten zwei Teile sind Bestandteile von dem Monitor.</li><li>Dafür Einarbeiten in Jetty</li><li>Comet long-polling Technik verwendet, um über HTTP pushen zu erlauben. Dies ist mehr responsible als Poll da die Ergebnisse sofort erscheinen können ohne auf dem nächste Zyklus abzuwarten.<li>Nun kann Monitor schon Events von Java pushen lassen und sofort aktualisieren, sobald ein Suche passiert ist.</li></ul> |  |
+| SIGMUND | 21.06.2011 | 4.5 | Noch bisschen Maven konfiguriert und dieses Maven-Problem gelöst <p> Überarbeitung von SIGMUND: <ul><li>Lucene erweitert um cached Zugriff auf CAS Check Archive, um fehlende GUID von Treffer zu finden </li><li> Search Controller überarbeitet. Wie besprochen Extend Search hat nun die Semantik von New Search </li><li>Wegen Unerreichbarkeit von CAS Services konnten die Implementierungen leider noch nicht getestet werden</li><li>Refactors und Aufräumungen</li></ul> Lernen von Wicket über PUSH-Webapp |  |
+| SIGMUND | 20.06.2011 | 2 | Erklärungen von Arbeitsvertrag <p> Maven funktionierte nicht mehr. Neu konfiguriert |  |
+| SIGMUND | 15.06.2011 | 1.5 | Refactors. Anpassung von Maven Artifact IDs, Packagenamen und Co. |  |
+| SIGMUND | 14.06.2011 | 2 | Meeting mit Benjamin über Lucene und Search Controller <p> Meetingsergebnis in Pseudocode zusammengefasst (Google Docs / SIGMUND considerations) |  |
+| SIGMUND | 13.06.2011 | 3 | Architekturalternative wegen Nachschlag der GUID von Lucene Search Module beschrieben <p> Einarbeiten in Apache Wicket für Search Module Monitor |  |
+| SIGMUND | 11.06.2011 | 1.5 | Implementierung von Query mit CAS Check Archive Service. Die Ergebnisse ist über Java Objekte verfügbar |  |
+| SIGMUND | 09.06.2011 | 1.5 | CAS API und Search Module in zwei Projekte refactored, somit kann Lucene Search Module CAS Service nutzen, GUID für Treffer herauszufinden |  |
+| Test und Überarbeitung von SIGMUND | 08.06.2011 | 3.5 | Konfiguration von Maven auf privatem Laptop <p> CAS Services liefern keine Exceptions <p> Überarbeitung: <ul><li>Lucene wirft nicht mehr Exception bei frühzeitigem Abbruch einer Suche</li><li>Robuster gegen illegaler Sucheingabe</li><li>Anzahl der Ergebnisse wird in Endergebnis zwingend begrenzt</li><li>Felder von Endergebnis richtig ausgefüllt</li></ul> |  |
+| Dokumentation, Treffen, Debug | 07.06.2011 | 4.5 | Erstellung von Dokument "SIGMUND System Description" <br> Überarbeitung von Dokument "SIGMUND Questions", "SIGMUND Time Plan" <p> Treffen mit Benjamin über bisherigen Zustand und die nächste Schritte <p> Debug und Testen von SIGMUND, insbesondere mit Lucene Search Module |  |
+| Search Controller Monitor | 06.06.2011 | 1 | Implementierung von Layout und Eventhandlung |  |
+| Search Controller Monitor | 05.06.2011 | 1 | Implementierung von Layout |  |
+| Search Controller Monitor | 04.06.2011 | 5.5 | Einarbeiten in HTML und CSS für Layout <p> Entwurf und Implementierung des Layouts von Search Controller Monitor <p> Dabei einige Frameworks ausprobiert (SproutCore, GWT) aber wegen Komplexität nicht weiter benutzt |  |
+| Test, Search Controller Monitor | 03.06.2011 | 3 | Testen von Synchronous Result Collector <p> Email an Benjamin über GUI von Search Controller -- Search Controller Monitor <p> Angefangen mit Search Controller Monitor als Webapp |  |
+| AsyncResultCollector | 02.06.2011 | 6 | Asynchronous Result Collector fertig implementiert und getestet <p> Search Service terminiert nun "gracefully" <p> Refactor von Klassen und Projekten. Search Controller und Result Collector sind nun in einem Projekt zusammengefügt. Ein neues "commons"-Projekt enthält Interfaces von Search Module und Exceptions, die die meisten SIGMUND-Projekte benötigen. <p> Dokument "Adding a Search Module" geschrieben mit einer Beispielimplementation. Das Dokument befindet sich in Google Docs |  |
+| SIGMUND, AyncResultCollector | 01.06.2011 | 3.5 | Search Service nun lässt sich ausschalten mit Enter-Taste in Konsole. <p> Synchrone Result Collector als ein Tag in SVN gesichert so dass Asynchron Result Collector in Branch sicher weiter entwickelt werden kann. <p> Weitere Implementierung von Asynchrone Result Collector |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 64)$EXEC($GET(total_hour))"}% | bis Ende Juni noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 19 Stunde Übertrag von Mai) | |
+<nop>
+
+
+---++ Mai 2011
+
+---+++ Abgeschlossene Aufgaben
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Architektur von Result Integrator (flexibel, robust) | 100 | * |
+| 2. Synchrone Result Collector | 100 | * |
+
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Einstellung UKP Rechner, SIGMUND | 31.05.2011 | 4.5 | Wegen Reparatur eigenes Rechners Arbeitsumgebung auf UKP-Rechner einstellen <p> Aktualisierung einiger Dependencies in POM-Datei für SIGMUND-relevante Projekte, um sie auf UKP-Rechner zum Laufen zu bringen | * |  
+| SIGMUND | 30.05.2011 | 2 | Anfang mit =AsyncResultCollector= | * |
+| SIGMUND | 29.05.2011 | 5 | Überarbeiten von bisherige SIGMUND. <p> Nun liefert Search Modules, insb. Lucene sinnvollere Meta-Informationen zu den Treffer. <p> Search Modules liefern direkt Ergebnis im Format, das CAS Frontend erwartet. Eine Umwandlung von Hit zu dem Ergebnis wurde gespart |  |
+| SIGMUND | 27.05.2011 | 3 | Interaktive konsole-basierte Search Client gebaut <p> Besprechung mit Benjamin über Probleme mit SIGMUND |  |
+| SIGMUND | 26.05.2011 | 1.5 | Angefangen mit interaktive GUI / konsole-basierte Search Client |  |
+| SIGMUND | 25.05.2011 | 5 | CAS Services in ein Projekt zusammengefügt <p> CAS Services in SearchController integriert <p> Besprechung mit Benjamin über Problem bei CAS Global Search |  |
+| SIGMUND | 24.05.2011 | 2 | Zusammenfügen der CAS Services in ein Projekt |  |
+| SIGMUND | 23.05.2011 | 2.5 | Testen von CAS Global Search <p> Implementierung von CAS Semantic Search Module |  |
+| SIGMUND | 20.05.2011 | 2.5 | Testen der aktualisierten CAS Services. Nun 2 / 3 Services funktionieren. <p> Works:<ul><li>GSStartAddressSearch</li><li>SSStartStringSearch</li></ul> <p> Not working: <ul><li>GSStartSearchRequest (DataLayerFault: Die angegebene Umwandlung ist ungültig.)</li></ul> |  | 
+| SIGMUND | 05.05.2011 | 1.5 | Untersuchung von Nebenläufigkeit-Unterstützung in WebService Server-Implementierung |  |
+| SIGMUND | 04.05.2011 | 1 | Hinzufügen von Kommentare |  |
+| SIGMUND | 03.05.2011 | 3.5 | Saubermachen <p> Konzipierung async ResultCollector mit Future oder Listener <p> Meeting mit Benjamin, Fragen geklärt, nächste Schritte in SIGMUND gegeben |  |
+| SIGMUND | 02.05.2011 | 2 | =SearchModule= ist nun um Gewicht einstellbar <p> =ResultIntegrator= refactored, nun dient =ResultIntegratorImplBase= als bequemere Basisklasse zur Experiment |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 55)$EXEC($GET(total_hour))"}% | bis Ende Mai noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 10 Stunde Übertrag von April) | |
+<nop>
+
+
+
+---++ April 2011
+---+++ Abgeschlossene Aufgaben
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Einarbeiten Spring WS | 100 |  |
+| 2. Einarbeiten SIGMUND | 100 |  |
+
+---++++ 4. Architektur & Implementierung von Result Integrator (flexibel, robust)
+   1. <del>Plan April - Mai, 1 Blatt DINA4</del>
+   1. <del>Plan nacharbeiten</del>
+   1. <del>Architektur nacharbeiten</del>
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| SIGMUND | 29.04.2011 | 1.5 | Zeichnung der UML-Diagramme von SIGMUND Projekte (bouml-Format, in Dropbox/SIGMUND/UML) | * |
+| SIGMUND | 28.04.2011 | 1 | Versucht einen Visualizer für ResultIntegrator zu bauen, um den Vorgang besser zu evaluieren | * |
+| SIGMUND | 26.04.2011 | 0.5 | Email Verkehr mit Benjamin | * |
+| SIGMUND | 23.04.2011 | 2 | CAS Semantic search funktioniert nicht. <p> Hinzufügen von Max Strategy <p> Refactors |  |  
+| SIGMUND | 20.04.2011 | 3 | CAS CRM Search Module funktioniert. (Projekt de.tudarmstadt.ukp.sigmund.searchmodule.cascrm, Test mit searchcontrollerclient/Search Controller Test.java) <p> Zwar NUR Start Search. =SIGGSStartAddressSearchRequest= und =SIGGSGiveFeedbackRequest= funktionieren mit CAS Server immer noch nicht.<p> Marshalling und unmarshalling mit JAXB implementiert. |  | 
+| SIGMUND | 19.04.2011 | 2 | Query Manager und stopSearch funktioniert (Siehe searchcontrollerclient/Search Controller Test.java) <p> Add Integration Strategy funktioniert (Getestet mit 2x Lucene Searcher, siehe searchcontrollerservice/Test Integration Strategy.java) |  |
+| SIGMUND | 16.04.2011 | 3 | Marshalling und Unmarshalling der SOAP-XMLs nun mit JAXB möglich <p> Injektion von Integration Strategy über Spring |  |
+| SIGMUND | 14.04.2011 | 2.5 | LuceneSearchModule fertig überarbeitet. <br>Pfade zu Index, CSV einstellbar durch .properties-Datei.  <p> Dabei ResultCollector erweitert um Result, ein Wrapper von Ergebnisliste |  |
+| SIGMUND | 13.04.2011 | 0.5 | Überarbeiten von LuceneSearchModule |  |
+| SIGMUND | 10.04.2011 | 1 | JUnit Test <-> Search Controller Service <-> Result Collector <-> Lucene Searcher, funktioniert. <p> Also Search Controller Service empfängt Anfrage in einem JUnit-Test, konfiguriert Result Collector durch Spring und bekommt Ergebnis von Lucene Search Module über Result Collector zurück |  |
+| SIGMUND | 09.04.2011 | 4 | Injection mehrerer Search Modules als List nun möglich, und Constructor-Injection wurde gewählt (statt Setter-Injection). Grund in Google Docs/SIGMUND considerations <p> =SearchModule= interface definiert, und Lucene Document Searcher implementiert diese interface (komplette Überarbeitung fehlt noch) <p> Detaillierte Klasse siehe Google Docs/SIGMUND time plan |  |
+| Spring Injection | 07.04.2011 | 2 | Einarbeiten in Spring Dependency Injection für Konfiguration von SIGMUND (in Projekt springplayground) <p> Erfolgreich mit XML-Stil Konfiguration, aber fehlerhaft mit Annotation- und Java-Stile Konfigurationen<br> -> bleibe erstmal bei XML Konfiguration<br>  |  |
+| Architektur, Plan | 06.04.2011 | 1.5 | Überarbeiten von Architektur und Zeitplan |  |
+| Architektur, Treffen | 05.04.2011 | 5 | Alternative Architekturen erstellen <p> Treffen mit Benjamin über den Plan und Architektur <p> Architektur nacharbeiten |  |
+| Email | 04.04.2011 | 0.5 | Einige Email-Verkehr mit Benjamin bezüglich dem Plan für SIGMUND |  |
+| Plan, Grobe Architektur | 02.04.2011 | 4 | Erstellung Zeitplan von SIGMUND für April und Mai <p> Dabei Überlegung der grobe Architektur von SC+RI |   |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 44)$EXEC($GET(total_hour))"}% | bis Ende April noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 14 Stunde Übertrag von März) | |
+
+---++ März 2011
+
+---+++ Abgeschlossene Aufgaben
+keine
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Organisatorisches | 01.04.2011 | 1 | Programme für Erstellung von UML-Diagramme gefunden: BOUML <p> Erstellung Arbeitsplan Sigmund | * |
+| Organisatorisches | 30.03.2011 | 0.5 | Auswahl Programme für Erstellung von UML-Diagramme | * |
+| Architektur Result Integrator | 26.03.2011 | 1 | Erstellung 1. Version des Komponentendiagramms |  |
+| Treffen | 21.03.2011 | 0.5 | Treffen mit Benjamin über Vertragsverlängerung und Arbeitsprioritäten |  | 
+| Vorbereitung Test Search Module | 20.03.2011 | 2.5 | <ul><li>Versuchte CAS Echo-Anfrage mit Spring WS durchzuführen</li><li>Nach Hinzufügen von SOAPAction reagiert CAS auch zu Echo-Anfrage von Spring WS! Dies soll allerdings irgendwie automatisch hinzugefügt werden können</li><li>Zur Login-Anfrage hat es noch Problem: "Fehler beim Deserialisieren des Textkörpers der Anforderungsnachricht für Vorgang "executeUnauthenticated"."</li><li>Nun habe ich Verständnis von CAS auf SOAP-Niveau</li></ul> |  |
+| Vorbereitung Test Search Module | 19.03.2011 | 4.5 | Untersuchung der Kommunikation mit CAS auf SOAP-Nachrichten-Ebene, um die bisherige Service besser zu verstehen. Nun zeigt beide JAX-WS und Spring WS die zu schickende und empfangene SOAP-Nachrichten. Dieses Verständnis brauche ich, um relevante Umsetzungsmöglichkeiten zu finden und vergleichen.<br> Dabei =SpringWsUtils= erweitert und Unit Tests dazu geschrieben |  |
+| Vorbereitung Test Search Module | 16.03.2011 | 3 | <ul><li>Probieren, mit Spring WS Dokument-Stil SOAP-Nachrichten mit CAS zu kommunizieren.</li><li>Herausfinden, wie die von CAS erwartete SOAP Nachrichten für ihr Suchmodul aussieht</li><li>Einige bequeme Utilities geschrieben (=JaxbUtils=, =SpringWsUtils=) </li></ul> |  |
+| Einarbeiten SIGMUND | 11.03.2011 | 2.5 | Testen und Bug-Berichten von SIGMUND-APIs |  |
+| Treffen | 07.03.2011 | 1.5 | Treffen mit Benjamin über u.ä. Bugs von CAS-Web Service |  |
+| Vorbereitung Test Search Module | 06.03.2011 | 1 | Auschecken von Existierende Projekte, Lösen von Dependency-Probleme |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 32)$EXEC($GET(total_hour))"}% | bis Ende März noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 12 Stunde Übertrag von Februar) | |
+<nop>
+
+
+---++ Feb 2011
+
+---+++ Abgeschlossene Aufgaben
+keine
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Einarbeiten SIGMUND, Treffen | 15.02.2011 | 4 | Maven-ize =CasSearchModule= Projekt <br> Weitere Einarbeiten in SIGMUND <br> Einlesen vorhandener Codes von UKP in SIGMUND <br> Treffen mit Benjamin<ul><li>Probleme bei SIGMUND (=SSSearchString=) </li><li> Erklärung von Spring WS</li><li>Besprechung nächster Schritte</li></ul> | * |
+| Einarbeiten SIGMUND | 14.02.2011 | 2.5 | Einlesen von SIGMUND Interfaces <br> =GSStartSearchRequest= zum Laufen gebracht |  | 
+| Spring WS | 09.02.2011 | 1.5 | Einarbeiten in Spring WS |  |
+| Spring WS | 08.02.2011 | 2.5 | Einlesen Document-basiert vs RPC-basiert SOAP-Stile. <br> Anschauen von CAS Klassen <p> Vorbereitung einer Folie zur Präsentierung von Spring WS | |
+| Spring WS | 07.02.2011 | 4.5 | Ein Spring-Stil Document-basierte Web Service Beispiel wurde geschrieben und funktionsfähig gebracht. | |
+| Spring WS | 06.02.2011 | 3 | Einarbeiten in Spring WS | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 30)$EXEC($GET(total_hour))"}% | bis Ende Februar noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 10 Stunde Übertrag von Januar) | |
+<nop>
+
+---++ Jan 2011
+
+---+++ Abgeschlossene Aufgaben
+keine
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Zusammenfassung* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Spring WS, Treffen | 31.01.2011 | 4 | Einarbeiten in Spring Web Services. <p> Treffen mit Benjamin | * |
+| Spring WS | 29.01.2011 | 1.5 | Einarbeiten in Spring WS | * |
+| Fehlerreport CAS | 27.01.2011 | 1.5 | Sigmund-Server von CAS hat mehrfach wegen =SearchString= -Abfrage abgestürzt. <br> Detailliert protokollierte Test durchgeführt und an CAS weitergeleitet, um die Ursache herauszufinden <br> Dafür Einarbeiten in Log4j | * |
+| Spring WS, Treffen | 24.01.2011 | 3 | Einarbeiten in Spring Web Services. Sigmund Projekt kann das vielleicht nützen <br> Treffen mit Benjamin | * |
+| Sigmund | 23.01.2011 | 1.5 | Einarbeiten in Sigmund Web Services Klassen <br> Testprogramm =FetchDocument= erfolgreich <br> Testprogramm =SearchString= fehlgeschlagen wegen serverseitigem Fehler | * |
+| Sigmund-Einarbeiten, Treffen | 18.01.2011 | 2.5 | Einarbeiten in SOAP und kurz JSP <p> Treffen mit Benjamin |  |
+| Sigmund-Einarbeiten | 07.01.2011 | 1 | Einarbeiten in SOAP |  |
+| Sigmund-Einarbeiten | 06.01.2011 | 2 | Einarbeiten in SOAP Web Services <br> Erstellung eines Testprogramms für RPC über SOAP |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 27)$EXEC($GET(total_hour))"}% | bis Ende Januar noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 7 Stunde Übertrag von November)  | |
+<nop>
+
+
+-- Main.ShuoYang - 2011-07-01

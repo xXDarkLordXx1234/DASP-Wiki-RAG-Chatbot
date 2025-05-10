@@ -1,0 +1,99 @@
+%META:TOPICINFO{author="ArtemVovk" date="1265716815" format="1.1" reprev="149" version="149"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Artem Vovk Work
+
+---++ Work
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Redirect Service (instead of proxy) | 80 |
+| Automatic Lucene index generation | 100 |
+| Wiki syntax to plain text | 99 |
+| Suggest Links Design | 30 |
+
+Subtasks for lucene index generation:
+   * make configurable using a probperties file (with platform/url/...)
+   * create abstract class to unify code
+   * shell script to execute index generation
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Wiki syntax to plain text | 06.12.2009 | 3 | <ul><li>Testen von WikiText</li><li>Algo fuer Wiki syntax-plain text konvertation</li></ul> |
+| Wiki syntax to plain text | 08.12.2009 | 5 | <ul><li>Testen von WikiText</li><li>Implementation von der Methode, die wikitext in plaintext umwandelt</li><li>Analyse von DiffPatchMatch Bibliothek</li></ul> |
+| Wiki syntax to plain text | 13.12.2009 | 1 | <ul><li>Test of Wiki syntax to plain text convertation</li></ul> |
+| Wiki syntax to plain text | 16.12.2009 | 1.5 | <ul><li>Test of Wiki syntax to plain text convertation</li></ul> |
+| Wiki syntax to plain text | 17.12.2009 | 2.5 | <ul><li>Lesen der Maven Dokumentation</li><li>Beratung mit Johannes</li><li>Testen von wiki syntax-> plain text Umwandlung</li></ul> |
+| Wiki syntax to plain text | 20.12.2009 | 1 | <ul><li>Testen von wiki syntax-> plain text Umwandlung(Probleme mit falsche HTML Syntax wurden gefunden)</li></ul> |
+| Wiki syntax to plain text | 21.12.2009 | 5 | <ul><li>Beratung mit Johannes</li><li>Versuche richtige DocumentBuilder zu finden</li><li>Analyse von WikiText source code</li><li>Suche nach alternative Moeglichkeit html zum Plain text umzuwandeln(Jericho HTML Parser)</li><li>Testen von Jericho parser</li><li>Testen von IndexCreation</li></ul> |
+| Wiki syntax to plain text | 22.12.2009 | 3 | <ul><li>Upgrade von MediaWiki(OpenSuse)</li><li>Beratung mit Johannes</li><li>Wiki syntax to plain text</li></ul> |
+| Wiki syntax to plain text | 05.01.2010 | 4 | <ul><li>Beratung mit Johannes</li><li>Testen von Suggest Section Fehlern</li><li>Problem (re)Analyse und Kode Aenderungen</li></ul> |
+| Wiki syntax to plain text | 07.01.2010 | 4 | <ul><li>Testen von DiffPatchMatch(verschiedene Faehle, die zu den Fehlern fuehren)</li><li>Aenderungen in WikiProxy(ConfirmTopicSuggestions, balancierte Matching)</li><li>Erstellung von Dokument: SuggestSectionProblems</li></ul> |
+| Wiki syntax to plain text | 09.01.2010 | 4 | <ul><li>Implementierung von PlainTextDocumentBuilder(Plain text extractor aus WikiText)</li><li>Testen von PlainTextDocumentBuilder</li></ul> |
+| Wiki syntax to plain text | 10.01.2010 | 2 | <ul><li>Testen von PlainTextDocumentBuilder</li></ul> |
+| Automatic Lucene index generation,Redirect Service (instead of proxy) | 11.01.2010 | 2 | <ul><li>Bauen Index von UKP wiki</li><li>Testen von DirectProxy</li></ul> |
+| Redirect Service | 14.01.2010 | 2 | <ul><li>Testen und Aenderungen in Direct Proxy</li></ul> |
+| Redirect Service | 15.01.2010 | 4 | <ul><li>Erstellung von OpenSuSe Index</li><li>Direct Proxy(Korrektur)</li></ul> |
+| Link Statistic | 19.01.2010 | 5 | <ul><li>Implementierung von CSVLinkStatisticCreator</li></ul> |
+| Link Statistic | 24.01.2010 | 1 | <ul><li>Implementierung von CSVLinkStatisticCreator</li></ul> |
+| Suggest Links Design | 02.02.2010 | 5 | <ul><li>visuelle Darstellung von LinkAnchotCandidates </li></ul> |
+| Suggest Links Design | 03.02.2010 | 5 | <ul><li>Implementation von Popup Window</li></ul> |
+| Suggest Links Design | 06.02.2010 | 3 | <ul><li>Analysing von sniffercontrol.js</li></ul> |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 138 (18 Übertrag von November) | bis Ende Februar |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+ImportingWikipedia
+
+SuggestSectionProblems
+
+TestPage?
+
+
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+   * [[%ATTACHURL%/build.xml][build.xml]]: Script for importing wikipedia
+
+---------------------
+
+ReleasePackageErrors
+
+
+
+   * [[%ATTACHURL%/MiniManual.pdf][MiniManual.pdf]]: Manual to "Preloaded descriptor selection"
+
+
+---++ Previous Work
+
+   * ArtemVovkPreviousWork
+
+   
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="MiniManual.pdf" attachment="MiniManual.pdf" attr="" comment="Manual to %22Preloaded descriptor selection%22" date="1234806618" path="MiniManual.pdf" size="40665" stream="MiniManual.pdf" tmpFilename="/var/tmp/CGItemp37940" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="build.xml" attachment="build.xml" attr="" comment="Script for importing wikipedia" date="1248857901" path="build.xml" size="2013" stream="build.xml" tmpFilename="/var/tmp/CGItemp61365" user="ArtemVovk" version="1"}%

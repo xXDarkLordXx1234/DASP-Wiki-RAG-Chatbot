@@ -1,0 +1,155 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1302694563" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="WiktionaryAnalysis"}%
+---+ Wikisaurus Analysis
+---++ Vergleich von Relation-Statistiken mit und ohne Wikisaurus
+|      **                                   |*Without Wikisaurus*|||*With Wikisaurus*|**|
+| Number of relations:        |   24,023 |         ||   40,891 |         |
+| + *ALL RELATIONS* :            |   24,023 | 100.00% ||   40,891 | 100.00% |
+| +++ Ambiguous:              |   15,638 |  65.10% ||  25,187 |  61.60% |
+| +++ Not ambiguous:          |    8,385 |  34.90% ||   15,704 |  38.40% |
+| +++ Return relation:        |   10,661 |  44.38% ||   22,271 |  54.46% |
+| +++ One way relation:       |   13,362 |  55.62% ||   18,620 |  45.54% |
+| + *Antonymy* :                 |    2,700 |  11.24% ||   3,370 |   8.24% |
+| +++ Ambiguous:              |    2,003 |  74.19% ||    2,494 |  74.01% |
+| +++ Not ambiguous:          |      697 |  25.81% ||      876 |  25.99% |
+| +++ Return relation:        |    1,227 |  45.44% ||    1,705 |  50.59% |
+| +++ One way relation:       |    1,473 |  54.56% ||    1,665 |  49.41% |
+| + *Synonymy* :                 |   20,592 |  85.72% ||   28,172 |  68.90% |
+| +++ Ambiguous:              |   13,368 |  64.92% ||   18,138 |  64.38% |
+| +++ Not ambiguous:          |    7,224 |  35.08% ||   10,034 |  35.62% |
+| +++ Return relation:        |    9,077 |  44.08% ||   14,358 |  50.97% |
+| +++ One way relation:       |   11,515 |  55.92% ||   13,814 |  49.03% |
+| + *Hypernymy* :                |      116 |   0.48% ||     565 |   1.38% |
+| +++ Ambiguous:              |       68 |  58.62% ||      412 |  72.92% |
+| +++ Not ambiguous:          |       48 |  41.38% ||      153 |  27.08% |
+| +++ Return relation:        |       56 |  48.28% ||      421 |  74.51% |
+| +++ One way relation:       |       60 |  51.72% ||      144 |  25.49% |
+| + *Hyponymy* :                 |      585 |   2.44% ||    7,501 |  18.34% |
+| +++ Ambiguous:              |      181 |  30.94% ||    3,355 |  44.73% |
+| +++ Not ambiguous:          |      404 |  69.06% ||    4,146 |  55.27% |
+| +++ Return relation:        |      282 |  48.21% ||    4,866 |  64.87% |
+| +++ One way relation:       |      303 |  51.79% ||    2,635 |  35.13% |
+| + *Holonymy* :                 |       11 |   0.05% ||      272 |   0.67% |
+| +++ Ambiguous:              |        6 |  54.55% ||      214 |  78.68% |
+| +++ Not ambiguous:          |        5 |  45.45% ||       58 |  21.32% |
+| +++ Return relation:        |        5 |  45.45% ||      177 |  65.07% |
+| +++ One way relation:       |        6 |  54.55% ||       95 |  34.93% |
+| + *Meronymy* :                 |       19 |   0.08% ||    1,011 |   2.47% |
+| +++ Ambiguous:              |       12 |  63.16% ||      574 |  56.78% |
+| +++ Not ambiguous:          |        7 |  36.84% ||      437 |  43.22% |
+| +++ Return relation:        |       14 |  73.68% ||      744 |  73.59% |
+| +++ One way relation:       |        5 |  26.32% ||      267 |  26.41% |
+
+
+
+---++ Allgemeines
+Insgesamt gibt es zurzeit ungefähr 1.070 Wikisaurus-Seiten in WKT_EN<br>
+Alle Wikisaurus-Seiten: http://en.wiktionary.org/wiki/Wiktionary:All_Wikisaurus_pages <br>
+Hauptartikel über Wikisaurus: http://en.wiktionary.org/wiki/Wiktionary:Wikisaurus
+
+---++ Format
+Source: http://en.wiktionary.org/wiki/Wiktionary:Wikisaurus/Format <br>
+Ein Wikisaurus-Eintrag sieht normalerweise wie folgt aus:
+
+<verbatim>
+{{ws header}}
+
+==LANGUAGE==
+
+===POS===
+
+===={{ws sense|SENSE_1_DEFINITION}}====
+
+=====Synonyms=====
+{{ws beginlist}}
+{{ws|SYNONYM_1|SYNONYM_1_SENSE_DEFINITION}}
+{{ws|SYNONYM_2}}
+...
+{{ws endlist}}
+=====Antonyms=====
+...
+=====Hyponyms=====
+...
+=====Hypernyms=====
+...
+=====Instances=====
+...
+=====Meronyms=====
+...
+=====Holonyms=====
+...
+=====Various=====
+...
+===See also===
+...
+===External links===
+...
+</verbatim>
+Beim Header kann noch ein Wort spezifiziert werden:
+<verbatim>
+{{ws header|WORD}}
+</verbatim>
+---+++ Sense-Definition
+Mit Hilfe von Sense-Beschreibung können wir die Relaionen einem konkretem Sense des Wiktionary-Artikels zuweisen. Z.B.: [[http://en.wiktionary.org/wiki/Wikisaurus:food][Wikisaurus:food]] _"substance eaten by living organisms"_ kann man mit Hilfe von Similarity-Analyse an den ersten Sense _"Any substance that is or can be consumed by living organisms, especially by eating, in order to sustain life. "_ von [[http://en.wiktionary.org/wiki/food][food]] zuweisen <br><br>
+*Target Sense-Definitions* <br>
+Einzelne Sektionen bestehen aus Listen von Relation-Targets. Einzelne Relation-Target kann noch zusätzlich mit einem Disambiguierung-Sensebeschreibung versehen werden:
+<verbatim>
+{{ws|SYNONYM_1|SYNONYM_1_SENSE_DEFINITION}}
+</verbatim>
+Z.B. in [[http://en.wiktionary.org/wiki/Wikisaurus:build][Wikisaurus:build]] sehen wir bei den Synonymen: _{{ws|assemble|to put together}}_ , das entspricht dem ersten Sense von [[http://en.wiktionary.org/wiki/assemble][assemble]]. Die Target-Beschreibung ist nicht immer der Sense-Beschreibung gleich oder hochähnlich. Z.B. bei [[http://en.wiktionary.org/wiki/Wikisaurus:build][Wikisaurus:build]] _{{ws|compile|turn code into machine language}}_ entspricht dem zweiten Sense von [[http://en.wiktionary.org/wiki/compile][compile]]: _"(transitive, computing) To use a compiler to process source code and produce executable code."_ <br>
+Beim Rendering werden die Wörter mit Sensebeschreibung unterstrichen. Wenn es einen Eintrag für eine Relation-Target in Wikisaurus gibt, dann wird beim Rendering noch ein Link auf den entsprechenden Wikisaurus-Artikel angezeigt. Z.B: "destroy [Ws]" bei [[http://en.wiktionary.org/wiki/Wikisaurus:build][Wikisaurus:build]], in Quellcode gibt es dafür keine besondere Markierung.
+---+++ Linking from Wiktionary
+Um die Wiktionary-Einträge auf Wikisaurus-Seiten zu verlinken gibt es zwei Möglichkeiten:<br>
+1.
+<verbatim>
+* See also [[Wikisaurus:headword]]
+</verbatim>
+Z.B. in [[http://en.wiktionary.org/wiki/greed][greed]] in der Synonym-Sektion: 
+<verbatim>
+* {{sense|selfish desire for more than is needed}} [[avarice]], [[covetousness]], [[greediness]], [[rapacity]]
+* See also [[Wikisaurus:greed]]
+</verbatim>
+2. 
+<verbatim>
+{{ws refer|WIKISAURUS_WORD|SENSE}}
+</verbatim>
+oder
+<verbatim>
+{{ws refer|WIKISAURUS_WORD}}
+</verbatim>
+Z.B. in [[http://en.wiktionary.org/wiki/impoverished][impoverished]]
+<verbatim>
+====Synonyms====
+{{ws refer|poor|impoverished}}
+</verbatim>
+in [[http://en.wiktionary.org/wiki/fatigued][fatigued]]
+<verbatim>
+====Synonyms====
+{{ws refer|fatigued}}
+</verbatim>
+---+++See also
+In der "See also"-Sektion können verschieden Informationen kodiert werden. <br>
+1. Verweise auf andere verwandte Wikisaurus-Einträge. Z.B. [[http://en.wiktionary.org/wiki/Wikisaurus:confusion][Wikisaurus:confusion]] oder [[http://en.wiktionary.org/wiki/Wikisaurus:awesome][Wikisaurus:awesome]]<br>
+2. Verweise auf verwandte Wiktionary-Artikeln. Z.B. [[http://en.wiktionary.org/wiki/Wikisaurus:lucky][Wikisaurus:lucky]]. In [[http://en.wiktionary.org/wiki/Wikisaurus:end][Wikisaurus:end]] steht unter See also ein Atonym _continue_ <br>
+3. Verweise auf verwandte Kategorien. Z.B. [[http://en.wiktionary.org/wiki/Wikisaurus:aircraft][Wikisaurus:aircraft]], [[http://en.wiktionary.org/wiki/Wikisaurus:container][Wikisaurus:container]], [[http://en.wiktionary.org/wiki/Wikisaurus:arachnid][Wikisaurus:arachnid]]
+
+---+++ External Links
+In External Links stehen normalerweise Referenzen auf andere Thesauri. Es gibt meistens nur zwei Möglichkeiten<br>
+Open Roget's:
+<verbatim>
+{{R:Roget 1911}}
+</verbatim>
+Moby II thesaurus:
+<verbatim>
+{{R:Moby II}}
+</verbatim>
+
+---++ Einbindung in JWKTL
+Da es fast immer möglich mit Hilfe von der Sense-Beschreibung den Wikisaurus-Eintrag eindeutig einem Sense aus einem Wiktionary-Eintrag zuzuweisen, kann man die Relationen direkt in dem WiktionarySense speichern. <br>
+Da die Relation-Targets oft noch eine Sense-Beschreibung enthalten, wäre es sinnvoll in der WiktionaryRelation nicht nur den Target-String zu speichern, sondern auch diese Sense-Beschreibung oder einen direkten Verweis auf den Target-WiktionarySense.<br><br>
+Die Extrahierung von Wikisaurus-Informationen muss nach dem Parsen von WiktionaryEntries erfolgen, da man für die Zuweisung der Wikisaurus-Einträge schon extrahierte Titel und Gloss-Informationen benötigt:
+   1 Wir laufen alle Seiten in dem Namespace "Wikisaurus" durch
+   2 Suchen die möglichen WiktionaryEntry-Kandidaten, zu denen Wikisaurus-Eintrag zugewiesen wird (gleiches Entry-Word)
+   3 Vergleich von den Sense-Glosses mit Wikisaurus Sense-Definition. Der Sense, der ein Gloss mit größter Ähnlichkeit zu der Wikisaurus Sense-Definition hat, wird ausgewählt
+   4 Zu den Relationen von dem ausgewählten Sense werden die Relationen aus Wikisaurus hinzugefügt
+  

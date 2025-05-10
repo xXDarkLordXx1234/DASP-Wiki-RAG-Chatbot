@@ -1,0 +1,85 @@
+%META:TOPICINFO{author="kluge" comment="reprev" date="1390925297" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="RolandKlugeMTNotes"}%
+---+++ Interesting??
+   * Manfred S.and Sauermann A.,&#8221;Linearization of arguments in commentary text,&#8221; in Multidisciplinary Approaches to Discourse 2008 - MAD 08,20-23 February 2008, Lysebu, Oslo, 2008
+   * Kirschner P.A.,Shum S.J.B.,and Carr C.S.,Visualizing argumentation:software tools for collaborative and educational sensemaking.:Springer-Verlag,2003.
+   * http://www.inf.kcl.ac.uk/staff/mcburney/downloads/pubs/2010/pm-2010-10.pdf 
+---+++ Projects/workshops/groups/corpora
+   * ACILA project @ KU Leuven (http://www.cs.kuleuven.be/groups/liir/projects.php?project=125)
+   * ARGUMENTUM (see below)
+   * Discourse Relations Reference Corpus (http://www.sfu.ca/rst/06tools/discourse_relations_corpus.html)
+   * Araucaria corpus -> also contains newspaper articles
+   * Debatepedia/debate.org
+---+++ Classification resources
+   * Stede, M., Umbach, C. (1998) DiMLex: A lexicon of discourse markers for text generation and understanding
+   * From connectives to argumentative markers (Tseronis 2011) 
+      * interesting as a source of features, http://link.springer.com/article/10.1007%2Fs10503-011-9215-x
+   * [[http://arxiv.org/abs/cs/0402057][Integrating Defeasible Argumentation and Machine Learning Techniques]]
+      * -> classification
+   * see table here: [[ArgumentMining.ArgumentExtraction]]
+   * lexical features: [[ArgumentMining.HighSchoolMaterial]]
+---+++ Legal Argumentation
+   * Automatic Detection and ClassificationArgumentation in a Legal Case (Mochales, 2011) 
+   * Towards Automated Identification and Analysis of Argumentation Structures in the Decision Corpus of the German Federal Constitutionals Court (Huoy et al., 2013) 7th IEEE Int. Conf. on Digital Ecosystems and Technologies (DEST), 2013
+      * context of ARGUMENTUM
+---+++ [[ArgumentMining/ArgumentationSchemes][Argumentation models]] (Wiki)
+   * Walton, Reed, Macagno, 2008
+      * also: re-read introduction
+   * The use of argument (Toulmin 1958) 
+      * considered as the first work on argumentative structures
+   * An annotation scheme for discourse-level argumentation in research articles (Teufel et al. 1999) 
+      * scientific domain
+      * also: CARS - Creating a research space (Swales 1990) 
+      * also: Extension to CARS (Teufel, Carletta, Moens, at EACL 1999)
+   * Workshop on Discourse Connectors 
+      * -> great overview of work around discourse connectives
+   * [[ArgumentMining.Terminology][Terminology]] (Claim, premise, proposition)
+---+++ Google Scholar (AM in general)
+   * [[http://dl.acm.org/citation.cfm?id=1568246][Argumentation mining: the detection, classification and structure of arguments in text]]
+   * [[http://link.springer.com/article/10.1007/s10506-010-9104-x/fulltext.html][Argumentation mining]]
+   * [[http://www.studiesinlogic.net/english/UploadFiles_1698/201104/20110415074459727.pdf][Argument Mining by Applying Argumentation Schemes]] (see also below)
+   * [[http://link.springer.com/chapter/10.1007/978-3-642-16385-2_25][Mining Economic Sentiment Using Argumentation Structures]] 
+      * application scenario, rather for thesis
+   * [[http://link.springer.com/chapter/10.1007/978-3-642-12837-0_4][Approaches to text mining arguments from legal cases]]
+   * [[http://gdac.uqam.ca/proceedingEDM2008.pdf#page=202][Argument mining using highly structured argument repertoire]]
+   * [[http://link.springer.com/chapter/10.1007/978-3-540-85563-7_24][A First Step towards Argument Mining and Its Use in Arguing Agents and ITS]]
+      * -> CS
+   * [[http://ac.els-cdn.com/S1386505605000894/1-s2.0-S1386505605000894-main.pdf?_tid=c88b09f6-875d-11e3-95ad-00000aab0f27&acdnat=1390832442_9852d9febb848a0afdfd4496cd062b27][Using argumentation to retrieve articles with similar citations: An inquiry into improving related articles search in the MEDLINE digital library]]
+   * [[http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5630727][Implementation and Performance Evaluation of an Intelligent Online Argumentation Assessment System]]
+   * [[http://iospress.metapress.com/index/F6K82725600H4142.pdf][ALES: An innovative agent-based learning environment to teach argumentation]]
+   * [[http://www.igi-global.com/chapter/artificial-intelligence-applications-improved-software/36447][An Intelligent Computational Argumentation System for Supporting Collaborative Software Development Decision Making]]
+      * application to SW development
+      * also: [[http://eprints.ulster.ac.uk/20143/][The Application of a Natural Language Argumentation Based Approach within Project Life Cycle Management]]
+   * [[http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6122134&tag=1][ A versatile argumentation system based on the Logic of Multiple-valued Argumentation]]
+   * [[http://www.ccsenet.org/journal/index.php/jpl/article/viewFile/29977/17760][Arguments from Fairness and Misplaced Priorities in Political Argumentation.]]
+      * -> argumentation schemes
+   * [[http://ceur-ws.org/Vol-925/proceedingsswaie2012.pdf#page=37][Identifying Consumers&#8217; Arguments in Text]]
+   * [[http://arxiv.org/abs/1304.5554][Enacting Social Argumentative Machines in Semantic Wikipedia]]
+   * [[http://lexitron.nectec.or.th/public/LREC-2010_Malta/workshops/W23.pdf#page=35][On the extraction of decisions and contributions from summaries of French legal IT contract cases]]
+   * [[http://www.igi-global.com/article/from-argument-diagrams-to-argumentation-mining-in-texts/87173][From Argument Diagrams to Argumentation Mining in Texts: A Survey]]
+   * [[http://www.aaai.org/ocs/index.php/FLAIRS/FLAIRS12/paper/viewFile/4366/4806][Applying Kernel Methods to Argumentation Mining.]]
+   * [[http://dfki.de/KI2012/PosterDemoTrack/ki2012pd07.pdf][ARGUMENTUM - Towards Computer-Supported Analysis, Retrieval and Synthesis of Argumentation Structures in Humanities Using the Example of Jurisprudence ]]
+   * [[http://link.springer.com/chapter/10.1007/978-3-642-33876-2_4][http://link.springer.com/chapter/10.1007/978-3-642-33876-2_4]]
+---+++ AM and newspapers
+   * [[http://link.springer.com/chapter/10.1007/978-3-642-38288-8_46][Automatic Argumentation Extraction]]
+   * [[ftp://ftp.sys.utoronto.ca/cs/ftp/public_html/pub/gh/Feng-MSc-2010.pdf][Classifying arguments by scheme]]
+---+++ AM and TE
+   * [[http://link.springer.com/chapter/10.1007/978-3-642-16385-2_25][Mining Economic Sentiment Using Argumentation Structures]]
+   * EXCITEMENT
+---+++ From Wiki (Newspaper)
+   * ?Using Argumentation Schemes for Argument Extraction: A Bottom-Up Method (Walton, 2012) IGI Global
+      * focuses on Walton's argumentation schemes; tries to cluster schemes by similarity...
+      * "It was found that 37.1% of the arguments collected did not fit any of the fourteen schemes" 
+   * ? Pushing Toulmin Too Far: Learning From an Argument Representation Scheme (Newman & Marshall, 1992) [[http://www.csdl.tamu.edu/~marshall/toulmin.pdf][Technical report]]
+   * Argument extraction for supporting public policy formulation (Florou et al, 2013) [[http://aclweb.org/anthology/W/W13/W13-2707.pdf][ACL WS 2013]]
+   * Active participation within written argumentation: metadiscourse and editorialist&#8217;s authority ([[http://ac.els-cdn.com/S0378216603000328/1-s2.0-S0378216603000328-main.pdf?_tid=e257b13a-3731-11e3-b4b3-00000aab0f6c&acdnat=1382017494_8f507e5bcaf2a22d2d1451ecee6aeb9e][Le 2002]])
+   * Appraisal and Journalistic Discourse [[[http://grammatics.com/Appraisal/MediaLit-Comment.pdf][Rick Iedema, Susan Feez and Peter White, 1994]]]
+      * rather for thesis than for paper; not very scientific, rather a survey
+   * Reported speech as an element of argumentative newspaper discourse [[[http://dcm.sagepub.com/content/3/1/79.short#aff-1][Smirnova, 2009]]] 
+   * Who speaks for whom? Towards analyzing opinions in news editorials [[[http://www.irit.fr/~Patrick.Saint-Dizier/publi_fichier/P43.pdf][Bald and Saint-Dizier, 2009]]]
+      * most related task
+      * TODO: did they finish the project?
+
+
+
+-- Main.RolandKluge - 2014-01-28

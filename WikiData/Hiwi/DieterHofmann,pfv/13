@@ -1,0 +1,85 @@
+%META:TOPICINFO{author="hofmann" comment="reprev" date="1367020023" format="1.1" reprev="12" version="13"}%
+---+ Tasks
+
+   * Phase 1: Implementierung Client
+      * DONE - Client Erweiterung um Update, Delete Methoden. Unit Tests
+      * DONE - JavaDoc für StorageClient schreiben
+      * DONE - Tests in package de.tudarmstadt.ukp.dariah.storage.client in src/test/java verschieben
+      * DONE - Variablen nicht mehrfach verwenden (z.B. "file" in testCreateUpdateReadLocal)
+      * DONE - Für Lokale und Remote Tests gleichen Code in Basisklasse auslagern die dann nur noch mit einem StorageClient initialisiert wird.
+      * DONE - getIdFromResponse() sollte die ID als String zurückgeben. D.h. readFile() und deleteFile() sollte auch diese String ID annehmen.
+   * Phase 2: Proof-of-Concept Integration in dSpace
+      * DONE - dSpace in Eclipse Entwicklungsumgebung konfigurieren (siehe https://wiki.duraspace.org/display/DSPACE/Developer+Guidelines+and+Tools)   
+      * TODO - DARIAH Storage Service als Alternative zu einer Ablage von Daten in SRB bzw. auf dem Dateisystem in BitstreamStorageManager einbinden, dabei Client verwenden (Credentials nicht hardgecoded im BitstreamStorageManager, sondern via System Properties)
+
+
+---+ Aktueller Vertrag (Apr 2013)
+
+Stundenzahl bitte in *englischer Notation* mit eintragen, also *0.5* anstatt _0,5_.
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 05.04.2013 | Meeting | 1 | |
+| 07.04.2013 | DARIAH-AIB | 2 | Client Erweiterung um Update, Delete Methoden. Unit Tests |
+| 11.04.2013 | DSpace | 4 | DSpace Installation und Einrichtung |
+| 12.04.2013 | Meeting | 0.5 | |
+| 14.04.2013 | Implementierung Client | 0.5 | JavaDoc für StorageClient schreiben. Tests in package de.tudarmstadt.ukp.dariah.storage.client in src/test/java verschieben. Variablen nicht mehrfach verwenden (z.B. "file" in testCreateUpdateReadLocal) |
+| 17.04.2013 | DARIAH-AIB | 0.5 | Für Lokale und Remote Tests gleichen Code in Basisklasse auslagern die dann nur noch mit einem StorageClient initialisiert wird. |
+| 16.04.2013 | DSpace | 2 | dSpace in Eclipse Entwicklungsumgebung konfigurieren |
+| 23.04.2013 | DSpace | 2 | DSpace in Eclipse richtig konfigurieren |
+| 24.04.2013 | DSpace | 2 | DARIAH Client mit DSpace testen |
+| 27.04.2013 | DSpace+DARIAH | 2.25 | Git Einrichten, DARIAH Properties aus dspace.cfg einlesen |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 20
+
+---+ Kommentare
+
+---++ Automatische Erkennung ob Login abgelaufen ist
+
+Mit dem folgenden Befehl kann man sich anschauen was der Storage Service schickt wenn man nicht angemeldet ist:
+
+<verbatim>
+curl -H'PAOS:ver="urn:liberty:paos:2003-08";"urn:oasis:names:tc:SAML:2.0:profiles:SSO:ecp"' -H'Accept:text/html;application/vnd.paos+xml' -k -o - https://ipedariah1.lsdf.kit.edu/dariah_storage/123
+</verbatim>
+
+Antwort:
+
+<verbatim>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+  <S:Header>
+    <paos:Request xmlns:paos="urn:liberty:paos:2003-08" 
+        S:actor="http://schemas.xmlsoap.org/soap/actor/next" 
+        S:mustUnderstand="1" 
+        responseConsumerURL="https://ipedariah1.lsdf.kit.edu/Shibboleth.sso/SAML2/ECP" 
+        service="urn:oasis:names:tc:SAML:2.0:profiles:SSO:ecp"/>
+    <ecp:Request xmlns:ecp="urn:oasis:names:tc:SAML:2.0:profiles:SSO:ecp" 
+        IsPassive="0" S:actor="http://schemas.xmlsoap.org/soap/actor/next" 
+        S:mustUnderstand="1">
+      <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+        https://ipedariah1.lsdf.kit.edu/shibboleth
+      </saml:Issuer>
+    </ecp:Request>
+    <ecp:RelayState xmlns:ecp="urn:oasis:names:tc:SAML:2.0:profiles:SSO:ecp" 
+        S:actor="http://schemas.xmlsoap.org/soap/actor/next" 
+        S:mustUnderstand="1">
+      ss:mem:af66fad6ec0139d5a281010c85300022
+    </ecp:RelayState>
+  </S:Header>
+  <S:Body>
+    <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" 
+        AssertionConsumerServiceURL="https://ipedariah1.lsdf.kit.edu/Shibboleth.sso/SAML2/ECP" 
+        ID="_3ea703cfc379b035107d2cf5a8f73b2e"
+        IssueInstant="2013-04-23T09:28:30Z"
+        ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:PAOS"
+        Version="2.0">
+      <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+        https://ipedariah1.lsdf.kit.edu/shibboleth
+      </saml:Issuer>
+      <samlp:NameIDPolicy AllowCreate="1"/>
+    </samlp:AuthnRequest>
+  </S:Body>
+</S:Envelope>
+</verbatim>
+
+-- Main.DieterHofmann - 01 Apr 2013

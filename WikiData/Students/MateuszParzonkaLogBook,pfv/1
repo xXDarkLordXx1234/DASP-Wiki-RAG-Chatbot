@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1284072396" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+%TOC%
+
+---++++++ 08 Sep 2010
+
+Projekt mit Maven Standard Directories und allen Libraries eingecheckt.
+
+---++++++ 09 Sep 2010
+
+Recherche über State-Of-The-Art Keyphrase Extraction welche sich für BOTBI eignet.  Paper: _"Approximate Matching for Evaluating Keyphrase Extraction"_ [1] als Anfang genommen. Dort sind zwei Verfahren (supervised:KEA + unsupervised:TextRank) beschrieben welche auch in DKPRo enthalten sein sollen. 
+
+KEA habe ich gefunden, ist wohl aus WEKA übernommen, benötigt noch ein externes Modell welches nicht im Snapshot enthalten ist. (Weil kein =resource/Kea= vorhanden).
+
+TextRank scheint man selbst zusammenbauen zu müssen aus anderen Annotatoren. 
+
+Im Paper angegebenes Pre-Processing verwendet das Stanford NER Tool aus _"Incorporating Non-local Information into Information Extraction Systems by Gibbs Sampling."_ [2] Das wäre auch interessant um Named Entities zu annotieren. 
+
+Als bisherige Vorgehensweise wäre es sinnvoll das Buch in Segmente aufzuteilen (also in Texte mit einer Länge von 150 - 8500 Tokens (Schranken aus den Durchschnitten von [1] und dann eine Keyphrase-Extraction darauf anwenden, und zwar so wie das Verfahren beschrieben ist:
+
+*Preprocessing und Candidate Extraction:*
+<blockquote>
+For preprocessing, we tokenize the documents, and split them into sentences. We integrated the TreeTagger for lemmatization, POS-tagging, and NP chunking [20], as well as the Stanford NER tool [5] for named entity recognition. From this pool of preprocessed data, we select as candidates Tokens, Lemmas, N-grams, Noun Phrases, and Named Entities. Following [15], we addi- tionally use the restricted set of tokens Tokens (N,A) and lemmas Lemmas (N,A).
+</blockquote>
+
+*Candidate Ranking:*
+<blockquote>
+The unsupervised graph- based methods (e.g. TextRank) build a co-occurence graph using the candidates. The final candidate rank- ing is determined by computing the centrality scores of the graph nodes using PageRank. For tf.idf ranking, 
+the tf.idf scores are computed using token frequencies. If candidates contain more than one token, the over- all tf.idf score for the candidate is the maximum tf.idf score among all the contained tokens. The supervised keyphrase extraction systems use the extraction model obtained from the training data to classify the candi- dates into keyphrases and rank them according to their importance in the document.
+</blockquote>
+
+KEA und TextRank ausprobieren wenn Implementierung vorhanden in DKPro.
+
+Als Zwischentest vielleicht Buchkapitel manuell aufteilen und exemplarisch die Keyphrase-Extraction evaluieren.
+
+-- Main.MateuszParzonka - 09 Sep 2010

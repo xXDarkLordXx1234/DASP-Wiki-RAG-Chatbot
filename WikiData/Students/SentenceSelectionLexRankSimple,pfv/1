@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="BastianChristoph" date="1287343265" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="SentenceSelection"}%
+---++ Setup for Simple Example
+This example uses ROUGE-N with N=1 and N=2 for evaluation.
+
+---++++ (0) Working dir
+LexRankTutorial
+<br>-> evasum
+<br>-> lib -> dragontool
+<br>-> nlpdata
+
+---++++ (1) Download core library & include
+Download the files at:
+<br>-> http://dragon.ischool.drexel.edu/lib/dragontool.jar
+<br>-> http://dragon.ischool.drexel.edu/nlpdata/nlpdata.zip
+<br>-> http://dragon.ischool.drexel.edu/example/duc2004_2.zip (DUC 2004 Task 2)
+
+---++++ (2) Copy files / Decompress
+-> evasum
+<br>--> lib/dragontool/dragontool.jar
+<br>--> duc2004_2
+<br>---> models
+<br>---> ...
+<br>--> nlpdata
+<br>---> exp
+<br>---> gate
+<br>---> ...
+
+---+++++ (3) Create start-script
+File: workdir \ run-LexRank.bat
+<br>Content:
+<br>java -mx1000000000 -oss10000000000 -cp lib\dragontool\*;. dragon.config.SummarizationEvaAppConfig evasum/duc2004_2/sumcfg.xml 1
+
+---+++++ (4) Result for running the script
+Run	R-1.Min	R-1.Max	R-1.Avg	R-2.Min	R-2.Max	R-2.Avg
+<br>d30001t	0,3524	0,4600	0,4167	0,0865	0,1616	0,1286
+<br>d30002t	0,2542	0,2857	0,2655	0,0536	0,0625	0,0584
+<br>d30003t	0,2990	0,3905	0,3431	0,0208	0,0769	0,0560
+<br>d30005t	0,2542	0,3107	0,2754	0,0085	0,0686	0,0330
+<br>d30006t	0,3214	0,3839	0,3568	0,0360	0,1182	0,0750
+<br>d30007t	0,3232	0,4423	0,3989	0,0204	0,1619	0,0841
+<br>... more ...
+
+---+++++ (5) Note
+The result is additionally saved to: evsum/duc2004_2/evaresult/*_sum.txt
+
+---++++ Example Reference
+http://dragon.ischool.drexel.edu/example.asp
+<br>-> http://dragon.ischool.drexel.edu/textsum.asp

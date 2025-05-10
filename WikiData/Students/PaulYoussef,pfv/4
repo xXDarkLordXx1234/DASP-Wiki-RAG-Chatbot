@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="eger" comment="reprev" date="1510840408" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor thesis: Impact of activation functions on deep learning in NLP
+
+*Start date*: 01.11.2017
+
+*Supervisor*: Dr. Steffen Eger
+
+---++ Current Status
+
+---+++ 15.11.2017
+   * expirements on movie-reviews dataset are still running (maxout, leakyrelu, prelu are done)
+   * I'm working on CNN and RNN for document classification and sequence tagging
+   * I'm also working on the theory & background section in the thesis
+
+---+++ 08.11.2017
+   * Filled out application form [...]
+
+---++ Meeting Minutes
+
+---+++ 16.11.2017
+   * Can send me list about parameters including datasets, so that we can possibly reduce the amount of experiments
+      * possibly reduce one dataset
+   * Tensorflow RNN is on the webpage for DL4NLP: HEX 11
+   * Which parameters are you using for RNN? Please insert into Wiki
+   * Come to some of the UKP meetings on Tuesday
+   * We also talked about the plans for the 2nd phase (different activation functions per layer + combination of activation functions)
+
+---+++ 09.11.2017
+
+   * For CNN: play around with different filter sizes, potentially other hyperparameters
+      * can also play around with more optimizers if time permits: AdaGrad, AdaDelta, RMSprop
+   * For CNN: adaptation of code is completely ok, if you have good reasons for doing so
+   * Can also prepare RNN for Sequence Tagging Task: which implementation do you want to use?
+      * TK in Tensorflow
+      * NR in Keras
+   * I gave you a potential structure of the thesis (>40 pages including everything)
+      * For analysis: std is bad, mean is good
+   * I also gave you feedback on the related work section
+   * Maxout: k=4 (Optional k=2)
+
+---+!! Hyper-Parameters & Datasets
+
+   * MLP & Sentence Classification: 
+      * Datasets: TREC, ...
+      * Hyper-Parameters: 
+         * Optimizer: Adam, SGD
+         * Layers: 1,2,3
+         * ...
+   * CNN:
+   * RNN:
+
+
+-- Main.SteffenEger - 2017-11-09
+
+ 
+-- Main.PaulYoussef - 2017-11-15

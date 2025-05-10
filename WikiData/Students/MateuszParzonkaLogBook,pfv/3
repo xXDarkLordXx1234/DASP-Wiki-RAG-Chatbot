@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1284428460" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+%TOC%
+
+
+---++++++ 13 Sep 2010
+
+Split initial jCas into segments with demultiplier and applied a simplified LexRank to the sub-CASes. Wrote a AnnotationPrinter to visualize the results.
+
+---++++++ 12 Sep 2010
+
+Played around with LexSemRank, seems to be quite slow. Using the  3,2GB "wikipedia_lemma_en" esa cached index.
+
+---++++++ 10 Sep 2010
+
+Played around with TextRank.
+
+---++++++ 09 Sep 2010
+
+Research about State-Of-The-Art Keyphrase Extraction. 
+
+---++++++ 08 Sep 2010
+
+Checked in project.

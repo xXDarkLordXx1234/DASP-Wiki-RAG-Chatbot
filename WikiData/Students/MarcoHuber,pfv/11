@@ -1,0 +1,61 @@
+%META:TOPICINFO{author="huber" comment="reprev" date="1513270579" format="1.1" reprev="5" version="11"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Context-Aware Relation Extraction for Scientific Data
+Mid-Term Presentation: 31.01.2018
+
+End Presentation: 20.03.2018
+
+---+++ Next Meeting: 18.12.2017, 15:00
+   * I need access to more computing power, my machine is overwhelmed
+---++ Meeting: 07.12.2017, 15:00
+
+   * Some Question about Word Embeddings solved
+   * Held-out data -> may be important for me too, need to be checked
+   * Relparser in parser.py is Relation Encoder
+   * Attention is "Selektive Attention" from Lin et al
+
+Todos: 
+   * Try the current model on local machine
+   * Change Keras Backend from Theano to Tenserflow
+
+
+---++ Meeting: 30.11.2017, 15:00
+
+   * Attached Anmeldeformular, Datum der Themenvergabe? May need to be checked...
+   * Changed Declaration: (just to keep in mind and may update the template) [[https://www.informatik.tu-darmstadt.de/fileadmin/user_upload/Group_Studbuero/Erklaerung_zur_Abschlussarbeit_Vorlage.pdf][New Declaration]]
+
+Questions: 
+   * include Approach of data analysis in text? -> no need to, too obvious
+      *  include Code of the data analysis approach somewhere?  -> just store it for myself
+
+   * Which strategy for REVERSE? --> separated classes or "pipelined"
+   * try a machine learning approach (maybe at the end...)
+   * start with a simple local model
+   * familiarize with model &#10004;
+   
+
+   
+
+---++ Meeting: 21.11.2017, 15:00
+
+Questions: 
+   * there may not be enough relations in single sentences -> "abstract-wise"
+   * focus on words and sentences in data analysis (e.g. average Word Length not that useful)
+
+Todos:
+   * Examples of training data &#10004;
+   * data analysis &#10004;
+      * with graphs/plots and some bulletpoints &#10004;
+
+   * setup repo for thesis &#10004;
+   * fork project &#10004;
+   * VPN &#10004;
+   * Anmeldeformular &#10004;
+
+Literature:
+   * Augenstein et al (see Task Description...)
+   * Eger et al (see Task Description...)
+
+-- Main.MarcoHuber - 2017-11-26
+
+%META:FILEATTACHMENT{name="HuberM_Anmeldung_Bachelorthesis.pdf" attachment="HuberM_Anmeldung_Bachelorthesis.pdf" attr="" comment="Anmeldeformular" date="1511995773" path="HuberM_Anmeldung_Bachelorthesis.pdf" size="285320" user="huber" version="1"}%

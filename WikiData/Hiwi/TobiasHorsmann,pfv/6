@@ -1,0 +1,26 @@
+%META:TOPICINFO{author="TobiasHorsmann" date="1316174182" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Tobias Horsmann
+
+---+++ Aufgabenüberblick
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| * Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung in Wikipedia-API um auf lokale MySQL DB mit Amisch-Wiki zugreifen zu können | |
+| Eingelesen Wikiseiten nach MWT absuchen und diese speichern. Abgreifen von MWT vorläufig via RegEx | |
+| Gefundene MWTs indiziert in einem eigenen Datentyp speichern | |
+| Zu jedem MWT die Häufigkeit innerhalb des Wiki ermitteln/abzählen und Eintrag um Frequenz aktualisieren. | |
+| MWT filtern damit nur noch MWTs aus 2-X Wörtern vorhanden sind | |
+---+++ Zeiterfassung
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Zusammenfassung* | *Stunden* | *Bemerkungen* |
+| 10.09.2011 | Erstellen von Testfällen für ausgewählte Seiten des Amisch-Wiki, um MWE Extraktion zu testen. | 1 | ... |
+| 10.09.2011-13.09.2011 | Erstellen von RegEx-Commands, um möglichst präzise und vollständig bold, italic, header und links aus Wikipediaseiten zu extrahieren | 8 | |
+| 16.09.2011 | Annotator erstellt der Simple-Links extrahiert, dass Link Target speichert und die Wörter zählt, sowie einen Test zur Überprüfung hinzugefügt. | 1 | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 90)$EXEC($GET(total_hour))"}% | bis Ende November noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |
+<nop>
+
+%META:FILEATTACHMENT{name="hiwi_task_description.pdf" attachment="hiwi_task_description.pdf" attr="" comment="Rough task overview" date="1315573417" path="hiwi_task_description.pdf" size="788067" user="SilvanaHartmann" version="1"}%
+%META:FILEATTACHMENT{name="hiwi_task_description-2011-09-15.pdf" attachment="hiwi_task_description-2011-09-15.pdf" attr="" comment="UPDATED OVERVIEW" date="1316163031" path="hiwi_task_description-2011-09-15.pdf" size="842532" user="SilvanaHartmann" version="1"}%

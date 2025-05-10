@@ -1,0 +1,120 @@
+%META:TOPICINFO{author="biehl" comment="" date="1590753168" format="1.1" reprev="13" version="15"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ *Master Thesis*: Improving Cross-Document Entity Coreference Resolution using Transfer Learning
+
+*Official Start Date*: 22.10.2019
+
+*Mid-Term Presentation Date*: 06.02.2020
+
+*Final Presentation Date*: 16.06.2020
+
+*End Date*: 31.07.2020
+
+
+---++ Todos, Meetings
+
+---+++ Meeting 2020-05-19
+   * Status:
+      * WDCR annotation in progress on MTurk, created new qualification to exclude some Turkers
+      * CDCR annotation only to be done with experts on some documents or only with system-generated annotation
+      * Result with SpanBERT-large based cross-document coreference model on ECB+ test set: 74.98 CoNLL F1
+      * Result with SpanBERT-large using gradual unfreezing as layerwise training: 78.12 CoNLL F1
+      * Result using SpanBERT-large pre-trained on OntoNotes within-doc coreference: 77.30 CoNLL F1
+   * TODO:
+      * Improve annotation aggregation post-processing -> check for different spans marking the same head noun (genitiv 's, adjectives, etc.)
+      * Evaluate on John Smith Corpus for comparison with CROCS (B^3 only...)
+      * Evaluate gradual unfreezing / layerwise training results
+      * Evaluate cluster-level features, how short can the word-piece level context be per entity mention?
+      * Error analysis - which errors does the CDCR system make? How does this differ from the system of Barhom et al.?
+      * Run feature extraction experiment again (with frozen SpanBERT-large model) and evaluate results
+      * Evaluate other clustering method
+
+---+++ Meeting 2020-01-07
+   * TODO:
+      * Fix incorrect pronoun resolution in cross-doc pre-annotation
+      * Use results of HIT batch aggregation to determine the query mentions for the next batch of HITs (by mention coverage, annotator disagreement, dissimilarity to pre-annotation - evaluate which criterion works well)
+      * Change cross-doc annotation UI: Make whole within-doc coref chains selectable instead of single mentions
+      * Normalize effort per HIT batch using the number of mentions per (pre-annotation) chain
+
+---+++ Meeting 2019-12-17
+   * TODO:
+      * Collect more data for testing the aggregation and verifying the results
+      * Re-Upload the new cross-document HITs (improved HIT UI)
+      * Collect statistics of average mention distance within chains in relation to the chain length on football data and compare to OntoNotes
+      * Improve Aggregation (find optimal clustering, use model confidence scores)
+      * Provide theory chapters of the thesis for review
+
+---+++ Meeting 2019-12-03
+   * Aggregation of annotations via majority vote and constrained optimization implemented
+   * Dry run for MTurk annotation will start this week
+
+---+++ Meeting 2019-11-26
+   * Within-document HIT UI ready for annotation on Mechanical Turk (https://git.ukp.informatik.tu-darmstadt.de/bugert/conll-coref-crowdsourcing/tree/cdcr)
+   * TODO:
+      * Aggregation of annotations using majority vote and constrained optimization (e.g. weighting single decisions / possible clusters by annotator compentence or model confidence)
+      * Optimize cross-document coreference on football dataset (many pronouns resolved incorrectly)
+
+---+++ Skype Meeting 2019-10-08
+   * MB:
+      * How is cross-doc entity coref commonly evaluated?
+      * Which prediction files and/or implementations of cross-doc entity coref systems are publically available?
+
+   * TODO CB:
+      * Finish pre-annotation in the next two weeks, use system with best CoNLL Recall and neural mention detection
+      * Annotation scheme for testing annotation (could be Excel, HTML, ...)
+      * Cross-doc entity coref evaluation approaches
+      * Implement code for mention pair model using transfer learning with BERT, train until next time
+      * Anmeldung der Masterarbeit
+
+---+++ Meeting 2019-09-24
+   * Status: Pre-Annotation of football corpus - Evaluating within-document coreference resolution (kentonl/e2e-coref, CoreNLP neural model), running/pending cross-document coreference resolution (Barhom et al.)
+   * Current evaluation of within-document coreference (kentonl/e2e-coref):  
+   %IMAGE{"kentonle2ecorefeval.png" caption="" size="200"}%
+
+   * TODO CB:
+      * Evaluate recall of mention detection (kentonl/e2e-coref, CoreNLP, BiLSTM-CNN-CRF)
+      * Adapt manual annotation of documents (tag only minimal entity mention, only tag determiner if there is a good justification for it)
+      * Evaluate within-document coreference resolution (kentonl/e2e-coref) again, but with the exact same mentions tagged in the manually annotated documents
+      * Improve recall of within-document coreference resolution (e.g. test sieve-based system by Stanford and remove high-precision sieves)
+      * Send results of mention detection and within-document coreference resolution to MB until end of week
+      * Run cross-document coreference resolution on Slurm (after downtime) to speed up
+      * Create annotation scheme and design of HIT UI, but separate annotation itself and visual realization, consider existing UI (https://git.ukp.informatik.tu-darmstadt.de/bugert/conll-coref-crowdsourcing)
+      * Familiarize with MTurk (go through tutorials)
+      * Write theoretical foundations chapter
+
+   * TODO MB:
+      * Send link to running example of coref crowdsourcing UI
+
+---+++ Meeting 2019-09-09
+   * TODO CB:
+      * Compare mention detection of kentonl/e2e-coref and CoreNLP Coref Annotator to BiLSTM-CNN-CRF sequence tagger
+      * Compare kentonl/e2e-coref coreference annotation to CoreNLP Coref Annotator
+      * Adjust code for speeding up cluster pair generation in CDCR system of Barhom et al. and run on Slurm
+      * Manually annotate at least 3 documents and compare to automatic annotation using CoNLL2012 scorer (useful scorer: https://github.com/ns-moosavi/coval)
+      * Write theoretical foundations part of the thesis
+
+---+++ Meeting 2019-08-29
+   * MB:
+      * schedule mid-term and final presentation:
+         * midterm: 6.2.
+         * final: tbd
+      * UKP Seminar participation: https://docs.google.com/spreadsheets/d/1fWgHG13wpfPhaDYMhXuzZFTde2X2QHUMwrytYxLcJMY/edit?usp=sharing
+      * Anmeldung Masterarbeit: [[https://www.informatik.tu-darmstadt.de/studium_fb20/im_studium/formulare_und_dokumente/abschlussarbeiten_formulare/index.de.jsp][Formular]]
+      * Paper, ggf. relevant:
+         * https://arxiv.org/abs/1908.09091
+         * http://web.stanford.edu/class/cs224n/reports/custom/15735157.pdf
+         
+   * TODO CB:
+      * run cross-document coreference system (Barhom et al.) on football dataset with mention detection from within-document coreference and mention detection with BiLSTM-CNN-CRF
+      * manually evaluate the generated within- and cross-document coreference annotation by sampling and manually annotating single documents and coreference clusters
+      * write theory chapter on (cross-document) entity coreference resolution and transfer learning
+      * setup code base for transfer learning experiments
+
+   * TODO für MB:
+      * mention detection System trainiert auf ECB+ an CB schicken
+      * Terminserie auf Dienstag ändern wg. Seminar
+        
+---+++ 2019-08-15 until 2019-08-29
+   * run !CDEnCR models of Lee et al. 2012 and Barhom et al. 2019 on football dataset
+
+%META:FILEATTACHMENT{name="kentonle2ecorefeval.png" attachment="kentonle2ecorefeval.png" attr="" comment="" date="1569335995" size="36386" user="biehl" version="1"}%

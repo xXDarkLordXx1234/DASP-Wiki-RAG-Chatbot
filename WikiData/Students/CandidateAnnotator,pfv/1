@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="NicoErbs" date="1263901372" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NicoErbsHiWiWork"}%
+---+++CandidateAnnotator
+
+UIMA annotator which is retrieving a candidate for keyphrase extraction. It takes the following parameters:
+
+   * PARAM_ANNOTATION_TYPE: Type which is used as a candidate
+   * PARAM_STRING_METHOD: String of the method which is used to get information from the annotation type (getCoveredText or getValue)
+   * PARAM_USE_POS_FILTER: Boolean value stating whether a Pos filter is used or not
+   * PARAM_RESOLVE: Boolean value for resolving the text. Does not make sense for N-Grams
+
+-- Main.NicoErbs - 19 Jan 2010

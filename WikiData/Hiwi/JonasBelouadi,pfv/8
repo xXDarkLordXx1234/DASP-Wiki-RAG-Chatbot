@@ -1,0 +1,95 @@
+%META:TOPICINFO{author="bugert" comment="" date="1557154963" format="1.1" reprev="5" version="8"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Generelles
+   * Zeitliche Vorgaben:
+      * 13. Mai: Release Hausübung 5
+         * Studenten sollen Baseline für Shared Task entwickeln. Dafür muss !CodaLab mit simplem Scorer funktionieren, plus die Hausübung.
+      * ca. 08. Juli: Submission Deadline für Shared Task
+         * Bis dahin kann der Scorer noch erweitert werden.
+
+   * Google Doc von Steffen: https://docs.google.com/document/d/1g25ZrPRPo0O37FPyPqF5o5r7xe2kUqQYiRc5hh1JOac/edit#
+      * Poems, die generiert werden sollen
+      * Was der Scorer können soll
+
+---++ Progress
+
+---+++ 2019-04-25
+   * format von poems vorerst übernommen:
+      * pro zeile ein Vers
+      * Strophen sind durch newlines getrennt
+      * Tokenisiert auf Wortebene
+   * Readability scorer implementiert
+   * alliteration scorer implementiert
+   * rhyme scorer implementiert
+   * code jetzt im [[https://git.ukp.informatik.tu-darmstadt.de/belouadi/dl4nlp19_codalab][UKP Git]]
+
+---+++ 2019-04-26
+   * potentielle clustering algorithms
+      * DBSCAN
+      * HDBSCAN
+      * !AffinityPropagation
+      * !MeanShift
+   * HDBSCAN scheint am besten zu funktionieren
+
+---+++ 2019-04-27
+   * duplication checking:
+      * Gedichte werden als TF-IDF Vektoren repräsentiert
+      * clustering aller Gedichte mit HDBSCAN
+      * Mittel der soft clustering Wahrscheinlichkeiten als Indikator für duplication
+   * überprüfen der Gedichtsformate bei Upload
+
+---+++ 2019-04-30
+   * perplexity score:
+      * character level language model funktioniert wahrscheinlich besser (viele Rechtschreibfehler und ähnliches in Gedichten)
+      * [[https://github.com/salesforce/awd-lstm-lm][this]] seems to be a good choice
+
+---+++ 2019-05-05
+   * flesh-reading-ease scores zwischen 0 und 100 normalisiert
+   * perplexity model trainiert und dem Scorer hinzugefügt
+   * das scoring dauert sehr lange, ein Worker Node braucht ca 20 Minuten um 4000 Gedichte zu verarbeiten
+   * verschiedene Dinge probiert um den Scorer auszutricksen:
+      * 1000 mal dasselbe Gedicht abgegeben (*replicated*)
+      * 3000 Gedichte mit zufälligen Wörtern aus Wörterbuch generiert (*random_words*)
+      * 3000 Gedichte mit häufigen Wörtern aus Wörterbuch (Stopwords) generiert (*random_stopwords*)
+   | *Abgabetyp* | *Readability Score* | *Alliteration Score* | *Rhyme Score* | *Originality Score* | *Perplexity* |
+   | *gold_poems* | 63.214856192927826 | 26.391962467911835 | 78.11387331795068 | 94.51120986108566 | 3.4248341839140757 |
+   | *replicated* | 64.69914085207614 | 0.0 | 52.22222222222235 | 0.09066183136899886 | 6.6215923515200785 |
+   | *random_words* | 0.2581197798682197 | 28.533368855734647 | 100.0 | 0.6078989494819664 | 11.067080482267503 |
+   | *random_stopwords* | 58.71873038695129 | 0.0 | 99.98841788278898 | 17.247630915005917 | 8.373718951607612 |
+   * in allen "Fake" Abgaben ist Originality Score sehr niedrig und Perplexity hoch, was sehr gut ist
+
+
+---++ Meeting Minutes
+---+++ 2019-04-04 Erste Aufträge von MB
+   * Generieren von Poems: erstmal überspringen.
+   * Wir brauchen zunächst eine prototypische Umsetzung für den gesamten Shared Task. Der Weg dahin:
+      * mit Codalab vertraut machen: https://github.com/codalab/codalab-competitions/wiki und [[%ATTACHURL%/dl4nlp2018_shared_task_codalab.7z][Competition vom letzten Jahr]] mal hochladen/ausprobieren ✅
+      * Datenformat für die Poem-Predictions grob festlegen ✅
+      * simplen Scorer schreiben, der z.B. nur readability prüft ✅
+      * das ganze auf Codalab mit Dummy-Predictions testen ✅
+
+---+++ 2019-04-15 Meeting
+   * Gold Poems müssen noch aufgetrieben werden ✅
+   * bis Ende der Woche versuchen ein paar Dinge zu tun um Aufwand abzuschätzen:
+      * Format für dataset überlegen ✅
+      * protoypisch eine metric mit dem scorer umsetzen ✅
+
+---+++ 2019-04-25 Meeting
+   * baseline für hausübung 5 soll von JB implementiert werden
+   * die Länge der Submissions wird durch die performance der baseline bestimmt
+   * rhyme score bestimmen mithilfe Grapheme to Phoneme Conversion ✅
+   * Gedanken machen über deduplication of poems ✅
+
+---+++ 2019-05-02 Meeting
+   * Durchführung von Stresstests mit dem Codalab Scorer:
+      * test mit unsinnigem Datensatz mit identischen letzten Wörtern per Zeile ✅
+      * inwiefern wirkt sich casing auf die Scores aus ✅
+   * bis 8./9. Mai grobe Vorabgabe der 5. Hausübung vorbereiten
+      * Aufgabenstellung
+      * Baseline
+
+<!--
+   * Set ALLOWTOPICVIEW = Main.SteffenEger
+//-->
+
+%META:FILEATTACHMENT{name="dl4nlp2018_shared_task_codalab.7z" attachment="dl4nlp2018_shared_task_codalab.7z" attr="" comment="" date="1554371476" path="dl4nlp2018_shared_task_codalab.7z" size="2438062" user="bugert" version="1"}%

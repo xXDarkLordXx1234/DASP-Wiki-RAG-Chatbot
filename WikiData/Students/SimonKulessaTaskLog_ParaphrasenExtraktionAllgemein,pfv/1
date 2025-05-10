@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212657817" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="SimonKulessaTaskLog"}%
+*Komponente:*
+<br>Paraphrasen Kandidaten Extraktion 
+
+*Beschreibung:*
+<br>Extraktion der Paraphrasen aus den Wikipedia Artikeln ...
+
+*Bisherige Lösung:*
+<br>Verwendung eines Bag of Words Ansatzen um die geänderten Sätze zwei Revisionen miteinander zu vergleichen.
+<br>Clustering der Sätze aller Revisionen.
+
+*Alternativen:*
+<br>Momentan sehe ich da nur folgende Alternative:
+   * Unterteilung jeder Revision in Sätze und anschließendes Clustering aller Sätze (ebenfalls mit Bag of Words Ansatz).
+
+
+-- Main.SimonKulessa - 05 Jun 2008

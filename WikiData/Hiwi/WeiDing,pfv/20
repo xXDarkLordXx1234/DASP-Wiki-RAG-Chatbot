@@ -1,0 +1,211 @@
+%META:TOPICINFO{author="ding" comment="reprev" date="1521636460" format="1.1" reprev="20" version="20"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Meeting Minutes
+[[WeiDingTimes][Time tracking]]
+---++ 2018-03- Meeting
+   * #164 correction-update AL sidebar:
+      * needs to receive event from webanno?
+
+---++ 2018-03-14 Meeting
+   * Last review active learning tutorials
+   * Try to set ukp email in gmail
+   * User cannot delete document after active learning
+   * Create new issues from the workshop feedback
+   * Fix the bug cannot delete document and project
+   * To do:
+      * send AL tutorial to Pierre-Alex - done
+      * fix bugs firstly
+
+---++ 2018-03-07 Meeting
+   * Review active learning tutorials
+   * Active learning correction using events
+   * Try to set UPK mailbox outlook
+
+---++ 2018-02-28 Meeting
+---++ 2018-02-21 Meeting
+
+
+---++ 2018-01-31 Meeting
+   * Discuss
+      * Variant 1? 2? 3? (Variant 1 is implemented. have tried to implement Variant 3, but have problems)
+      * Do we really need a skip button? (In case of if user accept the recommendation in the right part) But this button makes me forget to click reject after correction.
+      * How to update the learning history every time a new record is stored.
+      * Logic of implement learning records, and in which model? 
+         * Suppose: AL Sidebar gives Recommendation: "can Verb"  
+            1 User accepted "can Verb" in !BratEditor > Record: can, Verb, accepted, target:true, madeBy: !BratEditor
+            2 User annotated "can Verb" in !RightSidebar > Record: can, Verb, accepted, target:true, madeBy: !RightSidebar
+            3 User rejected "can Verb" in !BratEditor > Record: can, Verb, rejected, target:true, madeBy: !BratEditor
+            4 User annotated "can Noun" in !BratEditor > Record: can, Noun, corrected, target:true, madeBy: !BratEditor
+            5 User annotated "can Noun" in !RightSidebar > Record: can, Noun, corrected, target:true, madeBy: !RightSidebar
+            6 User accepted "may Verb" in !BratEditor  > Record: may, Verb, accepted, target:false, !BratEditor
+            7 User rejected "may Noun" in !BratEditor  > Record: may, Noun, rejected, target:false, !BratEditor
+
+---++ 2018-01-24 Meeting
+   * Review the merge requests
+   * Discuss the problem: a new button to let user skip this recommendation without anything happens in database
+   * to do:
+      * 2 new columns in database and methods changes correspondingly
+      * delete button bug after using !LambdaModel for learning records
+      * "skip" the recommendation
+      * Learning Graph
+
+---++ 2018-01-17 Meeting
+   * Merge the changes
+   * Install mysql and create 2 tables for 0.1.x and 0.2.x
+   * 2 Bugs: 
+      * Highlight doesn't work sometimes, hard to reproduce
+      * When the recommendations don't come, internal error
+
+---++ 2018-01-09 Meeting
+   * to do:
+      * changes in learning record database -done
+      * move the suggestion issues from milestone 0.2.0 to 0.3.0
+      * Removing suggestion from the learning history and create issue in git -done but not merged
+      * Clicking in the learning history jumps to the annotation and create issue in git -done but not merged
+      * Retrieving the results and showing the graph in the AL sidebar and create issue in git
+
+---++ 2017-12-12 Meeting
+   * Test results meeting
+
+---++ 2017-11-27 Meeting
+   * Test the following functions:
+      * Get predictions for the whole document
+      * !AnnotationPage jumps to the corresponding suggestion location in the document
+      * bootstrap button and scrolling history record
+      * learning records are stored in the database and works after accept or reject
+   * Things need to be discussed:
+      * how to identify same tokens in different position in one sentence
+      * how to synchronize the rejected learning history with recommendation model
+   * Todos:
+      * add layer to record database and change getting learning history method in !ActiveLearningSidebar
+      * write a email to BB/REC asking for the solution to get annotationPage in !ActiveLearningSidebar
+      * prepare for the presentation next Monday, send to Beto for feedback before Friday
+         * explain the algorithm
+         * UI screenshot
+         * wishes for next step
+         * a demo
+      * sit down with Peter to solve the NLP classifier bug
+      * maybe bug: check the selected layer after terminate change a layer, but not restart !ActiveLearningSidebar
+
+---++ 2017-11-17 Meeting
+   * Currently, the recommendations are coming only for the current document
+   * Tasks for the upcoming days:
+   * PRIORITY 1
+      * (PETER) Refactor model
+      * (PETER) The recommendation object should have an extended id:
+         * {projectid, username, documentid, sentenceid, recommendationid}.
+         * This id should have some support method for comparing the instances
+      * (PETER) !GetPrediction should be parameterized so that the caller can choose to get predictions for the whole project or for a specific document
+      * *(WEI) Get predictions for the whole document (use 0 and document size as start/end)* done
+      * *(WEI) When showing the suggestion, the AL sidebar should jump to the corresponding suggestion location in the document* done
+         * Use the documentService.getSourceDocument method
+         * See the private !SearchResultGroup class in the !SearchAnnotationSidebar class for an example
+      * *(WEI) Use bootstrap classes for the AL sidebar buttons* done
+   * PRIORITY 2
+      * *(WEI) The AL service should store in the database the history of accepted/rejected recommendations with the following information:* done
+         * {projectid, username, documentid, offset(begin-end), label, reject/accept}
+      * *(WEI) After a user rejects something, the renderer must be triggered* 
+         * Call !AnnotationPage !ActionRefreshDocument
+   * PRIORITY 3
+      * (PETER) Renderer should filter the rejected recommendations
+   * BUGS
+      * (PETER) Bug - Stringmatching has two suggestions for the same token
+      * (PETER) Bug - !OpenNLP is not showing option  has two suggestions for the same token
+   * Future steps:
+      * Improvements graph
+         * (PETER) Database table for storing the results of every classifier run
+            *  projectid, classifierid, time, duration, precision, recall, fscore
+         * (WEI) Retrieve the results and showing the graph in the AL sidebar
+   * Wishlist:
+      * Removing suggestion from the learning history
+      * Clicking in the learning history jumps to the annotation
+
+
+---++ 2017-11-10 Meeting
+   * renew contract
+   * 2 !ActiveLearning strategies:
+      * Strategy A: the predictions are ordered by confidence (ascending).
+         * this one is already implemented in recommendation model.
+      * Strategy B: When showing the predictions, order (ascending) by the difference between weights (regardless of the classifier) for every word.
+      * For the moment, strategy B will be the default, but in the future, we can easily configure to switch between different strategies, as well as add new strategies
+   * Checked with Peter: 
+      * recommendations are being generated for suggestions that have already been chosen by the user. So the !recommendationList from recommendation model contains all the recommendations even for those already accepted tokens
+      * it is possible that one classifier gives different predictions to the same token
+   * For storing data in the database, look at !entityManager. The accepted recommendations should already been stored in database.
+   * Question: When getting recommendations from the recommender system, should we get them only for the current document/page?
+      * getPrediction only retrieves recommendations for the current document
+      * If they would come from all documents in a project, the AL sidebar should jump to the corresponding document/page when showing a new recommendation
+   * To do
+      * show more information about recommendation like confidence, classifier in log so that easy to debug later
+      * filter recommendations for tokens which already been taken
+      * implement strategy B
+      * refine strategy A in active learning model
+
+
+---++ 2017-11-03 Meeting
+   * handing over timesheets
+   * fix the serializable error and push to incrementalTrainer master branch
+   * To do
+      * write the function to accept button, after clicking, the recommendation will be saved in memory, be shown in annotationBrat and be recorded in !LearningHistory
+      * use !ListView component for !LearningHistory
+      * after finishing this function, try to store in database
+
+
+---++ 2017-10-25 Meeting
+   * Created a new issue in Git for me #51, keep my feature active learning branch, pull from master branch and push to my feature branch
+   * Discussed how to [[%ATTACHURLPATH%/ActiveLearningGiveRecommendationLogic.jpg][give recommendations]] in Active Learning:
+      * Give user the recommendations word by word
+      * Get all confidences for tokens in the document and sort them from low to high in a recommendationList
+      * Show user the recommendation of lowest confidence at first
+         * If user accepts this recommendation, remove other recommendations for this token from the recommendationList
+         * If user rejects this recommendation, remove this recommendation from the recommendationList
+      * Keep the learned words in Learning History
+   * Discussed the functional details behind each button and the layout of activeLearningSidebar
+      * If start learning, the layer dropDownChoice should be disabled. And the value of start button should be changed to stop.The rest part of sidebar should be hidden until start learning
+      * In the place of Learning Curve, replace it with Recommendation, so that user can accept or reject the recommendations here. So move the 2 buttons after Learning History to here
+   * To do
+      * Update the mockup active learning sidebar
+      * Try to get the list of confidences
+
+
+
+---++ 2017-10-17 Meeting
+   * How to choose instances to query considering the classifiers, whether we give the user multiple suggestions for the instance with regard to the confidence of one classifier or we give multiple suggestions from different classifiers. *In the moment, we should focus on the suggestions from one classifier.*
+   * If the suggestions are wrong, we should provide the function for users to delete it. How can users do the changes? *In the future, this point will be discussed again.*
+   * Richard has explained !DocumentInfoSiderbarFactory and !DocumentInfoSidebar classes.
+   * To do
+      * implement a simple sidebar for active learning to know more about Wicket Framework
+      * think about the implementation of functionality of activeLearningSidebar
+
+
+
+---++ 2017-10-09 Meeting
+   * Got to know Beto
+   * Introduced project [[%ATTACHURLPATH%/INCEpTION-ActiveLearning.jpg][INCEpTION-ActiveLearning]]
+   * Downloaded source code and set the environment
+   * To do
+      * to create WikiPage
+      * to be familiar with the source code from class "SearchAnnotationSideBar.java"
+      * to be familiar with !INCEpTION application
+      * to be familiar with Wicket
+
+%META:FORM{name="%25SYSTEMWEB%25.UserForm"}%
+%META:FIELD{name="FirstName" attributes="" title="<nop>FirstName" value=""}%
+%META:FIELD{name="LastName" attributes="" title="<nop>LastName" value=""}%
+%META:FIELD{name="OrganisationName" attributes="" title="<nop>OrganisationName" value=""}%
+%META:FIELD{name="OrganisationURL" attributes="" title="<nop>OrganisationURL" value=""}%
+%META:FIELD{name="Profession" attributes="" title="Profession" value=""}%
+%META:FIELD{name="Country" attributes="" title="[[System.CountryList][Country]]" value=""}%
+%META:FIELD{name="State" attributes="" title="State" value=""}%
+%META:FIELD{name="Address" attributes="" title="Address" value=""}%
+%META:FIELD{name="Location" attributes="" title="Location" value=""}%
+%META:FIELD{name="Telephone" attributes="" title="Telephone" value=""}%
+%META:FIELD{name="VoIP" attributes="" title="<nop>VoIP" value=""}%
+%META:FIELD{name="InstantMessagingIM" attributes="" title="<nop>InstantMessaging (IM)" value=""}%
+%META:FIELD{name="Email" attributes="" title="Email" value=""}%
+%META:FIELD{name="HomePage" attributes="" title="<nop>HomePage" value=""}%
+%META:FIELD{name="Comment" attributes="" title="Comment" value=""}%
+%META:FILEATTACHMENT{name="INCEpTION-ActiveLearning.jpg" attachment="INCEpTION-ActiveLearning.jpg" attr="" comment="" date="1507553992" size="95391" user="ding" version="1"}%
+%META:FILEATTACHMENT{name="ActiveLearningGiveRecommendationLogic.jpg" attachment="ActiveLearningGiveRecommendationLogic.jpg" attr="" comment="" date="1508931852" size="90988" user="ding" version="1"}%
+%META:TOPICMOVED{by="ding" date="1521451932" from="Main.WeiDing" to="Hiwi.WeiDing"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Local" value="System.LdapUserView"}%

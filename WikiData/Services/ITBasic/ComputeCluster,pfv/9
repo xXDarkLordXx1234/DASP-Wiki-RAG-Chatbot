@@ -1,0 +1,70 @@
+%META:TOPICINFO{author="bugert" comment="" date="1560253912" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="WebHome"}%
+<!--
+   * ALLOWTOPICCHANGE = System-Admin
+-->
+
+<div style="background: red; color: #F8F8F8; border: solid 2px darkred; padding: 5px">
+<p align="center">
+<u>*BETA PHASE!!*</u>
+</p>
+under construction
+</div>
+
+---+!! Slurm Compute Cluster
+%TOC%
+
+---++ Principle of Slurm
+On traditional compute servers (the way we had them at UKP before summer 2019), running compute experiments works by connecting to a specific server, then starting a script with GNU screen or tmux.
+
+Slurm is a job scheduling service. With Slurm, compute experiments are done by connecting to a headnode where one can submit a compute job into a queue of compute jobs. Slurm prioritizes compute jobs in a way that every user gets his/her share of the compute resources that he/she deserves. If a compute job has a high enough priority and a node (== compute server) with sufficient resources is free, Slurm will automatically start the compute experiment. Once a job finishes, an email notification is sent.
+
+---++ Walkthrough Usage Example
+<div style="background: red; color: #F8F8F8; border: solid 2px darkred; padding: 5px">
+Should cover the following steps:
+   * put code & data in place: assume that data is already present and link to [[ComputeClusterStorage]] for further instructions
+   * writing the bash script
+   * specifying resource requirements (cpu, mem, gpu of type)
+   * submit
+   * checking progress
+   * receiving results
+</div>
+
+Jobs on slurm are started by writing a shell script and then calling it via =sbatch myscript.sh= . The [[https://slurm.schedmd.com/sbatch.html][official sbatch documentation]] describes all parameters that can be used. More examples can be found on the websites of the [[https://www.hhlr.tu-darmstadt.de/hhlr/arbeit_auf_dem_cluster/arbeit_mit_lsf_1/index~1.de.jsp][TU Darmstadt Lichtenberg]] or the [[https://doku.lrz.de/display/PUBLIC/Example+parallel+job+scripts+on+the+Linux-Cluster][Leipzig Rechenzentrum]], or at [[https://www.ch.cam.ac.uk/computing/slurm-usage][Univ Cambridge]].
+   
+You can use place holders in file names to create a different file for e.g. different runs. This could look like =#SBATCH --output=/ukp-storage-1/my_user/myjob.%j.%N.out= . A list of placeholders can be found in the [[https://slurm.schedmd.com/sbatch.html#SECTION_<B>filename-pattern</B>][sbatch documentation]].
+
+---++ Resource Limits
+
+%TABLE{ headerrows="2" }%
+| *User Group* | *Researchers* || *Students* |
+| *QOS* | *researcher (default)* | *snail* | *student* |
+| Max nodes per job | 1 | 1 | 1 |
+| Max CPUs per job | 24 | 6 | 24 |
+| Max GPUs per job | unlimited | 1 | 1 |
+| Max memory per job (GB) | 128 | 64 | 64 |
+| Max job duration (days) | 3 | 7 | 3 |
+| sudo rights | no | no | no |
+
+When submitting a job, researchers can request different *quality of service (QOS)* settings. The *snail* QOS allows longer running jobs with stricter resource limits.
+
+<div style="background: red; color: #F8F8F8; border: solid 2px darkred; padding: 5px">
+how to request different qos?
+</div>
+
+---++ !FairShare
+In order to give distribute the compute resources fairly, we employ fair share. FairShare is a score that determines what priority you have in the scheduling queue for your jobs. The more jobs you run, the lower your score becomes, temporarily. A number of factors are used to determine this score:
+
+   * Point 1
+   * Point 2
+
+To find out what your score is, enter =sshare -U= on *wormulon* to see a listing for your group (this is not your individual score, but an aggregate for your group).
+In general, a score of 0.5 or above means you have higher priority for scheduling.
+
+---++ Slurm Command Documentation / External References
+
+---++ Moving code and data into the cluster
+See [[ComputeClusterStorage]].
+
+---++ Frequently Asked Questions
+See [[ComputeClusterFAQ]].

@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="MichaelKutschke" date="1337005835" format="1.1" version="2"}%
+%META:TOPICPARENT{name="PANChallenge"}%
+---+ Weitere nützliche Features
+   * Neben Bigrammen sollten auch Unigramme und Trigramme berücksichtigt werden (*DONE: Michael*)
+   * Lexikalische Features auf Basis der Diskussionsseiten (uni/bi/trigramme aus den diskussionen)
+      * Grund - für einige Flaw-Typen sind die Diskussions-Features recht hoch geranked. Daher sollte man vielleicht auch die Diskussionen auf lexikalischer Ebene mit einbeziehen
+   * Named Entities im Artikel erkennen (mit Stanford Named Entity Recognizer aus DKPro Core GPL) und als feature verwenden.
+      * Es gibt 4 NE-Typen. Man könnte die Zahl der NE aus jedem Typ als Feature verwenden
+   * Inline-Citations haben oft spezielle Diskursmarker. Die könnte man explizit als Wortliste definieren und als Feature verwenden.
+---+ Sonstiges
+   * Mit einer Ablationsstudie herausfinden, wie nützlich einzelne Features/Feature-Gruppen für die einzelnen Flaws sind.
+   * Error-Analyse falsch erkannter Artikel vor dem Hintergrund der ausgewählten Features: 
+      * Warum konnten diese Artikel durch die selektierten Features nicht korrekt bestimt werden. 
+      * Bleiben die falsch erkannten Artikel konstant wenn man weniger/mehr/alle Features selektiert? Andere ML-Algorithmen verwendet?
+
+-- Main.OliverFerschke - 2012-05-13

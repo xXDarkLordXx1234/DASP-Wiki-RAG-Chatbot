@@ -1,0 +1,238 @@
+%META:TOPICINFO{author="dodinh" comment="reprev" date="1377104925" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ErikLanDoDinh"}%
+Additional work to my diploma thesis:
+
+----+ False negatives
+
+Analysis of false negatives which are produced by the system: [[%ATTACHURL%/NNgenNN_manual_analysis_FN.odt][NNgenNN_manual_analysis_FN.odt]]
+
+Note that, due to the random initialization of the algorithm, these false negatives are not "stable", i.e. sometimes there are more than these, sometimes less. However, from multiple runs, these showed to be some of the most persistent false negatives. Further information (e.g. the feature vectors) can be found here: [[%ATTACHURL%/METAPHORS_1.ods][METAPHORS_1.ods]]
+
+----+ Scott's Pi for IAA
+
+Using Scott's Pi instead of Cohen's Kappa for Inter-Annotator Agreement, we arrive at these results:
+
+s1: 320 nietzsche-vom-nutzen-und-nachteil-der-historie-fuer-das-leben-1-5-annotiert-cr-110815.docx<br>
+s2: 737 nietzsche-vom-nutzen-und-nachteil-1-5-annotiert-pgg-110811.docx<br>
+aligned: 319<br>
+ |  | N | M| | 
+ | N | 207 | 44 | 251 | 
+ | M | 30 | 38 | 68 | 
+ |  | 237 | 82 | 319 | 
+Pi = 0.3550273224043717
+
+
+s1: 252 Nietzsche - Vom Nutzen und Nachteil ... (1-5) - AK.docx<br>
+s2: 737 nietzsche-vom-nutzen-und-nachteil-1-5-annotiert-pgg-110811.docx<br>
+aligned: 250<br>
+ |  | N | M| | 
+ | N | 165 | 44 | 209 | 
+ | M | 18 | 23 | 41 | 
+ |  | 183 | 67 | 250 | 
+Pi = 0.2677626606198032
+
+
+s1: 252 Nietzsche - Vom Nutzen und Nachteil ... (1-5) - AK.docx<br>
+s2: 320 nietzsche-vom-nutzen-und-nachteil-der-historie-fuer-das-leben-1-5-annotiert-cr-110815.docx<br>
+aligned: 251<br>
+ |  | N | M| | 
+ | N | 176 | 34 | 210 | 
+ | M | 19 | 22 | 41 | 
+ |  | 195 | 56 | 251 | 
+Pi = 0.3227440498918162
+
+
+s1: 108 Hegel-Grundlinien-der-Philosophie-des-Rechts-Vorrede-AK.docx<br>
+s2: 108 hegel-grundlinien-der-philosophie-des-rechts-vorrede-annotiert-pgg-110804.docx<br>
+aligned: 108<br>
+ |  | N | M| | 
+ | N | 85 | 3 | 88 | 
+ | M | 5 | 15 | 20 | 
+ |  | 90 | 18 | 108 | 
+Pi = 0.7445298639858072
+
+
+s1: 108 hegel-grundlinien-der-philosophie-des-rechts-vorrede-zeno-org-annotiert-cr-110814.docx<br>
+s2: 108 hegel-grundlinien-der-philosophie-des-rechts-vorrede-annotiert-pgg-110804.docx<br>
+aligned: 108<br>
+ |  | N | M| | 
+ | N | 83 | 5 | 88 | 
+ | M | 7 | 13 | 20 | 
+ |  | 90 | 18 | 108 | 
+Pi = 0.6167947959787107
+
+
+s1: 108 Hegel-Grundlinien-der-Philosophie-des-Rechts-Vorrede-AK.docx<br>
+s2: 108 hegel-grundlinien-der-philosophie-des-rechts-vorrede-zeno-org-annotiert-cr-110814.docx<br>
+aligned: 108<br>
+ |  | N | M| | 
+ | N | 84 | 4 | 88 | 
+ | M | 4 | 16 | 20 | 
+ |  | 88 | 20 | 108 | 
+Pi = 0.7545454545454546
+
+
+s1: 229 Hegel-Grundlinien-der-Philosophie-des-Rechts-Einleitung-AK.docx<br>
+s2: 229 hegel-grundlinien-der-philosophie-des-rechts-einleitung-annotiert-pgg-110810.docx<br>
+aligned: 229<br>
+ |  | N | M| | 
+ | N | 220 | 4 | 224 | 
+ | M | 1 | 4 | 5 | 
+ |  | 221 | 8 | 229 | 
+Pi = 0.6041486603284352
+
+
+s1: 229 Hegel-Grundlinien-der-Philosophie-des-Rechts-Einleitung-AK.docx<br>
+s2: 229 hegel-grundlinien-der-philosophie-des-rechts-einleitung-zeno-org-annotiert-cr-110815.docx<br>
+aligned: 229<br>
+ |  | N | M| | 
+ | N | 219 | 5 | 224 | 
+ | M | 3 | 2 | 5 | 
+ |  | 222 | 7 | 229 | 
+Pi = 0.3153961136023911
+
+
+s1: 229 hegel-grundlinien-der-philosophie-des-rechts-einleitung-zeno-org-annotiert-cr-110815.docx<br>
+s2: 229 hegel-grundlinien-der-philosophie-des-rechts-einleitung-annotiert-pgg-110810.docx<br>
+aligned: 229<br>
+ |  | N | M| | 
+ | N | 217 | 5 | 222 | 
+ | M | 4 | 3 | 7 | 
+ |  | 221 | 8 | 229 | 
+Pi = 0.3796839729119644
+
+
+0.3550 = [nietzsche-vom-nutzen-und-nachteil-der-historie-fuer-das-leben-1-5-annotiert-cr-110815.docx] vs [nietzsche-vom-nutzen-und-nachteil-1-5-annotiert-pgg-110811.docx]<br>
+0.2677 = [Nietzsche - Vom Nutzen und Nachteil ... (1-5) - AK.docx] vs [nietzsche-vom-nutzen-und-nachteil-1-5-annotiert-pgg-110811.docx]<br>
+0.3227 = [Nietzsche - Vom Nutzen und Nachteil ... (1-5) - AK.docx] vs [nietzsche-vom-nutzen-und-nachteil-der-historie-fuer-das-leben-1-5-annotiert-cr-110815.docx]<br>
+0.7445 = [Hegel-Grundlinien-der-Philosophie-des-Rechts-Vorrede-AK.docx] vs [hegel-grundlinien-der-philosophie-des-rechts-vorrede-annotiert-pgg-110804.docx]<br>
+0.6167 = [hegel-grundlinien-der-philosophie-des-rechts-vorrede-zeno-org-annotiert-cr-110814.docx] vs [hegel-grundlinien-der-philosophie-des-rechts-vorrede-annotiert-pgg-110804.docx]<br>
+0.7545 = [Hegel-Grundlinien-der-Philosophie-des-Rechts-Vorrede-AK.docx] vs [hegel-grundlinien-der-philosophie-des-rechts-vorrede-zeno-org-annotiert-cr-110814.docx]<br>
+0.6041 = [Hegel-Grundlinien-der-Philosophie-des-Rechts-Einleitung-AK.docx] vs [hegel-grundlinien-der-philosophie-des-rechts-einleitung-annotiert-pgg-110810.docx]<br>
+0.3153 = [Hegel-Grundlinien-der-Philosophie-des-Rechts-Einleitung-AK.docx] vs [hegel-grundlinien-der-philosophie-des-rechts-einleitung-zeno-org-annotiert-cr-110815.docx]<br>
+0.3796 = [hegel-grundlinien-der-philosophie-des-rechts-einleitung-zeno-org-annotiert-cr-110815.docx] vs [hegel-grundlinien-der-philosophie-des-rechts-einleitung-annotiert-pgg-110810.docx]<br>
+
+
+----+ Scott's Pi (and precision/recall) for system performance evaluation
+
+We show Scott's Pi using the Gold annotations as one annotator, the system as the other annotator. We also list precision and recall.
+
+The results are divided into candidate type (+ a combination), and then further into one result set including only the candidates, and one, where also gold metaphors which are not captured by a candidate type are included. For this to work, and to have this gold/system Scott's Pi comparable to the IAA Scott's Pi, we use the system as the originally intended clustering solution; i.e. we use all candidates as training and all candidates as test set. For the "combined" results we rate a candidate as metaphor if it is considered as metaphor by at least one candidate type run. This increases both true positive and false positive counts.
+
+Note: there are 134 sentences containing a novel metaphor in the six evaluated documents.
+
+
+noun-genitive-noun:
+
+Candidates only:
+
+TP: 50<br>
+FP: 205<br>
+TN: 347<br>
+FN: 17<br>
+rated: 619<br>
+total: 1701<br>
+precision: 0.19607843137254902<br>
+recall: 0.746268656716418<br>
+
+ |  | N | M| | 
+ | N | 50 | 205 | 255 | 
+ | M | 17 | 347 | 364 | 
+ |  | 67 | 552 | 619 | 
+Pi = 0.06820092760855996
+
+All sentences/metaphors:
+
+TP: 50<br>
+FP: 205<br>
+TN: 1362<br>
+FN: 84<br>
+precision: 0.19607843137254902<br>
+recall: 0.373134328<br>
+
+ |  | N | M| | 
+ | N | 50 | 205 | 255 | 
+ | M | 84 | 1362 | 1446 | 
+ |  | 134 | 1567 | 1701 | 
+Pi = 0.16115171873040282
+
+----------------
+
+
+
+verb-object:
+
+
+TP: 70<br>
+FP: 265<br>
+TN: 498<br>
+FN: 29<br>
+rated: 862<br>
+total: 1701<br>
+precision: 0.208955223880597<br>
+recall: 0.7070707070707071<br>
+
+ |  | N | M| | 
+ | N | 70 | 265 | 335 | 
+ | M | 29 | 498 | 527 | 
+ |  | 99 | 763 | 862 | 
+Pi = 0.09467366841710427
+
+All sentences/metaphors:
+
+TP: 70<br>
+FP: 265<br>
+TN: 1302<br>
+FN: 64<br>
+precision: 0.208955223880597<br>
+recall: 0.522388059<br>
+
+ |  | N | M| | 
+ | N | 70 | 265 | 335 | 
+ | M | 64 | 1302 | 1366 | 
+ |  | 134 | 1567 | 1701 | 
+Pi = 0.18633562497773679
+
+----------------
+
+
+
+combined:
+
+
+Candidates only:
+
+TP: 78<br>
+FP: 324<br>
+TN: 662<br>
+FN: 36<br>
+rated: 1100<br>
+total: 1701<br>
+precision: 0.19402985074626866<br>
+recall: 0.6842105263157895<br>
+
+ |  | N | M| | 
+ | N | 78 | 324 | 402 | 
+ | M | 36 | 662 | 698 | 
+ |  | 114 | 986 | 1100 | 
+Pi = 0.08854885930508723
+
+All sentences/metaphors:
+
+TP: 78<br>
+FP: 324<br>
+TN: 1243<br>
+FN: 56<br>
+precision: 0.19402985074626866<br>
+recall: 0.58208955223<br>
+
+ |  | N | M| | 
+ | N | 78 | 324 | 402 | 
+ | M | 56 | 1243 | 1299 | 
+ |  | 134 | 1567 | 1701 | 
+Pi = 0.15845580193936148
+
+-- Main.ErikLanDoDinh - 2013-08-21
+
+%META:FILEATTACHMENT{name="METAPHORS_1.ods" attachment="METAPHORS_1.ods" attr="" comment="Results of the system for noun-genitive-noun candidates, including vectors and comments." date="1377104452" path="METAPHORS_1.ods" size="163285" user="dodinh" version="1"}%
+%META:FILEATTACHMENT{name="NNgenNN_manual_analysis_FN.odt" attachment="NNgenNN_manual_analysis_FN.odt" attr="" comment="" date="1377104474" path="NNgenNN_manual_analysis_FN.odt" size="25541" user="dodinh" version="1"}%

@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="falke" comment="reprev" date="1502963011" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Template: 2017-mm-tt
+   * Status / Fortschritt
+      * Was wurde seit dem letzten Treffen gemacht?
+      * Wie sind die Resultate?
+      * Wo gibt es Probleme?
+   * Protokoll Treffen
+      * Was wurde besprochen
+   * Nächste Schritte
+      * Was ist geplant?
+
+---++ 2017-08-17
+   * Status / Fortschritt
+      * ...
+   * Protokoll Treffen
+      * Pipeline läuft mit GloVe 300d lokal, Zugriff für Server auch vorhanden
+      * Sowohl für 1 also auch 10 Paper
+      * Zum Anschauen der Graphen auch Textformat möglich (extraction.AllPropsMap)
+   * Nächste Schritte
+      * Pipeline auf Server
+      * Bis zu wie vielen Dokumenten skaliert die aktuelle Implementierung
+         * lokal
+         * Server
+      * Statistiken
+         * Wie viele Dokumente
+         * Wie lang die sind Dokumente (avg, min, max)
+         * Wie viele Konzepte im Schnitt pro Dokument
+         * Wie viele Relationen ...
+         * Laufzeit
+         * Speicher
+
+-- Main.TobiasFalke - 2017-08-17

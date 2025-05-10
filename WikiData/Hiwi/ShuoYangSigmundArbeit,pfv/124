@@ -1,0 +1,60 @@
+%META:TOPICINFO{author="ShuoYang" date="1293739478" format="1.1" version="124"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Dez 2010
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. !WikiWörterbuch | 100 | * |
+| 2. Sigmund | 0 | * |
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| !WikiWörterbuch-Wiktionary | 30.12.2010 | 2.5 | Überarbeitung und Erweiterung von Wiktionary-Teil. Hinzufügen der Funktionalität, Gloss und Senses für eine Übersetzung zu bekommen. | * |
+| !WikiWörterbuch-OO | 28.12.2010 | 3 | Dokumentationen, Kommentare und Unit Tests zu erstellen | * |
+| !WikiWörterbuch-OO | 27.12.2010 | 4 | Mehr Object-oriented-Version fertig. | * |
+| !WikiWörterbuch-OO | 25.12.2010 | 2 | Angefangen, Klassen mehr Object-oriented umzuschreiben | * | 
+| !WikiWörterbuch | 21.12.2010 | 2 | Dokumentation und Erklärung von Komponenten | * |
+| !WikiWörterbuch | 20.12.2010 | 1 | Erklärung von Komponenten <p> Treffen mit Benjamin über nächste Aufgabe |  |
+| !WikiWörterbuch | 17.12.2010 | 1 | Erklärung von Komponenten |  |
+| !WikiWörterbuch | 13.12.2010 | 1 | Aktualisierung von ShuoYangStatistikInterlanguageLinksWikipedia |  |
+| Studie | 08.12.2010 | 0.5 | Studie zu Ähnlichkeiten von Daniel Bär |  |
+| Meeting | 06.12.2010 | 1 | Meeting mit Benjamin |  |
+| !WikiWörterbuch | 05.12.2010 | 1 | Englische Wikipedia fertig geparst und somit !WikiWörterbuch fertig. <p> Anpassung und Erstellung von Unit Tests |  |
+| !WikiWörterbuch | 03.12.2010 | 1 | Weitere Parsen <p> Vorschlag der Verbesserungen in JWPL im Ausnahme von =NULL= an Torsten |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 27)$EXEC($GET(total_hour))"}% | bis Ende Dezember noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (ink. 13 Stunde Untertrag von November)  | |
+<nop>
+
+---+++ Dokumente
+*WikiWörterbuch:* <br>
+ShuoYangStatistikInterlanguageLinksWikipedia <br>
+[[http://www.ishuo.de/storage/wikipediaTitlesWithBrackets.txt][List of wikipedia articles, whose title entails brackets]] <br>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ShuoYang/titleWithMultipleTranslations.txt][List of wikipedia articles with multiple interlanguage links]] <br>
+ShuoYangMysqlimportErrorReport
+
+*Lucene Scoring:* <br>
+ShuoYangChangingLuceneScoring <br>
+ShuoYangBM25Guide
+
+*XMLReader:* <br>
+ShuoYangXPathPerformanceAnalysis
+
+*Google Translate:* <br>
+ShuoYangGoogleTranslatePerformanceAnalysis <br>
+ShuoYangGoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+-- Main.ShuoYang - 12 Dez 2010
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%
+%META:FILEATTACHMENT{name="titleWithMultipleTranslations.txt" attachment="titleWithMultipleTranslations.txt" attr="" comment="List of wikipedia articles with multiple interlanguage links" date="1285170011" path="titleWithMultipleTranslations.txt" size="22805" stream="titleWithMultipleTranslations.txt" tmpFilename="/var/tmp/CGItemp3071" user="ShuoYang" version="1"}%

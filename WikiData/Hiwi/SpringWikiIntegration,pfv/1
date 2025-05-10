@@ -1,0 +1,165 @@
+%META:TOPICINFO{author="IvanGalkin" date="1259061018" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="IvanGalkinWork"}%
+---+ Integration von Data-, Time- und !WikiMachine mithilfe von Spring-Beans
+---++ Problemstellung
+   1 DataMachine und TimeMachine (weiter als !xMachine genannt) haben viele Gemeinsamkeiten. Die meisten davon wurden in das separate Projekt WikiMachine ausgelagert. Wegen der breiten Zerstreuung von Klassen, gibt es eine Notwendigkeit in einem übersichtlichem und standardisierten Integrationswerkzeug
+   1 Die für xMachine entwickelte verschiedene Memory-Strategien und weitere austauschbare Komponente wie Logger, Archive Extractor oder Parser sollen maximal flexibel und anpasbar sein.
+---++ Lösung
+
+Gewünschte Flexibilität könnte dadurch erreicht werden, dass die austauschbare Komponente mithilfe von Factroy-Klassen erzeugt werden. Eine sehr breite Funktionalität bieten die so genannte Spring-Beans, wobei alle für die Application notwendige Objekte (nach ihre Funktionalität) als Beans in einer Aplication-Context-Datei erfasst werden.
+
+Solche Objekte werden in unserem Fall sowohl für Data- als auch für TimeMachie ähnlich. Ihre Auflistung befindet sich in der Datei /src/context/applicationContext.xml des jeweiligen Eclipse-Projektes.
+
+Wir gehen auf jeden einzelnen Bean ein:
+---+++ environmentFactory
+Springbasierte Implementierung von IEnvironmentFactory. Dieser Bean wird nicht nach außen gegeben, sondern dient der Übergabe von Parameter an andere Beans. Ziel des Objektes - Erzeugung der für !xMachine notwendigen Elementen (repräsentiert als folgende Beans).
+
+<verbatim>
+	<bean id="environmentFactory" class="de.tudarmstadt.ukp.wikipedia.wikimachine.factory.SpringFactory" scope="singleton">
+	</bean>
+</verbatim>
+
+---+++ logger
+
+Jeder einzelne Logger-Bean ist eine Implementierung des Interfaces ILogger. Log4jLogger ist ein universaler Logger, der mithilfe von log4j.properties konfigurierbar ist. Die *MemoryLogger dienen der Vermittlung der Speicher-Verbrauch-Information via File oder Email-Schnittstelle. Soll es mehrere Logger verwendet werden, sollte ein CompositeLogger benutzt werden, der als Constructor-Parameter weritere ILogger-Ableitungen übergeben bekommen soll (die leere Liste der Parameter bedeutet den Verzicht auf Loggen-Funktionalität).
+
+<verbatim>
+	<!-- variants: use one or several loggers from the list
+		de.tudarmstadt.ukp.wikipedia.wikimachine.debug.FileMemoryLogger
+		de.tudarmstadt.ukp.wikipedia.wikimachine.debug.MailMemoryLogger
+		de.tudarmstadt.ukp.wikipedia.wikimachine.debug.Log4jLogger
+	-->
+	<bean id="logger" class="de.tudarmstadt.ukp.wikipedia.wikimachine.debug.CompositeLogger" scope="singleton">
+		<constructor-arg>
+			<list>
+				<bean id="fileLogger" class="de.tudarmstadt.ukp.wikipedia.wikimachine.debug.FileMemoryLogger" scope="singleton" />
+				<bean id="log4jLogger" class="de.tudarmstadt.ukp.wikipedia.wikimachine.debug.Log4jLogger" scope="singleton" />
+			</list>
+		</constructor-arg>
+	</bean>
+</verbatim>
+
+---+++ decompressor
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.wikimachine.decompression.UniversalDecompressor [default]
+	de.tudarmstadt.ukp.wikipedia.wikimachine.decompression.BZip2Decompressor
+	de.tudarmstadt.ukp.wikipedia.wikimachine.decompression.GZipDecompressor	
+	-->
+	<bean id="decompressor" class="de.tudarmstadt.ukp.wikipedia.wikimachine.decompression.UniversalDecompressor" scope="singleton">
+	</bean>
+</verbatim>
+
+---+++ snapshotGenerator
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.datamachine.domain.DataMachineGenerator [datamachine]
+	de.tudarmstadt.ukp.wikipedia.timemachine.domain.TimeMachineGenerator [timemachine]
+	-->
+	<bean id="snapshotGenerator" class="de.tudarmstadt.ukp.wikipedia.datamachine.domain.DataMachineGenerator" scope="singleton">
+		<constructor-arg ref="environmentFactory" />
+	</bean>
+</verbatim>
+
+---+++ dumpVersionProcessor
+ <verbatim>
+	<!-- single variant
+		de.tudarmstadt.ukp.wikipedia.wikimachine.domain.DumpVersionProcessor
+		TODO: maybe a multithread dump version processor will be added
+		
+		step2Log, step2GC and step2Flush are settings used to find/ to aboid memory leaks
+		use property's value="0" to disable it 
+	-->
+	<bean id="dumpVersionProcessor" class="de.tudarmstadt.ukp.wikipedia.wikimachine.domain.DumpVersionProcessor" scope="singleton">
+		<constructor-arg ref="logger" />
+		<property name="step2Log" value="10000" />
+		<property name="step2GC" value="100000" />
+		<property name="step2Flush" value="100000" />
+	</bean>
+</verbatim>
+
+---+++ dumpVersionFactory & dumpVersion
+ <verbatim>
+	<!-- variants [datamachine]
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.SingleDumpVersionJDKIntKeyFactory (bean id="dumpVersionFactory") [default]
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.SingleDumpVersionJDKLongKeyFactory (bean id="dumpVersionFactory")
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.SingleDumpVersionJDKStringKeyFactory (bean id="dumpVersionFactory")
+	-->
+
+	<!-- variants [timemachine]
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.DumpVersionJDKIntKeyFactory (bean id="dumpVersionFactory")
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.DumpVersionJDKLongKeyFactory (bean id="dumpVersionFactory")
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.DumpVersionJDKStringKeyFactory (bean id="dumpVersionFactory")
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.DumpVersionTroveIntKey (bean id="dumpVersion" without factory) [default]
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.version.OriginalDumpVersion (bean id="dumpVersion" without factory)
+	-->
+
+	<!-- examples
+	
+	Factory Template:
+		
+	<bean id="dumpVersionFactory" class="factoryClass" scope="singleton"/>
+	<bean id="dumpVersion" factory-bean="dumpVersionFactory" factory-method="getDumpVersion" scope="prototype">
+		<property name="logger">
+			<ref bean="logger" />
+		</property>
+	</bean>
+	
+	Constructor Template:
+	
+	<bean id="dumpVersion" class="dumpVersionClass" scope="prototype">
+		<property name="logger">
+			<ref bean="logger" />
+		</property>
+	</bean>
+	
+	-->
+	<bean id="dumpVersionFactory" class="de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.SingleDumpVersionJDKIntKeyFactory" scope="singleton" />
+	<bean id="dumpVersion" factory-bean="dumpVersionFactory" factory-method="getDumpVersion" scope="prototype">
+		<property name="logger">
+			<ref bean="logger" />
+		</property>
+	</bean>
+</verbatim>
+
+---+++ dumpTableInputStream
+ <verbatim>
+	<!-- variants [datamachine]
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.xml.BinaryDumpTableInputStream
+	-->
+	<!-- variants [timemachine]
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.xml.light.XMLDumpTableInputStream
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.xml.original.XMLDumpTableInputStream [default]
+	-->
+
+	<bean id="dumpTableInputStream" class="de.tudarmstadt.ukp.wikipedia.datamachine.dump.xml.BinaryDumpTableInputStream" scope="prototype">
+	</bean>
+</verbatim>
+
+---+++ pageParser
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.wikimachine.dump.xml.PageParser [datamachine] & [timemachine]
+	-->
+	<bean id="pageParser" class="de.tudarmstadt.ukp.wikipedia.wikimachine.dump.xml.PageParser" scope="singleton">
+	</bean>
+</verbatim>
+
+---+++ revisionParser
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.datamachine.dump.xml.DataMachineRevisionParser [datamachine]
+	de.tudarmstadt.ukp.wikipedia.timemachine.dump.xml.TimeMachineRevisionParser [timemachine]
+	-->
+	<bean id="revisionParser" class="de.tudarmstadt.ukp.wikipedia.datamachine.dump.xml.DataMachineRevisionParser" scope="singleton">
+	</bean>
+</verbatim>
+
+---+++ textParser
+ <verbatim>
+	<!-- variants 
+	de.tudarmstadt.ukp.wikipedia.wikimachine.dump.xml.TextParser [datamachine] & [timemachine]
+	-->
+	<bean id="textParser" class="de.tudarmstadt.ukp.wikipedia.wikimachine.dump.xml.TextParser" scope="singleton">
+	</bean>
+</verbatim>

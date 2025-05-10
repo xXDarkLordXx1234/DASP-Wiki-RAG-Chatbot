@@ -1,0 +1,35 @@
+%META:TOPICINFO{author="NicoErbs" date="1262855256" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="NicoErbsTasks"}%
+---+ Experimental Framework Improvement
+
+%TOC%
+
+---+++ good solution
+
+---++++ Annotator Factory for each annotaor
+
+public static AnalysisEngineDescription getKeyphraseCandidateAnnotator_filteredToken_noPosFilter_noResolve() throws ResourceInitializationException<br>
+         return createPrimitiveDescription(<br>
+               CandidateAnnotator.class,<br>
+               ComponentFactory.getDKProTypeSystem(),<br>
+               CandidateAnnotator.PARAM_ANNOTATION_TYPE, FilteredToken.class.getName(),<br>
+               CandidateAnnotator.PARAM_STRING_METHOD, "getCoveredText",<br>
+               CandidateAnnotator.PARAM_USE_POS_FILTER, false,<br>
+               CandidateAnnotator.PARAM_RESOLVE, false);<br>
+        }
+
+
+---++++ Generating chain
+
+   * calling methods from chain to consruct annotators
+   * calling method to construct aggregates analysis engines
+   * calling methods for generalized cpes
+   * keeping parameters for input files etc.
+
+---+++ not so good solution
+one class with framework with hard coded locations
+--> see: de.tudarmstadt.ukp.dkpro.experiments.ExperimentalFramework
+
+
+
+-- Main.NicoErbs - 06 Jan 2010

@@ -1,0 +1,84 @@
+%META:TOPICINFO{author="meichler" comment="" date="1552321692" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Developing an Inspector for Multilingual Word Representations
+
+*Start date:* 2019-02-06
+
+*Supervisor:* Dr. Gözde Gül Şahin
+
+---++ Meeting 2019-03-11
+
+   * Discussed and decided on AllenNLP as an implementation basis based on tech demo
+   * Overview of existing code, how probing is currently implemented, and how a future implementation should look
+   * Decided on early May for midterm, and early to mid June for final presentation
+   * Tasks:
+      * Find out how AllenNLP reads files
+      * Convert vocabulary in 2-3 file formats
+      * Make AllenNLP SimpleTagger work for German and Case
+      * Use [[https://github.com/gozdesahin/dataset_compilation/blob/master/data_util/get_intrinsic_vocab.py]] to write a file and check how simple tagger reads this
+      * Get encoding from AllenNLP seq2seq encoder from this model
+      * Go through "Deep Learning for NLP with Pytorch" first 4 tutorials [[https://pytorch.org/tutorials/beginner/deep_learning_nlp_tutorial.html]]
+
+---++ 2019-02-26
+
+   * Got to know the basics of the AllenNLP framework
+   * Tested the possibility of extending AllenNLP models with additional parameters (=probing_layer=, =lang=)
+   * Engineered a small tech demo and drew a flow chart with a potential solution ([[https://github.com/maexe/linspector-proposal]])
+   * I will have to look further into probing and how to handle static embeddings
+
+---++ Meeting 2019-02-20
+
+   * Discussed thesis discription and timeline
+   * Overview of AllenNLP
+   * Tasks:
+      * Setup working environment ([[https://github.com/allenai/allennlp]], [[http://github.com/gozdesahin/dataset_compilation]])
+      * Decide whether to use AllenNLP or own interface
+      * Is AllenNLP extendable?
+      * Provide an abstract idea whether AllenNLP is feasible for WP1
+
+---++ 2019-02-20
+
+   * Scanned and read papers from Google Scholar, RepEval, RepL4NLP, and ICLR
+   * Added some of them to Mendeley with a summary
+   * Yaghoobzadeh et al. (2018) and Bacon and Regier (2018) had some (possibly) interesting ideas for tasks
+   * Put Zhang and Bowman (2019) and Ettinger et al. (2016) on my reading list
+   * Found that I should read up on ELMo and AllenNLP
+
+---++ Meeting 2019-02-06
+
+   * Finished paperwork
+   * Discussed papers
+   * Got first overview of project and datasets
+   * Tasks: Read and gather additional papers
+
+---++ 2019-02-06
+
+   * Read all the stared papers in Mendeley, added summaries to each
+   * Had no real issues reading them except for having to look up some linguistic words
+   * Most interesting papers to me where Köhn (2016) and Burlot et al. (2018) for their multi lingual approaches + Conneau et al. (2018) as an introduction to probing tasks
+   * I did not found Tsvetkov et al. (2015) that useful
+   * Currently looking at Köhn (2015) and Burlot and Yvon (2017) for additional multilingual evaluation systems
+
+---++ Meeting 2019-01-23
+
+   * Finalized web server requirements
+   * Project will be open source on GitHub
+   * Discussed paperwork
+   * Tips on how to find good papers (overview of search engines, workshops, conferences)
+   * Tasks:
+      * Read papers in Mendeley and add a note “which dataset", "which language(s)", "which evaluation method(s)", and "conclusion"
+      * Search additional relevant papers
+      * Think about advanced probing tests
+      * Print and sign paperwork
+
+---++ Meeting 2019-01-17
+
+   * Organization of thesis at UKP Lab
+   * Introduced to topic
+      * Word embeddings
+      * Evaluation methods
+      * Probing tests
+      * Potential definition of work packages
+   * Tasks: Gather requirements for web server
+
+-- Main.MaxEichler - 2019-03-11

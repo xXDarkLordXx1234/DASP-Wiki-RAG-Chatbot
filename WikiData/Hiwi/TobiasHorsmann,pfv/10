@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="TobiasHorsmann" date="1316612936" format="1.1" version="10"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Tobias Horsmann
+
+---+++ Aufgabenüberblick
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| * Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung in Wikipedia-API um auf lokale MySQL DB mit Amisch-Wiki zugreifen zu können | 100 |
+| Eingelesen Wikiseiten nach MWT absuchen und diese speichern. Abgreifen von MWT vorläufig via RegEx | 80 |
+| Gefunden MWTs in einem eigenen Datentyp speichern | 100 |
+| MWT nach Wortanzahl filtern | 100 |
+| Zugriff auf die MetaDaten der Wiki*-Reader, um Page-Titel ebenfalls als MWE abzuspeichern | 0 |
+| Zu jedem MWT die Häufigkeit innerhalb des Wiki ermitteln/abzählen und Eintrag um Frequenz aktualisieren. | 0 |
+| Datentypen via Lucene indizieren | 0 |
+---+++ Zeiterfassung
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Zusammenfassung* | *Stunden* | *Bemerkungen* |
+| 10.09.2011 | Erstellen von Testfällen für ausgewählte Seiten des Amisch-Wiki, um MWE Extraktion zu testen. | 1 | ... |
+| 10.09.2011-13.09.2011 | Erstellen von RegEx-Commands, um möglichst präzise und vollständig bold, italic, header und links aus Wikipediaseiten zu extrahieren | 8 | |
+| 16.09.2011 | Annotator erstellt der Simple-Links extrahiert, dass Link Target speichert und die Wörter zählt, sowie einen Test zur Überprüfung hinzugefügt. | 1 | |
+| 17.09.2011 | Generischen Wiki Annotator erstellt. Testfälle für die verschiedenen Annotationsarten erstellt. | 6 | Header-Pattern/Test laufen noch nicht korrekt |
+| 19.09.2011 | Erstellen von Annotatoren zum extrahieren einzelner MarkUp-Arten, ausgehend von einem erstellten abstrakten WikiAnnotator. Testfälle aufgeteilt auf die verschiedenen Annotatorvarianten. Beispielhafte Pipeline erstellt, die die neuen Annotatoren nutzt und die Ergebnisse auf System.out ausgibt. | 4 | |
+| 21.09.2011 | Besprechung mit Silvana | 0.75 | |
+| 21.09.2011 | Hinzufügen der Index-Erstellung mit Lucene für die annotierten Terme. Änderung der abstrakten Basisklasse für die Wikiannotatoren, um 1-Buchstabe Ergebnisse nicht länger zu berücksichtigen. | 0.5 | |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 90)$EXEC($GET(total_hour))"}% | bis Ende November noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |
+<nop>
+
+%META:FILEATTACHMENT{name="hiwi_task_description.pdf" attachment="hiwi_task_description.pdf" attr="" comment="Rough task overview" date="1315573417" path="hiwi_task_description.pdf" size="788067" user="SilvanaHartmann" version="1"}%
+%META:FILEATTACHMENT{name="hiwi_task_description-2011-09-15.pdf" attachment="hiwi_task_description-2011-09-15.pdf" attr="" comment="UPDATED OVERVIEW" date="1316163031" path="hiwi_task_description-2011-09-15.pdf" size="842532" user="SilvanaHartmann" version="1"}%

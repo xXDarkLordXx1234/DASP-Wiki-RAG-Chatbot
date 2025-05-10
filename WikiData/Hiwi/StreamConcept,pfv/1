@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="IvanGalkin" date="1234094365" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="IvanGalkinWork"}%
+---+ *Streaming-Konzept in WikipediaTimeMachine: Vor- und Nachteile*
+---++ Vorteile:
+
+Die Verwendung von Streams im Zusammenhang mit dem Decorator Design Pattern bietet viele Möglichkeiten an, die die Datenverarbeitung leichter und schneller machen. Um die Wikipeda Dump-Dateien in die gewünschte textuelle Form zu konvertieren und Resourcen intensive Klassen XML2SQL und SQL2TXT zu ersetzen, wurden folgende neue Klassen entwickelt:
+   * *XMLInputStream* - eine Klasse, die mit einem InputStream initialisiert wird und ihn aus XML- ins SQL-Format umwandelt. Dabei weitert die Klasse XMLInputStream selbst die abstrakte Klasse InputStream aus, was dem Programmierer erlaubt gleich die konvertierte SQL-Daten daraus zu lesen. Die Datenverarbeitung wird in einem separaten Thread mithilfe folgender Klassen gemacht, die auch das Stream-Konzept unterstützen und keine temporäre Speicherung der Daten brauchen. 
+      * org.mediawiki.importer.XmlDumpReader
+      * org.mediawiki.importer.SqlWriter15
+   * *SQLInputStream* - eine Klasse, die auch mit einem InputStream initialisiert wird und ihn aus dem SQL-Format in die textuelle Form konvertiert. Diese Konvertierung erfolgt auch in einem separaten Thread (dabei wurden die Methoden der alten Klasse SQL2TXT verwendet), was uns ermöglicht die Ergebnisdaten "on the fly" zu lesen. Der Unterschied zu der oben beschriebenen Klasse XMLInputStream besteht darin, dass anstatt einem Ergebnisstream, hier wenigstens drei verwendet werden, da jede DB-Tabelle separat behandelt wird.
+
+So einfach kann man die temporäre Dateien page.txt, revision.txt und text.txt mit folgender Kette ersetzen:
+
+=SQLInputStream sqlInputStream = new !SQLInputStream(new !XMLInputStream(new !SevenZipInputStream("dump.7z")))= <br /> =InputStream textInputStream = sqlInputStream.getInputStream("text");= <br /> =InputStream revisionInputStream = sqlInputStream.getInputStream("revision");= <br /> =InputStream pageInputStream = sqlInputStream.getInputStream("page");=
+
+---++ Nachteile:
+ Die sequenzielle Datenverarbeitung, die uns vom Stream-Konzept bereitgestellt wird, hat auch ihre Nachteile. Falls die Dateien fragmentiert sind, wird die aufeinanderfolgende Analyse nicht mehr so einfach möglich sein. So wurde die bestehende Klasse MediaWiki2JWPL so entwickelt, dass die temporären Dateien folgendermaßen bearbeitet werden: zuerst revision.txt, dann page.txt und zum Schluß text.txt. Die Darstellung der XML-Dump {LANG}wiki-{TIMESTAMP}-pages-meta-history.xml ist gemischt, d.h. die oben genannte textInputStream, revisionInputStream und pageInputStream sollen nicht ein nach dem anderen, sondern gleichzeitig ausgelesen werden. Da es unerwünscht ist, die bestehende Analyselogik zu ändern, gibt es zwei Varianten dieses Problem zu lösen:
+
+   1 die temporären Dateien revision.txt, page.txt und text.txt doch auf der Festplatte zu speichern. Diese Lösung ist deswegen schlecht, weil die Datei text.txt ungefähr genau so viel Speicherplatz braucht, als wenn der Dump komplett ausgepackt würde. (Bei der Deutschen Wikipedia entspricht es ~ einem Terabyte)
+   1 der 7ZipEntpacken-&gt;XMLParsen-&gt;SQLParsen-Prozess soll drei mal wiederholt werden, wobei die Reihenfolge der SQL-Tabellen dem weiteren Programmablauf entsprechen wird (die Klasse SQLInputStream wird so angepasst, dass pro einmal nur eine bestimmte Tabelle gelesen wird). Diese Lösung ist 3 mal langsamer als die zuerst geplante voll streamkonforme Lösung, aber trotzdem nicht viel langsamer als die bestehende, weil der 7ZipEntpacken-&gt;XMLParsen-&gt;SQLParsen-Prozess in mehreren Threads parallel läuft.
+Da bei uns der sparsame Umgang mit Speicherkapazität Priorität vor einer schnellen Bearbeitung hat, wird die zweite Lösung eingesetzt.

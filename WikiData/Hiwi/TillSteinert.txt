@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="steinert" comment="" date="1608581124" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Reports by Till Steinert (Praktikum in der Lehre, Tutor NLP4Web)
+
+---+++  Week from 03.12.2020 to 10.12.2020
+   * *Hours worked*:
+      * This week: 6
+      * Total: 48
+   * *Tasks*:
+      * Preparing and teaching exercise class 5
+      * Supervising moodle forum
+      * Preparing exercise class 6
+
+---+++  Week from 26.11.2020 to 02.12.2020
+   * *Hours worked:*
+      * This week: 8
+      * Total: 42
+   * *Tasks*:
+      * Grading and uploading remainder of second homework
+      * Revising hex5 according to feedback
+      * Preparing exercise class 5
+
+---+++  Week from 18.11.2020 to 25.11.2020
+   * *Hours worked*:
+      * This week: 11,5
+      * Total: 34
+   * *Tasks*:
+      * Grading of second homework
+      * Initiated call to discuss homework grading
+      * Slack discussions on edge cases for grading of hex2
+      * Graded remaining hex1 sent by email
+
+---+++  Week from 10.11.2020 to 17.11.2020
+   * *Hours worked*:
+      * This week: 9
+      * Total: 23,5
+   * *Tasks*: I was mainly occupied with grading of the first home exercise 1. In total I graded 53 submissions by 57 students (I took over one collaboration from Felix because of the matriculation number rule). Moreover, as the creator of the exercise, I participated in the slack discussions for defining grading standards and discussing corner cases. For the most part, students solved the home exercise quite well. However, there were some challenging cases where a wrong data type (e.g. string or nothing) was returned as the tokenized tweet or punctuation wasn't treated correctly. Also, task 1d) seemed to be quite a challenge for students with only half of them figuring out that the clitic (e.g. Let's) should be split.
+
+---+++  Week from 02.11.2020 to 09.11.2020
+   * *Hours worked*:
+      * This week: 7
+      * Total: 14,5
+   * *Tasks*: In the first week of the class, I had to do some minor adjustments to homework 1 in correspondence to slack discussions (e.g. motivating students to write comments, clarifying some aspects of the grade distribution). Moreover, I continued to work on homework 5 where I fixed some bugs in my sample solution, improved some of the task descriptions and wrote a criteria guide to help the other tutors grading the exercise. Finally, I supervised the moodle forum where I answered the students questions (mostly clarifying questions regarding the first home exercise).
+
+---+++  Week from 12.10.2020 to 1.11.2020
+
+   *  *Hours worked*: 
+      * This week: 7.5
+      * Total: 7.5
+   *  *Tasks*:
+      Before the official start of the lectures, I was involved in several onboarding sessions with Fabian and Max where we discussed the modalities of the internship and distributed the initial tasks that had to be completed for the first few weeks of the course. My taks was to prepare home exercise 1 and 5. In particular, my work included converting last years homework PDFs into Jupyter notebook structure and researching how to make them visually appealing (e.g. including graphics). Moreover, some descriptions were unclear, so I had to update the descriptions (e.g. I adapted the definition of tokenization and included an example as tokenization hadn't yet been introduced in class). In addition, I impoved accessibility of the tasks by providing the necessary data within the notebook (e.g. I added the tweet as text and stored the sentences for task 2 in a list) and adding blueprint methods with docstrings. Also, I added a subtask for students to point out the challenges of tokenization by finding an example of bad tokenization within the tweet. Finally, I implemented a sample solution in a seperate Jupyter notebook and wrote some hints/criteria for grading. I also started to work on home excercise 5, which I also converted into a Jupyter notebook. For the most part, I was able to reuse the task descriptions from last year with the exception of task 1a) for which I clarifyed how the probability shall be computed. Finally, I began to implemented solutions for the Hidden Markov Model and Viterbi algorithm tasks.

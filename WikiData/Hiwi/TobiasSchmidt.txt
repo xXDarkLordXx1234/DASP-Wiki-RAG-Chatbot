@@ -1,0 +1,173 @@
+%META:TOPICINFO{author="tschmidt" comment="" date="1648737455" format="1.1" reprev="8" version="17"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.TobiasSchmidt - 2021-07-24
+
+
+---++ 21.03 - 31.03:
+   * Finished the implementation of the site and changed some features
+   * Re-ran transcriptions on more data, last changes to the toolkit
+   * Collected relevant code the next person might find valuable and made it presentable
+   * Wrote a small MTurk manual on how to work with the code
+
+---++ 14.03 - 20.03:
+   * Used some transcription services to test which ASR system would be valuable
+   * Implemented most of the new MTurk project with a script to generate data etc. 
+
+---++ 01.03 - 13.03:
+   * Some minor tasks (e.g. some audio experiments, tweaks to the toolkit etc.)
+   * Started implementing the MTurk site and some debugging
+
+---++ 21.02 - 28.02:
+   * Had problems with the T0 script again, was too unperformant
+   * Started researching how to write an MTurk site from scratch
+
+
+---++ 14.02 - 21.02:
+   * Implemented new scripts for the BIU deployment (extra diarization)
+   * Changed some other minor things in the toolkit
+   * Finished the experiment implementation, ran it, debugged it
+   * Started thinking about the scripting problem we have
+
+---++ 07.02 - 13.02:
+   * Started with some ASR tests
+   * Annotated some data and checked with diarization
+   * Started implementing experiments on the Toxic Annotation Dialoge data
+
+---++ 01.02-07.02:
+   * Finished adapting the toolkit for the newest specifications of BIU
+   * Wrote a new manual to use the feature toolkit
+   * Finished an Open Issue from my list
+
+---++ 24.01-30.01:
+   * Started adapting the toolkit for the newest specifications of BIU
+   * Had some problems with the environment and library dependencies, took a lot of time to debug
+   * Annotated some data to test some sort of ASR model
+
+---++ 17.01-23.01:
+   * Finished implementing the baseline PsyQA experiments, evaluated the results
+   * Found some bugs in the code, debugged them, fixed them. 
+   * Talking and discussing about the AI4PSYCH project, how we can change the toolkit 
+   * Did a small amount of research how we could built a language adapter for Hebrew
+
+---++ 07.01-16.01:
+   * Finishing the reversibility audio problem
+   * Thinking about which augmentations we can use for audio that actually influence the data
+   * Started to implement the HeBERT models and other PsyQA Experiments with adapters
+
+---++ 01.01-06.01:
+   * Finished almost all of the scripts (except T0) and did test on how much the annotations overlap
+   * Started reading up on the reversibility of LLD audio features
+
+---++ 21.12-31.12:
+   * Started implementing a script to aggregate annotations (using crowdkit)
+   * Started a script for automatic toxicity detection (detoxify)
+   * Started a script to infer toxicity labels from T0
+
+---++ 13.12-20.12:
+   * Implemented changes for the Feature Extractor Package (utterance-wise frame annotations)
+   * Uploaded new batch to MTurk
+   * Answered questions/comments by participants, did some initial analysis for the data we got
+
+---++ 06.12-12.12:
+   * Running PsyQA Experiments, most likely implementing the XLMRoberta and HBert experiments soon
+   * Changing the Feature Extract Package s.t. the partners can extract the features
+   * Selecting next batch for the Annotation Study and some preparations
+   * Read up on automatic toxic detection (T0, detoxify and some others)
+
+---++ 29.11-05.12:
+   * Experiments didnt work properly: Debugged the code, tried out different hyperparameters, re-implemented parts, ...
+   * Started working on the annotation study again: Re-labeling the annotated data in part, updating the Qualification Test, trying to iron out problems
+
+---++ 22.11-28.11:
+   * Got answer from PsyQA people: Re-implemented the Validation experiments from PsyQA and guessed the "correct approach"
+   * Debugging the code, running different experiments for PsyQA
+
+---++ 15.11-21.11:
+   * Worked with the diarization code, found the problem (too short videos cannot be annotated properly) why it didnt work properly
+   * Hand-labeling hebrew data, writing code for evaluation
+
+---++ 01.11 - 14.11:
+   * Implemented CV for the PsyQA dataset, where the results were too good
+   * Implemented XLM Roberta finetuning for the PsyQA data (also CV)
+   * Currently re-training adapters with the new code
+   * Uploaded some batch to MTurk, evaluated results some minor things
+   * meetings for AI 4 Psych
+
+---++ 25.10 - 31.10:
+   * Continued with the adapter training/the chinese corpus; tried out different "counting schemes", of which one seemed correct
+   * Wrote code for the Adapter Training / CV training
+   * Initial meetings on AI 4 Psych projects
+
+---++ 11.10 - 24.10:
+   * trying to reproduce the experiments on the chinese corpus; 
+   * Training an adapter to compare performance with chinese RoBERTa
+   * Fine tuning BART model to decide if we need to annotate all data
+   * getting familiar with slurm, transformers etc.
+
+---++ 03.10 - 10.10 
+   * started evaluating the chinese corpus; checking if data is as advertised
+   * finished evaluation of the test batches
+
+---++ 27.09-03.10 
+   * continuing to evaluate our initial test results
+   * (mostly) finishing the implementation of the feature extraction package (mostly eye tracking and "cleaning up the code" for reusability)
+   * starting documentation
+   * if time: starting with a surfboard wrapper
+
+---++ 20.09-26.09
+   * uploading our AMT website to the official UKP AMT Account;
+   * carry out initial test run for annotations; evaluate results
+   * almost finished the implementation of the feature package
+---++ 13.09-19.09 
+   * sick with doctors note
+
+---++ 30.08-12.09 
+   * working on the AMT website, fixing smaller problems, qualification test, internal problems,...
+   * tried different ASR systems, started thinking about some way to implement the final feature package
+   * started with the implementation; mostly, the "general framework" code
+
+---++ 16.08 - 29.08 
+   * finishing features from last task (checking whether there are better eye blink detection systems)
+   * continue working on the AMT Website
+   * Implementing the qualification test via boto3
+   * Testing annotation time via MTurk Sandbox
+   * Writing up a handout about our current features
+   * Checking licenses of used packages for the feature package
+
+---++ 09.08 - 15.08
+   * FAU, eye gaze, head position. How much is pre-implemented?
+   * Eye closed, eye open, closing speed, gaze spatial distribution over time
+   * Search for body gestures out of the box models 
+   * Feature list in NextCloud
+   * Test Surfboard
+
+---++ 01.08 - 09.08
+   * new ASR model for annotation and speech rate
+   * document slides (Prosody)
+   * Continue making list for related work
+   * finish implementing the features from last week
+
+---++ 01.08 - 09.08 
+   * Implementing the following features: Pause rate / pause total / pause variability / utterance duration  (split and not split) / speech rate / time talking (with different silence detections)
+   * test some transcript models
+   * Start making list for related work
+
+---++ 26.07 - 01.08 
+   * Implementing the following features: Pause rate / pause total / pause variability / utterance duration  (split and not split) / speech rate / time talking (with different silence detections)
+   * test some transcript models
+   * Start making list for relted work
+
+---++ 19.07 - 25.07
+   * Finished reading last related work papers from the AVEC 2019 challenge; finalised the found feature list and put it into a table.
+   * Tried implementing basic functions to extract standard key features from the raw input data via openSMILE while only using python packages. 
+
+---++ 12.07 - 18.07
+   * Read more papers, especially related to the AVEC 2019 challenge and the DAIC Corpus. 
+
+---++ 05.07 - 11.07
+   * Started researching about multi modal features and searched related work, starting from a reference paper about Deep Spectral Features
+   * Began making a list about these features
+
+---++ 01.07 - 04.07
+   * Started researching about multi modal features and searched related work, starting from a reference paper about Deep Spectral Features
+   * Began making a list about these features

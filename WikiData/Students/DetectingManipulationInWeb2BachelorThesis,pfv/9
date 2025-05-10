@@ -1,0 +1,44 @@
+%META:TOPICINFO{author="ArdalanNaseri" date="1265910913" format="1.1" version="9"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ArdalanNaseri - 
+*01 Feb 2010 :* 
+
+ I have crawled more than 3,500,000 reviews from Amazon, some Informations about products should be downloaded and I am downloading these infos.
+
+ *2 Feb 2010 :* 
+The number of reviews in the database is about 4 millions  now.
+I am trying to use Hashfunctions in order to detect duplicate reviews, however access to this large amount of data is too slow, and if the body of reviews are not exactly the same, I will have different values as the result of hashing. I have run just for 2 products and tried to find duplicate reviews, but it took more than 2 minutes. Moreover, I think if I should give a number to duplicates in my database to find these duplicate easier or is there any better solution.
+
+*3 Feb 2010 :*
+report has been changed. the new version has been uploaded as pdf.
+
+   * [[%ATTACHURL%/thesis.pdf][thesis.pdf]]: thesis.pdf
+*11 Feb 2010:*
+
+you can see crawled data on [[https://green.homeunix.com/phpmyadmin][https://green.homeunix.com/phpmyadmin]] , sometimes could be the server down especially in the midnight :)
+
+There were some problems with crawled reviews :
+ - table reviewer has a filed as found_reviews, it had the function of a counter and should represent the number of reviews existing in the database, but it was not always correct, usually lower. I should go through all the reviews (about 4 million) and count again for each reviewer  and save the number of reviews as current_num_reviews 
+ - found_reviews might be greater than total_reviews of  a customer, because firstly  Amazon put reviews of some products on the similar product, secondly I can not exclude twice download of some reviews, I have tried to prevent multiple download, but I am not sure beacuse of some interruption during 3 weeks for crawling.
+ 
+
+table reviewerpromanufacturer containts reviewer which have written at least 5 reviews, whereby the reviewer who have rated 5 just on manufacturer and for another manufacuturer he has given a rating number less than 3. About 1,000 reviewers are revealed from about 35,000 reviewers.  reminder: Amazon allows users to rate a product or service on a scale of 1-5 stars and make comments (reviews) related to the product for other users to read.
+
+I will try another methods to find suspect reviews or reviewers.
+   * reviews which result a small value , as I divide the number of helpful feedbacks by number of feedbacks on the review- less or equal than 0.1. There should be at least 5 feedbak to the review
+   * reviews of a product which have a rating very different from other values on the product.
+
+
+61,404 reviews from  3,979,788 have been marked as reviews with too low positive feedbacks. It is about  1,54 % of all reviews. There are saved in the table _lowpositivefeedbacks_ .
+rev
+
+---
+
+To find duplicate reviews I used MD5 Hashing. _review_hashed_ table contains hash values for  body and title of 3,979,788 reviews. The following SQL query returns 3,435,759 rows, which means that there might be 544029 reviews as spam, but It is difficult to say that all of these reviews have been written by customers and are spam reviews, As i mentioned before Amazon put some reviews from other proudcts on similar product and it will not be easy to distinguish them. 
+
+SELECT DISTINCT titel_hash body_hash
+FROM `hashed_review`
+WHERE 1
+
+
+%META:FILEATTACHMENT{name="thesis.pdf" attachment="thesis.pdf" attr="" comment="" date="1265164489" path="thesis.pdf" size="663377" stream="thesis.pdf" tmpFilename="/var/tmp/CGItemp11715" user="ArdalanNaseri" version="3"}%

@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="NicoErbs" date="1269851808" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="SemEval"}%
+---+++ SemEvalResults
+
+%TOC%
+
+---++++ Official Results (Test dataset Stem Matching)
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+| Combination | Combined | .0940 | .0321 | .0479 | .0590 | .0402 | .0478 | .0527 | .0539 | .0533 |
+| Combination | Reader-assigned | .0820 | .0341 | .0482 | .0530 | .0440 | .0481 | .0467 | .0581 | .0518 |
+| KEA | Combined | .2380 | .0812 | .1211 | .1300 | .0887 | .1055 | .0207 | .0211 | .0209 |
+| KEA | Reader-assigned | .2060 | .0855 | .1208 | .1100 | .0914 | .0998 | .0147 | .0183 | .0163 |
+| LSG | Combined | .0620 | .0211 | .0315 | .0540 | .0368 | .0438 | .0420 | .0430 | .0425 |
+| LSG | Reader-assigned | .0540 | .0224 | .0317 | .0470 | .0390 | .0426 | .0372 | .0465 | .0414 |
+| TF.IDF | Combined | .0940 | .0321 | .0479 | .0640 | .0437 | .0519 | .0527 | .0539 | .0533 |
+| TF.IDF | Reader-assigned | .0840 | .0349 | .0493 | .0580 | .0482 | .0526 | .0460 | .0573 | .0510 |
+| CG segmented | Combined | .0860 | .0293 | .0437 | .0580 | .0396 | .0471 | .0520 | .0532 | .0526 |
+| CG segmented | Reader-assigned | .0760 | .0316 | .0446 | .0520 | .0432 | .0472 | .0453 | .0565 | .0503 |
+<!--edittable1-->
+
+---++++ Test dataset Token Matching
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+<!--edittable1-->
+
+---++++ Train dataset Stem Matching (as used by SemEval)
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+<!--edittable1-->
+
+---++++ Train dataset Token Matching
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Method* | *Keywords* | *P Top5* | *R Top5* | *F Top5* | *P Top10* | *R Top10* | *F Top10* | *P Top15* | *R Top15* | *F Top15* |
+<!--edittable1-->
+
+-- Main.NicoErbs - 29 Mar 2010

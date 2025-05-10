@@ -1,0 +1,73 @@
+%META:TOPICINFO{author="stab" comment="" date="1541681104" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Talks
+   * 2019-01-08 mid term talk
+   * 2019-03-19 final talk
+
+---++ 2018-11-08
+   * template for thesis
+   * prepared data
+   * Simple implementation of crf without cross topic setup -> pretty bad results (F1 score 0,207, recall 0,137)
+   * @discussed data splitting: cross-topic: 4x train, 4x dev, 4x test (do feature selection / model selection on dev set only and report final scores on test)
+   * @discussed candidate extraction method and its evaluation
+   * repo: https://git.ukp.informatik.tu-darmstadt.de/stab/aspect-extraction 
+   * thesis-template: https://wiki.ukp.informatik.tu-darmstadt.de/Students/InformationenFuerDiplomanden 
+   * TODO / next steps
+      * Review papers and continue writing related work section. 
+      * Use cross-topic setup for all experiments
+      * Features (prefex, relative position in sentence, contextual information, first half second half, num words preceding the current word)
+      * Eperiments with LSTM / LSTM-CRF using word2vec/glove embeddings
+      * Start implementing candidate extraction
+   
+   
+---++ 2018-10-25
+   * Structure for related work section
+      * Argument Mining / Aspect-based Sentiment Analysis
+      * Sequence Tagging/Labeling
+         * CRF?
+         * LSTM?
+         * ...
+      * Ranking Methods 
+         * Regression?
+         * Learning to Rank?
+         * Levy?
+      * Chapter Summary
+   * *Evaluation Setup*: Cross-topic -> train in n-1 and test on n (n = topic)
+   * Keyword: Active Learning
+   * TODO / next steps
+      * Review papers and continue writing related work section. 
+      * Start implementing 
+         * Implement a crf (or other sequence taggers) example 
+         * Preapre data and data splitting 
+         * Implement evaltuation measures
+
+---++ 2018-10-19
+   * paperwork
+   * discuss task description 
+   * discussed ranking approaches for aspect extraction 
+   * evaluation metrics (How can e compare ranking and sequence modeling approaches?)
+      * Solution 1: consider only best ranked candidate as actual "hit" and evaluate using token-level IOB/BIO tagging scheme
+      * Solution 2: use approach described in http://www.aclweb.org/anthology/S14-2004
+   * *TODOS / next steps*
+      * (DONE) *Formulate a good argument why we use ranking methods instead of common sequence labeling methods.* in the current version of the task description 
+      * (DONE) Get familiar with keras / tensorflow -> LSTM-CRF
+      * (DONE) Evaluation Setup: How to split the data? Cross-topic vs. In-topic vs. "we don't care about the topic"
+      * Review papers and start writing related work section. 
+
+---++ 2018-10-11 
+   * Forms for account, IP, etc. 
+   * Discuss data to use for this project
+   * Task description
+   * Evaluation setup
+   * @discussed: (1) selquence labeling vs. (2) ranking approaches
+   * *Participate in the advanced seminar*: Dienstag 11:30 Raum B002+
+   * *Todos / next steps*
+      * Prepare forms and contract / etc.
+      * Get familiar with the following methods CRF, LSTM-CRF and sequence-tagging (these models are for instance used for named-entity recognition,)
+      * Get familiar with keras / tensorflow -> LSTM-CRF
+      * Think about evaluation strategies w.r.t. to compare tagging and ranking approaches
+      * Evaluation Setup: How to split the data? Cross-topic vs. In-topic vs. "we don't care about the topic"
+
+
+
+-- Main.ChristianStab - 2018-10-11

@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="hanselowski" comment="save topic" date="1525332565" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+
+
+---++ Meeting 2018-5-2
+
+
+
+Gurevych: Knowledge bases, reasoning, inference on the basis of knowledge bases and raw text
+
+Alternative approach deep learning approach memory netowrks: https://arxiv.org/pdf/1506.07285.pdf
+
+Constructing Datasets for Multi-hop Reading Comprehension Across Documents
+https://arxiv.org/pdf/1710.06481.pdf
+
+FEVER example:
+https://arxiv.org/pdf/1803.05355.pdf
+
+
+Sebastian Riedel, Tim Rocktäschel
+
+
+Andreas: Claim validation, collect evidence semantic parsing and information from knowledge base in order to validate claims
+
+People to talk to: Daniil expert on semantic parsing, knowledge bases
+
+
+
+
+
+-----------------------------------
+
+Summary: combine raw text and knowledge base: Semantic parsing, join entity linking relation matching
+
+Related work for join entity linking relation matching: http://xren7.web.engr.illinois.edu/www17-CoType.pdf
+
+Need to determine: dataset: FEVER, WikiHop, MultiHop, ...
+
+
+Extracting reasoning chains for multihop reasoning for claim validation
+
+Information aggregation: extracting of evidence, semantic parsing combining with knowledge base and reasoning
+
+Ask Todor for paper: Enhancing Cloze-Style Reading Comprehension with External Common Sence Knowledge (wordnet) using Explicit Key-Value Memory
+
+---++ Project idea:
+   **Multi-hop inference combining information from raw text and a knowledge base*
+
+---++ Project constraints:
+
+   **Prof Gurevych's ideas for the project*
+   * Enhancing information present in raw text with information from a knowledge base and apply reasoning techniques to solve a task
+   * For this purpose the following problems must be solved:
+      * Transforming a text into a logical forms (possibly represented by embeddings)
+      * Grounding of the derived logical forms in a knowledge base: entity linking, relation matching
+      * Joint inference: Reasoning over the information from the knowledge base and the text
+
+
+-- Main.AndreasHanselowski - 2018-05-03

@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="2"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Hier stehen Informationen zum Amazon E-Commerce Service
+%TOC%
+
+---++ Fehler beim ersten Compilieren
+Beim ersten Compilieren der !AWSECommerceService kommt es zur Fehlermeldung, dass der Konstruktor !ItemAttributes zu viele Attribute hat. Diesen muss man löschen wie im Developer-Forum vorgeschlagen wird.
+
+---++ einige WSDL-Dateien
+| *Locale* | *URL* |
+| US | http://ecs.amazonaws.com/AWSECommerceService/AWSECommerceService.wsdl |
+| UK | http://ecs.amazonaws.com/AWSECommerceService/UK/AWSECommerceService.wsdl |
+| DE | http://ecs.amazonaws.com/AWSECommerceService/DE/AWSECommerceService.wsdl |
+
+
+-- Main.KaiMichaelHoever - 05 Mar 2007

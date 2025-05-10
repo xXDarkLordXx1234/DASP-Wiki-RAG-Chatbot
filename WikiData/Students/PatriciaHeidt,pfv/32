@@ -1,0 +1,445 @@
+%META:TOPICINFO{author="heidt" comment="" date="1594217443" format="1.1" reprev="29" version="32"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis
+
+*Supervisor:*
+   * Tilman Beck
+
+*Presentations:*
+   * 11.08.2020 Mid-term presentation
+   * 27.10.2020 final presentation 
+
+*Deadline:*
+   * 16.11.2020
+
+---++ 06.07. - 12.07.:
+---+++ Literature on crowdsourcing sentence clustering
+---++++ _Cascade: Crowdsourcing Taxonomy Creation_ (Chilton et al., 2013)
+   * dataset:
+      * 3 different datasets containing up to 100 sentences
+   * approach:
+      1 have crowdworkers create astract labels for every item in the dataset
+      2 have crowdworkers decide which of the labels from the 1st step fit each item best
+      3 have crowdworkers decide which of all the items' labels fit each item
+      4 repeat the 3rd step but only show the labels considered fitting in the 3rd step for each item
+      5 delete, merge, and hierarchically organize labels based on crowdworkers' decisions in the previous steps
+   * the authors make the point that it works best to have crowdworkers compare actual data to abstract labels, instead of data to data or labels to labels (neither offer enough context)
+   * there is no published implementation for this approach
+
+---+++ Approaches
+---++++ Example setting
+   * 1 topic with 100 arguments
+   * 7 workers per HIT (for most tasks)
+   * US federal minimum wage $ 7.25
+   * single HIT costs do not include MTurk fees; total costs do
+
+---++++ External categories approach
+   1 
+      * *before:* retrieve categories from some external source
+      * *HIT:* select the one category from the list below that best fits this argument on the topic &lt;topic&gt;
+      * *time expectation:* 45 seconds
+      * *cost:* $ 0.09 per HIT, $ 75.60 total
+      * *agreement:* choose the one category with the highest number of votes; maybe need some threshold; probably need a way to break ties
+      * *output:* clustering with one label for each cluster
+*total cost: $ 75.60*
+
+---++++ 2-step approach
+   1 
+      * *before:* use cluster API to obtain 10 clusters for each topic; sample 5 arguments from each cluster if necessary
+      * *HIT:* select the one of the following arguments that could be best used to summarize all of the following arguments on the topic &lt;topic&gt;
+      * *time expectation:* 40 seconds for the biggest clusters
+      * *cost:* $ 0.08 per HIT, $ 6.72 total
+      * *agreement:* choose the one argument with the highest number of votes; maybe need some threshold; probably need a way to break ties
+      * *output:* 1 representative argument for each cluster
+   2 
+      * *before:* step 1
+      * *HIT:* select the one argument from the list below that best describes this argument on the topic &lt;topic&gt;
+      * *time expectation:* 60 seconds
+      * *cost:* $ 0.12 per HIT, $ 100.80 total
+      * *agreement:* like step 1
+      * *output:* clustering with one representative argument for each cluster
+*total cost: $ 107.52*
+
+---++++ New idea: combination of 2-step approach and _Cascade_
+   1 
+      * *before:* use cluster API to obtain 10 clusters for each topic; sample 5 arguments from each cluster if necessary
+      * *HIT:* [show the arguments for each cluster] Summarize the abstract concept all (or most) of the following arguments use to argue about the topic &lt;topic&gt;. Use about 1 - 4 words.
+      * *note:* using fewer workers on this step will reduce how expensive the later steps are while hopefully not affecting the results too badly; I would want to try it with 3 workers
+      * *time expectation:* 60 seconds for the biggest clusters
+      * *cost:* $ 0.12 per HIT, $ 4.32 total
+      * *agreement:* not needed, simply collect all suggestions
+      * *output:* set of 30 labels (10 clusters * 3 workers)
+   2 
+      * *before:* construct 1 HIT per argument in the dataset
+      * *HIT:* [show all 30 labels] select *all* of the labels that match the following argument on topic &lt;topic&gt;
+      * *time expectation:* 40 seconds (labels are way shorter than arguments in 2-step approach)
+      * *cost:* $ 0.08 per HIT, $ 67.20 total
+      * *agreement:* maybe use threshold (_Cascade_ has 2 out of 5, so maybe 3 out of 7)
+      * *after:* _Cascade's_ "global structure inference" (remove labels with fewer than 2 items matched, merge labels if 75% of matched items are identical)
+      * *output:* set of <30 labels + one set of matching labels for each argument
+   3 
+      * *before:* construct 1 HIT per argument in the dataset
+      * *HIT:* [show all labels previously matched to this argument] select the *one* label that best matches the following argument on topic &lt;topic&gt;
+      * *time expectation:* 25 seconds (probably about 5 labels per argument)
+      * *cost:* $ 0.05 per HIT, $ 42 total
+      * *agreement:* like 2-step approach
+      * *output:* clustering with one label for each cluster
+*total cost: $ 113.52*
+
+---++ 22.06. - 05.07.:
+---+++ 2-step approach
+   1 
+      * *Input:* the dataset that will be clustered
+      * *Action:* automatically cluster the dataset and select arguments from each cluster
+      * *Output:* a preliminary clustering + some selected arguments from each cluster
+   2 
+      * *Input:* some selected arguments from each preliminary cluster
+      * *Action:* construct one HIT for each preliminary cluster
+      * *Output:* HITs in which one argument can be chosen for each preliminary cluster
+   3 
+      * *Input:* HITs from the previous step
+      * *Action:* have crowdworkers choose the best or most important of the presented arguments
+      * *Output:* one argument per preliminary cluster that a majority of crowdworkers considered best or most important
+   4 
+      * *Input:* the dataset that will be clustered + the previously chosen arguments
+      * *Action:* construct one HIT for each argument in the dataset
+      * *Output:* HITs in which one of the previously chosen arguments can be selected for each argument in the dataset
+   5 
+      * *Input:* HITs from the previous step
+      * *Action:* have crowdworkers select the most similar of the displayed arguments for each argument
+      * *Output:* clustering where each argument in the dataset belongs to the cluster represented by the argument selected by the majority of workers
+
+---+++ External categories approach
+   1 
+      * *Input:* the dataset that will be clustered + some categories from an external source
+      * *Action:* construct one HIT for each argument in the dataset
+      * *Output:* HITs in which one category can be selected for each argument in the dataset
+   2 
+      * *Input:* HITs from the previous step
+      * *Action:* have crowdworkers select the best category for each argument in the dataset
+      * *Output:* clustering where each argument in the dataset belongs to the cluster represented by the category selected by the majority of workers
+
+---+++ Crowdclustering implementation from Cocos and Callison-Burch: _Clustering Paraphrases by Word Sense_ (2016)
+   * they cluster paraphrases for targetwords (in our case this would be clustering arguments for topics)
+   * clustering is performed iteratively; in each iteration for each targetword
+      * up to 10 words that have not been succesfully clustered in a previous iteration are selected
+      * from each cluster that was constructed in a previous iteration, up to 6 words are randomly chosen to represent that cluster
+      * workers sort the 10 "new" words into one of the existing clusters or a new one
+      * workers can also merge existing clusters
+      * once the HIT was submitted by the required number of workers, words are added to clusters and clusters are merged if enough workers agree on it
+      * if there are not enough workers who agree on how a certain word should be clustered, the word will be included in up to 4 more HITs until workers agree
+   * in a final step, all created clusters are displayed without any new words and can be merged by workers
+   * no two HITs for the same targetword can be online at the same time (a HIT can only be created after the previous HIT was completed and the clusters were updated based on that HIT)
+
+---++++ Example how it might work with arguments
+   * let's say the dataset includes *1 topic* and *100 arguments*
+   * 1st iteration
+      * *10 arguments* are *randomly sampled* from the dataset
+      * crowdworkers get to sort these arguments into however many clusters they want
+      * let's say the required number of workers agree that *two of the arguments* should be sorted into *one cluster* and *three other arguments* should be sorted into *another cluster*
+      * we get 2 clusters containing a total of 5 arguments
+      * the other 5 arguments would not be clustered and will appear in a later iteration
+   * 2nd iteration
+      * *10 arguments* (that have not been succesfully clustered yet) are *randomly sampled* from the dataset
+      * the two previously formed clusters are represented by their 2 and 3 arguments respectively
+      * crowdworkers get to sort the 10 new arguments into one of the existing clusters or new clusters
+      * crowdworkers can also choose to merge the two existing clusters
+      * crowdworkers' decisions are evaluated as before
+   * this process is repeated until all arguments were either sorted into a cluster or reached the maximum number of HITs without being succesfully clustered
+   * arguments that were not succesfully clustered are clustered in their own cluster (with no other arguments)
+   * in a final HIT, any of the created clusters can be merged
+   * with *100 arguments*, we would need *at least 11 HITs* and *at most 51 HITs* depending on how much the workers agree (any of these HITs can only be created after the previous HIT was completed and evaluated)
+   * in every HIT each existing cluster is represented by up to 6 of its arguments
+   * if we have *8 clusters*, we can have *58 arguments in one HIT* (6 x 8 = 48 to represent existing clusters + 10 arguments that have not been succesfully clustered)
+
+---++ Meetings:
+
+---+++ 03.07.2020
+   * 2-Schritt Ansatz
+      * 1. Schritt: Clustering Threshold sollte hoch sein (0,7 oder so); Ziel: ungefähr 10 Cluster mit jeweils ungefähr 5 Argumenten; dann Crowdworker ein Argument auswählen lassen
+      * 2. Schritt: je HIT 1 Argument + ~10 Argumente aus erstem Schritt -> klassifizieren
+      * wird sehr stark von Qualität des ursprünglich durchgeführten Clusterings beeinflusst
+   * anderer Ansatz: Kategorien aus externer Quelle, ansonsten wie 2. Schritt des 2-Schritt Ansatzes
+   * nächstes Meeting am 9.7. 10 Uhr
+      * Themen und Datensätze auswählen
+      * Kosten der verschiedenen Ansätze berechnen
+
+---+++ 22.06.2020
+   * 3 mögliche Ansätze für Annotation
+      1 2-teiliges Crowdsourcing:
+         1 Argumente clustern
+         2 Menschen für jedes Cluster aus etwa 5 Argumenten das repräsentativste/wichtigste auswählen lassen
+         3 Menschen alle Argumente zu den im vorherigen Schritt ausgewählten Argumenten klassifizieren lassen
+      2 aus externer Quelle Kategorien erhalten und danach klassifizieren
+      3 Crowdclustering: Menschen von Hand Teile des Datensatzes clustern lassen und dann Ergebnisse zusammenführen
+   * nächste Schritte:
+      * Ansätze formalisieren
+      * wie kann man die Ergebnisse vergleichen?
+
+---+++ 10.06.2020
+   * Ziele für Annotation Guideline:
+      * Ansatz, der für Crowd-Sourcing geeignet ist
+      * nur von den Daten zu Clustern, ohne aus irgendeiner Quelle Kategorien zu nehmen
+   * als nächstes recherchieren, wie Clusteringdatensätze für andere Problemstellungen annotiert werden
+   * nächstes Meeting am 24.6. um 16 Uhr
+
+---+++ 15.05.2020
+   * an Related Work weiterarbeiten
+      * auch Paper erwähnen, die nur ungefähr zum Thema passen
+      * bis ~22.05. abschließen
+      * besonders auch Paper, die die Annotation von Clustering Datensätzen beschreiben
+   * Überblick über bestehende Datensätze erstellen (Domäne, Größe, Annotationsschema, ...)
+   * Gedanken machen, wie man Unsicherheit in der Zuordnung im Clustering modellieren kann (z.B. Soft Clustering)
+   * Clusteringalgorithmen, -metriken ausprobieren
+
+---+++ 05.05.2020
+   * Besprechung des bisherigen Standes der Related Work
+      * Paper zur Aspect Classification deutlich ausführlicher beschreiben
+      * auf Unterschiede zur Arbeit eingehen
+   * Literatur zur Annotation von Clusterings und zu Short Text Clustering lesen
+   * Thema überlegen und per E-Mail abklären, dann Anmeldeformular ausfüllen und ans Prüfungssekretariat schicken
+   * nächstes Meeting am 15.5.
+
+---+++ 20.04.2020
+
+
+---++ 15.06. - 21.06.:
+
+---+++ Methoden zur Datensatz Annotation
+   1 Crowdclustering, z.B.
+      * Gomes et al.: _Crowdclustering_ (2011)
+      * Cocos and Callison-Burch: _Clustering Paraphrases by Word Sense_ (2016)
+   2 Elemente im Datensatz mit vorgegebenen Kategorien annotieren, z.B.
+      * Xu et al.: _Implicit feature identification in Chinese reviews using explicit topic mining model_ (2015)
+      * Goldberg et al.: _May All Your Wishes Come True: A Study of Wishes and How to Recognize Them_ (2009)
+      * Lu and Zhai: _Opinion integration through semi-supervised topic modeling_ (2008)
+      * Li and Roth: _Learning question classifiers_ (2002)
+      * Rosell et al.: _Comparing comparisons: Document clustering evaluation using two manual classifications_ (2004)
+   3 Daten zu vorgegenen Kategorien sammeln/erstellen, z.B.
+      * Sun et al.: _Query-adaptive shape topic mining for hand-drawn sketch recognition_ (2012)
+      * Sang and Xu: _Browse by chunks: Topic mining and organizing on web-scale social media_ (2011)
+      * Hu et al.: _Exploiting internal and external semantics for the clustering of short texts using world knowledge_ (2009)
+   4 Daten crawlen, die von Nutzern schon gelabelet sind, z.B.
+      * Li et al.: _Mining User Interest in Microblogs with a User-Topic Model_ (2014)
+      * He et al.: _Short Text Feature Extraction and Clustering for Web Topic Mining_ (2007)
+      * Rasiwasia et al.: _A new approach to cross-modal multimedia retrieval_ (2010)
+      * Griffiths and Steyvers: _Finding scientific topics_ (2004)
+      * Yan et al: _A biterm topic model for short texts_ (2013)
+      * Jin et al: _Transferring topical knowledge from auxiliary long texts for short text clustering_ (2011)
+      * Zhang and LeCun: _Text understanding from scratch_ (2015)
+      * Zubiaga and Ji: _Harnessing Web Page Directories for Large-Scale Classification of Tweets_ (2013)
+
+---++++ Crowdclustering (Gomes et al. 2011)
+   * Ansatz:
+      1 Elemente des Datensatzes werden zufällig auf HITs aufgeteilt
+      2 Crowdworker teilen die Daten eines HITs in Cluster auf
+      3 Annotationen der Worker werden als paarweiser Vergleich zwischen den einzelnen Datenpunkten interpretiert
+      4 generatives Modell berechnet wahrscheinlichste Cluster
+      5 es ergibt sich eine hierarchische Struktur der Cluster, aus der ersichtlich wird, wie einzelne Worker die "atomaren" Cluster zusammengelegt haben
+   * Paper ist sehr "mathematisch" und die Implementierung des vierten Schrittes könnte sehr kompliziert sein
+
+---++ 01.06. - 07.06.:
+
+---+++ Datensatz Annotation
+
+---++++ Ziele Datensatz
+   * einfach als Clustering Gold Standard zu verwenden
+   * sinnvolle Cluster (gute Anzahl, gute Größe, sinnvolle Unterschiede und Gemeinsamkeiten)
+   * passt zum Anwendungsfall (welcher Anwendungsfall?)
+
+---++++ Bestehende annotierte Datensätze
+   * Reason Datensatz (Hasan and Ng: _Why are you taking this stance? Identifying and classifying reasons in ideologic debates_) ziemlich genau das, was ich mir vorstellen würde
+   * Arguing Datensatz (Conrad et al.: _Recognizing arguing subjectivity and arguing tags_) wahrscheinlich auch sehr gut, aber mit der hierarchischen Struktur muss man sich irgendwie überlegen, auf welcher Ebene man die Cluster trennen sollte
+   * Webis Datensatz (Ajjour et al.: _Modeling frames in argumentation_) ähnlich einfach zu verwenden wie Reason, aber die Qualität der Annotationen ist wahrscheinlich nicht optimal, da es für jedes Thema komplett unabhängig voneinander ist
+   * bei ComArg Datensatz (Boltuzic and Snajder: _Back up your stance: Recognizing arguments in online discussions_) muss man sich irgendwie überlegen, wie man die Attack/Support Annotationen in Cluster übersetzen kann
+   * ArgKP Datensatz (Bar-Haim et al.: _From arguments to key points: towards automatic argument summarization_): wenn man die Informationen der "non-matching" Paare einfach wegschmeißt, kann man ihn genauso verwenden wie den Reason Datensatz
+   * AFS (Misra et al.: _Measuring the similarity of sentential arguments in dialogue_) und UKP Aspect (Reimers et al.: _Classification and clustering of arguments with contextualized word embeddings_) Datensätze annotieren Ähnlichkeiten zwischen Sätzen und bräuchten daher wahrscheinlich ganz andere Evaluationsmethoden
+
+| *Name*     | *Topics* | *Arguments*           |     *Arguments per topic* | *Sentences per argument* |
+| Arguing    | 1      | 1,215               | 1,215                   | 1.0 |
+| Reason     | 4      | 2,813               | 703                     | 1.4 |
+| Webis      | 465    | 12,326              | 27                      | 4.1 |
+| ComArg     | 2      | 373                 | 187                     | 6.0 |
+| ArgKP      | 28     | 6,515               | 233                     | 1.2 |
+| AFS        | 3      | 2,648               | 883                     | 1.0 |
+| UKP Aspect | 28     | 2,010               | 72                      | 1.0 |
+
+
+
+---++++ Ziele Annotation
+   * gute Skalierung mit großen Datensätzen
+   * einfach verständlich
+   * möglichst objektiv und reproduzierbar
+   * enstehender Datensatz passt zu Zielen
+
+---++ 18.05. - 31.05.:
+
+---+++ Related Work
+
+---++++ Evaluation
+
+*Silhouettes: a graphical aid to the interpretation and validation of cluster analysis (Rousseeuw)*
+   * uses pairwise (dis)similarity scores
+   * compute closest neighboring cluster for each element
+   * compare how close that neighbor is and how close the other points from the same cluster are
+   * can use averages of scores to assess quality of each cluster and whole clustering
+
+*Estimating the number of clusters in a data set via the gap statistic (Tibshirani et al.)*
+   * uses data points/vectors; use with pairwise (dis)similarities is complicated
+   * compare differences in clusters with an appropriate expectation function
+   * maximum of difference is the best clustering/best number of clusters
+
+*V-Measure: A conditional entropy-based external cluster evaluation measure (Rosenberg and Hirschberg)*
+   * compares clustering result from some clustering approach with annotated target clustering
+   * maximize homogeneity (only elements from one target cluster per cluster) and completeness (only one cluster for each target cluster)
+
+*Information Theoretic Measures for Clusterings Comparison: Variants, Properties, Normalization and Correction for Chance (Vinh et al.)*
+   * compares clustering result from some clustering approach with annotated target clustering
+   * compare many evaluation approaches under 3 criteria:
+      1 metric property: symmetric, positive definite, triangle inequality
+      2 normalized: bounded, ideally [0,1] or [-1,1]
+      3 constant baseline: e.g. more clusters does not naturally lead to higher scores
+   * introduce adjusted mutual information, which fulfills criteria 2 and 3 but not 1
+   * adjustment for chance, i.e. criterion 3, mostly needed when the number of data points is relatively small compared to the number of clusters
+   * advocate for normalized information distance(fulfills criteria 1 and 2) as a "general purpose" measure
+
+---++++ Argument Aspect Classification
+
+*Argumentation Mining in Parliamentary Discourse (Naderi and Hirst)*
+   * approach:
+      * SVM with (similarity of) sum of word embeddings, stance, POS tags, and type dependencies as features
+   * dataset:
+      * ComArg corpus by Boltuzic and Snajder as training set
+      * speeches from Canadian parliament as test set
+      * use same aspect classes as ComArg
+   * results:
+      * word2vec works better than other embeddings (syntactic embeddings & skip-thought)
+      * stance information helpful (in the setting where aspects are stance specific)
+      * sum of word2vec vectors best feature set
+
+*From Arguments to Key Points: Towards Automatic Argument Summarization*
+   * dataset:
+      * 24,000 argument - key point pairs
+      * 6,515 arguments for 28 topics (~230 arguments per topic)
+      * 8.67 key points per topic (up to 7 key points per topic and stance)
+      * remove arguments with low likelihood of it being an argument and of the stance being correct
+      * professional debater provided key points
+      * all matching key points assigned to each argument
+      * 67.5% of arguments assigned to one key point (5% assigned to multiple)
+   * approach:
+      1 score how well each pair matches. 4 approaches:
+         * cosine similarity of TF-IDF
+         * cosine similarity of word embeddings (GloVe and BERT)
+         * BERT trained on part of dataset
+         * BERT trained on bigger natural language inference dataset
+      2 choose key point(s) for each argument based on the scores. 4 approaches:
+         * choose all key points over certain threshold
+         * choose best scored key point for each argument
+         * choose best scored key point if the score exceeds a certain threshold
+         * choose two best arguments if one exceeds some higher threshold and other exceeds lower threshold; else like before
+   * results
+      * BERT-large trained on fold of dataset works best
+      * pretraining on bigger natural language inference dataset does not improve results
+
+---++++ Argument Clustering
+
+*Summarising the points made in online political debates (Egan et al.)*
+   * approach:
+      * use POS tagging and FrameNet frames: same words in same roles -> same cluster
+      * choose best sentence for each cluster based on length and bigrams
+      * choose sentences from biggest clusters
+      * try to present each sentence with a counterargument by looking for same frame with opposing word
+      * group sentences together if their arguments often appear in the same posts
+      * add some questions in the end
+      * for the "layout" approach: add section headings based on which rule was applied to choose a certain sentence
+   * dataset: internet argument corpus
+   * experiments:
+      * baseline: state of the art extractive summarization system
+      * have turkers choose which of two summaries is better
+      * this approach significantly better than baseline
+      * even better when section headings are used
+
+---++++ Short Text Clustering
+
+*Self-Taught Convolutional Neural Networks for Short Text Clustering (Xu et al.)*
+   * approach:
+      * use unsupervised dimensionality reduction on bag-of-words
+      * binarize the output
+      * fit cnn with word embeddings as input to these binary vectors
+      * apply k-means
+   * 3 datasets:
+      * web search results for different search phrases
+      * questions from stack overflow with some chosen tags as clusters
+      * paper titles with clusters as categorized in database
+   * results:
+      * cnn performs best on 2 datasets
+      * same system using rnn with gru instead of cnn works better on stack overflow dataset
+
+*A Dirichlet Multinomial Mixture Model-based Approach for Short Text Clustering (Yin and Wang)*
+   * approach:
+      * randomly assign all documents to clusters
+      * reassign each document to its best cluster (the most similar but prioritize larger clusters)
+      * repeat this step about 5 times
+   * datasets:
+      * google news headlines and/or snippets with clusters based on what google considers to be on the same topic
+      * tweets corresponding to different search queries with each query being one cluster; manually annotated and only using tweets annotated as highly relevant for the query
+   * results:
+      * works better than k-means, agglomerative clustering, and some probabilistic model
+
+*Comparative Study of Clustering Techniques for Short Text Documents (by Rangrej et al.)*
+   * compare k-means, singular value decomposition, and graph based method using affinity propagation
+   * compare cosine similarity and Jaccard similarity for k-means and affinity propagation
+   * dataset: handpicked tweets from different search queries
+   * evaluation function (cluster error) = (number of pairs clustered differently in gold clustering vs. performed clustering) / (number of pairs)
+
+---++++ Framing
+
+*Identifying Media Frames and Frame Dynamics Within and Across Policy Issues (Boydstun et al.)*
+   * policy frames cookbook:
+      * meant to be applied to opinions on political policy issues
+      * list of 14 frames, each with a short desription
+      * designed to be applicable to any policy issue -> very generic; additional topic-specific frames might be useful
+
+
+
+---+!! Bachelor Thesis
+
+*Supervisors:*
+   * Daniil Sorokin
+   * Maxime Peyrard
+   * Teresa Botschen
+
+---++ Meetings:
+
+---+++ 25.09.2018:
+Final Talk is schedueled for 11.12.2018 <br>
+*TODOs:* <br>
+   * prepare slides until the end of the week and send them
+   * run Rouge on Frames
+
+---+++ 11.09.2018:
+*TODOs:* <br>
+   * create a ranking of Rouge scores and human scores to find those which are overestimated/underestimated most
+   * run Rouge-1 and Rouge-2 on only the entities
+   * replace words with entities and run Rouge on this (might be hard to do, in that case won't be done)
+
+---+++ 14.08.2018:
+   * Entity Linker had some issue
+   * Entity Linking will probably need several days -> run on server
+   * TODOs from last meeting are still open
+   * mid-term talk can be held on 02.10.
+   * task description has been signed
+
+---+++ 24.07.2018:
+*TODOs:* <br>
+   * try other baselines (ROUGE-2, ROUGE-WE, ...)
+   * run entity linker on data
+   * find some examples where ROUGE fails
+
+
+---+++ 12.07.2018:
+*TODOs:* <br>
+Create Pipeline:
+   1 Load data
+   2 Rouge as baseline
+   3 Compute 2 different correlations and plot results

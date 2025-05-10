@@ -1,0 +1,73 @@
+%META:TOPICINFO{author="alles" comment="" date="1728466708" format="1.1" reprev="3" version="5"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}%%IF{"$WEBSUMMARY != ''" then="
+*%WEBSUMMARY%"}%*
+
+<div style="float:right;background-color:white; z-index:999;">
+  <div style="border: solid grey 1px; padding: 0.25em; margin: 0.25em">
+
+---++++ !! Content of this page
+%TOC%
+
+---++++ !! Permissions
+This web and it's contents are available for:
+   * Everyone that can login (just denied for guest users)
+   * *%RED%Subpages below may be restricted further - <br />so for some pages you still might get a permission denied.%ENDCOLOR%*
+
+---++++ !! <nop>%WEB% Web Utilities
+   * WebTopicList - all topics in alphabetical order
+   * WebChanges - recent topic changes in this web
+   * WebNotify - subscribe to an e-mail alert sent when topics change
+   * WebRss, WebAtom - RSS and ATOM news feeds of topic changes %IF{"istopic '%STATISTICSTOPIC%'" then="
+   * %STATISTICSTOPIC% - listing popular topics and top contributors"}%
+   * WebPreferences - preferences of this web
+
+  </div>
+</div>
+
+---++ Ticket System - Single Point of Contact
+*%RED%Always use [[https://ticket.ukp.informatik.tu-darmstadt.de][our ticket system]] or send mail to [[mailto:ticket@ukp.tu-darmstadt.de][the ticket system mail]] to contact system-admin!%ENDCOLOR%*
+   * [[Services/ITBasic/Ticketsystem][Wiki - How to write tickets]] - we *will* reject tickets if not matching those criteria!
+   * [[https://ticket.ukp.informatik.tu-darmstadt.de][Ticket graphical web interface]]
+
+---++ IT related Workflows, Forms, Wikis and Processes
+---+++ 👦 Accounts
+   * [[Services/ITBasic/Accounts][Wiki - Existing Accounts and their Purpose]]
+   * [[Services/ITBasic/AccountChangePassword][Wiki - How to change your UKP account password]]
+
+---+++ 💬 Communication - Chat and Email
+   * [[Services/ITBasic/PhishingAwareness][Wiki - Phishing Awareness 🕵️]]
+
+---+++ 💻 Homeoffice and Mobile working
+From technical point of view you are allowed to also work from home / mobile. Some services are public reachable, others require a VPN to connect. As a researcher or administrative staff of UKP Lab you are always granted the permission to authenticate at the UKP VPN. Please also check on how to borrow things if you want to take hardware home. 
+   * [[Services/ITBasic/VpnService][Wiki - UKP VPN]] - How to use, setup and limitations
+   * [[Services/ITBasic/VpnService#HRZ_VPN][Wiki - HRZ VPN]] - How to use, setup and limitations
+
+---+++ 🖥️ Slurm Compute Cluster / Computation Resources
+UKP Lab provides it's own compute cluster with various nodes, central storange and queueing system using SLURM. We have a separate wiki covering a big FAQ section and information on how to use it.Another possibility is to use the DGX Server of FB20 (Fachbereich Informatik) or request a poject on the Lichtenberh Hochleistungsrechner of TU Darmstadt. 
+   * [[https://service.ukp.informatik.tu-darmstadt.de/shared-slurm-folder][Form - Request Shared Slurm Storage Folder]] (external link)
+   * [[Services/ITBasic/ComputeCluster][Wiki - Slurm Compute Cluster Information including FAQ and common issues]]
+   * [[Services/ITBasic/ComputeClusterResourcesSummary][Wiki - an overview of our labs compute ressources]]
+
+---+++ 🏢 Office Equipment
+---++++ Your standard workplace
+   * [[Services/ITBasic/TelephoneService][Wiki - Telephone]]
+---++++ Software for your equipment
+We have to differ between software provided by TU Darmstadt and UKP Lab. Some can be used on multiple devices, some not. Please check below to get information for a special software product.
+   * [[Services/ITBasic/OfficeAndEmailSetup][Wiki - Install and activate Office 365 from TU Da]] - Setup Word, Excel, Powerpoint, Outlook...
+   * [[https://www.hrz.tu-darmstadt.de/services/it_services/campus_software/index.en.jsp][External - More software provided by the HRZ of TU Darmstadt]]
+
+---+++ 🖥️ Virtual (Project) Machines (VMs) / Servers
+One can request Virtual Machines / Servers to host a web appliance or website at UKP Lab, usually based on Linux.
+   * [[Services/ITBasic/SshService][Wiki - How to access your VM using SSH]]
+
+---+++ 📡 WLAN / eduroam
+For wifi the only option to use is eduroam. Eduroam is not maintained by UKP Lab and you have to set it up on your client yourself.
+   * [[Services/ITBasic/WirelessNetworkService][Wiki - Setup WLAN / eduroam]]
+
+<!--
+---++ %MAKETEXT{"Available Basic IT Services"}%
+   * [[Ticketsystem][Ticketsystem]]
+   * VPN %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% available for everyone in Main.vpn-minimal, Main.vpn-cluster-only, Main.ukp-tuda-staff, Main.ukp-tuda-associated-researcher, Main.ukp-tuda-researcher, Main.ukp-tuda-irg, Main.ukp-tuda-intern %ENDTWISTY% 
+   * UKP account password change %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% available for everyone that can login, no additional restriction %ENDTWISTY% 
+   * UKP SLURM cluster %TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% availabe for everyone in Main.slurm-user %ENDTWISTY% 
+-->

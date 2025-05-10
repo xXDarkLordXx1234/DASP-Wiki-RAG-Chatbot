@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<map version="0.8.1">
+    <node TEXT="Feature Engineering (simple)">
+        <FONT SIZE="16"></FONT>
+        <node TEXT="Unreferenced">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="Number of references">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Lexical features (word prefix)">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+        <node TEXT="Orphan">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="Incoming links &lt; 3">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+        <node TEXT="Empty Section">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="Number of words in section = 0">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Number of words in section">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+        <node TEXT="No footnotes">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="Footnotes = 0">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+    </node>
+</map>

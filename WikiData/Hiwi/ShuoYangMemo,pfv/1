@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="ShuoYang" date="1297775537" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Miscellaneous Memo
+
+---++ Maven
+
+   * POM Parent:
+      * Group Id: de.tudarmstadt.ukp.dkpro.misc
+      * Artifact Id: de.tudarmstadt.ukp.dkpro.misc.superpom
+   * POM:
+      * Group Id: de.tudarmstadt.ukp.experiments.sy
+      * Artifact Id: de.tudarmstadt.ukp.experiments.sy.xxx
+
+---++ Log4j
+
+   * log4j.properties:
+    <verbatim>
+    log4j.rootLogger=DEBUG,development
+
+    log4j.appender.development=org.apache.log4j.ConsoleAppender
+    log4j.appender.development.layout=org.apache.log4j.PatternLayout
+    log4j.appender.development.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %5p [%t] %C{1} - %m%n
+
+    log4j.logger.de.tudarmstadt.ukp = DEBUG
+</verbatim>
+   * Load: 
+   <verbatim>    PropertyConfigurator.configure("src/main/resources/log4j.properties");</verbatim>
+
+
+
+
+-- Main.ShuoYang - 2011-02-15

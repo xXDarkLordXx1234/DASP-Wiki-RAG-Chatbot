@@ -1,0 +1,62 @@
+%META:TOPICINFO{author="ChristianHollubetz" date="1332168722" format="1.1" reprev="1" version="1"}%
+#hostname -f
+
+-&gt; gwap.ukp.informatik.tu-darmstadt.de
+
+#hostname -a
+
+-&gt; gwap localhost
+
+#sudo apt-get update
+
+#sudo apt-get upgrade
+
+#sudo apt-get install mysql-client mysql-server
+
+-&gt; Fehler -&gt; Timo um Hilfe gebeten -&gt; Fehler im Template der VM -&gt; beseitigt
+
+#sudo apt-get install mysql-client mysql-server
+
+User: root PW: hier nicht aufgeschrieben
+
+#sudo apt-get install tomcat6
+
+Testaufruf von http://gwap.ukp.informatik.tu-darmstadt.de:8080/ -&gt; läuft
+
+#sudo apt-get install apache2 apache2.2-common apache2-doc apache2-mpm-prefork apache2-utils libapache2-mod-php5 php5 php5-common php5-gd php5-mysql php5-imap php5-cli php5-cgi libapache2-mod-fcgid apache2-suexec php-pear php-auth php5-mcrypt mcrypt php5-imagick imagemagick libapache2-mod-suphp libruby libapache2-mod-ruby libexpat1 ssl-cert
+
+-&gt; http://gwap.ukp.informatik.tu-darmstadt.de testen -&gt; funktioniert
+
+#sudo apt-get install phpmyadmin
+
+-&gt; root-Passwort von MySQL eingeben, Passwort generieren lassen durch leer lassen und Enter drücken, apache2 mit Leertaste auswählen
+
+-&gt; http://gwap.ukp.informatik.tu-darmstadt.de/phpmyadmin/ testen -&gt; funktioniert
+
+#sudo apt-get install libapache2-mod-jk
+
+#sudo nano /etc/apache2/workers.properties
+
+worker.list=tomcat_main_worker
+
+worker.tomcat_main_worker.port=8009
+
+worker.tomcat_main_worker.host=localhost
+
+worker.tomcat_main_worker.type=ajp13
+
+worker.tomcat_main_worker.lbfactor=1
+
+#sudo nano /etc/apache2/conf.d/jk.conf
+
+&lt;ifmodule mod_jk.c&gt;
+
+JkWorkersFile /etc/apache2/workers.properties
+
+JkLogFile /var/log/apache2/mod_jk.log
+
+JkLogLevel error
+
+&lt;/ifmodule&gt;
+
+# sudo /etc/init.d/apache2 restart

@@ -1,0 +1,2 @@
+ChristianKirschner
+Erste Version der BingTranslationAPI zum Übersetzen von deutschen/englischen Texten

@@ -1,0 +1,3310 @@
+=============================================================================================================================
+Sentence:The Váh (; ; ) is the longest river within Slovakia.
+Parse Count: 3
+Semantic Parse:  [river.longest(8:s , 1:váh), river.within.1(9:e , 1:váh), river(9:s , 1:váh), UNIQUE(1:váh), river.within.2(9:e , 11:slovakia)]
+Lexical items: [11, 1, 8, 9]
+Node:11, Slovakia   
+Node:1, Váh UNIQUE river
+Events (with NN/NNP arguments)[9]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: continent.1(e , Váh) ^ continent.2(e , x)
+Denotations:[Europe] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Váh) ^ country.2(e , x)
+Denotations:[Slovakia] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: mouth of the watercourse.1(e , Váh) ^ mouth of the watercourse.2(e , x)
+Denotations:[Danube] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Váh) ^ instance of.2(e , x)
+Denotations:[river] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: tributary.1(e , Váh) ^ tributary.2(e , x)
+Denotations:[Nitra, Kysuca, Turiec, Orava, Belá, Little Danube, Dudváh] Replaced Entity: Slovakia
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Váh) ^ country.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Hron (, , , ) is a long left tributary of the Danube and the second longest river in Slovakia.
+Parse Count: 6
+Semantic Parse:  [river.in.2(18:e , 20:slovakia), tributary.of.1(10:e , 0:hron), UNIQUE(13:danube), river(18:s , 13:danube), river.in.1(18:e , 13:danube), tributary.left(9:s , 0:hron), tributary.long(8:s , 0:hron), tributary.of.2(10:e , 13:danube), river.longest(17:s , 13:danube), river.second(16:s , 13:danube), tributary(10:s , 0:hron)]
+Lexical items: [0, 13, 16, 17, 18, 8, 9, 20, 10]
+Node:0, Hron  tributary
+Node:13, Danube UNIQUE river
+Node:20, Slovakia   
+Events (with NN/NNP arguments)[18, 10]
+
+Wikipedia Annotations for sentence:[Q1653 Danube ,  Q214 Slovakia ,  ]
+
+
+Candidate Surrogate Grounded phrase: continent.1(e , Danube) ^ continent.2(e , x)
+Denotations:[Europe] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Danube) ^ country.2(e , x)
+Denotations:[Germany, Romania, Ukraine, Slovakia, Moldova, Bulgaria, Croatia, Hungary, Austria, Serbia] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: mouth of the watercourse.1(e , Danube) ^ mouth of the watercourse.2(e , x)
+Denotations:[Black Sea] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: located on terrain feature.1(e , Danube) ^ located on terrain feature.2(e , x)
+Denotations:[Danube basin] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Danube) ^ topic's main category.2(e , x)
+Denotations:[Category:Danube] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: bodies of water basin category.1(e , Danube) ^ bodies of water basin category.2(e , x)
+Denotations:[Category:Danube basin] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Danube) ^ instance of.2(e , x)
+Denotations:[main stem] Replaced Entity: Slovakia
+
+
+Candidate Surrogate Grounded phrase: tributary.1(e , Danube) ^ tributary.2(e , x)
+Denotations:[Lech, Inn, Isar, Sava, Argeș River, Tisza, Drava, Riss, Prut, Olt River, Westernach, Siret River, Rusenski Lom] Replaced Entity: Slovakia
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Danube) ^ country.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:is an old province of Japan, which today comprises Shiga Prefecture.
+Parse Count: 5
+Semantic Parse:  [province.of.1(3:e , 10:shiga-prefecture), province.of.2(3:e , 5:japan), comprises.today(8:s , 9:e), comprises.1(9:e , 10:shiga-prefecture), province(3:s , 10:shiga-prefecture), province.old(2:s , 10:shiga-prefecture)]
+Lexical items: [2, 3, 5, 8, 9, 10]
+Node:5, Japan   
+Node:10, Shiga_Prefecture  province
+Events (with NN/NNP arguments)[3, 9]
+
+Wikipedia Annotations for sentence:[Q131358 Shiga Prefecture ,  ]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Shiga Prefecture) ^ country.2(e , x)
+Denotations:[Japan] Replaced Entity: Japan
+
+
+Candidate Surrogate Grounded phrase: capital.1(e , Shiga Prefecture) ^ capital.2(e , x)
+Denotations:[Ōtsu] Replaced Entity: Japan
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Shiga Prefecture) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Japan] Replaced Entity: Japan
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Shiga Prefecture) ^ topic's main category.2(e , x)
+Denotations:[Category:Shiga Prefecture] Replaced Entity: Japan
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Shiga Prefecture) ^ instance of.2(e , x)
+Denotations:[prefecture of Japan] Replaced Entity: Japan
+
+
+Candidate Surrogate Grounded phrase: category of associated people.1(e , Shiga Prefecture) ^ category of associated people.2(e , x)
+Denotations:[Category:People from Shiga Prefecture] Replaced Entity: Japan
+
+
+Candidate Surrogate Grounded phrase: shares border with.1(e , Shiga Prefecture) ^ shares border with.2(e , x)
+Denotations:[Kyōto Prefecture, Gifu Prefecture, Mie Prefecture, Fukui Prefecture] Replaced Entity: Japan
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Shiga Prefecture) ^ country.2(e , x)
+
+
+Selected surrogate Grounded parse 1 : located in the administrative territorial entity.1(e , Shiga Prefecture) ^ located in the administrative territorial entity.2(e , x)
+
+
+Selected surrogate Grounded parse 2 : instance of.1(e , Shiga Prefecture) ^ instance of.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Mino Province bordered Echizen , Hida , Ise , Mikawa , Ōmi , Owari , and Shinano Provinces.
+Parse Count: 1
+Semantic Parse:  [bordered.2(1:e , 10:ōmi), bordered.2(1:e , 15:shinano-provinces), bordered.2(1:e , 2:echizen), bordered.2(1:e , 8:mikawa), bordered.1(1:e , 0:mino-province), bordered.2(1:e , 4:hida), bordered.2(1:e , 6:ise), bordered.2(1:e , 12:owari)]
+Lexical items: [0, 1, 12, 2, 4, 15, 6, 8, 10]
+Node:0, Mino_Province   
+Node:12, Owari   
+Node:2, Echizen   
+Node:4, Hida   
+Node:15, Shinano_Provinces   
+Node:6, Ise   
+Node:8, Mikawa   
+Node:10, Ōmi   
+Events (with NN/NNP arguments)[1]
+
+Wikipedia Annotations for sentence:[Q1047144 ref=Echizen Province|Echizen Echizen ,  Q1056535 ref=Hida Province|Hida Hida ,  Q864166 ref=Ise Province|Ise Ise ,  Q768158 ref=Mikawa Province|Mikawa Mikawa ,  Q843882 ref=Lmi Province|Lmi Lmi ,  Q514506 ref=Owari Province|Owari Owari ,  Q289250 ref=Shinano Province|Shinano Shinano ,  ]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Mino Province) ^ country.2(e , x)
+Denotations:[Japan] Replaced Entity: Echizen
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Mino Province) ^ instance of.2(e , x)
+Denotations:[province of Japan] Replaced Entity: Echizen
+
+
+Candidate Surrogate Grounded phrase: shares border with.1(e , Mino Province) ^ shares border with.2(e , x)
+Denotations:[Shinano Province, Mikawa Province, Owari Province, Ise Province, Ōmi Province, Echizen Province, Hida Province] Replaced Entity: Echizen
+
+
+Selected surrogate Grounded parse 0 : shares border with.1(e , Mino Province) ^ shares border with.2(e , x) ^ shares border with.1(e , Mino Province) ^ shares border with.2(e , Mikawa) ^ shares border with.1(e , Mino Province) ^ shares border with.2(e , Hida) ^ shares border with.1(e , Mino Province) ^ shares border with.2(e , Ise) ^ shares border with.1(e , Mino Province) ^ shares border with.2(e , Owari)
+
+
+
+=============================================================================================================================
+Sentence:The Virginia Peninsula is a peninsula in southeast Virginia , USA, bounded by the York River , James River , Hampton Roads and Chesapeake Bay.
+Parse Count: 7
+Semantic Parse:  [bounded.2(11:e , 9:usa), southeast(6:s , 7:virginia), bounded.1(11:e , 14:york), bounded.1(11:e , 22:chesapeake-bay), bounded.1(11:e , 17:james-river), peninsula(4:s , 1:virginia-peninsula), peninsula.in.2(4:e , 7:virginia), bounded.1(11:e , 19:hampton), peninsula.in.2(4:e , 9:usa), peninsula.in.1(4:e , 1:virginia-peninsula), River(15:s , 14:york), UNIQUE(14:york), UNIQUE(1:virginia-peninsula), Roads(20:s , 19:hampton)]
+Lexical items: [11, 22, 1, 14, 4, 15, 6, 17, 7, 19, 9, 20]
+Node:22, Chesapeake_Bay   
+Node:1, Virginia_Peninsula UNIQUE peninsula
+Node:14, York UNIQUE River
+Node:17, James_River   
+Node:7, Virginia  southeast
+Node:19, Hampton  Roads
+Node:9, USA   
+Events (with NN/NNP arguments)[11, 4]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Virginia Peninsula) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Virginia
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Virginia Peninsula) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Virginia] Replaced Entity: Virginia
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Virginia Peninsula) ^ instance of.2(e , x)
+Denotations:[peninsula] Replaced Entity: Virginia
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Virginia Peninsula) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Eretria and other cities of Euboea rebelled unsuccessfully against Athens in 446 BC.
+Parse Count: 4
+Semantic Parse:  [rebelled.unsuccessfully(7:s , 6:e), cities(3:s , 0:eretria), cities.other(2:s , 0:eretria), cities.of.2(3:e , 5:euboea), rebelled.against.2(6:e , 9:athens), cities.in.1(3:e , 0:eretria), BC(12:s , 11:type.int), cities.in.2(3:e , 11:type.int), cities.of.1(3:e , 0:eretria), rebelled.2(6:e , 5:euboea)]
+Lexical items: [0, 11, 12, 2, 3, 5, 6, 7, 9]
+Node:0, Eretria  cities
+Node:5, Euboea   
+Node:9, Athens   
+Events (with NN/NNP arguments)[3, 6]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Eretria) ^ country.2(e , x)
+Denotations:[Greece] Replaced Entity: Euboea
+
+
+Candidate Surrogate Grounded phrase: located on terrain feature.1(e , Eretria) ^ located on terrain feature.2(e , x)
+Denotations:[Euboea] Replaced Entity: Euboea
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Eretria) ^ instance of.2(e , x)
+Denotations:[town] Replaced Entity: Euboea
+
+
+Candidate Surrogate Grounded phrase: located in time zone.1(e , Eretria) ^ located in time zone.2(e , x)
+Denotations:[UTC+02:00] Replaced Entity: Euboea
+
+
+Selected surrogate Grounded parse 0 : located on terrain feature.1(e , Eretria) ^ located on terrain feature.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:The Beas River is a river in north India.
+Parse Count: 1
+Semantic Parse:  [UNIQUE(1:beas-river), river(4:s , 1:beas-river), river.in.2(4:e , 7:india), north(6:s , 7:india), river.in.1(4:e , 1:beas-river)]
+Lexical items: [1, 4, 6, 7]
+Node:1, Beas_River UNIQUE river
+Node:7, India  north
+Events (with NN/NNP arguments)[4]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Beas River) ^ country.2(e , x)
+Denotations:[India] Replaced Entity: India
+
+
+Candidate Surrogate Grounded phrase: mouth of the watercourse.1(e , Beas River) ^ mouth of the watercourse.2(e , x)
+Denotations:[Sutlej] Replaced Entity: India
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Beas River) ^ instance of.2(e , x)
+Denotations:[river] Replaced Entity: India
+
+
+Candidate Surrogate Grounded phrase: tributary.1(e , Beas River) ^ tributary.2(e , x)
+Denotations:[Parvati River] Replaced Entity: India
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Beas River) ^ country.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Since 2011, Saudi Arabia has been affected by its own Arab Spring protests.
+Parse Count: 2
+Semantic Parse:  [protests(12:s , 10:arab), affected.1(6:e , 10:arab), affected.2(6:e , 3:saudi-arabia), own(9:s , 10:arab), affected.Since.2(6:e , 1:type.int), protests.Spring(11:s , 10:arab)]
+Lexical items: [11, 1, 12, 3, 6, 9, 10]
+Node:3, Saudi_Arabia   
+Node:10, Arab  protests
+Events (with NN/NNP arguments)[6]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Arab) ^ country.2(e , x)
+Denotations:[Yemen, Oman, Saudi Arabia, United Arab Emirates, Qatar] Replaced Entity: Saudi Arabia
+
+
+Candidate Surrogate Grounded phrase: located on terrain feature.1(e , Arab) ^ located on terrain feature.2(e , x)
+Denotations:[Western Asia, Arabian Plate] Replaced Entity: Saudi Arabia
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Arab) ^ topic's main category.2(e , x)
+Denotations:[Category:Arabian Peninsula] Replaced Entity: Saudi Arabia
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Arab) ^ instance of.2(e , x)
+Denotations:[peninsula] Replaced Entity: Saudi Arabia
+
+
+Candidate Surrogate Grounded phrase: located next to body of water.1(e , Arab) ^ located next to body of water.2(e , x)
+Denotations:[Arabian Sea, Red Sea, Persian Gulf, Gulf of Aqaba] Replaced Entity: Saudi Arabia
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Arab) ^ country.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Wagga Wagga ( ; informally called Wagga) is a city in New South Wales , Australia.
+Parse Count: 1
+Semantic Parse:  [called.2(4:e , 0:wagga-wagga), called.3(4:e , 5:wagga), city(9:s , 0:wagga-wagga), called.informally(3:s , 4:e), city.in.2(9:e , 11:new-south-wales), city.in.2(9:e , 13:australia), city.in.1(9:e , 0:wagga-wagga)]
+Lexical items: [0, 11, 13, 3, 4, 5, 9]
+Node:0, Wagga_Wagga  city
+Node:11, New_South_Wales   
+Node:13, Australia   
+Node:5, Wagga   
+Events (with NN/NNP arguments)[4, 9]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Wagga Wagga) ^ country.2(e , x)
+Denotations:[Australia] Replaced Entity: New South Wales
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Wagga Wagga) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[New South Wales, City of Wagga Wagga] Replaced Entity: New South Wales
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Wagga Wagga) ^ topic's main category.2(e , x)
+Denotations:[Category:Wagga Wagga] Replaced Entity: New South Wales
+
+
+Candidate Surrogate Grounded phrase: sister city.1(e , Wagga Wagga) ^ sister city.2(e , x)
+Denotations:[Nördlingen, Leavenworth] Replaced Entity: New South Wales
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Wagga Wagga) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: New South Wales
+
+
+Candidate Surrogate Grounded phrase: capital of.1(e , Wagga Wagga) ^ capital of.2(e , x)
+Denotations:[City of Wagga Wagga] Replaced Entity: New South Wales
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Wagga Wagga) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Wagga Wagga) ^ country.2(e , Australia)
+
+
+
+=============================================================================================================================
+Sentence:Welwyn is a village and civil parish in Hertfordshire , England.
+Parse Count: 1
+Semantic Parse:  [village(3:s , 0:welwyn), parish(6:s , 0:welwyn), parish.in.1(6:e , 0:welwyn), parish.civil(5:s , 0:welwyn), parish.in.2(6:e , 8:hertfordshire)]
+Lexical items: [0, 3, 5, 6, 8]
+Node:0, Welwyn  village
+Node:8, Hertfordshire   
+Events (with NN/NNP arguments)[6]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Welwyn) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Hertfordshire
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Welwyn) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[England, Hertfordshire] Replaced Entity: Hertfordshire
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Welwyn) ^ instance of.2(e , x)
+Denotations:[village, civil parish in England] Replaced Entity: Hertfordshire
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Welwyn) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:The first was Mainz , Germany, in 1956, and the most recent is Pesaro , Italy, in 1988; the others are Nanterre , Novgorod, and Wilmington, Delaware.
+Parse Count: 11
+Semantic Parse:  [UNIQUE(8:type.int), is.in.2(14:e , 20:type.int), is.1(14:e , 5:germany), is.2(14:e , 17:italy), is.in.2(14:e , 8:type.int), recent.most(12:s , 13:e), is.2(14:e , 15:pesaro), UNIQUE(23:x), others(23:s , 23:x), UNIQUE(3:mainz)]
+Lexical items: [12, 23, 13, 3, 14, 15, 5, 17, 8, 20]
+Node:3, Mainz UNIQUE  
+Node:15, Pesaro   
+Node:5, Germany   
+Node:17, Italy   
+Events (with NN/NNP arguments)[14]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: continent.1(e , Germany) ^ continent.2(e , x)
+Denotations:[Europe] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Germany) ^ country.2(e , x)
+Denotations:[Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: history of topic.1(e , Germany) ^ history of topic.2(e , x)
+Denotations:[history of Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: patron saint.1(e , Germany) ^ patron saint.2(e , x)
+Denotations:[Michael] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: capital.1(e , Germany) ^ capital.2(e , x)
+Denotations:[Berlin, Bonn] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: flag.1(e , Germany) ^ flag.2(e , x)
+Denotations:[flag of Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: anthem.1(e , Germany) ^ anthem.2(e , x)
+Denotations:[Das Lied der Deutschen] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: category for people who died here.1(e , Germany) ^ category for people who died here.2(e , x)
+Denotations:[Category:Death in Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: category for people born here.1(e , Germany) ^ category for people born here.2(e , x)
+Denotations:[Category:Births in Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: shares border with.1(e , Germany) ^ shares border with.2(e , x)
+Denotations:[France, Belgium, East Germany, Saar, Czechoslovakia, Poland, Czech Republic, Switzerland, Netherlands, Denmark, Luxembourg, Austria] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: said to be the same as.1(e , Germany) ^ said to be the same as.2(e , x)
+Denotations:[Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: top-level domain.1(e , Germany) ^ top-level domain.2(e , x)
+Denotations:[.de] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: coat of arms.1(e , Germany) ^ coat of arms.2(e , x)
+Denotations:[coat of arms of Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Germany) ^ topic's main category.2(e , x)
+Denotations:[Category:Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: named after.1(e , Germany) ^ named after.2(e , x)
+Denotations:[Alamanni, Theodiscus, Bavaria, Saxons, Prussia, Germania] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: head of government.1(e , Germany) ^ head of government.2(e , x)
+Denotations:[Ludwig Erhard, Walter Scheel, Angela Merkel, Konrad Adenauer, Kurt Georg Kiesinger, Willy Brandt, Helmut Schmidt, Helmut Kohl, Gerhard Schröder] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: public holiday.1(e , Germany) ^ public holiday.2(e , x)
+Denotations:[German Unity Day] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: located in time zone.1(e , Germany) ^ located in time zone.2(e , x)
+Denotations:[UTC+01:00, Central European Time, UTC+02:00] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: official language.1(e , Germany) ^ official language.2(e , x)
+Denotations:[German] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: contains administrative territorial entity.1(e , Germany) ^ contains administrative territorial entity.2(e , x)
+Denotations:[Schleswig-Holstein, Mecklenburg-Vorpommern, Lower Saxony, North Rhine-Westphalia, Saarland, Thuringia, Bremen, Berlin, Baden-Württemberg, Hesse, Saxony, Hamburg, Rhineland-Palatinate, Saxony-Anhalt, Brandenburg, Bavaria] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: category of associated people.1(e , Germany) ^ category of associated people.2(e , x)
+Denotations:[Category:German people] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: currency.1(e , Germany) ^ currency.2(e , x)
+Denotations:[Deutsche Mark, euro] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: diplomatic relation.1(e , Germany) ^ diplomatic relation.2(e , x)
+Denotations:[France, Canada, Czech Republic, Chile, United States of America, Greece, Portugal, Netherlands, New Zealand, Japan, South Africa, Sweden, Denmark, Italy, Australia, Iran, Cape Verde, Madagascar, Namibia, Niger, Nigeria, Uganda, Senegal, Somalia, Russia, East Germany, Ukraine, Slovakia, Bulgaria, Albania, Croatia, Bosnia and Herzegovina, Cyprus, Kazakhstan, San Marino, Cuba, Belize, Indonesia, Algeria, Uzbekistan, Ireland, Hungary, Liechtenstein, Austria, North Korea, India, Suriname, Guyana, Ecuador, Honduras, Dominican Republic, Iraq, Costa Rica, Jordan, Pakistan, United Arab Emirates, Bangladesh, Mali, Tanzania, Central African Republic, Togo, Zambia, Zimbabwe, Benin, Burkina Faso, Burundi, Democratic Republic of the Congo, Equatorial Guinea, Eritrea, United Kingdom, Norway, Malta, Switzerland, Israel, Afghanistan, People's Republic of China, Slovenia, Romania, Monaco, Spain, Belgium, Finland, Thailand, Mexico, Gabon, Gambia, Guinea, Guinea-Bissau, Ivory Coast, Cameroon, Libya, Morocco, Mozambique, Rwanda, Sudan, Kenya, Ethiopia, Ghana, Brazil, Belarus, Iceland, Moldova, Azerbaijan, Andorra, Georgia, Vatican City, Luxembourg, Singapore, Poland, Serbia, Argentina, Peru, Turkey, Chad, Mongolia, Venezuela, Paraguay, Colombia, Bolivia, Uruguay, Guatemala, Egypt, Panama, Nicaragua, Malaysia, Saudi Arabia, Vietnam, South Korea, Angola, Bhutan, Tunisia, South Sudan, Botswana, Republic of the Congo] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: part of.1(e , Germany) ^ part of.2(e , x)
+Denotations:[European Union, Central Europe, Europe] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: member of.1(e , Germany) ^ member of.2(e , x)
+Denotations:[World Health Organization, Multilateral Investment Guarantee Agency, United Nations, Paris Charter, European Southern Observatory, International Commission for the Protection of the Rhine, Universal Postal Union, World Intellectual Property Organization, Antarctic Treaty System, European Convention on Human Rights, Treaty on the Non-Proliferation of Nuclear Weapons, Western European Union, International Bank for Reconstruction and Development, General Agreement on Tariffs and Trade, Berne Convention for the Protection of Literary and Artistic Works, African Development Bank, Comprehensive Nuclear-Test-Ban Treaty Organization, G8, World Tourism Organization, International Fund for Agricultural Development, World Trade Organization, Organization for Security and Co-operation in Europe, Food and Agriculture Organization of the United Nations, International Development Association, Organisation for the Prohibition of Chemical Weapons, Council of Europe, European Atomic Energy Community, European Union, Convention on the Rights of Persons with Disabilities, International Civil Aviation Organization, European Air Transport Command, World Meteorological Organization, G-20 major economies, International Maritime Organization, United Nations Framework Convention on Climate Change, economic, United Nations Convention to Combat Desertification, International Telecommunication Union, African Union – United Nations Hybrid Operation in Darfur, United Nations Industrial Development Organization, Organisation for Economic Co-operation and Development, International Atomic Energy Agency, European Space Agency, International Labour Organization, Weimar Triangle, International Finance Corporation, International Commission for the Protection of the Danube River, World Bank, North Atlantic Treaty Organisation, International Monetary Fund, United Nations Educational, World Trade Organization, Council of the Baltic Sea States, International Centre for Settlement of Investment Disputes] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: follows.1(e , Germany) ^ follows.2(e , x)
+Denotations:[Holy Roman Empire, West Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: office held by head of state.1(e , Germany) ^ office held by head of state.2(e , x)
+Denotations:[President of Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: legislative body.1(e , Germany) ^ legislative body.2(e , x)
+Denotations:[Bundesrat, Bundestag of Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: highest judicial authority.1(e , Germany) ^ highest judicial authority.2(e , x)
+Denotations:[Federal Constitutional Court of Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: office held by head of government.1(e , Germany) ^ office held by head of government.2(e , x)
+Denotations:[Federal Chancellor of Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: highest point.1(e , Germany) ^ highest point.2(e , x)
+Denotations:[Zugspitze] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: head of state.1(e , Germany) ^ head of state.2(e , x)
+Denotations:[Joachim Gauck, Richard von Weizsäcker, Heinrich Lübke, Theodor Heuss, Christian Wulff, Horst Köhler, Johannes Rau, Roman Herzog, Karl Carstens, Walter Scheel, Gustav Heinemann] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: basic form of government.1(e , Germany) ^ basic form of government.2(e , x)
+Denotations:[federal republic, parliamentary system] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Germany) ^ instance of.2(e , x)
+Denotations:[country, member state of the European Union, sovereign state, federation, member state of the United Nations, legal state, social state, member state of the Council of Europe, republic, state] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: significant event.1(e , Germany) ^ significant event.2(e , x)
+Denotations:[Saarland, Treaty of Rome, Yugoslav Wars, economic, Berlin Wall, Occupation statute, German reunification, Basic Law for the Federal Republic of Germany, Treaty on the Final Settlement with Respect to Germany, War in Afghanistan, Élysée Treaty, Basic Treaty, 1972 Summer Olympics] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: category for films shot at this location.1(e , Germany) ^ category for films shot at this location.2(e , x)
+Denotations:[Category:Films shot in Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: category of people buried here.1(e , Germany) ^ category of people buried here.2(e , x)
+Denotations:[Category:Burials in Germany] Replaced Entity: Italy
+
+
+Candidate Surrogate Grounded phrase: topic's main Wikimedia portal.1(e , Germany) ^ topic's main Wikimedia portal.2(e , x)
+Denotations:[Portal:Germany] Replaced Entity: Italy
+
+
+Selected surrogate Grounded parse 0 : diplomatic relation.1(e , Germany) ^ diplomatic relation.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Melton Mowbray () is a town in the Melton borough of Leicestershire , England.
+Parse Count: 9
+Semantic Parse:  [town.in.1(5:e , 0:melton-mowbray), town.of.1(5:e , 0:melton-mowbray), town(5:s , 0:melton-mowbray), borough(9:s , 8:melton), UNIQUE(8:melton), town.in.2(5:e , 8:melton), town.of.2(5:e , 13:england), town.of.2(5:e , 11:leicestershire)]
+Lexical items: [0, 11, 13, 5, 8, 9]
+Node:0, Melton_Mowbray  town
+Node:11, Leicestershire   
+Node:13, England   
+Node:8, Melton UNIQUE borough
+Events (with NN/NNP arguments)[5]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Melton Mowbray) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Melton
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Melton Mowbray) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[England, Leicestershire] Replaced Entity: Melton
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Melton Mowbray) ^ topic's main category.2(e , x)
+Denotations:[Category:Melton Mowbray] Replaced Entity: Melton
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Melton Mowbray) ^ instance of.2(e , x)
+Denotations:[town] Replaced Entity: Melton
+
+
+Selected surrogate Grounded parse 0 : topic's main category.1(e , Melton Mowbray) ^ topic's main category.2(e , x) ^ located in the administrative territorial entity.1(e , Melton Mowbray) ^ located in the administrative territorial entity.2(e , England) ^ located in the administrative territorial entity.1(e , Melton Mowbray) ^ located in the administrative territorial entity.2(e , Leicestershire)
+
+
+
+=============================================================================================================================
+Sentence:North West Leicestershire is a local government district in Leicestershire , England.
+Parse Count: 1
+Semantic Parse:  [district.in.2(5:e , 7:leicestershire), district.local(3:s , 0:north-west-leicestershire), district.government(4:s , 0:north-west-leicestershire), district(5:s , 0:north-west-leicestershire), district.in.1(5:e , 0:north-west-leicestershire)]
+Lexical items: [0, 3, 4, 5, 7]
+Node:0, North_West_Leicestershire  district
+Node:7, Leicestershire   
+Events (with NN/NNP arguments)[5]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , North West Leicestershire) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Leicestershire
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , North West Leicestershire) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Leicestershire] Replaced Entity: Leicestershire
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , North West Leicestershire) ^ topic's main category.2(e , x)
+Denotations:[Category:North West Leicestershire] Replaced Entity: Leicestershire
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , North West Leicestershire) ^ instance of.2(e , x)
+Denotations:[non-metropolitan district] Replaced Entity: Leicestershire
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , North West Leicestershire) ^ located in the administrative territorial entity.2(e , x)
+
+
+Selected surrogate Grounded parse 1 : topic's main category.1(e , North West Leicestershire) ^ topic's main category.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:East Midlands Airport is the second largest cargo airport in the United Kingdom after London Heathrow.
+Parse Count: 5
+Semantic Parse:  [airport.cargo(5:s , 0:east-midlands-airport), airport.after.2(6:e , 11:london-heathrow), airport.second(3:s , 0:east-midlands-airport), airport.in.1(6:e , 0:east-midlands-airport), UNIQUE(9:united-kingdom), airport.largest(4:s , 0:east-midlands-airport), airport.in.2(6:e , 9:united-kingdom), airport(6:s , 0:east-midlands-airport), UNIQUE(0:east-midlands-airport), airport.after.1(6:e , 0:east-midlands-airport)]
+Lexical items: [0, 11, 3, 4, 5, 6, 9]
+Node:0, East_Midlands_Airport UNIQUE airport
+Node:11, London_Heathrow   
+Node:9, United_Kingdom UNIQUE  
+Events (with NN/NNP arguments)[6]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , East Midlands Airport) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , East Midlands Airport) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[England, Castle Donington] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , East Midlands Airport) ^ topic's main category.2(e , x)
+Denotations:[Category:East Midlands Airport] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , East Midlands Airport) ^ instance of.2(e , x)
+Denotations:[international airport] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: owned by.1(e , East Midlands Airport) ^ owned by.2(e , x)
+Denotations:[Manchester Airports Group] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: operator.1(e , East Midlands Airport) ^ operator.2(e , x)
+Denotations:[Manchester Airports Group] Replaced Entity: United Kingdom
+
+
+Selected surrogate Grounded parse 0 : country.1(e , East Midlands Airport) ^ country.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Wrexham (; ; ) is a town in north Wales.
+Parse Count: 1
+Semantic Parse:  [town.in.1(7:e , 0:wrexham), town(7:s , 0:wrexham), north(9:s , 10:wales), town.in.2(7:e , 10:wales)]
+Lexical items: [0, 7, 9, 10]
+Node:0, Wrexham  town
+Node:10, Wales  north
+Events (with NN/NNP arguments)[7]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Wrexham) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Wrexham) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Wales] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Wrexham) ^ topic's main category.2(e , x)
+Denotations:[Category:Wrexham] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: sister city.1(e , Wrexham) ^ sister city.2(e , x)
+Denotations:[Iserlohn, Racibórz] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Wrexham) ^ instance of.2(e , x)
+Denotations:[Bourgade] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: category for people who died here.1(e , Wrexham) ^ category for people who died here.2(e , x)
+Denotations:[Category:Death in Wrexham] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: category of associated people.1(e , Wrexham) ^ category of associated people.2(e , x)
+Denotations:[Category:People from Wrexham] Replaced Entity: Wales
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Wrexham) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Royal Tunbridge Wells is the administrative centre for both Tunbridge Wells Borough and the parliamentary constituency of Tunbridge Wells.
+Parse Count: 1
+Semantic Parse:  [constituency.parliamentary(10:s , 0:royal-tunbridge-wells), UNIQUE(0:royal-tunbridge-wells), centre.for.1(4:e , 0:royal-tunbridge-wells), constituency.of.2(11:e , 13:tunbridge-wells), centre(4:s , 0:royal-tunbridge-wells), constituency.of.1(11:e , 0:royal-tunbridge-wells), centre.administrative(3:s , 0:royal-tunbridge-wells), centre.for.2(4:e , 7:tunbridge-wells-borough), constituency(11:s , 0:royal-tunbridge-wells)]
+Lexical items: [0, 11, 13, 3, 4, 7, 10]
+Node:0, Royal_Tunbridge_Wells UNIQUE centre
+Node:13, Tunbridge_Wells   
+Node:7, Tunbridge_Wells_Borough   
+Events (with NN/NNP arguments)[11, 4]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Royal Tunbridge Wells) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Tunbridge Wells
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Royal Tunbridge Wells) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[England, Kent] Replaced Entity: Tunbridge Wells
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Royal Tunbridge Wells) ^ topic's main category.2(e , x)
+Denotations:[Category:Tunbridge Wells (borough)] Replaced Entity: Tunbridge Wells
+
+
+Candidate Surrogate Grounded phrase: sister city.1(e , Royal Tunbridge Wells) ^ sister city.2(e , x)
+Denotations:[Wiesbaden] Replaced Entity: Tunbridge Wells
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Royal Tunbridge Wells) ^ instance of.2(e , x)
+Denotations:[town] Replaced Entity: Tunbridge Wells
+
+
+Candidate Surrogate Grounded phrase: category for people who died here.1(e , Royal Tunbridge Wells) ^ category for people who died here.2(e , x)
+Denotations:[Category:Death in Royal Tunbridge Wells] Replaced Entity: Tunbridge Wells
+
+
+Selected surrogate Grounded parse 0 : topic's main category.1(e , Royal Tunbridge Wells) ^ topic's main category.2(e , x)
+
+
+Selected surrogate Grounded parse 1 : category for people who died here.1(e , Royal Tunbridge Wells) ^ category for people who died here.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Hinckley is a market town in southwest Leicestershire , England.
+Parse Count: 3
+Semantic Parse:  [southwest(6:s , 7:leicestershire), town.in.2(4:e , 7:leicestershire), town.market(3:s , 0:hinckley), town.in.1(4:e , 0:hinckley), town.in.2(4:e , 9:england), town(4:s , 0:hinckley)]
+Lexical items: [0, 3, 4, 6, 7, 9]
+Node:0, Hinckley  town
+Node:7, Leicestershire  southwest
+Node:9, England   
+Events (with NN/NNP arguments)[4]
+
+Wikipedia Annotations for sentence:[Q18511725 market town ,  Q23106 Leicestershire ,  ]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Hinckley) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: England
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Hinckley) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[England, Leicestershire] Replaced Entity: England
+
+
+Candidate Surrogate Grounded phrase: sister city.1(e , Hinckley) ^ sister city.2(e , x)
+Denotations:[Herford, Le Grand-Quevilly] Replaced Entity: England
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Hinckley) ^ instance of.2(e , x)
+Denotations:[town] Replaced Entity: England
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Hinckley) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Royal Mail plc (, ) is a postal service company in the United Kingdom.
+Parse Count: 2
+Semantic Parse:  [company(9:s , 0:royal-mail), company.service(8:s , 0:royal-mail), UNIQUE(12:united-kingdom), plc(1:s , 0:royal-mail), company.in.1(9:e , 0:royal-mail), company.in.2(9:e , 12:united-kingdom), company.postal(7:s , 0:royal-mail)]
+Lexical items: [0, 1, 12, 7, 8, 9]
+Node:0, Royal_Mail  company
+Node:12, United_Kingdom UNIQUE  
+Events (with NN/NNP arguments)[9]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Royal Mail) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: headquarters location.1(e , Royal Mail) ^ headquarters location.2(e , x)
+Denotations:[London, Victoria Embankment] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Royal Mail) ^ topic's main category.2(e , x)
+Denotations:[Category:Royal Mail] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Royal Mail) ^ instance of.2(e , x)
+Denotations:[company, public limited company] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: subsidiaries.1(e , Royal Mail) ^ subsidiaries.2(e , x)
+Denotations:[Parcelforce] Replaced Entity: United Kingdom
+
+
+Candidate Surrogate Grounded phrase: stock exchange.1(e , Royal Mail) ^ stock exchange.2(e , x)
+Denotations:[London Stock Exchange] Replaced Entity: United Kingdom
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Royal Mail) ^ country.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Irenaeus, the late 2nd century bishop of Lyon was an outspoken premillennialist.
+Parse Count: 1
+Semantic Parse:  [bishop(6:s , 0:irenaeus), bishop.of.1(6:e , 0:irenaeus), bishop.century(5:s , 0:irenaeus), bishop.of.2(6:e , 8:lyon), premillennialist(12:s , 0:irenaeus), premillennialist.outspoken(11:s , 0:irenaeus), bishop.2nd(4:s , 0:irenaeus), bishop.late(3:s , 0:irenaeus), UNIQUE(0:irenaeus)]
+Lexical items: [0, 11, 12, 3, 4, 5, 6, 8]
+Node:0, Irenaeus UNIQUE bishop
+Node:8, Lyon   
+Events (with NN/NNP arguments)[6]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: described by source.1(e , Irenaeus) ^ described by source.2(e , x)
+Denotations:[Dictionary of Biblical Criticism and Interpretation (2007 ed.)] Replaced Entity: Lyon
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Irenaeus) ^ occupation.2(e , x)
+Denotations:[writer, theologian, priest] Replaced Entity: Lyon
+
+
+Candidate Surrogate Grounded phrase: position held.1(e , Irenaeus) ^ position held.2(e , x)
+Denotations:[bishop] Replaced Entity: Lyon
+
+
+Candidate Surrogate Grounded phrase: place of death.1(e , Irenaeus) ^ place of death.2(e , x)
+Denotations:[Lyon] Replaced Entity: Lyon
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Irenaeus) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Lyon
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Irenaeus) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Lyon
+
+
+Candidate Surrogate Grounded phrase: canonization status.1(e , Irenaeus) ^ canonization status.2(e , x)
+Denotations:[saint] Replaced Entity: Lyon
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Irenaeus) ^ given name.2(e , x)
+Denotations:[Ireneus] Replaced Entity: Lyon
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Irenaeus) ^ place of birth.2(e , x)
+Denotations:[İzmir] Replaced Entity: Lyon
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Irenaeus) ^ country of citizenship.2(e , x)
+Denotations:[Ancient Rome] Replaced Entity: Lyon
+
+
+Selected surrogate Grounded parse 0 : place of death.1(e , Irenaeus) ^ place of death.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Jim Talent visited LU as a U. S. congressman from Missouri in 1995.
+Parse Count: 8
+Semantic Parse:  [visited.as.2(1:e , 5:u.-s.), visited.in.2(1:e , 10:type.int), visited.1(1:e , 0:jim-talent), visited.from.2(1:e , 8:missouri), congressman(6:s , 5:u.-s.), visited.2(1:e , 2:lu)]
+Lexical items: [0, 1, 2, 5, 6, 8, 10]
+Node:0, Jim_Talent   
+Node:2, LU   
+Node:5, U._S.  congressman
+Node:8, Missouri   
+Events (with NN/NNP arguments)[1]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Jim Talent) ^ occupation.2(e , x)
+Denotations:[politician] Replaced Entity: Missouri
+
+
+Candidate Surrogate Grounded phrase: position held.1(e , Jim Talent) ^ position held.2(e , x)
+Denotations:[United States Senator, United States Representative, Member of the Missouri House of Representatives] Replaced Entity: Missouri
+
+
+Candidate Surrogate Grounded phrase: educated at.1(e , Jim Talent) ^ educated at.2(e , x)
+Denotations:[Washington University in St. Louis] Replaced Entity: Missouri
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Jim Talent) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Missouri
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Jim Talent) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Missouri
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Jim Talent) ^ given name.2(e , x)
+Denotations:[Jim] Replaced Entity: Missouri
+
+
+Candidate Surrogate Grounded phrase: member of political party.1(e , Jim Talent) ^ member of political party.2(e , x)
+Denotations:[Republican Party] Replaced Entity: Missouri
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Jim Talent) ^ place of birth.2(e , x)
+Denotations:[Des Peres] Replaced Entity: Missouri
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Jim Talent) ^ country of citizenship.2(e , x)
+Denotations:[United States of America] Replaced Entity: Missouri
+
+
+Candidate Surrogate Grounded phrase: holds belief system.1(e , Jim Talent) ^ holds belief system.2(e , x)
+Denotations:[Presbyterian Church in America] Replaced Entity: Missouri
+
+
+Selected surrogate Grounded parse 0 : position held.1(e , Jim Talent) ^ position held.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Datchet is a village and civil parish on the River Thames , England.
+Parse Count: 1
+Semantic Parse:  [village(3:s , 0:datchet), parish.on.2(6:e , 9:river-thames), parish(6:s , 0:datchet), UNIQUE(9:river-thames), parish.civil(5:s , 0:datchet), parish.on.1(6:e , 0:datchet)]
+Lexical items: [0, 3, 5, 6, 9]
+Node:0, Datchet  village
+Node:9, River_Thames UNIQUE  
+Events (with NN/NNP arguments)[6]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Datchet) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: River Thames
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Datchet) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[England, Berkshire] Replaced Entity: River Thames
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Datchet) ^ instance of.2(e , x)
+Denotations:[village, civil parish in England] Replaced Entity: River Thames
+
+
+Candidate Surrogate Grounded phrase: located next to body of water.1(e , Datchet) ^ located next to body of water.2(e , x)
+Denotations:[River Thames] Replaced Entity: River Thames
+
+
+Selected surrogate Grounded parse 0 : located next to body of water.1(e , Datchet) ^ located next to body of water.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Ahjumawi Lava Springs State Park is a state park of California in the United States.
+Parse Count: 1
+Semantic Parse:  [UNIQUE(9:united-states), park.of.1(4:e , 0:ahjumawi-lava-springs-state-park), park.in.2(4:e , 9:united-states), park.state(3:s , 0:ahjumawi-lava-springs-state-park), park(4:s , 0:ahjumawi-lava-springs-state-park), park.in.1(4:e , 0:ahjumawi-lava-springs-state-park), park.of.2(4:e , 6:california)]
+Lexical items: [0, 3, 4, 6, 9]
+Node:0, Ahjumawi_Lava_Springs_State_Park  park
+Node:6, California   
+Node:9, United_States UNIQUE  
+Events (with NN/NNP arguments)[4]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Ahjumawi Lava Springs State Park) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: United States
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Ahjumawi Lava Springs State Park) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[California] Replaced Entity: United States
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Ahjumawi Lava Springs State Park) ^ instance of.2(e , x)
+Denotations:[state park of a state of the United States] Replaced Entity: United States
+
+
+Candidate Surrogate Grounded phrase: IUCN protected areas category.1(e , Ahjumawi Lava Springs State Park) ^ IUCN protected areas category.2(e , x)
+Denotations:[IUCN category II: National Park] Replaced Entity: United States
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Ahjumawi Lava Springs State Park) ^ country.2(e , x) ^ located in the administrative territorial entity.1(e , Ahjumawi Lava Springs State Park) ^ located in the administrative territorial entity.2(e , California)
+
+
+Selected surrogate Grounded parse 1 : instance of.1(e , Ahjumawi Lava Springs State Park) ^ instance of.2(e , x) ^ located in the administrative territorial entity.1(e , Ahjumawi Lava Springs State Park) ^ located in the administrative territorial entity.2(e , California)
+
+
+
+=============================================================================================================================
+Sentence:Colón is a sea port on the Caribbean Sea (Atlantic) coast of Panama.
+Parse Count: 15
+Semantic Parse:  [coast(11:s , 7:caribbean-sea), UNIQUE(7:caribbean-sea), port.on.1(4:e , 0:colón), port(4:s , 0:colón), port.on.2(4:e , 7:caribbean-sea), port.of.1(4:e , 0:colón), port.of.2(4:e , 13:panama), port.sea(3:s , 0:colón)]
+Lexical items: [0, 11, 13, 3, 4, 7]
+Node:0, Colón  port
+Node:13, Panama   
+Node:7, Caribbean_Sea UNIQUE coast
+Events (with NN/NNP arguments)[4]
+
+Wikipedia Annotations for sentence:[Q1247 Caribbean Sea ,  Q804 Panama ,  ]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Colón) ^ country.2(e , x)
+Denotations:[Panama] Replaced Entity: Panama
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Colón) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Panama] Replaced Entity: Panama
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Colón) ^ topic's main category.2(e , x)
+Denotations:[Category:Colón Province] Replaced Entity: Panama
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Colón) ^ instance of.2(e , x)
+Denotations:[province of Panama] Replaced Entity: Panama
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Colón) ^ country.2(e , x)
+
+
+Selected surrogate Grounded parse 1 : located in the administrative territorial entity.1(e , Colón) ^ located in the administrative territorial entity.2(e , x)
+
+
+Selected surrogate Grounded parse 2 : instance of.1(e , Colón) ^ instance of.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Colón is a province of Panama.
+Parse Count: 1
+Semantic Parse:  [province.of.2(3:e , 5:panama), province.of.1(3:e , 0:colón), province(3:s , 0:colón)]
+Lexical items: [0, 3, 5]
+Node:0, Colón  province
+Node:5, Panama   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Colón) ^ country.2(e , x)
+Denotations:[Panama] Replaced Entity: Panama
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Colón) ^ topic's main category.2(e , x)
+Denotations:[Category:Colón] Replaced Entity: Panama
+
+
+Candidate Surrogate Grounded phrase: sister city.1(e , Colón) ^ sister city.2(e , x)
+Denotations:[Santos, Río Grande, Mandeville] Replaced Entity: Panama
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Colón) ^ instance of.2(e , x)
+Denotations:[human settlement] Replaced Entity: Panama
+
+
+Candidate Surrogate Grounded phrase: category for people who died here.1(e , Colón) ^ category for people who died here.2(e , x)
+Denotations:[Category:Death in Colón] Replaced Entity: Panama
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Colón) ^ country.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:His father Alexander Nasmyth was a landscape and portrait painter in Edinburgh , where James was born.
+Parse Count: 1
+Semantic Parse:  [father(1:s , 2:alexander-nasmyth), painter.in.1(8:e , 2:alexander-nasmyth), painter.portrait(7:s , 2:alexander-nasmyth), born.2(15:e , 13:james), landscape.in.1(5:e , 2:alexander-nasmyth), landscape(5:s , 2:alexander-nasmyth), painter.in.2(8:e , 10:edinburgh), painter(8:s , 2:alexander-nasmyth), landscape.in.2(5:e , 10:edinburgh)]
+Lexical items: [1, 2, 13, 5, 7, 8, 10]
+Node:2, Alexander_Nasmyth  father
+Node:10, Edinburgh   
+Events (with NN/NNP arguments)[5, 8]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Alexander Nasmyth) ^ occupation.2(e , x)
+Denotations:[painter] Replaced Entity: Edinburgh
+
+
+Candidate Surrogate Grounded phrase: place of death.1(e , Alexander Nasmyth) ^ place of death.2(e , x)
+Denotations:[Edinburgh] Replaced Entity: Edinburgh
+
+
+Candidate Surrogate Grounded phrase: educated at.1(e , Alexander Nasmyth) ^ educated at.2(e , x)
+Denotations:[Royal High School] Replaced Entity: Edinburgh
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Alexander Nasmyth) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Edinburgh
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Alexander Nasmyth) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Edinburgh
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Alexander Nasmyth) ^ given name.2(e , x)
+Denotations:[Alexander] Replaced Entity: Edinburgh
+
+
+Candidate Surrogate Grounded phrase: genre.1(e , Alexander Nasmyth) ^ genre.2(e , x)
+Denotations:[landscape art, portrait] Replaced Entity: Edinburgh
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Alexander Nasmyth) ^ place of birth.2(e , x)
+Denotations:[Edinburgh] Replaced Entity: Edinburgh
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Alexander Nasmyth) ^ country of citizenship.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Edinburgh
+
+
+Candidate Surrogate Grounded phrase: child.1(e , Alexander Nasmyth) ^ child.2(e , x)
+Denotations:[James Nasmyth, Jane Nasmyth, Anne Nasmyth, Patrick Nasmyth, Elizabeth Nasmyth, Barbara Nasmyth, Charlotte Nasmyth, Margaret Nasmyth] Replaced Entity: Edinburgh
+
+
+Selected surrogate Grounded parse 0 : place of death.1(e , Alexander Nasmyth) ^ place of death.2(e , x) ^ place of birth.1(e , Alexander Nasmyth) ^ place of birth.2(e , Edinburgh)
+
+
+Selected surrogate Grounded parse 1 : place of birth.1(e , Alexander Nasmyth) ^ place of birth.2(e , x) ^ place of birth.1(e , Alexander Nasmyth) ^ place of birth.2(e , Edinburgh)
+
+
+
+=============================================================================================================================
+Sentence:The sequel Ip Man 2 focuses on Yips beginnings in Hong Kong and his students, including Bruce Lee.
+Parse Count: 18
+Semantic Parse:  [beginnings(7:s , 6:yips), students(12:s , 9:hong-kong), students.including.1(12:e , 9:hong-kong), students.including.2(12:e , 15:bruce-lee), focuses.on.2(4:e , 6:yips), UNIQUE(2:ip-man), 2(3:s , 2:ip-man), focuses.in.2(4:e , 9:hong-kong), sequel(1:s , 2:ip-man), focuses.1(4:e , 2:ip-man)]
+Lexical items: [1, 12, 2, 3, 4, 15, 6, 7, 9]
+Node:2, Ip_Man UNIQUE 2
+Node:15, Bruce_Lee   
+Node:6, Yips  beginnings
+Node:9, Hong_Kong  students
+Events (with NN/NNP arguments)[12, 4]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Ip Man) ^ occupation.2(e , x)
+Denotations:[martial artist] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: place of death.1(e , Ip Man) ^ place of death.2(e , x)
+Denotations:[Mong Kok] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: student.1(e , Ip Man) ^ student.2(e , x)
+Denotations:[Bruce Lee, Wong Shun Leung, Leung Sheung, Chu Shong-tin, William Cheung, Victor Kan Wah Chit] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: member of political party.1(e , Ip Man) ^ member of political party.2(e , x)
+Denotations:[Kuomintang] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: student of.1(e , Ip Man) ^ student of.2(e , x)
+Denotations:[Chan Wah-shun] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Ip Man) ^ place of birth.2(e , x)
+Denotations:[Foshan] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Ip Man) ^ country of citizenship.2(e , x)
+Denotations:[Hong Kong] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: cause of death.1(e , Ip Man) ^ cause of death.2(e , x)
+Denotations:[esophageal cancer] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: spouse.1(e , Ip Man) ^ spouse.2(e , x)
+Denotations:[Cheung Wing Sing] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Ip Man) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Ip Man) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: place of burial.1(e , Ip Man) ^ place of burial.2(e , x)
+Denotations:[Fanling] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: residence.1(e , Ip Man) ^ residence.2(e , x)
+Denotations:[Hong Kong] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: relative.1(e , Ip Man) ^ relative.2(e , x)
+Denotations:[Ip Chun] Replaced Entity: Hong Kong
+
+
+Candidate Surrogate Grounded phrase: child.1(e , Ip Man) ^ child.2(e , x)
+Denotations:[Ip Ching, Ip Chun] Replaced Entity: Hong Kong
+
+
+Selected surrogate Grounded parse 0 : country of citizenship.1(e , Ip Man) ^ country of citizenship.2(e , x)
+
+
+Selected surrogate Grounded parse 1 : residence.1(e , Ip Man) ^ residence.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:His mother was Lucille Crane Scott, born in Luray , Virginia, a member of a wealthy North Carolina family.
+Parse Count: 7
+Semantic Parse:  [member.of.2(12:e , 16:north-carolina), family(17:s , 16:north-carolina), mother(1:s , 3:lucille-crane-scott), born.2(5:e , 3:lucille-crane-scott), wealthy(15:s , 16:north-carolina), born.in.2(5:e , 7:luray), member.of.1(12:e , 9:virginia), member(12:s , 9:virginia), born.in.2(5:e , 9:virginia)]
+Lexical items: [1, 12, 3, 15, 5, 16, 17, 7, 9]
+Node:3, Lucille_Crane_Scott  mother
+Node:16, North_Carolina  family
+Node:7, Luray   
+Node:9, Virginia  member
+Events (with NN/NNP arguments)[12, 5]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Virginia) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: capital.1(e , Virginia) ^ capital.2(e , x)
+Denotations:[Richmond] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: flag.1(e , Virginia) ^ flag.2(e , x)
+Denotations:[Flag of Virginia] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: category for people who died here.1(e , Virginia) ^ category for people who died here.2(e , x)
+Denotations:[Category:Death in Virginia] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: legislative body.1(e , Virginia) ^ legislative body.2(e , x)
+Denotations:[Virginia General Assembly] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: shares border with.1(e , Virginia) ^ shares border with.2(e , x)
+Denotations:[West Virginia, Tennessee, Kentucky, Washington, Maryland, North Carolina] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: office held by head of government.1(e , Virginia) ^ office held by head of government.2(e , x)
+Denotations:[Governor of Virginia] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Virginia) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[United States of America] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Virginia) ^ topic's main category.2(e , x)
+Denotations:[Category:Virginia] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: named after.1(e , Virginia) ^ named after.2(e , x)
+Denotations:[Elizabeth I of England] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Virginia) ^ instance of.2(e , x)
+Denotations:[state of the United States] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: official language.1(e , Virginia) ^ official language.2(e , x)
+Denotations:[English] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: category for films shot at this location.1(e , Virginia) ^ category for films shot at this location.2(e , x)
+Denotations:[Category:Films shot in Virginia] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: category of associated people.1(e , Virginia) ^ category of associated people.2(e , x)
+Denotations:[Category:People from Virginia] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: category of people buried here.1(e , Virginia) ^ category of people buried here.2(e , x)
+Denotations:[Category:Burials in Virginia] Replaced Entity: North Carolina
+
+
+Candidate Surrogate Grounded phrase: topic's main Wikimedia portal.1(e , Virginia) ^ topic's main Wikimedia portal.2(e , x)
+Denotations:[Portal:Virginia] Replaced Entity: North Carolina
+
+
+Selected surrogate Grounded parse 0 : shares border with.1(e , Virginia) ^ shares border with.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:The Berlin and Magdeburg railway also runs through Brandenburg an der Havel.
+Parse Count: 1
+Semantic Parse:  [runs.1(6:e , 1:berlin), railway.'s.1(4:e , 1:berlin), railway.'s.2(4:e , 3:magdeburg), runs.through.2(6:e , 8:brandenburg), runs.also(5:s , 6:e), railway(4:s , 1:berlin), UNIQUE(1:berlin)]
+Lexical items: [1, 3, 4, 5, 6, 8]
+Node:1, Berlin UNIQUE railway
+Node:3, Magdeburg   
+Node:8, Brandenburg   
+Events (with NN/NNP arguments)[4, 6]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Berlin) ^ country.2(e , x)
+Denotations:[Germany] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: history of topic.1(e , Berlin) ^ history of topic.2(e , x)
+Denotations:[History of Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: flag.1(e , Berlin) ^ flag.2(e , x)
+Denotations:[flag of Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: category for people who died here.1(e , Berlin) ^ category for people who died here.2(e , x)
+Denotations:[Category:Deaths in Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: enclave within.1(e , Berlin) ^ enclave within.2(e , x)
+Denotations:[Brandenburg] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: category for people born here.1(e , Berlin) ^ category for people born here.2(e , x)
+Denotations:[Category:People born in Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: shares border with.1(e , Berlin) ^ shares border with.2(e , x)
+Denotations:[Stahnsdorf, Brandenburg, Potsdam, Havelland, Potsdam-Mittelmark, Oder-Spree, Oberhavel, Teltow-Fläming, Dahme-Spreewald, Kleinmachnow, Barnim, Märkisch-Oderland] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: capital of.1(e , Berlin) ^ capital of.2(e , x)
+Denotations:[Germany, Weimar Republic, Nazi Germany, Kingdom of Prussia, Brandenburg-Prussia, Free State of Prussia, Allied-occupied Germany] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Berlin) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Germany] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: coat of arms.1(e , Berlin) ^ coat of arms.2(e , x)
+Denotations:[Coat of arms of Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Berlin) ^ topic's main category.2(e , x)
+Denotations:[Category:Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: sister city.1(e , Berlin) ^ sister city.2(e , x)
+Denotations:[Paris, Tokyo Prefecture, Copenhagen, Madrid, Moscow, Prague, Buenos Aires, Mexico City, Budapest, Beyoğlu, Brussels, Warsaw, Santo Domingo, Algiers, Tehran, Jakarta, Istanbul, Sofia, Los Angeles, London, Brussels, Beijing, Windhoek, Tashkent, Royal Borough of Greenwich] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: head of government.1(e , Berlin) ^ head of government.2(e , x)
+Denotations:[Willy Brandt, Richard von Weizsäcker, Hans-Jochen Vogel, Eberhard Diepgen, Eberhard Diepgen, Otto Suhr, Ernst Reuter, Dietrich Stobbe, Heinrich Albertz, Klaus Wowereit, Walther Schreiber, Franz Amrehn, Walter Momper, Michael Müller, Klaus Schütz] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: located in time zone.1(e , Berlin) ^ located in time zone.2(e , x)
+Denotations:[UTC+01:00, Central European Time] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: contains administrative territorial entity.1(e , Berlin) ^ contains administrative territorial entity.2(e , x)
+Denotations:[Charlottenburg-Wilmersdorf, Reinickendorf, Friedrichshain-Kreuzberg, Lichtenberg, Steglitz-Zehlendorf, Treptow-Köpenick, Spandau, Bezirk Pankow, Marzahn-Hellersdorf, Tempelhof-Schöneberg, Bezirk Mitte, Neukölln] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: category of associated people.1(e , Berlin) ^ category of associated people.2(e , x)
+Denotations:[Category:People from Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: part of.1(e , Berlin) ^ part of.2(e , x)
+Denotations:[Berlin/Brandenburg Metropolitan Region] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: described by source.1(e , Berlin) ^ described by source.2(e , x)
+Denotations:[Catholic Encyclopedia] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: award received.1(e , Berlin) ^ award received.2(e , x)
+Denotations:[Princess of Asturias Award - concord] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: follows.1(e , Berlin) ^ follows.2(e , x)
+Denotations:[Alt-Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: legislative body.1(e , Berlin) ^ legislative body.2(e , x)
+Denotations:[Abgeordnetenhaus of Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: highest judicial authority.1(e , Berlin) ^ highest judicial authority.2(e , x)
+Denotations:[Constitutional Court of the State of Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: office held by head of government.1(e , Berlin) ^ office held by head of government.2(e , x)
+Denotations:[Governing Mayor of Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: highest point.1(e , Berlin) ^ highest point.2(e , x)
+Denotations:[Arkenberge] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Berlin) ^ instance of.2(e , x)
+Denotations:[state of Germany, big city, city with millions of inhabitants, seat of government, municipality of Germany, city, city-state, metropolis, federal capital] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: category for films shot at this location.1(e , Berlin) ^ category for films shot at this location.2(e , x)
+Denotations:[Category:Films shot in Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: category of people buried here.1(e , Berlin) ^ category of people buried here.2(e , x)
+Denotations:[Category:Burials in Berlin by place] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: topic's main Wikimedia portal.1(e , Berlin) ^ topic's main Wikimedia portal.2(e , x)
+Denotations:[Portal:Berlin] Replaced Entity: Brandenburg
+
+
+Candidate Surrogate Grounded phrase: located next to body of water.1(e , Berlin) ^ located next to body of water.2(e , x)
+Denotations:[Havel, Spree, Lake Tegel, Großer Wannsee] Replaced Entity: Brandenburg
+
+
+Selected surrogate Grounded parse 0 : enclave within.1(e , Berlin) ^ enclave within.2(e , x)
+
+
+Selected surrogate Grounded parse 1 : shares border with.1(e , Berlin) ^ shares border with.2(e , x)
+
+
+Selected surrogate Grounded parse 2 : capital of.1(e , Berlin) ^ capital of.2(e , x)
+
+
+Selected surrogate Grounded parse 3 : part of.1(e , Berlin) ^ part of.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:The national anthem of Australia is Advance Australia Fair.
+Parse Count: 1
+Semantic Parse:  [anthem(2:s , 6:advance-australia-fair), anthem.of.2(2:e , 4:australia), anthem.national(1:s , 6:advance-australia-fair), anthem.of.1(2:e , 6:advance-australia-fair), UNIQUE(6:advance-australia-fair)]
+Lexical items: [1, 2, 4, 6]
+Node:4, Australia   
+Node:6, Advance_Australia_Fair UNIQUE anthem
+Events (with NN/NNP arguments)[2]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Advance Australia Fair) ^ country.2(e , x)
+Denotations:[Australia] Replaced Entity: Australia
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Advance Australia Fair) ^ instance of.2(e , x)
+Denotations:[national anthem] Replaced Entity: Australia
+
+
+Candidate Surrogate Grounded phrase: lyrics by.1(e , Advance Australia Fair) ^ lyrics by.2(e , x)
+Denotations:[Peter Dodds McCormick] Replaced Entity: Australia
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Advance Australia Fair) ^ country.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Prague is served by Prague Václav Havel Airport.
+Parse Count: 1
+Semantic Parse:  [served.1(2:e , 4:prague-václav-havel-airport), served.2(2:e , 0:prague)]
+Lexical items: [0, 2, 4]
+Node:0, Prague   
+Node:4, Prague_Václav_Havel_Airport   
+Events (with NN/NNP arguments)[2]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Prague Václav Havel Airport) ^ country.2(e , x)
+Denotations:[Czech Republic] Replaced Entity: Prague
+
+
+Candidate Surrogate Grounded phrase: place served by airport.1(e , Prague Václav Havel Airport) ^ place served by airport.2(e , x)
+Denotations:[Prague] Replaced Entity: Prague
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Prague Václav Havel Airport) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Ruzyně] Replaced Entity: Prague
+
+
+Candidate Surrogate Grounded phrase: named after.1(e , Prague Václav Havel Airport) ^ named after.2(e , x)
+Denotations:[Václav Havel] Replaced Entity: Prague
+
+
+Candidate Surrogate Grounded phrase: parent company.1(e , Prague Václav Havel Airport) ^ parent company.2(e , x)
+Denotations:[Czech Aeroholding] Replaced Entity: Prague
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Prague Václav Havel Airport) ^ instance of.2(e , x)
+Denotations:[international airport] Replaced Entity: Prague
+
+
+Selected surrogate Grounded parse 0 : place served by airport.1(e , Prague Václav Havel Airport) ^ place served by airport.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Longyearbyen is the largest settlement and the administrative center of Svalbard , Norway.
+Parse Count: 1
+Semantic Parse:  [settlement.largest(3:s , 0:longyearbyen), center.of.1(8:e , 0:longyearbyen), center.administrative(7:s , 0:longyearbyen), settlement(4:s , 0:longyearbyen), center(8:s , 0:longyearbyen), UNIQUE(0:longyearbyen), settlement.of.1(4:e , 0:longyearbyen), settlement.of.2(4:e , 10:svalbard), center.of.2(8:e , 10:svalbard)]
+Lexical items: [0, 3, 4, 7, 8, 10]
+Node:0, Longyearbyen UNIQUE settlement
+Node:10, Svalbard   
+Events (with NN/NNP arguments)[4, 8]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Longyearbyen) ^ country.2(e , x)
+Denotations:[Norway] Replaced Entity: Svalbard
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Longyearbyen) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Svalbard] Replaced Entity: Svalbard
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Longyearbyen) ^ topic's main category.2(e , x)
+Denotations:[Category:Longyearbyen] Replaced Entity: Svalbard
+
+
+Candidate Surrogate Grounded phrase: head of government.1(e , Longyearbyen) ^ head of government.2(e , x)
+Denotations:[Christin Kristoffersen] Replaced Entity: Svalbard
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Longyearbyen) ^ instance of.2(e , x)
+Denotations:[human settlement] Replaced Entity: Svalbard
+
+
+Candidate Surrogate Grounded phrase: capital of.1(e , Longyearbyen) ^ capital of.2(e , x)
+Denotations:[Svalbard] Replaced Entity: Svalbard
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Longyearbyen) ^ located in the administrative territorial entity.2(e , x) ^ located in the administrative territorial entity.1(e , Longyearbyen) ^ located in the administrative territorial entity.2(e , Svalbard)
+
+
+Selected surrogate Grounded parse 1 : capital of.1(e , Longyearbyen) ^ capital of.2(e , x) ^ located in the administrative territorial entity.1(e , Longyearbyen) ^ located in the administrative territorial entity.2(e , Svalbard)
+
+
+
+=============================================================================================================================
+Sentence:Almere Haven is the oldest part of Almere.
+Parse Count: 1
+Semantic Parse:  [part(4:s , 0:almere-haven), part.of.2(4:e , 6:almere), part.oldest(3:s , 0:almere-haven), UNIQUE(0:almere-haven), part.of.1(4:e , 0:almere-haven)]
+Lexical items: [0, 3, 4, 6]
+Node:0, Almere_Haven UNIQUE part
+Node:6, Almere   
+Events (with NN/NNP arguments)[4]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Almere Haven) ^ country.2(e , x)
+Denotations:[Netherlands] Replaced Entity: Almere
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Almere Haven) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Almere] Replaced Entity: Almere
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Almere Haven) ^ instance of.2(e , x)
+Denotations:[human settlement] Replaced Entity: Almere
+
+
+Candidate Surrogate Grounded phrase: located next to body of water.1(e , Almere Haven) ^ located next to body of water.2(e , x)
+Denotations:[Gooimeer] Replaced Entity: Almere
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Almere Haven) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:The wife whom Esau named as Basemath, was Adah the Hittite , his first wife.
+Parse Count: 1
+Semantic Parse:  [UNIQUE(11:hittite), named.as.2(4:e , 6:basemath), wife(15:s , 11:hittite), wife(1:s , 11:hittite), named.1(4:e , 3:esau), Adah(9:s , 11:hittite), named.2(4:e , 11:hittite), wife.first(14:s , 11:hittite)]
+Lexical items: [11, 1, 3, 14, 4, 15, 6, 9]
+Node:11, Hittite UNIQUE wife
+Node:3, Esau   
+Node:6, Basemath   
+Node:9, Adah   
+Events (with NN/NNP arguments)[4]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: mother.1(e , Esau) ^ mother.2(e , x)
+Denotations:[Rebecca] Replaced Entity: Basemath
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Esau) ^ topic's main category.2(e , x)
+Denotations:[Category:Esau] Replaced Entity: Basemath
+
+
+Candidate Surrogate Grounded phrase: present in work.1(e , Esau) ^ present in work.2(e , x)
+Denotations:[Bible] Replaced Entity: Basemath
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Esau) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Basemath
+
+
+Candidate Surrogate Grounded phrase: father.1(e , Esau) ^ father.2(e , x)
+Denotations:[Isaac] Replaced Entity: Basemath
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Esau) ^ instance of.2(e , x)
+Denotations:[twin, biblical character] Replaced Entity: Basemath
+
+
+Candidate Surrogate Grounded phrase: brother.1(e , Esau) ^ brother.2(e , x)
+Denotations:[Jacob] Replaced Entity: Basemath
+
+
+Candidate Surrogate Grounded phrase: spouse.1(e , Esau) ^ spouse.2(e , x)
+Denotations:[Mahalath, Basemath] Replaced Entity: Basemath
+
+
+Candidate Surrogate Grounded phrase: child.1(e , Esau) ^ child.2(e , x)
+Denotations:[Eliphaz] Replaced Entity: Basemath
+
+
+Selected surrogate Grounded parse 0 : spouse.1(e , Esau) ^ spouse.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Shabbir Banoobhai (born 23 October 1949) is a South Africa n poet.
+Parse Count: 5
+Semantic Parse:  [poet.n(10:s , 0:shabbir-banoobhai), poet.'s.2(11:e , 9:south-africa), poet(11:s , 0:shabbir-banoobhai), born.3(2:e , 3:type.int), poet.'s.1(11:e , 0:shabbir-banoobhai), born.2(2:e , 0:shabbir-banoobhai), 1949(5:s , 3:type.int)]
+Lexical items: [0, 11, 2, 3, 5, 9, 10]
+Node:0, Shabbir_Banoobhai  poet
+Node:9, South_Africa   
+Events (with NN/NNP arguments)[11, 2]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Shabbir Banoobhai) ^ occupation.2(e , x)
+Denotations:[poet] Replaced Entity: South Africa
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Shabbir Banoobhai) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: South Africa
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Shabbir Banoobhai) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: South Africa
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Shabbir Banoobhai) ^ given name.2(e , x)
+Denotations:[Shabbir] Replaced Entity: South Africa
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Shabbir Banoobhai) ^ country of citizenship.2(e , x)
+Denotations:[South Africa] Replaced Entity: South Africa
+
+
+Selected surrogate Grounded parse 0 : country of citizenship.1(e , Shabbir Banoobhai) ^ country of citizenship.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Douglas Livingstone (1932 1996) was a South Africa n poet.
+Parse Count: 1
+Semantic Parse:  [poet.'s.2(9:e , 7:south-africa), poet(9:s , 0:douglas-livingstone), 1996(3:s , 0:douglas-livingstone), poet.'s.1(9:e , 0:douglas-livingstone), poet.n(8:s , 0:douglas-livingstone)]
+Lexical items: [0, 3, 7, 8, 9]
+Node:0, Douglas_Livingstone  poet
+Node:7, South_Africa   
+Events (with NN/NNP arguments)[9]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Douglas Livingstone) ^ occupation.2(e , x)
+Denotations:[poet] Replaced Entity: South Africa
+
+
+Candidate Surrogate Grounded phrase: award received.1(e , Douglas Livingstone) ^ award received.2(e , x)
+Denotations:[Cholmondeley Award] Replaced Entity: South Africa
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Douglas Livingstone) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: South Africa
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Douglas Livingstone) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: South Africa
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Douglas Livingstone) ^ given name.2(e , x)
+Denotations:[Douglas] Replaced Entity: South Africa
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Douglas Livingstone) ^ country of citizenship.2(e , x)
+Denotations:[South Africa] Replaced Entity: South Africa
+
+
+Selected surrogate Grounded parse 0 : country of citizenship.1(e , Douglas Livingstone) ^ country of citizenship.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:In 1854 Volkmann moved to Vienna , only to return to Budapest in 1858.
+Parse Count: 6
+Semantic Parse:  [return.only(7:s , 9:e), return.in.2(9:e , 13:type.int), return.to.2(9:e , 11:budapest), moved.to.2(3:e , 5:vienna), return.1(9:e , 5:vienna), moved.In.2(3:e , 1:type.int), moved.1(3:e , 2:volkmann)]
+Lexical items: [11, 1, 2, 13, 3, 5, 7, 9]
+Node:11, Budapest   
+Node:2, Volkmann   
+Node:5, Vienna   
+Events (with NN/NNP arguments)[3, 9]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Vienna) ^ country.2(e , x)
+Denotations:[Austria] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: award received.1(e , Vienna) ^ award received.2(e , x)
+Denotations:[European City of the Reformation] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: category for people who died here.1(e , Vienna) ^ category for people who died here.2(e , x)
+Denotations:[Category:Death in Vienna] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: legislative body.1(e , Vienna) ^ legislative body.2(e , x)
+Denotations:[Landtag and City Council of Vienna] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: enclave within.1(e , Vienna) ^ enclave within.2(e , x)
+Denotations:[Lower Austria] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: category for people born here.1(e , Vienna) ^ category for people born here.2(e , x)
+Denotations:[Born in Vienna] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: shares border with.1(e , Vienna) ^ shares border with.2(e , x)
+Denotations:[Lower Austria, Korneuburg District, Mödling District, Gänserndorf District, Wien-Umgebung District] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: capital of.1(e , Vienna) ^ capital of.2(e , x)
+Denotations:[Holy Roman Empire, Austria-Hungary, Austria, Austrian Empire, Lower Austria, Habsburg Monarchy] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Vienna) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Austria] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: coat of arms.1(e , Vienna) ^ coat of arms.2(e , x)
+Denotations:[wiener wappen] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Vienna) ^ topic's main category.2(e , x)
+Denotations:[Category:Vienna] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: named after.1(e , Vienna) ^ named after.2(e , x)
+Denotations:[Wien] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: sister city.1(e , Vienna) ^ sister city.2(e , x)
+Denotations:[Moscow, Bern, Zagreb, Brno, Bratislava, Budapest, Kiev, Warsaw, Tel Aviv, Tunis, Belgrade, Istanbul, Ljubljana, Sofia, Vaduz, Pula] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: head of government.1(e , Vienna) ^ head of government.2(e , x)
+Denotations:[Michael Häupl] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Vienna) ^ instance of.2(e , x)
+Denotations:[capital, place with town rights and privileges, city with millions of inhabitants, city, statuatory city of Austria, municipality of Austria, district of Austria, state of Austria, federal capital] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: located in time zone.1(e , Vienna) ^ located in time zone.2(e , x)
+Denotations:[UTC+01:00] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: contains administrative territorial entity.1(e , Vienna) ^ contains administrative territorial entity.2(e , x)
+Denotations:[Döbling, Neubau, Penzing, Innere Stadt, Hietzing, Währing, Wieden, Landstraße, Josefstadt, Alsergrund, Hernals, Ottakring, Leopoldstadt, Floridsdorf, Brigittenau, Mariahilf, Donaustadt, Simmering, Favoriten, Rudolfsheim-Fünfhaus, Meidling, Liesing, Margareten] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: category for films shot at this location.1(e , Vienna) ^ category for films shot at this location.2(e , x)
+Denotations:[Category:Films shot in Vienna] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: category of associated people.1(e , Vienna) ^ category of associated people.2(e , x)
+Denotations:[Category:People from Vienna] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: topic's main Wikimedia portal.1(e , Vienna) ^ topic's main Wikimedia portal.2(e , x)
+Denotations:[Portal:Vienna] Replaced Entity: Budapest
+
+
+Candidate Surrogate Grounded phrase: located next to body of water.1(e , Vienna) ^ located next to body of water.2(e , x)
+Denotations:[Danube, Liesing, Wien, Donaukanal] Replaced Entity: Budapest
+
+
+Selected surrogate Grounded parse 0 : sister city.1(e , Vienna) ^ sister city.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Jennings was a leader, both as a batter and as a shortstop, with the Baltimore Orioles teams that won National League championships in 1894, 1895, and 1896.
+Parse Count: 31
+Semantic Parse:  [championships(21:s , 20:national-league), batter(8:s , 8:x), won.2(19:e , 20:national-league), won.1(19:e , 16:baltimore-orioles), UNIQUE(16:baltimore-orioles), teams(17:s , 16:baltimore-orioles), won.in.2(19:e , 28:type.int), shortstop(12:s , 12:x), won.in.2(19:e , 23:type.int), won.in.2(19:e , 25:type.int)]
+Lexical items: [12, 23, 25, 16, 17, 28, 8, 19, 20, 21]
+Node:16, Baltimore_Orioles UNIQUE teams
+Node:20, National_League  championships
+Events (with NN/NNP arguments)[19]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Baltimore Orioles) ^ topic's main category.2(e , x)
+Denotations:[Category:Baltimore Orioles (19th century)] Replaced Entity: National League
+
+
+Candidate Surrogate Grounded phrase: league.1(e , Baltimore Orioles) ^ league.2(e , x)
+Denotations:[National League, American Association] Replaced Entity: National League
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Baltimore Orioles) ^ instance of.2(e , x)
+Denotations:[baseball team] Replaced Entity: National League
+
+
+Candidate Surrogate Grounded phrase: sport.1(e , Baltimore Orioles) ^ sport.2(e , x)
+Denotations:[baseball] Replaced Entity: National League
+
+
+Selected surrogate Grounded parse 0 : league.1(e , Baltimore Orioles) ^ league.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Kolhapur, also spelled Colapore, () is a city in the Panchganga River Basin in the western India n state of Maharashtra.
+Parse Count: 15
+Semantic Parse:  [city(10:s , 0:kolhapur), UNIQUE(13:panchganga-river-basin), state(19:s , 17:india), western(16:s , 17:india), spelled.3(3:e , 4:colapore), UNIQUE(17:india), city.in.1(10:e , 0:kolhapur), city.in.2(10:e , 17:india), city.of.2(10:e , 21:maharashtra), city.of.1(10:e , 0:kolhapur), state.n(18:s , 17:india), spelled.2(3:e , 0:kolhapur), city.in.2(10:e , 13:panchganga-river-basin), spelled.also(2:s , 3:e)]
+Lexical items: [0, 2, 13, 3, 4, 16, 17, 18, 19, 10, 21]
+Node:0, Kolhapur  city
+Node:13, Panchganga_River_Basin UNIQUE  
+Node:4, Colapore   
+Node:17, India UNIQUE state
+Node:21, Maharashtra   
+Events (with NN/NNP arguments)[3, 10]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Kolhapur) ^ country.2(e , x)
+Denotations:[India] Replaced Entity: India
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Kolhapur) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Kolhapur district] Replaced Entity: India
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Kolhapur) ^ topic's main category.2(e , x)
+Denotations:[Category:Kolhapur] Replaced Entity: India
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Kolhapur) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: India
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Kolhapur) ^ country.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:In 1929, the Maharashtra Film Company was established in Kolhapur by Baburao Painter.
+Parse Count: 1
+Semantic Parse:  [established.in.2(6:e , 8:kolhapur), established.1(6:e , 10:baburao-painter), established.2(6:e , 4:maharashtra-film-company), UNIQUE(4:maharashtra-film-company), established.In.2(6:e , 1:type.int)]
+Lexical items: [1, 4, 6, 8, 10]
+Node:4, Maharashtra_Film_Company UNIQUE  
+Node:8, Kolhapur   
+Node:10, Baburao_Painter   
+Events (with NN/NNP arguments)[6]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Baburao Painter) ^ occupation.2(e , x)
+Denotations:[film director] Replaced Entity: Kolhapur
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Baburao Painter) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Kolhapur
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Baburao Painter) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Kolhapur
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Baburao Painter) ^ place of birth.2(e , x)
+Denotations:[Kolhapur State] Replaced Entity: Kolhapur
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Baburao Painter) ^ country of citizenship.2(e , x)
+Denotations:[India] Replaced Entity: Kolhapur
+
+
+Selected surrogate Grounded parse 0 : place of birth.1(e , Baburao Painter) ^ place of birth.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Johann Christoph Bach, the oldest brother of Johann Sebastian Bach , was a pupil of Pachelbel.
+Parse Count: 1
+Semantic Parse:  [UNIQUE(0:johann-christoph-bach), pupil.of.1(10:e , 0:johann-christoph-bach), brother(4:s , 0:johann-christoph-bach), brother.oldest(3:s , 0:johann-christoph-bach), pupil(10:s , 0:johann-christoph-bach), brother.of.2(4:e , 6:johann-sebastian-bach), pupil.of.2(10:e , 12:pachelbel), brother.of.1(4:e , 0:johann-christoph-bach)]
+Lexical items: [0, 12, 3, 4, 6, 10]
+Node:0, Johann_Christoph_Bach UNIQUE brother
+Node:12, Pachelbel   
+Node:6, Johann_Sebastian_Bach   
+Events (with NN/NNP arguments)[4, 10]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Johann Christoph Bach) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Johann Sebastian Bach
+
+
+Candidate Surrogate Grounded phrase: father.1(e , Johann Christoph Bach) ^ father.2(e , x)
+Denotations:[Johann Sebastian Bach] Replaced Entity: Johann Sebastian Bach
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Johann Christoph Bach) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Johann Sebastian Bach
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Johann Christoph Bach) ^ given name.2(e , x)
+Denotations:[Johann] Replaced Entity: Johann Sebastian Bach
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Johann Christoph Bach) ^ place of birth.2(e , x)
+Denotations:[Weimar] Replaced Entity: Johann Sebastian Bach
+
+
+Selected surrogate Grounded parse 0 : father.1(e , Johann Christoph Bach) ^ father.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Frost took a role opposite Jude Law in Paul W. S. Anderson s directorial debut Shopping.
+Parse Count: 4
+Semantic Parse:  [s.1(11:e , 7:paul-w.-s.-anderson), took.2(1:e , 5:jude-law), took.1(1:e , 0:frost), debut(10:s , 7:paul-w.-s.-anderson), took.in.2(1:e , 7:paul-w.-s.-anderson), role(3:s , 5:jude-law), opposite(4:s , 5:jude-law), directorial(9:s , 7:paul-w.-s.-anderson)]
+Lexical items: [0, 1, 3, 4, 5, 7, 9, 10]
+Node:0, Frost   
+Node:5, Jude_Law  role
+Node:7, Paul_W._S._Anderson  debut
+Events (with NN/NNP arguments)[11, 1]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Frost) ^ occupation.2(e , x)
+Denotations:[actor, film producer] Replaced Entity: Jude Law
+
+
+Candidate Surrogate Grounded phrase: family name.1(e , Frost) ^ family name.2(e , x)
+Denotations:[Frost] Replaced Entity: Jude Law
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Frost) ^ sex or gender.2(e , x)
+Denotations:[female] Replaced Entity: Jude Law
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Frost) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Jude Law
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Frost) ^ given name.2(e , x)
+Denotations:[Sadie] Replaced Entity: Jude Law
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Frost) ^ place of birth.2(e , x)
+Denotations:[London] Replaced Entity: Jude Law
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Frost) ^ country of citizenship.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Jude Law
+
+
+Candidate Surrogate Grounded phrase: spouse.1(e , Frost) ^ spouse.2(e , x)
+Denotations:[Jude Law] Replaced Entity: Jude Law
+
+
+Selected surrogate Grounded parse 0 : spouse.1(e , Frost) ^ spouse.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Newport (; ) is a cathedral and university city and unitary authority area in south east Wales.
+Parse Count: 1
+Semantic Parse:  [cathedral.in.1(6:e , 0:newport), cathedral.in.2(6:e , 17:wales), area(13:s , 0:newport), cathedral(6:s , 0:newport), area.in.1(13:e , 0:newport), city(9:s , 0:newport), area.authority(12:s , 0:newport), area.unitary(11:s , 0:newport), city.university(8:s , 0:newport), south(15:s , 17:wales), east(16:s , 17:wales), area.in.2(13:e , 17:wales), city.in.2(9:e , 17:wales), city.in.1(9:e , 0:newport)]
+Lexical items: [0, 11, 12, 13, 15, 16, 6, 17, 8, 9]
+Node:0, Newport  area
+Node:17, Wales  south
+Events (with NN/NNP arguments)[13, 6, 9]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Newport) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: headquarters location.1(e , Newport) ^ headquarters location.2(e , x)
+Denotations:[Newport Civic Centre] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Newport) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Wales] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Newport) ^ topic's main category.2(e , x)
+Denotations:[Category:Newport] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: sister city.1(e , Newport) ^ sister city.2(e , x)
+Denotations:[Guangxi Zhuang Autonomous Region, Kutaisi, Heidenheim an der Brenz, Annapolis] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Newport) ^ instance of.2(e , x)
+Denotations:[principal area of Wales, city] Replaced Entity: Wales
+
+
+Candidate Surrogate Grounded phrase: category of associated people.1(e , Newport) ^ category of associated people.2(e , x)
+Denotations:[Category:People from Newport] Replaced Entity: Wales
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Newport) ^ located in the administrative territorial entity.2(e , x) ^ located in the administrative territorial entity.1(e , Newport) ^ located in the administrative territorial entity.2(e , Wales) ^ located in the administrative territorial entity.1(e , Newport) ^ located in the administrative territorial entity.2(e , Wales)
+
+
+Selected surrogate Grounded parse 1 : instance of.1(e , Newport) ^ instance of.2(e , x) ^ located in the administrative territorial entity.1(e , Newport) ^ located in the administrative territorial entity.2(e , Wales) ^ located in the administrative territorial entity.1(e , Newport) ^ located in the administrative territorial entity.2(e , Wales)
+
+
+
+=============================================================================================================================
+Sentence:Verdi refers to Giuseppe Verdi (1813 1901), Italian opera composer.
+Parse Count: 1
+Semantic Parse:  [refers.1(1:e , 0:verdi), composer.Italian(9:s , 5:type.int), 1901(6:s , 5:type.int), refers.to.2(1:e , 3:giuseppe-verdi), composer(11:s , 5:type.int), composer.opera(10:s , 5:type.int)]
+Lexical items: [0, 11, 1, 3, 5, 6, 9, 10]
+Node:0, Verdi   
+Node:3, Giuseppe_Verdi   
+Events (with NN/NNP arguments)[1]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: named after.1(e , Verdi) ^ named after.2(e , x)
+Denotations:[Giuseppe Verdi] Replaced Entity: Giuseppe Verdi
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Verdi) ^ instance of.2(e , x)
+Denotations:[impact crater] Replaced Entity: Giuseppe Verdi
+
+
+Candidate Surrogate Grounded phrase: location.1(e , Verdi) ^ location.2(e , x)
+Denotations:[Shakespeare quadrangle] Replaced Entity: Giuseppe Verdi
+
+
+Candidate Surrogate Grounded phrase: located on astronomical body.1(e , Verdi) ^ located on astronomical body.2(e , x)
+Denotations:[Mercury] Replaced Entity: Giuseppe Verdi
+
+
+Selected surrogate Grounded parse 0 : named after.1(e , Verdi) ^ named after.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:It is home to HMS Excellent , the oldest shore training establishment within the Royal Navy , and the location of the Navy Command Headquarters.
+Parse Count: 7
+Semantic Parse:  [location.of.1(17:e , 13:royal-navy), Headquarters.Command(21:s , 20:navy), establishment(10:s , 0:it), UNIQUE(20:navy), UNIQUE(13:royal-navy), establishment.shore(8:s , 0:it), UNIQUE(0:it), location.of.2(17:e , 20:navy), establishment.within.1(10:e , 0:it), Headquarters(22:s , 20:navy), establishment.oldest(7:s , 0:it), establishment.training(9:s , 0:it), location(17:s , 13:royal-navy), establishment.within.2(10:e , 13:royal-navy)]
+Lexical items: [0, 22, 13, 17, 7, 8, 9, 20, 10, 21]
+Node:13, Royal_Navy UNIQUE location
+Node:20, Navy UNIQUE Headquarters
+Events (with NN/NNP arguments)[17, 10]
+
+Wikipedia Annotations for sentence:[Q5632351 ref=HMS Excellent (shore establishment)|HMS Excellent HMS Excellent ,  Q172771 Royal Navy ,  Q6982619 Navy Command Headquarters ,  ]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Royal Navy) ^ country.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Navy
+
+
+Candidate Surrogate Grounded phrase: headquarters location.1(e , Royal Navy) ^ headquarters location.2(e , x)
+Denotations:[Ministry of Defence] Replaced Entity: Navy
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Royal Navy) ^ topic's main category.2(e , x)
+Denotations:[Category:Royal Navy] Replaced Entity: Navy
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Royal Navy) ^ instance of.2(e , x)
+Denotations:[navy] Replaced Entity: Navy
+
+
+Candidate Surrogate Grounded phrase: item operated.1(e , Royal Navy) ^ item operated.2(e , x)
+Denotations:[ScanEagle] Replaced Entity: Navy
+
+
+Candidate Surrogate Grounded phrase: allegiance.1(e , Royal Navy) ^ allegiance.2(e , x)
+Denotations:[Elizabeth II] Replaced Entity: Navy
+
+
+Candidate Surrogate Grounded phrase: military branch.1(e , Royal Navy) ^ military branch.2(e , x)
+Denotations:[navy] Replaced Entity: Navy
+
+
+Candidate Surrogate Grounded phrase: part of.1(e , Royal Navy) ^ part of.2(e , x)
+Denotations:[Naval Service] Replaced Entity: Navy
+
+
+Selected surrogate Grounded parse 0 : topic's main category.1(e , Royal Navy) ^ topic's main category.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:In 2007 Laurence and Lydia married actors Billie Piper and Richard Ayoade , respectively.
+Parse Count: 1
+Semantic Parse:  [married.2(5:e , 7:billie-piper), married.1(5:e , 4:lydia), married.2(5:e , 9:richard-ayoade), actors(6:s , 7:billie-piper), married.1(5:e , 2:laurence), married.In.2(5:e , 1:type.int), respectively(11:s , 9:e)]
+Lexical items: [11, 1, 2, 4, 5, 6, 7, 9]
+Node:2, Laurence   
+Node:4, Lydia   
+Node:7, Billie_Piper  actors
+Node:9, Richard_Ayoade  respectively
+Events (with NN/NNP arguments)[5]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Laurence) ^ occupation.2(e , x)
+Denotations:[actor, television actor] Replaced Entity: Billie Piper
+
+
+Candidate Surrogate Grounded phrase: educated at.1(e , Laurence) ^ educated at.2(e , x)
+Denotations:[Harrow School, Royal Academy of Dramatic Art] Replaced Entity: Billie Piper
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Laurence) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Billie Piper
+
+
+Candidate Surrogate Grounded phrase: father.1(e , Laurence) ^ father.2(e , x)
+Denotations:[James Fox] Replaced Entity: Billie Piper
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Laurence) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Billie Piper
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Laurence) ^ given name.2(e , x)
+Denotations:[Laurence] Replaced Entity: Billie Piper
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Laurence) ^ place of birth.2(e , x)
+Denotations:[Yorkshire] Replaced Entity: Billie Piper
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Laurence) ^ country of citizenship.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Billie Piper
+
+
+Candidate Surrogate Grounded phrase: spouse.1(e , Laurence) ^ spouse.2(e , x)
+Denotations:[Billie Piper] Replaced Entity: Billie Piper
+
+
+Selected surrogate Grounded parse 0 : spouse.1(e , Laurence) ^ spouse.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Ormandys recordings also included Anton Bruckner s Symphony No. 7 and Mahler s Symphony No. 2 , which became extremely well known.
+Parse Count: 12
+Semantic Parse:  [No.(7:s , 4:anton-bruckner), included.1(3:e , 0:ormandys), included.also(2:s , 3:e), known.extremely(18:s , 20:e), 2.'s.2(14:e , 12:symphony), known.1(20:e , 10:mahler), known.became.1(20:e , 10:mahler), 7.'s.2(8:e , 6:symphony), recordings(1:s , 0:ormandys), s.1(14:e , 10:mahler), 7.'s.1(8:e , 4:anton-bruckner), included.2(3:e , 4:anton-bruckner), 2.'s.1(14:e , 10:mahler), s.1(8:e , 4:anton-bruckner), included.2(3:e , 10:mahler), known.well(19:s , 20:e), No.(13:s , 10:mahler)]
+Lexical items: [12, 13, 14, 18, 19, 0, 1, 2, 3, 4, 6, 7, 8, 20, 10]
+Node:12, Symphony   
+Node:0, Ormandys  recordings
+Node:4, Anton_Bruckner  No.
+Node:6, Symphony   
+Node:10, Mahler  No.
+Events (with NN/NNP arguments)[3, 14, 8, 20]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: described by source.1(e , Anton Bruckner) ^ described by source.2(e , x)
+Denotations:[Great Soviet Encyclopedia (1969—1978)] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Anton Bruckner) ^ occupation.2(e , x)
+Denotations:[composer, musicologist, music educator, organist, music theorist] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: place of death.1(e , Anton Bruckner) ^ place of death.2(e , x)
+Denotations:[Vienna] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: student.1(e , Anton Bruckner) ^ student.2(e , x)
+Denotations:[Károly Aggházy] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: award received.1(e , Anton Bruckner) ^ award received.2(e , x)
+Denotations:[Order of Franz Joseph] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Anton Bruckner) ^ given name.2(e , x)
+Denotations:[Anton] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Anton Bruckner) ^ place of birth.2(e , x)
+Denotations:[Ansfelden] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Anton Bruckner) ^ country of citizenship.2(e , x)
+Denotations:[Austria] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: instrument.1(e , Anton Bruckner) ^ instrument.2(e , x)
+Denotations:[organ] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Anton Bruckner) ^ topic's main category.2(e , x)
+Denotations:[Category:Anton Bruckner] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Anton Bruckner) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Anton Bruckner) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: genre.1(e , Anton Bruckner) ^ genre.2(e , x)
+Denotations:[classical music, symphony] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+Denotations:[Symphony No. 3 (Bruckner), Te Deum, Symphony No. 1 (Bruckner), Study Symphony, Symphony in D minor, Symphony No. 2, Symphony No. 4 (Bruckner), Symphony No. 5 (Bruckner), Symphony No. 6 (Bruckner), Symphony No. 7 (Bruckner), Symphony No. 8 (Bruckner), Symphony No. 9, Helgoland] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: employer.1(e , Anton Bruckner) ^ employer.2(e , x)
+Denotations:[University of Vienna] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: residence.1(e , Anton Bruckner) ^ residence.2(e , x)
+Denotations:[Vienna, St. Florian's Priory] Replaced Entity: Symphony
+
+
+Candidate Surrogate Grounded phrase: holds belief system.1(e , Anton Bruckner) ^ holds belief system.2(e , x)
+Denotations:[Catholicism] Replaced Entity: Symphony
+
+
+Selected surrogate Grounded parse 0 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 1 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 2 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 3 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 4 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 5 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 6 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 7 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 8 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 9 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+Selected surrogate Grounded parse 10 : notable work.1(e , Anton Bruckner) ^ notable work.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Tintoretto scarcely ever travelled out of Venice.
+Parse Count: 1
+Semantic Parse:  [travelled.scarcely(1:s , 3:e), travelled.of.2(3:e , 6:venice), travelled.1(3:e , 0:tintoretto), travelled.ever(2:s , 3:e)]
+Lexical items: [0, 1, 2, 3, 6]
+Node:0, Tintoretto   
+Node:6, Venice   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: described by source.1(e , Tintoretto) ^ described by source.2(e , x)
+Denotations:[Schilder-boeck, Teutsche Academie der Edlen Bau- Bild- und Mahlerey-Künste] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Tintoretto) ^ occupation.2(e , x)
+Denotations:[painter, artist] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: place of death.1(e , Tintoretto) ^ place of death.2(e , x)
+Denotations:[Venice] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Tintoretto) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Tintoretto) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: notable work.1(e , Tintoretto) ^ notable work.2(e , x)
+Denotations:[Christ Washing the Disciples' Feet, St. Roch in Glory, Crucifixion] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: student of.1(e , Tintoretto) ^ student of.2(e , x)
+Denotations:[Titian] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Tintoretto) ^ place of birth.2(e , x)
+Denotations:[Venice] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Tintoretto) ^ country of citizenship.2(e , x)
+Denotations:[Italy] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: movement.1(e , Tintoretto) ^ movement.2(e , x)
+Denotations:[Mannerism, Venetian school] Replaced Entity: Venice
+
+
+Candidate Surrogate Grounded phrase: child.1(e , Tintoretto) ^ child.2(e , x)
+Denotations:[Marietta Robusti] Replaced Entity: Venice
+
+
+Selected surrogate Grounded parse 0 : place of death.1(e , Tintoretto) ^ place of death.2(e , x)
+
+
+Selected surrogate Grounded parse 1 : place of birth.1(e , Tintoretto) ^ place of birth.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Belair is an unincorporated community in southern Leon County , Florida , United States , south of Tallahassee.
+Parse Count: 1
+Semantic Parse:  [of.2(9:e , 15:tallahassee), community.in.2(4:e , 9:florida), community.in.2(4:e , 7:leon-county), south(13:s , 11:e), south(13:s , 9:e), community(4:s , 0:belair), community.in.1(4:e , 0:belair), southern(6:s , 7:leon-county), of.2(11:e , 15:tallahassee), community.in.2(4:e , 11:united-states), community.unincorporated(3:s , 0:belair)]
+Lexical items: [0, 11, 13, 3, 4, 15, 6, 7, 9]
+Node:0, Belair  community
+Node:11, United_States  south
+Node:7, Leon_County  southern
+Node:9, Florida  south
+Events (with NN/NNP arguments)[4]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Belair) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Florida
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Belair) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Florida] Replaced Entity: Florida
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Belair) ^ instance of.2(e , x)
+Denotations:[unincorporated community] Replaced Entity: Florida
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Belair) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Belair) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Bayezid II ascended the Ottoman throne in 1481.
+Parse Count: 4
+Semantic Parse:  [UNIQUE(3:ottoman), ascended.in.2(1:e , 6:type.int), ascended.1(1:e , 0:bayezid-ii), ascended.2(1:e , 3:ottoman), throne(4:s , 3:ottoman)]
+Lexical items: [0, 1, 3, 4, 6]
+Node:0, Bayezid_II   
+Node:3, Ottoman UNIQUE throne
+Events (with NN/NNP arguments)[1]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: position held.1(e , Bayezid II) ^ position held.2(e , x)
+Denotations:[List of sultans of the Ottoman Empire] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: place of death.1(e , Bayezid II) ^ place of death.2(e , x)
+Denotations:[Istanbul] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: father.1(e , Bayezid II) ^ father.2(e , x)
+Denotations:[Mehmed the Conqueror] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: follows.1(e , Bayezid II) ^ follows.2(e , x)
+Denotations:[Mehmed the Conqueror] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Bayezid II) ^ place of birth.2(e , x)
+Denotations:[Didymoteicho] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Bayezid II) ^ country of citizenship.2(e , x)
+Denotations:[Ottoman Empire] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: spouse.1(e , Bayezid II) ^ spouse.2(e , x)
+Denotations:[Ferahşad Hatun, Gülbahar Sultan, Ayşe Hatun, Gülruh Hatun] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: followed by.1(e , Bayezid II) ^ followed by.2(e , x)
+Denotations:[Selim I] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: mother.1(e , Bayezid II) ^ mother.2(e , x)
+Denotations:[Emine Gülbahar Hatun, Mükrime Hatun] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Bayezid II) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Bayezid II) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: noble family.1(e , Bayezid II) ^ noble family.2(e , x)
+Denotations:[Ottoman Dynasty] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: brother.1(e , Bayezid II) ^ brother.2(e , x)
+Denotations:[Sultan Cem] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: holds belief system.1(e , Bayezid II) ^ holds belief system.2(e , x)
+Denotations:[Islam] Replaced Entity: Ottoman
+
+
+Candidate Surrogate Grounded phrase: child.1(e , Bayezid II) ^ child.2(e , x)
+Denotations:[Selim I, Şehzade Ahmet, Şehzade Korkut] Replaced Entity: Ottoman
+
+
+Selected surrogate Grounded parse 0 : position held.1(e , Bayezid II) ^ position held.2(e , x)
+
+
+Selected surrogate Grounded parse 1 : country of citizenship.1(e , Bayezid II) ^ country of citizenship.2(e , x)
+
+
+Selected surrogate Grounded parse 2 : noble family.1(e , Bayezid II) ^ noble family.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Belle and Sebastian were formed in Glasgow, Scotland in 1996 by Stuart Murdoch and Stuart David.
+Parse Count: 1
+Semantic Parse:  [formed.2(4:e , 2:sebastian), formed.in.2(4:e , 10:type.int), formed.1(4:e , 14:stuart-david), formed.in.2(4:e , 8:scotland), formed.1(4:e , 12:stuart-murdoch), formed.in.2(4:e , 6:glasgow), formed.2(4:e , 0:belle)]
+Lexical items: [0, 12, 2, 14, 4, 6, 8, 10]
+Node:0, Belle   
+Node:12, Stuart_Murdoch   
+Node:2, Sebastian   
+Node:14, Stuart_David   
+Node:6, Glasgow   
+Node:8, Scotland   
+Events (with NN/NNP arguments)[4]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: member of.1(e , Stuart David) ^ member of.2(e , x)
+Denotations:[Belle & Sebastian] Replaced Entity: Sebastian
+
+
+Candidate Surrogate Grounded phrase: occupation.1(e , Stuart David) ^ occupation.2(e , x)
+Denotations:[musician] Replaced Entity: Sebastian
+
+
+Candidate Surrogate Grounded phrase: sex or gender.1(e , Stuart David) ^ sex or gender.2(e , x)
+Denotations:[male] Replaced Entity: Sebastian
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Stuart David) ^ instance of.2(e , x)
+Denotations:[human] Replaced Entity: Sebastian
+
+
+Candidate Surrogate Grounded phrase: given name.1(e , Stuart David) ^ given name.2(e , x)
+Denotations:[Stuart] Replaced Entity: Sebastian
+
+
+Candidate Surrogate Grounded phrase: place of birth.1(e , Stuart David) ^ place of birth.2(e , x)
+Denotations:[Scotland] Replaced Entity: Sebastian
+
+
+Candidate Surrogate Grounded phrase: country of citizenship.1(e , Stuart David) ^ country of citizenship.2(e , x)
+Denotations:[United Kingdom] Replaced Entity: Sebastian
+
+
+Candidate Surrogate Grounded phrase: instrument.1(e , Stuart David) ^ instrument.2(e , x)
+Denotations:[bass guitar] Replaced Entity: Sebastian
+
+
+Selected surrogate Grounded parse 0 : member of.1(e , Stuart David) ^ member of.2(e , x) ^ place of birth.1(e , Stuart David) ^ place of birth.2(e , Scotland) ^ member of.1(e , Stuart David) ^ member of.2(e , Belle)
+
+
+
+=============================================================================================================================
+Sentence:Robins Air Force Base is a major United States Air Force installation located in Houston County , Georgia, United States.
+Parse Count: 16
+Semantic Parse:  [major(3:s , 4:united-states-air-force), located(6:s , 4:united-states-air-force), is.2(1:e , 4:united-states-air-force), is.in.2(1:e , 10:georgia), is.in.2(1:e , 8:houston-county), is.in.2(1:e , 12:united-states), installation(5:s , 4:united-states-air-force), is.1(1:e , 0:robins-air-force-base)]
+Lexical items: [0, 1, 12, 3, 4, 5, 6, 8, 10]
+Node:0, Robins_Air_Force_Base   
+Node:12, United_States   
+Node:4, United_States_Air_Force  major
+Node:8, Houston_County   
+Node:10, Georgia   
+Events (with NN/NNP arguments)[1]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Robins Air Force Base) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Georgia
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Robins Air Force Base) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Georgia] Replaced Entity: Georgia
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Robins Air Force Base) ^ instance of.2(e , x)
+Denotations:[military airbase, census designated place] Replaced Entity: Georgia
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Robins Air Force Base) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Robins Air Force Base) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Denton is a city in Jeff Davis County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city.in.1(3:e , 0:denton), city.in.2(3:e , 7:georgia), city(3:s , 0:denton), city.in.2(3:e , 5:jeff-davis-county), city.in.2(3:e , 9:united-states)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Denton  city
+Node:5, Jeff_Davis_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Denton) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Jeff Davis County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Denton) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Jeff Davis County] Replaced Entity: Jeff Davis County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Denton) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Jeff Davis County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Denton) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Denton) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Hazlehurst is a city in and the county seat of Jeff Davis County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [seat.of.2(8:e , 12:georgia), seat.of.2(8:e , 14:united-states), seat.of.2(8:e , 10:jeff-davis-county), city.of.1(3:e , 0:hazlehurst), city.of.2(3:e , 14:united-states), UNIQUE(0:hazlehurst), city.of.2(3:e , 12:georgia), seat.county(7:s , 0:hazlehurst), city.of.2(3:e , 10:jeff-davis-county), city(3:s , 0:hazlehurst), seat.of.1(8:e , 0:hazlehurst), seat(8:s , 0:hazlehurst), in.1(4:e , 0:hazlehurst)]
+Lexical items: [0, 12, 3, 14, 7, 8, 10]
+Node:0, Hazlehurst UNIQUE city
+Node:12, Georgia   
+Node:14, United_States   
+Node:10, Jeff_Davis_County   
+Events (with NN/NNP arguments)[3, 4, 8]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Hazlehurst) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Jeff Davis County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Hazlehurst) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Jeff Davis County] Replaced Entity: Jeff Davis County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Hazlehurst) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Jeff Davis County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Hazlehurst) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Hazlehurst) ^ country.2(e , United States) ^ located in the administrative territorial entity.1(e , Hazlehurst) ^ located in the administrative territorial entity.2(e , Jeff Davis County)
+
+
+
+=============================================================================================================================
+Sentence:Bartow is a town in Jefferson County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [town.in.2(3:e , 7:georgia), town(3:s , 0:bartow), town.in.2(3:e , 9:united-states), town.in.2(3:e , 5:jefferson-county), town.in.1(3:e , 0:bartow)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Bartow  town
+Node:5, Jefferson_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Bartow) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Bartow) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Jefferson County] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Bartow) ^ instance of.2(e , x)
+Denotations:[town of the United States] Replaced Entity: Jefferson County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Bartow) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Louisville is a city in Jefferson County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city.in.1(3:e , 0:louisville), city.in.2(3:e , 7:georgia), city(3:s , 0:louisville), city.in.2(3:e , 9:united-states), city.in.2(3:e , 5:jefferson-county)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Louisville  city
+Node:5, Jefferson_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Louisville) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Louisville) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Jefferson County] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Louisville) ^ topic's main category.2(e , x)
+Denotations:[Category:Louisville] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: sister city.1(e , Louisville) ^ sister city.2(e , x)
+Denotations:[Mainz, Jiujiang, La Plata, Montpellier, City of Leeds, Perm, Tamale] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Louisville) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: category for people who died here.1(e , Louisville) ^ category for people who died here.2(e , x)
+Denotations:[Category:Death in Louisville] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: topic's main Wikimedia portal.1(e , Louisville) ^ topic's main Wikimedia portal.2(e , x)
+Denotations:[Portal:Louisville] Replaced Entity: Jefferson County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Louisville) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Stapleton is a city in Jefferson County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city.in.2(3:e , 7:georgia), city.in.1(3:e , 0:stapleton), city.in.2(3:e , 9:united-states), city(3:s , 0:stapleton), city.in.2(3:e , 5:jefferson-county)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Stapleton  city
+Node:5, Jefferson_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Stapleton) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Stapleton) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Jefferson County] Replaced Entity: Jefferson County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Stapleton) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Jefferson County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Stapleton) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Wrightsville is a city in Johnson County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city(3:s , 0:wrightsville), city.in.2(3:e , 7:georgia), city.in.2(3:e , 5:johnson-county), city.in.2(3:e , 9:united-states), city.in.1(3:e , 0:wrightsville)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Wrightsville  city
+Node:5, Johnson_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Wrightsville) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Johnson County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Wrightsville) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Johnson County] Replaced Entity: Johnson County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Wrightsville) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Johnson County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Wrightsville) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Wrightsville) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Aldora is a town in Lamar County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [town.in.2(3:e , 7:georgia), town.in.2(3:e , 9:united-states), town(3:s , 0:aldora), town.in.1(3:e , 0:aldora), town.in.2(3:e , 5:lamar-county)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Aldora  town
+Node:5, Lamar_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Aldora) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: United States
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Aldora) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Lamar County] Replaced Entity: United States
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Aldora) ^ instance of.2(e , x)
+Denotations:[town of the United States] Replaced Entity: United States
+
+
+Selected surrogate Grounded parse 0 : country.1(e , Aldora) ^ country.2(e , x) ^ located in the administrative territorial entity.1(e , Aldora) ^ located in the administrative territorial entity.2(e , Lamar County)
+
+
+Selected surrogate Grounded parse 1 : instance of.1(e , Aldora) ^ instance of.2(e , x) ^ located in the administrative territorial entity.1(e , Aldora) ^ located in the administrative territorial entity.2(e , Lamar County)
+
+
+
+=============================================================================================================================
+Sentence:Barnesville is a city in Lamar County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city.in.2(3:e , 7:georgia), city.in.1(3:e , 0:barnesville), city.in.2(3:e , 5:lamar-county), city(3:s , 0:barnesville), city.in.2(3:e , 9:united-states)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Barnesville  city
+Node:5, Lamar_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Barnesville) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Georgia
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Barnesville) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Georgia, Lamar County] Replaced Entity: Georgia
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Barnesville) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Georgia
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Barnesville) ^ located in the administrative territorial entity.2(e , x) ^ located in the administrative territorial entity.1(e , Barnesville) ^ located in the administrative territorial entity.2(e , Lamar County) ^ country.1(e , Barnesville) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Dublin is a city in Laurens County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city.in.2(3:e , 7:georgia), city(3:s , 0:dublin), city.in.1(3:e , 0:dublin), city.in.2(3:e , 5:laurens-county), city.in.2(3:e , 9:united-states)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Dublin  city
+Node:5, Laurens_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Dublin) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Laurens County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Dublin) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Laurens County] Replaced Entity: Laurens County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Dublin) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Laurens County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Dublin) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Dublin) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:East Dublin is a city in Laurens County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city(3:s , 0:east-dublin), city.in.2(3:e , 7:georgia), city.in.2(3:e , 5:laurens-county), city.in.1(3:e , 0:east-dublin), city.in.2(3:e , 9:united-states)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, East_Dublin  city
+Node:5, Laurens_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , East Dublin) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Laurens County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , East Dublin) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Laurens County] Replaced Entity: Laurens County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , East Dublin) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Laurens County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , East Dublin) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , East Dublin) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Rentz is a town in Laurens County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [town.in.2(3:e , 7:georgia), town.in.1(3:e , 0:rentz), town(3:s , 0:rentz), town.in.2(3:e , 5:laurens-county)]
+Lexical items: [0, 3, 5, 7]
+Node:0, Rentz  town
+Node:5, Laurens_County   
+Node:7, Georgia   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Rentz) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Laurens County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Rentz) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Laurens County] Replaced Entity: Laurens County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Rentz) ^ instance of.2(e , x)
+Denotations:[town of the United States] Replaced Entity: Laurens County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Rentz) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Midway is a city in Liberty County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city.in.2(3:e , 7:georgia), city(3:s , 0:midway), city.in.1(3:e , 0:midway), city.in.2(3:e , 5:liberty-county), city.in.2(3:e , 9:united-states)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Midway  city
+Node:5, Liberty_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Midway) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Liberty County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Midway) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Liberty County] Replaced Entity: Liberty County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Midway) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Liberty County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Midway) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Midway) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Remerton is a city in Lowndes County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city.in.2(3:e , 7:georgia), city.in.2(3:e , 5:lowndes-county), city(3:s , 0:remerton), city.in.2(3:e , 9:united-states), city.in.1(3:e , 0:remerton)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Remerton  city
+Node:5, Lowndes_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Remerton) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Lowndes County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Remerton) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Lowndes County] Replaced Entity: Lowndes County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Remerton) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Lowndes County
+
+
+Candidate Surrogate Grounded phrase: enclave within.1(e , Remerton) ^ enclave within.2(e , x)
+Denotations:[Valdosta] Replaced Entity: Lowndes County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Remerton) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Remerton) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Valdosta is a city in and the county seat of Lowndes County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [seat.of.2(8:e , 12:georgia), seat.of.2(8:e , 14:united-states), seat.of.1(8:e , 0:valdosta), city.of.2(3:e , 14:united-states), seat.county(7:s , 0:valdosta), in.1(4:e , 0:valdosta), UNIQUE(0:valdosta), city.of.2(3:e , 12:georgia), seat(8:s , 0:valdosta), city.of.2(3:e , 10:lowndes-county), seat.of.2(8:e , 10:lowndes-county), city(3:s , 0:valdosta), city.of.1(3:e , 0:valdosta)]
+Lexical items: [0, 12, 3, 14, 7, 8, 10]
+Node:0, Valdosta UNIQUE seat
+Node:12, Georgia   
+Node:14, United_States   
+Node:10, Lowndes_County   
+Events (with NN/NNP arguments)[3, 4, 8]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Valdosta) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Lowndes County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Valdosta) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Lowndes County] Replaced Entity: Lowndes County
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Valdosta) ^ topic's main category.2(e , x)
+Denotations:[Category:Valdosta] Replaced Entity: Lowndes County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Valdosta) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Lowndes County
+
+
+Candidate Surrogate Grounded phrase: located in time zone.1(e , Valdosta) ^ located in time zone.2(e , x)
+Denotations:[Eastern Time Zone] Replaced Entity: Lowndes County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Valdosta) ^ located in the administrative territorial entity.2(e , x) ^ topic's main category.1(e , Valdosta) ^ topic's main category.2(e , Georgia) ^ country.1(e , Valdosta) ^ country.2(e , United States) ^ located in the administrative territorial entity.1(e , Valdosta) ^ located in the administrative territorial entity.2(e , Lowndes County)
+
+
+
+=============================================================================================================================
+Sentence:Culloden is a city in Monroe County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city.in.2(3:e , 7:georgia), city.in.1(3:e , 0:culloden), city(3:s , 0:culloden), city.in.2(3:e , 5:monroe-county), city.in.2(3:e , 9:united-states)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Culloden  city
+Node:5, Monroe_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Culloden) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Monroe County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Culloden) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Monroe County] Replaced Entity: Monroe County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Culloden) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Monroe County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Culloden) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Culloden) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Higgston is a town in Montgomery County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [town.in.2(3:e , 5:montgomery-county), town.in.1(3:e , 0:higgston), town(3:s , 0:higgston)]
+Lexical items: [0, 3, 5]
+Node:0, Higgston  town
+Node:5, Montgomery_County   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Higgston) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Montgomery County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Higgston) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Montgomery County] Replaced Entity: Montgomery County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Higgston) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Montgomery County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Higgston) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Buckhead is a town in Morgan County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [town(3:s , 0:buckhead), town.in.2(3:e , 7:georgia), town.in.1(3:e , 0:buckhead), town.in.2(3:e , 9:united-states), town.in.2(3:e , 5:morgan-county)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Buckhead  town
+Node:5, Morgan_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Buckhead) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Georgia
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Buckhead) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Georgia] Replaced Entity: Georgia
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Buckhead) ^ instance of.2(e , x)
+Denotations:[neighborhood] Replaced Entity: Georgia
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Buckhead) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Buckhead) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Madison is a city in Morgan County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [city.in.2(3:e , 7:georgia), city.in.2(3:e , 5:morgan-county), city.in.1(3:e , 0:madison), city(3:s , 0:madison), city.in.2(3:e , 9:united-states)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Madison  city
+Node:5, Morgan_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Madison) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Morgan County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Madison) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Morgan County] Replaced Entity: Morgan County
+
+
+Candidate Surrogate Grounded phrase: topic's main category.1(e , Madison) ^ topic's main category.2(e , x)
+Denotations:[Category:Madison] Replaced Entity: Morgan County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Madison) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Morgan County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Madison) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Madison) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Covington is a city and the county seat of Newton County , Georgia.
+Parse Count: 1
+Semantic Parse:  [seat.county(6:s , 0:covington), seat(7:s , 0:covington), UNIQUE(0:covington), city(3:s , 0:covington), seat.of.1(7:e , 0:covington), seat.of.2(7:e , 9:newton-county)]
+Lexical items: [0, 3, 6, 7, 9]
+Node:0, Covington UNIQUE seat
+Node:9, Newton_County   
+Events (with NN/NNP arguments)[7]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: architectural style.1(e , Covington) ^ architectural style.2(e , x)
+Denotations:[Renaissance Revival architecture] Replaced Entity: Newton County
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Covington) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Newton County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Covington) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Newton County] Replaced Entity: Newton County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Covington) ^ instance of.2(e , x)
+Denotations:[city, historic district in the United States] Replaced Entity: Newton County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Covington) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Newborn is a town in Newton County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [town.in.2(3:e , 7:georgia), town.in.1(3:e , 0:newborn), town.in.2(3:e , 9:united-states), town.in.2(3:e , 5:newton-county), town(3:s , 0:newborn)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Newborn  town
+Node:5, Newton_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Newborn) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Newton County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Newborn) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Newton County] Replaced Entity: Newton County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Newborn) ^ instance of.2(e , x)
+Denotations:[town of the United States] Replaced Entity: Newton County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Newborn) ^ located in the administrative territorial entity.2(e , x)
+
+
+
+=============================================================================================================================
+Sentence:Oxford is a city in Newton County , Georgia , in the United States.
+Parse Count: 1
+Semantic Parse:  [city.in.2(3:e , 5:newton-county), city(3:s , 0:oxford), city.in.2(3:e , 11:united-states), city.in.1(3:e , 0:oxford), in.2(7:e , 11:united-states), UNIQUE(11:united-states), in.1(7:e , 0:oxford)]
+Lexical items: [0, 11, 3, 5, 7]
+Node:0, Oxford  city
+Node:11, United_States UNIQUE  
+Node:5, Newton_County   
+Node:7, Georgia   
+Events (with NN/NNP arguments)[3, 7]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Oxford) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Newton County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Oxford) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Newton County] Replaced Entity: Newton County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Oxford) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Newton County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Oxford) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Oxford) ^ country.2(e , United States) ^ country.1(e , Oxford) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Crawford is a city in Oglethorpe County , Georgia , United States of America.
+Parse Count: 3
+Semantic Parse:  [city.in.1(3:e , 0:crawford), city.in.2(3:e , 7:georgia), city.in.2(3:e , 5:oglethorpe-county), of.1(9:e , 0:crawford), city(3:s , 0:crawford), of.2(9:e , 11:america)]
+Lexical items: [0, 11, 3, 5, 7, 9]
+Node:0, Crawford  city
+Node:11, America   
+Node:5, Oglethorpe_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3, 9]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Crawford) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Georgia
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Crawford) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Georgia, Oglethorpe County] Replaced Entity: Georgia
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Crawford) ^ instance of.2(e , x)
+Denotations:[city] Replaced Entity: Georgia
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Crawford) ^ located in the administrative territorial entity.2(e , x) ^ located in the administrative territorial entity.1(e , Crawford) ^ located in the administrative territorial entity.2(e , Oglethorpe County) ^ country.1(e , Crawford) ^ country.2(e , America)
+
+
+
+=============================================================================================================================
+Sentence:Maxeys is a town in Oglethorpe County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [town.in.2(3:e , 7:georgia), town(3:s , 0:maxeys), town.in.2(3:e , 5:oglethorpe-county), town.in.2(3:e , 9:united-states), town.in.1(3:e , 0:maxeys)]
+Lexical items: [0, 3, 5, 7, 9]
+Node:0, Maxeys  town
+Node:5, Oglethorpe_County   
+Node:7, Georgia   
+Node:9, United_States   
+Events (with NN/NNP arguments)[3]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Maxeys) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Oglethorpe County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Maxeys) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Oglethorpe County] Replaced Entity: Oglethorpe County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Maxeys) ^ instance of.2(e , x)
+Denotations:[human settlement] Replaced Entity: Oglethorpe County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Maxeys) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Maxeys) ^ country.2(e , United States)
+
+
+
+=============================================================================================================================
+Sentence:Dallas is a city in and the county seat of Paulding County , Georgia , United States.
+Parse Count: 1
+Semantic Parse:  [seat.of.2(8:e , 12:georgia), seat.of.2(8:e , 14:united-states), city.of.2(3:e , 10:paulding-county), seat.of.1(8:e , 0:dallas), seat.of.2(8:e , 10:paulding-county), city.of.2(3:e , 14:united-states), seat.county(7:s , 0:dallas), UNIQUE(0:dallas), city.of.1(3:e , 0:dallas), city.of.2(3:e , 12:georgia), city(3:s , 0:dallas), in.1(4:e , 0:dallas), seat(8:s , 0:dallas)]
+Lexical items: [0, 12, 3, 14, 7, 8, 10]
+Node:0, Dallas UNIQUE city
+Node:12, Georgia   
+Node:14, United_States   
+Node:10, Paulding_County   
+Events (with NN/NNP arguments)[3, 4, 8]
+
+Wikipedia Annotations for sentence:[No annotation from Wikipedia]
+
+
+Candidate Surrogate Grounded phrase: country.1(e , Dallas) ^ country.2(e , x)
+Denotations:[United States of America] Replaced Entity: Paulding County
+
+
+Candidate Surrogate Grounded phrase: located in the administrative territorial entity.1(e , Dallas) ^ located in the administrative territorial entity.2(e , x)
+Denotations:[Paulding County] Replaced Entity: Paulding County
+
+
+Candidate Surrogate Grounded phrase: instance of.1(e , Dallas) ^ instance of.2(e , x)
+Denotations:[city of the United States] Replaced Entity: Paulding County
+
+
+Selected surrogate Grounded parse 0 : located in the administrative territorial entity.1(e , Dallas) ^ located in the administrative territorial entity.2(e , x) ^ country.1(e , Dallas) ^ country.2(e , United States) ^ country.1(e , Dallas) ^ country.2(e , United States) ^ located in the administrative territorial entity.1(e , Dallas) ^ located in the administrative territorial entity.2(e , Paulding County)
+
+
+

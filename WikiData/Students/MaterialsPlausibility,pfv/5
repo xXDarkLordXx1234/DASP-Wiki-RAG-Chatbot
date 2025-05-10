@@ -1,0 +1,47 @@
+%META:TOPICINFO{author="NikolayGeorgiev" date="1248188696" format="1.1" version="5"}%
+%META:TOPICPARENT{name="NikolayMaterials"}%
+---+ Plausibility
+
+   * *Links*: 
+      * [[http://wortschatz.uni-leipzig.de/Webservices/][Leipzig - Web Services]]
+      * [[http://wortschatz.uni-leipzig.de/axis/servlet/ServiceOverviewServlet][Leipzig - ServiceOverviewServlet]]
+      * [[http://www.asv.informatik.uni-leipzig.de/webservices][Leipzig - ASV Anwendungen]]
+      * [[http://corpora.informatik.uni-leipzig.de/][Leipzig - Search in corpora]]
+      * [[http://corpora.uni-leipzig.de/download.html][Leipzig - Download corpora]]
+      * [[http://corpora.uni-leipzig.de/download/CorpusPortal.pdf][Leipzig - Corpus Portal for Search in Monolingual Corpora]]
+   * *Information*
+      * The sources of all corpora are either newspaper texts or randomly collected web pages. The size of a corpus is measured in sentences. All corpora have one of the following sizes: 300,000, 1 million, 3 million, 10 million, or 30 million. ~ [[http://corpora.informatik.uni-leipzig.de][Leipzig Corpora]] - Help
+         * from [[http://nl.ijs.si/is-ltc06/proc/13_Richter.pdf][Exploiting the Leipzig Corpora Collection]]
+            * Size of English Corpus - 10 million
+            * Size of German Corpus - 30 million
+   * *Calculation*:
+      * MI (mutual information) of 2 words = MI(x,y). The formula is from the Yang(1999) paper, page 225. Needed parameters (OK means can be taken from the web services or somehow calculated):
+         * N - size of corpus (<span class="green">OK</span> - a constant)
+         * f(x), f(y) - # of times 'x' occurs in the corpus. Is it the same as "Frequency of a word"? (<span class="yellow">MAYBE</span> - the Frequency Web Service)
+         * fw(x,y) -  # of times 'x' is followed by 'y' in a window of 'w' words (with the Neighborhood or Collocation WS the window size can be only 1, BUT these WS do not give the # of times! They give the "statistically significant co-occurrences", e.x. the frequency of "teddy" is smaller that the sum of the significances of its co-occurring words. So the *Kookkurrenzschnitt* WS have to be used, but I'm waiting for access permission, otherwise have download the DB and get it from there) (<span class="green">OK</span> - either WS or MySQL)
+      * Plausibility of a sentence. Different cases?:
+         * For paraphrases:
+            * All words of the sentence VS. The intersected words.
+         * For one-way translation - all words of the sentence
+      * Plausibility of a sentence. Calculation ideas:
+         * All words of the sentence:
+            * ... Still haven't decided ...
+   * *MySQL DB Installation* on Ubuntu
+      * Install MySQL >= 5.0 from the Synaptic Package Manager
+      * Download the corpora from [[http://corpora.informatik.uni-leipzig.de/download.html][Leipzig Corpora Download Page]]
+      * Unzip the english and german databases somewhere on your drive, e.g. /home/erdtek/downloads/firefox/
+      * cd /var/lib/mysql
+      * sudo cp -r /home/erdtek/downloads/firefox/en1M /var/lib/mysql/
+      * sudo chmod o+rx en1M/
+      * sudo chown mysql:root en1M/
+      * cd en1M/
+      * sudo chown mysql:mysql *
+      * sudo chmod g+w *
+   * Notes - [[http://nl.ijs.si/is-ltc06/proc/13_Richter.pdf][Exploiting the Leipzig Corpora Collection]]
+      * Our notion of corpus is centered around the sentence as the largest unit
+      * For the calculation of the co-occurrence significance, the log-likelihood measure (Dunning, 1993) is used as described in (Biemann et al., 2004b). Two kinds of co-occurrence data are pre-computed: Words occurring together in sentences and words found as immediate (left or right) neighbors.
+      * There also is a download site at http://corpora.uni-leipzig.de/download.html where smaller corpora2 of these languages can be obtained free of charge in two formats: flat text files and MySQL databases. 2 As of now the larger corpora are available only after email request.
+      * Based on the degrees of freedom (always one in these cases) and the desired significance level of 5%, the value must be larger then 3.84 in order to be counted as significant.
+      * It is important to know, that if a word occurs several times in a sentence, that it still produces only one co-occurrence observation with all the other words in that sentence.
+
+-- Main.NikolayGeorgiev - 16 Jul 2009

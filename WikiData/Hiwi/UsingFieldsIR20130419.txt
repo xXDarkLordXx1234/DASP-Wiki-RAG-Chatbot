@@ -1,0 +1,64 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1366377104" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="RichardSteuerMasterthesis"}%
+This page documents my experiments on using multiple (i.e., more than the default one) index fields in Terrier.
+
+---++++ results for !Token and Lemma in separate fields (train, TD)
+
+   * 1. the first table does not use multiple fields
+   * 2. the second table uses one field for all Tokens, one for all Lemmas
+
+<div class="foswikiLeft">
+| num_q | all | 150 | 
+| num_ret | all | 10.439.364 | 
+| num_rel | all | 2052 | 
+| num_rel_ret | all | 2039 | 
+| *map* | all | 0.3442 | 
+| gm_ap | all | 0.0634 | 
+| R-prec | all | 0.3225 | 
+| bpref | all | 0.4106 | 
+| recip_rank | all | 0.5698 | 
+| *P5* | all | 0.3387 | 
+| P10 | all | 0.2727 | 
+| P15 | all | 0.2338 | 
+| P20 | all | 0.2063 | 
+| P30 | all | 0.1713 | 
+| P100 | all | 0.0867 | 
+| P200 | all | 0.0513 | 
+| P500 | all | 0.0233 | 
+| P1000 | all | 0.0123 | 
+</div>
+
+<div class="foswikiLeft" style="margin-left:2em">
+| num_q | all | 150 | 
+| num_ret | all | 7.269.267 | 
+| num_rel | all | 2052 | 
+| num_rel_ret | all | 1530 | 
+| *map* | all | 0.2545 | 
+| gm_ap | all | 0.0375 | 
+| R-prec | all | 0.2621 | 
+| bpref | all | 0.3188 | 
+| recip_rank | all | 0.5359 | 
+| *P5* | all | 0.2907 | 
+| P10 | all | 0.2280 | 
+| P15 | all | 0.1978 | 
+| P20 | all | 0.1760 | 
+| P30 | all | 0.1436 | 
+| P100 | all | 0.0684 | 
+| P200 | all | 0.0393 | 
+| P500 | all | 0.0177 | 
+| P1000 | all | 0.0094 |
+</div>
+
+%CLEAR% 
+
+---++++ software setup in !DKPro/Terrier
+At the index side, the fields are created with this code:
+
+<sticky>
+%CODE{lang="java" [num="10"]}% 
+TerrierIndexWriter.PARAM_USE_FIELD_NAME, true,
+// f_Token, f_Lemma, ...
+TerrierIndexWriter.PARAM_TERM_FIELD_NAME, "f",
+TerrierIndexWriter.PARAM_USE_TERM_TYPE_SUFFIX, true));
+%ENDCODE%
+</sticky>

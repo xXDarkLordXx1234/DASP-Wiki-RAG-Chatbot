@@ -1,0 +1,21 @@
+%META:TOPICINFO{author="NicoErbs" date="1244502682" format="1.1" version="7"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+---+ Resources
+
+   * Moodle plattform for department of mathematics: http://fb04267.mathematik.tu-darmstadt.de/moodle/
+   * German opinion lexicon: 
+      * [[%ATTACHURL%/negativeSentimentComponentLexicon.txt][negative polarity]]
+      * [[%ATTACHURL%/positiveSentimentComponentLexicon.txt][positive polarity]]
+   * [[%ATTACHURL%/tazexample.xml][TAZ example file]]
+   * [[%ATTACHURL%/outputSubjective.txt][Corpus with approx. 1000 sentences from TAZ, Meinung, Kommentar, only medium length]] from 02.04.94 to 19.04.94
+   * [[%ATTACHURL%/outputObjective.txt][Corpus with approx. 1000 sentences from TAZ, Wirtschaft/Umwelt, Agentur, only medium length]] from 02.04.94 to 21.06.94
+   * [[%ATTACHURL%/outputBoth.txt][Both corpora (Meinung and Wirtschaft/Umwelt) combined]]
+<br />-- Main.NicoErbs - 14 May 2009
+
+%META:FILEATTACHMENT{name="negativeSentimentComponentLexicon.txt" attachment="negativeSentimentComponentLexicon.txt" attr="" comment="German opinon lexicon, negative polarity" date="1242654809" path="negativeSentimentComponentLexicon.txt" size="12277" stream="negativeSentimentComponentLexicon.txt" tmpFilename="/var/tmp/CGItemp41838" user="CigdemToprak" version="1"}%
+%META:FILEATTACHMENT{name="positiveSentimentComponentLexicon.txt" attachment="positiveSentimentComponentLexicon.txt" attr="" comment="German opinon lexicon, positive polarity" date="1242654836" path="positiveSentimentComponentLexicon.txt" size="12901" stream="positiveSentimentComponentLexicon.txt" tmpFilename="/var/tmp/CGItemp41828" user="CigdemToprak" version="1"}%
+%META:FILEATTACHMENT{name="tazexample.xml" attachment="tazexample.xml" attr="" comment="" date="1243426610" path="tazexample.xml" size="4792" stream="tazexample.xml" tmpFilename="/var/tmp/CGItemp42324" user="CigdemToprak" version="3"}%
+%META:FILEATTACHMENT{name="outputBoth.txt" attachment="outputBoth.txt" attr="" comment="Both corpora (Meinung and Wirtschaft/Umwelt) combined" date="1243768851" path="outputBoth.txt" size="282110" stream="outputBoth.txt" tmpFilename="/var/tmp/CGItemp45111" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="outputObjective.txt" attachment="outputObjective.txt" attr="" comment="Corpus with approx. 1000 sentences from TAZ, Wirtschaft/Umwelt, Agentur, only medium length" date="1243768896" path="outputObjective.txt" size="136830" stream="outputObjective.txt" tmpFilename="/var/tmp/CGItemp45099" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="outputSubjective.txt" attachment="outputSubjective.txt" attr="" comment="Corpus with approx. 1000 words from TAZ, Meinung, Kommentar, only medium length" date="1243768920" path="outputSubjective.txt" size="145280" stream="outputSubjective.txt" tmpFilename="/var/tmp/CGItemp45199" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="2000evaluationSet.rar" attachment="2000evaluationSet.rar" attr="" comment="2000EvaluationDataSet" date="1244502682" path="2000evaluationSet.rar" size="99184" stream="2000evaluationSet.rar" tmpFilename="/var/tmp/CGItemp49864" user="NicoErbs" version="1"}%

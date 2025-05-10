@@ -1,0 +1,12 @@
+%META:TOPICINFO{author="ArtemVovk" date="1232020860" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung in UIMA | 30 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+<nop>

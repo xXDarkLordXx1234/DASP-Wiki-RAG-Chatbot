@@ -1,0 +1,127 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1306342315" format="1.1" reprev="13" version="13"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+%TOC%
+
+---+ Quotes in Diskussionen
+   * *OF:* Wir sollten eine UIMA-Komponente zur Erkennung von Zitaten in Diskussionen entwickeln. Der Annotator soll alle Bereiche einer Diskussion markieren, die ein Zitat darstellen. Am Besten unterscheidet man auch zwischen "Zitat aus dem Artikel" und "Externes Zitat".
+      * Dies verlässlich hinzukriegen kann schwer sein. Allzu viel Zeit solltest du nicht darauf verbrauchen. Fürs Erste reicht eine vorläufige Version. Wenn wir sehen, dass diese Informationen für die spätere Klassifizierung besonders wichtig sind, können wir die Komponente verbessern
+      * Vielleicht hilft dieses Paper - es kann sein, dass es nichts bringt, da das Paper sich mit eMails beschäftigt: [[http://www.cs.cmu.edu/%7Evitor/papers/sigFilePaper_finalversion.pdf][Learning to Extract Signature and Reply Lines from Email]]
+
+---+ MediaWiki Parser in JWPL
+   * Wir können den Parser so umschreiben, dass er bei Bedarf die Doppelpunkte bei den Indents stehen lässt.
+   * Im Standardverhalten sollten die Doppelpunkte jedoch zunächst weiterhin entfernt werden.
+   * *YC:* Ich habe einen Weg gefunden ohne Umschreibung von MediaWikiParser die Doppelpunkte zu zählen. Und zwar kann man aus einem Paragraph mit Hilfe von Pargraph.getSrcSpan() die Start- und End-Indizes im Original-Text der Seite bestimmen. Somit kann man den nicht-geparsten Paragraph-Text extrahieren und Doppelpunkte zählen.
+
+---+ User identification for turn segments
+*YC:* <br>
+---++ Algorithmus
+Die User-Identifizierung wird für jeden Paragraph durchgeführt. Man verfolgt den Paragraph von der letzten Revision über alle Revisionen zurück und findet die Revision, in der der Paragraph zuerst auftaucht. Der User, der für diese Revision verantwortlich ist, wird als Contributer des Paragraphs festgelegt. <br><br>
+Die aktuelle Version des Algorithmus für die User-Identifizierung für jeden Pargraph auf einer Diskussionsseite sieht so aus: <br><br>
+1. Extrahiere die Start- und End-Indizes des Paragraph in dem Seitenquelltext. Sie entsprechen den Indizes dieses Paragraphs in der letzten Revision.<br>
+2. Starte bei der letzten Revision und gehe zurück in Richtung der ersten Revision<br>
+3. Für jede Revision gehe alle DiffParts durch und rekonstruiere die gemachten Veränderungen zwischen zwei Revisionen<br>
+4. Berechne die Start- und End-Indizes des Paragraphs in der vorherigen Revision
+   * Paragraph-Indizes müssen nur dann neu berechnet werden wenn der DiffPart-Start vor dem Start des Pargraphs war.
+   * Die Änderungen können so bestimmt werden     
+      * DELETE, CUT: Addiere die DiffPart-Länge zu beiden Pagraph-Indizes
+      * INSERT, PASTE: Subtrahiere die DiffPart-Textlänge von beiden Paragraph-Indizes
+      * REPLACE: Addiere zu beiden Paragraph-Indizes die Differenz zwischen DiffPart-Länge(Länge des Parts in der alten Revision) und DiffPart-Textlänge(Länge des Parts in der neuen Revision)
+5. Prüfe ob sich zwischen neu berechneten Paragraph-Indizes derselbe Paragraph, dass in dem Original-Seitenquelltext war, befindet.
+   * Wenn nein, dann wurde der Paragraph geändert. Wir speicher den User und den Timestamp für diesen Paragraph und beenden den Algorithmus
+   * Wenn ja, dann gehe zu älteren Revision über (Schritt 3).
+
+---++ Probleme
+---+++ SPAM, Malicious edits, Edits of foreign messages (gelöst)
+Wie wir z.B. [[http://simple.wikipedia.org/w/index.php?title=Talk:Main_Page&diff=prev&oldid=2631830][hier]] sehen, können auch Paragraphen von anderen User gelöscht oder verändert werden, so dass bei oben beschriebenem Algorithmus falscher User identifiziert wird. <br>
+*Lösung* <br>
+Im Fall von Malicious edits/SPAM, werden diese Edits in der Regel von Administratoren oder anderen Benutzer rückgängig gemacht, wie z.B. [[http://simple.wikipedia.org/w/index.php?title=Talk:Main_Page&diff=next&oldid=2631830][hier]]. Dadurch wird die Seite auf eine Revision vor den Malicious edits zurückgebracht. Unsere Paragraph-Koordinaten beziehen sich auf diese Version. Wenn also der Paragraph während eines Malicious Edits geändert wurde und später durch 
+einen "Revert" wiederhergestellt wurde, dann wird er in einer älteren Revision(zu der "reverted" wurde) wieder auf derselben Stelle auftauchen. Wir müssen unseren Algorithmus in dem Schritt 5 ändern: <br>
+
+5. Prüfe ob sich zwischen neu berechneten Paragraph-Indizes derselbe Paragraph, dass in dem Original-Seitenquelltext war, befindet.<br>
+   * Wenn nein. Wir speichern den User und den Timestamp. Wir gehen zu einer älteren Revision über, führen aber keine Neuberechnung der Paragraph-Indizes durch(also gleich zum Schritt 5). <br>
+   * Wenn ja(Paragraph taucht wieder auf). Wir löschen den aktuell bestimmten User und Timestamp und setzen den Algorithmus fort. Also gehen zu älteren Revision über und berechnen die Paragraph-Koordinaten neu(Schritt 3)<br>
+
+Da der aktualisierte Algorithmus bis zur ersten Revision läuft und nicht abbricht, kann es bei den Diskussionen mit sehr vielen Revisionen zu großen Laufzeiten kommen. Deshalb macht es Sinn einen "Revision-Window" einzuführen, das definiert wieviele Revsionen man nach der Änderung des Paragraphs zurückverfolgen will bis der Paragraph wieder auftaucht. In der Regel werden die Malicious edits innerhalb von maximal 10-20 Revisionen rückgängig gemacht. Es reicht also bei solchen Artikeln 10-20 Revisionen zurückzugehen und wenn der Paragraph nicht wieder auftaucht, die zuletzt bestimmten User und Timestamp zu speichern. Man kann das "Revision-Window" konfigurieren und wenn man formal exakte Ergebnisse braucht auch bis zur ersten Revision laufen lassen.<br><br>
+Es kann auch passieren, dass die von anderen User gemachte Änderungen nicht rückgängig gemacht werden, wie z.B. [[http://simple.wikipedia.org/w/index.php?title=Talk%3AMain_Page&action=historysubmit&diff=2380551&oldid=2380548][hier]] und [[http://simple.wikipedia.org/w/index.php?title=Talk:Cat&diff=next&oldid=47504][hier]]. In diesem Fall ist es nicht möglich den Original-User zu bestimmen, da der Pargraph, wie er in der letzten Revision steht, früher nicht auftaucht. Solche Fälle sind jedoch eher selten.
+
+---+++ XML-Escaped characters in Revision-Datenbank (gelöst)
+In Revision-Datenbank sind im Unterschied zu JWPL-Wikipedia-Datenbank die Zeichen &amp;, &quot;, &lt;, &gt; mit HTML-Escape-Sequenzen gespeichert. Somit stimmen die Indizes im Seitenquelltext und Revision-Text nicht überein<br>
+*Lösung* <br>
+Die o.g. Zeichen werden in dem Seitenquelltext mit Escape-Zeichen kodiert und Paragraph indizes neu berechnet, somit stimmen die Indizes überein.
+
+---+++ Different Usernames in Signatures (gelöst)
+Einige User geben andere User-Namen in ihren Signaturen. Z.B. [[http://simple.wikipedia.org/w/index.php?title=Talk:Germany&diff=prev&oldid=927180][hier]] "Prime Contributer" vs "Minor Contributer", und [[http://simple.wikipedia.org/w/index.php?title=Talk:Main_Page&diff=prev&oldid=2651958][hier]] "IanP" vs "Loudclaw". Es wäre vielleicht nützlich solche Daten für Benutzer-Analysen zu verwenden. Durch o.g. Algorithmus werden die echten Benutzernamen erkannt.
+
+---+++ Templates am Anfang eines Paragraphs
+[[http://simple.wikipedia.org/w/index.php?title=Talk%3AAlanis_Morissette&action=historysubmit&diff=1228189&oldid=484255][Hier]] sehen wir, dass ein Template "{{dyktalk|23 December|2008}}" vor einem Paragraph eingefügt wird. MediaWikiParser parst jedoch dieses Template als Teil des nachstehenden Paragraphs. Da der Template-Code ein Teil des Paragraphs wird, und Paragraph in solcher Form zuerst an dieser Stelle auftaucht, wird der Benutzer, der das Template eingefügt hat als Contributor festgelegt("Bluegoblin7" statt "Eptalon"). Eine Lösung wäre die Templates zu erkennen und Paragraph-Indizes neu zu berechnen.
+
+---++ User-Turns aus mehreren Paragraphen
+Da User-Turns auch aus mehreren Paragraphen bestehen können müssen alle Paragraphen, die zu einem User-Turn gehören bestimmt werden. 
+<br>Der letzte Paragraph eines User-Turns wird so festgelegt:
+   * Der nächste Paragraph wurde von einem anderen User geschrieben
+   * Der nächste Paragraph befindet sich in einem anderen Topic-Segment
+   * Der Unterschied zwischen Timestamps dieses Paragraph mit dem nächsten ist größer als ein festgelegtes Zeit-Fenster.
+   * Der nächste Paragraph hat eine andere Einrückung als der aktuelle
+Somit werden alle Paragraphe als ein User-Turn betrachtet bis der letzte Paragraph laut obiger Definition vorkommt.
+
+---+ Referenzen zu anderen Beiträgen
+---++ Eingerückte Referenzen
+Die Referenzen bzw. Antworten auf andere Beiträge müssen laut [[http://en.wikipedia.org/wiki/Help:Using_talk_pages#Indentation][Wikipedia-Richtlinien]] mit Einrückungen (Doppelpunkt) versehen werden. Somit kann man durch Aufzählen von Doppelpunkten die Tiefe von dem Beitrag in der Diskussion-Struktur bestimmen. Dabei kann man folgend vorgehen:<br>
+   1 Mercke für jeden Topic-Segment für jede Einrückungsgröße den letzten User-Turn mit dieser Einrückungsgröße
+   2 Für jeden User-Turn, falls es eingerückt ist, laufe alle Einrückungsgrößen durch, die kleiner als die Einrückungsgröße dieses User-Turns sind (von größten zu kleinsten)
+   3 Die erste Einrückungsgröße, zu der ein User-Turn zugewiesen ist, wird angenommen. Es wird eine Referenz-Verbindung zu diesem User-Turn hergestellt.
+---++ Probleme
+---+++ Verschieden Einrückungen innerhalb eines Beitrages
+[[http://simple.wikipedia.org/w/index.php?title=Talk:Main_Page&diff=prev&oldid=2694200][Hier]] sehen wir, dass der User auf einen Beitrag antwortet indem er seinen Beitrag einrückt. Seine Signatur schreibt er jedoch ohne Einrückungen. Somit entsteht eine falsche Beitrag-Struktur. Wenn der nächste User seinen Beitrag auch einrückt, dann wird eine Referenz auf die Signatur des vorherigen Benutzers festgestellt, obwohl in Wirklichkeit eine Referenz zu dem nicht-eingerückten Beitrag davor hergestellt werden muss.
+
+---+ Discussion Pages Statistiken und Analyse
+   * [[%ATTACHURL%/LengthStatistics.ods][LengthStatistics.ods]]<br>[[%ATTACHURL%/LengthStatistics.xls][LengthStatistics.xls]]: Text Length statistics of Discussion Pages
+      *  [[%ATTACHURL%/LengthStatisticsTopicName.ods][LengthStatisticsTopicName.ods]]<br>[[%ATTACHURL%/LengthStatisticsTopicName.xls][LengthStatisticsTopicName.xls]]: Text Length statistics of Discussion Pages (Only Topics with non-empty titles are considered)
+
+   * [[%ATTACHURL%/CountStatistics.ods][CountStatistics.ods]]<br>[[%ATTACHURL%/CountStatistics.xls][CountStatistics.xls]]: Count Number statistics of Discussion pages
+      * [[%ATTACHURL%/CountStatisticsTopicName.ods][CountStatisticsTopicName.ods]]<br> [[%ATTACHURL%/CountStatisticsTopicName.xls][CountStatisticsTopicName.xls]]: Count Number statistics of Discussion pages (Only Topics with non-empty titles are considered)
+
+   * [[%ATTACHURL%/TopicAvgLengthTemporalInclLastVersion.ods][TopicAvgLengthTemporalInclLastVersion.ods]]<br>[[%ATTACHURL%/TopicAvgLengthTemporalInclLastVersion.xls][TopicAvgLengthTemporalInclLastVersion.xls]]: Topic average length according to it's lifetime in days. Text lengths are sampled at revision points AND at last known version point (2011-04-06: Timestamp of Wikipedia version). Only Topics with non-empty titles are considered.
+
+   * [[%ATTACHURL%/TopicAvgLengthTemporalNoLastVersion.ods][TopicAvgLengthTemporalNoLastVersion.ods]]<br>[[%ATTACHURL%/TopicAvgLengthTemporalNoLastVersion.xls][TopicAvgLengthTemporalNoLastVersion.xls]]: Topic average length according to it's lifetime in days. Text lengths are sampled only at revision points. Only Topics with non-empty titles are considered.
+
+   * [[%ATTACHURL%/ReferenceTimeDistanceFinal.ods][ReferenceTimeDistanceFinal.ods]] <br>[[%ATTACHURL%/ReferenceTimeDistanceFinal.xls][ReferenceTimeDistanceFinal.xls]]: Time distance statistics between two adjacent User Turns from different Users inside a Topic (Reference vs No-Reference)
+
+   * [[%ATTACHURL%/NumUserTurnsOverTime.ods][NumUserTurnsOverTime.ods]]<br>[[%ATTACHURL%/NumUserTurnsOverTime.xls][NumUserTurnsOverTime.xls]]: Number of User Turns over time and its growth. Only User Turns that still exist are counted.
+
+   * [[%ATTACHURL%/UserTurnArticleInfluence.ods][UserTurnArticleInfluence.ods]]<br>[[%ATTACHURL%/UserTurnArticleInfluence.xls][UserTurnArticleInfluence.xls]]: Average change of Article Length after and before a User Turn in corresponding Discussion Page
+
+---++ Bemerkungen
+---+++ Diskussionsseiten mit wenigen Topics. Topics mit Titeln vs. Topics ohne Titeln.
+Großer Teil der Diskussionsseiten in Simple English Wikipedia sind noch nur wenig ausgebaut. Man sieht, dass größter Teil der Diskussionsseiten nur einen Topic haben und Anzahl der Topics pro Artikel sehr schnell absteigt. Wenn man die Topics nur auf die Topics mit einem nicht-leerem Titel begrenzt, dann steigt die Anzahl der Diskussionsseiten mit 0 Topics enorm(auf fast 11600). Beispiele solcher Seitens sind: [[http://simple.wikipedia.org/wiki/Talk:Metallurgy][Metallurgy]], [[http://simple.wikipedia.org/wiki/Talk:Island][Island]], [[http://simple.wikipedia.org/wiki/Talk:Theology][Theology]], [[http://simple.wikipedia.org/wiki/Talk:Argon][Argon]]. Hier sehen wir, dass viele Seiten mit einem Topic nur aus einem Anfang-Topic bestehen, der normalerweise keinen Titel besitzt. Durch die Filterung von Topics ohne Titeln haben solche Seiten keine Topics mehr. Da die Topics ohne Titel normalerweise kleiner als die mit Titel sind, sehen wir auch erhöhte Werte bei der Statistik-Werten von Textlängen und User-Beiträgen, wenn man nur die Topics mit Titeln betrachtet. 
+---+++ Zeitlicher Verlauf von Topic-Längen
+Bei dem zeitlichen Verlauf von Topic-Längen wurden nur die Topics mit einem Titel betrachtet, da man solche Topics auch unabhängig von ihrere Länge in Revisionen identifizieren kann. Alle Topics wurden auf eine einheitliche Zeitskala gebracht, in dem die Zeitpunkte wo die Topics in der Diskussionsseite zum ersten Mal auftachen als 0 festgelegt wurden. Die Zeitspanne wurde in Tagen aufgeteilt.  Für jeden Tag wurde immer eine Revision gewählt, die am nächsten zu diesem Zeitpunkt liegt.  <br><br>
+*Last know version point* <br>
+In vielen Topics werden nach kurzer Zeit nach ihrer Erstellung keine neue Beiträge mehr hinzugefügt. Das bezieht sich in Simple Wikipedia auch auf einige ganze Diskussionsseiten, wo nach einiger Zeit keine neue Beiträge mehr entstehen. Da die Seite in diesem Fall nur wenige Revisionen hat, kann die Zeitspanne zwischen erster und letzter Revision ziemlich kurz sein und außerdem letzte Revision weit in Vergangenheit liegen. Somit haben wir bei vielen Seiten zwischen erster und letzter Revision nur kurze Zeitraum, den wir untersuchen können. Das sehen wir in "Topic influence"-Diagramm von _TopicAvgLengthTemporalNoLastVersion.xsl_ Die Anzahl der Topics, die wir für Auswertung von Mittelwerten verwenden, fällt am Anfang sehr schnell, da wir für jeden Topic nur den Zeitraum zwischen erster und letzter Revision betrachten. <br> Man kann diesen Zeitraum erweitern, in dem wir aktuelle bekannte Länge des Topics verwenden. Die aktuellste Topic-Länge, die wir haben ist mit dem Timestamp des Wikipedia-Dumps datiert. Die Textlänge bleibt zwar ab der letzten Revision konstant, hat jetzt aber einen Einfluss auf einen größeren Diagrammabschnitt und stabilisiert das Diagramm. Wir sehen einen glätteren Diagrammverlauf, der mehr die Tendenz der Längeveränderung wiedergibt. In "Topic Influence"-Diagramm von _TopicAvgLengthTemporalInclLastVersion.xls_ sehen wir dass die Anzahl der Topics, die einen Einfluss auf Mittelwerte haben nicht so schnell absteigt und für jeden Zeitpunkt wir mehr Daten als vorher haben. <br> Da die Anzahl der Topics, die man in Betracht ziehen kann immer kleiner wird (es gibt weniger ältere Topics als jungere) wird das Diagramm immer ungenauer und am Ende haben wir sehr große Sprünge in den Werten, da nur wenige Daten vorhanden sind.
+
+ 
+
+  
+
+ 
+
+  
+
+%META:FILEATTACHMENT{name="LengthStatistics.ods" attachment="LengthStatistics.ods" attr="" comment="Text Length statistics of Discussion Pages" date="1306081640" path="LengthStatistics.ods" size="40904" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="CountStatistics.ods" attachment="CountStatistics.ods" attr="" comment="Count Number Statistics of Discussion pages" date="1306081619" path="CountStatistics.ods" size="58771" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="TopicAvgLengthTemporalInclLastVersion.ods" attachment="TopicAvgLengthTemporalInclLastVersion.ods" attr="" comment="Topic average length according to it's lifetime in days. Text lengths are sampled at revision points AND at last known version point (2011-04-06: Timestamp of Wikipedia version)" date="1305127278" path="TopicAvgLengthTemporalInclLastVersion.ods" size="198799" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="TopicAvgLengthTemporalNoLastVersion.ods" attachment="TopicAvgLengthTemporalNoLastVersion.ods" attr="" comment="Topic average length according to it's lifetime in days. Text lengths are sampled only at revision points" date="1305126972" path="TopicAvgLengthTemporalNoLastVersion.ods" size="173203" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="CountStatistics.xls" attachment="CountStatistics.xls" attr="" comment="" date="1306081630" path="CountStatistics.xls" size="22528" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="LengthStatistics.xls" attachment="LengthStatistics.xls" attr="" comment="" date="1306081655" path="LengthStatistics.xls" size="16384" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="TopicAvgLengthTemporalInclLastVersion.xls" attachment="TopicAvgLengthTemporalInclLastVersion.xls" attr="" comment="" date="1305299422" path="TopicAvgLengthTemporalInclLastVersion.xls" size="303104" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="TopicAvgLengthTemporalNoLastVersion.xls" attachment="TopicAvgLengthTemporalNoLastVersion.xls" attr="" comment="" date="1305299422" path="TopicAvgLengthTemporalNoLastVersion.xls" size="271360" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="LengthStatisticsTopicName.ods" attachment="LengthStatisticsTopicName.ods" attr="" comment="Text Length statistics of Discussion Pages (Only Topics with non-empty titles)" date="1305556484" path="LengthStatisticsTopicName.ods" size="34813" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="LengthStatisticsTopicName.xls" attachment="LengthStatisticsTopicName.xls" attr="" comment="Text Length statistics of Discussion Pages (Only Topics with non-empty titles)" date="1305556484" path="LengthStatisticsTopicName.xls" size="13824" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="CountStatisticsTopicName.ods" attachment="CountStatisticsTopicName.ods" attr="" comment="Count Number statistics of Discussion pages. (Only Topics with non-empty titles)" date="1305557530" path="CountStatisticsTopicName.ods" size="60295" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="CountStatisticsTopicName.xls" attachment="CountStatisticsTopicName.xls" attr="" comment="Count Number statistics of Discussion pages. (Only Topics with non-empty titles)" date="1305557530" path="CountStatisticsTopicName.xls" size="22528" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="ReferenceTimeDistanceFinal.ods" attachment="ReferenceTimeDistanceFinal.ods" attr="" comment="Time distance statistics between two adjacent User Turns from different Users inside a Topic (Reference vs No-Reference)" date="1306083862" path="ReferenceTimeDistanceFinal.ods" size="716593" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="ReferenceTimeDistanceFinal.xls" attachment="ReferenceTimeDistanceFinal.xls" attr="" comment="Time distance statistics between two adjacent User Turns from different Users inside a Topic (Reference vs No-Reference)" date="1306083874" path="ReferenceTimeDistanceFinal.xls" size="3119104" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="NumUserTurnsOverTime.ods" attachment="NumUserTurnsOverTime.ods" attr="" comment="Number of User Turns over time and its growth. Only User Turns that still exist are counted." date="1306320549" path="NumUserTurnsOverTime.ods" size="46530" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="NumUserTurnsOverTime.xls" attachment="NumUserTurnsOverTime.xls" attr="" comment="Number of User Turns over time and its growth. Only User Turns that still exist are counted." date="1306320549" path="NumUserTurnsOverTime.xls" size="20480" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="UserTurnArticleInfluence.xls" attachment="UserTurnArticleInfluence.xls" attr="" comment="Average change of Article Length after and before a User Turn in corresponding Discussion Page" date="1306342218" path="UserTurnArticleInfluence.xls" size="43008" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="UserTurnArticleInfluence.ods" attachment="UserTurnArticleInfluence.ods" attr="" comment="" date="1306342315" path="UserTurnArticleInfluence.ods" size="94457" user="YevgenChebotar" version="1"}%

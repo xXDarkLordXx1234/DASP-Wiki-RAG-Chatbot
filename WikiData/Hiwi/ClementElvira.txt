@@ -1,0 +1,156 @@
+%META:TOPICINFO{author="elvira" comment="reprev" date="1411465064" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ClementElvira - 2014-06-20
+---+ Project management
+
+---++ Project specification
+
+TBD
+---++ Tasks & WPs
+
+---+ Weekly report
+
+---++Week 1
+
+   * First days at Ukp, configuren eclipe, getting started
+
+---++Week 2
+
+   * Exploring dkpro and weka
+   * Implemeting first readers (acl and wikipedia dataset)
+   * Thinking about how to do summarization with dipro
+
+---++Week 3
+
+   * Starting implementing a summarizer with dkpro
+   * Adapting acl reader
+   * Adding Rouge evaluation through java
+
+---++Week 4
+
+   * Creating first baseline summarizer (Selecting the ten first sentences)
+   * Adding result parsing
+   *  TODO: add result
+
+---++Week 5
+
+   * Adding a second Baseline summarizer (the idea was to use weka to do something more sophiticated): It computed the Bhattacharyya distance between the ngram distribution of each sentence and the ngram distribution of each text. Sentence are then rejected or accepted in terms of a treshold, computed thanks to the golden summary.
+      * *TODO:* add result
+      *  *Comments* : the Bhattacharyya distance between two distribution p and q is <latex> D_{bat}(p, q) = - \ln \left( \sum_{x \in X} \sqrt{p(x) * q(x)} \right) </latex>
+  
+   * Working on a first summarizer from literature:  [[http://www.csie.ntnu.edu.tw/~g96470318/A_trainable_document_summarizer_.pdf][Kupiec, Pederson, Chen, A document trainable Summarizer]]
+
+---++Week 6
+   
+   * Improving Kupiec Perderson Chen classifier
+      * Adding features: Based on POS tagging (verb, adjective), and improving StopWord dataset
+      * Using Stemming during pre-processing step
+      * Linking golden summaries to body texts trough cosinus similarity (instead of Leverson distance)
+
+*Confusion matrix:* (trained on 1/4 of the acl dataset, computed on the validation set)
+|    | *P* | *N* |
+| *T* | 158 | 1172 |
+| *F* | 144 | 26419 | 
+
+*Rouge Evalution:* rouge C ~0.25<br>
+*Comment:* Because the number of feature is increasing, it is less and less relevant to approximate the corelation matrix by the identity matrix, which contradicts the main asumption of the naive bayes classifier.
+
+   * Implementing a new algorithm based on Random Forest (not tested yet)
+*Comment:* This classifier may be interesting because of the automatic selection of relevant feature and the "boosting".
+
+---++Week 7
+
+   * Improving ROUGE results for a subset of ACL to 0.29 (on validation set) thanks to Random forest
+   * Implementing Wikipedia dataset Reader
+   * First experiments on this datasets:
+      * *baseline: * 0.17
+      * *Modified version of Pederson Chen Kupiec: * 0.16
+
+---++Week 8
+
+   * Rewriting various baselines summarizer:
+      * TFIDF based (select 10 sentences with the highest TFIDF score)
+      * a summarizer that ponderate sentences positions by TFIDF score
+      * POS tagging Patern (compute ngram distribution on part of speech tagging on the summary, and look for ngram)
+
+---++Week 9
+
+   * Preparation of the presentation
+   * Improving Kupiec Pederson Chen Summarizer using annotation, solving bugs etc...
+   * Experimenting with short dataset (because of the curse of time computation)
+   *  Results available here:
+
+---++Week 10
+
+   * Implementing a MEAD based summarizer (http://www.summarization.com/mead/)
+   * rewritting some module, integrating ROUGE evaluation into batch Report
+   * Experimenting with MEAD summarizer
+   * Setting up environment for experiment on server
+
+---++ Plan
+
+   * First task, Experimenting:
+      * (75%) Implementing a 100% dkpro based summarizer (in term of features)
+      * Integrating MEAD feature
+      * Integrating POS ngram Patern features
+      * Integrating Kupiec ... features
+      * test various combination of these features, ml technics
+ 
+   * Second task, improving
+      * Spend time on one of the baseline summarizer (most probably POS ngram)
+      * Improve summarizer by doing error analysis
+
+---++Week 11 (08.04.2014 - 08.08.2014)
+
+   * Insupervised Learning
+      * Implementing and testing Mead classifier
+      * Improvement: Restriction to 250 words
+      * Adding feature: eliminating sentences with too much pronoun (to avoid summary without reference)
+      * Adding feature:  penalizing sentences with numbers
+   * result stuck around 0.20 - 0.23 (Wikipedia Rouge score (100 hundred articles))
+
+   * Supervised Learning
+      * Starting building classifier from
+         * tc features
+         * mead
+         * new: identifying topic name by TFIDF, designed bonus to sentences containing the name (even more if in the begining or the ned)
+      * classifier naive bayes, qda
+      * Current results: 0.24 on Wikipedia (100 articles)
+
+   * Testing the quality of the summary built from the gold reference (best 10 cosine similarity)
+      * Wikipedia Rouge score (100 hundred articles) : *0.20*
+      * that means that the outcome desinated for supervised learning might not be relevant
+
+*Plan*
+   * keep working on the supervised learning stuff
+   * Studied a new unsupervised learning method, based on cosine similarity and spectral clustering
+
+---++Week 12 (08.11.2014 - 08.15.2014)
+
+   * Writting master thesis
+
+---++Week 1 (08.18.2014 - 08.22.2014)
+
+   * A bit of master thesis
+   * Writting Intership report
+   * Working of a new unsupervised learning summarizer:
+
+Text are splitted into sentences. We compute a kind of Gram matrix for the text by computing the cosine similarity of two Sentence. This is not one hundred percent a Gram matrix since the cosine similiraty is not really a scalar product. But we are able from this matrix to use a nuw kind a clusterer such as Spectral clustering. I'have use a c++ implementation, called Graclus (available here http://www.cs.utexas.edu/users/dml/Software/graclus.html). The idea is to separate the text into clusters, supposed to represent topic, and then pick up some sentence from these clusters to avoid redundancy. 
+Task : choose the number of cluster (the idea is to choose one sentence per cluster) and how to select clusters
+
+---+++ First results
+Selecting randomly (far from optimality) sentences in clusters :
+| 100 files from Wikipedia datasets | *5 clusters* | *7 clusters* | *10 clusters* |
+| *Rouge 1 score* | 0.13 | 0.14 | 0.16 |
+
+| 100 files from ACL | *5 clusters* | *7 clusters* | *10 clusters* |
+| *Rouge 1 score* |  |  |  |
+
+Selecting sentences by best sumTFIDF score inside clusters:
+| 100 files from Wikipedia datasets | *5 clusters* | *7 clusters* | *10 clusters* |
+| *Rouge 1 score* |  |  | 0.18 |
+
+%META:FILEATTACHMENT{name="readme" attachment="readme" attr="" comment="Readme of the project" date="1411464863" path="readme" size="11060" user="elvira" version="1"}%
+%META:FILEATTACHMENT{name="mcf.pdf" attachment="mcf.pdf" attr="" comment="Dealing with outcome unbalance by corruption" date="1411464959" path="mcf.pdf" size="569971" user="elvira" version="1"}%
+%META:FILEATTACHMENT{name="presentation_finale.pdf" attachment="presentation_finale.pdf" attr="" comment="final presentation" date="1411464993" path="presentation finale.pdf" size="1043685" user="elvira" version="1"}%
+%META:FILEATTACHMENT{name="Elkan,_Noto_2008_Learning_classifiers_from_only_positive_and_unlabeled_data.pdf" attachment="Elkan,_Noto_2008_Learning_classifiers_from_only_positive_and_unlabeled_data.pdf" attr="" comment="another way to deal with outcome unbalanced" date="1411465063" path="Elkan, Noto_2008_Learning classifiers from only positive and unlabeled data.pdf" size="216291" user="elvira" version="1"}%

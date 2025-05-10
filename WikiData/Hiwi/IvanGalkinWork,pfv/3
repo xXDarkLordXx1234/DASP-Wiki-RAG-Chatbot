@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="IvanGalkin" date="1231969365" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Ivan Aufgaben* ||
+| *Aufgabe*  | *% done*  |
+| Einarbeitung !DataMachine | 0 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Ivan Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung DataMachine | 13.01.2009 | 4 | Installation von mySQL, Einrichtung der Datenbank, Einlesen in Quellcode und UKP-Seite, Download von SimpleEnglish-Dump, Starten der DataMachine (in einigen Stunden wurden die Daten erfolgreich generiert) |
+| Einarbeitung DataMachine | 14.01.2009 | 2 | Einlesen in den Programm-Quellcode und die Modifikation dieses Programmcodes, erfolgreicher DataMachine-Programmstart mit dem GZip-on-the-fly-Parser |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+<nop>

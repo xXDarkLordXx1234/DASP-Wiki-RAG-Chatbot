@@ -1,0 +1,131 @@
+%META:TOPICINFO{author="deboer" comment="" date="1546134912" format="1.1" reprev="38" version="39"}%
+%META:TOPICPARENT{name="MarcelDeBoer"}%
+---++ Mai 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-05-03 | Issue 244 [GitLab] | 2 | Cascading deletion |
+| 2018-05-04 | Issue 168 [GitHub] | 1 | add properties to KB/EKB, add Wicket Components to UI |
+| 2018-05-04 | Issue 244 [GitLab] | 1 | Cascading deletion |
+| 2018-05-05 | Issue 168 [GitHub] | 1 | add properties to KB/EKB, add Wicket Components to UI |
+| 2018-05-08 | Issue 168 [GitHub] | 0.5 | create corresponding Issue and Pullrequest on GitHub, adapt JUnit Tests |
+| 2018-05-09 | Issue 168 [GitHub] | 1.5 | Resolving conflicts with master branch and adapting code |
+| 2018-05-10 | Issue 244 [GitHub] | 3 | consider reification strategy when deleting, show number of deleted statements in confirmation dialog |
+| 2018-05-11 | Issue 166 [GitHub] | 1 | create panel and add it to wizard & project settings |
+| 2018-05-12 | Issue 166 [GitHub] | 1 | create panel and add it to wizard & project settings |
+| 2018-05-12 | Issue 244 [GitLab] | 1.5 | trying to implement JUnit test but having problems |
+| 2018-05-13 | Issue 166 [GitHub], Issue 185[GitHub] | 0.5 | implement sorting for 185 and resolve conflicts of PR 166 with master |
+| 2018-05-14 | Sprint Meeting | 1 |  |
+| 2018-05-14 | Issue 185[GitHub] | 0.25 | sort in sql query instead of in panel |
+| 2018-05-15 | Issue 134 [GitHub] | 1 | additional IRIs |
+| 2018-05-16 | Issue 168 [GitHub], Issue 174[GitHub] | 1.5 | JUnit tests for deletion, resolve merge confilcts for PR 169 and implement requested changes  |
+| 2018-05-16 | Issue 217 [GitHub] | 2.0 | fix scrolling behavior of property panel and concept panel |
+| 2018-05-17 | Issue 225 [GitHub] | 1 | Easier Subclassing |
+| 2018-05-18 | Issue 225 [GitHub] | 3 | Easier Subclassing |
+| 2018-05-18 | Issue 225 [GitHub] | 1 | Investigating problems, error message for same subclass name |
+| 2018-05-26 | Issue 235 [GitHub] | 1 | Looking for changes that caused this bug, fixing it by changing modifier |
+| 2018-05-30 | Issue 134 [GitHub] | 0.5 | adjust methods to new kb fields |
+| 2018-05-x | Meetings | 3 | meetings with REC and NaK throughout the month |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ June 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-06-04 | Sprint Meeting | 1 |  |
+| 2018-06-x | Meetings | 4 | meetings with NaK throughout the month |
+| 2018-06-07 | Issue 138 [GitHub] | 3 | explicit definition of root concepts |
+| 2018-06-13 | Issue 138 [GitHub] | 3 | explicit definition of root concepts |
+| 2018-06-13 | Issue 138 [GitHub] | 1 | explicit definition of root concepts |
+| 2018-06-13 | Issue 138 [GitHub] | 1.75 | explicit definition of root concepts |
+| 2018-06-18 | Sprint Meeting | 1 |  |
+| 2018-06-19 | Issue 169 [GitHub] | 4 | implement kb exporter |
+| 2018-06-20 | Issue 169 [GitHub] | 0.5 | adjust to requested changes, fix build |
+| 2018-06-21 | Issue 169 [GitHub] | 1.25 | JUnit test for exporter |
+| 2018-06-21 | Issue 169 [GitHub] | 1.25 | JUnit test for exporter |
+| 2018-06-28 | Issue 169 [GitHub] | 2.5 | Move KB Profiles to a file |
+| 2018-06-29 | Issue 169 [GitHub] | 1.75 | Move KB Profiles to a file |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ July 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-07-02 | Sprint Meeting | 1 |  |
+| 2018-07-02 | #377 | 0.5 |  |
+| 2018-07-10 | participate in User Study | 1.5 |  |
+| 2018-07-13 | Sprint Meeting | 1 |  |
+| 2018-07-26 | Cascading deletion for Wikidata reification| 1 |  |
+| 2018-07-27 | Statment validation| 3 |  |
+| 2018-07-30 | Sprint Meeting | 1 |  |
+| 2018-06-x | Meetings | 1.5 | meetings with NaK throughout the month |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ August 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-08-02 | #377 | 0.5 |  |
+| 2018-08-02 | #170 | 2.0 |  |
+| 2018-08-13 | Sprint Meeting | 1 |  |
+| 2018-08-15 | #298 | 3.5 |  |
+| 2018-08-17 | #124 | 2.5 |  |
+| 2018-08-17 | KB Example Project | 1 |  |
+| 2018-07-20 | Statment validation| 6 |  |
+| 2018-08-27 | Sprint Meeting | 1 |  |
+| 2018-08-27 | #492 | 1.5 |  |
+| 2018-08-27 | #419 | 1.0 |  |
+| 2018-08-x | Meetings | 2 | meetings with NaK throughout the month |
+| 2018-08-31 | #298 | 3 | add classpath import and implement requested changes |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ September 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-09-02 | make query limit configurable on 0.5 | 3.5 |  |
+| 2018-09-02 | make query limit configurable on master | 2.5 |  |
+| 2018-09-03 | pre defined kbs | 1 |  |
+| 2018-09-13 | kb-mapping refacoring | 7.5 |  |
+| 2018-09-13 | solve merge confilicts | 1 || |
+| 2018-09-15 | support sub-property labels  | 8 |  |
+| 2018-09-15 | fix importer  | 2 |  |
+| 2018-09-17 | Sprint Meeting  | 1.0 |  |
+| 2018-09-x | Meetings | 4 | meetings with NaK throughout the month |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ Oktober 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-10-02 | support sub-property labels | 3 |  |
+| 2018-10-02 | elevated kb properties | 1.5 |  |
+| 2018-10-5 | support sub-property labels  | 1.75 |  |
+| 2018-10-5 | elevated kb properties  | 0.75 |  |
+| 2018-10-5 | solve merge confilcts  | 0.5 |  |
+| 2018-10-6 | elevated kb properties  | 0.5 |  |
+| 2018-10-6 | fix rendering bugs in #299 & #533  | 1.25 |  |
+| 2018-10-10 | skip tests if endpoint is not available  | 1 |  |
+| 2018-10-15 | solve merge conflicts, investigate bugs  | 1 |  |
+| 2018-10-28 | concept feature can use disabled kbs #554  | 3 |  |
+| 2018-10-29 | elevated kb properties | 0.5 |  |
+| 2018-10-29 | concept feature can use disabled kbs #554  | 1 |  |
+| 2018-10-30 | #554 & #557  | 4.0 |  |
+| 2018-10-31 | #122 | 5.75 |  |
+| 2018-10-31 | refactor kb module | 2 |  |
+| 2018-10-x | Meetings | 3 | meetings with NaK throughout the month |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ November 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-11-06 | Sprint Meeting | 1 |  |
+| 2018-11-11 | #639 change ui structure | 3.5 |  |
+| 2018-11-12 | #639 change ui structure | 4   |  |
+| 2018-11-19 | Meetings | 1.5  |  |
+| 2018-11-24 | #639 | 4 || 
+| 2018-11-25 | #639 | 2.75 || 
+| 2018-11-26 | UI-Structure, review subproperty labels, bugfix 687 | 5 ||
+| 2018-11-27 | UI-Structure, review subproperty labels, bugfix 687 | 5 || 
+| 2018-11-28 | Solve merge conflict, review pullrequets, kb refactoring | 3.25 || 
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+---++ Dezember 2018
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2018-12-04 | Sprint Meeting | 1 |  |
+| 2018-12-20 | Sprint Meeting | 1 |  |
+| 2018-12-25 | sub property labels | 4 |  |
+| 2018-12-25 | sub property labels/kb refactoring/review | 6 |  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+
+
+-- Main.MarcelDeBoer - 2018-05-09

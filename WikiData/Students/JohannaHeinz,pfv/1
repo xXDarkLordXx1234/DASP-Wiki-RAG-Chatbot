@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="stab" comment="" date="1539255401" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2018-10-11 
+   * Forms for account, IP, etc. 
+   * Discuss data to use for this project
+   * Task description
+   * Evaluation setup
+   * @discussed: (1) tagging approaches vs. (2) ranking approaches
+   * *Participate in the advanced seminar*: Dienstag 11:30 Raum B002+
+   * *Todos / next steps*
+      * Prepare forms and contract / etc.
+      * Get familiar with the following methods CRF, LSTM-CRF and sequence-tagging (these models are for instance used for named-entity recognition,)
+      * Get familiar with keras / tensorflow
+      * Think about evaluation strategies w.r.t. to compare tagging and ranking approaches
+      * Evaluation Setup: How to split the data? Cross-topic vs. In-topic vs. "we don't care about the topic"
+
+
+
+-- Main.ChristianStab - 2018-10-11

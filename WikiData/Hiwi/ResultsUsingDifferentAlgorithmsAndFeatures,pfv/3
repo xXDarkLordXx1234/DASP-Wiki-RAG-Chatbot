@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="MichaelKutschke" date="1336406632" format="1.1" version="3"}%
+%META:TOPICPARENT{name="PANChallenge"}%
+---++ 4.5. 10-fold cv, 1000 Dokumente (ca. 50% positiv), Naive Bayes, alle Features (kein Stopword removal etc.)
+
+---+++ Advert
+
+   * F-Measure\:\ =0.9805471756995735
+   * Recall\ (Flawed)\:\ =0.9757763975155279
+   * Precision\ (Flawed)=0.9853648337863266
+
+Zweites Experiment auf Moe:
+
+   * F-Measure\:\ =0.9901941557168072
+   * Precision\ (Flawed)\:\ =0.9884494909945184
+   * Recall\ (Flawed)\:\ =0.9919449901768173
+
+---+++ Empty Section
+
+   * F-Measure\:\ =0.9809430255402751
+   * Precision\ (Flawed)\:\ =0.9695145631067961
+   * Recall\ (Flawed)\:\ =0.9926441351888668
+
+---+++ Notability
+
+   * F-Measure\:\ =0.9643313353640562
+   * Precision\ (Flawed)\:\ =1.0
+   * Recall\ (Flawed)\:\ =0.9311195445920304
+
+
+-- Main.MichaelKutschke - 2012-05-02

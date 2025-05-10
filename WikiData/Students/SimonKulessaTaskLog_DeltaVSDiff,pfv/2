@@ -1,0 +1,52 @@
+%META:TOPICINFO{author="SimonKulessa" date="1212987583" format="1.1" version="2"}%
+%META:TOPICPARENT{name="SimonKulessaTaskLog"}%
+*Komponente:*
+Delta Tool 
+
+*Beschreibung:*
+Da sowohl die Diff und Delta Variante die selbe Aufgabe erfüllen hier ein kleiner Vergleich beider Komponenten.
+
+<table border=1>
+<tr style="width: 40%">
+  <td></td>
+  <td>Diff</td>
+  <td>Delta</td>
+</tr>
+<tr style="width: 30%">
+  <td>Algorithmus:</td>
+  <td>Simple</td>
+  <td>Komplex</td>
+</tr>
+<tr style="width: 30%">
+  <td>Verfahren:</td>
+  <td>Heuristische Variante</td>
+  <td>Heuristische Variante</td>
+</tr>
+<tr>
+  <td>Kompressionsrate auf dem Test Set:</td>
+  <td>~ 92%</td>
+  <td>~ 90%</td>
+</tr>
+<tr>
+  <td>Laufzeit auf dem Test Set<br>(als Single-Thread Anwendung):</td>
+  <td>~ 45 Minuten</td>
+  <td>~ 38 Minuten</td>
+</tr>
+<tr>
+  <td>Anzahl Revisionen</td>
+  <td>722594</td>
+  <td>721862</td>
+</tr>
+<tr>
+  <td>Anzahl (Diff/Delta) Parts</td>
+  <td>10361489<br>~14 Parts/Rev</td>
+  <td>1466344<br>~2 Parts/Rev</td>
+</tr>
+<tr>
+  <td>Anmerkung</td>
+  <td>keine</td>
+  <td>Enthält mehr Text,<br>daher wäre die SQL-DB besser komprimierbar</td>
+</tr>
+</table>
+
+-- Main.SimonKulessa - 09 Jun 2008

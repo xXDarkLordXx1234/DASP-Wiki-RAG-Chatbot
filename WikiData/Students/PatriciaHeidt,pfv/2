@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="heidt" comment="" date="1532515088" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis
+
+*Supervisors:*
+   * Daniil Sorokin
+   * Maxime Peyrard
+   * Teresa Botschen
+
+---++ Meetings:
+
+---+++ 24.07.2018:
+*TODOs:* <br>
+   * try other baselines (ROUGE-2, ROUGE-WE, ...)
+   * run entity linker on data
+   * find some examples where ROUGE fails
+
+
+---+++ 12.07.2018:
+*TODOs:* <br>
+Create Pipeline:
+   1 Load data
+   2 Rouge as baseline
+   3 Compute 2 different correlations and plot results
+
+
+-- Main.PatriciaHeidt - 2018-07-12

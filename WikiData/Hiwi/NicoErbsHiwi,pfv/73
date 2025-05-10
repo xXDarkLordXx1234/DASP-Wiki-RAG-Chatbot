@@ -1,0 +1,138 @@
+%META:TOPICINFO{author="NicoErbs" date="1274032449" format="1.1" version="73"}%
+%META:TOPICPARENT{name="Hiwi.WebHome"}%
+---++ Work
+
+%TOC%
+
+
+---+++ Related Work
+   * [[Students.NicoErbsHiWiRelatedWork][Related Work]]
+
+---+++ QuickLinks
+   * Students.SemEval
+   * Students.SemEvalSegmentation
+   * Students.SemEvalResultsAnalysis
+   * [[Projects/Wikulu.IUI-Planung]]
+
+---+++ Tasks
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Task 1: Creating Maven project for keyphrase experiments | 100 |
+| Task 2: Improving experimental framework for existing keyphrase experiments | 100 |
+| Task 2a: Collect information about missing files for experiments | 100 |
+| Task 2b: Establish working preprocessing | 100 |
+| Task 2c: Create new model for Kea (because of out-dated serial number) | 100 |
+| Task 3: Print out parameters from CPEs to output (see [[Students.ParameterResultWriter][here]]) | 100 |
+| Task 3a: Check possibility to extract results to Excel format | 100 |
+| Task 4: Redesign Cooccurrence Graph for better compatibility with Students.PageRank | 100 |
+| Task 5: Improve Pos filter in Students.CandidateAnnotator | 100 |
+| Task 6: Experiments with keyphrase extraction | 80 |
+| Task 7: Check paper [[Students.MikalaiAutaeuMarchese09]['Large Dataset for Keyphrases Extraction']] for training data and integrate it in existing experiments | 5 |
+| Task 8: Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 100 |
+| Task 8a: Add segmentation to exisiting experiments | 100 |
+| Task 8b: Analyze logs of experiments for additional tuning | 100 |
+| Task 8c: Investigate clustering | 100 |
+| Task 8d: Combine all previous results | 100 |
+| Task 8e: Keyphrase extraction paper for Students.SemEval-2010 | 05 |
+| Task 9: Review Students.TfidfConsumer | 100 |
+| Task 9a: Create new Students.TfidfConsumer and corresponding annotator | 100 |
+| Task 10: Refactor StanfordNamedEntityRecognizer to uutuc format (see e.g. StopwordFilter) | 0 |
+| Task 11: Prepare short presentation for Graph Problem in NLP | 100 |
+| Task 12: Get familar with Link Discovery | 80 |
+| Task 13: Get familar with Wikulu | 60 |
+| Task 14: [[Projects/Wikulu.IUI-Planung]] | 10 |
+
+
+---+++ Working Hours
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Task* | *Date* | *Hours* | *Remark* |
+| Installing eclipse | 05.01.2010 | 5.5 | |
+| Creating Maven project | 06.01.2010 | 5.5 | Additionally solving problems with eclipse |
+| Improving experimental framework for existing keyphrase experiments | 07.01.2010 | 2.5 | Understanding keyphrase extraction framework |
+| Improving experimental framework for existing keyphrase experiments | 12.01.2010 | 3 | Students.StartFrameworkCandidateBaselineExperiments |
+| Improving experimental framework for existing keyphrase experiments | 12.01.2010 | 6.5 | Students.StartFrameworkCandidateBaselineExperiments |
+| Improving experimental framework for existing keyphrase experiments | 13.01.2010 | 2 | Students.StartFrameworkCooccurrenceKeyphraseExperiments |
+| Redesign Cooccurrence Graph for better compatibility with Students.PageRank | 13.01.2010 | 2 | Change [[Students.NicoErbsPageRankCooccurrenceAndGraphs][CooccurrenceGraphAnnotator]] |
+| Redesign Cooccurrence Graph for better compatibility with Students.PageRank | 15.01.2010 | 1 | Change [[Students.NicoErbsPageRankCooccurrenceAndGraphs][CooccurrenceGraphAnnotator]] |
+| Redesign Cooccurrence Graph for better compatibility with Students.PageRank | 18.01.2010 | 2 | Analyze impact of changes (see [[Students.NicoErbsPageRankCooccurrenceAndGraphs][here]]) |
+| Improving experimental framework for existing keyphrase experiments | 19.01.2010 | 5 | Remaining frameworks in package keyphrases.acl09 |
+| Redesign Cooccurrence Graph for better compatibility with Students.PageRank | 20.01.2010 | 1.5 | Adding comments and finalisation |
+| Improve Pos filter in Students.CandidateAnnotator | 20.01.2010 | 1 | Added JUnit test case for Pos filter and made minor changes. Further changes do not have priority |
+| Collect information about missing files for experiments | 20.01.2010 | 0.5 | found ESA indexes |
+| Improving experimental framework for existing keyphrase experiment | 20.01.2010 | 1.5 | Analyzing and correcting errors for experiments |
+| Improving experimental framework for existing keyphrase experiment | 21.01.2010 | 1 | Analyzing and correcting errors for experiments |
+| miscellaneous | 22.01.2010 | 2 | Related work (reading and summarizing in [[Students.NicoErbsHiWiRelatedWork][wiki]]) |
+| Improving experimental framework for existing keyphrase experiment | 22.01.2010 | 1 | Analyzing and correcting errors for experiments |
+| Create new model for Kea | 26.01.2010 | 2 | Kea Model training and improving architecture |
+| Redesign Cooccurrence Graph | 26.01.2010 | 2 | JUnit tests from semantics |
+| Establish working preprocessing | 26.01.2010 | 3.5 | |
+| Establish working preprocessing | 27.01.2010 | 3 | Reached problem with StanfordNamedEntityRecognizer |
+| Establish working preprocessing | 29.01.2010 | 2 | Fixing minor errors |
+| Review TfIdfConsumer and eliminate fixed references to path | 29.01.2010 | 3 | Transforming to AE (uutuc style) Decision: Create new Students.TfidfConsumer |
+| Create new Students.TfidfConsumer and corresponding annotator | 02.02.2010 | 6.5 | all necessary changes |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 02.02.2010 | 2 | created Reader and preprocessing |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 03.02.2010 | 5 | improved Reader for loading keyphrases, created writer and performed experiments |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 04.02.2010 | 3 | corrected writer for results |
+| Print out parameters from CPEs to output (see [[Students.ParameterResultWriter][here]]) | 09.02.2010 | 5 | Created classes with Excel functions |
+| Print out parameters from CPEs to output (see [[Students.ParameterResultWriter][here]]) | 10.02.2010 | 5 | Improved classes and applied to experiments |
+| Print out parameters from CPEs to output (see [[Students.ParameterResultWriter][here]]) | 14.02.2010 | 4.5 | Corrected errors and created overview of results |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 16.02.2010 | 2 | Discussion about progress and further enhancements |
+| Improving experimental framework for existing keyphrase experiments | 17.02.2010 | 2 | Validating integrity ([[Students.FrameworkAdaptionResults][Results]]) |
+| Print out parameters from CPEs to output | 17.02.2010 | 2 | Improved style of output |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 17.02.2010 | 2 | Created and filled page Students.SemEvalStatus |
+| Improving experimental framework for existing keyphrase experiments | 18.02.2010 | 5 | Corrected errors and extracted results for comparison |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 19.02.2010 | 3 | Completed results for new framework and Students.SemEval comparison statistics |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 22.02.2010 | 2 | Preprocessed training dataset and reconfigured all experiments |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 23.02.2010 | 6.5 | Created consumer for Students.SemEval data to standard format. Created KEA model. Analyzed results |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 24.02.2010 | 5.5 | Completed results for training data. Started segmentation |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 26.02.2010 | 3 | Students.LexSem Results and applying different KEA models |
+| Task 8a: Add segmentation to exisiting experiments | 01.03.2010 | 3 | Worked on Segmenter |
+| Task 8a: Add segmentation to exisiting experiments | 02.03.2010 | 5.5 | Completed (De-)Multiplier components and started experiments. Data analysis for a single file. |
+| Task 8a: Add segmentation to exisiting experiments | 03.03.2010 | 2.5 | Created a couple of DeSegmenter |
+| Algo in eWERC | 04.03.2010 | 2 | Preperation and Presentation |
+| Keyphrase extraction for [[Students.SemEvalTechnical]['Students.SemEvalTechnical-2']] (#5) | 05.03.2010 | 1 | R-Precision and overview table |
+| Task 8a: Add segmentation to exisiting experiments | 07.03.2010 | 2 | Prepare and evaluate experiments for different Desegmenter |
+| Statusmeeting | 08.03.2010 | 1 | |
+| Task 8c: Combine all previous results | 09.03.2010 | 6.5 | Create Reader for keyphrases only and adapted Evaluator |
+| Task 8c: Combine all previous results | 10.03.2010 | 4 | Implemented different strategies |
+| Statusmeeting | 15.03.2010 | 1 | |
+| Task 8a: Add segmentation to exisiting experiments | 17.03.2010 | 8.5 | New version of segmentation and better combination |
+| Task 8: Keyphrase extraction for 'Students.SemEvalTechnical-2' (#5) | 18.03.2010 | 9 | Preparing final results and attending UKP Workshop |
+| Task 8: Keyphrase extraction for 'Students.SemEvalTechnical-2' (#5) | 19.03.2010 | 5 | Validating and submiting final results |
+| Task 8e: Keyphrase extraction paper for Students.SemEval-2010 | 23.03.2010 | 4 | Outline |
+| Task 8: Keyphrase extraction for 'Students.SemEval-2' (#5) | 29.03.2010 | 7 | Create overview of results: Students.SemEvalResults |
+| Task 8: Keyphrase extraction for 'Students.SemEval-2' (#5) | 30.03.2010 | 6 | Improving code structure and JUint tests |
+| Task 8: Keyphrase extraction for 'Students.SemEval-2' (#5) | 31.03.2010 | 5 | Bugfixing and investigating segmentation for LSG |
+| Task 8: Keyphrase extraction | 13.03.2010 | 4 | Additional experiments with short papers |
+| Task 8a: Add segmentation to exisiting experiments | 14.04.2010 | 4 | Get segmentation for LSG working |
+| Task 8a: Add segmentation to exisiting experiments | 16.04.2010 | 4 | Segmentation for LSG works |
+| Task 6: Experiments with keyphrase extraction | 19.04.2010 | 3 | Additional experiments with LSG segmented |
+| Task 12: Get familar with Link Discovery | 20.04.2010 | 5 | JH wiki articles and overview, preparing evaluation tool |
+| Task 13: Get familar with Wikulu | 21.04.2010 | 6 | Installing Wikulu, Wikulu Meeting and bugfixing |
+| Handing over TWiki and LinkDetection Experiments | 27.04.2010 | 6 | |
+| Wikulu | 28.04.10 | 5 | Presentations for Wikulu and LinkDiscovery experiments |
+| TWiki Organisation | 30.04.10 | 3 | User privilege management |
+| IUI-Planung | 10.04.2010 | 8 | Hiwi organization and other meetings |
+| Link Discovery | 11.04.2010 | 6 | |
+| Task Description MM | 12.04.2010 | 7.5 | |
+| Wiki Structure | 13.04.2010 | 4 | |
+| Students assistance | 14.04.2010 | 1 | |
+| TaskDescription MM | 15.04.2010 | 4 | |
+| Wiki Structure | 16.04.2010 | 3.5 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 270 | until May 15th 2010 |
+<nop>
+
+
+
+----+++ Useful internal links
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/artifactory][Artifactory]]
+
+----+++ Notes
+   * Use eclipse classic distribution
+   * Use Subclipse (!not subversion)
+
+
+-- Main.NicoErbs - 11 Jan 2010
+
+%META:TOPICMOVED{by="NicoErbs" date="1272639699" from="Students.NicoErbsHiWiWork" to="Hiwi.NicoErbsHiwi"}%

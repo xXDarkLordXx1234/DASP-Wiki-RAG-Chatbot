@@ -1,0 +1,78 @@
+%META:TOPICINFO{author="ShuoYang" date="1285178661" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Statistik von Interlanguage-Links der Wikipedia
+
+
+---++ Englische Wikipedia -> Deutsche Wikipedia
+
+Gesucht ist wie groß ein Anteil der Artikel von englischer Wikipedia hat ein entsprechendes Artikel in deutscher Wikipedia.
+
+
+---+++ enwiki-20100904-pages-articles.xml
+Diese Archiv wurde zur 11 Teile getrennt und einzeln gespeichert.
+
+| *Artikel#* | *Anzahl Pages* | *Davon Redirect* | *Netto* | *Anzahl gültiger* Pages* | *Prozent gültiger Pages (%)* |
+| 1 | 1138635 | 476075 | 662560 | 260392 | 39.30 |
+| 2 | 895785 | 400482 | 495303 | 89098 | 17.99 |
+| 3 | 753287 | 326399 | 426888 | 52859 | 12.38 |
+| 4 | 643232 | 275872 | 367360 | 39644 | 10.79 |
+| 5 | 600758 | 259956 | 340802 | 26733 | 7.84 |
+| 6 | 569918 | 245305 | 324613 | 26446 | 8.15 | 
+| 7 | 680997 | 286998 | 393999 | 27495 | 6.98 |
+| 8 | 682438 | 310460 | 371978 | 24482 | 6.58 |
+| 9 | 662481 | 346409 | 316072 | 17013 | 5.38 |
+| 10 | 685334 | 299497 | 385837 | 17532 | 4.54 |
+| 11 | 3042360 | 1380605 | 385837 | 59447 | 3.58 |
+| *Total* | *10 355 225* | *4 608 058* | *5 747 167* | *641 141* | *11.16* |
+
+* Gültig: Es gibt mindestens ein Interlanguage-Link auf Zielsprache in Text-Bereich der Artikel (Page).
+
+
+---+++ enwiki-latest-pages-articles.xml (20100905)
+
+| *Anzahl Pages* | *Davon Redirect* | *Netto* | *Anzahl gültiger Pages* | *Prozent gültiger Pages (%)* |
+| 10 355 225 | 4 608 058 | 5 747 167 | 640 063 | 11.14 |
+
+---+++ enwiki-20100130-pages-articles.xml
+
+| *Anzahl Pages* | *Davon Redirect* | *Netto* | *Anzahl gültiger Pages* | *Prozent gültiger Pages (%)* |
+| 9 541 307 | 4 150 720 | 5 390 587 | 586 591 | 10.88 |
+
+
+---++ Deutsche Wikipedia -> Englische Wikipedia
+---+++ dewiki-20100903-pages-articles.xml
+
+| *Anzahl Pages* | *Davon Redirect* | *Netto* | *Anzahl gültiger Pages* | *Prozent gültiger Pages (%)* |
+| 2 288 998 | 790 166 | 1 498 832 | 634 552 | 42.34 |
+
+
+---++ Anhang: Struktur von Mediawiki-XML
+[[http://www.mediawiki.org/xml/export-0.4.xsd][XSD]]
+
+<verbatim>
+/* Structure
+	 * <mediawiki>
+	 *     <siteinfo>
+	 *     </siteinfo>
+	 *     <page>
+	 *         <title>xxx</title>
+	 *         ...
+	 *         <revision>
+	 *             <text>xxxxx</text>
+	 *         </revison>
+	 *     </page>
+	 *     <page>
+	 *         ...
+	 *     </page>
+	 *     ...
+	 *     <page>
+	 *         ...
+	 *     </page>
+	 * </mediawiki>
+	 * 
+	 */
+</verbatim>
+
+
+
+-- Main.ShuoYang - 19 Sep 2010

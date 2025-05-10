@@ -1,0 +1,283 @@
+%META:TOPICINFO{author="bugert" comment="" date="1601043798" format="1.1" reprev="41" version="41"}%
+%META:TOPICPARENT{name="Services/Campus.ComputeCluster"}%
+---+!! Slurm Compute Cluster FAQ
+
+%TOC%
+
+---++ Jobs and scheduling
+
+---+++ What's the status of my jobs?
+Run:
+<verbatim>
+squeue --u $USER
+</verbatim>
+
+For more monitoring commands, see e.g. [[https://hpcf.umbc.edu/general-productivity/tools-for-monitoring-your-jobs/][here.]]
+
+---+++ Why is my job pending?
+Check the REASON column of the =squeue= output.
+   * "Resources" means that there is currently no free compute node with the resource requirements of your job.
+   * "Priority" means that other jobs in the same partition have a higher priority than yours.
+   * "QOS..." means that your job is pending because of restrictions defined by us. For example, =QOSMaxGRESPerUser= means that the total number of GPUs in your currently running jobs have reached the permitted maximum.
+   * For other codes, check [[https://slurm.schedmd.com/squeue.html#lbAF][the Slurm documentation]].
+
+You can increase your chances by:
+   * Requesting fewer resources (CPUs, GPUs, Memory).
+   * Using the =--time= option of =sbatch= to limit the execution time of your jobs.
+   * Using an account with higher !FairShare, if you have multiple accounts at your disposal.
+
+---+++ How much !FairShare do I have left?
+%INCLUDE{"Services/Campus.ComputeClusterDetermineFairShare"}%
+
+---+++ Why does my job fail immediately? It's running fine on my workstation.
+
+Please check the following:
+   * Do the parent folders of the =--output= and =--error= files in your =sbatch= script *exist* and do you have *write permissions* for these files?
+   * Does your experiment try to read to or write from =/home/&lt;user&gt;/...=? There are no =/home= directories on compute nodes in our cluster. Configure your experiment to use =/ukp-storage-1= instead of =/home=. Well-written external code libraries should offer the possibility to change their working directory, too. If you are using python and your script still does not run, try adding =/ukp-storage-1= to your =PYTHONPATH=.
+
+---+++ How do I kill a compute job?
+
+To cancel a job, use =scancel=. You need the running or pending jobid. It is only the job's owner and SLURM administrators that can cancel jobs.
+
+<verbatim>
+scancel <jobid>
+</verbatim>
+
+To cancel all your jobs (running and pending) you can run
+
+<verbatim>
+scancel -u $USER
+</verbatim>
+
+You get the job id when you submit the job and you can look it up by =squeue -u <username>=. Interactive jobs are cancelled once you close the session, e.g. via =Ctrl + C=.
+
+---+++ How can I run my job on a specific node?
+
+Use the =-w= option to specify a node or a comma seperated list of nodes to run on.
+
+---+++ How to schedule jobs which make use of GPUs?
+---++++ Simple option via the =--gres= parameter
+You can use the =--gres= option of =sbatch= or =srun=. For example, use =--gres=gpu:p100:2= to request two P100 GPUs. If the GPU model is not of importance, you can also use =--gres=gpu:1= to request one GPU of any model available. For details, refer to [[https://slurm.schedmd.com/sbatch.html][the sbatch documentation]].
+
+---++++ Advanced option via node features
+More advanced GPU requests are possible via node feature constraints.
+For example, you can force a job to run on a GPU with 16GB or 24GB memory by running
+<verbatim>
+sbatch --gres=gpu:1 --constraint="gpu_mem:16gb|gpu_mem:24gb"
+</verbatim>
+Complex boolean expressions for constraints are possible, see [[https://slurm.schedmd.com/sbatch.html][the sbatch documentation]].
+If you want to be nice, you can also force a CPU job to not run on a GPU server by specifying =--constraint="no_gpus"= for your job.
+For the full list of node features, see [[ComputeClusterFAQ#Which_nodes_are_there_63_Which_GPUs_are_there_63][this FAQ question]].
+
+---+++ How much of the allocated resources does/did my job use?
+---++++ Finished jobs
+   * For *CPU and memory efficiency*: run =seff &lt;jobid&gt;=.
+   * For *CPU, memory, disk usage and more*: The =sacct= command provides more information for example by running =sacct -j &lt;jobid&gt; -l &verbar; less -S=. Refer to [[https://slurm.schedmd.com/sacct.html][the sacct documentation]] for more details and explanations.
+   * For *GPU utilization*: Check the GPU dashboard in our [[http://monitoring.ukp.informatik.tu-darmstadt.de/][cluster monitoring]]. There is no Slurm-internal way to check GPU usage.
+
+---++++ Running jobs
+   * For *CPU and memory efficiency*: run =sstat &lt;jobid&gt; &verbar; less -S=. Refer to [[https://slurm.schedmd.com/sstat.html][the sstat documentation]] for more details and explanations.
+   * For *GPU utilization*: Check the GPU dashboard in our [[http://monitoring.ukp.informatik.tu-darmstadt.de/][cluster monitoring]].
+
+---+++ How do I run jobs that run longer than three days?
+
+Researchers can submit jobs taking up to seven days by using the "snail" QOS. This can be done by adding =--qos=snail= as an option for =sbatch=.
+
+---+++ How to run many similar jobs efficiently?
+
+Slurm offers [[https://slurm.schedmd.com/job_array.html][job arrays]] for starting many jobs with similar resource and runtime requirements. Example applications are hyperparameter optimization, running your code on many different datasets, and more. Benefits of using job arrays over starting individual jobs:
+   * easier management: array jobs can be cancelled all at once, have their resource requirements updated all at once, etc.
+   * less pollution in =squeue=
+   * it's more efficient for the Slurm scheduler
+
+When submitting a job array, Slurm provides additional environment variables for each job (see the official documentation linked above). Check the development section of these FAQ for hints on how to use these environment variables effectively.
+
+---++ Storage
+
+---+++ Where to put code and data?
+
+See [[ComputeClusterStorage]].
+
+---+++ I need fast temporary storage for my job, where can I get that?
+
+Some of the nodes in the cluster have a local disk space for storing temporary files. When a job starts on such a node, a directory for temporary files is automatically created. The location of this directory is passed to your script in the =TMPDIR= environment variable. Note that *all files in this directory are automatically deleted after your job completes or fails.*
+
+You can specifically request nodes with temporary storage by using the =--tmp=<size[units]>= option of sbatch/srun, for example =--tmp=1G= for 1GB.
+
+---+++ How to share files with other users?
+
+For short-term sharing, there is =/ukp-storage-1/shared_temporary= which all Slurm users can write to/read from. We may empty this folder from time to time, so make sure you keep backup copies of important files.
+
+---++ Cluster information
+
+---+++ Which partitions (== queues) are there?
+Run:
+<verbatim>
+scontrol show partition
+</verbatim>
+
+---+++ Which nodes are there? Which GPUs are there?
+
+The following command lists all nodes in the cluster alongside their number of CPUs, their RAM, GPUs and features:
+<verbatim>
+sinfo --format="%20n %8t %8c %10m %25G %100f"
+</verbatim>
+
+As of 2019, the following GPU models are used throughout the cluster:
+<!--| v100     | volta              |  7014    |           32 |-->
+| *Name*   | *GPU architecture* | *GFLOPS* | *VRAM (!GiB)* |
+| p100     | pascal             |  4353    |           16 |
+| k40      | kepler             |  1555    |           12 |
+| titanrtx | turing             |   449.28 |           24 |
+| titanxp  | pascal             |   346.2  |           12 |
+| titanx   | pascal             |   330.15 |           12 |
+
+For *live monitoring of nodes*, refer to [[ComputeClusterFAQ#How_can_I_see_monitoring_information_of_the_Slurm_cluster_63][this part of the FAQ]].
+
+---+++ How can I see monitoring information of the Slurm cluster?
+
+Visit http://monitoring.ukp.informatik.tu-darmstadt.de to view the load of the whole cluster and individual nodes. You need to connect from within the UKP network or use the UKP-VPN.
+
+---++ Development-related
+
+---+++ Which software is available on each node?
+
+%TWISTY{ 
+    showlink="Installed software" 
+    hidelink="Hide _Installed software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+%TWISTY{ 
+    showlink="System programs" 
+    hidelink="Hide _System programs_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * wget
+   * gcc
+   * g++
+   * curl
+   * htop
+   * iotop
+   * ncdu
+   * atop
+   * screen
+   * nano
+   * vim
+%ENDTWISTY% 
+
+%TWISTY{ 
+    showlink="developer software" 
+    hidelink="Hide _developer software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * gcc
+   * gcc-c++
+   * python3.6
+   * python2.7
+   * OpenJDK 8
+   * cmake
+%ENDTWISTY% 
+
+%ENDTWISTY%
+
+---+++ How do I get a newer gcc version?
+
+<verbatim>
+scl enable devtoolset-7 bash
+</verbatim>
+
+---+++ Which possibilities are there for testing/debugging an experiment?
+
+---++++ Use the "testing" partition
+%INCLUDE{ComputeClusterTestingPartition}%
+
+---++++ Start an interactive shell
+If you want to have an interactive shell on a slurm node, then on *wormulon*, you can run
+
+<verbatim>
+srun --pty bash -i
+</verbatim>
+
+There, you can open a python shell or start parts of your experiment to see if everything runs as expected. =srun= accepts the same parameters as you can specify in a batch file, e.g. =srun --gres=gpu:1 --pty bash= would request one GPU.
+
+---++++ Live monitoring of stdout/stderr
+If you use =srun= inside your =sbatch= bashscript to start your main experiment (as in "srun python run.py"), then you can monitor stdout/stderr output while the job is running via:
+<verbatim>
+sattach <jobid.stepid>
+</verbatim>
+=stepid= will be 0 unless your bash script contains multiple =srun= calls. For example, to see the output of the first =srun= call within job 42, run =sattach 42.0=.
+
+---++++ Remote Debugging
+This option is much more powerful but also takes more effort to set up. The !PyCharm debugger will run on your workstation but will debug code that is running remotely on a Slurm compute node. This way, one can interactively debug code using GPUs and more.
+
+%TABPANE%
+%TAB{"PyCharm Professional"}%
+   * You need !PyCharm Professional. As of 2019-07, there are free 1 year licenses for students, see https://www.jetbrains.com/student/.
+   * Follow the instructions [[https://www.jetbrains.com/help/pycharm/remote-debugging-with-product.html#remote-debug-config][on setting up a remote debug server]]. Note: The variant with a remote interpreter does *NOT* work in our Slurm cluster, since it requires an SSH connection to individual compute nodes (which we do not provide).
+%ENDTAB%
+%TAB{"Other (please contribute!)"}%
+_If you have successfully used remote debugging with a tool other than PyCharm, please contact %WIKIWEBMASTER%._
+
+According to their website, Visual Studio is also capable of remote debugging.
+%ENDTAB%
+%ENDTABPANE%
+
+---+++ How can I access Slurm job information (job ID, executing node, ...) from within my experiment?
+
+---++++ Via sbatch filename patterns
+You can use placeholders in sbatch arguments to vary filenames depending on the job id and more. The following example would include the jobid and the name of the executing node in the filename:
+<verbatim>
+#SBATCH --output=/ukp-storage-1/my_user/myjob.%j.%N.out
+</verbatim>
+A list of all possible placeholders can be found in the [[https://slurm.schedmd.com/sbatch.html][sbatch documentation]].
+
+---++++ Via slurm environment variables
+Slurm sets environment variables for the job ID, the executing node, the resources of the current node and more. An full list is shown [[https://slurm.schedmd.com/sbatch.html#lbAJ][here]].
+
+You can use these environment variables directly inside your =sbatch= bashscript to load certain datasets or pass certain parameters to your code.
+*If you use python*, check out *[[https://pypi.org/project/slurmee/][the slurmee package]]*. It conveniently provides Slurm job information inside python à la =slurmee.get_job_id()=.
+
+---+++ How can I create a virtualenv?
+
+Use the =venv= module that comes with Python, e.g. 
+
+<verbatim>
+python3.6 -m venv venv
+</verbatim>
+
+Replace =python3.6= with the Python version of your choice. In your batch file, you can activate it by referencing its absolute path, e.g. =source /ukp-storage-1/$your_name/test/venv/bin/activate=
+
+---+++ How can I use Python 3.7+?
+
+Use [[https://docs.conda.io/en/latest/miniconda.html][miniconda]]. Or [[https://www.liquidweb.com/kb/how-to-install-python-3-on-centos-7/][build from source]] (on wormulon, the build dependencies are installed, i.e. you can skip the =yum install= steps).
+
+---+++ How can I use a specific CUDA version?
+
+In your batch script, use <verbatim>module load cuda</verbatim> for the latest CUDA version or =module load cuda/$version=. You can see all available CUDA versions by running <verbatim>module avail</verbatim> on the headnode.
+
+---+++ How can I use tensorboard with Slurm?
+Use [[https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh][sshfs]] and run tensorboard on your workstation.
+
+On your workstation, run something like:
+<verbatim>
+mkdir ~/ukp-storage-1
+sshfs <username>@wormulon:/ukp-storage-1/<username> ~/ukp-storage-1
+tensorboard --logdir ~/ukp-storage-1/my-experiment
+</verbatim>
+
+---++ Known issues
+
+---+++ !RuntimeError: CUDA error: no kernel image is available for execution on the device
+
+If you run on desktop-k40 and get this error, then it means that you use a deep learning library with a CUDA which is too new. You can either use a different node or downgrade your pytorch (<= 1.2.0) or tensorflow. You can exclude desktop-k40 from your jobs by adding =-x desktop-k40= to your srun or sbatch calls.
+
+---++ Demonstrators and User Studies
+We can reserve compute nodes (incl. GPU nodes) for demonstrators or user studies. Please get in touch an open a bug [[https://bugzilla.ukp.informatik.tu-darmstadt.de/enter_bug.cgi?product=Shared-IT&component=Slurm][on bugzilla]].
+
+---++ My issue isn't listed here
+If you are a student, please contact your supervisor. Otherwise please post a bug [[https://bugzilla.ukp.informatik.tu-darmstadt.de/enter_bug.cgi?product=Shared-IT&component=Slurm][on bugzilla]].
+
+%META:TOPICMOVED{by="bugert" date="1570804905" from="Services.ComputeClusterFAQ" to="Services/Campus.ComputeClusterFAQ"}%

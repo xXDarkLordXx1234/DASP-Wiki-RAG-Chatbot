@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="starke" comment="reprev" date="1433143218" format="1.1" reprev="4" version="5"}%
+%META:TOPICPARENT{name="ElisaStarke"}%
+---++ Statistics for GN-Salsa transitive alignment pairs
+   [[%ATTACHURL%/transitiveAlignmentPairs_GN_Salsa_uniq.csv][transitiveAlignmentPairs_GN_Salsa_uniq.csv]] [31.05.2015]
+   
+   * total number of aligned lemma pairs: 1322 
+   * number of unique aligned lemma pairs: 529
+   
+
+---++++ SALSA 
+- senses
+   * total number of senses: 1826 
+   * number of senses covered by alignment: 150 => 8% 
+   
+   * total number of verb senses: 1347 
+   * number of verb senses covered by alignment: 150 => 11% 
+
+- lemmas
+   * total number of lemmas: 648
+   * number of lemmas covered by alignment: 131 => 20%
+   
+   * total number of verb lemmas: 493 
+   * number of verb lemmas covered by alignment: 131 => 27%
+ 
+
+- number of alignments per sense 
+   *    min: 1 
+   *    max: 137 
+   *    average: 8
+
+---++++ !GermanNet
+- senses
+   * total number of senses: 121810 
+   * number of senses covered by alignment: 768 => 0.6% 
+   
+   * total number of verb senses: 14331 
+   * number of verb senses covered by alignment: 768 => 5%
+
+- lemmas
+   * total number of lemmas: 111719 
+   * number of lemmas covered by alignment: 352 => 0.3% </br>
+   
+   * total number of verb lemmas: 9678 
+   * number of verb lemmas covered by alignment: 352 => 4%
+
+
+- number of alignments per sense 
+   *    min: 1 
+   *    max: 10 
+   *    average: 4
+
+---++++ number of alignment pairs with same lemma vs. different lemma
+   * same lemma: 138 => 10%
+   * different lemma: 1184 => 90%
+
+
+-- Main.ElisaStarke - 2015-05-26
+
+%META:FILEATTACHMENT{name="transitiveAlignmentPairs_GN_Salsa_uniq.csv" attachment="transitiveAlignmentPairs_GN_Salsa_uniq.csv" attr="" comment="transitive Salsa-GN alignment pairs" date="1433094373" path="transitiveAlignmentPairs_GN_Salsa_uniq.csv" size="78301" user="starke" version="1"}%

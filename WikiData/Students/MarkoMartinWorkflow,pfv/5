@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="MarkoMartin" date="1278356293" format="1.1" version="5"}%
+%META:TOPICPARENT{name="MarkoMartin"}%
+%TOC%
+
+---++02.07.2010 - 04.07.2010
+   * update of UIMA pipeline concepts:
+      * corpus generation:<br><img src="%ATTACHURL%/Pipeline_-_Corpus_Generation.png"/>
+      * evaluation:<br><img src="%ATTACHURL%/Pipeline_-_Evaluation.png"/>
+   * implementation of PlainTextWriter, AnnotationOffsetWriter, and abstract SegmentationEvaluator
+      * some simple unit tests added
+   * tried to connect the JWPL database (with VPN connection)
+      * error: java.sql.SQLException: Access denied for user 'm_martin'@'130.83.163.244' (using password: YES)
+      * _05.07.2010:_ solved with correct user name and password
+   * implementation of WikipediaCategoryReader initiated
+      * This component is to receive documents of a certain category and annotate them with segment annotations on a certain level of granularity.
+   * all necessary libraries added to Eclipse project and saved in SVN repository (Project should now be compilable on other systems.)
+      * URL: https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/m_martin/trunk/GraphBasedTextSegmentation
+
+---++28.06.2010
+   * first ideas for UIMA pipelines
+      * corpus generation:<br><img src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/viewfile/Students/MarkoMartinWorkflow?filename=Pipeline_-_Corpus_Generation.png;rev=1"/>
+      * evaluation:<br><img src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/viewfile/Students/MarkoMartinWorkflow?filename=Pipeline_-_Evaluation.png;rev=1"/>
+
+---++26.06.2010
+   * new DKPro libraries from NE imported
+      * => solves problem with AnnotationWriter
+   * VPN connection tested with login data as specified by TZ
+      * => failed
+   * Wiki pages Workflow and Questions set up
+
+---++24.06.2010
+   * mail to Malioutov and Barzilay concerning P<sub>k</sub> and WindowDiff implementation
+   * JWPL library downloaded and imported
+
+-- Main.MarkoMartin - 26 Jun 2010
+
+%META:FILEATTACHMENT{name="Pipeline_-_Corpus_Generation.png" attachment="Pipeline_-_Corpus_Generation.png" attr="" comment="UIMA pipeline for corpus generation" date="1278269250" path="Pipeline - Corpus Generation.png" size="20213" stream="Pipeline - Corpus Generation.png" tmpFilename="/var/tmp/CGItemp24357" user="MarkoMartin" version="2"}%
+%META:FILEATTACHMENT{name="Pipeline_-_Evaluation.png" attachment="Pipeline_-_Evaluation.png" attr="" comment="UIMA pipeline for evaluation" date="1278269291" path="Pipeline - Evaluation.png" size="23436" stream="Pipeline - Evaluation.png" tmpFilename="/var/tmp/CGItemp23627" user="MarkoMartin" version="2"}%

@@ -1,0 +1,63 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1308567220" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Annotation Schema Bemerkungen
+1. Die User-Turns, die keine Inhaltlich Information enthalten werden nicht mit einer InformationContent-Label versehen. Z.B. Template "Done", Template "Fixed", die ohne weitere Information vorkommen <br>
+2. Es kann passieren, dass die Diskussion über mehrere Topics dauert. Somit können Auch Interpersonal-Labels zwischen verschiedenen Topics vergeben werden, sogar wenn der UserTurn am Anfang des Topics steht. <br>
+3. Die Turns, die aus mehreren Teilen bestehen (mit Turns von anderen User dazwischen) müssen die Labels CO für Article Criticism bzw. IO für InformationContent erhalten, wenn die Teile verschiedene Aspekte von Article Criticism bzw. Information Content betrachten und man für jeden Teil verschiedene Labels vergeben hätte.
+
+<br><br>
+   * [[%ATTACHURL%/5ArticlesAnnotationAgreement.csv][5ArticlesAnnotationAgreement.csv]]: Annotation comparison of 5 Articles: "Computer", "Italy","Alanis Morissette", "Barack Obama", "Atom"
+---+ Auffallende Besonderheiten der Labels
+---++ Article Criticism
+*CM* <br>
+Enthält: _missing, reference, (needs) ref, (not) explain(ed), does not have, lacks, sources, expand, should include, be mentioned, no information, could use some_
+<br>
+*CW* <br>
+Enthält: _wrong, not true, confusing_
+<br>
+*CU* <br>
+Enthält: _too much details, detailed, doesn't belong, redundant, reduce, remove, should be removed_
+<br>
+*CS* <br>
+Enthält: _merge, paragraph, section, link, infobox_
+<br>
+*CL* <br>
+Enthält: _English, simple, sentence, sounds awkward, consistent, rephrase, word, complex, grammar, style, comma_ <br>
+Enthält umformulierte Sätze (meistens zusammen mit IC) 
+<br>
+*COBJ* <br>
+Enthält: _POV, NPOV, point of view, biased, neurtral_
+---++ Explicit Performative
+*PSR* <br>
+Enthält: _should be, needs, would be good, feel free to_ <br>
+Enthält Ausdrücke im Imperativ
+<br>
+*PREF* <br>
+Enthält: _please read, look up, see [[...]]_
+Enthält einen Link
+<br>
+*PPC* <br>
+Enthält: _done, fixed, changed, restored, added, removed, reverted_
+<br>
+*PFC* <br>
+Enthält: _I'll, will do, I can do, am going to_
+<br>
+---++ Information Content
+*IS* <br>
+Enthält: Fragezeichen, Wh.., help me, tell me, what do you think... <br>
+Normalerweise Übergang IP-->IS, sehr selten IS-->IS <br>
+*IC* <br>
+Enthält: actually it's, it isn't..., it's
+---++ Interpersonal
+*ATT+* <br>
+Enthält: it is true, agree, thank you for...
+<br>
+*ATT-* <br>
+Enthält: it is not true, disagree, not done
+<br>
+*ATTP* <br>
+Enthält: yes... but, agree... but, however
+
+
+
+%META:FILEATTACHMENT{name="5ArticlesAnnotationAgreement.csv" attachment="5ArticlesAnnotationAgreement.csv" attr="" comment="Annotation comparison of 5 Articles: %22Computer%22, %22Italy%22,%22Alanis Morissette%22, %22Barack Obama%22, %22Atom%22" date="1306414170" path="5ArticlesAnnotationAgreement.csv" size="3964" user="YevgenChebotar" version="1"}%

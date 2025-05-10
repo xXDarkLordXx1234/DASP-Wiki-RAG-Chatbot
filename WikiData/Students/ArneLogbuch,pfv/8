@@ -1,0 +1,84 @@
+%META:TOPICINFO{author="ArnePottharst" date="1203692474" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Logbuch 
+%TOC%
+
+---++ 22.02.2008
+   * Der Stanford-Tokenizer hat Probleme mit _manchen_ Umlauten und bricht danach um, hier nochmal nachforschen & nachbessern.
+   * Tokens zu klassifizieren ist auch von Hand nicht immer einfach und eindeutig. Genaue Vorgaben/Beispiele sind notwendig.
+   * Probleme, da z.B. "Yahoo" eine Firma und "Yahoo Mail" ein Produkt ist ... sorgt für nicht eindeutige Ergebnisse
+
+Versuch mit Texten mit den Stichwörtern "Yahoo, Google, IBM, Microsoft, Vista, Festplatte, Opera, Ubuntu"
+
+*Trainingsdaten* ("NE-Dichte": 22,4%)
+| *Gesamt* | * O* | *PROD* | *COMP* | *PRODTYPE* | *PERS* | *ORG* | *MISC* | *LOC* |
+|  10867 |  8429 |  757 |  340 |  797 |  75 |  185 |  174 |  110 |
+|   100% |  77,6% |  7,0% |  3,1% |  7,3% |  0,7% |  1,7% |  1,6% |  1,0 % |
+
+*Testdaten* ("NE-Dichte": 18,5%)
+| *Gesamt* | *O* | *PROD* | *COMP* | *PRODTYPE* | *PERS* | *ORG* | *MISC* | *LOC* |
+|  2795 |  2279 |  65 |  154 |  94 |  33 |  85 |  75 |  10 |
+|  100% |  81,5% |  2,3% |  5,5% |  3,4% |  1,2% |  3,0% |  2,7% |  0,4% |
+
+*Ergebnisse*
+   * NE-Dichte Gold: 18,5%
+   * NE-Dichte Gold: 14,1%
+   * Korrekt klassifizierte NE: 45,0%
+   * Falsch klassifizierte NE: 68,6%
+   * Falsch als NE erkannt: 10,2%
+
+*"Als NE erkannt, egal ob richtiges NE oder falsches NE"*
+| | *ist NE* | *ist kein NE* |
+| *als NE erkannt* |   354 |  162 |
+| *nicht als NE erkannt* |  40 |  2239 |
+
+---++ 11.02.2008
+Erstellung eines halbautomatischen Annotators, der die Texte aus der Datenbank ausliest, in Tokens zerlegt und mit Hilfe von Wikipedia in die vorher genannten Klassen einordnet soweit möglich. Anschließend muß die Ausgabe nochmals von Hand nachgearbeitet werden. Mit diesen Daten kann dann der Stanford-NER trainiert werden.
+
+---++ 07.02.2008
+Beim Stanford-NER sind 4 verschiedene Demosets dabei. Eines davon wird im Paper zu CoNLL 2003 erwähnt:
+   * Entities: Person (PER), Ort (LOC), Organisation (ORG), Sonstiges (MISC)
+   * Trainingset: 945 Dokumente, 203.000 Token
+   * Testset: 231 Dokumente, 46.000 Token
+
+Im Wissensnetz gibt es folgende Klassen: Person (PER), Ort (LOC), Firma/Hersteller (COMP), Produkt (PROD), Produkttyp (PRODTYPE). Sinnvoll wäre auch noch MISC für alles andere, was auch einen Namen darstellt aber in keine Kategorie fällt.
+
+---++ 06.02.2008 
+Erschließen eines Textkorpus "Redaktionelle Texte":
+   * Crawlen verschiedener Newssites mittels Curl und Wget, Texte ca. seit Anfang 2007 bis heute
+   * Extrahieren des Textes mittels Perl
+   * Einspeisen in MySQL -Datenbank für schnellen Zugriff
+   * Statistik:
+      * heise.de: 3259 Texte
+      * hartware.de: 2973 Texte
+      * de.internet.com: 471 Texte
+      * golem.de: 7757 Texte
+   * Insgesamt also: 14460 Texte
+
+Jetzt muß ich schauen, welche Texte geeignet sind, also nach Stichwörtern sinnvolle Texte herausfinden und markieren. Von diesen Texte einige manuell klassifizieren für Stanford-NER-Training. Ausprobieren, ob ich das mit Hilfe von Wikipedia-Artikeln machen kann.
+
+*IG:* hier musst du dich schlau machen, welche Trainingsmengen das Stanford-NER-Programm voraussetzt, damit es sinnvoll funktioniert.
+
+Ein weiterer Textkorpus soll "User generated Content", also Blogeinträge, enthalten, hier muß ich schauen, die Technokrati funktioniert.
+
+*IG:* dafür gibt es bereits einen UIMA-Reader in UKP. Niklas kann den Zuständigen (CT) kontaktieren.
+
+---++ 05.02.2008 
+Trainieren des Stanford-NER mit ein paar Textdateien, die ich von Hand klassifiziert habe. Erste Ergebnisse sehen ganz gut aus, es werden auch Dinge richtig klassifiziert, die in den Trainingsdaten nicht vorhanden sind, aber ein paar Fehler treten noch auf, ich brauche mehr Trainingsdaten.
+
+---++ 01.02.2008 
+Checkin ins SVN:
+   * Der *WikiParser*, der zum Erstellen von SVN-Dateien dient, die dann eingelesen werden können von K-Infinity
+   * Grundversion des *Stanford-NER*. In der Datei <nop>TeXHyphenator#loadDefault() habe ich einen String eingefügt, der gefehlt hat, Decompiler sei Dank ;-)
+
+---++ 25.01.2008 
+Erstellen des Wissensnetzes:
+   1 Einlesen von Wikipedia-Kategorien (=Typen)
+   1 Einlesen von Artikeln mit Zuordnung zu den Kategorien (=Instanzen)
+   1 Einlesen der Links in den Artikeln, um die Artikel untereinander zu verlinken.
+
+Dies alles kann ich in K-Infinity importieren und so ein Wissensnetz daraus aufbauen.
+Es fehlen allerdings noch wichtige Metainformationen bei den Links zwischen den einzelnen Artikeln wie "A stellt her B" oder "A ist Konkurrent von B", ebenso könnten noch Metainformationen zu den einzelnen Instanzen gespeichert werden. Hier überlege ich grade, welche Informationen ich noch aus Wikipedia ziehen kann, und ob bzw. welche weiteren Quellen ich noch verwenden kann -&gt; Ideen sind willkommen :-) 
+
+---++ 09.01.2008 
+Einarbeitung in UIMA und K-Infinity: ich habe ein Testprogramm (Proofe of Concept) für UIMA erstellt, das einen gegebenen Text zerlegt und großgeschriebene Wörter in einem Text findet (seeehr simples NER) und diese im Wissensnetz von K-Infinity sucht und gefundene entsprechend in UIMA markiert.

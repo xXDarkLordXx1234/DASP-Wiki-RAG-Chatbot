@@ -1,0 +1,71 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1338912924" format="1.1" version="9"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+---++++ June 4
+
+   * Begun work on tf*idf implementation and implementing proper tools to record results more quickly.
+
+---++++ June 1
+
+   * Intersected pedocs and FS keywords.
+   * Formatted and sent results to Wolfgang
+
+---++++ May 29
+
+   * Normalized distances and fixed error in CW, now 1 cluster with previous distances, 22 with normalized distances.
+   * Working on parsing and analyzing FS keywords in relation to existing pedocs keywords.
+
+---++++ May 11
+
+Building Framework on JUNG (v.2, external jar still), can hopefully finish that before weekend.
+
+---++++ May 10
+
+Just brainstorming and reading, some personal notes:
+   * Efficient java vector framework?
+   * High correlation = actual relation, low correlation usually nonsense.
+   * High correlation not nearly enough to build graph, unsurprisingly.
+   * Need more than those keywords, combined approaches? (co-author?)
+   * Need to know what sort of "topic extraction" is actually feasible.
+   * Prepare for insufficient detection, build scalable and modular structure anyway.
+
+---++++ May 9
+
+   * Chinese Whispers results somewhat sobering so far.
+   * Number of clusters in ~100-300 range (depending on number of iterations).
+   * Sampling the results reveals little to no actual correlation topic wise.
+   * Will implement vector distance approach, see if something changes.
+   * According to the algorithm, the assignments can be (should be?) randomised, not sure if that is a good idea considering consistent results, currently not random.
+   * Code still very "prototype-ish", not sure of structure yet, need to know how it fits into "pedocseer" & DKPro, what kind of modularity is desired etc.
+
+---++++ May 8
+
+   * Keywordgraph of pedocs is connected (has 1 connected component), no isolated nodes.
+      * *IG:* which Keywords do you mean? How are they computed?
+         * The keywords in the pedocs database have been manually entered as far as I know, we haven't really tackled the problem of untagged papers (DIPF) yet.
+   * Removing common keywords appears to have no effect on nr of components, but reduces nr of edges significantly.
+   * 517 inconsistent papers between opus and opus_autor. 3007 (!) including opus_sama_publisher.
+   * Started on Chinese Whispers.
+
+---++++ May 7
+
+   * Implemented keyword based graph with: vertices = papers, edges = correlations, correlation = keyword in common, weight = number of correlations.
+   * Graph has 1.5mill edges, which seems surprisingly high.
+   * Reason is that some keywords are very common and form large complete components, "deutschland" alone forms component with ~850.000 edges.
+   * May have to adjust graph as these keywords do not seem to be particularly significant, not sure how to determine significance of keywords though
+   * Will analyze number of components and isolated nodes tomorrow.
+
+Current problems:
+   * DKPro still largely a mystery to me.
+   * Need to figure out how to extract my results from "AnalysisEngine" in Richard&Shuo's JDBC adapter.
+   * Haven't yet figured out a proper structure for the graphs. Custom classes for vertices and edges may be cleaner, but don't seem to make sense both for efficiency and avoiding redundancies.
+   * Keyword graph appears to run somewhat "sluggish", will look for coding mishaps.
+   * This wiki.
+
+---++++ Previous to May 2012:
+
+   * Reading on NLP
+   * Installed Maven, DKPro, Treetagger etc.
+   * Installed MySQL, entered pedocs, connected to Java (JDBC)
+   * Built Co-Author Network
+   * Ported to Richard&Shuo's JDBC code, not yet working.
+   * Roughly analyzed the database, concerning eligibility of a keyword based graph

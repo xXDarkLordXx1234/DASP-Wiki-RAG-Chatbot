@@ -1,0 +1,137 @@
+%META:TOPICINFO{author="zelch" comment="reprev" date="1527450894" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Meetings
+
+---++ 23.05.18
+   * welche Scores wurden durch Hinzufügen von FrameNet Informationen verbessert und welche wurden verschlechtert?
+   * Thesis weitergeschrieben
+   * Anmeldeformular im Studienbüro abgegeben
+
+---++ 17.05.18
+   * vor allem an Thesis weitergeschrieben
+   * einige weitere Tests
+   * Ansatz evtl. noch auf anderen Tasks ausprobieren? (nicht nur STS)
+   
+---++ 08.05.18
+   * weitere Szenarien getestet
+   * Ergebnisse sind noch nicht wirklich überzeugend
+   * Durchsprechen von allgemeinen Fragen zur Gliederung der Thesis
+
+---++ 03.05.18
+   * erste Erweiterungen an InferSent mit Frame Embeddings
+   * Gegenüberstellung der Ergebnisse
+   * Besprechung weiterer Szenarien, die man ausprobieren kann
+   
+---++ 24.04.18
+   * Zwischenvortrag
+
+
+---++ 19.04.18
+   * Besprechung der Thesis in SIG von Teresa - Sammeln von neuem Input
+
+
+---++ 18.04.18
+   * FEs werden korrekt zugewiesen
+   * Besprechen des Zwischenvortrags in der kommenden Woche
+   * Sprachnachweis eingetragen
+
+
+---++ 12.04.18
+   * Stand der Thesis fertig updaten
+   * Versuch, FEs bestimmen zu lassen - die zugewiesenen roles verstehe ich noch nicht ganz (ist nicht ganz der Output, den ich erwartet habe)
+   * InferSent verstehen und versuchen, Wort-Embeddings an der richtigen Stelle auszuweiten, damit dort die Frame-Embeddings hinzugefügt werden können
+   * ich habe noch immer nichts neues bezüglich meines Sprachnachweises gehört und meine Arbeit daher immer noch nicht angemeldet
+      * ich werde mein Studienbüro in der kommenden Woche nochmal  kontaktieren
+   * endlich Wiki geupdated!
+
+
+---++ 05.04.18
+   * entfällt wegen Klausur in dieser Woche
+
+
+---++ 29.03.18
+   * Beginn, den aktuellen Stand in Thesis festzuhalten
+   * Aussuchen konkreter Beispiele für die einzelnen Kategorien, anhand derer der potenzielle Nutzen von Frames gezeigt werden soll
+   * auf der GitHub-Seite von open-SESAME wurden nun diverse Fehler behoben, die mich viel Zeit gekostet haben; außerdem gibt es jetzt eine target-identification-Methode
+      * diese hat allerdings ein etwas anderes Format,
+      * außerdem ist meine eigene Methode in den Prozess des Erstellens der Input-conll-	Datei eingebunden (dafür gibt es noch immer keine Methode von open-SESAME)
+      * und beide Methoden identifizieren genau dieselben target Wörter auf den Testsätzen
+      --> aus diesen Gründen bleibe ich bei meinem eigenen Code
+   * eventuell können neben den Frames auch noch die Frame Elements bestimmt werden?
+
+---++ 22.03.18
+   * da der Output wiederum im conll-Format ist, Schreiben einer Methode, die die Frames aus diesem Format für die einzelnen Satzpaare extrahiert und einigermaßen übersichtlich darstellt
+   * Beheben einzelner Fehler, die noch bei der Aufbereitung der Daten und ihrer Umwandlung ins conll-Format auftraten
+   * ich wollte mir den Anmeldeschein für meine BA im Studienbüro (FB02) abholen
+      * es fehlte allerdings noch der Sprachnachweis in Englisch
+      * ich habe einen Antrag abgegeben, um mir einen Sprachtest von letztem Jahr in TUCaN anrechnen zu lassen
+
+
+---++ 15.03.18
+   * Frames werden nun auch für neue Sätze bestimmt
+   * Untersuchen der mit Frames annotierten Sätze
+   * Einteilung in verschiedene Kategorien, um die Analyse deutlicher zu strukturieren
+
+
+---++ 08.03.18
+   * Trainieren und Testen von open-SESAME funktioniert jetzt
+   * Problem: keine Methode vorhanden zum Umwandeln neuer Sätze in erforderliches conll-Format
+   * Schreiben einer eigenen Methode dafür
+   * zusätzlich ist noch keine Frame-Identification Methode vorhanden - muss ebenfalls selbst geschrieben werden
+
+
+---++ 01.03.18
+   * Aussetzen wegen Krankheit
+
+
+---++ 22.02.18
+   * weiterhin open-SESAME...
+
+
+---++ 15.02.18
+   * Einarbeiten in den Code von open-SESAME, um Fehler zu beheben
+
+
+---++ 08.02.18
+   * für die einzelnen Sätze sollen nun die konkreten Frames bestimmt werden
+   * Suche nach geeignetem frame prediction tool
+   * zunächst war SEMAFOR angedacht - es wurde auch einige Zeit in den Versuch gesteckt, dieses System in einem Python-Wrapper zum Laufen zu bringen
+   * allerdings wird SEMAFOR inzwischen nicht mehr unterstützt
+      --> auf der GitHub-Seite wird stattdessen auf open-SESAME verwiesen
+   * andere Idee: SimpleFrameID von Hartmann et al. (2017) nutzen
+      --> der Nachteil hierbei: es predicted die Frames für alle Wörter (keine target identification)
+   * andere Alternative: mateplus (ist aber geschrieben in Java)
+   * vergleichbare Performanz von open-SESAME gegenüber anderen aktuellen Systemen
+	- außerdem geschrieben in Python und mit open-source Code
+   * runterladen des Codes - läuft allerdings noch nicht - errors
+
+
+---++ 01.02.18
+   * Abgabe der TD
+   * Erledigung der Formalia
+   * abwägen zwischen BIT und InferSent - welches System eignet sich besser als Basissystem?
+	--> Entscheidung für InferSent
+   * sonst weniger produktiv, da Lernen für eine Klausur ansteht
+
+
+---++ 25.01.18
+   * InferSent läuft endlich, Ergebnisse können reproduziert werden
+   * letzte Änderungen an TD
+
+
+---++ 18.01.18
+   * InferSent streikt
+
+
+---++ 11.01.18
+   * Anforderung der konkreten Daten auf dem Testset von ECNU und BIT
+   * Untersuchen der Beispielsätze und konkreten Scores der beiden Systeme dazu
+   * Versuch, InferSent zum laufen zu bringen, um die Ergebnisse zu reproduzieren
+   * InferSent will nicht laufen -> benötigt CUDA, was mein Laptop nicht unterstützt
+   * auf einem anderen Rechner wirft CUDA diverse Fehler, die behoben werden wollen
+
+
+---++ 04.01.18
+   * Task Description (TD) muss überarbeitet werden
+   * Einarbeiten in Paper von Cer et al. (2017) zu STS Shared Task 2017 und in Paper der beiden besten Systeme BIT und ECNU, außerdem in das von InferSent
+   * erste Änderungen an TD

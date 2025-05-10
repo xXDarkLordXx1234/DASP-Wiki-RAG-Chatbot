@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="4"}%
+%META:TOPICPARENT{name="StefanHenss"}%
+---+ Web Crawler
+
+---++ Current Design
+   * State: Current URL; link-queue; visited and stored URLs; history of past N followed links.
+   * Actions: Store current page; follow unvisited links on current page directly; store unvisited links to queue; follow link from queue; return to any of the N past links; use tf-idf ranking (or similar) to characterize relevant terms and issue a Google query using them.
+   * Rewards1: -0.001 for adding a link to the queue, +/-0.01 for visiting a relevant/irrelevant link and +/-1.0 for storing relevant/irrelevant URLs.
+   * Rewards2: Cosine similarity between a visited or stored link and the gold standard. Including a penalty for not storing visited relevant documents. 
+   * Future Rewards: Discount factor of 0.25. Will be increased when crawler performance improves.
+   * Predictions: The observed reward from past actions is stored and future reward predicted through supervised learning.
+   * Idea: Since we have so many different actions with different features, it could be useful to have a hierarchy of learners, e.g., one that uses search engines and determines which domains to visit and for each visited domain we could execute another "actor" which visits/downloads only pages of that domain until it decides to return control.
+
+---++ Issues
+   * Normalization of URLs - resolved
+   * Error codes and connection timeouts - resolved
+   * Irrelevant content such as rss feeds - partially resolved (can't always detect from URL)
+   * Irrelevant file types (images, audio, video) and preventing from downloading them - partially resolved (s.o.)
+   * Dead ends (e.g., sequence of pages with too few unvisited links) - in progress (should be solved with a Google action).
+
+---++ Current Features
+The following features represent the perspective of the source of a link, since we only want to load a document, if it is promising. So all document features are calculated for the link source, not the actual document. The document features only represent the current document, when we've loaded it and want to decide to store it or not. URL-related features are computed for the source _and_ target of a domain.
+
+| *Feature* | *Description* | *Relevance** |
+| actionType | - | tbd |
+| lastRewards | Statistics regarding the rewards for the links that lead to the current situation. | tbd |
+| rewardHistoryDomain | Statistics about the past rewards for actions on the given domain. Also, how many documents from that domain we already visited/stored. | tbd |
+| rewardHistoryKnn | Rewards for past actions, with similarity based on features and text similarity. | tbd |
+| topLevelDomain | Is it .de, .com, .org, etc.? | tbd |
+| hostnameLength | The length of the main host identifier, without subdomain | tbd |
+| subdomainLength | Length of subdomain name, if it exists. | tbd |
+| domainPageRank | Only if there are free APIs which allow to request as many domain names as we require. | tbd |
+| googleStatistics | Total number of results for domain, number of backlinks, etc. | tbd |
+| alexaStatistics | Statistics from Alexa.com, if there is a suitable API. | tbd |
+| documentLength | Length of the entire text. Without HTML code. | tbd |
+| stopwordsRatio | Ratio of stopwords found in the document. | tbd |
+| documentTextSimilarity | Similarity between the text and the texts / keywords in the training corpus. | tbd |
+| documentReadability | FleschKincaid Grade Level of the text, or similar. | tbd |
+| documentLanguage | Since TLD is not always reliable, we might identify the document language. | tbd |
+| contentType | We might include extra predictors, trained on content type, like "official"/government, business, Web 2.0, newspapers, etc. | tbd |
+| tagStatistics | For HTML documents, how often do certain tags appear, e.g., images and outgoing links. | tbd |
+| linkPosition | The position of the link within the document. | tbd |
+| linkAttributes | How long is "alt" attribute, does it wrap a text or image, etc.? | tbd |
+| linkSameDomain | Does the link point to the same domain? | tbd |
+| linkTargetType | If we can tell from the URL, is the target a website, PDF, etc.? | tbd |
+| linkTextKnn | Comparison with past rewards, based on similarity of text surrounding the link. | tbd |
+
+* Relevance measures for features will be given soon.
+
+---++ Evaluation
+ Test-Crawling the web from _any_ entry point can be difficult. First, there could not be a link path between the source page and most of the expected results. Second, even if there is, the average path could be long enough so that the crawler doesn't receive any positive feedback within a reasonable time and therefore isn't able to learn. Tuning entry points or providing a priori knowledge could lead to cheating ourselves. A method used in some papers is to obtain a subset of the web by identifying pages that link to the target pages and then continue to collect incoming links for those. From this web graph we can select sufficiently difficult entry points, e.g., those having a large minimum path to a target website or many outgoing links which can "confuse" the crawler enough.
+ 
+Using a subset of the web also allows to obtain reasonable results for brute-force approaches such as breadth-first search. Many good baseline algorithms can be found in the "Topical web crawlers: Evaluating adaptive algorithms" paper.
+ 
+---+++ Metrics
+   * Standard Information Retrieval metrics such as F1 score.
+   * Content Similarity measures since we cannot assume that any page not in the gold standard is irrelevant.
+   * Effort-related metrics such as recall per page visit or, since we also search for PDFs, the relative file size of irrelevant downloaded content.
+   * Minor: we could also find or build a corpus of content which must be avoided, such as political extremism, build a classifier from that and see if we have crawled such content.

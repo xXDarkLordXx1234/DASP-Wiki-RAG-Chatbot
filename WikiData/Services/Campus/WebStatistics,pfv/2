@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="BaseUserMapping_333" comment="" date="1575170172" format="1.1" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+%IF{
+"istopic '%USERSWEB%.Default%STATISTICSTOPIC%'"
+then="$percentINCLUDE{$quot%USERSWEB%.Default%STATISTICSTOPIC%$quot}$percent"
+else="$percentINCLUDE{$quot%SYSTEMWEB%.Default%STATISTICSTOPIC%$quot}$percent"
+}%
+| <!--statDate--> | <!--statViews--> | <!--statSaves--> | <!--statUploads--> | <!--statTopViews--> | <!--statTopContributors--> |
+| Nov 2019 |  178 |  2 |  0 | &nbsp;75 [[ComputeCluster]]<br />&nbsp;55 [[ComputeClusterFAQ]]<br />&nbsp;20 [[WebHome]]<br />&nbsp;13 [[ComputeClusterStorage]]<br />&nbsp;&nbsp;8 [[WebSearch]]<br />&nbsp;&nbsp;5 [[AccountChangePassword]]<br />&nbsp;&nbsp;1 [[WebStatistics]]<br />&nbsp;&nbsp;1 [[WebPreferences]] | &nbsp;&nbsp;2 Main.MichaelBugert |
+| Oct 2019 |  292 |  15 |  0 | 137 [[ComputeCluster]]<br />&nbsp;58 [[WebHome]]<br />&nbsp;51 [[ComputeClusterFAQ]]<br />&nbsp;17 [[ComputeClusterStorage]]<br />&nbsp;11 [[AccountChangePassword]]<br />&nbsp;&nbsp;4 [[WebPreferences]]<br />&nbsp;&nbsp;4 [[ComputeClusterDetermineFairShare]]<br />&nbsp;&nbsp;3 [[ComputeClusterLongRunningJobs]]<br />&nbsp;&nbsp;3 [[WebSearch]]<br />&nbsp;&nbsp;1 [[WebTopicList]]<br />&nbsp;&nbsp;1 [[WebNotify]] | &nbsp;15 Main.MichaelBugert |

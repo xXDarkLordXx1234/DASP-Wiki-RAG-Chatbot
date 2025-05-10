@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="JudithEckleKohler" date="1289393769" format="1.1" version="4"}%
+%META:TOPICPARENT{name="LexiconProjects"}%
+---+++Summary of Technologies and Tools for Lexical Acquisition (PANACEA D6.1)
+
+   * Four main areas of lexical acquisition are included: Subcategorization frames (SCFs), Selectional Preferences (SPs), Lexical-semantic Classes (LCs), for both nouns and verbs, and Multi-Word Expressions (MWEs).
+   * "By lexical merging, or merging of dictionaries, we refer to the process of composing a new lexicon out of two or more existing lexica...."
+   * LMF standard is mentioned as a potential data model
+      * section 5: Resource Building: "not all of the lexical acquisition tasks investigated during the project will necessarily result in a PANACEA fully-integrated component ... For the tasks and languages resulting in a fully-integrated component, the results of the lexical acquisition components will be encoded in XML and, where possible, will be *compliant to the LMF standard*."
+      * section 7 Work Plan, Lexical Merging: "...As for the formats, we envision the use of automatic components that performs conversions to and from *LMF* ( *or a yet to be investigated ad-hoc internal format*) both in the input layer and in the output layer. "
+   * section 6.1 Current Techniques: lists related work on lexicon merging
+      * Tracy Holloway King, Dick Crouch. 2005. Unifying lexical resources. Proceedings of Interdisciplinary Workshop on the Identification and Representation of Verb Features and Verb Classes; 2005 February 28 - March 1; Saarbruecken; Germany. pp. 32-37.  [[%ATTACHURL%/crouch-king-unifyingResources.pdf][crouch-king-unifyingResources.pdf]]: 
+         * work by PARC researchers
+         * describes work on merging XLE syntactic lexicon (developed as part of the broad-coverage English LFG grammar for the !ParGram project), !WordNet, Cyc, and !VerbNet 
+         * building a Unified Lexicon (UL) with lexical entries for verbs based on their syntactic subcategorization in combination with their meaning
+         * part of the goal of building the UL is to understand where gaps in information arise across the merged resources
+-- Main.JudithEckleKohler - 2010-11-02
+ 
+
+%META:FILEATTACHMENT{name="crouch-king-unifyingResources.pdf" attachment="crouch-king-unifyingResources.pdf" attr="" comment="Paper describes merging techniques used to integrate several lexical resources" date="1288778343" path="crouch-king-unifyingResources.pdf" size="111842" user="JudithEckleKohler" version="1"}%

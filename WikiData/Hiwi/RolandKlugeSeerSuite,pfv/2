@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="RolandKluge" date="1359628171" format="1.1" version="2"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+---+++ How to communicate information between JSP and Java
+(By example: text input for abstract query in Advanced Search)
+<verbatim>
+<spring:bind path="advancedSearch.abstractQuery">
+    <tr>
+    <td>
+        <label 
+            for="<c:out value="${ status.expression }"/>" 
+            class="prefield">Abstract:&nbsp;
+        </label>
+    </td>
+    <td>
+        <input 
+            name="<c:out value="${ status.expression }"/>" 
+            id="<c:out value="${ status.expression }"/>" 
+            value="<c:out value="${status.value}"/>" 
+            type="text" 
+            size="43"/>
+     </td>
+     </tr>
+</spring:bind>
+</verbatim>
+
+   * The =spring:bind= tag declares that we intend to access the property =abstractQuery= of the =advancedSearch= bean.
+   * Inside the =spring:bind= tag we may 
+      * retrieve the current value of the proptery by calling =status.value=
+      * get the name of the property by calling =status.expression=
+      * get potential errors by calling =status.errorMessages=
+   * For more information: [[http://static.springsource.org/spring/docs/1.1.5/taglib/tag/BindTag.html][Spring 1.1.5 Taglib Reference]]
+
+When introducing a new property =fooProp= into =AdvancedSearch=, we need to
+
+   * create a new instance variable: =private String fooProp;=
+   * provide getter and setter: 
+      * =public String getFooProp(){return this.fooProp;}=
+      * =public void setFooProp(final String fooProp) {this.fooProp = fooProp;}=
+
+-- Main.RolandKluge - 2013-01-31

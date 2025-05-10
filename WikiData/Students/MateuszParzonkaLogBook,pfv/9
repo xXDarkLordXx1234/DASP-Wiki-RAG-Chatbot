@@ -1,0 +1,65 @@
+%META:TOPICINFO{author="MateuszParzonka" date="1285660319" format="1.1" version="9"}%
+%META:TOPICPARENT{name="MateuszParzonka"}%
+---++Log
+
+---++++++ 27 Sep 2010
+Implemented a TfidfConsumer that works with the C&M Dataset.
+Hopefully i will manage to evaluate a baseline of tfidf-weighted n-grams cut at a threshold derived from the appiopriate ratio (tokens-in-book / entries-in-index) for the next status meeting.
+
+---++++++ 25 Sep 2010
+Baselines for Stanford NER:
+   * Model=CRF3: PRF: 18.33 | 42.30 | 25.58    
+   * Model=CRF3Distsim: PRF: 18.40 | 41.93 | 25.58
+      * Stanford NER performs significantly better then the NER from the Longpipe Toolkit which C&M used (15.79 | 39.10 | 22.49).
+      * *Problem:* Stanford offers a set of newer Models (from 2008) which doesn't work with the DKPro StanfordNamedEntityRecognizer.
+Rewrote the DKPro NGramAnnotator to allow a more sophisticated filtering of tokens. While using exact matching when evaluating it seems impossible to have an recall higher then 81.57 .
+   * No filtering: PRF: 0.132 | 81.33 | 0.263
+   * Filtering punctuation at / for sentence endings: PRF: 0.137 | 81.32 | 0.273
+   * Filtering all punctuation: PRF: 0.146 | 81.57 | 0.292
+
+*Problem:* DKPro TfidfConsumer builds such a huge HashMap during processing that the heap size is never (even when maxed to over 2.5 GM) enough. The hashmap stored to disk would be extremely big too. Trying to develop a tfidf annotator that uses one serialization per document for the term frequencies  instead of one per corpus.
+
+---++++++ 24 Sep 2010
+First baselines for "pure" candidate extraction (all micro):
+   * NGrams:  P=0.14 R=81.5 F=0.02    
+      * C&M: 0.01 | 84.20 | 0.02. So we have a slightly worse recall. But we have a ten-times higher precision then C&M do. Maybe to strong filtering on our side.
+   * NChunks: P=1.71 R=55.3 F=3.32    
+      * C&M: 4.40 | 28.99 | 7.64. They use NP-Chunks, we use N-Chunks. So we have very different.
+   * NERHeur: P=13.11 R=47.37 F=20.54
+      * C&M: 11.43 | 43.34 | 18.08. Our heuristic seems to be better then C&M.
+ 
+---++++++ 23 Sep 2010
+Heavy refactoring. Decided to separate the concerns of creating index entries and evaluation them into ExtractionPipelines and a EvaluationPipelines.
+
+---++++++ 22 Sep 2010
+Extracted the "unproblematic" subset from the main data set following Csomai & Mihalcea.
+
+---++++++ 21 Sep 2010
+Processing and evaluation of collections is working.
+
+---++++++ 18 Sep 2010
+Wrote PRF-Evaluator for back-of-the-book-indexing using gold index entries.
+
+---++++++ 17 Sep 2010
+Pipelines are now jUnit-testable.
+
+---++++++ 15 Sep 2010
+Wrote base pipeline for testing and experiments.
+
+---++++++ 13 Sep 2010
+Split initial jCas into segments with demultiplier and applied a simplified LexRank to the sub-CASes. Wrote a AnnotationPrinter to visualize the results.
+
+---++++++ 12 Sep 2010
+Played around with LexSemRank, seems to be quite slow. Using the  3,2GB "wikipedia_lemma_en" esa cached index.
+
+---++++++ 10 Sep 2010
+
+Played around with TextRank.
+
+---++++++ 09 Sep 2010
+
+Research about State-Of-The-Art Keyphrase Extraction. 
+
+---++++++ 08 Sep 2010
+
+Checked in project

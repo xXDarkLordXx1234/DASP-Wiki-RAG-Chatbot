@@ -1,0 +1,73 @@
+%META:TOPICINFO{author="MichaelKutschke" date="1336575528" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="PANChallenge"}%
+---++ 4.5. 10-fold cv, 1000 Dokumente (ca. 50% positiv), Naive Bayes, alle Features (kein Stopword removal etc.)
+
+---+++ Advert
+
+   * F-Measure\:\ =0.9805471756995735
+   * Recall\ (Flawed)\:\ =0.9757763975155279
+   * Precision\ (Flawed)=0.9853648337863266
+
+Zweites Experiment auf Moe:
+
+   * F-Measure\:\ =0.9901941557168072
+   * Precision\ (Flawed)\:\ =0.9884494909945184
+   * Recall\ (Flawed)\:\ =0.9919449901768173
+
+---+++ Empty Section
+
+   * F-Measure\:\ =0.9809430255402751
+   * Precision\ (Flawed)\:\ =0.9695145631067961
+   * Recall\ (Flawed)\:\ =0.9926441351888668
+
+---+++ Notability
+
+   * F-Measure\:\ =0.9643313353640562
+   * Precision\ (Flawed)\:\ =1.0
+   * Recall\ (Flawed)\:\ =0.9311195445920304
+
+---++ 7.5. - 9.5. Konfiguration wie oben, auf Moe
+
+---+++ Empty Section
+
+   * F-Measure\:\ =0.9828034393121375
+   * Precision\ (Flawed)\:\ =0.9728820269200317
+   * Recall\ (Flawed)\:\ =0.9929292929292929
+
+---+++ Notability
+
+   * F-Measure\:\ =0.9606314948041567
+   * Precision\ (Flawed)\:\ =0.9997920133111481
+   * Recall\ (Flawed)\:\ =0.9244230769230769
+
+---+++ Original Research
+
+   * F-Measure\:\ =0.9605982168536094
+   * Precision\ (Flawed)\:\ =0.9241837299391257
+   * Recall\ (Flawed)\:\ =1.0
+
+---+++ Orphan
+
+   * F-Measure\:\ =0.9898472340829301
+   * Precision\ (Flawed)\:\ =0.9994251772370186
+   * Recall\ (Flawed)\:\ =0.9804511278195489
+
+---+++ Advert
+
+   * F-Measure\:\ =0.9818297063173462
+   * Precision\ (Flawed)\:\ =0.993798118049615
+   * Recall\ (Flawed)\:\ =0.9701461377870564
+
+---+++ No Footnotes
+
+   * F-Measure\:\ =0.994981313400961
+   * Precision\ (Flawed)\:\ =0.9902231668437832
+   * Recall\ (Flawed)\:\ =0.9997854077253219
+
+---+++ Primary Sources
+
+   * F-Measure\:\ =0.9827365728900255
+   * Precision\ (Flawed)\:\ =0.9993498049414824
+   * Recall\ (Flawed)\:\ =0.9666666666666667
+
+-- Main.MichaelKutschke - 2012-05-02

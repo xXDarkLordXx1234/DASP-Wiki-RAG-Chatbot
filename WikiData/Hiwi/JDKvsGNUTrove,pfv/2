@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="IvanGalkin" date="1241525345" format="1.1" reprev="2" version="2"}%
+---+ *Optimierung des Speicherverbrauchs*
+---++ Timestamp vs Integer:
+Der Zeitpunkt jeder Wikipedia-Artikeländerung wurde ursprünglich mithilfe der Klasse java.sql.Timestamp gespeichert. Die basiert auf dem long -Typ, der 64 bit in Speicher braucht. Um den Speicherverbrauch zu reduzieren, wurde die oben genannte Klasse mit dem Typ Integer ersetzt (32 bit), wobei die Genauigkeit bzw. die Auslösung der Zeitabmessung reduziert wurde. Da die Anzahl der Artikeländerungen sehr groß sein kann (englische Wikipedia z.Z. 304 084 575 Stück) ist solche Einsparung nicht nutzlos.
+---++ Behälterreduzierung
+Nach der nächsten Quellcode-Analyse wurde es bemerkt, dass man auf manche der mehreren Container-Objekte verzichten kann oder ihre Struktur reduzieren. Zum Beispiel es gab ein HashMap<Integer, String> Objekt, bei dem nur auf die Menge der Schlüssel zugegriffen wurde. Nach dem Refactoring wurden solche Klassen mit entsprechenden speicherschonenden Klassen ersetzt. 
+---++ JDK Collections vs GNU Trove:
+
+%META:FILEATTACHMENT{name="enwiki_7.png" attachment="enwiki_7.png" attr="" comment="simple english-Auswertung (7 Snapshots) mit JDK-, GNU Trove-Collections und ihrer Kombination" date="1241518170" path="enwiki_7.png" size="26350" stream="enwiki_7.png" tmpFilename="/var/tmp/CGItemp26071" user="IvanGalkin" version="1"}%
+%META:FILEATTACHMENT{name="dewiki_4.png" attachment="dewiki_4.png" attr="" comment="Auswertung der eutschen Wikipedia (4 Snapshots) vor und nach dem Refactoring" date="1241518262" path="dewiki_4.png" size="19932" stream="dewiki_4.png" tmpFilename="/var/tmp/CGItemp26074" user="IvanGalkin" version="1"}%

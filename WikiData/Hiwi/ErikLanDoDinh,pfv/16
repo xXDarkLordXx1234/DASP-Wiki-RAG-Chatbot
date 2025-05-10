@@ -1,0 +1,110 @@
+%META:TOPICINFO{author="ErikLanDoDinh" date="1298896984" format="1.1" reprev="16" version="16"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Tasks
+
+Siehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/buglist.cgi?product=LOEWE+NCC][Bugzilla]].
+
+---+ Meetings
+
+---++ 28.02.11
+
+   * @action(EL) Webapplikation basieren auf Apache Wicket (Meeting mit REC - 28.2. nach Klausur)
+      * benötigt: Eclipse WTP plugins
+      * benötigt: m2eclipse WTP integration plugin für Eclipse
+      * benötigt: tomcat 6
+
+---++ 21.02.11
+
+   * @action(EL) !TextMarker als reine UIMA Komponente zum laufen bekommen (Meeting mit REC - 21.2)
+   * @action(EL) !tregex basieren auf OFs Integration zum laufen bekommen
+
+---++ 14.02.11
+
+   * @action(EL) Code in Subversion einchecken
+   * @action(EL) Wie lange wird Import von TüBa D/Z laufen? Ggf. Messung in Code von Annis einbauen.
+   * @action(REC) !ProgressMeter an EL schicken
+   * @action(EL) !MaltParser für Deutsch zum laufen bekommen - basieren auf OFs UIMA Integration
+   * @action(EL) RelAnnis Consumer soll auch Dependenzen schreiben (z.B. !MaltParser kann nur Dependenzen)
+  
+---++ 07.02.11
+
+   * Reader TüBa D/Z
+      * Sanity checks einbauen
+      * !StringBuilder statt String, Konstanten statt Zahlen im Code zu besseren Les- und Wartbarkeit, weitere Code-Verbesserungen einbauen
+      * Reader fertigstellen
+         * start- und end-Markierungen für Konstituenten hinzufügen
+         * gesamte Konstituentenstruktur (parent<->children) aus der .export-Datei einlesen, im Typsystem kodieren
+         * pro Text ein CAS Objekt
+
+---++ 31.01.11
+
+   * Consumer !RelANNIS
+      * Stand 
+         * Konstituentenstruktur wird abgebildet
+         * bisher getestet mit einem Dokument mit einem kleinen Text (771 Wörter)
+         * Stanford Parser liefert Syntactic Functions nicht direkt - aktuell wird "dummy" exportiert -> ganz weg lassen
+      * Next steps
+         * TüBa D/Z reader um schnell an große Mengen geparster Sätze zu kommen
+   * Bitte nach jeder Arbeitseinheit einen Kommentar an den entsprechenden Issue im Bugzilla
+   * Vertragsverlängerung Feb 2011
+
+---++ 24.01.11
+
+   * Ausgefallen wg. Krankheit Erik-Lân
+
+---++ 03.01.11
+
+   * DKPro Installation
+
+---+ Aktueller Vertrag (Feb 2011)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 1.5 | |
+| 06.02.11 | !TüBa D/Z Reader schreiben | 6 | !RelAnnis Consumer anpassen, Reader schreiben |
+| 12.02.11 | !TüBa D/Z Reader schreiben | 6.5 | !RelAnnis Consumer überarbeiten, Reader fertigschreiben |
+| 20.02.11 | Dependanzen in relAnnis Dateien ausgeben | 3 | Dependanzen in relAnnis Dateien ausgeben |
+| 28.02.11 | Projekte im SVN einchecken | 1 | Projekte vorbereiten, einchecken |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 20 - 1.5 v. Nov 2010 - Jan 2011
+
+---+ Vergangene Verträge
+
+---++ Vertrag Dez 2010 / Jan 2011
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 0.5 | |
+| 04.12.10 | Maven/UIMAfit einlesen, installieren, ausprobieren | 4 | Maven Installation, Uimafit und Beispielprogramm |
+| 07.12.10 | TueBaDZ -> Annis2 | 2.5 | TueBaDZ export (negra) zu tiger-xml konvertieren (mittels Tigersearch), Pepper Konvertierung testen |
+| 12.12.10 | TueBaDZ -> Annis2 | 2 | Lösung für Pepper Konvertierung suchen |
+| 14.12.10 | TueBaDZ -> Annis2 | 3 | TueBaDZ in relANNIS konvertieren, Fehler suchen, testen |
+| 15.12.10 | TueBaDZ -> Annis2 | 1 | TueBaDZ in relANNIS konvertieren, Fehler suchen, testen |
+| 20.12.10 | TueBaDZ -> Annis2 | 1 | 2x relANNIS -> 1x relANNIS testen, Mail an Pepper-Team wegen Konvertierung |
+| 28.12.10 | Output von Stanford Parser -> Annis | 2 | DKPro Installation |
+| 30.12.10 | Output von Stanford Parser -> Annis | 1 | DKPro Installation |
+| 02.01.11 | Output von Stanford Parser -> Annis | 3 | DKPro Installation |
+| 07.01.11 | DKPro Tutorial überarbeiten | 4.5 | DKPro Tutorial überarbeiten |
+| 08.01.11 | DKPro Tutorial überarbeiten | 1 | DKPro Tutorial überarbeiten |
+| 16.01.11 | Consumer schreiben um geparste Texte in Annis zu importieren | 5 | TreeTagger ins Tutorial, Consumer->Annis |
+| 23.01.11 | Consumer schreiben um geparste Texte in Annis zu importieren | 4.5 | ANT Installation ins Tutorial, TextMarker Installation, Consumer weiterbauen (SQL Schema, etc.) |
+| 30.01.11 | Consumer schreiben um geparste Texte in Annis zu importieren | 6.5 | Consumer schreiben |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40 - 0.5 v. Nov 2010
+
+---++ Vertrag Nov 2010
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 06.11.10 | MaltParser mit TueBaDZ trainieren | 1.5 | treeconv ausprobieren, in TueBaDZ einlesen |
+| 07.11.10 | MaltParser mit TueBaDZ trainieren | 1.5 | MaltParser Doku lesen, ausprobieren, .conll Format |
+| 14.11.10 | MaltParser mit TueBaDZ trainieren | 6 | MaltParser Negra Input testen, Converter (negra->malttab) programmieren |
+| 21.11.10 | Evaluation Annis2 | 4.5 | Lesen: Dependency Relations in TueBaDZ, Annis2, PAULA, relANNIS |
+| 28.11.10 | Evaluation Annis2 | 7 | PostgreSQL/Annis2 Installation, Tests mit PAULA, Pepper |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 20
+
+-- Main.RichardEckart - 2010-12-21

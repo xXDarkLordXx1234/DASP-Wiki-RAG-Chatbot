@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="ChristianHollubetz" date="1331333928" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Christian Hollubetz
+
+---++ Resources
+
+   * [[ChristianHollubetzGameSetups][Game setups and existing implementations (on which we can build)]]
+   * [[ChristianHollubetzGWAP][Games with a purpose literature]]
+   * [[ChristianHollubetzAnnotationExamples][Annotation examples]]
+   * [[ChristianHollubetzRoadmap][Roadmap der Tätigkeit]]
+
+---++ Work plan
+
+   * *Game identification*
+      1 Review existing literature on games with a purpose (based on the list linked above)
+      1 Search for open source implementation of games
+      1 Classify them according to the type of game, number of player, action performed by the user, possible injection of annotation tasks
+      1 Discuss which game types are most suitable for our purposes
+   * *Game development*
+      1 Discuss the game architecture
+      1 Inject the annotation data into a game setting
+      1 Try the game in a pilot study
+   * *Game deployment*
+      1 Carry out a game-based annotation study
+      1 Extract the annotated data from the game
+      1 Analyze the annotated data
+      1 Compare different paradigms of annotating data
+
+---++ Current schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Task* | *Date* | *Hours* | *Remarks* |
+| - | 30.01.2012 | 0 | Setup (!ChM) |
+| in Paper einlesen, Schlüsselstellen zusammenfassen, bestehende GWAPs ermitteln | bis Wiki-Freischaltung | 5 | |
+| Meeting Christian Meyer | 05.03.2012 | 1 | |
+| Zugänge, Evaluation Game, Wiki-Eintragungen, Projekt anlegen | 08.03.2012 | 4 | |
+| Roadmap als Wiki-Seite angelegt, Task 1 implementiert | 09.03.2012 | 2.5 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | bis Ende Mai 2012 |
+<nop>
+
+-- Main.ChristianMeyer - 2012-01-30

@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="BenjaminPetry" date="1306170475" format="1.1" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Resources
+
+   * Subversion: https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_students/b_petry
+   * DKPro Core ASL: http://code.google.com/p/dkpro-core-asl/
+   * DKPro Core GPL: http://code.google.com/p/dkpro-core-gpl/
+   * [[Projects/Wikulu/WikuluSetup][Wikulu Setup]]
+   * [[Projects/Wikulu/WikuluPluginsHowTo][Wikulu Plugins]]
+   * [[DKPro/HowToMaven]]
+   
+---+ Tasks
+
+   1 JavaDoc auf Englisch
+   1 DKPro Core Style
+   1 File encoding UTF-8
+   1 Package-level JavaDoc
+   1 @override annotations
+   1 Kommentare auch von private fields als JavaDoc (nicht mit // einleiten)
+   1 Apache Commons IO closeQuietly um Stream zu schliessen
+   1 IOExceptions nicht noch mal in IOExceptions wrappen (e.g. InternetHandler:67)
+   1 String Konstanten benutzen (z.B. Cache:63, 84, 114...)
+   1 Umstellung auf DKPro Core Komponenten (Segmenter, StanfordNER Komponente, ...)
+   1 Einbindung alternativer Komponenten statt StanfordNER (DictionaryAnnotator, OpenCalais, AlchemyAPI, OpenNLP NER)
+   1 Einbindung in Wikulu
+   1 Aufteilung in verschiedene Module: 
+      * de.tudarmstadt.ukp.dkpro.geocoding - UIMA Komponenten für Geocoding
+      * de.tudarmstadt.ukp.travelogue.wikulu - Wikulu Plugin
+      * de.tudarmstadt.ukp.travelouge.core - Algorithmen
+
+*Tips/Kommentare*
+   * path.getPath()+"/"+String.valueOf(currentIndexNumber)+ <= String.valueOf unnötig hier
+   * der Sprachstil des Handbuchs wäre in einem geschäftlichen oder wissenschaftlichen Umfeld zu locker. Für ein professionelleres Auftreten sollte am Stil gearbeitet werden.
+
+---+ Aktueller Vertrag (Mai 2011 - Jun 2011)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | 0.0 | |
+| 06.05.11 | 0 | 0.5 | Erste Besprechung |
+| 10.05.11 | 0 | 1.0 | Einrichten von Eclipse, Repository anlegen, etc. |
+| 12.05.11 | 1, 2, 5, 6 | 3.0 | Angefangen JavaDoc in English zu schreiben |
+| 13.05.11 | 12 | 1.5 | Einführung in Wikulu bekommen |
+| 18.05.11 | 12 | 0.5 | Wikulu so weit es geht eingerichtet |
+| 19.05.11 | 12 | 1.25 | Wikulu fertig eingerichtet |
+| 23.05.11 | 12 | 2 | Angefangen das Projekt in Wikulu zu integrieren |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 40
+
+-- Main.RichardEckart - 2010-12-21

@@ -1,0 +1,118 @@
+%META:TOPICINFO{author="ZhiShen" date="1217289091" format="1.1" reprev="28" version="28"}%
+%META:TOPICPARENT{name="ZhiShen"}%
+<table width="600" style="font-size: 90%" border="0"> <thead> <tr> <th width="100" style="background: #000099 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: #ffffff">Date</th> <th style="background: #000099 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: #ffffff"><div align="center">Description</div></th> <th style="background: #000099 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: #ffffff">Note</th> </tr> </thead> <tbody> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 28</div></th> <td>
+
+SpellingCorrector Comparision continued, corrected the table, separate two test sets, Bigrams and FrequencyMethod needs training data first.
+
+Test machine: Pentium D 3.2G, 2Gram, WinXP Pro SP2
+
+Dev Test Set <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>Rael</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>10687</td> </tr> <tr> <td>jSpellCorrect</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>16594</td> </tr> <tr> <td>JMySpell<br /> Suggestion list</td> <td>270</td> <td>228</td> <td>84.4%</td> <td>5109</td> </tr> <tr> <td>JMySpell<br /> One suggestion</td> <td>270</td> <td>180</td> <td>66.7%</td> <td>5031</td> </tr> <tr> <td>JaSpell</td> <td>270</td> <td>110</td> <td>40.7%</td> <td>516</td> </tr> <tr> <td>Jazzy<br /> One suggestion</td> <td>270</td> <td>144</td> <td>53.3%</td> <td>1125</td> </tr> </tbody></table>
+
+Final Test Set <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>Rael</td> <td>400</td> <td>270</td> <td>67.5%</td> <td>16704</td> </tr> <tr> <td>jSpellCorrect</td> <td>400</td> <td>270</td> <td>67.5%</td> <td>25266</td> </tr> <tr> <td>JMySpell<br /> Suggestion list</td> <td>400</td> <td>335</td> <td>83.75%</td> <td>8782</td> </tr> <tr> <td>JMySpell<br /> One suggestion</td> <td>400</td> <td>276</td> <td>69%</td> <td>8140</td> </tr> <tr> <td>JaSpell</td> <td>400</td> <td>142</td> <td>35.5%</td> <td>968</td> </tr> <tr> <td>Jazzy<br /> One suggestion</td> <td>400</td> <td>210</td> <td>52.5%</td> <td>1515</td> </tr> </tbody></table>
+
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 27</div></th> <td>
+
+SpellingCorrector Comparision continued
+
+Test machine: Pentium D 3.2G, 2Gram, WinXP Pro SP2 <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>Rael<br /> Dev Test Set</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>10687</td> </tr> <tr> <td>Rael<br /> Final Test Set</td> <td>400</td> <td>270</td> <td>67.5%</td> <td>16704</td> </tr> <tr> <td>jSpellCorrect<br /> Dev Test Set</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>16594</td> </tr> <tr> <td>jSpellCorrect<br /> Final Test Set</td> <td>400</td> <td>270</td> <td>67.5%</td> <td>25266</td> </tr> <tr> <td>JMySpell<br /> Suggestion list<br /> Dev Test Set</td> <td>270</td> <td>228</td> <td>84.4%</td> <td>5109</td> </tr> <tr> <td>JMySpell<br /> Suggestion list<br /> Final Test Set</td> <td>400</td> <td>335</td> <td>83.75%</td> <td>8782</td> </tr> <tr> <td>JMySpell<br /> One suggestion<br /> Dev Test Set</td> <td>270</td> <td>180</td> <td>66.7%</td> <td>5031</td> </tr> <tr> <td>JMySpell<br /> One suggestion<br /> Final Test Set</td> <td>400</td> <td>276</td> <td>69%</td> <td>8140</td> </tr> <tr> <td>JaSpell<br /> useBigrams<br /> Dev Test Set</td> <td>270</td> <td>110</td> <td>40.7%</td> <td>6594</td> </tr> <tr> <td>JaSpell<br /> useBigrams<br /> Final Test Set</td> <td>400</td> <td>142</td> <td>35.5%</td> <td>10203</td> </tr> <tr> <td>JaSpell<br /> useFrequencyMethod<br /> Dev Test Set</td> <td>270</td> <td>118</td> <td>43.7%</td> <td>547</td> </tr> <tr> <td>JaSpell<br /> useFrequencyMethod<br /> Final Test Set</td> <td>400</td> <td>163</td> <td>40.75%</td> <td>1047</td> </tr> <tr> <td>JaSpell<br /> Dev Test Set</td> <td>270</td> <td>110</td> <td>40.7%</td> <td>516</td> </tr> <tr> <td>JaSpell<br /> Final Test Set</td> <td>400</td> <td>142</td> <td>35.5%</td> <td>968</td> </tr> <tr> <td>JaSpell<br /> useBigrams<br /> useFrequencyMethod<br /> Dev Test Set</td> <td>270</td> <td>118</td> <td>43.7%</td> <td>6485</td> </tr> <tr> <td>JaSpell<br /> useBigrams<br /> useFrequencyMethod<br /> Final Test Set</td> <td>400</td> <td>163</td> <td>40.75%</td> <td>9937</td> </tr> </tbody></table>
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 26</div></th> <td> </td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 25</div></th> <td>
+
+[[http://icu-project.org/charts/comparison/][ICU Feature Comparisons]]<br /> ICU4J 3.8 has more features
+
+SpellingCorrector Comparision <table width="440" border="1"> <tbody><tr> <td width="151"> </td> <td width="64">Cases</td> <td width="54">Found</td> <td width="73">Percentage</td> <td width="64">Time (ms)</td> </tr> <tr> <td>Rael<br /> Dev Test Set</td> <td>270</td> <td>202</td> <td>74.8%</td> <td>10687</td> </tr> <tr> <td>Rael<br /> Final Test Set</td> <td>270</td> <td>400</td> <td>67.5%</td> <td>16704</td> </tr> <tr> <td>jSpellCorrect<br /> Dev Test Set</td> <td>202</td> <td>270</td> <td>74.8%</td> <td>16594</td> </tr> <tr> <td>jSpellCorrect<br /> Final Test Set</td> <td>270</td> <td>400</td> <td>67.5%</td> <td>25266</td> </tr> <tr> <td>JMySpell<br /> Dev Test Set</td> <td>228</td> <td>270</td> <td>84.4%</td> <td>5109</td> </tr> <tr> <td>JMySpell<br /> Final Test Set</td> <td>335</td> <td>400</td> <td>83.75%</td> <td>8782ms</td> </tr> </tbody></table>
+
+.
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 24</div></th> <td>
+
+Status Meeting<br /> Start with SpellingCorrector Comparison
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 21</div></th> <td>SVN updated</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 08</div></th> <td>
+
+Start implementation with language checker from <a target="_blank" href="http://www.languagetool.org/">LanguageTool</a> , rule based
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 July 07</div></th> <td>
+
+Start wikipedia corpus collection
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 July 05</div></th> <td>
+
+Spell checker and corrector, Java version from <a target="_blank" href="http://raelcunha.com/spell-correct.php">Rael Cunha</a> using big.txt
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 June 28</div></th> <td>
+
+ICU Character Set Detection used to detect file encoding
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 June 20</div></th> <td>
+
+LanguageIDAE from dong<br /> Changed depth of reading, start from root level, so that all contents are avaible.
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 June 16</div></th> <td>
+
+start with Encoding detector
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 June 12</div></th> <td>
+
+LookUpTokenAnnotation type system descriptor added, with dictionary source information
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 June 09</div></th> <td>
+
+Add SourceDocumentInformation to Type.<br /> By creating list with splitting more entries in a line.<br /> Add new type with more information, e.g. category, source, count
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 June 04</div></th> <td>
+
+Symbol direct after a work without seperator is not possible to be detected.
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 June 02</div></th> <td>
+
+XCasWriterCasConsumer writes also source document information, which can not be parsed by XCASDeserializer.
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 June 01</div></th> <td>
+
+Corrected some entries in shorthand_list.xml, which were two or more than two entries in a line. Now each entry in one line.
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 28</div></th> <td>
+
+Match type needs to be customized for my defined token type.
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 25</div></th> <td>
+
+Single valued match works fine.<br /> Multivalued not tested yet.
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 23</div></th> <td>
+
+Using DictionaryAnnotator to look up slang words, emotions, short forms<br /> Command line not working<br /> Wrote a short class to make dictoinary file [[%ATTACHURL%/Swearword_List.xml][dictionary example]]<br /> Input file needs also a certain format
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 20</div></th> <td>
+
+Status Meeting, presentation ZhiShenPresentations
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 18</div></th> <td>
+
+Pre-version of user generated content discourse updated [[%ATTACHURL%/UGC.ppt][preview]]
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 16</div></th> <td>
+
+Blogs corpus collected, 21 tags (categories), each has 1000 blogs [[%ATTACHURL%/53.xml][Example]]
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 14</div></th> <td valign="top">
+
+correct one Exception in jTechnorati, now it works.<br /> add a new function in class Technorati, tagSearch, in order to search topic related blogs
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 12</div></th> <td>
+
+Strucutre proposal [[%ATTACHURL%/structure.doc][Strucutre proposal ]] updated
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 08</div></th> <td valign="top">
+
+Start with Blogs corpus from Technorati
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 06</div></th> <td>
+
+Strucutre proposal [[%ATTACHURL%/structure.doc][Strucutre proposal ]]
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 05</div></th> <td>
+
+Pre-version of user generated content discourse [[%ATTACHURL%/UGC.ppt][preview]]
+
+"Weblogs as a Bridging Genre"<br /> classify Blogs compared with newspapers [[%ATTACHURL%/Note_-_Weblogs_as_a_Bridging_Genre.txt][Note]]
+
+"Newspapers vs. Blogs - Who Gets the Scoop"<br /> classify Blogs compared with newspapers [[%ATTACHURL%/Note_-_Newspapers_vs._Blogs_-_Who_Gets_the_Scoop.txt][Note]]
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 May 04</div></th> <td>
+
+Amazon Product Reviews Corpus created, 36 search indexes, each has over 1000 items with reviews (5 max) [[%ATTACHURL%/B000A2BJ76.xml][Example]]
+
+Yahoo! Answer Corpus collected in XML, 26 categories, each has over 1000 questions [[%ATTACHURL%/20080505085750AA1xUCC_396545320_-_Credit.xml][Example]]
+</td> <td> </td> </tr> <tr> <th valign="top"><div align="left" style="color: #666666">2008 May 02</div></th> <td>
+
+"A Faceted Classification Scheme for Computer-Mediated Discourse"<br />classify CMC with medium and situation factors [[%ATTACHURL%/Note_-_A_Faceted_Classification_Scheme_for_Computer-Mediated_Discourse.txt][Note]]
+
+Yahoo! Answer Corpus collected in XML, 11k questions now
+</td> <td> </td> </tr> <tr style="background: #e3e3f4 none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"> <th valign="top"><div align="left" style="color: #666666">2008 Apri 30</div></th> <td>Blogs created, for finished "to Do"s and others</td> <td> </td> </tr> </tbody> </table>
+
+%META:FILEATTACHMENT{name="Note_-_A_Faceted_Classification_Scheme_for_Computer-Mediated_Discourse.txt" attachment="Note_-_A_Faceted_Classification_Scheme_for_Computer-Mediated_Discourse.txt" attr="" comment="Note - A Faceted Classification Scheme for Computer-Mediated Discours" date="1209726573" path="Note - A Faceted Classification Scheme for Computer-Mediated Discourse.txt" size="1825" stream="Note - A Faceted Classification Scheme for Computer-Mediated Discourse.txt" tmpFilename="/var/tmp/CGItemp21290" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="B000A2BJ76.xml" attachment="B000A2BJ76.xml" attr="" comment="B000A2BJ76 (Amazon Product Review Corpus Example)" date="1209972085" path="B000A2BJ76.xml" size="2777" stream="B000A2BJ76.xml" tmpFilename="/var/tmp/CGItemp27685" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="Note_-_Weblogs_as_a_Bridging_Genre.txt" attachment="Note_-_Weblogs_as_a_Bridging_Genre.txt" attr="" comment="Note - Weblogs as a Bridging Genre" date="1210106818" path="Note - Weblogs as a Bridging Genre.txt" size="2068" stream="Note - Weblogs as a Bridging Genre.txt" tmpFilename="/var/tmp/CGItemp33357" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="Note_-_Newspapers_vs._Blogs_-_Who_Gets_the_Scoop.txt" attachment="Note_-_Newspapers_vs._Blogs_-_Who_Gets_the_Scoop.txt" attr="" comment="Note - Newspapers vs. Blogs - Who Gets the Scoop" date="1210105421" path="Note - Newspapers vs. Blogs - Who Gets the Scoop.txt" size="2220" stream="Note - Newspapers vs. Blogs - Who Gets the Scoop.txt" tmpFilename="/var/tmp/CGItemp34618" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="20080505085750AA1xUCC_396545320_-_Credit.xml" attachment="20080505085750AA1xUCC_396545320_-_Credit.xml" attr="" comment="20080505085750AA1xUCC (396545320 - Credit)" date="1210026091" path="20080505085750AA1xUCC (396545320 - Credit).xml" size="8296" stream="20080505085750AA1xUCC (396545320 - Credit).xml" tmpFilename="/var/tmp/CGItemp27257" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="UGC.ppt" attachment="UGC.ppt" attr="" comment="UGC Discourse" date="1211216636" path="UGC.ppt" size="80896" stream="UGC.ppt" tmpFilename="/var/tmp/CGItemp29029" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="structure.doc" attachment="structure.doc" attr="" comment="Structure proposal" date="1210721249" path="structure.doc" size="43008" stream="structure.doc" tmpFilename="/var/tmp/CGItemp30941" user="ZhiShen" version="2"}%
+%META:FILEATTACHMENT{name="53.xml" attachment="53.xml" attr="" comment="Blogs Corpus Example" date="1211034383" path="53.xml" size="2021" stream="53.xml" tmpFilename="/var/tmp/CGItemp27613" user="ZhiShen" version="1"}%
+%META:FILEATTACHMENT{name="Swearword_List.xml" attachment="Swearword_List.xml" attr="" comment="Swearword_List.xml" date="1212363690" path="Swearword_List.xml" size="4416" stream="Swearword_List.xml" tmpFilename="/var/tmp/CGItemp27659" user="ZhiShen" version="1"}%

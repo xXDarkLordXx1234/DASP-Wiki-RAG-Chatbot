@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="ChristianMeyer" date="1231415556" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="ChristianMeyer"}%
+<!-- @page { size: 21cm 29.7cm; margin: 2cm } P { margin-bottom: 0.21cm } H2 { margin-bottom: 0.21cm } H2.western { font-family: "Nimbus Sans L", sans-serif; font-size: 14pt; font-style: italic } H2.cjk { font-size: 14pt; font-style: italic } H2.ctl { font-size: 14pt; font-style: italic } H3 { margin-bottom: 0.21cm } H3.western { font-family: "Nimbus Sans L", sans-serif } -->
+---++ Passage Extraction
+---+++ Duplicate Document Remover
+Remove documents, that are identical (i.e. same MD5 hash) to at least one other document of the retrieved collection.
+| *data* | *removed* | *remaining* |
+| defQ-0 | 2d, 5p, 13s | 58d, 453p, 1388s |
+| defQ-1 | 8d, 8p, 32s | 52d, 286p, 1269s |
+| defQ-4 | 6d, 12p, 28s | 54d, 372p, 2402s |
+| defQ-9 | 0d, 0p, 0s | 60d, 594p, 2107s |
+| defQ-10 | 3d, 3p, 3s | 39d, 147p, 453s |
+| defQ-14 | 2d, 2p, 25s | 58d, 310p, 952s |
+   <small>d = document, p = paragraph, s = sentence</small>
+
+---+++ Paragraph Filter
+Remove paragraphs having a small similarity score. Used measures are Cosine (threshold = 0.065), Leacock/Chodorow (t = 0.513) and Resnik (t = 0.06); a paragraph is removed if at least one of the measures drops below the threshold (exception: paragraphs without a score are kept, i.e. paragraphs having only tokens, that are not in <nop>WordNet). Goal is to not filter relevant paragraphs (filtered-relevant).
+| *data* | *filtered* | *filtered-relevant* | *precision* | *remaining* | *remark* |
+| defQ-0 | 0d, 206p, 455s | 1p, 1s | 99.51% | 58d, 247p, 933s | training data |
+| defQ-10 | 0d, 96p, 286s | 6p, 14s | 93.75 % | 39d, 51p, 167s | validation data |
+| defQ-14 | 0d, 143p, 391s | 3p, 6s | 97.90 % | 58d, 167p, 561s | validation data |
+<small>d = document, p = paragraph, s = sentence</small>
+
+-- Main.ChristianMeyer - 08 Jan 2009

@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="NicoErbs" date="1263825552" format="1.1" version="3"}%
+%META:TOPICPARENT{name="NicoErbsHiWiWork"}%
+---++ Ranking algorithms and graphical representations
+
+ %TOC%
+
+---+++ Graphs
+
+Two different graphs for representing phrases and their relation are used.
+
+---++++ Lexical Semantic Graph
+The lexical semantic graph (LSG) consists of the phrases themself (nodes) and one link between two nodes (edges). The Edge contains a score which is calculated with a relatedness measure.
+The Annotation for the edge is called AnnotationPair. Additionally there is the annotation SemanticRelatedness, which consists amongst other of the AnnotationPair annotation and the score.
+
+---++++ Cooccurrence Graph
+As well as the LSG, the cooccurrence graph contains of phrases (nodes) and links between nodes (edges). The difference is, that an unlimited amount of edges can exist between two nodes. This corresponds to the number of cooccurrences between two phrases.
+Before the recent changes, there was a list of annotations (AnnotationPair) representing edges.
+Now there is only one edge and, like the LSG, one annotation for each AnnotationPair containing the score as well. The score is computed by normalizing the amount of cooccurrences.
+
+---+++ Ranking algorithms
+
+---++++ PageRank
+
+---++++ NodeDegree
+
+---+++ Combinations
+
+--- Main.NicoErbs - 18 Jan 2010

@@ -1,0 +1,117 @@
+%META:TOPICINFO{author="IrinaAlles" date="1343947661" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="IrinaAlles"}%
+---+ Setup
+This section describes the preparation of the corpus data for the parser training, the evaluation method and some data conversion techniques used to get the model output into the right format for evaluation.
+---++ Data Preparation
+   The data of each treebank was randomly splitted into two mutually exclusive sets, the training and test set. The training set represents 80% of the entire data and is used to train the parser in order to create a model for the German language. The 20% sized test set was used to evaluate the performance of the trained model on unseen data. 
+   
+The training set was split into three further parts representing 10%, 50% and 100% of the trainig data.
+All parsers have been succesively trained on each of the training sets, this results in 3 models for each parser. 
+The further splitting of training data is necessary to evaluate how many data a parser requires to build a well working model.
+All resulting models where evaluated on the test set using the evaluation tool "MaltEval".
+The following metrics have been used for evaluation:
+   * LAS: A token is counted as a hit if both the head and the dependency label are the same as in the gold-standard data. This is the default value.
+   * LA:  A token is counted as a hit if the dependency label is the same as in the gold-standard data.
+   * UAS:  A token is counted as a hit if the head is the same as in the gold-standard data.
+
+---++ Evaluation Method (MaltEval)
+MaltEval is an evaluation tool for dependency parsers. It can, among other data formats, handle the data format used in the CoNLL shared tasks on dependency parsing in the years 2006 and 2007. It is to a large extent adapted to the evaluation scripts eval.pl and eval07.pl provided by the organizers, but is more flexible and contains many addional features to facilitate evaluation.  <SMALL>(Based on the description of http://w3.msi.vxu.se/~jni/malteval/)</SMALL>
+
+The evaluation tool can evaluate multiple files as well as perform automatic evaluation of cross validation experiments.
+The supported formats are CoNLL, MaltXML and MaltTab. 
+It provides a well structured userguide with very helpful examples.
+---+++MaltEval usage
+The evaluation tool can be downloaded [[][here]]
+
+To evaluate a sinlge file use the following command:
+<verbatim>prompt> java -jar MaltEval.jar -s parser.conll -g gold.conll</verbatim>
+Where -s defines the parsed file and -g the gold standard. The output will look similar to this:
+<verbatim>
+===================================
+Gold: gold.conll
+Parsed: parser.conll
+===================================
+GroupBy-> Token
+Metric-> LAS
+===================================
+accuracy token
+------------------------
+0.867 Row mean
+70162 Row count
+------------------------
+</verbatim>
+
+It is possible to define evaluation settings using an evaluation file or adding further arguments.
+An evaluation file defining the metrics LAS, LA and UAs looks like this:
+<verbatim><evaluation>
+<parameter name="Metric">
+<value>LAS</value><value>UAS</value><value>LA</value>
+</parameter>
+</evaluation></verbatim>
+
+To use this setting file modify the previous command to the following:
+<verbatim>prompt> java -jar MaltEval.jar -e evaluation.xml -s parser.conll -g gold.conll</verbatim>
+
+---++ Format Conversion
+Not all of the evaluated parser support the CoNLL format as provided by the [[Corpora#TIGer_Corpus][TIGer]] or [[Corpora#T_ba_D_Z_Corpus][Tüba D/Z]] corpus and as required by MaltEval. The data had often to be converted in the format accepted by the parser and the model output had to be transformed back to CoNLL06 format.
+
+---++++MaltXML/ MaltTab to CoNLL06 conversion
+To convert data in MaltXML or MaltTab format, illustrated by the table below, into CoNLL06 format as provided by the  [[Corpora#TIGer_Corpus][TIGer]] copus one can use the MaltParser's conversion capacities.
+|*MaltTab*|*MatlXML*|
+|<verbatim>In	APPR	5	PP    
+einer	ART	4	DET    
+anonymen	ADJA	4	ATTR    
+Anzeige	NN	1	PN    
+werden	VAFIN	0	ROOT    
+der	ART	8	DET    
+Bremer	ADJA	8	ATTR    
+Staatsanwaltschaft	NN	14	OBJD    
+Details	NN	5	SUBJ    
+über	APPR	9	PP    
+dubiose	ADJA	13	ATTR    
+finanzielle	ADJA	13	ATTR    
+Transaktionen	NN	10	PN    
+mitgeteilt	VVPP	5	AUX   
+.	$.	14	-PUNCT-    </verbatim>|<verbatim><sentence id="5" user="pydeps" date="">
+<word id="1" form="In" postag="APPR" head="5" deprel="PP"/>
+<word id="2" form="einer" postag="ART" head="4" deprel="DET"/>
+<word id="3" form="anonymen" postag="ADJA" head="4" deprel="ATTR"/>
+<word id="4" form="Anzeige" postag="NN" head="1" deprel="PN"/>
+<word id="5" form="werden" postag="VAFIN" head="0" deprel="ROOT"/>
+<word id="6" form="der" postag="ART" head="8" deprel="DET"/>
+<word id="7" form="Bremer" postag="ADJA" head="8" deprel="ATTR"/>
+<word id="8" form="Staatsanwaltschaft" postag="NN" head="14" deprel="OBJD"/>
+<word id="9" form="Details" postag="NN" head="5" deprel="SUBJ"/>
+<word id="10" form="über" postag="APPR" head="9" deprel="PP"/>
+<word id="11" form="dubiose" postag="ADJA" head="13" deprel="ATTR"/>
+<word id="12" form="finanzielle" postag="ADJA" head="13" deprel="ATTR"/>
+<word id="13" form="Transaktionen" postag="NN" head="10" deprel="PN"/>
+<word id="14" form="mitgeteilt" postag="VVPP" head="5" deprel="AUX"/>
+<word id="15" form="." postag="$." head="14" deprel="-PUNCT-"/>
+</sentence></verbatim>|
+
+Use the following command for CoNLL conversion:
+
+<verbatim>prompt>	java -jar maltparser-1.7.1.jar -i inputFile.malt.tab -c configuratioFile -if malttab -o outputFile.conll -of conllx -m convert</verbatim>
+
+The -i parameter defines the input file which has to be converted, -c represents a model ending with .mco, -o is the output file. The parameter -of defines the output format, -if the input format and -m defines the function to be used.
+For futher information on tags and functionalities see the MaltParser's [[http://www.maltparser.org/optiondesc.html][option description]].
+
+---++++CoNLL06 to CoNLL09 and back
+The MateTools parser provides functionalities to convert between the CoNLL06 and CoNLL09 format.
+|*CoNLL06*|*CoNLL09*|
+|<verbatim>1	Er	_	PPER	PPER	_	2	SB	2	SB
+2	fürchtet	_	VVFIN	VVFIN	_	0	ROOT	0	ROOT
+3	noch	_	ADV	ADV	_	4	MO	4	MO
+4	Schlimmeres	_	NN	NN	_	2	OA	2	OA
+5	.	_	$.	$.	_	2	PUNC	2	PUNC</verbatim>|<verbatim>1	Er	_	_	PPER	PPER		_	2	2	SB	SB	_	_
+2	fürchtet	_	_	VVFIN	VVFIN		_	0	0	ROOT	ROOT	_	_
+3	noch	_	_	ADV	ADV		_	4	4	MO	MO	_	_
+4	Schlimmeres	_	_	NN	NN		_	2	2	OA	OA	_	_
+5	.	_	_	$.	$.		_	2	2	PUNC	PUNC	_	_</verbatim>|
+
+For the conversiont from CoNNL06 to CoNLL09 use the following command:
+<verbatim>prompt>java -Xms1G -Xmx4G -classpath anna-2.jar is2.util.Convert0609 <file to convert> <output file></verbatim>
+to convert the data back use:
+<verbatim>java -Xms1G -Xmx4G -classpath anna-2.jar is2.util.Convert0609 <file to convert> <output file> -w06</verbatim>
+Nevertheless the anna-2.jar suffers some encoding issues, an improved version(mtConllConverter.jar) is available on the frink server.

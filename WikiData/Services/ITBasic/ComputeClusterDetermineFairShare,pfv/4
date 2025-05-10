@@ -1,0 +1,9 @@
+%META:TOPICINFO{author="alles" comment="rename" date="1710425516" format="1.1" reprev="2" version="4"}%
+%META:TOPICPARENT{name="Services/Campus.ComputeCluster"}%
+Check your current !FairShare by running =sshare -U=.
+| *FairShare* | *Interpretation* |
+| 1.0 | Underserviced: Account has not used the cluster at all recently. |
+| 0.5 | The account has used exactly the amount of resources it was granted. |
+| 0.0 | Overserviced: The account has used up its quota. Jobs can still be submitted, but with potentially long queueing times. |
+
+%META:TOPICMOVED{by="bugert" date="1570804880" from="Services.ComputeClusterDetermineFairShare" to="Services/Campus.ComputeClusterDetermineFairShare"}%

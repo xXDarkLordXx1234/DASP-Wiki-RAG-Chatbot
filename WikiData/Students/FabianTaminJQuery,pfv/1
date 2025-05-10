@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="FabianTamin" date="1249402422" format="1.1" version="1"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ JQuery
+
+This tutorial is using [[http://docs.jquery.com/Downloading_jQuery][jQuery library]] and [[http://docs.jquery.com/images/c/c7/Jquery-starterkit.zip][JQuery Starterkit]]
+
+---++ Separation of Structure (HTML) and Behavior (JS)
+Now update the $(document).ready handler: 
+<verbatim>
+$(document).ready(function() {
+   $("a").click(function() {
+     alert("Hello world!");
+   });
+});
+</verbatim>
+
+This should show the alert as soon as you click on the link. You are ready now to copy and paste this script into your custom.js file. Then, open starterkit.html in the browser and click any link. You should see a pop-up window with "Hello world!" message regardless of what link was clicked. 
+
+Let's have a look at what we are doing: $("a") is a jQuery selector, in this case, it selects all a elements. $ itself is an alias for the jQuery "class", therefore $() constructs a new jQuery object. The click() function we call next is a method of the jQuery object. It binds a click event to all selected elements (in this case, a single anchor element) and executes the provided function when the event occurs. 
+
+This is similar to the following code: 
+<verbatim>
+<a href="" onclick="alert('Hello world')">Link</a>
+</verbatim>
+
+The difference is quite obvious:<br />
+_We don't need to write an onclick for every single element. We have a clean separation of structure (HTML) and behavior (JS), just as we separate structure and presentation by using CSS._
+
+
+-- Main.FabianTamin - 04 Aug 2009

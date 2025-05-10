@@ -1,0 +1,89 @@
+%META:TOPICINFO{author="kmayer" comment="reprev" date="1516094215" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="KevinMayer"}%
+---++ 2017-01-16
+   * # concepts: 1000
+   * baseline		 - # clusters: 828, avg cluster size: 1.21
+
+   * Ergebnisse eigenes Clustering vs. CompClusterer, 3 runs:
+   * d = 1024 - # clusters: 815, avg cluster size: 1.23, ARI: 0.60, precision: 0.98, recall: 0.96, F1: 0.97
+   * d = 1024 - # clusters: 815, avg cluster size: 1.23, ARI: 0.60, precision: 0.98, recall: 0.96, F1: 0.97
+
+   * d = 1024 - # clusters: 799, avg cluster size: 1.25, ARI: 0.51, precision: 0.98, recall: 0.95, F1: 0.97
+   * d = 1024 - # clusters: 799, avg cluster size: 1.25, ARI: 0.51, precision: 0.98, recall: 0.95, F1: 0.97
+
+   * d = 1024 - # clusters: 828, avg cluster size: 1.21, ARI: 0.64, precision: 0.97, recall: 0.97, F1: 0.97
+   * d = 1024 - # clusters: 828, avg cluster size: 1.21, ARI: 0.64, precision: 0.97, recall: 0.97, F1: 0.97
+
+   * Ergebnisse eigenes Clustering vs. GreedyLocalOptimizer, 5 runs:
+   * d = 1024 - # clusters: 793, avg cluster size: 1.26, ARI: 0.57, precision: 0.98, recall: 0.94, F1: 0.96
+   * d = 1024 - # clusters: 794, avg cluster size: 1.26, ARI: 0.58, precision: 0.98, recall: 0.94, F1: 0.96
+
+   * d = 1024 - # clusters: 812, avg cluster size: 1.23, ARI: 0.58, precision: 0.98, recall: 0.96, F1: 0.97
+   * d = 1024 - # clusters: 813, avg cluster size: 1.23, ARI: 0.58, precision: 0.98, recall: 0.96, F1: 0.97
+
+   * d = 1024 - # clusters: 827, avg cluster size: 1.21, ARI: 0.61, precision: 0.97, recall: 0.97, F1: 0.97
+   * d = 1024 - # clusters: 829, avg cluster size: 1.21, ARI: 0.61, precision: 0.97, recall: 0.97, F1: 0.97
+
+   * d = 1024 - # clusters: 803, avg cluster size: 1.25, ARI: 0.55, precision: 0.98, recall: 0.95, F1: 0.96
+   * d = 1024 - # clusters: 804, avg cluster size: 1.24, ARI: 0.58, precision: 0.98, recall: 0.95, F1: 0.96
+
+   * d = 1024 - # clusters: 765, avg cluster size: 1.31, ARI: 0.39, precision: 0.99, recall: 0.92, F1: 0.95
+   * d = 1024 - # clusters: 770, avg cluster size: 1.30, ARI: 0.43, precision: 0.99, recall: 0.92, F1: 0.95
+
+
+
+
+---++ 2017-01-08
+   Korrektur der Ergebnisse von LSH vA von unten:
+   * # concepts: 2000
+   * baseline - # clusters: 1455, avg cluster size: 1.37
+   * d = 8  - # clusters: 177, avg cluster size: 11.30, ARI: 0.04, precision: 0.84, recall: 0.10, F1: 0.18
+   * d = 9  - # clusters: 358, avg cluster size: 5.59, ARI: 0.07, precision: 0.86, recall: 0.21, F1: 0.34
+   * d = 10 - # clusters: 466, avg cluster size: 4.29, ARI: 0.04, precision: 0.84, recall: 0.27, F1: 0.41
+   * d = 11 - # clusters: 585, avg cluster size: 3.42, ARI: 0.01, precision: 0.79, recall: 0.32, F1: 0.45
+   * d = 12 - # clusters: 673, avg cluster size: 2.97, ARI: 0.05, precision: 0.83, recall: 0.38, F1: 0.52
+   * d = 13 - # clusters: 1076, avg cluster size: 1.86, ARI: 0.01, precision: 0.79, recall: 0.58, F1: 0.67
+   * d = 14 - # clusters: 1211, avg cluster size: 1.65, ARI: 0.01, precision: 0.77, recall: 0.64, F1: 0.70
+   * d = 15 - # clusters: 1408, avg cluster size: 1.42, ARI: 0.01, precision: 0.78, recall: 0.75, F1: 0.77
+   * d = 16 - # clusters: 1563, avg cluster size: 1.28, ARI: 0.01, precision: 0.76, recall: 0.82, F1: 0.79
+   * d = 17 - # clusters: 1676, avg cluster size: 1.19, ARI: 0.00, precision: 0.75, recall: 0.87, F1: 0.81
+   * d = 18 - # clusters: 1759, avg cluster size: 1.14, ARI: 0.01, precision: 0.75, recall: 0.90, F1: 0.82
+   * d = 19 - # clusters: 1692, avg cluster size: 1.18, ARI: 0.01, precision: 0.75, recall: 0.87, F1: 0.81
+   * d = 20 - # clusters: 1783, avg cluster size: 1.12, ARI: 0.00, precision: 0.75, recall: 0.92, F1: 0.83
+   * d = 21 - # clusters: 1919, avg cluster size: 1.04, ARI: 0.00, precision: 0.74, recall: 0.98, F1: 0.84
+   * d = 22 - # clusters: 1833, avg cluster size: 1.09, ARI: 0.01, precision: 0.75, recall: 0.95, F1: 0.84
+   * d = 23 - # clusters: 1928, avg cluster size: 1.04, ARI: 0.00, precision: 0.74, recall: 0.98, F1: 0.84
+   * d = 24 - # clusters: 1956, avg cluster size: 1.02, ARI: 0.00, precision: 0.73, recall: 0.99, F1: 0.84
+
+   Ergebnisse von LSH vB:
+   * # concepts: 2000
+   * baseline - # clusters: 1455, avg cluster size: 1.37
+   * d = 256  - # clusters: 1174, avg cluster size: 1.70, ARI: 0.19, precision: 0.97, recall: 0.78, F1: 0.86
+   * d = 512  - # clusters: 1339, avg cluster size: 1.49, ARI: 0.53, precision: 0.97, recall: 0.89, F1: 0.93
+   * d = 1024 - # clusters: 1477, avg cluster size: 1.35, ARI: 0.67, precision: 0.95, recall: 0.97, F1: 0.96
+   * d = 2048 - # clusters: 1448, avg cluster size: 1.38, ARI: 0.74, precision: 0.97, recall: 0.97, F1: 0.97
+   * d = 4096 - # clusters: 1433, avg cluster size: 1.40, ARI: 0.75, precision: 0.98, recall: 0.97, F1: 0.97
+   * d = 8192 - # clusters: 1459, avg cluster size: 1.37, ARI: 0.80, precision: 0.98, recall: 0.98, F1: 0.98
+
+---++ 2017-11-13
+   Approximation der Word Embeddings durch LSH vA für verschiedene Hashgrößen d:
+
+   * concepts: 2945
+   * baseline	 - # clusters: 1794, avg cluster size: 1.64
+   * d=64		 - # clusters: 2212, avg cluster size: 1.33, ARI: 0.62, precision: 0.79, recall: 0.97, F1: 0.87
+   * d=32		 - # clusters: 2194, avg cluster size: 1.34, ARI: 0.67, precision: 0.79, recall: 0.97, F1: 0.87
+   * d=16, run 1	 - # clusters: 1730, avg cluster size: 1.70, ARI: 0.51, precision: 0.80, recall: 0.77, F1: 0.79
+   * d=16, run 2	 - # clusters: 1704, avg cluster size: 1.73, ARI: 0.52, precision: 0.81, recall: 0.77, F1: 0.79
+   * d=16, run 3	 - # clusters: 1671, avg cluster size: 1.76, ARI: 0.54, precision: 0.81, recall: 0.75, F1: 0.78
+   * d=12		 - # clusters: 929,  avg cluster size: 3.17, ARI: 0.31, precision: 0.84, recall: 0.43, F1: 0.57
+   * d=8		 - # clusters: 213, avg cluster size: 13.83, ARI: 0.08, precision: 0.89, recall: 0.11, F1: 0.19
+
+
+---++ 2017-10-16
+   * Laufzeitanalyse der Pipeline:
+      * ohne Word Embeddings:
+         * Clustergröße 50: 20 min
+         * Clustergröße 100: 2,5 h
+      * mit Word Embeddings:
+         * Clustergröße 50: 30 min
+         * Clustergröße 100: 15 h

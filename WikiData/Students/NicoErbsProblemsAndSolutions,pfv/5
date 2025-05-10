@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="5"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+---+ Problems and solutions
+
+%TOC%
+
+---++++ TreeTaggerPosLemma is raising an exception during initilization that i cannot open location file:resource/TreeTagger_3.1
+In the xml descriptor of this annotator there is a requirement bundle with a fixed location. Change the location to the correct location.
+   
+---++++ Problems with UIMA datapath
+Create a file .datapath and set datapath in the program
+   
+---++++ AE leads to undeterministic behaviour
+Use type priorities like first lemma and then sentence (Descriptor --&gt; Indexes)
+   
+---++++ When creating a aggregate analysis engine it returns an error if ae from other projects should be applied
+Use CPE instead of aggreagte AE
+   
+---++++ xml cannot be opened with Component Descriptor Editor in eclipse
+Right click on project --&gt; Properties --&gt; UIMA --&gt; and paste path of project.
+
+-- Main.NicolaiErbs - 03 Aug 2009

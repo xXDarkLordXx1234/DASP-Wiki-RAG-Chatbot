@@ -1,0 +1,23 @@
+%META:TOPICINFO{author="RichardSteuer" date="1355527783" format="1.1" version="2"}%
+%META:TOPICPARENT{name="IrExperiments"}%
+Until now (14.12.2012), my best baseline result (without any kind of expansion) is the following.
+
+---+++Evaluation results (trec_eval) [all queries, indexed lema and word form]
+| num_q | all | 91 | 
+| num_ret | all | 89191 | 
+| num_rel | all | 1045 | 
+| num_rel_ret | all | 470 | 
+| map | all | 0.1789 | 
+| gm_ap | all | 0.0032 | 
+| R-prec | all | 0.1784 | 
+| bpref | all | 0.2624 | 
+| recip_rank | all | 0.3250 | 
+| P5 | all | 0.2000 | 
+| P10 | all | 0.1505 | 
+| P15 | all | 0.1333 | 
+| P20 | all | 0.1170 | 
+| P30 | all | 0.0916 | 
+| P100 | all | 0.0404 | 
+| P200 | all | 0.0231 | 
+| P500 | all | 0.0097 | 
+| P1000 | all | 0.0050 |

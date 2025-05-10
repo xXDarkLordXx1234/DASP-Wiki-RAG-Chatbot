@@ -1,0 +1,134 @@
+%META:TOPICINFO{author="kaster" comment="" date="1570282171" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Multilingual Contextual Probing
+   * Deadline: 27 December 2019
+   * Begin: 26 June 2019
+   * Midterm presentation: 10 October 2019
+
+---++ 02 October 2019 Meeeting
+   * Cross-lingual NER evaluations seems to be not possible. The languages have different labels.
+   * Focus on cross-lingual probing tasks.
+   * 4 weeks for fine-tuning results
+   * Prepare the repository for moving to the ukp repository in 2-3 weeks
+   * Simpler models: Use ratio instead of the absolute difference
+   * Got feedback for my midterm presentation slides
+
+---++ 26 September - 1 October 2019
+   * Trained simpler models for german. I added the results to the spreadsheet.
+      * 1st layer with dim=100
+      * Only 1 relu layer
+      * Only 1 linear layer
+      * Only 1 linear layer without dropout
+   * Created probing tasks for every language for which we have data
+   * Worked on the midterm presentation
+   * Checked which language pairs share labels (probing tasks). I added the results to the spreadsheet.
+   * I had problems with the cross-lingual NER evaluation. Every language has different label sets. AllenNLP sees an unknown label and throws an exception.
+   * Read "What Does BERT Look At? An Analysis of BERT’s Attention"
+
+---++ 26 September 2019 Meeting
+   * For next meeting:
+   * Train simpler models for the probing tasks in one language.
+   * Create probing tasks for Hindi
+   * Start mBert experiments with a few language pairs.
+   * Check which languages share the same labels. The model can't learn a label if the language doesn't have this label.
+   * Send the presentation slides before the next meeting
+
+---++ 17-25 September 2019
+   * Added the probing task results (incl. bert, bert-c, CharacterBin, TagCount) to the spreadsheet
+   * Bert uses word piece tokenization but our labels are for whole words. I tried using the first word piece (some papers did this) and an averaged word vector (like bpe). Using an averaged vector shows minor better results.
+   * Got an error for Russian w2v voice ("No embeddings of correct dimension found; you probably misspecified your embedding_dim parameter, or didn't pre-populate your Vocabulary").
+   * The results indicate that context information are helpful for some tasks. Improvements on case, pos, animacy and finiteness. Minor improvements or worse results on the other tasks. Elmo mostly outperforms bert.
+   * Probing tasks, XNLI and NER are available for:
+   * SVO: English, french, German, Russian, Spanish
+   * SOV: Turkish, Hindi, Urdu
+   * Some writing on related work
+   * Read "Cross-Lingual BERT Transformation for Zero-Shot Dependency Parsing"
+   * Read "How to Fine-Tune BERT for Text Classification?"
+   * Read "How to (Properly) Evaluate Cross-Lingual Word Embeddings: On Strong Baselines, Comparative Analyses, and Some Misconceptions"
+   * Read "Polyglot Contextual Representations Improve Crosslingual Transfer"
+   * Read "Massively Multilingual Sentence Embeddings for Zero-Shot Cross-Lingual Transfer and Beyond"
+   * Read "Probing What Different NLP Tasks Teach Machines about Function Word Comprehension"
+   * Read "BERTSCORE: Evaluating Text Generation with BERT"
+
+---++ 17 September 2019 Meeting
+   * Still waiting on probing tasks results. I will add them when they are available.
+   * Midterm presentation on 10th October. Prepare slides during the next 2 weeks. Should talk about motivation, what have I done? (probing/downstream tasks, results), how effective are the embeddings on our tasks?, future work (fine tuning ...). Max 20 minutes
+   * Read more about cross-lingual bert and fine-tuning
+   * Check which languages are available and how they are related
+   * Bert performs good on cross-lingual zero-shot tasks. It performs good on language pairs which share the word order even if  they have no vocabulary overlap. It performs bad on language pairs which do not share the word order. Hypothesis: Training bert on our probing tasks which correlate with the word order improves the performance for language pairs which have different word orders.
+   * Experimental setting:
+   * 1) Show that m-bert performs bad on cross-lingual tasks with unrelated language pairs
+   * 2) Show that m-bert performs good on cross-lingual tasks with unrelated language pairs if we fine-tune m-bert on our probing tasks
+   * 3) Show that fine-tuned m-bert performs similar on cross-lingual tasks with related language pairs
+
+---++ 09-16 September 2019
+   * Added CharacterBin and TagCount to the probing tasks
+   * Improved the probing datasets (removed long sentences and fixed word splitting)
+   * A z-score of 2 seems to be good for the sentence lengths.
+   * The sigmorphon19 tasks 2 dataset does not contain information about the word splitting. These information are in the original ud dataset.
+   * Checked pytorch-transformers framework. Bert should work with our intrinsic probing tasks. It should be possible to use the multilingual bert model directly in allennlp (useful for downstream tasks).
+   * Some restructuring of the repo
+   * Started the new probing tasks
+   * Read "How multilingual is Multilingual BERT?" (2019)
+   * Read "Cross-lingual Language Model Pretraining" (2019)
+   * Read "Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT" (2019)
+   * Read "Informing Unsupervised Pretraining with External Linguistic Knowledge" (2019)
+
+---++ 09 September 2019 Meeting
+   * Talked about the downstream results. The contextualized elmo performs only better on NER. No improvement on XNLI, DEP and POS
+   * For the next meeting:
+   * Check sentence length distribution of the treebank
+   * Remove long sentences from the probing dataset
+   * Fix that some words in Turkish (and probably Spanish, Russian) were separated in the probing task datasets
+   * Prepare the repository for moving into the UKPLab repository (more comments and restructuring)
+   * Add TagCount and CharacterBin to the probing tasks
+   * Support bert
+   * Read more literature about probing on bert and cross-lingual transfer
+   * Update this wiki page
+
+---++ 12 August - 08 September 2019
+   * Finished the experiments on the downstream tasks for elmo
+   * The contextualized elmo performs only better on NER. No improvement on XNLI, DEP and POS
+   * Setup thesis template
+   * Read "SentEval: An Evaluation Toolkit for Universal Sentence Representations"
+   * Read "Probing Biomedical Embeddings from Language Models"
+   * Read "GLUE: A MULTI-TASK BENCHMARK AND ANALYSIS PLATFORM FOR NATURAL LANGUAGE UNDERSTANDING"
+   * Read "What’s in an Embedding? Analyzing Word Embeddings through Multilingual Evaluation"
+   * Read "A Survey of Word Embeddings Evaluation Methods"
+   * Read "Linguistic Knowledge and Transferability of Contextual Representations"
+   * Read "Evaluation of sentence embeddings in downstream and linguistic probing tasks"
+   * Read "Probing Multilingual Sentence Representations With X-PROBE"
+   * Read "WHAT DO YOU LEARN FROM CONTEXT? PROBING FOR SENTENCE STRUCTURE IN CONTEXTUALIZED WORD REPRESENTATIONS"
+   
+
+---++ 18-26 July 2019
+   * Trained classifier for Downstream tasks (dep, xnli, ner, pos) for german, spanish, turkish and russian
+
+---++ 17 July 2019: Meeting with Max and Gözde
+   * Knowledgetransfer
+
+---++ 10-17 July 2019
+
+   * Trained classifier for fasttext, bpe, muse and elmo embeddings on Finnish, German, Spanish, Turkish and Russian
+   * Collected results in a spreadsheet
+
+---++ 10 July 2019 Meeting
+   
+---++ 27 June - 10 July 2019
+   * Trained classsifiers for intrinsic probing tasks on german, finnish, spanish, russian and turkish
+
+---++ 26 June 2019 Meeting
+   
+
+---++ 20-26 June 2019
+   * Statistics about the sigmorphon19 dataset
+
+---++ 19 June 2019 Meeting
+
+---++ 13-19 June 2019
+   * Wrote reader for the sigmorphon19 task 2 dataset and created probing dataset
+
+
+---++ 12 June 2019 Meeting
+   * First meeting
+   * Introduction to the topic

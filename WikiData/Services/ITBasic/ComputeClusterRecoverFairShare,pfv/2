@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="alles" comment="" date="1710425492" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ComputeClusterDetermineFairShare"}%
+There are several things that can be done when your fairshare is low:
+
+%TWISTY{ 
+    showlink="show the things" 
+    hidelink="hide the things" 
+    showimgright="%ICONURLPATH{toggleopen-small}%" 
+    hideimgright="%ICONURLPATH{toggleclose-small}%" 
+}% 
+
+   1 *Do not run jobs:* Fairshare recovers via two routes.  The first is via your group not running any jobs and letting others use the resource.  That allows your fractional usage to decrease which in turn increases your fairshare score.  The second is via the half-life we apply to fairshare which ages out old usage over time.  Both of these method require not action but inaction on the part of your group.  Thus to recover your fairshare simply stop running jobs until your fairshare reaches the level you desire.  Be warned this could take several weeks to accomplish depending on your current usage.
+   1 *Be patient:* This is a corollary to the previous point but applies if you want to continue to run jobs.  Even if your fairshare is low, your job gains priority by sitting the queue.  The longer it sits the higher priority it gains.  So even if you have very low fairshare your jobs will eventually run, it just may take several days to accomplish.
+   1 *Leverage Backfill:* Slurm runs in two scheduling loops.  The first loop is the main loop which simply looks at the top of the priority chain for the partition and tries to schedule that job.  It will schedule jobs until it hits a job it cannot schedule and then it restarts the loop.  The second loop is the backfill loop. This loop looks through jobs further down in the queue and asks can I schedule this job now and not interfere with the start time of the top priority job.  Think of it as the scheduler playing giant game of three dimensional tetris, where the dimensions are number of cores, amount of memory, and amount of time. If your job will fit in the gaps that the scheduler has it will put your job in that spot even if it is low priority.  This requires you to be very accurate in specifying the core, memory, and time usage of your job.  The better constrained your job is the more likely the scheduler is to fit you in to these gaps. The seff utility is a great way of figuring out your job performance.
+   1 *Leverage Requeue:* The *requeue partitions (yolo partition at UKP Lab) are cheaper to run* in and have a lot of capacity.  You are more likely to find your job pending for a shorter time, even with low fairshare, in those partitions than in the higher demand non-requeue partitions.
+   1 *Plan:* Better planning and knowledge of your historic usage can help you better budget your time on the cluster.  The cluster is not an infinite resource.  You have been allocated a slice of the cluster, thus it is best to budget your usage so that you can run high priority jobs when you need to. Tools like scalc, seff, seff-array, and the historic usage graphs (check our [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/Campus/ComputeCluster#Monitoring][monitoring!]]) are invaluable assets for this.  Beyond that doing analysis of your code efficiency and memory usage will help dramatically.  Most users vastly over estimate how much memory their job actually needs, dragging down their fairshare score over time.  Trimming these excess requests makes for more efficient usage.  Increasing code efficiency by taking time to optimize your code base can also be very beneficial as better, more efficient algorithms mean lower usage and therefore better fairshare.
+
+%ENDTWISTY%
+
+Taken from [[https://docs.rc.fas.harvard.edu/kb/fairshare/][here - worth a read on how fairshare works in general.]]

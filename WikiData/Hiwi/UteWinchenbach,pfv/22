@@ -1,0 +1,202 @@
+%META:TOPICINFO{author="winchenbach" comment="save topic" date="1447096623" format="1.1" reprev="22" version="22"}%
+---++ Treffen 11.11.2015
+   * Status
+      * Kontexte Dependencies um Ismus und Interval um Ismus (Halbierung zwischen Ismen) als neue Context Implementierungen in Cleartk umgesetzt bzw. umgeschrieben 
+   
+---++ Treffen 28.10.2015
+   * Status
+      * Weitere Features (POS und Word-Bigram) implementiert, Ablation Tests ausgeführt: neue Features bringen keine Verbesserung, 
+        die gewählten Features sind BoW und Lexikon-Features mit Gesamtprecision von 0,525 bis 0,646 und Mittlerer Precison von 0,454 bis 0,494 (s. SVM_Ablation).
+   * Nächste Schritte
+      * Mate Dependency Parse benutzen um den Kontext der Ismen zu bestimmen (verschiedene Höhen aufwärts des Ismus im Parse-Tree versuchen)
+      * Fehleranalyse für PMI und SVM (Gemeinsamkeiten der falsch bewerteten Ismen?)
+      * Inter-Annotator-Agreement zwischen Annotatoren und SVM System: Krippendorff's Alpha
+      * Precision/Recall für Annotatoren (anderer Annotator jeweils als Gold angesehen)
+      * Training der SVM auf bereits annotiertem Corpus, Suche deutsche Corpora z.B. MLSA
+      * Ev. angeglichene Annotation und ev. weitere Annotationen
+
+---++ Treffen 21.10.2015
+   * Status
+      * SentiWS Feature versucht mit summiertem Mittel-Wert, pos. und neg. summiertem Mittelwert, auf -1, 0, 1 diskretisiertem Wert mit Extraktion auf dem gesamten Satz oder
+        zwischen Ismen getrenntem Satz
+      -> leichte Verbesserung auf Satzebene, leichte Verschlechterung bei Split
+      -> Problem: wenig wird 1 zugeordnet, Genauigkeit für 1 ist schlecht (ist kleinste Klasse in Trainingsdaten)
+   * Nächste Schritte
+      * Recherche Class Imbalance SVM
+      * Threshold um 0 für diskretisiertes Feature
+      * Parse: Nur Worte, die sich auf den Ismus beziehen für Feature Extraktion benutzen
+
+---++ Treffen 07.10.2015
+   * Status
+      * SVM mit BoW features und leave-one-out cross validation zeigt Ergebnisse, die mit PMI-Baseline (Direkt, 500 Vergleichsworte, 0.1 Schwelle um 0) vergleichbar sind
+        (s. Cross Validation_Gerloff bzw. Cross Validation_Nunez)
+      * PMI-Normalisierung durch max. und min. PMI-Werte ergab keine Verbesserung gegenüber Diskretisierung mit Schwellwert (zu viel wird als neutral gewertet)
+   * Nächste Schritte
+      * Untersuchung Klassifizierungsergebnisse bzgl. Satzgrenzen, generiertem und annotiertem Score
+      * SentiWS Feature (Satz oder um Ismus herum), mögliche weitere Features: Wort-Bigramme, Anzahl POS
+      * Recherche Class Imbalance Maßnahmen/Auswirkungen auf SVM
+      * Recherche Feature Selection: Ablation tests
+
+---++ Treffen 26.08.2015
+   * Status
+      * PMI Normalisierung mittels NPMI (Gerlof Bouma 2009)liefert sehr kleine Werte, gleichmäßige Aufteilung des Intervalls deshalb nicht möglich, fehlerhaft?
+      * Benutze nur noch PMI Werte in Durchschnittsberechnung, die genug Hits aufweisen
+      * Bei Übertragung von PMI-Wert nach -1,0,1 benutze ich jetzt teilweise ein kleines Intervall um 0 herum, das als 0 zählt.
+      
+      * Endergebnisse wirken ausgeglichener, (erstaunlicherweise) deutliche Verbesserung der PMI-Werte, die direkt für den Ismus berechnet werden 
+        (Durchschnittl Precision ca. 40- 50, sonst ca. 30-40, Noun ca. 40)
+
+   * Fragen
+      * PMI Normalisierungsfehler? 
+   * Nächste Schritte
+      * PMI- Normalisierung: max. Obergrenze finden, kleineres Intervall aufteilen
+      * Bewertung von Ismus-Klassen (1 Fachtermini - 3 Doktrin) bei direkter PMI-Bewertung untersuchen:
+        Wird bestimmte Klasse häufig pos. bzw. neg. bewertet? Welche Klassen werden häufig falsch bzw. richtig klassifiziert?
+      * SVMlight mit cleartk und leave-one-out cross validation
+
+---++ Treffen 12.08.2015
+
+   * Nächste Schritte
+      * Pmi normalisieren und gleichmäßig in pos/neg/neutral übertragen in der Hoffnung, dass Klassifizierung als neutral und negativ ausgeglichener wird
+      * Negativ-Bias untersuchen, liegen einzelne Pmi-Werte nah bei 0, aber negativ?
+      * Evaluation verschiedener Parameter-Kombinationen für PMI fertig stellen, ev. DKPro Lab oder eigene Implementierung für Zusammenfassung der Ergebnisse (momentan manuell)
+      * SVM mit BoW Feature und Leave-one-out cross-validation
+
+---++ Treffen 5.08.2015
+---+++++ Ergebnisse
+   * Zusammenfassung Annotationen
+      * Es konnten in 120 bzw. 127 von 189 Annotationen pro Annotator alle Score Typen (BEKENNTNIS, MORAL, GUETE) zu einem (ACCU) zusammengefasst werden.
+      * Es konnten innerhalb der Score Typen beide Annotatoren zusammengefasst werden:
+        99 von 190 für BEKENNTNIS, 104 für MORAL und GUETE, 65 für ACCU
+   * Pmi Ismus direkt
+      * Pmi Ismus direkt d.h. der Pmi-Score des Ismus wird direkt aus dessen Wort und den Vergleichswörtern aus dem Sentiment-Lexikon berechnet.
+      * Das hat zur Folge, dass alle gleichen Ismen gleiche Werte haben und diese nur auf dem Gebrauch im DTA- Referenzkorpus beruhen.
+        Da die Ismen selten sind und noch seltener zusammen mit den Vergleichswörtern vorkommen sind die PMI-Werte häufig 0.0.
+        Dies kann verbessert werden, wenn eine hohe Anzahl von Vergleichsworten gewählt wird (s. Logs mit 5PmiWords bis 100PmiWords).
+      * Insgesamt ist die Precision niedrig (meist zwischen 0.2 und 0.3), geringer wenn beide Annotatoren zusammengefasst werden (um ca. 0.03- 0.09).
+        Wenn pro Annotator alle Score Typen zusammengefasst werden, wird die Precision geringer (um ca. 0.02- 0.07).
+   * Pmi Adjektive nahe des Ismus
+      * Pmi benachbarter Adjektive d.h. der Pmi Wert wurde nicht aus dem Ismus Wort sondern den Adjektiven 
+        in demselben oder benachbarten Satz und den Vergleichsworten aus dem Lexikon berechnet.
+      * Es fällt direkt auf, dass fast alle Ismen nun als negativ bewertet werden. Falls sie dennoch als neutral bewertet werden,
+        ist die Precision sehr hoch. Sie werden eigentlich nie als positiv bewertet.
+        Mir ist noch unklar, warum das so ist.
+---+++++ Nächste Schritte
+   * Pmi Verbesserungsideen
+      * Pmi aus anderen Worten in der Nähe des Ismus berechnen: Nomen, Nomen+ Adjektive, Inhaltsworte
+      * Einschränken auf Adjektive, die sich tatsächlich auf den Ismus beziehen (aus Parse)
+      * Eigene Sentiment Liste aus NuS Texten erstellen
+   * Weitere Literaturrecherche SemEval'15
+
+---+ Juni 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 11.06.2015 | Einarbeitung NuS und Recherche DTA | 4 | |
+| 14.06.2015 | Einarbeitung Lucene, XML Struktur | 4.75 | |
+| 16.06.2015 | Code Lucene Suchindex für DTA | 2.5 | |
+| 23.06.2015 | Recherche Tei-, XML-Readers, XPath | 2 | |
+| 23.06.2015 | Code Dta-Tei-Reader | 3 | |
+| 24.06.2015 | Code Lucene Suchindex erstellen | 3 | |
+| 24.06.2015 | Recherche Lucene Unit-tests | 1 | |
+| 28.06.2015 | Code PMI | 3 | |
+| 28.06.2015 | Test Lucene Suchindex | 1 | |
+| 29.06.2015 | Test/Debugging Dta Reader und Lucene Suchindex | 4 | |
+| 30.06.2015 | Test/Debugging PMI | 1.75 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+---+ Juli 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 3.07.2015 | Debugging PMI | 1 | |
+| 4.07.2015 | Unit Test Suchindex | 2.5 | |
+| 4.07.2015 | Literaturrecherche SemEval'15 | 0.5 | |
+| 4.07.2015 | Unit Test PMI und Suchindex | 2.25 | |
+| 5.07.2015 | Unit Test PMI und Suchindex | 2.25 | |
+| 27.07.2015 | Zusammenfassen von Annotationen,Design und Code | 3.25 | |
+| 28.07.2015 | Zusammenfassen von Annotationen, Tests | 2.25 | |
+| 28.07.2015 | Evaluation, Berechnung Precision und Confusionmatrix, Design und Code | 1.75 | |
+| 29.07.2015 | Evaluation Unit Test | 3.75 | |
+| 29.07.2015 | Evaluation Debug | 1.75 | |
+| 29.07.2015 | Evaluation Setup | 0.5 | |
+| 29.07.2015 | Literaturrecherche SemEval '15 | 1.25 | |
+| 30.07.2015 | Evaluation Debug | 0.5 | |
+| 30.07.2015 | Pmi mit Adjektiven, Code und Tests | 1.25 | |
+| 31.07.2015 | Evaluation Dokumentation | 1.5 | |
+| 31.07.2015 | Literaturrecherche SemEval 2015 | 3.75 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+---+ August 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 10.08.2015 | Code, Test für PMI mit Adjektiven etc. | 1.5 | |
+| 10.08.2015 | Evaluation von PMI mit unterschiedl. Param. | 3.0 | |
+| 11.08.2015 | Evaluation von PMI mit unterschiedl. Param. | 2.0 | |
+| 24.08.2015 | Änderung PMI-Berechnung, NPMI | 3.0 | |
+| 24.08.2015 | Tests des umgeschriebenen PMIs | 2.0 | |
+| 24.08.2015 | Neu-Evaluation PMI | 2.0 | |
+| 25.08.2015 | Neu-Evaluation PMI | 2.0 | |
+| 26.08.2015 | Recherche cleartk | 1.0 | |
+| 26.08.2015 | Überprüfung Encoding Lucene-Index | 1.5 | |
+| 26.08.2015 | Feature Extraction Code | 1.0 | |
+| 27.08.2015 | Training und Klassifizierung Code | 3.5 | |
+| 27.08.2015 | Recherche cleartk-eval für cross validation | 2.0 | |
+| 28.08.2015 | SVM Evaluation Code | 5.5 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+---+ September 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 1.09.2015 | PMI Normalisierung | 1.5 | |
+| 3.09.2015 | SVM Evaluation und Interpretation | 5 | |
+| 5.09.2015 | Recherche Feature Selection | 0.5 | |
+| 5.09.2015 | Ergebnisausgabe | 1.75 | |
+| 8.09.2015 | Feature Extraction Recherche & Code | 3 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+---+ Oktober 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 14.10.2015 | SentiWS Feature | 5.5 | |
+| 18.10.2015 | SentiWs Feature | 3.75 | |
+| 25.10.2015 | POS Feature | 4.5 | |
+| 26.10.2015 | Word Bigram Feature | 1 | |
+| 26.10.2015 | Recherche und Setup für Testen verschiedener Feature Kombis | 3.5 | |
+| 27.10.2015 | Test Setup | 2.0 | |
+| 29.10.2015 | Auswertung | 2.0 | |
+| 29.10.2015 | Dependency Parse Recherche und Code | 3.0 | |
+| 30.10.2015 | Dependency Parse und Feature Extraction Anpassung | 6.0 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 48.25
+
+---+ November 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 47
+
+
+
+
+-- Main.ErikLanDoDinh - 2015-06-10
+
+%META:FILEATTACHMENT{name="PMI_Eval.ods" attachment="PMI_Eval.ods" attr="" comment="Final EvaluationPMI" date="1440572779" path="PMI_Eval.ods" size="20104" user="winchenbach" version="1"}%
+%META:FILEATTACHMENT{name="CrossValidation_Gerloff.txt" attachment="CrossValidation_Gerloff.txt" attr="" comment="SVM BoW Evaluation Gerloff" date="1444208348" path="CrossValidation_Gerloff.txt" size="859" user="winchenbach" version="1"}%
+%META:FILEATTACHMENT{name="CrossValidation_Nunez.txt" attachment="CrossValidation_Nunez.txt" attr="" comment="SVM BoW Evaluation Nunez" date="1444208395" path="CrossValidation_Nunez.txt" size="861" user="winchenbach" version="1"}%
+%META:FILEATTACHMENT{name="SVM_Eval.ods" attachment="SVM_Eval.ods" attr="" comment="SVM Precision für verschiedene Feature Kombinationen." date="1445769484" path="SVM_Eval.ods" size="14408" user="winchenbach" version="1"}%

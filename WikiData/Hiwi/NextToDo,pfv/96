@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1376243955" format="1.1" reprev="96" version="96"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * *final talk*:
+      * <del>introduction / motivation / why is search important</del>
+      * <del>software setup (the paper, Terrier) and resources used (DT, TWSI, Delex)</del>
+      * practical aspects of the resources (how useful, applicable, ...)      
+      * show some expansions, maybe on the same query for comparison
+      * <del>evaluation data sets</del>
+      * show results so far
+      * show *delex results*
+      * show *query side* results on *new data set*
+
+   * run *delex query side on frink*
+      * the sense substituter contains an old version of asv toolbox, dt lemmatizer has new one
+         * re-pack the sensesubstituter jar and remove the asv package
+         * implement second term selecting method and (just by annotations overlap) count how many terms would be expanded by each of the two methods
+
+   * write about and *apply new data set*
+      * transform into same data format by a separate pipeline
+         * finished the topics
+         * [[http://ir.dcs.gla.ac.uk/wiki/Terrier/Disks4&5 index the document collection]]
+
+   * read the thesis: "A Comparison of Lexical Expansion Methodologies to Improve Medical Question and Answering Systems" ([[http://gradworks.umi.com/15/12/1512012.html][online]])
+
+   * points to *extend the thesis*: new data set, UIMA, IR intro, related work
+
+   * https://groups.google.com/forum/#!topic/dkpro-core-developers/LTfV46smprw

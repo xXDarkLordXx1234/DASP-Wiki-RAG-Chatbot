@@ -1,0 +1,151 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1340783476" format="1.1" version="12"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+---+++++ Statistics for main- and subcategories of the Fachsystematik in pedocs
+
+This table concerns the *main categories*. I filtered the pedocs keywords to only keep the ones that also appeared in the FS main categories, these statistics show the result (0 means that no keywords remained). The examples show the ID of the document, you can check the corresponding title and keywords of documents [[ClemensDeusserPedocsList][here]] (fair warning: very large).
+
+ | *Keywords* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 1219 | 35.74% | 137, 139, 138 | 
+ | 1 | 984 | 28.85% | 121, 136, 129 | 
+ | 2 | 602 | 17.65% | 133, 134, 147 | 
+ | 3 | 310 | 9.09% | 126, 122, 150 | 
+ | 4 | 154 | 4.51% | 124, 149, 169 | 
+ | 5 | 76 | 2.23% | 127, 123, 188 | 
+ | 6 | 28 | 0.82% | 153, 190, 219 | 
+ | 7 | 14 | 0.41% | 242, 375, 750 | 
+ | 8 | 9 | 0.26% | 125, 154, 356 | 
+ | 9 | 8 | 0.23% | 269, 326, 320 | 
+ | 10 | 2 | 0.06% | 324, 4389 | 
+ | 11 | 5 | 0.15% | 222, 274, 270 | 
+ 
+And the same for the *sub categories*:
+
+ | *Keywords* | *#Documents* | *Share* | *Examples* | 
+ | 0 | 684 | 20.05% | 121, 138, 141 | 
+ | 1 | 849 | 24.89% | 137, 136, 139 | 
+ | 2 | 671 | 19.67% | 159, 146, 151 | 
+ | 3 | 477 | 13.98% | 142, 129, 135 | 
+ | 4 | 299 | 8.77% | 122, 133, 147 | 
+ | 5 | 184 | 5.39% | 169, 204, 237 | 
+ | 6 | 109 | 3.2% | 126, 124, 153 | 
+ | 7 | 50 | 1.47% | 127, 123, 246 | 
+ | 8 | 31 | 0.91% | 149, 202, 238 | 
+ | 9 | 22 | 0.64% | 125, 280, 336 | 
+ | 10 | 10 | 0.29% | 269, 326, 356 | 
+ | 11 | 7 | 0.21% | 324, 320, 372 | 
+ | 12 | 7 | 0.21% | 154, 440, 438 | 
+ | 13 | 3 | 0.09% | 242, 270, 4945 | 
+ | 14 | 6 | 0.18% | 222, 219, 322 | 
+ 
+For reference, [[ClemensDeusserPedocsStatistics][here]] is the same statistic with no filtering.
+
+---+++++ On the Fachsystematik correlating with PEDOCS (Handout)
+
+*Description of the Fachsystematik and PEDOCS*
+
+The  [[ClemensDeusserFachsystematik][Fachsystematik]] (FS) is an index of topic areas of pedagogy scientific papers. It is structured using a general topic category, such as "Bildung und Erziehung allgemein" and then splitting off to sub categories, such as "Theorie der Bildung und Erziehung, einzelne Richtungen". In this specific document, the categories are identified by numbers.
+
+PEDOCS is a database of pedagogic papers, including metadata such as title, abstract, author(s), publication date, publication issue and keywords for each paper.
+
+*The Fachsystematik and PEDOCS keywords*
+
+Our main question now is whether the keywords in the PEDOCS database at least partially match the categories provided by the FS, if it does and if that matching is of good quality, we can use it as our gold standard to test and verify our algorithms against. To find out whether they matched up, I intentionally chose to parse the FS in a very lenient way, so that if the parsed data did match up with the PEDOCS keywords, I may not have sufficient evidence to justify using them as the gold standard, but if they did *not* match up, I would have sufficient evidence to dismiss them as a potential gold standard, so my formal goal was to provide reasoning that the keywords in PEDOCS are not compliant with the FS without further modification. I chose this route 
+
+For my approach I first augmented the FS to form complete words, for example "Jugendhilfe, -berufshilfe, -arbeitslosigkeit" was changed to "Jugendhilfe, Jugendberufshilfe, Jugendarbeitslosigkeit", so that a match from the keyword "Jugendarbeitslosigkeit" would not be missed. I then extracted all words longer than 3 letters (to exclude words such as "der die das") and treated them each as a separate category and repeated the same process with the PEDOCS keywords. My reasoning for this was simple, if one or more keywords matched a category completely, then they would match at least one of the words in that category, so the correct results would be a subset of our results and partially correct (and incorrect) results would be caught as well, which lines up with our goal of attempting to prove that FS and PEDOCS do not match up.
+
+As a result, the amount of different PEDOCS keywords increased slightly by about 500 keywords (+ ~10%) and I parsed 541 words from the Fachsystematik. The intersection of FS words and PEDOCS keywords consisted of about 190 words, which is a subset of ~3% of all PEDOCS keywords and ~38% of FS keys. While only a relatively low amount of PEDOCS keywords occurs in the FS, this by itself is not sufficient to dismiss the matching as unsuitable, we need to actually look at documents to see whether the matching keywords are actually representative and how much information the filtered keywords contained.
+
+*Verifying our results*
+
+589 PEDOCS documents did not contain a single match and the average amount of keywords per document decreased from ~11 to ~3 (average calculated excluding the 589 empty matches). A 70% decrease in keywords doesn't appear too bad considering that 97% of the keywords never appeared in the FS to begin with, but upon closer inspection of the results, the reason for this appears to be that the [[ClemensDeusserFSPedocsKeywords2][intersection]] contains a large amount of words with a rather general meaning in the context of pedagogy, such as "Erziehung", "Schule", "Lernen" etc.
+
+   But even with a general meaning, the classification can still be correct if the categories are equally general and in fact many of the classifications *are* correct, for instance document number 127 has the matching keywords "Lehrerausbildung;Lernen;Lehrerrolle;Lehrerfortbildung;Berufsschule;Weiterbildung;Hochschuldidaktik;Lehrer" which clearly puts it in the category "Der Lehrer", which, looking at the title "Innovative Fortbildung der Lehrerinnen und Lehrer an beruflichen Schulen. Gutachten zum Programm", appears to be correct.
+   
+However, the bulk of our documents (2276, again excluding empty ones) contains four matches or less and there the situation looks very different. Document 412 for instance uses the keywords " _Angewandte Sozialforschung; Auftragsforschung; Drittmittelforschung; Europäische Forschungsförderung; Forschung und Lehre;  Forschungsbedarf; Forschungsfinanzierung; Forschungsförderung; Forschungsprogramm; Forschungsstatistik; Forschungsüberblick; Sozialforschung; Sozialwissenschaftliche Forschung; Staatliche Forschungsförderung; Fachhochschule; Universität; Sozialarbeiter; Sozialpädagogik; Soziale Arbeit; Deutschland_ ", the matches remaining are " _Forschung;Lehre_ ". Even though the FS does not lack categories pertaining to "Forschung", the specific fields mentioned do not match up and the remaining words are unsuitable for classification.
+
+Without examining a significant portion of the database I cannot say how many documents are classified correctly and how many are not, but examples for both sides were readily available. If I had to guess, I would say that the majority of documents (with matches) are correctly classified, nevertheless because of the inconsistency, the substantial amount of unclassifiable data (empty matches) and the massive loss of keyword information, I don't think FS can be applied this way.
+
+*What I need*
+
+In order to get rid of the incorrect results there are a few possibilities:
+
+   * Discard documents without enough matches and refine current approach.
+   * Classify training & testing sets manually, possibly multi label.
+   * Use NLP to find matches instead of using the naive approach of exact matches.
+
+I feel that each solution has it's benefits and it's cost, the first one being the easiest but also the least promising and the last one being possibly too sophisticated for me. Using synonyms (or hypernyms) could improve classification for a relatively low cost, but the availabiltity and feasibility of this option has not yet been explored sufficiently to make that call.
+
+
+---+++++ Technical progress
+
+Small framework for graphs built on top of JUNG and an interface for algorithms. Framework for JDBC pending, may be able to use JDBCReader by Richard & Shuo.
+
+---+++++ Chinese Whispers clustering results including keywords and number of occurrences per cluster:
+
+   * [[ClemensDeusserCluster1][Version 1 / 10 iterations / 22 cluster / normalised edges]]
+
+Sample results using tf*idf and CW randomization seeds:
+
+   * [[ClemensDeusserCluster2][Version 2 / 10 iterations / 3 cluster / seed:2 / normalised edges / tf*idf / cutting edges below average weight]]
+   * [[ClemensDeusserCluster3][Version 2 / 10 iterations / 3 cluster / seed:4 / normalised edges / tf*idf / cutting edges below 1.5 * average weight]]
+   * [[ClemensDeusserCluster4][Version 2 / 10 iterations / 6 cluster / seed:1 / normalised edges / tf*idf / cutting edges below twice average weight]]
+
+Results very similar, all have a very large single cluster with the majority of nodes.
+
+---+++++ Keywords in both Fachsystematik and pedocs:
+
+Number of keywords occurring in both FS and pedocs: ~190
+   * [[ClemensDeusserFSPedocsKeywords1][Per document, in SQL statements]]
+   * [[ClemensDeusserFSPedocsKeywords2][Across database, in plain text]]
+
+---+++++ PEDOCS and Fachsystematik
+
+Pedocs is a database of over 3000 papers pertaining to pedagogy. The relevant information per document contained in this database is the title, a short description (abstract), the author(s), the date, publication information and a number of keywords. The Fachsystematik provides consistent identifiers for pedagogic papers according to their topic. While pedocs does have a field "FS_Keys", it does not appear to be used, so usage of the FS to determine the topic seems to be infeasible.
+
+---+++++ Statistics of pedocs:
+
+Keywords in pedocs can be found in the "opus" table, "subject_uncontrolled_german" column.
+
+   * Number of different keywords: 5817
+   * Number of papers (in opus): 3411
+   * Number of papers (in opus_autor): 3552
+   * Total Number of keywords: 38040
+That means:
+   * Average number of keywords per paper: 11.152154793315743
+   * Average times a word appears: 6.539453326456937
+
+Top 3 most common words and the number of occurences:
+   * deutschland: 1304
+   * rezension: 640
+   * schule: 423
+
+Authors, found in opus_autor:
+   * Number of authors: 2949
+   * Authors per paper with 5230 database entries and 3552 papers:
+      * ~1.4724 authors per paper on average.
+      * Between 1 and 18 authors per paper.
+      * 915 papers with more than one author,
+      * 2637 papers with only one author.
+   * 1800 authors have written a paper with somebody else.
+
+
+
+
+SQL statements documentation:
+
+
+<blockquote>
+SELECT COUNT(DISTINCT source_opus) FROM opus;
+
+SELECT COUNT(DISTINCT source_opus) FROM opus_autor;
+
+SELECT COUNT(creator_name) FROM opus_autor;
+
+SELECT COUNT(DISTINCT creator_name) FROM opus_autor;
+
+SELECT reihenfolge FROM opus_autor ORDER BY reihenfolge DESC;
+
+SELECT COUNT(source_opus) FROM opus_autor where reihenfolge = 2;
+
+SELECT COUNT(DISTINCT creator_name) FROM opus_autor WHERE source_opus IN (SELECT source_opus FROM opus_autor WHERE reihenfolge = 2);
+</blockquote>

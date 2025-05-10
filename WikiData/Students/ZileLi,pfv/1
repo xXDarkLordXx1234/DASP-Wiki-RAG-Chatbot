@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="hanselowski" comment="reprev" date="1524494891" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Meeting 2018-4-23
+
+
+   ** Discussed:*
+   * Things missing: approval from Gurevych
+   * Task description
+   * First meeting is 26th April 
+   * SNLI task is similar we could use models https://nlp.stanford.edu/projects/snli/
+   * Maybe we can built on top of the given github repository; maybe they also provide evaluation methods with the repository
+
+   ** TODOs first meeting: Zile*
+   * Structure of the problem: document retrieval, sentence selection (evidence extraction), recognizing textual entailment (claim validation)
+   * Structure of the problem setting (data set structure)
+   * Examples of cases: one example claim, documents and evidence: a number of examples only evidence and claim like for SNLI
+   * Evaluation of the individual tasks 
+   * Baseline system of Andreas Vlachos: different types of system
+   
+   ** TODOs: Zile*
+   * Read paper FEVER shared task: https://arxiv.org/pdf/1803.05355.pdf
+   * Read paper on SNLI https://nlp.stanford.edu/pubs/snli_paper.pdf
+   * Read paper on http://www.nyu.edu/projects/bowman/multinli/
+
+   ** TODOs Machine learning: Zile*
+   * Run the baseline code
+
+   ** TODOs: Andreas*
+   * Share the repository of Benjamin
+   * Write task description
+ 
+
+
+-- Main.AndreasHanselowski - 2018-04-23

@@ -1,0 +1,55 @@
+%META:TOPICINFO{author="StevenBurrows" date="1360143669" format="1.1" version="6"}%
+%META:TOPICPARENT{name="Resources"}%
+---+ !! UKP Mail Service
+
+%TOC%
+
+---+ Terms of Use
+
+   * Observe netiquette.
+
+---++ Setup
+
+---+++ Microsoft Outlook 2007
+
+Microsoft Outlook 2007 is the only officially supported client, and is available in the Windows VM on your workstation. When you start it, enter your details into the dialogs presented to you and leave it to Outlook to detect all settings automatically. If any problem occurs, please contact the system administrators by opening an issue the issue tracker.
+
+---+++ Webmail (OWA)
+
+You can also read and send mail in your web browser through [[https://mx.ukp.informatik.tu-darmstadt.de/owa/][Outlook Web Access (OWA)]] at https://mx.ukp.informatik.tu-darmstadt.de/owa/
+
+---+++ IMAP
+
+Our Exchange server provides the standard IMAP access for checking mail with other mail clients. Use the following settings, substituting your user name for mine.  (The exact names of the fields may vary from client to client; these are the ones used by Thunderbird.)
+   * Server type: IMAP
+   * Server name: =mx.ukp.informatik.tu-darmstadt.de=
+   * Port: =993=
+   * User Name: =miller=
+   * Authentication type: NTLM
+   * Connection security: SSL/TLS
+
+<img src="%ATTACHURLPATH%/UKP_IMAP_settings.png" />
+
+By default, your e-mail client might subscribe you only to your "Inbox" folder. You may need to edit your IMAP account settings to subscribe to other folders which you may have been using, such as "Gesendete Elemente".
+
+---+++ SMTP
+
+Our Exchange server provides the standard SMTP access for sending mail with other mail clients. Use the following settings, substituting your user name for mine.  (The exact names of the fields may vary from client to client; these are the ones used by Thunderbird.)
+   * Server name: =mx.ukp.informatik.tu-darmstadt.de=
+   * Port: =587=
+   * Connection security: STARTTLS
+   * Authentication method: NTLM
+   * User Name: =miller=
+
+<img src="%ATTACHURLPATH%/UKP_SMTP_settings.png" />
+
+---++ Known issues
+
+If your account was migrated from the TK to the new UKP Exchange server, you may find that e-mail messages created on the old TK Exchange server now have mangled e-mail addresses, such as &lt;IMCEAEX-_O=ASC_OU=EXCHANGE+20ADMINISTRATIVE+20GROUP+20+28FYDIBOHF23SPDLT+29_CN=RECIPIENTS_CN=ZESCH@ukp.informatik.tu-darmstadt.de&gt;.  This is a known issue and prevents you from directly responding to old e-mails.  You will have to manually change the address when replying.
+
+See also: [[MigrationTK2UKPExchangeKnownIssues][Exchange/Outlook/Mail Known Issues]]
+
+-- Main.StevenBurrows - 2013-02-06
+
+%META:FILEATTACHMENT{name="UKP_IMAP_settings.png" attachment="UKP_IMAP_settings.png" attr="" comment="UKP SMTP server settings (Thunderbird)" date="1329407107" path="UKP_IMAP_settings.png" size="6266" user="TristanMiller" version="3"}%
+%META:FILEATTACHMENT{name="UKP_SMTP_settings.png" attachment="UKP_SMTP_settings.png" attr="" comment="UKP SMTP server settings (Thunderbird)" date="1329391065" path="UKP_SMTP_settings.png" size="7088" user="TristanMiller" version="2"}%

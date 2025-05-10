@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="2" version="3"}%
+%META:TOPICPARENT{name="IvanGalkinWork"}%
+<!-- @page { margin: 2cm } P { margin-bottom: 0.21cm } -->
+
+Spring based application context of xMachine applications (namely TimeMachine and DataMachine) allows advanced users to affect many important settings. One of this settings is memory strategy: a compromise between processing speed/quality and main memory usage. To change the application context you have to
+   1 <p>Extract it from the Jar archive (context/applicationContext.xml) to the same directory where the Jar achive is placed.</p>
+   1 <p>Change beans configuration of extracted file with some unicode able editor</p>
+   1 <p>Save your changes and run xMachine</p>
+   
+Please note, that such an external application context file has a higher priority then the internal one.
+
+Replace an old strategy class, defined in the bean &ldquo;dumpVersionFactory&rdquo; with a desired class name. In doing so the factory bean will be defined like this:
+<p align="left" style="margin-bottom: 0cm"><font face="Courier New, monospace"><font size="2">%NAVY%&lt;bean%ENDCOLOR%%BLACK% %ENDCOLOR%%NAVY%id=%ENDCOLOR%%GREEN%"dumpVersionFactory"%ENDCOLOR%%BLACK% %ENDCOLOR%%NAVY%class=%ENDCOLOR%%GREEN%"de.tudarmstadt.ukp.wikipedia.datamachine.dump.version.CLASS"%ENDCOLOR%%BLACK% %ENDCOLOR%%NAVY%scope=%ENDCOLOR%%GREEN%"singleton"%ENDCOLOR%%BLACK% %ENDCOLOR%%NAVY%/&gt;%ENDCOLOR%</font></font></p>
+
+CLASS placeholder for DataMachine might be chosen between:
+   * <p>%BLACK%<span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial"><font face="Times New Roman, serif"><font size="3">SingleDumpVersionJDKIntKeyFactory &ndash; this strategy uses standard hashing algorithm to reduce main memory usage and increase the processing speed. Choosing of this value allows you the fastest processing, which needs smallest possible amount of main memory. Certainly there is a non-nil probability of erroneous hash code, which cannot identify the text on the unique way. This error appear very seldom, to you can see it as </font></font>negligible.</span>%ENDCOLOR%</p>
+   * <p>%BLACK%<font face="Times New Roman, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">SingleDumpVersionJDKLongKeyFactory &ndash; using a bigger hash code range as a previous strategy (64 bits instead of 32 bits), this one allows to reduce an error probability to very small rates. Unfortunately you have to pay with twice bigger information amount and rather slow hash generation time.</span></font></font>%ENDCOLOR%</p>
+   * <p>%BLACK%<font face="Times New Roman, serif"><font size="3"><span style="background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial">SingleDumpVersionJDKStringKeyFactory - this strategy doesn't use any hashing algorithms at all, so it needs the biggest amount of main memory. The prime reason to use this strategy is unmistakably processing (at least according to hashing mistakes ;) ).</span></font></font>%ENDCOLOR%</p>
+
+For more information about application context please read SpringWikiIntegration

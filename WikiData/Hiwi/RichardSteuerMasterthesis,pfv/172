@@ -1,0 +1,112 @@
+%META:TOPICINFO{author="RichardSteuer" date="1357513222" format="1.1" version="172"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+---++ Richard Steuer<br /><br />Master Thesis Student November 2012 - April 2013.
+<div style="float:right; background: solid white; border: solid grey 1px; padding: 0.5em">
+<b>Quick links</b><br/>
+IrExperiments<br/>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/HowToRunExperimentsOnComputeServer HowToRunExperimentsOnComputeServer]]<br/>
+[[https://scruffy.ukp.informatik.tu-darmstadt.de/artifactory/webapp/archivesearch.html?4][Artifactory class search]]
+</div>
+
+---+++++ Thesis Overview
+
+*"Improving Information Retrieval with Lexical Substitution"*
+Supervisors: Prof. Dr. Chris Biemann, Dr. Jungi Kim
+
+---++Meetings
+   * (in) what we did within the meeting
+   * (after) what I did after the meeting
+
+---+++ 20.12.2012 (9th meeting, just with Jungi)
+   * (in) asked Jungi, and decided not to touch the Synset type for now
+   * (in) asked Jungi about *IndexTermGenerator*.PARAM_TOKEN_WEIGHT (and others): since we now use *IndexTermAnnotator* (due to API changes), which does not have these weight parameters; answer: Extend *IndexTermAnnotator* and add parameters for each (Token, Lemma, Stem)
+   * (in) asked Jungi if we'll have many many parameters and thus should use !DkPro Lab; answer is no
+   * (in) asked Jungi: we should take the second index (i.e. index token, lemma and stem)
+   * (in) discussed weights, Jungi told me to use 1/3 for each (Token, Lemma, Stem); and we'll not use weighting for headline/text
+   * (in) Jungi explained the structure of the topics to me (regarding evaluation): They consist of a Title (T), a Description (D) and a Narrative (N). For evaluation purposes, we should try all the combinations: T, TD, TDN (currently, we're using TD)
+   * (in) since the overall evaluation scores are still poor (compared to the paper), we took a look at the paper again and found out that they use a slightly different model ("DFR_BM25") and query expansion ("KL")
+   * (in) Jungi advised to compare how the DT expansion performs with and without the query expansion later
+   * (after) ran the search again with DFR_BM25 and KL; only the !TokenLemmaStem variant improved (slightly), the two others showed slightly decreased performance (see BaselineIR)
+   * (after) ran experiments, tried the three combinations (T, TD, TDN); T performed poorly, while TDN improved the results again
+   * (after) Contacted REC, he said not to use the !IndexTermGenerator class; simulating the weight parameters could be done by using fields and assigning weights to them
+   * (after) finally found out how to select the Terrier fields to search on, and how to assign weights to them
+   * %RED% TODO: %ENDCOLOR% find out how the lemma is created in the CLEF09 corpus
+   * %RED% TODO: %ENDCOLOR% find out why "TerrierSearcher.PARAM_ENABLE_ORQUERY_WITHINFIELDS, false" (as they used in the paper, necessary for query expansion) stops with a !BufferUnderflowException
+
+---+++ 06.12.2012 (8th meeting)
+   * (in) agreed on staying with the CLEF09 corpus, but just take one WSDed system/corpus
+   * (in) talked about next step goals (within 4 weeks): read papers and write "Previous and related work", find out weighting of headline/text, resurrect "Synset" type
+   * (after) adapted the XML *topics* reader to just read one corpus (NUS or UBC), ran and evaluated it; the evaluation results with the entire topics collection is the same, so I'll just take one topics corpus from now on
+   * (after) did the same with the *document* collections; results are the same, again; I'll take one collection from now on
+   * (after) checked with the debugger, if the *lemma text* is indexed correctly (because I was confused); yes, it is
+   * (after) found out: Synset score is currently not used; you simply could include it by adding an !IndexTerm annotation in terms of the *Synset text value* (e.g. _"06838825n"_ )
+   * (after) resurrected the Synset type (including max score annotation)
+   * (after) added stemming to the document and topics pipeline
+   * (after) while debugging, I discovered and fixed not having the same stopword removal processing in both the pipelines
+   * (after) while evaluating, I found and reported a bug in the !StopWordRemover annotator
+   * (after) ran and evaluated several indexing combinations, see BaselineIR; all approaches improved significantly just by applying stopwords correctly
+   * (after) found out: there is no weighting of headline/text
+   * %RED% TODO: %ENDCOLOR% write a tool to easily visualize and browse the query evaluation
+
+---+++ 29.11.2012 (7th meeting)
+   * (in) talked about the next step goal: extracting the documents by id after the retrieval
+   * (in) Chris recommended the following papers for lexical expansion:
+      * "Text: Now in 2D! A Framework for Lexical Expansion with Contextual Similarity", 2012
+      * "Using Distributional Similarity for Lexical Expansion in Knowledge-based Word Sense Disambiguation", 2012
+      * "UKP: Computing Semantic Textual Similarity byCombining Multiple Content Similarity Measures", 2012
+   * (after) took a look at the terrier web interface, thought about extracting documents, looked at queries with 10 ten bad results, started an analysis, created page QueryAnalysis
+   * %RED% TODO: %ENDCOLOR% read the papers (later step)
+   * (after) created page WebBasedTerrier
+  
+---+++ 27.11.2012 (6th meeting, just with Jungi, consulted Richard [rec])
+   * (in) sat down with Jungi to get help with the "cannot process topic" error; we thought it was an encoding error
+   * (in) after spending one hour on it, we consulted Richard (REC) for another hour; he kindly took the time, ran the debugger and fixed the problem (solved by stopword removing round brackets and quotation marks), casually fixed the entire project dependencies
+   * (after) merged and unpacked all the files (that took several hours)
+   * (after) indexed all the 300k documents (took two hours on frink)
+      * commented and refactored the old XML reader code (from the paper)
+      * validated all the 300k XML files using _xmllint_ (result: OK); compared if all the file names are the same in both directories (result: OK)
+      * FOUND IT: the file "LA042494-0045.wsd" (in both the NUS and the UBC collection) is causing the problems, it is exceptionally small
+      * ran experiment on frink (for the used commands see IrExperiments)
+---+++ 23.11.2012 (5th meeting, just with Jungi)
+   * (in) Jungi presented his changes to me: he included "my" readers (which I had transformed from the old code) into one of his recent DKPro IR experiments
+   * (in) the pipelines are working now, including evaluation (see IrExperiments); he shared everything by SVN
+   * (in) Jungi said to not use DKPro Lab, because we don't have so many parameters
+   * (in) instead of the class _IndexTermGenerator_ we now use _IndexTermAnnotator_
+   * (after) understood and adapted new software package, kept it runnable, created the page IrExperiments
+
+---+++ 22.11.2012 (4th meeting, just with Jungi)
+   * (in) went through the code together, fixed many bugs
+   * (in) got the document indexing pipeline running
+   * (in) got stuck at the other pipeline (which does the topics and the search) by org.terrier source code error
+   * (in) Richard (REC) dropped by, pointed us to DKPro Lab
+   * EXTRA: read "A Lightweight Framework for Reproducible Parameter Sweeping in Information Retrieval", 2011
+
+---+++ 08.11.2012 (3rd meeting, just with Jungi)
+   * (in) went through the framework and overall technical aspects with Jungi
+   * (after) set up SVN folder and shared with Jungi
+   * (after) rewrote dkrpro pipelines, readers and annotators (topics and docs) from the package into new uima layout
+
+---+++ 25.10.2012 (2nd meeting)
+   * (after) downloaded and installed the software/framework to use, 
+   * %RED% TODO: %ENDCOLOR% manually evaluate the retrieval performance and examine "error classes"
+   * %RED% TODO: %ENDCOLOR% read "Retrieving with good sense", 2000
+   * EXTRA: read "Language model information retrieval with document expansion", 2006
+   * EXTRA: read "Flexible UIMA Components for Information Retrieval Research", 2008
+
+---+++ 11.10.2012 (1st meeting)
+   * (in) discussed ideas, suggested papers
+   * (in) Jungi said: "If you give me one week", he'd fix the framework (they used in the paper of 2009)
+   * (after) I read the following papers:
+      * "CLEF 2009 Ad Hoc Track Overview: Robust-WSD Task", 2009
+      * "Combining Probabilistic and Translation-Based Models for Information Retrieval Based on Word Sense Annotation", 2009
+      * "Word Sense Disambiguation and Information Retrieval", 1994
+      * "Word Sense Disambiguation Improves Information Retrieval", 2012
+      * "Enriching Document Representation via Translation for Improved Monolingual Information Retrieval", 2011
+      * "A Markov Random Field Model for Term Dependencies", 2005
+      * "Latent concept expansion using markov random fields", 2007
+      
+---++See also
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/HowToMaven][How To Maven]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/DkproRepositoryForHiwis][How To SVN]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/DKProIrProduct][DKPro IR]] (out-dated)
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/TheLab][DKPro Lab]]

@@ -1,0 +1,14 @@
+%META:TOPICINFO{author="BastianChristoph" date="1287512391" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="AnnotatorBaselines"}%
+---++ Introduce Type: SummarySentence, ExtendedSummary
+
+To introduce new Types to the TypeSystem additionally to DkPro-TypeSystem, we can
+add the Xml-Descriptors to /desc/type, where Types are read from.
+
+SummarySentence with Feature "SummaryScore":
+<blockquote>
+</blockquote>
+
+ExtendedSummary with Feature "SentenceList":
+<blockquote>
+</blockquote>

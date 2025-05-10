@@ -1,0 +1,1064 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<title>JabRef References output</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<script type="text/javascript">
+<!--
+// QuickSearch script for JabRef HTML export 
+// Version: 2.0
+//
+// Copyright (c) 2006-2007, Mark Schenk
+//
+// Permission to use, copy, modify, and distribute this software for any
+// purpose with or without fee is hereby granted, provided that the above
+// copyright notice and this permission notice appear in all copies.
+//
+
+// Some features:
+// + optionally searches Abstracts and Reviews
+// + allows RegExp searches
+//   e.g. to search for entries between 1980 and 1989, type:  198[0-9]
+//   e.g. for any entry ending with 'symmetry', type:  symmetry$
+//   e.g. for all reftypes that are books: ^book$, or ^article$
+//   e.g. for entries by either John or Doe, type john|doe
+// + easy toggling of Abstract/Review
+
+// Acknowledgements:
+// + incorporates speed improvements suggested by Jean-Luc Falcone
+
+// Search settings
+var searchAbstract = true;
+var searchReview = true;
+
+// Speed optimisation introduced some esoteric problems with certain RegExp searches
+// e.g. if the previous search is 200[-7] and the next search is 200[4-7] then the search doesn't work properly until the next 'keyup'
+// hence the searchOpt can be turned off for RegExp adepts
+var searchOpt = true;
+
+if (window.addEventListener) {
+	window.addEventListener("load",initSearch,false); }
+else if (window.attachEvent) {
+	window.attachEvent("onload", initSearch); }
+
+function initSearch() {
+	// basic object detection
+	if(!document.getElementById || !document.getElementsByTagName) { return; }
+	if (!document.getElementById('qstable')||!document.getElementById('qs')) { return; }
+
+	// find QS table and appropriate rows
+	searchTable = document.getElementById('qstable');
+	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+	// split all rows into entryRows and infoRows (e.g. abstract, review, bibtex)
+	entryRows = new Array();
+	infoRows = new Array();
+
+	for (var i=0, k=0, j=0; i<allRows.length;i++) {
+		if (allRows[i].className.indexOf('entry') != -1) {
+			entryRows[j++] = allRows[i];
+		} else {
+			infoRows[k++] = allRows[i];		
+		}
+	}
+
+	//number of entries and rows
+	numRows = allRows.length;
+	numEntries = entryRows.length;
+	numInfo = infoRows.length;
+
+	//find the query field
+	qsfield = document.getElementById('qsfield');
+
+	// previous search term; used for speed optimisation
+	prevSearch = '';
+
+	//find statistics location
+	stats = document.getElementById('stat');
+	setStatistics(-1);
+
+	// shows the searchfield
+	document.getElementById('qs').style.display = 'block';
+	document.getElementById('qsfield').onkeyup = testEvent;
+}
+
+function quickSearch(tInput){
+
+	 if (tInput.value.length == 0) {
+		showAll();
+		setStatistics(-1);
+		qsfield.className = '';
+		return;
+	} else {
+		// only search for valid RegExp
+		try {
+			var searchText = new RegExp(tInput.value,"i")
+			closeAllInfo();
+			qsfield.className = '';
+		}
+		catch(err) {
+			prevSearch = tInput.value;
+			qsfield.className = 'invalidsearch';
+			return;
+		}
+	}
+	
+	// count number of hits
+	var hits = 0;
+
+	// start looping through all entry rows
+	for (var i = 0; cRow = entryRows[i]; i++){
+
+		// only show search the cells if it isn't already hidden OR if the search term is getting shorter, then search all
+		// some further optimisation is possible: if the search string is getting shorter, and the row is already visible, skip it. Then be careful with hits!
+		if(!searchOpt || cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
+			var found = false; 
+
+			var inCells = cRow.getElementsByTagName('td');
+			var numCols = inCells.length;
+				
+			for (var j=0; j<numCols; j++) {
+				cCell = inCells[j];
+				var t = cCell.innerText?cCell.innerText:getTextContent(cCell);
+				if (t.search(searchText) != -1){ 
+					found=true; 
+					break;
+				} 
+			}
+
+			// look for further hits in Abstract and Review
+			if(!found) {
+				var articleid = cRow.id;
+				if(searchAbstract && (abs = document.getElementById('abs_'+articleid))) {
+					if (getTextContent(abs).search(searchText) != -1){ found=true; } 
+				}
+				if(searchReview && (rev = document.getElementById('rev_'+articleid))) {
+					if (getTextContent(rev).search(searchText) != -1){ found=true; } 
+				}
+			}
+			
+			if(found) {
+				cRow.className = 'entry show';
+				hits++;
+			} else {
+				cRow.className = 'entry noshow';
+			}
+		}
+	}
+
+	// update statistics
+	setStatistics(hits)
+	
+	// set previous search value
+	prevSearch = tInput.value;
+}
+
+function toggleInfo(articleid,info) {
+
+	var entry = document.getElementById(articleid);
+	var abs = document.getElementById('abs_'+articleid);
+	var rev = document.getElementById('rev_'+articleid);
+	var bib = document.getElementById('bib_'+articleid);
+	
+	if (abs && info == 'abstract') {
+		if(abs.className.indexOf('abstract') != -1) {
+		abs.className.indexOf('noshow') == -1?abs.className = 'abstract noshow':abs.className = 'abstract';
+		}
+	} else if (rev && info == 'review') {
+		if(rev.className.indexOf('review') != -1) {
+		rev.className.indexOf('noshow') == -1?rev.className = 'review noshow':rev.className = 'review';
+		}
+	} else if (bib && info == 'bibtex') {
+		if(bib.className.indexOf('bibtex') != -1) {
+		bib.className.indexOf('noshow') == -1?bib.className = 'bibtex noshow':bib.className = 'bibtex';
+		}		
+	} else { 
+		return;
+	}
+
+	// check if one or the other is available
+	var revshow = false;
+	var absshow = false;
+	var bibshow = false;
+	(abs && abs.className.indexOf('noshow') == -1)? absshow = true: absshow = false;
+	(rev && rev.className.indexOf('noshow') == -1)? revshow = true: revshow = false;	
+	(bib && bib.className == 'bibtex')? bibshow = true: bibshow = false;
+	
+	// highlight original entry
+	if(entry) {
+		if (revshow || absshow || bibshow) {
+		entry.className = 'entry highlight show';
+		} else {
+		entry.className = 'entry show';
+		}		
+	}
+	
+	// When there's a combination of abstract/review/bibtex showing, need to add class for correct styling
+	if(absshow) {
+		(revshow||bibshow)?abs.className = 'abstract nextshow':abs.className = 'abstract';
+	} 
+	if (revshow) {
+		bibshow?rev.className = 'review nextshow': rev.className = 'review';
+	}
+	
+}
+
+function setStatistics (hits) {
+	if(hits < 0) { hits=numEntries; }
+	if(stats) { stats.firstChild.data = hits + '/' + numEntries}
+}
+
+function getTextContent(node) {
+	// Function written by Arve Bersvendsen
+	// http://www.virtuelvis.com
+	
+	if (node.nodeType == 3) {
+	return node.nodeValue;
+	} // text node
+	if (node.nodeType == 1) { // element node
+	var text = [];
+	for (var chld = node.firstChild;chld;chld=chld.nextSibling) {
+		text.push(getTextContent(chld));
+	}
+	return text.join("");
+	} return ""; // some other node, won't contain text nodes.
+}
+
+function showAll(){
+	// first close all abstracts, reviews, etc.
+	closeAllInfo();
+
+	for (var i = 0; i < numEntries; i++){
+		entryRows[i].className = 'entry show'; 
+	}
+}
+
+function closeAllInfo(){
+	for (var i=0; i < numInfo; i++){
+		if (infoRows[i].className.indexOf('noshow') ==-1) {
+			infoRows[i].className = infoRows[i].className + ' noshow';
+		}
+	}
+}
+
+function testEvent(e){
+	if (!e) var e = window.event;
+	quickSearch(this);
+}
+
+function clearQS() {
+	qsfield.value = '';
+	quickSearch(qsfield);
+}
+
+function redoQS(){
+	showAll();
+	quickSearch(qsfield);
+}
+
+// Search Settings
+
+function toggleQSettingsDialog() {
+
+	var qssettings = document.getElementById('qssettings');
+
+	if(qssettings.className.indexOf('active')==-1) {
+		qssettings.className = 'active';
+
+		var absCheckBox = document.getElementById('searchabs');
+		var revCheckBox = document.getElementById('searchrev');
+		if(searchAbstract == true) { absCheckBox.checked = 'checked'; }
+		if(searchReview == true) { revCheckBox.checked = 'checked'; }
+
+	} else {
+		qssettings.className= '';
+	}
+}
+
+function toggleQSetting(setting) {
+
+	if(setting=='abs') { searchAbstract = !searchAbstract; }
+	if(setting=='rev') { searchReview = !searchReview; }
+
+	redoQS()
+}
+-->
+</script>
+<style type="text/css">
+body { background-color: white; font-family: "Trebuchet MS", Arial, sans-serif; font-size: 12px; line-height: 1.2; padding: 1em; }
+
+#qs { width: auto; border-style: solid; border-color: gray; border-width: 1px 1px 0px 1px; padding: 0.5em 0.5em; display:none; position:relative; }
+#qs form { padding: 0px; margin: 0px; }
+#qs form p { padding: 0px; margin: 0px; }
+
+.invalidsearch { background-color: red; }
+
+table { border: 1px gray solid; width: 100%; empty-cells: show; }
+th, td { border: 1px gray solid; padding: 0.5em; vertical-align: top;  }
+td { text-align: left; vertical-align: top; }
+th { background-color: #EFEFEF; }
+
+td a, td a:hover { color: navy; font-weight: bold; }
+
+tr.noshow { display: none;}
+
+tr.highlight td { background-color: #F1F1F1; border-top: 2px black solid; font-weight: bold; }
+tr.abstract td, tr.review td, tr.bibtex td { background-color: #F1F1F1; border-bottom: 2px black solid; }
+tr.nextshow td { border-bottom: 1px gray solid; }
+
+tr.bibtex pre { width: 100%; overflow: auto;}
+
+p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
+
+#qssettings { padding: 0.5em; position: absolute; top: 0.2em; right: 0.2em; border: 1px gray solid; background-color: white; display: block; }
+#qssettings p { font-weight: bold; cursor: pointer; }
+#qssettings ul { display: none; list-style-type: none; padding-left: 0; margin: 0; }
+#qssettings.active ul { display: block; }
+</style>
+</head>
+<body>
+
+<div id="qs">
+	<form action="">
+	<p>QuickSearch: <input type="text" name="qsfield" id="qsfield" autocomplete="off" title="Allows plain text as well as RegExp searches" /><input type="button" onclick="clearQS()" value="clear" />&nbsp; Number of matching entries: <span id="stat">0</span>.</p>
+	<div id="qssettings">
+		<p onclick="toggleQSettingsDialog()">Search Settings</p>
+		<ul>
+		<li><label><input type="checkbox" id="searchabs" onclick="toggleQSetting('abs')"> search abstract</label></li>
+		<li><label><input type="checkbox" id="searchrev" onclick="toggleQSetting('rev')"> search review</label></li>
+		</ul>
+	</div>
+	</form>
+</div>
+<table id="qstable" border="1">
+<thead><tr><th width="20%">Author</th><th width="30%">Title</th><th width="5%">Year</th><th width="30%">Journal/Proceedings</th><th width="10%">Reftype</th><th width="5%">DOI/URL</th></tr></thead>
+<tbody><tr id="Attardi2006" class="entry">
+	<td>Attardi, G. &amp; Simi, M.</td>
+	<td>Blog Mining Through Opinionated Words <p class="infolinks">[<a href="javascript:toggleInfo('Attardi2006','bibtex')">BibTeX</a>]</p></td>
+	<td>2006</td>
+	<td>TREC &nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://trec.nist.gov/pubs/trec15/papers/upisa.blog.final.pdf">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_Attardi2006" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Attardi2006,
+  author = {Giuseppe Attardi and Maria Simi},
+  title = {Blog Mining Through Opinionated Words},
+  booktitle = {TREC},
+  publisher = {National Institute of Standards and Technology (NIST)},
+  year = {2006},
+  volume = {Special Publication 500-272},
+  url = {http://trec.nist.gov/pubs/trec15/papers/upisa.blog.final.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Bruce1999" class="entry">
+	<td>Bruce, R. F. &amp; Wiebe, J. M.</td>
+	<td>Recognizing Subjectivity: A Case Study of Manual Tagging <p class="infolinks">[<a href="javascript:toggleInfo('Bruce1999','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Bruce1999','bibtex')">BibTeX</a>]</p></td>
+	<td>1999</td>
+	<td> &nbsp;</td>
+	<td>misc</td>
+	<td><a href="http://citeseer.ist.psu.edu/375420.html; http://www.cs.nmsu.edu/~wiebe/pubs/papers/nle99.ps">URL</a> &nbsp;</td>
+</tr>
+<tr id="abs_Bruce1999" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: In this paper, we describe a case study of a sentence-level categorization in which tagging instructions are developed and used by four judges to classify clauses from the Wall Street Journal as either subjective or objective. Agreement among the four judges is analyzed, and, based on that analysis, each clause is given a final classification. To provide empirical support for the classifications, correlations are assessed in the data between the subjective category and a basic semantic class posited by Quirk et al. (1985).</td>
+</tr>
+<tr id="bib_Bruce1999" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@misc{Bruce1999,
+  author = {Rebecca F. Bruce and Janyce M. Wiebe},
+  title = {Recognizing Subjectivity: A Case Study of Manual Tagging},
+  year = {1999},
+  url = {http://citeseer.ist.psu.edu/375420.html; http://www.cs.nmsu.edu/~wiebe/pubs/papers/nle99.ps}
+}
+</pre></td>
+</tr>
+<tr id="AsfSetup" class="entry">
+	<td>Community, A. U. D.</td>
+	<td>UIMA Overview &amp; SDK Setup <p class="infolinks">[<a href="javascript:toggleInfo('AsfSetup','bibtex')">BibTeX</a>]</p></td>
+	<td>2007</td>
+	<td> &nbsp;</td>
+	<td>manual</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_AsfSetup" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@manual{AsfSetup,
+  author = {Apache UIMA Development Community},
+  title = {UIMA Overview &amp; SDK Setup},
+  year = {2007},
+  edition = {2.2}
+}
+</pre></td>
+</tr>
+<tr id="AsfTutorial" class="entry">
+	<td>Community, A. U. D.</td>
+	<td>UIMA Tutorial and Developers' Guides <p class="infolinks">[<a href="javascript:toggleInfo('AsfTutorial','bibtex')">BibTeX</a>]</p></td>
+	<td>2007</td>
+	<td> &nbsp;</td>
+	<td>manual</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_AsfTutorial" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@manual{AsfTutorial,
+  author = {Apache UIMA Development Community},
+  title = {UIMA Tutorial and Developers' Guides},
+  year = {2007},
+  edition = {2.1}
+}
+</pre></td>
+</tr>
+<tr id="Cvoro05" class="entry">
+	<td>Cvoro, V.</td>
+	<td>Recognition of Emotional Preferences for Professional Features <p class="infolinks">[<a href="javascript:toggleInfo('Cvoro05','bibtex')">BibTeX</a>]</p></td>
+	<td>2005</td>
+	<td><i>School</i>: Ruprecht-Karls University, Department of Computational Linguistics &nbsp;</td>
+	<td>mastersthesis</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_Cvoro05" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@mastersthesis{Cvoro05,
+  author = {Vesna Cvoro},
+  title = {Recognition of Emotional Preferences for Professional Features},
+  school = {Ruprecht-Karls University, Department of Computational Linguistics},
+  year = {2005}
+}
+</pre></td>
+</tr>
+<tr id="Dave03" class="entry">
+	<td>Dave, K., Lawrence, S. &amp; Pennock, D. M.</td>
+	<td>Mining the peanut gallery: opinion extraction and semantic classification of product reviews <p class="infolinks">[<a href="javascript:toggleInfo('Dave03','bibtex')">BibTeX</a>]</p></td>
+	<td>2003</td>
+	<td>WWW'03: Proceedings of the 12th international conference on World Wide Web &nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://doi.acm.org/10.1145/775152.775226">DOI</a> &nbsp;</td>
+</tr>
+<tr id="bib_Dave03" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Dave03,
+  author = {Kushal Dave and Steve Lawrence and David M. Pennock},
+  title = {Mining the peanut gallery: opinion extraction and semantic classification of product reviews},
+  booktitle = {WWW'03: Proceedings of the 12th international conference on World Wide Web},
+  publisher = {ACM},
+  year = {2003},
+  pages = {519--528},
+  doi = {http://doi.acm.org/10.1145/775152.775226}
+}
+</pre></td>
+</tr>
+<tr id="FerreiraJakob2008" class="entry">
+	<td>Ferreira, L., Jakob, N. &amp; Gurevych, I.</td>
+	<td>A Comparative Study of Feature Extraction Algorithms in Customer Reviews <p class="infolinks">[<a href="javascript:toggleInfo('FerreiraJakob2008','bibtex')">BibTeX</a>]</p></td>
+	<td>2008</td>
+	<td>Proceedings of the 2nd IEEE International Conference on Semantic Computing &nbsp;</td>
+	<td>inproceedings</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_FerreiraJakob2008" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{FerreiraJakob2008,
+  author = {Liliana Ferreira and Niklas Jakob and Iryna Gurevych},
+  title = {A Comparative Study of Feature Extraction Algorithms in Customer Reviews},
+  booktitle = {Proceedings of the 2nd IEEE International Conference on Semantic Computing},
+  year = {2008},
+  pages = {144-151}
+}
+</pre></td>
+</tr>
+<tr id="Friesland1974" class="entry">
+	<td>Friesland, G. &amp; Sengler, H.</td>
+	<td>Zur &Uuml;bertragung von Compilern durch Selbstcompilation am Beispiel des PASCALS-Compilers <p class="infolinks">[<a href="javascript:toggleInfo('Friesland1974','bibtex')">BibTeX</a>]</p></td>
+	<td>1974</td>
+	<td> &nbsp;</td>
+	<td>techreport</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_Friesland1974" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@techreport{Friesland1974,
+  author = {Gerhard Friesland and Hans-Eckart Sengler},
+  title = {Zur &Uuml;bertragung von Compilern durch Selbstcompilation am Beispiel des PASCALS-Compilers},
+  year = {1974},
+  number = {13}
+}
+</pre></td>
+</tr>
+<tr id="TUD-CS-2009-0004" class="entry">
+	<td>Gurevych, I.</td>
+	<td>Das World Wide Web als computerlinguistische Ressource <p class="infolinks">[<a href="javascript:toggleInfo('TUD-CS-2009-0004','bibtex')">BibTeX</a>]</p></td>
+	<td>2009</td>
+	<td>Computerlinguistik und Sprachtechnologie - Eine Einf&uuml;hrung &nbsp;</td>
+	<td>incollection</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_TUD-CS-2009-0004" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@incollection{TUD-CS-2009-0004,
+  author = {Iryna Gurevych},
+  title = {Das World Wide Web als computerlinguistische Ressource},
+  booktitle = {Computerlinguistik und Sprachtechnologie - Eine Einf&uuml;hrung},
+  publisher = {Springer Verlag},
+  year = {2009},
+  pages = {(to appear)},
+  note = {Preprint version}
+}
+</pre></td>
+</tr>
+<tr id="TUD-CS-2009-0015" class="entry">
+	<td>Gurevych, I., Bernhard, D., Ignatova, K. &amp; Toprak, C.</td>
+	<td>Educational Question Answering based on Social Media Content <p class="infolinks">[<a href="javascript:toggleInfo('TUD-CS-2009-0015','bibtex')">BibTeX</a>]</p></td>
+	<td>2009</td>
+	<td>Proceedings of the 14th International Conference on Artificial Intelligence in Education. Building learning systems that care: From knowledge representation to affective modelling (AIED2009) &nbsp;</td>
+	<td>inproceedings</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_TUD-CS-2009-0015" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{TUD-CS-2009-0015,
+  author = {Iryna Gurevych and Delphine Bernhard and Kateryna Ignatova and Cigdem Toprak},
+  title = {Educational Question Answering based on Social Media Content},
+  booktitle = {Proceedings of the 14th International Conference on Artificial Intelligence in Education. Building learning systems that care: From knowledge representation to affective modelling (AIED2009)},
+  publisher = {IOS Press},
+  year = {2009},
+  volume = {200},
+  pages = {133-140}
+}
+</pre></td>
+</tr>
+<tr id="Guelcue2002" class="entry">
+	<td>Gülcü, C.</td>
+	<td>Short introduction to log4j <p class="infolinks">[<a href="javascript:toggleInfo('Guelcue2002','bibtex')">BibTeX</a>]</p></td>
+	<td>2002</td>
+	<td> &nbsp;</td>
+	<td>manual</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_Guelcue2002" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@manual{Guelcue2002,
+  author = {Ceki Gülcü},
+  title = {Short introduction to log4j},
+  year = {2002}
+}
+</pre></td>
+</tr>
+<tr id="HuLiu2004" class="entry">
+	<td>Hu, M. &amp; Liu, B.</td>
+	<td>Mining opinion features in customer reviews <p class="infolinks">[<a href="javascript:toggleInfo('HuLiu2004','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>AAAI'04: Proceedings of the 19th national conference on Artifical intelligence &nbsp;</td>
+	<td>inproceedings</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_HuLiu2004" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{HuLiu2004,
+  author = {Minqing Hu and Bing Liu},
+  title = {Mining opinion features in customer reviews},
+  booktitle = {AAAI'04: Proceedings of the 19th national conference on Artifical intelligence},
+  publisher = {AAAI Press / The MIT Press},
+  year = {2004},
+  pages = {755--760}
+}
+</pre></td>
+</tr>
+<tr id="HuLiu2004a" class="entry">
+	<td>Hu, M. &amp; Liu, B.</td>
+	<td>Mining and Summarizing Customer Reviews <p class="infolinks">[<a href="javascript:toggleInfo('HuLiu2004a','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td>KDD'04: Proceedings of the Tenth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining &nbsp;</td>
+	<td>inproceedings</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_HuLiu2004a" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{HuLiu2004a,
+  author = {Minqing Hu and Bing Liu},
+  title = {Mining and Summarizing Customer Reviews},
+  booktitle = {KDD'04: Proceedings of the Tenth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  publisher = {ACM},
+  year = {2004},
+  pages = {168-177}
+}
+</pre></td>
+</tr>
+<tr id="TUD-CS-2009-0005" class="entry">
+	<td>Ignatova, K., Toprak, C., Bernhard, D. &amp; Gurevych, I.</td>
+	<td>Annotating Question Types in Social Q&amp;A Sites <p class="infolinks">[<a href="javascript:toggleInfo('TUD-CS-2009-0005','bibtex')">BibTeX</a>]</p></td>
+	<td>2009</td>
+	<td>Tagungsband des GSCL Symposiums &nbsp;</td>
+	<td>incollection</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_TUD-CS-2009-0005" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@incollection{TUD-CS-2009-0005,
+  author = {Kateryna Ignatova and Cigdem Toprak and Delphine Bernhard and Iryna Gurevych},
+  title = {Annotating Question Types in Social Q&amp;A Sites},
+  booktitle = {Tagungsband des GSCL Symposiums},
+  publisher = {Abteilung f&uuml;r Informatik und Angewandte Kognitionswissenschaft Fakult&auml;t f&uuml;r Ingenieurwissenschaften Universit&auml;t Duisburg-Essen},
+  year = {2009},
+  pages = {44-49}
+}
+</pre></td>
+</tr>
+<tr id="Marcus1993" class="entry">
+	<td>Marcus, M., Santorini, B. &amp; Marcinkiewicz, M.</td>
+	<td>Building a Large Annotated Corpus of English <p class="infolinks">[<a href="javascript:toggleInfo('Marcus1993','bibtex')">BibTeX</a>]</p></td>
+	<td>1993</td>
+	<td>Computational Linguistics &nbsp;</td>
+	<td>article</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_Marcus1993" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@article{Marcus1993,
+  author = {M. Marcus and B. Santorini and M. Marcinkiewicz},
+  title = {Building a Large Annotated Corpus of English},
+  journal = {Computational Linguistics},
+  year = {1993},
+  volume = {19(2)},
+  pages = {313:330}
+}
+</pre></td>
+</tr>
+<tr id="Muller2006" class="entry">
+	<td>M&uuml;ller, C. &amp; Strube, M.</td>
+	<td>Multi-level annotation of linguistic data with MMAX2 <p class="infolinks">[<a href="javascript:toggleInfo('Muller2006','bibtex')">BibTeX</a>]</p></td>
+	<td>2006</td>
+	<td>Corpus Technology and Language Pedagogy: New Resources, New Tools, New Methods &nbsp;</td>
+	<td>incollection</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_Muller2006" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@incollection{Muller2006,
+  author = {M&uuml;ller, Christoph and Strube, Michael},
+  title = {Multi-level annotation of linguistic data with MMAX2},
+  booktitle = {Corpus Technology and Language Pedagogy: New Resources, New Tools, New Methods},
+  publisher = {Peter Lang},
+  year = {2006},
+  pages = {197-214}
+}
+</pre></td>
+</tr>
+<tr id="PatwardhanR06" class="entry">
+	<td>Patwardhan, S. &amp; Riloff, E.</td>
+	<td>Learning Domain-Specific Information Extraction Patterns from the Web <p class="infolinks">[<a href="javascript:toggleInfo('PatwardhanR06','bibtex')">BibTeX</a>]</p></td>
+	<td>2006</td>
+	<td>Proceedings of the ACL 2006 Workshop on Information Extraction Beyond the Document &nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.cs.utah.edu/~sidd/papers/PatwardhanR06.pdf">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_PatwardhanR06" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{PatwardhanR06,
+  author = {Patwardhan, S. and Riloff, E.},
+  title = {Learning Domain-Specific Information Extraction Patterns from the Web},
+  booktitle = {Proceedings of the ACL 2006 Workshop on Information Extraction Beyond the Document},
+  year = {2006},
+  pages = {66--73},
+  url = {http://www.cs.utah.edu/~sidd/papers/PatwardhanR06.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Popescu05" class="entry">
+	<td>Popescu, A. &amp; Etzioni, O.</td>
+	<td>Extracting product features and opinions from reviews <p class="infolinks">[<a href="javascript:toggleInfo('Popescu05','bibtex')">BibTeX</a>]</p></td>
+	<td>2005</td>
+	<td>HLT '05: Proceedings of the conference on Human Language Technology and Empirical Methods in Natural Language Processing &nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://dx.doi.org/10.3115/1220575.1220618">DOI</a> &nbsp;</td>
+</tr>
+<tr id="bib_Popescu05" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Popescu05,
+  author = {Ana-Maria Popescu and Oren Etzioni},
+  title = {Extracting product features and opinions from reviews},
+  booktitle = {HLT '05: Proceedings of the conference on Human Language Technology and Empirical Methods in Natural Language Processing},
+  publisher = {Association for Computational Linguistics},
+  year = {2005},
+  pages = {339--346},
+  doi = {http://dx.doi.org/10.3115/1220575.1220618}
+}
+</pre></td>
+</tr>
+<tr id="TUD-CS-2008102" class="entry">
+	<td>Qu, L., Toprak, C., Jakob, N. &amp; Gurevych, I.</td>
+	<td>Sentence Level Subjectivity and Sentiment Analysis Experiments in NTCIR-7 MOAT Challenge <p class="infolinks">[<a href="javascript:toggleInfo('TUD-CS-2008102','bibtex')">BibTeX</a>]</p></td>
+	<td>2008</td>
+	<td>Proceedings of the 7th NTCIR Workshop Meeting on Evaluation of Information Access Technologies: Information Retrieval, Question Answering, and Cross-Lingual Information Access &nbsp;</td>
+	<td>inproceedings</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_TUD-CS-2008102" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{TUD-CS-2008102,
+  author = {Lizhen Qu and Cigdem Toprak and Niklas Jakob and Iryna Gurevych},
+  title = {Sentence Level Subjectivity and Sentiment Analysis Experiments in NTCIR-7 MOAT Challenge},
+  booktitle = {Proceedings of the 7th NTCIR Workshop Meeting on Evaluation of Information Access Technologies: Information Retrieval, Question Answering, and Cross-Lingual Information Access},
+  year = {2008},
+  pages = {210--217}
+}
+</pre></td>
+</tr>
+<tr id="Riloff1996" class="entry">
+	<td>Riloff, E.</td>
+	<td>Automatically Generating Extraction Patterns from Untagged Text <p class="infolinks">[<a href="javascript:toggleInfo('Riloff1996','bibtex')">BibTeX</a>]</p></td>
+	<td>1996</td>
+	<td>AAAI/IAAI, Vol. 2 &nbsp;</td>
+	<td>inproceedings</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_Riloff1996" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Riloff1996,
+  author = {Ellen Riloff},
+  title = {Automatically Generating Extraction Patterns from Untagged Text},
+  booktitle = {AAAI/IAAI, Vol. 2},
+  year = {1996},
+  pages = {1044--1049}
+}
+</pre></td>
+</tr>
+<tr id="Riloff1999" class="entry">
+	<td>Riloff, E. &amp; Jones, R.</td>
+	<td>Learning Dictionaries for Information Extraction by Multi-Level Bootstrapping <p class="infolinks">[<a href="javascript:toggleInfo('Riloff1999','bibtex')">BibTeX</a>]</p></td>
+	<td>1999</td>
+	<td>AAAI/IAAI &nbsp;</td>
+	<td>inproceedings</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_Riloff1999" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Riloff1999,
+  author = {Ellen Riloff and Rosie Jones},
+  title = {Learning Dictionaries for Information Extraction by Multi-Level Bootstrapping},
+  booktitle = {AAAI/IAAI},
+  year = {1999},
+  pages = {474--479}
+}
+</pre></td>
+</tr>
+<tr id="Riloff2004" class="entry">
+	<td>Riloff, E. &amp; Phillips, W.</td>
+	<td>An Introduction to the Sundance and AutoSlog Systems <p class="infolinks">[<a href="javascript:toggleInfo('Riloff2004','bibtex')">BibTeX</a>]</p></td>
+	<td>2004</td>
+	<td> &nbsp;</td>
+	<td>techreport</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_Riloff2004" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@techreport{Riloff2004,
+  author = {Ellen Riloff and William Phillips},
+  title = {An Introduction to the Sundance and AutoSlog Systems},
+  year = {2004}
+}
+</pre></td>
+</tr>
+<tr id="Riloff2003" class="entry">
+	<td>Riloff, E. &amp; Wiebe, J.</td>
+	<td>Learning Extraction Patterns for Subjective Expressions <p class="infolinks">[<a href="javascript:toggleInfo('Riloff2003','bibtex')">BibTeX</a>]</p></td>
+	<td>2003</td>
+	<td> &nbsp;</td>
+	<td>misc</td>
+	<td><a href="http://citeseer.ist.psu.edu/657831.html; http://acl.ldc.upenn.edu/W/W03/W03-1014.pdf">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_Riloff2003" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@misc{Riloff2003,
+  author = {Ellen Riloff and Janyce Wiebe},
+  title = {Learning Extraction Patterns for Subjective Expressions},
+  year = {2003},
+  url = {http://citeseer.ist.psu.edu/657831.html; http://acl.ldc.upenn.edu/W/W03/W03-1014.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Riloff2003a" class="entry">
+	<td>Riloff, E., Wiebe, J. &amp; Wilson, T.</td>
+	<td>Learning Subjective Nouns using Extraction Pattern Bootstrapping <p class="infolinks">[<a href="javascript:toggleInfo('Riloff2003a','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Riloff2003a','bibtex')">BibTeX</a>]</p></td>
+	<td>2003</td>
+	<td> &nbsp;</td>
+	<td>misc</td>
+	<td><a href="http://citeseer.ist.psu.edu/663119.html; http://www.cs.pitt.edu/~wiebe/pubs/papers/conll03.ps">URL</a> &nbsp;</td>
+</tr>
+<tr id="abs_Riloff2003a" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: We explore the idea of creating a subjectivity classifier that uses lists of subjective nouns learned by bootstrapping algorithms. The goal of our research is to develop a system that can distinguish subjective sentences from objective sentences. First, we use two bootstrapping algorithms that exploit extraction patterns to learn sets of subjective nouns. Then we train a Naive Bayes classifier using the subjective nouns, discourse features, and subjectivity clues identified in prior research. The bootstrapping algorithms learned over 1000 subjective nouns, and the subjectivity classifier performed well, achieving 77% recall with 81% precision.</td>
+</tr>
+<tr id="bib_Riloff2003a" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@misc{Riloff2003a,
+  author = {Ellen Riloff and Janyce Wiebe and Theresa Wilson},
+  title = {Learning Subjective Nouns using Extraction Pattern Bootstrapping},
+  year = {2003},
+  url = {http://citeseer.ist.psu.edu/663119.html; http://www.cs.pitt.edu/~wiebe/pubs/papers/conll03.ps}
+}
+</pre></td>
+</tr>
+<tr id="Sundheim1992" class="entry">
+	<td>Sundheim, B.</td>
+	<td>Overview of the fourth message understanding evaluation and conference <p class="infolinks">[<a href="javascript:toggleInfo('Sundheim1992','bibtex')">BibTeX</a>]</p></td>
+	<td>1992</td>
+	<td>MUC &nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://doi.acm.org/10.1145/1072064.1072066">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_Sundheim1992" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Sundheim1992,
+  author = {Beth Sundheim},
+  title = {Overview of the fourth message understanding evaluation and conference},
+  booktitle = {MUC},
+  year = {1992},
+  pages = {3--21},
+  url = {http://doi.acm.org/10.1145/1072064.1072066}
+}
+</pre></td>
+</tr>
+<tr id="Thelen2002" class="entry">
+	<td>Thelen, M. &amp; Rilo, E.</td>
+	<td>In Proceedings of the 2002 Conference on Empirical Methods in Natural Language Processing (EMNLP 2002) <p class="infolinks">[<a href="javascript:toggleInfo('Thelen2002','bibtex')">BibTeX</a>]</p></td>
+	<td>2002</td>
+	<td> &nbsp;</td>
+	<td>misc</td>
+	<td><a href="http://citeseer.ist.psu.edu/610238.html; http://www.cs.utah.edu/~riloff/psfiles/emnlp02-thelen.ps">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_Thelen2002" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@misc{Thelen2002,
+  author = {Michael Thelen and Ellen Rilo},
+  title = {In Proceedings of the 2002 Conference on Empirical Methods in Natural Language Processing (EMNLP 2002)},
+  year = {2002},
+  url = {http://citeseer.ist.psu.edu/610238.html; http://www.cs.utah.edu/~riloff/psfiles/emnlp02-thelen.ps}
+}
+</pre></td>
+</tr>
+<tr id="TUD-CS-2009-0007" class="entry">
+	<td>Toprak, C., M&uuml;ller, C. &amp; Gurevych, I.</td>
+	<td>Extracting Professional Preferences of Users from Natural Language Essays <p class="infolinks">[<a href="javascript:toggleInfo('TUD-CS-2009-0007','bibtex')">BibTeX</a>]</p></td>
+	<td>2009</td>
+	<td>Tagungsband des GSCL Symposiums Sprachtechnologie und eHumanities &nbsp;</td>
+	<td>incollection</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_TUD-CS-2009-0007" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@incollection{TUD-CS-2009-0007,
+  author = {Cigdem Toprak and Christof M&uuml;ller and Iryna Gurevych},
+  title = {Extracting Professional Preferences of Users from Natural Language Essays},
+  booktitle = {Tagungsband des GSCL Symposiums Sprachtechnologie und eHumanities},
+  publisher = {Abteilung f&uuml;r Informatik und Angewandte Kognitionswissenschaft Fakult&auml;t f&uuml;r Ingenieurwissenschaften Universit&auml;t Duisburg-Essen},
+  year = {2009},
+  pages = {103-110}
+}
+</pre></td>
+</tr>
+<tr id="Uller2003" class="entry">
+	<td>Uller, C. M. &amp; Strube, M.</td>
+	<td>Multi-Level Annotation in MMAX <p class="infolinks">[<a href="javascript:toggleInfo('Uller2003','bibtex')">BibTeX</a>]</p></td>
+	<td>2003</td>
+	<td> &nbsp;</td>
+	<td>misc</td>
+	<td><a href="http://citeseer.ist.psu.edu/634182.html; http://fife.speech.cs.cmu.edu/sigdial2003/proceedings/07_LONG_strube_paper.pdf">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_Uller2003" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@misc{Uller2003,
+  author = {Christoph M Uller and Michael Strube},
+  title = {Multi-Level Annotation in MMAX},
+  year = {2003},
+  url = {http://citeseer.ist.psu.edu/634182.html; http://fife.speech.cs.cmu.edu/sigdial2003/proceedings/07_LONG_strube_paper.pdf}
+}
+</pre></td>
+</tr>
+<tr id="conf/sbbd/VelosoM07" class="entry">
+	<td>Veloso, A. &amp; Meira, W.</td>
+	<td>Efficient on-demand Opinion Mining <p class="infolinks">[<a href="javascript:toggleInfo('conf/sbbd/VelosoM07','bibtex')">BibTeX</a>]</p></td>
+	<td>2007</td>
+	<td>SBBD &nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.lbd.dcc.ufmg.br:8080/colecoes/sbbd/2007/SBBD22.pdf">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_conf/sbbd/VelosoM07" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{conf/sbbd/VelosoM07,
+  author = {Adriano Veloso and Wagner Meira},
+  title = {Efficient on-demand Opinion Mining},
+  booktitle = {SBBD},
+  publisher = {SBC},
+  year = {2007},
+  pages = {332--346},
+  url = {http://www.lbd.dcc.ufmg.br:8080/colecoes/sbbd/2007/SBBD22.pdf}
+}
+</pre></td>
+</tr>
+<tr id="Wiebe1999" class="entry">
+	<td>Wiebe, J., Bruce, R. F. &amp; O'Hara, T. P.</td>
+	<td>Development and Use of a Gold-Standard Data Set for Subjectivity Classifications <p class="infolinks">[<a href="javascript:toggleInfo('Wiebe1999','bibtex')">BibTeX</a>]</p></td>
+	<td>1999</td>
+	<td>ACL &nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://www.aclweb.org/anthology/P99-1032">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_Wiebe1999" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Wiebe1999,
+  author = {Janyce Wiebe and Rebecca F. Bruce and Thomas P. O'Hara},
+  title = {Development and Use of a Gold-Standard Data Set for Subjectivity Classifications},
+  booktitle = {ACL},
+  year = {1999},
+  url = {http://www.aclweb.org/anthology/P99-1032}
+}
+</pre></td>
+</tr>
+<tr id="Wiebe2005" class="entry">
+	<td>Wiebe, J. &amp; Riloff, E.</td>
+	<td>Creating Subjective and Objective Sentence Classifiers from Unannotated Texts <p class="infolinks">[<a href="javascript:toggleInfo('Wiebe2005','bibtex')">BibTeX</a>]</p></td>
+	<td>2005</td>
+	<td>CICLing &nbsp;</td>
+	<td>inproceedings</td>
+	<td><a href="http://springerlink.metapress.com/openurl.asp?genre=article&amp;amp;issn=0302-9743&amp;amp;volume=3406&amp;amp;spage=486">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_Wiebe2005" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{Wiebe2005,
+  author = {Janyce Wiebe and Ellen Riloff},
+  title = {Creating Subjective and Objective Sentence Classifiers from Unannotated Texts},
+  booktitle = {CICLing},
+  publisher = {Springer},
+  year = {2005},
+  volume = {3406},
+  pages = {486--497},
+  url = {http://springerlink.metapress.com/openurl.asp?genre=article&amp;amp;issn=0302-9743&amp;amp;volume=3406&amp;amp;spage=486}
+}
+</pre></td>
+</tr>
+<tr id="Wiebe2001" class="entry">
+	<td>Wiebe, J., Wilson, T. &amp; Bell, M.</td>
+	<td>Identifying Collocations for Recognizing Opinions <p class="infolinks">[<a href="javascript:toggleInfo('Wiebe2001','bibtex')">BibTeX</a>]</p></td>
+	<td>2001</td>
+	<td> &nbsp;</td>
+	<td>misc</td>
+	<td><a href="http://citeseer.ist.psu.edu/441818.html; http://www.cs.pitt.edu/~wiebe/pubs/papers/acl01wkshop.ps">URL</a> &nbsp;</td>
+</tr>
+<tr id="bib_Wiebe2001" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@misc{Wiebe2001,
+  author = {Janyce Wiebe and Theresa Wilson and Matthew Bell},
+  title = {Identifying Collocations for Recognizing Opinions},
+  year = {2001},
+  url = {http://citeseer.ist.psu.edu/441818.html; http://www.cs.pitt.edu/~wiebe/pubs/papers/acl01wkshop.ps}
+}
+</pre></td>
+</tr>
+<tr id="Wiebe2005a" class="entry">
+	<td>Wiebe, J., Wilson, T. &amp; Cardie, C.</td>
+	<td>Annotating expressions of opinions and emotions in language <p class="infolinks">[<a href="javascript:toggleInfo('Wiebe2005a','bibtex')">BibTeX</a>]</p></td>
+	<td>2005</td>
+	<td>Language Resources and Evaluation &nbsp;</td>
+	<td>techreport</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_Wiebe2005a" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@techreport{Wiebe2005a,
+  author = {Janyce Wiebe and Theresa Wilson and Claire Cardie},
+  title = {Annotating expressions of opinions and emotions in language},
+  journal = {Language Resources and Evaluation},
+  year = {2005},
+  volume = {1}
+}
+</pre></td>
+</tr>
+<tr id="YiNasukawa03" class="entry">
+	<td>Yi, J., Nasukawa, T., Bunescu, R. &amp; Niblack, W.</td>
+	<td>Sentiment Analyzer: Extracting Sentiments about a Given Topic using Natural Language Processing Techniques <p class="infolinks">[<a href="javascript:toggleInfo('YiNasukawa03','bibtex')">BibTeX</a>]</p></td>
+	<td>2003</td>
+	<td>ICDM '03: Proceedings of the Third IEEE International Conference on Data Mining &nbsp;</td>
+	<td>inproceedings</td>
+	<td> &nbsp;</td>
+</tr>
+<tr id="bib_YiNasukawa03" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@inproceedings{YiNasukawa03,
+  author = {Jeonghee Yi and Tetsuya Nasukawa and Razvan Bunescu and Wayne Niblack},
+  title = {Sentiment Analyzer: Extracting Sentiments about a Given Topic using Natural Language Processing Techniques},
+  booktitle = {ICDM '03: Proceedings of the Third IEEE International Conference on Data Mining},
+  publisher = {IEEE Computer Society},
+  year = {2003},
+  pages = {427--434}
+}
+</pre></td>
+</tr>
+<tr id="Zesch2009" class="entry">
+	<td>Zesch, T., M&uuml;ller, C. &amp; Gurevych, I.</td>
+	<td>Extracting Lexical Semantic Knowledge from Wikipedia and Wiktionary <p class="infolinks">[<a href="javascript:toggleInfo('Zesch2009','abstract')">Abstract</a>] [<a href="javascript:toggleInfo('Zesch2009','bibtex')">BibTeX</a>]</p></td>
+	<td>2009</td>
+	<td> &nbsp;</td>
+	<td>misc</td>
+	<td><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.140.4199; http://elara.tk.informatik.tu-darmstadt.de/publications/2008/lrec08_camera_ready.pdf">URL</a> &nbsp;</td>
+</tr>
+<tr id="abs_Zesch2009" class="abstract noshow">
+	<td colspan="6"><b>Abstract</b>: zesch,mueller,gurevych (at) tk.informatik.tu-darmstadt.de Recently, collaboratively constructed resources such as Wikipedia and Wiktionary have been discovered as valuable lexical semantic knowledge bases with a high potential in diverse Natural Language Processing (NLP) tasks. Collaborative knowledge bases however significantly differ from traditional linguistic knowledge bases in various respects, and this constitutes both an asset and an impediment for research in NLP. This paper addresses one such major impediment, namely the lack of suitable programmatic access mechanisms to the knowledge stored in these large semantic knowledge bases. We present two application programming interfaces for Wikipedia and Wiktionary which are especially designed for mining the rich lexical semantic information dispersed in the knowledge bases, and provide efficient and structured access to the available knowledge. As we believe them to be of general interest to the NLP community, we have made them freely available for research purposes. 1.</td>
+</tr>
+<tr id="bib_Zesch2009" class="bibtex noshow">
+<td colspan="6"><b>BibTeX</b>:
+<pre>
+@misc{Zesch2009,
+  author = {Torsten Zesch and Christof M&uuml;ller and Iryna Gurevych},
+  title = {Extracting Lexical Semantic Knowledge from Wikipedia and Wiktionary},
+  year = {2009},
+  url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.140.4199; http://elara.tk.informatik.tu-darmstadt.de/publications/2008/lrec08_camera_ready.pdf}
+}
+</pre></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+ <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 11/11/2009.</small>
+</p>
+
+</body>
+</html>
+
+<!-- File generated by JabRef ; Export Filter written by Mark Schenk -->
+

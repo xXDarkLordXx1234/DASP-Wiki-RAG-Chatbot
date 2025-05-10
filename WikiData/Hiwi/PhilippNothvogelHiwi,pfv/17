@@ -1,0 +1,117 @@
+%META:TOPICINFO{author="nothvogel" comment="" date="1553518685" format="1.1" reprev="17" version="17"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+
+---++ Arbeitsstunden
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Datum* | *Beginn* | *Ende* | *Täglich (hh:mm)* | *Notiz* |
+|  | 10:00 | 16:00 | 06:00 |Quali Test |
+|  |  |  | 07:00 |Arg Sim / Funkstandard |
+| | | |06:00 |Arg Sim / Funkstandard |
+| | | |01:00 |Arg Sim / Funkstandard |
+|06.03.2019 | | |02:00 |Arg Sim / Funkstandard |
+|07.03.2019 | | |03:05 |Arg Sim / Funkstandard |
+|09.03.2019 | | |08:00 |Arg Sim / Funkstandard |
+|11.03.2019 | | |03:00 |Hyperparam Optimization |
+|12.03.2019 | | |02:30 |Final Model |
+|13.03.2019 | | |01:15 |Custom MSE, BERT |
+|14.03.2019 | | |00:45 |Meeting, Notizen |
+|20.03.2019 | | |01:00 |BERT |
+|21.03.2019 | | |01:45 |BERT |
+|23.03.2019 | | |02:10 |BERT |
+|25.03.2019 | | |02:15 |BERT |
+
+
+---++ Meetings
+
+---+++ Neu 
+   * Fuer Threshold 0 ist die Verteilung der Klassen fast gleich, aber in der Praxis ist dieser Threshold nicht sehr nuetzlich.
+   * Daher wird jetzt Threshold 0.25 getestet (ca. 25% der Daten sind damit Label 1 bzw. similar), Score Range von -1 bis 1.
+   * Test setup: BERT model Parameter unveraendert. 10 Trainings Epochen. BertAdam Optimizer.
+      * Daten: BWS Corpus, Splits von maLSTM. Wichtig: Score range: von 0 bis 1, daher muss threshold im Code gleich 0.625 sein.
+      * Hyperparam Range:
+         * learnRate = 1 0.1 0.01 0.001 0.0001 2e-5
+         * batchSize = 16 32
+   * Hohe Learning Rate mit Adam (lr=1) sorgt dafuer, dass nur 1 Klasse predictet wird (scheinbar), da Accuracy genau den Klassenanteilen entspricht.
+
+---+++ 21.03.2019
+   * CSV einlesen für BERT Format funktioniert scheinbar.
+   * Score Threshold t für Konversion zu 0/1 Labels:
+      * t=0.49 ergibt 244 similar Paare (ca. 12% vom Corpus)
+      * Statistiken pro Topic:
+         * Mean: 13.56
+         * Std: 3.84
+         * Min: 6
+         * Max: 20
+   * Threshold 0 und 0.25 mal testen als Threshold. Some Similarity waere in dem Sinne schon noch 1/similar
+   * Train/Dev/Test Sets: Das Dev Set nicht anfügen ans Train Set
+   * Seed mal konstant setzen
+   * Hyperparam Tuning: Batch Sizes, Learning Rate
+   * Zugang zu Lisa zum laufen bringen
+   * Nächster Schritt: Übergang zu real valued scores.
+   
+---+++ 14.03.2019
+   * Pearson Correlation ist leider ungeeignet als Loss Function (nicht differenzierbar?), Predictions werden NaN
+   * Hyperparameter Optimization: 1 hidden LSTM layer, 2 hidden LSTM layer + return_sequences. Bias/initalization. Bidirectional.
+   * Bidirectional reduziert Bias auf letzte Wörter im Satz.
+   * Bestes Deep Model: (27, 27), bidirectional, initializer: zeros, unitForgetBias=False
+   * Custom MSE: Bestraft Fehler härter, je weiter sie von 0.5 (mittlerer Score) entfernt liegen.
+      * Zieht die Predictions auf unknown Daten (Funkstandard) weiter auseinander. Trotzdem sind die Predictions nicht besonders gut.
+   * Mit den aktuellen Daten / Models ist maLSTM nicht gut genug, um ähnliche Argumente auf komplett unbekannten Themen zu finden.
+   * => BERT: Pretrained Transformer, der kontext-abhängige Wort Vektoren liefert.
+      * 1. Schritt: Daten Parser anpassen
+         * Argumente aus der CSV in das BERT-Format bringen: Sentence1, Sentence2, Topic
+         * Scores zu binären Labels konvertieren: 0/1
+         * => Threshold?
+      * Mittelfristig BERT mit unseren Scores benutzen 
+
+---+++ 07.03.2019
+   * Bidirectional LSTM: Prediction von 250k Paaren dauert jetzt etwa doppelt so lange (ca. 5 min 30 sec). Bei selber Trainingsdauer keine Verbesserung der Predictions.
+   * Padding umdrehen hilft nichts - jetzt matcht die LSTM nur den Anfang des Satzes
+   * Grund fuer das Verhalten (wahrscheinlich): 
+      * Beispiele in den Trainingsdaten sind eher kurz und der input bias wurde komplett mit 0 initialisiert 
+      * (== nicht genug Daten, um bias fuer laengere Saetze zu lernen)
+      * Daher wird der Beginn des Satzes nicht gewichtet.
+   * Neuer Test mit Bias = 1 bringt kaum Verbesserung
+   * Verschiedene Architekturen: 
+      * LSTM mit weniger Nodes overfittet nicht auf die letzten Worte
+      * Deep LSTM mit return_sequences=True und z.B. (20,20) Nodes funktioniert auch gut
+      * Neues Hyperparameter Tuning mit Correlation als Metrik?
+   * Bias im Gold Standard: Training und Dev Set ueberprueft:
+      * Es gibt einige Beispiele mit hoher Similarity (>0.9) und gleichem Suffix
+      * Aber nicht mehrheitlich, d.h. genug Beispiele mit unterschiedlichem Suffix
+      * Mehr Trainingsdaten sammeln?
+   * Neue Trainingsdaten:
+      * Argumente aus statischem Web Crawl
+      * Mit existierendem System (maLSTM) ähnliche Argumente finden
+      * Bis dahin: Neue Hyperparameter Optimization!
+      * Ergebnisse vor dem nächsten Meeting schicken (Correlation und Beispiele)
+      * Predictions auf dem Gold Test Set überprüfen!
+
+---+++ 26.02.2019
+   * Predictions liegen selten über 0.6
+   * Argumente, die nicht Wort für Wort gleich sind haben bis zu 0.85
+   * Threshold schwierig zu setzen: 
+      * Bei 0.7 wären es nur etwa 40 Paare
+      * Um 0.6 hohe Fehlerquote
+   * Pearson Correlation als Metric auf Validation Set scheint vielversprechend:
+      * Correlation verbessert sich noch, obwohl der min loss sich nicht grossartig ändert.
+   * Problem: Letzten Wörter im Satz werden übergewichtet
+      * 0-padding umdrehen?
+      * Trainingsdaten gebiased? Also auch immer selbe Worte am Ende
+      * mal bidirectional LSTM testen
+   * Generell: Irgendwann auch cross-topic ähnliche Paare finden.
+
+---+++ 19.02.2019
+   * Funkstandard Argumente: Etwas noisy, quasi-duplikate vorhanden, teilweise andere Sprache (kyrillisch)
+   * Paare per brute-force innerhalb der 13 Themen generiert: 250k
+   * Embedding Layer in der maLSTM von meiner Bachelor Arbeit ungeeignet für unbekannte Argumente
+   * Prediction mit maLSTM trainiert auf arg-sim-bws Corpus: 
+      * Extreme (0 und 1) machen Sinn, aber sind relativ uninteressant
+      * 0: Normale Argumente mit kyrillischen Zeichen
+      * 1: Argumente, die bis auf wenige Zeichen identisch sind
+   * Ziel: Paare finden, die nicht genau die gleichen Wörter haben, aber immer noch sehr ähnlich sind.
+      * Entweder einen Prediction Threshold setzen oder automatisch suchen mit Substring-Maßen 
+
+-- Main.JohannesDaxenberger - 2019-02-20

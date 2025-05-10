@@ -1,0 +1,60 @@
+%META:TOPICINFO{author="ShuoYang" date="1318757290" format="1.1" reprev="29" version="29"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll von DARIAH-DE, Shuo Yang
+
+---++ Aktuelle Arbeit: Jul-Okt 2011
+
+---+++ Aufgabenübersicht
+
+Siehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/buglist.cgi?product=DARIAH-DE][Bugzilla]].
+
+<b>Aktuelle Bugs:</b>
+
+eSciDoc:
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1164][Tika Annotator vs Tika Reader]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][eSciDoc reader, writer]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1166][Automatic triggering]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1167][LUCAS writer]]
+
+UIMAFit !ExternalResource:
+   * [[http://code.google.com/p/uimafit/issues/detail?id=100][Bind !ExternalResource by setting parameter]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1169][Lazy loading of !ExternalResource]]
+
+---+++ Protokoll
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 14.07.2011 | Organisatorisches, Einarbeiten | 1.5 | Kickoff-Meeting mit Richard über DARIAH-DE Projekte, Einarbeiten in DARIAH-DE sowie eSciDoc Projekt |
+| 15.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]: Get familiar with eSciDoc | 1.5 | eSciDoc sowie PostgreSQL Datenbank installiert und konfiguriert. Danach gleiches Problem wie Richards gehabt |
+| 17.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]: Get familiar with eSciDoc | 2.5 | Aktualisierung dieser Wiki-Seite. <br> Debuggen von eSciDoc Infrastructure: mit alterer Version 1.2.2 funktioniert die "Ingest examples"-Test. |
+| 18.07.2011 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]</del> erledigt | 2 | Kommunikation mit Mailing-Liste <p> In release package wurde falsche Version von AdminTool aufgenommen. Gelöst mit neuer Version von AdminTool |
+| 21.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1065][ID1065]] Short summary of Fedora and eSciDoc | 2 | [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DARIAH_DE/FirstLookAtFedoraAndESciDoc][First look at Fedora and eSciDoc]] |
+| 28.07.2011 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1065][ID1065]]</del> erledigt | 1 | Hinzugefügt: Übersicht vergleichbarer Anwendungen von eSciDoc |
+| 15.08.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]] Short summary of MOPSEAS | 0.5 | Angefangen, https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DARIAH_DE/Mopseus |
+| 18.08.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]] Short summary of MOPSEAS | 1.5 | Fortsetzung der Evaluation |
+| 19.08.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]] Short summary of MOPSEAS | 2 | Fortsetzung der Evaluation, Beratung durch Mailing-List <p> Erstellung von dem Handbuch über Installation von eSciDoc |
+| 20.08.2011 | <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1087][ID1087]]</del> erledigt | 0.5 | Zusammenfassung erstellt |
+| 02.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1.5 | Angefangen, sehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][Bugzilla]] für die Entwicklung des Dokuments |
+| 05.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1.5 | Fortsetzung |
+| 08.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1.5 | Fortsetzung, Analyse der Fedora fast fertig |
+| 09.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1 | Analyse vom Fedora fertig |
+| | Lernen für Klausuren | 0 |  |
+| 20.09.2011 | Email wegen Arbeitsplan | 0.5 | Email-Kommunikation von Arbeitsplan mit Richard  |
+| 23.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 1 | Analyse von Mopseus |
+| 25.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1123][ID1123]] Synthesize requirements | 4 | Analyze von Requirements bis Ende geschrieben, Version 1.0.1 <p> Emailverkehr mit Richard über Arbeitszeit sowie Termin vom Treffen |
+| 26.09.2011 | Treffen, neue Aufgaben ausformulieren | 2.5 | Treffen über Analyze von Requirements, Besprechung von neuer Aufgaben <p> Ausformulierung der Aufgaben in Bugzilla. (ID1164-1169) |
+| 29.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1164][ID1164]] Tika Annotator vs Tika Reader, ESciDoc Reader | 3.5 | Organisation von Aufgaben, Fertig mit dem Vergleich von Tika Annotator und Tika Reader, Anfangen mit ESciDoc Reader-Prototyp |
+| 30.09.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Reader | 3 | Test Reader fertig. Braucht noch Umwandlung in UIMA Reader. |
+| 02.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Writer | 5 | Standalone ESciDoc Writer entworfen, gebaut und getestet |
+| 03.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Collection Reader | 1.5 | UIMA ESciDoc Collection Reader entworfen, wird implementiert |
+| 06.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Collection Reader | 3 | Reader fertig gebaut; Pipeline wird zur Zeit gebaut; Um den Reader effektiver zu testen, UIMAFit CASDumpWriter um SofaData erweitert und getestet |
+| 08.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Reader Pipeline | 4 | Reader Pipeline nun funktioniert: sie liest Digital Object aus eSciDoc und schreibt die binäre Datei in Dateisystem. Fehlt noch Cleanups.<p> Dazu SofaDataWriter gebaut um binäre Dateien auf dem Dateisystem zu schreiben |
+| 12.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Writer Pipeline | 3.5 | Cleanup und Dokumentieren von Reader & -Pipeline. ESciDoc Writer geschrieben, fehlt noch Reader für binären Dateien. |
+| 15.10.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1165][ID1165]] Pipelines | 5.5 | Pipelines bis Ende gebaut. Refactor, Klasse "DigitalObject" durch UIMA Annotationen ersetzt. Saubermachen und Dokumentieren. |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 80)$EXEC($GET(total_hour))"}% | bis Ende Oktober noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |
+<nop>
+
+
+-- Main.ShuoYang - 2011-10-16
+
+%META:TOPICMOVED{by="ShuoYang" date="1316728220" from="Hiwi.ShuoDariah" to="Hiwi.ShuoYangDariahArbeit"}%

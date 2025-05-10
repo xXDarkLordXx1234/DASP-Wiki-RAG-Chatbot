@@ -1,0 +1,244 @@
+%META:TOPICINFO{author="CarolinDeeg" date="1303572321" format="1.1" reprev="82" version="82"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Carolin Deeg
+[[Projects.Wikulu.WikuluSetup][Wikulu Setup]], [[Projects/Wikulu/WikuluPluginsHowTo][Wikulu Plugins HowTo]]
+
+---++++ Geplante Aufgaben
+   * Fertigstellen und Integrieren der aktuellen Plugins (POS Highlighting, Dynamic Slider für Keyphrase Extraction, Summarization, Link Discovery)
+   * Neueinrichten der Demosysteme auf der VM
+   * Entwicklung weiterer Plugins (z.B. Text Similarity)
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" }%
+| *Plugin* | *Fehler/OK* | *Fehlerbeschreibung* | *mögliche Lösung* | *Lösungsversuche* |
+| Wikify! | Fehler | Leerzeichen verschwinden bei Links mit mehreren Wörtern | Änderung im JavaScript | - |
+| POS Tagger | Fehler | keine Fehler, zeigt aber nichts an | Funktion getAnnotationIndex() hat sich geändert? | - |
+| Link Suggestion | Fehler | Fehler in !WikiApi (s.u.) | Änderungen in WikiApi | - |
+| !WikiApi | Fehler | getPage() funktioniert nicht richtig (URL wird falsch zusammengesetzt) | Funktion korrigieren | - |
+| Topic Segmentation | Fehler | Fehler beim Erstellen der !AnalysisEngine textSegmenter (im Konstruktor) | - | - |
+| Add Content/Search | Fehler | !AnalysisEngineProcessException durch !IllegalArgumentException ("CAS does not contain any de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData") [AddContentPlugin Zeile 78]] | - | - |
+| Keyphrase Extraction/Summarize | OK | "#<an Object> has no method 'slider'" | wie Wikify: Probleme mit JQuery | - andere Versionen von JQuery und JQuery-UI ausprobiert; Problem bleibt |
+
+---++++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" }%
+| *Aufgabe* | *% done* |
+| Extraktion der parallelen Wikiquotes | 100 |
+| Refactoring der WikiAPI | 100 |
+| Modularisieren von Wikulu | 100 |
+| Dynamische Plugins mit Spring (Richard) | 100 |
+| Tutorialerstellung | 100 |
+| Refactoring | 100 |
+| Konfigurierbare Komponenten | 100 |
+| Neues Plugin: Annotieren von Wiki-Texten | 95 |
+| onLoad-Bug | 100 |
+| Plugin: Menü für Plugin-Einstellungen | 100 |
+| Slider zum Einstellen der Anzahl von Keyphrases | 100 |
+| Debugging aller vorhandenen Plugins | 60 |
+| ENLP-Übungen | 0 |
+
+---++++ Stunden
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Parallele Wikiquotes | 05.01.2010 | 2 | Eclipse eingerichtet und Projekt aufgesetzt |
+| | 06.01.2010 | 1 | Kennenlernen der Wiki-API |
+| | 06.01.2010 | 4 | Zerlegung der Aufgabe in einzelne Teilaufgaben und deren Implementierung |
+| | 08.01.2010 | 2 | Optimierung des Codes und Bugfixes |
+| | 13.01.2010 | 1 | Besprechung |
+| | 13.01.2010 | 2 | Implementierung von zusätzlichen Hilfsmethoden |
+| | 16.01.2010 | 2 | Ergänzen/Hinzufügen der Dokumentation |
+| | 18.01.2010 | 3 | Einfügen des Projekts ins SVN (und benötigte Methoden in bereits vorhandenen Klassen hinzufügen) |
+| | 20.01.2010 | 1 | Ausgabe von Statistiken, Umsortieren des Codes |
+| | 26.01.2010 | 1 | Besprechung |
+| | 19.01.2010 | 2 | Debugging (zu wenig gespeicherte Zitate) |
+| Refactoring der WikiAPI | 03.02.2010 | 1 | Analyse des vorhandenen Codes |
+| | 04.02.2010 | 2 | Implementierung der Klasse Page und Unterklassen |
+| | 05.02.2010 | 3 | Umstellen der verschiedenen WikiAPIs und Tests |
+| | 06.02.2010 | 3 | Debugging und Korrekturen nach der Umstellung |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 30 | 01.01.2010 bis 31.01.2010 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Refactoring der WikiAPI | 08.02.2010 | 1 | Dokumentation |
+| | 08.02.2010 - 15.02.2010 | 6 | Umstellen von anderen Klassen auf neue Funktionen |
+| | 09.02.2010 - 16.02.2010 | 5 | Entfernen von veralteten WikiApi-Methoden und Fehlerbehebungen |
+| Modularisieren von Wikulu | 23.02.2010 | 1 | Installation des Wikulu-Plugins |
+| | 05.03.2010 | 3 | Neuinstallation von Eclipse, Einrichten der Plugins |
+| | 09.03.2010 | 3 | Update der Projektabhängigkeiten und Fehlerbehebungen |
+| | 11.03.2010 - 16.03.2010 | 7 | Funktionen von Wikulu modularisieren |
+| | 16.03.2010 - 18.03.2010 | 5 | Dynamisches Wikulu-Menü erstellen |
+| | 24.03.2010 - 26.03.2010 | 6 | Modularisieren von Wikulu.java |
+| | 25.03.2010 - 30.03.2010 | 10 | Strukturieren und Testen des Plugin-Systems |
+| | 02.04.2010 - 08.04.2010 | 11 | Implementierung der Plugins und Fehlerkorrekturen |
+| | 07.04.2010 | 1 | Besprechung mit Daniel |
+| | 10.04.2010 | 2 | Dokumentation |
+| | 13.04.2010 - 17.04.2010 | 4 | Fehlerkorrekturen und Aufräumen des Codes |
+| | 16.04.2010 | 1 | Dynamisches Wikulu-Menü für MediaWiki |
+| | 22.04.2010 - 25.04.2010 | 4 | Vorbereitung der Präsentation des Plugin-Systems |
+| | 27.04.2010 - 04.05.2010 | 5 | Fehlerbehebungen |
+| Dynamische Plugins mit Spring | 05.05.2010 - 08.05.2010 | 2 | Einlesen in die Java Servlet-API |
+| | 09.05.2010 - 14.05.2010 | 7 | Einfügen der Spring-Komponenten |
+| | 16.05.2010 - 20.05.2010 | 6 | Umstellen des Plugin-Systems |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | 01.02.2010 bis 30.04.2010 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Problemlösung: JavaScript-Funktionen aus Skripten, die nicht im Proxy-Projekt liegen, werden nicht mehr ausgeführt | 21.05.2010 | 2 | Fehlersuche im zuständigen Servlet (Skripte werden nicht korrekt ausgegeben?) |
+| | 21.05.2010 | 4 | Fehlersuche in wikulu.js (Funktionen werden nicht aufgerufen, wenn man auf die Links klickt?) |
+| | 23.05.2010 | 5 | Überprüfen der einzelnen JavaScript-Dateien (insgesamt 6 Stück) (falsche JSON-Strings/Funktionsnamen?) |
+| | 24.05.2010 | 2 | erneutes Überprüfen des Servlets; Änderung des Ausgabetyps |
+| | 24.05.2010 | 3 | erneutes Überprüfen von wikulu.js (JavaScript wird aufgerufen, Fehler muss in wikulu.js liegen) |
+| | 25.05.2010 | 4 | Überprüfen des generierten Menüs (falsche Verlinkungen?) |
+| | 28.05.2010 | 3 | Umschreiben und Testen der Funktion von wikulu.js, die die externen JavaScripts aufruft |
+| | 30.05.2010 | 2 | Herauslöschen der Testfunktionen und erneute Überprüfung der ursprünglichen Funktionen |
+| | 05.06.2010 | 3 | Entfernen der fehlerhaften Überprüfung und kleinere Korrekturen von wikulu.js |
+| Dynamische Plugins mit Spring | 09.06.2010 - 16.06.2010 | 8 | Umstellung des automatischen Methodenaufrufs der Plugins |
+| | 16.06.2010 - 18.06.2010 | 4 | Zusammenführen des aktuellen Stands (SVN) und dem Plugin-System |
+| | 18.06.2010 - 20.06.2010 | 5 | Testen des Systems |
+| | 25.06.2010 | 2 | Auflösen des Service-Projekts |
+| | 26.06.2010 | 4 | Testen des verschobenen Codes (Service -> Plugins) und Korrekturen |
+| | 02.07.2010 | 2 | Lösen von Konflikten im SVN (JavaScript-Dateien der Plugins anpassen) |
+| | 03.07.2010 | 3 | Lösen von Konflikten im SVN (Klassen der Plugins anpassen) |
+| | 05.07.2010 | 2 | Testen der lokalen Wikulu-Version und Fehlerkorrekturen |
+| | 08.07.2010 | 4 | Fehlerkorrekturen in den Plugin-Klassen |
+| | 13.07.2010 | 1 | Besprechung mit Daniel |
+| | 13.07.2010 | 4 | Einchecken der lokalen Wikulu-Version und Fehlerbehebungen im SVN |
+| | 15.07.2010 | 2 | Neue Version des Proxy-Projektes ins SVN einchecken |
+| | 20.07.2010 | 2 | Fehlerbehebung: Servlet wird nicht mehr angesprochen (Fehler beim Auslesen der Plugins?) |
+| | 21.07.2010 | 3 | Fehlerbehebung: Servlet wird nicht mehr angesprochen (Neukonfiguration von web.xml) |
+| | 26.07.2010 | 2 | Fehlersuche in Keyphrase Extraction (fehlende Dateien?) |
+| | 27.07.2010 | 2 | Fehlerbeseitigung bei AddContent |
+| | 28.07.2010 | 1 | Bearbeitung der Studie (Daniel) |
+| | 29.07.2010 | 2 | Entwurf für ein Tutorial zum Erstellen von Plugins |
+| | 05.08.2010 | 2 | Fertigstellung des Tutorials |
+| | 06.08.2010 | 1 | Überarbeitung des Tutorials |
+| | 11.08.2010 | 2 | Überarbeitung des Tutorials (Korrekturen und Ergänzungen) |
+| Refactoring | 13.08.2010 | 1 | Refactoring: Wikulu.java |
+| | 13.08.2010 | 1 | Refactoring: wikulu.js und twikisimpleadapter.js |
+| | 15.08.2010 | 2 | Refactoring und Korrektur von mediawikisimpleadapter.js |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | 01.05.2010 bis 30.07.2010 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Refactoring | 20.08.2010 | 2 | Entfernen von weiteren unbenötigten Funktionen in Wikulu.java/wikulu.js |
+| | 23.08.2010 | 2 | Entfernen von nicht mehr benötigten Debugging-Meldungen aus Wikulu.java und einigen Plugins |
+| Zwischenaufgabe: Proxy soll nur noch Anfragen des Wikulu-Servers beantworten | 28.08.2010 | 2 | Vertrautmachen mit dem entsprechenden Code, mögliche Stellen zum Blockieren anderer Seiten finden |
+| | 29.08.2010 | 2 | Umleiten anderer Domains als das entsprechende Wiki auf "Internal Server Error", Testen der Lösung |
+| Refactoring | 15.09.2010 | 2 | Restliches Refactoring (Wikulu.java, twiki/mediawikisimpleadapter.js) |
+| Zwischenaufgabe: KeyphraseExtraction-Highlighting fehlerhaft | 16.09.2010 | 2 | Suchen des entsprechenden Codes, Überlegen der Lösung |
+| Keyphrase-Extraction: Wortteile werden hervorgehoben, sollen aber nicht | 22.09.2010 | 1 | Korrektur des regulären Ausdrucks zum Hervorheben |
+| Hervorheben von Wörtern/Satzteilen durch den Annotator | 24.09.2010 | 2 | Entwurf für das Plugin |
+| | 25.09.2010 | 1 | Skizze für die Darstellung |
+| | 28.09.2010 | 3 | Implementierung des Plugins (JavaScript: Hightlighting in verschiedenen Farben, Einblenden des Menüs) |
+| | 29.09.2010 | 2 | Implementieren der Java-Klasse (verfügbare Annotations-Typen, Verwendung von CasUtils, TreeTagger) |
+| Zwischenaufgabe: Studie | 01.10.2010 | 1 | Teilnahme |
+| Hervorheben von Wörtern/Satzteilen durch den Annotator | 03.10.2010 | 2 | Korrektur bei der Verwendung von JCas und CasUtils |
+| | 04.10.2010 | 2 | Schreiben der JavaScript-Methoden (verschiedenfarbige Highlights, passendes Format für JSON-String) |
+| | 06.10.2010 | 4 | Testen des bisherigen Codes und Korrekturen |
+| | 09.10.2010 | 1 | Korrekturen der JavaScript-Funktionen |
+| | 12.10.2010 | 1 | Besprechung mit Daniel |
+| | 13.10.2010 | 3 | Debugging (Checkboxen funktionieren nicht richtig, Werte werden falsch zurückgegeben) |
+| | 15.10.2010 | 2 | Debugging (JSON-String-Format scheint inkorrekt zu sein; Wörter werden nur teilweise gehighlighted) |
+| | 15.10.2010 | 1 | Testen der Korrekturen |
+| | 16.10.2010 | 2 | Aufräumen des Codes |
+| | 18.10.2010 | 2 | Highlighting von Annotationen des Typs PUNC funktioniert nicht (Regular Expression fehlerhaft) |
+| | 19.10.2010 | 2 | Horizontales Menü, farbiges Highlighten der Menü-Punkten |
+| | 20.10.2010 | 1 | Config-Manager lädt Konfiguration des neuen Plugins nicht (zuviele Einstellungen, Fehler in plugin.js?) |
+| | 20.10.2010 | 1.5 | Studien-Teilnahme |
+| | 22.10.2010 | 2 | Menü des Plugin mitscrollen lassen |
+| | 23.10.2010 | 0.5 | Verbesserung des Menüs (Schrift scheint teilweise durch, Position der Menüpunkte ist falsch) |
+| onLoad-Bug | 25.20.2010 | 2 | Testen des WikiSniffers (funktioniert mit MediaWiki, nicht mit TWiki) |
+| | 26.10.2010 | 1 | Summary wird nicht angezeigt (kein Zugriff auf Summarize-Plugin?) |
+| | 29.10.2010 | 2 | Debugging (immer noch Probleme mit TWiki) |
+| | 30.10.2010 | 1 | Keyphrases funktionieren mit WikiSniffer |
+| | 02.11.2010 | 2 | Debugging von Summarization |
+| POSTagger | 06.11.2010 | 2 | Kleinere Korrekturen |
+| | 08.11.2010 | 2 | Löschen von alten Highlights |
+| onLoad-Bug | 09.11.2010 | 1 | Setzen von Property "user-agent" für MediaWikis, Testen (funktioniert nicht) |
+| Menü des POSTagger-Plugin in eigenes Plugin auslagern | 10.11.2010 | 3 | Erstellen der JavaScripts, Testen |
+| | 11.11.2010 | 1 | Korrekturen (Menü ein-/ausblenden) |
+| | 13.11.2010 | 2 | Suche nach Slider-Element (für KeyphraseExtractor-Menü) |
+| | 14.11.2010 | 4 | Fertigstellung des Menüs |
+| Änderung des Highlightens (RegEx funktioniert nicht richtig) | 16.11.2010 | 2 | Überlegung, wie man das Highlighting verbessern kann |
+| | 19.11.2010 | 3 | Umstellen der JavaScript-Dateien |
+| | 20.11.2010 | 2 | Umschreiben der Java-Klasse |
+| | 23.11.2010 | 1 | Ändern des JSON-String (alte Struktur funktioniert mit neuem System nicht) |
+| | 24.11.2010 | 3 | Bug-Fixing (Highlights werden nicht angezeigt) |
+| | 25.11.2010 | 4 | span-Tags werden falsch in den Text geschrieben, Umstellen des JavaScripts |
+| | 27.11.2010 | 3 | Erneutes Umschreiben des JavaScripts |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | 01.08.2010 bis 31.10.2010 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Änderung des Highlightens (RegEx funktioniert nicht richtig) | 28.11.2010 | 2 | Testen (Problem: vorherige HTML-Tags (z.B. Text-Formatierungen) werden gelöscht |
+| | 30.11.2010 | 3 | Überlegung, wie man die HTML-Tags zurück in den Text bekommt |
+| | 02.12.2010 | 4 | Testen von verschiedenen Möglichkeiten |
+| | 05.12.2010 | 3 | Implementierung einer Möglichkeit und Tests |
+| | 06.12.2010 | 2 | Durchgehen eines Beispiels von Hand, Umschreiben des Codes |
+| | 10.12.2010 | 1 | Bug-Fixing |
+| | 15.12.2010 | 2 | Umschreiben des Codes |
+| | 17.12.2010 | 2 | Debugging |
+| | 18.12.2010 | 1 | Überlegen eines neuen Systems zum Highlighten (HTML-Tags werden teilweise gehighlightet) |
+| | 22.12.2010 | 2 | Umsetzen des neuen Systems, Debugging |
+| | 27.12.2010 | 1 | Debugging |
+| | 03.01.2011 | 2 | Testen des neuen Codes |
+| | 06.01.2011 | 3 | Debugging |
+| | 07.01.2011 | 3 | Erneutes Umschreiben des Codes |
+| | 10.01.2011 | 2 | SVN-Update, Konfliktlösung, Fehlerbehebungen (ungültige Imports, fehlende Klassen) |
+| | 13.01.2011 | 2 | Kommentieren des neuen Codes, Löschen von Funktionen die nicht mehr benötigt werden |
+| | 14.01.2011 | 1 | Ausprobieren eines JavaScript-Sliders |
+| | 18.01.2011 | 1 | Besprechung mit Daniel |
+| | 18.01.2011 | 2 | Problemlösung (Maven-Abhängigkeiten) |
+| | 20.01.2011 | 3 | Problemlösung (Maven-Abhängigkeiten) |
+| | 21.01.2011 | 1 | Implementierung des Sliders zum Einstellen der Keyphrase-Anzahl |
+| | 23.01.2011 | 3 | Testen und Verbessern des Sliders |
+| | 25.01.2011 | 2 | Auslagern des Sliders in das Plugin-Menü |
+| | 26.01.2011 | 3 | Debugging |
+| | 01.02.2011 | 3 | Einbauen des Slider in KeyphraseExtraction |
+| | 03.02.2011 | 2 | Tests (KeyphraseExtraction und Slider) |
+| | 06.02.2011 | 2 | Entfernen von Debugging-Meldungen, Übersichtlichkeit des Codes verbessern |
+| | 10.02.2011 | 2 | Debugging (Highlighting von KeyphraseExtraction funktioniert nicht richtig) |
+| | 11.02.2011 | 3 | Debugging (-> Ändern des regulären Ausdrucks, Suche nach Ursachen (Leerzeichen in Keyphrases?)) |
+| | 14.02.2011 | 1 | Einchecken und SVN-Konfliktlösungen |
+| | 16.02.2011 | 1 | Zusammenstellen eines JQuery-UI Themes, einbinden des Themes |
+| | 16.02.2011 | 1 | Anpassen des Slider (CSS) |
+| | 22.02.2011 | 3 | Testen aller Plugins auf Funktionsfähigkeit, Überlegungen zum Bug-Fixing |
+| | 01.03.2011 | 2 | JQuery-Problem (eigene Methoden werden nicht gefunden) |
+| | 01.03.2011 | 1 | JQuery-UI: slider-Methode wird nicht gefunden (UI-Skript inkompatibel?) |
+| | 03.03.2011 | 2 | Debugging: POS Tagger |
+| | 05.03.2011 | 3 | POS Tagger findet keine Annotationen (Methode geändert?) |
+| | 06.03.2011 | 2 | Änderungen bei der benutzten AnalysisEngine |
+| | 08.03.2011 | 1 | Erneutes Austauschen von JQuery und JQuery-UI (Versionskonflikte?) |
+| | 10.03.2011 | 0.5 | Besprechung mit Daniel |
+| | 11.03.2011 | 0.5 | Bessere Lesbarkeit des Sliders |
+| ENLP-Übungen | 15.03.2011 | 2 | Dritte ENLP-Übung (Lösung verstehen, nachprogrammieren) |
+| | 17.03.2011 | 1 | Task 5.1 (UIMA Type-Descriptor erstellen), Erstellen des Annotators, Artikel von Lee&Seneff lesen |
+| | 17.03.2011 | 2 | Vervollständigen des Annotators, Fehlerbehebungen |
+| | 18.03.2011 | 2 | Schreiben eines eigenen Corpus (Brown-Corpus wirft OutOfMemoryException) |
+| | 18.03.2011 | 1 | Implementierung des Distractor Generators (Word Frequency) |
+| | 20.03.2011 | 1 | Verbesserungen des Generators |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | 01.11.2010 bis 31.01.2011 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| | 20.03.2011 | 2 | Fehlerkorrekturen (Map nach Werten, nicht Schlüsseln) sortieren lassen |
+| | 22.03.2011 | 1 | Besprechung mit Daniel |
+| | 23.03.2011 | 1 | SVN-Probleme (Kein Zugriff) |
+| | 23.03.2011 | 0.5 | Erstellen der benötigten Klassen für Übung 7 |
+| | 26.03.2011 | 2 | Implementierung des Unigram-Generators |
+| | 28.03.2011 | 4 | Implementiereung des NGram-Generators, Fehlerkorrekturen |
+| | 29.03.2011 | 2 | Beispiele zu JWNL durchlesen |
+| | 01.04.2011 | 3 | Fehlerkorrekturen in NGramGenerator |
+| | 02.04.2011 | 1.5 | Teilweise Implementierung des WordNet-Generators (Testen nicht möglich, da eine Properties-Datei fehlt) |
+| | 04.04.2011 | 3 | Versuche, NGram- und Unigram-Generators zu testen (BrownLookup und Web1TLookup_UKP werfen OutOfMemoryException) |
+| | 05.04.2011 | 2 | Tests (beide Lookup-Klassen laufen), Fehlerkorrekturen |
+| | 08.04.2011 | 2 | Umschreiben des NGram-Generators |
+| | 10.04.2011 | 3 | Versuche, den WordNetGenerator zu testen (properties.xml enthält Fehler (?)) |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 75 | 01.02.2011 bis 30.04.2011 |
+<nop>

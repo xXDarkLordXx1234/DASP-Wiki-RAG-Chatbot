@@ -1,0 +1,74 @@
+%META:TOPICINFO{author="ArnePottharst" date="1203681721" format="1.1" version="7"}%
+%META:TOPICPARENT{name="ArnePottharst"}%
+---+ Logbuch 
+%TOC%
+
+---++ 22.02.2008
+   * Der Stanford-Tokenizer hat Probleme mit _manchen_ Umlauten und bricht danach um, hier nochmal nachforschen & nachbessern.
+   * Tokens zu klassifizieren ist auch von Hand nicht immer einfach und eindeutig. Genaue Vorgaben/Beispiele sind notwendig.
+
+Versuch mit Texten mit den Stichwörtern "Yahoo, Google, IBM, Microsoft, Vista, Festplatte, Opera, Ubuntu"
+
+*Trainingsdaten* ("Tokendichte": 21,4%)
+| *Gesamt* | * O* | *PROD* | *COMP* | *PRODTYPE* | *PERS* | *ORG* | *MISC* |
+|  10867 |  8429 |  757 |  340 |  797 |  75 |  185 |  174 |
+|   100% |  77,6% |  7,0% |  3,1% |  7,3% |  0,7% |  1,7% |  1,6% |
+
+*Testdaten* ("Tokendichte": 17,3%)
+| *Gesamt* | *O* | *PROD* | *COMP* | *PRODTYPE* | *PERS* | *ORG* | *MISC* |
+|  3004 |  2474 |  61 |  159 |  105 |  33 |  85 |  77 |
+|  100% |  82,4% |  2,0% |  5,3% |  3,5% |  1,1% |  2,8% |  2,6% |
+
+
+
+
+---++ 11.02.2008
+Erstellung eines halbautomatischen Annotators, der die Texte aus der Datenbank ausliest, in Tokens zerlegt und mit Hilfe von Wikipedia in die vorher genannten Klassen einordnet soweit möglich. Anschließend muß die Ausgabe nochmals von Hand nachgearbeitet werden. Mit diesen Daten kann dann der Stanford-NER trainiert werden.
+
+---++ 07.02.2008
+Beim Stanford-NER sind 4 verschiedene Demosets dabei. Eines davon wird im Paper zu CoNLL 2003 erwähnt:
+   * Entities: Person (PER), Ort (LOC), Organisation (ORG), Sonstiges (MISC)
+   * Trainingset: 945 Dokumente, 203.000 Token
+   * Testset: 231 Dokumente, 46.000 Token
+
+Im Wissensnetz gibt es folgende Klassen: Person (PER), Ort (LOC), Firma/Hersteller (COMP), Produkt (PROD), Produkttyp (PRODTYPE). Sinnvoll wäre auch noch MISC für alles andere, was auch einen Namen darstellt aber in keine Kategorie fällt.
+
+---++ 06.02.2008 
+Erschließen eines Textkorpus "Redaktionelle Texte":
+   * Crawlen verschiedener Newssites mittels Curl und Wget, Texte ca. seit Anfang 2007 bis heute
+   * Extrahieren des Textes mittels Perl
+   * Einspeisen in MySQL -Datenbank für schnellen Zugriff
+   * Statistik:
+      * heise.de: 3259 Texte
+      * hartware.de: 2973 Texte
+      * de.internet.com: 471 Texte
+      * golem.de: 7757 Texte
+   * Insgesamt also: 14460 Texte
+
+Jetzt muß ich schauen, welche Texte geeignet sind, also nach Stichwörtern sinnvolle Texte herausfinden und markieren. Von diesen Texte einige manuell klassifizieren für Stanford-NER-Training. Ausprobieren, ob ich das mit Hilfe von Wikipedia-Artikeln machen kann.
+
+*IG:* hier musst du dich schlau machen, welche Trainingsmengen das Stanford-NER-Programm voraussetzt, damit es sinnvoll funktioniert.
+
+Ein weiterer Textkorpus soll "User generated Content", also Blogeinträge, enthalten, hier muß ich schauen, die Technokrati funktioniert.
+
+*IG:* dafür gibt es bereits einen UIMA-Reader in UKP. Niklas kann den Zuständigen (CT) kontaktieren.
+
+---++ 05.02.2008 
+Trainieren des Stanford-NER mit ein paar Textdateien, die ich von Hand klassifiziert habe. Erste Ergebnisse sehen ganz gut aus, es werden auch Dinge richtig klassifiziert, die in den Trainingsdaten nicht vorhanden sind, aber ein paar Fehler treten noch auf, ich brauche mehr Trainingsdaten.
+
+---++ 01.02.2008 
+Checkin ins SVN:
+   * Der *WikiParser*, der zum Erstellen von SVN-Dateien dient, die dann eingelesen werden können von K-Infinity
+   * Grundversion des *Stanford-NER*. In der Datei <nop>TeXHyphenator#loadDefault() habe ich einen String eingefügt, der gefehlt hat, Decompiler sei Dank ;-)
+
+---++ 25.01.2008 
+Erstellen des Wissensnetzes:
+   1 Einlesen von Wikipedia-Kategorien (=Typen)
+   1 Einlesen von Artikeln mit Zuordnung zu den Kategorien (=Instanzen)
+   1 Einlesen der Links in den Artikeln, um die Artikel untereinander zu verlinken.
+
+Dies alles kann ich in K-Infinity importieren und so ein Wissensnetz daraus aufbauen.
+Es fehlen allerdings noch wichtige Metainformationen bei den Links zwischen den einzelnen Artikeln wie "A stellt her B" oder "A ist Konkurrent von B", ebenso könnten noch Metainformationen zu den einzelnen Instanzen gespeichert werden. Hier überlege ich grade, welche Informationen ich noch aus Wikipedia ziehen kann, und ob bzw. welche weiteren Quellen ich noch verwenden kann -&gt; Ideen sind willkommen :-) 
+
+---++ 09.01.2008 
+Einarbeitung in UIMA und K-Infinity: ich habe ein Testprogramm (Proofe of Concept) für UIMA erstellt, das einen gegebenen Text zerlegt und großgeschriebene Wörter in einem Text findet (seeehr simples NER) und diese im Wissensnetz von K-Infinity sucht und gefundene entsprechend in UIMA markiert.

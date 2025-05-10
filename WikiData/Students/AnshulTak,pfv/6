@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="tak" comment="reprev" date="1475624613" format="1.1" reprev="6" version="6"}%
+Anshul Tak's HIWI page is [[Hiwi.AnshulTak][here]]
+
+---+++ Meeting 05.10.2016
+   * AT: Implemented kmean with constraints (https://web.cse.msu.edu/%7Ecse802/notes/ConstrainedKmeans.pdf)
+   * AT: Some idea for preprocessing: word2vec(corpus dependent), adding some wikidata or something like that so that sentences have simpler meaning if they represent same context with different words used in sentences. 
+   * AT: How to induce novelty in the system 
+   * AT: Simple algorithm 'Sicheng Xiong 2014'
+   * AT: How to choose most important points given dataset, current clustering, neighbourhood (Paper used entropy mechanism any other idea ??)
+   * Few techniques already done farthest datapoint, random, uncertainty (entropy)
+   * How to evaluate as dataset is different 
+   * Evaluation would be on 2 grounds runtime and quality of cluster (normalized mutual information NMI , F-measure for clustering)
+   * RoadMap:
+      *  Week1(3-9)
+         * Finalize some feedback mechanism, find some or brainstorm some novel idea
+         * Add feedback to kmean clustering (Active learning)
+      *  Week2
+         * Work on pending issue from previous week
+         * Take cluster access UKP
+         * Build baseline system (basu et al : Use random data points 2 at a time to get user feedback: Kmean)         
+      * Week3:
+         * Add preprocessing so to enrich information of each sentences for better clustering
+         * Start spectral clustering with constraints 
+      * Week4:
+         * Add feedback mechanism for spectral clustering (Active learning)
+         * Evaluation runtime and NMI and F-measure (Kmean)
+      * Week5:
+         * Demo UI for the mid-term
+         * Finalize the template for the writing part
+         * Start writing thesis
+         * Evaluation Spec clustering
+      * Week6:
+         * Demo-UI for the mid-term
+         * Start writing thesis
+      * Week7:
+         * Changes/modifications
+      * Week8(21-27)
+         * Presentation with evaluation 
+      * 29/11/2016: MID-TERM PRESENTATION
+
+---+++ Meeting 12.09.2016
+   * Using spark instead of Mahout, as most of the clustering is deprecated and performance of spark is much better than of mahout.
+   * BB will contact admin for thesis registration from 15.09
+   * BB gave English dataset for initial understanding of clustering outcomes
+   * BB will setup next meeting
+   * AT has configured his machine for spark applications
+   * AT will work on more concrete steps like initial spark driver program to use generate similarity matrix 
+   * AT will also find suitable methods for getting similarity scores of sentences as sentence has lower similarity scores due to less word content.
+   * AT will check if spark clustering uses similarity matrix as input or vector representation of dataset
+  
+---+++ Meeting 05.09.2016
+   * Reviewed the burocratic issues
+      * AT will register the thesis until next week, with a starting date of 01.09
+      * Scheduled mid-term and final thesis presentations
+   * BB gave to AT the dataset of Prof. Geyken to begin playing with
+   * Discussed next steps in the research
+   * AT will play with Apache Mahout to see how it could be used
+   * AT will also look deeper at Carrot2
+   * Next meeting: 12.09

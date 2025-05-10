@@ -1,0 +1,59 @@
+%META:TOPICINFO{author="ulutuerk" comment="" date="1646385555" format="1.1" reprev="10" version="12"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Feature Optimization in Multimodal Emotion Detection Models
+*Start date:* 15.12.2021
+
+*Supervisor:* Tobias Mayer
+
+---++ Meeting 23.02.2022
+   * issues when trying to select with tree, recursive the chi2 selector (dataset containing NaN value)
+      * CURRENT_SOLUTION: replacing NaN with zeroes (better solution?)
+      * tree selection => could not finish (loss value overflow)
+         * https://stackoverflow.com/questions/68450374/loss-value-and-val-loss-value-not-decreasing-in-rnn-algorithm-for-continuous-dat
+           i will try different lr in single runs instead of grid_search to see if that fixes the issue
+      * Next step for weekend: preparing midterm presentation and extract features with tweaks in the preprocessing over weekend
+
+---++ Meeting 23.02.2022
+   * Scaling and Variance-Threshold selection with different thresholds on qmnn => ca 24%
+   * qmnn issue high vram usage
+
+---++ Meeting 16.02.2022
+   * added reproducability
+      * hyperparameter selection
+      * getting list of removed features
+   * fixed selection pipeline
+   * ((  first indication: scaling iemocap on icon between 0 and 1 -> better accuracy and higher f1, low samplesize on       
+     hyperparameters for testing purposes  ))
+
+---++ Meeting 08.02.2022
+   * implementing new version of visual extractor (editing parts of the wrapper for pipeline convenience)
+   * comparing batchsizes (between averaging and 1 to 4 picked frames per video)
+      * averaging better solution
+
+---++ Meeting 02.02.2022
+   * testing with feature selectors
+   * further fixing feature formatting
+
+   * QUESTION how to handle different modules. Concatinate first then select or select before concatinating
+      * AFTER MEETING: for now select before merging 
+   * PROBLEM video selection has performance issues (is frame skipping ok or not?)
+      * AFTER MEETING: using frame averaging
+
+---++ Meeting 21.01.2022
+   * determining gridsearch time on "bob" node (ca 2:30 hours)
+   * found approximate issue of memory issue (limiting grid_search to 36-40 iteration on 32GB RAM)
+   * TODO fixing preprocess pipeline
+
+---++ Meeting 11.01.2022
+   * determining hyperparameters for further research
+   * comparing accuracy using determined hyperparamters and custom feature set
+
+---++ Meeting 04.01.2022
+   * fixed grid_search function on slurm and updated dependecies
+   * implemented script_generator to split bigger grid_searches into smaller searches
+   * ran grid_search
+   * created (temporary) feature list
+
+---++ Meeting 15.12.2021
+   * slurm tutorial machen
+   * baselines lauffähig machen

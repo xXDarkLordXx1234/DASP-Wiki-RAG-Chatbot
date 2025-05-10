@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="hofmann" comment="save topic" date="1366241003" format="1.1" reprev="8" version="8"}%
+---+ Tasks
+
+   * Phase 1: Implementierung Client
+      * DONE - Client Erweiterung um Update, Delete Methoden. Unit Tests
+      * TODO - JavaDoc für StorageClient schreiben
+      * TODO - Tests in package de.tudarmstadt.ukp.dariah.storage.client in src/test/java verschieben
+      * TODO - Variablen nicht mehrfach verwenden (z.B. "file" in testCreateUpdateReadLocal)
+      * TODO - Für Lokale und Remote Tests gleichen Code in Basisklasse auslagern die dann nur noch mit einem StorageClient initialisiert wird.
+   * Phase 2: Proof-of-Concept Integration in dSpace
+      * TODO - dSpace in Eclipse Entwicklungsumgebung konfigurieren (siehe https://wiki.duraspace.org/display/DSPACE/Developer+Guidelines+and+Tools)   
+      * TODO - DARIAH Storage Service als Alternative zu einer Ablage von Daten in SRB bzw. auf dem Dateisystem in BitstreamStorageManager einbinden, dabei Client verwenden (Credentials nicht hardgecoded im BitstreamStorageManager, sondern via System Properties)
+      * 
+
+---+ Aktueller Vertrag (Apr 2013)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 05.04.2013 | Meeting | 1 | |
+| 07.04.2013 | DARIAH-AIB | 2 | Client Erweiterung um Update, Delete Methoden. Unit Tests |
+| 11.04.2013 | DSpace | 4 | DSpace Installation und Einrichtung |
+| 12.04.2013 | Meeting | 0,5 | |
+| 14.04.2013 | Implementierung Client | 0,5 | JavaDoc für StorageClient schreiben. Tests in package de.tudarmstadt.ukp.dariah.storage.client in src/test/java verschieben. Variablen nicht mehrfach verwenden (z.B. "file" in testCreateUpdateReadLocal) |
+| 17.04.2013 | DARIAH-AIB | 0,5 | Für Lokale und Remote Tests gleichen Code in Basisklasse auslagern die dann nur noch mit einem StorageClient initialisiert wird. |
+| 16.04.2013 | DSpace | 2 | dSpace in Eclipse Entwicklungsumgebung konfigurieren |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 20
+
+
+
+-- Main.DieterHofmann - 01 Apr 2013

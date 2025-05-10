@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="JudithEckleKohler" date="1288553068" format="1.1" version="2"}%
+%META:TOPICPARENT{name="FrameNetResourcebeschreibung"}%
+---++List of all FE core types in FrameNet
+|*Core/Non-Core*|*Name*|
+|Core|Core|
+|Non-Core|Peripheral|
+|Non-Core|Core-Unexpressed|
+|Non-Core|Extra-Thematic|
+
+
+*JEK*: (source: Language resource management  Semantic annotation framework  Part 5: Semantic Roles (SemAF-SRL))
+   * core: conceptually necessary for the definition of the frame (e.g Cook and Food in Apply_heat)
+   * peripheral: not specific to the frame, but providing additional information, such as time and place; roughly similar to adjuncts
+   * extra-thematic: not part of the current frame, but related to another frame that frequently co-occurs with it
+
+-- Main.ZijadMaksuti - 2010-10-27

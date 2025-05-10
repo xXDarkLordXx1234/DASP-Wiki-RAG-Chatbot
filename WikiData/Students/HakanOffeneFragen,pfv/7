@@ -1,0 +1,37 @@
+%META:TOPICINFO{author="LizhenQu" date="1229680746" format="1.1" version="7"}%
+%META:TOPICPARENT{name="HakanEroglu"}%
+ich könnte doch Folgendes selbst bauen:<br /><br />Korpus Reader -&gt; JungWrapper -&gt; ResultWriter<br /><br />COMPONENT 1 (Korpus Reader):<br />Einen Annotator, der die XML datei seriell durchläuft.<br />Vorher definiere ich die CAS-Typen:<br />Node (String node_name, String type [username, tag, resource])<br />Edge (ähnlich WordPair aus zwei Nodes: Node node1, Node node2)<br /><br />COMPONENT 2 (JungWrapper):<br />Diese nimmt als Input die Daten aus COMPONENT 1 und baut einen JUNG Graph<br /><br />COMPONENT 3 (FolkRank/PageRank)<br /><br />COMPONENT 4 (Result Writer)<br /><br /><br />Was ich noch nicht ganz verstanden habe, ist, wie ich die Daten z.B. von COMPONENT 1 zu COMPONENT 2 bekomme?<br />Schnittstelle ist ja der CAS-Type.
+
+LQ: CAS ist eine standarde Weise
+
+Kann ich einen JUNG-Graph auch als Type nehmen?
+
+LQ: Deine Node und Edge Annotation Typen legen schon einen Graph fest. 
+
+1. Schreib eine Klasse, die Node und Edge in JUNG Graph transformiert. Die Klasse wird in meheren Komponenten (JUNG fuer Graphanalyse und FolkRank basiert auf die PageRank Implementierung von JUNG) wiederverwendet.
+
+2. (Nicht zu empfehlen) das JUNG Graph wird als external resource zwischen Komponenten uebertragen. See [[http://incubator.apache.org/uima/downloads/releaseDocs/2.1.0-incubating/docs/html/tutorials_and_users_guides/tutorials_and_users_guides.html#ugr.tug.aae.accessing_external_resource_files]].
+
+NEUE FRAGEN:
+
+1. Was tun bei Tags, die gleich sind, aber sich wegen Größ- und Kleinschreibung unterscheiden? Alle Tags default-mäßig in Großbuchstaben speihern und verarbeiten?
+
+LQ: entweder klein oder gross. Man kann die Tags lemmatizieren, see Beipiel BlogFolksonomyReader.
+
+2. Es sollen nur englische Texte genommen werden. Welche Spracherkennung soll ich nehmen? Es gibt viele...
+   
+IG: für Language-Identification gibt es eine UIMA-Komponente von UKP --> Lizhen.
+LQ: Das Komponent heisst LanguageIdentifier. In meiner Errinnerung habe ich es dir gegeben. Ich schicke dir nochmal.
+
+3. Wie kann ich einer Komponente Parameter zur Verarbeitung weitergeben? So wie bei Konstruktoren über die Parameterzeile. Es geht mir darum, z.B. Adressen von Files weiterzugeben.
+
+LQ: In einem Pipeline oder ueber mehrere Pipelines? Wenn es innerhalb eines Pipeline ist, gibt es dann 2 Möglichkeiten, eine ist durch einen Subtype von DocumentAnnotation, andere ist durch externalResource(See TreeTaggerPosLemma, wie man auf externe Dateien zugreift). 
+
+Kannst du mal genau beschreiben, wozu du sowas brauchst?
+
+4. Soll ich den Corpus nach einem Thema aufbauen oder generell quer alles Mögliche abbilden?
+
+LQ: Man baut die Arbeit Stufenweise auf. Ich schlag vor, zuerst ein Thema. Dann sieht man, wie ein Thema sich mit der Zeit läuft. Dann mehere Themen. 
+   * [[%ATTACHURL%/ukp_dkpro.zip][ukp_dkpro.zip]]: ukp_dkpro.zip
+
+%META:FILEATTACHMENT{name="ukp_dkpro.zip" attachment="ukp_dkpro.zip" attr="" comment="" date="1229680744" path="ukp_dkpro.zip" size="13862170" stream="ukp_dkpro.zip" tmpFilename="/var/tmp/CGItemp44303" user="LizhenQu" version="3"}%

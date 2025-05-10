@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="zap" comment="reprev" date="1517598756" format="1.1" reprev="3" version="3"}%
+---+!! TODO
+
+---+++ Until 08.02
+
+   * voting (ALL)
+   * meeting minutes and time table in wiki (AZ)
+   * spring bean fix in the datatable provider -> gitlab (REC zuweisen)
+   * recommendation table does not have any content despite recommendations being in database -> gitlab (AZ)
+   * describe how the preference extraction currently works (AZ)
+   * describe how the preference extraction should work (AZ)
+
+---+++ Further tasks
+
+   * optimize feature extraction -> gitlab
+
+   * change the code to make the preference extraction work as it should (log mining globally, not per query page)
+
+   * interleaving of recommenders in recommendation interface
+   
+   * query execution of new task queries (only after first task is completed)
+
+
+
+
+---+!! Meeting Minutes
+
+[[AlexanderZapMeeting][Meeting Minutes]]
+
+
+---+!! Time Table
+
+[[AlexanderZapTime][Time Table]]
+

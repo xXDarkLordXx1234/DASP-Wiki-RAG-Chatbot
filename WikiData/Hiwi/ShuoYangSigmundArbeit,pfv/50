@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="ShuoYang" date="1275377684" format="1.1" version="50"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Juni 2010
+
+---+++ Aufgabenübersicht
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Monolinguales Retrieval auf GIRT (MrGIRT) | | |
+| 2. Crosslinguales Retrieval auf GIRT (CrGIRT) | | |
+| 3. =FastTranslationAnnotator= | 98 | *  |
+| 4. Pipeline mit Ausgabe in TWiki Markups | 0 |  |
+| 5. =XMLFileReader= mit =XPath= | 20 |   |
+
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 39.5)$EXEC($GET(total_hour))"}% | bis Ende Juni noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden (inkl. 0.5 Untertrag von Mai) |  |
+<nop>
+
+---+++ Dokumente
+GoogleTranslatePerformanceAnalysis
+
+GoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangPreviousWork
+
+-- Main.ShuoYang - 01 Jun 2010
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%

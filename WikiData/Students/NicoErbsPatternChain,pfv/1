@@ -1,0 +1,16 @@
+%META:TOPICINFO{author="NicoErbs" date="1251471161" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NicoErbsExperiments"}%
+---+ Pattern recognition, counting and classification
+
+%TOC%
+
+---++ Implementation steps
+   * Generate Annotator which is applying templated to sentences to get detect patterns
+   * Generate Consumer (TFIDF) to count occurences of patterns
+      * generate CPE to load preproccessed data (UKPSentenceSplitter, TokenizerWithIndex, TreeTaggerPosLemmaTT4J, HighPrecisionSubjectivitySentenceClassifier) and consume it (save it to BerkelyDB)
+   * Generate PatternFrequencyAnnotator (TfidfAnnotatorFlexible) which annotates patterns in respect to their number of occurrences.
+   * Generate Probability annotator
+   * Generate Consumer which stores all relevant patterns
+   * Generate Annotator which annotates sentences if a subjective pattern ocurrs
+
+ -- Main.NicoErbs - 28 Aug 2009

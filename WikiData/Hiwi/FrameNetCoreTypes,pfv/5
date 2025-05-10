@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="JudithEckleKohler" date="1297782466" format="1.1" version="5"}%
+%META:TOPICPARENT{name="LSR.FrameNetResourcebeschreibung"}%
+---++List of all FE core types in FrameNet
+|*Core/Non-Core*|*Name*|
+|Core|Core|
+|Non-Core|Peripheral|
+|Non-Core|Core-Unexpressed|
+|Non-Core|Extra-Thematic|
+
+
+*JEK*: (source: Language resource management  Semantic annotation framework  Part 5: Semantic Roles (SemAF-SRL))
+   * core: conceptually necessary for the definition of the frame (e.g Cook and Food in Apply_heat)
+   * peripheral: not specific to the frame, but providing additional information, such as time and place; roughly similar to adjuncts
+   * extra-thematic: not part of the current frame, but related to another frame that frequently co-occurs with it
+   * @Question(SH): But why is under this definition Core-Unexpressed Non-core? 
+   * @Answer(JEK): Non-core refers to the inheritance relation: Core-Unexpressed FEs are not necessarily inherited by descendant frames. I found this in a more detailed explanation of the different core types in the FrameNet book of September 2010, p. 19 ff.. Core-Unexpressed is discussed on p. 21:
+      * "The value Core-Unexpressed is a special notational shorthand. It is assigned to FEs that behave like core frame elements in the frame where they are marked as Core-unexpressed but which, counter to expectation, may not be used for annotation in descendants of that frame. Frame elements marked as core-unexpressed will thus not necessarily be listed among the FEs in descendant frames...."
+
+-- Main.ZijadMaksuti - 2010-10-27

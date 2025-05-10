@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="ArtemVovk" date="1233794783" format="1.1" reprev="14" version="14"}%
+%META:TOPICPARENT{name="WebHome"}%
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| Einarbeitung in UIMA | 30 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Einarbeitung in UIMA | 15.01.2009 | 4 | Einfuehrung in UIMA. UIMA wurde instaliert und mit Eclipse verbunden, ganzer Stoff von Torsten und Mark-Christoph wurde gelesen. Jetzt probieren etwas zu schreiben |
+| Einarbeitung in UIMA | 20.01.2009 | 3 | Projekt Installation(dkpro_core, ukp_lib) |
+| Einarbeitung in UIMA | 21.01.2009 | 7 | Weitere Projekt Installation(dkpro_core, ukp_lib). Testen von "src_test". Dokumentation schreiben. Doc: Projekt Installation - https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/Projekt.pdf . Doc: Testfehler - https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ArtemVovkWork/Fehler.pdf |
+| Einarbeitung in UIMA | 23.01.2009 | 3 | Einarbeitung in ukp_dkpro (dkpro_core_release_12_08). Installation und Testen des Projekts. ReportHere |
+| Einarbeitung in UIMA | 28.01.2009 | 3 | Einarbeitung in ukp_dkpro, das Problem mit relativen Pfad (in CPE Descriptor -> ConfigurationParameterSettings) wurde geloest. LoesungHere |
+| Einarbeitung in UIMA | 30.01.2009 | 3 | Einarbeitung in DKPRo release tool. Installation von Tool. Start von Fehlersuche. |
+| Einarbeitung in UIMA | 31.01.2009 | 4 | Einarbeitung in DKPRo release tool. Problem wurde gefunden, Suche nach Loesung. (Leider ab 00:00 1 Februar mein SVN Account nicht gueltig ist...) |
+| Einarbeitung in UIMA | 03.01.2009 | 4 | Einarbeitung in DKPRo release tool. Code Korrektur fuer Aggregate Descriptors |
+| Einarbeitung in UIMA | 04.01.2009 | 2 | Einarbeitung in DKPRo release tool. Code Korrektur. Debuging. Vorbereitung zum Kommit. |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 80 | bis Ende Februar |
+
+
+
+
+
+---------------------
+
+DKProDocumentation
+
+DKProSrcTestErrors
+
+
+   * [[%ATTACHURL%/Projekt.pdf][Projekt.pdf]]: Installation von Projekt dkpro_core PDF File
+
+   * [[%ATTACHURL%/Fehler.pdf][Fehler.pdf]]: Testfehler von src_test in dkpro_core. PDF File
+
+---------------------
+
+ReleasePackageErrors
+
+
+
+%META:FILEATTACHMENT{name="Projekt.pdf" attachment="Projekt.pdf" attr="" comment="Installation von Projekt dkpro_core PDF File" date="1232576761" path="Projekt.pdf" size="16027" stream="Projekt.pdf" tmpFilename="/var/tmp/CGItemp37085" user="ArtemVovk" version="1"}%
+%META:FILEATTACHMENT{name="Fehler.pdf" attachment="Fehler.pdf" attr="" comment="Testfehler von src_test in dkpro_core. PDF File" date="1232576872" path="Fehler.pdf" size="21627" stream="Fehler.pdf" tmpFilename="/var/tmp/CGItemp37161" user="ArtemVovk" version="1"}%

@@ -1,0 +1,13 @@
+%META:TOPICINFO{author="OliverFerschke" date="1303915032" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---+ Developer Resources
+---++ DKPro
+---+++ WikipediaReaderBase
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/torsten/de.tudarmstadt.ukp.experiments.spelling/src/main/java/de/tudarmstadt/ukp/dkpro/core/io/jwpl/WikipediaReaderBase.java][Basisklasse für Wikipedia Reader]]
+   * Momentan noch im experiments-repository von Torsten - wird bald in Core umziehen.
+   * Am Besten kopierst du dir die Klasse zunächst in dein Projekt - sobald sie dann nachh DKPro-Core umgezogen ist, können wir die Abhängigkeit auf die offizielle Version nutzen.
+   * Du kannst diese Basisklasse so anpassen wie du es brauchst
+   * Der Reader für unsere UIMA-Pipeline sollte dann von dieser Basisklasse abgeleitet werden
+
+
+-- Main.OliverFerschke - 2011-04-27

@@ -1,0 +1,81 @@
+%META:TOPICINFO{author="kluge" comment="save topic" date="1380276667" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+---++ 2013-09-27
+
+   * Corpus statistics of Artem's raw corpus
+      * *#arguments*: 594
+      * *#docs*: 100
+<verbatim>
+Types=Value 	 Freq. 	 Pct. 	 Cum Pct. 
+	3	1%	1%
+Qualitative	458	77%	78%
+Quantitative	133	22%	100%
+
+--------------------------------------------------------------------------------
+Num. documents=100
+--------------------------------------------------------------------------------
+Topic distribution=Value 	 Freq. 	 Pct. 	 Cum Pct. 
+G8	69	12%	12%
+G9	59	10%	22%
+INKLUSION	57	10%	31%
+LEHRER	79	13%	44%
+MASTER	42	7%	52%
+PROMOVIEREN	94	16%	67%
+SITZENBLEIBEN	149	25%	92%
+SPORT	45	8%	100%
+
+--------------------------------------------------------------------------------
+Ref. Types=Value 	 Freq. 	 Pct. 	 Cum Pct. 
+	3	1%	1%
+Referenced	225	38%	38%
+Unreferenced	366	62%	100%
+
+--------------------------------------------------------------------------------
+Acceptecd?=Value 	 Freq. 	 Pct. 	 Cum Pct. 
+0	3	1%	1%
+1	17	3%	3%
+2	86	14%	18%
+3	488	82%	100%
+
+--------------------------------------------------------------------------------
+Num. arguments=594
+--------------------------------------------------------------------------------
+Arguments per document=Value 	 Freq. 	 Pct. 	 Cum Pct. 
+1	2	2%	2%
+2	12	12%	14%
+3	9	9%	23%
+4	14	14%	37%
+5	9	9%	46%
+6	15	15%	61%
+7	14	14%	75%
+8	4	4%	79%
+9	8	8%	87%
+10	7	7%	94%
+11	3	3%	97%
+12	1	1%	98%
+15	1	1%	99%
+18	1	1%	100%
+
+--------------------------------------------------------------------------------
+Num. sentences=Value 	 Freq. 	 Pct. 	 Cum Pct. 
+1	257	43%	43%
+2	182	31%	74%
+3	85	14%	88%
+4	49	8%	96%
+5	13	2%	99%
+6	6	1%	100%
+7	1	0%	100%
+8	1	0%	100%
+
+--------------------------------------------------------------------------------
+Comb. Types=Value 	 Freq. 	 Pct. 	 Cum Pct. 
+[,]	3	1%	1%
+[Qualitative,Referenced]	155	26%	27%
+[Qualitative,Unreferenced]	303	51%	78%
+[Quantitative,Referenced]	70	12%	89%
+[Quantitative,Unreferenced]	63	11%	100%
+</verbatim>
+
+
+
+-- Main.RolandKluge - 2013-09-27

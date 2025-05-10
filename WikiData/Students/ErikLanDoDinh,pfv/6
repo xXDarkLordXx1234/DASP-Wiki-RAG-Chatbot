@@ -1,0 +1,61 @@
+%META:TOPICINFO{author="dodinh" comment="reprev" date="1378988281" format="1.1" reprev="6" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Thesis: Automatic Identification of Novel Metaphorical Expressions
+
+---+++ How to use !IdentifyMetaphors.groovy
+
+Short instructions on how to use !IdentifyMetaphors.groovy (attached). Make sure a groovy is installed correctly first.
+
+Usage: !IdentifyMetaphors.groovy resources-directory input-directory output-directory output-format [topK] [features...]
+
+Example: !IdentifyMetaphors.groovy D:\ukp\diplom\standalone\resources D:\ukp\diplom\standalone\input D:\ukp\diplom\standalone\output docx
+
+In the standard configuration, the script only reads DOCX files.
+
+Mandatory resources:
+   * Lucene index containing lemmas and the documents they are contained in
+      * e.g. extracted from deWaC (de.wangtang.diplom.preparation.DewacToLucene; you may have to change paths)
+      * put it in resources/lucene
+
+Optional resources:
+   * To use selectional preferences:
+      * a mysql table containing selectional preferences (table structure in attached structure.sql)
+      * relative counts for nouns and verbs: _NOUN_-relative.txt and _VERB_-relative.txt in resources
+      * one way to create the selpref repositories and the relative count files is using !BuildNounSelPrefRepo.java and !BuildVerbSelPrefRepo.java (included in de.wangtang.diplom.preparation), although you may have to change paths there 	
+      * a UBY installation (with GermaNet)
+      * a mysqlLogin.properties (attached) containing the mysql server, database and login information
+      * Google Books 3-grams German (http://storage.googleapis.com/books/ngrams/books/datasetsv2.html) in resources/google_books_ngrams
+   * To use the novelty filter:
+      * Google Books 1-gram file (googlebooks-ger-all-totalcounts-20120701.txt, from the above URL) in resources/google_books_ngrams
+      * a file "year_published.txt" in the input documents directory, containing the years each document was published in (format: year TAB filename)
+
+<br><br>
+
+Short notes on ongoing work:
+
+---++++ 01.05.2013
+   * Finished creating repository of selectional preferences for the input documents
+   * Also extracted nouns and deduced label counts from GBN + UBY
+   * Created different vectors, running experiments
+   * Reading, Writing
+
+---++++ 15.01.2013
+   * After failed attempts using lucene, berkeleydb and some other candidates, Google Books Ngrams access is now done via piecewise recompressed files in combination with index files (roughly as in http://www.degruyter.com/view/j/fcds.2012.37.issue-4/v10209-011-0015-8/v10209-011-0015-8.xml) 
+   * Normalized Google Distance with Dewac, type->document lists in Lucene
+   * Discovered problem in GMM when using high-dimensonal vectors; floating point precision problems, matrices tend to get singular
+   * Started work on CSniper metaphor integration (separate project from trunk)
+   * Extended DocxReader
+
+---++++ 13.12.2012 - 19.12.2012
+   * Refactoring
+   * Test Pipeline for evaluation of labeled Metaphors (atm not Lab-based)
+   * Normalized Google Distance as similarity measure, which uses web1t 5-gram as corpus (untested -&gt; need web1t)
+   * Different approaches to efficiently reading Google Books Ngrams: directly from the .gz files (slow), from a lucene index (building takes ages, querying faster than .gz, but maybe not enough), currently trying BerkeleyDB
+   * Organisation: Finished short mathematical abstract for Prof. Kohler (see attachment)
+
+-- Main.ErikLanDoDinh - 2012-12-19
+
+%META:FILEATTACHMENT{name="using_gmm_for_metaphor_identification_v3.pdf" attachment="using_gmm_for_metaphor_identification_v3.pdf" attr="" comment="Using GMM for Metaphor Identification" date="1355924444" path="using_gmm_for_metaphor_identification_v3.pdf" size="43851" user="ErikLanDoDinh" version="1"}%
+%META:FILEATTACHMENT{name="IdentifyMetaphors.groovy" attachment="IdentifyMetaphors.groovy" attr="" comment="" date="1378986131" path="IdentifyMetaphors.groovy" size="9252" user="dodinh" version="1"}%
+%META:FILEATTACHMENT{name="structure.sql" attachment="structure.sql" attr="" comment="" date="1378986169" path="structure.sql" size="6145" user="dodinh" version="1"}%
+%META:FILEATTACHMENT{name="mysqlLogin.properties" attachment="mysqlLogin.properties" attr="" comment="" date="1378986229" path="mysqlLogin.properties" size="73" user="dodinh" version="1"}%

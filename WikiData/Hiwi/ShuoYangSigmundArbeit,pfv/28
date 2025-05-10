@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="ShuoYang" date="1271058460" format="1.1" reprev="28" version="28"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit - Mitte März ~ Ende April 2010
+
+---+++ Aufgabenübersicht
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Monolinguales Retrieval auf GIRT (MrGIRT) | | |
+| 2. Crosslinguales Retrieval auf GIRT (CrGIRT) | | |
+| 3. !FastTranslationAnnotator | 80 | * |
+| 4. Gegebene Pipelines laufen zu lassen |  | * |
+| 5. Konfiguration von Maven | | * |
+
+[[http://bizlink.ru/todoist-v-t2lkZ2M-RCIO3n044l9pijYxakTdyJbYTx9FOMJTnaQYjni1avpTATa7d8WjMyikpiA-j_VdTh58UBq9CtFg][To-Dos]]
+
+---+++ Detaillierte Auflistung
+_Antichronologisch sortiert_
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* | *Neu* |
+| Pipelines | 08.04.2010 | 1 | Über Pipelines <ul><li>Besprechung mit Benjamin</li><li>Versuchen dies laufen zu lassen</li></ul> | * |
+| FTA | 07.04.2010 | 4 | Über Pipelines <ul><li>Versuchen dies laufen zu lassen</li></ul> Erweiterung und Testen von =FastTranslationAnnotator= um <ul><li>Die Fähigkeit, (nur) ausgewählte XML Tags (nicht) zu übersetzen</li><li>Caching nach Sprachpaare</li></ul> | * |
+| !TikaReader | 05.04.2010 | 3.5 | Erweiterung von =TikaReader= um <ul><li>Erneutes Schreiben von =.eml= -Lesen Teil, nun HTML-Teil bevorzugt über reine Text, falls vorhanden</li><li>Höhere Zuverlässigkeit beim Einlesen von =.eml= Dateien</li><li>Unterstützung aller Arten von =.eml= Dateien</li><li>Zum Testen Installation und Einstellung von =Thunderbird=, um zusächliche Beispiel von =.eml= Dateien zu bekommen</li>  |  |
+| Girt RU | 03.04.2010 | 4.5 | Übersetzung von russischer Girt-Topics '06~'08 <ul><li>Bereinigung und Zusammenstellen der XML Dateien</li><li>Übersetzung mit =FastTranslationAnnotator= </li><li>Dabei Erstellung von Pipelines (im Projekt =FastTranslationAnnotator=, siehe =README=)</li><li>Die Ergebnisse befinden sich nun im =UKPExchange= von Dropbox</li></ul>   |  |
+| GTA-K | 02.04.2010 | 3.5 | Anlegen von neuem Projekt =FastTranslationAnnotator= <ul><li>für schnellere Übersetzung mit Konkatenation</li><li>Rückwechsel zur Bibliothek =Translate= , da es Übersetzung mehrerer Sätze auch unterstützt und effizientere Encoding bietet</li><li> befindet sich zusammen mit =README= in SVN</li></ul> Abschluss der Verfassung von GoogleTranslateConcatenationFeasibility <ul><li>Dafür Vergleich der Ergebnisse von Übersetzungen, beide mit und ohne Konkatenation</li></ul> |  |
+| GTA-K | 01.04.2010 | 2 | Beschleunigung von =TranslationAnnotator= mithilfe von Konkatenation <ul><li>Verwendung von neuer Bibliothek =Translator= , was Übersetzung mehrerer Sätze in dieselbe Anfrage unterstützt.</li><li>Neue Klasse =QueryLengthChecker= , um Anzahl gleichzeitig erlaubter Strings zu ermitteln</li><ul>  |  |
+| GTA-K | 21.03.2010 | 4.5 | Weitere Testen und Verfassung von GoogleTranslateConcatenationFeasibility |  |
+| GTA-K | 19.03.2010 | 2 | Entwurf und Durchführen von Testcases für GoogleTranslateConcatenationFeasibility |  |
+| GTA-P | 16.03.2010 | 2 | Verfassung von GoogleTranslatePerformanceAnalysis |  |
+| Übersetzung <br /> Girt Topics | 13.03.2010 | 1 | Mit GoogleTranslatePerformanceAnalysis <ul><li>Testcases von längerer Sätze erstellt</li><li>Dürchführen von Testcases daheim und in UKP-Pool</li><li>Dabei maximale Stringlänge von jeder Anfrage bestimmt, durch Encoding entstehende zusätzliche Länge muss man mit einbeziehen</li></ul> |  |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |  |
+| *Soll* | | %CALC{"$SET(total_hour, 61)$EXEC($GET(total_hour))"}% | bis Ende April noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden |  |
+<nop>
+
+---+++ Dokumente
+GoogleTranslatePerformanceAnalysis
+
+GoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangPreviousWork
+
+-- Main.ShuoYang - 12 Apr 2010

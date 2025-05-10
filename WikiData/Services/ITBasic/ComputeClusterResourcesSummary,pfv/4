@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="alles" comment="" date="1727880571" format="1.1" reprev="4" version="4"}%
+<div style="padding:10px; border: 2px solid green; text-align: center">
+Last updated by UKP system-admin on 24.06.2024
+</div>
+
+<div style="float:right;background-color:white; z-index:999;">
+---++++ !!Content<br/>
+<div style="border: solid grey 1px; padding: 0.25em; margin: 0.25em">
+%TOC%
+</div>
+</div>
+
+---+!! %TOPIC%
+
+Currently UKP Lab maintains the computational resources listed belwow on its own. There are additional ressources that can be used from TU Darmstadts "[[https://www.hrz.tu-darmstadt.de/hlr/hochleistungsrechnen/index.de.jsp][Lichtenberg HLR]]" and the Hessian AI Cluster "[[https://hessian.ai/supercomputer-for-cutting-edge-ai-research-in-hesse/][fourtytwo]]". 
+
+---++ Overview Compute Cluster
+   * 13 nodes
+   * ~ 2400 CPU Cores
+   * ~ 14,5 TB memory
+   * ~ 0,75 PB central storage capacity
+   * 36x GPUs with >= 80GB VRAM
+      * NVIDIA A100 (80GB) 32x
+      * NVIDIA H100 (80GB): 4x
+   * 45x GPUs with < 80GB VRAM
+      * NVIDIA P100 (16GB): 2x
+      * NVIDIA TITAN RTX (24GB): 3x
+      * NVIDIA V100 (32GB): 8x
+      * NVIDIA A100 (40GB): 8x
+      * NVIDIA L40 (45GB): 8
+      * NVIDIA RTX A6000 (48GB): 8
+
+---++ Overview LLM CLuster
+   * 4 nodes
+   * ~ 400 CPU Cores
+   * ~ 4TB MEMORY
+   * ~ 250 TB central storage capacity
+   * 13x GPUs with < 80GB VRAM
+      * NVIDIA P100 (16GB): 5x
+      * NVIDIA L40s (45GB): 8x
+
+---++ Summary
+   * 17 nodes
+   * ~ 2800 CPU cores
+   * ~ 18,5 TB memory
+   * 94 GPUs
+
+-- Main.SebastianAlles - 2024-06-24
+%META:TOPICMOVED{by="alles" date="1727880571" from="Services/ITBasic.UKPComputeResources" to="Services/ITBasic.ComputeClusterResourcesSummary"}%

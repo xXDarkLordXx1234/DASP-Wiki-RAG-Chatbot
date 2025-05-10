@@ -1,0 +1,532 @@
+%META:TOPICINFO{author="abbas" comment="save topic" date="1523810860" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! %TOPIC%
+
+
+---++ 2018-04-15
+
+Following is the update: 
+
+what you are currently working on,
+   * Complete life cycle of machine learning algorithm from inception to reactive server using reactive library and micro service architecture.
+how far you have gotten,
+   * Built the cycle, uploaded on git branch. The complete cycle of machine learning algorithm works fine. Now we can perform evaluation and prediction at reactive server by using the micro service at reactive server. 
+how you are implementing it,
+   * --
+what you plan on working on next,
+   * Thesis report. 
+what issues have come up,
+   * Communication between inception and reactive server.
+   * Transfer of objects between inception and reactive server.
+   * REST API issues.
+   * Data structure issues, need to have structured data to send between two systems.
+   * Data load issue to hand to much data. 
+   * Evaluation Model not working properly.
+   * Prediction model not working properly. 
+what you did to get around them,
+   * Using reactive library and reading reading spring 5 book
+   * Structured the data in a way that two machines could understand.
+   * Analysed and researched the proper way to send big data objects. 
+what is blocking you if you are stuck.
+   * Not much support in the internet. 
+   
+-- Main.HashimAbbas 2018-04-15
+
+---++ 2018-04-11
+
+Following is the update: 
+
+what you are currently working on,
+   * Thesis report. 
+how far you have gotten,
+   * Wrote chapter 3, 4 and 5 of my thesis report sent it to Richard for review
+how you are implementing it,
+   * Using latex
+what you plan on working on next,
+   * Complete life cycle of machine learning algorithm from inception to reactive server using reactive library and micro service architecture. 
+what issues have come up,
+   * --
+what you did to get around them,
+   * --. 
+what is blocking you if you are stuck.
+   * --
+   
+-- Main.HashimAbbas 2018-04-11
+
+---++ 2018-03-25
+
+Following is the update: 
+
+what you are currently working on,
+   * Evaluation model and Prediction Model at reactive server. 
+   * Thesis report.
+how far you have gotten,
+   * Implementation of reactive client at inception to send the data to the reactive server
+   * Built a micro service for machine learning algorithm at reactive server.
+   * Implemented old version of reactive dependencies which would work with inception's spring version.
+   * Implemented different solution at inception from test client for sending the data to reactive server
+how you are implementing it,
+   * Using the reactive spring io reactive library
+what you plan on working on next,
+   * Thesis report 
+what issues have come up,
+   * Reactive library support issues at inception
+   * Communication between inception and reactive server.
+what you did to get around them,
+   * Finding out a solution to solve the dependencies issue. 
+what is blocking you if you are stuck.
+   * No actual support for reactive library, it is still getting mature
+   
+-- Main.HashimAbbas 2018-03-25
+
+---++ 2018-03-20
+
+Following is the update: 
+
+what you are currently working on,
+   * Implementation of reactive client at inception to send the data to the reactive server
+   * Building a micro service for machine learning algorithm at reactive server.
+   * Implementing old version of reactive dependencies which would work with inception's spring version.
+   * Implementing different solution at inception from test client for sending the data to reactive server
+how far you have gotten,
+   * Implemented the code at reactive server to get the data from inception. 
+how you are implementing it,
+   * Using the reactive spring io reactive library
+what you plan on working on next,
+   * Testing the micro service for evaluation model at reactive server. 
+   * Testing the micro service for prediction model at reactive server. 
+what issues have come up,
+   * Reactive library support issues at inception
+   * Transfer of objects between inception and reactive server.
+   * REST API issues.
+   * Data structure issues, need to have structured data to send between two systems.
+   * Data load issue to hand to much data. 
+   * Evaluation Model not working properly.
+   * Prediction model not working properly.
+   * Microservice data repository issues.
+what you did to get around them,
+   * Finding out a solution to solve the dependencies issue. 
+what is blocking you if you are stuck.
+   * No actual support for reactive library, it is still getting mature
+   
+-- Main.HashimAbbas 2018-03-20
+
+---++ 2018-03-10
+
+Following is the update: 
+
+what you are currently working on,
+   * Implementation of reactive client at inception to send the data to the reactive server
+how far you have gotten,
+   * Implemented the code at reactive server to get the data from inception. 
+how you are implementing it,
+   * Using the reactive spring io library
+what you plan on working on next,
+   * Building a micro service for machine learning algorithm at reactive server. 
+what issues have come up,
+   * Access right issues to upload new dependencies from maven at inception
+   * New spring and reactive library version colliding with old spring version at inception
+what you did to get around them,
+   * Finding out a solution to solve the dependencies issue. 
+what is blocking you if you are stuck.
+   * No actual support for reactive library, it is still getting mature
+   
+-- Main.HashimAbbas 2018-03-10
+
+---++ 2018-02-28
+
+Following is the update: 
+
+what you are currently working on,
+   * Implementation of communication layer between test client and reactive server 
+how far you have gotten,
+   * Implemented the code at reactive server and tested it from a test client to send sample test data. 
+how you are implementing it,
+   * Using the reactive spring io library
+what you plan on working on next,
+   * Testing the communication between inception and reactive server. 
+what issues have come up,
+   * No actual support for reactive library, it is still getting mature 
+what you did to get around them,
+   * Learn more about spring 5 framework, event based microservices. 
+what is blocking you if you are stuck.
+   * No actual support for reactive library, it is still getting mature
+   
+-- Main.HashimAbbas 2018-02-28
+
+---++ 2018-02-20
+
+Following is the update: 
+
+what you are currently working on,
+   * Implementation of Reactive Server 
+how far you have gotten,
+   * Made a separate server and imported classes of machine learning algorithm to the reactive server. 
+how you are implementing it,
+   * Using the functionalities used in inception, creating them on reactive server
+what you plan on working on next,
+   * Creating a microservice based architecture for machine learning algorithms
+what issues have come up,
+   * Building old architecture on new technologies. 
+what you did to get around them,
+   * Learn more about spring 5 framework, event based microservices. 
+what is blocking you if you are stuck.
+   * --
+-- Main.HashimAbbas 2018-02-20
+
+---++ 2018-02-10
+
+Following is the update: 
+---+!! Reactive Machine Learning Architecture
+
+what you are currently working on,
+   * Implementation of Reactive Server 
+how far you have gotten,
+   * Made a separate server and building a model for a reactive server. 
+how you are implementing it,
+   * Using the functionalities used in inception, creating them on reactive server
+what you plan on working on next,
+   * Creating a microservice based architecture for machine learning algorithms
+what issues have come up,
+   * Building old architecture on new technologies. 
+what you did to get around them,
+   * Learn more about spring 5 framework, event based microservices. 
+what is blocking you if you are stuck.
+   * --
+-- Main.HashimAbbas 2018-02-10
+
+
+---++ 2018-02-01
+
+Following is the update: 
+---+!! Reactive Machine Learning Architecture
+
+what you are currently working on,
+   * Implementation of Reactive API base architecture 
+how far you have gotten,
+   * I have made a base architecture by which we can send a class object from one machine to another
+   * Both machines have reactive communication
+how you are implementing it,
+   * I implemented a Mono and Flux to send and receive class object having objects inside it
+what you plan on working on next,
+   * I will work on the existing machine learning module to merge my code in the existing one
+what issues have come up,
+   * New technology. Spring 5 does not have many scenario examples
+   * Removed old react methodologies from spring
+what you did to get around them,
+   * Learn more about spring 5 framework, event based microservices. 
+what is blocking you if you are stuck.
+   * --
+
+---+!! Mid Term Presentation
+what you are currently working on,
+   * Updating Mid term presentation
+how far you have gotten,
+   * Made new flow chart diagram to review and updated the existing mid term presentation slides  
+how you are implementing it,
+   * Researching and updating the presentation slides 
+what you plan on working on next,
+   * I have my midterm presentation on Tuesday
+what issues have come up,
+   * Not much information regarding architectures of microservices
+what you did to get around them,
+   * Learn more about spring 5 framework, event based microservices
+what is blocking you if you are stuck.
+   * --
+-- Main.HashimAbbas 2018-02-01
+
+
+---++ 2017-01-20
+
+Following is the update: 
+
+what you are currently working on,
+   * High Level Architecture model of the modified architecture.
+   * Internal Architecture model of the modified architecture. 
+   * Mid term initial presentation draft.
+how far you have gotten,
+   * Built an High level architecture model and working on the internal architecture for the modified structure of INCEpTION machine learning module. 
+   * Working on the mid term presentation.
+how you are implementing it,
+  * Making the architecture diagrams on a professional tool. 
+  * Creating the mid term presentation. 
+what you plan on working on next,
+   * Preparing for the midterm presentation. 
+what issues have come up,
+   * --
+what you did to get around them,
+   * --
+what is blocking you if you are stuck.
+   * --
+   
+-- Main.HashimAbbas 2018-01-20
+
+---++ 2018-01-10
+
+Following is the update: 
+
+what you are currently working on,
+   * Architecture model of the modified architecture. 
+   * Issues which I found to show them to Richard in INCEpTION current machine learning module flow.
+   * Communication strategies which could be applied for data transfer between two machines or processes. 
+how far you have gotten,
+   * I have now understanding how the code runs on the backend.
+   * Built an initial architecture model for the modified structure of INCEpTION machine learning module. 
+   * Listed some issues of INCEpTION current machine learning module flow.
+how you are implementing it,
+  * I am currently debugging different steps of machine learning flow. 
+  * Comparing analysing different technologies which I use in the modified architecture. 
+what you plan on working on next,
+   * Showed the current architecture diagram to Richard, then I will do some changes in it. 
+   * Analysis on the communication layer of modified architecture. 
+what issues have come up,
+   * Code modifications in the main release.
+   * Reactive libraries is a new model so nothing has been implemented so far.  
+what you did to get around them,
+   * Learning about the reactive library of spring io
+what is blocking you if you are stuck.
+   * Updating the code, need to start the analysis flow from scratch
+   
+-- Main.HashimAbbas 2017-01-10
+
+---++ 2018-12-30
+
+Following is the update: 
+
+what you are currently working on,
+   * Analysing the current code structure which needs to be modified
+   * Trying to build an architecture model so I can start implementing the model
+how far you have gotten,
+   * I have now understanding how the code runs on the backend.
+   * Building the architecture model for the modified structure of INCEpTION machine learning module. 
+how you are implementing it,
+   * I am currently debugging different steps of machine learning flow. 
+what you plan on working on next,
+   * I will make the architecture diagram which will be aproved by Richard, then I will start implementing the modified architecture. 
+what issues have come up,
+   * Code modifications in the main release. 
+what you did to get around them,
+   * -- 
+what is blocking you if you are stuck.
+   * Updating the code, need to start the analysis flow from scratch
+   
+-- Main.HashimAbbas 2017-12-30
+
+
+---++ 2017-12-10
+
+Following is the update: 
+
+what you are currently working on,
+   * Understanding the current monolithic architecture of INCEpTION
+   * Analysing the current code structure which needs to be modified
+how far you have gotten,
+   * I have now some understanding how the code runs on the backend.  
+how you are implementing it,
+   * I am currently debugging different steps of machine learning flow. 
+what you plan on working on next,
+   * I will make the architecture diagram which will be aproved by Richard, then I will start implementing the modified architecture. 
+what issues have come up,
+   * Code modifications in the main release. 
+what you did to get around them,
+   * -- 
+what is blocking you if you are stuck.
+   * Updating the code, need to start the analysis flow from scratch
+   
+-- Main.HashimAbbas 2017-12-10
+
+---++ 2017-11-20
+
+Before my travel I wanted to update my status regarding the work which I did in the last days. 
+
+---+!! Status Update: 
+As discussed in our last meeting, I had to implement following two architectures:
+
+   * Pulling the data(information) from the database and sending it to another machine/server
+   * Server pulls the data by itself and sends the data(information) in the message arguments to another machine/server
+
+---+!! Pulling the data(information) from the database and sending it to another machine/server:
+
+---+!! Implementation:
+
+   * Created a spring 5 reactive server which has a data model of a person (not a MongoDB)
+   * Created Mono and Flux reactive functions to fetch the data of the person
+      * Fetch single person record by sending a unique id 
+      * Fetch all person records
+      * Insert single person record 
+   * Created a client side which can fetch the person data on another machine
+
+---+!! Working:
+
+   * When the server starts, it automatically inserts 100000 records of person
+   * Once the records are inserted in the person repository, the client side can fetch/insert person data
+   * When the client starts it performs the below operations by requesting the server using REST API:
+      * Fetches all person data
+      * Fetch single person record
+      * Inserts more person record
+   * On the same time we can use curl command on different terminals to fetch all/single person data and also we can insert more person records.
+   
+---+!! Testing:
+
+   * Started the server and inserted the person data
+   * Started the clients side and fetched/inserted person data
+   * Opened three terminals and ran fetch command on two terminals and insert command on one terminal.
+
+---+!! Result:
+
+The server inserted 100000 records in less time
+   * The client side fetched/inserted the records in less time
+   * In the terminal, one person record was inserted while data was fetched in the two terminals
+   * While fetching the person records in two/three different terminals, the server did not waited for one request to completely fetch the whole person data. It kept on sending the data to the terminals as it was getting it from the person repository
+
+
+---+!! Server pulls the data by itself and sends the data(information) in the message arguments to another machine/server:
+
+---+!! Implementation:
+
+   * Added a small function to work on client side to work on JSON objects while fetching the person
+   * Rest of the implementation was same as previous architecture
+
+---+!! Working:
+
+   * As the records were fetched on client side the function was applied on the JSON object
+
+---+!! Testing:
+
+   * Fetched the records on the client side and applied function on the data
+
+---+!! Result:
+
+   * As per my understanding the communication between the server and client was asynchronous and the client was getting the data asynchronously.
+
+-- Main.HashimAbbas 2017-11-20
+
+---++ 2017-11-17
+
+   Try to find benefits and drawbacks for the following scenarios:
+   * Pulling the data(information) from the database and sending it to another machine/server
+   * Server pulls the data by itself and sends the data(information) in the message arguments to another machine/server
+   
+-- Main.HashimAbbas 2017-11-17
+
+---++ 2017-11-15
+
+Following is the update: 
+
+what you are currently working on,
+   * Understand more spring 5 reactive system e.g Mono and Flux
+   * Understand how reactive systems can help in our recommendation service
+how far you have gotten,
+   * I have now some understanding of what Mono and Flux are and how to implement them using router functions introduced in spring 5.  
+how you are implementing it,
+   * I implemented a sample example with Mono and Flux and also saw router functions as well which are introduced in spring 5 framework. 
+what you plan on working on next,
+   * I am currently trying to understand how a monolithical web application could be broken down in event based microservervice. 
+what issues have come up,
+   * Trying to figure out a scenario that how we can implement event based structure in our recommendation service. 
+what you did to get around them,
+   * Learn more about spring 5 framework, event based microservices. 
+what is blocking you if you are stuck.
+   * --
+   
+-- Main.HashimAbbas 2017-11-15
+
+---++ 2017-11-10
+   
+   *    Understand more spring 5 reactive system e.g Mono and Flux
+   *    Understand how reactive systems can help in our recommendation service   
+
+   
+-- Main.HashimAbbas 2017-11-10
+
+---++ 2017-11-31
+
+Following is the update on my status:
+
+* what you are currently working on,*
+I was currently researching:
+   1 How to break our service in an efficient way so we can make it a micro-service
+   2 Finding the best reactive framework for our application
+   2 Now I will try to build a test akka actor model using akka documentation
+
+* how far you have gotten,*
+
+As we discussed in our last meeting I had to go through different reactive frameworks for our application, I found below article which has a really nice explanation and comparison for different reactive frameworks.
+
+https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape 
+
+I read about some of the reactive frameworks which we can implement. Following are some useful links which I read and wanted to share them with you. 
+
+1 Implementing Microservices using Java:
+
+I read this book. The book is nice and basically builds up an architecture how we want to build our application but in the end it is based on Lagom framework which they said is open source but the main services we have to buy from them. So it is no use for us.
+
+https://www.lightbend.com/blog/developing-reactive-microservices-free-oreilly-mini-book-by-java-champion-markus-eisele  
+
+2 Microservice architecture pattern:
+
+Its a small useful article about the microservice architecture pattern which tell how a microservice should be designed.  
+
+http://microservices.io/patterns/microservices.html
+
+3 Building Reactive Systems Using Akkas Actor Model and Domain-Driven Design:
+
+Really nice article that explains how akka actor models fulfils 4 main principles of reactive programming 
+
+https://www.infoq.com/articles/Reactive-Systems-Akka-Actors-DomainDrivenDesign?utm_campaign=infoq_content&utm_source=twitter&utm_medium=feed&utm_term=java 
+
+4 Building Reactive Applications with Akka Actors and Java 8
+
+Another nice article which explains the use of akka actor model with reactive programming
+
+https://www.infoq.com/articles/Building-Reactive-Applications-with-Akka?utm_source=infoq&utm_medium=related_content_link&utm_campaign=relatedContent_articles_clk
+
+* how you are implementing it,*
+
+I think with the above what I have read, I should try to implement a simple test akka actor model and play with it. 
+
+* what you plan on working on next,*
+
+Implementing a test akka model. 
+
+https://doc.akka.io/docs/akka/current/java/actors.html#become-unbecome
+
+* what issues have come up,*
+
+Issues that I came up in many articles were that, some of them were using tools which were not open source
+
+* what you did to get around them,*
+--
+* what is blocking you if you are stuck.*
+
+I will let you know when I test run the test akka actor model. 
+
+*My question:* 
+Do you think I should try to run a test akka actor model now?
+
+-- Main.HashimAbbas 2017-10-31
+
+---++ 2017-10-25
+
+   Thesis Dates:
+   * Begin of period : Th, 26. Oct. 2017 
+   * End of period : Mon, 30. Apr. 2018 
+       
+-- Main.HashimAbbas 2017-10-25
+
+---++ 2017-10-24 11:30 B120
+
+   * Find out reactive programming frameworks  
+
+-- Main.HashimAbbas 2017-10-24
+
+---++ 2017-10-19
+
+   * REC will be on parental leave mid-March 2018 to mid-April 2018 (exact dates not yet defined)
+   * Final presentation: 2018-04-24 (tentative)
+   * Mid-term presentation: 2018-02-06 Room S2|02 A126
+   * Need to prepare paperwork for registering the thesis
+   * [[http://dkpro.github.io/files/DKProCoreStyle_20170725.xml][Eclipse style file]]
+   * Checkstyle setup for [[https://webanno.github.io/webanno/documentation/][WebAnno/INCEpTION]] (see Checkstyle section in Dev Guide for WebAnno 3.3.0-SNAPSHOT)
+
+-- Main.RichardEckartDeCastilho - 2017-10-19

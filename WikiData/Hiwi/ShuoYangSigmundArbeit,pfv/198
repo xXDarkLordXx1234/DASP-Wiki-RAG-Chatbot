@@ -1,0 +1,74 @@
+%META:TOPICINFO{author="ShuoYang" date="1316535979" format="1.1" version="198"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll Shuo Yang
+
+---++ Aktuelle Arbeit: Jul-Sep 2011
+
+Hinweis: ich habe am 14.09 und 21.09 jeweils eine Klausur. Wegen der Vorbereitung würde ich vor 21.09 mit gesunkenem Tempo arbeiten.
+
+-- 2011-09-10
+
+---+++ Aufgabenübersicht
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Aufgabe* | *% done* | *Neu* |
+| 1. Überarbeitung SIGMUND: Lucene erweitern, Search Controler überarbeiten | 60 - fehlt noch Testen |  |
+| 2. Testen und Evaluation von Qualität der SIGMUND-Ergebnisse | 30 |  |
+| 3. Webapp: Search Controller Monitor | 90 |  |
+| 4. Refactor CLL-Translation | 100 |  |
+| 5. Übersetzung mit Google Translate | 100 | * |
+
+---+++ Detaillierte Auflistung
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Zusammenfassung* | *Stunden* | *Bemerkungen* | *Neu* |
+| - | Übertrag | 2.5 | Übertrag der Stunden von Juni |  |
+| 01.07.2011 | Monitor, Wiki | 4.5 | Überarbeitung von Search Controller Monitor <ul><li>Sessions werden in Monitor mit robustem Verhältnis angezeigt</li><li>Man kann sessionId auswählen um das Sessions Ergebnis zu sehen</li><li>Runlabel von Search Module werden in Monitor gezeigt</li><li>Benachrichtigung von Status des Services (erreichbar, unerreichbar)</li></ul> Umstellung dieser Wiki-Seite zum Anfang der Monat |  |
+| 07.07.2011 | CLL-Translation | 0.5 | Besprechung über Saubermachen von CLL-Translation Projekt |  |
+| 08.07.2011 | CLL-Translation, Meeting | 5.5 | Einarbeiten in Codebase, Zeichnen von UML Klassendiagramm des Projekts <p> Überlegung und Diskussion mit Benjamin über Vorgehensweise des Saubermachens <p> Erstellung von Tools um Daten in neuen Formate zu migrieren. <p> Debug von POM Dependency-Konflikte mit SLF4J |  | 
+| 10.07.2011 | CLL-Translation | 2 | Überlegung und Forschen von neuer Vorgehensweise um Daten persistent zu halten |  |
+| 11.07.2011 | CLL-Translation | 2 | Experimentieren und Evaluation von unterschiedlichen Persistenz-Frameworks inkl. XStream für XML-Serialisierung, EHCache und Berkeley DB |  | 
+| 12.07.2011 | CLL-Translation | 7 | Erstellung des UML-Klassendiagramms, was die neue Architektur widerspiegelt <p> Umsetzung und Testen der neuen Architektur <p> Implementierung und Testen des Daten-Migrators |  |
+| 14.07.2011 | SIGMUND | 1 | Debuggen von dem Konflikt von JUnit und Groovy, was das Laufen von Unittest verhindert |  |
+| 19.07.2011 | CLL-Translation | 1.5 | Unterstützung von GZIP-Kompression. Als Default werden nun Daten in GZIP komprimiert. Dadurch sind die Datengröße von 100% (28MB -> 14MB) bis 300% (18MB -> 5.xxMB) reduziert <p> Anpassung und Testen von Data Migrator und relevante Klassen.<p> Dokumentation: Aktualisierung von Javadoc, Erstellung von readme |  |
+| 23.07.2011 | Übersetzung mit Google Translate | 3 | Refactor der Google Translate UIMA Annotator in standalone Translator<p> Übersetzung und Überprüfung der Dateien "4lang+anonymized+batch" |  |
+| 14.09.2011 | Meeting mit Benjamin | 0.5 | Meeting über Beendigung des SIGMUND-Projektes und zukünftige Arbeit bei UKP | * |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 60)$EXEC($GET(total_hour))"}% | bis Ende September noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden | |
+<nop>
+
+---+++ Projekte
+---++++ Sigmund
+ShuoYangSigmundProjekt <br>
+ShuoYangSpringWsNotes <br>
+ShuoYangJaxWsNotes
+
+---+++ Dokumente
+ShuoYangMemo
+
+
+*WikiWörterbuch:* <br>
+ShuoYangStatistikInterlanguageLinksWikipedia <br>
+[[http://www.ishuo.de/storage/wikipediaTitlesWithBrackets.txt][List of wikipedia articles, whose title entails brackets]] <br>
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/ShuoYang/titleWithMultipleTranslations.txt][List of wikipedia articles with multiple interlanguage links]] <br>
+ShuoYangMysqlimportErrorReport
+
+*Lucene Scoring:* <br>
+ShuoYangChangingLuceneScoring <br>
+ShuoYangBM25Guide
+
+*XMLReader:* <br>
+ShuoYangXPathPerformanceAnalysis
+
+*Google Translate:* <br>
+ShuoYangGoogleTranslatePerformanceAnalysis <br>
+ShuoYangGoogleTranslateConcatenationFeasibility
+
+---++ Vorherige Arbeit
+ShuoYangWork1H2011
+
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+-- Main.ShuoYang - 2011-09-20
+
+%META:FILEATTACHMENT{name="IMAG0103.jpg" attachment="IMAG0103.jpg" attr="" comment="" date="1275052630" path="IMAG0103.jpg" size="692550" stream="IMAG0103.jpg" tmpFilename="/var/tmp/CGItemp56132" user="BenjaminHerbert" version="1"}%
+%META:FILEATTACHMENT{name="titleWithMultipleTranslations.txt" attachment="titleWithMultipleTranslations.txt" attr="" comment="List of wikipedia articles with multiple interlanguage links" date="1285170011" path="titleWithMultipleTranslations.txt" size="22805" stream="titleWithMultipleTranslations.txt" tmpFilename="/var/tmp/CGItemp3071" user="ShuoYang" version="1"}%

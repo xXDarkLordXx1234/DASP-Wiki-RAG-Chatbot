@@ -1,0 +1,141 @@
+%META:TOPICINFO{author="kumar" comment="save topic" date="1527151998" format="1.1" reprev="14" version="16"}%
+%META:TOPICPARENT{name="WebHome"}%
+TimeSheet
+
+---+ Meeting Minutes
+
+---++ 2018-05-24 Meeting
+    
+   * DONE:- Easier subclassing in KB #225
+   * TODO:- Comprehensive deletion for KB entities #174 
+      * Needs a change in error showcasing
+      * Test Case Failed
+   * DONE:- Additional KB IRIs #134
+   * DONE:- #217 Concept tree loose scrolling position on select
+   * TODO:- Raise Issue and work on - Adding Statement throws Internal Error
+   * TODO:- #136 Allow concepts that are not explicitly class instances
+   * TODO:- Raise an issue for the case Reification = WIKIDATA, we cant see the description subClassOf/type.
+   * ISSUES NEED TO DISCUSS IN NEXT MEETING:
+      * Allow renaming the identifier 
+      * Explicit definition of root concepts #138
+      * In KBSI readProperty() , we need to get kb.getProperty instead of RDF.PROPERTY as it's not generic enough.
+   * Next Meeting: 28/05    
+
+    
+---++ 2018-05-18 Meeting
+   
+   * #237 Adding subclass to KB UI (GitLab): Create Issue in Github
+   * #237 Adding subclass to KB UI (GitLab): ToDo
+   * #168 Specifiable URI prefix in Knowledge Base : WIP
+   * #134 Additional KB IRIs : WIP
+   * #217 Concept tree loses scrolling position on select : 
+      * ToDo : Lists only need to be re-drawn if their content changes and not otherwise
+   * Add new issue to allow renaming the identifier
+   * Create a pull request for cascade deletion
+   * Next Meeting : 24/05      
+
+---++ 2018-05-14 Meeting
+   
+   * Fix the Junit test case (issue from TestFixtures.java)
+   * New Task Item: #194 Explore SKOS General Standards
+   * #168 Work on conflict issues.
+   * #134: Display them all with an additional choice for class and subclass 
+   * Adding subclass in KB UI: Add a button in Concept info panel and hide it in Instance info panel
+   * Next Meeting: 18/05
+
+---++ 2018-05-11 Meeting
+
+   * #132 Improve Wizard UI for KB class property selection: Done
+   * #134 Additional KB IRIs : WIP 
+   * #166 IRI fields in KB edit mode should be comboboxes : ToDO
+   * #168 (#244 Gitlab) Specifiable URI prefix in Knowledge Base : WIP 
+      * Junit test cases done    
+   *  #136 GitLab - Done. 
+      * Have to create a pull request for GitHub.
+
+---++ 2018-05-04 Meeting
+
+   * TimeSheet Submission
+   * Todo: 
+      * 244 (Gitlab) to Github : 
+         * Open Pull Request. Mark as WIP and implement JUnit test cases
+      * 136 (Gitlab): 
+         * Open Issue: Deletion strategy needs to consider the Reification Strategy
+      * 134 (Github): Additional KB IRIs 
+      * Add timesheet on wiki 
+     
+
+
+---++ 2018-04-20 Meeting
+   * MB:
+      * Unterschriften Stundenzettel
+      * Entscheidung Vertragsverlängerung
+      * nächste Meetings: MdB, MB, REC, NK
+   * Todo:
+      * TimeSheet nachtragen (siehe Peter, Wei)
+
+---++ 2018-04-13 Meeting
+   * Tasks:
+      * Status:
+         * einige Feature Editoren existieren in separatem Branch
+         * 228 (Wizard UI):
+            * wie custom URIs in Textfeldern behalten, wenn User in den Wizard Pages hin- und herswitcht? -> (Lambda)AjaxFormComponentUpdatingBehavior
+         * 236 (Feedback panel):
+            * Problem mit throws statement
+      * nächste:
+         * erstmal 228 und 236 bis sich geklärt hat, wo der Branch für Issue 17 landet
+   * MB:
+      * Stundenzettel März?
+      * Vertragsverlängerung ja/nein, wenn ja, wieviele Stunden?
+         * tbd, nächste Woche
+      * Freitagstermin noch mit Stundenplan vereinbar?
+         * ja
+
+---++ 2018-03-23 Meeting
+   * Tasks:
+      * JUnit Tests für Issue 311 
+      * Issue 228 fertig:
+         * switch zu custom bei click auf textfeld
+         * Initialisierung und URLValidator korrigieren
+      * Issue 236
+      * Neues Issue: flexibler editor je nach Datentyp...
+  
+
+---++ 2018-03-16 Status
+   * *MDB*: Issue 311 ist erledigt, nurnoch eine Frage dazu: wenn ich nichts übersehen habe wurde das mit den Layer in Webanno so gelöst, dass man im Panel über den SchemaService alle Layer bezieht und dann in einer for-Schleife diejenigen rausschmeißt, bei denen enabled == false ist. Das könnte ich auch so machen (bzw. ich habe eine version in der das so ist). Würde es aber für sinnnvoller halten direkt im kbService die Möglichkeit zu haben nur enabled KBs zurückzugeben. Habe dafür eine Methode getKnowledgeBases(Project aProject,boolean onlyReturnEnabled) geschrieben. Somit wird der Code auch weniger redundant, wenn man an mehreren Stellen eine Liste mit den enabled KBs braucht. Möglicherweise habe ich aber auch einen Aspekt übersehen. Was denkst du dazu?
+      * *MB*: Gute Idee, das sollten wir so umsetzen. Die bereits existierende =getKnowledgeBases= Methode sollte dann intern die neue Methode mit =onlyReturnEnabled=false= aufrufen. Hast du wahrscheinlich so gemacht. Kannst du dann einen Merge Request erstellen?
+   * *MDB*: Von welchem Branch aus soll ich branchen? master, 0.2.x,...?
+      * *MB*: Bugfixes bauen wir in die stable-Version ein (=0.2.x= Branch). Neue Features kommen in Version 0.3.x (=master= Branch). Wenn du also einen Bug fixst, solltest du von =0.2.x= aus branchen (und auch in 0.2.x mergen), wenn du ein Feature hinzufügst, von/zu =master=.
+   * *MDB*: Bin bei Trello registriert und dem Inception Board beigetreten. Da wird bei eingeladenen Mitgliedern noch marceldeboer4 angzeigt (ich bin marceldeboer5) das kann man dann wahrscheinlich löschen
+      * *MB*: Habe marceldeboer4 gelöscht.
+   * *MDB*: welches Issue als nächstes priorisieren?
+      * *MB*: Prinzipiell die andere beiden Bugs, die dir zugewiesen sind. Ich würde mal mit [[https://git.ukp.informatik.tu-darmstadt.de/inception/inception-application/issues/236][#236]] anfangen.
+   * *MB*: *Was ist der Status bei den noch fehlenden Unterlagen?*
+
+---++ 2018-03-08 Meeting
+   * MB: Intro
+      * Organisatorisches
+         * Meeting Minutes
+         * Arbeitsvertrag / Dokumente
+         * Stundenzettel
+            * siehe https://www.intern.tu-darmstadt.de/dez_vii/infosaz_1/studentische_hilfskraefte.de.jsp
+            * "Einhergehend mit der Einführung des Mindestlohngesetzes hat der Gesetzgeber eine Dokumentationspflicht für geringfügige Beschäftigte geschaffen. Seit Januar 2015 ist der Arbeitgeber bei Beschäftigung von geringfügig Beschäftigten bis zu einem Einkommen von  450,00 und kurzfristig bis zu 3 Monaten Beschäftigte verpflichtet, Beginn, Ende und Dauer der täglichen Arbeitszeit aufzuzeichnen. Die Aufzeichnung muss spätestens innerhalb einer Woche nach der Arbeitsleistung erfolgen und mindestens zwei Jahre für eine mögliche Kontrolle durch das Hauptzollamt aufbewahrt werden."
+            * "Bis wir einen vertretbaren Weg gefunden haben, müssen wir darum bitten, Beginn, Ende und Dauer der täglichen Arbeitszeit in geeigneter Weise zu dokumentieren, so dass ein prüffähiger Nachweis vorgelegt werden kann."
+         * regelmäßige Meetings, wann?
+      * INCEpTION
+         * auf Laptop eingerichtet?
+         * momentaner Entwicklungsstand (Milestones)
+         * Issue Tracker
+         * Branches
+         * Merge Requests / Pull Requests
+         * Sprint Meetings
+   * Tasks bis nächste Woche:
+      * Studienbescheinigung ss18
+      * KK Bescheinigung
+      * bei Trello registrieren
+      * Issue 311 
+      * MB:
+         * artifactory klären
+         * Beto erinnern, dass Marcel in Sprint Meetings eingeladen wird
+         * Trello einladen
+         * Test-KBs

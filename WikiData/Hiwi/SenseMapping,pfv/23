@@ -1,0 +1,87 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1268304386" format="1.1" reprev="23" version="23"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+---++ Sense Mapping
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Sense Mapping between Wikipedia and WordNet | |
+
+---++ Schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Yevgen Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Nachtrag vom Januar | 02.02.2010 | -11 | Wikipedia Mining |
+| Sense Mapping | 03.02.2010 | 3 | Einarbeitung in Relatedness, Excel-Extrahierung |
+| Sense Mapping | 05.02.2010 | 3 | Parsing von Excel-Datei.<br> Tabelle mit LinkLabels/Redirects wurde vollständig importiert. |
+| Sense Mapping | 06.02.2010 | 2.5 | Tokenizierung, Einarbeitung in Relatedness |
+| Sense Mapping | 07.02.2010 | 2.5 | Erstellung von Tests/Statistiken. |
+| Sense Mapping | 09.02.2010 | 3.5 | Statistik-Tabellen im Attachment |
+| Sense Mapping | 10.02.2010 | 2 | Analyse in "SenseMappingAnalysis.pdf" |
+| Sense Mapping | 11.02.2010 | 2 | Auswertung der Performanz |
+| Sense Mapping | 13.02.2010 | 3.5 | Test von Thresholds in "Threshold_Test.xls"<br>"SenseMappingAnalysis.pdf" wurde aktualisiert. |
+| Sense Mapping | 17.02.2010 | 3 | Einrichtung des neuen Rechners |
+| Sense Mapping | 18.02.2010 | 2 | AnchorText-Funktionen |
+| Sense Mapping | 19.02.2010 | 2 | Error analysis TF and FT |
+| Sense Mapping | 22.02.2010 | 3.5 | Einbeziehung von Hypo- und Hypernymen in Wordnet.<br>Einarbeitung in ESA |
+| Sense Mapping | 24.02.2010 | 3.5 | Tabellen mit Wordnet HypoHyper-Statistiken in XLS-Dateien.<br> "SenseMappingAnalysis.pdf" updated |
+| Sense Mapping | 27.02.2010 | 2.5 | Tests mit ESA-Methods |
+| Sense Mapping | 28.02.2010 | 3 | Tabellen mit ESA-Methods Average Statistics in XLS-Dateien.<br> "SenseMappingAnalysis.pdf" updated |
+| Sense Mapping | 01.03.2010 | 2.5 | Test von Threshold-Accuracy mit ESA und WordnetHypoHyper in <br>"ThresholdAccuracyTest.xls" |
+| Sense Mapping | 03.03.2010 | 3 | Implementierung von WordNet-PathToRoot in "ShortestPathToRoot.java" |
+| Sense Mapping | 04.03.2010 | 2.5 | Extrahierung von SameSense falschen Werten |
+| Sense Mapping | 05.03.2010 | 2 | Examples of low SameSense1 or high SameSense0 values in "FalseExamples.ods" |
+| Sense Mapping | 06.03.2010 | 2 | Verbesserung von SenseMapping |
+| Sense Mapping | 07.03.2010 | 2 | Implementierung von SynsetProperties-Funktionen |
+| Sense Mapping | 08.03.2010 | 2 | Threshold-Test mit neuen Verbesserungen in "ThresholdAccuracySB.xls".<br> Analyse in "SenseMappingAnalysis.pdf" aktualisiert. |
+| Synset Properties | 09.03.2010 | 2 | Funktionen Implementierung |
+| Synset Properties | 11.03.2010 | 2.5 | Die Funktionen sind fertig und liegen im SVN-Verzeichnis "y_chebotar/WnSynsetProperties/"<br>Die SQL-Datei zur Erstellung der Tabelle liegt in "y_chebotar/WnSynsetProperties/sql/" |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | bis Ende April 2010 |
+<nop>
+
+   * Similarity Statistics (goal: learn threshold)
+      * String-based methods       
+         * Source code: 
+            * de.tudarmstadt.ukp.sensemapping.test: TestSenseMappingMain.makeTestStringBased() 
+            * de.tudarmstadt.ukp.sensemapping.printer:  SenseMappingPrinterStringBased
+         * [[%ATTACHURL%/SameSense0HypoHyper_Average.xls][SameSense0HypoHyper_Average.xls]]: Table with SameSense=0 and WordNet Gloss,Hypo and Hypernyms. Similartiy Average Statistics.
+         * [[%ATTACHURL%/SameSense1HypoHyper_Average.xls][SameSense1HypoHyper_Average.xls]]: Table with SameSense=1 and WordNet Gloss,Hypo and Hypernyms. Similartiy Average Statistics.   
+         * [[%ATTACHURL%/SimilarityStatisticsSummary.ods][SimilarityStatisticsSummary.ods]]: Summary of similarity statistics
+      * ESA methods   
+         * Source code:
+            * de.tudarmstadt.ukp.sensemapping.test: TestSenseMappingMain.makeTestESA() 
+            * de.tudarmstadt.ukp.sensemapping.printer:  SenseMappingPrinterESA
+         * [[%ATTACHURL%/SameSense0ESA_Average.xls][SameSense0ESA_Average.xls]]: Table with SameSense=0 ESA-Methods. Similarity Average Statistics.
+         * [[%ATTACHURL%/SameSense1ESA_Average.xls][SameSense1ESA_Average.xls]]: Table with SameSense=1 ESA-Methods. Similarity Average Statistics.
+   * Alignment Statistics (goal: test threshold)
+      * String-based methods (Cosine, OverlapCoefficient) and ESA methods 
+         * Source code:
+            * de.tudarmstadt.ukp.sensemapping.test: TestThresholdMain.makeTestThresholdStringBased(), makeTestThresholdESA(), makeTestFindBestThreshold()
+            * de.tudarmstadt.ukp.sensemapping.printer:  SenseMappingPrinterThreshold
+         * [[%ATTACHURL%/ThresholdAccuracyTest.xls][ThresholdAccuracyTest.xls]]: Test of accuracy of different Thresholds and methods incl. ESA
+         * [[%ATTACHURL%/ThresholdAccuracySB.xls][ThresholdAccuracySB.xls]]: ThresholdAccuracySB.xls. Threshold Test with new improvements
+   * Analysis
+      * [[%ATTACHURL%/SenseMappingAnalysis.pdf][SenseMappingAnalysis.pdf]]: SenseMapping Analysis
+      * [[%ATTACHURL%/FalseExamples.ods][FalseExamples.ods]]: Examples of extreme low SameSense1 or high SameSense0 values
+
+
+   
+
+   * [[%ATTACHURL%/ShortestPathToRoot.java][ShortestPathToRoot.java]]: Shortest Path To Root in WordNet Function
+
+
+
+   
+
+%META:FILEATTACHMENT{name="SenseMappingAnalysis.pdf" attachment="SenseMappingAnalysis.pdf" attr="" comment="SenseMapping Analysis" date="1268045917" path="SenseMappingAnalysis.pdf" size="458179" stream="SenseMappingAnalysis.pdf" tmpFilename="/var/tmp/CGItemp44950" user="YevgenChebotar" version="5"}%
+%META:FILEATTACHMENT{name="SameSense0HypoHyper_Average.xls" attachment="SameSense0HypoHyper_Average.xls" attr="" comment="Table with SameSense=0 and WordNet Gloss,Hypo and Hypernyms. Average Statistics. <br> Source code: sensemapping.test: TestSenseMappingMain.makeTestStringBased() + sensemapping.printer : SenseMappingPrinterStringBased()" date="1267359706" path="SameSense0HypoHyper_Average.xls" size="18944" stream="SameSense0HypoHyper_Average.xls" tmpFilename="/var/tmp/CGItemp45558" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="SameSense1HypoHyper_Average.xls" attachment="SameSense1HypoHyper_Average.xls" attr="" comment="Table with SameSense=1 and WordNet Gloss,Hypo and Hypernyms. Average Statistics." date="1267359720" path="SameSense1HypoHyper_Average.xls" size="18944" stream="SameSense1HypoHyper_Average.xls" tmpFilename="/var/tmp/CGItemp45504" user="YevgenChebotar" version="2"}%
+%META:FILEATTACHMENT{name="SameSense0ESA_Average.xls" attachment="SameSense0ESA_Average.xls" attr="" comment="Table with SameSense=0 ESA-Methods. Average Statistics." date="1267359795" path="SameSense0ESA_Average.xls" size="14336" stream="SameSense0ESA_Average.xls" tmpFilename="/var/tmp/CGItemp40700" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SameSense1ESA_Average.xls" attachment="SameSense1ESA_Average.xls" attr="" comment="Table with SameSense=1 ESA-Methods. Average Statistics." date="1267359820" path="SameSense1ESA_Average.xls" size="14848" stream="SameSense1ESA_Average.xls" tmpFilename="/var/tmp/CGItemp40648" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="ThresholdAccuracyTest.xls" attachment="ThresholdAccuracyTest.xls" attr="" comment="Test of accuracy of different Thresholds and methods incl. ESA" date="1267460329" path="ThresholdAccuracyTest.xls" size="26112" stream="ThresholdAccuracyTest.xls" tmpFilename="/var/tmp/CGItemp40724" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SimilarityStatisticsSummary.ods" attachment="SimilarityStatisticsSummary.ods" attr="" comment="Summary of similarity statistics" date="1267609761" path="SimilarityStatisticsSummary.ods" size="21246" stream="SimilarityStatisticsSummary.ods" tmpFilename="/var/tmp/CGItemp53591" user="ElisabethWolf" version="1"}%
+%META:FILEATTACHMENT{name="ShortestPathToRoot.java" attachment="ShortestPathToRoot.java" attr="" comment="Shortest Path To Root in WordNet Function" date="1268130916" path="ShortestPathToRoot.java" size="2764" stream="ShortestPathToRoot.java" tmpFilename="/var/tmp/CGItemp44859" user="YevgenChebotar" version="3"}%
+%META:FILEATTACHMENT{name="FalseExamples.ods" attachment="FalseExamples.ods" attr="" comment="Examples of extreme low SameSense1 or high SameSense0 values" date="1267872148" path="FalseExamples.ods" size="45816" stream="FalseExamples.ods" tmpFilename="/var/tmp/CGItemp40747" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="ThresholdAccuracySB.xls" attachment="ThresholdAccuracySB.xls" attr="" comment="" date="1268046165" path="ThresholdAccuracySB.xls" size="19456" stream="ThresholdAccuracySB.xls" tmpFilename="/var/tmp/CGItemp45010" user="YevgenChebotar" version="2"}%

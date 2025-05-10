@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="busemann" comment="" date="1621509128" format="1.1" reprev="2" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+Weekly Reports 
+
+-- Main.KevinStowe - 2021-04-09
+
+---+!! 23.04. - 29.04.
+
+This week I have been setting up the following paired metrics:
+
+BLEU, ROUGE, METEOR, TER, MoverScore, SentBERT
+
+For the BLEU score I've used two different options: the concrete one and a smoothing function. Three metaphors in the dataset had zero n-grams, which led to a score of 0.0. With the smoothing funtion this can be avoided, but the scores are in general higher than the not smoothed ones.
+Concerning the MoverScore I had to run the model on my CPU, because the Intel GPU doesn't support this as far as I know.
+For the SentBERT embeddings I computed the cosine similarity.
+
+Additionally, I started researching Perplexity, more on that is following next week.  
+
+---+!! 30.04. - 06.05.
+
+I trained a GPT2 Model to predict the Perplexity scores.
+Also I have started setting up the linear regression model for metaphor novelty.
+
+---+!! 07.05. - 13.05.
+
+I set up the baseline models for linear regression on metaphor novelty und the classification for binary metaphors. 
+
+---+!! 14.05. - 20.05.
+
+This week I tried to improve the models and spend some time bugfixing. My main plan was to set up the binary classifier with a LSTM layer, but until now it doesn't work.

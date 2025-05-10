@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="9"}%
+%META:TOPICPARENT{name="ElifTekes"}%
+---+ Experimental results
+   * [[ElifTranslationExperimentalResults][TranslationExperimentalResults]]
+      * MOSES
+      * Wiktionary
+      * Universal Dictionary
+   * [[ElifBootstrappingExperimentalResults][BootstrappingExperimentalResults]]
+      * !GermaNet 
+      * Wiktionary
+ 
+---+ Experimental results
+   * Translation with Universal Dictionary yields low results
+      * Only ~500 words from !OpinionFinder were translated (out of ~8200 entries) by using the "full" UD dictionary
+      * Only ~1000 words were translated by using both the "full" and the "light" UD dictionary
+         * See ElifLexicalResources for further information
+
+   * Translation of OpinionFinder lexicon with self-written parser for Wiktionary yields following results: 
+      * Number of translated words 2052 out of 8221 total. Not translated: 6169
+      * Of those not translated
+         * 1273 because lack of Part-of-Speech
+         * Many more because lack of Translations entries (see .ods document)
+      * *Questions:*
+         1 Do all the OpinionFinder entries exist in the English Wiktionary? you should look for the lemma form of the ones with stemmed=y.
+
+   
+
+-- Main.ElifTekes - 21 Sep 2009
+   * [[%ATTACHURL%/Statistik_Wictionary.ods][Statistik_Wictionary.ods]]: The statistics of the failed translations of the self-written Wikipedia parser
+
+   * [[%ATTACHURL%/bootstrappedlist0.txt][bootstrappedlist0.txt]]: Test seed list for bootstrapping
+
+   * [[%ATTACHURL%/bootstrappedlist1.txt][bootstrappedlist1.txt]]: Bootstrapping result after first pass
+
+   * [[%ATTACHURL%/bootstrappedlist2.txt][bootstrappedlist2.txt]]: Bootstrapping result after second pass
+
+   * [[%ATTACHURL%/bootstrappedlist3.txt][bootstrappedlist3.txt]]: Bootstrapping result after third pass
+
+%META:FILEATTACHMENT{name="Statistik_Wictionary.ods" attachment="Statistik_Wictionary.ods" attr="" comment="The statistics of the failed translations of the self-written Wikipedia parser" date="1253532954" path="Statistik_Wictionary.ods" size="116220" stream="Statistik_Wictionary.ods" tmpFilename="/var/tmp/CGItemp63049" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="bootstrappedlist0.txt" attachment="bootstrappedlist0.txt" attr="" comment="Test seed list for bootstrapping" date="1253533634" path="bootstrappedlist0.txt" size="77" stream="bootstrappedlist0.txt" tmpFilename="/var/tmp/CGItemp62995" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="bootstrappedlist1.txt" attachment="bootstrappedlist1.txt" attr="" comment="Bootstrapping result after first pass" date="1253533659" path="bootstrappedlist1.txt" size="730" stream="bootstrappedlist1.txt" tmpFilename="/var/tmp/CGItemp62997" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="bootstrappedlist2.txt" attachment="bootstrappedlist2.txt" attr="" comment="Bootstrapping result after second pass" date="1253533676" path="bootstrappedlist2.txt" size="1448" stream="bootstrappedlist2.txt" tmpFilename="/var/tmp/CGItemp63071" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="bootstrappedlist3.txt" attachment="bootstrappedlist3.txt" attr="" comment="Bootstrapping result after third pass" date="1253533690" path="bootstrappedlist3.txt" size="5259" stream="bootstrappedlist3.txt" tmpFilename="/var/tmp/CGItemp62890" user="ElifTekes" version="1"}%

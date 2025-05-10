@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" reprev="9" version="10"}%
+%META:TOPICPARENT{name="FabianTamin"}%
+---+ Thesis
+<noautolink>
+Web-based collaboration called wikis has grown tremendously over the last years, e.g. [[http://en.wikipedia.org][Wikipedia]] that we know as the famous online encyclopedia. Its usability is very high. Many people use it. They have been writing many articles there and putting much more information within the existing articles. The drawback is the decreasing usability because of the increasing content amount.
+
+In the [[http://www.ukp.tu-darmstadt.de/projects/wikulu/][Wikulu]] project, we work on improving the usability of wikis by using the benefits of wikis characteristics, WikiMining, and also by employing natural language processing (NLP) methods. The goal is to find good ways of presenting information which is better structured to users in a way which is meaningful and easy to understand.
+
+The special characteristic of typical wiki sites is its good connection among the articles with a similar topic. A possible option is hence by using this characteristic to improve how links to other related wiki articles are displayed.
+To achieve this goal, we build an extra tool as a new intelligent user interface element that we call [[FabianTaminWikiSnifferSnapshots][Wiki-Sniffer]] that we can attach later easily on the existing wiki environments. By using this tool we would like to give users more possibilities to see an overview of information first instead of providing the whole information immediately.
+
+This diploma thesis focuses therefore on finding and arranging the most important information parts from wiki articles and designing a usable user friendly interface element which presents the information in a good structure to users.
+</noautolink>
+
+---++ See also
+   * [[FabianTaminMockups][Mockups]]
+   * [[FabianTaminUserStudy1][User Study 1 &#8722; Process Data (Plan)]]
+   * [[FabianTaminUserStudy1Result][User Study 1 &#8722; Process Data (Result)]]
+   * [[FabianTaminUserStudy2][User Study 2 &#8722; Bottom-line Data / Evaluation]]
+   * [[FabianTaminPresentations][Presentations]]
+   * [[FabianTaminWikiSnifferSnapshots][Wiki-Sniffer Snapshots]]
+
+---++ Files
+Thesis data of Wiki-Sniffer  Project &#8722; Creating Wiki Page Overview Snippets.
+
+Last revision: [[[%ATTACHURL%/TFabianLTamin-DiplomaThesis.docx][docx]]] [[[%ATTACHURL%/TFabianLTamin-DiplomaThesis.pdf][pdf]]]
+
+-- Main.FabianTamin - 09 Nov 2009
+   * [[/wiki/bin/viewfile/Students/%TOPIC%?filename=TFabianLTamin-DiplomaThesis.docx;rev=1][TFabianLTamin-DiplomaThesis.docx]]: 2009_1111 &#8722; Dissertation Chapter 1
+   * [[/wiki/bin/viewfile/Students/%TOPIC%?filename=TFabianLTamin-DiplomaThesis.pdf;rev=1][TFabianLTamin-DiplomaThesis.pdf]]: 2009_1111 &#8722; Dissertation Chapter 1
+
+   * [[/wiki/bin/viewfile/Students/%TOPIC%?filename=TFabianLTamin-DiplomaThesis.docx;rev=2][TFabianLTamin-DiplomaThesis.docx]]: 2009_1122 &#8722; Thesis Chapter 1 + 2 (75%)
+   * [[/wiki/bin/viewfile/Students/%TOPIC%?filename=TFabianLTamin-DiplomaThesis.pdf;rev=2][TFabianLTamin-DiplomaThesis.pdf]]: 2009_1122 &#8722; Thesis Chapter 1 + 2 (75%)
+
+   * [[/wiki/bin/viewfile/Students/%TOPIC%?filename=TFabianLTamin-DiplomaThesis.docx;rev=3][TFabianLTamin-DiplomaThesis.docx]]: 2009_1127 &#8722; Thesis Chapter: 1 (95%) + 2 (75%) + 3 (75%) + 4 (15%)
+   * [[/wiki/bin/viewfile/Students/%TOPIC%?filename=TFabianLTamin-DiplomaThesis.pdf;rev=3][TFabianLTamin-DiplomaThesis.pdf]]: 2009_1127 &#8722; Thesis Chapter: 1 (95%) + 2 (75%) + 3 (75%) + 4 (15%)
+
+   * [[%ATTACHURL%/TFabianLTamin-DiplomaThesis.pdf][TFabianLTamin-DiplomaThesis.pdf]]: 2009_1215 &#8722; complete
+
+   * [[%ATTACHURL%/TFabianLTamin-DiplomaThesis.zip][TFabianLTamin-DiplomaThesis.zip]]: 2009_1215 &#8722; complete (docx in zip)
+
+%META:FILEATTACHMENT{name="TFabianLTamin-DiplomaThesis.docx" attachment="TFabianLTamin-DiplomaThesis.docx" attr="" comment="2009_1127 &#8722; Thesis Chapter: 1 (95%25) + 2 (75%25) + 3 (75%25) + 4 (15%25)" date="1259304978" path="TFabianLTamin-DiplomaThesis.docx" size="7009637" stream="TFabianLTamin-DiplomaThesis.docx" tmpFilename="/var/tmp/CGItemp57021" user="FabianTamin" version="3"}%
+%META:FILEATTACHMENT{name="TFabianLTamin-DiplomaThesis.pdf" attachment="TFabianLTamin-DiplomaThesis.pdf" attr="" comment="2009_1215 &#8722; complete" date="1261227760" path="TFabianLTamin-DiplomaThesis.pdf" size="6430061" stream="TFabianLTamin-DiplomaThesis.pdf" tmpFilename="/var/tmp/CGItemp48744" user="FabianTamin" version="4"}%
+%META:FILEATTACHMENT{name="TFabianLTamin-DiplomaThesis.zip" attachment="TFabianLTamin-DiplomaThesis.zip" attr="" comment="2009_1215 &#8722; complete (docx in zip)" date="1261227898" path="TFabianLTamin-DiplomaThesis.zip" size="4845042" stream="TFabianLTamin-DiplomaThesis.zip" tmpFilename="/var/tmp/CGItemp48665" user="FabianTamin" version="1"}%
+%META:TOPICMOVED{by="FabianTamin" date="1258881504" from="Teaching.FabianTaminDissertation" to="Teaching.FabianTaminThesis"}%

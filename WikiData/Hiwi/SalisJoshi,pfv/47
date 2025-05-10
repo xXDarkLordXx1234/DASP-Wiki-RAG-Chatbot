@@ -1,0 +1,189 @@
+%META:TOPICINFO{author="sjoshi" comment="" date="1569016486" format="1.1" reprev="47" version="47"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ BERT Fine-tuning Result Overview
+
+%TABLE{tablerules="cols"}% 
+| *Model name* | *dev (5% Mobility)* | *test (5% Mobility)* | *test (100% UKP corpus)* | *train data* | *Model path (API)* | *date* | *Results*| *DB Identifier* |
+| BERT (https://git.ukp.informatik.tu-darmstadt.de/argumentext-core/api-model-bert) |||||||||
+| BERT en (base) | 81.35  | 78.05 | - | 90% Mobility Corpus | lisa:/home/argumentext/models/bert_base/en/ | 2019-05-24 |||
+| BERT en (base) | 79.69 | - | 62.93 | 95% Mobility Corpus  | lisa:/home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_en/topic-sent_uncased_L-12_H-768_A-12/all_seed-0_batch-12/1562751319/ | 2019-07-10 |||
+| BERT en (multi-lingual) | 76.63 | - | 59.06 | 95% Mobility Corpus | lisa:/home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_en/topic-sent_multilingual_L-12_H-768_A-12/all_seed-0_batch-12/1562750080 | 2019-07-10 |||
+| BERT de (base)| - | - | 44.66 | 100% Mobility Corpus | lisa:/home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_de_without_dev_data/topic-sent_uncased_L-12_H-768_A-12/all_seed-0_batch-12/1562427742 | 2019-07-06 |||
+| BERT de (base)| 61.18 | - | 46.47 | 95% Mobility Corpus  | lisa:/home/argumentext/models/bert_base/de/ | 2019-07-09 |||
+| BERT de (multi-lingual) | 73.97  | - | 56.88 | 95% Mobility Corpus | /home/argumentext/models/bert_base_multiling/de_only | 2019-07-09 |||
+| BERT en (base) | 72.10 | - | 50.04 | 95% Product Corpus  | /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_Products_en/topic-sent_uncased_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_15.58/1568988572 | 2019-09-20 | [[%ATTACHURLPATH%/eval_predictions1.txt][Eval]] [[%ATTACHURLPATH%/test_predictions1.txt][Test]] ||
+| BERT en (multi-lingual) | 68.36 | - | 48.93 | 95% Product Corpus  | /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_Products_en/topic-sent_multilingual_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_16.19/1568989926 | 2019-09-20 | [[%ATTACHURLPATH%/eval_predictions2.txt][Eval]] [[%ATTACHURLPATH%/test_predictions2.txt][Test]]||
+| BERT en (base) | 73.86 | - | 63.06 | 97.5% Mobility, 97.5% Product  | /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_Products_en/topic-sent_uncased_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_16.34/1568991436 | 2019-09-20 | [[%ATTACHURLPATH%/eval_predictions3.txt][Eval]] [[%ATTACHURLPATH%/test_predictions3.txt][Test]] ||
+| BERT en (multi-lingual) | 72.08 | - | 59.32 | 97.5% Mobility, 97.5% Product  | /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_Products_Mobility_Multi_en/topic-sent_multilingual_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_17.02/1568993272 | 2019-09-20 | [[%ATTACHURLPATH%/eval_predictions4.txt][Eval]]  [[%ATTACHURLPATH%/test_predictions4.txt][Test]]||
+| BERT de + en (multi-lingual) | 78.46 | - | 58.16 | 97.5% Mobility (de), 97.5% Mobility(en)  | /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_Mobility_Multi_test_en_en_de/topic-sent_multilingual_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_17.31/1568995327, /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_Mobility_Multi_test_de_en_de/topic-sent_multilingual_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_18.23/1568998426  | 2019-09-20 | [[%ATTACHURLPATH%/eval_predictions5.txt][Eval]] [[%ATTACHURLPATH%/eval_predictions7.txt][Eval]] [[%ATTACHURLPATH%/test_predictions5.txt][Test]] [[%ATTACHURLPATH%/test_predictions7.txt][Test]]||
+| BERT de + en (multi-lingual) | 75.23 | - | 58.02 | 98.33% Mobility (de), 98.33% Mobility(en), 98.33% Product(en)   | /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_Mobility_Products_Multi_test_en_en_de/topic-sent_multilingual_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_19.05/1569001527, /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_Mobility_Products_Multi_test_de_en_de/topic-sent_multilingual_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_19.58/1569004757 | 2019-09-20 | [[%ATTACHURLPATH%/eval_predictions8.txt][Eval]] [[%ATTACHURLPATH%/eval_predictions6.txt][Eval]] [[%ATTACHURLPATH%/test_predictions8.txt][Test]] [[%ATTACHURLPATH%/test_predictions6.txt][Test]] ||
+| BERT en (base) | 76.73 | - | 25.03 | 95% Procter & Gamble (Topic & Sentence)  | /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_PG_Topic_en/topic-sent_uncased_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_15.11/1568985647  | 2019-09-20 | [[%ATTACHURLPATH%/eval_predictions9.txt][Eval]] [[%ATTACHURLPATH%/test_predictions9.txt][Test]] ||
+| BERT en (base) | 76.17 | - | 25.18 | 95% Procter & Gamble (Suptopic & Sentence) | /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_PG_SubTopic_en/topic-sent_uncased_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_15.23/1568986357 | 2019-09-20 | [[%ATTACHURLPATH%/eval_predictions10.txt][Eval]] [[%ATTACHURLPATH%/test_predictions10.txt][Test]]||
+| BERT en (base) | 76.62 | - | 24.68 | 95% Procter & Gamble (Sentence) | /home/sjoshi/argmin/api-model-bert/project/model/results/sentargmin_PG_Sentence_en/topic-sent_uncased_L-12_H-768_A-12/all_seed-0_batch-12.2019.09.20_15.42/1568987497  | 2019-09-20 | [[%ATTACHURLPATH%/eval_predictions11.txt][Eval]] [[%ATTACHURLPATH%/test_predictions11.txt][Test]]||
+| BiLSTM Pipeline (https://git.ukp.informatik.tu-darmstadt.de/argumentext-core/api-model-default)||||||||||
+||||||||||
+||||||||||
+---++ Time Sheet
+
+Internal timesheet complete up to *20.09.2019*
+
+---+++ 2019-09
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 03.09.2019 | Issue#102 Monitoring Tool | 4 |  |
+| 04.09.2019 | Issue#102 Monitoring Tool | 4 |  |
+| 05.09.2019 | Issue#102 Monitoring Tool | 3 |  |
+| 06.09.2019 | Issue#102 Monitoring Tool | 3 |  |
+| 09.09.2019 | Issue#102 Monitoring Tool | 5 |  |
+| 11.09.2019 | Issue#102 Monitoring Tool | 4.5 |  |
+| 12.09.2019 | Issue#102 Monitoring Tool | 2.5 |  |
+| 13.09.2019 | Issue#3 Train new models | 8 |  |
+| 18.09.2019 | Issue#4 Documentation model results | 2 |  |
+| 19.09.2019 | Weekly Meeting | 1 |  |
+| 19.09.2019 | Issue#6 Training BERT with P&G | 4 |  |
+| 20.09.2019 | Issue#6 Training BERT with P&G | 2 |  |
+| 20.09.2019 | Issue#3 Train new models | 5 |  |
+| 20.09.2019 | Issue#4 Documentation model results | 2 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-08
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 06.08.2019 | Issue#112 and meeting | 3 |  |
+| 07.08.2019 | Issue#112 Bug Fixing in topic relevance filter | 4 |  |
+| 08.08.2019 | Issue#105 API Documentation | 4 |  |
+| 08.08.2019 | Issue#112 Bug Fixing in topic relevance filter | 2 |  |
+| 09.08.2019 | Weekly Meeting | 1 |  |
+| 09.08.2019 | Issue#105 API Documentation | 6 |  |
+| 12.08.2019 | Issue#105 API Documentation | 5 |  |
+| 13.08.2019 | Issue#105 API Documentation | 3 |  |
+| 14.08.2019 | Issue#105 API Documentation | 2 |  |
+| 16.08.2019 | Issue#105 API Documentation | 2 |  |
+| 16.08.2019 | Weekly Meeting | 1 |  |
+| 20.08.2019 | Issue#102 Monitoring Tool | 3.5 |  |
+| 21.08.2019 | Issue#102 Monitoring Tool | 4 |  |
+| 22.08.2019 | Issue#102 Monitoring Tool | 3 |  |
+| 23.08.2019 | Issue#102 Monitoring Tool | 3 |  |
+| 23.08.2019 | Weekly Meeting | 1 |  |
+| 26.08.2019 | Issue#102 Monitoring Tool | 4.5 |  |
+| 29.08.2019 | Issue#102 Monitoring Tool | 3 |  |
+| 30.08.2019 | Weekly Meeting | 1 |  |
+| 29.08.2019 | Issue#102 Monitoring Tool | 3.5 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-07
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 05.07.2019 | Train bert model on Mobility Corpus (de) | 4 |  |
+| 06.07.2019 | Train bert model on Mobility Corpus (de) | 3 |  |
+| 09.07.2019 | Filter Topic Relevance (Issue#91) | 2 |  |
+| 09.07.2019 | Weekly Meeting | 0.5 |  |
+| 09.07.2019 | Train bert model on Mobility Corpus (de) | 2.5 |  |
+| 11.07.2019 | Train bert model on Mobility Corpus (de) | 2 |  |
+| 18.07.2019 | Filter Topic Relevance (Issue#91) | 6 |  |
+| 19.07.2019 | Weekly Meeting | 1 |  |
+| 19.07.2019 | Filter Topic Relevance (Issue#91) | 2 |  |
+| 22.07.2019 | Filter Topic Relevance (Issue#91) | 4.5 |  |
+| 23.07.2019 | Upadate API Docs (Issue#105) | 5 |  |
+| 24.07.2019 | Upadate API Docs (Issue#105) | 6 |  |
+| 25.07.2019 | Upadate API Docs (Issue#105) | 5.5 |  |
+| 26.07.2019 | Weekly Meeting | 1 |  |
+| 26.07.2019 | Filter Topic Relevance (Issue#111) | 2 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-06
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 03.06.2019 | Weekly Meeting (Previous week meeting) | 1 |  |
+| 03.06.2019 | Prediction using BERT (Incorporate Classify requests) | 2 |  |
+| 06.06.2019 | Train model for topic relevance | 3.5 |  |
+| 07.06.2019 | Weekly Meeting | 0.5 |  |
+| 07.06.2019 | Add container names to daily mail (Issue#87) | 3.5 |  |
+| 13.06.2019 | Filter Topic Relevance (Issue#91) | 6.5 |  |
+| 14.06.2019 | Filter Topic Relevance (Issue#91) | 5.5 |  |
+| 14.06.2019 | Weekly Meeting | 1 |  |
+| 21.06.2019 | Filter Topic Relevance (Issue#91) | 3 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-05
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 02.05.2019 | Docker, Develop new endpoint in api-model-default | 7 |  |
+| 03.05.2019 | Docker, Develop new endpoint in api-model-default | 2 |  |
+| 03.05.2019 | Weekly Meeting | 1 |  |
+| 03.05.2019 | Create new project & Train new models | 4 |  |
+| 09.05.2019 | Train new models | 6 |  |
+| 10.05.2019 | Weekly Meeting | 1 |  |
+| 10.05.2019 | Incorporate BERT  | 1 |  |
+| 16.05.2019 | Fine tune BERT  | 5 |  |
+| 17.05.2019 | Weekly Meeting | 1 |  |
+| 17.05.2019 | Incorporate BERT  | 5 |  |
+| 23.05.2019 | Fine-tune BERT, Export Model, Load Saved Model  | 6 |  |
+| 24.05.2019 | Fine-tune BERT, Export Model, Load Saved Model  | 4 |  |
+| 24.05.2019 | Preprocessing input to Fine-tuned BERT  | 1.5 |  |
+| 24.05.2019 | Weekly Meeting | 1 |  |
+| 30.05.2019 | Prediction using BERT | 6 |  |
+| 31.05.2019 | Prediction using BERT | 2 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+---+++ 2019-04
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 28.03.2019 | Introductory Meeting with Johannes, Chris, Benjamin | 1 |  |
+| 03.04.2019 | Meeting with Benjamin | 1 |  |
+| 03.04.2019 | Setup Argument Mining API in Local Machine | 6 |  |
+| 04.04.2019 | Setup Argument Mining API in Lisa | 3 |  |
+| 05.04.2019 | Config environment in local machine for Lisa | 2 |  |
+| 05.04.2019 | Weekly Meeting | 1 |  |
+| 11.04.2019 | Get familiar with projet codebase | 5 |  |
+| 12.04.2019 | Get familiar with projet codebase | 2 |  |
+| 12.04.2019 | Weekly Meeting | 0.5 |  |
+| 12.04.2019 | Configure Remote Debugging in PyCharm | 3.5 |  |
+| 18.04.2019 | Docker, Develop new endpoint in api-model-default for search/classify | 6.5 |  |
+| 24.04.2019 | Docker, Develop new endpoint in api-model-default | 4.5 |  |
+| 25.04.2019 | Docker, Develop new endpoint in api-model-default | 6 |  |
+| 26.04.2019 | Weekly meeting with Benjamin | 1 |  |
+| 26.04.2019 | Docker, Develop new endpoint in api-model-default | 5 |  |
+| SUM |  | %CALC{"$SUM( $ABOVE() )"}% |  |
+| | | | |
+
+
+-- Main.SalisJoshi - 2019-03-28
+
+%META:FILEATTACHMENT{name="eval_predictions.txt" attachment="eval_predictions.txt" attr="" comment="" date="1569015033" size="132052" user="sjoshi" version="4"}%
+%META:FILEATTACHMENT{name="test_predictions.txt" attachment="test_predictions.txt" attr="" comment="" date="1569015073" size="5105173" user="sjoshi" version="4"}%
+%META:FILEATTACHMENT{name="eval_predictions1.txt" attachment="eval_predictions1.txt" attr="" comment="" date="1569015607" size="131918" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions1.txt" attachment="test_predictions1.txt" attr="" comment="" date="1569015636" size="5115341" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions2.txt" attachment="eval_predictions2.txt" attr="" comment="" date="1569015688" size="132052" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions2.txt" attachment="test_predictions2.txt" attr="" comment="" date="1569015713" size="5105173" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions3.txt" attachment="eval_predictions3.txt" attr="" comment="" date="1569015745" size="166307" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions3.txt" attachment="test_predictions3.txt" attr="" comment="" date="1569015777" size="5156504" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions4.txt" attachment="eval_predictions4.txt" attr="" comment="" date="1569015828" size="166536" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions4.txt" attachment="test_predictions4.txt" attr="" comment="" date="1569015858" size="5139025" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions5.txt" attachment="eval_predictions5.txt" attr="" comment="" date="1569015946" size="225151" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions5.txt" attachment="test_predictions5.txt" attr="" comment="" date="1569015980" size="5155491" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions7.txt" attachment="eval_predictions7.txt" attr="" comment="" date="1569016024" size="225089" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions7.txt" attachment="test_predictions7.txt" attr="" comment="" date="1569016085" size="5737868" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions8.txt" attachment="eval_predictions8.txt" attr="" comment="" date="1569016198" size="196026" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions8.txt" attachment="test_predictions8.txt" attr="" comment="" date="1569016231" size="5135416" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions6.txt" attachment="eval_predictions6.txt" attr="" comment="" date="1569016259" size="196035" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions6.txt" attachment="test_predictions6.txt" attr="" comment="" date="1569016285" size="5712247" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions9.txt" attachment="eval_predictions9.txt" attr="" comment="" date="1569016341" size="108097" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions9.txt" attachment="test_predictions9.txt" attr="" comment="" date="1569016367" size="5145963" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions10.txt" attachment="eval_predictions10.txt" attr="" comment="" date="1569016394" size="99331" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions10.txt" attachment="test_predictions10.txt" attr="" comment="" date="1569016419" size="5155557" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="eval_predictions11.txt" attachment="eval_predictions11.txt" attr="" comment="" date="1569016451" size="93227" user="sjoshi" version="1"}%
+%META:FILEATTACHMENT{name="test_predictions11.txt" attachment="test_predictions11.txt" attr="" comment="" date="1569016474" size="4834661" user="sjoshi" version="1"}%
+%META:PREFERENCE{name="ALLOWTOPICCHANGE" title="ALLOWTOPICCHANGE" type="Set" value="SalisJoshi"}%
+%META:PREFERENCE{name="PERMSET_CHANGE" title="PERMSET_CHANGE" type="Local" value="justauthor"}%

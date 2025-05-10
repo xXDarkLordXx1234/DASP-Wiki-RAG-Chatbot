@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="naik" comment="" date="1629203510" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ *Internship Report*
+<p align="center">
+----+ TODO List
+</p>
+
+   * Setup VPN, Instant Messaging and SLURM
+   * Papers to be read: https://arxiv.org/pdf/2106.12417.pdf, https://arxiv.org/pdf/2004.13912.pdf 
+   * Read Validity chapter from book: Empirical Methods (Validity, Reliability and Significance) (Draft)
+   * Try to come up with stastical tests for Validity measurs for classification, NLI or QA task (assuming Neural models instead of GAMs)
+
+<p align="center">
+-----+ Meeting Notes
+10th August 2021: 
+   * Discussion of idea about features that bias model prediction towards a certain class (similar to competency models paper, Trigger words from explainability tutorial slides) and maybe more generally the idea of Illegitimate features (information leakage) (as defined in the Empirical Methods book under the validity section)
+   * Infrastructure/communications setup
+   * One possible direction is Validity of features (circular features, bias features and information leakage) 
+
+17th August 2021:
+   * Discussed approach: Design (or learn) a set of features (like text spans such as NP in dep parse, common words etc.) and learn predictor for label using a NAM for dense representation of each feature. Then use NAM to breakdown relative importance of each feature (instead of the nullification test). Note: here we want to overfit the model on the dataset to model the labelling function, we don't want to generalize our model.
+   * Need to look into vaibility of training NAM on dense features (like Word2Vec or SBERT embedding) instead of a single variables.
+   * Proposed method is similar to LIME, but LIME perturbs local gradients, we are scoring dataset level features, to find their relative contributions in the labelling function that represents the annotation.
+   * Need to check papers similar to LIME, to make sure that this hasn't been done before.
+   * Start with MNLI as a case study for validating proposed method: 1)come up with feature set for NAM 2)fit NAMs on feature set to extract biases 3)test if NAMs relative ranking results correspond with the biases found by existing stress test/adversarial papers.
+   * This can later be extended to the class of PA using new feature set (or learning it by using any existing post-hoc interpretability approach on a trained model/NAM)
+</p>
+
+<p align="center">
+-----+ Summaries
+   * Competency Problems: <LINK>
+   * QA Survey and Taxonomy: <LINK>
+   * Validity Problems: <LINK> 
+   * Neural Additive models: <LINK>
+   * False perfection in machine learning: <LINK>
+</p>

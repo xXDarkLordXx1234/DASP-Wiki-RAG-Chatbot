@@ -1,0 +1,60 @@
+%META:TOPICINFO{author="nothvogel" comment="" date="1551956522" format="1.1" reprev="8" version="8"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+
+---++ Arbeitsstunden
+
+%EDITTABLE{format="| text,20| text,20| text,20| text,20| text,20|"}%
+| *Datum* | *Beginn* | *Ende* | *Täglich (hh:mm)* | *Notiz* |
+|  | 10:00 | 16:00 | 06:00 |Quali Test |
+|  |  |  | 07:00 |Arg Sim / Funkstandard |
+| | | |06:00 |Arg Sim / Funkstandard |
+| | | |01:00 |Arg Sim / Funkstandard |
+|06.03.2019 | | |02:00 |Arg Sim / Funkstandard |
+
+
+---++ Meetings
+
+---+++ Neu
+   * Bidirectional LSTM: Prediction von 250k Paaren dauert jetzt etwa doppelt so lange (ca. 5 min 30 sec). Bei selber Trainingsdauer keine Verbesserung der Predictions.
+   * Padding umdrehen hilft nichts - jetzt matcht die LSTM nur den Anfang des Satzes
+   * Grund fuer das Verhalten (wahrscheinlich): 
+      * Beispiele in den Trainingsdaten sind eher kurz und der input bias wurde komplett mit 0 initialisiert 
+      * (== nicht genug Daten, um bias fuer laengere Saetze zu lernen)
+      * Daher wird der Beginn des Satzes nicht gewichtet.
+   * Neuer Test mit Bias = 1 bringt kaum Verbesserung
+   * Verschiedene Architekturen: 
+      * LSTM mit weniger Nodes overfittet nicht auf die letzten Worte
+      * Deep LSTM mit return_sequences=True und z.B. (20,20) Nodes funktioniert auch gut
+      * Neues Hyperparameter Tuning mit Correlation als Metrik?
+   * Bias im Gold Standard: Training und Dev Set ueberprueft:
+      * Es gibt einige Beispiele mit hoher Similarity (>0.9) und gleichem Suffix
+      * Aber nicht mehrheitlich, d.h. genug Beispiele mit unterschiedlichem Suffix
+      * Mehr Trainingsdaten sammeln?   
+
+---+++ 26.02.2019
+   * Predictions liegen selten über 0.6
+   * Argumente, die nicht Wort für Wort gleich sind haben bis zu 0.85
+   * Threshold schwierig zu setzen: 
+      * Bei 0.7 wären es nur etwa 40 Paare
+      * Um 0.6 hohe Fehlerquote
+   * Pearson Correlation als Metric auf Validation Set scheint vielversprechend:
+      * Correlation verbessert sich noch, obwohl der min loss sich nicht grossartig ändert.
+   * Problem: Letzten Wörter im Satz werden übergewichtet
+      * 0-padding umdrehen?
+      * Trainingsdaten gebiased? Also auch immer selbe Worte am Ende
+      * mal bidirectional LSTM testen
+   * Generell: Irgendwann auch cross-topic ähnliche Paare finden.
+
+---+++ 19.02.2019
+   * Funkstandard Argumente: Etwas noisy, quasi-duplikate vorhanden, teilweise andere Sprache (kyrillisch)
+   * Paare per brute-force innerhalb der 13 Themen generiert: 250k
+   * Embedding Layer in der maLSTM von meiner Bachelor Arbeit ungeeignet für unbekannte Argumente
+   * Prediction mit maLSTM trainiert auf arg-sim-bws Corpus: 
+      * Extreme (0 und 1) machen Sinn, aber sind relativ uninteressant
+      * 0: Normale Argumente mit kyrillischen Zeichen
+      * 1: Argumente, die bis auf wenige Zeichen identisch sind
+   * Ziel: Paare finden, die nicht genau die gleichen Wörter haben, aber immer noch sehr ähnlich sind.
+      * Entweder einen Prediction Threshold setzen oder automatisch suchen mit Substring-Maßen 
+
+-- Main.JohannesDaxenberger - 2019-02-20

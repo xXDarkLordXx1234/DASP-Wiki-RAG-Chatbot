@@ -1,0 +1,17 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1173117071" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="AmazonDatenbank"}%
+Hier stehen Informationen zu Apache Derby.
+
+%TOC%
+
+---++ Derby als Server
+Derby starten mal [[http://db.apache.org/derby/papers/DerbyTut/ns_intro.html Network Server]] mit dem Befehl "java org.apache.derby.drda.NetworkServerControl start".
+
+---++ Macken
+Derby hat schon so seine Macken. Einige, auf die man achten sollte sind:
+   * Vergleiche gegenüber LONG VARCHAR sind nicht erlaubt. Man muss stattdessen VARCHAR verwenden.
+   * Zeichenketten müssen zwischen 2 Apostrophen (z.B. 'Zeichenkette') stehen. Anführungszeichen sind nicht erlaubt (z.B. "Zeichenkette"). Hier erhält man eine merkwürdige Fehlermeldung. Enthält die Zeichenkette selbst ein Apostroph muss ein weiteres davor gesetzt werden.
+
+
+
+-- Main.KaiMichaelHoever - 05 Mar 2007

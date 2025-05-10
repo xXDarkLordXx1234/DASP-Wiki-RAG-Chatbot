@@ -1,0 +1,61 @@
+%META:TOPICINFO{author="ChristianHollubetz" date="1339628774" format="1.1" version="16"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Christian Hollubetz
+
+---++ Resources
+
+   * [[ChristianHollubetzGameSetups][Game setups and existing implementations (on which we can build)]]
+      * [[%ATTACHURL%/GameTasks.pptx][Typology of game tasks; types of input and output data]]
+   * [[ChristianHollubetzGWAP][Games with a purpose literature]]
+   * [[ChristianHollubetzAnnotationExamples][Annotation examples]]
+   * [[ChristianHollubetzRoadmap][Roadmap der Tätigkeit]]
+   * [[ChristianHollubetzVirtualServerEinrichtung][Server-Einrichtung]]
+
+---++ Work plan
+
+   * *Game identification*
+      1 Review existing literature on games with a purpose (based on the list linked above)
+      1 Search for open source implementation of games
+      1 Classify them according to the type of game, number of player, action performed by the user, possible injection of annotation tasks
+      1 Discuss which game types are most suitable for our purposes
+   * *Game development*
+      1 Discuss the game architecture
+      1 Inject the annotation data into a game setting
+      1 Try the game in a pilot study
+   * *Game deployment*
+      1 Carry out a game-based annotation study
+      1 Extract the annotated data from the game
+      1 Analyze the annotated data
+      1 Compare different paradigms of annotating data
+
+---++ Current schedule
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Task* | *Date* | *Hours* | *Remarks* |
+| - | 30.01.2012 | 0 | Setup (!ChM) |
+| in Paper einlesen, Schlüsselstellen zusammenfassen, bestehende GWAPs ermitteln | bis Wiki-Freischaltung | 5 | |
+| Meeting Christian Meyer | 05.03.2012 | 1 | |
+| Zugänge, Evaluation Game, Wiki-Eintragungen, Projekt anlegen | 08.03.2012 | 4 | |
+| Roadmap als Wiki-Seite angelegt, Task 1 implementiert | 09.03.2012 | 2.5 | |
+| Meeting mit Christian | 12.03.2012 | 0.75 | |
+| Server eingerichtet & dokumentiert in Wiki | 19.03.2012 | 3.5 | MySQL-Server, Apache httpd, Apache Tomcat, Connector Tomcat <-> httpd, phpmyadmin |
+| Einlesen in Spring MVC in Verbindung mit Tomcat und Eclipse | 29.03.2012 | 6.5 | |
+| Projekt mit Spring MVC | 30.03.2012 | 3.5 | siehe SVN-Logs |
+| Spring MVC debuggen, Localization einbauen, Infos zu SessionAttributes einholen, klassische Session gegenüber SessionAttributes verwenden | 10.04.2012 | 4.25 | |
+| erstes Spiel weiter implementiert, Initial Setup für ganzes Projekt (dort werden die Datenbanken initialisiert), Vorbereitet für den Import von Daten | 15.04.2012 | 4 | siehe SVN-Logs |
+| kurze Ermitteln der 3D Möglichkeiten in Java | 21.04.2012 | 1.5 | ->Stichwort: Scetchup und JMonkeyEngine |
+| Block: Redesign der Wrapper um Wiederverwendung von Code zu gewährleisten; Datenanreicherung nun über Web möglich | 27.04.2012 | 5.5 | siehe SVN-Logs |
+| Meeting | 01.05.2012 | 1 | |
+| Einarbeiten | | 3.5 | Sessions in Spring |
+| Lesen | | 2 | |
+| Meeting | 14.05.2012 | 0.25 | |
+| Evaluieren | | 1 | unterschiedliche Möglichkeiten |
+| Einbinden | | 5.25 | siehe SVN-Logs |
+| Scatter->Equalz mit Testing | 14.06.2012 | 1.25 | auf neuen SVN-Server |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | bis Ende Mai 2012 |
+<nop>
+
+-- Main.ChristianMeyer - 2012-01-30
+
+%META:FILEATTACHMENT{name="GameTasks.pptx" attachment="GameTasks.pptx" attr="" comment="" date="1335793487" path="GameTasks.pptx" size="46614" user="ChristianMeyer" version="1"}%

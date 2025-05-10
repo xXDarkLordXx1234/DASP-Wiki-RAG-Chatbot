@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="reimers" comment="reprev" date="1387560836" format="1.1" reprev="12" version="12"}%
+---+!! Arbeitszeit
+
+%EDITTABLE{format="| text,20| text,20| text,20|"}%
+| *Date* | *Tasks* | *Time* |
+| Tu, 3.12.13 | Administration, installing Software etc | 1.5 h |
+| Fr, 6.12.13 | -Reading thesis about the dataset / get familiar with the dataset <br> -Installing DKPro and ClearTK. Run first code examples for UIMA and for text classification <br> -Reading recommended papers from James Pennebaker | 4 h |
+| Su, 8.12.13 | - Continue reading  papers by J. Pennebacker <br> -Trying to fix various bugs with DKPro TC installation (not successful yet) (Import of demos not working. Bug with path names in windows, not handling not allowable characters in the path like C:\ ) <br> -Export SPSS Data to Text| 3h|
+| Tu, 10.12.13 | -Understanding the SPSS data (variables & PANAS scales)<br>-Created first plots on background distribution (age, sex, nationality, anger)<br>-Learning how to use SPSS for basic statistical analysis<br>-Computing correlation between fields<br>-Converted doc files to txt<br>-Convert data set to English<br>-Installing DKPro TC<br>-[[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2013_12_10_Distribution_and_Correlation.pdf][Output of SPSS that shows distributions & correlations ]]  | 7h |
+| Fr, 13.12.13 | -Finishing up with correlation analysis of the data<br>- Playing around with the dkpro-tc demo (Twentynewsgroup) & running also the other demos<br>- Started to write the reader for out dataset | 4h |
+| Sa, 14.12.13 | -Finishing the corpus data reader<br>-Baseline with single labels is running<br>-Still struggeling getting the regression code to run | 1.5h |
+| Tu, 17.12.13 | -Converting from label classification to regression<br>- Baseline errors: Mean Abs Error: 0.57, Root Mean Sqrd Error: 0.73<br>-Reading papers about textual emotion & affect<br> - Dataset not really suitable to predict from the text input the anger value of that person (dataset way too sparse, only 3 candidates that were moderatly angry, all other were not really angry)<br>-Examing other PANAS values to find a suitable prediction scenario | 5h|
+| Fr, 20.12.13 | -Examing dataset1<br>- See [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2013_12_20_Summary_of_Dataset1.pdf][Summary ]]for the findings. See [[https://wiki.ukp.informatik.tu-darmstadt.de/pub/Hiwi/NilsReimers/2013_12_20_Dataset1_Correlations.xls][Correlation.xls]] for a correlation analysis between simple features and the personality of the participants  | 3h |
+
+
+%META:FILEATTACHMENT{name="2013_12_10_Distribution_and_Correlation.pdf" attachment="2013_12_10_Distribution_and_Correlation.pdf" attr="" comment="" date="1386691522" path="2013_12_10 Distribution and Correlation.pdf" size="42801" user="reimers" version="1"}%
+%META:FILEATTACHMENT{name="2013_12_20_Summary_of_Dataset1.pdf" attachment="2013_12_20_Summary_of_Dataset1.pdf" attr="" comment="" date="1387560766" path="2013_12_20_Summary of Dataset1.pdf" size="281562" user="reimers" version="1"}%
+%META:FILEATTACHMENT{name="2013_12_20_Dataset1_Correlations.xls" attachment="2013_12_20_Dataset1_Correlations.xls" attr="" comment="" date="1387560791" path="2013_12_20 Dataset1_Correlations.xls" size="70144" user="reimers" version="1"}%

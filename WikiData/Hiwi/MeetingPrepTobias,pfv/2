@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="SilvanaHartmann" date="1317203662" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="TobiasHorsmann"}%
+---+++ Meeting 28.09.2011
+
+   * Lucene !IndexTermAnnotator.PARAM_CHANGE_TO_LOWERCASE (default "true")
+   * !RegexPatterns (bold/italic)
+   * Candidate extraction pipeline
+   * Frequency extraction from Wikipedia Text
+      * Use the [[http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.io.web1t/src/main/java/de/tudarmstadt/ukp/dkpro/core/io/web1t/Web1FormatWriter.java][Web1TFormatWriter]] to create a pipeline that extracts n-gram frequencies from Wikipedia Text
+         * (E.g., !WikipediaReader, Tokenizer (!BreakIteratorSegmenter), !Web1TFormatWriter)
+         * The !Web1TFormatWriter takes _token_ and _sentence_ annotations, creates n-grams according to the parameters and collects counts for the n-gram
+         * Then the counts are stored in !Web1T-format (one n-gram and its frequency per line separated by tab)
+   * Get acquainted with !UimaFit external resource binding (for uima-fit aware components): [[http://code.google.com/p/uimafit/wiki/uimaFitResources][uimafit wiki]]
+   * Create an annotator that uses a [[http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.api.frequency/src/main/java/de/tudarmstadt/ukp/dkpro/core/api/frequency/provider/FrequencyCountProvider.java][FrequencyCountProvider]] as external resource.
+      * the provider could, for instance be a [[http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.frequency-asl/src/main/java/de/tudarmstadt/ukp/dkpro/core/frequency/Web1TFrequencyCountProvider.java][Web1TFrequencyCountProvider]] (providing access to !Web1T-data just generated)
+      * "dummy application": compute maximum likelihood estimate (MLER) of the tokens in the document (f(token)/total-words-in-corpus), annotate as "MLE"-type ("mleAnnotator") 
+      * "dummy pipeline": Read Text, tokenize, use mleAnnotator, dump
+
+
+-- Main.SilvanaHartmann - 2011-09-28

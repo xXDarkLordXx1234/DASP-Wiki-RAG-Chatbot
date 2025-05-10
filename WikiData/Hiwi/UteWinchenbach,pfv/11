@@ -1,0 +1,95 @@
+%META:TOPICINFO{author="winchenbach" comment="reprev" date="1439461163" format="1.1" reprev="11" version="11"}%
+---++ Treffen 12.08.2015
+
+   * Nächste Schritte
+      * Pmi normalisieren und gleichmäßig in pos/neg/neutral übertragen in der Hoffnung, dass Klassifizierung als neutral und negativ ausgeglichener wird
+      * Negativ-Bias untersuchen, liegen einzelne Pmi-Werte nah bei 0, aber negativ?
+      * Evaluation verschiedener Parameter-Kombinationen für PMI fertig stellen, ev. DKPro Lab oder eigene Implementierung für Zusammenfassung der Ergebnisse (momentan manuell)
+      * SVM mit BoW Feature und Leave-one-out cross-validation
+
+---++ Treffen 5.08.2015
+---+++++ Ergebnisse
+   * Zusammenfassung Annotationen
+      * Es konnten in 120 bzw. 127 von 189 Annotationen pro Annotator alle Score Typen (BEKENNTNIS, MORAL, GUETE) zu einem (ACCU) zusammengefasst werden.
+      * Es konnten innerhalb der Score Typen beide Annotatoren zusammengefasst werden:
+        99 von 190 für BEKENNTNIS, 104 für MORAL und GUETE, 65 für ACCU
+   * Pmi Ismus direkt
+      * Pmi Ismus direkt d.h. der Pmi-Score des Ismus wird direkt aus dessen Wort und den Vergleichswörtern aus dem Sentiment-Lexikon berechnet.
+      * Das hat zur Folge, dass alle gleichen Ismen gleiche Werte haben und diese nur auf dem Gebrauch im DTA- Referenzkorpus beruhen.
+        Da die Ismen selten sind und noch seltener zusammen mit den Vergleichswörtern vorkommen sind die PMI-Werte häufig 0.0.
+        Dies kann verbessert werden, wenn eine hohe Anzahl von Vergleichsworten gewählt wird (s. Logs mit 5PmiWords bis 100PmiWords).
+      * Insgesamt ist die Precision niedrig (meist zwischen 0.2 und 0.3), geringer wenn beide Annotatoren zusammengefasst werden (um ca. 0.03- 0.09).
+        Wenn pro Annotator alle Score Typen zusammengefasst werden, wird die Precision geringer (um ca. 0.02- 0.07).
+   * Pmi Adjektive nahe des Ismus
+      * Pmi benachbarter Adjektive d.h. der Pmi Wert wurde nicht aus dem Ismus Wort sondern den Adjektiven 
+        in demselben oder benachbarten Satz und den Vergleichsworten aus dem Lexikon berechnet.
+      * Es fällt direkt auf, dass fast alle Ismen nun als negativ bewertet werden. Falls sie dennoch als neutral bewertet werden,
+        ist die Precision sehr hoch. Sie werden eigentlich nie als positiv bewertet.
+        Mir ist noch unklar, warum das so ist.
+---+++++ Nächste Schritte
+   * Pmi Verbesserungsideen
+      * Pmi aus anderen Worten in der Nähe des Ismus berechnen: Nomen, Nomen+ Adjektive, Inhaltsworte
+      * Einschränken auf Adjektive, die sich tatsächlich auf den Ismus beziehen (aus Parse)
+      * Eigene Sentiment Liste aus NuS Texten erstellen
+   * Weitere Literaturrecherche SemEval'15
+
+---+ Juni 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 11.06.2015 | Einarbeitung NuS und Recherche DTA | 4 | |
+| 14.06.2015 | Einarbeitung Lucene, XML Struktur | 4.75 | |
+| 16.06.2015 | Code Lucene Suchindex für DTA | 2.5 | |
+| 23.06.2015 | Recherche Tei-, XML-Readers, XPath | 2 | |
+| 23.06.2015 | Code Dta-Tei-Reader | 3 | |
+| 24.06.2015 | Code Lucene Suchindex erstellen | 3 | |
+| 24.06.2015 | Recherche Lucene Unit-tests | 1 | |
+| 28.06.2015 | Code PMI | 3 | |
+| 28.06.2015 | Test Lucene Suchindex | 1 | |
+| 29.06.2015 | Test/Debugging Dta Reader und Lucene Suchindex | 4 | |
+| 30.06.2015 | Test/Debugging PMI | 1.75 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+---+ Juli 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 3.07.2015 | Debugging PMI | 1 | |
+| 4.07.2015 | Unit Test Suchindex | 2.5 | |
+| 4.07.2015 | Literaturrecherche SemEval'15 | 0.5 | |
+| 4.07.2015 | Unit Test PMI und Suchindex | 2.25 | |
+| 5.07.2015 | Unit Test PMI und Suchindex | 2.25 | |
+| 27.07.2015 | Zusammenfassen von Annotationen,Design und Code | 3.25 | |
+| 28.07.2015 | Zusammenfassen von Annotationen, Tests | 2.25 | |
+| 28.07.2015 | Evaluation, Berechnung Precision und Confusionmatrix, Design und Code | 1.75 | |
+| 29.07.2015 | Evaluation Unit Test | 3.75 | |
+| 29.07.2015 | Evaluation Debug | 1.75 | |
+| 29.07.2015 | Evaluation Setup | 0.5 | |
+| 29.07.2015 | Literaturrecherche SemEval '15 | 1.25 | |
+| 30.07.2015 | Evaluation Debug | 0.5 | |
+| 30.07.2015 | Pmi mit Adjektiven, Code und Tests | 1.25 | |
+| 31.07.2015 | Evaluation Dokumentation | 1.5 | |
+| 31.07.2015 | Literaturrecherche SemEval 2015 | 3.75 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+---+ August 2015
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 10.08.2015 | Code, Test für PMI mit Adjektiven etc. | 1.5 | |
+| 10.08.2015 | Evaluation von PMI mit unterschiedl. Param. | 3.0 | |
+| 11.08.2015 | Evaluation von PMI mit unterschiedl. Param. | 2.0 | |
+
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30
+
+
+
+
+-- Main.ErikLanDoDinh - 2015-06-10
+
+%META:FILEATTACHMENT{name="PMI_Eval_Notizen.ods" attachment="PMI_Eval_Notizen.ods" attr="" comment="" date="1439460722" path="PMI_Eval_Notizen.ods" size="13614" user="winchenbach" version="1"}%

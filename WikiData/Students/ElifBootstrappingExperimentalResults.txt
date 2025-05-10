@@ -1,0 +1,48 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="5"}%
+%META:TOPICPARENT{name="ElifExperimentalResults"}%
+%TOC%
+
+---+ Bootstrapping Experimental Results
+
+---++ Goals
+   * Creating subjectivity lexicons by using a seed list and expanding it via lexical semantic relations such as synonymy and antonymy. 
+---++ Related Work
+---++ Methods
+---++ Results
+   * Testing with 10 words yielded very good results
+      * List of 780 words after 3 passes, approximately 600 after repeat words have been deleted.
+      * Rare cases of wrong results, such as "Gutshof" as a synonym for "gut"
+   * *Questions*: 
+      1 Do you use only synonomy in the bootstrapping process? Why not other lexical relationships?
+      1 Distinguish polarity of the source seed term. Syn relation preserves the polarity, ant. relation switches etc. 
+      1 Where did you find starting seed terms? You can use the translation of Turney seed terms. 
+      1 How do you stop the bootstrapping process? No substantial gain in the list size. Refer to "simple expand" algorithm in Esuli's paper.
+      1 Comparison to bootstrapping from !GermaNet
+      1 Comparison to manually pruned list created from the !GermaNet. 
+   * *Answers*:
+      1 Including Antonymy in the bootstrapping process gave very good results. Hyponymy and Hypernymy however resulted in very low quality word lists with words like "Autonummer" and "Vorentscheid" being included. 
+      1 Included polarity now
+      1 TODO
+      1 I've experimented with various methods, including fixed number of iterations or stopping the process if the increase of the word list is less than 10%. 
+         * Durchlauf 0, Positive Words Size 37, Negative Words Size 60
+         * Durchlauf 1, Positive Words Size 83, Negative Words Size 150
+         * Durchlauf 2, Positive Words Size 205, Negative Words Size 345
+         * Durchlauf 3, Positive Words Size 515, Negative Words Size 689
+         * Durchlauf 4, Positive Words Size 1092, Negative Words Size 1289
+         * Durchlauf 5, Positive Words Size 2086, Negative Words Size 2247
+         * Durchlauf 6, Positive Words Size 3652, Negative Words Size 3670
+         * Durchlauf 7, Positive Words Size 5910, Negative Words Size 6008
+         * Had to abort after that, as my slow laptop could not finish the calculations for the next iteration in an hour
+
+---++ Bootstrapping with JWKTL (addition to the above)
+         * recent changes include manual input in the first two passes to eliminate non-subjective words (like "Gutshof" as synonym for "gut")
+-- Main.ElifTekes - 10 Oct 2009
+   * [[%ATTACHURL%/Thesaurus.java][Thesaurus.java]]: Program for Bootstrapping with JWKTL. Needs seedlists (attached in this page) and Wiki-Database to function
+
+   * [[%ATTACHURL%/neg_bootstrappedlist0.txt][neg_bootstrappedlist0.txt]]: Bootstrapping seed list for negative words
+
+   * [[%ATTACHURL%/pos_bootstrappedlist0.txt][pos_bootstrappedlist0.txt]]: Bootstrapping seed list for positive words
+
+%META:FILEATTACHMENT{name="Thesaurus.java" attachment="Thesaurus.java" attr="" comment="Program for Bootstrapping with JWKTL. Needs seedlists (attached in this page) and Wiki-Database to function" date="1258633341" path="Thesaurus.java" size="8377" stream="Thesaurus.java" tmpFilename="/var/tmp/CGItemp1126" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="neg_bootstrappedlist0.txt" attachment="neg_bootstrappedlist0.txt" attr="" comment="Bootstrapping seed list for negative words" date="1258633368" path="neg_bootstrappedlist0.txt" size="89" stream="neg_bootstrappedlist0.txt" tmpFilename="/var/tmp/CGItemp1110" user="ElifTekes" version="1"}%
+%META:FILEATTACHMENT{name="pos_bootstrappedlist0.txt" attachment="pos_bootstrappedlist0.txt" attr="" comment="Bootstrapping seed list for positive words" date="1258633393" path="pos_bootstrappedlist0.txt" size="71" stream="pos_bootstrappedlist0.txt" tmpFilename="/var/tmp/CGItemp1160" user="ElifTekes" version="1"}%

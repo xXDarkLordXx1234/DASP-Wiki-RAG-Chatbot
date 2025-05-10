@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="ding" comment="reprev" date="1509717644" format="1.1" reprev="5" version="8"}%
+%META:TOPICPARENT{name="WeiDing"}%
+---+ Time records
+---++ November 2017
+
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2017-11-03 | Meeting + Meeting minutes| 1 |  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+
+---++ October 2017
+
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2017-10-09 | Meeting | 1 |  |
+| 2017-10-09 | Creating WikiPage | 0.5 |  |
+| 2017-10-10 | Exploring INCEpTION | 1.5 |  |
+| 2017-10-10 | Studying Active Learning | 1.5 |  |
+| 2017-10-11 | Reading code and trying some Wicket examples| 3 |  |
+| 2017-10-17 | Meeting | 1 |  |
+| 2017-10-17 | creating new child maven project for active learning, putting it into webapp pom.xml and solving the dependency problems | 1.5 |  |
+| 2017-10-19 | creating a simple hello world sidebar, solving tomcat problem because error from database caused by conflicting beanName | 2.5 |  |
+| 2017-10-20 | creating a simple dropdownchoice for layer and dive into code to find predefined layer-ui-name | 2.5 |  |
+| 2017-10-23 | Finishing rest mockup | 2.5 |  |
+| 2017-10-23 | Refactoring, creating git features branches and push | 1.5 |  |
+| 2017-10-24 | Discussing with Peter about prediction | 1 |  |
+| 2017-10-24 | Thinking about logic behind activeLearningSidebar | 1 |  |
+| 2017-10-25 | Meeting + Meeting minutes | 1.75 |  |
+| 2017-10-25 | Change page layout + AjaxButton(change button value and hiding/showing forms/disabling layer selection after start) | 4.50 |  |
+| 2017-10-27 | implement get recommendations | 2.75 |  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |

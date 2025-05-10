@@ -1,0 +1,34 @@
+%META:TOPICINFO{author="BastianChristoph" date="1287508894" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="BastianChristoph"}%
+---++ Meeting Agenda
+
+%TOC%
+
+---++++ 26.10.2010
+   * [] Vergleich mit Pyramid-Method
+   * [] Entfernen: simple annotators
+   * [] Simple Summarization Pipeline: Baselines
+   * [] Referenz-Summaries einbinden (Evaluation Annotator)
+   * [] ROUGE-Modul einbinden
+   * [] Test-Cases für baselines
+
+---++++ 19.10.2010
+   * [x] Anmeldung Bachelor-Arbeit
+   * [x] Erweiterte Summary Annotation einbinden
+   * [x] Summary Annotation inkl. Summary-Feature in TypeSystem einbinden
+
+   * [~] CollectionReader: Referenz-Summaries
+      * [~] -> direkt in Evaluation-Annotator (s.o.)
+   * [~] simple und extended annotators?
+      * [~] -> nur extended annotators (s.o.)
+   * [~] State-of-the-art Implementierungen
+      * [x] [[SentenceSelectionLexRankSimple][Tutorial]] für Lex Page Rank- Implementierung in DragonToolkit
+ 
+---++++ 12.10.2010
+   * [x] Baseline-Implementierungen (Annotator)
+   * [~] Rouge Referenzimplementierung
+      * [x] SummaryEvalRougeSimple
+   * [~] State-of-the-art Implementierungen
+
+---++++ 05.10.2010
+   * Rouge

@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="vogel" comment="reprev" date="1525699645" format="1.1" reprev="13" version="19"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+---++ Time Tracking
+
+Internal timesheet complete up to *dd.mm.yyyy*
+
+---+++ 2018-04
+
+%EDITTABLE{  so7t="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Date* | *Task* | *Hours* | *Notes* |
+| 08.04.2018 | Seite /upload angelegt und in die Navigationsleiste eingebunden | 1.5 | |
+| 09.04.2018 | Dateien werden im Ordner gespeichert. Einlesen der Dateien, zählen von Labels nach Themen getrennt. | 2.5 | |
+| 10.04.2018 | Metadaten werden in json Datei abgespeichert. Labels werden vereinheitlicht. | 1 | |
+| 11.04.2018 | Erstellen der merge HTML Seite. | 1 | |
+| 12.04.2018 | Backend für die Tabelle im /upload_merge. | 2 | |
+| 12.04.2018 | Default-Strategie implementiert | 2 | |
+| 17.04.2018 | Amb-Column aus dem Interface herausgenommen. Checkbox für Case-sensitivity eingebaut | 1.5 | |
+| 18.04.2018 | Normieren der Labels in den tsv Dateien. Random Strategie zur Auswahl implementiert. Gesamtzahl Sätze wird angezeigt. | 2.5 | |
+| 19.04.2018 | Annotationsübersicht an neue Daten angepasst, info.json erweitert. Prozentzahlen werden hinter den Werten angezeigt. | 2.5 | |
+| 20.04.2018 | Hit-Template. Versuche mit buttons und checkboxen (und checkboxen, die wie Buttons aussehen). | 2 | |
+| 23.04.2018 | Bug Fixes. Hit Template dynamische Anzeige der Auswahl. | 2 | |
+| 25.04.2018 | Einarbeitung Javascript, Speichern eines Aspektes jetzt als eigenes Objekt mit Methoden um Wörter hinzuzufügen/zu löschen. | 2 | |
+| 26.04.2018 | Wörter werden in der richtigen Reihenfolge angezeigt. Bei Klick auf OK öffnet sich ein Input-Fenster. | 2 | |
+| 27.04.2018 | Bearbeitung eines Aspektes aktivieren/deaktivieren möglich. Dynamische Anzeige der ausgewählten Wörter eines Aspektes. | 3 | |
+| 30.04.2018 | Wörter können nur zusammenhängend ausgewählt werden, beim Abwählen können nur die äußeren Wörter abgewählt werden. | 2 | |
+| 02.05.2018 | Zweiten Aspekt hinzugefügt, Logik für das aktivieren/deaktivieren von Buttons geschrieben. | 2 | |
+| 07.05.2018 | Versuche die Checkboxen über tabbing zu highlighten.Beliebige Anzahl Aspekte hinzufügbar. | 4 | |
+| | | | |
+| SUM | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+-- Main.ChristianStab - 2018-04-06

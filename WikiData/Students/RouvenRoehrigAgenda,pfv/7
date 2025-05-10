@@ -1,0 +1,56 @@
+%META:TOPICINFO{author="roehrig" comment="reprev" date="1369124887" format="1.1" reprev="1" version="7"}%
+%META:TOPICPARENT{name="RouvenRoehrig"}%
+---+!! Agendas
+---++++ Master Thesis of Rouven Röhrig
+This page contains the agendas of the weekly meetings.
+
+---++++ Agenda for 21 May 2013, 11 am
+   * Status of the (minimal) system
+   * Discussion of planned algorithms
+      * Strategy for the problem identification
+         * Current approach idea:
+            1 Find/select the most similar cluster for a given sentence (using Text similarity measures)
+            2 If the given sentence is not the most frequent one of the selected cluster, return diff to most frequent sentence
+      * Strategy for the problem correction
+         * Current approach idea:
+            1 (same as above) 
+            2 (same as above) 
+            3 Propose most frequent sentence of the most similar cluster
+   * General question:
+      * I've corrected the 'Denglish' in the thesis template (I hope this is okay)
+   * (Other work done (fyi):)
+      * System infrastructure implemented (including proper tests)
+      * Correction module for spelling mistakes implemented (including identification and simple proposals)
+      * System is being used by the simple GUI (the one I've shown last meeting)
+      * Some thesis chapters started/written (or added from existing text files)
+   * Planned tasks for this week (21. - 27.05.)
+      * Implementation of the planned clustering algorithm (see above)
+      * LaTeX investigations...
+      * Writing some thesis texts
+      * (If time remains, try to generate glossary resource)
+      * (If time remains, integrating glossary like resource)
+   * (sorry for the late agenda)
+
+---++++ Agenda for 6 May 2013, 11 am
+   * Demo/Discussion of minimal system
+   * Demo of message editor
+   * (Other work done (fyi):)
+      * System design corrected
+      * Good example last week corrected
+      * Tried/Started setting up latex environment
+
+---++++ Agenda for 29 Apr 2013, 11 am
+   * System design discussion
+      * See sequence and component diagram
+   * <del>Demo of message editor (iff I can set up the database on time)</del>
+   * Data analysis (including duplicates)
+
+---++++ Agenda for 22 Apr 2013, 11 am
+   * State of task description
+   * Goal definition/description
+
+---++++ Agenda for 16 Apr 2013, 11 am
+   * State of task description
+   * State of data analysis (see also [[RouvenRoehrigSentenceClustering][Sentence Clustering]])
+
+-- Main.RouvenRoehrig - 12 Apr 2013

@@ -1,0 +1,145 @@
+%META:TOPICINFO{author="ManuelWick" date="1276684182" format="1.1" version="19"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ Logbuch
+
+%TOC%
+---++16.06.2010
+   * *MW* experiments with UimaLogger to get an better understanding of the CRM data
+      * A few emails are empty
+      * Some files are in english. (Pipeline has german settings atm. Wiki is also in german)
+      * Some of the files are even encrypted?! (Absolutely not readable)
+
+---++ 18.05.2010
+I tested a little bit the searching with esa and it surprisingly worked using the generated document_esa_vectors as the input in the TerrierSearcher, that means as EsaPipeline.DIRECTORY_ESA_VECTOR in the function below:
+
+(Lookup in the SVN project "src.main.java.de.tudarmstadt.ukp.manuelwick.dkpro.pipeline.EsaPipeline" or here [[%ATTACHURL%/esa_search_function.txt][esa_search_function.txt]])
+
+
+The result, e.g. searching for "Modell", was:<br />
+Score: 0.0 DocID:src/test/resources/esa_test/documents/schönsten_autos_der_welt.txt<br />
+Score: 0.0 DocID:src/test/resources/esa_test/documents/bmw_e60.txt
+
+Searching for "Figur" hit the following documents:<br />
+Score: 0.0 DocID:src/test/resources/esa_test/documents/salsa_level4.txt<br />
+Score: 0.0 DocID:src/test/resources/esa_test/documents/los_angeles_style.txt<br />
+Score: 0.0 DocID:src/test/resources/esa_test/documents/salsa_level2.txt<br />
+Score: 0.0 DocID:src/test/resources/esa_test/documents/tango_de_salon.txt
+
+So I think it works  (even if the score always shows 0)
+Searching was really fast in comparison with the searching before using the CacheAggregator (now 1-2 secs).
+However the documents_esa_output vectors have a size about 31,7 MiB for just 55,7 KiB of documents (9 txt files). Looks really weird to me.
+
+
+I can upload the complete test-directory to reproduce the results not before that evening. Then you can find the directory in the SVN project and you can reproduce the results by just running one test in the project to make it as easy as possible.
+
+---++ 26.01.2010
+   * Repository Directory eingerichtet / Projekt angepasst
+
+---++ 27.01.2010
+   * Main CPE Implementation completed
+   * First attempt of ReaderFramework built
+   * Maven installed
+   * Apache-Tika is running _[starving and totally exhausted ;) ]_
+
+---++ 10.03.2010
+   * Reading / Trying to understand JavaMail library
+   * Writing de.tudarmstadt.de.ukp.manuelwick.dkpro.tika.parser.EmlParser.java
+   
+---++ 12.03.2010
+   * Reading IR-Book
+   * First steps with Lucene
+
+---++ 16.03.2010
+   * Checking features of Lucene
+   * Reading IR-Book
+
+---++ 17.03.2010
+   * Testing features of Lucene
+   * Reading IR-Book
+
+---++ 20.03.2010
+   * Understanding lucene, building simple indexes with TermFreqVector
+
+---++ 21.03.2010
+   * Developing CPM with EML-Parser for testcases
+
+---++ 23.03.2010
+   * Introduction to uutuc/Ukp-Pipeline concept
+   * Getting familiar with it
+   * Adapt EML-Parser
+
+---++ 24.03.2010
+   * Trying to build index/search-pipeline with uutuc
+   * First steps with Terrier
+
+---++ 25.03.2010
+   * Restructuring project
+   * Reading JUnit-Documentation
+   * First steps with DKPro-Pipeline
+
+---++ 26.03.2010
+   * Lucene/Terrier Indexing/Searching with DKPro-Pipeline
+   * Reading IR-Book chapter "Scoring, Term weighting Vector Space Model"
+
+---++ 29.03.2010
+   * Reading about information-retrieval models, Tf-Idf, BM-25
+   * Trying to handle CRM-data
+
+---++ 31.03.2010
+   * Factory for DKPro-Pipelines
+
+---++ 01.04.2010
+   * Understanding IR model, ESA
+
+---++ 02.04.2010
+   * First attempts with DKPro-Pipeline
+
+---++ (13.04.2010)
+   * Getting Topics to search for on the indexes
+
+---++ (16.04.2010)
+   * Writing QueryXMLReader for parsing Topics
+
+---++ 21.04.2010
+   * Analysing CAS-Structure of project to consume important features
+   * Writing ResultConsumer component for preparation of results
+
+---++ 23.04.2010
+   * Creating presentation for StatusMeeting on 26.04
+
+---++ 24.04.2010
+   * Creating presentation for StatusMeeting on 26.04
+
+---++ 26.04.2010
+   * Got ESA-Parameters
+
+---++ 27.04.2010
+   * Severe problems parsing subdirectory 108 of CRM data with Terrier
+   * Lucene struggles with searching the complete CRM index
+
+---++ 28.04.2010
+"Evaluation of the results..."
+is an important point. We discussed this and you will have to listen to the recordings and record a description of the information need.
+The recordings should be identifiable by the same filename as the recording. Please note that caller and agent are on separate channels of the audio file.
+
+We propose a workflow like this:
+1) listen to the call and get a picture about the information need of the user (note this down)
+2) make a yes/no decision on whether the automatic speech recognition (ASR) output is a "good" representation of the need in the call - this is subjective, but we cannot do too much to it
+3) perform retrieval with the ASR results
+4) judge topK wrt the info need (derived from the call)
+5) calculate p@K 
+
+If you have no idea what a recording is about (what information need the CALLER has), please note them down and skip them.
+
+---++ 29.04.2010
+Results of Recording evaluation not as expected. Recordings don't match the given topics. In some cases, even no word in the talk was found
+
+---++ 30.04.2010
+Benjamin solved version conflicts with given DKPro components. Terrier can parse subdirectory 108 now. Lucene indexing and searching works. Terrier searching also.
+Still problems with ESA - far to slow. Need almost 7 mins to search a query consists of 2 topics. Terrier and Lucene need appr. 4 sec for that.
+
+-- Main.ManuelWick - %DATE%
+
+%META:FILEATTACHMENT{name="esa_search_function.txt" attachment="esa_search_function.txt" attr="h" comment="Component to search with ESA on a Terrier index" date="1274192334" path="esa_search_function.txt" size="967" stream="esa_search_function.txt" tmpFilename="/var/tmp/CGItemp60539" user="ManuelWick" version="1"}%
+%META:FILEATTACHMENT{name="terrier_complete_indexing.txt" attachment="terrier_complete_indexing.txt" attr="" comment="" date="1274964416" path="terrier_complete_indexing.txt" size="3202" stream="terrier_complete_indexing.txt" tmpFilename="/var/tmp/CGItemp65152" user="ManuelWick" version="1"}%
+%META:FILEATTACHMENT{name="uutuc_2010_06_03.txt" attachment="uutuc_2010_06_03.txt" attr="" comment="" date="1275663540" path="uutuc_2010_06_03.txt" size="3472" stream="uutuc_2010_06_03.txt" tmpFilename="/var/tmp/CGItemp64754" user="ManuelWick" version="1"}%

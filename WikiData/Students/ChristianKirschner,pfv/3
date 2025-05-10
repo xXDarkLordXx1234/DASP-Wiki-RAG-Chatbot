@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="ElisabethWolf" date="1276083788" format="1.1" version="3"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+++ Bachelor Thesis: (Personalized) PageRank for aligning Wikipedia articles and WordNet synsets
+
+---+++++ Overview
+The task consists in developing a UIMA based system, which classifies a sense pair of a Wikipedia article and a WordNet synset as equal or not equal concerning their meaning. This is achieved by applying Personalized PageRank on the article and the synset and comparing the resulting PageRank vectors with a distance measure such as cosine. 
+
+Therefore I will implement two UIMA pipelines:
+<br>
+1. Preprocessing: Lemmatization of articles and synsets, removing stop words
+<br>
+2. Training/Testing: Applying PageRank, finding an optimal threshold and classification of test data
+
+---+++++ Installation hints
+I work with DKPro-Core, which contains some important annotators such as StopWordTagger and Lemmatizer. Apart from my implementation the following software must be installed to run the application:
+   * TreeTagger (with english parameter file): [[http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/][http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/]]
+   <br>
+   I had some problems with the TreeTagger because the corresponding annotator searched the parameter file "english.par" in $TREETAGGER_HOME/models/english.par. In Linux installation the file can be found in $TREETAGGER_HOME/lib/english.par. I avoided this error by copying the file "english.par" into the new directory $TREETAGGER_HOME/models/. In addition you should not forget to create the environment variable $TAGDIR with the path to TreeTagger installation directory. 
+   * WordNet (version 2.1 or 3.0): [[http://wordnet.princeton.edu/][http://wordnet.princeton.edu/]]
+   <br>
+   Please adapt the path in src/main/config/file_properties.xml to WordNet installation directory.
+   * JWPL: For Wikipedia API you need a MySQL database: [[http://www.ukp.tu-darmstadt.de/research/software/jwpl/][http://www.ukp.tu-darmstadt.de/research/software/jwpl/]]
+   <br>
+   Currently you have to adapt the access data to the MySQL database in src/main/java/api/WikipediaAPI.java
+   * UKB: [[http://ixa2.si.ehu.es/ukb/][http://ixa2.si.ehu.es/ukb/]]
+   <br>
+   Download and install UKB (the files compile_kb, ukb_ppv and ukb_wsd in $UKB_HOME/bin/ should be overwritten during installation). In addition the WordNet graphs have to be created (command: =./compile_kb -o wn30.bin ../lkb_sources/30/wnet30_rels.txt ../lkb_sources/30/wnet30g_rels.txt=). The resulting files should have the name "wn17.bin" and "wn30.bin" and the location $UKB_HOME/bin/.  
+   
+Further hints:
+   * The path in ".datapath" file must be adapted to current location
+   * Descriptor files for new UIMA types must be found in desc/type/ not in src/main/resources/desc/type

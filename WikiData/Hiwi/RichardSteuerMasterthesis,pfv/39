@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="RichardSteuer" date="1353592785" format="1.1" version="39"}%
+%META:TOPICPARENT{name="RichardSteuer"}%
+---++ Richard Steuer<br /><br />Master Thesis Student November 2012 - April 2013.
+
+---+++++ Thesis Overview
+
+*"Improving Information Retrieval with Lexical Substitution"*
+Supervisors: Prof. Dr. Chris Biemann, Dr. Jungi Kim
+
+---++Meetings
+
+---+++ 22.11.2012 (fourth meeting, just with Jungi)
+
+---+++ 08.11.2012 (third meeting, just with Jungi)
+   * went through the framework and overall technical aspects with Jungi
+   * set up SVN folder and shared with Jungi
+   * %RED% TODO: %ENDCOLOR% rewrote dkrpro pipelines, readers and annotators (topics and docs) from the package into new uima layout (%RED%80% done%ENDCOLOR%)
+
+---+++ 25.10.2012 (second meeting)
+   * downloaded and installed the software/framework to use, 
+   * %RED% TODO: %ENDCOLOR% manually evaluate the retrieval performance and examine "error classes"
+   * %RED% TODO: %ENDCOLOR% read "Retrieving with good sense", 2000
+   * EXTRA: read "Language model information retrieval with document expansion", 2006
+   * EXTRA: read "Flexible UIMA Components for Information Retrieval Research", 2008
+
+
+---+++ 11.10.2012 (first meeting)
+   * I have read the following papers:
+      * "CLEF 2009 Ad Hoc Track Overview: Robust-WSD Task", 2009
+      * "Combining Probabilistic and Translation-Based Models for Information Retrieval Based on Word Sense Annotation", 2009
+      * "Word Sense Disambiguation and Information Retrieval", 1994
+      * "Word Sense Disambiguation Improves Information Retrieval", 2012
+      * "Enriching Document Representation via Translation for Improved Monolingual Information Retrieval", 2011
+      * "A Markov Random Field Model for Term Dependencies", 2005
+      * "Latent concept expansion using markov random fields", 2007
+      
+---++See also
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/HowToMaven][How To Maven]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/DkproRepositoryForHiwis][How To SVN]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/DKPro/DKProIrProduct][DKProIR]]

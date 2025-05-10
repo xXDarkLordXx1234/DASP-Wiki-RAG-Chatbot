@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="tak" comment="reprev" date="1473681866" format="1.1" reprev="3" version="5"}%
+Anshul Tak's HIWI page is [[Hiwi.AnshulTak][here]]
+
+---+++ Meeting 12.09.2016
+   * Using spark instead of Mahout, as most of the clustering is deprecated and performance of spark is much better than of mahout.
+   * BB will contact admin for thesis registration from 15.09
+   * BB gave English dataset for initial understanding of clustering outcomes
+   * BB will setup next meeting
+   * AT has configured his machine for spark applications
+   * AT will work on more concrete steps like initial spark driver program to use generate similarity matrix 
+   * AT will also find suitable methods for getting similarity scores of sentences as sentence has lower similarity scores due to less word content.
+   * AT will check if spark clustering uses similarity matrix as input or vector representation of dataset
+  
+---+++ Meeting 05.09.2016
+   * Reviewed the burocratic issues
+      * AT will register the thesis until next week, with a starting date of 01.09
+      * Scheduled mid-term and final thesis presentations
+   * BB gave to AT the dataset of Prof. Geyken to begin playing with
+   * Discussed next steps in the research
+   * AT will play with Apache Mahout to see how it could be used
+   * AT will also look deeper at Carrot2
+   * Next meeting: 12.09

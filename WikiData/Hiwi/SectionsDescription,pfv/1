@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1279972406" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WiktionaryResearch"}%
+-- Main.YevgenChebotar - 24 Jul 2010
+
+---+ Language 
+Bei allen betrachteten Wiktionaries steht Sprache am höchsten in dem hieararchischen Aufbau der Einträge. Diese Sektion ist vor allem für die Einträge wichtig, bei denen das Lemma in verschiedenen Sprachen vorkommt. Z.B. [[http://en.wiktionary.org/wiki/sensible][sensible]] hat Bedeutungen in Englisch, Französisch und Spanisch, wobei die Bedeutung in Englisch sich von den Bedeutungen in Französisch und Spanisch unterscheidet. Man muss zwischen den für die gegebene Wiktionary-Edition native Sprache und anderen Sprachen unterscheiden. Die Einträge in der nativen Sprache sind meistens mehr ausgearbeitet und haben auch manchmal eine andere Struktur als die Einträge in anderen Sprachen, die oft nur die Übersetzungen in die native Sprache darstellen. Betrachten wir die Einzelheiten der Kodierung der Sprach-Sektionen in verschiedenen Wiktionary-Editionen.<br>
+*English Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61;LANGUAGE&#61;&#61;"<br>
+Zwischen verschiedenen Sprach-Sektion steht normalerweise  "----" , was als eine horizontale Linie dargestellt wird.<br>
+*German Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; LEMMA ({{Sprache|LANGUAGE}}) &#61;&#61;"<br>
+Zwischen den Sprachsektionen steht normalerweise "{{2x----}}", was als eine doppelte horizontale Linie dargestellt wird. Beispiele: [[http://de.wiktionary.org/wiki/am][am]], [[http://de.wiktionary.org/wiki/klein][klein]]<br>
+*French Wiktionary* <br> 
+Format des Sektion-Titels: "&#61;&#61; {{&#61;LANGUAGE_ABBREVIATION&#61;}} &#61;&#61;". Z.B. "&#61;&#61; {{&#61;fr&#61;}} &#61;&#61;" für Französisch und "&#61;&#61; {{&#61;en&#61;}} &#61;&#61;" für Englisch in [[http://fr.wiktionary.org/wiki/mousse][mousse]]<br>
+*Russian Wiktionary* <br>
+Format des Sektion-Titels: "&#61; {{-LANGUAGE_ABBREVIATION-}} &#61;". Z.B. "&#61; {{-ru-}} &#61;" für Russisch und  "&#61; {{-bg-}} &#61;" für Bulgarisch [[http://ru.wiktionary.org/wiki/&#1089;&#1083;&#1086;&#1085;][&#1089;&#1083;&#1086;&#1085;]]<br>
+*Polish Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; LEMMA ({{LANGUAGE}}) &#61;&#61;". Z.B. "&#61;&#61; mama ({{j&#281;zyk polski}}) &#61;&#61;" und "&#61;&#61; mama ({{j&#281;zyk hiszpa&#324;ski}}) &#61;&#61;" in [[http://pl.wiktionary.org/wiki/mama][mama]]<br>
+*Lithuanian Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; {{LANGUAGE_ABBREVIATION}} &#61;&#61;". Z.B. "&#61;&#61; {{ltv}} &#61;&#61;" und "&#61;&#61; {{skv}} &#61;&#61;" in [[http://lt.wiktionary.org/wiki/Informatika][Informatika]]<br>
+*Turkish Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61; {{Dil|LANGUAGE}} &#61;&#61;". Z.B. "&#61;&#61; {{Dil|Türkçe}} &#61;&#61;" und "&#61;&#61;{{Dil|Türkmence}}&#61;&#61;" in [[http://tr.wiktionary.org/wiki/gitmek][gitmek]]<br>
+*Vietnamese Wiktionary* <br>
+Format des Sektion-Titels: "{{-LANGUAGE_ABBREVIATION-}}". Z.B. "{{-vie-}}" und "{{-eng-}}" in [[http://vi.wiktionary.org/wiki/go][go]]<br>
+*Ido Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61;LANGUAGE&#61;&#61;" oder "&#61;&#61;{{LANGUAGE_ABBREVIATION}}&#61;&#61;". Z.B. "&#61;&#61;Ido&#61;&#61;" und "&#61;&#61;{{en}}&#61;&#61;" in [[http://io.wiktionary.org/wiki/per][per]]<br>
+*Portuguese Wiktionary* <br>
+Format des Sektion-Titels: "&#61;LANGUAGE&#61;". Z.B. "&#61;Português&#61;" und "&#61;Italiano&#61;" in [[http://pt.wiktionary.org/wiki/casa][casa]]<br>
+*Chinese Wiktionary* <br>
+Format des Sektion-Titels: "&#61;&#61;{{LANGUAGE_ABBREVIATION}}&#61;&#61;". Z.B. "&#61;&#61;{{zh}}&#61;&#61;" und "&#61;&#61;{{ja}}&#61;&#61;" in [[http://zh.wiktionary.org/zh/%E6%B0%B8%E9%81%A0][&#27704;&#36960;]]

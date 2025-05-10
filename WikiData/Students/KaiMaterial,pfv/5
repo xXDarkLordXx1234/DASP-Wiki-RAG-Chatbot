@@ -1,0 +1,98 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="5"}%
+%META:TOPICPARENT{name="KaiLochbaum"}%
+---+ Meterial
+%TOC%
+
+---++ Wikipedia
+    [[KaiWiki][Wikipedia]]
+
+
+---++ Komponentenstruktur:
+     <img src="%ATTACHURLPATH%/struktur.png" alt="struktur.png" width='861' height='542' />
+
+---++ Libraries
+---+++ *[[http://secondstring.sourceforge.net][SecondString]]*
+[[http://sourceforge.net/projects/secondstring/][SecondString SF.net Page]] 
+[[http://secondstring.sourceforge.net/javadoc/][JavaDoc]] 
+
+---++++ Metrics
+   1 AffineGap 	Affine-gap string distance, following Durban et al.
+   1 CharJaccard 	Character-based Jaccard distance: the distance between two strings is the Jaccard distance of the letters in them.
+   1 DirichletJS 	Jensen-Shannon distance of two unigram language models, smoothed using Dirichlet prior.
+   1 Jaccard 	Jaccard distance implementation.
+   1 _Jaro_	 Jaro distance metric.
+   1 _JaroWinkler_	 Jaro distance metric, as extended by Winkler.
+   1 JaroWinklerTFIDF 	Soft TFIDF-based distance metric, extended to use "soft" token-matching with the JaroWinkler distance metric.
+   1 JelinekMercerJS 	Jensen-Shannon distance of two unigram language models, smoothed using Jelinek-Mercer mixture model.
+   1 _JensenShannonDistance_ 	Distance metrics based on Jensen-Shannon distance of two smoothed unigram language models.
+   1 _Level2_ 	Generic version of Monge & Elkan's "level 2" recursive field matching.
+   1 Level2Jaro 	"Level 2" recursive field matching algorithm, based on Jaro distance.
+   1 Level2JaroWinkler 	"Level 2" recursive field matching algorithm, based on Jaro distance.
+   1 Level2Levenstein 	"Level 2" recursive field matching algorithm using Levenstein distance.
+   1 Level2MongeElkan 	Monge & Elkan's "level 2" recursive field matching algorithm.
+   1 Level2SLIM 	"Level 2" recursive field matching algorithm, based on SLIM distance.
+   1 Level2SLIMWinkler 	"Level 2" recursive field matching algorithm, based on SLIM distance.
+   1 _Levenstein_	 Levenstein string distance.
+   1 Mixture 	Mixture-based distance metric.
+   1 MongeElkan 	The match method proposed by Monge and Elkan.
+   1 _NeedlemanWunsch_	<nop> Needleman-Wunsch string distance, following Durban et al.
+   1 SLIM 	The same-letter index mixture distance.
+   1 SlimTFIDF 	Soft TFIDF-based distance metric, extended to use "soft" token-matching with the SLIM distance metric.
+   1 SLIMWinkler 	SLIM distance metric, with extensions proposed by Winkler for the Jaro metric.
+   1 SmithWaterman 	Smith-Waterman string distance, following Durban et al.
+   1 SoftTFIDF 	TFIDF-based distance metric, extended to use "soft" token-matching.
+   1 SoftTokenFelligiSunter 	Highly simplified model of Felligi-Sunter's method 1, applied to tokens.
+   1 TFIDF 	TFIDF-based distance metric.
+   1 TokenFelligiSunter 	Highly simplified model of Felligi-Sunter's method 1, applied to tokens.
+   1 UnsmoothedJS 	Jensen-Shannon distance of two unsmoothed unigram language models.
+   1 WinklerRescorer 	Winkler's reweighting scheme for distance metrics.
+   
+
+---+++* *[[http://www.dcs.shef.ac.uk/~sam/stringmetrics.html][StringMetrics]]*
+[[http://sourceforge.net/projects/simmetrics/][SF.net page (download)]] 
+[[http://www.dcs.shef.ac.uk/~sam/simmetrics/index.html][JavaDoc]] 
+---++++ Metrics
+   1 _Levenshtein_ distance
+   1 _Needleman-Wunch_ distance or Sellers Algorithm
+   1 Smith-Waterman distance
+   1 Gotoh Distance or Smith-Waterman-Gotoh distance
+   1 Block distance or L1 distance or City block distance
+   1 Monge Elkan distance
+   1 _Jaro distance metric_
+   1 _Jaro Winkler_
+   1 SoundEx distance metric
+   1 Matching Coefficient
+   1 Dices Coefficient
+   1 _Jaccard Similarity or Jaccard Coefficient or Tanimoto coefficient_
+   1 Overlap Coefficient
+   1 _Euclidean distance or L2 distance_
+   1 _Cosine similarity_
+   1 q-gram
+[[http://www.dcs.shef.ac.uk/~sam/images/string_metrics_comparison.jpg][Performance Vergleich der Maße]]
+
+
+---+++ *[[http://www.ifi.uzh.ch/ddis/research/semweb/simpack][SimPack]]*
+[[http://www.ifi.uzh.ch/ddis/fileadmin/user_upload/kiefer/simpack/javadoc/][JavaDoc]]
+_In addition, the measures from the SecondString, the SimMetrics, the ontology Alignment API, and the OWLS-MX projects are wrapped in SimPack._
+---++++ Add. Metrics
+---+++++ Align. API
+   1 Hamming
+   1 _Jaro_
+   1 _JaroWinkler_
+   1 _Levenshtein_
+   1 _Needleman Wunch_
+   1 NGram
+   1 SMOA
+   1 SubStringSimilarity
+---+++++ OWLS-MX
+   1 _CosineSimilarity_
+   1 ExtendedJaccardMeasure
+   1 _JensenShannonMeasure_
+
+
+Kursive Metriken sind in mehreren Libraries implementiert. (Nicht auf gleiche Ergebnisse geprüft)
+
+
+-- Main.KaiLochbaum - 07 Sep 2008
+
+%META:FILEATTACHMENT{name="struktur.png" attachment="struktur.png" attr="" comment="Komponentenstruktur" date="1221234719" path="struktur.png" size="35848" stream="struktur.png" tmpFilename="/var/tmp/CGItemp20017" user="KaiLochbaum" version="1"}%

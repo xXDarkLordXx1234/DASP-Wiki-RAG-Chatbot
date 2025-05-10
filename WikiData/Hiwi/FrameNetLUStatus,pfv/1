@@ -1,0 +1,13 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1289145036" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="FrameNetResourcebeschreibung"}%
+---+++ !FrameNet LU-Status
+   * Definition des LU-Status aus dem Buch _THE STRUCTURE OF THE FRAMENET DATABASE_ Abschnitt 2.3: <br /> _One or more statuses can be associated with each LU. Some of these are temporary, used for keeping track of the state of work on each lexical unit, e.g. whether subcorpora have been prepared for it, whether it is in the process of annotation, whether there is an unresolved problem regarding the frame and whether the LU belongs in it, etc. Others will be of interest to the end users of the !FrameNet data, as they indicate the final disposition of the lexical unit._
+---+++++ Tabelle
+| *Lexical Unit Status* | *Definition* |
+| Finished | Enough examples were found and annotated during !FrameNet II |
+| FN1 Sent | Annotated during !FrameNet I |
+| Insufficient attestations |The LU has been defined in a frame, but we have not found enough good examples to annotate |
+| By analogy | This LU is one of a group of LUs that behave identically (such as the days of the week), and so only one or two of the group will be annotated; the others simply marked as similar |
+
+
+-- Main.ZijadMaksuti - 2010-11-07

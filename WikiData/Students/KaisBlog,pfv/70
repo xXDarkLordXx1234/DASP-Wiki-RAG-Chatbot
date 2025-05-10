@@ -1,0 +1,531 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1180721113" format="1.1" version="70"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+%TOC%
+
+---++01.06.2007
+---+++Rootwds
+Neuer Annotator, der die 4. Wurzel aus der Anzahl der Wörter im Dokument berechnet (wie von Page 1994 erfolgreich angewendet).
+
+---++30.05.2007
+---+++Überschriften-Tagger
+Der Annotator für Überschriftung erkennt diese anhand folgende Suchmuster:
+<verbatim>
+(\\A|<p>|<br>|<br />)+\\w+:[^<]*(<p>|<br>|<br />)
+</verbatim>
+und
+<verbatim>
+(\\A|<p>|<br>|<br />)+\\w+(<p>|<br>|<br />)
+</verbatim>
+
+---+++Neue Experimente mit !RapidMiner
+Ich probiere zur Zeit den !RapidMiner aus, um zu testen, ob einige der Probleme mit Yale (insbesondere die Probleme beim Grid search) noch bestehen oder behoben wurden.
+
+---++29.05.2007
+---+++Neue Experimente
+Unter YaleExperimente stehen neue Evaluationsergebnisse bzgl. der Features von Kim.
+
+---+++Neue Annotatoren für Absätze
+---++++ !ParagraphItemAnnotator
+Mit diesem Tagger werden einzelne Absätze gekennzeichnet. Absätze sind voneinander durch Umbrüche <verbatim><p>|<br>|<br /></verbatim> getrennt. Der entsprechende reguläre Ausdruck ist:
+<verbatim>
+(\\A|<p>|<br>|<br />)(\\s|\\w)+[^<]+(<p>|<br>|<br />|\\z)
+</verbatim>
+Ursprünglich hatte ich auch die Überschriften eines Absatzes mit dazu genommen:
+<verbatim>
+(\\A|<p>|<br>|<br />)+\\w+:(<p>|<br>|<br />)+(\\s|\\w)+[^<]+(<p>|<br>|<br />|\\z)
+</verbatim>
+aber doch wieder entfernt, da ich Überschriften in einem eigenen Tagger behandeln möchte ich diese auch sehr vielfältig gestaltet sein können.
+
+---++++ !ParagraphAnnotator
+Dieser Annotator zählt die Anzahl der Absätze in einem Dokument und berechnet ihren Anteil bezogen auf die Länge des Dokuments.
+
+---+++Verbesserung !ListItemAnnotator
+Bug beim !ListItemAnnotator behoben, der dann auftritt, wenn eine Rezension mit einem Listenelement endet.
+
+---++25.05.2007
+---+++ !ListAnnotator
+Dieser neue Annotator markiert den Anfang und das Ende einer Liste und speichert ihre Länge sowie den Anteil an Listenelementen in Bezug auf die Gesamtlänge.
+
+---++23.05.2007
+---+++Weitere Merkwürdigkeit von Yale
+Da das Logfile der Grid Search ja unvollständig sind, bin ich auf das zeitintensivere Experiment (GridSearch) umgestiegen. Aber auch hier gibt es eine kleine Merkwürdigkeit, denn die Ergebnisse (die opt. Parameter), die auf dem Bildschirm angezeigt werden, stimmen nicht mit den Werten im LogFile überein. So wurde z.B. für UGR-Spearman als opt. Paramter C=0, Gamma=8 angezeigt, was zu Spearman=0.178 +/- 0.024 führte. Im LogFile findet man als Paramter allerdings C=0.03125 und Gamma=1.220703125E-4, was Spearman=0.447 +/- 0.036 ergibt. Das ist ja mal ein Unterschied würde ich sagen! Allerdings gibt es auch in diesem Logfile fehlende Werte, sodass man nicht mit Sicherheit sagen kann welches denn nun die optimalen Parameter sind. Das ist blöd, aber wohl nicht zu ändern.
+
+Ich hatte allerdings auch schon mehrfach den Fall, dass es zwar einen Unterschied zwischen den optimalen Parametern am Bildschirm und im Logfile gab, es jedoch bei einer Untersuchung es keinen Performanceunterschied gab. Ebenso hatte ich den Fall, dass die Anwendung der Parameter aus dem Logfile zu schlechteren Ergebnisse führte. Von daher kann es auch sein, dass oben genannter Fall reiner Zufall ist. Vielleicht bin ich mittlerweile Yale zu sehr kritisch gegenüber, sodass ich jetzt jede Kleinigkeit überprüfe. ;-)
+
+---+++Vergleich der Pearson-Evaluationsergebnisse mit Weka
+Da meine Ergebnisse bezüglich des Korrelationskoeffizienten sich teilweise stark von denen von Kim et al. unterscheiden, habe ich testweise auch 2 Experimente mit Weka mit denselben Parametern gemacht. Diese zeigen nur geringe Abweichungen bedingt durch die CV auf:
+   * Feature LEN
+      * Correlation: 0.463 +/- 0.056
+      * Weka: 0.4551
+   * Feature Stars
+      * Correlation: 0.424 +/- 0.025
+      * Weka: 0.422
+
+Ich denke dies zeigt weiter, dass die Abweichungen nur noch durch eine andere Aufteilung der Daten zu begründen ist (obwohl ich langsam nicht mehr so sicher bin, ob es bei Kim nicht vielleicht den ein oder anderen Fehler gibt).
+
+*MW*: Du weisst das sicher schon, aber sicher ist sicher: Alle Algorithmen aus WEKA sind unveraendert in YALE enthalten. Das einzige, was YALE bei der Arbeit mit diesen Algorithmen wirklich anders macht, ist die Umgebung: Daten lesen, schreiben !CrossValidation durchfuehren etc. Von daher ist es zu erwarten, dass bei Abwesenheit von Bugs beide Pakete in etwa die selben Ergebnisse bringen. Das gilt insbesondere, da Du die !LibSVM einsetzt, die ja weder von den Autoren von YALE noch von WEKA stammt. Beim Nachbau der Experimente von Kim bleiben leider ein paar Freiheitsgrade, die das Paper nicht beantwortet:
+
+   * Die Auswahl der Daten
+   * Die Aufteilung der Daten in Development- und Testset
+   * Die Aufteilung der Daten fuer die CV Laeufe.
+
+Gerade die letzten beiden Punkte koennen wir nicht wirklich angehen.
+
+*Kai*: Ah, stimmt, dass alle Algorithemn aus Weka in Yale enthalten sind. Bei der Berechnung von Pearson war ich mir allerdings nicht sicher und da wollte ich einen Rechenfehler in Yale ausschließen (obwohl ich das eigentlich schon überprüft hatte). Aber sicher ist sicher.
+
+---++22.05.2007
+---+++Logging von Yale's !ExperimentLog unvollständig
+Zunächst hatte ich ja vermutet, dass die falsch bestimmten optimalen Paramter C und Gamma (s. 20.05.2007) an einer abweichenden Häufigkeitsverteilung liegen. Die Verteilungen unterscheiden sich jedoch kaum. So habe ich nach anderen Ursachen gesucht und auch eine gefunden. Die von Yale erstellte Log-Datei aus deren Daten ich die optimalen Parameter errechne, ist nämlich unvollständig. Als Beispiel dafür dieses GridSearchLog. Folgende Ungereimtheiten sich darin zu erkennen:
+1. Jede Parameter-Kombination sollte 10-mal vorkommen, da bei der Grid Search eine 10-fold cross validation durchgeführt wurde. Die Anzahl der Parameter-Kombination im Log sind aber sehr unterschiedlich; manchmal sind 7, manchmal 6 oder 9.
+2. Eine Performanzwerte fehlen. Stattdessen steht dort !NaN.
+
+Dass die so errechneten Parameter nicht stimmen zeigt folgendes Beispiel: Für den Pearson'schen Korrelationskoeffizienten mit Attribut "Technical Term" hatte ich als optimale Parameter C=32768.0, Gamma=2.0 errechnet und damit einen Korrelationswert von 0.113 +/- 0.397 erhalten. Aufgrund der fehlenden Daten im Log habe ich die Grid Search nochmal, aber ohne Benutzung des Logfiles, durchgeführt und andere Parameter erhalten. Mit diesen Paramtern erhielt ich einen anderen Korrelationswert, und zwar 0.494 +/- 0.053.
+
+Ich werde wohl also alle Tests nochmal neu machen müssen und diesmal mit dem sehr lange dauernden Grid Search mit 2-fach Durchlauf.
+
+
+*MW:* Oha. Kannst Du mir mal das dazu gehoerige Experiment schicken? Wenn sich auch das als Bug in Yale erweist waere ich arg enttaeuscht von Yale. Lass' uns am besten mal telefonieren, wie wir mit der unschoenen Lage umgehen.
+
+---+++Häufigkeitsverteilung beim Development Corpora Test Set
+Um zu untersuchen, ob bei der Development Corproa Test Set, die gleiche Verteilung hinsichtlich des Labels h vorliegt wie bei den Originaldaten, habe ich die beiden Histogramme miteinander verglichen, sowie einen Signifikanztest mit dem Chi-Quadrat-Verfahren durchgeführt. Das Ergebnis dabei ist, dass trotz zufälliger Wahl die Häufigkeitsverteilung nahezu gleich ist (s. a. [[http://www.kai4all.de/AssessingReviews/Ausarbeitung.pdf PDF-Dokument, S. 12]]).
+
+---++20.05.2007
+---+++Stratified Sampling bei numerischem Label beim Splitting
+Nur eine Idee, die mir eben eingefallen ist und damit ich sie morgen früh nicht vergessen habe, notiere ich sie hier: eine Möglichkeit wäre, die helpness-Werte zu diskretisieren (z.B. Entropie basiert oder !ChiMerge oder ... mal sehen) und dann aus den entstandenen Intervallen entsprechend der Anzahl ihrer Elemente zufällig ziehen.
+
+---+++Experimente und Schwankungen in den Ergebnissen
+Habe einige Experimente mit dem neuem Datensatz (s. 14.05.2007) gemacht (s. YaleExperimente). Die Unterschiede zu Kim et al. bestehen jedoch weiterhin, lassen sich aber durch eine andere Aufteilung der Daten erklären. Interessant ist noch, dass ich feststellen musste, dass die Ergebnisse der Grid Search nicht zuverlässig sind, so z.B. bei den folgenden Features:
+   * Feature(s):
+      * Stars
+      * LEN
+      * UGR
+         * mit optimalen Paramtern für Pearson:
+            * Performance = 0.445 +/- 0.017 (Spearman: 0.440 +/- 0.017)
+         * mit optimalen Parametern für Spearman:
+            * Performance = 0.497 +/- 0.014 (Pearson: 0.533 +/- 0.017)
+
+   * Feature(s):
+      * Technical Terms
+         * mit optimalen Paramtern für Pearson:
+            * Performance = 0.113 +/- 0.397 (Spearman: 0.145 +/- 0.355)
+         * mit optimalen Parametern für Spearman:
+            * Performance = 0.446 +/- 0.019 (Pearson: 0.343 +/- 0.021)
+
+Auch die Wahl andere Parameter kann Ursache für unterschiedliche Ergebnisse sein.
+
+Diese beiden Beispiele zeigen außerdem illustrativ, dass die durchgeführte Grid Search nicht unbedingt zuverlässig ist, da hier die Wahl der optimalen Parameter auf der Testmenge nicht korrekt ist. Diese Schwankungen zeigen, dass die von Kim et al. durchgeführten Evaluationsverfahren nur bedingt aussagekräftig sind. Die falsche Wahl der optimalen Parameter kann an einer im Vergleich zu Testmengen stark abweichenden Verteilung auf dem Development Corpora liegen, weswegen es ratsam sein kann, nicht (wie bei Kim) eine beliebige Menge als Development Corpora zurückzuhalten (_shuffeled sampling_), sondern eine Stratifikation durchzuführen (_stratification sampling_). Dummerweise unterstützt Yale stratified sampling nicht bei numerischen Labeln (Weka glaube ich ebenfalls nicht), sodass ich mir noch was einfallen lassen muss.
+
+Ob Kim et al. auch bei der Evaluation Cross Validation mit shuffeled sampling durchgeführt hat, kann man dem Paper leider nicht entnehmen. Wenn dies so wäre, ist dies eine weitere Erklärung für die Abweichungen der Evaluationsergebnisse.
+
+Nach dem ich nun viele Überlegungen angestellt und Experimente gemacht habe, um die Abweichungen der Evaluationsergebnisse zu erklären, sind die oben genannten Gründe denke ich sehr plausibel.
+
+---++18.05.2007
+---+++ !ArffFileSplitter
+Da es bei Yale ja offenbar Schwierigkeiten beim Splitten und/oder Schreiben von Arff-Files gibt, habe selbst ein kleines Programm geschrieben, was das tut. Eine kleine [[http://www.kai4all.de/AssessingReviews/Programm/ArffFileSplitter.png GUI]] gibt's auch dazu. Neben den 3 Dateien kann auch das Aufteilungsverhältnis und der seed-Wert angegeben werden.
+
+---+++ ARFF-Creater
+Die [[http://www.kai4all.de/AssessingReviews/Programm/ARFFCreater.png GUI]] des ARFF-Creater wurde auch ein wenig erweitert
+
+---+++ Grid search results evaluator
+Da bei Yale ein Grid search über mehr als ein Performanz-Maß recht umständlich ist, gehe ich jetzt den Weg, alle Ergebnisse der !XValidation zu loggen und dieses Logfile dann selbst auszuwerten. Als Hilfe gibt dafür ein kleines Programm mit [[http://www.kai4all.de/AssessingReviews/Programm/GridSearchResultsEvaluator.png GUI]].
+
+---++16.05.2007
+---+++ !AvgNoOfWordsPerSentenceAnnotator
+Neuen Annotator geschrieben. Dieser fügt zu jeder CAS die durchschnittliche Anzahl an Wörtern pro Satz hinzu. Dieses Feature kann ggf. ein Kriterium für die Lesbarkeit einer Rezension sein.
+
+*MW:* Das waere auch ein Kandidat fuer die Feature Extraction Pipeline. Ich werde sowas mal da einbauen. Dann kann man auch leicht so Sachen wie die Durchschnittliche Laenge der Worte, Absaetze etc. extrahieren. Wann ich dazu komme, kann ich nicht versprechen ;-)
+
+---+++ !ListItemAnnotator
+Und ein weiterer Annototar, der Elemente einer Liste erkennt und markiert.
+
+*MW:* Cool! Kannst mal mehr dazu schreiben, wie der das macht?
+
+Klar. Hier der Quellcode. Die Idee dahinter ist, dass bei einem Listenelement am Anfang und am Ende immmer ein Zeilenumbruch ist, es sei denn ein Listendokument beendet den Text. Der Text des Listenelements beginnt mit einem Aufzählungzeichen (-, * oder +). Danach kommt der eigentliche Text. Hab das ganze mal an verschiedenen zufällig gewählten Reviews ein wenig getestet und es hat gut funktioniert.
+<verbatim>
+private Pattern listitemPattern = Pattern.compile("(<p>|<br>|<br />)+\\s*[-\\*\\+]{1,}[^<]+(<p>|<br>|<br />|\\z)");
+
+  public void process(JCas aJCas, ResultSpecification arg1) throws AnnotatorProcessException {
+    String input = aJCas.getDocumentText();
+    
+    // search for items of a vertical list
+    Matcher matcher = listitemPattern.matcher(input);
+    int pos = 0;
+    while (matcher.find(pos)) {
+      //found one. create a ListItem annotation
+      ListItem annotation = new ListItem(aJCas);
+      annotation.setBegin(matcher.start());
+      annotation.setEnd(matcher.end());
+      annotation.addToIndexes();
+      if(input.substring(matcher.start(), matcher.end()).endsWith("<p>")) {
+        pos = matcher.end()-3;
+        continue;
+      }
+      if(input.substring(matcher.start(), matcher.end()).endsWith("<br>")) {
+        pos = matcher.end()-4;
+        continue;
+      }
+      pos = matcher.end()-6;
+    }
+  }
+</verbatim>
+
+---++15.05.2007
+---++Probleme mit Test Set nach Aufteilung
+Da mit dem Attribut LEN trotz Änderung der Daten es immer noch Unterschiede in den Ergebnissen gibt, wollte ich ein neues Experiment starten und zwar diesmal im den 3 Top Attributen Stars, LEN und UGR. Die Splittung in Test und Development Set habe ich mit Hilfe des !SimpleValidation-Operators von Yale gemacht. Das hat 2 Vorteile:
+1. Die Daten können bequem in 2 Mengen aufgeteilt werden.
+2. Die Aufteilung ist immer gleich, wenn immer derselbe seed-Wert verwendet wird. Das hat zur Folge, dass damit die Ergebnisse untereinander vergleichbar sind und evtl. Verbesserungen nicht an einer für den Lernen vorteilhafteren Aufteilung liegen.
+
+*MW:* Es ist wahrscheinlich anzuraten, nicht ganz zufaellig zu samplen, sondern stratified sampling einzusetzen. Das stellt sicher, dass die Verteilung hinsichtlich des Labels im Trainings- und Testset gleich sind. 
+
+Nachdem die Daten gesplittet und auf dem Development Test Set ein Grid Search durchgeführt wurde, wollte ich die errechneten Parameter in einem Experiment auf die Test Set anwenden. Jedoch habe ich eine Fehlermeldung erhalten, dass die arff-Datei (obwohl von Yale erstellt!) einen Fehler hat. Daraufhin habe ich sämtlichen möglichen Dateiformate (sparse, dat, xrff)  ausprobiert. Alle führten jedoch zu einer Fehlermeldung, sodass ich kein Experiment durchführen kann. Woran das liegt konnte ich bisher nicht herausfinden.
+
+*MW:* Wie per E-Mail besprochen: Wahrscheinlich ein Bug in Yale. Ich habe gesehen, dass Du Dich an die Entwickler gewandt hast. Ich denke, die werden zuegig reagieren.
+
+Ein Experiment mit dem Development Test Set verursacht keine Probleme beim Einlesen der Datei. Daher vermute ich, dass es bei Yale einen Bug beim Export großer Daten gibt. Es ist jedenfalls sehr sehr ärgerlich, dass ich immer wieder durch Software-Probleme ausgebremst werde, sodass ich mich nicht mit der eigentlichen Arbeit beschäftigen kann und auf der Stelle trete :-(.
+
+*MW:* Nicht aus der Ruhe bringen lassen. Software aus dem Forschungs-Umfeld ist oft von schlechter Qualitaet (siehe auch die "interessante" Leseroutine in WEKA), dafuer sind die Autoren meist sehr hilfsbereit ;-)
+
+
+Nachtrag: Um zu Testen, ob das Problem wirklich beim Export liegt, habe ich folgenden Versuch gemacht: statt der Splittung 0.9/0.1 habe ich die Splittung 1.0/0.0 gemacht. Auch die resultierende Datei mit 100% verursacht einen Einlesefehler ("expected the end of the line 37621"). Die Datei ist übrigens auch kleiner (1008.2MB statt 1.5GB). Ich bin mir daher sicher, dass das Problem in der Export-Routine von Yale oder der Splittung liegt.
+
+
+---++14.05.2007
+---++Extraktion von Fachbegriffen
+Eines der Features zur Bewertung der helpness, das ich noch heranziehen möchte, ist die Anzahl der erwähnten Fachbegriffe oder Begriffe, die mit z.B. Digitalkameras zu tun haben. Die Idee dahinter ist, dass solche Rezensionen hilfreich sind, die explizit auf die Eigenschaften eines Produktes eingehen. Da stellt sich die Frage, woher man solche Begriffe bekommt. Eine Möglichkeit sind fertige Liste, wie z.B. [[http://www.glossary-of-terms.net/glossary-of-digital-camera-terms.html diese]] oder auch Begriffe aus Handbüchern von Digitalkameras. Allerdings muss klar sein, dass die Rezensionen meist von Laien geschrieben sind und somit evtl. gar nicht das Fachvokabular haben oder verwenden. Daher habe ich mich zunächst entschlossen, eine Liste solcher "Fachbegriffe" aus den Rezensionen selbst zu erstellen, in dem von jedem Substantiv mit Hilfe eines _FrequencyClassConsumer_ die Häufigkeitsklasse bestimmt wird. Wie gut das funktioniert muss ich noch untersuchen.
+
+*MW:* Bei hinreichend grossem Korpus wird der Wordvektor gerade im Zusammenhang mit nicht-linearen Kernels solche Sachen aufdecken. Kim hat ja sowas auch probiert, und nur leidlich viel Erfolg damit gehabt. Deshalb mein Tipp: Auf niedriger Prioritaet verfolgen.
+
+---++Unterschiede bleiben trotz Änderung der Daten
+Eine mögliche Erklärung für die unten beschriebenen Abweichungen zu Kim ist, dass ich mehr Daten als Kim et al. verwendet habe. Und zwar hatte ich bisher alle Rezensionen mit min. 5 Votes, die bis einschl. 01.06.2006 geschrieben wurden. Mit diesem Filter komme ich auf 15281 Rezensionen. Kim et al. nennt jedoch 14467. Wenn ich das maximale Datum auf den 18.03.2006 setzen, was realistisch sein kann, da das Paper spätestens am 18.04.2006 eingereicht wurde, komme ich auf 14460 Rezensionen.
+
+Mit diesem neuen Datensatz von 14460 Rezensionen habe ich erneut Experimente für das Feature _LEN_ durchgeführt. Dazu habe ich zunächst 10% der Daten als development test set verwendet und darauf einen grid search ausgeführt. Mit diesen Ergebnissen habe ich auf den verbleibenden 90% Tests mit folgenden Ergebnissen durchgeführt:
+
+   * Kim:
+      * Pearson: 0.357 +/- 0.029
+      * Spearman: 0.521 +/- 0.029
+   * eigene Ergebnisse:
+      * Pearson: 0.454 +/- 0.099
+      * Spearman: 0.413 +/- 0.027
+
+
+---++Weiterhin Unterschiede zu den Ergebnissen von Kim
+Obwohl die Probleme bei der Berechnung von Spearmans Korrelationskoeffizienten in Yale behoben sind, gibt es weiterhin Unterschiede zu den Ergebnissen von Kim et al., trotz Parameter-Tuning per grid search. Zum Beispiel für das Feature _LEN_ bei Digitalkameras:
+
+   * Kim:
+      * Pearson: 0.357 +/- 0.029
+      * Spearman: 0.521 +/- 0.029
+   * eigene Ergebnisse:
+      * Pearson: 0.480 +/- 0.040
+      * Spearman: 0.413 +/- 0.024
+
+Interessanterweise scheinen die Ergebnisse verdreht zu sein: Pearson ist besser, Spearman im Vergleich schlechter. Eine Erklärung habe ich bisher dafür noch nicht. Um eine falsche oder andere Berechnung in Yale auszuschließen habe ich den Pearsonschen Korrelationskoeffizienten selbst programmiert, kam aber zum selben Ergebnis wie Yale.
+Außerdem habe ich das gleiche Experiment in Weka durchgeführt. Hier kam interessanterweise ein anderer Wert der Korrelationskoeffizienten heraus, und zwar  0.368. Warum Weka hier zu einem anderen Ergebnis kommt, ist mir leider unklar.
+
+*MW*:
+Noch ein paar Hinweise, woran es liegen koennte:
+
+   * Es koennte sich um eine numerische Instabilitaet handeln. Je nachdem, wie die Formeln implementiert sind.
+   * Bist Du Dir so einigermassen sicher, dass Du mit den selben Daten arbeitest wie Kim et.all?
+*Kai*: s.o.
+   * Du hattest mal gemailt, dass Kim et all. die Laenge anders bestimmen. Gibt es vergleichbare Unterschiede auch bei anderen Features?
+*Kai*: Die Länge bestime ich genauso wie Kim et al. über die Anzahl der Token. Nur bei der Bestimmung von UGR habe ich statt Token die Lemmata verwendet. Ja, auch bei _Star_ unterscheiden sich die Ergebnisse in ähnlicher weise.
+   * Hast Du das ganze in Weka auch neu trainiert oder lediglich die Masse neu bestimmt? In ersterem Fall koennte es sein, dass Weka diverse Standardparameter anders setzt, die Daten normalerweise normiert etc.
+*Kai*: Ein grid search habe ich unter Weka nicht mehr durchgeführt, sondern nur eine 10-fold cross-validation mit denselben Parametern wie bei Yale.
+   * Wo wir gerade dabei sind: Normierst Du eigentlich die Featurevektoren?
+*Kai* Ja, und zwar in das Intervall [0,1].
+   * Spearman hat soweit ich das sehe eine Abhaengigkeit von der Anzahl der gerankten Objekte. Im Zaehler geht die Anzahl quadratisch ein, da sie den maximalen Fehler begrenzt. Im Nenner geht sie jedoch cubisch ein. D.h. der Wert variiert je nach Groesse des Datensatzes. Sehe ich das richtig? Oder ist die Formel in der [[http://en.wikipedia.org/wiki/Spearman's_rank_correlation_coefficient][Wikipedia]] falsch? Annahme: Ich habe 3 Objekte zu ranken und vertausche die ersten beiden. Dann ist Spearman = 1 - 6 / 48 = 1 - 1/8 = 7/8. Mache ich den selben Fehler bei 4 Objekten erhalte ich 1 - 6/60 = 1- 1/10 = 9/10. Wenn Du also nur geringfuegig weniger Reviews hast, hat das schon einen Einfluss. 
+
+---++10.05.2007
+---+++Erweiterung der GUI zur Testset-Generierung
+Parameter zur differenzierteren Datenbankabfrage hinzugefügt.
+
+---+++Grid-search
+Habe einen Grid-search zur Bestimmung der optimalen Parameter C und Gamma eines RBF-Kernels durchgeführt. Als Daten diente ein Testset mit Parameter LEN (Länge eines Reviews in Token). Hab dies leider zunächst manuell gemacht, bis ich gesehen habe, dass die in Yale auch automatisch möglich ist. Werde die nächste Suche also mit Yale machen.
+
+---++08.05.2007
+---+++GUI zur Testset-Generierung
+Die [[http://www.kai4all.de/AssessingReviews/Programm/ARFFCreater.png GUI]] wurde um folgende Features erweitert:
+   * number of mentioned manufacturers
+   * number of mentioned competitors
+
+Die entsprechenden Annotatoren sind aber bisher noch sehr einfach gehalten und müssen ggf. noch überarbeitet werden.
+
+---+++Testergebnisse
+Nachdem die Problematik mit der Berechnung des Spearman Korrelationskoeffizienten endlich behoben ist, können erste Tests gefahren werden. Eine Übersicht über Testaufbau und Testergebnisse findet sich unter YaleExperimente.
+
+---++07.05.2007
+---+++Fehler in Yale gefunden
+Nach viel Zeit und einigen Statistikbüchern habe ich endlich die Erklärung für die abweichenden Testergebnisse gefunden. Eigentlich hatte ich an mir gezweifelt, aber es lag an einem Programmierfehler.
+[[http://sourceforge.net/forum/forum.php?thread_id=1728967&forum_id=390413]]
+
+*MW:* Cool. Sehr gut!
+
+---++28.04.-05.05.2007
+---+++GUI zur Testset-Generierung
+Habe eine kleine [[http://www.kai4all.de/AssessingReviews/Programm/ARFFCreater.png GUI]] für die Erstellung der ARFF-Files geschrieben. Damit soll die Erstellung der Testsets mit unterschiedlichen Features erleichtert werden.
+
+---+++Erste Testergebnisse
+Habe ein erstes Experiment laufen lassen mit den von Kim beschriebenen Daten und 3 besten Features (LEN, UGR, Stars). Nach stolzen 12 Stunden Rechenzeit hatte ich dann auch ein Ergebnis, das mich allerdings sehr überrascht hat, denn es wurde ein Korrelationswert von 0.546 ± 0.011 sowie ein Spearman Korrelationswert von 0.889 ± 0.004.
+
+---+++Berechnung der Rangkorrelation nach Spearman
+Habe die Berechnung des Korrelationswertes nach Spearman in Yale überschrieben. Einmal mit einer Version aus einem Statistikbuch (Taschenbuch der Statistik) und einmal mit einer Version, die von Kim verwendet wird. Beide führen zum selben Ergebnis, jedoch unterscheidet sich dieses von dem von Yale berechneten. Yale scheint also eine andere Berechnung durchzuführen. Warum das so ist, weiß ich nicht. Ich habe diese Frage an die Yale-Community weitergereicht. Hoffe, dass ich bald eine Antwort erhalte.
+
+Hier noch die verschiedenen Evaluationsergebnisse mit einem Testset, das nur als Feature LEN enthält:
+   * Kim:
+      * Spearman = 0.521 ± 0.029
+      * Pearson = 0.357 ± 0.029
+   * Yale:
+      * Spearman = 0.874 ± 0.005
+      * Pearson = 0.316 ± 0.024
+   * Yale modifiziert:
+      * Spearman = 0.412 ± 0.023
+      * Pearson = 0.316 ± 0.024
+
+---++25.04.-27.04.2007
+---+++Evaluation
+Da ja alle Daten im arff-format vorliegen und das Problem des Einlesens durch Upgrade auf Version 2.4.1 gelöst werden konnte, wollte ich eigentlich mit der Evaluation beginnen, um zu sehen, wie die Ergebnisse im Vergleich zu Kim's sind. Allerdings musste ich feststellen, dass mein Rechner dafür leider etwas zu schwach ist. Daher habe ich mich entschlossen, die Evaluation um 2-3 Tage zu verschieben und meinen Rechner aufzurüsten. In der Zwischenzeit gibt es ja genug zu tun... (s.u.)
+
+---+++Bugfixes
+Bugfixes bei !AmazonDB
+
+---+++ !ManufacturerAnnotator
+Habe einen Annotator geschrieben, der den Herstellernamen markiert. Die Anzahl der erwähnten Hersteller kann als Feature zur Bewertung einer Rezension dienen.
+
+---+++ !CompetitorAnnotator
+Aufbauend auf den !ManufacturerAnnotator habe ich einen !CompetitorAnnotator geschrieben, der die im Review erwähnten Herstellernamen der Konkurrenz markiert. Die Anzahl der erwähnten Konkurrenz-Hersteller kann als Feature zur Bewertung einer Rezension dienen.
+
+---+++Erweiterung des Typs !ReviewInformation
+Der UIMA-Typ !ReviewInformation wurde um folgende Attribute erweitert:
+   * _manufacturer_ (Name des Herstellers des rezensierten Produkts)
+   * _customerAverageRating_ (die durchschnittliche Produktbewertung des Autors der Rezension)
+   * _customerTotalReviews_ (die Gesamtzahl an verfassten Rezensionen des Autors)
+
+Der !AmazonCollectionReader wurde entsprechend angepasst.
+
+---++24.04.2007
+---+++Große arff-Dateien und Yale
+Es ist das Problem aufgetreten, die erstellen arff-Dateien in Yale einzulesen. Trotz Reduzierung auf 1.6 GB dauert das Einlesen und Stunden und bricht schließlich ab. Um auszuschließen zu können, dass es sich hier um ein Java spezifisches Problem handelt, habe ich ein eigenes kleines Programm geschrieben, dass eine Datei zeilenweise einliest. Dies läuft ohne Probleme, sodass ein Java spezifisches Problem ausgeschlossen werden konnte. Glücklicherweise wurde in Yale ein Einleseroutine verbessert, sodass in der aktuellen Version 3.4.1 das Einlesen jetzt deutlich schneller vonstatten geht und auch den benötigten Arbeitsspeicher weit weniger belastet.
+
+---++20.04.2007
+---+++Extraktion (fast) fertig
+Die Features _stars_, _unigram_ und _length_ wurden wie bei Kim et al. beschrieben aus den vorhandenen Amazon-Daten gebildet. Die resultierende arff-Datei für die Digitalkameras ist allerdings stolze 6.5 GByte groß. Mit dieser Größe ist kaum zu arbeiten, so dass die Daten noch etwas reduziert werden müssen. Naheliegend ist, die Anzahl der Unigramme dadurch zu verringern, indem Stoppwörter herausgefiltert werden. Das könnte entweder dadurch geschehen, indem man eine Liste vordefinierter Worte (z.B. [[http://www.dcs.gla.ac.uk/idom/ir_resources/linguistic_utils/stop_words]]) herausfiltert. Alternativ (oder als zweiten Schritt) könnte man alle Wörter nach ihrer Häufigkeit sortieren und Worte mit hoher und Worte mit niedriger Häufigkeit streichen mit dem Hintergrund, dass "die Entscheidungsstärke der aus Dokumententexten generierten Deskriptoren im mittleren Häufigkeitsbereich am höchsten ist". (Salton, !McGill: Information Retrieval) Das hätte vielleicht den Vorteil, dass man mit einer Liste von Stoppwörtern arbeitet, die sich aus dem Corpus ergibt. Ab bzw. bis zu welcher Häufigkeit ein Wort im mittleren Häufigkeitsbereich liegt ist allerdings schwierig zu bestimmen. 
+
+---++19.04.2007
+---+++Extraktion der Features von Kim et al.
+Das System ist nun soweit, die 3 besten Features von Kim in eine arff-Datei zu exportieren. Zur Bestimmung der Lemmata wurde !TreeTagger verwendet.
+
+---++14.04.2007
+---+++ !ReviewInformation
+Beim Type !ReviewInformation habe ich die Länge wieder entfernt. Sie als Feature zu führen ist nicht notwendig, da sie direkt aus dem Document-Text hervorgeht.
+
+---+++ !HtmlDetagger
+Da die Länge eines Reviews ohne die enthaltenen HTML-Tags bestimmt werden soll, habe ich einen kleinen HTML-Detagger geschrieben. Dabei wird eine neue Sicht (view) zur Rezension hinzugefügt, bei der alle HTML-Tags entfernt sind.
+
+---++11.04.2007
+---+++ Amazon Collection Reader
+Habe einen Collection Reader für die Anbindung der Amazon-Datenbank an UIMA geschrieben. Als Parameter können Filter (z.B. minimaler und maximaler Wert der Anzahl der Bewertungen) für die Datenbankabfrage gesetzt werden. Als !DocumentText wird die Rezension an sich gesetzt. Des Weiteren werden CAS Metadaten hinzugefügt. Diese werden im Objekt !ReviewInformation, das von Annotation abgeleitet ist, gespeichert. Näheres gibt es unter UnstructuredInformationManagementArchitecture.
+
+---+++ HTML Annotator
+Mein erster Annotator ist fertig. Juhuu! Er markiert HTML-tags. Der benutzte reguläre Ausdruck ist: "<[^>]+>"
+
+---++03.04.2007
+---+++ Weitere Überarbeitung der API
+Die API wurde weiter überarbeitet  (s. DatenbankEntwurf). set-Methoden wurden entfernt, da sie nicht benötigt werden. Des Weiteren habe ich Null Objects eingeführt, die die Handhabung von Objekten mit fehlenden Daten (z.B. Customer ohne Customer ID) erleichtern. Die Implementierung ist dadurch denke ich eleganter.
+
+---++02.04.2007
+---+++ Überarbeitung der API
+Habe die API wie besprochen geändert und etwas "objektorientierter" gemacht (s. DatenbankEntwurf). Die Änderungen waren zwar relativ aufwendig, aber ich denke der Mühe Wert.
+---+++ Kopieren von Amazon-Daten in die lokale Datenbank
+Die Amazon-Daten können jetzt mit einem einfachen Befehl in eine lokale Datenbank kopiert werden:
+<verbatim>
+java -jar Amazon.jar <props.xml> <BrowseNode>
+</verbatim>
+Hierbei gibt props.xml die Konfigurationsdatei an, in der die Zugriffsdaten für Amazon und die Datenbank stehen. !BrowseNode gibt die Nummer der Kategorie an. 
+
+
+---++ 28.03.2007
+---+++ Wort im Wörterbuch nachschlagen
+Hab eine kleine Methode geschrieben, mit der ein Wort im [[http://wordnet.princeton.edu/ !WordNet]]-Wörterbuch nachgeschlagen wird. Wenn das Wort existiert wird true zurückgegeben. Die Methode kann dann später für das _stemming_ verwendet werden.
+
+---++ 18.03.2007
+---+++ Test mit Mobile Phones
+Habe noch eine Methode geschrieben, bei der nur eine Browse Node als Parameter angegeben werden muss. Die Informationen über Produkte, deren Rezensionen sowie den Autoren werden dann automatisch von Amazon geholt und in die Datenbank geschrieben. Zur Abwechslung habe ich zum Testen PDA Phones (Browse Node: 864136) genommen. Hat alles super funktioniert :-)
+
+---++ 17.03.2007
+---+++ Gültigkeit von ASIN und Browse Node
+Ich habe mal geschaut, ob es eine Möglichkeit gibt, die Gültigkeit einer ASIN oder Browse Node vor einer Anfrage zu überprüfen. Leider habe ich nichts in dieser Hinsicht (Prüfsumme o.ä.) entdeckt. Ist die ASIN oder Browse Node ungültig erhält man allerdings bei einer Anfrage an den Amazon Web Service eine Fehlermeldung, die dann eine Exception wirft. Ich denke, so ist es auch in Ordnung.
+
+---++ 15.03.2007
+---+++ Einlesen der MP3-Player Daten
+Die Informationen über die MP3-Player und deren Rezensionen wurden in die Datenbank eingelesen. Insgesamt sind es 1309 Produkte und 28663 Rezensionen (doppelte bereits entfernt). Beim Einlesen wurde die folgenden Browse Nodes verwendet:
+| *Beschreibung* | *Browse Node* |
+| Hard Drive-Based | 15752041 |
+| Flash Drive-Based | 15752081 |
+
+---++ 14.03.2007
+---+++ Cui et al.: _Comparitive Experiments on Sentiment Classification for Online Product Reviews_ [Cui2006]
+Hab mir heute mal die Arbeit von Cui et al angesehen. Die Arbeit ist recht interessant, insbesondere, dass festgestellt wurde, dass n-Grammen (mit n=3,4,5,6) bessere Klassifikationsergebnisse erzielt werden als mit Uni- oder Bigrammen. Ich weiß allerdings noch nicht, ob das für meine Arbeit relevant sein kann.
+Interessant sind auch die vorgestellten 3 Klassifizierer, insbesondere PA, der gegenüber SVM den Vorteil hat, online zu arbeiten. Allerdings klassifiziert er binär, so dass er je nach task definition in Betracht gezogen werden kann.
+---+++ Verzögerung bei der Übertragung der MP3-Player Daten
+Zur Zeit lade ich die Informationen über MP3-Player und deren Rezensionen in die Derby-DB. Das an sich dauert leider sehr lange, was vor allem daran liegt, dass Amazon nur 1 Anfrage pro Sek. zulässt. Dummerweise ist heute auch deren Webservice für einige Zeit ausgefallen. Ich hoffe aber sehr, dass bis Freitag alle Daten geladen sind.
+
+---++12.03.2007
+---+++Einlesen der Digitalkamera-Daten
+Das Einlesen der Digitalkamera-Daten sowie der zugehörigen Rezensionen ist abgeschlossen. Insgesamt wurde 1668 Digitalkameras registriert und 29514 Rezensionen, wobei hier doppelte bereits herausgefiltert wurden. Verwendet wurden die folgenden Browse Nodes:
+| *Beschreibung* | *Browse Node* |
+| 2 to 2.9 Megapixels | 499058 |
+| 3 to 3.9 Megapixels | 1067692 |
+| 4 to 4.9 Megapixels | 1067694 |
+| 5 to 5.9 Megapixels | 3017951 |
+| 6 Megapixels & Up | 12942391 |
+
+---++09.03. - 06.03.2007
+Habe Methoden zum Auslesen der Amazon-Daten geschrieben sowie zum Einlesen dieser in eine lokale Datenbank. Habe allerdings noch immer Speicher-Probleme. 
+<verbatim>
+java.lang.OutOfMemoryError: Java heap space
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+</verbatim>
+Ich werde wohl das Einlesen in mehreren Schritte machen müssen.
+
+Anmerkung: Im embedded mode gab es bisher keine Probleme.
+
+---++05.03.2007
+Informationen zum Amazon Web Service hinzugefügt (s. AmazonECommerce) sowie zur Datenbank-Definition.
+
+---++02.03.2007
+---+++Verbesserung des DB-Entwurfs
+Nach dem heutigen Treffen mit Markus habe ich den Datenbankentwurf angepasst. Er ist jetzt zu finden unter AmazonDatenbank.
+---+++Produktdaten von Amazon.com
+Habe die Produktdaten von Digitalkameras von Amazon.com aus gelesen und mal in eine [[http://www.kai4all.de/AssessingReviews/Amazon/Products.txt Textdatei]] gespeichert. Die Liste enthält allerdings leider auch einige Zubehörteile. Amazon scheint da seine Daten nicht sauber zu trennen.
+
+---++01.03.2007
+---+++ ERM-Diagramm für die Amazon-Datenbank
+Habe ein [[http://www.kai4all.de/AssessingReviews/Datenbankentwurf/Datenbank-ERM3.jpg ERM]] für die Amazon-Daten mal erstellt. Die dazugehörige Erstellung der Tabellen könnte so aussehen:
+<verbatim>
+create table Product (
+  	ASIN CHAR(10) NOT NULL PRIMARY KEY,
+	Titel VARCHAR(50),
+	Manufacturer VARCHAR(30),
+	AverageRating DECIMAL(2,1),
+	SalesRank INTEGER,
+	TotalReviews INTEGER,
+	Features LONG VARCHAR,
+	EditorialReview LONG VARCHAR
+);
+create table Customer (
+	CustomerID VARCHAR(14) NOT NULL PRIMARY KEY,
+	TotalReviews INTEGER,
+	AverageRating DECIMAL(2,1),
+	TotalVotes INT,
+	HelpfulVotes INT
+);
+create table Review (
+	ASIN CHAR(10),
+	CustomerID VARCHAR(14),
+	Date DATE,
+	Rating DECIMAL(2,1),
+	Summary VARCHAR(50),
+	Content long VARCHAR,
+	TotalVotes SMALLINT,
+	HelpfulVotes SMALLINT,
+	Helpness FLOAT,
+	FOREIGN KEY (ASIN) REFERENCES Product (ASIN),
+	FOREIGN KEY (CustomerID) REFERENCES Customer (CustomerID)
+);
+</verbatim>
+
+---++28.02.2007
+---+++ !ReviewPage bei !CustomerContentLookup und viele Reviews
+Manche Kunden haben sehr viele Reviews geschrieben, wie z.B. Kunde !A2MQQI4UYT9C11. Dieser hat 129 Reviews geschrieben, die auf 13 !ReviewPages verteilt sind. Da jedoch der Parameter !ReviewPage bei der Operation !CustomerContentLookup nur Werte von 1 bis 10 annehmen darf, können gar nicht alle Reviews abgerufen werden.
+
+Bei einem !ItemLookup gibt es hingegen offenbar keine Probleme. Obwohl laut Spezifikation !ReviewPage hier nur Werte zwischen 1 und 20 annehmen darf, sind auch größere Werte unproblematisch.
+---+++Extraktion der "Technical Details" vom Amazon E-Commerce Service
+Leider ist es möglich, nur einige "Technical Details" zu einem Produkt zu extrahieren und nicht alle, die man auf der Webseite (nachdem man darauf kllickt) sieht. (s.a. http://developer.amazonwebservices.com/connect/thread.jspa?messageID=42837&#42837)
+
+---++27.02.2007
+---+++ _Hu, Liu: Mining Opinion Features in Customer Reviews_ (Hu2004a)
+Auch in diesem Paper werden Techniken vorgestellt, Produkteigenschaften, über die ein Kunde berichtet, zu extrahieren, sowie zu erkennen, ob dieser eine positive oder negative Meinung zu dieser Produkteigenschaft hat. Da in der Arbeit evtl. Produkteigenschaften extrahiert werden müssen, ist natürlich ersteres vor allem interessant. Die Extraktion einer Produkteigenschaft wird mit Hilfe eines Assoziationsregellerners gemacht. Eine genauere Beschreibung folgt noch, falls dieser Ansatz in der Arbeit Verwendung finden sollte.
+---++24.02.2007
+---+++ _Yi et al.: Sentiment Analyzer: Extracting Sentiments about a Given Topic using Natural Language Processing Techniques_ (Yi2003)
+In dieser Arbeit wurde u.a. ein Algorithmus entwickelt, der Fachbegriffe herausfiltert. Das könnte insofern interessant sein, wenn eine Referenzliste benötigt wird, auf die zurückgegriffen wird, um zu sehen, auf wie viele Eigenschaften eine Rezension eingeht. Andererseits existiert eine solche Liste (wenn auch nicht vollständig) bei einigen Produkten bei Amazon.com.
+---+++ _Wang et al.: A Semantic Classification Approach for Online Product Reviews_ (Wang2005)
+Wie bei [Hu2004] oder [Yi2003] wird hier versucht, eine Rezension nach ihrer Ausrichtung zu klassifizieren, dies allerdings satzweise. Verwendung findet dabei ein Naive Bayes Klassifikator. Außerdem wird eine Liste mit Adjektiven angegeben, mit deren Hilfe Sätze klassifiziert werden können.
+
+---++ 23.02.2007
+---+++ _Hu, Liu: Mining and summarizing customer reviews_ (Hu2004)
+Die Arbeit von Hu und Liu hat zum Ziel, die Kundenrezensionen eines Produktes zusammenzufassen. Dabei werden die Produkteigenschaften, auf welche die Kunden während ihrer Rezension eingegangen sind, herausgefiltert. In einem nächsten Schritt wird versucht herauszufinden, welche Meinung (positiv, negativ) zu einer Produkteigenschaft geäußert wurde.
+
+Meinungen interessieren den Leser einer Rezension zweifelsohne, denn aus diesem Grunde liest er sie. Daher wäre es denkbar, bei einer Rezension nach Produkteigenschaften und Meinungswörter zu suchen und als Bewertungskriterium heran zuzuziehen.
+
+---+++ Liste potentieller Merkmale
+Ich habe damit begonnen eine Liste der Merkmale, die zur Bewertung einer Rezension herangezogen werden könnten, zu erstellen. Sie leitet sich zum einen aus der Literatur ab und zum anderen aus eigenen Ideen.
+
+---+++ _Dave et al.: Mining the Peanut Gallery: Opinion Extraction and Semantic Classification of Product Reviews_ (Dave2003)
+In dieser Arbeit geht es u.a. darum, Kundenrezensionen zu klassifizieren ob sie positiv oder negativ sind. Dazu wird eine Liste von Features erstellt (n-Gramme) mit hohem information gain. Die Verwendung solcher n-Gramme zur Bewertung der Nützlichkeit einer Rezension könnte erfolgsversprechend sein, denn sind sie ein Maß dafür, ob der Rezensent eine positive oder negative Meinung über das Produkt hat. Bei Kim et al. wurde dies über die vergebenen Sterne bestimmt (STR1) und dies mit gutem Ergebnis. So gesehen könnten n-Gramme mit hohem Informationsgewinn Verwendung finden.
+
+---++ 21.02.2007
+---+++ _McCallum, Peterson: Computer-based readablility indexes_ (!McCallum1982)
+In der Arbeit von !McCallum und Petersen werden ähnliche Merkmale wie bei der Essay-Bewertung verwendet. Es geht in der Arbeit allerdings nicht um die Bewertung eines Essays, sondern um die Bewertung der Lesbarkeit. Da auch Rezensionen lesbar sein sollten, habe ich diese Arbeit mit aufgenommen.
+
+---++ 19.02.2007
+---+++ Titel für Diplomarbeit
+Folgende mögliche Titel für die Diplomarbeit sind mir bisher eingefallen:
+   * Entwicklung eines Systems zur Bewertung von Kundenrezensionen
+   * Entwicklung eines Systems zur automatischen Bewertung von Kundenrezensionen
+   * Automatically Assessing the helpfulness of customer reviews
+   * Automatically Assessing Review Helpfulness of Amazon Product Reviews
+
+---+++ _Page: Statistical and linguistic strategies in the computer grading of essays_ (Page1967)
+Bemerkung am Rande: Ich werde die Zusammenfassungen nicht mehr im Blog posten, damit die Sache hier übersichtlich bleibt. Stattdessen sind sie immer in der aktuellen Version der Ausarbeitung der Diplomarbeit nachzulesen (zu finden unter http://www.kai4all.de/AssessingReviews/Ausarbeitung.pdf). An Stelle der Zusammenfassungen poste ich hier evtl. Probleme und Fragen.
+
+Die Arbeit von Page war schon recht aufschlussreich (einfache features erzielen bereits gute Ergebnisse), auch wenn ich mir einige zusammensuchen musste. Das lag einfach daran, dass ich an einige Texte nicht rankomme (WantedPapers). 
+
+---+++ _Attali, Burstein: Automated essay scoring with e-rater v.2_ (Attali2006)
+Diesen Text fand ich schon etwas schwieriger zu verstehen. Dass lag zum einen daran, dass ich manchmal Schwierigkeiten hatte die passende Übersetzung zu finden (z.B. _mechanics_). Des Weiteren ist es schwierig nachzuvollziehen, wie die features erstellt werden und was sie abdecken, denn darüber gibt es so gut wie keine Informationen.
+
+---++ 13.02.2007
+Hallo Markus. Wollte dir nur mitteilen, dass sich die Literaturarbeit etwas verzögert, da ich krank im Bett liege. Ich hoffe aber, dass ich bald wieder auf den Beinen bin.
+
+---++ 09.02.2007
+---+++ _Callear et al.: Bridging Gaps in Computerised Assessment of Texts_ (Callear2001)
+Die Arbeit gibt einen kurzen Überblick über drei bedeutsame Textbewertungssysteme und kritisiert, dass bei allen die Bewertung des Inhalts nicht durchgeführt wird, da die Reihenfolge der Wörter nicht betrachtet wird.
+
+Project Essay Grade (PEG)
+Über PEG wird berichtet, dass die Reihenfolge der Wörter nicht betrachtet wird. Trotzdem stimmen die Bewertungen mit den menschlichen zu ca. 80% überein. PEG bewertet vor allem oberflächliche Eigenschaften eines Essays. Dazu zählen die Anzahl der Kommas, Anzahl der Semikolons, die durchschnittliche Anzahl der Wörter usw. PEG zeigt gute Ergebnisse bei der Bewertung ist jedoch nicht brauchbar, so wird kritisiert, wenn der Inhalt des Textes sehr wichtig ist.
+
+Intelligent Essay Assessor (IEA)
+IEA benutzt die sogenannte Latent Semantic Technik. Es wird kritisiert, dass die Grammatik und Reihenfolge der Wörter nicht betrachtet werden.
+
+Electronic essay rater (e-rater)
+e-rater führt eine syntaktische Strukturanalyse durch. Dabei werden die Anzahl der Komplementsätze (complement clauses) (auch: Objektsätze), Anzahl der Nebensätze (subordinate clauses), Anzahl der erweiterten Infinitive (infinitive clauses), Anzahl der Relativsätze (relative clauses), Anzahl der konjunktivischen modalen Hilfsverben (subjunctive modal auxiliary verbs) etc.
+Die Übereinstimmung mit der menschlichen Bewertung liegt bei 87%-94%. 
+
+Zum Schluss des Textes wird ein Prototyp names Automated Text Marker (ATM) vorgestellt, mit dessen Hilfe Prüfungsantworten mit denen eines Experten verglichen und bewertet werden. Dazu werden beide in kleine Einheiten aufgeteilt, um so die Bedeutung besser zu erfassen und zu vergleichen.
+
+Anmerkung: Ich denke gerade PEG und e-rater könnten in Hinblick auf die Bewertung der Rezensionen wertvoll sein.
+
+---++ 08.02.2007
+---+++ _Valenti et al.: An Overview of Current Research on Automated Essay Grading_ (Valenti2003)
+Die Arbeit gibt einen guten Überblick den Forschungsstand im Jahr 2003. Für die Diplomarbeit ist die Arbeit ansich jedoch kaum zu gebrauchen, da sie zu oberflächlich bleibt. Interessant ist jedoch, dass sie die Techniken der jeweiligen Bewertungsansätze für Essays zeigt. Dabei gibt es hauptsächlich 2 Gruppen, nämlich "statistical" und "NLP". Die Arbeit von Kim et al. (_Kim 2006_) folgt einem statistischen Ansatz. Da stellt sich die Frage, ob wir in dieser Richtung bleiben. Dann würde sich die Literatursuche auf statistischen Analyseansätzen beschränken.
+
+---++ 07.02.2007
+---+++ _Kim et al.: Automatically Assessing Review Helpfulness_ (Kim2006)
+In den letzten Tagen habe ich die Arbeit von _Kim et al.: Automatically Assessing Review Helpfulness_ (_Kim2006_) gelesen und zusammengefasst. Einige Dinge sind mir jedoch nicht ganz klar:
+   * Ist auf S. 3 eine falsche tf-idf Formel angegeben? Jedenfalls weicht sie von der üblichen, wie z.B. bei Jurafsky ab.
+   * Die Argumentation SVM Regression vs. SVM Ranking auf S. 4 ist mir nicht ganz klar (aber für die DA vermutlich auch gar nicht so wichtig). Es werden folgende Argumente für SVM Regression gebracht:
+      * _the helpfulness function provides non-uniform differences between ranks in the training set_
+Versteh ich leider nicht :-(
+      * _many products have only one review, which can serve as training data for SVM Regression but not SVM Ranking_
+Das Argument ist verständlich aber bei der Arbeit doch gar nicht relevant, da zum einen nicht einzelne Produkte sondern Produktgruppen betrachtet werden und zum anderen Produkte mit weniger als 5 Reviews sowieso ausgefiltert werden.
+      * _in large sites such as Amazon.com, when new reviews are written it is inefficient to re-rank all previously ranked reviews_
+Ok, ein Argument für die praktische Anwendung.
+   * S. 5: _10% of products for both datasets were withheld as development corpora_
+Warum werden 10% zurückgehalten?
+
+**MW:** Wenn man mit statistischem machine learning arbeitet, hat man immer das Problem, die Qualität der Ergebnisse zu beurteilen. Naheliegend ist, dazu die verfügbaren, schon gelabelten Daten zu verwenden. Daraus ergibt sich eine Aufteilung in Training- und Testdatensatz. Man entwickelt und trainiert das System auf dem Trainingsdatensatz, um dann die Evaluation auf dem Testdatensatz durchzuführen. Allerdings ist die Aufteilung oft willkürlich, was allerlei merkwürdige Effekte produzieren kann: Wenn z.B. der Testdatensatz eine andere Verteilung der Daten enthält. Beispiel Spam Filter: Man kann z.B. auf einem Datensatz mit 90% SPAM trainieren, aber auf einem mit nur 70% testen. Das macht dann die Evaluation eher nutzlos.
+
+Oft ist es besser, auf Cross Validation zu setzen: Man teilt die Daten in k Segmente. Dann trainiert man auf allen bis auf ein Segment und testet auf dem ausgelasenen. Das macht man für alle k Segmente. Man nennt das *k-fold crossvalidation*. Sinnvollerweise wird man beim bestimmen der Segmente darauf achten wollen, dass die vorherzusagenden Label darin gleich verteilt sind (nicht gleichverteilt!). Das nennt man dann *stratified k-fold crossvalidation*. Setzt man k auf die Anzahl der Datenpunkte, nennt man das "Leave one out bound". Es lässt sich zeigen, dass dies die beste Abschätzung des sogenannten Generalisierungsrisikos ist. Details dazu findest Du (recht mathematisch) in Schölkopf / Smola: Learning with kernels in Kapitel 7.3, in meiner Ausgabe ab Seite 197 und insbesondere in Kapitel 12.2 ab Seite 367.
+
+**KMH:** Danke für die ausführliche Antwort! Bei Jurafsky (_Jurafsky2000, S. 204_) habe ich auch noch was zum Thema _development corpora_ gefunden. Dort wird von einem _development test set_ gesprochen. Wenn ich es jetzt richtig verstehe, werden bei _Kim2006_ 10% der Daten (das _development test set_) zurückgehalten, um z.B. die Parameter der SVM zu "tunen". Das klingt plausibel, denn so wird erreicht, dass die Testergebnisse "fair" bleiben und nicht aus einer geschickten Wahl der SVM-Parameter resultieren. Die übrigen 90% der Daten werden schließlich zur 10-fold crossvalidation verwendet.
+
+%META:FILEATTACHMENT{name="ea3-gruen-1360x768.jpg" attachment="ea3-gruen-1360x768.jpg" attr="" comment="Mundobild" date="1170238280" path="ea3-gruen-1360x768.jpg" size="130612" stream="ea3-gruen-1360x768.jpg" user="Main.MarkusWeimer" version="1"}%

@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="ElifTekes" date="1251906330" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ElifTekes"}%
+---++Problems with JWKTL
+      I can't seem to get WordEntry.getAllTranslations() to work. What I'm trying is to modify WiktonaryCli.java so that it gives me the translation of the input instead of the entire entries. 
+      The part that's giving me problems looks like this: 
+      
+for(WordEntry we : wordEntries){
+  List<String> translations = we.getAllTranslations(Language.GERMAN);
+    if(translations==null || translations.size()==0) {
+      System.out.println("No translations in Wiktionary for this word.");
+    }
+
+I've also attached the whole file. 
+
+   It gives me a NullPointerException at the line "List<String> translations = we.getAllTranslations(Language.GERMAN);"
+   Exception in thread "main" java.lang.NullPointerException
+	at java.util.ArrayList.addAll(Unknown Source)
+	at de.tudarmstadt.ukp.wiktionary.api.entry.WordEntry_Impl.getAssignedTranslations(Unknown Source)
+	at de.tudarmstadt.ukp.wiktionary.api.entry.WordEntry_Impl.getAllTranslations(Unknown Source)
+	at WiktionaryCli.main(WiktionaryCli.java:48)
+
+
+
+---++Exceptions with MMAX
+Resolved
+
+-- Main.ElifTekes - 06 Jul 2009
+   * [[%ATTACHURL%/WiktionaryCli.java][WiktionaryCli.java]]: Modified version of the original WiktionaryCli.java that came with the JWKTL
+
+%META:FILEATTACHMENT{name="WiktionaryCli.java" attachment="WiktionaryCli.java" attr="" comment="Modified version of the original WiktionaryCli.java that came with the JWKTL" date="1251906192" path="WiktionaryCli.java" size="1909" stream="WiktionaryCli.java" tmpFilename="/var/tmp/CGItemp60640" user="ElifTekes" version="1"}%

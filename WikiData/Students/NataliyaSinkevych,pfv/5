@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="ChristophMueller" date="1206023326" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Treffen am 10. März (NS, MCM)
+   * Crawling von PW ist soweit abgeschlossen, Daten liegen vor
+   * Problem: Die meisten Services verwenden das SOAP-Protokoll, welches von der aktuellen Version des WSDL-Readers nicht vollständig gelesen werden kann. Vergleiche
+      * [[%ATTACHURL%/out_http.html][out_http.html]]: out_http.html
+      * [[%ATTACHURL%/out_soap.html][out_soap.html]]: out_soap.html
+   * Die Eingabeparameter im SOAP-Protokoll sind 'complex', können aber nicht analysiert werden. Im HTTP-Protokoll sind mehrere Eingabeparameter einzeln aufgeführt.
+   * @action(MCM): Checken, ob Reader modifiziert werden kann um auch SOAP zu lesen. (Die bisher verwendeten Datensätze hatten hauptsächlich HTTP verwendet, daher war die Einschränkung bisher kein Problem).
+
+---++ Treffen am 20. März (NS, MCM)
+   * Auslesen von XML-Schema funktioniert jetzt (bisher noch im eigenständigen Programm)
+   * Keine Arbeit investieren in die Verarbeitung nicht-wohlgeformter WSDL-Dateien!
+   * Nächste Schritte:
+      * UIMA installieren
+      * Parametrisierbare Methode zum Schema-Parsen schreiben (max. Rekursionstiefe 2)
+      * Existierenden WSDLReader um Schema-Unterstützung ergänzen
+
+-- Main.ChristophMueller - 15 Feb 2008
+   * [[%ATTACHURL%/Statusmeeting_NS_270208.ppt][Statusmeeting_NS_270208.ppt]]: Statusmeeting 20080207
+
+
+
+%META:FILEATTACHMENT{name="Statusmeeting_NS_270208.ppt" attachment="Statusmeeting_NS_270208.ppt" attr="" comment="Statusmeeting 20080207" date="1204103267" path="Statusmeeting_NS_270208.ppt" size="535552" stream="Statusmeeting_NS_270208.ppt" user="Main.NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="CrawlerProgrammableWeb_Datensammlung_Auswahl.zip" attachment="CrawlerProgrammableWeb_Datensammlung_Auswahl.zip" attr="" comment="Crawler, gesammelte Daten bzw. WSDL-Files, Auswahl" date="1205141272" path="CrawlerProgrammableWeb_Datensammlung_Auswahl.zip" size="1602110" stream="CrawlerProgrammableWeb_Datensammlung_Auswahl.zip" user="Main.NataliyaSinkevych" version="1"}%
+%META:FILEATTACHMENT{name="out_http.html" attachment="out_http.html" attr="" comment="" date="1205250777" path="out_http.html" size="561565" stream="out_http.html" user="Main.ChristophMueller" version="1"}%
+%META:FILEATTACHMENT{name="out_soap.html" attachment="out_soap.html" attr="" comment="" date="1205250796" path="out_soap.html" size="988059" stream="out_soap.html" user="Main.ChristophMueller" version="1"}%

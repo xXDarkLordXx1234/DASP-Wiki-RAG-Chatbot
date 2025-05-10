@@ -1,0 +1,112 @@
+%META:TOPICINFO{author="NicoErbs" date="1340370539" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="PedocsKeyphraseExtraction"}%
+---+++ Extraktion & Evaluation
+
+---++++ KEA
+Zeitlich ungeeignet bis Montag.
+
+Dauert zu lang und zu viel Ressourcenverbrauch für lange Dokumenten wie in Pedocs. Extraktion der Modelle stürzte ab nach 10,7 Stunden laufen wegen java.lang.OutOfMemoryError: Java heap space (max. zu 3,5GB gesetzt). 
+
+---++++ Tfidf
+
+*Versuch1: schlecht*
+
+Konfiguration: 
+   * Preprocessing: BreakIteratorSegmenter, TreeTaggerPosLemmaTT4J, XmiWriter, TfidfConsumer (FeaturePath=Lemma)
+   * Extraktion & Evaluation: XmiReader, SimpleSegmenter, CandidateAnnotator (FeaturePath=Lemma), StopwordFilter (punctuations), Candidate2KeyphraseConverter, KeyphraseMerger (length=2), StopwordFilter (de_stopwords), TfidfAnnotator (FeaturePath=Lemma, TfWeighting=log+1, IdfWeighting=log), TfidfRanking (aggregate=max), KeyphraseWriter, KeyphraseEvaluator (n=0, eval_type=Lemma, immer die beste 10 Keyphrases)
+
+Evaluation:
+<verbatim>
+# gold keyphrases:           35119
+# gold keyphrases (deleted): 11777
+ratio:                       0.664654460548421
+
+avg. R-Precision (All):      0.010563241266477228
+avg. R-Precision (Non-Zero): 0.0
+
+
+Micro P/R/F Overview
+k	P	R	F	
+5	0.011	0.008	0.009	
+10	0.010	0.013	0.011	
+15	0.010	0.013	0.011	
+
+Macro P/R/F Overview
+k	P	R	F	
+5	0.011	0.011	0.010	
+10	0.010	0.020	0.012	
+15	0.010	0.020	0.012	
+</verbatim>
+
+
+Beispielextraktions:
+954:
+   * *Gold*: Entwicklungsstörung, Fragebogen, Mutter, Sprachentwicklung, Stress 
+   * *Extracted*: Schaunig, Schaunig et, Ines Schaunig, Eltern-Dimension setzen, eltern-dimension, Eltern-Dimension, Kind-Dimension Eltern-Dimension, Eltern-Dimension Diagnose, elterlich Streßbelastung, Streßbelastung werden
+
+4832:
+   * *Gold*: Bildungsstandards, Deutschland, Fachdidaktik, Leistung, Leistungsmessung, Lerntheorie, Mathematikunterricht, Mathematische Kompetenz, Schweden, Schüler, USA
+   * *Extracted*: NCTM, NCTM Principles, NCTM aus, NCTM werden, NCTM regelmäßig, NCTM und, NCTM durch, NCTM zwar, NCTM darüber, NCTM zu
+
+Problem: 
+   * Nur konzentriert auf einem Hauptwort und die ihre Phrases
+   * Wie viele Keyphrases sollen extrahiert werden?
+   * Keyphrases not lemmatized
+
+------------------------------
+
+*Versuch2: schlecht*
+
+Änderung: lowercase, approximate matching
+
+<verbatim>
+# gold keyphrases:           35119
+# gold keyphrases (deleted): 11777
+ratio:                       0.664654460548421
+
+avg. R-Precision (All):      0.036720586293717807
+avg. R-Precision (Non-Zero): 0.0
+
+
+Micro P/R/F Overview
+k	P	R	F	
+5	0.045	0.030	0.036	
+10	0.039	0.053	0.045	
+15	&#65533;	&#65533;	0.000	
+
+Macro P/R/F Overview
+k	P	R	F	
+5	0.045	0.043	0.040	
+10	0.039	0.071	0.046	
+15	0.000	0.000	0.000	
+</verbatim>
+
+[[ShuoYangKeyphrasesFehlerAnalyse]]
+
+--------------
+
+*Versuch 3: normal*
+
+<verbatim>
+# gold keyphrases:           35071
+# gold keyphrases (deleted): 11661
+ratio:                       0.6675030652105729
+
+avg. R-Precision (All):      0.17980120531277408
+avg. R-Precision (Non-Zero): 0.0
+
+
+Micro P/R/F Overview
+k	P	R	F	
+5	0.216	0.143	0.172	
+10	0.156	0.207	0.178	
+15	0.125	0.249	0.167	
+
+Macro P/R/F Overview
+k	P	R	F	
+5	0.216	0.165	0.170	
+10	0.156	0.231	0.169	
+15	0.125	0.274	0.158	
+</verbatim>
+
+-- Main.NicoErbs - 2012-06-22

@@ -1,0 +1,180 @@
+%META:TOPICINFO{author="kluge" comment="reprev" date="1363247553" format="1.1" reprev="74" version="74"}%
+%META:TOPICPARENT{name="RolandKluge"}%
+%TOC%
+
+---+++ 2013-03-14 14:00 - 15:00
+
+---++++ Forking SeerSuite:
+
+   * @question(RK) which is the newest version of SeerSuite? Ask WS!
+   * Fundamental question: *to fork or not to fork*?
+   * Latest release online: http://sourceforge.net/projects/citeseerx/files/citeseerx/beta-0.12/
+   * License: Apache 2.0
+   * Pro forking:
+      * full control
+      * a lot of effort has already been put into migrating SeerSuite to Spring (Security) 3.1.0
+      * development at PSU is quite slow, only rare updates (revision 10 in mid 2012, http://citeseerx.sourceforge.net/)
+      * architecture needs some reviews (e.g. use of generics etc.)
+         * SeerSuite (rev. 10) is quite buggy (db queries, web links, etc.)
+         * full of development code - no unit tests etc.
+         * (very) old versions of several libraries/components: Solr
+      * the usual way to use the SeerSuite is forking (??): http://seerseer.ist.psu.edu/, http://chemxseer.ist.psu.edu/, 
+         * @question(RK): how do these guys incorporate updates of SeerSuite?
+      * independence of actual development at PSU 
+         * @action(JEK) what about e-mail response from developers?
+      * ...
+   * Contra forking
+      * duplicate work (in Pennsylvania and in Darmstadt)
+      * no cooperation (possible)?
+      * need a responsible person for maintaining the project
+      * extra effort for making the project open source (which may/may not be sensible)
+      * need for better integration into Maven infrastructure? -> not as much scripting as currently, more user-friendly
+      * Not every change to the user interface will be possible without modifying parts of the source code, e.g. disabling Table/Algorithm search, show/hide citations
+      * ...
+
+---++++ Plugin Concept
+
+   * Plugin points
+      * content boxes - see Keyphrase Extraction, only affects ViewDocController
+      * sections (add information below citations) - see Document Clustering: cluster of document, neighbor clusters, only affects ViewDocController
+      * new sites - see Document Clustering: overview of clusters, overview of keywords, etc.
+      * more?
+   * Content Boxes
+      * =ContentBoxProvider= which delivers instances of =ContentBox= (title; content as HTML)
+      * for the content: use approritate template engine
+   * Sections
+      * =SectionProvider= which delivers instances of =DocumentInformationSection= (title; content as HTML)
+      * for the content: use approritate template engine
+   * Plugin Sites
+      * register new DispatcherServlet for URLS of the form _/plugin/[plugin_name]_
+      * the dispatcher tries to fetch the appropriate Controller for [plugin_name] and redirects the request to it
+   * @question(RK) Can we use Javascript with this approach?
+
+---++++ Todos - Tasks to be done
+
+  * add Kaptcha 2.3.2 to Maven Artifactory
+  * start Tomcat instances from Eclipse (two instances for Solr+Axis and SeerSuite)
+
+---+++ 2013-02-18 Notes
+
+   * Inform about Vivo
+   * Are all titles in imported Pedocs data unique?
+      * =SELECT COUNT( title ) FROM `papers`= -> 3409
+      * =SELECT DISTINCT COUNT( title ) FROM `papers`= -> 3409
+
+---+++ 2013-01-10 Notes
+
+   * How does the DOI server work?
+   * How does the Solr indexer work?
+
+---+++ 2012-11-02 Notes
+
+   * get to run on VM
+      * SVN checkout
+      * install maven: sudo apt-get install maven2
+      * (potentially install JDK)
+      * mvn dependency:resolve (don't forget to use an appropriate settings.xml for accessing DKPro resources)
+   * What are Seersuite clusters for?
+   * Presentation:
+      * (Short intro into Seersuite) already known
+      * Seersuite architecture: quick intro
+      * Annotated Bibliography considered known
+      * What did I need to do for implementing Keyphrases?
+      * Talk: 20 min - Discussion: 10 min
+
+---+++ 2012-10-26 Notes
+
+   * pedocs data
+   * get to run on virtual machine
+
+---++++ Questions
+
+   * UKP-specific header for source code?
+      * copy from DKPro classes
+   * web interface necessary for generating Keywords? *NO*
+   * Perhaps disintegrate keyphrase generation from citeseerx? *NO*
+   * Keyphrases -> semi-automatic tagging? *Later*
+   * How to access seersuite.ukp...
+   * May we omit solrTable and solrAlgorithm?
+
+---+++ 2012-08-31 Notes
+
+---++++ Open
+
+   * Read annotated_bibliography
+   * "Clustered Documents": purpose?
+
+---++++ Done
+
+   * Test jars (located at public-ext-releases-local):
+      * com.nexus.kaptcha:kaptcha:2.0
+      * org.archive.crawler:heritrix:1.14.2
+      * de.nava.informa:informa:0.6.5
+      * com.advsofteng:ChartDirector.jar:5.0.x
+      * uk.ltd.getahead:dwr:1.1.4
+   * Does there exist a admin interface? *Seemingly not*
+   *  Make MyCiteseerX run
+      * locally
+      * What about Captcha problems? Deactivation possible?
+   * Make Statistics run
+   * Scripts for starting/stopping tomcat from shell
+   * Keywords Showcase
+      * Tool generates keywords for all documents
+      * Keywords are show inside a box next to the document (just like BibTeX refs)
+      * How to integrate into MyCiteseerX?
+
+---+++ 2012-08-10 Notes
+
+---++++ Mid-term goals (Use Cases)
+   *  As a researcher, I want to semiautomatically tag documents which have not been tagged manually, yet.
+      * The application provides a set of proposed tags, derived by determining a suitable cluster for the given document.
+      * I may add custom tags.
+   * As a researcher, I want to see proposed documents when I select a specific document.
+      * Proposed documents a somewhat similar to the current document, i.e., they belong to the same cluster and/or have a small distance to it.
+   * As a researcher, I want to see a visualization of the cluster of the current document
+      * The visualization may be integrated in a similar fashion like the Citegraph.
+
+---++++ Outstanding Tasks
+   1 Examine how Algorithm/Table search may be replaced with domain-specific search (-> HowTo)
+   1 Preparations for adding categories to documents
+      * Find appropriate integration into DB (represent hierarchy of categories)
+      * Which new DAOs are required? 
+      * Write HowTo on how to add new SQL queries to the system
+      * explore how cluster visualization may be integrated (like Citegraph)
+      * design database/table (Foreign keys?) -> SQL script
+      * create sample data or wait for Clemens
+   1 _low priority_ Get MyCiteseer to run (locally)
+      * contact Yevgen for information on that 
+   1 SVN repository
+      * check in current version
+      * test checked-in version on another PC
+      * write HowTo for local customization (e.g. scripts...) 
+      * script for localizing repository locations (applicationContext-csx-jdbc.xml)
+   1 Seersuite<->DKPro
+      * How to integrate DKPro functionality into Seersuite (design)
+   1 Reverse engineer database
+      * landscape view of tables and relationships (Wolfgang?)
+
+---++++ Done Tasks
+
+---+++ 2012-07-26 Notes
+
+   * Done Tasks:
+      1 *Cancelled* Convert SIG_KDSL.SeerSuite project to Maven project -> jar file can easily be installed/deployed 
+      1 Preparations for SVN publishing
+         * Create SVN repository at https://scruffy.ukp.informatik.tu-darmstadt.de/svn/third_party/seersuite (Wolfgang?)
+         * Locate all absolute paths
+         * Build a script for adapting seersuite check-out to local setup
+      1 Document Eclipse tooling (Tomcat integration etc.)
+      1 Examine further pipeline steps
+         * *not possible* Configure de.tudarmstadt.ukp.dkpro.core.io.pdf.PdfReader to accept any type of PDF file (not only those prefixed with "[+]" or "[-]" - maybe contact project lead)
+         * "CollectionReader": String to CAS
+         * Extract CAS object at end of the pipeline
+
+---+++ Open Questions
+
+
+-- Main.RolandKluge - 2012-07-23
+
+%META:TOPICMOVED{by="RolandKluge" date="1343381335" from="Hiwi.RolandKlugeOpenQuestions" to="Hiwi.RolandKlugeMeetingsAndNotes"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="RolandKlugeMeetingMinutes"}%

@@ -1,0 +1,120 @@
+%META:TOPICINFO{author="herrlich" comment="" date="1559739887" format="1.1" reprev="5" version="6"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! %TOPIC%
+<div style="float:right; border: solid grey 1px; padding: 0.25em; margin: 0.25em;">
+%TOC%
+</div>
+
+
+<div style="background: red; color: #F8F8F8; border: solid 2px darkred; padding: 5px">
+<p align="center">
+<u>*BETA PHASE!!*</u>
+</p>
+under construction
+</div><br/>
+%TWISTY{ 
+    showlink="Installed software" 
+    hidelink="Hide _Installed software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+%TWISTY{ 
+    showlink="System programs" 
+    hidelink="Hide _System programs_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * wget
+   * gcc
+   * g++
+   * curl
+   * htop
+   * iotop
+   * ncdu
+   * atop
+   * screen
+   * nano
+   * vim
+%ENDTWISTY% 
+
+%TWISTY{ 
+    showlink="developer software" 
+    hidelink="Hide _developer software_" 
+    showimgleft="%ICONURLPATH{toggleopen-small}%" 
+    hideimgleft="%ICONURLPATH{toggleclose-small}%" 
+}% 
+   * gcc
+   * gcc-c++
+   * python3.6
+   * python2
+%ENDTWISTY% 
+
+%ENDTWISTY% 
+
+---++ Principles of Slurm
+Slurm is a job scheduling service. On traditional compute servers (the way we had them at UKP before summer 2019), running compute experiments works by connecting to a specific server, then starting a script with GNU screen or tmux. With Slurm, compute experiments are done by connecting to a headnode where one can submit a compute job into a queue of compute jobs. Slurm prioritizes compute jobs in a way that every user gets his/her share of the compute resources that he/she deserves. If a compute job has a high enough priority and a node (== compute server) with sufficient resources is free, Slurm will automatically start the compute experiment. Once a job finishes, an email notification is sent.
+
+---++ Important things
+   * Server 1: slurm.ukp.informatik.tu-darmstadt.de
+   * Storage path: DON´T USE /home!
+      * ukp -> /ukp-storage-1
+
+---++ My first login
+   1 Log in to slurm.ukp.informatik.tu-darmstadt.de
+
+---++ Fair share
+
+In order to give distribute the compute resources fairly, we employ fair share. FairShare is a score that determines what priority you have in the scheduling queue for your jobs. The more jobs you run, the lower your score becomes, temporarily. A number of factors are used to determine this score:
+
+   * Point 1
+   * Point 2
+
+To find out what your score is, enter =sshare -U= on *wormulon* to see a listing for your group (this is not your individual score, but an aggregate for your group). In general, a score of 0.5 or above means you have higher priority for scheduling.
+
+---++ Slurm job files
+
+Jobs on slurm are started by writing a shell script and then calling it via =sbatch myscript.sh= . The [[https://slurm.schedmd.com/sbatch.html][official sbatch documentation]] describes all parameters that can be used. More examples can be found on the websites of the [[https://www.hhlr.tu-darmstadt.de/hhlr/arbeit_auf_dem_cluster/arbeit_mit_lsf_1/index~1.de.jsp][TU Darmstadt Lichtenberg]] or the [[https://doku.lrz.de/display/PUBLIC/Example+parallel+job+scripts+on+the+Linux-Cluster][Leipzig Rechenzentrum]], or at [[https://www.ch.cam.ac.uk/computing/slurm-usage][Univ Cambridge]].
+   
+You can use place holders in file names to create a different file for e.g. different runs. This could look like =#SBATCH --output=/ukp-storage-1/my_user/myjob.%j.%N.out= . A list of placeholders can be found in the [[https://slurm.schedmd.com/sbatch.html#SECTION_<B>filename-pattern</B>][sbatch documentation]].
+
+---+++ Use GPUs
+
+If you need a GPU for yourself, you can enforce this via =--gres-flags=enforce-binding= . This might improve performance, but might also delay your job to run.
+
+---++++ nvidia-docker
+
+[[https://github.com/NVIDIA/nvidia-docker][nvidia-docker]] is installed on every GPU node. You can use it to run your jobs with a certain CUDA and CUDnn version.
+
+---+++ Use command line arguments
+
+---+++ Interactive sessions and slurm
+
+---+++ Deleting a job
+
+To cancel a job, use =scancel=. You need the running or pending jobid. It is only the job's owner and SLURM administrators that can cancel jobs.
+
+<verbatim>
+$ scancel <jobid>
+</verbatim>
+
+To cancel all your jobs (running and pending) you can run
+
+<verbatim>
+$ scancel -u <username>
+</verbatim>
+
+You get the job id when you submit the job and you can look it up by =squeue -u <username>=. Interactive jobs are cancelled once you close the session, e.g. via =Ctrl + C=.
+
+<blockquote>
+Do not kill/skill =srun= to cancel a SLURM job! This will only remove it from the eyes of slurm while continuing to run.
+</blockquote>
+
+---+++ Interactive slurm
+
+When you want to have an interactive shell on a slurm node, then on *wormulon*, you can run
+
+<verbatim>
+srun --pty bash
+</verbatim>
+
+=srun= accepts the same parameters as you can specify in a batch file, e.g. =srun --gres=gpu:1 --pty bash= would request one GPU.

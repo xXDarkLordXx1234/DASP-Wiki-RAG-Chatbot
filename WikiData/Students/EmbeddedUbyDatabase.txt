@@ -1,0 +1,10 @@
+%META:TOPICINFO{author="eckle" date="1401269615" format="1.1" version="3"}%
+%META:TOPICPARENT{name="AnukiranSolur"}%
+   * http://www.h2database.com/html/cheatSheet.html
+   * delete h2ubylite.trace.db, this file is not necessary
+   * it is crucial that the path is set correctly: <verbatim>jdbc:h2:file:/<YOUR PATH>/h2ubylite.db</verbatim>
+
+
+
+
+-- Main.JudithEckleKohler - 2014-05-28

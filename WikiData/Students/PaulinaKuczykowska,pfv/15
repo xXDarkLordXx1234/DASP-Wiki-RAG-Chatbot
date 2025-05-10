@@ -1,0 +1,99 @@
+%META:TOPICINFO{author="kuczykowska" comment="" date="1701770061" format="1.1" reprev="12" version="15"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis: Predicting Depression Severity from Therapy Dialogues
+
+---++  Week: #12, November 27th - December 3th
+   * fine-tune Misterllite on DAIC and Depressometer (done)
+   * zero-shot on Misterllite for DAIC (done) and Depressometer (wip, some problems mith the length)
+   * optimize HDSC-Basline to work on Depressometer, still not 100& done as HW ressources are missing
+   * make mid-term presentation
+
+---++  Week: #11, November 20th - November 26th
+   * work on Misterlite 32k context size (with Lora & 4-Bit Quantization) (WIP) - goal: zero shor & fine-tuning
+   * create mid-term presentation (WIP)
+   * implement random and majority class baselines
+   * optimize Hierarchical Depression Symptom Classifier to get it run for Depressometer (WIP)
+   * get familiar with Landmark Attention (LA) code/paper
+   * create input for LA 
+
+---++  Week: #10, November 13th - November 19th
+   * run experiments for depression severity prediction for Depressometer on Unlimifromer
+   * run a baseline model (Hierarchical Depression Symptom Classifier) for DAIC 
+   * the above models fail bc of OOM errors on Depressometer dataset
+   * make visual analysis for Depressometer 
+   * FIX: correct implementation errors in SLED!
+   * write thesis
+
+---++  Week: #9, November 6th - November 12th
+   * implement metrics for Unlimiformer
+   * run experiments for depression severity prediction for DAIC Unlimiformer
+   * run experiments for depression severity prediction for Depressometer on SLED
+   * check out some baseline models (without success?)
+   * implement scripts to automate evaluation (prediction) runs
+
+---++  Week: #8, October 30th - November 5th
+   * run and evaluate experiments for depression severity prediction for DAIC on SLED
+   * finish creation of the Depressometer data set 
+   * set structure for the thesis
+   * implement scripts to automate experiment runs
+
+---++  Week: #7, October 23th - 29th
+   * create BIU data set (WIP) (see data section)
+   * write thesis 
+   * fine-tune SLED model for binary depression prediction & evaluate on dev and test data set
+   * implement and test new f1 metric on Seq2Seq for classification
+   * implement new mae, rmse metric on Seq2Seq for regressoin (wip)     
+
+---++  Week: #6, October 16th - 22th
+   * work on mpi data - correct assignment video to ptp (wip for later)
+   * create (multiple) DAIC datasets, run SLED on them and evaluate (dev ds only) (classification and quasi-regression done)  
+
+---++  Week: #5, October 9th - 15th
+   * run simple BERT for daic 
+   * work on MPI data set:
+      * copy labels data from ownCloud to the cluster
+      * create a set of unique ptps (wip)
+      * group sessions per ptp (visualize as bar diagram)
+
+---++  Week: #4, October 2th - 8th
+   * run fine-tuning for SLED on an example data set (seems to work)
+   * run fine-tuning for SLED on a DAIC data set (pro question) - wip
+   * create data visualizations
+   * MPI data set: get access to the output data (access there, but data still not on the cluster) 
+   * MPI: create environment etc and run first model (was killed after one day bc of time limits)
+   * MPI data set: try to create a data set  
+
+---++  Week #3, September 25th - October 1th
+   * Literatur Review on Depression Severity prediction
+   * Process DAIC data (create train and test data sets in HF format)
+   * First look (access since few days) at MPI data
+   * Re-engineering SLED to understand the correct data preparation for fine-tuning (wip)
+
+---++  Week #2, September 18th - 24th
+   * Writing and Literatur Review (wip) on:
+      * Text Classification
+   * Run SLED (locally)
+   * Connect to slurm, download all code bases 
+   * Applied for Datasets
+
+---++  Week #1, September 11th - 17th
+   * Literatur Review (wip) on:
+      * Text Classification
+      * Depression Severity Prediction 
+      * Long(ish) Text Processing
+      * SOTA Language Models
+   * Problem: none of the models considered (SLED, Unlmiformer, Landmark Attention) supports pure classification (or regression) task
+
+---++  Week #0, September 4th - 10th
+   * Environment set up
+      * Download the code base from the main three papers
+      * Install VS Code, Github, Tex Live
+   * Literatur Review (work in progress):
+      * Long transformers
+      * Long transformers that do not need to be re-trained
+      * Depression Severity Prediction & NLP
+   * First Code attempts
+      * install Unlimiformer
+         * update Unlimiformer & make pull-request
+         * Problem: Unlimformer does not support pure Classification or Regression models
+      * install SLED

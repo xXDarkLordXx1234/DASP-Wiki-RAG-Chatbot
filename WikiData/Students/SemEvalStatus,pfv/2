@@ -1,0 +1,29 @@
+%META:TOPICINFO{author="NicoErbs" date="1266340881" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="SemEvalTechnical"}%
+---+++ SemEvalStatus
+
+%TOC%
+
+---++++ Comparison of SemEval dataset to known dataset
+The dataset is the training dataset  (SemEval provides three different GoldStandards).
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Attribute* | *Hulth (Inspec)* | *SemEval: Author* | *SemEval: Reader* | *SemEval:Combined* |
+| *# Documents* | 1000 | 144 | 144 | 144 |
+| *Tokens / Document* | 142.5 | 9950.6 | 9950.6 | 9950.6 |
+| *Keyphrases* | 9788 | 559 | 1824 | 2223 |
+| *Keyphrases / Document* | 9.788 | 3.88 | 12.67 | 15.44 |
+| *Characters / Keyphrase* | 19.96 | 15.99 | 19.33 | 18.7 |
+| *Tokens / Keyphrase* | 2.33 (+/- 0.91) | 1.96 (+/- 0.85) | 2.24 (+/- 1.0) | 2.18 (+/- 0.98) |
+| *Keyphrases with 1 Token* | 1345 | 166 | 323 | 449 |
+| *Keyphrases with 2 Tokens* | 5065 | 287 | 971 | 1165 |
+| *Keyphrases with 3 Tokens* | 2488 | 82 | 398 | 459 |
+| *Keyphrases with 4 Tokens* | 673 | 17 | 92 | 104 |
+| *Keyphrases with 5 Tokens* | 157 | 4 | 11 | 15 |
+| *Keyphrases with 6+ Tokens* | 60 | 3 | 29 | 31 |
+<!--edittable1-->
+
+---+++++ Results for previous dataset
+
+---+++++ Parameter Configuration
+
+-- Main.NicoErbs - 16 Feb 2010

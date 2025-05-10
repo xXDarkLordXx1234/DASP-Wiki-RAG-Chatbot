@@ -1,0 +1,74 @@
+%META:TOPICINFO{author="NicoErbs" date="1265184904" format="1.1" version="25"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+---++ Work
+
+%TOC%
+
+
+---+++ Related Work
+   * [[NicoErbsHiWiRelatedWork][Related Work]]
+
+---+++ Tasks
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Task* | *% done* |
+| Task 1: Creating Maven project for keyphrase experiments | 100 |
+| Task 2: Improving experimental framework for existing keyphrase experiments | 95 |
+| Task 2a: Collect information about missing files for experiments | 100 |
+| Task 2b: Establish working preprocessing | 100 |
+| Task 2c: Create new model for Kea (because of out-dated serial number) | 100 |
+| Task 3: Print out parameters from CPEs to output | 0 |
+| Task 3a: Check possibility to extract results to Excel format | 0 |
+| Task 4: Redesign Cooccurrence Graph for better compatibility with PageRank | 100 |
+| Task 5: Improve Pos filter in CandidateAnnotator | 100 |
+| Task 6: Experiments with keyphrase extraction | 0 |
+| Task 7: Check paper [[MikalaiAutaeuMarchese09]['Large Dataset for Keyphrases Extraction']] for training data and integrate it in existing experiments | 5 |
+| Task 8: Try keyphrase extraction for [[SemEval]['SemEval-2']] (#5) | 10 |
+| Task 9: Review TfIdfConsumer | 100 |
+| Task 9a: Create new TfidfConsumer and corresponding annotator | 100 |
+| Task 10: Refactor StanfordNamedEntityRecognizer to uutuc format (see e.g. StopwordFilter) | 0 |
+
+
+---+++ Working Hours
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Task* | *Date* | *Hours* | *Remark* |
+| Installing eclipse | 05.01.2010 | 5.5 | |
+| Creating Maven project | 06.01.2010 | 5.5 | Additionally solving problems with eclipse |
+| Improving experimental framework for existing keyphrase experiments | 07.01.2010 | 2.5 | Understanding keyphrase extraction framework |
+| Improving experimental framework for existing keyphrase experiments | 12.01.2010 | 3 | StartFrameworkCandidateBaselineExperiments |
+| Improving experimental framework for existing keyphrase experiments | 12.01.2010 | 6.5 | StartFrameworkCandidateBaselineExperiments |
+| Improving experimental framework for existing keyphrase experiments | 13.01.2010 | 2 | StartFrameworkCooccurrenceKeyphraseExperiments |
+| Redesign Cooccurrence Graph for better compatibility with PageRank | 13.01.2010 | 2 | Change [[NicoErbsPageRankCooccurrenceAndGraphs][CooccurrenceGraphAnnotator]] |
+| Redesign Cooccurrence Graph for better compatibility with PageRank | 15.01.2010 | 1 | Change [[NicoErbsPageRankCooccurrenceAndGraphs][CooccurrenceGraphAnnotator]] |
+| Redesign Cooccurrence Graph for better compatibility with PageRank | 18.01.2010 | 2 | Analyze impact of changes (see [[NicoErbsPageRankCooccurrenceAndGraphs][here]]) |
+| Improving experimental framework for existing keyphrase experiments | 19.01.2010 | 5 | Remaining frameworks in package keyphrases.acl09 |
+| Redesign Cooccurrence Graph for better compatibility with PageRank | 20.01.2010 | 1.5 | Adding comments and finalisation |
+| Improve Pos filter in CandidateAnnotator | 20.01.2010 | 1 | Added JUnit test case for Pos filter and made minor changes. Further changes do not have priority |
+| Collect information about missing files for experiments | 20.01.2010 | 0.5 | found ESA indexes |
+| Improving experimental framework for existing keyphrase experiment | 20.01.2010 | 1.5 | Analyzing and correcting errors for experiments |
+| Improving experimental framework for existing keyphrase experiment | 21.01.2010 | 1 | Analyzing and correcting errors for experiments |
+| miscellaneous | 22.01.2010 | 2 | Related work (reading and summarizing in [[NicoErbsHiWiRelatedWork][wiki]]) |
+| Improving experimental framework for existing keyphrase experiment | 22.01.2010 | 1 | Analyzing and correcting errors for experiments |
+| Create new model for Kea | 26.01.2010 | 2 | Kea Model training and improving architecture |
+| Redesign Cooccurrence Graph | 26.01.2010 | 2 | JUnit tests from semantics |
+| Establish working preprocessing | 26.01.2010 | 3.5 | |
+| Establish working preprocessing | 27.01.2010 | 3 | Reached problem with StanfordNamedEntityRecognizer |
+| Establish working preprocessing | 29.01.2010 | 2 | Fixing minor errors |
+| Review TfIdfConsumer and eliminate fixed references to path | 29.01.2010 | 3 | Transforming to AE (uutuc style) Decision: Create new TfidfConsumer |
+| Create new TfidfConsumer and corresponding annotator | 02.02.2010 | 6.5 | all necessary changes |
+| Try keyphrase extraction for [[SemEval]['SemEval-2']] (#5) | 02.02.2010 | 2 | created Reader and preprocessing|
+| Try keyphrase extraction for [[SemEval]['SemEval-2']] (#5) | 03.02.2010 | 2 | improved Reader for loading keyphrases|
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 180 | until March 31st 2010 |
+<nop>
+
+
+
+----+++ Useful internal links
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/artifactory][Artifactory]]
+
+----+++ Notes
+   * Use eclipse classic distribution
+   * Use Subclipse (!not subversion)
+
+
+-- Main.NicoErbs - 11 Jan 2010

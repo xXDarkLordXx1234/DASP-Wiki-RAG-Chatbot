@@ -1,0 +1,15 @@
+%META:TOPICINFO{author="sabrin" comment="save topic" date="1401799619" format="1.1" reprev="1" version="5"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Tasks
+   * bullet item
+   * 
+---+ Opens Questions
+
+---+ Aktueller Vertrag (Jun 2014 - Aug 2014)
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| 26.05.13 | Meeting | 1 | |
+
+Summe: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 30

@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="klie" comment="reprev" date="1492981681" format="1.1" reprev="3" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Jan-Christoph Klie (Master thesis)
+
+Deep Learning for extraction of predicate-argument structures
+
+---++ CW16 17.4.2017 - 23.4.2017
+
+---+++ Done:
+
+   * Got access to data and embeddings
+   * Read and understand basic_srl
+   * Trained the existing models
+   * Setup the git repositories
+   * Started to convert the data to the required format
+
+---+++ Next steps:
+
+   * Finish conversion
+   * Translate SALSA to English with UBY/BabelNet
+   * Train on German SALSA
+
+---++ CW15 10.4.2017 - 16.4.2017
+
+   * Read source code of basic_srl_system
+   * Got FrameNet 1.7 from NLTK and converted it to *basic_srl* data format
+   * Missing dependency annotations for frame net sentences, where to get?
+   * Requested and got approved for BabelNet download
+   * No access to existing das-text/train (FrameNet 1.5 split)
+   * Easter spent with relatives, so not much progress else
+   * I read about evaluation of word vectors, what to do and what not
+   * 
+---+++ Blocked:
+
+   * Need dependency annotations for *basic_srl* or hint how it was annotated for ood paper
+   * Need Das split data or build it on my own
+   * Which framenet to use (1.5 vs 1.7)
+   
+---+++ Next steps:
+
+   * Evaluate word embeddings maybe on similarity task with data from Gurevych, 2005 (bad idea for dependency contexts) 
+
+---++ CW14 3.4.2017 - 9.4.2017
+
+   * No dependency context embeddings for German online
+   * Found some German word embeddings already trained (word2vec, fasttext)
+   * Got Access to Wiki
+   * No access to data yet (?)
+   * Translation-APIs like Google Cloud Translate or Yandex Translate are too expensive (15-20$ / 1 Mio characters)
+   * Read the code of _basic_srl_system_, vague idea how it internally works
+   
+---+++ Next steps:
+
+   * Evaluate German embeddings found online
+   * Find out how to exactly evaluate word embeddings (some papers exist)
+   * Understand data format of _basic_srl_system_
+   * Maybe use FNWkde for first training of _basic_srl_system_
+
+*Goal: Get basic_srl_system running*
+
+---++ 6.4.2017 Kickoff meeting
+
+   * Scheduled mid presentation to 11.7.2017
+   * Get access to Wiki
+   * basic_srl_system is now on Github
+   * Clarify goal: only frame identification, if time maybe role id also
+
+---+++ Fleshed out details for work package 1 (baseline)
+
+   * Problem is projecting back annotations in translated text: German -translate-> English -FrameId-> Annotated English  -Project back-> Annotated German
+   * Word-to-word translation at first
+   * If time, use parse tree (syntax/dependency/...) and translate nodes
+   * Look for translation tools (Babelnet, Google Translate, ...)
+
+---+++ Things to solve
+
+   * Get access to data
+   * Look for translation tools
+   * word embeddings for German text

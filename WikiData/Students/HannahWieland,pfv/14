@@ -1,0 +1,119 @@
+%META:TOPICINFO{author="wieland" comment="save topic" date="1511021889" format="1.1" reprev="13" version="14"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Crowd Sourcing Novel Metaphor Annotations
+
+%TOC%
+
+---++ Schedule
+
+%EDITTABLE{format="| text,20| text,20| text,20|"}%
+| *Week* | *Task*                                                                                           | *Comment*                                                             |
+| 0      | Initial meeting; discussion of the project definition                                            |                                                                       |
+| 0-3    | Familiarization with the project, literature review, setup of the environment and the datasets   | Start writing the thesis (or take notes for it) as early as possible! |
+| 4-8    | Conduct preliminary experiments, refine guidelines                                               |                                                                       |
+| 8-12   | Corpus creation                                                                                  |                                                                       |
+| 12     | Mid-term presentation                                                                            |                                                                       |
+| 13-16  | Corpus creation and evaluation                                                                   |                                                                       |
+| 17-20  | Implementation of existing methods and corpus evaluation                                         |                                                                       |
+| 21-24  | Final thesis redaction                                                                           |                                                                       |
+| 24     | Submit the thesis                                                                                |                                                                       |
+| 24     | Final presentation                                                                               |                                                                      |
+
+---++ Meetings (Mittwochs 11:00)
+
+---+++ 08. November 2017
+   * BWS-Annotationen auswerten (BWS-Scores, IBCC, Krippendorff's Alpha) und analysieren
+   * Scale HIT endlich online stellen
+   * und den Scale HIT ohne Metaphernerwähnung auch
+   * Neural Network von Haagsma, Bjerva angucken: Gibt es dazu eine Implementierung?
+   * Latex-Template benutzen und Outline schreiben
+
+---+++ 08. November 2017
+   * Best-Worst-Scaling statt paarweise Vergleiche -> Task Description anpassen
+   * Skala nochmal überdenken, Metaphoricity-Paper lesen
+   * diese beiden HITs endlich online stellen
+   * Aufgabenstellung vom HIT ohne Metaphernerwähnung verfassen
+
+---+++ 01. November 2017
+   * Präsentation vorbereiten (Beispiele nicht vergessen)
+   * Evaluation für den Binary HIT machen (IBCC, Krippendorff's Alpha)
+
+---+++ 24. Oktober 2017
+   * Wiki nachtragen
+   * Texte für den Pilottest raussuchen
+   * Referenz zum BNC in allen HITs ergänzen
+   * Pairwise Comparison: auch erste und letzte Metapher vergleichen
+   * Aufgabenstellung für Scale und Pairwise Comparison HIT schreiben
+   * Pairwise Comparison: Layout verfeinern
+   * HITs online stellen
+   * Midterm-Präsentation vorbereiten
+   * Mace und IBCC ausprobieren
+
+---+++ 19 Oktober 2017
+   * Aufgabenstellung für alle HIT-Arten schreiben
+   * HITs für den Pilottest startbereit machen
+   * Pilottest durchführen
+   * Paper zu Crowdsourcing lesen
+
+---+++ 11. Oktober 2017
+   * Layout vom Scale-HIT finalisieren (Reduktion auf 4 Auswahlmöglichkeiten, Skala beschriften)
+   * Binary HIT: Radio-Buttons nebeneinander anordnen
+   * Comparison HIT: Paare zum Vergleichen erstellen, HIT-Layout erstellen
+   * Input-CSV auf neue Datenstruktur umstellen (ID, Kontext, Token)
+   * für alle HITs: Frage, wie man die Metapher bewertet, pro Aufgabe einbauen, Referenz auf BNC ergänzen
+   * Paper lesen: zu IBCC, Pairwise Ranking und Novel Metaphors (Petra Gehring)
+   * Mace angucken
+
+---+++ 4. Oktober 2017
+   * Wie soll der Kontext dargestellt werden? (gemeinsamer Fließtext für alle HITs vs. einzelner Kontext für jeden HIT)
+   * Kontext mit gewähltem Ansatz in CSV-Datei schreiben
+   * ID erstellen und in CSV-Datei schreiben
+   * CSV-Datei so bearbeiten, dass sie bereit für MTurk ist
+   * Eingabe bei Skala über Radio-Buttons erstellen und nicht über ein Dropdown-Menü
+   * Aufgabenbeschreibungen für die verschiedenen HIT-Arten verfassen
+   * Wie soll ich den Ranking-Ansatz umsetzen? (Pairwise Comparison?)
+   * Git aktualisieren: SSH-Key, Code und Kostenüberlegungen hochladen
+
+---+++ 13. September 2017
+   * Erik-Lân schicken: Tucan-Screenshot & Link zum HIT in Sandbox
+   * Kontext in HIT einbinden
+   * IDs generieren und in HIT einbinden
+   * Paper zum Thema Ranking lesen
+   * bisherigen Fortgang genauer dokumentieren
+   * Anmerkung: nächsten zwei Wochen Urlaub
+
+---+++ 6. September 2017
+   * Metaphern mit ID versehen
+   * Output analysieren
+   * Anweisung für Turker verfassen
+
+---+++ 30. August 2017
+   * Ansätze implementieren
+   * Daten für Mechanical Turk aufbereiten
+
+---+++ 16. August 2017
+   * Annotations-Ansätze überlegen
+   * Welcher Teil des Korpus eignet sich für Vergleich der Ansätze?
+   * Wie müssen Experimente technisch designed werden?
+   * @ED: Crowdsourcing @UKP: Anmeldung, Bezahlung?
+
+---+++ 9. August 2017
+   * Formulare
+   * Literaturrecherche für Crowdsourcing-Ansätze (komplexe Phänomene)
+   * Korpusannäherung
+      * Was ist eine Metapher? Sätze etc.
+      * Korpusdokumentation
+   * @ED: Links für git, wiki, VUAMC Dokumentation schicken
+   * @ED: Termine für mid-/final talk raussuchen
+
+---++ Literatur
+
+---++ Notes
+   * Dates:
+      * Midterm-presentation: 07. November 2017
+      * Final presentation: 16. Januar 2018
+
+-- Main.ErikLanDoDinh - 2017-08-09
+
+%META:FILEATTACHMENT{name="TaskDescription_NovelMetaphorCorpus_v2.pdf" attachment="TaskDescription_NovelMetaphorCorpus_v2.pdf" attr="" comment="Task Description" date="1502265885" path="TaskDescription_NovelMetaphorCorpus_v2.pdf" size="322969" user="dodinh" version="1"}%
+%META:FILEATTACHMENT{name="Crowdsourcing_and_Language-Studies.pdf" attachment="Crowdsourcing_and_Language-Studies.pdf" attr="" comment="" date="1502834412" path="Crowdsourcing_and_Language-Studies.pdf" size="567165" user="wieland" version="1"}%

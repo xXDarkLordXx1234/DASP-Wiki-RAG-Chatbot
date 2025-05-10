@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="semmelmann" comment="" date="1607875580" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+*Important Dates:*
+   * 01.12.2020 (Thesis start)
+   * 04.06.2021 (Submission deadline) 
+
+---++ Week 01.12. - 07.12:
+   * Set up conda envs for the baseline models on SLURM (plms-graph2text and emnlp-dualgraph)
+   * Run T5-small baseline model without modification. 
+   * Learn about AMR graph preprocessing.
+   * Install transformer library as editable and add simple linear adapter layer into every T5-Block.
+
+---++ Week 8.12. - 15.12.:
+   * Run t5-small with various bottelneck adapter variations
+   * look into transformers modeling_t5.py source code.
+   * Trying to understand the t5 embeddings in combination with the relative position representations
+   * check emnlp-dualgraph AMR preprocessing node traversal. 
+
+-- Main.TobiasAndreasSemmelmann - 2020-12-07

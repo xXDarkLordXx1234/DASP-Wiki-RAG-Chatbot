@@ -1,0 +1,109 @@
+%META:TOPICINFO{author="sorokin" comment="reprev" date="1448019924" format="1.1" reprev="12" version="14"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Intro
+
+I'm doing my Master thesis here at UKP Labs under the supervision of Mr. Daniil Sorokin and Prof.Dr. Gurevych. The title of my work is 'Reference extraction for Knowledge Base Facts'. During my work, I will examine methods of extracting meaningful references as a supporting authority to claims expressed in a natural language statement.
+
+---++ Meetings
+
+---+++ 2015-11-20
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * todo(RB) How many sentences with at least one link? (Pending)
+         * todo(RB) What is the link density? (Pending)
+         * todo(RB) Prepare a training data sample
+   * Reddy's code
+      * todo(RB) Try out the Virtuoso installation on DS's machine
+
+---+++ 2015-11-13
+   * Training data
+      * Map Wikipedia links to WikiData item ids:
+         * Wikipedia dump of article texts: https://dumps.wikimedia.org/enwiki/20151002/enwiki-20151002-pages-articles-multistream.xml.bz2
+         * Wikimedia project ids mapping: https://dumps.wikimedia.org/enwiki/20151002/enwiki-20151002-iwlinks.sql.gz
+         * todo(RB) How many sentences with at least one link? (Pending)
+         * todo(RB) What is the link density? (Pending)
+   * Reddy's code
+      * todo(DS) ask about reserving a server or hosting a Virtuoso database () 
+         * Virtuoso is running on DS's work station: desktop-212:8890/sparql
+      * todo(RB) instructions how to install Virtuoso and import Reddy's data (Done)
+
+
+---+++ 2015-11-06
+   * Training data
+      * Use Freebase - Wikidata identifiers mapping either on a subset of ClueWeb or on Free917 (only for debugging purposes)
+         * Google provides mapping of Freebase ids to WikiData (it is old, from 2013)
+         * todo(RB) try to extract mappings from WikiData (use Property "Freebase identifier"). How many of them is there? Overlap with the Google mapping?
+      * Wikipedia links as WikiData annotations
+         * Look only at the titles and abstracts first
+         * todo(RB) map Wikipedia links to WikiData item ids 
+   * Reddy's code
+      * Virtuoso is too large to run locally
+      * todo(DS) ask about reserving a server or hosting a Virtuoso database
+
+---+++ 2015-10-30
+   * Status Update
+      * Tried to obtain a subset of Freebase to actually test Reddy et.al results. But no small enough dataset was available.
+      * Subsequently tried downloading whole of Freebase but have been unsucccessful due to system constraints and performance (under-going).
+      * Read literature on deep learning and some NLP machine learning approaches.
+   * todo(RB): *Enroll at the Prüfungssekretariat*
+      * It is about time to do that. Figure out what do you need for that, there is some form that Prof. Gurevych has to sign.
+      * Form submitted to IG 
+   * todo(RB): description of packages (undergoing)
+   * todo(RB): how to get a sample of Freebase to try out the grounded semantic parsing (*status update*)
+      * Wait for Reddy's answer
+   * todo(DS): a paper on other features that could be used
+   * todiscuss: Could we e-mail Reddy to get access to the dataset and to replicate TACL results (as mentioned on his GitHub profile)
+      * Yes
+
+
+---+++ 2015-10-16
+   * Pool access
+   * Wiki Meeting Minutes (once the account is activated)
+      * Use them for progress updates, small question, to collect literature
+   * Latex template
+   * SVN
+
+---+++ 2015-10-09
+   * Regular meetings
+      * Friday at 12:00
+   * Mid-term, final presentation
+      * Mid-term: *05.01.16*
+      * Final: *29.03.16*
+   * Student presentations next week: 13.10.2015 at 11:30
+   * Computational Semantics book
+   * Update on Reddy's code
+      * todo(RB): description of packages
+   * WikiData: how to proceed with the scheme mapping
+      * First trying to replicate results with Freebase, then transition to WikiData
+   * Ungrounded semantic parsing is working out of the box
+   * todo(RB) What is need to run the grounded parsing with Freebase? To replicate Reddy's result with provided models (without retraining)?
+
+---+++ Summary of the initial meeting
+   * Starting date: 15.09.2015, Deadline: 15.03.2015
+   * Enroll at the Prüfungssekretariat: ~15.10.2015
+   * Task description approved: Please refer attachments 
+
+
+---+++Tentative Schedule
+%EDITTABLE{format="| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Comment* |
+| 0 | Initial meeting; discussion of the project definition |  |
+| 02 | Familiarization with the project, literature review, setup of the environment and the datasets | Start writing the thesis (or takenotes for it) as early as possible! |
+| 35 | Requirements analysis | WP1 |
+| 69 | Semantic parsing systems review, pipeline draft | WP2 |
+| 8  12 | Training data acquisition, Semantic parser training | WP3 1  2 |
+| 12 | Mid-term presentation |  |
+| 13  16 | Implementing the semantic parsing service | WP3 3  4 |
+| 17  20 | Integrate the service with WikiData tools to search for reference suggestions, discuss results | WP4 |
+| 21  24 | Final thesis redaction | |
+| 24 | Final presentation | |
+| 24 | Submit the thesis | |
+
+
+
+-- Main.DaniilSorokin - 2015-10-08
+
+   * [[%ATTACHURL%/RaktimBora_MA_Thesis_Task_Description_v2.pdf][RaktimBora_MA_Thesis_Task_Description_v2.pdf]]: Master Thesis Proposal (Approved) for Raktim Bora
+
+%META:FILEATTACHMENT{name="RaktimBora_MA_Thesis_Task_Description.pdf" attachment="RaktimBora_MA_Thesis_Task_Description.pdf" attr="" comment="" date="1444388492" path="RaktimBora_MA_Thesis_Task_Description.pdf" size="109064" user="sorokin" version="1"}%
+%META:FILEATTACHMENT{name="RaktimBora_MA_Thesis_Task_Description_v2.pdf" attachment="RaktimBora_MA_Thesis_Task_Description_v2.pdf" attr="h" comment="Master Thesis Proposal (Approved) for Raktim Bora" date="1447336153" path="RaktimBora_MA_Thesis_Task_Description_v2.pdf" size="109230" user="bora" version="1"}%

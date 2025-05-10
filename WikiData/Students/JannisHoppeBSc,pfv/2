@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="jhoppe" date="1464900115" format="1.1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+2.5-9.5 
+Einlesen in die relevante Literatur. 
+Hauptsächlich herausgestochen sind 
+   * Xie et. al. "Neural Language Correction with Character-Based Attention"
+   * Bahdanau, Cho, Bengio "Neural Machine Translation by jointly learning to align and translate"
+   * Cho et al "Learning Phrase Representations using RNN EncoderDecoder for Statistical Machine Translation"
+9.5-23.5
+Implementieren einer einfachen encoder decoder Struktur mit Keras. Ergebnisse mit Autoencodern zeigen selbst Reproduktion von Sätzen mit mehr als 20 Zeichen sind problematisch, insofern ist an eine Korrektur von längeren Sätzen kaum zu denken.
+
+23.5-30.5
+Fertigstellung einer Theano Implementierung des Encoder Decoder Ansatzes von Cho. Auch hier treten ähnliche Probleme auf wie in den Keras Experimenten, jedoch lernt das Modell schneller. Ebenso hat sich als beste Methode zum Evaluieren der späteren Ergebnisse der M2scorer https://github.com/nusnlp/m2scorer herausgestellt, dieser wurde unter anderem auch von Xie in dem oben erwähnten Paper benutzt.
+
+30.5-6.6
+Beginn und eventuelle Fertigstellung des Attention Ansatzes mit Hilfe von Theano und wenn möglich produzieren erster Ergebnisse (Precision, Recall, F1) auf den CoNLL2014 Daten. Außerdem Erweiterung des Trainings/Evaluations Datensatzes durch den Nucle Corpus und "Ten Sets of Multiply Annotated Essays for Grammatical Error Correction" auf http://www.comp.nus.edu.sg/~nlp/corpora.html .
+
+-- Main.JannisHoppe - 2016-05-30

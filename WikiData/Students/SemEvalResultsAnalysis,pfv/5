@@ -1,0 +1,181 @@
+%META:TOPICINFO{author="NicoErbs" date="1267813833" format="1.1" reprev="5" version="5"}%
+%META:TOPICPARENT{name="SemEvalStatus"}%
+---+++ SemEvalResultsAnalysis
+
+%TOC%
+
+---++++ Detailed Analysis for one file
+File: C-42
+   * 15 Gold Keyphrases
+      * cyberinfrastructure development project
+      * grid computing
+      * energy exploration
+      * tigre grid computing environment
+      * strategic application area
+      * ensemble kalman filter
+      * enkf
+      * grid-enabling
+      * gridway metascheduler
+      * high performance computing
+      * pooling license
+      * tigre grid middleware
+      * tigre
+      * hydrocarbon reservoir simulation
+      * reservoir model
+
+A restriction to 30 keyphrases at maximum was made. Matches are markes bold.
+---+++++ KEA, Token
+   * Precision: .077
+   * Recall: .067
+   * exact R-Precision: .067
+   * approximate R-Precision: .333
+   * 13 keyphrases retrieved
+      * tigre grid computing
+      * grid
+      * grid-enabled ensemble
+      * grid-enabled ensemble kalman filter
+      * grid-enabled ensemble kalman
+      * geological models
+      * tigre environment
+      * kalman filter data assimilation
+      * number licenses
+      * reservoir modeling
+      * models in the ensemble
+      * grid-enabling enkf
+      * *gridway metascheduler*
+  
+---+++++ tf.idf, Lemma (N,A)
+   * Precision: .067
+   * Recall: .125
+   * exact R-Precision: .000
+   * approximate R-Precision: .125
+   * 30 keyphrases retrieved
+      *  grid-enabled ensemble kalman filter
+      * data assimilation methodology
+      * reservoir characterization ravi vadapalli
+      * high performance computing center
+      * texas tech university lubbock
+      * ravi.vadapalli @ ttu.edu ajitabh
+      * kumar department
+      * petroleum engineering texas
+      * university college station
+      * akumar tamu.edu ping luo
+      * supercomputing facility texas
+      * pingluo sc.tamu.edu shameem siddiqui
+      * petroleum engineering texas tech
+      * university lubbock
+      * shameem.siddiqui @ ttu.edu taesung
+      * kim supercomputing facility texas
+      * university college
+      * tskim sc.tamu.edu abstract ensemble
+      * kalman filter datum assimilation
+      * popular approach
+      * *hydrocarbon reservoir simulation*
+      * *energy exploration*
+      * geological model
+      * production datum
+      * oil field
+      * dynamic response
+      * oil well
+      * schlumberger eclipse software
+      * good choice
+      * model check
+
+---+++++ LexSem, Lemma (N,A)
+   * Precision: .033
+   * Recall: .062
+   * exact R-Precision: .062
+   * approximate R-Precision: .11
+   * 23 keyphrases retrieved
+      * education grid
+      * organization specific high performance
+      * state funded cyberinfrastructure development
+      * efficient use
+      * user management system
+      * supercomputing facility
+      * application general term algorithms
+      * high performance computing center
+      * schlumberger eclipse software
+      * major university system
+      * kumar department
+      * area such
+      * texas tech university lubbock
+      * up-to-date information
+      * port information repository
+      * *hydrocarbon reservoir simulation*
+      * present work
+      * future work
+      * ref http
+      * regional user
+      * time step
+      * web service
+      * john wiley
+      * customer service
+      * user jid dm em
+      * minimal set
+      * master control process
+      * filter datum assimilation methodology
+      * initial condition
+      * good choice
+
+---+++++ Co-occurrence, NP (Window: 5)
+   * Precision: .033
+   * Recall: .062
+   * exact R-Precision: .062
+   * approximate R-Precision: .133
+   * 30 keyphrases retrieved
+      * figure ref http
+      * texas consortium http
+      * phys conf series http
+      * moinmoin wiki engine http
+      * *grid computing*
+      * geological model
+      * tigre environment
+      * dm prol
+      * dm warp
+      * dm epil
+      * tigre sites
+      * educational opportunities
+      * em actv
+      * mpi implementation
+      * tigre portal
+      * master control process
+      * master cluster
+      * input files
+      * eclipse license
+      * tx 77843 001
+      * www.racf.bnl.gov facility gums index.html
+      * tigre institutions
+      * enkf application
+      * enkf main program
+      * reservoir modeling
+      * eclipse package
+      * geological models
+      * hostname cosmos.tamu.edu
+      * hostname antaeus.hpcc.ttu.edu
+      * hostname minigar.hpcc.ttu.edu
+
+---+++++ Overview
+%EDITTABLE{ sort="off" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Gold* | *KEA* | *tf.idf* | *LexSem* | *Co-Occurrence* |
+| cyberinfrastructure development project | | | state funded cyberinfrastructure development | |
+| grid computing | tigre grid computing <br> grid | | | *grid computing* |
+| energy exploration | | *energy exploration* | | |
+| tigre grid computing environment | tigre environment | | | |
+| strategic application area | | | | |
+| ensemble kalman filter | kalman filter data assimilation | grid-enabled ensemble kalman filter | | |
+| enkf | | | | enkf application <br> enkf main program |
+| grid-enabling | grid-enabled ensemble <br> grid-enabled ensemble kalman filter <br> grid-enabled ensemble kalman <br> grid-enabling enkf | | | |
+| gridway metascheduler | *gridway metascheduler* | | | |
+| high performance computing | | high performance computing center | organization specific high performance <br> high performance computing center | |
+| pooling license | | | | |
+| tigre grid middleware | | | | |
+| tigre | | | | tigre environment <br> tigre sites <br> tigre portal  <br> tigre institutions |
+| hydrocarbon reservoir simulation | | *hydrocarbon reservoir simulation* | *hydrocarbon reservoir simulation* | |
+| reservoir model | reservoir modeling <br> geological models | | | geological model <br> reservoir modeling <br> geological models |
+| | number licenses <br> models in the ensemble | data assimilation methodology <br> reservoir characterization ravi vadapalli <br> texas tech university lubbock <br>ravi.vadapalli @ ttu.edu ajitabh <br> kumar department <br> petroleum engineering texas <br> university college station <br> akumar tamu.edu ping luo <br> supercomputing facility texas <br> pingluo sc.tamu.edu shameem siddiqui <br> petroleum engineering texas tech <br> university lubbock <br> shameem.siddiqui @ ttu.edu taesung <br> kim supercomputing facility texas <br> university college <br> tskim sc.tamu.edu abstract ensemble <br> kalman filter datum assimilation <br> popular approach <br> geological model <br> production datum <br> oil field <br> dynamic response <br> oil well <br> schlumberger eclipse software <br> good choice <br> model check | education grid <br> efficient use <br> user management system <br> supercomputing facility <br> application general term algorithms <br> schlumberger eclipse software <br> major university system <br> kumar department <br> area such <br> texas tech university lubbock <br> up-to-date information <br> port information repository <br> present work <br> future work <br> ref http <br> regional user <br> time step <br> web service <br> john wiley <br> customer service <br> user jid dm em <br> minimal set <br> master control process <br> filter datum assimilation methodology <br> initial condition <br> good choice | figure ref http <br> texas consortium http <br> phys conf series http <br> moinmoin wiki engine http <br>  dm prol <br> dm warp <br> dm epil <br>  educational opportunities <br> em actv <br> mpi implementation <br> #  master control process <br> master cluster <br> input files <br> eclipse license <br> tx 77843 001 <br> www.racf.bnl.gov facility gums index.html <br> eclipse package <br>   hostname cosmos.tamu.edu <br> hostname antaeus.hpcc.ttu.edu <br> hostname minigar.hpcc.ttu.edu |
+
+---++++ 	Drawbacks and opportunities
+   * Many keyphrases are very similar (at least one identical word) --> Clustering
+
+-- Main.NicoErbs - 02 Mar 2010

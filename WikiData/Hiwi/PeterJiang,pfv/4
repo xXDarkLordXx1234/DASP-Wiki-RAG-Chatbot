@@ -1,0 +1,68 @@
+%META:TOPICINFO{author="jiang" comment="save topic" date="1492378627" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="WikiUsers"}%
+---+ Meeting Minutes
+[[PeterJiangTimes][Time tracking]]
+
+---++ 2016-10-10 Meeting
+      * handed over contract and account credentials
+      * Issues with tasks of last week:
+         * #1 Set up project correctly and fixed(deleted) missing dependencies
+         * #2 Tests didn't pass. Solution: Increase surefire heap size ( mvn clean install -Dmaven.surefire.heap=6g )
+         * #3 Text Reader in Galaxy Tool Builder didn't accept only single files
+      * Discussed further issues
+         * #4 Make it possible to use the tools on a server without internet access
+            * thus, a Docker file would need to be written to predownload all the dependencies
+         * #5 Increase Usability
+            * Change certain input fields to dropdown menus to exclude certain values
+            * Remove certain input fields
+            * This info can be passed into the xml files of each tool
+         * #6 Make it possible to run the whole pipeline on a simple example e.g. data -> Text Reader -> Umlaut Normalizer -> Text Writer
+      * New Tasks
+         * Create PR for #3
+         * work on #5 https://github.com/dkpro/dkpro-meta/issues/5
+   
+---++ 2016-10-4 Meeting
+   * 
+   * New Tasks
+      * DKPro Core auschecken und bauen
+      * DKPro Meta auschecken und Galaxy Tool Builder laufen lassen
+      * Konfigurationsdateien die von Galaxy Tool Builder erzeugt wurden mit Galaxy/Docker laufen lassen
+      * Lesen:
+         * Galaxy Tool Files
+         * Code von Galaxy Tool Builder
+         * Output von: Galaxy Tool Builder
+
+---++ Current task (PJ)
+
+---+ Time records
+---++ April 2017
+
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2017-04-04 | Meeting | 1 |  |
+| 2017-04-06 | Setting up Projects and Eclipse | 3 |  |
+| 2017-04-07 | Research about UIMA / Understanding code & Output | 4.5 |  |
+| 2017-04-10 | Meeting | 2 |  |
+| 2017-04-11 | Create WikiPage | 0.5 | |
+| 2017-04-14 | Research in .adoc generator files and about Galaxy Tool Files & others | 4 |  |
+| 2017-04-14 | Suppressing Location and Encoding parameters  | 3 |  |
+| 2017-04-15 | Create dropdown menu for language parameter | 4 |  |
+| 2017-04-16 | Create conditionals for language-modelVariant parameter  | 5 |  |
+
+%META:FORM{name="%25SYSTEMWEB%25.UserForm"}%
+%META:FIELD{name="FirstName" attributes="" title="<nop>FirstName" value=""}%
+%META:FIELD{name="LastName" attributes="" title="<nop>LastName" value=""}%
+%META:FIELD{name="OrganisationName" attributes="" title="<nop>OrganisationName" value=""}%
+%META:FIELD{name="OrganisationURL" attributes="" title="<nop>OrganisationURL" value=""}%
+%META:FIELD{name="Profession" attributes="" title="Profession" value=""}%
+%META:FIELD{name="Country" attributes="" title="[[System.CountryList][Country]]" value=""}%
+%META:FIELD{name="State" attributes="" title="State" value=""}%
+%META:FIELD{name="Address" attributes="" title="Address" value=""}%
+%META:FIELD{name="Location" attributes="" title="Location" value=""}%
+%META:FIELD{name="Telephone" attributes="" title="Telephone" value=""}%
+%META:FIELD{name="VoIP" attributes="" title="<nop>VoIP" value=""}%
+%META:FIELD{name="InstantMessagingIM" attributes="" title="<nop>InstantMessaging (IM)" value=""}%
+%META:FIELD{name="Email" attributes="" title="Email" value=""}%
+%META:FIELD{name="HomePage" attributes="" title="<nop>HomePage" value=""}%
+%META:FIELD{name="Comment" attributes="" title="Comment" value=""}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Local" value="System.LdapUserView"}%

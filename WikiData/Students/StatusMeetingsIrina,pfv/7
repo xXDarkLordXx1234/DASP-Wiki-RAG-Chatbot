@@ -1,0 +1,83 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="7"}%
+%META:TOPICPARENT{name="IrinaSmidt"}%
+---+ Meetings
+
+---++ 06.09.
+   * Zwischenpräsentation gehalten
+   * @info(IG): im Vortrag erwähnte aktuelle Referenz von ACL 2011 http://www.aclweb.org/anthology/P/P11/P11-1093.pdf
+
+---++ 05.09.
+   * Probevortrag Zwischenpräsentation
+
+---++ 02.09.
+   * Präsentation besprochen
+   * Pipeline besprochen
+      * Liste mit Mass Nouns (Unzählbare Nomen) muss zusammengestellt werden
+      * Problem mit TreeTagger behoben
+   * weiteres Vorgehen: vor allem an Präsentation & Mass Nouns Liste arbeiten
+
+---++ 29.08.
+   * Problem mit Python im Evaluator behoben
+   * Related Work: Paper besprochen
+   * Grobe Gliederung der Thesis besprochen
+      * Related Work: Paper in Tabelle gegenüberstellen
+      * Literarturverzeichnis erstellen
+   * Pipeline besprochen
+      * Features für ML erarbeitet
+         * Token
+         * Wortart (PoS-Tags)
+         * Lemmas
+         * Zählbarkeit
+         * nGrams
+         * Kamen Nomen schon mal vor?
+   * bis Freitag soll die Zwischenpräsentation vorbereitet werden
+   * Wiki muss überarbeitet werden
+   * für ML müssen Features in *.arff-Datei geschrieben werden
+      * anschauen, wie das funktioniert
+   * weiteres Vorgehen: so viel wie möglich aus den o.g. Punkten abarbeiten
+
+---++ 16.08.
+   * weiteres Vorgehen: sämtliche Paper lesen und analysieren
+
+---++ 09.08.
+   * Evaluator benötigt eine Unterscheidung nach Betriebssystemen
+   * weiteres Vorgehen: Lesen der Paper von Rozovskaya & Roth, um deren Methode zu analysieren
+
+---++ 02.08.
+   * Probleme mit Reader besprochen. Sätze und Edits sollen aus getrennten Dateien extrahiert werden
+
+---++ 26.07.
+   * Beispielklasse für XML-Reader bekommen und Anforderungen an HOO-Reader besprochen
+   * Bachelorarbeit wird in Englisch verfasst
+   * weitere Aufgabe: Reader für HOO-Dateien implementieren
+
+---++ 19.07.
+
+   * Aufgaben besprochen (Einrichtung & Einarbeitung in UIMA, Maven, DKPro; evtl. Reader für HOO-Dateien implementieren)
+
+---++ 15.07.
+
+   * Anmeldung der Bachelorarbeit
+
+---++ 04.07.
+
+   * Verträge abgegeben
+   * offizielle Aufgabenbeschreibung erhalten
+
+---++ 01.07.
+
+   *  Verträge erhalten
+
+---++ 30.06.
+
+   * Beschränkung auf Fehlerklasse Artikelfehler
+   * Teilnahme an der Challenge zweitrangig
+
+---++ 26.05.
+
+   * Vorbesprechung: Vorstellung der Bachelorarbeit, Aufbau, Aufgaben, Umfang etc
+   * eventuelle Teilnahme an der HOO-Challenge besprochen ([[http://www.clt.mq.edu.au/research/projects/hoo/][HOO]])
+
+
+
+-- Main.IrinaSmidt - 2011-07-22

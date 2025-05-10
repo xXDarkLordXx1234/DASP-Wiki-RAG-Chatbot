@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+I am currently using a connection to the pedocs database to extract document information (IDs and keywords) and attempt to cluster the documents by using the chinese whispers algorithm on a graph built using the extracted keywords.
+
+The graph is built like this:
+
+The documents are identified by IDs (source_opus in the database), which are the nodes of our graph.
+
+Matching keywords result in an undirected edge between the corresponding documents (nodes). More matching keywords increase the weight of this edge.
+
+To account for varying relevance of keywords, keywords are individually weighed using tf*idf, with tf = 1 (a keyword can only appear once per document) and idf = (number of documents / number of occurrences of keyword).
+
+Lastly, the weight is normalised by dividing the weight of the intersection of the keywords of the documents by the weight of the union.
+
+Chinese whispers works as follows:
+
+All nodes are assigned classes (in our case, we simply use the ID as the class). In each iteration, every node is visited once, the order is (pseudo) random. Each visited node checks its neighbours and assumes the class with the strongest combined (inbound) weight.
+
+Building a Co-Author network proved to be unsuccessful because a significant number of documents were authored by writers who never co-authored other papers.

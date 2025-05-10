@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<project name="wikiImporter" basedir="." default="import">
+
+       
+    <property name="wikipedia.dump" value="http://download.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2"/>
+	<!--<property name="wiki.test" value="http://www.qsdchublist.com/hublists/DCHublist.xml.bz2"/>-->
+    <property name="base.dir" location="."/>
+	<property name="java.dir" location="/usr/bin"/>
+	
+    <!--Download last wikipedia dump-->
+    <target name="download">
+	<!--Remove test-->
+        <get src="${wikipedia.dump}" dest="enwiki.xml.bz2"/>
+	</target>
+	
+	<!--Extracts wikipedia dump and deletes archive-->
+	<target name="extract" depends="download">
+		<bunzip2 src="enwiki.xml.bz2" dest="."/>
+		<delete file="enwiki.xml.bz2"/>
+	</target>
+	
+	<!-- Starts import-->
+	<target name="import" depends="extract">
+		<input message="Enter mysql db login:"
+               defaultvalue="wikulu"
+               addproperty="sql.login"/>
+		<input message="Enter sql password:"
+               defaultvalue="null"
+               addproperty="sql.pass"/>
+		<input message="Enter database:"
+               defaultvalue="wikulu_wikipedia"
+               addproperty="sql.database"/>
+		<exec dir="${java.dir}" executable="./java -jar ${base.dir}/mwdumper.jar --format=sql:1.5 enwiki.xml | mysql -u ${sql.login} -p${sql.pass} ${sql.database}" />
+	</target>
+	
+	
+	
+	<!--Create database for mediawiki-->
+	<target name="createDatabase">
+		<input message="Enter database name:"
+		               defaultvalue="wikulu_wikiedia1"
+		               addproperty="base"/>
+	<input message="Enter sql password:"
+               defaultvalue="null"
+               addproperty="pass"/>
+		<sql
+			driver="org.database.jdbcDriver"
+			url="jdbc:http://mrburns.ntdom.tk.informatik.tu-darmstadt.de/"
+			userid="wikulu"
+			password="${pass}"
+		>
+			CREATE DATABASE ${base} CHARACTER SET utf8 COLLATE utf8_general_ci; 
+		</sql>
+	</target>
+
+
+
+</project>

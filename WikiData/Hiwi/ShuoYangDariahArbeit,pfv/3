@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="ShuoYang" date="1310941436" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll von DARIAH-DE, Shuo Yang
+
+---++ Aktuelle Arbeit: Jul-Sep 2011
+
+---+++ Aufgabenübersicht
+
+Siehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/buglist.cgi?product=DARIAH-DE][Bugzilla]].
+
+
+---+++ Protokoll
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* | *Neu* |
+| 14.07.2011 | Organisatorisches, Einarbeiten | 1.5 | Kickoff-Meeting mit Richard über DARIAH-DE Projekte, Einarbeiten in DARIAH-DE sowie eSciDoc Projekt | * | 
+| 15.07.2011 | [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=972][ID972]]: Get familiar with eSciDoc | 1.5 | eSciDoc sowie PostgreSQL Datenbank installiert und konfiguriert. Leider konnte danach nicht weiterkommen: gleiches Problem wie Richards gehabt | * | 
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | | |
+| *Soll* | | %CALC{"$SET(total_hour, 60)$EXEC($GET(total_hour))"}% | bis Ende September noch %CALC{"$EVAL( $GET( total_hour ) - $GET( done_hour ) )"}% Stunden | |
+<nop>
+
+
+-- Main.ShuoYang - 2011-07-17

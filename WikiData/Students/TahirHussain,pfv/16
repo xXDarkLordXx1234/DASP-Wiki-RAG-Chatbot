@@ -1,0 +1,85 @@
+%META:TOPICINFO{author="hussain" comment="reprev" date="1464584027" format="1.1" reprev="16" version="16"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 31 May 2016
+---++++ Meeting Agenda
+   * Please provide DKPro Core code examples (to test them as workflow)
+   * Are tags relevant to me?
+   * Starting points for generating tool descriptions
+   * Once I Spark implementation is complete, how would I test it? Would I be provided Spark cluster or something?
+   * Scaling Strategy (HDFS)
+   * As part of evaluation, what factors should I measure for galaxy and spark workflows.
+   * Could it be the case than two or more readers or components be merged in a writer at once?
+   * What are available languages for Readers and Writers? 
+
+---++++ Deliverables
+   * Working implementation of DK Pro Core Workflow in galaxy and [possibly in Spark (pending)]. 
+
+
+<hr>
+---++ 09 May 2016
+---++++ Meeting Agenda
+   *  Discussion and feedback on how to integrate spark.  
+
+<hr>
+---++ 28 April 2016
+---++++ Meeting Agenda
+   *  How to extend Demo implementation.
+   *  Starting points for generating tool descriptions
+      * https://github.com/dkpro/dkpro-core/blob/master/dkpro-core-doc/src/main/script/generateDocumentation.groovy
+      * https://github.com/openminted/interoperability-mapping-conversion/blob/master/src/main/groovy/eu/openminted/interop/componentoverview/ComponentsMain.groovy 
+   * Starting point for Spark-based execution backend for Galaxy: https://github.com/galaxyproject/pulsar
+
+---++++ Deliverables
+   * A demo of DKPro Core with Galaxy and Spark .
+
+
+<hr>
+
+---++ 14 April 2016
+---++++ Meeting Agenda
+   * Feedback on Workflow systems
+   * Use of Hadoop/Spark with DKPro Core. 
+   * Batch input for Workflow. 
+
+---++++ Deliverables
+   * Requirements, Overview and comparison of workflow editors [<u>Need more time</u>]
+
+---++++ Tasks
+   * Integrate DKPro Core, Galaxy and Spark for demo. 
+
+<hr>
+
+---++ 31st March 2016
+---++++ Meeting Agenda
+   * Thesis Registration
+   * Following questions needs to be discussed related to DKPro Core
+      1 Why Resource and Component are distributed separately in maven repository. Relationship between components and resources.
+      2 Classification of components, can one be substituted for another.
+      3 For workflow should I assume certain predefined components or it should be generic. How components can be listed.
+      4 Order in a certain workflow is always sequential or it can be customised i.e branches etc.
+      5 Scope of UIMA in workflow editor, i.e workflow will be generalised to UIMA pipeline or DK Pro Core Components.
+      6 In Some of the example, some parts of UIMA pipeline were provided by user, i.e final Writer component. Does it mean user can import custom components in workflow.
+      7 Workflow should be defined as UIMA compatible xml format, or some other way
+   * Some references from today
+      * Groovy-based scripts with DKPro Core - https://dkpro.github.io/dkpro-core/groovy/recipes/
+      * DKPro Script - still simpler scripting for DKPro Core - https://dkpro.github.io/dkpro-script/
+      * Auto-generated DKPro Core documentation: https://github.com/dkpro/dkpro-core/tree/master/dkpro-core-doc
+---++++ Issues
+   * Jabber account not working
+---++++ Tasks
+   *  Requirements, Overview and comparison of workflow editors
+
+<hr>
+
+---++  Meeting on 17 March 2016
+
+---++++ Tasks
+   * _Done_ - Brief overview of thesis and tasks to perform
+   * _Initial draft submitted_ - List of features/requirements for workflow editor
+
+<hr>
+
+[[%ATTACHURLPATH%/TaskDescription.pdf][Thesis description]]
+
+%META:FILEATTACHMENT{name="TaskDescription.pdf" attachment="TaskDescription.pdf" attr="" comment="" date="1459370768" size="334515" user="hussain" version="1"}%
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value="Tahir Hussain"}%

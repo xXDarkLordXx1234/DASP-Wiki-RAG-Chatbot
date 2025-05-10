@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="braeutigam" comment="reprev" date="1445589104" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="WebHome"}%
+
+
+-- Main.SvenBraeutigam - 2015-10-11
+
+---+++ Protocol
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Sven, Stunden 2015* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Template | 11.10.2015 | 0 | <ul><li> template-comment1 </li><li> template-comment2 </li></ul> |
+| Vorlesung & Moodle-Betreuung | 15.10.2015 | 3 | <ul><li> Ansprechpartner für Studenten und Vorstellung der Person in der Vorlesung </li><li>Sprechstundenumfrage im Moodle-Forum</li></ul> |
+| Forumsbetreuung & Hausaufgabenkorrektur | 19.10.2015 | 2 | |
+       | Forumsbetreuung | 20.10.2015 | 1 | |
+| Studentenbetreuung | 21.10.2015 | 2 | <ul><li>Einrichten von Python + Packages</li><li>Erklärung Übungsablauf</li></ul> |
+| Sprechstunde, Meeting, Hausaufgabenkorrektur | 22.10.2015 | 3 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | until the end of november 2015 |

@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="helm" comment="" date="1709890113" format="1.1" reprev="3" version="5"}%
+%META:TOPICPARENT{name="HowTo"}%
+---+!! %TOPIC%
+
+%TOC%
+
+---++ Common Telephone Usage (Alcatel 4039)
+If you have trouble identifying the model of your telephone, check the back or bottom of the unit for the model number.
+
+---+++ Calling external numbers
+   1. Dial 0
+   2. Dial external number, including leading 0
+   3. Dial hash key (#) to confirm the number to start dialing. 
+
+---+++ Using automated hotlines ("Press 1 for support, press 2 for ...")
+   1. Call hotline
+   2. Press "MFV senden":
+
+<img src="%ATTACHURLPATH%/alcatel_4039_mfv.jpg" alt="alcatel_4039_mfv.jpg" width="540" />
+
+---+++ Transferring calls
+External or internal calls can be transferred to internal numbers. Imagine three participants A, B (internal) and E (external). B wants to call E, then transfer the call to A. These are the steps for participant B:
+   1. Call E (or be called by E, doesn't matter)
+   2. Once the call with E is established, B dials the number of A. The call with E will automatically be put on hold.
+   3. Once the call with A is established, B presses "Verbinden" on the phone:
+   4. A is now in a call with E. B was disconnected from both calls and can hang up.
+
+<img src="%ATTACHURLPATH%/alcatel_4039_verbinden.jpg" alt="alcatel_4039_verbinden.jpg" width="540" />
+
+---+++ Conferences
+It's possible to have three-way telephone conferences. The process is the same as for transferring calls, except that B needs to press "Konferenz" instead of "Verbinden". Three-way conferences with two external callers are also possible.
+
+---++ More features:
+See manual: [[%ATTACHURL%/Alcatel_4038-4039-4068_User_Guide.pdf][Alcatel 4038/4039/4068 User Guide (English)]]
+
+---++ Restricted phone numbers
+
+_Information from 2014, might not apply anymore:_
+
+It is not possible to dial premium (0900) numbers directly from the office phones. However, some embassies require visa applicants to call such numbers.  In such cases, seek advance permission of IG.  If she agrees to the call, then you can dial 99 to reach the university switchboard, explain the situation, and have them dial the number for you.
+
+---++ Conferences with >3 participants
+   * [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/UKP/Webconference][Webconference with telephone-option]]
+
+---++ Additional information from HRZ
+   * [[https://www.hrz.tu-darmstadt.de/netz/netz_telefon_1/festnetz_1/index.de.jsp]]
+
+%META:FILEATTACHMENT{name="Informationen_zu_Calling_Cards.pdf" attachment="Informationen_zu_Calling_Cards.pdf" attr="" comment="Information concerning calling cards" date="1275898413" moveby="miller" movedto="UKP.Telephone.Informationen_zu_Calling_Cards.pdf" movedwhen="1371215672" movefrom="UKP.TelefonCallingCard.Informationen_zu_Calling_Cards.pdf" path="Informationen zu Calling Cards.pdf" size="998539" stream="Informationen zu Calling Cards.pdf" tmpFilename="/var/tmp/CGItemp42214" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="Alcatel_4038-4039-4068_User_Guide.pdf" attachment="Alcatel_4038-4039-4068_User_Guide.pdf" attr="" comment="" date="1333464510" moveby="miller" movedto="UKP.Telephone.Alcatel_4038-4039-4068_User_Guide.pdf" movedwhen="1371216494" movefrom="UKP.TelephoneManuals.Alcatel_4038-4039-4068_User_Guide.pdf" path="Alcatel_4038-4039-4068_User_Guide.pdf" size="6751108" user="TristanMiller" version="1"}%
+%META:FILEATTACHMENT{name="alcatel_4039_mfv.jpg" attachment="alcatel_4039_mfv.jpg" attr="" comment="" date="1538756852" path="alcatel_4039_mfv.jpg" size="162782" user="bugert" version="1"}%
+%META:FILEATTACHMENT{name="alcatel_4039_verbinden.jpg" attachment="alcatel_4039_verbinden.jpg" attr="" comment="" date="1538756864" path="alcatel_4039_verbinden.jpg" size="171903" user="bugert" version="1"}%

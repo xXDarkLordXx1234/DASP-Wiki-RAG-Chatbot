@@ -1,0 +1,66 @@
+%META:TOPICINFO{author="arshad" comment="save topic" date="1455892992" format="1.1" reprev="4" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+-- Main.HatemMoussellySergieh - 2016-01-08
+
+---++ Intro
+
+I'm doing my Master thesis here at UKP Labs under the supervision of Hatem Mousselly Sergieh and Prof.Dr. Gurevych. The title of my work is 'Cross Resource Predicate Argument Linking'.
+
+---+++ Topic Description
+In my Thesis i aim to develop a Web application based on state of the art indexing and
+data visualization techniques supporting enormous number of concurrent users to establish 
+novel methods for analyzing frame based predicate­argument structures across a set of
+predicate­argument inventories e.g. Framenet flexibly composed from a sense linked lexical
+semantic knowledge base. More specifically, our goal is to identify predicate­argument
+structure in a given textual unit and link the participants of the structure to corresponding
+entities in external knowledge bases or linguistic resource. Furthermore, we focus on cross
+resource linking in the sense that the participants of predicate­argument structure are linked to
+multiple knowledge bases and lexical resources.  
+
+---++ Literatur Reviewed so far 
+   * *Framenet*  
+   1 Semi-Supervised Semantic role labeling via structure alignment
+   2 Semantic Frame Identification with Distributed Word Representations
+   3 LTH: Semantic Structure Extraction using Nonprojective Dependency Trees
+   4 Aligning Framenet and Wikidata on Relation Level
+   5 The Berkeley Framenet Project
+   6 Framenet Frames vs Levins Verb Classes
+   7 Building Large Lexical Databank which provides deep semantics
+   8 SEMAFOR 1,0 A Probablistic Frame-Semantic Parser
+   9 Semi supervised Frame Semantic Parsing for Unknown Predicates
+       
+   * *Wikidata*
+   1 The Rise of Wikidata
+   2 https://www.wikidata.org/wiki/Wikidata:Glossary
+   3 Wikidata: A Free Collaborative Knowledge Base
+---++ Meetings 19.02.2016
+   * Semafor Remote Client and Server implementation.
+   * TODO Faisal: Data visulization from sample Output .
+   * TODO Faisal: Try to Run : http://homepages.inf.ed.ac.uk/mroth/demo.html 
+   * Next Meeting 26.02.2016
+   * 
+
+---++ Meetings 29.01.2016
+   * todo(): reproduce the resluts of semafor.
+      * Re-training on the original corpus
+      * Run semafor in server mode on our machine :  Done -- Main.FaisalArshad - 2016-02-02 - 22:07
+      * Access the semafor server via API and use it as service for the web application : Done -- Main.FaisalArshad - 2016-02-18 - 22:53
+      * Work on the user interface (web application)
+   * todo(HMS): Checking with Raktim if we can use a part of his code for the corpus annotation.
+
+
+---++ Meetings 22.01.2016
+
+   * todo(Faisal): <del>Further investigating semafor for training</del>
+   * todo(Faisal):<del>Done Reading: Studying a Wikidata-FrameNet alignment approach by</del> (HMS)
+   * todo(Faisal):Done <del>Reading: study the paper of *semi-supervised semantic role labling by Fürstenau and Lapata*</del>
+   * todo(Faisal): Invesitgating a new approach based on Wikidata annotated corpus:
+      * todo(HMS): Checking with Raktim if we can use a part of his code for the corpus annotation.
+      * todo(Faisal):Done : investigating methods for re-phrasing Wikdidata properties, e.g., reasonator (https://tools.wmflabs.org/reasonator/)
+   * todo(HMS): <del>regarding the infra-structure. We need a machine with minimum of 8 GB RAM to run semafor</del>   * Done Reading: <del>Karl Moritz Hermann et al. *Semantic Frame Identification with Distributed Word Representations*</del>
+   *  <del>Richard Johansson and Pierre Nugues. *LTH: Semantic Structure Extraction using Nonprojective Dependency Trees*</del>
+---++ Meetings 17.12.2015
+
+   * First web interfance design
+   * Studied papers on semafor and Wikidata-FramentNet alginment
+   * Finished the task description and got the approval from DSS responsible

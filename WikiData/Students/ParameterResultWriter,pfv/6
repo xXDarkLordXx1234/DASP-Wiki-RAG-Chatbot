@@ -1,0 +1,69 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762007" format="1.1" version="6"}%
+%META:TOPICPARENT{name="Hiwi.NicoErbsHiwi"}%
+---+++ ParameterResultWriter
+
+A writer for experiments which outputs readable information.
+
+%TOC%
+
+---++++ Problem
+Until now results and information abut experiments are written to a console which is saved in a log file. Extracting these results (and information about the corresponding experiments) tend to be difficult with huge log-files of some GB.
+
+Hence it should be possible to extract results in a convenient manner. Nevertheless no essential information about the experiments (descriptors and their parameters) should be neglected.
+
+---+++++ Methods of resolution
+Several methods to solve this problem are discussed.
+
+---++++++ Creating a special UIMA consumer
+A new UIMA consumer can get information about descriptors and their parameters. The consumer can write information about descriptors and their parameters but it seems complicated to get results of an experiment (which is neither inside a CAS nor a parameter of a descriptor).
+
+---++++++ Creating external programm
+An external programm can process a log-file and retrieve all relevant information with regular expressions. Implementing such a program is costly because many regular expressions have to be defined and one has to look deeply into the log-file.
+
+---++++++ Modifying existing UIMA consumers for results
+Modifying the existing consumer, which calculates results seems to be the easiest way. This consumer has to have additional parameters for a list of descriptors used in the experiment and the path to a file where to store data in.
+
+---+++++ Using Excel
+Excel Spreadsheets are a good way to store information in. The main problem is to keep all relevant data and keep a Spreadsheet easily readable. The following structure is used:
+   * One file for each experiment
+   * One Worksheet for each dynamically generated cpe
+
+---++++ Additional classes
+Aim is to have additional classes for one function only --> LSP
+
+---+++++ de.tudarmstadt.ukp.dkpro.experiments.keyphrases.acl09.ExcelExperiment
+This class provides methods for generating a String for the essential information of descriptors and for creating the Excel document. Additionally it contains a method which makes keeping track of the added descriptors easy.
+Classes with experiments extend this class.
+
+---+++++ de.tudarmstadt.ukp.dkpro.semantics.consumer.keyphrases.KeyphraseEvaluatorExcelBase
+This class provides additional functionalities to write results and parameters to an excel document. Parameters are written at initialization and results are written at destruction.
+This class extends KeyphraseEvaluatorBase. Both classes are abstract. If an Evaluator has to have a functionality to write to Excel documents, than it must extend KeyphraseEvaluatorExcelBase rather than KeyphraseEvaluatorBase.
+
+---++++ Migration guideline
+To migrate experiments to write results as excel documents the following steps have to be done:
+   * Extend experiment from ExcelExperiment
+   * add following line at top of class with the path for the Excel document: =private static final String excelDocumentPath = "/media/data/Uni/Darmstadt/ukp/semEval2/trial/excel/candidate";=
+   * add following line at the top of the main method: =initialize(excelDocumentPath);=
+   * add following line at the start of construction the cpe: =resetAeDescriptions();=
+   * change all (besides the ones with the KeyphraseEvaluator) occurences of =cpeManager.appendAnalysisEngine(descriptor , sofaMapping)= to =addAE(cpeManager, descriptor, sofaMapping)=
+   * add the following parameters to the description of the KeyphraseEvaluator (this is for the exact KeyphraseEvaluator):
+      * =KeyphraseEvaluatorExact.PARAM_EXCEL_WORKBOOK_PATH, excelDocumentPath + "Exact.xls"=
+      * =KeyphraseEvaluatorExact.PARAM_AE_DESCRIPTORS, getAeDescriptions()=
+      * =KeyphraseEvaluatorExact.PARAM_AE_DESCRIPTORS_PARAMETERS, getAeDescriptionParameters()=
+      * =KeyphraseEvaluatorExact.PARAM_READER_DESCRIPTOR, getReaderDescription(readerItem)=
+      * =KeyphraseEvaluatorExact.PARAM_READER_DESCRIPTOR_PARAMETERS, getReaderDescriptionParameters(readerItem)=
+
+
+Note that migration only works, if experiments are in the new style and if KeyphraseEvaluator is used.
+Migration (according to the steps above) of a single experiments takes less than five minutes.
+
+---++++ Provisional results
+Two examples for exact and approximate matching in an excel workbook:
+
+see attachement!
+
+
+-- Main.NicolaiErbs - 09 Feb 2010
+
+%META:FILEATTACHMENT{name="cooccurrenceExact.xls" attachment="cooccurrenceExact.xls" attr="" comment="Cooccurrence Exact Matching" date="1266167850" path="cooccurrenceExact.xls" size="300544" stream="cooccurrenceExact.xls" tmpFilename="/var/tmp/CGItemp60089" user="NicoErbs" version="1"}%
+%META:FILEATTACHMENT{name="cooccurrenceApprox.xls" attachment="cooccurrenceApprox.xls" attr="" comment="Cooccurrence Approximate Matching" date="1266167880" path="cooccurrenceApprox.xls" size="299520" stream="cooccurrenceApprox.xls" tmpFilename="/var/tmp/CGItemp60065" user="NicoErbs" version="1"}%

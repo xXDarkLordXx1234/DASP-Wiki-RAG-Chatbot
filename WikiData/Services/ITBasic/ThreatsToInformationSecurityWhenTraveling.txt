@@ -1,0 +1,87 @@
+%META:TOPICINFO{author="alles" comment="" date="1730109689" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="WebHome"}%
+<div style="float:right; border: solid grey 1px; padding: 0.25em; margin: 0.25em;">
+%TOC%
+</div>
+
+---+!! (English - German below) Threats to information security when traveling - guide
+   * tbd
+
+---+!! (German) Bedrohungen für die Informationssicherheit auf Reisen - Leitfaden
+
+---++ Allgemeines zu In- und Auslandsreisen
+   * Es gibt eine Vielzahl von Bedrohungen für die Informationssicherheit auf Reisen; diese variieren je nach Reisezweck, Reisedauer und Reiseziel.
+   * Durch Kommunikation über offene oder manipulierte Netzwerke oder den Diebstahl/Verlust von unverschlüsselten Datenträgern oder Laptops können schnell Gefahrensituationen entstehen, die im regulären Betrieb nicht oder deutlich seltener auftreten.
+   * Um dem vorzubeugen, hat die TU Darmstadt eine Richtlinie zur Informationssicherheit auf Dienstreisen im In- und Ausland erlassen, an die sich alle Mitarbeitenden der TU Darmstadt halten müssen [0].
+   * Diese Wiki-Seite ist nur eine Zusammenfassung der Informationen der Richtlinie - wir bitte im Zweifel um ein Selbststudium des zuvor verlinkten Dokuments. 
+
+---+++ Länder mit erhöhtem Risiko
+   * Es gibt eine Reihe von Staaten mit besonderen Sicherheitsrisiken; eine aktuelle Liste dieser Staaten kann beim BMI [8] heruntergeladen werden.
+   * Der UKP-VPN sowie viele weitere Dienste von UKP sind in diesen Staaten nicht erreichbar. Nutze stattdessen den HRZ-VPN im Profil "Campus"! [1]
+   * Sei in diesen Ländern besonders vorsichtig!
+
+---+++ Vorsicht vor
+   * lokalen gesetzlichen Bestimmungen, die z. B. die Nutzung von VPNs verbieten (z. B. in China) – dies ist bei der Reiseplanung unbedingt zu berücksichtigen! Mehr dazu unter "Länder mit erhöhtem Risiko".
+   * irreführenden Informationen oder Falschinformationen zur Täuschung mit dem Ziel, Daten herauszugeben.
+   * Aushebelung der Regelungen zur Informationssicherheit durch Nötigung, Erpressung, Entführung und/oder Korruption – auch langjährige Freunde oder Bekannte könnten unter Druck/Erpressung, z. B. von Regierungen, stehen und dich ausspionieren.
+   * Taschendiebstahl oder dem Verlust von privaten und dienstlichen Geräten.
+   * intensiven Sicherheitskontrollen und Gepäckdurchsuchungen, z. B. bei Flügen (auch Inlandsflüge) oder in öffentlichen Verkehrsmitteln.
+   * unangemessenen oder auffällig übertriebenen Kontaktversuchen bzw. dem Überreichen von Geschenken.
+   * installierter Überwachungstechnik in Hotelzimmern oder anderen öffentlichen Räumen/Plätzen.
+
+---++ Vor der Reise
+   * Prüfe vor deiner Reise, welche Datenträger/Geräte und Daten du wirklich benötigst, und nimm nur diese mit.
+      * Du kannst dir einen der UKP-Pool-Laptops für eine Reise ausleihen, um den Verlust/das Ausspähen von Daten auf deinem Gerät zu minimieren.
+      * Wir empfehlen dies ausdrücklich für Länder mit erhöhtem Risiko (s. o.).
+      * Ein "einfaches" Löschen von Daten/in den Papierkorb verschieben und leeren reicht nicht aus, um Daten sicher zu löschen.
+   * Prüfe, ob dein Betriebssystem verschlüsselt ist, bzw. schalte die Verschlüsselung ein:
+      * Windows: BitLocker; Linux: LUKS; macOS: FileVault.
+      * Der UKP-System-Admin gibt aktuell verstärkt neue Geräte mit bereits aktiver Verschlüsselung aus, alte Geräte könnten jedoch unverschlüsselt sein – im Zweifel vereinbare einen Termin mit dem System-Admin über ticket@ukp.tu-darmstadt.de zur Prüfung deines Geräts.
+   * Aktualisiere stets dein Betriebssystem, um ausnutzbare Sicherheitslücken zu schließen.
+   * Prüfe vor deiner Reise, ob dein Gerät durch eine restriktiv konfigurierte Firewall geschützt ist – bei Windows ist diese standardmäßig aktiv, bei Linux muss sie aktiviert werden [2].
+   * Frage beim System-Admin eine Sichtschutzfolie für deinen Laptop an, damit Daten weniger einfach ausgespäht werden können.
+   * Bereite den HRZ-VPN zur Nutzung vor und teste diesen [1] – der UKP-VPN ist aus Sicherheitsgründen nicht in allen Ländern verfügbar und führt nicht alle Datenverbindungen über den VPN! [7]
+   * Informiere dich vorab über die klimatischen Bedingungen vor Ort und prüfe, ob weitere persönliche (z. B. Impfungen) oder technische Schutzmaßnahmen (für die mitgenommenen Geräte) notwendig sind.
+
+---++ Während der Reise
+---+++ Datenträger und Geräte
+   * Müssen mobile Datenträger verwendet werden, speichere die Daten dort immer verschlüsselt (nutze z. B. die Software VeraCrypt [3] oder Cryptomator [4] für Datenträger, 7zip oder 7z für einzelne Ordner) und sichere deinen privaten Schlüssel an einem sicheren Ort.
+   * Gebe Datenträger niemals aus der Hand.
+   * Keine Datenträger (Geschenke wie USB-Sticks, Festplatten etc.) von Fremden an das eigene Gerät anschließen (diese könnten Mal- oder Spyware enthalten).
+
+---+++ Technische Absicherungen
+   * Verwende im Ausland am besten immer den HRZ-VPN im Profil "Campus" [1].
+      * Damit werden alle Datenverbindungen über den VPN geführt, um deine Daten vor unverschlüsselter Übertragung/unsicheren Netzwerken zu schützen.
+      * Deine privaten sowie dienstlichen Passwörter, Online-Banking-Daten u. v. m. können bei schlecht abgesicherten oder unverschlüsselten Netzwerken abgehört und missbraucht werden!
+   * Nutze keine öffentlichen Netzwerke, denen du nicht vertraust,
+      * vor allem, wenn deren Verwendung von offizieller Seite mit Nachdruck angeboten wird!
+      * Wenn verfügbar, nutze immer "eduroam" an vielen öffentlichen Plätzen oder in der Nähe von Schulen und Universitäten.
+   * Achte bei Webseiten immer auf verschlüsselte HTTPS-Verbindungen und akzeptiere keine unbekannten Zertifikate/vertraue keinen privaten Zertifizierungsstellen für verschlüsselte Verbindungen.
+   * Signiere E-Mails und/oder verschlüssele diese mittels S/MIME [5] bei der Übermittlung von vertraulichen Daten; das Zertifikat bekommst du über das DFN [6].
+   * Nutze die Bildschirmsperre, wenn du dein Gerät dennoch unbeaufsichtigt lassen musst (Tastenkombinationen: Windows: Win+L, Mac: Command+Control+Q, Linux: Strg+Alt+L).
+   * Vermeide, wenn möglich, die Nutzung von ortsüblichen Apps, die zur Überwachung genutzt werden könnten bzw. installiere diese auf einem eigenen Reisetelefon ohne gespeicherte schützenswerte Daten.
+
+---+++ Verhalten
+   * Reise am besten nie allein oder teile einer vertrauenswürdigen Person deinen Ziel- bzw. Aufenthaltsort mit.
+   * Vermeide Situationen mit erhöhtem Konfliktpotenzial wie z. B. Demonstrationen oder Protestaktionen.
+   * Melde gestohlene oder verlorene Geräte sofort(!) bei ukp.system-admin@ukp.tu-darmstadt.de sowie bei cert@tu-darmstadt.de und, bei Verlust von Daten Dritter, auch bei datenschutz@tu-darmstadt.de.
+   * Verwende nur eigene Ladegeräte; fremde könnten zur Datenausspähung manipuliert sein.
+   * Lasse deine elektronischen Geräte (egal ob privat oder dienstlich) niemals aus den Augen (z. B. im Zugabteil, in der Pause einer Konferenz, ...) oder verschließe sie sicher, z. B. in einem Hotelsafe (Diebstahlschutz).
+   * Spreche nicht in der Öffentlichkeit über interne oder kritische Informationen, denn diese könnten mitgehört und zu deinem Nachteil (oder dem der gesamten TU Darmstadt) verwendet werden.
+
+---++ Nach der Reise
+   * Prüfe deine Geräte selbst oder lasse sie (z. B. vom UKP-System-Admin) auf Schadsoftware überprüfen.
+   * Ändere ggf. deine auf der Reise genutzten Zugangsdaten (TU-ID, UKP-Account etc.).
+   * Bei Unklarheiten oder Unstimmigkeiten kontaktiere gerne den UKP-System-Admin via Ticketsystem.
+
+[0] Richtlinie Informationssicherheit auf Dienstreisen im In- und Ausland: https://download.hrz.tu-darmstadt.de/protected/IT-Sicherheit/Richtlinien/DR-RL-TUDa.pdf
+[1] HRZ VPN: https://www.hrz.tu-darmstadt.de/services/it_services/vpn/index.de.jsp
+[2] Linux Firewall: https://www.tu-darmstadt.de/it-sicherheit/itsecurity/itsecurity_user/lokale_firewall.de.jsp
+[3] Software Veracrypt:https://veracrypt.fr/en/Home.html
+[4] Software Cryptopmator: https://cryptomator.org/de/
+[5] E-Mail Verschlüsseln und Signieren: https://www.tu-darmstadt.de/it-sicherheit/itsecurity/itsecurity_user/itsecurity_signatur.de.jsp
+[6] E-Mail Zertifikate erhalten und einrichten: https://www.hrz.tu-darmstadt.de/services/it_services/zertifikate/nutzerzertifikate_dfnpki/index.de.jsp
+[7] UKP VPN: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/ITBasic/VpnService
+[8] Staatenliste im Sinne von § 13 Abs. 1 Nr. 17 SÜG: https://www.bmi.bund.de/SharedDocs/downloads/DE/veroeffentlichungen/themen/sicherheit/staatenliste-para-13-anleitung-sicherheitserklaerung.html
+
+-- Main.SebastianAlles - 2024-10-28

@@ -1,0 +1,170 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="ClemensDeusserStatistics"}%
+These statistics are about the number of keywords belonging to the same category/ies in relation to the total amount of keywords with varying category level and maximum allowed number of categories
+
+The category level is determined by the category tree of the Fachsystematik, if we choose a certain category level then all categories will be replaced by their parents until they meet the level requirement. The maximum number of categories refers to the number of categories we allow to be taken into account. Example: If a document has 3 keywords belonging to category 3850 and 2 belonging to 6850 and 6 total then allowing one category means 50% frequency (3850) and allowing two categories meaning ~83% frequency (3850 and 6850).
+
+
+Category Level: 0<br />Number of Allowed Categories: 1.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 165 | 4.84% | 
+ | 80% - 90% | 3 | 0.09% | 
+ | 70% - 80% | 45 | 1.32% | 
+ | 60% - 70% | 124 | 3.64% | 
+ | 50% - 60% | 82 | 2.4% | 
+ | 40% - 50% | 561 | 16.45% | 
+ | 30% - 40% | 792 | 23.22% | 
+ | 20% - 30% | 836 | 24.51% | 
+ | 10% - 20% | 763 | 22.37% | 
+ | 0% - 10% | 40 | 1.17% | 
+
+Category Level: 0<br />Number of Allowed Categories: 2.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 568 | 16.65% | 
+ | 80% - 90% | 36 | 1.06% | 
+ | 70% - 80% | 237 | 6.95% | 
+ | 60% - 70% | 427 | 12.52% | 
+ | 50% - 60% | 343 | 10.06% | 
+ | 40% - 50% | 738 | 21.64% | 
+ | 30% - 40% | 714 | 20.93% | 
+ | 20% - 30% | 303 | 8.88% | 
+ | 10% - 20% | 31 | 0.91% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+Category Level: 0<br />Number of Allowed Categories: 3.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 1025 | 30.05% | 
+ | 80% - 90% | 154 | 4.51% | 
+ | 70% - 80% | 501 | 14.69% | 
+ | 60% - 70% | 331 | 9.7% | 
+ | 50% - 60% | 503 | 14.75% | 
+ | 40% - 50% | 574 | 16.83% | 
+ | 30% - 40% | 258 | 7.56% | 
+ | 20% - 30% | 51 | 1.5% | 
+ | 10% - 20% | 0 | 0.0% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+Category Level: 1<br />Number of Allowed Categories: 1.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 182 | 5.34% | 
+ | 80% - 90% | 5 | 0.15% | 
+ | 70% - 80% | 49 | 1.44% | 
+ | 60% - 70% | 141 | 4.13% | 
+ | 50% - 60% | 118 | 3.46% | 
+ | 40% - 50% | 613 | 17.97% | 
+ | 30% - 40% | 830 | 24.33% | 
+ | 20% - 30% | 834 | 24.45% | 
+ | 10% - 20% | 610 | 17.88% | 
+ | 0% - 10% | 29 | 0.85% | 
+
+Category Level: 1<br />Number of Allowed Categories: 2.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 595 | 17.44% | 
+ | 80% - 90% | 63 | 1.85% | 
+ | 70% - 80% | 289 | 8.47% | 
+ | 60% - 70% | 468 | 13.72% | 
+ | 50% - 60% | 402 | 11.79% | 
+ | 40% - 50% | 733 | 21.49% | 
+ | 30% - 40% | 617 | 18.09% | 
+ | 20% - 30% | 211 | 6.19% | 
+ | 10% - 20% | 19 | 0.56% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+Category Level: 1<br />Number of Allowed Categories: 3.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 1097 | 32.16% | 
+ | 80% - 90% | 204 | 5.98% | 
+ | 70% - 80% | 565 | 16.56% | 
+ | 60% - 70% | 351 | 10.29% | 
+ | 50% - 60% | 488 | 14.31% | 
+ | 40% - 50% | 492 | 14.42% | 
+ | 30% - 40% | 174 | 5.1% | 
+ | 20% - 30% | 26 | 0.76% | 
+ | 10% - 20% | 0 | 0.0% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+Category Level: 2<br />Number of Allowed Categories: 1.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 226 | 6.63% | 
+ | 80% - 90% | 32 | 0.94% | 
+ | 70% - 80% | 137 | 4.02% | 
+ | 60% - 70% | 246 | 7.21% | 
+ | 50% - 60% | 229 | 6.71% | 
+ | 40% - 50% | 883 | 25.89% | 
+ | 30% - 40% | 933 | 27.35% | 
+ | 20% - 30% | 535 | 15.68% | 
+ | 10% - 20% | 176 | 5.16% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+Category Level: 2<br />Number of Allowed Categories: 2.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 792 | 23.22% | 
+ | 80% - 90% | 206 | 6.04% | 
+ | 70% - 80% | 573 | 16.8% | 
+ | 60% - 70% | 574 | 16.83% | 
+ | 50% - 60% | 486 | 14.25% | 
+ | 40% - 50% | 534 | 15.66% | 
+ | 30% - 40% | 211 | 6.19% | 
+ | 20% - 30% | 21 | 0.62% | 
+ | 10% - 20% | 0 | 0.0% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+Category Level: 2<br />Number of Allowed Categories: 3.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 1530 | 44.85% | 
+ | 80% - 90% | 422 | 12.37% | 
+ | 70% - 80% | 632 | 18.53% | 
+ | 60% - 70% | 416 | 12.2% | 
+ | 50% - 60% | 270 | 7.92% | 
+ | 40% - 50% | 114 | 3.34% | 
+ | 30% - 40% | 13 | 0.38% | 
+ | 20% - 30% | 0 | 0.0% | 
+ | 10% - 20% | 0 | 0.0% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+Category Level: 3<br />Number of Allowed Categories: 1.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 511 | 14.98% | 
+ | 80% - 90% | 182 | 5.34% | 
+ | 70% - 80% | 476 | 13.95% | 
+ | 60% - 70% | 613 | 17.97% | 
+ | 50% - 60% | 531 | 15.57% | 
+ | 40% - 50% | 798 | 23.39% | 
+ | 30% - 40% | 264 | 7.74% | 
+ | 20% - 30% | 21 | 0.62% | 
+ | 10% - 20% | 1 | 0.03% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+Category Level: 3<br />Number of Allowed Categories: 2.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 2058 | 60.33% | 
+ | 80% - 90% | 599 | 17.56% | 
+ | 70% - 80% | 529 | 15.51% | 
+ | 60% - 70% | 162 | 4.75% | 
+ | 50% - 60% | 38 | 1.11% | 
+ | 40% - 50% | 10 | 0.29% | 
+ | 30% - 40% | 1 | 0.03% | 
+ | 20% - 30% | 0 | 0.0% | 
+ | 10% - 20% | 0 | 0.0% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+Category Level: 3<br />Number of Allowed Categories: 3.
+ | *Frequency* | *#Documents* | *Share* | 
+ | 90% - 100% | 3165 | 92.79% | 
+ | 80% - 90% | 190 | 5.57% | 
+ | 70% - 80% | 40 | 1.17% | 
+ | 60% - 70% | 1 | 0.03% | 
+ | 50% - 60% | 1 | 0.03% | 
+ | 40% - 50% | 0 | 0.0% | 
+ | 30% - 40% | 0 | 0.0% | 
+ | 20% - 30% | 0 | 0.0% | 
+ | 10% - 20% | 0 | 0.0% | 
+ | 0% - 10% | 14 | 0.41% | 
+
+
+
+
+
+
+
+-- Main.ClemensDeusser - 2012-07-30

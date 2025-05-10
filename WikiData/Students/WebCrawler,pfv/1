@@ -1,0 +1,20 @@
+%META:TOPICINFO{author="StefanHenss" date="1349696161" format="1.1" version="1"}%
+%META:TOPICPARENT{name="StefanHenss"}%
+---+ Web Crawler
+
+---++ Current Design
+   * State: Current URL, queue for links, visited and stored URLs, history of past N followed links
+   * Actions: Store current page, follow unvisited links directly, store unvisited links to queue, follow link from queue, return to any of the N past links.
+   * Rewards: -0.001 for adding a link to the queue, +/-0.01 for visiting a relevant/irrelevant link and +/-1.0 for storing relevant/irrelevant URLs.
+   * Future Rewards: Discount factor of 0.25. Will be increased when crawler performance improves.
+   * Predictions: The observed reward from past actions is stored and future reward predicted through supervised learning.
+
+---++ Issues
+   * Normalization of URLs - resolved
+   * Error codes and connection timeouts - resolved
+   * Irrelevant content such as rss feeds - partially resolved (can't always detect from URL)
+   * Irrelevant file types (images, audio, video) and preventing from downloading them - partially resolved (s.o.)
+   * Dead ends (e.g., sequence of pages with too few unvisited links) - in progress
+
+---++ Evaluation
+ As currently the rewards are stored for all actions in order to build a model, we can use a traditional supervised learning setup (e.g., crossvalidation) to evaluate how fell future rewards are predicted by the model. The ultimate crawler performance will be measured through IE metrics with the Bildungsserver database as our gold standard.

@@ -1,0 +1,74 @@
+%META:TOPICINFO{author="SilvanaHartmann" date="1334060882" format="1.1" version="9"}%
+%META:TOPICPARENT{name="TobiasHorsmann"}%
+
+---+++ Meeting 10.04.2012
+   * DKPro TEI reader: de.tudarmstadt.ukp.dkpro.core.tei.TEIReader.java: reads Sentences, Tokens, POS
+   * Maybe relevant: de.tudarmstadt.ukp.dkpro.core.api.lexmorph.TagsetMappingFactory: map different tagsets to dkpro POS-type system, using a [[http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.api.lexmorph/src/main/resources/de/tudarmstadt/ukp/dkpro/core/api/lexmorph/tagset/en-tagger.map?r=504][mapping file]]
+   * 
+---+++ Meeting 06.03.2012
+   * New task: wrap [[http://projects.csail.mit.edu/jmwe/][jMWE library]] in UIMA, i.e. create an annotator that finds MWEs in text using jMWE (and a lexicon of MWEs) and annotates them as MWE-type
+      * Have a look at the [[http://projects.csail.mit.edu/jmwe/download.php?f=edu.mit.jmwe_1.0.1_manual.pdf][user manual]], it contains some examples
+      * jMWE and jSemcor jars are in the artifactory 
+      * For annotating MWEs in text:
+         * jMWE requires tokenized, POS-tagged sentences as input. We get this from our preprocessing components (for English, they use the same POS-tagset as treetagger)
+            * Question: which tagset does the German version of [[http://nlp.stanford.edu/software/tagger.shtml][Stanford POS-tagger use]]? (treetagger uses STTS)
+         * jMWE requires an "index data file" that contains a list of MWEs in a particular format and some additional information; this would be an external resource to the annotator
+            * An example data file is given on the website
+         * for the jMweAnnotator, we need the IMWEDetector-functionality (including chapter 2 in the manual), not the index creator, not the test harness (although we may want to wrap that as a consumer later on)
+         * The IMWE detector outputs a list of MWEs found in the sentence. In the annotator, their spans need to be added as annotations of an MWE UIMA type.  
+         * I suggest starting with the simple pipeline example as a basis for the annotator. (Later, some more complex IMWEDetectors can be added and some options specified in the parameters of the annotators.) 
+   * What is required for adapting jMWE to German data?
+      * Preprocessing Steps
+         * Different tagset for English and German   
+      * Evaluation: 
+         * We need a German dataset in the jSemCor format
+         * => need a writer for the jSemCor format (information on jMWE page, or [[http://projects.csail.mit.edu/jsemcor/][here]] and maybe [[http://www.cse.unt.edu/~rada/downloads.html#semcor][here]])
+         * Brown1/br-a01/1 The_DT__0_0 Fulton_NNP_fulton_1_0 County_NNP_county_1_1 Grand_NNP_grand_1_2 Jury_NNP_jury_1_3 said_VBD_say_2_0 Friday_NNP_friday_3_0 an_DT__4_0 investigation_NN_investigation_5_0
+
+---+++ Meeting 01.12.2011
+   * [[http://code.google.com/p/dkpro-core-gpl/source/browse/de.tudarmstadt.ukp.dkpro.core-gpl/trunk/de.tudarmstadt.ukp.dkpro.core.frequency-gpl/src/main/java/de/tudarmstadt/ukp/dkpro/core/frequency/FrequencyCountProvider.java?r=45][FrequencyCountProvider]]
+---+++ Meeting 28.11.2011
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Projects/QAEL/AssociationMeasureLibraries][AssociationMeasureLibraries]]
+
+---+++ Meeting 20.10.2011
+
+Until more information on efficient creation of !Web1T data is available:
+   *  "mwe" project:
+      * Add javadoc to annotators and readers (esp. linkAnnotator, titleAnnotator as what they do is not obvious, the same for the !WikipediaTitleReaders)
+      * Prepare (main method) & run extraction of German MWE candidates
+   * Pipeline for extraction of additional information for list of MWEs
+      * Extract a list of German MWEs, for which additional information is to be extracted. Format: appropriate for dkpro core !DictionaryAnnotator (textfile with one MWE per line) (For now: Create a small list for testing purposes. This list will be a result of the candidate ranking & selection step, which requires the frequency information.)
+      * Create a pipeline, which (for a language given as a parameter)
+         * Reads Wikipedia plain text (without markup): !WikipediaReader
+         * Segments the text (!BreakIteratorSegmenter)
+         * Annotates POS and lemma information (Treetagger)
+         * Annotates MWEs using the Dictionary Annotator (and a list of MWEs)
+         * Annotates Named Entity (NE) information using the stanford.namedentityrecognizer with (German or English) NER models
+         * Aggregates the POS, Lemma and NE information for the MWE (new component to be created). Two output options:
+            * a.) Output the distribution of POS, Lemma and fully matching NE annotations  per MWE
+            * b.) Output one POS-sequence, one Lemma-sequence (the most frequent sequences) per MWE, and all fully matching NE labels       
+---+++ Meeting 28.09.2011
+
+   * Lucene !IndexTermAnnotator.PARAM_CHANGE_TO_LOWERCASE (default "true")
+   * !RegexPatterns (bold/italic)
+   * Candidate extraction pipeline
+   * Frequency extraction from Wikipedia Text
+      * Use the [[http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.io.web1t/src/main/java/de/tudarmstadt/ukp/dkpro/core/io/web1t/Web1FormatWriter.java][Web1TFormatWriter]] to create a pipeline that extracts n-gram frequencies from Wikipedia Text
+         * (E.g., !WikipediaReader, Tokenizer (!BreakIteratorSegmenter), !Web1TFormatWriter)
+         * The !Web1TFormatWriter takes _token_ and _sentence_ annotations, creates n-grams according to the parameters and collects counts for the n-gram
+         * Then the counts are stored in !Web1T-format (one n-gram and its frequency per line separated by tab)
+   * Get acquainted with !UimaFit external resource binding (for uima-fit aware components): [[http://code.google.com/p/uimafit/wiki/uimaFitResources][uimafit wiki]]
+   * Create an annotator that uses a [[http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.api.frequency/src/main/java/de/tudarmstadt/ukp/dkpro/core/api/frequency/provider/FrequencyCountProvider.java][FrequencyCountProvider]] as external resource.
+      * the provider could, for instance be a [[http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.frequency-asl/src/main/java/de/tudarmstadt/ukp/dkpro/core/frequency/Web1TFrequencyCountProvider.java][Web1TFrequencyCountProvider]] (providing access to !Web1T-data just generated)
+      * "dummy application": compute maximum likelihood estimate (MLER) of the tokens in the document (f(token)/total-words-in-corpus), annotate as "MLE"-type ("mleAnnotator") 
+      * "dummy pipeline": Read Text, tokenize, use mleAnnotator, dump
+   1 Generalize the "mleAnnotator" such that a "FeaturePath" is used as a parameter to determine for which annotations (or their features!) frequency counts should be extracted and processed
+      * Example: A feature path is also used in the !IndexTermAnnotator.PARAM_PATHS. We set it to !WikiMwe.class.getName()+"/linkTarget" to annotate the linkTarget-values as IndexTerms, or to" WikiMwe.class.getName() to annotate the spans annotated as MWE as "IndexTerms. (You can also have a look at the sourcecode/documentation of the !IndexTermAnnotator)
+      * Goal: More flexible annotator. By specifying a feature or feature-path we can decide, whether we want to collect statistics on tokens, or lemmas, or sth. else.
+      * Info: !DKPro-asl [[http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk#trunk%2Fde.tudarmstadt.ukp.dkpro.core.api.featurepath][FeaturePath-package]]
+      * Info: Iterating-over/Selecting Annotations with [[http://code.google.com/p/uimafit/source/browse/trunk/uimaFIT/src/main/java/org/uimafit/util/JCasUtil.java][UimaFit]]
+   2 Add another feature path to the "mleAnnotator" which allows to specifiy as which type or type.feature the computed values are stored (we may wish to store the value in a specific type or a feature of the WikiMwe type, or something else..)
+   3 Create a version of the !Web1TFormatWriter that extracts n-grams on other annotations than token by using a FeaturePath. We, for instance, would like to  extract the n-grams for the lemmas associated with the tokens.
+
+
+-- Main.SilvanaHartmann - 2011-09-28

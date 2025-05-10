@@ -1,0 +1,270 @@
+%META:TOPICINFO{author="stab" comment="save topic" date="1412663551" format="1.1" reprev="25" version="29"}%
+%META:TOPICPARENT{name="WebHome"}%
+<!--
+---+++yyyy-mm-dd
+   * Status Report(SM): What have you done? What will you do? What's in your way?
+      * 
+   * @todo(SM):
+   * @todo(CS):
+//-->
+
+---+++ Next Meeting
+   * Status Report(SM): What have you done? What will you do? What's in your way?
+      * 
+   * @discuss(CS): Status of slides for the mid term talk?
+   * @discuss(CS): Status of thesis writing?
+   * @discuss(CS): Status of the annotations?
+   * @info(CS): I finished the annotation task.
+   * @discuss(CS): The preliminary IAA scores and statistics are still missing. What's the problem?
+   * @info(CS): Nikhil finished annotation of first 50 items, still waiting for your response and approval for continuing the annotations as discussed.
+
+---+++ 2014-10-07
+   * canceled by student
+
+---+++ 2014-09-30
+   * canceled by student
+
+---+++ 2014-09-25
+   * canceled by student 
+   
+---+++ 2014-09-09
+   * canceled by student 
+
+---+++ 2014-09-02
+   * CS absent
+
+---+++ 2014-08-26
+   * CS business trip.
+
+---+++ 2014-08-19
+   * canceled by student because auf sickness
+   * MID-TERM TALK also canceled!
+
+---+++2014-08-12
+   * canceled by student; Agenda points move to next week
+
+---+++2014-08-07
+   * Status Report(SM): What have you done? What will you do? What's in your way?
+   * @info(CS) provided an suggestion for the thesis structure and discussed it.
+      * Reviewed the chapter about argumentation theory and provided feedback
+      * You should include a SOTA of argumentation mining 
+   * @info(CS) coordination of annotation study with PaP
+   * @info(CS) I need more items for annotation (done)
+   * @info(CS) We need IAA + Statistics (OPEN)
+
+
+
+---+++2014-08-05
+   * canceled by student
+   
+---+++2014-07-29
+   * Status Report(SM): What have you done? What will you do? What's in your way?
+      * Annotated relations (50 essays are done)
+      * Evaluated agreement
+      * Elaborated guidelines
+      * Implemented some methods for integrating data in DKPro-TC
+   * @info(CS): annotated 370 items
+   * @discuss(CS): Estimate class distribution including #plausible and #non-plausible relations as well as premises
+   * @discuss(CS): How to handle Reformulations in the annotation study?
+   * @discuss(CS): Status of slides for the mid term talk?
+   * @discuss(CS): Have you been able to integrate the data into the DKPro-TC framework?
+   * @todo(SM):
+      * Send first section of the thesis to CS for review
+      * Send additional items to CS for annotation (done)
+      * Talk with Nikhil regarding the annotation task (should be shifted to first week of august)
+      * Send additional training items for Nikhil
+   * @todo(CS):
+      * Annotate additional items (done)
+
+---+++2014-07-24
+   * canceled by student
+
+---+++2014-07-16
+   * Status Report(SM): What have you done? What will you do? What's in your way?
+      * Elaborated annotation guideline
+      * Annotated 30 essays
+      * Familiarization with DKpro-TC
+      * Started preparing mid term talk
+      * Prepared some items for annotator training (for training Nikhil)
+   * @discuss(CS): IAA per essay?
+   * @discuss(CS): Subjectivity lexicon for feature engineering
+      * http://mpqa.cs.pitt.edu/lexicons/subj_lexicon/
+   * @discuss(CS): statistics about plausible and non-plausible relations/premises.
+   * @discuss(CS): The term _plausibility_ should be elaborated in more detail in the annotation guideline. Here are some ideas that might help:
+      * For deciding if a premise is plausible, it might make sense to include some of the following notions in the annotation guidelines:
+         * <u>Subjectivity</u>: Is it a subjective of objective statement? Does the statement deal with *perspectives*, *experiences*, *feelings*, *beliefs*, *desires*? Answer the question how to distinguish that! This is crucial for obtaining a good IAA.
+         * <u>Verifiability</u>: Is it possible to check the *correctness* or the *truth* of the statement?
+         * <u>Acceptability</u>: 
+            * Take a look a Dalmer (2012) page 34. There are many properties which might help. Include them in the annotation guideline. (The term 'claim' in this section should be considered as assertion. It is not the same as our definition of the term!)
+      * For deciding if a premise is relevant to the truth of the claim the following might help:
+         * Is the claim and the premise about the same *topic*?
+         * Is the premise *relevant* to the truth of the claim?
+            * Compare definition of Dalmer: "A premise is relevant if its acceptance provides some reason to believe, counts in favor of, or has some bearing on the truth or merit of the conclusion. A premise is irrelevant if its acceptance has no bearing on, provides no evidence for, or has no connection to the truth or merit of the conclusion."
+         * Is the premise really a *reason* which underpins the validity of the claim?
+         * How to decide if the premise is a *reformulation* of the claim?
+      * In principle: 
+         * The annotation guideline should include a precise and clear definition of the two plausibility concepts (I know you have included a definition in bold face, but I feel it should be more detailed).
+            * Define criteria which have to be fulfilled in both cases. In the examples, show which of the criteria (see above) is fulfilled and which are not. 
+         * Maybe it might make sense to include <u>questions</u>, which the author can answer during the decision process. It might also make sense to include a decision tree for facilitating the annotation.
+   * @info(CS): Annotated the first 100 relations.
+   * @todo(SM):
+      * Send first section of the thesis to CS for review
+   * @todo(CS):
+      * Continue annotation
+
+---+++2014-07-08
+   * Status Report(SM): What have you done? What will you do? What's in your way?
+      * Determined agreements of the pre-study
+      * Literature review of related work
+      * Elaborated chapter 1 of the thesis
+   * @discuss: inter annotator agreement calculation
+   * @todo(SM):
+      * make sure, that the "annotations" can be read in Java.
+      * Continue literature review
+      * Continue writing the thesis
+   * @todo(CS):
+      * Review Annotation Guidelines (done)
+      * Annotated first collection of items (100 relations are annotated)
+
+
+
+---+++2014-07-01 Status Meeting
+   * Status Report(SM): What have you done? What will you do? What's in your way?
+      * Annotation Guidelines are finished
+      * Prepared items for annotation 
+      * First chapter (argumentation sota) of the work is finished
+      * First essays are annotated (20)
+   * @discuss: Status of annotation guidelines
+   * @discuss: Results of the pre-study
+      * Have to be determined! 
+   * @todo(SM):
+      * Sent annotation guidelines to CS for review
+      * Sent first chapter of the thesis to CS
+      * Agreement of the pre-study.
+      * Prepare IAA-Suite for calculating the inter-annotator agreement
+   * @todo(CS):
+      * Make appointment for introduction to TC (done)
+
+---+++2014-06-24 Status Meeting
+   * canceled by student due to sickness
+
+---+++2014-06-17 Status Meeting
+   * vacation CS
+
+---+++2014-06-10 Status Meeting
+   * vacation CS
+
+---+++2014-06-03 Status Meeting
+   * Weekly Standup (SM)
+      * Elaboration of annotation guidelines
+      * Implemented code for generating the annotation items of the study.
+   * @action(CS): Sign work description and hand it to our secretariat (done)
+   * @discuss(CS): Work plan for next two weeks (CS is on vacation)
+   * @discuss(CS): Results of second pre study (done)
+   * @discuss(CS): Status of annotation guidelines (done). Good progress :)
+   * @todo(SM): 
+      * Evaluate inter-annotator agreement of the second pre-study.
+      * Work plan next two weeks (because of vacation of CS):
+         * Elaborate annotation guidelines
+         * Prepare annotation items for the study
+         * Write thesis (introduction, SoTA, results + findings of pre study (How has the pre study influenced the elaboration of annotation guidelines? What were the findings?), Description of annotation study)
+         * Get familiar with DKPro-TC (https://code.google.com/p/dkpro-tc/)
+            * In particular: Pair classification task
+   * @todo(CS):
+      * Hand signed work description to secretariat. (done)
+
+
+---+++2014-05-27 Status Meeting
+   * Weekly Standup (SM)
+      * Annotation guidelines ausgearbeitet
+      * Prepared examples for second pre-study
+      * Investigated brat. Will conduct the annotation study using spreadsheets because of compatibility problems to student's hardware
+   * @discuss(): Discussed the annotation guidelines.
+   * @info: attacking faulty reasoning: http://www.gospellifechurch.com/thinktank/download/05_Faulty_Reasoning.pdf
+      * provides criteria for good arguments and discusses details
+   * @info(CS): Work Description
+   * @discuss(CS): annotation schema
+   * @discuss(SM): second pre-study
+   * @discuss(SM): annotation tools
+   * @todo(SM): 
+      * Elaboration of annotation guidelines
+      * Preparation of the data for the study
+   * @todo(CS):
+      * Annotated examples of pre-study (done).
+
+---+++2014-05-20 Status Meeting
+   * Appointments for mid-term and final talk 
+      * mid-term presentation: 19.08.2014
+      * final presentation: 14.10.2014
+   * @discuss: Results of pre-study
+      * Review of current guidelines; CS provided tips for improvement. 
+   * @discuss: work description and feedback from IG
+   * @discuss: Annotations Tools. Which are suited for the task?
+   * @todo(SM):
+      * Elaboration of annotation guidelines
+      * Setup of annotation Tool.
+      * Continue writing of the thesis (definition arguments, and quality metrics)
+   * @todo(CS):
+      * elaboration of work description (done)
+         * provide an operationalization of the task (done)
+
+---+++ 2014-05-13 Status Meeting
+   * canceled by student
+   * @info(CS): shared my annotations of the pre study
+
+---+++ 2014-05-08 Status Meeting
+   * @discuss: Elaboration of quality metrics.
+      * CS provided tips for scientific writing, forming arguments and structure of the thesis
+   * @discuss: Details of the pre study. It will help to elaborate the task and the elaboration of the annotation guidelines.
+   * @discuss: Structure of the essay
+   * @todo(SM):
+      * Prepare examples for the pre-study (Done)
+      * Elaborate the definition of arguments and argumentation quality
+      * Elaboration of annotation guidelines
+
+---+++ 2014-04-29 Meeting mit Sören
+   * @discuss: Possible metrics for assessing quality 
+   * @discuss: Example Aguments
+   * @todo(SM)
+      * Elaborate argument quality sota
+      * Prepare examples for a pre-study
+      * Elaborate annotation guidelines
+  * @todo(CS): 
+      * send guidelines of argument annotation study (Done)
+
+---+++ 2014-04-22 Status Meeting
+   * Questions regarding UIMA and DKPRO
+      * Import of AM-Projekts, Type-System, reading corpus
+      * Projects are now working and the data can be accessed
+   * Elaboration of work description
+      * The thesis will include an annotation task and a classification task
+   * Accounts are working
+      * Email is redirected to personal mail-account
+  * @todo(SM):
+      * Which dimensions are suited for assessing the quality of arguments?
+         * Which approaches are available? 
+         * Examples for bad and good arguments
+      * Recommendation: Start writing a first overview of existing approaches and define argument components, etc.
+   * @todo(CS):
+      * Grant access to UKP-Wiki (done)
+      * First Draft work description (done)
+
+---+++ 2014-04-15 Status Meeting
+   * canceled by student
+
+---+++ 2014-04-08 Status Meeting
+   * Standup
+      * Familiarization with Argumentation (Toulmin-Scheme)
+      * Argumentation Quality (Sampson2006 and additional references)
+         * Elaboration likelyhood model (ELB) for assessing argument quality
+            * estimates cognitive aspects of arguments
+      * UIMA Tutorial 
+   * Accounts / administrative tasks
+   * @todo(SM) 
+      * Investigation of argumentation quality metrics/dimensions
+      * Examples of bad and good arguments 
+      * Setup Eclipse, etc. 
+   * @todo(CS):
+      * Send argument annotation guidelines (Done)
+      * Send data / Minimal Code for accessing the data (Done)
+-- Main.ChristianStab - 2014-05-21

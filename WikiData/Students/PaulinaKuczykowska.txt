@@ -1,0 +1,163 @@
+%META:TOPICINFO{author="kuczykowska" comment="" date="1706516173" format="1.1" reprev="17" version="19"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Master Thesis: Predicting Depression Severity from Therapy Dialogues
+
+---++  Week: #21, January 29th - February 4th
+   * Experimental Setup "first done"?
+
+---++  Week: #20, January 22th - January 28th
+   * adapt Tobias' comments for Chapter 2
+   * Methodology (Chapter 4) "first done"
+   * run missing experiments for RQ3 on Depressometer (targeted data set)
+   * Create visualizations for RQ3
+   * Write on Experimental Setup, draft done
+
+---++  Week: #19, January 15th - January 21th
+   * interpretation of the prediction via CC method from a non-medical view, create some examples: Picture, Patient, Session number, Predicted chunk severity, and the content of the session 
+   * interpretation of SLED and Unlimiformer models via "attention patterns which occur around similar times" impossible as 'SLED’s chunking mechanism means that it utilizes the positional encoding of the underlying model independently in each chunk and is thus agnostic to the positional embedding technique used by the backbone model.' (And Unlimiformer utilizes SLED input procedure)
+   * Start writing on Methodology Chapter
+   * Create a small demo
+
+---++  Week: #18, January 8th - January 14th
+   * small adjustment of the second research question together with Tobias to "Are there parts of the therapy session that are particularly expressive in terms of depression severity?"
+   * Related Work chapter first draft (still WIP: Interpretable models & maybe Truncation methods)
+   * interpret results of 10%-models splitting the results by depression severity (could it, i.e., be that for the minimal depression severity, for example, the first 10% of the session are especially expressive, and for the severe depression, some sections in the middle?)
+   * visualize the predicted likelihoods on the train data set for the new CC model to see what is a good threshold
+   * Background and Related Work Chapter "First done"
+   
+---++  Week: #17, January 1th - January 7th
+   * change the visualization method of chunking prediction per patient to heatmap-like 
+   * visualize not only the test dataset but merge additionally with the validation dataset
+   * add session numbers etc 
+   * interpret results of 10%-models - there are some differences of the prediction quality in dependence of time in the session, but it is difficult to say if they are significant
+   * new idea for training a new CC model which would predict the single chunks within a session more accurately: on the already trained model perform prediction on the training data set and proof which of them are predcited with high likelihood, then train a new model only on those selected chunks 
+   * Datasets Chapter "First done"
+   * start Bckg. and RW Chapeter
+   * 
+---++  Week: #16, December 25th - December 31th
+   * Dataset chapter first draft, waiting for information on the Depressometer study
+   * visualize and analyze chunking predictions per chunk on the test dataset
+   * visualize chunking predictions per chunk per patient
+   * run CC models on Bert but only with k-th 10% of the session texts = 10%-models
+      * to see if there is a "temporal pattern" - is there any 10%-split that is more expensive than others (i.e., can we predict the depression severity with k-th 10% of the session as good as with the whole text?)  
+
+---++  Week: #15, December 18th - December 24th
+   * done: chunking-method with chunks as Contiguous dialogue parts = Contiguous Chunking (CC)
+      * instead of fix token number the text is now separated in contiguous dialogue parts, of the max size if 512 or 256 to make an easier interpretation
+      * run training on ember and BGE embeddings (current best on visualize MTEB Leaderboard)
+   * make description for error analysis for Depressometer and WoZ datasets
+   * thesis: write on Dataset chapter
+
+---++  Week: #14, December 11th - December 17th
+   * create new model aka baseline - chunking, new best results on Depressometer
+      * chunks with pre-defined size 
+      * run on bert 
+      * not the best for DAIC
+      * 512 chunk size seems the best one
+   * error analysis for SLED and Unlimiformer by one vs all (description WIP)
+   * create another chunking-method with chunks as coherent dialogue parts (WIP)
+   * run the new model (bert chunking) on recreated Depressometer data set - better results
+   * time to do it for the other models as well?
+
+---++  Week: #13, December 4th - December 10th
+   * get all remaining results for Miserlite and HDSC 
+   * run a new baseline (model by AM) on the Depressometer and DAIC data, new best results of DAIC
+   * write on the thesis
+   * revisit the creation of the Depressometer data set (to do!) 
+   * create new model aka baseline - chunking (WIP)
+
+---++  Week: #12, November 27th - December 3th
+   * fine-tune Misterllite on DAIC and Depressometer (done)
+   * zero-shot on Misterllite for DAIC (done) and Depressometer (wip, some problems mith the length)
+   * optimize HDSC-Basline to work on Depressometer, still not 100& done as HW ressources are missing
+   * make mid-term presentation
+
+---++  Week: #11, November 20th - November 26th
+   * work on Misterlite 32k context size (with Lora & 4-Bit Quantization) (WIP) - goal: zero shor & fine-tuning
+   * create mid-term presentation (WIP)
+   * implement random and majority class baselines
+   * optimize Hierarchical Depression Symptom Classifier to get it run for Depressometer (WIP)
+   * get familiar with Landmark Attention (LA) code/paper
+   * create input for LA 
+
+---++  Week: #10, November 13th - November 19th
+   * run experiments for depression severity prediction for Depressometer on Unlimifromer
+   * run a baseline model (Hierarchical Depression Symptom Classifier) for DAIC 
+   * the above models fail bc of OOM errors on Depressometer dataset
+   * make visual analysis for Depressometer 
+   * FIX: correct implementation errors in SLED!
+   * write thesis
+
+---++  Week: #9, November 6th - November 12th
+   * implement metrics for Unlimiformer
+   * run experiments for depression severity prediction for DAIC Unlimiformer
+   * run experiments for depression severity prediction for Depressometer on SLED
+   * check out some baseline models (without success?)
+   * implement scripts to automate evaluation (prediction) runs
+
+---++  Week: #8, October 30th - November 5th
+   * run and evaluate experiments for depression severity prediction for DAIC on SLED
+   * finish creation of the Depressometer data set 
+   * set structure for the thesis
+   * implement scripts to automate experiment runs
+
+---++  Week: #7, October 23th - 29th
+   * create BIU data set (WIP) (see data section)
+   * write thesis 
+   * fine-tune SLED model for binary depression prediction & evaluate on dev and test data set
+   * implement and test new f1 metric on Seq2Seq for classification
+   * implement new mae, rmse metric on Seq2Seq for regressoin (wip)     
+
+---++  Week: #6, October 16th - 22th
+   * work on mpi data - correct assignment video to ptp (wip for later)
+   * create (multiple) DAIC datasets, run SLED on them and evaluate (dev ds only) (classification and quasi-regression done)  
+
+---++  Week: #5, October 9th - 15th
+   * run simple BERT for daic 
+   * work on MPI data set:
+      * copy labels data from ownCloud to the cluster
+      * create a set of unique ptps (wip)
+      * group sessions per ptp (visualize as bar diagram)
+
+---++  Week: #4, October 2th - 8th
+   * run fine-tuning for SLED on an example data set (seems to work)
+   * run fine-tuning for SLED on a DAIC data set (pro question) - wip
+   * create data visualizations
+   * MPI data set: get access to the output data (access there, but data still not on the cluster) 
+   * MPI: create environment etc and run first model (was killed after one day bc of time limits)
+   * MPI data set: try to create a data set  
+
+---++  Week #3, September 25th - October 1th
+   * Literatur Review on Depression Severity prediction
+   * Process DAIC data (create train and test data sets in HF format)
+   * First look (access since few days) at MPI data
+   * Re-engineering SLED to understand the correct data preparation for fine-tuning (wip)
+
+---++  Week #2, September 18th - 24th
+   * Writing and Literatur Review (wip) on:
+      * Text Classification
+   * Run SLED (locally)
+   * Connect to slurm, download all code bases 
+   * Applied for Datasets
+
+---++  Week #1, September 11th - 17th
+   * Literatur Review (wip) on:
+      * Text Classification
+      * Depression Severity Prediction 
+      * Long(ish) Text Processing
+      * SOTA Language Models
+   * Problem: none of the models considered (SLED, Unlmiformer, Landmark Attention) supports pure classification (or regression) task
+
+---++  Week #0, September 4th - 10th
+   * Environment set up
+      * Download the code base from the main three papers
+      * Install VS Code, Github, Tex Live
+   * Literatur Review (work in progress):
+      * Long transformers
+      * Long transformers that do not need to be re-trained
+      * Depression Severity Prediction & NLP
+   * First Code attempts
+      * install Unlimiformer
+         * update Unlimiformer & make pull-request
+         * Problem: Unlimformer does not support pure Classification or Regression models
+      * install SLED

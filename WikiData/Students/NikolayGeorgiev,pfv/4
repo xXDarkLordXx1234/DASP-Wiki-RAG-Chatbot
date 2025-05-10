@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="NikolayGeorgiev" date="1245220839" format="1.1" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ Nikolay Georgiev
+ Bachelor Thesis Student since May 2009.
+
+" *Using and Evaluating Machine Translation Systems for Monolingual and Cross-lingual Translation* "
+
+<blockquote style="border-style: solid; border-color: rgb(251, 251, 251) rgb(251, 251, 251) rgb(251, 251, 251) rgb(221, 221, 221); border-width: 1px 0px 1px 3px; padding: 0.5em 1.25em; background-color: #fbfbfb"><strong style="font-weight: bold">Abstract:</strong> Machine Translation systems are still far from being perfect and often yield ungrammatical or weird translations, especially for short texts, such as user queries in information retrieval. One way to evaluate Machine Translation systems is to have them play the famous "Chinese whispers" game: a text in a source language is first automatically translated into one or more target languages, then back again in the source language. The amount of distortion in both form and meaning between the original and the final text depends on the quality of the Machine Translation system used. These distortions are nevertheless useful since they can be used to automatically reformulate texts.
+
+The goal of the bachelor thesis will be to develop a system to automatically perform translations with "Google Translate" and "Yahoo! Babelfish" for large quantities of data. The system will be used for monolingual round-trip translations and for cross-lingual translation of information retrieval queries.
+
+The software components will be tested on two datasets of short texts:
+   * Dictionary definitions from WordNet, for which automatic reformulations will have to be generated with round-trip translations.
+   * Queries in German, which will have to be translated in several other languages.
+</blockquote>
+
+   * [[MeetingProtocolsNikolay][Meeting Protocols]]
+   * NikolayMaterials
+   * [[WorkByDaysNikolay][Work By Days]]
+   * [[PresentationsNikolay][Status Meeting Presentations]]
+
+-- Main.NikolayGeorgiev - 15 Mai 2009

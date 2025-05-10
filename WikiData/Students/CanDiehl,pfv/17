@@ -1,0 +1,161 @@
+%META:TOPICINFO{author="diehl" comment="reprev" date="1462731735" format="1.1" reprev="17" version="17"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ 2016-05-11
+   * Status Update:
+      * Midterm:
+         * Defined first version of topic list ([[%ATTACHURLPATH%/topics.txt][txt]])
+         * Created short overview of pro and cons for different clustering methods ([[%ATTACHURLPATH%/ProsCons.txt][txt]])
+      * Short-term:
+         * Faroo Web Search not usable
+            * tried own implementation as well as already implemented JFreeWebSearch
+            * No results for queries containing too many words
+         * Extended boilerplate removal to add a dot if there is no punctuation before a linebreak
+         * Slightly changed html retrieval
+            *  htmls are directly downloaded via tika instead of saving them first
+         * Implemented German version (Retrieval, Preprocessing)
+         * Experimented with Proposition extraction
+            * No good results with manual created rules ([[%ATTACHURLPATH%/PropFile.txt][txt]])
+               * Hard to find relevant rules manually
+               * Quality of results is too low
+               * Amount of found results is to low
+               * English implementation completely unusable for German version
+            * Implemented target extraction based on rules by Somasundaran ([[%ATTACHURLPATH%/PropFile.txt][txt]])
+               * Way too much noise (even after filtering sentences without subject) 
+               * English implementation completely unusable for German version
+      * Next Steps:
+         * Midterm: 
+            * Write Related Work - Text Clustering and Sentiment Analysis
+            * Elaborate Thesis Structure ([[%ATTACHURLPATH%/structure.pdf][pdf]])
+         * Short-term:
+            * Find appropriate method for proposition extraction
+
+---++ 2016-04-27
+   * Scheduling of the tasks
+   * Administrative tasks
+      * todo(CS): Put thesis on ukp homepage (DONE)
+      * todo(CS): Wiki entry (running thesis) (DONE)
+      * Scheduled talks:
+         * 2016-08-16 midterm presentation
+         * 2016-10-11 final presentation
+   * https://sites.google.com/site/iggsasharedtask/tools -> german sentiment-analysis tools and lexicons
+   * Clustering with CLUTO package or similar existing tools ([[http://glaros.dtc.umn.edu/gkhome/views/cluto][link]])
+   * Status Update:
+      * Got a Faroo API Key
+      * Implemented Pro-Con Classification based on polarity of Propositions through Subjectivity Clues
+         * Currently it looks like most of the triples are neutral and are therefore discarded (Cloning, n=20 -> 13 positive, 14 negative, 108 neutral triples)
+            * More rules for Proposition Extraction could help.
+            * Coreference Solution could help
+         * Only polarity of predicate is checked currently
+      * Drafted first version of Thesis Structure ([[%ATTACHURLPATH%/structure.pdf][pdf]])
+      * Tried java word2vec from file
+         * Somehow i get different similarities when entering the same word combination twice
+   * Next Steps:
+      * Midterm:
+         * Write Related Work - Text Clustering and Sentiment Analysis
+         * Elaborate Thesis Structure
+         * Define a reasonable query list / topics for demonstration
+      * Short-term: 
+         * Implement Faroo Web Search!
+         * Improve proposition extraction and sentiment analysis (de/en)
+         * Revise boilerplate removal (line break bug)
+         * Implement German version (adapt preprocessing, etc.)
+         * Add list of extracted proposition to the wiki
+         * Implement similarity based on word2vec
+         * Get to know CLUTO
+
+
+---++ 2016-04-20
+   * Task description ([[%ATTACHURLPATH%/TaskDescription_v03.pdf][pdf]] / [[%ATTACHURLPATH%/TaskDescription_v03.docx][doc]])
+   * @info(CS): SVN access should work now.
+      * @info(CD): SVN access works, code committed
+      * <del>@todo: Send link to CS</del>
+      * <del>@todo: include readme.txt that describes how to run the system</del>
+   * Status Update:
+      * Preprocessing implemented: Segmentation, Lemmatization, Parsing (No Sentiment Analysis is used)#
+         * Currently only english; 
+         * @todo: Should be adapted to german as well
+      * Simple Proposition Extraction implemented
+         * Extracts only propositions where the subject is the nominal subject (nsubj) and a direct object (dobj) is targeted
+            * e.g. "uniforms improve attendance"
+      * (Mainly) implemented general Architecture including the HashClass that is responsible for assigning folder names and detect duplicates
+         * Classes in the pipeline can check if work is needed
+      * Literature Research: Only researched argument generation and stance recognition
+         * <del>@todo: draft thesis structure</del>
+      * Found a German lexicon with polarity clues online [[http://www.ulliwaltinger.de/sentiment/][here]]
+   * Next Steps:
+      * Implement Pro-Con Classification based on polarity of Propositions through Subjectivity Clues
+      * Research Clustering Literature (Especially "A survey of text clustering algorithms")
+      * Implement naive clustering
+   * @info(CS): Aspect Extraction with Automated Prior Knowledge Learning
+      * http://www.aclweb.org/anthology/P14-1033
+      * Might be relevant to the work. 
+      * There is a lot related work in sentiment analysis (keywords: aspect extraction / target extraction).
+         * http://de.slideshare.net/midorazaz/aspect-extraction-a-survey 
+      * Some approaches also use clustering / topic modeling approaches (see related work of the paper above)
+      * The evaluation is also interesting since it is based on user ratings. I could imagine a similar approach for your thesis.
+   * @info(CS): Identifying Prominent Arguments in Online Debates Using Semantic Textual Similarity
+      * http://www.aclweb.org/anthology/W15-0514
+      * Includes some information about argument similarity
+
+---++ 2016-04-13 
+   * SVN for students?
+      * Yes, but I have no access (https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro_students)
+   * Status Update:
+      * Java Web Search implemented 
+         * Currently using Google Custom Search (100 queries per day)
+         * Hint:
+            * Cache results of (each) step(s) on file system (use Hash as key for storage (maybe include classname as well))
+            * Use for each step a clear defined interface (in order to exchange the modules)
+            * Parameters: number hits, language (de/en)
+   * Next Steps:
+      * Implement general architecture (define interfaces, data flow, caching, etc. and implement it)
+      * Implement Proposition Extraction
+      * Research Clustering Literature
+
+---++ 2016-04-06 (open) Questions & Answers
+   * Discuss current state of task description
+   * What are arguments in the context of this thesis?
+      * Actually, it is not clear if the extracted propositions are "arguments", they could be "argument components" with unknown type or just "propositions/statements" on the queried subject.
+   * What are potential data sources?
+      * Question in that context: How does the ideal data look like?
+      1 Query Web search engine (e.g. faroo) per API or manually (potential violation of ToS) and save top n results
+         * Maybe use more than 1 query to get results on a subject (e.g. 1 for pro, one for con)
+      2 <del>Existing corpora with debate data (Probably difficult to find a fitting German corpus)</del>
+   * What are possible methods for evaluating?
+      * User Study:
+         * Users evaluate result on subjects according to relevance and correct side (pro/con) via web interface
+            * <del>Potential problem -> completeness of the collected information not guaranteed, how could this be evaluated?</del>
+         * Use automatically extracted pro con lists for several subjects and ask participants e.g. if polarity of items is correct, if clusters are redundant, if items are meaningful, etc.
+         * Evaluate results using IAA scores and conduct error analysis
+         * evaluation strategy similar to Levy, Ran, Yonatan Bilu, Daniel Hershcovich, Ehud Aharoni, and Noam Slonim. 2014. Con-text dependent claim detection. In Proceedings of the 25th International Conference on Computational Linguistics (COLING 2014), pages 14891500, Dublin, Ireland.
+   * Could document type/name and metadata help improve the Pro/Con Detection?
+      * Most documents state in their title, if they argue for or against the subject or both
+      * This could potentially be exploited in combination with html-metadata to easier identify Pro/Con statements
+   * How to detect indirect references to the subject?
+      * Research State of the Art, good solutions should be available
+      * This task is called co-reference resolution 
+   * Proposition extraction: http://u.cs.biu.ac.il/~stanovg/propextraction.html
+   * Clustering
+      * How important is domain knowledge or similarity measures?
+      * We might need Semantic Similarity (DKPro Similarity)
+      * Research clustering of short documents (single sentences / microblogs / twitter)
+
+   
+---++ 2016-03-30
+   * Discussed Workflow of the thesis and signed contract(s)
+   * Clarified expectations and requirements
+   * Started elaborating the topic
+      * Aggregation of arguments (what are arguments in the context of this thesis?)
+      * Potential data sources (English or German or both)
+      * "Search engine" that summarizes/aggregates argumentation relevant propositions structured as pro and con.
+      * Evaluation?
+
+
+-- Main.ChristianStab - 2016-03-30
+
+%META:FILEATTACHMENT{name="TaskDescription_v03.pdf" attachment="TaskDescription_v03.pdf" attr="" comment="" date="1460979768" size="266300" user="stab" version="1"}%
+%META:FILEATTACHMENT{name="TaskDescription_v03.docx" attachment="TaskDescription_v03.docx" attr="" comment="" date="1460979782" size="124683" user="stab" version="1"}%
+%META:FILEATTACHMENT{name="structure.pdf" attachment="structure.pdf" attr="" comment="" date="1462729384" size="55558" user="diehl" version="3"}%
+%META:FILEATTACHMENT{name="topics.txt" attachment="topics.txt" attr="" comment="" date="1462723171" size="279" user="diehl" version="1"}%
+%META:FILEATTACHMENT{name="ProsCons.txt" attachment="ProsCons.txt" attr="" comment="" date="1462731729" size="603" user="diehl" version="2"}%
+%META:FILEATTACHMENT{name="PropFile.txt" attachment="PropFile.txt" attr="" comment="" date="1462730259" size="56305" user="diehl" version="2"}%

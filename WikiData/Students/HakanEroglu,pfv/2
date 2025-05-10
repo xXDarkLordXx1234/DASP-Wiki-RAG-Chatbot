@@ -1,0 +1,36 @@
+%META:TOPICINFO{author="HakanEroglu" date="1229093187" format="1.1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ Hakan Eroglu
+
+   * [[HakanAusarbeitung][Ausarbeitung]]
+   * [[HakanMaterial][Material]]
+   * [[HakanMeetingProtokolle][Meeting Protokolle]]
+   * [[HakanOffeneFragen][Offene Fragen]]
+
+Hi Lizhen,
+
+ich könnte doch Folgendes selbst bauen:
+
+Korpus Reader -> JungWrapper -> ResultWriter
+
+COMPONENT 1 (Korpus Reader):
+Einen Annotator, der die XML datei seriell durchläuft.
+Vorher definiere ich die CAS-Typen:
+Node (String node_name, String type [username, tag, resource])
+Edge (ähnlich WordPair aus zwei Nodes: Node node1, Node node2)
+
+COMPONENT 2 (JungWrapper):
+Diese nimmt als Input die Daten aus COMPONENT 1 und baut einen JUNG Graph
+
+COMPONENT 3 (FolkRank/PageRank)
+
+COMPONENT 4 (Result Writer)
+
+
+Was ich noch nicht ganz verstanden habe, ist, wie ich die Daten z.B. von COMPONENT 1 zu COMPONENT 2 bekomme?
+Schnittstelle ist ja der CAS-Type. Kann ich einen JUNG-Graph auch als Type nehmen?
+
+LG
+Hakan
+
+   * [[HakanPraesentationen][Präsentationen]]

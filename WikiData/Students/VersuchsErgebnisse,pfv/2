@@ -1,0 +1,30 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1185223873" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Hier nochmal die Versuchsergebnisse für einen besseren Überblick:
+
+
+%TOC%
+
+---++ !MP3Player
+
+Insgesamt 11372 Rezensionen (Kim et al.: 11374)
+| *Features* | *Performanz Pearson* | *Performanz Spearman* | *Pearson Kim* | *Spearman Kim* |
+| LEN | 0.493 +/- 0.020 | 0.443 +/- 0.018 | 0.391 +/- 0.038 | 0.575 +/- 0.037 |
+| UGR | 0.502 +/- 0.019 | 0.539 +/- 0.013 | 0.398 +/- 0.038 | 0.593 +/- 0.036 |
+| LEN+UGR | 0.583 +/- 0.014 | 0.579 +/- 0.013 | 0.401 +/- 0.038 | 0.582 +/- 0.036 |
+| STR1 | 0.386 +/- 0.026 | 0.393 +/- 0.027 | 0.326 +/- 0.038 | 0.589 +/- 0.034 |
+| LEN+UGR+STR1 | 0.602 +/- 0.019 | 0.532 +/- 0.024 | 0.467 +/- 0.038 | 0.656 +/- 0.033 |
+| Technical Terms (TT)^1  | 0.507 +/- 0.022 | 0.471 +/- 0.024 | (0.400 +/- 0.039) | (0.591 +/- 0.037) |
+| UGR+TT^1 | 0.586 +/- 0.014 | 0.584 +/- 0.013 | (0.375 +/- 0.038) | (0.570 +/- 0.037) |
+| Meta | 0.407 +/- 0.042 | 0.439 +/- 0.035 | | |
+| Structural | 0.507 +/- 0.022 | 0.452 +/- 0.027 | | |
+| Linguistic | 0.604 +/- 0.014 | 0.589 +/- 0.020 | | |
+| Linguistic+Structural | 0.615 +/- 0.014 | 0.595 +/- 0.020 | | |
+| All Features | 0.657 +/- 0.012 | 0.648 +/- 0.020 | | |
+
+1: _Technical Terms_ wurde anders gewonnen als bei Kim et al. (dort: PRF) und ist daher nicht direkt vergleichbar. Interessant ist aber, dass bei Kim durch das Merkmal PRF (Product Features) keine Performanzsteigerung erreicht wurde, sodass der Schluss gezogen wurde, dass die wichtigen Worte mit den Unigrammen (UGR) bereits erfasst sind. In diesen Experimenten konnte jedoch eine Steigerung der Performanz erreicht werden.
+
+---++ Digitalkameras
+
+
+-- Main.KaiMichaelHoever - 21 Jul 2007

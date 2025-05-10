@@ -1,0 +1,18 @@
+%META:TOPICINFO{author="NicoErbs" date="1243779058" format="1.1" version="5"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+---+ Open Questions
+
+   * Are line breaks any problem for the File2CAS Reader?
+   * How does a template for a grammatical pattern look like?
+      * good question, got to check that out for you.
+
+---+ Old Questions
+   * In which format is FAZ corpus?
+      * Depends on which archive you use to crawl the data.
+   * Is there already a file to CAS loader?
+   * The output of the parsing will be CAS?
+   * Will parser and tokenizer be integrated in my implementation?
+      * The tokenizer it is provided, parser may need to be wrapped as a UIMA annotator, depends on the parser we will use.
+      * They will be called in your CPE descriptor as the pre-processing pipeline annotators.
+
+ -- Main.NicoErbs - 14 May 2009

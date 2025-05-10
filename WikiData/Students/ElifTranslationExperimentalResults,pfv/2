@@ -1,0 +1,28 @@
+%META:TOPICINFO{author="ElifTekes" date="1255325123" format="1.1" version="2"}%
+%META:TOPICPARENT{name="ElifExperimentalResults"}%
+%TOC%
+
+---+ Translation Experimental Results
+---++ Goals
+   * Creating resources for resource-poor languages (in our case, German) by translating subjectivity lexicons from other languages such as English
+---++ Related Work
+---++ Methods
+---++ Results with Universal Dictionary
+   * Translation with Universal Dictionary yields low results
+      * Only ~500 words from !OpinionFinder were translated (out of ~8200 entries) by using the "full" UD dictionary
+      * Only ~1000 words were translated by using both the "full" and the "light" UD dictionary
+         * See ElifLexicalResources for further information
+
+---++ Results with Wiktionary and Self-written Parser
+   * Translation of !OpinionFinder lexicon with self-written parser for Wiktionary yields following results: 
+      * Number of translated words 2052 out of 8221 total. Not translated: 6169
+      * Of those not translated
+         * 1273 because lack of Part-of-Speech
+         * Many more because lack of Translations entries (see .ods document)
+      * *Questions:*
+         1 Do all the OpinionFinder entries exist in the English Wiktionary? you should look for the lemma form of the ones with stemmed=y.
+
+---++ Results with Wiktionary and JWKTL
+---++ Error Analysis
+
+-- Main.ElifTekes - 10 Oct 2009

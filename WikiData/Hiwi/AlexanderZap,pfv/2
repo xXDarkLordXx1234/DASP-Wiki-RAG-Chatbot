@@ -1,0 +1,114 @@
+%META:TOPICINFO{author="zap" comment="reprev" date="1517502923" format="1.1" reprev="2" version="2"}%
+---+!! Meeting Minutes
+
+
+---++ Meeting 04.12
+   * 12:00 - 13:30
+   * Participants: Richard, Edwin, Masoud, Alexander
+   * *Content:*
+      * Finished contract   
+      * Introduction to system by Masoud
+   * *Homework:*
+      * Query Collection for task "supervised vs. unsupervised ML"
+      * Task Definition for another user experiment
+      * Alexander: look into Reader paper
+
+---++ Meeting 12.12
+   * 12:15 - 13:15
+   * Participants: Richard, Edwin, Masoud, Alexander  
+   * *Content:*
+      * Evalution of query voting and new tasks
+      * Experiment Discussion 
+   * * *Homework:*
+      * Voting on previously collected queries
+      * Alexander: Build reader at home machine and run webapplication locally
+
+---++ Meeting 19.12
+   * 12:15 - 13:15
+   * Participants: Richard, Edwin, Masoud, Alexander  
+   * *Content:*
+      * Discussion about next steps
+   * * *Homework:*
+      * Query Collection for new tasks
+      * Query Execution of "supervised vs. unsupervised ML" task
+
+---++ Meeting 20.12
+   * 13:30 - 16:00
+   * Participants: Masoud, Alexander
+   * *Content:*
+      * Fast code walkthrough with rough explanation of every module
+      * Noted short description for every module
+
+---++ Meeting 08.01
+   * 12:00 - 13:30 
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+      * Problem: Abstract prevents users from clicking
+      * Solution: Remove abstract from query results (to require click)
+
+---++ Meeting 23.01
+   * 11:30 - 12:30
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+      * Problem: Duplicates across multiple query results
+      * Solution: Compute preferences globally, not over single pages
+   * Alexander: analysis of recommendation pipeline
+     
+---++ Meeting 01.02
+   * 12:00 - 13:30
+   * Participants: Richard, Edwin, Alexander
+   * *Content:*
+     * Investigation of recommendation pipeline
+   * *Homework:*
+      * Voting
+      * Alexander: meeting minutes and time table + describe how the preference extraction currently works / should work
+      * Work on code:
+         * Richard: spring bean fix in the datatable provider
+         * Alexander: recommendation table does not have any content despite recommendations being in database
+     
+
+---++ Meeting 01.02
+
+
+---+!! Time Table
+
+---++ January
+
+   * 08.01 - 1,5h - Meeting
+   * 11.01 - 4h - Fix of reader-webapp errors (solr incompatability)
+   * 17.01 - 2h - Query collection + voting _(time for all combined)_
+   * 23.01 - 1h - Meeting
+   * 24.01 - 1h - OpenVPN setup
+   * 24.01 - 1,5h - Query execution
+   * 25.01 - 2h - Reader code analysis
+   * 26.01 - 2h - Reader code analysis (focus on recommendation system)
+   * 29.01 - 8h - Building reader _(December)_
+   * 30.01 - 4h - Building reader _(December)_
+   * 30.01 - 4h - Testing reader _(December)_
+   * 31.01 - 6h - Meetings _(December)_
+
+---++ February
+
+   * 01.02 - 1,5h - Meeting
+   * 01.02 - 2h - Creation of wikipage
+
+---+!! TODO
+
+---+++ Until 08.02
+
+   * voting (ALL)
+   * meeting minutes and time table in wiki (AZ)
+   * spring bean fix in the datatable provider -> gitlab (REC zuweisen)
+   * recommendation table does not have any content despite recommendations being in database -> gitlab (AZ)
+   * describe how the preference extraction currently works (AZ)
+   * describe how the preference extraction should work (AZ)
+
+---+++ Further tasks
+
+   * optimize feature extraction -> gitlab
+
+   * change the code to make the preference extraction work as it should (log mining globally, not per query page)
+
+   * interleaving of recommenders in recommendation interface
+   
+   * query execution of new task queries (only after first task is completed)

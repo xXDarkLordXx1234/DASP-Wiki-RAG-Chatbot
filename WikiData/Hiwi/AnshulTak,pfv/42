@@ -1,0 +1,323 @@
+%META:TOPICINFO{author="stab" comment="save topic" date="1439546642" format="1.1" reprev="42" version="42"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Meeting Minutes
+---++ LAST TIME SHEET GIVEN 
+   * TIMESHEET:24/07/2015 
+
+--- 2015-08-20
+   * Time: 11:00
+
+---++ 2015-08-14
+   * Weekly Standup (What have you done; What will you do; What are any obstacles)
+      * suggestions for mysidebias classification features
+   * @discuss(CS): Feature Suggestions
+      * discussed several features
+      * TODO: implement them and get results
+   * @discuss(CS): Contract extension.. Done!
+   * @discuss(CS): Exchange of data.. Pending!
+   * @discuss(CS): Time schedule below?
+   * @ask(CS): Timesheets.. Done!
+
+---++ 2015-08-06
+   * Weekly Standup (What have you done; What will you do; What are any obstacles)
+      * Finished self training experiment (excel sheet & formulas) 
+      * Got familiar with mySide Bias Classification; There is a problem that need to be fixed (dependencies) (AT) Fixed
+   * @discuss(CS): Results of Self Training
+      * Found a good parameter configuration in both experiments both improve the results about .04 macro F-measure.
+   * @discuss(CS): Setup of mySideBias classification
+   * @discuss(CS): Progress Studienarbeit
+   * @ask(CS): time schedule
+
+---++ 2015-07-28
+   * @discuss(CS): Status of Self-Training experiment?
+      * Time schedule?
+      * Highlight each result outperforming the baseline in lightgreen
+      * Highlight top 10 results in darker green
+      * Top result in light red
+   * @info(CS): Status of "Task Description"
+   * @discuss(CS): Time records? Which are missing?
+      * 6/07/2015, 13/07/2015, 20/07/2015 
+   * @discuss(CS): MySideBias Classification
+      * SVN: https://scruffy.ukp.informatik.tu-darmstadt.de/svn/dkpro/experiments/stab/misc/de.tudarmstadt.ukp.dkpro.argumentation.mysidebias/trunk/0.0.1-SNAPSHOT/de.tudarmstadt.ukp.dkpro.argumentation.mysidebias
+      * Document classification task using dkpro-tc 
+      * Task: feature engineering
+
+
+---++ 2015-07-13
+   * *time 10:00*
+   * @discuss(CS): Self-training Experiment
+   * @discuss(CS): Topic for "Studienarbeit"
+
+
+---++ 2015-06-26 
+   * @discuss(CS): Result of self training experiment
+      * Split current train set into five subsets of same size
+      * Create five train-test-sets based on the five subsets. 
+      * Compute the five baselines for each fold using the created train-test-sets
+   * @discuss(CS): Studienarbeit
+   * @dicusss(CS): Relation annotation
+
+
+---++ 2015-06-15 
+   * *Time*: 14:30
+   * @discuss(CS): Topic for "Studienarbeit"
+      * Implementation of a Demonstrator (web-based) for argumentation structure extraction
+      * The models are already there; In this work we will implement a web demo for demonstrating the technology
+      * Research questions:
+         * Which technology is appropriate for implementing such a system?
+         * How can we use the argumentation structure to provide feedback about argumentation (see slides that I send you)?
+   * @info(CS): Results of the annotation study
+   * @TODO:
+      * SelfTrainingExperiment: Rerun experiments on server.
+      * Studienarbeit: Create a google doc (share with CS) and include initial thoughts and ideas regarding the task description.
+
+---++ 2015-06-08 
+   * *Time*: 14:30
+   * @info(CS): annotation results
+   * @discuss(CS): Self Training Results
+   * [AT]: Annotations 1-2 and Result for Selftraining experiment with excel template: DONE  
+   * [AT]: Timesheet : Will give end of this week [DONE]
+   * [AT]: Project task read: TBD 
+   * [AT]: Next task: TBD 
+   * [AT]: Give files for individual experiment Meeting
+   * [AT]: Update wiki: By end of Tuesday  [DONE]
+   * @TODO:
+      * Run an experiment on your local machine and investigate the pool folders and distribution of distant data classification (id2outcome.txt / classify distant data folder)
+      * run a full experiment on the server... check it there as well. 
+
+---++ 2015-05-20
+   * *Time*: 11:30
+   * @info(CS): Reserved server capacity (20.5. - 20.6.)
+      * Server: barney
+      * Processes: max. 4 CPU
+      * Memory: max. 100 GB
+      * Directories:
+         * Binaries: /data/stab/SelfTraining-Persuasiveness/deploy
+         * Data: /data/stab/SelfTraining-Persuasiveness/data
+         * Results: /data/stab/SelfTraining-Persuasiveness/results/"experiment"
+            * experiment folder should look like this: Results_g100_p100_i40
+            * where g=growthrate, p=poolsize, i=iterations
+   * run at most 4 experiments and inspect frequently to save time.
+   * When an experiment is finished, copy the "TestTask-GoldTest..." folder to your local machine and evaluate the results
+
+---++ 2015-05-18 
+   * *Time*: 14:30
+   * @info(CS): essay169: major claim not in conclusion
+   * @discuss(CS): inter-annotator agreement
+   * @discuss(CS): Tasks during my absence
+   * *TODO*: 
+      * Prepare project for running it on the server (see 2015-05-04)
+      * Test the binaries on your local machine (including the parameters)
+         * Run it again from the console [AT]: DONE
+      * CS: Reserve capacity on our server
+      * Copy resources and project to the server
+      * Run the experiments on the server
+
+---++ 2015-05-11
+   * @info(CS): Vacation 23.5. - 7.6.
+      * We have to manage next tasks until next week!
+   * @info(CS): Time record
+      * [AT] Done
+   * @info(CS): Remember to fill in tasks in time records (see below)
+   * @discuss(CS): Studienarbeit
+   * *TODO*: 
+      * Run experiment on the whole data set (train-test split)... 5-10 iterations
+         * [AT] Done, It is working  
+      * Test the evaluation method (see below 2015-04-20)
+         * [AT] Completed
+      * Prepare project for running it on the server (see 2015-05-04) [AT]: DONE
+      * Test connection to compute server [AT]: DONE
+         * Get VPN-connection. Tutorial is here: https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Services/VpnService
+         * If connected to VPN, try "ssh -l tak barney" to connect to compute server barney. 
+ 
+
+---++ 2015-05-04
+   * @discuss(CS): Self-Training experiment [AT]: DONE
+      * Does it work after updating meta data in unlabeled data? (Yes; Done)
+      * Commit to SVN (Done)
+      * Share data sets (Done)
+      * Running it on the server needs the following steps:
+         * We will follow the second procedure (Building an Ant-based package and running it on a compute server (Maven)) described ([[DKPro.HowToRunExperimentsOnComputeServer][here]])
+         * Best practice: Copy each *local* referenced project into your project (e.g. "DL"). 
+         * Try: "mvn -Ppackage-deploy" from console
+         * Maybe you need to clean things: "mvn -DskipTests=true clean install"
+         * Test your project from the console by doing something like this: "bin/run -Dmainclass=package/of/the/MainClass -Dargline="arg1 arg2 ...""
+         * Adapt heap space in "/conf/wrapper.conf" of your deploy directory 12G
+         * All parameters (paths (distant, train, test, result), growth rate, iterations, pool size, etc.) should be adaptable from args of main method
+   * @discuss(CS): Next steps of the annotation task 
+      * Discuss annotation results
+      * Next 40 essays
+      * Relation classification
+   * @info(CS): Guidelines are finished
+   * *TODO*: [AT]: DONE
+      * Run experiment on the whole data set (train-test split)... 5-10 iterations
+      * Test the evaluation method (see below 2015-04-20)
+      * Prepare project for running it on the server
+      * Annotations 
+
+---++ 2015-04-27
+   * @info(AT): Analyzed issues in self training experiment
+   * @info(CS): Please remember to fill out the time records for second and third week of april.
+   * TODO: [AT]: DONE
+      * Continue with annotation
+      * Fix issue in LuceneBasedMetaColletors
+         * Check if DocumentMetaData (in particular the title of the cas) is set in unlabeled data. Compare it to labeled data
+      * Exchange data (train test split)
+      * Commit self training project to SVN
+
+---++ 2015-04-20
+   * @info(CS): Evaluation of Self Training Experiment
+      * Use de.tudarmstadt.ukp.dkpro.argumentation.selftrainingcomponents.evaluation.Evaluateparameters in project selftraining components
+      * Lines 40 and following have to be adapted according to the labels in the experiment ("P1" and "P2" instead of claim, etc.)
+      * It collects all confusion matrices from each iteration of the ST-Experiment and outputs the F1-macro scores for each iteration
+      * These scores should be put in a table (see [[%ATTACHURLPATH%/ResultTemplate.xlsx][template]]) tab "TT".
+   * @action(CS): sign time records
+      * Done
+   * @action(CS): Please try if you have access to [[UKP.ServerJobs][this]] page.
+      * This works :)
+
+---++ 2015-04-13
+   * Form for weekly time schedule
+   * SelfTraining Experiment (see below)
+
+
+---++ 2015-03-30
+   * @discuss(CS): Next steps in self training experiment
+      * provided the data set of unlabeled data
+   * @Discuss(CS): planed next annotation steps
+
+---++ 2015-03-23
+   * @discuss: Annotation of major claim... investigated results.
+   * @discuss: solved issue with the annotation environment. 
+
+
+---+ Results
+
+---++ Current task (AT)
+   * TODO: Include baseline results (train-test split) [DONE]
+   * [AT]: Baseline [[%ATTACHURLPATH%/PC-selftraining_ConfusionMatrix_result.txt][results]]
+   * TODO: Provide train-test split data 
+
+   * Include Feature Extractors from PC into SelfTraining Experiment (done)
+      * TODO: Test the experiment with a small number of unlabeled data and few iterations for ensuring it works as expected
+      * If everything works, 
+         * Commit the source into SVN
+         * We will put the experiment on the server.
+
+
+---+ Time records
+---++ June 2015
+
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2015-06-01 | Running experiment and monitoring experiments on Barney | 2 |  |
+| 2015-06-02 | Running experiment and monitoring experiments on Barney | 2 |  |
+| 2015-06-04 | Copying all the data from Barney of all the experiment and running evaluteParamenter.java on each experiment directory| 3 |  |
+| 2015-06-05 | Evalutation and putting results in template| 3 |  |
+| 2015-06-08 | Meeting and discussing about result similarity | 2 |  |
+| 2015-06-09 |  Running sample 40 iteration experiment checking the issue of similarity| 3 |  |
+| 2015-06-11 | Running experiment from compiled code and verifying the results | 2 | Deploying selftrainingPC experiment again and running experiment from compiled code |
+
+
+---++ May 2015
+
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2015-05-04 | Meeting and CAS de-serialization issue | 2 |  |
+| 2015-05-05 | Claim annotation for 9 essays | 3 |  |
+| 2015-05-06 | Evaluation method and modification of PC experiment | 3 |  |
+| 2015-05-09 | New annotation for 10 essays another 40 essay slot | 2 |  |
+| 2015-05-11 | Meeting and revision | 2 |  |
+| 2015-05-12 | New annotation for 5 essays | 1 |  |
+| 2015-05-13 | New annotation for 25 essays | 4 |  |
+| 2015-05-14 | Setting up VPN connection and configuring machine and   | 4 | |
+| 2015-05-18 | Meeting and evaluation of evaluateParamenter.java | 2 | Working on small poolsize and GR to test if evaluateParameter.java is working for our experiment|
+| 2015-05-19 | Maven setting.xml issue for setting ant script for the project | 3 |  |
+| 2015-05-20 | Meeting and Revision annotation from revision list   | 2 |  |
+| 2015-05-22 | Barney not responding(VPN issue) + Sample run of the experiment on Barney | 3 |  VPN copy issue |
+| 2015-05-25 | Setting of template and running experiment on barney | 2 |  |
+| 2015-05-27 | Running experiment on Barney and Revision | 5 |  |
+| 2015-05-29 | Running experiment and monitoring experiment | 3 |  |
+
+
+---++ April 2015
+
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2015-04-01 | Meeting | 1 | meeting |
+| 2015-04-02 | Annotation Guideline V2.0 | 2 | understanding the concept of claims in inner paragraph and introduction and conclusion |
+| 2015-04-03 | Claim annotation for 9 essays | 4 | Applying annotation guidelines to 9 essays |
+| 2015-04-04 | Train-test split and error in selftraining PC experiment | 3 | Train-test split, revision of essays and error correction |
+| 2015-04-07 | Claim annotation for 10 essays | 2 |  |
+| 2015-04-08 | Continue for another 10| 1 |  |
+| 2015-04-09 | Continue for another 5 | 1 |  |
+| 2015-04-10 | Continue for another 5 | 1|  |
+| 2015-04-13 | Meeting and Work on SelftrainingPC | 2 |  |
+| 2015-04-14 | Updated guideline and revise annotation | 3 |  |
+| 2015-04-17 | Premise annotation | 3 |  |
+| 2015-04-20 | Problem in Dependency of PC pom + meeting | 2 | |
+| 2015-04-21 | Non FE document classifier problem and self PC experiment | 3 | |
+| 2015-04-24 | FOCUS of type system error in selftraining PC experiment | 2 | |
+| 2015-04-25 | Premise annotation for 10 essay | 1 | |
+| 2015-04-27 | Meeting and analysing issue of DocumentMetaData in PC | 2 |  |
+| 2015-04-28 | Claim annotation for 20 essays | 3 |  |
+| 2015-04-29 | Fixing issue for DocumentMetaData in PC and running experiment and monitoring| 3 |  |
+| 2015-04-30 | Claim annotation for 10 essays | 2 |  |
+
+---++ Mar 2015
+
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| 2015-03-02 | Initial meeting, contract information and project explanation | 2 |  |
+| 2015-03-03 | Research on UIMA and DKPro and DKPro TC | 3 |  |
+| 2015-03-04 | Manual annotations and reading Annotation guidelines | 3 | Brat setup, Guidelines version 1.0 and manual annotation |
+| 2015-03-06 | Manual annotation continue ..  | 1 |  |
+| 2015-03-09 | Project setup for the PersuasiveClassification | 4 | Study on maven projects setup and Worked on errors for the project |
+| 2015-03-11 | Understanding the PC experiment with various feature extractor and Understanding DKPro TC  | 3 |  |
+| 2015-03-12 | Manual annotations for remaining 30 essays | 3 | Major Claim |
+| 2015-03-16 | Manual annotation continue..  | 1 |  |
+| 2015-03-18 | Excess issue resolved and SVN checkout for the project | 2 |  |
+| 2015-03-19 | Meeting and understanding the logic and flow for the PC classification model  | 5 | Introduction to self learning Model and PC experiment  |
+| 2015-03-20 | Running PC experiment with GOLD preprocessed dataset | 2 |  |
+| 2015-03-23 | Meeting for Major claim annotation results/ Resolving errors in the annotation environment/ Re-running PC classification for understanding various parameters which are used  | 3 |  |
+| 2015-03-25 | Setting up self training experiment | 5 | Modifing PC to run test-train model rather than cross validation task |
+| 2015-03-27 | Adding features used in PersuasiveClassification to selfTraining experiment and resolving issues that arised | 2 |  |
+| 2015-03-31 | Running PC experiment and discrepancy analysis about the difference in the result at each run | 4 |  |
+
+
+---++ WIKI(mySideBias)
+| *Details* |
+Myside bias occurs when people evaluate evidence, generate evidence, and test hypotheses in a manner biased toward their own prior opinions and attitudes(1). 
+
+*Feature idea: When a author try to put claims from his/her past experience than that essay is a strong contender for mySideBias* 
+*Feature idea: claim:Premise ratio as mySideBias author will try to give less premise explaining against point instead if author explain his/her viewpoint so he will try to give more premise for claim [human psychology] *
+*Feature idea: premise/claim length for both mySideBias and normal essay [need to check if this feature can work]*
+*Feature idea: less use of negative connectors like but/although/nevertheless/still etc in mySideBias*
+*Feature idea: Dubious nature in Major claim covering paragraph/conclusion paragraph which explains author point of view as will he give any against claim in it subsequent paragraph*
+
+NOTE: Find some similarity in mySideBias essays also collect some of it and check their traits
+
+| *References* |
+   1 Myside Bias, Rational Thinking, and Intelligence  Keith E. Stanovich1
+
+
+---++ WIKI(StudienArbeit:Implementation of Argumentative Writing Support System)
+| *Details* |
+** Criterion:**
+%EDITTABLE{format="| text,20| text,20|"}%
+| *#* | *Things it can detect* |
+| 1 | Error in grammar |
+| 2 | Scoring based on F-measure |
+| 3 | Discourse element in essay |
+| 4 | No Feedback |
+| 5 | Undesirable element of style |
+Tools referred: 
+
+Thesis: In german what to do? Our data set would be in English
+
+| *References* |
+
+-- Main.ChristianStab - 2015-03-23
+
+%META:FILEATTACHMENT{name="ResultTemplate.xlsx" attachment="ResultTemplate.xlsx" attr="" comment="" date="1429085394" size="109706" user="stab" version="1"}%
+%META:FILEATTACHMENT{name="PC-selftraining_ConfusionMatrix_result.txt" attachment="PC-selftraining_ConfusionMatrix_result.txt" attr="" comment="PC experiment with train test evaulation" date="1429353567" size="664" user="tak" version="2"}%

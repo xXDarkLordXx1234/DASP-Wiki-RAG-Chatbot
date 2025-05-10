@@ -1,0 +1,94 @@
+%META:TOPICINFO{author="welsch" comment="" date="1633458831" format="1.1" reprev="2" version="4"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! *Bachelor Thesis:* Rule-based analysis and evaluation of corporate digital responsibility implementation
+
+*Start date:* 31.05.2021
+
+*End date:* 15.12.2021
+
+*Supervisors:* Marcus Dombois, Thomas Arnold
+
+---++ Weekly overview
+
+---+++ 01.06.2021 - 10.06.2021
+*Status:* Started with analyzing Cookie Windows, Impressum, AGB and Privacy Pages on different websites
+   * How accessible are they?
+   * Are they easily understandable and readable?
+   * Which informations are important for me and what can I do with them?
+
+*TODO for next week:* Start to automate the process of analyzation of the different web pages
+
+---+++ 11.06.2021 - 15.06.2021
+*Status:* Started with implementation of automated analyzer
+   * Basic Preprocessing of input text
+   * Thought about rule using all verbs of the text, because they say much about what is done with personal information on the website
+   * First rule: Length of text in relation to readability
+
+*TODO for next week:* Design Mockup and improve rules
+
+---+++ 16.06.2021 - 22.06.2021
+*Status:* Created Mockup and searched for best implementation environment
+   * Mockup in Adobe XD
+   * Project will base on Python with the Framework Django
+   * Database will be managed with PostgreSQL
+
+*TODO for next week:* Setup project
+
+---+++ 23.06.2021 - 29.06.2021
+*Status:* Setup project to get something to show
+   * Setup Django and the local server to work on
+   * Further employ in Readability classification
+
+*TODO for next week:* Implement Mockup and some rules for Readability
+
+---+++ 29.06.2021 - 06.07.2021
+*Status:* Implemented first version of mockup and readability rules
+   * Determine coherences of tokens with token ratio, verb ratio, noun ratio
+   * How to exactly use this information for readability will be analysed later with a bigger dataset
+
+*TODO for next week:* Expand readability rules
+
+---+++ 07.07.2021 - 15.07.2021
+*Status:* Prepared for brainstorming session where we define useful rules for implementation and implemented some simple rules
+   * Added possibility to add more than one URL
+   * Expanded readability rules with average sentence length and average number of characters per word
+
+*TODO for next week:* Start with implementing defined rules, in category 'access'
+
+---+++ 16.07.2021 - 27.07.2021
+*Status:* Refactored written code and created new Rules in category 'access' for contact data
+   * Changed code to preprocess all given documents of website with possibility to differentiate between them
+   * Added paragraph detection function to split up the document in different sections
+   * Checked if contact form, E-Mail and phone for contact is given
+   * Checked if contact for 'Datenschutzbeauftragter' is given in 'Datenschutzerklärung'
+
+*TODO for next week:* Use bigger data set to evaluate readability and to categorise the companies
+
+---+++ 28.07.2021 - 19.08.2021
+*Status:* Added a way to automatically execute all rules for every company of the whole dataset
+   * Iterate through dataset and execute rule for every company
+
+*TODO for next week:* Optimize rule execution
+
+---+++ 20.08.2021 - 31.08.2021
+*Status:* Refactored and optimized whole project, especially the rule execution
+   * Extremly efficient rule execution
+   * Focused on modularity of code
+
+*TODO for next week:* Add new tules
+
+---+++ 01.09.2021 - 09.09.2021
+*Status:* Added 'Lesbarkeitsindex' (LIX) to get a concrete value for the difficulty of a text and save the compiled document in a .pkl file to optimize code execution
+   * A high LIX indicates the given text is hard to read
+   * Dataset needs to be precompiled only once, which optimizes code execution extremly
+
+*TODO for next week:* Analyze results
+
+---+++ 28.09.2021 - 05.09.2021
+*Status:* Added way to analyze the results of every function to find out which values are 'optimal'. Started with analyzing LIX. Also remade translation check rule and added new rules in category 'awareness'.
+   * New function analyze_results() defines which functions to analyze
+   * Is later used to return 'optimal' values to frontend
+   * LIX relatively high, as expected
+   * Awareness rules check if company assigns important environmental topics
+
+*TODO for next week:* Add new rules in category 'privacy', further analyze results, especially compare LIX for different document types

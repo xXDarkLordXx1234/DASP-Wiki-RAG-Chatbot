@@ -1,0 +1,94 @@
+%META:TOPICINFO{author="ShuoYang" date="1282812238" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ Changing Lucene Scoring
+
+---++ Abstract
+
+This document describes how to implement a customized scoring module for Apache Lucene to let it score the way you want. Firstly it explains why we would create our own scoring and the two different levels of customization. Then it describes shortly the first level _Changing Similarity_. Finally we will explore the more complicated second level _Query - Weight - Scorer Model_. An example is given to help understanding this level.
+
+---++ Introduction
+
+Apache Lucene is a high-performance, full-featured text search engine library. Ranking function is at the core of every search engine, since it determines directly how relevant a document is to a given query. Lucene provides a great formula with a good implementation, described in its [[http://lucene.apache.org/java/3_0_2/api/all/org/apache/lucene/search/Similarity.html][Similarity document]]. In most cases, it serves its purpose well.
+
+Lucene also supports customized scoring in addition to its own. Which means we can write own own scoring module, for the sake of optimization of the search result, or experimenting with different ranking models. This document explains two ways to create our own scoring, depending on our customization level.
+
+---+++ So which level?
+
+To customize the scoring, we can either
+   1. Change Similarity, or
+   1. Change Query - Weight - Scorer
+
+Lucene has its _Lucene Practical Scoring Function_
+
+<table cellpadding="2" cellspacing="2" border="0" align="center">
+   <tr>
+     <td valign="middle" align="right" rowspan="1">
+       score(q,d) &nbsp; = &nbsp;
+       <A HREF="#formula_coord"><font color="#FF9933">coord(q,d)</font></A> &nbsp;&middot;&nbsp;
+       <A HREF="#formula_queryNorm"><font color="#FF33CC">queryNorm(q)</font></A> &nbsp;&middot;&nbsp;
+     </td>
+     <td valign="bottom" align="center" rowspan="1">
+       <big><big><big>&sum;</big></big></big>
+     </td>
+     <td valign="middle" align="right" rowspan="1">
+       <big><big>(</big></big>
+       <A HREF="#formula_tf"><font color="#993399">tf(t in d)</font></A> &nbsp;&middot;&nbsp;
+       <A HREF="#formula_idf"><font color="#993399">idf(t)</font></A><sup>2</sup> &nbsp;&middot;&nbsp;
+       <A HREF="#formula_termBoost"><font color="#CCCC00">t.getBoost()</font></A>&nbsp;&middot;&nbsp;
+       <A HREF="#formula_norm"><font color="#3399FF">norm(t,d)</font></A>
+       <big><big>)</big></big>
+     </td>
+   </tr>
+   <tr valigh="top">
+    <td></td>
+    <td align="center"><small>t in q</small></td>
+    <td></td>
+   </tr>
+   </table>
+
+in determining the score, described in greater detail [[http://lucene.apache.org/java/3_0_2/api/all/org/apache/lucene/search/Similarity.html][here]]. If it works for you, but you want to implement your own calculation of each component, like the implementation of =tf()=, =idf()= or =queryNorm()=, go with the first level. 
+
+If you would like to experience more, go with the second level.
+
+---++ Level 1: Changing Similarity
+---+++ When Appropriate
+Similarity defines the components of Lucene scoring. Overriding computation of these components is a convenient way to alter Lucene scoring. For instance, in the case of some applications which do not need to distinguish between shorter and longer documents.
+
+---+++ Implementation
+---++++ Subclassing =Similarity=
+=Similarity= is an abstract class. After subclassing, following methods must be implemented, which are further used to calculate the score according to the formula above:
+
+<verbatim>
+	public float coord(int overlap, int maxOverlap)
+	public float idf(int docFreq, int numDocs) 
+	public float lengthNorm(String fieldName, int numTokens)
+	public float queryNorm(float sumOfSquaredWeights)
+	public float sloppyFreq(int distance)
+	public float tf(float freq)
+</verbatim>
+
+You can also simply subclass =DefaultSimilarity= and override only the changed methods.
+
+---++++ Usage
+To change =Similarity=, one must do so for both indexing and searching, and the changes must happen before either of these actions take place. Although in theory there is nothing stopping you from changing mid-stream, it just isn't well-defined what is going to happen.
+
+To make this change, instantiate your own Similarity and then use the new class by calling =IndexWriter.setSimilarity= before indexing and =Searcher.setSimilarity= before searching.
+
+-- [[http://lucene.apache.org/java/3_0_2/api/all/org/apache/lucene/search/package-summary.html#query][Source]]
+
+---++ Level 2: Creating Your Own Query
+---+++ When Appropriate
+
+
+
+---+++ Implementation
+---++++ Structure: the Query - Weight - Scorer Model of Lucene
+---++++ Example: !NaïveScoring
+---++++ Query
+---++++ Weight
+---++++ Scorer
+
+---++ Summary
+
+
+-- Main.ShuoYang - 26 Aug 2010

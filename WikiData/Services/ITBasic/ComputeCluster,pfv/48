@@ -1,0 +1,315 @@
+%META:TOPICINFO{author="alles" comment="" date="1689752937" format="1.1" reprev="46" version="48"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Slurm Compute Cluster
+%TOC%
+
+---++ Frequently Asked Questions
+See [[ComputeClusterFAQ]].
+
+---++ Principle of Slurm
+<!--
+On traditional compute servers (the way we had them at UKP before summer 2019), running compute experiments works by connecting to a specific server, then starting a script with GNU screen or tmux.
+-->
+
+Slurm is a job scheduling service. With Slurm, one performs compute experiments by connecting to a headnode where one can submit a compute job into a queue of compute jobs. Slurm prioritizes compute jobs in a way that every user gets his/her share of the compute resources that he/she deserves. If a compute job has a high enough priority and a node (== compute server) with sufficient resources is free, Slurm will automatically start the compute experiment. Once a job finishes, an email notification is sent.
+
+---++ The Cluster Headnode
+The cluster headnode is reachable by SSH at =slurm.ukp.informatik.tu-darmstadt.de= from within the network of TU Darmstadt (consider using the [[https://www.hrz.tu-darmstadt.de/services/it_services/vpn/index.en.jsp][HRZ VPN]] if you work remotely), or via =wormulon.ukp.informatik.tu-darmstadt.de= from within UKP. 
+
+<div style="padding:10px;border:3px solid purple">
+<b>
+If you are a student, then you usually do not have the permissions  to use the UKP VPN, please use the [[https://www.hrz.tu-darmstadt.de/services/it_services/vpn/index.en.jsp][HRZ VPN]] instead.
+</b>
+</div>
+
+---++ Walkthrough Usage Example
+
+<div style="border: solid 2px lightblue; font-weight:800; padding: 5px">
+<p align="center">
+👉 <a href="https://public.ukp.informatik.tu-darmstadt.de/slurm-tutorial/slurm-tutorial.zip">Please follow this tutorial project for our Slurm compute cluster to get started!</a> 👈
+</p>
+</div>
+
+---++ Storage: Moving code and data into the cluster
+
+See [[ComputeClusterStorage]].
+
+<div style="padding:10px;border:3px solid purple">
+<b>
+Your home folder is not reachable from compute nodes, hence you need to put your code and data on an network storage. The space is limited in =/home=, so please do not store more than 10GB, better not more than 1GB in your home folder!
+</b>
+</div>
+
+---++ Quota
+
+Before explaining how user quotas work, you need to learn about accounts in Slurm.
+
+---+++ Accounts
+Slurm tracks resource usage via so-called *accounts*. Slurm accounts work a bit like bank accounts, i.e. a single user can have multiple accounts.
+The total compute power of the cluster is distributed across all accounts, meaning every account receives a percentage of the total compute power. Your affiliation (the lab you belong to) and your employment relation (researcher or student) decides over your accounts and their quota. If your affiliation is UKP/AIPHES, you will have one UKP account and one AIPHES account, giving you a larger share of the total compute power.
+
+You can see your accounts via =sshare -U=. Add =--account=SOME_ACCOUNT= to your =sbatch= or =srun= call to run using a different account. Note: resource limits in partitions (see below) apply _per user_, not _per account_.
+
+---+++ !FairShare
+Account quotas in Slurm are not hard limits. Instead, every account has a !FairShare value between 0.0 and 1.0 attached to it. Jobs can be submitted independent of the !FairShare value. However, *jobs by accounts with higher !FairShare value are prioritized by the scheduler*. By running jobs, the !FairShare value decreases depending on the duration and the resource requirements of the jobs. The !FairShare value recovers over time (it has a half-life of two weeks).
+
+%INCLUDE{"ComputeClusterDetermineFairShare"}%
+
+---++ Partitions and Resource Limits
+
+When submitting a job in Slurm, one has to specify a *partition* into which the job will be queued. We have several partitions in our cluster for different purposes. Some are for day-in-day-out experiments, one is for testing jobs interactively, one for running demonstrator systems, and so on.
+
+To run a job in a specific partition use =-p PARTITIONNAME=. For example, if you are associated with ATHENE, you would want to use <verbatim>sbatch -p athene your_script.sh</verbatim>
+
+The following partitions exist:
+%TABPANE%
+%TAB{"athene, aiphes, cai, tk, ukp"}%
+Each lab has its own partition (=ukp=, =tk=, =athene=, ...) which contains only the compute nodes of this lab. The following limits apply:
+
+%TABLE{ headerrows="2" }%
+| *User Group* | *Researchers* || *Students* |
+| *Available QOS* | *researcher (default)* | *snail* | *student* |
+| Max nodes per job | 1 | 1 | 1 |
+| Max logical CPUs per job | 24 | 16 | 24 |
+| Max logical CPUs per user | 128| 72 | 36 |
+| Max GPUs per job | unlimited | 0 %ICON{new}% | unlimited  |
+| Max GPUs per user | 4 %ICON{new}% | 0 %ICON{new}% | 2 |
+| Max memory per job (GB) | 256| 64 | 64 |
+| Max memory per user (GB) | 512| 384 | 192 |
+| Max job duration (days) | 3 | 7 | 3 |
+
+When submitting a job, one can request different *quality of service (QOS)* settings. The QOS influences the resource limits. %INCLUDE{"ComputeClusterLongRunningJobs"}%
+%ENDTAB%
+<!-- %TAB{"testing"}%
+%INCLUDE{"ComputeClusterTestingPartition"}%
+%ENDTAB%
+--> 
+%TAB{"yolo"}%
+The =yolo= partition is useful if you have many medium to low priority jobs which are not time-critical. It is available for researchers and students.
+
+Jobs in this partition:
+   * will utilize any currently idling and unclaimed compute resources of the cluster and
+   * will *bypass all resource limits* (max GPUs per user, etc.) but
+   * will be *cancelled and requeued if a higher priority job from a different partition demands resources*
+The =yolo= partition contains *all* nodes in the cluster, i.e. it makes it possible to run jobs on compute nodes from other labs users normally would not have access to. Jobs are limited to a runtime of 3 days, and !FairShare is computed with the same rates as usual. For the sake of the climate, please make use of checkpointing to avoid pointless recomputation in case your job gets cancelled.
+
+To submit a job in the =yolo= partition, run<verbatim>
+sbatch --qos yolo -p yolo myscript.sh
+</verbatim>
+%ENDTAB%
+%TAB{"demo"}%
+This partition is reserved for running demonstrator systems for user studies.
+%ENDTAB%
+%ENDTABPANE%
+
+A detailed overview of all available partitions is shown with =scontrol show partition=
+
+---++ Monitoring
+
+Visit https://monitoring.ukp.informatik.tu-darmstadt.de to view the load of the whole cluster and individual nodes. This page is accessible from within the TU Darmstadt network.
+
+---++ Slurm Command Documentation / External References
+
+| *Command* | *Purpose* | *Example* | *Documentation* |
+| =srun= | Schedule a compute job. Executed in the foreground (directly on your terminal). | =srun --pty bash=  | [[https://slurm.schedmd.com/srun.html]] |
+| =sbatch= | Schedule a compute job. Executed in the background. | =sbatch myscript.sh= | [[https://slurm.schedmd.com/sbatch.html]] |
+| =squeue= | Show the job queue and status. | =squeue --me= | [[https://slurm.schedmd.com/squeue.html]] |
+| =scancel= | Cancel a job. | =scancel [job_id]= | [[https://slurm.schedmd.com/scancel.html]] |
+| =sinfo= | Show status of cluster nodes and available resources. | =sinfo --Format=nodehost,statelong,cpus,memory,gres= | [[https://slurm.schedmd.com/sinfo.html]] |
+| =sshare= | Display accounts and !FairShare. | =sshare -a= | [[https://slurm.schedmd.com/sshare.html]] |
+
+---++ Running Container in SLURM
+---+++ Why did we install Apptainer (ex. Singularity) instead of docker?
+   * There are some important differences between Docker and Apptainer:
+      * Docker and Apptainer have their own container formats.
+      * Docker containers may be imported to run via Apptainer.
+      * Docker containers need root privileges for full functionality which is not suitable for a shared HPC environment.
+      * Apptainer allows working with containers as a regular user.
+
+---+++ Apptainer on the Cluster
+   * *As we have only recently implemented this feature, there may be issues or situations that have not been tested or are uncomfortable to use. If you notice anything that needs to be changed or adapted, please let us know via ticket@ukp...*
+   * Apptainer is available only on the compute nodes on the cluster. Therefore, to use it you need to either start an interactive job or submit a batch-job to the available SLURM queues.
+   * In the below examples we illustrate the interactive use of Apptainer in an interactive bash shell.
+   * grab a bash shell, e.g.
+      * <verbatim>srun -p yolo --qos yolo --gres gpu:1 --pty bash -i</verbatim>
+   * check apptainer version
+      * <verbatim>bash-4.4$ apptainer --version
+apptainer version 1.1.9-1.el8 </verbatim>
+   * the most up-to-date help comes from apptainer itself
+      * <verbatim>bash-4.4$ apptainer --help
+
+Linux container platform optimized for High Performance Computing (HPC) and
+Enterprise Performance Computing (EPC)
+
+Usage:
+  apptainer [global options...]
+
+Description:
+  Apptainer containers provide an application virtualization layer enabling
+  mobility of compute via both application and environment portability. With
+  Apptainer one is capable of building a root file system that runs on any
+  other Linux system where Apptainer is installed.
+
+Options:
+      --build-config    use configuration needed for building containers
+  -c, --config string   specify a configuration file (for root or
+                        unprivileged installation only) (default
+                        "/etc/apptainer/apptainer.conf")
+  -d, --debug           print debugging information (highest verbosity)
+  -h, --help            help for apptainer
+      --nocolor         print without color output (default False)
+  -q, --quiet           suppress normal output
+  -s, --silent          only print errors
+  -v, --verbose         print additional information
+      --version         version for apptainer
+
+Available Commands:
+  build       Build an Apptainer image
+  cache       Manage the local cache
+  capability  Manage Linux capabilities for users and groups
+  checkpoint  Manage container checkpoint state (experimental)
+
+[...] shortened
+
+</verbatim>
+---+++ Getting existing images onto the cluster
+   * Apptainer uses container images which you can scp or rsync to the cluster as you would do with any other file. See Copying Data to & from the cluster for more information.
+   * Note: your folder on the central storage of UKP will be used. You should see a folder /ukp-storage-1/$USERNAME/.apptainer/ that contains all your Apptainer data. 
+   * Apptainer is a fork of Singularity, so must of Singularitys commands and images should work, too.
+   * You can also use the pull or build commands to download pre-built images from external resources, such as Singularity Hub (as of April 26th 2021, Singularity Hub is a read-only archive), the Sylabs Container Library or Docker Hub. For instance, you can download a native Singularity image with its default name from Singularity Hub with:
+      * <verbatim>bash-4.4$ apptainer pull shub://vsoch/hello-world
+INFO:    Downloading shub image
+59.8MiB / 59.8MiB [====================================================================================================================================================================================================================================] 100 % 23.3 MiB/s 0s
+bash-4.4$ </verbatim>
+   * The downloaded image file is hello-world_latest.sif. You can also pull the image with a customized name; e.g., hello.sif:
+      * <verbatim>apptainer pull --name hello.sif shub://vsoch/hello-world</verbatim>
+      * <verbatim>bash-4.4$ apptainer pull --name hello.sif shub://vsoch/hello-world
+INFO:    Use cached image
+bash-4.4$ </verbatim>
+      * Note: the image was already downloaded by me sometime ago, so it is still there and the cached one will be used.
+   * Similarly, you can pull images from Docker Hub:
+      * <verbatim>apptainer pull docker://ghcr.io/apptainer/lolcow</verbatim> 
+
+---+++ Working with images
+   * When working with images you could either start an interactive session, or submit a Apptainer job to the available queues. For these examples, we will use a lolcow image from Docker Hub in an interactive bash shell.
+      * <verbatim>srun -p yolo --qos yolo --gres gpu:1 --pty bash -i</verbatim>
+      * <verbatim>bash-4.4$ apptainer pull docker://ghcr.io/apptainer/lolcow
+INFO:    Converting OCI blobs to SIF format
+INFO:    Starting build...
+Getting image source signatures
+Copying blob 5ca731fc36c2 done
+Copying blob 16ec32c2132b done
+Copying config fd0daa4d89 done
+Writing manifest to image destination
+Storing signatures
+2023/07/18 14:49:51  info unpack layer: sha256:16ec32c2132b43494832a05f2b02f7a822479f8250c173d0ab27b3de78b2f058
+2023/07/18 14:49:52  info unpack layer: sha256:5ca731fc36c28789c5ddc3216563e8bfca2ab3ea10347e07554ebba1c953242e
+INFO:    Creating SIF file...
+bash-4.4$</verbatim>
+   * check on the conatiner files
+      * <verbatim>bash-4.4$ ls
+hello.sif lolcow_latest.sif</verbatim>
+   * run a shell
+      * <verbatim>bash-4.4$ apptainer shell lolcow_latest.sif
+INFO:    underlay of /etc/localtime required more than 50 (77) bind mounts
+Apptainer> </verbatim>
+   * run a command
+      * <verbatim>Apptainer> cowsay moo
+ _____
+< moo >
+ -----
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+Apptainer> </verbatim>
+   * you can also pass arguments to the containers
+      * <verbatim>bash-4.4$ apptainer exec lolcow_latest.sif cowsay moo
+INFO:    underlay of /etc/localtime required more than 50 (77) bind mounts
+ _____
+< moo >
+ -----
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+bash-4.4$ </verbatim> 
+
+---+++ GPU example
+   * To access Nvidia GPU card driver installed inside of Apptainer container you need to use =--nv= option while executing the container. To verify that you have access to the requested GPUs, run =nvidia-smi= inside the container:
+   * <verbatim>bash-4.4$ singularity exec --nv lolcow_latest.sif /bin/bash
+INFO:    underlay of /etc/localtime required more than 50 (77) bind mounts
+INFO:    underlay of /usr/bin/nvidia-smi required more than 50 (329) bind mounts
+Apptainer> nvidia-smi
+Tue Jul 18 14:56:51 2023
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 530.30.02              Driver Version: 530.30.02    CUDA Version: 12.1     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                  Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf            Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  Tesla P100-PCIE-16GB            On | 00000000:86:00.0 Off |                    0 |
+| N/A   51C    P0               31W / 250W|      0MiB / 16384MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+Apptainer> </verbatim>
+   * you can see that the requested GPU is available in Apptainer
+
+---+++ Accessing files from container
+   * Files and directories on the cluster are accessible from within the container. By default, directories under =/scratch=, =/mnt/beegfs/work/$USERNAME/= (central storage), =/mnt/beegfs/shared/= (central storage) and =/tmp= are available at runtime inside the container:
+      * <verbatim>Apptainer> df -h
+Filesystem             Size  Used Avail Use% Mounted on
+tmpfs                   16M   12K   16M   1% /
+squashfuse_ll           72M   72M     0 100% /opt
+/dev/sda2               69G  6.4G   59G  10% /etc/hosts
+devtmpfs               189G     0  189G   0% /dev
+tmpfs                  189G  8.0K  189G   1% /dev/shm
+slurm-nfs:/nfs-mounts  503G   75G  403G  16% /nfs
+beegfs_nodev           466T  202T  265T  44% /mnt/beegfs
+/dev/sda3              809G   36K  768G   1% /scratch
+tmpfs                  189G     0  189G   0% /sys/fs/cgroup
+tmpfs                  189G   50M  188G   1% /run/nvidia-persistenced/socket
+Apptainer></verbatim>
+
+---+++ Singularity containers as SLURM jobs
+   * once you have build and moved the container to your storage location, you can also submit Apptainer jobs with sbatch
+      * =srun apptainer_test.sh=
+      * with hello_world.sif container at =/ukp-storage-1/$USERNAME/hello_world.sif=
+      * apptainer_test.sh:
+         * <verbatim>#!/bin/bash
+#
+#SBATCH --job-name=apptainer_test
+#SBATCH --output=/ukp-storage-1/$USERNAME/result.txt
+#SBATCH --error=/ukp-storage-1/$USERNAME/error.txt
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=$USERNAME@ukp.tu-darmstadt.de
+#SBATCH --partition=ukp
+#SBATCH --time=10:00
+#SBATCH --mem-per-cpu=100
+
+# Apptainer command line options
+apptainer exec hello_world.sif cat /etc/os-release</verbatim>
+   * result.txt:
+      * <verbatim>
+NAME="Ubuntu"
+VERSION="14.04.6 LTS, Trusty Tahr"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 14.04.6 LTS"
+VERSION_ID="14.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"</verbatim> 
+
+%META:TOPICMOVED{by="bugert" date="1570804848" from="Services.ComputeCluster" to="Services/Campus.ComputeCluster"}%

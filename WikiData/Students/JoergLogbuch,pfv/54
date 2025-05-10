@@ -1,0 +1,279 @@
+%META:TOPICINFO{author="JoergHellms" date="1225711332" format="1.1" version="54"}%
+%META:TOPICPARENT{name="JoergHellms"}%
+---+ Logbuch
+ 
+%TOC%
+
+---++ November 2008
+---+++ 03.11.2008
+   * IrEvaluation erfolgreich eingebunden
+      * trec_eval tool kompiliert (http://trec.nist.gov/trec_eval/)
+      * Pfade für GoldStandard und trec_tool eingestellt
+      * QueryId und DocumentId angepasst (nur Nummer ohne Dateiname)
+   * Erste Ergebnisse für SIR-Implementierung.. map_all: 0.15
+   * Gewichtung von GraphScore der Dokumente in Suche verringert...
+
+---++ Oktober 2008
+---+++ 31.10.2008
+   * dabei alle 529 Dokumente von BerufeNet in BerkeleyDB zu schreiben...
+   * delimiter bei edgeId und vertexId von "-" auf "||" geändert
+   * Performanz der idf-Berechnung verbessert
+
+---+++ 30.10.2008
+   * CPE für Suche gebaut:
+      * XmiCollectionReader
+      * RunInformationGenerator
+      * Searcher
+      * IrResultConsumer
+      * IrEvaluator
+
+   * Versuch mit Korpus BerufeNet gestartet
+      * 12 vorverarbeitete Dokumente in Datenbank geschrieben (processingDocuments)
+      * alle vorverarbeitete Abfragen in Datenbank geschrieben (processingQueries)
+      * Suche gestartet
+
+   * EsaCachedComparator verwendet (allerdings am Anfgang nicht auf lowerCase getestet)
+
+---+++ 28.10.2008
+   * Ablauf für preprocessing und processing der Dokumente und Queries geordnet
+      * preprocessingDocuments
+      * preprocessingQueries
+      * processingDocuments (speichern in BerkeleyDb / Environment A)
+      * processingQueries (speichern in BerkelyDb / Environment B)
+      * -> CPEs dafür angelegt
+   * In Arbeit: Searcher-Komponente (noch ohne UIMA-Einbindung)
+
+---+++ 27.10.2008
+   * Methoden für graphSimilarity und sim(d,q) erstellt (SIR-2 AP 7 und 8)
+   * Angefangen mit der Komponente für die Query-Verarbeitung im UIMA Kontext
+   * Code kommentiert
+
+---+++ 26.10.2008
+   * VertexRelevance und idf für jeden Graphen wird berechnet und in BerkeleyDb abgelegt
+
+---+++ 24.10.2008
+   * Noch zu erledigende Aufgaben geordnet / Überblick
+   * BerkeleyDb Struktur aufgeräumt
+
+---+++ 23.10.2008
+   * Komponente die in BerkeleyDb schreibt aufgeräumt
+   * Probleme bei der graphScore behoben (span)
+
+---+++ 21.10.2008
+   * Berechnungen für graphQuality, graphCoherence, graphDensity, graphRel und graphScore analog zu SIR-AP6 implementiert
+
+---+++ 10.10.2008
+   * Speichern und Auslesen von Graphen in die BerkeleyDb klappt
+   * Eine DB für DocId zu GraphId (Graph plus Subgraphs)
+   * Eine DB für GraphId zu Graph
+   * Eine DB für GraphId zu GraphAttributen (Score, etc.)
+
+---+++ 09.10.2008
+   * Arbeiten an Speichern und Auslesen von Graphen in die BerkeleyDb
+   * Umgestellt auf von Torsten bearbeitetem Code statt von Florian
+
+---+++ 07.10.2008
+   * Arbeiten an Speichern und Auslesen von Graphen in die BerkeleyDb
+
+---+++ 02.10.2008
+   * Angefangen mit Speichern in BerkeleyDb
+
+---++ September 2008
+---+++ 30.09.2008
+   * Erzeugen von Subgraphen, Pageranking und Filtern von Knoten mittels JUNG
+   * Überlegungen zu Speichern der Graphen in BerkeleyDb statt GraphML Dateien
+
+---+++ 29.09.2008
+   * Begonnen Methoden aus SIR Antrag, die für lexikalische Ketten gelten, auf Graphen umzuformen (mittels JUNG)
+
+---+++ 26.09.2008
+   * GraphmlReader ist nun Util-Klasse von GraphAlgo Annotator und kein Reader im Sinne von UIMA mehr
+   * GraphmlReader funktioniert und liest aus einer .graphml Datei nun den Graph korrekt ein (mit Edge = SemanticEdge und Vertex = TokenVertex)
+
+Stand der UIMA Komponenten
+   * Dokumente werden vorverarbeitet und als .graphml Datei abgespeichert
+   * Aus den .graphml Dateien kann wieder ein JUNG Graph<TokenVertex, SemanticEdge> erstellt werden
+   * Query wird vorverarbeitet und als JUNG Graph<TokenVertex, SemanticEdge> dargestellt
+
+Arbeit im Moment
+   * Angefangen mit dem Annotator für den Graphenvergleich
+
+---+++ 25.09.2008
+   * Arbeit am GraphML Reader. Problem die Dateien wieder einzulesen mit korrekten Edge und Vertex Typen. JUNG liest nur die IDs ein und nicht mehr.
+
+---+++ 23.09.2008
+   * JUnit Tests für GraphMLConsumer geschrieben (leichte Probleme mit Annotationen und Typen gehabt... aber gelöst mit "leeren" Annotationen)
+   * Umgebung für die JUnit Test erstellt (Ordnerstruktur, Test-Annotatoren, Vergleichsdateien)
+
+---+++ 22.09.2008
+   * JUnit Tests für SemanticEdge und TokenVertex geschrieben
+
+---+++ 16.09.2008
+   * Angefangen mit GraphML Reader Komponente
+
+---+++ 15.09.2008
+   * GraphML Consumer Komponente funktioniert (Gespeichert wird Vertex, Edge und EdgeWeight)
+   * Graph besteht aus =TokenVertex= und =SemanticEdge=
+   * Graph wird mit JUNG visualisiert (nur beta-Stadium zwecks Debugging)
+
+---+++ 12.09.2008
+   * Arbeit an GraphML Consumer Komponente
+
+---+++ 11.09.2008
+   * Angefangen mit GraphML Consumer für Komponenten von Florian mittels JUNG 2.0beta
+   * SVN Verzeichnis 'joerg' eingerichtet
+
+---+++ 09.09.2008
+   * Vortrag beim StatusMeeting
+   * Von Konstantina die vorhandenen UKP-Komponenten bezüglich Graphen erklärt bekommen
+      * Interfaces zum Übernehmen geeignet
+      * die meisten Klassen benutzen allerdings eine SemanticResource und können somit für meine Zwecke nicht einfach übernommen werden
+
+---+++ 08.09.2008
+   * MMAX2-Consumer läuft wieder (Grund: Classpath, Output Directory) 
+   * Grund für Java Warnung =java.util.prefs.FileSystemPreferences.syncWorld: WARNUNG: Couldn't flush user prefs: java.util.prefs.BackingStoreException: java.lang.IllegalArgumentException: Not supported: indent-number= gefunden: Die CPE_GUI möchte eine pref-file unter =/home/joerg/.java/.userPrefs/org/apache/uima/tools/_!%:!`!"&!&8![w"_!%k=/prefs.xml= ablegen was offensichtlich am Verzeichnisnamen scheitert. Workaround: Logging-Level auf Severe gesetzt für =java.util.prefs.FileSystemPreferences.syncWorld=
+   * Präsentation vorbereitet
+   * Graphrepräsentation möglich mit:
+         | *Name* | *Lizenz* | *Beschreibung* | *Schon von UKP genutzt* | *Link* |
+         | yWorks | <span class="red">kostenpflichtig</span> | Umfangreiches Tool | Nein | [[http://www.yworks.com/de/index.html][link]]  | 
+         | Piccolo2D | <span class="green">Open Source</span> | <span class="red">eher für gute Darstellbarkeit gedacht (Animation, Zoom, Anordnung)</span> | Nein | [[http://www.piccolo2d.org/][link]] | 
+         | Tulip | GPL | Visualization, drawing and edition of graphs | Nein | [[http://www.labri.fr/perso/auber/projects/tulip/news.php][link]] |
+         | GraphML | - | keine Darstellung, sondern legt Syntax für Graphen in XML fest |  | [[http://graphml.graphdrawing.org/index.html][link]] |
+         | JGraph | <span class="green">Library ist Open Source</span><br /><span class="red">Layout-Tool ist kostenpflichtig</span> | Ähnlich oder schlechter wie JGraphT, nur besser bei der Visualisierung |  | [[http://www.jgraph.com/][link]] |
+         | JGraphT | <span class="green">Lesser GPL</span> | <span class="green">Umfangreiches Toolkit für Graphen. Stabil und geeignet für große Datenmengen.</span> | <span class="green">Ja</span> | [[http://jgrapht.sourceforge.net/][link]] |
+         | prefuse | <span class="green">BSD</span> | <span class="green">Umfangreiches Toolkit für Java (data modeling, visualization, interaction)</span> Schwerpunkt eher auf Visualisierung | <span class="green">Ja</span> | [[http://prefuse.org/][link]] |
+         | JUNG | <span class="green">Open Source</span> | <span class="green">Umfangreiches Toolkit mit vielen nützlichen Algorithmen (flow, measures, distances, clustering) </span> | <span class="green">Ja</span> | [[http://jung.sourceforge.net/index.html][link]] |
+         |  |  |  |  |  |
+
+---+++ 05.09.2008
+   * MMAX2-Consumer läuft nach Update mit Repository nicht mehr... :-(
+
+---+++ 04.09.2008
+   * LinkPrunning und LinkWeightAdjustment wieder aus der CPE entfernt, da dadurch keine Verbesserung entsteht (Ergebnis aus Diplomarbeit Florian Schwager)
+   * Überlegungen zur Graphrepräsentation in Java (JGraph, JGraphT, GraphML, JUNG)
+
+---+++ 02.09.2008
+Vorverarbeitung der Datei scheint soweit zu klappen:
+   * Preprocessing
+   * PosFilter
+   * WordPairsAnnotator
+   * EsaSemRelAnnotator
+   * LinkWeightAdjustment (?)
+   * LinkPrunning
+
+Schreiben des CAS mittles:
+   * AnnotationWriter
+   * MMAXGraphConsumer
+      * IG: @Christof: ist das mit den jüngsten Arbeiten von MCM / TZ /CT aligniert? ich hoffe ja... Wenn nicht, bitte abklären.
+      * CM: Jörg verwendet die bereits bestehenden Komponenten aus Florians Diplomarbeit. Es geht also nicht um die Erstellung einer neuen Komponente, sondern nur um die Anwendung einer bereits bestehenden Komponente. Also keine Gefahr von "doppelter Arbeit". :-)
+
+---+++ 01.09.2008
+Florians Code verwendet auf dem Weg von Datei->Preprocessed->Graph->MMAX2
+
+---++ August 2008
+
+---+++ 29.08.2008
+   * Umgestiegen auf Linux als Entwicklungsplattform (Auf Wiedersehen Windows.. Hallo Suse...)
+   * Code von Florian nach relevanten Teilen für das Preprocessing durchsucht und diese in mein Java-Projekt übernommen (soweit möglich Code aus DKPro Repository eingebunden / reference by name statt reference by location)
+   * Möglichkeiten datapath zu setzen:
+      * .datapath Datei im workspace (sollte eigentlich ausreichen)
+      * "set datapath" im UIMA 'Component Descriptor Editor' (zusätzlich um Datei die 'import by name' enthält,  mit 'Component Descriptor Editor' öffnen zu können)
+      * run mit "-Duima.datapath=xyz" als VM-argument (benötigt für UIMA applications, die aus Eclipse heraus gestartet werden)
+   * Preprocessing läuft (auch mit großen document-collections) 
+
+---+++ 28.08.2008
+   * TreeTagger läuft unter Windows XP als "stand-alone" aber nicht im UIMA-Kontext mit großen document-collections
+   * Pfade der resource treetagger von "DVD_Florian" auf "C:\treetagger" geändert
+   * Also doch Preprocessing unter Linux machen... :-(
+      * *IG:* am besten alles unter Linux machen, Windows macht nur Ärger; es ist bei Diplomanden vielleicht noch nicht angekommen, aber Linux soll die verbindliche Plattform für alle Software sein
+
+---+++ 26.08.2008
+   * Linux fertig eingerichtet (samt WLAN in der Uni)
+
+---+++ 25.08.2008
+   * Linux einrichten (eclipse, UIMA, etc.)
+
+---+++ 24.08.2008
+   * Linux installiert
+
+---+++ 22.08.2008
+   * Code von Florian Schwager mithilfe von Diplomarbeit und [[http://incubator.apache.org/uima/downloads/releaseDocs/2.2.2-incubating/docs/pdf/tutorials_and_users_guides.pdf][UIMA Tutorial]] angeschaut
+   * [[JoergMeetingProtokolle][Meeting]] mit Christof
+
+---+++ 19.08.2008
+   * immer noch am [[http://incubator.apache.org/uima/downloads/releaseDocs/2.2.2-incubating/docs/pdf/tutorials_and_users_guides.pdf][UIMA Tutorial]] lesen
+   * Versucht den Code von Florian Schwager zum Laufen zu bekommen
+
+---+++ 15.08.2008
+   * immer noch am [[http://incubator.apache.org/uima/downloads/releaseDocs/2.2.2-incubating/docs/pdf/tutorials_and_users_guides.pdf][UIMA Tutorial]] lesen
+
+---+++ 14.08.2008
+   * [[http://incubator.apache.org/uima/downloads/releaseDocs/2.2.2-incubating/docs/pdf/tutorials_and_users_guides.pdf][UIMA Tutorial]] weiter gelesen
+   * SVN unter eclipse (subversion) eingerichtet
+
+---+++ 12.08.2008
+   * [[http://incubator.apache.org/uima/downloads/releaseDocs/2.2.2-incubating/docs/pdf/tutorials_and_users_guides.pdf][UIMA Tutorial]] weiter gelesen
+   * Diplomanden StatusMeeting und Abschlussvortrag von Arne angehört
+
+---+++ 11.08.2008
+   * [[http://incubator.apache.org/uima/downloads/releaseDocs/2.2.2-incubating/docs/pdf/tutorials_and_users_guides.pdf][UIMA Tutorial]] weiter gelesen
+   * Patentdatensätze (Korpus) angeschaut
+   * Programmcode von Florian überflogen
+
+---+++ 07.08.2008
+   * [[JoergMeetingProtokolle][Meeting]] mit Christof und Konstantina
+   * [[http://incubator.apache.org/uima/downloads/releaseDocs/2.2.2-incubating/docs/pdf/tutorials_and_users_guides.pdf][UIMA Tutorial]] angefangen
+
+---+++ 05.08.2008
+   * Literaturrecherche (IEEE)
+
+---+++ 04.08.2008
+   * [[JoergPatentrecherche][Patentrecherche]] abgeschlossen
+   * Nach weiterer Literatur gesucht (IEEE)
+
+---+++ 01.08.2008
+   * [[JoergPatentrecherche][Patentrecherche]] fortgesetzt
+
+---++ Juli 2008
+
+---+++ 29.07.2008
+   * [[JoergPatentrecherche][Patentrecherche]] angefangen
+   * [[JoergMaterial][Materialseite]] aufgeteilt nach [[JoergLiteraturrecherche][Literatur]] und [[JoergPatentrecherche][Patente]]
+
+---+++ 28.07.2008
+   * Literaturrecherche (fertig mit vorgeschlagener Literatur)
+
+---+++ 25.07.2008
+   * DKPro Meeting
+   * Social Event (Wanderung zum Biergarten)
+
+---+++ 24.07.2008
+   * DKPro Meeting
+   * Vortrag beim Diplomanden StatusMeeting
+   * Literaturrecherche
+
+---+++ 22.07.2008
+   * DKPro Meeting
+   * Ausarbeitung Vortrag für StatusMeeting
+   * Eclipse und UIMA fertig eingerichtet
+
+---+++ 21.07.2008
+   * DKPro Meeting
+   * Literaturrecherche
+   * Update meiner [[JoergMaterial][Materialseite]]
+   * Einarbeiten in UIMA (erstes [[http://incubator.apache.org/uima/downloads/releaseDocs/2.2.2-incubating/docs/pdf/overview_and_setup.pdf][Tutorial]] gelesen)
+
+---+++ 16.07.2008
+   * Literaturrecherche
+   * Meine Material-Seite im TWiki angelegt
+   * Meeting mit Christoph und Konstantina
+
+---+++ 15.07.2008
+   * Arbeiten von zuhause in die Uni verlegt
+   * Neuen Arbeitsplatz an der Uni bezogen (B115)
+   * Diplomarbeit von Florian Schwager erneut gelesen und zusammengefasst (unter Material)
+   * Zeitplan für Diplomarbeit erstellt (stark am Zeitplan der Vorhabensbeschreibung orientiert)
+
+-- Main.JoergHellms - 15 Jul 2008
+
+%META:FILEATTACHMENT{name="Zeitplan.xls" attachment="Zeitplan.xls" attr="" comment="" date="1216198495" path="Zeitplan.xls" size="24576" stream="Zeitplan.xls" tmpFilename="/var/tmp/CGItemp24071" user="JoergHellms" version="1"}%

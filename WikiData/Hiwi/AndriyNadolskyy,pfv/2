@@ -1,0 +1,19 @@
+%META:TOPICINFO{author="AndriyNadolskyy" date="1312810333" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Work
+
+
+
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"}%
+| *Artem Aufgaben* |
+| *Aufgabe* | *% done* |
+| | |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Artem Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | | |
+
+-- Main.NicoErbs - 2011-08-08

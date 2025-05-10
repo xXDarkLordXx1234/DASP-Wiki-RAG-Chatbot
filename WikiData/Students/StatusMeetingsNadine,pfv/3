@@ -1,0 +1,32 @@
+%META:TOPICINFO{author="NadineTrueschler" date="1310407599" format="1.1" version="3"}%
+%META:TOPICPARENT{name="NadineTrueschler"}%
+---+ Meetings
+
+---++ 31.05.
+
+   * Vorstellung und Besprechung der Bachelorarbeit, Aufbau, Aufgaben etc.
+
+   * Verträge erhalten
+
+---++ 08.06.
+
+   * Abgabe der unterschriebenen Verträge
+
+   * Klärung von Fragen
+
+---++ 10.06.
+
+   * Einrichten von Maven sowie kleine Einführung
+
+   * Anschließend ML-Workshop von 10:30 bis 15:30 Uhr
+
+---++ 05.07.
+   * Besprechung für die erste Aufgabe (Corpus Creation)
+   * Über Datenbank arbeiten (Pipeline)
+   * Ein Corpus mit FA und GA, dazu einer mit NA
+   * EIn Corpus nur mit FA, dazu einer mit NA
+   * Wkipedia-Pages sollten ungefähr alle gleich lang/groß sein, wird anhand der Länge des Strings gemessen
+
+---++ 11.07.
+   * Problem bezüglich WikipediaArticleReader gelöst
+   * weiteres Vorhaben besprochen (ID u. Länge in zwei verschiedene txt-Dateien speichern, weiteren Consumer wie StatWriter anlegen, der die beiden Textdateien weiter verarbeitet (initialize, hasNext, getNext - zwei Listen, eine abarbeiten, in der anderen durch Rauswerfen überprüfen, ob alle Artikel "Partner" fanden))

@@ -1,0 +1,50 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="6" version="7"}%
+---+ *Optimierung des Speicherverbrauchs*
+---++ Timestamp vs Integer:
+
+Der Zeitpunkt jeder Wikipedia-Artikeländerung wurde ursprünglich mithilfe der Klasse java.sql.Timestamp gespeichert. Diese basiert auf dem long -Typ, der 64 bit Arbeitsspeicher braucht. Um den Speicherverbrauch zu reduzieren, wurde die oben genannte Klasse mit dem Typ Integer ersetzt (32 bit), wobei die Genauigkeit bzw. die Auflösung der Zeitabmessung reduziert wurde. Da die Anzahl der Artikeländerungen sehr groß sein kann (englische Wikipedia z.Z. 304 084 575 Stück), kann diese Reduzierung eine wichtige Einsparung bringen.
+
+---++ Behälteroptimierung:
+ Nach der nächsten Quellcode-Analyse wurde bemerkt, dass man auf einige der Container-Objekte der Klasse !DumpVersion verzichten oder ihre Benutzung effizienter machen kann: 
+   * pageIdRevMap &ndash; Änderung der Collection-Klasse: Map &rarr; !TIntLongHashMap, dabei wurde die Klasse Revision mit Long ersetzt, die nach der Art von C++ unions verwendet wird. Nach dem Parsen der Revision-Information wird diese !HashMap in einen !TIntHashSet transformiert, was zusätzlichen Speicher freigibt und den funktionalen Anforderungen entspricht.
+
+   * Das Paar von !HashMaps !cPageIdNameMap und !cNamePageIdMap haben ursprünglich dieselbe Information, aber in verschiedenen Richtungen &bdquo;gemapt&ldquo;. Da mithilfe von !cPageIdNameMap nur die Schlüssel-Existenz geprüft wurde, konnte man auf diesen Behälter verzichten und die genannte Verantwortung an !cNamePageIdMap übergeben.
+
+   * Ein ähnliches Paar bestand aus den !HashMaps !pPageIdNameMap und !pNamePageIdMap. Da die beiden Behälter aktiv benutzt werden, führt die Ablösung von einem der Objekte zu starken Zeitverlusten. Die Optimierung wurde dadurch erreicht, dass sowohl bei !cPageIdNameMap als auch bei !pNamePageIdMap der String-Hashcode anstatt dem String selbst als Schlüssel verwendet wurde. Sollte das zu Zweideutigkeiten führen, könnte man String-Hashing-Algorithmus aus dem Apache-Serializierung-Framework als eine Alternative benutzen.
+
+   * Alle Container, die primitive Datentype enthalten, (!HashMap, !HashMap, !HashSet<Integer>) wurden durch entsprechende Klassen der GNU-Trove-Bibliothek ersetzt, was sowohl den Zeit- als auch den Arbeitsspeicher-Bedarf positiv beeinflusst hat.
+
+   * Alle Container werden freigegeben, nachdem die dort gespeicherte Information nicht mehr benutzt wird.
+
+---++ GNU Trove:
+
+Der Einsatz der GNU Trove Bibliothek, die sich als schnelle und leichtgewichtige Alternative zu den JDK Collections positioniert, erschien als nicht triviale Aufgabe, die mehrere Tage Testen erfordert hat. So führte die einfache Ersetzung der JDK Container-Klassen zu rasanten Verschlechterungen. Nachdem der Inhalt der meisten Behälter in Form von primitiven Datentypen dargestellt wurde, konnte man die Speicherverbrauch-Minimierung beobachten:
+<blockquote>
+
+Simple-Eglish-Wikipedia - 7 Snapshots
+
+Blau - nur GNU Trove Collections
+
+Gelb - nur JDK Collections
+
+Grün - JDK + GNU Trove
+</blockquote>
+
+<img width="802" alt="" src="%ATTACHURL%/enwiki_7.png" height="516" />
+<blockquote>
+
+Deutsche Wikipedia - 4 Snapshots
+
+Blau / Rot - Total / Used Memory - nur JDK Collection
+
+Gelb / Grün - Total / Used Memory - JDK Collections +GNU Trove
+</blockquote>
+
+<img alt="" src="%ATTACHURL%/dewiki_4.png" />
+
+<blockquote>
+Alle test wurden durchgeführt unter Windows XP und JRE 1.6.0_13
+</blockquote>
+
+%META:FILEATTACHMENT{name="dewiki_4.png" attachment="dewiki_4.png" attr="" comment="Auswertung der eutschen Wikipedia (4 Snapshots) vor und nach dem Refactoring" date="1244011640" path="dewiki_4.png" size="19310" stream="dewiki_4.png" tmpFilename="/var/tmp/CGItemp28333" user="IvanGalkin" version="2"}%
+%META:FILEATTACHMENT{name="enwiki_7.png" attachment="enwiki_7.png" attr="" comment="simple english-Auswertung (7 Snapshots) mit JDK-, GNU Trove-Collections und ihrer Kombination" date="1241618487" path="enwiki_7.png" size="26207" stream="enwiki_7.png" tmpFilename="/var/tmp/CGItemp19830" user="IvanGalkin" version="1"}%

@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="naik" comment="" date="1628823889" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ *Internship Report*
+<p align="center">
+----+ TODO List
+</p>
+
+   * Setup VPN, Instant Messaging and SLURM
+   * Papers to be read: https://arxiv.org/pdf/2106.12417.pdf, https://arxiv.org/pdf/2004.13912.pdf 
+   * Read Validity chapter from book: Empirical Methods (Validity, Reliability and Significance) (Draft)
+   * Try to come up with stastical tests for Validity measurs for classification, NLI or QA task (assuming Neural models instead of GAMs)
+
+<p align="center">
+-----+ Meeting Notes
+10th August 2021: 
+   * Discussion of idea about features that bias model prediction towards a certain class (similar to competency models paper, Trigger words from explainability tutorial slides) and maybe more generally the idea of Illegitimate features (information leakage) (as defined in the Empirical Methods book under the validity section)
+   * Infrastructure/communications setup
+   * One possible direction is Validity of features (circular features, bias features and information leakage) 
+</p>
+
+<p align="center">
+-----+ Summaries
+   * Competency Problems: <LINK>
+   * QA Survey and Taxonomy: <LINK>
+   * Validity Problems: <LINK> 
+   * Neural Additive models: <LINK>
+   * False perfection in machine learning: <LINK>
+-----+ Ideas and Thoughts
+9th August - 15th August:
+
+   *Bias Featues:* 
+   *    These features (for most previous work) are based on normalized co-ocurrence statistics of features(like words) used by models and dataset categories. E.g. joint probability of features and labels normalized by feature probability or joint probability of features and labels normalized by feature and label proabability. 
+   *    These metrics can't separate bias features necessary for a task and the ones that are spurious/misleading. 
+   *    For a feature to be labeled as a bias feature it should not generalize to other domains/datasets of the same task.
+   *    If this is not targeted by previous work (looking into it), it can be a focus point of our research
+   
+   *Illegitimate Featues:*
+</p>

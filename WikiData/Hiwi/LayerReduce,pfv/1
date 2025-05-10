@@ -1,0 +1,62 @@
+%META:TOPICINFO{author="IvanGalkin" date="1237468989" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="IvanGalkinWork"}%
+---+ *Reduzierung der Bearbeitungsebenen*
+---++ Problemstellung:
+
+Die sehr lange Arbeitszeit des Programms dient als ein Zeichen für ineffiziente Algorithmen der Datenverarbeitung und die Notwendigkeit, diese Algorithmen zu optimieren.
+
+---++ Analyse:
+Nach der ausführlichen Analyse des Programmablaufs kann man die Bearbeitung einer Dump-Datei als mehrere Bearbeitungsebenen darstellen:
+
+<img width="460" height="460" alt="" src="%ATTACHURL%/layersBefore.jpg" />
+
+Dabei spielen die dargestellten Schichten folgende Rollen:
+   * *Archivdatei* - die einzige Möglichkeit, die Dumps runter zu laden und auf der Festplatte zu speichern, weil die entpackte Information mehrere Terabyte groß sein kann
+   * *XML-Darstellung* - ist [bis jetzt] nur für pages-meta-history-Dump aktuell und wird durch das Entpacken der Archivdatei mithilfe der Klasse =UniversatDecompressor= erstellt *. Das Entpacken der restlichen Dump-Dateien stellt gleich die SQL-Befehle dar.*
+   * *SQL-Darstellung* -  wird durch den Einsatz der Bibliothek =MWDumper= bzw. der Klasse =XMLInputStream= aus der XML-Darstellung konvertiert *oder durch Entpacken aus der Archivdatei erstellt.*
+   * *textuelle Darstellung* - separiert verschiedene Tabellen aus der SQL-Darstellung von einander und stellt die Daten tabellenartig dar (CSV-ähnlich, wobei der Tabulator als Separater benutzt wird). 
+ 
+Je nach Bearbeitungsschritt (s. DataMachineReview oder ParallelismImpossibility) werden verschiedene Parser eingesetzt, um die notwendigen Werte aus der textuellen Darstellung zu extrahieren.
+
+Da der größte Zeitaufwand mit dem pages-meta-history-Dump verbunden ist, skizzieren wir seine Bearbeitungsschritte:
+   1 processRevision
+      1 komplettes Entpacken der Dump-Datei  (für deutsche Wikipedia zur Zeit > 1 Terabyte)
+      1 *komplettes* Umwandeln der XML-Darstellung in die SQL Darstellung (> 1 Terabyte)
+      1 Umwandeln der "revision"-Tabelle *mit allen ihren neun Spalten* (Textänderungen, Wikipedia-Benutzer u.v.m.)
+      1 Parsing der textuellen Darstellung und Auslesen von *drei* ihren Feldern
+   1 processPage
+      1 komplettes Entpacken der Dump-Datei  (für deutsche Wikipedia zur Zeit > 1 Terabyte)
+      1 *komplettes* Umwandeln der XML-Darstellung in die SQL Darstellung (> 1 Terabyte)
+      1 Umwandeln der "page"-Tabelle *mit allen ihren 11 Spalten* (inklusive irrelevanten Daten)
+      1 Parsing der textuellen Darstellung und Auslesen von *vier* ihren Feldern
+   1 processText
+      1 komplettes Entpacken der Dump-Datei  (für deutsche Wikipedia zur Zeit > 1 Terabyte)
+      1 *komplettes* Umwandeln der XML-Darstellung in die SQL Darstellung (> 1 Terabyte)
+      1 Umwandeln der "text"-Tabelle *mit allen ihren 3 Spalten* 
+      1  Parsing der textuellen Darstellung und Auslesen von *zwei* ihren Feldern
+
+Die Notwendigkeit, der aufeinander folgenden Bearbeitung, ist in ParallelismImpossibility bewiesen. Aus diesem Grund bewerten wir den Aufwand, der mit dem Entpacken verbunden ist, als unvermeidbar.
+
+Eine weitere Quelle des zeitlichen Aufwandes ist die Tatsache, dass trotz der relativ kleinen Menge der notwendigen Informationen auf jedem Schritt der ganze Dump unnötigerweise in SQL umgewandelt und danach mehrmals gefiltert werden soll.
+
+---++ Lösungsvorschlag:
+
+Es ist grundsätzlich unnötig, die XML-Datei ins SQL-Format zu konvertieren. Die verwendete Bibliothek MWDumper bietet die Möglichkeit, die Informationen, die aus XML-Darstellung bekommen werden, nach beliebiger Art und Weise darzustellen. Diese Darstellung ist mit dem bis jetzt verwendeten SQL-Format nicht beschränkt und lässt sich mithilfe der Ableitungen der Klasse =org.mediawiki.importer.DumpWriter= beeinflussen.
+
+Momentan wird für die XML2SQL-Konvertierung folgender Quellcode verwendet:
+
+
+=SqlStream= stellt eine ZielStream dar und wird mit =OutputStream= initializiert
+<verbatim>SqlStream output = new SqlFileStream(someOutputStream);</verbatim>
+=DumpWriter= ist ein Interface, das für Transformationen der Dump-Information zuständig ist. In diesem Fall wird es als Output-Format SQL 1.5 verwendet
+<verbatim>DumpWriter sqlWriter = new SqlWriter15(new MySQLTraits(), output);</verbatim>
+=xmlReader= liest den Dump, transformiert ihn auf Grund vom =DumpWriter= und schreibt den in =SqlStream=
+<verbatim>xmlReader = new XmlDumpReader(someInputStream, sqlWriter);</verbatim>
+Starten
+<verbatim>xmlReader.readDump();</verbatim>
+
+Für unsere Lösung sollen wir die Klasse =SqlWriter15= mit unseren eigenen Klassen ersetzen, die das Interface =DumpWriter= implementieren. So könnte man drei verschiedene DumpWriter schreiben, die sich jeweils an den konkreten Schritten der Dumpbearbeitung orientieren (processRevision, processPage oder processText) und *nur* die notwendige Daten zurückliefern.
+
+Durch solche Modifikationen kann man erheblich Arbeitszeit sparen, indem mehrere vollständige Dump-Konvertierungen mit einer gezielten Konvertierung ersetzt werden.
+
+%META:FILEATTACHMENT{name="layersBefore.jpg" attachment="layersBefore.jpg" attr="" comment="" date="1237465313" path="layersBefore.jpg" size="62625" stream="layersBefore.jpg" tmpFilename="/var/tmp/CGItemp28369" user="IvanGalkin" version="2"}%

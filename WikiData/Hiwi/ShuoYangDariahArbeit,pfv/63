@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="ShuoYang" date="1332558486" format="1.1" version="63"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+!! Arbeitsprotokoll von DARIAH-DE, Shuo Yang
+
+---++ Aktuelle Arbeit: Februar - April 2012
+
+---+++ Aufgabenübersicht
+
+Siehe [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/buglist.cgi?query_format=advanced&short_desc_type=allwordssubstr&short_desc=&product=DARIAH-DE&long_desc_type=substring&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&status_whiteboard_type=allwordssubstr&status_whiteboard=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&emailassigned_to1=1&emailtype1=substring&email1=yang&emailassigned_to2=1&emailreporter2=1&emailqa_contact2=1&emailcc2=1&emailtype2=substring&email2=&bugidtype=include&bug_id=&votes=&chfieldfrom=&chfieldto=Now&chfieldvalue=&cmdtype=doit&order=Reuse+same+sort+as+last+time&remtype=asdefault&field0-0-0=noop&type0-0-0=noop&value0-0-0=][Bugzilla]].
+
+<b>Aktuelle Bugs:</b>
+
+[[ShuoYangKeyphrases]]
+
+eSciDoc:
+   * <del>[[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1412][Setup ESciDoc in VM + Guide]]</del>
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1166][Automatic triggering]]
+   * [[https://maggie.tk.informatik.tu-darmstadt.de/bugzilla/show_bug.cgi?id=1167][LUCAS writer]]
+
+UIMAFit !ExternalResource:
+   * [[http://code.google.com/p/dkpro-core-gpl/issues/detail?id=14][Load mapping with !AutoResourceResolver]]
+   * [[http://code.google.com/p/dkpro-core-asl/issues/detail?id=40][Lazy loading of !ExternalResource]]
+
+
+---+++ Protokoll
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "2" }%
+| *Datum* | *Aufgabe* | *Stunden* | *Bemerkungen* |
+| | Übertrag | -3 | Übertrag von letztem Vertrag |
+| 26.02.2012 | JOAI Data Provider, Harvester | 5 | Fertig: Einfügen von Testdaten in JOAI Data Provider, und Doku dazu<br>Fertig: Harvesten der Daten von JOAI-Testrepo<br>Angefangen: Harvesten der Daten von ESciDoc |
+| 27.02.2012 | Meeting | 1 | Meeting mit Richard |
+| 13.03.2012 | Organisatorisches, Doku | 2 | Einrichtung der Konten in DARIAH-Netz. Migration der Wiki-Seiten von UKP-Netz in DARIAH-Netz |
+| 14.03.2012 | Doku | 1.5 | Weitere Migrationen sowie Erweiterung der Wiki-Seiten |
+| 16.03.2012 | Wiki, Harvest von ESciDoc | 1.5 | Schieben der OAI-Testset von /opt in /srv <br> Versuchen, OAI-Provider in ESciDoc zu deployen, so dass ESciDoc von jOAI geharvestet werden können |
+| 18.03.2012 | Harvest von ESciDoc, Puppet | 2 | Wegen bekanntem Bug von OAI-Provider ist momentan eine Harvesting nicht möglich <br> Einarbeiten in Puppet |
+| 19.03.2012 | Puppet, Keyphrase Extraction Paper | 4 | Einarbeiten in Puppet <br> Einlesen von Keyphrase Extraction Paper |
+| *Summe* | | %CALC{"$SET(done_hour, $SUM( $ABOVE() ))$EXEC($GET(done_hour))"}% | |
+| *Soll* | | %CALC{"$SET(total_hour, 60)$EXEC($GET(total_hour))"}% | bis Ende April noch %CALC{"$EVAL( $GET( total_hour ) - ($GET( done_hour )) )"}% Stunden |
+<nop>
+
+---++ Dokumente
+ShuoYangMemo
+
+UsefulLinuxCommands
+
+[[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Main/NotesOnCoding][Notes on Coding]]
+
+
+---++ Vorherige Arbeit
+ShuoYangWork2H2011<br>
+ShuoYangWork1H2011
+
+ShuoYangWork2H2010<br>
+ShuoYangWork1H2010
+
+
+-- Main.ShuoYang - 2012-03-20
+
+%META:TOPICMOVED{by="ShuoYang" date="1316728220" from="Hiwi.ShuoDariah" to="Hiwi.ShuoYangDariahArbeit"}%

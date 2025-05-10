@@ -1,0 +1,235 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+
+import de.tudarmstadt.ukp.wiktionary.api.Language;
+import de.tudarmstadt.ukp.wiktionary.api.RelationType;
+import de.tudarmstadt.ukp.wiktionary.api.Wiktionary;
+import de.tudarmstadt.ukp.wiktionary.api.WordEntry;
+
+/* 
+ * Author: Elif Tekes
+ * Date: 14.08.2009
+ * 
+ * Creates a german version of the Opinion Finder lexicon, a lexicon of subjective words 
+ */
+
+public class Thesaurus {
+	
+	String wktPath;
+	
+	public Thesaurus(String wktPath) {
+		this.wktPath = wktPath;
+	}
+	
+	boolean isSubjective(String synonym){
+		final String PROMPT = " > ";
+		
+		System.out.println(synonym + ": Subjective? y/n");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		
+		System.out.print(PROMPT);
+		String line = null;
+		try {
+			while((line = reader.readLine()) != null) {
+				if(line.equals("y")){
+					return true;
+				}
+				else if(line.equals("n")){
+					return false;
+				}
+				else System.out.println("Wrong input. Try again. y/n");
+				
+				System.out.print(PROMPT);
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("exit");
+		
+		return true;
+	}
+	void bootstrap() throws IOException{
+		
+		int level = 0;
+		
+		//Reader for the positive word list
+		File pos_seed_file; // = new File("seedwords.txt");  
+		FileReader pos_seed_fr; // = new FileReader(seed_file);
+		BufferedReader pos_seed_br; // = new BufferedReader(seed_fr);
+		
+		//Reader for the negative word list
+		File neg_seed_file; // = new File("seedwords.txt");  
+		FileReader neg_seed_fr; // = new FileReader(seed_file);
+		BufferedReader neg_seed_br; // = new BufferedReader(seed_fr);
+		
+		//Writer for the positive word list
+		File pos_boot; // = new File("bootstrappedlist"+level+".txt");
+		FileWriter pos_boot_fr; // = new FileWriter(boot);
+		BufferedWriter pos_boot_br; // = new BufferedWriter(boot_fr);
+		
+		//Writer for the negative word list
+		File neg_boot; // = new File("bootstrappedlist"+level+".txt");
+		FileWriter neg_boot_fr; // = new FileWriter(boot);
+		BufferedWriter neg_boot_br; // = new BufferedWriter(boot_fr);
+		
+		LinkedHashSet<String> processedWords = new LinkedHashSet<String>();
+		LinkedHashSet<String> posWords = new LinkedHashSet<String>();
+		LinkedHashSet<String> negWords = new LinkedHashSet<String>();
+		
+		
+		String currentWord = "";		
+		
+		//TODO find a better measure to decide whether to continue bootstrapping than
+		//whether there was any increase in the size of the word list
+		//possible measure: see if the next step yields more than 10% of the previous step
+		while(level<5){
+		//while(posWordsSize/10 < posWords.size() || negWordsSize/10 < negWords.size()){ //level < 3){
+			System.out.println("Durchlauf " + level);
+						
+			//Initialize readers and writers
+			pos_seed_file = new File("src/pos_bootstrappedlist"+level+".txt"); 
+			pos_seed_fr = new FileReader(pos_seed_file);
+			pos_seed_br = new BufferedReader(pos_seed_fr);
+			
+			neg_seed_file = new File("src/neg_bootstrappedlist"+level+".txt"); 
+			neg_seed_fr = new FileReader(neg_seed_file);
+			neg_seed_br = new BufferedReader(neg_seed_fr);
+			
+			pos_boot = new File("src/pos_bootstrappedlist"+(level+1)+".txt");
+			pos_boot_fr = new FileWriter(pos_boot);
+			pos_boot_br = new BufferedWriter(pos_boot_fr);
+			
+			neg_boot = new File("src/neg_bootstrappedlist"+(level+1)+".txt");
+			neg_boot_fr = new FileWriter(neg_boot);
+			neg_boot_br = new BufferedWriter(neg_boot_fr);
+			
+			//process the positive seed list
+			while((currentWord = pos_seed_br.readLine()) != null ){
+				
+				if(level == 0){ //add the words in the original seed list to the LinkedHashSet
+					posWords.add(currentWord); //it's part of the positive words
+					processedWords.add(currentWord); //it's also part of the processed words
+				}
+				ArrayList<String> synonyms = findSynonyms(currentWord);
+				ArrayList<String> antonyms = findAntonyms(currentWord);
+				
+				for(String synonym : synonyms){
+					//System.out.println(synonym);
+					if(processedWords.add(synonym)){ //add the word to the processed words LinkedHashSet
+						if (level>=1 || (level<1 && isSubjective(synonym))){ //For the first few lists, the program accepts human input
+																			// After level 2, only the computer decides.
+							//write it to the textfile if it was not already in the LinkedHashSet
+							posWords.add(synonym); //add it to the positive words LinkedHashSet
+							pos_boot_br.write(synonym + "\n"); //write it to the text file
+							pos_boot_br.flush();
+						}
+					}
+				}
+				
+				for(String antonym :antonyms){
+					//System.out.println(antonym);
+					if(processedWords.add(antonym)){ //add the word to the LinkedHashSet
+						if (level>=1 || (level<1 && isSubjective(antonym))){ //For the first few lists, the program accepts human input
+																			// After level 2, only the computer decides.
+							//write it to the textfile if it was not already in the LinkedHashSet
+							negWords.add(antonym);
+							neg_boot_br.write(antonym + "\n"); 
+							neg_boot_br.flush();
+						}
+					}
+				}
+			}
+			//process the negative seed list
+			while((currentWord = neg_seed_br.readLine()) != null ){
+				
+				if(level == 0){ //add the words in the original seed list to the LinkedHashSet
+					negWords.add(currentWord);
+					processedWords.add(currentWord);
+				}
+				
+				//System.out.println(currentWord);
+				ArrayList<String> synonyms = findSynonyms(currentWord);
+				ArrayList<String> antonyms = findAntonyms(currentWord);
+				
+				for(String synonym : synonyms){
+					//System.out.println(synonym);
+					if(processedWords.add(synonym)){ //add the word to the processed words LinkedHashSet
+						if (level>=1 || (level<1 && isSubjective(synonym))){ //For the first few lists, the program accepts human input
+																			// After level 2, only the computer decides.
+							//write it to the textfile if it was not already in the LinkedHashSet
+							negWords.add(synonym);
+							neg_boot_br.write(synonym + "\n"); 
+							neg_boot_br.flush();
+						}
+					}
+				}
+				
+				for(String antonym : antonyms){
+					//System.out.println(antonym);
+					if(processedWords.add(antonym)){ //add the word to the processed words LinkedHashSet
+						if (level>=1 || (level<1 && isSubjective(antonym))){ //For the first few lists, the program accepts human input
+																			// After level 2, only the computer decides.
+							//write it to the textfile if it was not already in the LinkedHashSet
+							posWords.add(antonym);
+							pos_boot_br.write(antonym + "\n"); 
+							pos_boot_br.flush();
+						}
+					}
+				}
+			}
+			level++;
+			//Close the readers
+			pos_seed_br.close();
+			pos_seed_fr.close();
+			neg_seed_br.close();
+			neg_seed_fr.close();
+			
+			//Close the writers
+			pos_boot_br.close();
+			pos_boot_fr.close();
+			neg_boot_br.close();
+			neg_boot_fr.close();
+			
+			System.out.println("Positive Words Size " + posWords.size());
+			System.out.println("Negative Words Size " + negWords.size());
+		}
+	}
+	
+	ArrayList<String> findSynonyms(String word){
+
+		Wiktionary wkt = new Wiktionary(wktPath);
+		wkt.setIsCaseSensitive(false);
+		ArrayList<WordEntry> entries = (ArrayList<WordEntry>) wkt.getWordEntries(word, Language.GERMAN);
+		ArrayList<String> synonyms = new ArrayList<String>();
+		for(WordEntry we : entries){
+			synonyms.addAll((ArrayList<String>) we.getAllRelatedWords(RelationType.SYNONYM));
+		}
+		return synonyms;
+	}
+	
+	ArrayList<String> findAntonyms(String word){
+
+		Wiktionary wkt = new Wiktionary(wktPath);
+		wkt.setIsCaseSensitive(false);
+		ArrayList<WordEntry> entries = (ArrayList<WordEntry>) wkt.getWordEntries(word);
+		ArrayList<String> antonyms = new ArrayList<String>();
+		for(WordEntry we : entries){
+			antonyms.addAll((ArrayList<String>) we.getAllRelatedWords(RelationType.ANTONYM));
+		}
+		return antonyms;
+	}
+	
+	
+	public static void main(String args[]) throws IOException{
+		Thesaurus thes = new Thesaurus(args[0]);
+		thes.bootstrap();
+	}
+}

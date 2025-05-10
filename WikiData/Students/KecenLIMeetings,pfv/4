@@ -1,0 +1,56 @@
+%META:TOPICINFO{author="li" comment="save topic" date="1501508352" format="1.1" reprev="4" version="4"}%
+%META:TOPICPARENT{name="KecenLI"}%
+---++ Meeting 31.7.2017
+
+Objectives achieved last week: 
+
+   * PDF and XML conversion code
+   * tested deeplearning4j on 10 papers relating IQA (image quality assessment)
+   * installed solr
+   * elsevier classification seems not plausible
+
+Planned tasks:
+   * ask elsevier dev team for category search
+   * classification filtering in springer and elsevier
+   * read suggested papers on word embeddings and query expansion
+   * implement word2vec in kbrs and explore more functionality and configs
+   * fix reader webapp dependencies
+
+General idea:
+   * aggregation approach (based on publication date or randomness) - time does carry extra informations which is important.
+   * evaluation on the above mentioned publication date approach (will new words be added into vector space during aggregated learning? even added, any different outcome)
+   * batch vs aggregation (take both into account, maybe a trade-off like a hybrid model for the system)
+   * actual evaluation approach, a bench mark together with deeplearning4j similarity comparison
+
+
+
+---++ Meeting 24.7.2017
+
+Planned tasks:
+   * PDF conversion
+   * deeplearning4j test on 10-20 papers
+   * Solr (index schema file + mysql schema from Masoud)
+   * complete xml processing with uima
+
+
+---++ Meeting 17.7.2017
+
+Objectives achieved: 
+
+   * briefing on VM and APU at UKP server
+   * summary of current status of resourceSync harvester
+   * introduction of Solr into the project
+   * discussion on presentation schedule
+
+Planned tasks:
+   * obtain category list from Springer/Elsevier
+   * implement Springer/Elsevier paper category filtering
+   * implement XML conversion into formatted text file (schema discovery)
+   * implement PDF conversion into formatted text file for Springer
+   * experiment obtained text files with embedding learner in deeplearning4j framework
+   * setup VM environment at UKP server (kbrs.ukp.informatik.tu-darmstadt.de)
+   * No. of files estimation for disk space required
+
+
+
+-- Main.MasoudKiaeeha - 2017-07-17

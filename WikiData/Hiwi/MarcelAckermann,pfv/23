@@ -1,0 +1,95 @@
+%META:TOPICINFO{author="MarcelAckermann" date="1309027609" format="1.1" version="23"}%
+---+++Vertrag
+Laufzeit: 01.04.2011-31.06.2011
+
+---+++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"}%
+| *Priorität* | *ID* | *Beschreibung* | *Status* |
+| 1 | 0 | Meetings | |
+| 1 | 1 | Literatur (see SiDiM.LiteratureSummary) | |
+| 1 | 2 | Konfigurationsmanagement | |
+| 1 | 3 | in Architektur einarbeiten, dokumentieren | |
+| 1 | 4 | Einfache & Genaue Methode implementieren | |
+| 1 | 5 | SiDiM Projektwebseite | |
+| 1 | 8 | Architektur Update auf CoreNLP 1.2 | |
+| 2 | 6 | Wikipedia Revisionen als parallelen Korpus in SW einarbeiten | |
+| 2 | 7 | Stanford Parser German Model | |
+
+
+---+++ Arbeitszeit
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1" footerrows = "2" }%
+| *Datum* | *Stunden* | *Aufgabe-ID* |
+| 01.04.2011 | 1 | 1 |
+| 02.04.2011 | 2 | 1 |
+| 06.04.2011 | 2 | 1 |
+| 09.04.2011 | 2 | 1 |
+| 11.04.2011 | 2 | 1 |
+| 13.04.2011 | 2 | 1 |
+| 17.04.2011 | 4 | 2 |
+| 22.04.2011 | 4 | 2 |
+| 28.04.2011 | 1 | 0 |
+| 02.05.2011 | 1 | 0 |
+| 08.05.2011 | 6 | 1 |
+| 11.05.2011 | 4 | 3 |
+| 12.05.2011 | 1 | 0 |
+| 17.05.2011 | 4 | 5 |
+| 27.05.2011 | 2 | 0 |
+| 28.05.2011 | 2 | 1 |
+| 29.05.2011 | 3 | 1 |
+| 03.06.2011 | 4 | 4 |
+| 03.06.2011 | 2 | 7 |
+| 04.06.2011 | 8 | 7 |
+| 05.06.2011 | 7 | 7 |
+| 06.06.2011 | 1 | 0 |
+| 06.06.2011 | 1 | 7 |
+| 07.06.2011 | 5 | 7 |
+| 13.06.2011 | 8 | 8 |
+| 24.06.2011 | 5 | 1 |
+| *Summe* | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | 90 | bis 31.6. |
+
+
+---+++ Literatur
+
+   1 OK *Ching-Yun Chang and Stephen Clark. Practical Linguistic Steganography using Contextual Synonym Substitution and Vertex Colour Coding. In: Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP-10), pp.1194-1203, Cambridge, MA, 2010*
+   1 OK *Ching-Yun Chang and Stephen Clark. Linguistic Steganography using Automatically Generated Paraphrases. In: Proceedings of the Annual Meeting of the North American Association for Computational Linguistics (NAACL-HLT-10), pp. 591-599, Los Angeles, 2010*
+
+   1 *Mikhail J. Atallah, et al. &ldquo;Natural Language Watermarking and Tamperproofing.&rdquo; Information Hiding: Fifth International Workshop. Ed. Fabien A. P. Petitcolas: Springer, 2002. 196-212. Lecture Notes in Computer Science. 2578. Web. &lt;http://omni.cc.purdue.edu/ vraskin/IHW-2002.pdf&gt;.*
+   
+   1 *Meral, H. M., B. Sankur, and A. S. Ozsoy. &ldquo;Watermarking Tools for Turkish Texts.&rdquo; Proceedings of the 14th IEEE Conference on Signal Processing and Communications Applications: IEEE, 2006. 1-4. Print.*
+   1 *Meral, Hasan Mesut, et al. &ldquo;Natural language watermarking via morphosyntactic alterations.&rdquo; Comput. Speech Lang. 23.1 (2009): 107-125. Print.*
+
+   1 *Mercan Topkara, Cuneyt M. Taskiran, and Edward J. Delp. &ldquo;Natural language watermarking.&rdquo; Proceedings of the SPIE International Conference on Security, Steganography, and Watermarking of Multimedia Contents, 2005. Print.*
+   1 *Mercan Topkara, Dilek Hakkani-Tür, and Mikhail J. Atallah. &ldquo;Natural Language Watermarking: Challenges in Building a Practical System.&rdquo; Proceedings of the SPIE International Conference on Security, Steganography, and Watermarking of Multimedia* Contents, 2006. Print.
+   1 *Mercan Topkara, et al. &ldquo;Natural Language Watermarking: Challenges in Building a Practical System.&rdquo; Proceedings of the SPIE International Conference on Security Steganography, and Watermarking of Multimedia Contents, 2006. Web. &lt;http://homes.cerias.purdue.edu/ mercan/spie06_6072-10_paper.pdf&gt;.*
+   1 *Mercan Topkara, Umut Topkara, and Mikhail J. Atallah. &ldquo;Information hiding through errors: A confusing approach.&rdquo; Proceedings of the SPIE International Conference on Security Steganography, and Watermarking of Multimedia Contents, 2007. Print.*
+   1 *Topkara, Mercan, Umut Topkara, and Mikhail J. Atallah. &ldquo;Words are not enough: sentence level natural language watermarking.&rdquo; MCPS &lsquo;06: Proceedings of the 4th ACM international workshop on Contents protection and security. New York, NY, USA: ACM, 2006. 37-46. Print.*
+   1 *Topkara, Umut, Mercan Topkara, and Mikhail J. Atallah. &ldquo;The hiding virtues of ambiguity: quantifiably resilient watermarking of natural language text through synonym substitutions.&rdquo; MM&Sec &lsquo;06: Proceedings of the 8th workshop on Multimedia and security. New York, NY, USA: ACM, 2006. 164-174. Print.*
+
+   1 OK Ferschke, Zesch, Gurevych. Wikipedia Revision Toolkit: Efficiently Accessing Wikipedia's Edit History. 2011
+   
+   1  NAACL 2011 paper über lexical-simplifications, gelernt aus Wikipedia Revisionen
+ 
+   1 Murphy, B., and C. Vogel. &ldquo;Statistically constrained shallow text marking: techniques, evaluation paradigm, and results.&rdquo; Proceedings of the SPIE International Conference on Security Steganography, and Watermarking of Multimedia Contents, 2007. Print.
+   1 Murphy, B., and C. Vogel. &ldquo;The syntax of concealment: reliable methods for plain text information hiding.&rdquo; Proceedings of the SPIE International Conference on Security Steganography, and Watermarking of Multimedia Contents, 2007. Print.
+   1 Nakagawa, Hiroshi, et al. &ldquo;Text information hiding with preserved meaning - A case for Japanese documents.&rdquo; IPSJ Transaction 42.9 (2001): 2339&ndash;50. Print.
+   1 Shirali-Shahreza, M. Hassan, and Mohammad Shirali-Shahreza. &ldquo;A New Approach to Persian/Arabic Text Steganography.&rdquo; Proceedings of the 5th IEEE/ACIS International Conference on Computer and Information Science. Washington, DC, USA: IEEE Computer Society, 2006. 310-315. Print.
+   1 Ton Kalker, Ingemar J. Cox, and Yong Man Ro, eds. Digital Watermarking Second International Workshop, IWDW 2003: Springer, 2003. Print. Lecture Notes in Computer Science.
+   1 Uzuner, Ozlem. &ldquo;Natural language processing with linguistic information for digital fingerprinting and watermarking.&rdquo; Proceedings of the SPIE International Conference on Security Steganography, and Watermarking of Multimedia Contents, 2006. Print.
+   1 Wayner, Peter. Disappearing Cryptography - Information Hiding: Steganography & Watermarking. Second. Los Altos, CA 94022, USA: Morgan Kaufmann Publishers, 2002. Print.
+   1 Winstein, Keith. Tyrannosaurus Lex, 1999. Print. &lt;http://alumni.imsa.edu/ keithw/tlex/&gt;.
+   1 Wu, Jiang, and Douglas R. Stinson. &ldquo;Authorship Proof for Textual Document.&rdquo; Information Hiding, 10th International Workshop, IH 2008, Santa Barbara, CA, USA, May 19-21, 2008, Revised Selected Papers. Eds. Kaushal Solanki, Kenneth Sullivan and Upamanyu Madhow: Springer, 2008. 209&ndash;23. Print. Lecture Notes in Computer Science.
+   1 Xingming Sun, Gang Luo, and Huajun Huang. &ldquo;Component-based digital watermarking of Chinese texts.&rdquo; InfoSecu &lsquo;04 Proceedings of the 3rd international conference on Information security: ACM Press, 2004. 76-81. Print.
+   1 Yuling Liu, Xingming Sun, and Yong Wu. &ldquo;A Natural Language Watermarking Based on Chinese Syntax.&rdquo; Advances in Natural Computation, First International Conference, ICNC 2005, Changsha, China, August 27-29, 2005, Proceedings, Part III. Eds. Lipo Wang, Ke Chen, Yew-Soon Ong: Springer, 2005. 958&ndash;61. Print. Lecture Notes in Computer Science.
+   1 Zalewski, Michal. snowdrop, 2002. Print. &lt;http://freshmeat.net/projects/snowdrop/&gt;.
+   1 Bergmair, Richard, and Stefan Katzenbeisser. &ldquo;Towards Human Interactive Proofs in the Text-Domain.&rdquo; Proceedings of the 7th Information Security Conference. Eds. Kan Zhang, Yuliang Zheng: Springer Verlag, 2004. 257-267. Lecture Notes in Computer Science. 3225. Web. &lt;http://bergmair.cjb.net/pub/towhiptext-proc.ps.gz&gt;.
+   1 Bolshakov, Igor A., and Alexander Gelbukh. &ldquo;Synonymous Paraphrasing Using WordNet and Internet.&rdquo; Natural Language Processing and Information Systems 9th International Conference on Applications of Natural Language to Information Systems, NLDB 2004. Eds. Farid Meziane, Elisabeth Elisabeth Metais: Springer, 2004. 312-323. Print. Lecture Notes in Computer Science. 3136.
+   1 Chiang, Yuei-Lin, et al. &ldquo;Natural Language Watermarking Using Semantic Substitution for Chinese Text.&rdquo; Digital Watermarking Second International Workshop, IWDW 2003. Eds. Ton Kalker, Ingemar J. Cox, Yong Man Ro: Springer, 2003. 129-140. Print. Lecture Notes in Computer Science. 2939.
+   1 Kim, Mi-Young. &ldquo;Text watermarking by syntactic analysis.&rdquo; ICCOMP&lsquo;08: Proceedings of the 12th WSEAS international conference on Computers. Stevens Point, Wisconsin, USA: World Scientific and Engineering Academy and Society (WSEAS), 2008. 904-909. Print.
+   1 Lipo Wang, Ke Chen, and Yew-Soon Ong, eds. Advances in Natural Computation, First International Conference, ICNC 2005, Changsha, China, August 27-29, 2005, Proceedings, Part III: Springer, 2005. Print. Lecture Notes in Computer Science. 3612.
+   1 Macq, B., et al. &ldquo;A method of text watermarking using presuppositions: A New Steganographic Method for Data Hiding in Microsoft Word Documents by A Change Tracking Technique.&rdquo; Proceedings of the SPIE International Conference on Security Steganography, and Watermarking of Multimedia Contents, 2007. Print.
+
+---+++ Notizen
+simple wikipedia gibt es nur auf Englisch
+
+---+++ Fragen

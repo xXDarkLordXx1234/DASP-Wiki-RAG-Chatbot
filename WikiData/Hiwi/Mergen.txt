@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="BaseUserMapping_999" date="1360762006" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="IvanGalkinWork"}%
+---+ Mergen von !DataMachine und !TimeMachine:
+
+   * Nach dem Fusionieren von beiden Projekten entstand ein gemeinsamer Teil, der sowohl in !DataMachine als auch in !TimeMachine seine Benutzung fand: Nach der entsprechenden Generalisierung wurden solche Klassen und Packages ins Projekt &bdquo;WikiMachine&ldquo; verschoben.
+   * Viele mehrmals eingesetzten Algorithmen und Datenstrukturen wurden ebenso extrahiert und wiederverwendbar gemacht.
+   * Die Hauptlogik der! Dump-Bearbeitung, dessen Algorithmus und Containerklassen einen großen Einfluss auf den Speicherverbrauch und die Bearbeitungszeit hat, ist mit flexibel parametresierbar geworden.
+   * Nach dem Mergen, wurden Projekte ausführlich getestet.
+<blockquote><img width="374" alt="WikiMachine" src="https://maggie.tk.informatik.tu-darmstadt.de/wiki/pub/Hiwi/Mergen/WikiMachine.png" title="WikiMachine" height="355" /></blockquote>
+
+%META:FILEATTACHMENT{name="WikiMachine.png" attachment="WikiMachine.png" attr="" comment="main part of both projects - WikiMachine" date="1247863234" path="WikiMachine.png" size="18823" stream="WikiMachine.png" tmpFilename="/var/tmp/CGItemp31927" user="IvanGalkin" version="1"}%

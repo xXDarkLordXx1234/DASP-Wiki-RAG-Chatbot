@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="RolandKluge" date="1340345862" format="1.1" reprev="14" version="14"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Stundenzettel
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Anmerkungen* |
+| Kickoff-Treffen: Roadmap, erstes Arbeitspaket, Technisches | 04.06.2012 | 1 | |
+| Einlesen: <nop>SeerSuite, Algorithm Search, <nop>TableSeer, etc. | 05.06.2012-06.06.2012 | 3 | |
+| Einrichtung von DKPro | 06.06.2012- | 6,5 | |
+| Zwischentreffen | 19.06.2012 | 1 | |
+| Einarbeitung SeerSuite | 19.06.2012- | 1,5 | in Arbeit |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 60 | bis 1. September 2012 |
+<nop>
+
+---++ Einrichtung DKPro
+
+---+++ TODO
+
+   * Setting up the access to existing DKPRO projects
+   * Tutorial [[http://code.google.com/p/dkpro-core-asl/wiki/MyFirstDKProProject]]
+
+---++ Einrichtung CiteSeer (lokal)
+
+---+++ Troubleshooting:
+
+1. Link im webapps-Verzeichnis muss korrekte Rechte haben -> vielleicht doch lieber mit ant deploy
+
+2. Nicht alle Pfade angepasst:
+
+<verbatim>
+./WEB-INF/csx.config.properties:foul.word.list=/usr/local/tomcat-csx/webapps/ROOT/WEB-INF/FoulWordsList.txt
+./WEB-INF/csx.config.properties:name.model=/usr/local/tomcat-csx/webapps/ROOT/WEB-INF/resources/metric-distance/names.model
+./WEB-INF/csx.config.properties:stats.folder=/usr/local/tomcat-csx/webapps/ROOT/WEB-INF/stats
+</verbatim>
+
+
+
+---++ Links (intern)
+
+   * DKPro.DKProDeveloperResources
+   * YevgenChebotar 

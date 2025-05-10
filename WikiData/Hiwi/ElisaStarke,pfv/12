@@ -1,0 +1,51 @@
+%META:TOPICINFO{author="starke" comment="reprev" date="1427384377" format="1.1" reprev="12" version="12"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+++ Tasks
+   * Getting Started [Done, X March]
+      * eclipse settings, connect to maven, connect to svn
+      * run first steps pipeline
+      * import uby database
+      * check out uby example project from tutorial and run with database 
+   * Getting Familiar with UBY
+      * Understand UBY tutorial example 
+      * Analysing SALSA conversion
+   * Analyse/Korrektur des !GermaNet-IMSLexSubcat Alignment
+   * Analyse des !GermaNet-SALSA alignment
+      * Establish SALSA-FN alignment
+         * match !SemanticPredicates via label
+         * identify matching Senses (and their lemma, pos) via matched !SemanticPredicates (=> sense mapping candidates)
+            * FN.senseId,FN.semanticPredicateId,FN.semanticPredicate.label, FN.lemma, FN.pos (same for SALSA)
+            * take into account label-renamings (list)
+         * determine German translations for FN lemmata, English translations for SALSA lemmata
+            * !SenseAxis GN-WN (in current db)
+            * Wiktionary-EN, Wiktionary-DE translations (new db)
+            * !OmegaWiki sense axis 
+         * filter sense mapping candidates by matching lemma-translation and pos => FN-GN sense alignment
+         * Collect statistics on mapped senses, lemma-pos, etc.
+      * Infer SA-GN sense alignment via transitive sense alignments: GN->ImsLex->VN->FN->SA, collect statistics 
+      * Manually evaluate subset
+---+++ Fragen
+---+++ Aktueller Vertrag (01.03.2015-31.05.2015)
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Stunden* |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Meeting | 02.03.2015 | 3.5 | <ul><li> weekly meeting: Thursdays 2:15-3:15,B120 (until term starts) </li><li> setting up workspace; |
+| Getting Started | 03.03.2015 | 3.5 | <ul><li> setting up workspace </li><li> checking out uby example project from tutorial |
+       | Meeting | 04.03.2015 | 1 | <ul><li> discussing next task (analysing SALSA conversion) |
+| Getting Familiar with UBY | 10.03.2015 | 2 | <ul><li> Analysing SALSA conversion |
+| Getting Familiar with UBY | 11.03.2015 | 2 | <ul><li> Analysing SALSA conversion |
+| Analyse des !GermanNet-IMSLexSubcat Alignments | 15.03.2015 | 1.5 | <ul><li> Extraktion relevanter Informationen zur Korrektur |
+| Meeting | 18.03.2015 | 0.75 | <ul><li> discussing results/problems of tasks (Salsa conversion + IMS-GN-Alignment) |
+| Analyse des !GermanNet-IMSLexSubcat Alignments | 20.03.2015 | 2 | <ul><li> Extraktion weiterer Informationen aus der Datenbank </li><li> Import neuer Datenbank, da fehlerhaft |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 22.03.2015 | 2 | <ul><li> manuelle Überprüfung der Paare |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 23.03.2015 | 2 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 24.03.2015 | 1 | |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 25.03.2015 | 1.75 | |
+| Meeting | 25.03.2015 | 0.75 | <ul><li> discussing problems (database error) </li><li> discussing next task (analyzing !GermaNet-SALSA alignment) |
+| Korrektur des !GermanNet-IMSLexSubcat Alignments | 26.03.2015 | 1.5 | |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 120 | until the end of May 2015 |
+
+-- Main.SilvanaHartmann - 2015-03-02
+
+%META:FILEATTACHMENT{name="Uby-LMF_15_2_public_release4.png" attachment="Uby-LMF_15_2_public_release4.png" attr="" comment="uby overview diagram" date="1425294710" path="Uby-LMF_15_2_public_release4.png" size="65147" user="hartmann" version="1"}%

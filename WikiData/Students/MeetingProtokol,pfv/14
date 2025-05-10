@@ -1,0 +1,88 @@
+%META:TOPICINFO{author="CigdemToprak" date="1245170239" format="1.1" reprev="14" version="14"}%
+%META:TOPICPARENT{name="NicoErbs"}%
+%TOC%
+---+++ 15.06.2009
+   * @action(CT): new annotation scheme + project, take the file from resources link
+   * @decision(): Stanford parser ==> not sure now. This point still open.
+   * @discuss(): Extraction pattern template.
+   * @discuss(): Annotation of the forum data
+
+DONE
+   * @action(NE): add UIMA nature to existing project and apply Coding Rules and best Practices
+   * @action(NE): prepare 300000 sentence corpus from TAZ (mixture from all types and ressort should be Bildung, Hochschule, Wissenschaft, Meinung)
+   * @action(NE): annotate 100 sentences to compare with Elif
+   * @action(CT): Send Nico the UIMA component for the St. parser
+   * @action(NE): Sign Abtretungsdocument
+   * @action(CT): Send EMail to admin concerning access with 'n_erbs' to SVN
+
+---+++ 04.06.2009
+   * @action(NE): add UIMA nature to existing project and apply Coding Rules and best Practices
+   * @action(NE): annotate 100 sentences to compare with Elif
+   * @action(NE): prepare 300000 sentence corpus from TAZ (mixture from all types and ressort should be Bildung, Hochschule, Wissenschaft, Meinung)
+   * @discuss(): Extraction pattern template.
+   * @action(CT): *dringend:* look for suitable German Parsers, send Nico the BitPar Parser
+   * Students repository, core project has all the components except Parser
+   * @dsscuss(): [[%ATTACHURL%/expectations_for_students.pdf][UKP expectations document]]
+   * @discuss(): How should we proceed with the actual annotation. Text file you sent me contains 104 sentences, are you planning to annotate in chunks? ==&gt; ignore (update on ressources)
+
+*DONE*
+   * @action(CT): send outlook invitation (reserve room for regular meetings); new date
+   * @action(NE): prepare 2000 sentences from corpus and send to Cigdem
+   * @action(NE): create and synchronize with repository on share
+   * @action(CT): Nico's TK account dringend
+   * @action(CT): create the annotation project after receiving the evaluation data set from Nico
+   * @action(CT): send email with step for step manual to import core project 
+      * To check out dkpro core project use eclipse and import new project from repository
+
+---+++ 27.05.2009
+
+   * @action(NE): prepare 300000 sentence corpus from FAZ 
+      * Crawl the data from the archive files.
+      * CD-Search interface enables an option "Export mit Umbruch"
+      * Search options: 
+         * Ressort: Bildung, Hochschule, Wissensschaft, Meinung
+         * Art: Kommentar, TAZ-Bericht, Dokumentation
+         * Länge: nur mittlere
+         * Make a corpus of 300000 (half from Kommentar, half from Bericht)
+   * @action(CT): Nico's TK account dringend
+   * @action(CT): look for suitable German Parsers, send Nico the <span style="color: blue; text-decoration: underline">BitPar</span> Parser 
+      * Students repository, core project has all the components except Parser
+   * @action(NE): harvest the forum data. 
+      * Course name: Basics September 2006, 2007
+   * @discuss(): Manual annotation. 
+      * Read the <span style="color: blue; text-decoration: underline"><span style="color: blue; text-decoration: underline">[[http://www.cs.pitt.edu/~wiebe/pubs/papers/lre05.pdf][manual]]</span></span>
+      * <span style="color: blue; text-decoration: underline"><span style="color: blue; text-decoration: underline">[[http://www.cs.pitt.edu/~wiebe/pubs/pub1.html][Wiebe's page for more info. on sentiment and subjectivity analysis]]</span></span>
+      * <span style="color: blue; text-decoration: underline"><span style="color: blue; text-decoration: underline">[[http://mmax2.sourceforge.net/][Annotation Tool]]</span></span>
+   * @action(CT): create the annotation project after receiving the evaluation data set from Nico
+   * two ways to retrieve data: 
+      * Get one file for each article directly from huge data file with lots of brackets.
+      * Use Interface from CD
+   * @action(NE): add UIMA nature to existing project and apply Coding Rules and best Practices
+   * @action(NE): create and synchronize with repository on share
+   * @action(NE): prepare 2000 sentences from corpus and send to Cigdem
+   * @action(NE): manually annotate 2000 sentences and send Cigdem
+   * @action(NE): send 100 annotated sentences to Cigdem to check if annotated in a proper way
+   * @action(NE): install and use MMAX
+   * @action(NE): run UIMA Sentence Splitter and Tokenizer in data
+
+*DONE*
+   * @action(CT): mail German opinion lexicon for high-precision subj. classifiers.
+
+---+++ 18.05.2009
+
+Presentation of preliminary version of Status Meeting Presentation.
+
+Discussion of approach to determine polarity of forum entries.
+
+   * @action(NE): improve presention for next day
+   * @action(CT): upload German opinion lexicon to TWiki
+
+---+++ 11.05.2009
+   * @action(CT): prepare 300000 sentence corpus from FAZ
+   * @action(CT): prepare preprocessing components (sentece splitter, tokenizer, POS tagger, parser (German Parser))
+   * @action(NE): harvest the forum data. (CT will give the name of the course.)
+   * @action(CT): mail German opinion lexicon for high-precision subj. classifiers.
+
+-- Main.CigdemToprak - 11 May 2009
+
+%META:FILEATTACHMENT{name="expectations_for_students.pdf" attachment="expectations_for_students.pdf" attr="" comment="" date="1245057214" path="expectations_for_students.pdf" size="124217" stream="expectations_for_students.pdf" tmpFilename="/var/tmp/CGItemp48185" user="CigdemToprak" version="1"}%

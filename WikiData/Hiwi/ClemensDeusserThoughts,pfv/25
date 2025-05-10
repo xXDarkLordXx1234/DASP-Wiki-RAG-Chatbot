@@ -1,0 +1,247 @@
+%META:TOPICINFO{author="ClemensDeusser" date="1355498255" format="1.1" version="25"}%
+%META:TOPICPARENT{name="ClemensDeusser"}%
+<!--
+  * Set ALLOWTOPICVIEW = Main.IrynaGurevych, Main.WolfgangStille
+  * Set ALLOWTOPICCHANGE =  Main.IrynaGurevych, Main.WolfgangStille
+//-->
+
+Some notes and thoughts that could be relevant for discussion or for the written thesis.
+
+---++++ December 13
+
+I want to do testing over christmas, with my current framework that means I want to save as much data as possible so I can readily access the results. The input and graph are the basis for what I do, so those absolutely need to be closed once I begin, that includes:
+
+   * All forms of input, excluding entirely new input, but including all variations or corrections to current input.
+   * Similarity measure, excluding new measures that I can put into the current framework, but including new forms of measurement that require changing of the graph code
+   * Any changes on how the graph is created, including new ways of defining a cutoff threshold, tf*idf, etc.
+
+In addition, the clusterings will be saved and due to the sheer amount of clusterings, those should not have to be remade either. That includes:
+
+   * Any changes to an existing algorithm, excluding entirely new algorithms that fit within the framework
+   * Any changes to the parameters of an existing algorithm, including adding new parameters.
+   * Any changes to graphs (see above)
+
+The last level is evaluation of the results. Since this works on the (existing) clusterings, it is not too time consuming to redo this step, so things like new measurements can be added.
+
+*My current plan*:
+
+Use these parameters:
+
+*graph:*
+   * input and preprocessing
+      * kind of input (Keywords (intellectual, unfiltered, unprocessed), titles, abstracts, fulltext)
+      * In case of fulltext, abstract or title: POS tags (N*, for now)
+      * In case of fulltext: tf*idf threshold for words
+      * Always with stopword removal and lemmatisation
+   * edge cutoff threshold
+      * This would not be saved as I can prune graphs after saving them
+   * similarity measure (Jaccard or Cosine)
+      * If DKPro measures are implemented, they may require additional parameters (optional)
+
+*algorithm:*
+   * MCL
+      * inflation (controls number of clusters)
+      * scheme (Is supposed to influence quality, doesn't seem to be doing anything for me)
+   * CW
+      * Class contribution (using steffen's implementation only one of four modes can be used at a time)
+      * number of iterations and epsilon (for terminating the algorithm)
+   * MST
+      * number of clusters (this is usually fixed by what the reference cluster gets
+
+(For adding new parameters, keep in mind that the (time) complexity grows exponentially with each new parameter.)
+
+*The timeline (without timestamps) would look something like this:*
+
+   * The OCR problem should be resolved asap, because I must recompute my fulltext save file before I can use the alterations in my input and that is rather time consuming. This would also be the area where I need the most assistance as I know very little about it.
+
+   * Decide whether some of the Text Similarity measures provided by DKPro are promising and if yes, include them before testing, this will take some time since it's a lot of measures and they are barely documented, plus external resources may be required
+
+   * Test whether graph/clustering saving works properly (this needs to be tested in depth so I don't risk the whole thing shutting down after a day and wasting all that time, time consuming as well)
+
+   * Check whether we can determine an upper bound for feasible thresholds
+
+   * Write the "christmas testing" class
+
+   * Test the whole thing as thoroughly as possible in the remaining time (at least 2 days, if possible finished before the 20.)
+
+
+
+There are some other things I would like to do, I would like to check whether I can find another algorithm for instance, but I may not have the time.
+
+
+
+
+
+
+
+
+
+---
+
+---
+
+---++++ August 21
+
+Evaluation Indices:
+
+*Coverage*: The number (weight) of intra cluster edges in relation to the number (weight) of inter cluster edges. Very easy and quick way of checking your clusters, however optimising this value does not lead to optimal clusterings. The trivial 1-clustering (all nodes belong to one cluster) results in maximum coverage and for a preset number of clusters, optimal coverage results in clusterings according to minimal cuts in the graph, which is not necessarily the desired clustering.
+
+*Performance*: Measures the number of correctly classified pairs of vertices vs the number of incorrectly classified vertices. Correctly classified pairs are connected pairs within the same cluster and unconnected pairs between clusters. I do not yet know how to incorporate edge weight into this. Weighing connected pairs would require weighing unconnected pairs as well, since any clustering should be scale invariant.
+
+*Density*: Measures intra cluster density and inter cluster sparsity. Basically how well the cluster is intra connected and how badly it is inter connected.
+
+*Modularity*: The fraction of edges in clusters compared to the expected number of edges if the graph edges are randomly rewired while keeping the node degree intact. The value is positive if the number of edges in the cluster is higher than the expected (random) number of edges in the cluster.
+
+*Conductance*: Searches for bottle necks inside clusters and too many connections outside clusters. The intra cluster conductivity is thus the minimum conductance over all clusters, meaning the smallest cut in any one cluster and the inter cluster conductivity is the maximum conductance over all induced cuts between any one cluster and the rest of the graph. Calculating this value precisely is NP-hard, but it can be approximated.
+
+
+References:
+
+[[http://www.inf.uni-konstanz.de/algo/publications/bgw-egca-03.pdf][http://www.inf.uni-konstanz.de/algo/publications/bgw-egca-03.pdf]]
+
+[[http://www.inf.uni-konstanz.de/algo/publications/bgw-egc-07.pdf][http://www.inf.uni-konstanz.de/algo/publications/bgw-egc-07.pdf]]
+
+[[http://digbib.ubka.uni-karlsruhe.de/volltexte/documents/3149][http://digbib.ubka.uni-karlsruhe.de/volltexte/documents/3149]]
+
+
+---++++ August 8
+
+Evaluation Thoughts:
+
+Two rough categories for evaluation approaches, knowledge free and context based (that's just the names I've given them for now, can change, feedback welcome).
+
+Knowledge free would evaluate and judge the quality of a cluster without further information or really without any knowledge of what the cluster is about. Knowledge free approaches also includes generic techniques such as coverage, density etc. as described [[http://digbib.ubka.uni-karlsruhe.de/volltexte/documents/3149][here]].
+
+Context based would introduce external criteria for judging the quality of a cluster and evaluating the results, such as a gold standard.
+
+Generally we want nodes within a cluster to be similar to each other and dissimilar to nodes from other clusters. For this similarity we can use the measure already used for creating the cluster in the first place (edge weight), which would be knowledge free, or we could use an external gold standard, which would be context based. From these similarity values we could calculate a "similarity index" for a cluster, or a measure of cluster quality.
+
+That by itself is obviously not enough, we need something to compare that measure to and since we do not actually have a cluster gold standard, which also makes chi-square hard to use (I think), we'd either need to use other clustering methods or compare to random clusters. However, without some kind of "standard" clustering result we really cannot determine with confidence just how good the results really are without actually manually (intellectually) checking them.
+
+In our case, using the mentioned knowledge free approach would basically pass the quality assurance "load" to our similarity measure. While it would be good at determining cluster quality, it gives us no information whatsoever concerning the actual quality of the result for the purpose of the project, if our similarity measure is bad then the result is bad even if the clusters are good. The context based approach does not suffer from that particular problem, however in our case we could really only use the matching to the Fachsystematik as a gold standard which introduces two new problems. 1) There is not really any "clustering pressure" to reach the categories detailed in the Fachsystematik since we use none of that information for clustering and it should be safe to assume that the Fachsystematik is not an objectively unique way of categorising documents, it is only one of many, so evaluating against it doesn't really seem... "fair". 2) The keywords that we use to extract the Fachsystematik topic are the same ones we use to create the clusters, this could create a bias towards a self affirming result, although the matching list was created intellectually.
+
+I guess the only thing I'm certain of now after spending some time reading the papers: My similarity measure is not sufficient and it is actually the most important piece of the entire algorithm (that I can influence). Once I'm confident in my similarity measure, generic clustering evaluation could actually be sufficient for evaluation.
+
+
+---++++ July 23
+
+
+FS parsing:
+
+Each category has a 4-digit code
+
+Each code digit signifies a category level, subsequent 0s mean that it's the category of that level.
+
+e.g. 5000 is a category of the highest level (5), 5100 is a category of the second highest level (1), belonging to category nr 5. etc., however, there are exceptions to this, so don't use that as a parsing criteria.
+
+A category ID in brackets, e.g. (5000) means that the category is "empty", it splits up into subcategories.
+
+There are 4 highest level categories (3000, 4000, 5000, 6000. 7000 is missing for some reason.)
+
+There are 26 bracketed categories excluding the ones that only have bracketed subcategories, so 26 categories that split off into "real" subcategories.
+
+The theme is not 100% consistent, when a category has too many subcategories a 0 can appear without signifying a higher level, e.g.:
+
+(6800)		Fachdidaktik, Schulfaecher, Unterrichtsinhalte
+
+[...snip...]
+
+(6820)			Fremdsprachenunterricht
+
+ 6821				Fremdsprachenunterricht allgemein
+        
+[...snip...]	
+
+6847			Physikunterricht, Astronomieunterricht
+
+6850			Politisch gesellschaftlicher Unterricht, Politische Bildung
+
+6851			Religionsunterricht
+
+6852			Sachunterricht
+
+6853			Sexualerziehung
+
+6855			Sportunterricht
+
+6856			Theater in der Schule, Schulspiel, Feiergestaltung
+
+6851 does not belong to 6850 and neither to the previous bracketed category (6820) but instead to (6800). It appears to be consistent that a category has to be bracketed to have subcategories but the subcategories *must* be within the same category (category digits must be the same, so 6821 can be a subcategory of 6820, but 6850 cannot) *and* at least one level below.
+
+So, the document basically represents a tree structure where all non-leaf nodes are signified with brackets, the tree has a depth of 4 and all nodes are attached to the non-leaf node with which it has the most 'most significant digits' in common. I'll use 0000 as the tree root for simplicity.
+
+Oh and just to set it here, once and for all:
+
+pedocs keywords, keywords, Schlagworte: the preset (intellectual) keywords in the pedocs metadata.
+category words, categories, Kategorien: keywords or key phrases in the Fachsystematik.
+
+---++++ June 21
+
+Testing suite brainstorming:
+
+The "pipeline" (incidentally, I now understand why DKPro is set up the way it is):
+   * Input is document metadata (loosely, could include key phrases and such)
+   * Output is a classification, let's assume for now that this will be multi label
+   * Manipulation inbetween, anywhere from DKPro to machine learning to graph algorithms
+   * Manipulation needs to be modular to a degree
+
+The rest:
+   * Input can be generated using keyphrase extraction for example, could be invoked with the pipeline, but does not need to be an integrated part of it
+   * gold standard can be generated separately
+   
+I'm not including full text analysis in the pipeline for now, we can generate metadata using the full text outside the pipeline should it be required. The reason for not including it in the pipeline is that we cannot treat full text like metadata, we'd have to analyse single documents as the amount of full text data is simply too large to process the entire database at once, so if I included full text in the pipeline I'd basically have to do design two versions of the pipeline since my current approach requires procession of the entire database to allow clustering.
+
+The main question would obviously be how to handle the manipulation part. Building a very general interface would not be a problem, but we probably desire a more modular and less generic approach, which would be difficult considering how little we know of what the manipulation should be. Building a DKPro like pipeline with a dedicated object (CAS) and an interface for its manipulation could be a solution, but I'm very unfamiliar with that type of design and the complexity of that approach would probably be overkill for our purposes.
+
+The reason why I assume multi label is because it feels like a much better approach for judging the quality of our results. Enabling partially correct results would allow us to see improvement even if our result does not yet match to the correct category, improving the testing process. Multi label also feels like a more natural and correct classification since many papers relate to several categories. In our meetings a process was mentioned that maps multi label results to single labels, so if our end result is required to be single label, then that could simply be appended afterwards.
+
+---++++ June 18
+
+Possible evaluation methods:
+   * Cross validation 
+   * Keywords (closest to current "approach", check keywords and determine whether they match up with each other and form a coherent cluster)
+   * Extracted information ("keyphrases", nouns, verbs etc. Similar to previous one, but using additional information rather than just the provided one)
+
+Combination of first and last approach? Cluster using keywords, evaluate using extracted information. Keywords may not be sufficient for classification though.
+
+Using cross validation on separate training and validation sets results in the general question of how to determine those sets, what is an appropriate, representative set? How do we even evaluate the validation set?
+
+Currently our method of validation is looking at keywords from the generated clusters and guessing whether they are related to each other. In addition, we can look at how spread the clusters are, if we get a single large cluster then the result is likely not a good one. Obviously this needs to be improved somehow.
+
+---++++ June 15
+
+*IG:* I allow me just a short comment, as we have a meeting on Tuesady anyway. We have to formalize und understand the task properly before you start any experiments. We should then determine good baselines and understand their results for a set of experimental configurations we define. Then, we should define a hypothesis how / which graph-based methods to use and why, and verify this experimentally. But not having this plan, we run the risk of investing the valuable time in not-so-promising-things. For example, if you asked me, I would have told you long time ago that using keywords as your representation is not a good way to go. They do not encode enough context (apart from poor quality) to serve as a good representation for an NLP task. This is known in the literature.
+
+Just using the nouns of the description (abstract) could be more successful, semi-redundancy may actually strenghten correct results. Should be tested once I find out how to get the DKPro pipeline to actually deliver it's results.
+
+How can we cluster papers around specific (pre defined) topics?
+
+I've talked about this with Wolfgang, he suggested that we could define our topics as points in our search space and build our clusters around these topics.
+
+I'm not sure how that is supposed to work with Chinese Whispers however, we could certainly force a class to exist, but we cannot really force nodes to be part of that class without skewing the results. And in either case, if we go by a search space approach with our nodes as vectors in this space and distances as the cosine of the angle, then what do we need a graph for? We could just as well use any one of the many statistical clustering algorithms that work just fine without a graph representation, right?
+
+It's not really a problem yet since we're not quite far enough, but it seems to me that it's bound to become one.
+
+---++++ June 14
+
+I'm beginning to think that a dozen keywords per document is not enough for a statistical approach, which is essentially what we're doing right now. I think we either need many more keywords per document or some sort of interpretation of those keywords.
+
+Germanet/Wordnet/UBY *may* be an answer and I'll definitely check those out, but for now I remain unconvinced for the following reasons:
+
+1: How usable are they? What I've seen so far is underwhelming, they could very well be another case of DKPro that'd take ages to learn for a more questionable benefit.
+2: Generalising words to synonyms or hypernyms never generates data, you always lose data, is that really a good way to go if you don't have much data to begin with?
+3: Even as a human I have a hard time roughly classifying a pedocs paper just by looking at the keywords, how could a rather rudimentary method that just generalises information produce better results? While being far from an expert, I think we need actual sophisticated NLP to squeeze information from the bits of data we have.
+
+To illustrate the last point, a random example:
+
+"Geschichtsunterricht ; Kooperation; Thema; Norm; Oral History; Moral; Sekundarstufe II; Unterrichtsprojekt; Grundschule; Berufsbildung; Außerschulische Einrichtung; Sekundarstufe I; Entwicklung;; Deutschland"
+
+This seems to be about history lessons, yet only two of the keywords actually pertain to that and one is in another language. All the other keywords are so general in their meaning that they barely help to specify the document further. While tf*idf helps against that, it only helps if those keywords are not just general, but also common in our database, which is not necessarily the case.
+
+"Sekundarstufe II; Grundschule; Rechtsextremismus; Sekundarstufe I; Deutschland"
+
+What is this one about? Radical right extremism in elementary schools, highschools and "Gymnasium"? So just right extremism in any school? Then "Schule, Rechtsextremismus" seems more fitting, so if we assume that the people setting the keywords did a good job, and they probably did, then the document is about something else, perhaps right extremism detailed in each of those stages, or perhaps a document *about* those stages with an interlude about right extremism? It could even be a document about teaching about right extremism.
+
+Without even the title of the document, it becomes pure guess work what it's about and the keywords seem to be less of a help than one would expect.
+
+-- Main.ClemensDeusser - 2012-07-23

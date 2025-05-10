@@ -1,0 +1,42 @@
+%META:TOPICINFO{author="slee" comment="reprev" date="1524667223" format="1.1" reprev="3" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Finding Conceptual Metaphors with Semantically Enriched Embeddings
+
+---++ Meetings
+   * 18.04.2017:
+      * modify DKPro Pipeline, export as .jar to run it on wiki dump
+         * include logging to see status updates, e. g. every 1000000th line
+      * Mapper for dependency types
+      * Pseudocode for whole algorithm (e. g. mock Java classes)
+      * think about how to read word embeddings in Java/maybe use Python for the rest of the algorithm
+   * 11.04.2018:
+      * try Pipeline with simple relations, before converting dependency types
+      * Clustering algorithm: famliarize with hierarchical agglomerative clustering 
+   * 28.03.2018:
+      * DKPro: introduction, write Pipeline, TargetSearcher class
+   * 22.03.2018:
+      * extract source terms with relation to target term from LCC Metaphor Dataset
+      * find instances of source term with relation in parsed wiki dump
+      * DKPro: write pipeline
+   * 07.03.2018:
+      * ClueWeb: on cluster, there might be a parsed version
+      * try using MaltParser, what does the output look like
+      * reader for embeddings
+      * read paper: Semi-supervised methods for expanding psycholinguistics norms by integrating distributional similarity with the structure of WordNet
+      * register thesis
+   * 22.02.2018:
+      * Multilingual Conceptual Metaphor Recognition: write down steps, find out necessary resources for steps
+      * reader for embeddings
+      * create git project
+
+---++ Notes
+   * Dates:
+      * Midterm-presentation: 12.06.2018
+      * Final presentation: 21.08.2018
+
+---++ Paper
+   * A Novel Distributional Approach to Multilingual Conceptual Metaphor Recognition (http://www.aclweb.org/anthology/C14-1165)
+   * Semi-supervised methods for expanding psycholinguistics norms by integrating distributional similarity with the structure of WordNet (http://www.lrec-conf.org/proceedings/lrec2014/pdf/1043_Paper.pdf)
+   * Universal Stanford Dependencies: A cross-linguistic typology -> Mapping dependency types (https://nlp.stanford.edu/pubs/USD_LREC14_paper_camera_ready.pdf)
+
+-- Main.ErikLanDoDinh - 2018-02-22

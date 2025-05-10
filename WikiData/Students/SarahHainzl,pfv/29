@@ -1,0 +1,247 @@
+%META:TOPICINFO{author="schulz" comment="" date="1534327138" format="1.1" reprev="29" version="29"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ Talks
+   * mid-term: 10.7.
+   * final: 18.9.
+---++++ Meetings during Sarah's working weeks
+   * 06.06.
+   * 11.07.
+
+
+---++ 2018-08-15
+---++++meeting notes
+   * calculated agreement of second annotation study (another 100 arguments): large difference between one large continuum and average of all arguments
+   * from now on continue rest of annotations asap --> at least 300 until *next week*
+      * talk to Liane until when she can do the annotations --> *next week*
+      * create project in INCEpTION --> *next week*
+   * create pipelines for:
+      * think about gold label creation, especially automatic merging of not completely agreed annotations
+      * determine distribution of agreement --> overlap of annotations, how many don't overlap, how many are contained in one another, how many complete overlap --> *next week*
+      * analyse type of annotations, e.g. POS tagging
+      * category agreement --> *next week*
+   * *start thesis writing* --> next week start with Related Work and revise structure of thesis as discussed
+
+
+---++ 2018-08-01
+---++++meeting notes
+   * look at examples of first annotation study
+   * check implementation/usage of DKPro statistics with example
+   * discuss revised guidelines
+   * TODO: identify disagreement categories
+
+---++ 2018-07-25
+---++++meeting notes
+   * TODO: agreement should be calculated on basis of words rather than characters
+   * agreement worse when calculating it for each argument and then averaging (0.27)
+   * problem with different target arguments: unclear whether to annotate different topic as aspect or the aspects of the different topic
+      * suggestion: annotate ALL aspects, then some are target-topic and some are other-topic
+   * problem with how long the aspects should be, i.e. what is relevant and should be part of the aspect and what isn't
+      * suggestion: narrow down aspect as much as possible, mostly 1-4 words
+      * suggestion: delete the "sentiment word" rule from guidelines to make it easier?
+   * try to incorporate questions in guidline, e.g. and aspect should answer the question "why should we support the topic?"
+      * when told an aspect it should be clear for the audience why the aspect supports the topic (i.e. what's the reason for the support): for example "uranium" is not an aspect since it's unclear on its own whether or not its a reason for or against nuclear energy
+   * don't restrict the annotation too much since we want to find out what an aspect is
+   * the term "gist" is difficult, maybe just talk about aspect as the "main reason(s)" of an argument to support or refure the topic
+   * TODO: revise guideline
+      * simplify them
+      * more structured
+      * distinguish what should be annotated from technical/tool part
+   * then annotate the next 100 arguments (new ones)
+
+---++ 2018-07-18
+---++++meeting notes
+   * current agreement when treating all arguments as one span (after 100 annotated arguments) 0.47
+   * todo
+      * also calculate agreement when averaging the agreement on argument-level
+      * POS of the annotated segments, e.g. using DKPro
+      * agreement when treating task as sentence-classification for the "target Topic" and "has simplification" (category agreemen without unitizing, e.g. kappa score)
+      * talk to Liane about problems/difficulties with annotation and check examples with very low agreement; then potentially revise guideline
+
+
+---++ 2018-07-10
+---++++meeting notes
+   * annotations underway
+   * todo
+      * implement agreement calculations with DKPro Statistics
+      * disagreement highlighting
+      * small scripts for data analysis/statistics, e.g.
+         * length of annotated segments per topic and per annotator with avergage and standard deviation
+         * number (absolute, relative) of annotated segments, i.e. aspects
+         * implicit versus explicit
+         * POS of the annotated segments
+   * guidelines are missing rules for punctuation
+
+---++ 2018-06-29
+---++++meeting notes
+   * final discussion of guideline
+   * presentation
+      * needs motivation at the beginning: why do we need aspects (compared to current argument mining) and why is it difficult?
+      * then some related work: aspect-based sentiment analysis (how does it relate to argumentation? can we use it?)
+      * research questions
+      * approach in order to answer the questions
+      * describe steps already performed, i.e. filtering (why needed??) and guideline creation
+      * preliminary results e.g. of the preliminary study
+      * what's to come during the second half of the thesis?
+
+
+---++ 2018-06-20
+---++++meeting notes
+   * guidelines close to final, only small changes needed for ease of reading
+   * after final guideline check next week, the annotations can start
+   * start outlining midterm presentation for next meeting
+   * talked about extracting and processing of inception annotations for DKPro Statistics
+   * apparently no way for constraints as desired in inception: send email with problem to Claudia so she can ask someone from Inception team about it
+
+
+---++ 2018-06-13
+---++++meeting notes
+   * guidelines:
+      * specification of aspects (making clear that we are talkig about a particular type of aspect), e.g. "limited resources" or "underage users" should be annotated as an aspect rather than just "resources" or "users"
+      * first just name aspect is part of gist + easy examples, then in more detail what the difference of gist and aspect is using more difficult examples
+      * some other small changes discussed
+   * inception constraints: play around a bit more to check if it is possible to hide textbox
+
+---++++premeeting notes
+   * CS: Bitte Treffen am 27.6. verlegen auf entweder 28.6. nachmittags oder irgendwann am Freitag 29.6.
+   * *WICHTIG*: Da die Aufgabenbeschreibung nun akzeptiert wurde, bitte Arbeit offiziell anmelden (Studienbüro und Tucan; wie genau müsste Sarah wissen bzw. rausfinden).
+   * Sarah: Verstecken von Simplification Textbox zum Abgeben einer Vereinfachung in Inception nicht möglich (oder übersehe ich was?)
+
+
+---++ 2018-05-23
+---++++ meeting notes
+   * data ready for annotation: randomised with hash in name and PRO TOPIC in first line + sentence to be annotated in second
+      * instead of checkbox for wrong topic use a binary label, so annotators have to explicitly choose
+      * also use binary label for simplification yes/no
+   * simplification always has to be belong to a segment, this could be the whole sentence
+   * SHK of Claudia might be able to annotate too
+   * Next steps:
+      * writing
+      * processing output of inception to calculate agreement
+      * revise guidelines
+
+---++ 2018-05-23
+---++++ meeting notes
+   * Format for Inception
+      * One file per argument including the following two lines
+         * stance + topic, e.g. "PRO nuclear energy"
+         * sentence, e.g. "Nuclear energy is safe and cheap ."
+      * File name: !RandomNumber_Stance_Topic_SentencesHash, e.g. 005_pro_nuclear-energy_5345354jhhj453g543.txt
+      * Files should be randomized to prevent bias
+   * Next steps
+      * Finish data cleaning, and create data statistics
+      * Prepare files for inception and integrate them in the system
+      * Elaborate guideline, i.e. add "simplification"
+
+---++ 2018-05-16
+---++++ meeting notes
+   * Preliminary Study (14 arguments; three annotators)
+      * alpha_U = 0.56 - 0.60 (depending on setup, i.e. different categories)
+   * Status Task Description: Signed and put in IGs post box
+   * Next step: Get familiar with Inception
+      * Figure out how to integrate data
+      * How to setup the type system, i.e. labels for the annotation task
+   * Next step: Clean data
+      * it is important to create statistics of the data cleaning process, i.e. how many are filtered ans why ((1) wrong stance, (2) ambiguous, (3) no reason)
+
+---++++ pre-meeting notes
+   * Status task description
+   * Status corpus cleaning
+
+---++ 2018-05-09
+---++++ meeting notes
+   * Claudia to set up Inception account for Sarah
+   * Problem with annotation: unclear what counts as "different topic", needs to be clarified in guidelines
+   * next steps: try out IAA in DKPro, play with Inception, revise guidelines
+ 
+---++++ pre-meeting notes
+   * CS: We need to create a git-repo for uploading the data and code
+      * Can you please setup a repo during the meeting and add me as a master? Thx
+   * CS: Finish task description and send to IG?
+
+---++ 2018-05-02
+---++++ meeting notes
+   * Talked about task description
+   * Send link to thesis template
+   * Sarah will send preliminary guideline and some example sentences for annotations 
+      * 10-20 sentences in a word/Exel document
+      * We (CS,ClS) all will annotate these examples in order to get some first agreement scores
+   * Get familiar with DKPro statistics for determining IAA-scores
+      * https://dkpro.github.io/dkpro-statistics/
+
+
+---++ 2018-04-25
+---++++ meeting notes
+   * talk about related work Sarah found
+   * look at Inception
+   * !ClS points out DKPRo Statistics for inter annotator agreement
+   * schedule midterm and final talk
+   * talk through work packages of Task Description
+
+---++++ pre-meeting notes
+   * added all related work to the task description.
+   * also worked on the motivation part
+   * added the task description to the attachments.
+
+---++ 2018-04-18
+
+---++++ meeting notes
+   * discussed pre-filtering: process needs to be described in thesis
+   * discussed one versus various aspects in one argument: various if different topics, one if one topic that is explained in more detail
+   * discussed work packages: iterative creation of guidelines, (small sample study with experts + further guideline improvement), set-up and supervise expert annotation study, evaluate annotation study (inter annotator agreement, gold label creation, corpus statistics)
+   * for next week:
+      * Sarah will find and read related work (especially regarding aspects, facets, gist of arguments) and add these to the task description
+   * further steps for guidelines:
+      * identify facettes of the annotation (to structure the guideline), e.g. length of segment, one versus many, when does an aspect relate to the target topic and find a definition for these
+      * add examples for each facette
+      * collect difficult/unclear examples: to be discussed later
+   * to discuss next week:
+      * finalise task description
+      * schedule mid and end talk
+      * WebAnno / Inception for annotations?
+      * DKPro Statistics for inter annotator agreement?
+
+---++++ pre-meeting notes
+   * Filtered the corpora for guideline: 200 arguments for school uniform and 200 for nuclear energy (first 200, not checked how many pro/con)
+   * Difficulties:
+      * Some arguments are supported by examples and it is hard to locate the aspect: 'Many girls , for example , do not like to wear skirts or dresses , which most girls ' uniforms require ' (school uniforms, argument_against) 
+      * There are arguments with two targets *A* and *B* that contain aspects for both targets: 'Firstly , it does n't let out green house gases that destroy the environment .' (nuclear energy, argument_for) target A: nuclear energy, target B: green house gases, aspect 1: green house gases refers to A, aspect 2: environment refers to B.
+      * How do we anotate aspects that are seperated by an subclause? For example: '...a performance, one might say, of decency itself.' (minimum wage, argument_for)
+   * added the current guideline to the attachments
+
+---++ 2018-04-11
+   * Wir prüfen nicht ob es sich um ein Argument handelt und auch nicht ob der Stance korrekt ist, damit wir uns auf den eigentlichen Task (Aspekt Annotation konzentrieren können)
+   * Zu jedem annotierten Aspekt *A* sollten wir mit annotieren, ob A sich direkt auf das Thema *T* bezieht 
+   * Nächste Schritte:
+      * *Korpus filtern*: (1) prüfe stance, (2) prüfe ob Argument, (3) filtere Sätze mit nicht eindeutigen Stance
+         * Hintergrund: da unsere Daten mit crowdsourcing erzeugt wurden, ist der Stance manchmal falsch und manchmal sind die Sätze nur Meinungen ohne Grund (=kein Argument)
+         * Das resultierende Korpus sollte mindestens 200 Sätze für mindestens vier Themen enthalten
+      * Guidelines überarbeiten
+      * Annotiere Beispiele für 10 pro un 10 contra für mehrere Themen
+         *  notiere Schwierigkeiten 
+         * und verfeinere Guideline entsprechend
+
+---++ 2018-04-04
+   * Completion of forms
+   * Discuss results of the first preliminary study
+      * Annotation seems to be more complicated for some topics. For instance, "Marijuana legalization" seems to be complicated; most likely because texts stem from online discussions. In contrast, "nuclear energy" is simpler to annotate.
+      * "*Target*" seems to be important and should be considered
+   * Nächste Schritte
+      * Berücksichtige target in der annotation. Wird es dadurch leichter? Wieviele Argumente enthalten das Target / wie viele nicht?
+      * Guideline überarbeiten.
+
+---++ 2018-03-28
+   * Thesis Workflow and forms
+   * Discuss topic in more detail
+   * Erste Studie:
+      * Annotiere 20 Argumente (10 pro + 10 con) für jeweils vier Themen (insgesamt 80 Sätze)
+      * Erstelle erste Guideline: (1) spezifiziere "Aspekt", (2) Suche gute Beispiele für die Guideline, (3) definiere Regeln für die Annotation
+      * Notiere Schwierigkeiten 
+
+
+
+-- Main.ChristianStab - 2018-04-04
+
+%META:FILEATTACHMENT{name="Guideline.docx" attachment="Guideline.docx" attr="" comment="Current guideline (17.04.18)" date="1524011474" path="Guideline.docx" size="14455" user="hainzl" version="1"}%
+%META:FILEATTACHMENT{name="TaskDescription_SarahHainzl_v01.docx" attachment="TaskDescription_SarahHainzl_v01.docx" attr="" comment="Worked on the references and motivation part" date="1524611362" path="TaskDescription_SarahHainzl_v01.docx" size="81185" user="hainzl" version="1"}%
+%META:FILEATTACHMENT{name="Guideline_25.06.18.docx" attachment="Guideline_25.06.18.docx" attr="" comment="Current guideline (25.06.18)" date="1529944710" path="Guideline_25.06.18.docx" size="34080" user="hainzl" version="1"}%
+%META:FILEATTACHMENT{name="Guideline_29.06.18.docx" attachment="Guideline_29.06.18.docx" attr="" comment="Current guideline (29.06.18) small changes to the previous one" date="1530279833" path="Guideline_29.06.18.docx" size="30768" user="hainzl" version="1"}%

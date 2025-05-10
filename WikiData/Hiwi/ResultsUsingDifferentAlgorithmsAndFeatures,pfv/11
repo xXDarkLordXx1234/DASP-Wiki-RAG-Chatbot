@@ -1,0 +1,130 @@
+%META:TOPICINFO{author="MichaelKutschke" date="1337617887" format="1.1" reprev="11" version="11"}%
+%META:TOPICPARENT{name="PANChallenge"}%
+Naive Bayes:
+
+
+---++ Notability
+
+*F-Measure* : 0.7238562091503268
+
+Precision:    0.6101928374655647
+
+Recall: 0.8895582329317269
+
+	
+---++ Advert
+
+
+*F-Measure* : 0.8114754098360656
+
+Precision: 0.8065173116089613
+
+Recall: 0.8164948453608247
+
+---++ Primary_sources
+
+*F-Measure* : 0.773017319963537
+
+Precision: 0.7198641765704584
+
+Recall: 0.8346456692913385
+
+
+---++ Refimprove
+
+*F-Measure* : 0.4165588615782665
+
+Precision: 0.5919117647058824
+
+Recall: 0.3213572854291417
+
+(*NOTE*: Seems to work better with 1000 instead of 500 features -- Michael)
+
+1000 Features with discretization (unfixed stopword removal -> some stopwords are chosen *Performance seems to get worse with the fixed Stopword removal(????)*)
+
+*F-Measure* : 0.6195995785036881
+
+Precision: 0.6461538461538462
+
+Recall :0.5951417004048583
+
+1000 features, feature extractors selected to reduce correlation between variables (no NrOfTokens, no unigrams, no orphan features, no NumberOfUniqueRegisteredContributorsFeature)
+
+*F-Measure* : 0.6728280961182994
+
+Precision : 0.6419753086419753
+
+Recall : 0.7067961165048544
+
+---++ Original_research
+
+*F-Measure* : 0.7077267637178052
+
+Precision: 0.8040712468193384
+
+Recall: 0.632
+
+AdaBoost with C4.5, with filtered stopwords, --maxdepth 5, 500 Features, no discretization
+
+*F-Measure* : 0.7408163265306122
+
+Precision : 0.7546777546777547 _(NOTE: this is lower than above, but the recall is greatly enhanced)_
+
+Recall : 0.7274549098196392
+
+
+---++ Orphan
+
+*F-Measure* : 0.8476027397260274
+
+Precision:0.7432432432432432
+
+Recall:0.9860557768924303
+
+
+---++ Empty_section
+
+
+*F-Measure* : 0.8044077134986225
+
+Precision: 0.7617391304347826
+
+Recall: 0.8521400778210116
+
+AdaBoost mit C4.5, 500 Features, Stopword Removal für alle NGram Features, C4.5 --maxDepth 5, no discretization
+
+*F-Measure* : 0.8731268731268732
+
+Precision : 0.874
+
+Recall : 0.872255489021956
+
+
+---++ No_footnotes
+
+
+*F-Measure* : 0.7729831144465291
+
+Precision: 0.7253521126760564
+
+Recall: 0.8273092369477911
+
+
+---++ Unreferenced
+
+
+*F-Measure* : 0.8379705400981997
+
+Precision: 0.7551622418879056
+
+Recall: 0.9411764705882353
+
+
+---++ Wikify
+
+
+*F-Measure* : 0.8379705400981997
+
+Precision: 0.7551622418879056
+
+Recall: 0.9411764705882353

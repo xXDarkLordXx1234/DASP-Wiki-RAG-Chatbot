@@ -1,0 +1,27 @@
+%META:TOPICINFO{author="steuer" comment="reprev" date="1366909798" format="1.1" reprev="30" version="30"}%
+%META:TOPICPARENT{name="Main.RichardSteuerLeftBar"}%
+   * !TerrierSearcher.process()
+      * -> !TerrierSearcher.processResultSet()
+         * -> addResult()
+
+<!--
+
+Dear all,
+
+in de.tudarmstadt.ukp.dkpro.ir.terrier3.index.isolated.TerrierManagerOr I found this:
+
+// UKP DKPro: If we use a query with fields, then the reqquirement_list size is > then 0, due
+// to the requirement on the field. This would trigger the BooleanScoreModifier
+// which would zero out all documents in which not all of the search terms occur.
+// Usually this means, that everything will be zeroed out and nothing will return.
+
+ // q.getTermsOf(FieldQuery.class, field_list, true);
+ //   for (int i=0; i<field_list.size(); i++) {
+ //     if (!requirement_list.contains(field_list.get(i))) {
+ //       requirement_list.add(field_list.get(i));
+ //      }
+ //    }
+
+Richard (REC) had commented that out by the given reasons. I think there is a misunderstanding: The terms do not have to appear in the document, but in the index field (of the document).
+
+-->

@@ -1,0 +1,66 @@
+%META:TOPICINFO{author="ManuelWick" date="1270534515" format="1.1" reprev="9" version="9"}%
+%META:TOPICPARENT{name="ManuelWick"}%
+---+ Logbuch
+
+%TOC%
+
+---++ 26.01.2010
+   * Repository Directory eingerichtet / Projekt angepasst
+
+---++ 27.01.2010
+   * Main CPE Implementation completed
+   * First attempt of ReaderFramework built
+   * Maven installed
+   * Apache-Tika is running _[starving and totally exhausted ;) ]_
+
+---++ 10.03.2010
+   * Reading / Trying to understand JavaMail library
+   * Writing de.tudarmstadt.de.ukp.manuelwick.dkpro.tika.parser.EmlParser.java
+   
+---++ 12.03.2010
+   * Reading IR-Book
+   * First steps with Lucene
+
+---++ 16.03.2010
+   * Checking features of Lucene
+   * Reading IR-Book
+
+---++ 17.03.2010
+   * Testing features of Lucene
+   * Reading IR-Book
+
+---++ 20.03.2010
+   * Understanding lucene, building simple indexes with TermFreqVector
+
+---++ 21.03.2010
+   * Developing CPM with EML-Parser for testcases
+
+---++ 23.03.2010
+   * Introduction to uutuc/Ukp-Pipeline concept
+   * Getting familiar with it
+   * Adapt EML-Parser
+
+---++ 24.03.2010
+   * Trying to build index/search-pipeline with uutuc
+   * First steps with Terrier
+
+---++ 25.03.2010
+   * Restructuring project
+   * Reading JUnit-Documentation
+   * First steps with DKPro-Pipeline
+
+---++ 26.03.2010
+   * Lucene/Terrier Indexing/Searching with DKPro-Pipeline
+   * Reading IR-Book chapter "Scoring, Term weighting Vector Space Model"
+
+---++ 29.03.2010
+   * Reading about information-retrieval models, Tf-Idf, BM-25
+   * Trying to handle CRM-data
+
+---++ 31.03.2010
+   * Factory for DKPro-Pipelines
+
+---++ 01.04.2010
+   * Understanding IR model, ESA
+
+-- Main.ManuelWick - %DATE%

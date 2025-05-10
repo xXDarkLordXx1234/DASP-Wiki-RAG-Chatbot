@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="ShuoYang" date="1291108064" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="ShuoYang"}%
+---+ =mysqlimport= "slash" error report
+
+---++ Introduction
+This article discusses an error that will occur, when importing data with =\= "slash" immediately before a tab delimiter into mysql database using =mysqlimport=.
+
+The command =mysqlimport= imports data from files into mysql database. For each file it
+   1. strips out all extension names from the filename, 
+   1. look up the table with this name without extension, and 
+   1. write data from the file into this database, where =\t= in the file is used as delimiter to separate columns. 
+
+---+++ Example (Normal Case)
+There is a database =testdb= with a table =test= of structure
+<verbatim>
+col1 VARCHAR(30), col2 VARCHAR(30), col3 VARCHAR(30)
+</verbatim>and a file =test.txt= with content
+<verbatim>
+a<tab>b<tab>c
+</verbatim>
+where <tab> is a tab character.
+
+Upon executing  =mysqlimport --local -u user testdb test.txt=, filename =test.txt= will be striped out of the extension name and become =test=, and thus its content will be added into table =test= of database =testdb= . Afterwards this row will be in the table:
+<verbatim>
++------+------+------+
+| col1 | col2 | col3 |
++------+------+------+
+| a    | b    | c    |
++------+------+------+
+</verbatim>
+
+---++ Error
+However, if =\= is the last character of a column, the =\t= afterwards will _no longer_ be correctly parsed as a delimiter. In other words, <verbatim> \<tab> </verbatim> is not recognized as a delimiter. Thus these two columns in the text file will be combined into one, and therefore the column count in this line of the text file is _less than_ that of the table in database. In this case, =NULL= will fill out the last few columns where there is "no" data from the text file.
+
+---+++ Example (Slash Error Case / SSCCE)
+For the same database =testdb= and table =test= and its structure as above, but with the new file =test.txt= of content
+<verbatim>
+a<tab>b\<tab>c
+</verbatim>
+
+If we import this file with =mysqlimport=, the following row will be resulted in the table:
+<verbatim>
++------+------+------+
+| col1 | col2 | col3 |
++------+------+------+
+| a    | b	c  | NULL |
++------+------+------+
+</verbatim>
+
+We would expect similar result with the previous example, but this row _isn't_ what we want. As we can see, =b= and =c= are combined into one column, and there is =NULL= in the third column, where =c= should be. Due to the =\= after =b= in =test.txt=.
+
+---++ Impact
+It leads to failures with =JWPL=, the Wikipedia APIs from UKP. And especially when there is such column with a =NULL= value in it, and JWPL trys to assign this =NULL= value to a Java primitive datatype, Exception will be thrown, which brings down the whole program.
+
+---+++ Example
+In english Wikipedia, the page =Lower Mickletown=  has =\= as the last character of the text segment, and the page =Control-\= has =\= as the last character in the title segment. 
+
+After those pages being processed by DataMachine, a preprocessor of JWPL, =Page.txt= with <verbatim>\<tab></verbatim> in it will be created. This files are then imported into the table =Page=. Since two columns are combined into one due to this failure, there is one less columns than required, and thus previous columns are shifted left, and the default value is saved in the last column =isDisambiguation=, in this case, =NULL=. 
+
+Now if =JWPL= trys to read this value from column =isDisambiguation= and assign it to a =boolean=, Exception will be thrown saying it's illegal to assign a =NULL= to a primitive data type, in this case, =boolean= .
+
+---++ Problematic Wikipedia Pages
+Since a =\= as the last character is syntactically correct, Wikipedia cannot and will not check against it.
+Here are all examples found in english Wikipedia Dump 20101011 for this problem.
+
+---+++ =\= as last character of text
+   * Tooth & Nail Records
+   * Western Spirit FC
+   * Smith River Falls-Fort Halkett Provincial Park
+   * David Wilson (university administrator)
+   * The Mad Monster
+   * Guaranteed consumer funding
+   * Lower Mickletown
+
+---+++ =\= as last character of title
+   * Control-\\
+
+
+-- Main.ShuoYang - 2010-11-30

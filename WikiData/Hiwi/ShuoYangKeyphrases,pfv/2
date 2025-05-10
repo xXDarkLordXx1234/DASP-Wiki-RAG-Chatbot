@@ -1,0 +1,46 @@
+%META:TOPICINFO{author="ShuoYang" date="1333398336" format="1.1" version="2"}%
+%META:TOPICPARENT{name="ShuoYangDariahArbeit"}%
+Application of existing keyphrase extraction infrastructure to new data sets
+
+---++ URLs
+   * Components usable for the pipeline: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro_ng/dkpro/semantics</verbatim>
+   * Experimental projects should be stored in: <verbatim>https://maggie.tk.informatik.tu-darmstadt.de/svn/dkpro/experiments/keyphrases</verbatim>
+
+---++ Results
+---+++ Table 1
+| *Name* | *Domain* | *Indexing* | *# Docs* | *&#8709; # Tokens* | *&#8709; # Keyphrases* | *r* |
+| Pedocs | | | 146 (incomplete) | 6366.1 | 9.36 | 0.29 |
+
+
+
+---+++ Raw
+Pedocs:
+<verbatim>
+# Documents:               146
+Tokens / Document:         6366.068493150685
+# Keyphrases:              1366
+Keyphrases / Document:     9.356164383561644
+Characters / Keyphrase:    14.085651537335286
+Tokens / Keyphrase:        1.240117130307467(+/- 0.6711158412459699)
+
+Pearson Correlation between document size and the number of gold keyphrases:
+0.28642262164654536
+
+1:1114
+2:218
+3:21
+4:2
+5:1
+6:6
+7:3
+11:1
+</verbatim>
+
+
+
+
+
+
+
+
+-- Main.ShuoYang - 2012-03-24

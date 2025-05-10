@@ -1,0 +1,79 @@
+%META:TOPICINFO{author="YevgenChebotar" date="1348571695" format="1.1" version="5"}%
+%META:TOPICPARENT{name="YevgenChebotar"}%
+-- Main.YevgenChebotar - 2012-06-05
+   * [[%ATTACHURL%/InstallingSeersuite.pdf][InstallingSeersuite.pdf]]: Seersuite installation guide
+
+   * [[%ATTACHURL%/InstallingSeersuite.doc][InstallingSeersuite.doc]]: Seersuite installation guide
+
+   * [[%ATTACHURL%/SeersuiteIngestion.pdf][SeersuiteIngestion.pdf]]: Seersuite ingestion guide
+
+   * [[%ATTACHURL%/SeersuiteIngestion.doc][SeersuiteIngestion.doc]]: Seersuite ingestion guide
+
+
+---++ Pedocs ingest script
+__Location:__ /srv/scripts/ingestPedocs.pl <br>
+__Usage:__  ingestPedocs.pl inputFolder outputFolder <br>
+Input folder is the folder (e.g. 2012, 2011 etc.) folders in Pedocs distribution where each PDF is located inside its own folder with source opus ID as the folder name. <br>
+Folder names are used to find documents in the pedocs database. During conversion, all files are renamed to "SOURCE_OPUS_ID.EXTENSION". All files (.pdf,.txt,.body,.cite,.header,.parscit,.file,.met) are placed in output folder, buildXML.pl is called for producing XML-files.<br>
+After running the script, the documents can be imported by calling batchImport script on the output folder. After that, _public_ -field in the citeseerx databases should be set to 1. _updateInferences_ and _updateIndex_ scripts should be called in order to activate search. 
+
+---++ MyCiteseerx
+In order for MyCiteseerx to work we have to enable HTTPS support in Tomcat. 
+
+First, go to tomcat _conf_  folder (e.g. /srv/tomcat/conf). Create key file (Change organization, company name etc.)
+<verbatim>
+keytool -genkeypair -alias tomcat -keyalg RSA -keysize 1024 -dname "CN=localhost, OU=Organization, O=Company Name, L=City, S=State, C=US" -validity 365 -keystore keystore
+</verbatim>
+This will create a file with name " _keystore_ " in the same folder. You will be asked to enter passwords for the key and tomcat.
+
+Second, find " _server.xml_ " in tomcat _conf_ folder. Insert a new Connector:
+
+<verbatim>
+<Service name="Catalina">
+...
+    <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+               maxThreads="150" scheme="https" secure="true"
+               clientAuth="false" sslProtocol="TLS"
+               keystoreFile="/srv/tomcat/conf/keystore" keystorePass="csx-devel" />
+               
+...
+</verbatim>
+Change _keystoreFile_ and _keystorePass_ according to your values.
+
+After HTTPS has been enabled we have to create some users. This can be done by manually creating a database entry in table _users_ of _myciteseerx_ database or by registering on the portal. In order for registration to work _newAccountsEnabled_  should be set to true in _myciteseerx.configuration_ table. In the same table we can also set other properties like _urlSubmissionsEnabled_  or _peopleSearchEnabled_ .
+
+---++ Homepage statistics
+The statistics can be created by executing scripts " _genStats_ " and " _genHomePageStats_ " in seersuite _bin_ folder. The scripts will create statistic files in _stats_ subfolder (e.g. if you execute the scripts in _bin_ folder then the statistic files will be in _bin/stats_ ). Afterwards, the statistic files should be placed in _WEB-INF/stats_ folder of citeseerx webapp. The webapp will read these files and show statistics on the homepage.
+
+If while executing " _genStats_ " or " _genHomePageStats_ " you get an error about missing table "eTables" just go ahead and create this table in _citeseerx_ database with the same structure as " _eAlgorithms_ " table in the same database.
+
+---++ Enabling crawling with Heritrix
+Seersuite provides a pre-configured distribution of Heritrix web crawler in "trunk/heritrix" folder. 
+
+---+++ ActiveMQ
+First, we have to download and install ActiveMQ message broker from [[http://activemq.apache.org/download.html][here]]. This will be needed for communication between Citeseerx-webapp, Heritrix and Seersuite ingestion services. They communicate with help of Java Messaging Service API (JMS).
+After extracting archive with ActiveMQ distribution go to "conf" subfolder and open "_activemq.xml_". If not already set, change _tansportConnector_  to _tcp://localhost:61616_
+<verbatim>
+<transportConnectors>
+            <transportConnector name="openwire" uri="tcp://localhost:61616"/>
+</transportConnectors>
+</verbatim>
+After that you can start the ActiveMQ service from activemq/bin folder by executing 
+<verbatim>
+./activemq start
+</verbatim>
+To stop the service, run:
+<verbatim>
+./activemq stop
+</verbatim>
+ActiveMQ provides an admin webapp that is very useful for managing messages and queues. It can be accessed from browser by going to _http://localhost:8161/admin_.
+Finally, copy ActiveMQ JAR library to " _heritrix/lib_ " folder.
+
+---+++ Heritrix
+
+
+
+%META:FILEATTACHMENT{name="InstallingSeersuite.pdf" attachment="InstallingSeersuite.pdf" attr="" comment="Seersuite installation guide" date="1338909446" path="InstallingSeersuite.pdf" size="153720" user="YevgenChebotar" version="3"}%
+%META:FILEATTACHMENT{name="InstallingSeersuite.doc" attachment="InstallingSeersuite.doc" attr="" comment="Seersuite installation guide" date="1338909438" path="InstallingSeersuite.doc" size="47104" user="YevgenChebotar" version="3"}%
+%META:FILEATTACHMENT{name="SeersuiteIngestion.doc" attachment="SeersuiteIngestion.doc" attr="" comment="Seersuite ingestion guide" date="1341270922" path="SeersuiteIngestion.doc" size="59392" user="YevgenChebotar" version="1"}%
+%META:FILEATTACHMENT{name="SeersuiteIngestion.pdf" attachment="SeersuiteIngestion.pdf" attr="" comment="Seersuite ingestion guide" date="1341270974" path="SeersuiteIngestion.pdf" size="190413" user="YevgenChebotar" version="1"}%

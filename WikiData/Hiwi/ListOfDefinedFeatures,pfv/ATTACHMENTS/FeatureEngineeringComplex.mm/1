@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<map version="0.8.1">
+    <node TEXT="Feature Engineering (complex)">
+        <FONT SIZE="16"></FONT>
+        <node TEXT="Refimprove">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="Number of tokens">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Ratio: text_length/number_of_references">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Ratio: sentences/references">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+        <node TEXT="Notability">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="In/outlinks">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Footnotes">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Tag: proposed deletion">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Number of sections">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Number of tokens">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Revision features ">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+        <node TEXT="Primary Sources">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="Revision features">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Lexical features">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Number of references">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+        <node TEXT="Wikify">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="Number of wikilinks">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Revision features">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Ratio: plain_text/markup_text">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Number of different markup elements">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Section length">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+        <node TEXT="Advert">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="List of ad words">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Lexical features (unigrams, bigrams)">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Page parameters (locked page etc.)">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Last modification by unregistered user?">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+        <node TEXT="Original research">
+            <FONT SIZE="16"></FONT>
+            <node TEXT="Revision features">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Lexical features">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Number of references">
+                <FONT SIZE="16"></FONT>
+            </node>
+            <node TEXT="Ratio: number_of_references/text_length">
+                <FONT SIZE="16"></FONT>
+            </node>
+        </node>
+    </node>
+</map>

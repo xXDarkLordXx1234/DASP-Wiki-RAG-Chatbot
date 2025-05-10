@@ -1,0 +1,52 @@
+%META:TOPICINFO{author="habernal" comment="reprev" date="1452583636" format="1.1" reprev="6" version="8"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+ Master thesis
+
+---++ Meeting 2016-01-11
+   * Firefox CSS fixed
+   * MACE integrated into game
+      * Export using Python, running MACE, import back to game
+   * Speed problem: each request takes 3 seconds before reaching backend database, can't probably be fixed (better hardware won't help)
+
+---++ Meeting 2016-01-04
+   * PVP round design agreed
+   * PVP - compose round: ready
+   * TBD: PVP assessment from other players round
+   * Bottlenecks: speed of the backend Bass-Box (not the database itself)
+   * Ideen: Player of the week
+
+---++ Meeting 2015-12-09
+   * Signing up the thesis
+   * Regular meetings every Monday 14.00
+   * @action(IH): Send thesis template
+   * @action(CP): first draft of thesis structure
+   * @discuss(): fallacy-free version for Dagstuhl
+      * Two days of development, is feasible
+      * Open to decision
+   * 0151-50709470
+
+---+ Meeting 2015-12-25
+   A    Dagstuhl-playing of Argotario showed some bugs and lead to some ideas: 
+   
+   * no topics at some valid arguments, 
+   * timeouts
+   * argument-composing for same topic
+   * database highschores did not update
+   * get rid of webkit
+   * suggest topics yourself
+   * argument comparison to find best ones
+   * spam auto-delete
+   * maybe remove topic for stance-recognition
+  
+   B   Insert new fallacy-types into game:
+     
+   * Non-context
+      * appeal to emotion,
+      * irrelevant authority
+      * hasty generalization
+      * appeal to consequences
+   * context:
+      * ad hominem
+      * red herring
+ 
+   C   Develop ideas for PvP-Gamecontent

@@ -1,0 +1,175 @@
+%META:TOPICINFO{author="jiang" comment="reprev" date="1512911792" format="1.1" reprev="33" version="33"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ Meeting Minutes
+[[PeterJiangTimes][Time tracking]]
+
+AGENDA
+   * CREATE a database table to store the runs and performances of the classifier
+   * Recommendation Sidebar Training Status using Web Socket
+   * Try !OpenNlpNerClassifier - but insufficient training data?
+   * MIRA and !DL4J Classifier don't work anymore - find out why
+   * Cache the trained model of a classifier (and also selected classifiers) for next time the document is opened.
+
+
+---++ 2017-11-07 Meeting
+   * NEW CONTRACT
+   * use websocket to show training status in recommendation sidebar
+      * show if training or not
+      * information about selected classifiers
+   * In the long run it we should define interface to let user access external classifiers
+   * Save which predictions have been rejected.
+
+---++ 2017-10-24 Meeting
+   * Store tagged sequences in the !PredictionModel
+   * keep in mind that the active learning strategy could inherit from my strategies..
+   * Investigate why there are different numbers of annotations for a token...
+   * Investigate why most annotations for a token have the same confidence
+   * Configure the number of recommendations for a classifier in a sidebar (for !OpenNlp, it must be configured at training time)
+
+---++ 2017-10-17 Meeting
+   * Meeting with Wei about Active Learning
+   * Next tasks:
+      * Extend the !PredictionModel to show multiple recommendations for a token, show n most confident results
+      * Generate predictions earlier
+
+---++ 2017-09-12 Meeting
+   * Fix !RecommedationPage UI
+   * Reactivate !DL4J
+   * Talk about Thesis
+   * IMLS Interface
+
+---++ 2017-08-29 Meeting
+   * Next tasks: Confusion Matrix heatmap, relative values, tooltip
+   * Timesheets
+   * next contract
+
+---++ 2017-08-22 Meeting
+   * Continue working on Confusion Matrix (maybe orient on !DefaultRefreshingView in Webanno !AgreementTable.html)
+   * use germ & gum data, maybe we can find another dataset for chunking?
+
+---++ 2017-08-15 Meeting
+   * Continue working on enhancing !EvaluationPage
+
+---++ 2017-08-02 Meeting
+   * Try to identify why the recommmendation module is making the application slow
+      * reduce the checks for Document change
+      * measure time
+   * make it possible to select feature for layer
+
+---++ 2017-07-25 Meeting
+   * new contract
+   * handing over timesheets
+   * Eclipse bug
+   * !REC will work on the UI for recommendation configuration and provide new methods, I will adjust the recommendation module to the changes.
+   * Verify that recommendation works for NER layer too.
+   * Get a confidence for each prediction
+   * The statistical recommender should overwrite the Stringmatcher if the confidence for the prediction is high enough.
+   * Offtopic..Bachelor Thesis - possible topic?
+
+---++ 2017-07-11 Meeting
+   * fixed vanished sidebar problem
+   * Combine predictions from String Matching and another classifier
+  
+---++ 2017-07-04 Meeting
+   * Next things to fix: Make recommendations grey, show classifier used for making each recommendation, fix duplicate recommendation issue(it was because of window offset)
+   * after fixing these bugs we should further work on the customization settings of the recommendation module.
+
+---++ 2017-06-28 Meeting
+   * we fixed an error which made it impossible to click on recommended annotations
+   * until next week: keep debugging. Inspect why we get recommendations that span multiple words (it was because the Annotation Id was not unique).
+     
+---++ 2017-06-13 Meeting
+   * fixed inception startup issues
+   * Debugging inception
+   * Next steps: https://git.ukp.informatik.tu-darmstadt.de/inception/webanno-inception/issues/1 
+
+---++ 2017-06-06 Meeting
+   * Next tasks:
+      * get Layer from VID instead of !PredictionModel and adjust methods
+      * !AnnotationObject: add field "feature"
+      * when prediction are made by the classifier, the feature which is predicted must be hardcoded in the classifier where model is created
+
+---++ 2017-05-30 Meeting
+   * discussed further procedure of TD's integration
+      * Used VDocument instead of !GetDocumentResponse
+      * refactoring of other methods
+
+---++ 2017-05-23 Meeting
+   * discussed further procedure of TD's integration
+   * I will propose changes by pushing into my clone of webanno-td
+
+---++ 2017-05-16 Meeting
+   * set up project correctly
+   * continue working on last week's task
+   * discussed how an extension could look like
+
+---++ 2017-05-04 Meeting
+   * Discuss timesheets
+   * new Task:
+      * Some components of TD's Webanno fork should be moved to the Inception project.
+         * Perform Code Archeology on Webanno and compare the differences between the master project on TD's fork
+         * point out differences where  may be extension points may be defined
+        
+---++ 2017-04-24 Meeting
+   * clarified how #6 should be solved
+      * The input stream must be read two times. There are still two tests who fail (those with DKPro header)
+   * new tasks: 
+      * finish #6
+      * #7 modify !BinaryCasWriter:
+         * Currently, the program accumulates the typesystem for every document that passes the pipeline. 
+         * There should be a boolean parameter to turn this off. 
+            * If the parameter is off, only the first typesystem should be merged.
+               * this should happen in !typeSystemInit()
+         * Make it possible to specify an external typesystem
+         * Tests in !BinaryCasWriterReaderTest.java must be adjusted, s.t. tests will be carried out in both modes.
+      
+---++ 2017-04-18 Meeting
+   * review of #5
+   * next task:  #6 modify !BinaryCasReader to merge the typesystem of previous engine with typesystem of current engine
+      
+---++ 2017-04-10 Meeting
+   * handed over contract and account credentials
+   * Issues with tasks of last week:
+      * #1 Set up project correctly and fixed(deleted) missing dependencies
+      * #2 Tests didn't pass. Solution: Increase surefire heap size ( mvn clean install -Dmaven.surefire.heap=6g )
+      * #3 Text Reader in Galaxy Tool Builder didn't accept only single files
+   * Discussed further issues
+      * #4 Make it possible to use the tools on a server without internet access
+         * thus, a Docker file would need to be written to predownload all the dependencies
+      * #5 Increase Usability
+         * Change certain input fields to dropdown menus to exclude certain values
+         * Remove certain input fields
+         * This info can be passed into the xml files of each tool
+      * #6 Make it possible to run the whole pipeline on a simple example e.g. data -> Text Reader -> Umlaut Normalizer -> Text Writer
+   * New Tasks
+     * Create PR for #3
+      * work on #5 https://github.com/dkpro/dkpro-meta/issues/5
+   
+---++ 2017-04-04 Meeting
+   * New Tasks
+      * DKPro Core auschecken und bauen
+      * DKPro Meta auschecken und Galaxy Tool Builder laufen lassen
+      * Konfigurationsdateien die von !GalaxyToolBuilder erzeugt wurden mit Galaxy/Docker laufen lassen
+      * Lesen:
+         * Galaxy Tool Files
+         * Code von !GalaxyToolBuilder
+         * Output von: !GalaxyToolBuilder
+
+%META:FORM{name="%25SYSTEMWEB%25.UserForm"}%
+%META:FIELD{name="FirstName" attributes="" title="<nop>FirstName" value=""}%
+%META:FIELD{name="LastName" attributes="" title="<nop>LastName" value=""}%
+%META:FIELD{name="OrganisationName" attributes="" title="<nop>OrganisationName" value=""}%
+%META:FIELD{name="OrganisationURL" attributes="" title="<nop>OrganisationURL" value=""}%
+%META:FIELD{name="Profession" attributes="" title="Profession" value=""}%
+%META:FIELD{name="Country" attributes="" title="[[System.CountryList][Country]]" value=""}%
+%META:FIELD{name="State" attributes="" title="State" value=""}%
+%META:FIELD{name="Address" attributes="" title="Address" value=""}%
+%META:FIELD{name="Location" attributes="" title="Location" value=""}%
+%META:FIELD{name="Telephone" attributes="" title="Telephone" value=""}%
+%META:FIELD{name="VoIP" attributes="" title="<nop>VoIP" value=""}%
+%META:FIELD{name="InstantMessagingIM" attributes="" title="<nop>InstantMessaging (IM)" value=""}%
+%META:FIELD{name="Email" attributes="" title="Email" value=""}%
+%META:FIELD{name="HomePage" attributes="" title="<nop>HomePage" value=""}%
+%META:FIELD{name="Comment" attributes="" title="Comment" value=""}%
+%META:TOPICMOVED{by="eckart" date="1492502907" from="Main.PeterJiang" to="Hiwi.PeterJiang"}%
+%META:PREFERENCE{name="VIEW_TEMPLATE" title="VIEW_TEMPLATE" type="Local" value="System.LdapUserView"}%

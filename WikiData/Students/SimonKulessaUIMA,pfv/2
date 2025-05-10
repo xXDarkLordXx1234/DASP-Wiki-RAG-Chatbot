@@ -1,0 +1,52 @@
+%META:TOPICINFO{author="TorstenZesch" date="1224407221" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="SimonKulessa"}%
+Fehler unbekannter Ursache:
+
+
+---++ UKPSentenceSplitter:
+
+<b>Vermutete Ursache</b><br>
+DocumentText ist null ... UKPSentenceSplitter hat keine Möglichkeit auf die Views zuzugreifen ??<br>
+<br>
+CAS Objekt im Reader befüllt mit ...<br>
+<br>
+		// Set previous revision<br>
+		JCas revA = jcas.createView("PREVIOUS_REVISION");<br>
+		revA.setDocumentText(previousRevision);<br>
+<br>
+		// Set current revision<br>
+		JCas revB = jcas.createView("CURRENT_REVISION");<br>
+		revB.setDocumentText(currentRevision);<br>
+<br>
+<br>
+<b>StackTrace</b><br>
+
+org.apache.uima.analysis_engine.AnalysisEngineProcessException: Annotator processing failed. <br>   
+	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.callAnalysisComponentProcess(PrimitiveAnalysisEngine_impl.java:389)<br>
+	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.processAndOutputNewCASes(PrimitiveAnalysisEngine_impl.java:297)<br>
+	at org.apache.uima.analysis_engine.impl.AnalysisEngineImplBase.process(AnalysisEngineImplBase.java:218)<br>
+	at org.apache.uima.collection.impl.cpm.engine.ProcessingUnit.processNext(ProcessingUnit.java:892)<br>
+	at org.apache.uima.collection.impl.cpm.engine.ProcessingUnit.run(ProcessingUnit.java:577)<br>
+Caused by: java.lang.NullPointerException<br>
+	at java.text.StringCharacterIterator.<init>(Unknown Source)<br>
+	at java.text.StringCharacterIterator.<init>(Unknown Source)<br>
+	at java.text.BreakIterator.setText(Unknown Source)<br>
+	at de.tudarmstadt.ukp.dkpro.core.annotator.UkpSentenceSplitter.makeAnnotations(UkpSentenceSplitter.java:73)<br>
+	at de.tudarmstadt.ukp.dkpro.core.annotator.UkpSentenceSplitter.process(UkpSentenceSplitter.java:66)<br>
+	at org.apache.uima.analysis_component.JCasAnnotator_ImplBase.process(JCasAnnotator_ImplBase.java:48)<br>
+	at org.apache.uima.analysis_engine.impl.PrimitiveAnalysisEngine_impl.callAnalysisComponentProcess(PrimitiveAnalysisEngine_impl.java:375)<br>
+	... 4 more<br>
+<br>
+
+----------------
+
+*TZ:* !SentenceSplitter ist eine Single-View Komponente, die eigentlich nichts von Views weiss. Sie kann aber auch mit Views arbeiten, indem im CPE Deskriptor (oder im Aggregate) ein !SofaMapping vorgenommen wird.
+<verbatim>
+<sofaNameMappings>
+<sofaNameMapping cpeSofaName="PREVIOUS_REVISION" componentSofaName="_InitialView"/>
+</sofaNameMappings>
+</verbatim>
+
+Damit beide Revisionen bearbeitet werden, muss der !SentenceSplitter entsprechend zweimal aufgerufen werden, mit jeweils anderem !SofaMapping.
+
+-- Main.SimonKulessa - 18 Oct 2008

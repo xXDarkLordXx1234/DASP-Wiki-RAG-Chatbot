@@ -1,0 +1,24 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1285562363" format="1.1" version="97"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ZijadMaksuti - 29 Oct 2009
+
+   * ResearchTaskDictionaryIntegration
+   * MyNotes
+
+---+++ Zeiterfassung
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" format=" | text,10 | date | text,4 | textarea,3x30" }%
+| *Zijad's Stunden* | | | |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Dictionary Integration - Erste Schritte | 18 August 2010 | 4.0 | Lesen von: _Aligning Sense Inventories in Wikipedia and !WordNet (EW,IG)_ und  _How Web Communities Analyze Human Language: Word Senses in Wiktionary (!ChM , IG)_ |
+| Meeting, Dictionary Integration - Erste Schritte | 20 August 2010 | 4.0 | Meeting mit MM und SH: Initialmeeting, besprechen meiner Aufgaben. Lesen von: _Jurafsky & Martin: Speech and Language Processing, Chapter 19 and 20_ Seiten 611 bis 619. |
+| Meeting, Dictionary Integration - Erste Schritte | 16 September 2010 | 8.0 | Lesen von: _Jurafsky & Martin: Speech and Language Processing, Chapter 19 and 20_ Seiten 619 bis 652. |
+| Meeting, Dictionary Integration - !WordNet | 22 September 2010 | 5.5 | Meeting mit MM und SH <ul><li> Klären der Fragen bezüglich des Inhaltes des von mir zu erstellenden Relationsdiagrammes. Es ist beschlossen dass ich dabei mit !WordNet anfange.</li></ul> Dictionary Integration - !WordNet <ul><li> !WordNet Java API (JWNL) ist runtergeladen worden und in Eclipse angebunden. Ich habe mir die Folien der LSM Vorlesung zu !WordNet gelesen, weitere Notizen gemacht, und angefangen mit Erstellung eines simplen Diagrammes.  </li></ul> |
+| Dictionary Integration - !WordNet | 23 September 2010 | 3.0 | Ich habe die Folien der LSM Vorlesung zu !WordNet zu Ende gelesen, weitere Notizen gemacht, und das simple Diagramm erweitert. Dieses Diagramm  habe ich Erstellt zur Veranschaulichung der Informationen die aus dem !WordNet gewonnen werden können. |
+| Dictionary Integration - !WordNet | 26/27 September 2010 | 10.0 | Installieren von !WordNet 3.0 auf dem eigenen Rechner; herunterladen und anbinden von JWNL API in Eclipse. Ich habe API sowie innere Form von Daten und Informationen in !WordNet analysiert und angefangen mit der Übertragung der für uns relevanten [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/WordNetResourcebeschreibung][Informationen]].  |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 240 | bis Ende November (incl. "Reststunden" aus dem alten Vertrag) |
+
+   * [[Archiv][Archiv]]
+
+                        <nop>

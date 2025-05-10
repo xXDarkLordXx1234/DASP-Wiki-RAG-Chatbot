@@ -1,0 +1,164 @@
+%META:TOPICINFO{author="siahdohoni" comment="reprev" date="1453291332" format="1.1" reprev="3" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: A User Interface for Semantic Search on Translations of Cuneiform Documents
+%TOC%
+---++ Intro
+I'm doing my bachelor thesis under the supervision of Dr. Des. Johannes Daxenberger and Prof. Dr. Iryna Gurevych.
+In the scope of this thesis, I will prepare a set of given datas (more specifically: translated Hittite cuneiform documents) and apply linguistic processes to make them available for semantic search in a web-based user interface.
+---++ Schedule
+%EDITTABLE{format="| text,20| text,20| text,20|"}%
+| *Week* | *Task* | *Comment* |
+| 0-2 | Familiarization with the datasets, literature review, setup of the environment | Start writing the thesis as early as possible! |
+| 3-5 | Development of an appropriate type system to pass the original data in a structured way into a UIMA pipeline | Use DKPro Core |
+| 6-7 | Linguistic preprocessing of the data in various languages | Use DKPro Core |
+| 8-10 | Enrich preprocessed data with semantic information | Use DKPro Core, Uby, and DKPro WSD |
+| 11-13 | Draft design and develop database to store the semantically enriched documents | |
+| 13 | Mid-term presentation | |
+| 14-17 | Develop query and ranking interface | |
+| 18-20 | Small user study to evaluate UI, in particular with respect to the relevancy of result of search queries | In collaboration with the owners of the data |
+| 21-24 | Final thesis redaction | |
+| 24 | Submit the thesis | |
+| 24 | Final presentation | |
+
+---++ Meeting 15.01.2016, 16:00
+   * Topics
+      * Parser
+         * Finished Transliteration Parser
+         * Setting of Meta-Data's: e.g. Document-Title, Language
+         * Matching Translations with corresponding Transliteration
+         * Setting CTH#, Paragraph# and Column# to each Colon.
+      * Footnotes
+         * Footnotes should not appear in the document-text, instead add them as annotations
+         * Need to Update the structure of self-definded Field-Annotation.
+      * Mid-term Talk will be held soon (26.01.2016) 
+         * Think of a database model to show in the talk.
+      * TODOs
+         * Update Field-Annotation Structure, add Footnotes as annotations
+         * Prepare Slides for the Talk
+
+---++ Meeting 08.01.2016, 11:00
+   * Topics
+      * Discussed some problems regarding the transliteration parser.
+         * Structure of documents is not alike.
+         * There may be a different amount of tables/rows.
+         * Sometimes there are several transliterations.
+         * Need to define some rules to get the corresponding one
+      * Skype Conference with our Partner in Mainz
+         * Discussed some important questions regarding the datas
+         * There is a protocol with further information.
+      * TODOs
+         * Finish the parser for the transliteration
+
+---++ Meeting 28.12.2015, 17:00
+   * Topics
+      * Talked about my results until so far. e.g.:
+         * How am I building a Cas?
+         * How do I set the language?
+         * How do I set annotations?
+         * Whats the current output?
+      * The annotations seem to be inserted correctly, but there is empty annotation at the end with leads to a exception.
+      * A 2nd view is needed in order to set a correlation between translation and transliteration file.
+      * A Skype conference with out partner in Mainz will be held in the next Meeting to clarify some important questions.
+      * TODOs
+         * Set a 2nd view for the cas with the corresponding transliteration file.
+         * Write a simplified back-end (writer) for the pipeline, to get familiar with it.
+
+---++ Meeting 17.12.2015, 16:30
+   * Topics
+      * Discussed my suggestion for the database structure.
+         * Solution is improvable.
+         * Perhaps RDF [51] or ODF [54] suits well to our problem.
+      * Demonstration of the developed document parser.
+         * Text is currently written into a '.txt' files, but should directly be put into a CAS and proceed with further linguistic processes.
+      * Talked about some variations of the backend-writer component of the UIMA-Pipeline.
+         * Own writer-component creation is preferred: Instant Insert-Statements or creation of a importable database-file.
+      * Some questions considering the provided transcription and translation documents were left unanswered, meeting with our partner in Mainz should clear it up.
+         * The meeting with out partner will take place in February 12th.
+         * An second and earlier meeting is also under consideration.
+      * TODOs
+         * Proceed with the parser, create a CAS from the text input.
+         * Go over the database model again and try to find a better solution.
+
+---++ Meeting 08.12.2015, 16:30
+   * Topics
+      * what kind of dictionaries exist for Hittitie, incl. examples
+      * What are some related works? Need to put them into the thesis.
+      * Evaluation: Gather some students after programming has been done to evaluate the functionalities.
+      * Cooperation with other ininstitutions who work on these datas is highly recommended. There will possibly be a meeting.
+      * Talked about problems that ococcurredn the meantime. How can we solve these problems?
+      * The .odt parser should harmonize with following programs like e.g. DKPro and Uby.
+      * For a susubmittingn good time, work has to be speeded up.
+      * TODOs
+         * Deliver a suitable database model which allows semantic search which can be discussed about its goods and bads next time.
+         * This model has to be kept in mind while developing e.g. the parser and further methods.
+
+---+++ Meeting 24.11.2015, 16:30
+   * Topics
+      * Signed the final Description of the bachelor thesis.
+      * Decided the date of the mid-term talk(26.01.2016) and the final talk(26.4.2016).
+      * Document for thesis registration.
+      * Talked about the example programs.
+      * TODOs
+         * Try getting more familiar with the programs needed.
+
+---+++ Meeting 19.11.2015, 16:00
+   * Topics
+      * Handed out: Draft version of the dedescriptionf the bachelor thesis, some Hittite documents (translations and transcription of original)
+      * UKP Account Creation and Cloud Access for datas.
+      * TODOs
+         * Read into NLP, try some examples of DKPro Core and Uby.      
+
+---+++ Meeting 12.11.2015, 16:00
+   * Topics
+      * Handed out: some 3-paged topic introduction
+      * Talked in details about the individual parts of this thesis.
+      * Talked about the ways of the functionality of NLP.
+      * Talked about programs needed
+         * DKPro Core
+         * DKPro Uby
+      * TODOs
+         * Read into NLP, try some examples of DKPro Core and Uby.
+
+---+++ Meeting 23.10.2015, 16:30
+   * Topics
+      * Introduction to the topic
+         * What is the Hittite language?
+         * What are the datas which have to be made accessible for semantic search?
+         * Who needs/works with these datas?
+      * Scope of this thesis
+      * There are two options for the focus of this thesis:
+         * Focus more on the semantic search aspect. The database generated should be amamongther values as efficient, extendable and reusable as possible.
+         * Focus on the User-Interface. Make the datas acaccessibleor semantic search but keep it rather simple.
+      * TODOs
+         * Decide whether I do or do not my thesis at the UKP Lab and inform as soon as possible.
+
+---++ Resources/Related Work
+      * Resources, theoretical background
+         * Some background knowledge of NLP
+            * [1] https://www.coursera.org/course/nlp
+            * [2] http://nlp.stanford.edu/fsnlp/
+         * Simple Search Engine of Hittite cuneiform translations: http://www.hethport.uni-wuerzburg.de/txhet_besrit/q.php
+         * UBY lexical resource
+            * [3] http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/publikationen/2012/uby_eacl2012_cameraready.pdf
+      * Resources, practical 
+         * DKPro Core
+            * [11] https://dkpro.github.io/dkpro-core/
+            * [12]https://www.ukp.tu-darmstadt.de/software/dkpro-core/
+            * [13]DKPro Core Example: https://code.google.com/p/dkpro-core-asl/wiki/MyFirstDKProProject
+         * DKPro UBY
+            * [21] https://dkpro.github.io/dkpro-uby/
+            * [22] https://www.ukp.tu-darmstadt.de/software/dkpro-uby/
+            * [23] DKPro UBY Tutorial: http://www.ukp.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/publikationen/2013/ubyTutorial_GSCL2013.pdf
+            * [24] DKPro UBY Example: https://code.google.com/p/dkpro-tutorials/wiki/UbyTutorial201
+         * DKPro Similarity
+            * [31] https://dkpro.github.io/dkpro-similarity/
+            * [32] https://www.ukp.tu-darmstadt.de/software/dkpro-similarity/
+         * DKPro WSD
+            * [41] https://dkpro.github.io/dkpro-wsd/
+            * [42] https://www.ukp.tu-darmstadt.de/software/dkpro-wsd/
+         * Semantic Search Technologies/Databases
+            * [51] https://en.wikipedia.org/wiki/Resource_Description_Framework
+            * [52] https://de.wikipedia.org/wiki/SPARQL
+            * [53] https://de.wikipedia.org/wiki/DBpedia
+            * [54] https://en.wikipedia.org/wiki/Web_Ontology_Language
+-- Main.DarjushSiahdohoni - 2015-12-10

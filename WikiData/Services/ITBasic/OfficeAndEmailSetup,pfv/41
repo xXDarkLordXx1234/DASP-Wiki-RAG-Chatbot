@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="alles" comment="lost thunderbird-copies.png" date="1670415730" format="1.1" reprev="41" version="41"}%
+%META:TOPICPARENT{name="WebHome"}%
+---+ !! UKP Mail Service
+
+---+!! %RED% From 01.12.2022 on, UKP uses HRZ groupware as mailsystem! Please make sure to update your clients // access to mailbox as follows and read the information carefully. %ENDCOLOR%
+
+---++ FAQ
+*<u>What about my old mails in UKP mailbox after the migration?</u>*
+
+All mails, contacts, and data has been transferred to your groupware mailbox, nothing should be missing.
+
+*<u>Something is missing!</u>*
+
+Please let system-admin know via ticket.
+
+*<u>What is my mail address now?</u>*
+
+Your primary mailaddress has changed, this is usually vorname.nachname@tu-darmstadt.de. you'll be sending mails from this address, so you should use this mail in your signatre and on any official stuff. your previous mailaddress like nachname@ukp.tu-darmstadt.de can still receive mails. 
+
+*<u>Have central mails changed?</u>*
+
+The central mails have not changed and any known mailaddress can still be used. in future, central addresses will only have the @ukp.tu-darmstadt.de ending, we'll stop using the "informatik" part. 
+
+*<u>What are the login credentials for my mailbox?</u>*
+
+You have tu use your TU-ID to access mails, not UKP account.
+
+*<u>Are there any restrictions for my mailbox?</u>*
+
+You have 2.5GB of mail space if not communicated otherwise.
+
+*<u>Something that I want to know is not explained here.</u>*
+
+There are also guides for other configurations if you search on the TU Darmstadt Groupware page. If you cant fint it, let system-admin know using ticket.
+
+---++ Accessing your mailbox
+there are multiple ways - OWA is the easiest possibility to use your mailbox. you can also use outlook and many other clients, below you can find the how-tos from hrz. ukp system-admin only supports outlook and owa.
+   * [[https://mail.tu-darmstadt.de/owa][OWA - just login with TU-ID]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_3200.en.jsp][Outlook]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/groupware_wdb/artikel_details_5697.en.jsp][iOS]]
+   * [[https://www.hrz.tu-darmstadt.de/support_und_anleitungen/hrz_anleitungen/linux_mailbox/e_mail_einrichten/thunderbird_einrichten/index.en.jsp][Thunderbird]]
+
+%META:TOPICMOVED{by="bugert" date="1570805052" from="Services.MailService" to="Services/Lab.MailService"}%

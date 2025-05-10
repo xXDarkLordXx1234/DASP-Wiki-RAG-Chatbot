@@ -1,0 +1,43 @@
+%META:TOPICINFO{author="schiller" comment="" date="1539953971" format="1.1" reprev="1" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+++ 19.10.2018
+*Current state*
+   * Virtuoso running on local machine with SPARQL endpoint and WordNet 3.1
+
+*Open questions/tasks*
+   * Is it possible to use other query languages (SQL, CIPHER, etc.)?
+   * How to enable full text search? (https://github.com/dotnetrdf/dotnetrdf/wiki/UserGuide-Full-Text-Querying-With-SPARQL)
+   * How is it possible to use multiple knowledge bases in one Virtuoso endpoint?
+   * Provide detailed documentation for installation and configuration
+
+---+++ 12.10.2018
+*Organizational*
+   * Sign contract, intellectual proprty statement, task descriptions
+   * Mandatory meetings on Tuesdays at 11:30 in B002
+   * Thesis template und Presentation template: https://wiki.ukp.informatik.tu-darmstadt.de/Students/InformationenFuerDiplomanden
+
+*Proposed/Discussed next steps (Overview)*
+   1 Work into Virtuoso (document all steps)
+      2 Build a minimal working sample by  installing Virtuoso, adding e.g. WordNet (specs for virtuoso KB server: https://docs.google.com/document/d/17gru5AApGwa-F7_4gZ_adMjlmBUYviD6oynSgiz0gMM/edit)
+      3 Add a SPARQL endpoint for WordNet/Virtuoso (check functionality by comparing it to official WordNet SPAQRL endpoint)
+      4 Find out how to add multiple KBs with their own endpoints (is a combined endpoint possible?)
+   2 Entity linker
+      3 Find out which entity linkers can be used for the proposed KBs and how they work (is a SPAQRL endpoint sufficient?), e.g. from:
+         *     Unsupervised Entity Linking with Abstract Meaning Representation, ACL16 
+         *     CoType: Joint Typing of Entities and Relations with Knowledge Bases, WWW17 
+         *     Fast and Space-Efficient Entity Linking in Queries, WSDM15 
+         *     Tagme: on-the-fly annotation of short text fragments (by Wikipedia entities), CIKM10 
+         *     Local and Global Algorithms for Disambiguation to Wikipedia (Wikifier), ACL11 
+         *     DBpedia Spotlight, iSemantics13 
+      4 Test entity linkers with Virtuoso endpoint
+
+
+
+
+
+
+
+---+++ 21.09.2018
+   * discuss proposal for task description
+
+-- Main.BenjaminSchiller - 2018-10-12

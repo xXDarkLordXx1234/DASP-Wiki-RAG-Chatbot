@@ -1,0 +1,33 @@
+%META:TOPICINFO{author="ZijadMaksuti" date="1286430268" format="1.1" reprev="105" version="105"}%
+%META:TOPICPARENT{name="WebHome"}%
+-- Main.ZijadMaksuti - 29 Oct 2009
+
+   * ResearchTaskDictionaryIntegration
+   * MyNotes
+
+---+++ Zeiterfassung
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="1"  footerrows = "1" format=" | text,10 | date | text,4 | textarea,3x30" }%
+| *Zijad's Stunden* | | | |
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Dictionary Integration - Erste Schritte | 18 August 2010 | 4.0 | Lesen von: _Aligning Sense Inventories in Wikipedia and !WordNet (EW,IG)_ und  _How Web Communities Analyze Human Language: Word Senses in Wiktionary (!ChM , IG)_ |
+| Meeting, Dictionary Integration - Erste Schritte | 20 August 2010 | 4.0 | Meeting mit MM und SH: Initialmeeting, besprechen meiner Aufgaben. Lesen von: _Jurafsky & Martin: Speech and Language Processing, Chapter 19 and 20_ Seiten 611 bis 619. |
+| Meeting, Dictionary Integration - Erste Schritte | 16 September 2010 | 8.0 | Lesen von: _Jurafsky & Martin: Speech and Language Processing, Chapter 19 and 20_ Seiten 619 bis 652. |
+| Meeting, Dictionary Integration - !WordNet | 22 September 2010 | 5.5 | Meeting mit MM und SH <ul><li> Klären der Fragen bezüglich des Inhaltes des von mir zu erstellenden Relationsdiagrammes. Es ist beschlossen dass ich dabei mit !WordNet anfange.</li></ul> Dictionary Integration - !WordNet <ul><li> !WordNet Java API (JWNL) ist runtergeladen worden und in Eclipse angebunden. Ich habe mir die Folien der LSM Vorlesung zu !WordNet gelesen, weitere Notizen gemacht, und angefangen mit Erstellung eines simplen Diagrammes.  </li></ul> |
+| Dictionary Integration - !WordNet | 23 September 2010 | 3.0 | Ich habe die Folien der LSM Vorlesung zu !WordNet zu Ende gelesen, weitere Notizen gemacht, und das simple Diagramm erweitert. Dieses Diagramm  habe ich Erstellt zur Veranschaulichung der Informationen die aus dem !WordNet gewonnen werden können. |
+| Dictionary Integration - !WordNet | 26 September 2010 | 10.0 | Installieren von !WordNet 3.0 auf dem eigenen Rechner. Ich habe API sowie innere Form von Daten und Informationen in !WordNet analysiert und angefangen mit der Übertragung der für uns relevanten [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/WordNetResourcebeschreibung][Informationen]].  |
+| Dictionary Integration - !WordNet | 27 September 2010 | 4.0 | Weitere Analyse der !WordNets Index- und Datafiles und dazugehöriger API-Segmenten. Ergänzen der Informationen zu index.pos und data.pos sowie das entsprechende erweitern des   [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Hiwi/WordNetResourcebeschreibung][Diagrammes]].  |
+ | Meeting | 28 September 2010 | 1.0 | Meeting mit SH um MM. Beschlossen ist: 1)POS muss als Separate Klasse im Diagramm dargestellt werden da POS eine große Rolle spielt. 2)Bei der Erstellung von Diagramm soll ich auf die Informationen achten die wichtig bei der Erstellung von Datenbanken sind. 3) Attribute in den Klassen müssen beschrieben werden 4) Meetings werden zwei mal wöchentlich stattfinden um bessere Kommunikation zu erzielen |
+ | Dictionary Integration - !WordNet | 29 September 2010 | 6.0 | Redundanz im Diagramm ist eliminiert. POS ist als separate Klasse dargestellt und entsprechend mit den anderen verknüpft. Eine wichtige Einheit (!PointerType) ist im Diagramm eingefügt worden. Die Attributen der Klasse !IndexWord sind beschrieben.  |
+ | Dictionary Integration - !WordNet | 30 September 2010 | 5.5 | Ergänzung der Informationen des Files data.pos. Beschreibung des Files frame.vrb. Einheit Frame ist dem Diagramm hinzugefügt worden. Attributen der Klasse Synset sind beschrieben. Pointertypen sind aufgezählt mit Bezug auf die Encodierung im !WordNet. Lexikographische Files die zur Erstellung der Datenbank des !WordNets benutzt werden sind aufgelistet und erklärt. |
+ | Meeting | 1 Oktober 2010 | 1.0 | Beschlossen ist: 1)Word soll als Separate Klasse im Diagramm stehen 2)Ich soll herausfinden woher die Examples im !WordNet stammen. 3) Lexikographische Files sind für uns nur beschränkt interessant, tiefere Analyse ist nicht erforderlich 4)Die Häufigkeiten einiger Wörter in Konkordanztexten werden in !WordNet angezeigt, ich soll herausfinden wo diese Informationen stehen und wie diese mit den Senses verbunden sind |
+ | Dictionary Integration - !WordNet | 2 Oktober 2010 | 4.0 | Klasse Word ist separat im Diagramm dargestellt und ihre Attribute sind beschrieben. File index.sense ist analysiert und beschrieben worden, dabei hat sich herausgestellt dass die Informationen über Anzahl der Markierungen der Wörter in Konkordanztexten in diesem File stehen. Mir ist jedoch nicht ganz klar wie sense_key der dazu benutzt wird auf diese Informationen zuzugreifen generiert wird. Sense_key stellt die Verbindung zwischen dieser Zahl und dem Sense des Wortes dar. Man Pages des !WordNets sagen nicht viel darüber und API ist an diesen Stellen schlecht, bzw. nicht kommentiert worden was Verständnis des Codes erschwert. Morgen werde ich durch weitere Analyse des APIs dies herausfinden. |
+  | Dictionary Integration - !WordNet | 5 Oktober 2010 | 5.0 | Klasse !VerbExample ist im Diagramm eingefügt worden. Klassen !VerbExample und Frame sind beschrieben worden. Files _sentidx.vrb_ und _sents.vrb_ und in Ihnen enthaltenen Informationen sind beschrieben. Der Zusammenhang zwischen _sense_key_ und Informationen die über ihn gewonnen werden ist analysiert und erklärt. |
+    | Dictionary Integration - !WordNet | 5 Oktober 2010 | 3.5 | Pointertypen und deren Eigenschaften sind weiter Analysiert und näher erläutert. |
+ | *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 240 | bis Ende November (incl. "Reststunden" aus dem alten Vertrag) |
+
+
+   * [[Archiv][Archiv]]
+
+                        <nop>

@@ -1,0 +1,11 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1178647873" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Hier wird eine Übersicht über durchgeführte Experimente geboten. Dies beinhaltet Testaufbau und Testergebnisse.
+
+| *Datenbank* | *SQL-Query* | *LEN* | *UGR* | *Stars* | *Correlation* | *Spearman* | *Kendall* |
+| Digitalkameras | SELECT * FROM REVIEW WHERE TotalVotes>=5 AND DATE<='2006-06-01' | X | X | X | 0.454 +/- 0.020 | 0.452 +/- 0.019 | 0.319 +/- 0.013 |
+| Digitalkameras | SELECT * FROM REVIEW WHERE TotalVotes>=5 AND DATE<='2006-06-01' | X |  |  | 0.316 +/- 0.024 | 0.412 +/- 0.024 | 0.292 +/- 0.017 |
+
+
+
+-- Main.KaiMichaelHoever - 08 May 2007

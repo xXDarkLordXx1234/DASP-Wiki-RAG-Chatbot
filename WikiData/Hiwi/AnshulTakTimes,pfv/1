@@ -1,0 +1,9 @@
+%META:TOPICINFO{author="eckart" date="1459160131" format="1.1" version="1"}%
+%META:TOPICPARENT{name="AnshulTak"}%
+---+ FROM_MONTH - TO_MONTH 2016
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" headerrows="2"  footerrows = "1" }%
+| *Hours* |
+| *Date* | *Task* | *Hours* | *Notes* |
+| | Carry over | ??? | |
+| 1-2-2016 | Which task(s) was being worked on | 4 | |
+Sum: %CALC{"$SUM(R2:C3..R100000:C3)"}% / 120

@@ -1,0 +1,81 @@
+%META:TOPICINFO{author="aelmi" comment="reprev" date="1478709937" format="1.1" reprev="20" version="22"}%
+%META:TOPICPARENT{name="HamidZafar"}%
+---++ [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafar][Back]] 
+
+---+!! Meetings
+
+---++ 09.11.2016
+   * New ideas:
+      * Application of IMMC for text segmentation: http://www.mirlab.org/conference_papers/International_Conference/ICASSP%201998/pdf/author/ic982335.pdf
+      * HDM-HMM: Potential paper (Side-work)
+   * Presentation:
+      * Example: show a word in its context can have different topics in a document *Done*
+      * Add WSI and ESD as potential NLP applications *Done*
+      * Evaluating the performance of AV_DPMM. Experiment on bigger dataset, how much faster does it get
+         * also different parameters: like different cluster size
+---++ 02.11.2016
+   * Presentation:
+      * Outline: merge *Done*
+      * References for the pictures *Done*
+      * HDP: example hdp vs lda *Done*
+      * Link from HDP to HMM: order of observation (LDA bag of words) *Done*
+      * HDP-HMM: motivating Example? HDP-HMM WSI (experiment results or the idea) *Done*
+      * IMMC and motivation: swap *Done*
+      * Scalability: add more detail on dataset and experiment, Goal/motivation + requirement for the scalable model *Done*
+      * AVParallel: describe super cluster
+      * Add new slide: question, application for nlp *Done*
+      * Add new slide: about the rest of the work *Done*
+      * result of immc for wsi?
+      * try to use the idea of "Word Sense Disambiguation using HMM Tagger" as an example of immc for wsi
+   * Writing:
+      * also add experiments in here, e.g. immc for wsd
+   * Run IMMC for WSI/WSD or ESD: *priority*
+      * HDP-HMM/IMMC for WSI: for long documents.
+   * Implementation:
+      * Scalable IMMC
+---++ 28.10.2016
+   * Presentation:
+      * Eliminate some details (e.g. math stuff) *I tried keep the ones*
+      * Add overview about scalability (high level view) *Done*
+      * Motivation IMMC (FB sample) *Done*
+      * Scalability: Add AV-DP result from matlab implementation *Done*
+   * Writing:
+      * More explanation on AV IMMC *Done*
+      * Inference *Partially, DPMM is done*
+      * Visualization (for stick breaking process *done*, also graphical models *done*)
+      * Organization of sections
+      * Summerize the spliting and merging steps as well as clustering (From last week)
+   * Run IMMC for WSI/WSD or ESD: *priority*
+      * HDP-HMM/HDP for WSI: for long documents. *Experiment with HDP for WSI*
+   * Implementation:
+      * Scalable IMMC
+
+---++ 18.10.2016
+   * Prepare presentation slides *Please checkout Presentation/Mid-term presentation.pdf, Still working on it*
+   * Requirement for distributed platform
+      * A single server with multiple cores *[Currently using google cloud (free for 2 months) 1CPU 8Cores 7GB mem]*
+      * investigate existing options (hadoop, spark, tension flow)
+      * Check out free plan on amazon cloud *[Applied for it, wait for approval.]*
+   * Prepare report on model in more detail and align with implementation *Please checkout Writing/Template/UKPThesisTemplate.pdf. Not quite done yet*
+   * Summerize the spliting and merging steps as well as clustering 
+   * evaluation: 
+      * try with exterme values different in each cluster => *got better, used 30,000 data, 78%-94% correctly identified (depends on the dataset)*
+      * try prediction task
+
+---++ 12.10.2016
+
+   * Reviewing scalability papers for HDPs and adapting to IMMC
+      * Proposed method uses a Gibbs' sampler with auxiliary variables
+   * Implementing scalable distributed IMMC
+   * Tasks to do for next week:
+      * Report on the method -- put a description into the thesis template
+      * Continue with implementation of distributed IMMC
+      * Produce an outline of the mid-term presentation
+      * Update UKP Wiki page
+      * Presentation info (see [[https://wiki.ukp.informatik.tu-darmstadt.de/bin/view/Students/HamidZafarPresentations][presentation page]])
+      * Computation resources!
+
+-- Main.EdwinSimpson - 2016-10-11
+
+
+-- Main.HamidZafartavanAelmi - 2016-10-14

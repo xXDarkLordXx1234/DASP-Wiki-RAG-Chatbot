@@ -1,0 +1,38 @@
+%META:TOPICINFO{author="speh" comment="" date="1621389245" format="1.1" reprev="2" version="2"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelor Thesis: Controlled Language Generation for Framed Issues
+
+*Start date:* 21.04.2021
+
+   
+*Supervisor:* Tobias Mayer
+
+---++ Meeting 06.05.2021
+   * Replication of Aspect-Controlled Neural Argument Generation model
+      * First time running a full scale CTRL-based model
+      * Adaptation of existing code to own requirements    
+      * First longer-term training on Slurm Compute Cluster
+
+---++ Meeting 29.04.2021
+   * Evaluation of potential Language Model candidates & reading of further promising papers 
+      * MEGATRON-CNTRL: Controllable Story Generation with External Knowledge Using Large-Scale Language Models
+      * PAIR: Planning and Iterative Refinement in Pre-trained Transformers for Long Text Generation    
+      * How to Make Neural Natural Language Generation as Reliable as Templates in Task-Oriented Dialogue
+      * Plug and Play Autoencoders for Conditional Text Generation
+      * Diverse, Controllable, and Keyphrase-Aware: A Corpus and Method for News Multi-Headline Generation
+
+---++ Meeting 21.04.2021
+   * First own implementation of smaller CTRL version on small test data set
+   * Evaluation of potential Language Model candidates
+      * PALM: Pre-training an Autoencoding&Autoregressive Language Model for Context-conditioned Generation
+      * FUDGE: Controlled Text Generation With Future Discriminators    
+
+
+---++ Meeting 14.04.2021
+   * Getting familiar with Slurm and compute cluster environment
+   * Reading of similar UKP papers
+      * Aspect-Controlled Neural Argument Generation
+      * Metaphor Generation with Conceptual Mappings
+   * Familiarization with Controllable Text Generation
+   * Familiarization with Language Models CTRL & BART 
+   

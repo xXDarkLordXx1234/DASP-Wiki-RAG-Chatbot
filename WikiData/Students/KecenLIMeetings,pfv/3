@@ -1,0 +1,45 @@
+%META:TOPICINFO{author="li" date="1501499633" format="1.1" version="3"}%
+%META:TOPICPARENT{name="KecenLI"}%
+---++ Meeting 31.7.2017
+
+Objectives achieved last week: 
+
+   * PDF and XML conversion code
+   * tested deeplearning4j on 10 papers relating IQA (image quality assessment)
+   * installed solr
+   * elsevier classification seems not plausible
+
+Planned tasks:
+
+
+
+---++ Meeting 24.7.2017
+
+Planned tasks:
+   * PDF conversion
+   * deeplearning4j test on 10-20 papers
+   * Solr (index schema file + mysql schema from Masoud)
+   * complete xml processing with uima
+
+
+---++ Meeting 17.7.2017
+
+Objectives achieved: 
+
+   * briefing on VM and APU at UKP server
+   * summary of current status of resourceSync harvester
+   * introduction of Solr into the project
+   * discussion on presentation schedule
+
+Planned tasks:
+   * obtain category list from Springer/Elsevier
+   * implement Springer/Elsevier paper category filtering
+   * implement XML conversion into formatted text file (schema discovery)
+   * implement PDF conversion into formatted text file for Springer
+   * experiment obtained text files with embedding learner in deeplearning4j framework
+   * setup VM environment at UKP server (kbrs.ukp.informatik.tu-darmstadt.de)
+   * No. of files estimation for disk space required
+
+
+
+-- Main.MasoudKiaeeha - 2017-07-17

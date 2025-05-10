@@ -1,0 +1,49 @@
+%META:TOPICINFO{author="KaiMichaelHoever" date="1179700002" format="1.1" version="2"}%
+%META:TOPICPARENT{name="KaiMichaelHoever"}%
+Diese Seite zeigt den aktuellen Arbeitsstatus. Sie gibt eine Übersicht darüber, was bereits bearbeitet wurde und was noch zur Bearbeitung aussteht.
+
+%TOC%
+
+---++bereits bearbeitet
+   * Literaturrecherche
+      * Inhaltliche Zusammenfassung der relevanten Literatur (muss aber natürlich noch überarbeitet werden)
+      * Hervorheben von Features, die für die Arbeit interessant sind
+   * Implementierung der Amazon-DB
+      * Erstellung der Datenbankstruktur
+      * Erstellung von Methoden, mit deren Hilfe Rezensionen einer gegebenen Produktgruppe und weitere Meta-Informationen in eine lokale Datenbank geschrieben werden können
+      * Erstellung von Methoden zur Abfrage der lokalen Datenbank
+   * Einarbeitung in UIMA
+   * Implementierung des Verfahren von Kim et al. 2006
+      * Schreiben eines !CollectionReaders zum Auslesen der Rezensionsdaten
+      * Extraktion der 3 wichtigsten Features bei Kim über UIMA
+         * LEN: Länge der Token
+         * UGR: tf-idf Statistik jedes Wortes
+         * Stars: Benotung des Rezensenten
+      * Erstellung der arff-Files per GUI
+      * Performanzmessung mittels des Pearson'schen Korrelationskoeffizienten und des Spearman'schen Rankkorrelationskoeffizienten (in Arbeit)
+   * Implementierung weiterer Features
+     * Annotaroren geschrieben zur Bestimmung der
+         * Anzahl der erwähnten Hersteller
+         * Anzahl der erwähnten Konkurrenten (Die Idee dahinter ist, dass es für Kunden interessant sein kann, wenn ein Rezensent das Produkt mit Konkurrenzprodukten vergleicht)
+
+
+---++ to do
+   * Entwicklung einer Methode zur Aufteilung der Daten in einen Develpment Corpora und eine Testmenge, wobei die Verteilung erhalten bleibt
+   * Implementierung des Verfahren von Kim et al. 2006
+      * Durchführung von grid-searches über die 3 Features von Kim wie bei Hsu et al. 2003 beschrieben
+   * Implementierung weiterer Features, wie z.B.
+      * Anzahl der erwähnten technischen Eigenschaften
+         * Erstellung einer Liste technischer Begriffe für Digitalkameras
+         * Erstellung einer Liste technischer Begriffe für MP3-Player
+      * Erkennung eines strukturellen Aufbaus (pros, cons, ...)
+   * ...
+   * Anwendung anderer Verfahren zur Performanzmessung
+      * z.B. Jarvelin 2002
+   * Durchführung weiterer Tests mit verschiedenen Feature-Kombinationen
+   * Sichtung weiterer Maschineller Lernverfahren zum Lernen der Nützlichkeit einer Rezension
+   * Zusammenschreiben der Diplomarbeit
+   * Vortrag
+
+
+
+-- Main.KaiMichaelHoever - 11 May 2007

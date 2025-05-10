@@ -1,0 +1,111 @@
+%META:TOPICINFO{author="li" comment="save topic" date="1505307818" format="1.1" reprev="7" version="9"}%
+%META:TOPICPARENT{name="KecenLI"}%
+---++ Meeting 13.9.2017
+
+Planned task:
+
+   * train paravec with full set of springer papers (or )
+   * pruning springer txt to exclude formulas if possible
+   * parse and classify the full set of elsevier xml on apu server
+
+Regarding embedding learning evaluation:
+
+   * compare batch learning and incremental learning
+   * require date information of publication and segregate them in batches
+   * compute difference in each iteration between batch learnt space and incremental learnt space
+
+
+
+---++ Meeting 29.8.2017
+
+Planned Tasks:
+
+   * try to complete the springer paper training and test on elsevier datasets
+
+Discussion:
+
+   * for the time being, it's fine with doing filtering only one time.
+   * using deeplearning4j to classify computer science related springer and elsevier papers (para2vec with classifier)
+      * Other option: using SciKit-Learn http://scikit-learn.org/stable/auto_examples/text/document_classification_20newsgroups.html#sphx-glr-auto-examples-text-document-classification-20newsgroups-py
+
+Ideas noted:
+   
+   * incremental training evaluation done offline with papers batches separated by dates, online incremental training might not be feasible if we don't continuously feed new paper into the system
+   
+
+---++ Meeting 21.8.2017
+
+Planned Tasks:
+
+   * search result reranking mechanism 
+   * ** document against user library divergence
+   * ** document vector comparison
+   * check document vector in deeplearning4j
+
+Ideas noted:
+  
+   * user library document divergence: low such that the library can be used to rerank search result, high means user is just doing explortory search
+
+---++ Meeting 31.7.2017
+
+Planned Tasks:
+
+   * filtering papers on APU for both Springer and Elsevier
+   * word2vec aggregation training implementation in kbrs
+   * finish relevant reading
+
+
+---++ Meeting 31.7.2017
+
+Objectives achieved last week: 
+
+   * PDF and XML conversion code
+   * tested deeplearning4j on 10 papers relating IQA (image quality assessment)
+   * installed solr
+   * elsevier classification seems not plausible
+
+Planned tasks:
+   * ask elsevier dev team for category search
+   * classification filtering in springer and elsevier
+   * read suggested papers on word embeddings and query expansion
+   * implement word2vec in kbrs and explore more functionality and configs
+   * fix reader webapp dependencies
+
+General idea:
+   * aggregation approach (based on publication date or randomness) - time does carry extra informations which is important.
+   * evaluation on the above mentioned publication date approach (will new words be added into vector space during aggregated learning? even added, any different outcome)
+   * batch vs aggregation (take both into account, maybe a trade-off like a hybrid model for the system)
+   * actual evaluation approach, a bench mark together with deeplearning4j similarity comparison
+
+
+
+---++ Meeting 24.7.2017
+
+Planned tasks:
+   * PDF conversion
+   * deeplearning4j test on 10-20 papers
+   * Solr (index schema file + mysql schema from Masoud)
+   * complete xml processing with uima
+
+
+---++ Meeting 17.7.2017
+
+Objectives achieved: 
+
+   * briefing on VM and APU at UKP server
+   * summary of current status of resourceSync harvester
+   * introduction of Solr into the project
+   * discussion on presentation schedule
+
+Planned tasks:
+   * obtain category list from Springer/Elsevier
+   * implement Springer/Elsevier paper category filtering
+   * implement XML conversion into formatted text file (schema discovery)
+   * implement PDF conversion into formatted text file for Springer
+   * experiment obtained text files with embedding learner in deeplearning4j framework
+   * setup VM environment at UKP server (kbrs.ukp.informatik.tu-darmstadt.de)
+   * No. of files estimation for disk space required
+
+
+
+-- Main.MasoudKiaeeha - 2017-07-17

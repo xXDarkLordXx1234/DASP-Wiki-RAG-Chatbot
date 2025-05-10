@@ -1,0 +1,165 @@
+%META:TOPICINFO{author="mischnaewski" comment="" date="1641999057" format="1.1" reprev="7" version="7"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---+!! Bachelors Thesis: Reasoning over Knowledge Graphs for Generative Question Answering
+
+*Supervisor: Leonardo Ribeiro*
+
+---++++ Week 25.08 - 31.08.2021
+
+   * Completed setting up Slurm, Wiki, including environments
+   * Computed perplexity
+   * Metrics in ELI5:
+      * F1 for ROUGE-{1,2,L}
+      * Human Judges
+      * ROUGE-20%
+      * FILL-1
+
+---++++ Week 01.09 - 07.09.2021
+
+   * Ran baselines 
+      * This time with full dataset because of access to cluster
+      * Models: t5-base & bart-base
+      * Datasets: ELI5 & GOOAQ 
+         * (ELI5 transformed to pairs of questions and answers instead of 1:N relation)
+      * Completed:
+         * t5-base on gooaq
+
+---++++ Week 08.09 - 14.09.2021
+
+   * Background research
+      * Look into SOTA on ELI5
+      * Look into using GNNs for QA
+      * Evaulate potential approaches for improving QA using GNNs
+      * Summarize in presentation for Leonardo
+   * Run QA-GNN as a baseline (and proof of working on ukp slurm cluster)
+      * Had issues with running due to old gcc version
+         * Fixed by installing gcc over conda (important: first install gcc, then install pytorch-geometric etc. as otherwise geometric uses the wrong path)
+
+---++++ Week 15.09 - 21.09.2021
+
+   * Fix Baselines
+      * Baselines use incorrect model parameters making them inferior to expected scores
+      * Reformulate background research (tabular data etc.)
+      * Perform entity extraction similar to QA-GNN
+      * Perform subgraph extraction similar to QA-GNN
+         * After that, think about extending subgraphs as they probably will not be large enough to contain the answer
+
+---++++ Week 22.09 - 28.09.2021
+
+   * Add selftext to input
+      * Does not improve performance
+   * Compare Conceptnet and DBPedia for ELI5
+      * Conceptnet seems more adequate as knowledge is more general which ELI5 is likely to need more
+      * Questions that are part of ELI5 are usually understood by the average person 
+      * Conceptnet is more refined
+   * Subgraph extraction
+      * Performance issues due to some computations only required in QAGNN
+
+---++++ Week 29.09 - 05.10.2021
+
+   * Improve space efficiency of training scripts
+   * Switch from DBPedia as main KG to Conceptnet
+   * Run subgraph extraction 
+      * Slow due to still present performance issues
+      * Adjustment needed as QA-GNN often relies on the existance of answer candidates to build relevant hops
+      * Script is often preempted
+   * While subgraph extraction is running, work on adding the main ELI5 baseline using fairseq
+   * Write thesis itself
+
+---++++ Week 06.10 - 12.10.2021
+
+   * Complete subgraph extraction
+   * Complete graph linearization 
+   * Run experiment with graph linearization on extracted subgraphs but on reduced dataset size (1/20th)
+      * Results slightly worse than previously. Perplexity much worse than previously
+
+---++++ Week 13.10 - 19.10.2021
+
+   * Due to low priority on slurm cluster, restrict dataset size to 1/20th for quicker development
+   * Rerun all experiments on 1/20th of the datasets
+      * Rerun experiments 5 times for stable performance average
+      * Complete first draft of midterm presentation (5th of November)
+   * Start work on model for injecting dense knowledge representation between transformer encoder and decoder.
+      * Specifically transformer for conditioning on two sequences
+
+---++++ Week 20.10 - 26.10.2021
+
+   * Suspend model conditioned on two sequences due to time constraints
+   * Improve midterm presentation based on feedback
+   * Add linearization used by Fan et al. (2019b)
+
+---++++ Week 27.10 - 02.11.2021
+
+   * Start bin-experiment (5 bins, 4 linearizations, 5 runs)
+   * Analyze length of linearizations with respect to bart input truncation
+   * Final improvements of midterm presentation
+   * Write thesis
+
+---++++ Week 03.11 - 09.11.2021
+
+   * Hold midterm presentation (04.11.2021)
+   * Structure and analyze further progress with help from midterm feedback
+   * Get support documents baseline running using wikipedia data (to compare to graph extraction)
+   * Reevaluate all experiments with additional BLEU metric
+   * Write thesis
+
+---++++ Week 10.11 - 16.11.2021
+
+   * Run oracle experiment
+     * Use answers for subgraph extraction as an upper bound on subgraph extraction
+     * Shows that subgraph extraction can still be improved by a lot
+     * Linearization efficiency can however be confirmed using oracles
+   * Write thesis
+
+---++++ Week 17.11 - 23.11.2021
+
+   * Run main experiment using longformer
+     * Problems with slurm reservation on Minerva
+   * Write thesis
+
+---++++ Week 24.11 - 30.11.2021
+
+   * Run main experiment using longformer
+      * Performance terrible
+   * Run full subgraph extraction and evaluate
+   * Write thesis
+
+---++++ Week 01.12 - 07.12.2021
+
+   * New Experiment: Node linearization
+      * Only linearize concepts to probe importance of relation types
+   * Problem with slurm cluster. Jobs are cancelled due to some global storage issue?
+   * Write thesis 
+
+---++++ Week 08.12 - 14.12.2021
+
+   * Run node linearization experiment
+   * Node linearization results
+      * Node linearization improves on no linearization 
+      * Still worse than all other linearizations
+      * Implies that concepts are useful but relation are also useful
+   * Write thesis
+
+---++++ Week 15.12 - 21.12.2021
+
+   * Try other longformer models
+      * Performance *decreases* with longer linearization approaches
+   * Write thesis
+
+---++++ Week 22.12 - 28.12.2021
+
+   * Only writing thesis
+
+---++++ Week 29.12 - 04.01.2022
+
+   * Run main experiments on GooAQ dataset
+   * Write thesis
+
+---++++ Week 05.01 - 11.01.2022
+
+   * On Vacation
+
+---++++ Week 12.01 - 18.01.2022
+
+   * Finalize first thesis draft
+   * Finalize first final presentation draft

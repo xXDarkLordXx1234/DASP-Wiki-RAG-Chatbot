@@ -1,0 +1,22 @@
+%META:TOPICINFO{author="lilin" comment="" date="1561968952" format="1.1" reprev="2" version="2"}%
+---+!! Time Table
+
+---++ June 2019
+
+| *Date* | *Task* | *Hours* | *Notes* |
+| 05.06.2019 | Try out the example projects in INCEpTION | 3 | |
+| 06.06.2019 | Understand how the external recommander works with spaCy. | 3 | |
+| 07.06.2019 | Replace the pos and ner part of spaCy with flair | 4 | |
+| 12.06.2019 | Replace the pos and ner part of spaCy with flair | 3 | |
+| 13.06.2019 | Find out how to deal with the issue of timeout when get predictions from the external recommender| 3 | |
+| 14.06.2019 | Find out how to deal with the issue of timeout when get predictions from the external recommender | 4 | |
+| 19.06.2019 | Understand how to train our own models in flair | 3 | |
+| 20.06.2019 | Understand how spring works to add the configuration variable into our project | 3 | |
+| 21.06.2019 | Find which tagsets are used in Flair models. And add the tagsets in INCEpTION| 4 | |
+| 27.06.2019 | Add options to specify pretrained models | 5 | |
+| 28.06.2019 | Understand how to use gunicorn to run the server in multithreading| 5 | |
+| *SUM* | | %CALC{"$SUM( $ABOVE() )"}% | |
+
+
+
+-- Main.JanChristophKlie - 2019-05-14

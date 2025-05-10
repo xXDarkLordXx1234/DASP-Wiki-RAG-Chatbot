@@ -1,0 +1,114 @@
+%META:TOPICINFO{author="DanielBaer" date="1283504920" format="1.1" version="50"}%
+%META:TOPICPARENT{name="WebHome"}%
+---++ Carolin Deeg
+[[Projects.Wikulu.WikuluSetup][Wikulu Setup]], [[Projects/Wikulu/WikuluPluginsHowTo][Wikulu Plugins HowTo]]
+
+---++++ Scratchpad
+   * Was wir mal fixen sollten: Bei Keyphrase Extraction werden auch Substrings hervorgehoben, sollten aber nur völlständige Wörter sein. Bsp: Keyphrase "owl", hervorgehoben wird aber auch "owl" innerhalb von "knowledge".
+
+---++++ Aufgaben
+%EDITTABLE{ sort="on" tableborder="0" cellpadding="1" cellspacing="3" }%
+| *Aufgabe* | *% done* |
+| Extraktion der parallelen Wikiquotes | 100 |
+| Refactoring der WikiAPI | 100 |
+| Modularisieren von Wikulu | 100 |
+| Dynamische Plugins mit Spring (Richard) | 100 |
+| Tutorialerstellung | 100 |
+| Refactoring | 20 |
+| Konfigurierbare Komponenten | 0 |
+
+---++++ Stunden
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Parallele Wikiquotes | 05.01.2010 | 2 | Eclipse eingerichtet und Projekt aufgesetzt |
+| | 06.01.2010 | 1 | Kennenlernen der Wiki-API |
+| | 06.01.2010 | 4 | Zerlegung der Aufgabe in einzelne Teilaufgaben und deren Implementierung |
+| | 08.01.2010 | 2 | Optimierung des Codes und Bugfixes |
+| | 13.01.2010 | 1 | Besprechung |
+| | 13.01.2010 | 2 | Implementierung von zusätzlichen Hilfsmethoden |
+| | 16.01.2010 | 2 | Ergänzen/Hinzufügen der Dokumentation |
+| | 18.01.2010 | 3 | Einfügen des Projekts ins SVN (und benötigte Methoden in bereits vorhandenen Klassen hinzufügen) |
+| | 20.01.2010 | 1 | Ausgabe von Statistiken, Umsortieren des Codes |
+| | 26.01.2010 | 1 | Besprechung |
+| | 19.01.2010 | 2 | Debugging (zu wenig gespeicherte Zitate) |
+| Refactoring der WikiAPI | 03.02.2010 | 1 | Analyse des vorhandenen Codes |
+| | 04.02.2010 | 2 | Implementierung der Klasse Page und Unterklassen |
+| | 05.02.2010 | 3 | Umstellen der verschiedenen WikiAPIs und Tests |
+| | 06.02.2010 | 3 | Debugging und Korrekturen nach der Umstellung |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 30 | 01.01.2010 bis 31.01.2010 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Refactoring der WikiAPI | 08.02.2010 | 1 | Dokumentation |
+| | 08.02.2010 - 15.02.2010 | 6 | Umstellen von anderen Klassen auf neue Funktionen |
+| | 09.02.2010 - 16.02.2010 | 5 | Entfernen von veralteten WikiApi-Methoden und Fehlerbehebungen |
+| Modularisieren von Wikulu | 23.02.2010 | 1 | Installation des Wikulu-Plugins |
+| | 05.03.2010 | 3 | Neuinstallation von Eclipse, Einrichten der Plugins |
+| | 09.03.2010 | 3 | Update der Projektabhängigkeiten und Fehlerbehebungen |
+| | 11.03.2010 - 16.03.2010 | 7 | Funktionen von Wikulu modularisieren |
+| | 16.03.2010 - 18.03.2010 | 5 | Dynamisches Wikulu-Menü erstellen |
+| | 24.03.2010 - 26.03.2010 | 6 | Modularisieren von Wikulu.java |
+| | 25.03.2010 - 30.03.2010 | 10 | Strukturieren und Testen des Plugin-Systems |
+| | 02.04.2010 - 08.04.2010 | 11 | Implementierung der Plugins und Fehlerkorrekturen |
+| | 07.04.2010 | 1 | Besprechung mit Daniel |
+| | 10.04.2010 | 2 | Dokumentation |
+| | 13.04.2010 - 17.04.2010 | 4 | Fehlerkorrekturen und Aufräumen des Codes |
+| | 16.04.2010 | 1 | Dynamisches Wikulu-Menü für MediaWiki |
+| | 22.04.2010 - 25.04.2010 | 4 | Vorbereitung der Präsentation des Plugin-Systems |
+| | 27.04.2010 - 04.05.2010 | 5 | Fehlerbehebungen |
+| Dynamische Plugins mit Spring | 05.05.2010 - 08.05.2010 | 2 | Einlesen in die Java Servlet-API |
+| | 09.05.2010 - 14.05.2010 | 7 | Einfügen der Spring-Komponenten |
+| | 16.05.2010 - 20.05.2010 | 6 | Umstellen des Plugin-Systems |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | 01.02.2010 bis 30.04.2010 |
+
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Problemlösung: JavaScript-Funktionen aus Skripten, die nicht im Proxy-Projekt liegen, werden nicht mehr ausgeführt | 21.05.2010 | 2 | Fehlersuche im zuständigen Servlet (Skripte werden nicht korrekt ausgegeben?) |
+| | 21.05.2010 | 4 | Fehlersuche in wikulu.js (Funktionen werden nicht aufgerufen, wenn man auf die Links klickt?) |
+| | 23.05.2010 | 5 | Überprüfen der einzelnen JavaScript-Dateien (insgesamt 6 Stück) (falsche JSON-Strings/Funktionsnamen?) |
+| | 24.05.2010 | 2 | erneutes Überprüfen des Servlets; Änderung des Ausgabetyps |
+| | 24.05.2010 | 3 | erneutes Überprüfen von wikulu.js (JavaScript wird aufgerufen, Fehler muss in wikulu.js liegen) |
+| | 25.05.2010 | 4 | Überprüfen des generierten Menüs (falsche Verlinkungen?) |
+| | 28.05.2010 | 3 | Umschreiben und Testen der Funktion von wikulu.js, die die externen JavaScripts aufruft |
+| | 30.05.2010 | 2 | Herauslöschen der Testfunktionen und erneute Überprüfung der ursprünglichen Funktionen |
+| | 05.06.2010 | 3 | Entfernen der fehlerhaften Überprüfung und kleinere Korrekturen von wikulu.js |
+| Dynamische Plugins mit Spring | 09.06.2010 - 16.06.2010 | 8 | Umstellung des automatischen Methodenaufrufs der Plugins |
+| | 16.06.2010 - 18.06.2010 | 4 | Zusammenführen des aktuellen Stands (SVN) und dem Plugin-System |
+| | 18.06.2010 - 20.06.2010 | 5 | Testen des Systems |
+| | 25.06.2010 | 2 | Auflösen des Service-Projekts |
+| | 26.06.2010 | 4 | Testen des verschobenen Codes (Service -> Plugins) und Korrekturen |
+| | 02.07.2010 | 2 | Lösen von Konflikten im SVN (JavaScript-Dateien der Plugins anpassen) |
+| | 03.07.2010 | 3 | Lösen von Konflikten im SVN (Klassen der Plugins anpassen) |
+| | 05.07.2010 | 2 | Testen der lokalen Wikulu-Version und Fehlerkorrekturen |
+| | 08.07.2010 | 4 | Fehlerkorrekturen in den Plugin-Klassen |
+| | 13.07.2010 | 1 | Besprechung mit Daniel |
+| | 13.07.2010 | 4 | Einchecken der lokalen Wikulu-Version und Fehlerbehebungen im SVN |
+| | 15.07.2010 | 2 | Neue Version des Proxy-Projektes ins SVN einchecken |
+| | 20.07.2010 | 2 | Fehlerbehebung: Servlet wird nicht mehr angesprochen (Fehler beim Auslesen der Plugins?) |
+| | 21.07.2010 | 3 | Fehlerbehebung: Servlet wird nicht mehr angesprochen (Neukonfiguration von web.xml) |
+| | 26.07.2010 | 2 | Fehlersuche in Keyphrase Extraction (fehlende Dateien?) |
+| | 27.07.2010 | 2 | Fehlerbeseitigung bei AddContent |
+| | 28.07.2010 | 1 | Bearbeitung der Studie (Daniel) |
+| | 29.07.2010 | 2 | Entwurf für ein Tutorial zum Erstellen von Plugins |
+| | 05.08.2010 | 2 | Fertigstellung des Tutorials |
+| | 06.08.2010 | 1 | Überarbeitung des Tutorials |
+| | 11.08.2010 | 2 | Überarbeitung des Tutorials (Korrekturen und Ergänzungen) |
+| Refactoring | 13.08.2010 | 1 | Refactoring: Wikulu.java |
+| | 13.08.2010 | 1 | Refactoring: wikulu.js und twikisimpleadapter.js |
+| | 15.08.2010 | 2 | Refactoring und Korrektur von mediawikisimpleadapter.js |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | 01.05.2010 bis 30.07.2010 |
+
+%EDITTABLE{  sort="on" tableborder="0" cellpadding="1" cellspacing="3" footerrows = "1" }%
+| *Aufgabe* | *Datum* | *Stunden* | *Bemerkungen* |
+| Refactoring | 20.08.2010 | 2 | Entfernen von weiteren unbenötigten Funktionen in Wikulu.java/wikulu.js |
+| | 23.08.2010 | 2 | Entfernen von nicht mehr benötigten Debugging-Meldungen aus Wikulu.java und einigen Plugins |
+| Zwischenaufgabe: Proxy soll nur noch Anfragen des Wikulu-Servers beantworten | 28.08.2010 | 2 | Vertrautmachen mit dem entsprechenden Code, mögliche Stellen zum Blockieren anderer Seiten finden |
+| | 29.08.2010 | 2 | Umleiten anderer Domains als das entsprechende Wiki auf "Internal Server Error", Testen der Lösung |
+| *Summe* | | %CALC{"$SUM( $ABOVE() )"}% | |
+| *Soll* | | 90 | 01.08.2010 bis 31.10.2010 |
+<nop>

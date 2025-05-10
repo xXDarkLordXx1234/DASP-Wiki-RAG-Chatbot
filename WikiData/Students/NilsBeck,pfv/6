@@ -1,0 +1,48 @@
+%META:TOPICINFO{author="nbeck" comment="" date="1617822879" format="1.1" reprev="5" version="6"}%
+%META:TOPICPARENT{name="StudentsList"}%
+---++ KW 13: March 29-April 4, 2021
+   * held midterm presentation & received feedback
+      * stick to T5, performs better than BART and others
+      * consider multilingual models, such as mT5. Maybe evene better
+      * consider multilingual training data, e.g., by linking FrameNet to GermaNet, Salsa, etc.
+      * hyperparameter not a huge concern, since we use large data set
+
+---
+
+---++ KW 12: March 22-28, 2021
+   * went over language models & papers in detail and selected for fine-tuning and comparison
+      1. T5
+      2. BART
+      3. CTRL
+   * agreed on collaboration with Kevin for paper, due by June 1st, 2020
+   * set up code environment for fine-tuning T5, with other models to follow. Currently, execution works successfully with _t5-small_ on the MONEY IS A SUBSTANCE metaphor
+   * presentation next week (April 1, 2021) at 11am, 10mins talk + 10mins discussion
+
+---
+
+---++ KW 11: March 15-21, 2021
+   * created exhaustive set of sentence mappings from MetaNet and FrameNet, roughly 360.000 in total
+   * began researching language models for fine-tuning. Current candidates
+      * T5
+      * BART
+      * CTRL
+      * PPLM
+      * GPT-2
+   * wrote chapter on conceptual metaphor theory
+   * received draft paper from Kevin, where some of my work is planned to be included
+
+---
+
+---++ KW 10: March 8-14, 2021
+   * implemented fitterBERT, resulting in a roughly 1000x speedup in creating sentence mappings
+   * adopted Delemmatizer from fitBert
+   * created figures for sentence and vocab distribution
+   * computation of ALL possible sentence mappings running
+   * *Mid-term presentation* on April 1, 2021
+
+---
+
+---++ KW 9: March 1-7, 2021
+   * began writing introduction 
+   * FitBERT way too slow -> began custom implementation building on huggingface's BERT
+   * read related papers (anonymous submissions)

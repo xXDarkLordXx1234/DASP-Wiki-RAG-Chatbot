@@ -1,0 +1,31 @@
+%META:TOPICINFO{author="BastianChristoph" date="1287512323" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="AnnotatorBaselines"}%
+---++ Introduce Type: SummaryAnnotation
+
+As we need to introduce a new type "SummaryAnnotation" here including a additional
+feature "SummaryString" we need to take a look at the TypeSystemDesciption.
+
+When adding a new type to the TypeSystem, we have code like this:
+<blockquote>
+  TypeSystemDescription typeSystemDesc = ComponentFactory.getDKProTypeSystem();
+   <br>typeSystemDesc.addType("de.thesis.summaryExtraction.type.SummaryAnnotation", "", "uima.tcas.Annotation");
+</blockquote>
+
+But as we need to introduce the Feature "SummaryString" as well and not having a function
+in the TypeSystemDescription-Class for adding a Type including the used feature, we can
+use a workaround, to extend the TypeDescription-Array inside the Object as following:
+
+<blockquote>
+  TypeDescription_impl summaryTypeDesc = new TypeDescription_impl();
+  <br>summaryTypeDesc.setName("de.thesis.summaryExtraction.type.SummaryAnnotation");
+  <br>summaryTypeDesc.setDescription("");
+  <br>summaryTypeDesc.setSupertypeName("uima.tcas.Annotation");
+  <br>summaryTypeDesc.addFeature("SummaryString","","uima.cas.String");
+  <br>TypeDescription[] descArray = typeSystemDesc.getTypes();
+  <br>TypeDescription[] newDesc = new TypeDescription_impl[descArray.length+1]; 
+  <br>for(int i=0; i< descArray.length; i++) {
+  <br>  newDesc[i] = descArray[i];
+  <br>}
+  <br>newDesc[descArray.length] = summaryTypeDesc;
+  <br>typeSystemDesc.setTypes(newDesc);
+</blockquote>

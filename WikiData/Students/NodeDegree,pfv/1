@@ -1,0 +1,7 @@
+%META:TOPICINFO{author="NicoErbs" date="1263900797" format="1.1" reprev="1" version="1"}%
+%META:TOPICPARENT{name="NicoErbsPageRankCooccurrenceAndGraphs"}%
+---+++NodeDegree
+
+This algorithm calculates a score of a node by summing over all edges. In case of unweighted edges it normalizes it with the total amount of edges. Nodes with more edges are rated higher than nodes with less edges. If edges should be weighted, the score of all edges linked to a node are summed. The sum is normalized with the number of edges connected to the node.
+
+-- Main.NicoErbs - 19 Jan 2010

@@ -1,0 +1,9 @@
+%META:TOPICINFO{author="EmilyJamison" date="1322603934" format="1.1" version="2"}%
+%META:TOPICPARENT{name="HowTo"}%
+<table align="left" style="width: 453px; height: 149px;" cellspacing="1" border="1"> <tbody> <tr> <td>Server:</td> <td>vpn.ukp.informatik.tu-darmstadt.de</td> </tr> <tr> <td>Login:</td> <td>UKP Account (ohne führendes UKP\)</td> </tr> <tr> <td>Passwort:</td> <td>Passwort für den UKP Account</td> </tr> <tr> <td>Domäne:</td> <td>UKP</td> </tr> <tr> <td>Art:</td> <td>PPTP mit Softwarekompimierung und deak. Remote Gateway</td> </tr> <tr> <td>Vorbedingung:</td> <td>Bestehende Netzwerk/Internet Verbindung</td> </tr> </tbody> </table><br /><br /><br /><br /><br /><br /><br /><br /><br />
+   * Mit den Daten in der obigen Tabelle kann eine VPN Verbindung in das UKP Netz hergestellt werden um die internen Dienste und Services zu nutzen. Für Details zu den einzelnen Betriebsystemen siehe das !HowTo von TK: https://wiki.tk.informatik.tu-darmstadt.de/bin/view/ASCAll/TKVPN
+   * In unserem Fall sind dann alle ...tk.informatik.tu-darmstadt.de Angaben mit ...ukp.informatik.tu-darmstadt.de zu ersetzen.
+
+---+++++ In English:
+   * With the data in the table above, you can make a VPN connection into the UKP network &#8203;&#8203;to use the internal services. For details on the individual operating systems, see the HowTo of TK: https://wiki.tk.informatik.tu-darmstadt.de/bin/view/ASCAll/TKVPN
+   * Please replace all ... tk.informatik.tu-darmstadt.de details with ... ukp.informatik.tu-darmstadt.de.

@@ -1,0 +1,102 @@
+%META:TOPICINFO{author="RichardSteuer" date="1357752254" format="1.1" version="55"}%
+%META:TOPICPARENT{name="IrExperiments"}%
+Until now (09.01.2013), my best baseline result (without any kind of DT expansion) is the following.
+
+---+++Evaluation results (trec_eval)
+
+All of the following results were accomplished on the test data without using (multiple) fields.
+
+   * 1.  all queries, indexed *Token* and *Lemma* ; using DFR_BM25 and KL; using TD (title, description)
+   * 2.  all queries, indexed *Token*, *Lemma* and *Stem* ; using DFR_BM25 and KL; using TD (title, description)
+   * 3.  all queries, just indexed *Token*; using DFR_BM25 and KL; using TD (title, description)
+   * 4.  all queries, just indexed *Lemma*; using DFR_BM25 and KL; using TD (title, description)
+
+<div id="table1" style="float:left; margin-left:25px">
+| num_q | all | 160 | 
+| num_ret | all | 10550704 | 
+| num_rel | all | 4327 | 
+| num_rel_ret | all | 4273 | 
+| *map* | all | 0.3736 | 
+| gm_ap | all | 0.1585 | 
+| R-prec | all | 0.3631 | 
+| bpref | all | 0.3547 | 
+| recip_rank | all | 0.6476 | 
+| *P5* | all | 0.4525 | 
+| P10 | all | 0.3819 | 
+| P15 | all | 0.3408 | 
+| P20 | all | 0.3150 | 
+| P30 | all | 0.2740 | 
+| P100 | all | 0.1478 | 
+| P200 | all | 0.0900 | 
+| P500 | all | 0.0420 | 
+| P1000 | all | 0.0230 |
+</div>
+
+<div id="table2" style="float:left; margin-left:25px">
+| num_q | all | 160 | 
+| num_ret | all | 11306103 | 
+| num_rel | all | 4327 | 
+| num_rel_ret | all | 4296 | 
+| *map* | all | 0.3780 | 
+| gm_ap | all | 0.1634 | 
+| R-prec | all | 0.3593 | 
+| bpref | all | 0.3528 | 
+| recip_rank | all | 0.6303 | 
+| *P5* | all | 0.4525 | 
+| P10 | all | 0.3813 | 
+| P15 | all | 0.3404 | 
+| P20 | all | 0.3119 | 
+| P30 | all | 0.2731 | 
+| P100 | all | 0.1521 | 
+| P200 | all | 0.0927 | 
+| P500 | all | 0.0432 | 
+| P1000 | all | 0.0236 | 
+</div>
+
+<div id="table3" style="float:left; margin-left:25px">
+| num_q | all | 160 | 
+| num_ret | all | 6944616 | 
+| num_rel | all | 4327 | 
+| num_rel_ret | all | 4203 | 
+| *map* | all | 0.3411 | 
+| gm_ap | all | 0.1316 | 
+| R-prec | all | 0.3306 | 
+| bpref | all | 0.3292 | 
+| recip_rank | all | 0.6242 | 
+| *P5* | all | 0.4275 | 
+| P10 | all | 0.3581 | 
+| P15 | all | 0.3267 | 
+| P20 | all | 0.2972 | 
+| P30 | all | 0.2525 | 
+| P100 | all | 0.1367 | 
+| P200 | all | 0.0838 | 
+| P500 | all | 0.0398 | 
+| P1000 | all | 0.0220 |
+</div>
+
+<div id="table4" style="float:left; margin-left:25px">
+| num_q | all | 160 | 
+| num_ret | all | 10502051 | 
+| num_rel | all | 4327 | 
+| num_rel_ret | all | 4270 | 
+| *map* | all | 0.3764 | 
+| gm_ap | all | 0.1594 | 
+| R-prec | all | 0.3623 | 
+| bpref | all | 0.3554 | 
+| recip_rank | all | 0.6400 | 
+| *P5* | all | 0.4400 | 
+| P10 | all | 0.3744 | 
+| P15 | all | 0.3421 | 
+| P20 | all | 0.3144 | 
+| P30 | all | 0.2737 | 
+| P100 | all | 0.1508 | 
+| P200 | all | 0.0912 | 
+| P500 | all | 0.0427 | 
+| P1000 | all | 0.0232 |
+</div>
+
+<div style="clear:both;"></div>
+
+---+++Paper results - stand-alone retrieval models
+In the paper it says: _"The DFR_BM25 model with query expansion on tokens yields a MAP value of *0.4223* while we get a MAP value of *0.4451* on lemmas, which is an improvement of 5.1%."_ 
+I still can't figure out how they did this.

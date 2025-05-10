@@ -1,0 +1,57 @@
+%META:TOPICINFO{author="alles" comment="" date="1727884798" format="1.1" reprev="15" version="15"}%
+---+!! %MAKETEXT{"Welcome to the [_1] web" args="<nop>%WEB%"}%%IF{"$WEBSUMMARY != ''" then="
+---++!! %WEBSUMMARY%"}%
+
+<div style="border: solid 4px green; font-weight:800; padding: 5px">
+<p align="center">
+[[UKP/UkpOnboarding][👋 Onboarding - Your first day at UKP Lab 👨‍🏫💡🏫]]
+</p>
+</div>
+
+<div style="border: solid 4px #FBD603; font-weight:800; padding: 5px">
+  <p align="center">
+🚧 *This web is under active development.* 👷🔨 🚧
+  </p>
+</div>
+
+<div style="float:right;background-color:white; z-index:999;">
+  <div style="border: solid grey 1px; padding: 0.25em; margin: 0.25em">
+
+---++ Permissions
+This web and it's contents are available for:
+   * Everyone that can login (just denied for guest users)
+   * *%RED%Subwikis are restricted further!%ENDCOLOR%*
+  </div>
+</div>
+
+---++ %MAKETEXT{"Please select one of the following areas"}%
+---+++ *%RED%UKP Organizational%ENDCOLOR%* (office-admin area)
+An overview and documentation of ...
+<div style="text-align:center">
+<table style="border-collapse: separate; border-spacing: 15px">
+<tr>
+<td>[[Services/OrganizationBasic/?refresh=cache][ <img src="%ICONURL{"Ukp"}%" style="width:10em"/> ]]<br/>[[/Services/OrganizationBasic//?refresh=cache][Basic Organizational<br/>Information]] </td>
+<td>[[Services/Organization/?refresh=cache][ <img src="%ICONURL{"Ukp"}%" style="width:10em"/> ]]<br/>[[/Services/Organization/?refresh=cache][Advanced Organizational<br/>Information]]</td>
+</tr>
+</table>
+</div>
+
+---+++ *%BLUE%UKP IT Services%ENDCOLOR%* (system-admin area)
+An overview and documentation of the IT services that UKP system-admin either hosts and maintains itself or services hosted externally (e.g. by the HRZ) whose use UKP system-admin supports
+<div style="text-align:center">
+<table style="border-collapse: separate; border-spacing: 15px">
+<tr>
+<td>[[Services/ITBasic/?refresh=cache][ <img src="%ICONURL{"Ukp"}%" style="width:10em"/> ]]<br/>[[Services/ITBasic/?refresh=cache][Basic IT Information]] </td>
+<td>[[Services/IT/?refresh=cache][ <img src="%ICONURL{"Ukp"}%" style="width:10em"/> ]]<br/>[[Services/IT/?refresh=cache][Advanced IT Information]]</td>
+</tr>
+<td><i>smaller version of <br/> advanced IT wiki</i></td>
+<td><i>also includes basic <br/> IT information wiki</i></td>
+<tr>
+<td>%TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% <br/> <b>available for ...</b><br/> everyone that can<br/>login (just denied <br/>for guest users) %ENDTWISTY% </td>
+<td>%TWISTY{mode="inline" showlink="(show permissions)" hidelink="(hide permissions)"}% <br/> <b>available for ...</b><br/> ukp-tuda-staff<br/>ukp-tuda-associated<br/>ukp-tuda-researcher<br/>ukp-tuda-irg<br/>ukp-tuda-intern %ENDTWISTY% </td>
+</tr>
+</table>
+</div>
+
+
+%META:PREFERENCE{name="TOPICTITLE" title="TOPICTITLE" type="Local" value=""}%

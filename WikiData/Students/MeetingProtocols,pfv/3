@@ -1,0 +1,40 @@
+%META:TOPICINFO{author="CigdemToprak" date="1225380997" format="1.1" reprev="3" version="3"}%
+%META:TOPICPARENT{name="GregLogan"}%
+---+ Meetings
+
+%TOC%
+
+---++ 05.11.2008
+   * @action(CT): MMAX reader attribute-type mapping.
+   * *Architecture idea:*
+      * Tokenizer
+      * Spell checker
+      * Dictionary annotator
+      * Cue annotator
+      * Opinion question annotator
+   * action(CT): Update the manual and send to DB.  
+---++ 29.10.2008
+   * @action(CT): calculate inter-annotator agreement and generate statistics for 120 questions
+      * Still working on it, [[https://maggie.tk.informatik.tu-darmstadt.de/wiki/bin/view/Projects/AQUA2/ExperimenteErgebnisse][here]] is what I have sofar. 
+   * @action(GL): complete MMAX reader
+   * @action(GL): propose architecture for the system
+
+*Done*
+      * @action(CT): finish the annotation
+
+---++ 23.10.2008 
+   * @discuss(CT):  the Zhi Shen's components which can be used by GL  
+      * Dictionary look-up annotator
+      * User generated content dictionaries, smileys, etc. 
+   * @info(CT): 200 annotated questions, 120 annotated by both
+      * Base data from Agichtein
+      * 400 extracted questions from 4 categories, randomly chosen (more than 4 answers)
+   * @info(GL):
+      * Read text-based MMAX format
+      * Reader for Q&A data (default View) + MMAX annotations in other view
+      * Tokenisation + POS tagging
+      * Consumer to write text
+   * @info(DB): participation to the eNLP meetings (Monday, 10:45 - 11:00)
+      * @action(GL): write a short summary on work done in the project
+
+-- Main.CigdemToprak - 21 Oct 2008
